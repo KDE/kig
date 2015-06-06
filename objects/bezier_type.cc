@@ -29,7 +29,6 @@
 
 #include "../misc/common.h"
 
-#include <klocale.h>
 #include <cmath>
 #include <vector>
 

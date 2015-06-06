@@ -27,7 +27,6 @@
 #include "../kig/kig_view.h"
 
 #include <math.h>
-#include <klocale.h>
 #include <qstring.h>
 
 CubicImp::CubicImp( const CubicCartesianData& data )

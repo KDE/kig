@@ -36,7 +36,6 @@
 #include <qscrollbar.h>
 
 #include <QDebug>
-#include <klocale.h>
 
 #include <cmath>
 #include <algorithm>

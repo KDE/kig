@@ -27,8 +27,6 @@
 #include "../misc/equationstring.h"
 #include "../kig/kig_view.h"
 
-#include <klocale.h>
-
 #include <cmath>
 using namespace std;
 

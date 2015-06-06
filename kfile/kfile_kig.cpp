@@ -28,7 +28,6 @@
 #include <karchive.h>
 #include <kgenericfactory.h>
 #include <kglobal.h>
-#include <klocale.h>
 #include <kstandarddirs.h>
 #include <ktar.h>
 

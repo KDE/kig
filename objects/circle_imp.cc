@@ -28,8 +28,6 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
-#include <klocale.h>
-
 #include <math.h>
 
 CircleImp::CircleImp( const Coordinate& center, double radius )

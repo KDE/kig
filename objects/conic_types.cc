@@ -28,8 +28,6 @@
 #include "../kig/kig_commands.h"
 #include "../kig/kig_part.h"
 
-#include <klocale.h>
-
 static const char conic_constructstatement[] = I18N_NOOP( "Construct a conic through this point" );
 
 static const struct ArgsParser::spec argsspecConicB5P[] =

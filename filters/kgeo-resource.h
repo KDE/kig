@@ -44,7 +44,6 @@
 
 #include <iostream>
 #include <qstring.h>
-#include <klocale.h>
 
 ///////////////////////////////////////////////////////////////////
 // resource.h  -- contains macros used for commands

@@ -45,7 +45,6 @@
 #include <KIconEngine>
 #include <kcursor.h>
 #include <QDebug>
-#include <klocale.h>
 #include <kmessagebox.h>
 
 #include <algorithm>

@@ -52,8 +52,6 @@
 #include <qdatastream.h>
 #include <qbuffer.h>
 
-#include <klocale.h>
-
 KigFilterKSeg::KigFilterKSeg()
 {
 }

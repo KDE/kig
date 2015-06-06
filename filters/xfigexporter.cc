@@ -39,7 +39,6 @@
 #include <qfile.h>
 #include <qtextstream.h>
 
-#include <klocale.h>
 #include <kmessagebox.h>
 
 #include <map>

@@ -31,7 +31,6 @@
 #include <qrect.h>
 #include <QSvgGenerator>
 
-#include <klocale.h>
 #include <kmessagebox.h>
 
 #include <map>

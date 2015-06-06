@@ -36,8 +36,6 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_commands.h"
 
-#include <klocale.h>
-
 static const ArgsParser::spec argsspecFixedPoint[] =
 {
   { DoubleImp::stype(), "x", "SHOULD NOT BE SEEN", false },

@@ -24,7 +24,6 @@
 #include <QCheckBox>
 #include <QLabel>
 
-#include <klocale.h>
 #include <QVBoxLayout>
 
 KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision ) : QDialog()

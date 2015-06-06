@@ -28,8 +28,6 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_document.h"
 
-#include <klocale.h>
-
 #include <cmath>
 
 using namespace std;

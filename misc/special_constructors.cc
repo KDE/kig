@@ -60,8 +60,6 @@
 
 #include <qpen.h>
 
-#include <klocale.h>
-
 #include <algorithm>
 #include <functional>
 #include <iterator>

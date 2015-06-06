@@ -21,7 +21,6 @@
 
 #include "../misc/coordinate.h"
 
-#include <klocale.h>
 #include <map>
 
 class ObjectImpType::StaticPrivate

@@ -37,7 +37,6 @@
 #include <kactionmenu.h>
 #include <kactioncollection.h>
 #include <kimageio.h>
-#include <klocale.h>
 #include <kmessagebox.h>
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,

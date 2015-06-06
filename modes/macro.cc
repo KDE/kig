@@ -30,7 +30,6 @@
 #include <klineedit.h>
 #include <kmessagebox.h>
 #include <kcursor.h>
-#include <klocale.h>
 
 #include <functional>
 #include <algorithm>

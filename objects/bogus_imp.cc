@@ -18,7 +18,6 @@
 #include "bogus_imp.h"
 
 #include <qstringlist.h>
-#include <klocale.h>
 
 #include "../misc/rect.h"
 

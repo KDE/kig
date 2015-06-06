@@ -31,7 +31,6 @@
 #include "../objects/bogus_imp.h"
 
 #include <KIconEngine>
-#include <klocale.h>
 #include <kactioncollection.h>
 
 #include <QIcon>

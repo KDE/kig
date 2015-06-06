@@ -30,8 +30,6 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
-#include <klocale.h>
-
 ObjectImp* ConicImp::transform( const Transformation& t ) const
 {
   bool valid = true;

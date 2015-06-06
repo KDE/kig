@@ -27,8 +27,6 @@
 #include "other_imp.h"
 #include "point_imp.h"
 
-#include <klocale.h>
-
 static const char intersectlinestat[] = I18N_NOOP( "Intersect with this line" );
 
 static const ArgsParser::spec argsspecConicLineIntersection[] =

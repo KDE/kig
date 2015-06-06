@@ -21,7 +21,6 @@
 #include <qstring.h>
 
 #include <QDebug>
-#include <klocale.h>
 
 struct script_prop
 {

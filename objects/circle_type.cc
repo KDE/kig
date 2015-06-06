@@ -27,8 +27,6 @@
 
 #include "../misc/common.h"
 
-#include <klocale.h>
-
 static const char constructcirclethroughpointstat[] = I18N_NOOP( "Construct a circle through this point" );
 
 static const char constructcirclewithcenterstat[] = I18N_NOOP( "Construct a circle with this center" );

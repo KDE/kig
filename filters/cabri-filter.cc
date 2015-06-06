@@ -55,7 +55,6 @@
 #include <qregexp.h>
 
 #include <QDebug>
-#include <klocale.h>
 
 #include <iterator>
 
