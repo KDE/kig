@@ -65,7 +65,6 @@ void KigFileDialog::accept()
   if ( mow )
   {
     QDialog* optdlg = new QDialog( this );
-    QWidget* mainWidget = new QWidget( optdlg );
     QDialogButtonBox* buttonBox = new QDialogButtonBox( QDialogButtonBox::Cancel | QDialogButtonBox::Ok );
     QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
     QVBoxLayout* mainLayout = new QVBoxLayout;
@@ -73,16 +72,14 @@ void KigFileDialog::accept()
     okButton->setDefault( true );
     okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
     optdlg->setLayout( mainLayout );
-    mainLayout->addWidget( mainWidget );
+    mainLayout->addWidget( mow );
     mainLayout->addWidget( buttonBox );
     optdlg->setWindowTitle( moptcaption );
     
     connect( buttonBox, SIGNAL( accepted() ), optdlg, SLOT( accept() ) );
-    connect( buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ));
+    connect( buttonBox, SIGNAL( rejected() ), optdlg, SLOT( reject() ));
 
-    mow->setParent( optdlg );
-//PORTING: Verify that widget was added to mainLayout     optdlg->setMainWidget( mow );
-    optdlg->exec() == QDialog::Accepted ? QFileDialog::accept() : QFileDialog::reject();
+    (optdlg->exec() == QDialog::Accepted) ? QFileDialog::accept() : QFileDialog::reject();
   }
   else
     QFileDialog::accept();
