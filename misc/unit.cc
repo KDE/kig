@@ -21,7 +21,8 @@
 #include "unit.h"
 
 #include <QDebug>
-#include <klocale.h>
+
+#include <KLocalizedString>
 
 Unit::Unit( double value, Unit::MetricalUnit unit, int dpi )
 {

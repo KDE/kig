@@ -21,14 +21,11 @@
 
 #include "goniometry.h"
 
-#include <math.h>
-
-#include <qstringlist.h>
+#include <cmath>
 
 #include <QDebug>
-#include <klocale.h>
 
-#include <cmath>
+#include <KLocalizedString>
 
 Goniometry::Goniometry()
 {

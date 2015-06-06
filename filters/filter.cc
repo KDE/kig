@@ -26,8 +26,8 @@
 #include "kseg-filter.h"
 #include "drgeo-filter.h"
 
-#include <kmessagebox.h>
-#include <klocale.h>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 KigFilters* KigFilters::sThis;
 

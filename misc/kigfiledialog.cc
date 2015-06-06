@@ -17,14 +17,13 @@
 
 #include "kigfiledialog.h"
 
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <qfile.h>
-
-#include <klocale.h>
-#include <kmessagebox.h>
-
 #include <cassert>
+
+#include <QPushButton>
+#include <QVBoxLayout>
+
+#include <KLocalizedString>
+#include <KMessageBox>
 
 KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
               const QString& caption,  QWidget* parent )

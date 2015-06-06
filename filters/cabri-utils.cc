@@ -21,12 +21,10 @@
 
 #include "cabri-filter.h"
 
-#include <qfile.h>
-#include <qregexp.h>
-#include <qstring.h>
-
 #include <QDebug>
-#include <klocale.h>
+#include <QFile>
+
+#include <KLocalizedString>
 
 #define KIG_CABRI_FILTER_PARSE_ERROR \
 { \
