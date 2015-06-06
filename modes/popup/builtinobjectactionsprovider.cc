@@ -37,7 +37,6 @@
 #include <QRect>
 
 #include <KIconEngine>
-#include <KLocale>
 
 struct color_struct
 {

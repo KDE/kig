@@ -28,8 +28,6 @@
 #include "../../modes/normal.h"
 #include "../../misc/coordinate_system.h"
 
-#include <KLocale>
-
 void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )

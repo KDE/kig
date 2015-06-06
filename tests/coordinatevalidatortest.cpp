@@ -23,8 +23,6 @@
 #include <QObject>
 #include <QValidator>
 
-#include <KLocale>
-
 // this class is copied from coordinate_system.cpp, with the following differences:
 // - QDoubleValidator is used instead of KDoubleValidator
 // this way, we avoid all the dependancies needed by the coordinate systems

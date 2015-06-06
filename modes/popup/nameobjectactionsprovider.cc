@@ -36,8 +36,6 @@
 #include <QInputDialog>
 #include <QRegExpValidator>
 
-#include <KLocale>
-
 void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const Coordinate& loc, KigPart& doc )
 {
   std::vector<ObjectCalcer*> args;

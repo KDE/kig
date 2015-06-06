@@ -30,7 +30,6 @@
 
 #include <QIcon>
 
-#include <KLocale>
 #include <KIconEngine>
 
 void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
