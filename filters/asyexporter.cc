@@ -23,6 +23,8 @@
 
 #include <qfile.h>
 #include <qtextstream.h>
+#include <QStandardPaths>
+
 #include <kmessagebox.h>
 
 #ifdef HAVE_TRUNC
@@ -53,7 +55,7 @@ QString AsyExporter::menuIcon() const
 void AsyExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString(), i18n( "*.asy|Asymptote Documents (*.asy)" ),
+      QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "*.asy|Asymptote Documents (*.asy)" ),
       i18n( "Export as Asymptote script" ), &w );
   kfd->setOptionCaption( i18n( "Asymptote Options" ) );
   AsyExporterOptions* opts = new AsyExporterOptions( 0L );

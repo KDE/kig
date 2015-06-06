@@ -85,7 +85,7 @@ QString ImageExporter::menuIcon() const
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString(), KImageIO::pattern( KImageIO::Writing ),
+      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), KImageIO::pattern( KImageIO::Writing ),
       i18n( "Export as Image" ), &w );
   kfd->setOptionCaption( i18n( "Image Options" ) );
   ImageExporterOptions* opts = new ImageExporterOptions( 0L );
