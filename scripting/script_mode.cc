@@ -17,8 +17,6 @@
 
 #include "script_mode.h"
 
-#include <iterator>
-
 #include "newscriptwizard.h"
 #include "python_type.h"
 #include "python_scripter.h"
@@ -33,14 +31,7 @@
 #include "../objects/object_imp.h"
 #include "../objects/object_factory.h"
 
-#include <qbytearray.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-
-#include <kcursor.h>
-#include <QDialog>
-#include <kicon.h>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
 void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
 {

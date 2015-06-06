@@ -32,24 +32,19 @@
 
 #include <config-kig.h>
 
-#include <qbytearray.h>
-#include <qdom.h>
-#include <qfile.h>
-#include <qfont.h>
-#include <qregexp.h>
-#include <qtextstream.h>
-#include <QStandardPaths>
-
-#include <karchive.h>
-#include <QDebug>
-#include <kstandarddirs.h>
-#include <ktar.h>
-
-#include <stdio.h>
-
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <map>
+
+#include <QDebug>
+#include <QDomElement>
+#include <QFile>
+#include <QFont>
+#include <QStandardPaths>
+#include <QTextStream>
+
+#include <KTar>
 
 struct HierElem
 {
