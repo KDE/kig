@@ -24,8 +24,6 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
-#include <klocale.h>
-
 PointImp::PointImp( const Coordinate& c )
   : mc( c )
 {

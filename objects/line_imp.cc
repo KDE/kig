@@ -24,10 +24,8 @@
 #include "../misc/common.h"
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
-#include "../misc/equation.h"
+#include "../misc/equationstring.h"
 #include "../kig/kig_view.h"
-
-#include <klocale.h>
 
 #include <cmath>
 using namespace std;

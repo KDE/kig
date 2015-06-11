@@ -17,26 +17,23 @@
 // 02110-1301, USA.
 
 #include "newscriptwizard.h"
-#include "newscriptwizard.moc"
 
 #include "script_mode.h"
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qmenu.h>
+#include <QAction>
+#include <QDialog>
+#include <QFontDatabase>
+#include <QLabel>
+#include <QTextEdit>
+#include <QVBoxLayout>
 
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <kdialog.h>
-#include <kglobalsettings.h>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <ktextedit.h>
-#include <ktexteditor/document.h>
-#include <ktexteditor/editor.h>
-#include <ktexteditor/editorchooser.h>
-#include <ktexteditor/view.h>
-#include <ktoolinvocation.h>
+#include <KActionCollection>
+#include <KIconEngine>
+#include <KHelpClient>
+
+#include <KTextEditor/Document>
+#include <KTextEditor/Editor>
+#include <KTextEditor/View>
 
 #include <assert.h>
 
@@ -60,7 +57,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 ), mIconLoader( il )
 {
   setObjectName( QLatin1String( "New Script Wizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "New Script" ) ) );
+  setWindowTitle( i18n( "New Script" ) );
   setOption( HaveHelpButton );
 
   QWizardPage* firstPage = new QWizardPage( this );
@@ -85,17 +82,16 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   lay2->addWidget( mLabelFillCode );
   setPage( CodePageId, secondPage );
 
-  KTextEditor::Editor* editor = KTextEditor::EditorChooser::editor();
-//  KTextEditor::Editor* editor = 0;
-  kDebug() << "EDITOR: " << editor;
+  KTextEditor::Editor* editor = KTextEditor::Editor::instance();
+  qDebug() << "EDITOR: " << editor;
 
   if ( !editor )
   {
     // there is no KDE textditor component installed, so we'll use a
     // simplier KTextEdit
-    textedit = new KTextEdit( secondPage );
+    textedit = new QTextEdit( secondPage );
     textedit->setObjectName( "textedit" );
-    textedit->setFont( KGlobalSettings::fixedFont() );
+    textedit->setFont( QFontDatabase::systemFont( QFontDatabase::FixedFont ) );
     textedit->setAcceptRichText( false );
     lay2->addWidget( textedit );
   }
@@ -103,8 +99,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   {
     document = editor->createDocument( 0 );
     // creating the 'view', that is what the user see and interact with
-    (void)document->createView( secondPage );
-    docview = document->activeView();
+    docview = document->createView( secondPage );
 
     lay2->addWidget( docview );
 
@@ -165,7 +160,7 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "scripting", "kig" );
+  KHelpClient::invokeHelp( "scripting", "kig" );
 }
 
 void NewScriptWizard::setText( const QString& text )
@@ -195,7 +190,7 @@ QString NewScriptWizard::text() const
 void NewScriptWizard::setType( ScriptType::Type type )
 {
   mLabelFillCode->setText( ScriptType::fillCodeStatement( type ) );
-  KIcon scriptIcon( ScriptType::icon( type ), mIconLoader );
+  QIcon scriptIcon( new KIconEngine( ScriptType::icon( type ), mIconLoader ) );
   if ( type != ScriptType::Unknown )
   {
     setWindowIcon( scriptIcon );

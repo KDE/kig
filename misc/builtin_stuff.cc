@@ -43,8 +43,6 @@
 #include "../objects/polygon_type.h"
 #include "../objects/bezier_type.h"
 
-#include <klocale.h>
-
 void setupBuiltinStuff()
 {
   static bool done = false;

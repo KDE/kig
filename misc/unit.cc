@@ -20,8 +20,9 @@
 
 #include "unit.h"
 
-#include <kdebug.h>
-#include <klocale.h>
+#include <QDebug>
+
+#include <KLocalizedString>
 
 Unit::Unit( double value, Unit::MetricalUnit unit, int dpi )
 {
@@ -132,7 +133,7 @@ Unit::MetricalUnit Unit::intToUnit( int index )
     return cm;
   else if ( index == 2 )
     return in;
-  kDebug() << "No measure unit with index " << index;
+  qDebug() << "No measure unit with index " << index;
   return pixel;
 }
 

@@ -32,8 +32,6 @@
 
 #include <qdom.h>
 
-#include <klocale.h>
-
 const ObjectImpFactory* ObjectImpFactory::instance()
 {
   static const ObjectImpFactory t;

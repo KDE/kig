@@ -18,7 +18,7 @@
 #ifndef KIG_FILTERS_EXPORTER_H
 #define KIG_FILTERS_EXPORTER_H
 
-#include <kaction.h>
+#include <QAction>
 
 #include <vector>
 
@@ -41,7 +41,7 @@ public:
 };
 
 class ExporterAction
-  : public KAction
+  : public QAction
 {
   Q_OBJECT
 

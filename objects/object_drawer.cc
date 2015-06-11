@@ -24,7 +24,7 @@
 #include <qnamespace.h>
 #include <cassert>
 
-#include <kdebug.h>
+#include <QDebug>
 
 void ObjectDrawer::draw( const ObjectImp& imp, KigPainter& p, bool sel ) const
 {
@@ -107,7 +107,7 @@ ObjectDrawer* ObjectDrawer::getCopyStyle( Qt::PenStyle s ) const
   return ret;
 }
 
-ObjectDrawer* ObjectDrawer::getCopyPointStyle( int p ) const
+ObjectDrawer* ObjectDrawer::getCopyPointStyle( Kig::PointStyle p ) const
 {
   ObjectDrawer* ret = new ObjectDrawer;
   ret->mcolor = mcolor;
@@ -141,7 +141,7 @@ Qt::PenStyle ObjectDrawer::style() const
   return mstyle;
 }
 
-int ObjectDrawer::pointStyle() const
+Kig::PointStyle ObjectDrawer::pointStyle() const
 {
   return mpointstyle;
 }
@@ -151,50 +151,19 @@ QFont ObjectDrawer::font() const
   return mfont;
 }
 
-ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style, int pointStyle, const QFont& f )
+ObjectDrawer::ObjectDrawer( const QColor& color, int width, bool shown, Qt::PenStyle style, Kig::PointStyle pointStyle, const QFont& f )
   : mcolor( color ), mshown( shown ), mwidth( width ), mstyle( style ), mpointstyle( pointStyle ), mfont( f )
 {
 }
 
 ObjectDrawer::ObjectDrawer()
-  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine ), mpointstyle( 0 ), mfont( QFont() )
+  : mcolor( Qt::blue ), mshown( true ), mwidth( -1 ), mstyle( Qt::SolidLine ), mpointstyle( Kig::Round ), mfont( QFont() )
 {
 }
 
 bool ObjectDrawer::inRect( const ObjectImp& imp, const Rect& r, const KigWidget& w ) const
 {
   return mshown && imp.inRect( r, mwidth, w );
-}
-
-int ObjectDrawer::pointStyleFromString( const QString& style )
-{
-  if ( style == "Round" )
-    return 0;
-  else if ( style == "RoundEmpty" )
-    return 1;
-  else if ( style == "Rectangular" )
-    return 2;
-  else if ( style == "RectangularEmpty" )
-    return 3;
-  else if ( style == "Cross" )
-    return 4;
-  return 0;
-}
-
-QString ObjectDrawer::pointStyleToString() const
-{
-  if ( mpointstyle == 0 )
-    return "Round";
-  else if ( mpointstyle == 1 )
-    return "RoundEmpty";
-  else if ( mpointstyle == 2 )
-    return "Rectangular";
-  else if ( mpointstyle == 3 )
-    return "RectangularEmpty";
-  else if ( mpointstyle == 4 )
-    return "Cross";
-  assert( false );
-  return QString();
 }
 
 Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )

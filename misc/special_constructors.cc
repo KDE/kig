@@ -60,8 +60,6 @@
 
 #include <qpen.h>
 
-#include <klocale.h>
-
 #include <algorithm>
 #include <functional>
 #include <iterator>
@@ -993,7 +991,7 @@ void PolygonBCVConstructor::handlePrelim(
   drawprelim( drawer, p, args, d );
   if ( moreinfo )
   {
-    p.setPointStyle( 1 );
+    p.setPointStyle( Kig::RoundEmpty );
     p.setWidth( 6 );
     double ro = 1.0/(2.5);
     Coordinate where = getRotatedCoord( c, (1-ro)*c+ro*v, 4*M_PI/5.0 );

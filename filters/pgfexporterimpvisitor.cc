@@ -43,7 +43,7 @@ void PGFExporterImpVisitor::newLine()
 QString PGFExporterImpVisitor::emitPenColor( const QColor& c )
 {
   QString pencolor("");
-  pencolor = "color={rgb:red," + QString::number(c.red()) + ";green," + QString::number(c.green()) + ";blue," + QString::number(c.blue()) + "}";
+  pencolor = "color={rgb,255:red," + QString::number(c.red()) + ";green," + QString::number(c.green()) + ";blue," + QString::number(c.blue()) + "}";
   return pencolor;
 }
 
@@ -252,11 +252,15 @@ void PGFExporterImpVisitor::visit( const TextImp* imp )
     mstream << "\\node ";
     if (imp->hasFrame())
     {
-        mstream << "[rectangle,draw] ";
+        mstream << "[rectangle,draw,align=left] ";
     }
+    else
+    {
+        mstream << "[align=left] ";
+    }    
     mstream << "at "
             << emitCoord(imp->coordinate())
-            << " {" << imp->text() << "}";
+            << " {" << imp->text().replace(QString("\n"),QString("\\\\")) << "}";
     newLine();
 }
 

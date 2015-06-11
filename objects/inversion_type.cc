@@ -29,8 +29,6 @@
 
 #include "../misc/common.h"
 
-#include <klocale.h>
-
 static const char str1[] = I18N_NOOP( "Invert with respect to this circle" );
 static const char str2[] = I18N_NOOP( "Select the circle we want to invert against..." );
 

@@ -44,18 +44,17 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
-#include <math.h>
+#include <config-kig.h>
+
+#include <cmath>
 #include <algorithm>
 
-#include <qcheckbox.h>
-#include <qcolor.h>
-#include <qfile.h>
-#include <qtextstream.h>
+#include <QFile>
+#include <QTextStream>
 
-#include <klocale.h>
-#include <kmessagebox.h>
-
-#include <config-kig.h>
+#include <KConfigGroup>
+#include <KMessageBox>
+#include <KSharedConfig>
 
 #ifdef HAVE_TRUNC
 #define KDE_TRUNC(a)    trunc(a)
@@ -536,7 +535,7 @@ void PSTricksExportImpVisitor::visit(const RationalBezierImp* imp)
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
     KigFileDialog* kfd = new KigFileDialog(
-        QString(), i18n( "*.tex|Latex Documents (*.tex)" ),
+        QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "*.tex|Latex Documents (*.tex)" ),
         i18n( "Export as Latex" ), &w );
     kfd->setOptionCaption( i18n( "Latex Options" ) );
     LatexExporterOptions* opts = new LatexExporterOptions( 0L );
@@ -546,7 +545,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     opts->setAxes( doc.document().axes() );
     opts->setExtraFrame( false );
 
-    KConfigGroup cg = KGlobal::config()->group("Latex Exporter");
+    KConfigGroup cg = KSharedConfig::openConfig()->group("Latex Exporter");
 
     int fmt = cg.readEntry<int>("OutputFormat", LatexExporterOptions::PSTricks);
     if (fmt > -1 && fmt < LatexExporterOptions::FormatCount)

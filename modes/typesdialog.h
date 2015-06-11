@@ -23,7 +23,7 @@
 
 #include <qabstractitemmodel.h>
 
-#include <kdialog.h>
+#include <QDialog>
 
 #include "../misc/lists.h"
 
@@ -69,7 +69,7 @@ public:
 /**
  * Manage the macro types...
  */
-class TypesDialog : public KDialog
+class TypesDialog : public QDialog
 {
   Q_OBJECT
 

@@ -31,8 +31,6 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
-#include <klocale.h>
-
 #include <cmath>
 //#include <gsl/gsl_poly.h>
 

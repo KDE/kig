@@ -22,12 +22,11 @@
 #include "../misc/kigpainter.h"
 #include "../misc/screeninfo.h"
 #include "../misc/kignumerics.h"
-#include "../misc/equation.h"
+#include "../misc/equationstring.h"
 #include "../misc/common.h"
 #include "../kig/kig_view.h"
 
 #include <math.h>
-#include <klocale.h>
 #include <qstring.h>
 
 CubicImp::CubicImp( const CubicCartesianData& data )

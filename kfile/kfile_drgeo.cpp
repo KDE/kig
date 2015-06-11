@@ -95,5 +95,5 @@ bool DrgeoPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   return true;
 }
 
-#include "kfile_drgeo.moc"
+
 

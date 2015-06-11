@@ -22,7 +22,6 @@
 #include "object_hierarchy.h"
 #include "../kig/kig_part.h"
 
-#include <klocale.h>
 #include <kmessagebox.h>
 #include <qfile.h>
 #include <qtextstream.h>

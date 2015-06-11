@@ -22,7 +22,7 @@
 
 #include "../kig/kig_part.h"
 
-#include <kaction.h>
+#include <QAction>
 
 void KigMode::enableActions()
 {

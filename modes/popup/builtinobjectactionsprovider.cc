@@ -32,11 +32,11 @@
 #include "../../objects/object_drawer.h"
 #include "../../objects/point_imp.h"
 
+#include <QColorDialog>
 #include <QPen>
 #include <QRect>
 
-#include <KColorDialog>
-#include <KLocale>
+#include <KIconEngine>
 
 struct color_struct
 {
@@ -83,8 +83,8 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       popup.addInternalAction( menu, i18n( "&Show" ), nextfree+1 );
     }
     nextfree += 2;
-    popup.addInternalAction( menu, KIcon( "transform-move", l ), i18n( "&Move" ), nextfree++ );
-    popup.addInternalAction( menu, KIcon( "edit-delete", l ), i18n( "&Delete" ), nextfree++ );
+    popup.addInternalAction( menu, QIcon( new KIconEngine( "transform-move", l ) ), i18n( "&Move" ), nextfree++ );
+    popup.addInternalAction( menu, QIcon( new KIconEngine( "edit-delete", l ) ), i18n( "&Delete" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetColorMenu )
   {
@@ -94,7 +94,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
       p.fill( QColor( colors[i].color ) );
       popup.addInternalAction( menu, QIcon( p ), i18n( colors[i].name ), nextfree++ );
     }
-    popup.addInternalAction( menu, KIcon( "color", l ), i18n( "&Custom Color" ), nextfree++ );
+    popup.addInternalAction( menu, QIcon( new KIconEngine( "color", l ) ), i18n( "&Custom Color" ), nextfree++ );
   }
   else if ( menu == NormalModePopupObjects::SetSizeMenu && !popup.onlyLabels() )
   {
@@ -149,17 +149,19 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
     bool point = ( npoints > nothers );
     if ( ! samecolor ) color = Qt::blue;
     if ( point )
-      for ( int i = 0; i < 5; ++i )
+    {
+      for ( int i = 0; i < (int)Kig::NumberOfPointStyles; ++i )
       {
         QPixmap p( 20, 20 );
         p.fill( popup.palette().color( popup.backgroundRole() ) );
         ScreenInfo si( Rect( -1, -1, 2, 2 ), p.rect() );
         KigPainter ptr( si, &p, popup.part().document(), false );
         PointImp pt( Coordinate( 0, 0 ) );
-        ObjectDrawer d( color, -1, true, Qt::SolidLine, i );
+        ObjectDrawer d( color, -1, true, Qt::SolidLine, (Kig::PointStyle)i );
         d.draw( pt, ptr, false );
         popup.addInternalAction( menu, QIcon( p ), nextfree++ );
       }
+    }
     else
     {
       Qt::PenStyle penstyles[] = {Qt::SolidLine, Qt::DashLine, Qt::DashDotLine, Qt::DashDotDotLine, Qt::DotLine};
@@ -171,7 +173,7 @@ void BuiltinObjectActionsProvider::fillUpMenu( NormalModePopupObjects& popup, in
         KigPainter ptr( si, &p, popup.part().document(), false );
         LineImp line( Coordinate( -1, 0 ), Coordinate( 1, 0 ) );
         Qt::PenStyle ps = penstyles[i];
-        ObjectDrawer d( color, 2, true, ps, 1 );
+        ObjectDrawer d( color, 2, true, ps, Kig::RoundEmpty );
         d.draw( line, ptr, false );
         popup.addInternalAction( menu, QIcon( p ), nextfree++ );
       };
@@ -235,8 +237,8 @@ bool BuiltinObjectActionsProvider::executeAction(
     {
       if ( os.size() == 1 )
         color = os.front()->drawer()->color();
-      int result = KColorDialog::getColor( color, &w );
-      if ( result != KColorDialog::Accepted ) return true;
+      color = QColorDialog::getColor( color, &w );
+      if ( !color.isValid() ) return true;
     }
     KigCommand* kc = new KigCommand( doc, i18n( "Change Object Color" ) );
     assert( color.isValid() );
@@ -270,20 +272,18 @@ bool BuiltinObjectActionsProvider::executeAction(
       else
         nothers++;
     };
-    bool point = ( npoints > nothers );
-    int max = point ? 5 : 5;
-    if ( id >= max )
+    if ( id >= Kig::NumberOfPointStyles )
     {
-      id -= max;
+      id -= Kig::NumberOfPointStyles;
       return false;
     };
 
-    if ( point )
+    if ( npoints > nothers )
     {
       KigCommand* kc = new KigCommand( doc, i18n( "Change Point Style" ) );
       for ( std::vector<ObjectHolder*>::const_iterator i = os.begin(); i != os.end(); ++i )
         if ( (*i)->imp()->inherits( PointImp::stype() ) )
-          kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( id ) ) );
+          kc->addTask( new ChangeObjectDrawerTask( *i, ( *i )->drawer()->getCopyPointStyle( (Kig::PointStyle)id ) ) );
       doc.history()->push( kc );
       return true;
     }

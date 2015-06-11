@@ -20,26 +20,39 @@
 */
 
 #include "edittype.h"
-#include "edittype.moc"
 
 #include "ui_edittypewidget.h"
 
 #include <kicondialog.h>
 #include <klineedit.h>
-#include <klocale.h>
 #include <kmessagebox.h>
-#include <ktoolinvocation.h>
+#include <KHelpClient>
+#include <QDialogButtonBox>
+#include <KConfigGroup>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
                     const QString& icon )
-  : KDialog( parent ),
+  : QDialog( parent ),
     mname( name ), mdesc( desc ), micon( icon )
 {
-  setCaption( i18n( "Edit Type" ) );
-  setButtons( Help | Ok | Cancel );
+  setWindowTitle( i18n( "Edit Type" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
+  mainLayout->addWidget(buttonBox);
 
   QWidget* base = new QWidget( this );
-  setMainWidget( base );
+//PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   medittypewidget = new Ui_EditTypeWidget();
   medittypewidget->setupUi( base );
   base->layout()->setMargin( 0 );
@@ -57,8 +70,8 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
         i18n( "Use this button to change the icon of the current macro type." ) );
 
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
-  connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
-  connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
+  connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
 
   resize( 450, 150 );
 }
@@ -70,7 +83,7 @@ EditType::~EditType()
 
 void EditType::slotHelp()
 {
-  KToolInvocation::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( "working-with-types", "kig" );
 }
 
 void EditType::slotOk()

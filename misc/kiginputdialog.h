@@ -27,7 +27,7 @@ class Goniometry;
 class KigDocument;
 class KigInputDialogPrivate;
 
-#include <kdialog.h>
+#include <QDialog>
 
 /**
  * The KigInputDialog class provides easy ways of interaction with the user.
@@ -38,7 +38,7 @@ class KigInputDialogPrivate;
  * getTwoCoordinates(), getAngle().
  */
 class KigInputDialog
-  : public KDialog
+  : public QDialog
 {
 Q_OBJECT
 

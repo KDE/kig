@@ -31,7 +31,7 @@
 #include <geogebra/geogebratransformer.h>
 
 #include <KZip>
-#include <KDebug>
+#include <QDebug>
 
 #include <QFile>
 #include <QXmlQuery>
@@ -91,7 +91,7 @@ KigDocument* KigFilterGeogebra::load( const QString& sFrom )
   }
   else
   {
-    kWarning() << "Failed to open zip archive";
+    qWarning() << "Failed to open zip archive";
   }
 
   return document;

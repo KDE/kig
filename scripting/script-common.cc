@@ -20,8 +20,7 @@
 
 #include <qstring.h>
 
-#include <kdebug.h>
-#include <klocale.h>
+#include <QDebug>
 
 struct script_prop
 {
@@ -100,7 +99,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
     return tempcode;
   }
 
-  kDebug() << "No such script type: " << type;
+  qDebug() << "No such script type: " << type;
   return "";
 }
 

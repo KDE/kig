@@ -28,8 +28,6 @@
 #include "../../modes/normal.h"
 #include "../../misc/coordinate_system.h"
 
-#include <KLocale>
-
 void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
@@ -63,7 +61,7 @@ bool BuiltinDocumentActionsProvider::executeAction(
 {
   if ( menu == NormalModePopupObjects::ToplevelMenu )
   {
-    kDebug() << "id: " << id;
+    qDebug() << "id: " << id;
     if ( id == 0 )
     {
       doc.showHidden();

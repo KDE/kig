@@ -35,8 +35,7 @@
 
 #include <qundostack.h>
 #include <kcursor.h>
-#include <kaction.h>
-#include <klocale.h>
+#include <QAction>
 
 #include <algorithm>
 #include <functional>

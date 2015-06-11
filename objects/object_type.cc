@@ -24,8 +24,6 @@
 
 #include <qstringlist.h>
 
-#include <klocale.h>
-
 #include <iterator>
 
 const char* ObjectType::fullName() const

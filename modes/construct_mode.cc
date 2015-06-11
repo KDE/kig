@@ -39,7 +39,7 @@
 #include <qevent.h>
 
 #include <kcursor.h>
-#include <kaction.h>
+#include <QAction>
 
 #include <algorithm>
 #include <functional>

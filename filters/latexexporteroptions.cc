@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "latexexporteroptions.h"
-#include "latexexporteroptions.moc"
 
 #include "ui_latexexporteroptionswidget.h"
 

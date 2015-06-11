@@ -52,8 +52,6 @@
 #include <qdatastream.h>
 #include <qbuffer.h>
 
-#include <klocale.h>
-
 KigFilterKSeg::KigFilterKSeg()
 {
 }
@@ -304,7 +302,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     int width = style.pen.width();
 
 /*
-    kDebug() << "type: " << type
+    qDebug() << "type: " << type
               << "descendtype: " << descendtype << endl
               << "label: " << labeltext << endl;
 //*/

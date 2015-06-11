@@ -31,8 +31,6 @@
 
 #include <qstringlist.h>
 
-#include <klocale.h>
-
 static const ArgsParser::spec argsspecSegmentAB[] =
 {
   { PointImp::stype(), I18N_NOOP( "Construct a segment starting at this point" ),

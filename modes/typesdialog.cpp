@@ -19,35 +19,37 @@
 **/
 
 #include "typesdialog.h"
-#include "typesdialog.moc"
 
 #include "edittype.h"
 #include "ui_typeswidget.h"
 #include "../kig/kig_part.h"
 #include "../misc/guiaction.h"
 #include "../misc/object_constructor.h"
-#include "../geogebra/geogebratransformer.h"
 #include "../kig/kig_document.h"
-
-#include <kfiledialog.h>
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <kpushbutton.h>
-#include <ktoolinvocation.h>
-#include <KZip>
-#include <KDebug>
-
-#include <QXmlQuery>
-#include <QByteArray>
-#include <QEvent>
-#include <QFile>
-#include <QLayout>
-#include <QMenu>
-#include <QStringList>
 
 #include <algorithm>
 #include <iterator>
+
+#include <QDialogButtonBox>
+#include <QFileDialog>
+#include <QMenu>
+#include <QPushButton>
+#include <QStandardPaths>
+#include <QVBoxLayout>
+
+#include <KConfigGroup>
+#include <KHelpClient>
+#include <KIconLoader>
+#include <KMessageBox>
+
+#ifdef WITH_GEOGEBRA
+#include "../geogebra/geogebratransformer.h"
+
+#include <QDebug>
+#include <QXmlQuery>
+
+#include <KZip>
+#endif //WITH_GEOGEBRA
 
 static QString wrapAt( const QString& str, int col = 50 )
 {
@@ -259,7 +261,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
     case Qt::DecorationRole:
     {
       if ( index.column() == 1 )
-        return KIcon( melems[ index.row() ]->icon() );
+        return QIcon::fromTheme( melems[ index.row() ]->icon() );
       else
         return QVariant();
       break;
@@ -338,17 +340,26 @@ int TypesModel::rowCount( const QModelIndex& parent ) const
 
 
 TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
-  : KDialog( parent ),
+  : QDialog( parent ),
     mpart( part )
 {
-  setCaption( i18n( "Manage Types" ) );
-  setButtons( Help | Ok | Cancel );
+  setWindowTitle( i18n( "Manage Types" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help );
+  QWidget *mainWidget = new QWidget( this );
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout( mainLayout );
+  mainLayout->addWidget( mainWidget );
+  QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
+  okButton->setDefault( true );
+  okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
+  connect(buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
+  connect(buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
+  mainLayout->addWidget( buttonBox );
 
-  QWidget* base = new QWidget( this );
-  setMainWidget( base );
+//PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   mtypeswidget = new Ui_TypesWidget();
-  mtypeswidget->setupUi( base );
-  base->layout()->setMargin( 0 );
+  mtypeswidget->setupUi( mainWidget );
+  mainWidget->layout()->setMargin( 0 );
 
   // model creation and usage
   mmodel = new TypesModel( mtypeswidget->typeList );
@@ -357,10 +368,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->setContextMenuPolicy( Qt::CustomContextMenu );
 
   // improving GUI look'n'feel...
-  mtypeswidget->buttonEdit->setIcon( KIcon( "document-properties" ) );
-  mtypeswidget->buttonRemove->setIcon( KIcon( "edit-delete" ) );
-  mtypeswidget->buttonExport->setIcon( KIcon( "document-export" ) );
-  mtypeswidget->buttonImport->setIcon( KIcon( "document-import" ) );
+  mtypeswidget->buttonEdit->setIcon( QIcon::fromTheme( "document-properties" ) );
+  mtypeswidget->buttonRemove->setIcon( QIcon::fromTheme( "edit-delete" ) );
+  mtypeswidget->buttonExport->setIcon( QIcon::fromTheme( "document-export" ) );
+  mtypeswidget->buttonImport->setIcon( QIcon::fromTheme( "document-import" ) );
 
   // loading macros...
   mmodel->addMacros( MacroList::instance()->macros() );
@@ -370,10 +381,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->resizeColumnToContents( 0 );
 
   popup = new QMenu( this );
-  popup->addAction( KIcon( "document-properties" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->addAction( KIcon( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->addAction( QIcon::fromTheme( "document-properties" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
+  popup->addAction( QIcon::fromTheme( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
   popup->addSeparator();
-  popup->addAction( KIcon( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup->addAction( QIcon::fromTheme( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
 
   // saving types
   mpart.saveTypes();
@@ -384,8 +395,8 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
   connect( mtypeswidget->typeList, SIGNAL( customContextMenuRequested( const QPoint& ) ), this, SLOT( typeListContextMenu( const QPoint& ) ) );
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
-  connect( this, SIGNAL( okClicked() ), this, SLOT( slotOk() ) );
-  connect( this, SIGNAL( cancelClicked() ), this, SLOT( slotCancel() ) );
+  connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
 
   resize( 460, 270 );
 }
@@ -397,7 +408,7 @@ TypesDialog::~TypesDialog()
 
 void TypesDialog::slotHelp()
 {
-  KToolInvocation::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( "working-with-types", "kig" );
 }
 
 void TypesDialog::slotOk()
@@ -453,7 +464,7 @@ void TypesDialog::exportType()
       types.push_back( macro );
   }
   if (types.empty()) return;
-  QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///macro" ), i18n("*.kigt|Kig Types Files\n*|All Files"), this, i18n( "Export Types" ) );
+  QString file_name = QFileDialog::getSaveFileName( this, i18n( "Export Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n("*.kigt|Kig Types Files\n*|All Files") );
   if ( file_name.isNull() )
     return;
   QFile fi( file_name );
@@ -467,21 +478,28 @@ void TypesDialog::exportType()
 
 void TypesDialog::importTypes()
 {
-    //TODO : Take care of the MIME type of Geogebra Tools
-  QStringList file_names =
-    KFileDialog::getOpenFileNames( KUrl( "kfiledialog:///importTypes" ), i18n( "*.kigt|Kig Types Files\n*.ggt|Geogebra Tool Files\n*|All Files" ), this, i18n( "Import Types" ));
+  //TODO : Do this through MIME types
+  QStringList toolFilters;
+  toolFilters << i18n( "*.kigt|Kig Types Files" );
+#ifdef WITH_GEOGEBRA
+  toolFilters << i18n( "*.ggt|Geogebra Tool Files" );
+#endif //WITH_GEOGEBRA
+  toolFilters << i18n( "*|All Files" );
+  QStringList file_names = QFileDialog::getOpenFileNames( this, i18n( "Import Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), toolFilters.join( QLatin1String( "\n" ) ) );
 
   std::vector<Macro*> macros;
   for ( QStringList::const_iterator i = file_names.constBegin();
         i != file_names.constEnd(); ++i)
   {
     std::vector<Macro*> nmacros;
+#ifdef WITH_GEOGEBRA
     if( (*i).contains( QRegExp( "^*.ggt$" ) ) )// The input file is a Geogebra Tool file..
     {
       loadGeogebraTools( *i, nmacros, mpart );
       std::copy( nmacros.begin(), nmacros.end(), std::back_inserter( macros ) );
       continue;
     }
+#endif //WITH_GEOGEBRA
     bool ok = MacroList::instance()->load( *i, nmacros, mpart );
     if ( ! ok )
       continue;
@@ -559,6 +577,7 @@ void TypesDialog::typeListContextMenu( const QPoint& pos )
   popup->exec( mtypeswidget->typeList->viewport()->mapToGlobal( pos ) );
 }
 
+#ifdef WITH_GEOGEBRA
 bool TypesDialog::loadGeogebraTools( const QString& sFrom, std::vector<Macro*>& vec, KigPart& /*kigpart*/ )
 {
   KZip geogebraFile( sFrom );
@@ -598,10 +617,10 @@ bool TypesDialog::loadGeogebraTools( const QString& sFrom, std::vector<Macro*>& 
   }
   else
   {
-    kWarning() << "Failed to open zip archive";
+    qWarning() << "Failed to open zip archive";
     return false;
   }
 
   return true;
 }
-
+#endif //WITH_GEOEBRA

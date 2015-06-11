@@ -54,8 +54,7 @@
 #include <qfile.h>
 #include <qregexp.h>
 
-#include <kdebug.h>
-#include <klocale.h>
+#include <QDebug>
 
 #include <iterator>
 
@@ -75,7 +74,7 @@ static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& p
     else return 0;
   };
 #ifdef CABRI_DEBUG
-  kDebug() << "which: " << which;
+  qDebug() << "which: " << which;
 #endif
   if ( nlines == 2 )
     return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
@@ -178,12 +177,12 @@ KigDocument* KigFilterCabri::load( const QString& file )
   CabriReader* reader = 0;
 
 #ifdef CABRI_DEBUG
-  kDebug() << ">>>>>>>>> version: " << header.cap( 3 );
+  qDebug() << ">>>>>>>>> version: " << header.cap( 3 );
   if ( !header.cap( 13 ).isEmpty() )
   {
-    kDebug() << ">>>>>>>>> session file:";
-    kDebug() << ">>>>>>>>>  -> time = " << header.cap( 15 ) << " sec";
-    kDebug() << ">>>>>>>>>  -> action = \"" << header.cap( 14 ) << "\"";
+    qDebug() << ">>>>>>>>> session file:";
+    qDebug() << ">>>>>>>>>  -> time = " << header.cap( 15 ) << " sec";
+    qDebug() << ">>>>>>>>>  -> action = \"" << header.cap( 14 ) << "\"";
   }
 #endif
   if ( ( major == 1 ) && ( minor == 0 ) )
@@ -235,7 +234,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   while ( ! f.atEnd() )
   {
 #ifdef CABRI_DEBUG
-    kDebug() << ">>>>>>>>> -------------------------------";
+    qDebug() << ">>>>>>>>> -------------------------------";
 #endif
     // we do one object each iteration..
     CabriObject* obj = reader->readObject( f );
@@ -243,7 +242,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
       return 0;
 
 #ifdef CABRI_DEBUG
-    kDebug() << "+++++ " << obj->id << " - " << obj->type;
+    qDebug() << "+++++ " << obj->id << " - " << obj->type;
 #endif
 
     if ( obj->type == "Grid" )
@@ -271,7 +270,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
 #ifdef CABRI_DEBUG
         else
         {
-          kDebug() << ">>>>>>>>> OBJECT TO AXIS/GRID: \"" << obj->type << "\"";
+          qDebug() << ">>>>>>>>> OBJECT TO AXIS/GRID: \"" << obj->type << "\"";
         }
 #endif
       }
@@ -286,12 +285,12 @@ KigDocument* KigFilterCabri::load( const QString& file )
     if ( args.size() > 0 )
       for ( uint j = 0; j < args.size(); ++j )
       {
-        kDebug() << "+++++++++ arg[" << j << "]: " << args[j] << " - "
+        qDebug() << "+++++++++ arg[" << j << "]: " << args[j] << " - "
                   << args[j]->imp()->type()->internalName() << endl;
       }
     else
-      kDebug() << "+++++++++ args: NO";
-    kDebug() << "+++++++++ data: " << obj->data.size();
+      qDebug() << "+++++++++ args: NO";
+    qDebug() << "+++++++++ data: " << obj->data.size();
 #endif
     if ( obj->type == "Pt" )
     {
@@ -658,21 +657,21 @@ KigDocument* KigFilterCabri::load( const QString& file )
       return 0;
     }
 #ifdef CABRI_DEBUG
-    kDebug() << "+++++++++ oc: " << oc;
+    qDebug() << "+++++++++ oc: " << oc;
 #endif
 
     if ( oc == 0 ) KIG_FILTER_PARSE_ERROR;
 
     oc->calc( *ret );
 #ifdef CABRI_DEBUG
-    kDebug() << "+++++++++ oc: " << oc << " - "
+    qDebug() << "+++++++++ oc: " << oc << " - "
               << oc->imp()->type()->internalName() << endl;
 #endif
     calcers.push_back( oc );
 
     // decoding the style and building the ObjectDrawer
     Qt::PenStyle ls = Qt::SolidLine;
-    int ps = 0;
+    Kig::PointStyle ps = Kig::Round;
     reader->decodeStyle( obj, ls, ps );
     ObjectDrawer* d = new ObjectDrawer( obj->color, obj->thick, obj->visible, ls, ps );
 

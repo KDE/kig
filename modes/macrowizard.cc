@@ -16,19 +16,20 @@
 // 02110-1301, USA.
 
 #include "macrowizard.h"
-#include "macrowizard.moc"
+
 
 #include "macro.h"
 
 #include <qlabel.h>
 #include <qlayout.h>
 
-#include <kdebug.h>
-#include <kdialog.h>
-#include <kicondialog.h>
-#include <klineedit.h>
-#include <klocale.h>
-#include <ktoolinvocation.h>
+#include <QDebug>
+#include <QDialog>
+#include <QLineEdit>
+
+#include <KHelpClient>
+#include <KIconButton>
+#include <KLocalizedString>
 
 class GivenArgsPage
   : public QWizardPage
@@ -129,20 +130,21 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
   setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   setFinalPage( true );
 
+  //TODO Make this a ui file
   QGridLayout* lay = new QGridLayout( this );
   lay->setMargin( 0 );
   QLabel* label = new QLabel( this );
   lay->addWidget( label, 0, 0 );
   label->setText( i18n( "&Name:" ) );
   label->setAlignment( Qt::AlignRight );
-  KLineEdit* editname = new KLineEdit( this );
+  QLineEdit* editname = new QLineEdit( this );
   lay->addWidget( editname, 0, 1 );
   label->setBuddy( editname );
   label = new QLabel( this );
   lay->addWidget( label, 1, 0 );
   label->setText( i18n( "&Description:" ) );
   label->setAlignment( Qt::AlignRight );
-  KLineEdit* editdesc = new KLineEdit( this );
+  QLineEdit* editdesc = new QLineEdit( this );
   lay->addWidget( editdesc, 1, 1 );
   label->setBuddy( editdesc );
   label = new QLabel( this );
@@ -168,7 +170,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
 {
   setModal( false );
   setObjectName( QLatin1String( "Define Macro Wizard" ) );
-  setWindowTitle( KDialog::makeStandardCaption( i18n( "Define New Macro" ) ) );
+  setWindowTitle( i18n( "Define New Macro" ) );
   setOption( HaveHelpButton );
 
   mgivenArgsPage = new GivenArgsPage( this, mmode );
@@ -200,7 +202,7 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  KToolInvocation::invokeHelp( "defining-macros", "kig" );
+  KHelpClient::invokeHelp( "defining-macros", "kig" );
 }
 
 void MacroWizard::currentIdChanged( int id )

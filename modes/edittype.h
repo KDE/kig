@@ -20,14 +20,14 @@
 #ifndef KIG_MODES_EDITTYPE_H
 #define KIG_MODES_EDITTYPE_H
 
-#include <kdialog.h>
+#include <QDialog>
 
 class Ui_EditTypeWidget;
 
 /**
  * Simply dialog that allow the user the editing of a macro type...
  */
-class EditType : public KDialog
+class EditType : public QDialog
 {
   Q_OBJECT
 

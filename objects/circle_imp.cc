@@ -22,13 +22,11 @@
 
 #include "../misc/kigtransform.h"
 #include "../misc/kigpainter.h"
-#include "../misc/equation.h"
+#include "../misc/equationstring.h"
 #include "../misc/coordinate_system.h"
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
-
-#include <klocale.h>
 
 #include <math.h>
 

@@ -19,7 +19,7 @@
 **/
 
 #include "kig_view.h"
-#include "kig_view.moc"
+
 
 #include "kig_part.h"
 #include "kig_document.h"
@@ -35,8 +35,7 @@
 #include <qlayout.h>
 #include <qscrollbar.h>
 
-#include <kdebug.h>
-#include <klocale.h>
+#include <QDebug>
 
 #include <cmath>
 #include <algorithm>
@@ -47,7 +46,7 @@ KigWidget::KigWidget( KigPart* part,
                       QWidget* parent,
                       bool fullscreen )
   : QWidget( parent,
-             fullscreen ? Qt::FramelessWindowHint : (Qt::WFlags)0 ),
+             fullscreen ? Qt::FramelessWindowHint : Qt::Widget ),
     mpart( part ),
     mview( view ),
     stillPix(size()),
@@ -57,7 +56,6 @@ KigWidget::KigWidget( KigPart* part,
     mispainting( false ),
     malreadyresized( false )
 {
-  setAttribute( Qt::WA_PaintOnScreen, true );
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);

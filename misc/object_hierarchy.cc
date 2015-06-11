@@ -26,7 +26,6 @@
 #include "../objects/transform_types.h"
 #include "../objects/object_type.h"
 
-#include <kglobal.h>
 #include <qdom.h>
 
 class ObjectHierarchy::Node

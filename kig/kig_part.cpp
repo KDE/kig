@@ -19,7 +19,8 @@
 **/
 
 #include "kig_part.h"
-#include "kig_part.moc"
+
+#include <kigpart_export.h>
 
 #include "aboutdata.h"
 #include "kig_commands.h"
@@ -45,45 +46,58 @@
 #include <functional>
 #include <iterator>
 
-#include <kaction.h>
-#include <kdebug.h>
-#include <kdemacros.h>
-#include <kfiledialog.h>
-#include <kglobal.h>
-#include <kiconloader.h>
-#include <kcomponentdata.h>
-#include <klocale.h>
-#include <kxmlguiwindow.h>
-#include <kactioncollection.h>
-#include <kmessagebox.h>
-#include <kmimetype.h>
-#include <kstandarddirs.h>
-#include <kstandardaction.h>
-#include <ktoggleaction.h>
-#include <ktogglefullscreenaction.h>
-#include <kundostack.h>
-#include <kparts/genericfactory.h>
-#include <kicon.h>
-#include <kdeprintdialog.h>
-#include <kprintpreview.h>
+#include <QDirIterator>
+#include <QFileDialog>
+#include <QFile>
+#include <QMimeType>
+#include <QMimeDatabase>
+#include <QPrintDialog>
+#include <QPrinter>
+#include <QPrintPreviewDialog>
+#include <QStandardPaths>
+#include <QTimer>
 
-#include <qbytearray.h>
-#include <qcheckbox.h>
-#include <qeventloop.h>
-#include <qfile.h>
-#include <qlayout.h>
-#include <qsizepolicy.h>
-#include <qtimer.h>
-#include <QtGui/QPrinter>
-#include <QtGui/QPrintDialog>
+#include <KAboutData>
+#include <KActionCollection>
+#include <KIconLoader>
+#include <KIconEngine>
+#include <KMessageBox>
+#include <KUndoActions>
+#include <KPluginFactory>
+#include <KStandardAction>
+#include <KToggleAction>
+
+#include <KParts/OpenUrlArguments>
 
 using namespace std;
 
 static const QString typesFile = "macros.kigt";
 
+QStringList getDataFiles( const QString & folder )
+{
+  QStringList dataFiles;
+  const QStringList allFolders = QStandardPaths::locateAll( QStandardPaths::DataLocation, folder, QStandardPaths::LocateDirectory );
+
+  for( const QString & folderPath : allFolders )
+  {
+    QDirIterator folderIterator( folderPath, QDirIterator::Subdirectories );
+
+    while ( folderIterator.hasNext() )
+    {
+      const QString fileName = folderIterator.next();
+
+      if ( fileName.endsWith( ".kigt" ) )
+      {
+        dataFiles << fileName;
+      }
+    }
+  }
+
+  return dataFiles;
+}
+
 // export this library...
 K_PLUGIN_FACTORY( KigPartFactory, registerPlugin< KigPart >(); )
-K_EXPORT_PLUGIN( KigPartFactory( kigAboutData( "kig", I18N_NOOP( "KigPart" ) ) ) )
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
@@ -176,7 +190,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
     mMode( 0 ), mRememberConstruction( 0 ), mdocument( new KigDocument() )
 {
   // we need an instance
-  setComponentData( KigPartFactory::componentData() );
+  setComponentData( kigAboutData( "kig", I18N_NOOP( "KigPart" ) ) );
 
   mMode = new NormalMode( *this );
 
@@ -196,9 +210,9 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   setupTypes();
 
   // construct our command history
-  mhistory = new KUndoStack();
-  mhistory->createUndoAction( actionCollection() );
-  mhistory->createRedoAction( actionCollection() );
+  mhistory = new QUndoStack();
+  KUndoActions::createUndoAction( mhistory, actionCollection() );
+  KUndoActions::createRedoAction( mhistory, actionCollection() );
   connect( mhistory, SIGNAL( cleanChanged( bool ) ), this, SLOT( setHistoryClean( bool ) ) );
 
   // we are read-write by default
@@ -224,20 +238,20 @@ void KigPart::setupActions()
     this, SLOT( slotSelectAll() ), actionCollection() );
   aDeselectAll = KStandardAction::deselect(
     this, SLOT( slotDeselectAll() ), actionCollection() );
-  aInvertSelection  = new KAction(i18n("Invert Selection"), this);
+  aInvertSelection  = new QAction(i18n("Invert Selection"), this);
   actionCollection()->addAction("edit_invert_selection", aInvertSelection );
   connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
 
   // we need icons...
   KIconLoader* l = iconLoader();
 
-  aDeleteObjects  = new KAction(KIcon("edit-delete"), i18n("&Delete Objects"), this);
+  aDeleteObjects  = new QAction(QIcon::fromTheme("edit-delete"), i18n("&Delete Objects"), this);
   actionCollection()->addAction("delete_objects", aDeleteObjects );
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
   aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction  = new KAction(KIcon("process-stop"), i18n("Cancel Construction"), this);
+  aCancelConstruction  = new QAction(QIcon::fromTheme("process-stop"), i18n("Cancel Construction"), this);
   actionCollection()->addAction("cancel_construction", aCancelConstruction );
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
   aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
@@ -245,7 +259,7 @@ void KigPart::setupActions()
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aRepeatLastConstruction = new KAction(KIcon("system-run"), i18n("Repeat Construction"), this);
+  aRepeatLastConstruction = new QAction(QIcon::fromTheme("system-run"), i18n("Repeat Construction"), this);
   actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
   connect(aRepeatLastConstruction, SIGNAL(triggered(bool) ), SLOT(repeatLastConstruction()));
   aRepeatLastConstruction->setShortcut(QKeySequence(Qt::Key_Z));
@@ -253,23 +267,23 @@ void KigPart::setupActions()
       i18n("Repeat the last construction (with new data)"));
   aRepeatLastConstruction->setEnabled(false);
 
-  aShowHidden  = new KAction(i18n("U&nhide All"), this);
+  aShowHidden  = new QAction(i18n("U&nhide All"), this);
   actionCollection()->addAction("edit_unhide_all", aShowHidden );
   connect(aShowHidden, SIGNAL(triggered(bool) ), SLOT( showHidden() ));
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro  = new KAction(KIcon("system-run"), i18n("&New Macro..."), this);
+  aNewMacro  = new QAction(QIcon::fromTheme("system-run"), i18n("&New Macro..."), this);
   actionCollection()->addAction("macro_action", aNewMacro );
   connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
-  aConfigureTypes  = new KAction(i18n("Manage &Types..."), this);
+  aConfigureTypes  = new QAction(i18n("Manage &Types..."), this);
   actionCollection()->addAction("types_edit", aConfigureTypes );
   connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-  aBrowseHistory  = new KAction(KIcon("view-history"), i18n("&Browse History..."), this);
+  aBrowseHistory  = new QAction(QIcon::fromTheme("view-history"), i18n("&Browse History..."), this);
   actionCollection()->addAction("browse_history", aBrowseHistory );
   connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
@@ -290,7 +304,7 @@ void KigPart::setupActions()
   a = KStandardAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
-  a->setIcon( KIcon( "view_fit_to_page", l ) );
+  a->setIcon( QIcon( new KIconEngine( "view_fit_to_page", l ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
@@ -299,19 +313,19 @@ void KigPart::setupActions()
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a  = new KAction(KIcon("zoom-fit-best"), i18n("&Select Shown Area"), this);
+  a  = new QAction(QIcon::fromTheme("zoom-fit-best"), i18n("&Select Shown Area"), this);
   actionCollection()->addAction("view_select_shown_rect", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a  = new KAction(KIcon("zoom-original"), i18n("S&elect Zoom Area"), this);
+  a  = new QAction(QIcon::fromTheme("zoom-original"), i18n("S&elect Zoom Area"), this);
   actionCollection()->addAction("view_zoom_area", a );
   connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  aSetCoordinatePrecision = new KAction(i18n("Set Coordinate &Precision..."), this);
+  aSetCoordinatePrecision = new QAction(i18n("Set Coordinate &Precision..."), this);
   actionCollection()->addAction("settings_set_coordinate_precision", aSetCoordinatePrecision);
   aSetCoordinatePrecision->setToolTip( i18n("Set the floating point precision of coordinates in the document. " ));
   connect(aSetCoordinatePrecision, SIGNAL( triggered() ), this, SLOT( setCoordinatePrecision() ));
@@ -399,14 +413,15 @@ bool KigPart::openFile()
     return false;
   };
 
-  KMimeType::Ptr mimeType = KMimeType::mimeType( arguments().mimeType() );
-  if ( !mimeType )
+  const QMimeDatabase mimeDb;
+  QMimeType mimeType = mimeDb.mimeTypeForName( arguments().mimeType() );
+  if ( !mimeType.isValid() )
   {
     // we can always use findByPath instead of findByURL with localFilePath()
-    mimeType = KMimeType::findByPath( localFilePath() );
+    mimeType = mimeDb.mimeTypeForFile( localFilePath() );
   }
-  kDebug() << "mimetype: " << mimeType->name();
-  KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
+  qDebug() << "mimetype: " << mimeType.name();
+  KigFilter* filter = KigFilters::instance()->find( mimeType.name() );
   if ( !filter )
   {
     // we don't support this mime type...
@@ -414,7 +429,7 @@ bool KigPart::openFile()
       (
         widget(),
         i18n( "You tried to open a document of type \"%1\"; unfortunately, Kig does not support this format. If you think the format in question would be worth implementing support for, you can open a feature request in <a href=\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist\">KDE's bug tracking system</a>"
-          , mimeType->name()),
+          , mimeType.name()),
         i18n( "Format Not Supported" ),
         KMessageBox::Notify | KMessageBox::AllowLink
         );
@@ -425,7 +440,7 @@ bool KigPart::openFile()
   if ( !newdoc )
   {
     closeUrl();
-    setUrl( KUrl() );
+    setUrl( QUrl() );
     return false;
   }
   delete mdocument;
@@ -452,8 +467,9 @@ bool KigPart::saveFile()
 {
   if ( url().isEmpty() ) return internalSaveAs();
   // mimetype:
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( localFilePath() );
-  if ( mimeType->name() != "application/x-kig" )
+  const QMimeDatabase mimeDb;
+  const QMimeType mimeType = mimeDb.mimeTypeForFile( localFilePath() );
+  if ( mimeType.name() != "application/x-kig" )
   {
     // we don't support this mime type...
     if( KMessageBox::warningYesNo( widget(),
@@ -555,7 +571,7 @@ void KigPart::deleteObjects()
 void KigPart::startObjectGroup()
 {
   if ( mcurrentObjectGroup.size() > 0 )
-    kWarning() << "New object group started while already having objects in object group. Current group will be lost";
+    qWarning() << "New object group started while already having objects in object group. Current group will be lost";
   
   mcurrentObjectGroup.clear();
   misGroupingObjects = true;
@@ -663,7 +679,7 @@ void KigPart::delObjects( const std::vector<ObjectHolder*>& os )
 void KigPart::enableConstructActions( bool enabled )
 {
   for_each( aActions.begin(), aActions.end(),
-            bind2nd( mem_fun( &KAction::setEnabled ),
+            bind2nd( mem_fun( &QAction::setEnabled ),
                      enabled ) );
 }
 
@@ -709,11 +725,14 @@ bool KigPart::internalSaveAs()
   // this slot is connected to the KStandardAction::saveAs action...
   QString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
                           "*.kigz|Compressed Kig Documents (*.kigz)" );
+  QString currentDir = url().toLocalFile();
 
-  //  formats += "\n";
-  //  formats += KImageIO::pattern( KImageIO::Writing );
+  if ( currentDir.isNull() )
+  {
+    currentDir = QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation );
+  }
 
-  QString file_name = KFileDialog::getSaveFileName( KUrl( "kfiledialog:///document" ), formats );
+  const QString file_name = QFileDialog::getSaveFileName( 0, QString(), currentDir, formats );
   if (file_name.isEmpty()) return false;
   else if ( QFileInfo( file_name ).exists() )
   {
@@ -725,7 +744,7 @@ bool KigPart::internalSaveAs()
       return false;
     }
   }
-  saveAs( KUrl( file_name ) );
+  saveAs( QUrl::fromLocalFile( file_name ) );
   return true;
 }
 
@@ -802,9 +821,7 @@ void KigPart::setupMacroTypes()
     alreadysetup = true;
 
     // the user's saved macro types:
-    const QStringList dataFiles =
-      KGlobal::dirs()->findAllResources("appdata", "kig-types/*.kigt",
-                                        KStandardDirs::Recursive);
+    const QStringList dataFiles = getDataFiles( "kig-types" );
     std::vector<Macro*> macros;
     for ( QStringList::const_iterator file = dataFiles.begin();
           file != dataFiles.end(); ++file )
@@ -829,8 +846,7 @@ void KigPart::setupBuiltinMacros()
     alreadysetup = true;
     // builtin macro types ( we try to make the user think these are
     // normal types )..
-    const QStringList builtinfiles =
-      KGlobal::dirs()->findAllResources( "appdata", "builtin-macros/*.kigt", KStandardDirs::Recursive);
+    const QStringList builtinfiles = getDataFiles( "builtin-macros" );
     for ( QStringList::const_iterator file = builtinfiles.begin();
           file != builtinfiles.end(); ++file )
     {
@@ -866,7 +882,7 @@ void KigPart::delWidget( KigWidget* v )
 void KigPart::filePrintPreview()
 {
   QPrinter printer;
-  KPrintPreview printPreview( &printer );
+  QPrintPreviewDialog printPreview( &printer );
   doPrint( printer, document().grid(), document().axes() );
   printPreview.exec();
 }
@@ -875,18 +891,18 @@ void KigPart::filePrint()
 {
   QPrinter printer;
   KigPrintDialogPage* kp = new KigPrintDialogPage();
-  QPrintDialog *printDialog = KdePrint::createPrintDialog( &printer, QList<QWidget*>() << kp, m_widget );
-  printDialog->setWindowTitle( i18n("Print Geometry") );
+  QPrintDialog printDialog( &printer, m_widget );
+  printDialog.setWindowTitle( i18n("Print Geometry") );
+  printDialog.setOptionTabs( { kp } );
   printer.setFullPage( true );
   //Unsupported in Qt
   //printer.setPageSelection( QPrinter::ApplicationSide );
   kp->setPrintShowGrid( document().grid() );
   kp->setPrintShowAxes( document().axes() );
-  if (printDialog->exec())
+  if (printDialog.exec())
   {
     doPrint( printer, kp->printShowGrid(), kp->printShowAxes() );
   }
-  delete printDialog;
 }
 
 void KigPart::doPrint( QPrinter& printer, bool printGrid, bool printAxes )
@@ -993,14 +1009,14 @@ KigDocument& KigPart::document()
   return *mdocument;
 }
 
-extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& outfile )
+extern "C" KIGPART_EXPORT int convertToNative( const QUrl &url, const QByteArray& outfile )
 {
-  kDebug() << "converting " << url.prettyUrl() << " to " << outfile;
+  qDebug() << "converting " << url.toDisplayString( QUrl::PrettyDecoded ) << " to " << outfile;
 
   if ( ! url.isLocalFile() )
   {
     // TODO
-    kError() << "--convert-to-native only supports local files for now." << endl;
+    qCritical() << "--convert-to-native only supports local files for now." << endl;
     return -1;
   }
 
@@ -1009,23 +1025,24 @@ extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& ou
   QFileInfo fileinfo( file );
   if ( ! fileinfo.exists() )
   {
-    kError() << "The file \"" << file << "\" does not exist" << endl;
+    qCritical() << "The file \"" << file << "\" does not exist" << endl;
     return -1;
   };
 
-  KMimeType::Ptr mimeType = KMimeType::findByPath ( file );
-  kDebug() << "mimetype: " << mimeType->name();
-  KigFilter* filter = KigFilters::instance()->find( mimeType->name() );
+  const QMimeDatabase mimeDb;
+  const QMimeType mimeType = mimeDb.mimeTypeForFile( file );
+  qDebug() << "mimetype: " << mimeType.name();
+  KigFilter* filter = KigFilters::instance()->find( mimeType.name() );
   if ( !filter )
   {
-    kError() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
+    qCritical() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
     return -1;
   };
 
   KigDocument* doc = filter->load (file);
   if ( !doc )
   {
-    kError() << "Parse error in file \"" << file << "\"." << endl;
+    qCritical() << "Parse error in file \"" << file << "\"." << endl;
     return -1;
   }
 
@@ -1039,7 +1056,7 @@ extern "C" KDE_EXPORT int convertToNative( const KUrl& url, const QByteArray& ou
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
-    kError() << "something went wrong while saving" << endl;
+    qCritical() << "something went wrong while saving" << endl;
     return -1;
   }
 
@@ -1082,10 +1099,15 @@ void KigPart::coordSystemChanged( int id )
 
 void KigPart::saveTypes()
 {
-  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
-  if ( !typesDir.endsWith( '/' ) )
-    typesDir += '/';
-  QString typesFileWithPath = typesDir + typesFile;
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
+  const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
+
+  if ( !typesDir.exists() )
+  {
+    writeableDataLocation.mkdir( "kig-types" );
+  }
+
+  const QString typesFileWithPath =  typesDir.absoluteFilePath( typesFile );
 
   // removing existent types file
   if ( QFile::exists( typesFileWithPath ) )
@@ -1097,16 +1119,19 @@ void KigPart::saveTypes()
 
 void KigPart::loadTypes()
 {
-  QString typesDir = KGlobal::dirs()->saveLocation( "appdata", "kig-types" );
-  if ( !typesDir.endsWith( '/' ) )
-    typesDir += '/';
-  QString typesFileWithPath = typesDir + typesFile;
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
+  const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
 
-  if ( QFile::exists( typesFileWithPath ) )
+  if ( typesDir.exists() )
   {
-    std::vector<Macro*> macros;
-    MacroList::instance()->load( typesFileWithPath, macros, *this );
-    MacroList::instance()->add( macros );
+    const QString typesFileWithPath =  typesDir.absoluteFilePath( typesFile );
+
+    if ( QFile::exists( typesFileWithPath ) )
+    {
+        std::vector<Macro*> macros;
+        MacroList::instance()->load( typesFileWithPath, macros, *this );
+        MacroList::instance()->add( macros );
+    }
   }
 }
 
@@ -1122,3 +1147,5 @@ void KigPart::deleteTypes()
   }
   plugActionLists();
 }
+
+#include "kig_part.moc"

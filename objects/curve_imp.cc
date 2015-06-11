@@ -19,7 +19,7 @@
 #include "../misc/common.h"
 #include "../misc/coordinate.h"
 #include "../misc/kignumerics.h"
-#include "../misc/equation.h"
+#include "../misc/equationstring.h"
 #include "../kig/kig_document.h"
 
 #include <cmath>
@@ -185,13 +185,10 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
   double fxm = getDist( xm, p, doc );
   double x1,x2;
 
-  int j = 1;
   double mm[N+1];
   mm[0] = fxm;
 
-//  while( j < N - 1 )
-// TODO: this function is under revision anyway...
-  while( j <= N )
+  for(int j = 1; j < N + 1; j++)
   {
     // [x1,x2] is the range we're currently considering..
     x1 = j * incr;
@@ -203,7 +200,6 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
       xm=x1;
       fxm=mm1;
     }
-    j++;
     mm[j]=mm1;
   }
   if ( xm == 0.)
@@ -229,8 +225,7 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
     xm=xm1;
     fxm=fxm1;
   }
-  j=1;
-  while (j <N -1 )
+  for(int j = 1; j < N - 1; j++)
   {
     if (mm[j] < mm[j-1] && mm[j] < mm[j+1])
     {
@@ -246,7 +241,6 @@ double CurveImp::getParam( const Coordinate& p, const KigDocument& doc ) const
            }
         }
     }
-    j++;
   }
   return xm;
 }

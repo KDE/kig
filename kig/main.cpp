@@ -20,75 +20,25 @@
 
 #include "kig.h"
 
-#include <qbytearray.h>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QDebug>
 
-#include <kuniqueapplication.h>
-#include <kaboutdata.h>
-#include <kcmdlineargs.h>
-#include <klocale.h>
-#include <klibloader.h>
-#include <kdebug.h>
+#include <KPluginLoader>
+#include <KAboutData>
 
 #include "aboutdata.h"
+#include <klocalizedstring.h>
 
-class KigApplication
-  : public KUniqueApplication
+static int convertToNative( const QUrl &file, const QByteArray& outfile )
 {
-public:
-  KigApplication( bool gui = true );
-  int newInstance();
-  void handleArgs( KCmdLineArgs* args );
-};
-
-KigApplication::KigApplication( bool gui )
-  : KUniqueApplication( gui, gui )
-{
-}
-
-int KigApplication::newInstance()
-{
-  static bool first = true;
-  if (isSessionRestored() && first)
-  {
-    first = false;
-    return 0;
-  }
-  first = false;
-
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  handleArgs(args);
-  args->clear();
-  return 0;
-}
-
-void KigApplication::handleArgs( KCmdLineArgs* args )
-{
-  if ( args->count() == 0 )
-  {
-    Kig *widget = new Kig;
-    widget->show();
-  }
-  else
-  {
-    for (int i = 0; i < args->count(); i++ )
-    {
-      Kig *widget = new Kig;
-      widget->show();
-      widget->load( args->url( i ) );
-    }
-  }
-}
-
-static int convertToNative( const KUrl& file, const QByteArray& outfile )
-{
-  KComponentData maindata( KCmdLineArgs::aboutData() );
   KPluginLoader libraryLoader( "kigpart" );
   QLibrary library( libraryLoader.fileName() );
-  int ( *converterfunction )( const KUrl&, const QByteArray& );
-  converterfunction = ( int ( * )( const KUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );
+  int ( *converterfunction )( const QUrl&, const QByteArray& );
+  converterfunction = ( int ( * )( const QUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );
   if ( !converterfunction )
   {
-    kError() << "Error: broken Kig installation: different library and application version !" << endl;
+    qCritical() << "Error: broken Kig installation: different library and application version !" << endl;
     return -1;
   }
   return (*converterfunction)( file, outfile );
@@ -96,49 +46,67 @@ static int convertToNative( const KUrl& file, const QByteArray& outfile )
 
 int main(int argc, char **argv)
 {
-  KAboutData about = kigAboutData( "kig", I18N_NOOP("Kig") );
+  QApplication app( argc, argv );
+  KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
+  QCommandLineParser parser;
+  QCommandLineOption convertToNativeOption( QStringList() << "c" << "convert-to-native", i18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ) );
+  QCommandLineOption outfileOption( QStringList() << "o" << "outfile", i18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ), "file" );
 
-  KCmdLineArgs::init(argc, argv, &about);
+  QCoreApplication::setApplicationName( "kig" );
+  QCoreApplication::setApplicationVersion( i18n( KIGVERSION ) );
+  QCoreApplication::setOrganizationDomain( i18n( "kde.org" ) );
+  KAboutData::setApplicationData( about );
+  KLocalizedString::setApplicationDomain("kig");
 
-  KCmdLineOptions options;
-  options.add("c");
-  options.add("convert-to-native", ki18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ));
-  options.add("o");
-  options.add("outfile <file>", ki18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ));
-  options.add("+[URL]", ki18n( "Document to open" ));
-  KCmdLineArgs::addCmdLineOptions( options );
-  KigApplication::addCmdLineOptions();
+  about.setupCommandLine( &parser );
+  parser.addHelpOption();
+  parser.addOption( convertToNativeOption );
+  parser.addOption( outfileOption );
+  parser.addPositionalArgument( "URL", i18n( "Document to open" ) );
+  parser.process( app );
+  about.processCommandLine( &parser );
 
-  KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-  if ( args->isSet( "convert-to-native" ) )
+  QStringList urls = parser.positionalArguments();
+
+  if ( parser.isSet( "convert-to-native" ) )
   {
-    QString outfile = args->getOption( "outfile" );
-    if ( outfile.isEmpty() )
+    QString outfile = parser.value( "outfile" );
+    if ( outfile.isNull() )
       outfile = "-";
-
-    if ( args->count() == 0 )
+    if ( urls.isEmpty() )
     {
-      kError() << "Error: --convert-to-native specified without a file to convert." << endl;
+      qCritical() << "Error: --convert-to-native specified without a file to convert." << endl;
       return -1;
     }
-    if ( args->count() > 1 )
+    if ( urls.count() > 1 )
     {
-      kError() << "Error: --convert-to-native specified with more than one file to convert." << endl;
+      qCritical() << "Error: --convert-to-native specified with more than one file to convert." << endl;
       return -1;
     }
-    return convertToNative( args->url( 0 ), outfile.toLocal8Bit() );
+    return convertToNative( QUrl::fromLocalFile( urls[0] ), outfile.toLocal8Bit() );
   }
   else
   {
-    if ( args->isSet( "outfile" ) )
+    if ( parser.isSet( "outfile" ) )
     {
-      kError() << "Error: --outfile specified without convert-to-native." << endl;
+      qCritical() << "Error: --outfile specified without convert-to-native." << endl;
       return -1;
     }
-    KigApplication app;
 
     // see if we are starting with session management
-    if (app.isSessionRestored()) RESTORE(Kig)
-      return app.exec();
+    if ( app.isSessionRestored() )
+    {
+      RESTORE( Kig )
+    }
+
+    Kig *widget = new Kig;
+    widget->show();
+
+    if( urls.count() > 0 )
+    {
+      widget->load( QUrl::fromLocalFile( urls[ 0 ] ) );
+    }
+
+    return app.exec();
   }
 }

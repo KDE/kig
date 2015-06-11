@@ -26,15 +26,13 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <qrect.h>
-#include <qsvggenerator.h>
-
-#include <klocale.h>
-#include <kmessagebox.h>
-
 #include <map>
+
+#include <QFile>
+#include <QStandardPaths>
+#include <QSvgGenerator>
+
+#include <KMessageBox>
 
 SVGExporter::~SVGExporter()
 {
@@ -58,7 +56,7 @@ QString SVGExporter::menuIcon() const
 void SVGExporter::run( const KigPart& part, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString(), i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
+      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), i18n( "*.svg|Scalable Vector Graphics (*.svg)" ),
       i18n( "Export as SVG" ), &w );
   kfd->setOptionCaption( i18n( "SVG Options" ) );
   SVGExporterOptions* opts = new SVGExporterOptions( 0L );

@@ -28,16 +28,14 @@
 #include "goniometry.h"
 #include "kigpainter.h"
 
+#include <string>
+#include <cmath>
+
 #include <qpainter.h>
 #include <qregexp.h>
+#include <QDoubleValidator>
 
-#include <kdebug.h>
-#include <kglobal.h>
-#include <klocale.h>
-#include <knumvalidator.h>
-
-#include <string>
-#include <math.h>
+#include <QDebug>
 
 static QString withoutSpaces( const QString& str )
 {
@@ -53,26 +51,44 @@ static QString withoutSpaces( const QString& str )
 class CoordinateValidator
   : public QValidator
 {
-  bool mpolar;
-  KDoubleValidator mdv;
-  mutable QRegExp mre;
 public:
+  enum CoordinateType
+  {
+    Euclidean,
+    Polar
+  };
+
   static const char reEuclidean[];
   static const char rePolar[];
 
-  CoordinateValidator( bool polar );
+  CoordinateValidator( CoordinateType type );
   ~CoordinateValidator();
   State validate ( QString & input,  int & pos ) const;
   void fixup ( QString & input ) const;
+
+private:
+  CoordinateType mtype;
+  QDoubleValidator mdv;
+  mutable QRegExp mre;
 };
 
 const char CoordinateValidator::reEuclidean[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\s*([0-9.,+-]+)\\s*\\)?\\s*";
 const char CoordinateValidator::rePolar[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\s*([0-9.,+-]+) ?°?\\s*\\)?\\s*";
 
-CoordinateValidator::CoordinateValidator( bool polar )
-  : QValidator( 0L ), mpolar( polar ), mdv( 0L ),
-    mre( QString::fromUtf8( polar ? rePolar : reEuclidean ) )
+CoordinateValidator::CoordinateValidator( CoordinateType type )
+  : QValidator( 0L ), mtype( type ), mdv( 0L )
 {
+  switch ( mtype )
+  {
+  case Euclidean:
+    mre.setPattern( QString::fromUtf8( reEuclidean ) );
+    break;
+  case Polar:
+    mre.setPattern( QString::fromUtf8( rePolar ) );
+    break;
+  default:
+    break;
+  }
 }
 
 CoordinateValidator::~CoordinateValidator()
@@ -85,7 +101,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
   if ( tinput.isEmpty() )
     return Invalid;
   if ( tinput.at( tinput.length() - 1 ) == ')' ) tinput.truncate( tinput.length() - 1 );
-  if ( mpolar )
+  if ( mtype )
   {
     // strip the eventual '°'
     if ( !tinput.isEmpty() && tinput.at( tinput.length() - 1 ).unicode() == 176 )
@@ -125,15 +141,22 @@ void CoordinateValidator::fixup( QString & input ) const
   int sc = input.indexOf( ';' );
   if ( sc == -1 )
   {
+    const QLocale l;
     sc = input.length();
-    KLocale* l = KGlobal::locale();
-    if ( mpolar )
-      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
+    switch ( mtype )
+    {
+    case Polar:
+      input.append( QString::fromLatin1( ";" ) + l.positiveSign() +
                     QString::fromLatin1( "0" ) );
-    else
-      input.append( QString::fromLatin1( ";" ) + l->positiveSign() +
-                    QString::fromLatin1( "0" ) + l->decimalSymbol() +
+      break;
+    case Euclidean:
+      input.append( QString::fromLatin1( ";" ) + l.positiveSign() +
+                    QString::fromLatin1( "0" ) + l.decimalPoint() +
                     QString::fromLatin1( "0" ) );
+      break;
+    default:
+      break;
+    }
   };
   mre.exactMatch( input );
   QString ds1 = mre.cap( 1 );
@@ -153,25 +176,26 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   // since an object isn't asked to recalc every time the widget size
   // changes..  might be a good idea to do that, but well, maybe some
   // other time :)
+  const QLocale currentLocale;
   int l = d.getCoordinatePrecision();
-  QString xs = KGlobal::locale()->formatNumber( p.x, l );
-  QString ys = KGlobal::locale()->formatNumber( p.y, l );
+  QString xs = currentLocale.toString( p.x, 'f', l );
+  QString ys = currentLocale.toString( p.y, 'f', l );
   return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
-Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
+Coordinate EuclideanCoords::toScreen( const QString& s, bool& ok ) const
 {
   QRegExp r( QString::fromUtf8( CoordinateValidator::reEuclidean ) );
-  ok = ( r.indexIn(s) == 0 );
-  if (ok)
+  ok = ( r.indexIn( s ) == 0 );
+  if ( ok )
   {
-    QString xs = r.cap(1);
-    QString ys = r.cap(2);
-    KLocale* l = KGlobal::locale();
-    double x = l->readNumber( xs, &ok );
+    QString xs = r.cap( 1 );
+    QString ys = r.cap( 2 );
+    const QLocale currentLocale;
+    double x = currentLocale.toDouble( xs, &ok );
     if ( ! ok ) x = xs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
-    double y = l->readNumber( ys, &ok );
+    double y = currentLocale.toDouble( ys, &ok );
     if ( ! ok ) y = ys.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     return Coordinate( x, y );
@@ -188,7 +212,7 @@ Coordinate EuclideanCoords::toScreen(const QString& s, bool& ok) const
  */
 static double nicenum( double x, bool round )
 {
-  int exp = (int) log10( x );
+  int exp = ( int ) log10( x );
   double f = x/pow( 10., exp );
   double nf;
   if ( round )
@@ -229,7 +253,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   // the number of intervals we would like to have:
   // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
-    kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40. ) + 1;
+                      kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40. ) + 1;
 
   double hrange = nicenum( hmax - hmin, false );
   double vrange = nicenum( vmax - vmin, false );
@@ -240,13 +264,13 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   const double hd = nicenum( hrange / ( ntick - 1 ), true );
   const double vd = nicenum( vrange / ( ntick - 1 ), true );
 
-  const double hgraphmin = ceil( hmin / hd) * hd;
+  const double hgraphmin = ceil( hmin / hd ) * hd;
   const double hgraphmax = floor( hmax / hd ) * hd;
   const double vgraphmin = ceil( vmin / vd ) * vd;
   const double vgraphmax = floor( vmax / vd ) * vd;
 
-  const int hnfrac = kigMax( (int) - floor( log10( hd ) ), 0 );
-  const int vnfrac = kigMax( (int) - floor( log10( vd ) ), 0 );
+  const int hnfrac = kigMax( ( int ) - floor( log10( hd ) ), 0 );
+  const int vnfrac = kigMax( ( int ) - floor( log10( vd ) ), 0 );
 
   /****** the grid lines ******/
   if ( showgrid )
@@ -265,6 +289,8 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
   /****** the axes ******/
   if ( showaxes )
   {
+    const QLocale currentLocale;
+
     p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
     // x axis
     p.drawSegment( Coordinate( hmin, 0 ), Coordinate( hmax, 0 ) );
@@ -282,18 +308,18 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
 
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
-        KGlobal::locale()->formatNumber( i, hnfrac ),
+        currentLocale.toString( i, 'f', hnfrac ),
         Qt::AlignLeft | Qt::AlignTop
-        );
+      );
     };
     // y axis...
     for ( double i = vgraphmin; i <= vgraphmax + vd/2; i += vd )
     {
       if( fabs( i ) < 1e-8 ) continue;
       p.drawText ( Rect( Coordinate( 0, i ), 2*hd, vd ).normalized(),
-                   KGlobal::locale()->formatNumber( i, vnfrac ),
+                   currentLocale.toString( i, 'f', vnfrac ),
                    Qt::AlignBottom | Qt::AlignLeft
-        );
+                 );
     };
     // arrows on the ends of the axes...
     p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
@@ -303,7 +329,7 @@ void EuclideanCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) co
     // the arrow on the right end of the X axis...
     a.reserve( 3 );
     double u = p.pixelWidth();
-    a.push_back( Coordinate( hmax - 6 * u, -3 * u) );
+    a.push_back( Coordinate( hmax - 6 * u, -3 * u ) );
     a.push_back( Coordinate( hmax, 0 ) );
     a.push_back( Coordinate( hmax - 6 * u, 3 * u ) );
     p.drawArea( a );
@@ -355,14 +381,15 @@ PolarCoords::~PolarCoords()
 QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) const
 {
   int l = d.getCoordinatePrecision();
+  const QLocale currentLocale;
 
   double r = pt.length();
   double theta = Goniometry::convert( atan2( pt.y, pt.x ), Goniometry::Rad, Goniometry::Deg );
 
-  QString rs = KGlobal::locale()->formatNumber( r, l );
-  QString ts = KGlobal::locale()->formatNumber( theta, 0 );
+  QString rs = currentLocale.toString( r, 'f', l );
+  QString ts = currentLocale.toString( theta, 'f', 0 );
 
-  return QString::fromLatin1("( %1; %2 )").arg( rs ).arg( ts );
+  return QString::fromLatin1( "( %1; %2 )" ).arg( rs ).arg( ts );
 }
 
 QString PolarCoords::coordinateFormatNotice() const
@@ -379,18 +406,19 @@ QString PolarCoords::coordinateFormatNoticeMarkup() const
                "where r and \xCE\xB8 are the polar coordinates." );
 }
 
-Coordinate PolarCoords::toScreen(const QString& s, bool& ok) const
+Coordinate PolarCoords::toScreen( const QString& s, bool& ok ) const
 {
   QRegExp regexp( QString::fromUtf8( CoordinateValidator::rePolar ) );
   ok = ( regexp.indexIn( s ) == 0 );
-  if (ok)
+  if ( ok )
   {
+    const QLocale currentLocale;
     QString rs = regexp.cap( 1 );
-    double r = KGlobal::locale()->readNumber( rs, &ok );
+    double r = currentLocale.toDouble( rs, &ok );
     if ( ! ok ) r = rs.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     QString ts = regexp.cap( 2 );
-    double theta = KGlobal::locale()->readNumber( ts, &ok );
+    double theta = currentLocale.toDouble( ts, &ok );
     if ( ! ok ) theta = ts.toDouble( &ok );
     if ( ! ok ) return Coordinate();
     theta *= M_PI;
@@ -421,7 +449,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   // the intervals:
   // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
-    kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40 ) + 1;
+                      kigMax( hmax - hmin, vmax - vmin ) / p.pixelWidth() / 40 ) + 1;
 
   const double hrange = nicenum( hmax - hmin, false );
   const double vrange = nicenum( vmax - vmin, false );
@@ -429,13 +457,13 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   const double hd = nicenum( hrange / ( ntick - 1 ), true );
   const double vd = nicenum( vrange / ( ntick - 1 ), true );
 
-  const double hgraphmin = floor( hmin / hd) * hd;
+  const double hgraphmin = floor( hmin / hd ) * hd;
   const double hgraphmax = ceil( hmax / hd ) * hd;
   const double vgraphmin = floor( vmin / vd ) * vd;
   const double vgraphmax = ceil( vmax / vd ) * vd;
 
-  const int hnfrac = kigMax( (int) - floor( log10( hd ) ), 0 );
-  const int vnfrac = kigMax( (int) - floor( log10( vd ) ), 0 );
+  const int hnfrac = kigMax( ( int ) - floor( log10( hd ) ), 0 );
+  const int vnfrac = kigMax( ( int ) - floor( log10( vd ) ), 0 );
   const int nfrac = kigMax( hnfrac, vnfrac );
 
   /****** the grid lines ******/
@@ -458,6 +486,8 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
   /****** the axes ******/
   if ( showaxes )
   {
+    const QLocale currentLocale;
+
     p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
     // x axis
     p.drawSegment( Coordinate( hmin, 0 ), Coordinate( hmax, 0 ) );
@@ -473,7 +503,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
       // through the 0 etc. )
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+      QString is = currentLocale.toString( fabs( i ), 'f', nfrac );
       p.drawText(
         Rect( Coordinate( i, 0 ), hd, -2*vd ).normalized(),
         is, Qt::AlignLeft | Qt::AlignTop );
@@ -483,11 +513,11 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     {
       if( fabs( i ) < 1e-8 ) continue;
 
-      QString is = KGlobal::locale()->formatNumber( fabs( i ), nfrac );
+      QString is = currentLocale.toString( fabs( i ), 'f', nfrac );
 
       p.drawText ( Rect( Coordinate( 0, i ), hd, vd ).normalized(),
                    is, Qt::AlignBottom | Qt::AlignLeft
-        );
+                 );
     };
     // arrows on the ends of the axes...
     p.setPen( QPen( Qt::gray, 1, Qt::SolidLine ) );
@@ -497,7 +527,7 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
     // the arrow on the right end of the X axis...
     a.reserve( 3 );
     double u = p.pixelWidth();
-    a.push_back( Coordinate( hmax - 6 * u, -3 * u) );
+    a.push_back( Coordinate( hmax - 6 * u, -3 * u ) );
     a.push_back( Coordinate( hmax, 0 ) );
     a.push_back( Coordinate( hmax - 6 * u, 3 * u ) );
 //    p.drawPolygon( a, true );
@@ -516,12 +546,12 @@ void PolarCoords::drawGrid( KigPainter& p, bool showgrid, bool showaxes ) const
 
 QValidator* EuclideanCoords::coordinateValidator() const
 {
-  return new CoordinateValidator( false );
+  return new CoordinateValidator( CoordinateValidator::Euclidean );
 }
 
 QValidator* PolarCoords::coordinateValidator() const
 {
-  return new CoordinateValidator( true );
+  return new CoordinateValidator( CoordinateValidator::Polar );
 }
 
 QStringList CoordinateSystemFactory::names()
@@ -605,7 +635,7 @@ Coordinate EuclideanCoords::snapToGrid( const Coordinate& c,
   // the number of intervals we would like to have:
   // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
-    kigMax( hmax - hmin, vmax - vmin ) / w.pixelWidth() / 40. ) + 1;
+                      kigMax( hmax - hmin, vmax - vmin ) / w.pixelWidth() / 40. ) + 1;
 
   const double hrange = nicenum( hmax - hmin, false );
   const double vrange = nicenum( vmax - vmin, false );
@@ -613,7 +643,7 @@ Coordinate EuclideanCoords::snapToGrid( const Coordinate& c,
   const double hd = nicenum( hrange / ( ntick - 1 ), true );
   const double vd = nicenum( vrange / ( ntick - 1 ), true );
 
-  const double hgraphmin = ceil( hmin / hd) * hd;
+  const double hgraphmin = ceil( hmin / hd ) * hd;
   const double vgraphmin = ceil( vmin / vd ) * vd;
 
   const double nx = qRound( ( c.x - hgraphmin ) / hd ) * hd + hgraphmin;
@@ -640,7 +670,7 @@ Coordinate PolarCoords::snapToGrid( const Coordinate& c,
   // the intervals:
   // we try to have one of them per 40 pixels or so..
   const int ntick = static_cast<int>(
-    kigMax( hmax - hmin, vmax - vmin ) / w.pixelWidth() / 40 ) + 1;
+                      kigMax( hmax - hmin, vmax - vmin ) / w.pixelWidth() / 40 ) + 1;
 
   const double hrange = nicenum( hmax - hmin, false );
   const double vrange = nicenum( vmax - vmin, false );
@@ -672,12 +702,12 @@ void PolarCoords::drawGridLine( KigPainter& p, const Coordinate& c,
   };
 
   static const iterdata_t iterdata[] =
-    {
-      { +1, +1, &Rect::topRight, &Rect::bottomLeft, 0, M_PI/2 },
-      { -1, +1, &Rect::topLeft, &Rect::bottomRight, M_PI, M_PI / 2 },
-      { -1, -1, &Rect::bottomLeft, &Rect::topRight, M_PI, 3*M_PI/2 },
-      { +1, -1, &Rect::bottomRight, &Rect::topLeft, 2*M_PI, 3*M_PI/2 }
-    };
+  {
+    { +1, +1, &Rect::topRight, &Rect::bottomLeft, 0, M_PI/2 },
+    { -1, +1, &Rect::topLeft, &Rect::bottomRight, M_PI, M_PI / 2 },
+    { -1, -1, &Rect::bottomLeft, &Rect::topRight, M_PI, 3*M_PI/2 },
+    { +1, -1, &Rect::bottomRight, &Rect::topLeft, 2*M_PI, 3*M_PI/2 }
+  };
   for ( int i = 0; i < 4; ++i )
   {
     int xd = iterdata[i].xd;

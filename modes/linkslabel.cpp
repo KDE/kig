@@ -17,7 +17,7 @@
 
 
 #include "linkslabel.h"
-#include "linkslabel.moc"
+
 
 #include <qlabel.h>
 #include <kurllabel.h>

@@ -19,50 +19,56 @@
 */
 
 #include "historydialog.h"
-#include "historydialog.moc"
+
 
 #include "ui_historywidget.h"
 
-#include <qlabel.h>
-#include <qtextedit.h>
-#include <qtimer.h>
-#include <qundostack.h>
+#include <QIntValidator>
+#include <QDebug>
+#include <QDialogButtonBox>
+#include <QIcon>
+#include <QPushButton>
+#include <QUndoStack>
+#include <QVBoxLayout>
 
-#include <kdebug.h>
-#include <kicon.h>
-#include <klineedit.h>
-#include <klocale.h>
-#include <knumvalidator.h>
-#include <kpushbutton.h>
+#include <KConfigGroup>
 
 HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
-  : KDialog( parent ), mch( kch )
+  : QDialog( parent ), mch( kch )
 {
-  setCaption( i18n( "History Browser" ) );
-  setButtons( Close );
+  setWindowTitle( i18n( "History Browser" ) );
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
+  mainLayout->addWidget(buttonBox);
 
   QWidget* main = new QWidget( this );
   mwidget = new Ui_HistoryWidget();
   mwidget->setupUi( main );
-  setMainWidget( main );
+//PORTING: Verify that widget was added to mainLayout   setMainWidget( main );
 
   mtotalsteps = mch->count() + 1;
 
   bool reversed = layoutDirection() == Qt::RightToLeft;
 
-  mwidget->buttonFirst->setIcon( KIcon( reversed ? "go-last" : "go-first" ) );
+  mwidget->buttonFirst->setIcon( QIcon::fromTheme( reversed ? "go-last" : "go-first" ) );
   connect( mwidget->buttonFirst, SIGNAL( clicked() ), this, SLOT( goToFirst() ) );
 
-  mwidget->buttonBack->setIcon( KIcon( reversed ? "go-next" : "go-previous" ) );
+  mwidget->buttonBack->setIcon( QIcon::fromTheme( reversed ? "go-next" : "go-previous" ) );
   connect( mwidget->buttonBack, SIGNAL( clicked() ), this, SLOT( goBack() ) );
 
-  mwidget->editStep->setValidator( new KIntValidator( 1, mtotalsteps, mwidget->editStep ) );
+  mwidget->editStep->setValidator( new QIntValidator( 1, mtotalsteps, mwidget->editStep ) );
   mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
 
-  mwidget->buttonNext->setIcon( KIcon( reversed ? "go-previous" : "go-next" ) );
+  mwidget->buttonNext->setIcon( QIcon::fromTheme( reversed ? "go-previous" : "go-next" ) );
   connect( mwidget->buttonNext, SIGNAL( clicked() ), this, SLOT( goToNext() ) );
 
-  mwidget->buttonLast->setIcon( KIcon( reversed ? "go-first" : "go-last" ) );
+  mwidget->buttonLast->setIcon( QIcon::fromTheme( reversed ? "go-first" : "go-last" ) );
   connect( mwidget->buttonLast, SIGNAL( clicked() ), this, SLOT( goToLast() ) );
 
   updateWidgets();

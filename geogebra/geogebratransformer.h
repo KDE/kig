@@ -30,6 +30,7 @@
 #include <vector>
 
 #include "geogebrasection.h"
+#include "../misc/point_style.h"
 
 class KigDocument;
 class ObjectHolder;
@@ -72,7 +73,7 @@ private:
     {
         m_show = true;
         m_thickness = -1;
-        m_pointType = 0;
+        m_pointType = Kig::Round;
         m_type = Qt::SolidLine;
         m_r = 0;
         m_g = 0;
@@ -125,7 +126,7 @@ private:
     /* members required for constructing the object-drawers*/
     bool m_show;
     int  m_thickness;
-    int m_pointType;
+    Kig::PointStyle m_pointType;
     Qt::PenStyle  m_type;
     int  m_r, m_g, m_b, m_alpha; // m_alpha is causing trouble at the moment as Geogebra somehow generates decimal values for it
 };

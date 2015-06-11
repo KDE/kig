@@ -75,19 +75,15 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
       id = 1;
     }
   }
-//  kDebug() << "numpoints: " << numpoints
-//            << "numothers: " << numothers << endl
-//            << "numpolygons: " << numpolygons << endl
-//            << "id: " << id << endl;
 
   return id;
 }
 
 ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
                                         const std::vector<ObjectHolder*>& objs )
-  : KMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
+  : QMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
-  addTitle( i18np( "%1 Object", "%1 Objects", mobjs.size() ) );
+  addSection( i18np( "%1 Object", "%1 Objects", mobjs.size() ) );
   QAction* newaction = 0;
   for ( uint i = 0; i < mobjs.size(); i++ )
   {

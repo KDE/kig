@@ -28,9 +28,10 @@
 #include <objects/object_drawer.h>
 #include <objects/bogus_imp.h>
 #include <objects/object_type_factory.h>
+#include <misc/point_style.h>
 
 #include <KZip>
-#include <KDebug>
+#include <QDebug>
 
 #include <QFile>
 #include <QXmlQuery>
@@ -46,14 +47,14 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
 {
   if( name.localName( m_np ) == QLatin1String( "label" ) )
   {
-    const QByteArray objectLabel = value.toAscii();
+    const QByteArray objectLabel = value.toLatin1();
     bool isDoubleValue;
     const double dblval = value.toString().toDouble( &isDoubleValue );
 
     switch( m_currentState )
     {
     case GeogebraTransformer::ReadingObject:
-      m_currentObjectLabel = value.toAscii();
+      m_currentObjectLabel = value.toLatin1();
       // There must be a better place for this
       m_currentState = GeogebraTransformer::ReadingArguments;
 
@@ -104,11 +105,11 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   }
   else if ( name.localName( m_np ) == QLatin1String( "Input" ) )
   {
-    m_inputObjectLabels.insert( value.toAscii() );
+    m_inputObjectLabels.insert( value.toLatin1() );
   }
   else if ( name.localName( m_np ) == QLatin1String( "Output" ) )
   {
-    m_outputObjectLabels.insert( value.toAscii() );
+    m_outputObjectLabels.insert( value.toLatin1() );
   }
   else if( name.localName( m_np ) == QLatin1String( "show" ) )
   {
@@ -151,17 +152,17 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   {
     int pt = value.toString().toInt();
     if( pt == SOLIDCIRCLEPOINT )
-      m_pointType = ObjectDrawer::pointStyleFromString( "Round" );
+      m_pointType = Kig::pointStyleFromString( "Round" );
     else if( pt == SOLIDDIAMONDPOINT || pt == UPARROWPOINT || pt == DOWNARROWPOINT || pt == RIGHTARROWPOINT || pt == LEFTARROWPOINT )
-      m_pointType = ObjectDrawer::pointStyleFromString( "Rectangular" );
+      m_pointType = Kig::pointStyleFromString( "Rectangular" );
     else if( pt == HOLLOWCIRCLEPOINT )
-      m_pointType = ObjectDrawer::pointStyleFromString( "Round" );//TODO should be mapped to RoundEmpty ( i.e. 1) but for some reason it is not drawing in KIG
+      m_pointType = Kig::pointStyleFromString( "Round" );//TODO should be mapped to RoundEmpty ( i.e. 1) but for some reason it is not drawing in KIG
     else if( pt == HOLLOWDIAMONDPOINT )
-      m_pointType = ObjectDrawer::pointStyleFromString( "Rectangular" );//TODO should be mapped to RectangularEmpty ( i.e. 3) but for some reason it is not drawing in KIG
+      m_pointType = Kig::pointStyleFromString( "Rectangular" );//TODO should be mapped to RectangularEmpty ( i.e. 3) but for some reason it is not drawing in KIG
     else if( pt == CROSSPOINT  || pt == PLUSPOINT )
-      m_pointType = ObjectDrawer::pointStyleFromString( "Cross" );
+      m_pointType = Kig::pointStyleFromString( "Cross" );
     else
-      m_pointType = 0;
+      m_pointType = Kig::Round;
   }
   else if( name.localName( m_np ) == QLatin1String( "r" ) )
   {
@@ -307,7 +308,7 @@ void GeogebraTransformer::startElement( const QXmlName& name )
 
       if ( !m_currentObject )
       {
-        kWarning() << name.localName( m_np ) << " object not found!";
+        qWarning() << name.localName( m_np ) << " object not found!";
       }
     }
 

@@ -28,8 +28,6 @@
 #include "../kig/kig_commands.h"
 #include "../kig/kig_part.h"
 
-#include <klocale.h>
-
 static const char conic_constructstatement[] = I18N_NOOP( "Construct a conic through this point" );
 
 static const struct ArgsParser::spec argsspecConicB5P[] =
@@ -496,7 +494,7 @@ ObjectImp* ParabolaBDPType::calc( const LineData& l, const Coordinate& c ) const
   Coordinate fa = c - l.a;
   ret.pdimen = fa.y*ldir.x - fa.x*ldir.y;
   ConicImpPolar* r = new ConicImpPolar( ret );
-  kDebug() << r->conicTypeString();
+  qDebug() << r->conicTypeString();
   return r;
 }
 

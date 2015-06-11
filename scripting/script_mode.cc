@@ -17,8 +17,6 @@
 
 #include "script_mode.h"
 
-#include <iterator>
-
 #include "newscriptwizard.h"
 #include "python_type.h"
 #include "python_scripter.h"
@@ -33,14 +31,7 @@
 #include "../objects/object_imp.h"
 #include "../objects/object_factory.h"
 
-#include <qbytearray.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-
-#include <kcursor.h>
-#include <kdialog.h>
-#include <kicon.h>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
 void ScriptModeBase::dragRect( const QPoint& p, KigWidget& w )
 {
@@ -316,7 +307,7 @@ ScriptEditMode::ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc )
   // in the editor and aborts the editing
   morigscript = static_cast<const StringImp*>( imp )->data();
 
-  mwizard->setWindowTitle( KDialog::makeStandardCaption( i18nc( "'Edit' is a verb", "Edit Script" ) ) );
+  mwizard->setWindowTitle( i18nc( "'Edit' is a verb", "Edit Script" ) );
   mwizard->setText( morigscript );
   mwizard->show();
   mwizard->next();

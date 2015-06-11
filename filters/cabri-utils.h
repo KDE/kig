@@ -26,6 +26,7 @@
 #include <qcolor.h>
 
 #include "../misc/rect.h"
+#include "../objects/object_drawer.h"
 
 #include <map>
 #include <vector>
@@ -137,7 +138,7 @@ public:
 
   virtual bool readWindowMetrics( QFile& f ) = 0;
   virtual CabriObject* readObject( QFile& f ) = 0;
-  virtual void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& pointType ) = 0;
+  virtual void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType ) = 0;
 };
 
 class CabriReader_v10
@@ -149,7 +150,7 @@ public:
 
   virtual bool readWindowMetrics( QFile& f );
   virtual CabriObject* readObject( QFile& f );
-  virtual void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& pointType );
+  virtual void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType );
 };
 
 class CabriReader_v12
@@ -167,7 +168,7 @@ public:
 
   virtual bool readWindowMetrics( QFile& f );
   virtual CabriObject* readObject( QFile& f );
-  virtual void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, int& pointType );
+  virtual void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType );
 };
 
 #endif

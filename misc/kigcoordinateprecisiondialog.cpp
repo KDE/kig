@@ -23,14 +23,17 @@
 #include <QBoxLayout>
 #include <QCheckBox>
 #include <QLabel>
-#include <knuminput.h>
 
-#include <klocale.h>
+#include <QVBoxLayout>
 
-KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision ) : KDialog()
+KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision ) : QDialog()
 {
   ui = new Ui::KigCoordinatePrecisionDialog();
-  ui->setupUi(mainWidget());
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  mainLayout->addWidget(mainWidget);
+  ui->setupUi(mainWidget);
   
   ui->m_defaultCheckBox->setCheckState( isUserSpecified ? Qt::Unchecked : Qt::Checked) ;
   ui->m_precisionLabel->setEnabled( isUserSpecified );
@@ -65,4 +68,4 @@ void KigCoordinatePrecisionDialog::toggleCoordinateControls( int state )
   ui->m_precisionSpinBox->setEnabled( controlsEnabled );
 }
 
-#include "kigcoordinateprecisiondialog.moc"
+

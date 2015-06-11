@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "guiaction.h"
-#include "guiaction.moc"
 
 #include "coordinate_system.h"
 #include "coordinate.h"
@@ -31,11 +30,10 @@
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kicon.h>
+#include <KIconEngine>
 #include <kactioncollection.h>
 
+#include <QIcon>
 #include <qregexp.h>
 
 int GUIAction::shortcut() const
@@ -84,18 +82,18 @@ void ConstructibleAction::act( KigPart& d )
 
 KigGUIAction::KigGUIAction( GUIAction* act,
                             KigPart& doc )
-  : KAction( act->descriptiveName(), doc.actionCollection() ),
+  : QAction( act->descriptiveName(), doc.actionCollection() ),
   mact( act ),
   mdoc( doc )
 {
   QByteArray icon = act->iconFileName( true );
   if ( !icon.isEmpty() )
-    setIcon( KIcon( icon, doc.iconLoader() ) );
+    setIcon( QIcon( new KIconEngine( icon, doc.iconLoader() ) ) );
   setWhatsThis( act->description() );
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );
   setToolTip( tooltip );
-  setShortcut( KShortcut( act->shortcut() ) );
+  setShortcut( QKeySequence( act->shortcut() ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
 
     doc.actionCollection()->addAction(act->actionName(), this);

@@ -24,14 +24,13 @@
 
 #include <qlist.h>
 
-#include <kparts/part.h>
+#include <KParts/ReadWritePart>
 #include <kselectaction.h>
 
 #include <vector>
 
 class KAboutData;
 class KToggleAction;
-class KUndoStack;
 class QUndoStack;
 class QWidget;
 class QPrinter;
@@ -212,7 +211,7 @@ protected:
   /**
    * the command history
    */
-  KUndoStack* mhistory;
+  QUndoStack* mhistory;
 
 public:
   // actions: this is an annoying case, didn't really fit into my
@@ -233,17 +232,17 @@ public:
   QList<QAction*> aMNewConic;
 
 
-  KAction* aCancelConstruction;
-  KAction* aRepeatLastConstruction;
-  KAction* aSelectAll;
-  KAction* aDeselectAll;
-  KAction* aInvertSelection;
-  KAction* aDeleteObjects;
-  KAction* aNewMacro;
-  KAction* aShowHidden;
-  KAction* aConfigureTypes;
-  KAction* aBrowseHistory;
-  KAction* aSetCoordinatePrecision;
+  QAction * aCancelConstruction;
+  QAction * aRepeatLastConstruction;
+  QAction * aSelectAll;
+  QAction * aDeselectAll;
+  QAction * aInvertSelection;
+  QAction * aDeleteObjects;
+  QAction * aNewMacro;
+  QAction * aShowHidden;
+  QAction * aConfigureTypes;
+  QAction * aBrowseHistory;
+  QAction * aSetCoordinatePrecision;
   KToggleAction* aToggleGrid;
   KToggleAction* aToggleAxes;
   KToggleAction* aToggleNightVision;

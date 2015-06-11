@@ -32,24 +32,19 @@
 
 #include <config-kig.h>
 
-#include <qbytearray.h>
-#include <qdom.h>
-#include <qfile.h>
-#include <qfont.h>
-#include <qregexp.h>
-#include <qtextstream.h>
-
-#include <karchive.h>
-#include <kdebug.h>
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <ktar.h>
-
-#include <stdio.h>
-
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <map>
+
+#include <QDebug>
+#include <QDomElement>
+#include <QFile>
+#include <QFont>
+#include <QStandardPaths>
+#include <QTextStream>
+
+#include <KTar>
 
 struct HierElem
 {
@@ -122,7 +117,7 @@ KigDocument* KigFilterNative::load( const QString& file)
     // kig file inside it...
     iscompressed = true;
 
-    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    QString tempdir = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
     if ( tempdir.isEmpty() )
       KIG_FILTER_PARSE_ERROR;
 
@@ -149,7 +144,7 @@ KigDocument* KigFilterNative::load( const QString& file)
     if ( !kigz->isFile() )
       KIG_FILTER_PARSE_ERROR;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
-    kDebug() << "extracted file: " << tempdir + kigz->name()
+    qDebug() << "extracted file: " << tempdir + kigz->name()
               << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
 
     kigdoc.setFileName( tempdir + kigz->name() );
@@ -590,7 +585,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
         Qt::PenStyle style = ObjectDrawer::styleFromString( tmp );
 
         tmp = e.attribute( "point-style" );
-        int pointstyle = ObjectDrawer::pointStyleFromString( tmp );
+        Kig::PointStyle pointstyle = Kig::pointStyleFromString( tmp );
 
         tmp = e.attribute( "font" );
         QFont f;
@@ -705,7 +700,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     drawelem.setAttribute( "shown", QLatin1String( d->shown() ? "true" : "false" ) );
     drawelem.setAttribute( "width", QString::number( d->width() ) );
     drawelem.setAttribute( "style", d->styleToString() );
-    drawelem.setAttribute( "point-style", d->pointStyleToString() );
+    drawelem.setAttribute( "point-style", Kig::pointStyleToString( d->pointStyle() ) );
     drawelem.setAttribute( "font", d->font().toString() );
 
     ObjectCalcer* namecalcer = ( *i )->nameCalcer();
@@ -749,7 +744,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     // the user wants to save a compressed file, so we have to save our kig
     // file to a temp file and then compress it...
 
-    QString tempdir = KGlobal::dirs()->saveLocation( "tmp" );
+    QString tempdir = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
     if ( tempdir.isEmpty() )
       return false;
 
@@ -769,7 +764,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
       return false;
     ftmpfile.close();
 
-    kDebug() << "tmp saved file: " << tmpfile;
+    qDebug() << "tmp saved file: " << tmpfile;
 
     // creating the archive and adding our file
     KTar ark( outfile,  "application/x-gzip" );

@@ -165,7 +165,7 @@
   <customwidget>
    <class>KIconButton</class>
    <extends></extends>
-   <header>kicondialog.h</header>
+   <header>KIconButton</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

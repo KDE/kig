@@ -50,7 +50,7 @@ KigPainter::KigPainter( const ScreenInfo& si, QPaintDevice* device,
   : mP ( device ),
     color( Qt::blue ),
     style( Qt::SolidLine ),
-    pointstyle( 0 ),
+    pointstyle( Kig::Round ),
     width( -1 ),
     brushStyle( Qt::NoBrush ),
     brushColor( Qt::blue ),
@@ -104,7 +104,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
   mP.setPen( QPen( color, 1, style ) );
   switch ( pointstyle )
   {
-    case 0:
+    case Kig::Round:
     {
       double radius = twidth * pixelWidth();
       setBrushStyle( Qt::SolidPattern );
@@ -118,7 +118,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
-    case 1:
+    case Kig::RoundEmpty:
     {
       double radius = twidth * pixelWidth();
       setBrushStyle( Qt::NoBrush );
@@ -132,7 +132,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
-    case 2:
+    case Kig::Rectangular:
     {
       double radius = twidth * pixelWidth();
       Coordinate rad( radius, radius );
@@ -146,7 +146,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
-    case 3:
+    case Kig::RectangularEmpty:
     {
       double radius = twidth * pixelWidth();
       Coordinate rad( radius, radius );
@@ -159,7 +159,7 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       if( mNeedOverlay ) mOverlay.push_back( qr );
       break;
     }
-    case 4:
+    case Kig::Cross:
     {
       double radius = twidth * pixelWidth();
       Coordinate rad( radius, radius );
@@ -172,6 +172,10 @@ void KigPainter::drawFatPoint( const Coordinate& p )
       mP.drawLine( qr.topLeft(), qr.bottomRight() );
       mP.drawLine( qr.topRight(), qr.bottomLeft() );
       if( mNeedOverlay ) mOverlay.push_back( qr );
+      break;
+    }
+    default:
+    {
       break;
     }
   }
@@ -202,7 +206,6 @@ void KigPainter::drawText( const Rect& p, const QString& s, int textFlags )
 
 void KigPainter::textOverlay( const QRect& r, const QString& s, int textFlags )
 {
-  //  kDebug() << Rect::fromQRect( mP.boundingRect( r, textFlags, s, len ) );
   QRect newr( mP.boundingRect( r, textFlags, s ) );
   newr.setWidth( newr.width() + 4 );
   newr.setHeight( newr.height() + 4 );
@@ -236,7 +239,7 @@ void KigPainter::setWidth( int c )
   mP.setPen( QPen( color, width == -1 ? 1 : width, style ) );
 }
 
-void KigPainter::setPointStyle( int p )
+void KigPainter::setPointStyle( Kig::PointStyle p )
 {
   pointstyle = p;
 }
@@ -457,13 +460,12 @@ void KigPainter::segmentOverlay( const Coordinate& p1, const Coordinate& p2 )
     tR.setCenter(tP);
     if (!tR.intersects(r))
     {
-      //kDebug()<< "stopped after "<< counter << " passes.";
       break;
     }
     if (tR.intersects(border)) mOverlay.push_back( toScreenEnlarge( tR ) );
     if (++counter > 100)
     {
-      kDebug()<< "counter got too big :( ";
+      qDebug()<< "counter got too big :( ";
       break;
     }
   }
@@ -914,7 +916,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   curpolylinenextfree = 0;
 
   if ( ! workstack.empty () )
-    kDebug() << "Stack not empty in KigPainter::drawCurve!\n";
+    qDebug() << "Stack not empty in KigPainter::drawCurve!\n";
   assert ( tNeedOverlay || overlaystack.empty() );
   if ( tNeedOverlay )
   {

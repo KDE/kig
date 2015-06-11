@@ -23,8 +23,10 @@
 #include "script-common.h"
 
 class QLabel;
+class QTextEdit;
+
 class KIconLoader;
-class KTextEdit;
+
 namespace KTextEditor
 {
   class Document;
@@ -56,7 +58,7 @@ protected slots:
 
 protected:
   QLabel* mLabelFillCode;
-  KTextEdit* textedit;
+  QTextEdit* textedit;
   KTextEditor::Document* document;
   KTextEditor::View* docview;
   KIconLoader* mIconLoader;

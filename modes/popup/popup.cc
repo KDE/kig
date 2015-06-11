@@ -19,7 +19,6 @@
 **/
 
 #include "popup.h"
-#include "popup.moc"
 
 #include "../../kig/kig_part.h"
 #include "../../kig/kig_document.h"
@@ -51,22 +50,7 @@
 #include "objecttypeactionsprovider.h"
 #include "propertiesactionsprovider.h"
 
-#include <algorithm>
-#include <functional>
-
-#include <qaction.h>
-#include <qcursor.h>
-#include <qdialog.h>
-#include <qfont.h>
-#include <qpen.h>
-#include <qregexp.h>
-#include <qvalidator.h>
-
-#include <kaction.h>
-#include <kcolordialog.h>
-#include <kicon.h>
-#include <kinputdialog.h>
-#include <klocale.h>
+#include <KIconEngine>
 
 #include <config-kig.h>
 
@@ -87,7 +71,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
                                                 NormalMode& mode,
                                                 const std::vector<ObjectHolder*>& objs,
                                                 const QPoint& plc )
-  : KMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
+  : QMenu( &view ), mplc( plc ), mpart( part ), mview( view ), mobjs( objs ),
     mmode( mode ), monlylabels( false )
 {
   bool empty = objs.empty();
@@ -105,7 +89,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   }
   else
     title = i18np( "%1 Object", "%1 Objects", objs.size() );
-  addTitle( title );
+  addSection( title );
 
   if ( !empty )
   {
@@ -182,7 +166,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       mmenus[i]->setTitle( menunames[i] );
     if ( !menuicons[i].isEmpty() )
     {
-      mmenus[i]->setIcon( KIcon( menuicons[i], l ) );
+      mmenus[i]->setIcon( QIcon( new KIconEngine( menuicons[i], l ) ) );
     }
   }
   mmenus[ToplevelMenu] = mmenuslast[ToplevelMenu] = this;
@@ -219,7 +203,7 @@ void NormalModePopupObjects::toplevelMenuSlot( QAction* act )
   int data = act->data().toInt();
   int id = data & 0xFF;
   int menu = data >> 8;
-kDebug() << "menu: " << menu << " - id: " << id;
+qDebug() << "menu: " << menu << " - id: " << id;
   activateAction( menu, id );
 }
 
@@ -229,7 +213,7 @@ void NormalModePopupObjects::activateAction( int menu, int action )
   // we need action - 10 cause we called fillUpMenu with nextfree set
   // to 10 initially..
   action -= 10;
-kDebug() << "MENU: " << menu << " - ACTION: " << action;
+qDebug() << "MENU: " << menu << " - ACTION: " << action;
   for ( uint i = 0; ! done && i < mproviders.size(); ++i )
     done = mproviders[i]->executeAction( menu, action, mobjs, *this, mpart, mview, mmode );
 }
@@ -246,7 +230,6 @@ QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, 
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon, const QString& name, int id )
 {
-//kDebug() << "ID: " << id;
   if ( mmenuslast[menu]->actions().size() >= MAXMENUITEMS )
     mmenuslast[menu] = mmenuslast[menu]->addMenu( i18nc( "More menu items", "More..." ) );
   QAction* newaction = mmenuslast[menu]->addAction( icon, name );

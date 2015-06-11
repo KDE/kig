@@ -48,14 +48,11 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <math.h>
+#include <cmath>
 
-#include <qfile.h>
-#include <qnamespace.h>
 #include <QDomDocument>
-
-#include <kinputdialog.h>
-#include <klocale.h>
+#include <QInputDialog>
+#include <QFile>
 
 #undef DRGEO_DEBUG
 //#define DRGEO_DEBUG
@@ -124,7 +121,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   {
     // Dr. Geo file has more than 1 figure, let the user choose one...
     bool ok = true;
-    myfig = KInputDialog::getItem(
+    myfig = QInputDialog::getItem( nullptr,
                 i18n( "Dr. Geo Filter" ),
                 i18n( "The current Dr. Geo file contains more than one figure.\n"
                       "Please select which to import:" ),
@@ -134,7 +131,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   }
 
 #ifdef DRGEO_DEBUG
-  kDebug() << "drgeo file " << file;
+  qDebug() << "drgeo file " << file;
 #endif
 
   for ( QDomNode n = main.firstChild(); ! n.isNull(); n = n.nextSibling() )
@@ -146,7 +143,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
       if ( e.attribute("name") == myfig )
       {
 #ifdef DRGEO_DEBUG
-        kDebug() << "- Figure: '" << e.attribute("name") << "'";
+        qDebug() << "- Figure: '" << e.attribute("name") << "'";
 #endif
         bool grid = !e.attribute( "grid" ).isEmpty() &&
                     ( e.attribute( "grid" ) != "False" );
@@ -199,7 +196,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
     {
       DrGeoHierarchyElement elem;
 #ifdef DRGEO_DEBUG
-      kDebug() << "  * " << domelem.tagName() << "(" << domelem.attribute("type") << ")";
+      qDebug() << "  * " << domelem.tagName() << "(" << domelem.attribute("type") << ")";
 #endif
       for ( QDomNode c = domelem.firstChild(); ! c.isNull(); c = c.nextSibling() )
       {
@@ -216,7 +213,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
 
 #ifdef DRGEO_DEBUG
   QString x;
-  kDebug() << "+++ elems";
+  qDebug() << "+++ elems";
   for ( uint i = 0; i < elems.size(); ++i )
   {
     x = "";
@@ -224,7 +221,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
     {
       x += elems[i].parents[j] + '_';
     }
-    kDebug() << "  --> " << i << " - " << elems[i].id << " - " << x;
+    qDebug() << "  --> " << i << " - " << elems[i].id << " - " << x;
   }
 #endif
 
@@ -242,7 +239,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
   for (QDomNode a = f; ! a.isNull(); a = a.nextSibling() )
   {
 #ifdef DRGEO_DEBUG
-    kDebug() << "+++ id: " << curid;
+    qDebug() << "+++ id: " << curid;
 #endif
     const DrGeoHierarchyElement& el = elems[curid];
     std::vector<ObjectCalcer*> parents;
@@ -259,12 +256,12 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
     if ( parents.size() > 0 )
       for ( uint j = 0; j < parents.size(); ++j )
       {
-        kDebug() << "+++++++++ parent[" << j << "]: " << parents[j] << " - "
+        qDebug() << "+++++++++ parent[" << j << "]: " << parents[j] << " - "
                   << parents[j]->imp()->type()->internalName() << endl;
       }
     else
-      kDebug() << "+++++++++ parents: NO";
-    kDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute("type");
+      qDebug() << "+++++++++ parents: NO";
+    qDebug() << "+++++++++ " << domelem.tagName() << " - " << domelem.attribute("type");
 #endif
 
     if ( domelem.isNull() ) continue;
@@ -400,7 +397,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         return 0;
       }
 #ifdef DRGEO_DEBUG
-      kDebug() << "+++++++++ oc:" << oc;
+      qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
     else if( ( domelem.tagName() == "line" ) ||
@@ -507,7 +504,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         return 0;
       }
 #ifdef DRGEO_DEBUG
-      kDebug() << "+++++++++ oc:" << oc;
+      qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
     else if( ( domelem.tagName() == "numeric" ) ||
@@ -634,7 +631,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         return 0;
       }
 #ifdef DRGEO_DEBUG
-      kDebug() << "+++++++++ oc:" << oc;
+      qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
     else if ( domelem.tagName() == "angle" )
@@ -652,7 +649,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         return 0;
       }
 #ifdef DRGEO_DEBUG
-      kDebug() << "+++++++++ oc:" << oc;
+      qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
     else if ( domelem.tagName() == "script" )
@@ -705,7 +702,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         return 0;
       }
 #ifdef DRGEO_DEBUG
-      kDebug() << "+++++++++ oc:" << oc;
+      qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
     else if ( ( domelem.tagName() == "boundingBox" ) ||
@@ -717,7 +714,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
     else
     {
 #ifdef DRGEO_DEBUG
-      kDebug() << ">>>>>>>>> UNKNOWN OBJECT";
+      qDebug() << ">>>>>>>>> UNKNOWN OBJECT";
 #endif
       notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                           "which Kig does not currently support.", domelem.tagName() , 
@@ -758,7 +755,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         w = 2;
     }
     QString ps = domelem.attribute( "style" );
-    int pointstyle = ObjectDrawer::pointStyleFromString( ps );
+    Kig::PointStyle pointstyle = Kig::pointStyleFromString( ps );
 // show this object?
     bool show = ( ( domelem.attribute( "masked" ) != "True" ) &&
                   ( domelem.attribute( "masked" ) != "Alway" ) );
@@ -773,11 +770,11 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
     holders.push_back( o );
 // calc()
 #ifdef DRGEO_DEBUG
-    kDebug() << ">>>>>>>>> calc";
+    qDebug() << ">>>>>>>>> calc";
 #endif
     holders[curid-1-nignored]->calc( *ret );
 #ifdef DRGEO_DEBUG
-    kDebug() << "+++++++++ oc: " << oc << " - "
+    qDebug() << "+++++++++ oc: " << oc << " - "
               << oc->imp()->type()->internalName() << endl;
 #endif
 

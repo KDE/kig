@@ -16,7 +16,6 @@
 // 02110-1301, USA.
 
 #include "exporter.h"
-#include "exporter.moc"
 
 #include "imageexporteroptions.h"
 #include "latexexporter.h"
@@ -31,24 +30,23 @@
 #include "../misc/kigfiledialog.h"
 #include "../misc/kigpainter.h"
 
-#include <qfile.h>
+#include <QImageWriter>
+#include <QMimeDatabase>
+#include <QStandardPaths>
 
-#include <kactionmenu.h>
-#include <kactioncollection.h>
-#include <kicon.h>
-#include <kimageio.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <kmimetype.h>
+#include <KIconEngine>
+#include <KActionMenu>
+#include <KActionCollection>
+#include <KMessageBox>
 
 ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
                                 KActionCollection* parent, KigExporter* exp )
-  : KAction( exp->menuEntryName(), parent),
+  : QAction( exp->menuEntryName(), parent),
     mexp( exp ), mdoc( doc ), mw( w )
 {
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
-    setIcon( KIcon( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) );
+    setIcon( QIcon( new KIconEngine( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) ) );
   connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
   if(parent)
     parent->addAction("action", this );
@@ -85,8 +83,15 @@ QString ImageExporter::menuIcon() const
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QString(), KImageIO::pattern( KImageIO::Writing ),
+      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QString(),
       i18n( "Export as Image" ), &w );
+  const QList<QByteArray> mimeFilters = QImageWriter::supportedMimeTypes();
+  QStringList mimeFiltersConverted;
+  // Since someone didn't get the memo about what's the type of a mime name...
+  for (auto mimeFilter : mimeFilters) {
+      mimeFiltersConverted.append( QString::fromUtf8( mimeFilter ) );
+  }
+  kfd->setMimeTypeFilters( mimeFiltersConverted );
   kfd->setOptionCaption( i18n( "Image Options" ) );
   ImageExporterOptions* opts = new ImageExporterOptions( 0L );
   kfd->setOptionsWidget( opts );
@@ -104,9 +109,10 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   delete opts;
   delete kfd;
 
-  KMimeType::Ptr mimeType = KMimeType::findByPath( filename );
-  kDebug() << "mimetype: " << mimeType->name();
-  if ( !KImageIO::isSupported( mimeType->name(), KImageIO::Writing ) )
+  QMimeDatabase db;
+  QMimeType mimeType = db.mimeTypeForFile( filename );
+  qDebug() << "mimetype: " << mimeType.name();
+  if ( !QImageWriter::supportedMimeTypes().contains( mimeType.name().toUtf8() ) )
   {
     KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
     return;
@@ -128,7 +134,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   p.drawGrid( doc.document().coordinateSystem(), showgrid, showaxes );
   // FIXME: show the selections ?
   p.drawObjects( doc.document().objects(), false );
-  QStringList types = KImageIO::typeForMime( mimeType->name() );
+  const QStringList types = mimeType.suffixes();
   if ( types.isEmpty() ) return; // TODO error dialog?
   if ( !img.save( filename, types.at(0).toLatin1() ) )
   {
@@ -156,7 +162,7 @@ void KigExportManager::addMenuAction( const KigPart* doc, KigWidget* w,
                                       KActionCollection* coll )
 {
   KActionMenu* m = new KActionMenu( i18n( "&Export To" ), w );
-  m->setIcon( KIcon( "document-export", const_cast<KigPart*>( doc )->iconLoader() ) );
+  m->setIcon( QIcon( new KIconEngine( "document-export", const_cast<KigPart*>( doc )->iconLoader() ) ) );
   for ( uint i = 0; i < mexporters.size(); ++i )
     m->addAction( new ExporterAction( doc, w, coll, mexporters[i] ) );
   if(coll)

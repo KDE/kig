@@ -19,7 +19,6 @@
 **/
 
 #include "kiginputdialog.h"
-#include "kiginputdialog.moc"
 
 #include "coordinate.h"
 #include "coordinate_system.h"
@@ -27,15 +26,17 @@
 
 #include "../kig/kig_document.h"
 
-#include <qevent.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qvalidator.h>
+#include <QApplication>
+#include <QComboBox>
+#include <QDialogButtonBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QValidator>
+#include <QVBoxLayout>
 
-#include <kcombobox.h>
-#include <klineedit.h>
-#include <klocale.h>
-#include <kpushbutton.h>
+#include <KConfigGroup>
+#include <KLocalizedString>
 
 class KigInputDialogPrivate
 {
@@ -43,9 +44,10 @@ public:
   KigInputDialogPrivate();
 
   QLabel* m_label;
-  KLineEdit* m_lineEditFirst;
-  KLineEdit* m_lineEditSecond;
-  KComboBox* m_comboBox;
+  QLineEdit* m_lineEditFirst;
+  QLineEdit* m_lineEditSecond;
+  QComboBox* m_comboBox;
+  QPushButton* okButton;
 
   Coordinate m_coord1;
   Coordinate m_coord2;
@@ -68,11 +70,22 @@ KigInputDialog::~KigInputDialog()
 
 KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
       QWidget* parent, const KigDocument& doc, Coordinate* c1, Coordinate* c2 )
-  : KDialog( parent ),
+  : QDialog( parent ),
     d( new KigInputDialogPrivate() )
 {
-  setCaption( caption );
-  setButtons( Ok | Cancel );
+  QWidget *mainWidget = new QWidget( this );
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel );
+  QVBoxLayout* mainlay = new QVBoxLayout( mainWidget );
+  
+  setWindowTitle( caption );
+  setLayout( mainLayout );
+  mainLayout->addWidget( mainWidget );
+  d->okButton = buttonBox->button( QDialogButtonBox::Ok );
+  d->okButton->setDefault( true );
+  d->okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
+  connect( buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
+  connect( buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
 
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
   d->m_coord2 = c2 ? Coordinate( *c2 ) : Coordinate::invalidCoord();
@@ -81,19 +94,15 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   bool ok = false;
 
-  QWidget* frame = new QWidget();
-  setMainWidget( frame );
-  QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
-  mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
-  d->m_label = new QLabel( frame );
+  d->m_label = new QLabel( mainWidget );
   d->m_label->setTextFormat( Qt::RichText );
   d->m_label->setText( label );
   mainlay->addWidget( d->m_label );
 
-  d->m_lineEditFirst = new KLineEdit( frame );
+  d->m_lineEditFirst = new QLineEdit( mainWidget );
 //  d->m_lineEditFirst->setValidator( d->m_vtor );
   if ( d->m_coord1.valid() )
   {
@@ -107,7 +116,7 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   if ( d->m_coord2.valid() )
   {
-    d->m_lineEditSecond = new KLineEdit( frame );
+    d->m_lineEditSecond = new QLineEdit( mainWidget );
 //    d->m_lineEditSecond->setValidator( d->m_vtor );
     d->m_lineEditSecond->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord2, *d->m_doc ) );
     mainlay->addWidget( d->m_lineEditSecond );
@@ -117,45 +126,52 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   }
 
   resize( minimumSizeHint() );
-
   d->m_lineEditFirst->setFocus();
+  d->okButton->setEnabled( ok );
 
-  enableButtonOk( ok );
+  mainLayout->addWidget( mainWidget );
+  mainLayout->addWidget( buttonBox );
 }
 
 KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
-  : KDialog( parent ),
+  : QDialog( parent ),
     d( new KigInputDialogPrivate() )
 {
-  setCaption( i18n( "Set Angle Size" ) );
-  setButtons( Ok | Cancel );
+  QWidget *mainWidget = new QWidget( this );
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel );
+  QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
+  QVBoxLayout* mainlay = new QVBoxLayout( mainWidget );
+  QHBoxLayout* horlay = new QHBoxLayout( mainWidget );
+
+  setWindowTitle( i18n( "Set Angle Size" ) );
+  setLayout( mainLayout );
+  okButton->setDefault( true );
+  okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
+  d->okButton = okButton;
+  connect( buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
+  connect( buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
 
   d->m_gonio = g;
   d->m_gonioIsNum = true;
 
-  QWidget* frame = new QWidget();
-  setMainWidget( frame );
-  QVBoxLayout* mainlay = new QVBoxLayout( frame );
   mainlay->setMargin( 0 );
-  mainlay->setSpacing( spacingHint() );
   mainlay->activate();
 
-  d->m_label = new QLabel( frame );
+  d->m_label = new QLabel( mainWidget );
   d->m_label->setText( i18n( "Insert the new size of this angle:" ) );
   mainlay->addWidget( d->m_label );
 
-  QHBoxLayout* horlay = new QHBoxLayout( (QWidget*)0 );
-  horlay->setMargin( 0 );
-  horlay->setSpacing( spacingHint() );
-  horlay->activate();
+//   horlay->setMargin( 0 );
+//   horlay->activate();
 
-  d->m_lineEditFirst = new KLineEdit( frame );
+  d->m_lineEditFirst = new QLineEdit( mainWidget );
   d->m_lineEditFirst->setText( QString::number( d->m_gonio.value() ) );
   d->m_lineEditFirst->setWhatsThis(
         i18n( "Use this edit field to modify the size of this angle." ) );
   horlay->addWidget( d->m_lineEditFirst );
 
-  d->m_comboBox = new KComboBox( frame );
+  d->m_comboBox = new QComboBox( mainWidget );
   d->m_comboBox->addItems( Goniometry::systemList() );
   d->m_comboBox->setCurrentIndex( d->m_gonio.system() );
   d->m_comboBox->setWhatsThis(
@@ -165,8 +181,6 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
               "the left will be converted to the new selected unit." ) );
   horlay->addWidget( d->m_comboBox );
 
-  mainlay->addLayout( horlay );
-
   connect( d->m_lineEditFirst, SIGNAL(textChanged(const QString&)),
            this, SLOT(slotGonioTextChanged(const QString&)) );
   connect( d->m_comboBox, SIGNAL(activated(int)),
@@ -175,6 +189,10 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   resize( 350, 100 );
 
   d->m_lineEditFirst->setFocus();
+
+  mainlay->addLayout( horlay );
+  mainLayout->addWidget( mainWidget );
+  mainLayout->addWidget( buttonBox );
 }
 
 void KigInputDialog::keyPressEvent( QKeyEvent* e )
@@ -196,7 +214,7 @@ void KigInputDialog::keyPressEvent( QKeyEvent* e )
     return;
   }
 #endif
-  KDialog::keyPressEvent( e );
+  QDialog::keyPressEvent( e );
 }
 
 void KigInputDialog::slotCoordsChanged( const QString& )
@@ -215,7 +233,7 @@ void KigInputDialog::slotCoordsChanged( const QString& )
       d->m_coord2 = d->m_doc->coordinateSystem().toScreen( t, ok );
   }
 
-  enableButtonOk( ok );
+  d->okButton->setEnabled( ok );
 }
 
 void KigInputDialog::slotGonioSystemChanged( int index )
@@ -237,7 +255,7 @@ void KigInputDialog::slotGonioTextChanged( const QString& txt )
     double v = txt.toDouble( &(d->m_gonioIsNum) );
     d->m_gonio.setValue( v );
   }
-  enableButtonOk( d->m_gonioIsNum );
+  d->okButton->setEnabled( d->m_gonioIsNum );
 }
 
 

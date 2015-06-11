@@ -35,15 +35,14 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
-#include <qcolor.h>
-#include <qfile.h>
-#include <qtextstream.h>
-
-#include <klocale.h>
-#include <kmessagebox.h>
-
 #include <map>
 #include <iterator>
+
+#include <QFile>
+#include <QStandardPaths>
+#include <QTextStream>
+
+#include <KMessageBox>
 
 // we need this for storing colors in a std::map..
 static bool operator<( const QColor& a, const QColor& b )
@@ -86,9 +85,6 @@ class XFigExportImpVisitor
     {
       Coordinate ret = ( c - msr.bottomLeft() );
       ret.y = msr.height() - ret.y;
-//       kDebug() << "msr: " << msr
-//                 << "ret: " << ret << endl
-//                 << "c: " << c << endl;
       ret *= 9450;
       ret /= msr.width();
       return ret.toQPoint();
@@ -253,7 +249,7 @@ void XFigExportImpVisitor::visit( const TextImp* imp )
           << "500 500 " // height, width: large enough..
           << coord.x() << " " // x, y
           << coord.y() << " "
-          << text.toAscii() << "\\001" // text, terminated by \001
+          << text.toLatin1() << "\\001" // text, terminated by \001
           << "\n";
 }
 
@@ -578,7 +574,7 @@ void XFigExportImpVisitor::visit(const OpenPolygonalImp* imp)
 void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      ":document", i18n( "*.fig|XFig Documents (*.fig)" ),
+      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), i18n( "*.fig|XFig Documents (*.fig)" ),
       i18n( "Export as XFig File" ), &w );
   if ( !kfd->exec() )
     return;

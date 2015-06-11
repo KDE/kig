@@ -538,5 +538,5 @@ CubicCartesianData CubicCartesianData::invalidData()
 
 bool CubicCartesianData::valid() const
 {
-  return finite( coeffs[0] );
+  return std::isfinite( coeffs[0] );
 }

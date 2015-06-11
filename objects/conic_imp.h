@@ -21,7 +21,6 @@
 #include "curve_imp.h"
 
 #include "../misc/conic-common.h"
-#include "../misc/equation.h"
 
 /**
  * An ObjectImp representing a conic.
