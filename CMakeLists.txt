@@ -60,8 +60,8 @@ if(BoostPython_FOUND)
 endif(BoostPython_FOUND)
 
 set_package_properties(
-   FEATURE PROPERTIES
-   DESCRIPTION "Boost.Python"
+   BoostPython PROPERTIES
+   DESCRIPTION "Python scripting support in Boost"
    URL "http://www.boost.org/"
    TYPE OPTIONAL
    PURPOSE "Kig can optionally use Boost.Python for Python scripting"
