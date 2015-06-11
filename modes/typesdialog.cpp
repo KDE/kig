@@ -493,10 +493,9 @@ void TypesDialog::importTypes()
   {
     std::vector<Macro*> nmacros;
 #ifdef WITH_GEOGEBRA
-    if( (*i).contains( QRegExp( "^*.ggt$" ) ) )// The input file is a Geogebra Tool file..
+    if( i->endsWith( ".ggt" ) )// The input file is a Geogebra Tool file..
     {
-      loadGeogebraTools( *i, nmacros, mpart );
-      std::copy( nmacros.begin(), nmacros.end(), std::back_inserter( macros ) );
+      loadGeogebraTools( *i, macros, mpart );
       continue;
     }
 #endif //WITH_GEOGEBRA
