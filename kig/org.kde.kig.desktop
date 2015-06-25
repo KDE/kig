@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Kig
 Name[af]=Kig
+Name[ast]=Kig
 Name[be]=Kig
 Name[bg]=Kig
 Name[bn]=কিগ
@@ -67,6 +68,7 @@ Name[zh_CN]=Kig
 Name[zh_TW]=數學_Kig
 GenericName=Interactive Geometry
 GenericName[af]=Interaktiewe Meetkunde
+GenericName[ast]=Xeometría interactiva
 GenericName[be]=Інтэрактыўная геаметрыя
 GenericName[bg]=Интерактивна геометрия
 GenericName[bn]=ইন্টারঅ্যাকটিভ জ্যামিতি
@@ -130,6 +132,7 @@ GenericName[x-test]=xxInteractive Geometryxx
 GenericName[zh_CN]=交互几何
 GenericName[zh_TW]=交互式幾何作圖
 Comment=Explore Geometric Constructions
+Comment[ast]=Esplora construcciones xeométriques
 Comment[be]=Вывучэнне геаметрычных фігур
 Comment[bg]=Геометрични конструкции
 Comment[bn]=জ্যামিতি ছবি আঁকা চর্চা করুন
