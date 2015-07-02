@@ -30,7 +30,7 @@
 { \
   QString locs = i18n( "An error was encountered at line %1 in file %2.", \
       __LINE__, __FILE__ ); \
-  m_filter->publicParseError( file, locs ); \
+  parseError( locs ); \
   return 0; \
 }
 
@@ -168,6 +168,13 @@ void CabriReader::initColorMap()
     colormap[ "W" ] = Qt::white;
   }
 }
+
+
+void CabriReader::parseError(const QString& explanation) const
+{
+  m_filter->parseError( explanation );
+}
+
 
 QColor CabriReader::translateColor( const QString& s )
 {
@@ -603,7 +610,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
         freeText = true;
       }
       else
-        readStyles( file, line, myobj );
+        readStyles( line, myobj );
     }
 
     line = CabriNS::readLine( f );
@@ -672,7 +679,7 @@ QColor CabriReader_v12::translateColor( const QString& s )
   return CabriReader::translateColor( s );
 }
 
-bool CabriReader_v12::readStyles( const QString& file, const QString& line, CabriObject_v12* myobj )
+bool CabriReader_v12::readStyles( const QString& line, CabriObject_v12* myobj )
 {
 #ifdef CABRI_DEBUG
   qDebug() << ">>>>>>>>> style line: \"" << line << "\"";

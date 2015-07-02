@@ -135,7 +135,7 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
   else return 0;
 }
 
-ObjectCalcer* KigFilterKSeg::transformObject( const QString& file, KigDocument& kigdoc,
+ObjectCalcer* KigFilterKSeg::transformObject( KigDocument& kigdoc,
                                               std::vector<ObjectCalcer*>& parents,
                                               int subtype, bool& ok )
 {
@@ -177,9 +177,9 @@ ObjectCalcer* KigFilterKSeg::transformObject( const QString& file, KigDocument& 
       else
       {
         // TODO
-        notSupported( file, i18n( "This KSeg document uses a scaling "
-                                  "transformation, which Kig currently "
-                                  "cannot import." ) );
+        notSupported( i18n( "This KSeg document uses a scaling "
+                            "transformation, which Kig currently "
+                            "cannot import." ) );
         ok = false;
         return 0;
       }
@@ -318,7 +318,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_FREE_POINT:
@@ -383,7 +383,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_ENDPOINTS_SEGMENT:
@@ -406,7 +406,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_TWOPOINTS_RAY:
@@ -436,7 +436,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_TWOPOINTS_LINE:
@@ -471,7 +471,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_CENTERPOINT_CIRCLE:
@@ -518,7 +518,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_THREEPOINTS_ARC:
@@ -541,7 +541,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         default:
@@ -556,20 +556,20 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       };
       case G_CIRCLEINTERIOR:
       {
-        notSupported( file, i18n( "This KSeg file contains a filled circle, "
-                                  "which Kig does not currently support." ) );
+        notSupported( i18n( "This KSeg file contains a filled circle, "
+                            "which Kig does not currently support." ) );
         return 0;
       };
       case G_ARCSECTOR:
       {
-        notSupported( file, i18n( "This KSeg file contains an arc sector, "
-                                  "which Kig does not currently support." ) );
+        notSupported( i18n( "This KSeg file contains an arc sector, "
+                            "which Kig does not currently support." ) );
         return 0;
       };
       case G_ARCSEGMENT:
       {
-        notSupported( file, i18n( "This KSeg file contains an arc segment, "
-                                  "which Kig does not currently support." ) );
+        notSupported( i18n( "This KSeg file contains an arc segment, "
+                            "which Kig does not currently support." ) );
         return 0;
       };
       case G_LOCUS:
@@ -581,7 +581,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
         case G_SCALED:
         case G_REFLECTED:
         {
-          o = transformObject( file, *retdoc, parents, descendtype, ok );
+          o = transformObject(  *retdoc, parents, descendtype, ok );
           break;
         }
         case G_OBJECT_LOCUS:

@@ -96,6 +96,8 @@ private slots:
 
 private:
   QModelIndexList selectedRows() const;
+  //This method is called in the importTypes() slot in case the file being imported is a geogebra-tool file.
+  bool loadGeogebraTools( const QString&, std::vector<Macro*>&, KigPart& );
 };
 
 #endif

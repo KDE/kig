@@ -100,7 +100,7 @@ bool KigFilterNative::supportMime( const QString& mime )
   return mime == "application/x-kig";
 }
 
-KigDocument* KigFilterNative::load( const QString& file )
+KigDocument* KigFilterNative::load( const QString& file)
 {
   QFile ffile( file );
   if ( ! ffile.open( QIODevice::ReadOnly ) )
@@ -161,7 +161,12 @@ KigDocument* KigFilterNative::load( const QString& file )
   // removing temp file
   if ( iscompressed )
     kigdoc.remove();
+  
+  return load( doc );
+}
 
+KigDocument* KigFilterNative::load( const QDomDocument& doc )
+{
   QDomElement main = doc.documentElement();
 
   QString version = main.attribute( "CompatibilityVersion" );
@@ -186,28 +191,28 @@ KigDocument* KigFilterNative::load( const QString& file )
   // we only support 0.[0-7] and 1.0.*
   if ( major > 0 || minor > 9 )
   {
-    notSupported( file, i18n( "This file was created by Kig version \"%1\", "
-                              "which this version cannot open.", version ) );
+    notSupported( i18n( "This file was created by Kig version \"%1\", "
+                        "which this version cannot open.", version ) );
     return 0;
   }
   else if ( major == 0 && minor <= 3 )
   {
-    notSupported( file, i18n( "This file was created by Kig version \"%1\".\n"
-                              "Support for older Kig formats (pre-0.4) has been "
-                              "removed from Kig.\n"
-                              "You can try to open this file with an older Kig "
-                              "version (0.4 to 0.6),\n"
-                              "and then save it again, which will save it in the "
-                              "new format.", version ) );
+    notSupported( i18n( "This file was created by Kig version \"%1\".\n"
+                        "Support for older Kig formats (pre-0.4) has been "
+                        "removed from Kig.\n"
+                        "You can try to open this file with an older Kig "
+                        "version (0.4 to 0.6),\n"
+                        "and then save it again, which will save it in the "
+                        "new format.", version ) );
     return 0;
   }
   else if ( major == 0 && minor <= 6 )
-    return load04( file, main );
+    return load04( main );
   else
-    return load07( file, main );
+    return load07( main );
 }
 
-KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& docelem )
+KigDocument* KigFilterNative::load04( const QDomElement& docelem )
 {
   bool ok = true;
 
@@ -294,7 +299,7 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
           {
-            parseError( file, error );
+            parseError( error );
             return 0;
           }
           o = new ObjectConstCalcer( imp );
@@ -328,11 +333,11 @@ KigDocument* KigFilterNative::load04( const QString& file, const QDomElement& do
             ObjectTypeFactory::instance()->find( tmp.toLatin1() );
           if ( !type )
           {
-            notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                      "which this Kig version does not support."
-                                      "Perhaps you have compiled Kig without support "
-                                      "for this object type,"
-                                      "or perhaps you are using an older Kig version.", tmp ) );
+            notSupported( i18n( "This Kig file uses an object of type \"%1\", "
+                                "which this Kig version does not support."
+                                "Perhaps you have compiled Kig without support "
+                                "for this object type,"
+                                "or perhaps you are using an older Kig version.", tmp ) );
             return 0;
           };
 
@@ -385,7 +390,7 @@ static const char* obsoletemessage = I18N_NOOP(
                            "which is obsolete, you should save the construction with "
                            "a different name and check that it works as expected." );
 
-KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& docelem )
+KigDocument* KigFilterNative::load07( const QDomElement& docelem )
 {
   KigDocument* ret = new KigDocument();
 
@@ -457,7 +462,7 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
           {
-            parseError( file, error );
+            parseError( error );
             return 0;
           }
           o = new ObjectConstCalcer( imp );
@@ -521,11 +526,11 @@ KigDocument* KigFilterNative::load07( const QString& file, const QDomElement& do
               parents[1] = parents[0];
               parents[0] = point;
             } else {
-              notSupported( file, i18n( "This Kig file uses an object of type \"%1\", "
-                                        "which this Kig version does not support."
-                                        "Perhaps you have compiled Kig without support "
-                                        "for this object type,"
-                                        "or perhaps you are using an older Kig version.", tmp ) );
+              notSupported( i18n( "This Kig file uses an object of type \"%1\", "
+                                  "which this Kig version does not support."
+                                  "Perhaps you have compiled Kig without support "
+                                  "for this object type,"
+                                  "or perhaps you are using an older Kig version.", tmp ) );
               return 0;
             }
           }

@@ -147,7 +147,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
 #endif
         bool grid = !e.attribute( "grid" ).isEmpty() &&
                     ( e.attribute( "grid" ) != "False" );
-        return importFigure( e.firstChild(), file, grid );
+        return importFigure( e.firstChild(), grid );
       }
     }
   }
@@ -179,7 +179,7 @@ static const Coordinate convertDrgeoHalflineParam( const double param, const Lin
   return p;
 }
 
-KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& file, const bool grid )
+KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
 {
   KigDocument* ret = new KigDocument();
 
@@ -333,9 +333,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         else
         {
 //          oc = fact->constrainedPointCalcer( parents[0], value );
-          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support.", domelem.tagName() , 
-                                      domelem.attribute( "type" ) ) );
+          notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                              "which Kig does not currently support.", domelem.tagName() , 
+                              domelem.attribute( "type" ) ) );
           return 0;
         }
       }
@@ -370,8 +370,8 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
             type = ArcLineIntersectionType::instance();
           else
           {
-            notSupported( file, i18n( "This Dr. Geo file contains an intersection type, "
-                                      "which Kig does not currently support." ) );
+            notSupported( i18n( "This Dr. Geo file contains an intersection type, "
+                                "which Kig does not currently support." ) );
             return 0;
           }
           oc = new ObjectTypeCalcer( type, args );
@@ -391,9 +391,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         oc = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support.", domelem.tagName() , 
-                                    domelem.attribute( "type" ) ) );
+        notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                            "which Kig does not currently support.", domelem.tagName() , 
+                            domelem.attribute( "type" ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
@@ -423,9 +423,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           type = CircleBCPType::instance();
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support.", domelem.tagName() , 
-                                    domelem.attribute( "type" ) ) );
+          notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                              "which Kig does not currently support.", domelem.tagName() , 
+                              domelem.attribute( "type" ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
@@ -436,9 +436,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
           type = ArcBTPType::instance();
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support.", domelem.tagName() , 
-                                    domelem.attribute( "type" ) ) );
+          notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                              "which Kig does not currently support.", domelem.tagName() , 
+                              domelem.attribute( "type" ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
@@ -459,9 +459,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support.", domelem.tagName() , 
-                                    domelem.attribute( "type" ) ) );
+          notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                              "which Kig does not currently support.", domelem.tagName() , 
+                              domelem.attribute( "type" ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
@@ -475,9 +475,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         }
         else
         {
-          notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                    "which Kig does not currently support.", domelem.tagName() , 
-                                    domelem.attribute( "type" ) ) );
+          notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                              "which Kig does not currently support.", domelem.tagName() , 
+                              domelem.attribute( "type" ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
@@ -498,9 +498,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         oc = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support.", domelem.tagName() , 
-                                  domelem.attribute( "type" ) ) );
+        notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                            "which Kig does not currently support.", domelem.tagName() , 
+                            domelem.attribute( "type" ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
@@ -625,9 +625,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       }
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support.", domelem.tagName() , 
-                                  domelem.attribute( "type" ) ) );
+        notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                            "which Kig does not currently support.", domelem.tagName() , 
+                            domelem.attribute( "type" ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
@@ -643,9 +643,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
       }
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support.", domelem.tagName() , 
-                                  domelem.attribute( "type" ) ) );
+        notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                            "which Kig does not currently support.", domelem.tagName() , 
+                            domelem.attribute( "type" ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
@@ -684,9 +684,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), *ret );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support.", domelem.tagName() , 
-                                  domelem.attribute( "type" ) ) );
+        notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                            "which Kig does not currently support.", domelem.tagName() , 
+                            domelem.attribute( "type" ) ) );
         return 0;
       }
     }
@@ -696,9 +696,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
         oc = fact->locusCalcer( parents[0], parents[1] );
       else
       {
-        notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                  "which Kig does not currently support.", domelem.tagName() , 
-                                  domelem.attribute( "type" ) ) );
+        notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                            "which Kig does not currently support.", domelem.tagName() , 
+                            domelem.attribute( "type" ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
@@ -716,9 +716,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const QString& fil
 #ifdef DRGEO_DEBUG
       qDebug() << ">>>>>>>>> UNKNOWN OBJECT";
 #endif
-      notSupported( file, i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
-                                "which Kig does not currently support.", domelem.tagName() , 
-                                domelem.attribute( "type" ) ) );
+      notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
+                          "which Kig does not currently support.", domelem.tagName() , 
+                          domelem.attribute( "type" ) ) );
       return 0;
     }
     curid++;

@@ -40,7 +40,7 @@ public:
   bool supportMime( const QString& mime );
   KigDocument* load( const QString& file );
 private:
-  KigDocument* importFigure( const QDomNode& f, const QString& file, const bool grid );
+  KigDocument* importFigure( const QDomNode& f, const bool grid );
 };
 
 #endif

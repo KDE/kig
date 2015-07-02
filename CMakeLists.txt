@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 find_package(Qt5Svg REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
+find_package(Qt5XmlPatterns 5.5.1)
 
 find_package(ECM 1.7 REQUIRED NO_MODULE)
 find_package(KF5Parts REQUIRED)
@@ -64,6 +65,14 @@ set_package_properties(
    URL "http://www.boost.org/"
    TYPE OPTIONAL
    PURPOSE "Kig can optionally use Boost.Python for Python scripting"
+)
+
+set_package_properties(
+   Qt5XmlPatterns PROPERTIES
+   DESCRIPTION "Qt5 XmlPatterns Module"
+   URL "http://qt.io/"
+   TYPE OPTIONAL
+   PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
 )
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
@@ -189,6 +198,15 @@ set(kigpart_PART_SRCS
    kig/kig_view.cpp
 )
 
+if (Qt5XmlPatterns_FOUND)
+  set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
+  geogebra/geogebratransformer.cpp
+  geogebra/geogebrasection.cpp
+  filters/geogebra-filter.cpp)
+  qt5_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/geogebra/geogebra.qrc)
+  add_definitions(-DWITH_GEOGEBRA=1)
+endif(Qt5XmlPatterns_FOUND)
+
 ki18n_wrap_ui(kigpart_PART_SRCS
    modes/typeswidget.ui
    modes/edittypewidget.ui
@@ -233,6 +251,10 @@ target_link_libraries(kigpart
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
+
+if (Qt5XmlPatterns_FOUND)
+  target_link_libraries(kigpart Qt5::XmlPatterns)
+endif(Qt5XmlPatterns_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES kig.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)

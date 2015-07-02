@@ -28,7 +28,7 @@ class KigFilterKSeg
   KigFilterKSeg();
   ~KigFilterKSeg();
 
-  ObjectCalcer* transformObject( const QString& file, KigDocument& kigdoc,
+  ObjectCalcer* transformObject( KigDocument& kigdoc,
                                  std::vector<ObjectCalcer*>& parents,
                                  int subtype, bool& ok );
 

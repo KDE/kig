@@ -25,6 +25,9 @@
 #include "native-filter.h"
 #include "kseg-filter.h"
 #include "drgeo-filter.h"
+#ifdef WITH_GEOGEBRA
+#include "geogebra-filter.h"
+#endif //WITH_GEOGEBRA
 
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -47,6 +50,9 @@ KigFilters::KigFilters()
   mFilters.push_back( KigFilterCabri::instance() );
   mFilters.push_back( KigFilterNative::instance() );
   mFilters.push_back( KigFilterDrgeo::instance() );
+#ifdef WITH_GEOGEBRA
+  mFilters.push_back( KigFilterGeogebra::instance() );
+#endif //WITH_GEOGEBRA
 }
 
 KigFilters* KigFilters::instance()
@@ -76,11 +82,11 @@ void KigFilter::fileNotFound( const QString& file ) const
                             "its permissions", file ) );
 }
 
-void KigFilter::parseError( const QString& file, const QString& explanation ) const
+void KigFilter::parseError( const QString& explanation ) const
 {
   const QString text =
-    i18n( "An error was encountered while parsing the file \"%1\".  It "
-          "cannot be opened.", file );
+    i18n( "An error was encountered while parsing this file.  It "
+          "cannot be opened." );
   const QString title = i18n( "Parse Error" );
 
   if ( explanation.isEmpty() )
@@ -89,10 +95,10 @@ void KigFilter::parseError( const QString& file, const QString& explanation ) co
     KMessageBox::detailedSorry( 0, text, explanation, title );
 }
 
-void KigFilter::notSupported( const QString& file, const QString& explanation ) const
+void KigFilter::notSupported( const QString& explanation ) const
 {
   KMessageBox::detailedSorry( 0,
-                              i18n( "Kig cannot open the file \"%1\".", file ),
+                              i18n( "Kig cannot open this file." ),
                               explanation, i18n( "Not Supported" ) );
 }
 

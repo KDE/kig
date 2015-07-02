@@ -54,7 +54,7 @@ protected:
     QString locs = i18n( "An error was encountered at " \
                          "line %1 in file %2.", \
         __LINE__, __FILE__ ); \
-    parseError( file, locs ); \
+    parseError( locs ); \
     return 0; \
   }
 
@@ -69,8 +69,8 @@ class KigFilter
 protected:
   // shows errors to the user..
   void fileNotFound( const QString& file ) const;
-  void parseError( const QString& file, const QString& explanation = QString() ) const;
-  void notSupported( const QString& file, const QString& explanation ) const;
+  void parseError( const QString& explanation = QString() ) const;
+  void notSupported( const QString& explanation ) const;
   void warning( const QString& explanation ) const;
 public:
   KigFilter();

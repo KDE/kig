@@ -59,7 +59,7 @@ KigDocument* KigFilterKGeo::load( const QString& sFrom )
   KConfig config ( sFrom, KConfig::SimpleConfig );
 
   loadMetrics ( &config );
-  return loadObjects ( sFrom, &config );
+  return loadObjects ( &config );
 }
 
 void KigFilterKGeo::loadMetrics(KConfig* c )
@@ -101,7 +101,7 @@ static std::vector<KGeoHierarchyElement> sortElems( const std::vector<KGeoHierar
   return ret;
 }
 
-KigDocument* KigFilterKGeo::loadObjects( const QString& file, KConfig* c )
+KigDocument* KigFilterKGeo::loadObjects( KConfig* c )
 {
   KigDocument* ret = new KigDocument();
 

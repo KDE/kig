@@ -21,6 +21,7 @@
 #include "filter.h"
 
 class QDomElement;
+class QDomDocument;
 class KigDocument;
 class QTextStream;
 class QString;
@@ -38,12 +39,12 @@ private:
    * this is the load function for the Kig format that is used,
    * starting at Kig 0.4
    */
-  KigDocument* load04( const QString& file, const QDomElement& doc );
+  KigDocument* load04( const QDomElement& doc );
   /**
    * this is the load function for the Kig format that is used
    * starting at Kig 0.7
    */
-  KigDocument* load07( const QString& file, const QDomElement& doc );
+  KigDocument* load07( const QDomElement& doc );
 
   /**
    * save in the Kig format that is used starting at Kig 0.7
@@ -58,6 +59,7 @@ public:
 
   bool supportMime( const QString& mime );
   KigDocument* load( const QString& file );
+  KigDocument* load( const QDomDocument& doc );
 
   bool save( const KigDocument& data, const QString& file );
 //  bool save( const KigDocument& data, QTextStream& stream );
