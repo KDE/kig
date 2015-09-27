@@ -10,8 +10,9 @@
 <firstname>Ben</firstname>
 <surname>Burton</surname>
 </personname><email>bab@debian.org</email></author>
-<date>2010-10-06</date>
-<productname>K Desktop Environment</productname>
+<date>2015-08-27</date>
+<releaseinfo>&kig; 1.0 (Applications 15.12)</releaseinfo>
+<productname>KDE Applications</productname>
 </refentryinfo>
 
 <refmeta>
@@ -21,7 +22,7 @@
 
 <refnamediv>
 <refname><command>kig</command></refname>
-<refpurpose>an interactive geometry program for &kde;</refpurpose>
+<refpurpose>an interactive geometry program by &kde;</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -31,8 +32,7 @@
 <group choice="opt"><option>-o, --outfile <replaceable>filename</replaceable></option>
 </group>
 </group>
-<arg choice="opt">KDE Generic Options</arg>
-<arg choice="opt">Qt Generic Options</arg>
+<arg choice="opt">options</arg>
 </cmdsynopsis>
 </refsynopsisdiv>
 
@@ -99,7 +99,9 @@ url="http://edu.kde.org/kig/">&kde; Edutainment website</ulink>.</para>
 <personname><firstname>Franco</firstname><surname>Pasquarelli</surname></personname>
 <email>pasqui@dmf.bs.unicatt.it</email>,
 <personname><firstname>Pino</firstname><surname>Toscano</surname></personname>
-<email>toscano.pino@tiscali.it</email>, and others.</para>
+<email>toscano.pino@tiscali.it</email>,
+<personname><firstname>David E.</firstname><surname>Narvaez</surname></personname>
+<email>david.narvaez@computer.org</email>, and others.</para>
 <para>This man page based on the one prepared for Debian by
 <personname><firstname>Ben</firstname><surname>Burton</surname></personname>
 <email>bab@debian.org</email>.</para>

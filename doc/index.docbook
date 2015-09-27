@@ -3,7 +3,6 @@
 <!ENTITY kseg "<application>KSeg</application>">
 <!ENTITY cabri "<application>Cabri</application>">
 <!ENTITY drgeo "<application>Dr.Geo</application>">
-<!ENTITY package "kdeedu">
 <!ENTITY kappname "&kig;">
 <!ENTITY % addindex "IGNORE">
 <!ENTITY % English "INCLUDE">
@@ -34,11 +33,12 @@ Devriese</holder>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2010-02-07</date> <releaseinfo>1.0 (&kde; 4.4)</releaseinfo>
+<date>2015-09-27</date>
+<releaseinfo>&kig; 1.0 (Applications 15.12)</releaseinfo>
 
 <abstract>
 <para>
-&kig; is a &kde; application for Interactive Geometry.
+&kig; is an application for Interactive Geometry by &kde;.
 </para>
 </abstract>
 
@@ -77,17 +77,16 @@ documents.</para></listitem>
 You can report problems in &kig; using the internal bug
 reporting tool
 (<menuchoice><guimenu>Help</guimenu><guimenuitem>Report
-Bug...</guimenuitem></menuchoice>), or just contact me at
-<email>toscano.pino@tiscali.it</email>.
+Bug...</guimenuitem></menuchoice>).
 </para>
 <para>
 Since &kig; supports macros and the construction of loci, it allows for
 some
 rather advanced macros to be defined. If you have created an
 interesting macro, which you think might be useful for other
-people, please mail it to me at
-<email>toscano.pino@tiscali.it</email>, so I can include it in the
-distribution (if you do this, it will be licensed under the
+people, please open a review request for the change, so that
+it can be evaluated for the inclusion in the distribution
+(if you do this, it will be licensed under the
 terms of &kig;'s license, the <ulink
 url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>,
 so that other people can freely use and adapt it).
@@ -876,8 +875,8 @@ basically that everyone should have the same rights to use
 Free software programs are developed in a very open
 spirit, and its developers are usually very responsive to
 user feedback. Therefore, if you have any questions,
-complaints, or whatever about &kig;, please let the author
-know at <email>toscano.pino@tiscali.it</email>.
+complaints, or whatever about &kig;, please contact the
+kde-edu mailing list at <email>kde-edu@kde.org</email>.
 </para>
 </listitem>
 <listitem>
@@ -957,10 +956,22 @@ support for other formats is planned.
 <title>Credits and License</title>
 
 <para>
-&kig;
+Main authors:
 </para>
 <para>
-&kig; copyright 2002-2004 Dominique Devriese
+&kig; copyright 2011-2015 David E. Narvaez
+<email>david.narvaez@computer.org</email>
+</para>
+<para>
+&kig; copyright 2002-2013 Maurizio Paolini
+<email>paolini@dmf.unicatt.it</email>
+</para>
+<para>
+&kig; copyright 2004-2010 Pino Toscano
+<email>pino@kde.org</email>
+</para>
+<para>
+&kig; copyright 2002-2005 Dominique Devriese
 <email>devriese@kde.org</email>
 </para>
 
@@ -981,23 +992,6 @@ Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.
 &underFDL; &underGPL;
 </chapter>
 
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kig">
-<title>How to obtain &kig;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-&install.compile.documentation;
-</sect1>
-
-</appendix>
-
 <appendix id="contributing">
 <title>Contribute</title>
 <sect1 id="kig-is-free">
@@ -1007,10 +1001,7 @@ Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.
 url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
 Free Software</ulink>. This means that its source code is
 freely available on the Internet, and everyone can use it,
-read it, modify it, and distribute it. I work on it as a
-hobby project, and I have already learned a lot about
-programming, C++, &kde;/&Qt;, math, software collaboration and open
-source projects in the process.
+read it, modify it, and distribute it.
 </para>
 </sect1>
 
@@ -1022,10 +1013,8 @@ rights that &kig;'s license gives you. As with all free
 software, you are allowed (and encouraged) to fix problems
 you encounter while using it, to add features you miss, to
 distribute your modified program, and to send these
-modifications to me at <email>toscano.pino@tiscali.it</email>, so
-that I can include them in the next version for others to
-enjoy. Please note I personally have no financial interest in this
-project whatsoever.
+modifications back for inclusion through the review tools
+available for the KDE community.
 </para>
 <para>
 If you are uncertain of your rights to use this software, or
