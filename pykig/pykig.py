@@ -217,7 +217,7 @@ class KigDocument(object):
       sys.exit(2)
     try:
       if self.callkig:
-        err = os.system('kig --nofork ' + self.outfilename)
+        err = os.system('kig ' + self.outfilename)
     except Exception, value:
       print >> sys.stderr, value      
     if not self.of:
