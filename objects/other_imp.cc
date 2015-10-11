@@ -471,7 +471,7 @@ ObjectImp* ArcImp::property( int which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new AngleImp( mcenter, msa, ma, false );
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return new IntImp( static_cast<int>( Goniometry::convert( ma, Goniometry::Rad, Goniometry::Deg ) ) );
+    return new DoubleImp( Goniometry::convert( ma, Goniometry::Rad, Goniometry::Deg ) );
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( ma );
   else if ( which == Parent::numberOfProperties() + numprop++ )
