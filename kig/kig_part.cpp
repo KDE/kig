@@ -1104,7 +1104,7 @@ void KigPart::saveTypes()
 
   if ( !typesDir.exists() )
   {
-    writeableDataLocation.mkdir( "kig-types" );
+    writeableDataLocation.mkpath( "kig-types" );
   }
 
   const QString typesFileWithPath =  typesDir.absoluteFilePath( typesFile );
