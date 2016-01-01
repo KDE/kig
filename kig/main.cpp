@@ -26,6 +26,7 @@
 
 #include <KPluginLoader>
 #include <KAboutData>
+#include <KCrash>
 
 #include "aboutdata.h"
 #include <klocalizedstring.h>
@@ -48,6 +49,7 @@ int main(int argc, char **argv)
 {
   QApplication app( argc, argv );
   KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
+  KCrash::initialize();
   QCommandLineParser parser;
   QCommandLineOption convertToNativeOption( QStringList() << "c" << "convert-to-native", i18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ) );
   QCommandLineOption outfileOption( QStringList() << "o" << "outfile", i18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ), "file" );

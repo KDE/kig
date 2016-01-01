@@ -15,7 +15,7 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kig.png")
 ecm_add_app_icon(kig_SRCS ICONS ${ICONS_SRCS})
 add_executable(kig ${kig_SRCS})
 
-target_link_libraries(kig KF5::Parts KF5::ConfigCore)
+target_link_libraries(kig KF5::Parts KF5::ConfigCore KF5::Crash)
 
 install(TARGETS kig ${INSTALL_TARGETS_DEFAULT_ARGS})
 

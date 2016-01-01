@@ -15,6 +15,7 @@ find_package(KF5IconThemes REQUIRED)
 find_package(KF5ConfigWidgets REQUIRED)
 find_package(KF5Archive REQUIRED)
 find_package(KF5XmlGui 5.1 REQUIRED)
+find_package(KF5Crash 5.15 REQUIRED)
 
 # Needed for unit tests
 find_package(KF5Emoticons)
@@ -239,6 +240,7 @@ target_link_libraries(kigpart
   Qt5::Gui
   Qt5::Svg
   Qt5::PrintSupport
+  KF5::Crash
   KF5::Parts
   KF5::I18n
   KF5::TextEditor
