@@ -111,7 +111,7 @@ WeightImpType weightimptypeinstance(
 
 InvertibleImpType::InvertibleImpType( const ObjectImpType* parent,
     const char* internalname )
-  : ObjectImpType( parent, internalname, snbs, snbs,
+  : ObjectImpType( parent, internalname, snbs, I18N_NOOP( "Select this object" ),
                    snbs, snbs, snbs, snbs, snbs, snbs, snbs )
 {
 }
