@@ -1,3 +1,4 @@
+kde_enable_exceptions()
 include(CheckIncludeFiles)
 include(CheckFunctionExists)
 
