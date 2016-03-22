@@ -40,6 +40,8 @@ public:
 
   QPoint toScreen( const Coordinate& p ) const;
   QRect toScreen( const Rect& r ) const;
+  QPointF toScreenF( const Coordinate& p ) const;
+  QRectF toScreenF( const Rect& r ) const;
 
   double pixelWidth() const;
 

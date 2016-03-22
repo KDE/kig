@@ -86,7 +86,7 @@ void KigPainter::drawCircle( const Coordinate& center, double radius )
   Coordinate bottomLeft = center - Coordinate(radius, radius);
   Coordinate topRight = center + Coordinate(radius, radius);
   Rect r( bottomLeft, topRight );
-  QRect qr = toScreen( r );
+  QRectF qr = toScreenF( r );
   mP.drawEllipse ( qr );
   if( mNeedOverlay ) circleOverlay( center, radius );
 }
@@ -506,6 +506,11 @@ QPoint KigPainter::toScreen( const Coordinate& p ) const
   return msi.toScreen( p );
 }
 
+QPointF KigPainter::toScreenF( const Coordinate& p ) const
+{
+  return msi.toScreenF( p );
+}
+
 void KigPainter::drawGrid( const CoordinateSystem& c, bool showGrid, bool showAxes )
 {
   c.drawGrid( *this, showGrid, showAxes );
@@ -547,6 +552,11 @@ void KigPainter::drawTextStd( const QPoint& p, const QString& s )
 QRect KigPainter::toScreen( const Rect& r ) const
 {
   return msi.toScreen( r );
+}
+
+QRectF KigPainter::toScreenF( const Rect& r ) const
+{
+  return msi.toScreenF( r );
 }
 
 QRect KigPainter::toScreenEnlarge( const Rect& r ) const

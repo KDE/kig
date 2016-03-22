@@ -58,6 +58,23 @@ QRect ScreenInfo::toScreen( const Rect& r ) const
     ).normalized();
 }
 
+QPointF ScreenInfo::toScreenF( const Coordinate& p ) const
+{
+  Coordinate t = p - mkrect.bottomLeft();
+  t *= mqrect.width();
+  t /= mkrect.width();
+  // invert the y-axis: 0 is at the bottom !
+  return QPointF( t.x, mqrect.height() - t.y );
+}
+
+QRectF ScreenInfo::toScreenF( const Rect& r ) const
+{
+  return QRectF(
+    toScreenF( r.bottomLeft() ),
+    toScreenF( r.topRight() )
+    ).normalized();
+}
+
 double ScreenInfo::pixelWidth() const
 {
   Coordinate a = fromScreen( QPoint( 0, 0 ) );

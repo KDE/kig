@@ -89,6 +89,8 @@ public:
 
   QPoint toScreen( const Coordinate& p ) const;
   QRect toScreen( const Rect& r ) const;
+  QPointF toScreenF( const Coordinate& p ) const;
+  QRectF toScreenF( const Rect& r ) const;
   QRect toScreenEnlarge( const Rect& r ) const;
   Coordinate fromScreen( const QPoint& p ) const;
   Rect fromScreen( const QRect& r ) const;
