@@ -42,6 +42,26 @@ public:
 };
 
 /**
+ * an arc by a start point, an intermediate point and an end point
+ */
+class ArcBTPoType
+  : public ArgsParserObjectType
+{
+  typedef ArgsParserObjectType Parent;
+  ArcBTPoType();
+  ~ArcBTPoType();
+public:
+  static const ArcBTPoType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+
+  bool inherits( int type ) const;
+  const ObjectImpType* resultId() const;
+};
+
+/**
  * an arc by a point (center), a starting point and an angle
  */
 class ArcBCPAType

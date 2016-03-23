@@ -220,6 +220,10 @@ public:
    */
   double radius() const;
   /**
+   * Return the orientation of this arc (usually > 0)
+   */
+  double orientation() const;
+  /**
    * Return the start angle in radians of this arc.
    */
   double startAngle() const;

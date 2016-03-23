@@ -366,7 +366,8 @@ const Coordinate calcCenter(
   double b2 = xao*xao + yao*yao;
 
   double numerator = (xdo * yao - xao * ydo);
-  if ( numerator == 0 )
+  /* mp: note that we should never compare with zero due to floating-point arithmetic */
+  if ( isSingular (xdo, ydo, xao, yao) )
   {
     // problem:  xdo * yao == xao * ydo <=> xdo/ydo == xao / yao
     // this means that the lines ac and ab have the same direction,

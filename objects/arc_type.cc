@@ -156,6 +156,129 @@ const ObjectImpType* ArcBTPType::resultId() const
   return ArcImp::stype();
 }
 
+/* oriented arc by three points */
+
+static const ArgsParser::spec argsspecArcBTPo[] =
+{
+  { PointImp::stype(), constructarcstartingstat,
+    I18N_NOOP( "Select the start point of the new arc..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc through this point" ),
+    I18N_NOOP( "Select a point for the new arc to go through..." ), true },
+  { PointImp::stype(), I18N_NOOP( "Construct an arc ending at this point" ),
+    I18N_NOOP( "Select the end point of the new arc..." ), true }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( ArcBTPoType )
+
+ArcBTPoType::ArcBTPoType()
+  : ArgsParserObjectType( "ArcBTPo", argsspecArcBTPo, 3 )
+{
+}
+
+ArcBTPoType::~ArcBTPoType()
+{
+}
+
+const ArcBTPoType* ArcBTPoType::instance()
+{
+  static const ArcBTPoType t;
+  return &t;
+}
+
+ObjectImp* ArcBTPoType::calc( const Args& args, const KigDocument& ) const
+{
+  if ( ! margsparser.checkArgs( args, 2 ) )
+    return new InvalidImp;
+
+  const Coordinate a =
+    static_cast<const PointImp*>( args[0] )->coordinate();
+  const Coordinate b =
+    static_cast<const PointImp*>( args[1] )->coordinate();
+  Coordinate center;
+  double angle = 0.;
+  double startangle = 0.;
+  int orientation = 1;
+  if ( args.size() == 3 )
+  {
+    Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
+    center = calcCenter( a, b, c );
+    if ( ! center.valid() )
+    {
+/* TODO: return correctly oriented segment! */
+      if ( fabs( a.x - c.x ) > fabs( a.y - c.y ) )
+      {
+        if ( ( b.x - a.x)*(c.x - b.x) > 1e-12 ) return new SegmentImp(a, c);
+      } else
+      {
+        if ( ( b.y - a.y)*(c.y - b.y) > 1e-12 ) return new SegmentImp(a, c);
+      }
+      return new InvalidImp;
+    }
+    /* this is also done in calcCenter... should optimize in some way */
+    double xdo = b.x-a.x;
+    double ydo = b.y-a.y;
+
+    double xao = c.x-a.x;
+    double yao = c.y-a.y;
+
+    if ( xdo * yao - xao * ydo < 0.0 ) orientation = -1;
+
+    Coordinate ad = a - center;
+    Coordinate bd = b - center;
+    Coordinate cd = c - center;
+    double anglea = atan2( ad.y, ad.x );
+    double angleb = atan2( bd.y, bd.x );
+    double anglec = atan2( cd.y, cd.x );
+
+    // anglea should be smaller than anglec
+    if ( anglea > anglec )
+    {
+      double t = anglea;
+      anglea = anglec;
+      anglec = t;
+    };
+    if ( angleb > anglec || angleb < anglea )
+    {
+      startangle = anglec;
+      angle = 2 * M_PI + anglea - startangle;
+    }
+    else
+    {
+      startangle = anglea;
+      angle = anglec - anglea;
+    };
+  }
+  else
+  {
+    // find a center and angles that look natural..
+    center = (b+a)/2 + .6*(b-a).orthogonal();
+    Coordinate bd = b - center;
+    Coordinate ad = a - center;
+    startangle = atan2( ad.y, ad.x );
+    double halfangle = atan2( bd.y, bd.x ) - startangle;
+    if ( halfangle < - M_PI ) halfangle += 2*M_PI;
+    angle = 2 * halfangle;
+  };
+
+  double radius = ( a - center ).length();
+  return new ArcImp( center, orientation*radius, startangle, angle );
+}
+
+const ObjectImpType* ArcBTPoType::impRequirement( const ObjectImp*, const Args& ) const
+{
+  return PointImp::stype();
+}
+
+bool ArcBTPoType::inherits( int type ) const
+{
+  return Parent::inherits( type );
+}
+
+const ObjectImpType* ArcBTPoType::resultId() const
+{
+  return ArcImp::stype();
+}
+
 /*
  * arc by center, starting point and angle
  */

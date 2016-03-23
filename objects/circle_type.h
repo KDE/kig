@@ -66,4 +66,21 @@ public:
   const ObjectImpType* resultId() const;
 };
 
+/**
+ * Circle by three points (with orientation)
+ */
+class CircleBTPoType
+  : public ArgsParserObjectType
+{
+  CircleBTPoType();
+  ~CircleBTPoType();
+
+public:
+  static const CircleBTPoType* instance();
+
+  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  const ObjectImpType* resultId() const;
+};
+
+
 #endif

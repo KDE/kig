@@ -57,6 +57,32 @@ const ConicLineIntersectionType* ConicLineIntersectionType::instance()
 
 ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocument& doc ) const
 {
+  /*
+   * special case of a circle that degenerates into a line.  This is possible e.g. for
+   * circles by three points when the points get aligned.
+   */
+  if ( parents.size() == 3 && parents[0]->inherits( AbstractLineImp::stype() ) &&
+                              parents[1]->inherits( AbstractLineImp::stype() ) &&
+                              parents[2]->inherits( IntImp::stype() ) )
+  {
+    int side = static_cast<const IntImp*>( parents[2] )->data();
+    assert( side == 1 || side == -1 );
+    const LineData degline = static_cast<const AbstractLineImp*>( parents[0] )->data();
+    const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+    const double vecprod = degline.dir().y * line.dir().x - degline.dir().x * line.dir().y;
+    /*
+     * mp: In this case only one of the two points must be valid (the other is "pushed"
+     * to infinity).  The choice of which one is done such that we avoid abrupt points exchange
+     * when dinamically movint points
+     */
+    if (side*vecprod < 0)
+    {
+      Coordinate p = calcIntersectionPoint( degline, line );
+      return new PointImp( p );
+    }
+    return new InvalidImp();
+  }
+
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
   int side = static_cast<const IntImp*>( parents[2] )->data();
@@ -70,7 +96,7 @@ ObjectImp* ConicLineIntersectionType::calc( const Args& parents, const KigDocume
     // easy case..
     const CircleImp* c = static_cast<const CircleImp*>( parents[0] );
     ret = calcCircleLineIntersect(
-      c->center(), c->squareRadius(), line, side );
+      c->center(), c->squareRadius(), line, c->orientation()*side );
   }
   else
   {
@@ -493,6 +519,41 @@ const CircleCircleIntersectionType* CircleCircleIntersectionType::instance()
 
 ObjectImp* CircleCircleIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
+  if ( parents.size() == 3 &&
+       ( parents[0]->inherits( LineImp::stype() ) || parents[1]->inherits( LineImp::stype() ) ) &&
+       parents[2]->inherits( IntImp::stype() ) )
+  {
+    /* This the special case when one or both circles degenerate into a line
+     */
+    int il = 0;
+    int ori = 1;
+    if ( parents[1]->inherits( LineImp::stype() ) ) { il = 1; ori = -1; }
+    const LineData line = static_cast<const AbstractLineImp*>( parents[il] )->data();
+    int side = static_cast<const IntImp*>( parents[2] )->data();
+    assert( side == 1 || side == -1 );
+    if ( parents[1 - il]->inherits( CircleImp::stype() ) )
+    {
+      const CircleImp* c = static_cast<const CircleImp*>( parents[1 - il] );
+      const Coordinate o = c->center();
+      const double rsq = c->squareRadius();
+      ori *= c->orientation();
+      Coordinate ret = calcCircleLineIntersect( o, rsq, line, ori*side );
+      if ( ret.valid() ) return new PointImp( ret );
+      else return new InvalidImp;
+    } else {
+      // same code as for ConicLineIntersection with degenerate conic
+      assert (il == 1);
+      const LineData degline = static_cast<const AbstractLineImp*>( parents[0] )->data();
+      const double vecprod = degline.dir().y * line.dir().x - degline.dir().x * line.dir().y;
+      if (side*vecprod > 0)
+      {
+        Coordinate p = calcIntersectionPoint( degline, line );
+        return new PointImp( p );
+      }
+      return new InvalidImp();
+    }
+  }
+
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
   int side = static_cast<const IntImp*>( parents[2] )->data();
@@ -501,12 +562,13 @@ ObjectImp* CircleCircleIntersectionType::calc( const Args& parents, const KigDoc
   const CircleImp* c2 = static_cast<const CircleImp*>( parents[1] );
   const Coordinate o1 = c1->center();
   const Coordinate o2 = c2->center();
+  const int ori = ( c1->orientation()*c2->orientation() < 0 )?(-1):(1);
   const double r1sq = c1->squareRadius();
   const Coordinate a = calcCircleRadicalStartPoint(
     o1, o2, r1sq, c2->squareRadius()
     );
   const LineData line = LineData (a, Coordinate ( a.x -o2.y + o1.y, a.y + o2.x - o1.x ));
-  Coordinate ret = calcCircleLineIntersect( o1, r1sq, line, side );
+  Coordinate ret = calcCircleLineIntersect( o1, r1sq, line, ori*side );
   if ( ret.valid() ) return new PointImp( ret );
   else return new InvalidImp;
 }
