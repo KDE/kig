@@ -93,7 +93,7 @@ void KigPainter::drawCircle( const Coordinate& center, double radius )
 
 void KigPainter::drawSegment( const Coordinate& from, const Coordinate& to )
 {
-  QPoint tF = toScreen(from), tT = toScreen(to);
+  QPointF tF = toScreenF(from), tT = toScreenF(to);
   mP.drawLine( tF, tT );
   if( mNeedOverlay ) segmentOverlay( from, to );
 }
@@ -983,7 +983,7 @@ void KigPainter::drawArc( const Coordinate& center, double radius,
   { 
     Rect krect( 0, 0, 2*radius, 2*radius );
     krect.setCenter( center );
-    QRect rect = toScreen( krect );
+    QRectF rect = toScreenF( krect );
 
     mP.drawArc( rect, startangle, angle );
     setWholeWinOverlay();
