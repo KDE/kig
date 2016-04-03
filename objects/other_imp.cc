@@ -346,7 +346,7 @@ ObjectImp* ArcImp::transform( const Transformation& t ) const
   if ( ! t.isHomothetic() )
   {
     //CircleImp support = CircleImp( mcenter, mradius );
-    ConicCartesianData data = CircleImp( mcenter, mradius ).cartesianData();
+    ConicCartesianData data = CircleImp( mcenter, fabs( mradius ) ).cartesianData();
     //return new InvalidImp();
     ConicArcImp conicarc = ConicArcImp( data, msa, ma );
     return conicarc.transform ( t );
@@ -373,7 +373,7 @@ ObjectImp* ArcImp::transform( const Transformation& t ) const
 
 void ArcImp::draw( KigPainter& p ) const
 {
-  p.drawArc( mcenter, mradius, msa, ma );
+  p.drawArc( mcenter, fabs( mradius ), msa, ma );
 }
 
 bool ArcImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
@@ -467,7 +467,7 @@ ObjectImp* ArcImp::property( int which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new PointImp( mcenter );
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return new DoubleImp( mradius );
+    return new DoubleImp( fabs( mradius ) );
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new AngleImp( mcenter, msa, ma, false );
   else if ( which == Parent::numberOfProperties() + numprop++ )
@@ -477,7 +477,7 @@ ObjectImp* ArcImp::property( int which, const KigDocument& d ) const
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new DoubleImp( sectorSurface() );
   else if ( which == Parent::numberOfProperties() + numprop++ )
-    return new DoubleImp( mradius * ma );
+    return new DoubleImp( fabs( mradius ) * ma );
   else if ( which == Parent::numberOfProperties() + numprop++ )
     return new CircleImp( mcenter, mradius );
   else if ( which == Parent::numberOfProperties() + numprop++ )
@@ -523,7 +523,7 @@ double ArcImp::getParam( const Coordinate& c, const KigDocument& ) const
 const Coordinate ArcImp::getPoint( double p, const KigDocument& ) const
 {
   double angle = msa + p * ma;
-  Coordinate d = Coordinate( cos( angle ), sin( angle ) ) * mradius;
+  Coordinate d = Coordinate( cos( angle ), sin( angle ) ) * fabs( mradius );
   return mcenter + d;
 }
 
@@ -534,7 +534,12 @@ const Coordinate ArcImp::center() const
 
 double ArcImp::radius() const
 {
-  return mradius;
+  return fabs( mradius );
+}
+
+double ArcImp::orientation() const
+{
+  return ( mradius >= 0)?1:(-1);
 }
 
 double ArcImp::startAngle() const
@@ -550,13 +555,13 @@ double ArcImp::angle() const
 Coordinate ArcImp::firstEndPoint() const
 {
   double angle = msa;
-  return mcenter + Coordinate( cos( angle ), sin( angle ) ) * mradius;
+  return mcenter + Coordinate( cos( angle ), sin( angle ) ) * fabs( mradius );
 }
 
 Coordinate ArcImp::secondEndPoint() const
 {
   double angle = msa + ma;
-  return mcenter + Coordinate( cos( angle ), sin( angle ) ) * mradius;
+  return mcenter + Coordinate( cos( angle ), sin( angle ) ) * fabs( mradius );
 }
 
 const Coordinate VectorImp::a() const
@@ -663,7 +668,7 @@ bool ArcImp::containsPoint( const Coordinate& p, const KigDocument& ) const
 
 bool ArcImp::internalContainsPoint( const Coordinate& p, double threshold ) const
 {
-  return isOnArc( p, mcenter, mradius, msa, ma, threshold );
+  return isOnArc( p, mcenter, fabs( mradius ), msa, ma, threshold );
 }
 
 bool AngleImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
@@ -724,13 +729,13 @@ Rect ArcImp::surroundingRect() const
   // points, and all extreme x and y positions in between.
   //Rect ret( mcenter, 0, 0 );
   double a = msa;
-  //ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
-  Rect ret ( mcenter + mradius*Coordinate( cos( a ), sin( a ) ), 0, 0 );
+  //ret.setContains( mcenter + fabs( mradius )*Coordinate( cos( a ), sin( a ) ) );
+  Rect ret ( mcenter + fabs( mradius )*Coordinate( cos( a ), sin( a ) ), 0, 0 );
   a = msa + ma;
-  ret.setContains( mcenter + mradius*Coordinate( cos( a ), sin( a ) ) );
+  ret.setContains( mcenter + fabs( mradius )*Coordinate( cos( a ), sin( a ) ) );
   for ( a = -2*M_PI; a <= 2*M_PI; a+=M_PI/2 )
   {
-    Coordinate d = mcenter + mradius*Coordinate( cos( a ), sin( a ) );
+    Coordinate d = mcenter + fabs( mradius )*Coordinate( cos( a ), sin( a ) );
     if ( msa <= a && a <= msa + ma )
       ret.setContains( d );
   }

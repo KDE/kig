@@ -61,12 +61,6 @@ ObjectImp* CircleBCPType::calcx( const Coordinate& a, const Coordinate& b ) cons
   return new CircleImp( a, ( b - a ).length() );
 }
 
-const CircleBTPType* CircleBTPType::instance()
-{
-  static const CircleBTPType t;
-  return &t;
-}
-
 static const ArgsParser::spec argsspecCircleBTP[] =
 {
   { PointImp::stype(), constructcirclethroughpointstat,
@@ -86,6 +80,12 @@ CircleBTPType::CircleBTPType()
 
 CircleBTPType::~CircleBTPType()
 {
+}
+
+const CircleBTPType* CircleBTPType::instance()
+{
+  static const CircleBTPType t;
+  return &t;
 }
 
 ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
@@ -131,7 +131,18 @@ ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
 
   const Coordinate center = calcCenter( a, b, c );
   if ( center.valid() )
-    return new CircleImp( center, (center - a ).length() );
+  {
+    /* this is also done in calcCenter... should optimize in some way */
+    double xdo = b.x-a.x;
+    double ydo = b.y-a.y;
+
+    double xao = c.x-a.x;
+    double yao = c.y-a.y;
+
+    double determinant = (xdo * yao - xao * ydo);
+    if (determinant > 0) return new CircleImp( center, (center - a ).length() );
+      else return new CircleImp( center, -(center - a ).length() );
+  }
 
   /*
    * case of collinear points, we need to identify the intermediate one
@@ -141,7 +152,7 @@ ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
   double xmax = fmax( a.x, fmax( b.x, c.x) );
   double ymin = fmin( a.y, fmin( b.y, c.y) );
   double ymax = fmax( a.y, fmax( b.y, c.y) );
-  double axy, bxy, cxy;
+  double d, axy, bxy, cxy;
 
   /* decide whether to work with x coordinate or y coordinate */
 
@@ -150,30 +161,30 @@ ObjectImp* CircleBTPType::calc( const Args& args, const KigDocument& ) const
     axy = a.x;
     bxy = b.x;
     cxy = c.x;
+    d = xmax - xmin;
   } else
   {
     axy = a.y;
     bxy = b.y;
     cxy = c.y;
+    d = ymax - ymin;
   }
 
-  /*
-   * compute baricentric coordinate of c with respect to a and b
-   * (if a and c are not coincident)
-   */
-  if ( fabs( cxy - axy ) < 1e-6*fabs( bxy - axy ) ) return new InvalidImp;
-  double t = (bxy - axy)/(cxy - axy);
+  if ( fabs( axy - cxy ) >= d ) // b between a and c
+    return new LineImp( a, c );
+  if ( fabs( cxy - bxy ) >= d ) // a between c and b
+    return new LineImp( c, b );
 
-  if ( fabs( t ) < 1e-6  || fabs( 1.0 - t ) < 1e-6 ) return new InvalidImp;
+  // otherwise: c between b and a
+  return new LineImp( b, a);
 
   /*
-   * t < 0:     a between c and b
-   * 0 < t < 1: b between a and c
-   * t > 1:     c between a and b
+   * mp: note that the orientation of the new line is from a to c
+   * if b is intermediate, otherwise it is reversed whenever
+   * two of the three points cross each-other.
+   * This should give consistent results when intersecting circles that
+   * degenerate into lines
    */
-  if ( t < 0.0 ) return new LineImp( c, b );
-  if ( t > 1.0 ) return new LineImp( a, b );
-  return new LineImp( a, c );
 }
 
 const ObjectImpType* CircleBCPType::resultId() const

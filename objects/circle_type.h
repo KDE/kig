@@ -51,7 +51,7 @@ public:
 };
 
 /**
- * Circle by three points
+ * Circle by three points (with orientation)
  */
 class CircleBTPType
   : public ArgsParserObjectType
@@ -65,5 +65,6 @@ public:
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };
+
 
 #endif

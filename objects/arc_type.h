@@ -23,6 +23,7 @@
 
 /**
  * an arc by a start point, an intermediate point and an end point
+ * (with orientation)
  */
 class ArcBTPType
   : public ArgsParserObjectType

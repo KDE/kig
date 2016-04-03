@@ -74,6 +74,10 @@ public:
    */
   double radius() const;
   /**
+   * Return the orientation of this circle.
+   */
+  double orientation() const;
+  /**
    * Return the square radius of this circle.  Use this in preference
    * to sqr( radius() ).
    */

@@ -59,12 +59,12 @@ ObjectImp* CircleImp::transform( const Transformation& t ) const
 
 void CircleImp::draw( KigPainter& p ) const
 {
-  p.drawCircle( mcenter, mradius );
+  p.drawCircle( mcenter, fabs( mradius ) );
 }
 
 bool CircleImp::contains( const Coordinate& p, int width, const KigWidget& w ) const
 {
-  return fabs((mcenter - p).length() - mradius) <= w.screenInfo().normalMiss( width );
+  return fabs((mcenter - p).length() - fabs( mradius )) <= w.screenInfo().normalMiss( width );
 }
 
 bool CircleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
@@ -78,9 +78,9 @@ bool CircleImp::inRect( const Rect& r, int width, const KigWidget& w ) const
 
   // we allow a miss of some pixels ..
   double miss = w.screenInfo().normalMiss( width );
-  double bigradius = mradius + miss;
+  double bigradius = fabs( mradius ) + miss;
   bigradius *= bigradius;
-  double smallradius = mradius - miss;
+  double smallradius = fabs( mradius ) - miss;
   smallradius *= smallradius;
 
   const int in = -1;
@@ -212,7 +212,12 @@ const Coordinate CircleImp::center() const
 
 double CircleImp::radius() const
 {
-  return mradius;
+  return fabs( mradius );
+}
+
+double CircleImp::orientation() const
+{
+  return (mradius > 0)?1:(-1);
 }
 
 double CircleImp::surface() const
@@ -369,6 +374,6 @@ bool CircleImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
 
 Rect CircleImp::surroundingRect() const
 {
-  Coordinate d( mradius, mradius );
+  Coordinate d( fabs( mradius ), fabs( mradius ) );
   return Rect( mcenter - d, mcenter + d );
 }

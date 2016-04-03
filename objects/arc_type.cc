@@ -41,7 +41,7 @@ using std::find;
 #include <qstringlist.h>
 
 /*
- * arc by three points
+ * oriented arc by three points
  */
 
 static const char constructarcstartingstat[] = I18N_NOOP( "Construct an arc starting at this point" );
@@ -85,12 +85,14 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
   Coordinate center;
   double angle = 0.;
   double startangle = 0.;
+  int orientation = 1;
   if ( args.size() == 3 )
   {
     Coordinate c = static_cast<const PointImp*>( args[2] )->coordinate();
     center = calcCenter( a, b, c );
     if ( ! center.valid() )
     {
+/* TODO: return correctly oriented segment! */
       if ( fabs( a.x - c.x ) > fabs( a.y - c.y ) )
       {
         if ( ( b.x - a.x)*(c.x - b.x) > 1e-12 ) return new SegmentImp(a, c);
@@ -100,6 +102,15 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
       }
       return new InvalidImp;
     }
+    /* this is also done in calcCenter... should optimize in some way */
+    double xdo = b.x-a.x;
+    double ydo = b.y-a.y;
+
+    double xao = c.x-a.x;
+    double yao = c.y-a.y;
+
+    if ( xdo * yao - xao * ydo < 0.0 ) orientation = -1;
+
     Coordinate ad = a - center;
     Coordinate bd = b - center;
     Coordinate cd = c - center;
@@ -138,7 +149,7 @@ ObjectImp* ArcBTPType::calc( const Args& args, const KigDocument& ) const
   };
 
   double radius = ( a - center ).length();
-  return new ArcImp( center, radius, startangle, angle );
+  return new ArcImp( center, orientation*radius, startangle, angle );
 }
 
 const ObjectImpType* ArcBTPType::impRequirement( const ObjectImp*, const Args& ) const
