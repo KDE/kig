@@ -606,6 +606,32 @@ const ArcLineIntersectionType* ArcLineIntersectionType::instance()
 
 ObjectImp* ArcLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
+  /*
+   * special case of an arc that degenerates into a line.  This is possible e.g. for
+   * arcs by three points when the points get aligned.
+   */
+  if ( parents.size() == 3 && parents[0]->inherits( AbstractLineImp::stype() ) &&
+                              parents[1]->inherits( AbstractLineImp::stype() ) &&
+                              parents[2]->inherits( IntImp::stype() ) )
+  {
+    int side = static_cast<const IntImp*>( parents[2] )->data();
+    assert( side == 1 || side == -1 );
+    const LineData degline = static_cast<const AbstractLineImp*>( parents[0] )->data();
+    const LineData line = static_cast<const AbstractLineImp*>( parents[1] )->data();
+    const double vecprod = degline.dir().y * line.dir().x - degline.dir().x * line.dir().y;
+    /*
+     * mp: In this case only one of the two points must be valid (the other is "pushed"
+     * to infinity).  The choice of which one is done such that we avoid abrupt points exchange
+     * when dinamically movint points
+     */
+    if (side*vecprod < 0)
+    {
+      Coordinate p = calcIntersectionPoint( degline, line );
+      return new PointImp( p );
+    }
+    return new InvalidImp();
+  }
+
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
   int side = static_cast<const IntImp*>( parents[2] )->data();
@@ -615,7 +641,7 @@ ObjectImp* ArcLineIntersectionType::calc( const Args& parents, const KigDocument
   const ArcImp* c = static_cast<const ArcImp*>( parents[0] );
   const double r = c->radius();
   Coordinate ret = calcArcLineIntersect( c->center(), r*r, c->startAngle(),
-                                         c->angle(), line, side );
+                                         c->angle(), line, c->orientation()*side );
   if ( ret.valid() ) return new PointImp( ret );
   else return new InvalidImp;
 }

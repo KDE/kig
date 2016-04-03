@@ -117,7 +117,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp", Qt::Key_C ) );
 
     c = new SimpleObjectTypeConstructor(
-      CircleBTPoType::instance(), I18N_NOOP( "Circle by Three Points" ),
+      CircleBTPType::instance(), I18N_NOOP( "Circle by Three Points" ),
       I18N_NOOP( "A circle constructed through three points" ),
       "circlebtp" );
     ctors->add( c );
@@ -327,7 +327,7 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_halflinebyvector", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
-      ArcBTPoType::instance(),
+      ArcBTPType::instance(),
       I18N_NOOP( "Arc by Three Points" ),
       I18N_NOOP( "Construct an arc through three points." ),
       "arc" );

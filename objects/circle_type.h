@@ -51,7 +51,7 @@ public:
 };
 
 /**
- * Circle by three points
+ * Circle by three points (with orientation)
  */
 class CircleBTPType
   : public ArgsParserObjectType
@@ -61,22 +61,6 @@ class CircleBTPType
 
 public:
   static const CircleBTPType* instance();
-
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
-};
-
-/**
- * Circle by three points (with orientation)
- */
-class CircleBTPoType
-  : public ArgsParserObjectType
-{
-  CircleBTPoType();
-  ~CircleBTPoType();
-
-public:
-  static const CircleBTPoType* instance();
 
   ObjectImp* calc( const Args& args, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
