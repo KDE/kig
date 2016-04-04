@@ -517,11 +517,13 @@ double ArcImp::getParam( const Coordinate& c, const KigDocument& ) const
 //
   angle = max( 0., min( angle, ma ) );
   angle /= ma;
+  if ( mradius < 0 ) angle = 1.0 - angle;  // this is to avoid abrupt jumps when an ArcBTPType changes concavity
   return angle;
 }
 
 const Coordinate ArcImp::getPoint( double p, const KigDocument& ) const
 {
+  if ( mradius < 0 ) p = 1.0 - p;  // this is to avoid abrupt jumps when an ArcBTPType changes concavity
   double angle = msa + p * ma;
   Coordinate d = Coordinate( cos( angle ), sin( angle ) ) * fabs( mradius );
   return mcenter + d;
@@ -554,13 +556,17 @@ double ArcImp::angle() const
 
 Coordinate ArcImp::firstEndPoint() const
 {
-  double angle = msa;
+  /**
+   * mp: We take advantage of the arc orientation (mainly for the benefit of arc through 3 points)
+   * in order to avoid abrupt jumps when moving points
+   */
+  const double angle = mradius >= 0 ? msa : msa+ma;
   return mcenter + Coordinate( cos( angle ), sin( angle ) ) * fabs( mradius );
 }
 
 Coordinate ArcImp::secondEndPoint() const
 {
-  double angle = msa + ma;
+  const double angle = mradius >= 0 ? msa+ma : msa;
   return mcenter + Coordinate( cos( angle ), sin( angle ) ) * fabs( mradius );
 }
 
