@@ -48,6 +48,7 @@ static int convertToNative( const QUrl &file, const QByteArray& outfile )
 int main(int argc, char **argv)
 {
   QApplication app( argc, argv );
+  KLocalizedString::setApplicationDomain("kig");
   KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
   KCrash::initialize();
   QCommandLineParser parser;
@@ -58,7 +59,6 @@ int main(int argc, char **argv)
   QCoreApplication::setApplicationVersion( i18n( KIGVERSION ) );
   QCoreApplication::setOrganizationDomain( i18n( "kde.org" ) );
   KAboutData::setApplicationData( about );
-  KLocalizedString::setApplicationDomain("kig");
 
   about.setupCommandLine( &parser );
   parser.addHelpOption();
