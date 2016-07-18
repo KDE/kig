@@ -259,7 +259,7 @@ if (Qt5XmlPatterns_FOUND)
 endif(Qt5XmlPatterns_FOUND)
 
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES org.kde.kig.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata/)
+install(FILES org.kde.kig.appdata.xml DESTINATION ${KDE_INSTALL_METADATA})
 
 # unit tests
 add_subdirectory(tests)
