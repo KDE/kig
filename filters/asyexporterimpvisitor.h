@@ -101,7 +101,7 @@ private:
 
   /**
    * Converts Kig coords to Asymptote coord system and sends them to stream
-   * using the format (xcoord,ycoord) wich is of asymptote data type "pair".
+   * using the format (xcoord,ycoord) which is of asymptote data type "pair".
    */
   QString emitCoord( const Coordinate& c );
 

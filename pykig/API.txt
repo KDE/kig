@@ -29,7 +29,7 @@ width = integer                           the line width
 pointstyle = "Round"|"RoundEmpty"|"Rectangular"|"RectangularEmpty"|"Cross"
 linestyle = "SolidLine"|"DashLine"|"DashDotLine"|"DashDotDotLine"|"DotLine"
 color = "#RRGGBB"                         where RR, GG, BB are three numbers
-                                          wich represent the red, green, blue
+                                          which represent the red, green, blue
                                           components 
 
 The kigdocument is a global object to allow two methods for modify Kig look and

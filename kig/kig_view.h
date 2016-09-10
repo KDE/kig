@@ -127,7 +127,7 @@ public:
   /**
    * The following are functions used by KigMode's to tell us to draw
    * stuff...
-   * i tried to optimise the drawing as much as possible, using
+   * i tried to optimize the drawing as much as possible, using
    * much ideas from kgeo
    * DOUBLE BUFFERING:
    * we don't draw on the widget directly, we draw on a QPixmap (

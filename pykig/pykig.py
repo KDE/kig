@@ -276,7 +276,7 @@ class KigDOP(object):
 
 #class KigView(KigOut):
 class KigView(object):
-  """A class containing visualisation data.
+  """A class containing visualization data.
 
     ancestor chain:
       KigView <- object
