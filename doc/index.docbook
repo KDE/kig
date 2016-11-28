@@ -3,7 +3,6 @@
 <!ENTITY kseg "<application>KSeg</application>">
 <!ENTITY cabri "<application>Cabri</application>">
 <!ENTITY drgeo "<application>Dr.Geo</application>">
-<!ENTITY kappname "&kig;">
 <!ENTITY % addindex "IGNORE">
 <!ENTITY % English "INCLUDE">
 <!-- change language only here -->
@@ -79,6 +78,7 @@ reporting tool
 (<menuchoice><guimenu>Help</guimenu><guimenuitem>Report
 Bug...</guimenuitem></menuchoice>).
 </para>
+
 <para>
 Since &kig; supports macros and the construction of loci, it allows for
 some
@@ -286,7 +286,7 @@ these:
 <itemizedlist>
 <listitem>
 <para>
-Press the <keycap>Delete</keycap> key.
+Press the &Del; key.
 </para>
 </listitem>
 <listitem>
@@ -942,13 +942,6 @@ support for other formats is planned.
 </para>
 </listitem>
 </itemizedlist>
-</chapter>
-
-
-<chapter id="faq">
-<title>Questions and Answers</title>
-
-&reporting.bugs; &updating.documentation;
 </chapter>
 
 
