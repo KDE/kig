@@ -17,10 +17,6 @@ find_package(KF5Archive REQUIRED)
 find_package(KF5XmlGui 5.1 REQUIRED)
 find_package(KF5Crash 5.15 REQUIRED)
 
-# Needed for unit tests
-find_package(KF5Emoticons)
-find_package(KF5ItemModels)
-
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 
 set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
@@ -262,4 +258,6 @@ install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES org.kde.kig.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 # unit tests
-add_subdirectory(tests)
+if (BUILD_TESTING)
+  add_subdirectory(tests)
+endif ()
