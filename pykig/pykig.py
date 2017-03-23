@@ -561,7 +561,9 @@ objects=(\
                     "conic, line, which,", "(conic, line, Int(which),),"),
 ("ConicLineOtherIntersection", "ConicLineOtherIntersection",
            	    "conic, line, p,", "(conic, line, p),"),
-("CubicLineIntersection", "CubicLineIntersection",
+("LineCubicIntersection", "LineCubicIntersection",
+                    "cubic, line, which,", "(cubic, line, Int(which),),"),
+("CubicLineIntersection", "LineCubicIntersection",
                     "cubic, line, which,", "(cubic, line, Int(which),),"),
 ("CubicLineOtherIntersection", "CubicLineOtherIntersection", "cubic, line, p1, p2,", "(cubic, line, p1, p2),"),
 ###### Triangle class
