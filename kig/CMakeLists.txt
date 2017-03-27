@@ -9,9 +9,7 @@ set(kig_SRCS
   kig.cpp
 )
 
-#uncomment this if oxygen icons for kig are available
-#kde4_add_app_icon(kig_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/kig.png")
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-kig.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kig.png")
 ecm_add_app_icon(kig_SRCS ICONS ${ICONS_SRCS})
 add_executable(kig ${kig_SRCS})
 
