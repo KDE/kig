@@ -30,6 +30,7 @@ ecm_install_icons(ICONS
   32-apps-kig.png
   64-apps-kig.png
   48-apps-kig.png
+  128-apps-kig.png
   sc-apps-kig.svgz
   DESTINATION ${ICON_INSTALL_DIR}
   THEME hicolor
