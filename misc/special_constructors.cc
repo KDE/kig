@@ -1935,7 +1935,7 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
 
   ObjectConstructor* linecubic =
     new ThreeTwoOneIntersectionConstructor(
-          LineCubicIntersectionType::instance(),
+          CubicLineIntersectionType::instance(),
           CubicLineOtherIntersectionType::instance(),
           "curvelineintersection",
           argsspeccbli);

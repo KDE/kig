@@ -112,13 +112,13 @@ public:
   const ObjectImpType* resultId() const;
 };
 
-class LineCubicIntersectionType
+class CubicLineIntersectionType
   : public ArgsParserObjectType
 {
-  LineCubicIntersectionType();
-  ~LineCubicIntersectionType();
+  CubicLineIntersectionType();
+  ~CubicLineIntersectionType();
 public:
-  static const LineCubicIntersectionType* instance();
+  static const CubicLineIntersectionType* instance();
   ObjectImp* calc( const Args& parents, const KigDocument& ) const;
   const ObjectImpType* resultId() const;
 };

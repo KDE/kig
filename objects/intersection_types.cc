@@ -415,7 +415,7 @@ ObjectImp* LineLineIntersectionType::calc( const Args& parents, const KigDocumen
   else return new InvalidImp();
 }
 
-static const ArgsParser::spec argsspecLineCubicIntersection[] =
+static const ArgsParser::spec argsspecCubicLineIntersection[] =
 {
   { CubicImp::stype(), I18N_NOOP( "Intersect with this cubic curve" ),
     "SHOULD NOT BE SEEN", true },
@@ -423,25 +423,25 @@ static const ArgsParser::spec argsspecLineCubicIntersection[] =
   { IntImp::stype(), "param", "SHOULD NOT BE SEEN", false }
 };
 
-KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( LineCubicIntersectionType )
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( CubicLineIntersectionType )
 
-LineCubicIntersectionType::LineCubicIntersectionType()
-  : ArgsParserObjectType( "LineCubicIntersection",
-                         argsspecLineCubicIntersection, 3 )
+CubicLineIntersectionType::CubicLineIntersectionType()
+  : ArgsParserObjectType( "CubicLineIntersection",
+                         argsspecCubicLineIntersection, 3 )
 {
 }
 
-LineCubicIntersectionType::~LineCubicIntersectionType()
+CubicLineIntersectionType::~CubicLineIntersectionType()
 {
 }
 
-const LineCubicIntersectionType* LineCubicIntersectionType::instance()
+const CubicLineIntersectionType* CubicLineIntersectionType::instance()
 {
-  static const LineCubicIntersectionType t;
+  static const CubicLineIntersectionType t;
   return &t;
 }
 
-ObjectImp* LineCubicIntersectionType::calc( const Args& parents, const KigDocument& ) const
+ObjectImp* CubicLineIntersectionType::calc( const Args& parents, const KigDocument& ) const
 {
   if ( ! margsparser.checkArgs( parents ) ) return new InvalidImp;
 
@@ -475,7 +475,7 @@ const ObjectImpType* LineLineIntersectionType::resultId() const
   return PointImp::stype();
 }
 
-const ObjectImpType* LineCubicIntersectionType::resultId() const
+const ObjectImpType* CubicLineIntersectionType::resultId() const
 {
   return PointImp::stype();
 }

@@ -495,6 +495,10 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
               parents[0] = segment;
               parents[1] = circle;
               parents[2] = point;
+            } else if ( tmp == "LineCubicIntersection" )
+            {
+              warning( i18n( obsoletemessage, tmp ) );
+              type = ObjectTypeFactory::instance()->find( "CubicLineIntersection" );
             } else if ( tmp == "InvertLine" )
             {
               warning( i18n( obsoletemessage, tmp ) );
