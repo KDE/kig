@@ -27,8 +27,8 @@ class AreParallelType
   ~AreParallelType();
 public:
   static const AreParallelType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class AreOrthogonalType
@@ -38,8 +38,8 @@ class AreOrthogonalType
   ~AreOrthogonalType();
 public:
   static const AreOrthogonalType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class AreCollinearType
@@ -49,8 +49,8 @@ class AreCollinearType
   ~AreCollinearType();
 public:
   static const AreCollinearType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class ContainsTestType
@@ -60,8 +60,8 @@ class ContainsTestType
   ~ContainsTestType();
 public:
   static const ContainsTestType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class InPolygonTestType
@@ -71,8 +71,8 @@ class InPolygonTestType
   ~InPolygonTestType();
 public:
   static const InPolygonTestType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class ConvexPolygonTestType
@@ -82,8 +82,8 @@ class ConvexPolygonTestType
   ~ConvexPolygonTestType();
 public:
   static const ConvexPolygonTestType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class SameDistanceType
@@ -93,8 +93,8 @@ class SameDistanceType
   ~SameDistanceType();
 public:
   static const SameDistanceType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class VectorEqualityTestType
@@ -104,8 +104,8 @@ class VectorEqualityTestType
   ~VectorEqualityTestType();
 public:
   static const VectorEqualityTestType* instance();
-  ObjectImp* calc( const Args& parents,  const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents,  const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class ExistenceTestType
@@ -115,7 +115,7 @@ class ExistenceTestType
   ~ExistenceTestType();
 public:
   static const ExistenceTestType* instance();
-  ObjectImp* calc( const Args& parents,  const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents,  const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 #endif

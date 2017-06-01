@@ -34,12 +34,12 @@ class ArcBTPType
 public:
   static const ArcBTPType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
 
-  bool inherits( int type ) const;
-  const ObjectImpType* resultId() const;
+  bool inherits( int type ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -54,12 +54,12 @@ class ArcBCPAType
 public:
   static const ArcBCPAType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
 
-  bool inherits( int type ) const;
-  const ObjectImpType* resultId() const;
+  bool inherits( int type ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -75,9 +75,9 @@ class ConicArcBCTPType
 public:
   static const ConicArcBCTPType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* resultId() const;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -94,9 +94,9 @@ class ConicArcB5PType
 public:
   static const ConicArcB5PType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* resultId() const;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

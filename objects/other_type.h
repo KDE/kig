@@ -30,15 +30,15 @@ class LocusType
 public:
   static const LocusType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
 
-  bool inherits( int type ) const;
-  const ObjectImpType* resultId() const;
+  bool inherits( int type ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
-  Args sortArgs( const Args& args ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
+  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
 };
 
 class CopyObjectType
@@ -49,13 +49,13 @@ protected:
   ~CopyObjectType();
 public:
   static CopyObjectType* instance();
-  bool inherits( int type ) const;
-  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
-  const ObjectImpType* resultId() const;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const;
-  Args sortArgs( const Args& args ) const;
+  bool inherits( int type ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const Q_DECL_OVERRIDE;
+  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
 };
 
 #endif

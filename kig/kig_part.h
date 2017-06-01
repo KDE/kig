@@ -85,19 +85,19 @@ protected:
   /**
    * load our internal document from m_file
    */
-  virtual bool openFile();
+  bool openFile() Q_DECL_OVERRIDE;
 
   /**
    * save our internal document to m_file
    */
-  virtual bool saveFile();
+  bool saveFile() Q_DECL_OVERRIDE;
 
   /**
    * KigPart cannot be safely destroyed if it's in a nested event loop
    * (construct mode). As a workaround, call this first so it can cancel the
    * construction.
    */
-  virtual bool queryClose();
+  bool queryClose() Q_DECL_OVERRIDE;
 
 public:
   void emitStatusBarText( const QString& text );

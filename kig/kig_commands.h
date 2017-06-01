@@ -78,8 +78,8 @@ public:
 
   void addTask( KigCommandTask* );
 
-  void redo();
-  void undo();
+  void redo() Q_DECL_OVERRIDE;
+  void undo() Q_DECL_OVERRIDE;
 private:
   Q_DISABLE_COPY( KigCommand )
 };
@@ -103,8 +103,8 @@ class AddObjectsTask
 public:
   AddObjectsTask( const std::vector<ObjectHolder*>& os);
   ~AddObjectsTask ();
-  void execute( KigPart& doc );
-  void unexecute( KigPart& doc );
+  void execute( KigPart& doc ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& doc ) Q_DECL_OVERRIDE;
 protected:
   bool undone;
 
@@ -116,8 +116,8 @@ class RemoveObjectsTask
 {
 public:
   RemoveObjectsTask( const std::vector<ObjectHolder*>& os );
-  void execute( KigPart& );
-  void unexecute( KigPart& );
+  void execute( KigPart& ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& ) Q_DECL_OVERRIDE;
 };
 
 class ChangeObjectConstCalcerTask
@@ -127,8 +127,8 @@ public:
   ChangeObjectConstCalcerTask( ObjectConstCalcer* calcer, ObjectImp* newimp );
   ~ChangeObjectConstCalcerTask();
 
-  void execute( KigPart& );
-  void unexecute( KigPart& );
+  void execute( KigPart& ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& ) Q_DECL_OVERRIDE;
 protected:
   ObjectConstCalcer::shared_ptr mcalcer;
   ObjectImp* mnewimp;
@@ -188,8 +188,8 @@ public:
   ChangeCoordSystemTask( CoordinateSystem* s );
   ~ChangeCoordSystemTask();
 
-  void execute( KigPart& doc );
-  void unexecute( KigPart& doc );
+  void execute( KigPart& doc ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& doc ) Q_DECL_OVERRIDE;
 };
 
 class ChangeParentsAndTypeTask
@@ -202,8 +202,8 @@ public:
                             const ObjectType* newtype );
   ~ChangeParentsAndTypeTask();
 
-  void execute( KigPart& doc );
-  void unexecute( KigPart& doc );
+  void execute( KigPart& doc ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& doc ) Q_DECL_OVERRIDE;
 };
 
 class KigViewShownRectChangeTask
@@ -215,8 +215,8 @@ public:
   KigViewShownRectChangeTask( KigWidget& v, const Rect& newrect );
   ~KigViewShownRectChangeTask();
 
-  void execute( KigPart& doc );
-  void unexecute( KigPart& doc );
+  void execute( KigPart& doc ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& doc ) Q_DECL_OVERRIDE;
 };
 
 class ChangeObjectDrawerTask
@@ -228,8 +228,8 @@ public:
   ChangeObjectDrawerTask( ObjectHolder* holder, ObjectDrawer* newdrawer );
   ~ChangeObjectDrawerTask();
 
-  void execute( KigPart& doc );
-  void unexecute( KigPart& doc );
+  void execute( KigPart& doc ) Q_DECL_OVERRIDE;
+  void unexecute( KigPart& doc ) Q_DECL_OVERRIDE;
 };
 
 #endif

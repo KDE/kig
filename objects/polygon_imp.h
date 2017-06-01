@@ -48,20 +48,20 @@ public:
   ~AbstractPolygonImp();
 //  PolygonImp* copy() const;
 
-  Coordinate attachPoint() const;
+  Coordinate attachPoint() const Q_DECL_OVERRIDE;
   std::vector<Coordinate> ptransform( const Transformation& ) const;
 
-  bool inRect( const Rect& r, int width, const KigWidget& ) const;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
   bool valid() const;
-  Rect surroundingRect() const;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& w ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
   /**
    * Returns the vector with polygon points.
@@ -85,7 +85,7 @@ public:
    */
   double area() const;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
   bool isInPolygon( const Coordinate& p ) const;
   bool isOnOPolygonBorder( const Coordinate& p, double dist, const KigDocument& doc ) const;
   bool isOnCPolygonBorder( const Coordinate& p, double dist, const KigDocument& doc ) const;
@@ -107,21 +107,21 @@ public:
   static const ObjectImpType* stype();
   static const ObjectImpType* stype3();
   static const ObjectImpType* stype4();
-  ObjectImp* transform( const Transformation& ) const;
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& w ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  FilledPolygonImp* copy() const;
+  FilledPolygonImp* copy() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -134,21 +134,21 @@ public:
   typedef AbstractPolygonImp Parent;
   ClosedPolygonalImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
-  ObjectImp* transform( const Transformation& ) const;
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& w ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  ClosedPolygonalImp* copy() const;
+  ClosedPolygonalImp* copy() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -161,21 +161,21 @@ public:
   typedef AbstractPolygonImp Parent;
   OpenPolygonalImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
-  ObjectImp* transform( const Transformation& ) const;
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& w ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  OpenPolygonalImp* copy() const;
+  OpenPolygonalImp* copy() const Q_DECL_OVERRIDE;
 };
 
 std::vector<Coordinate> computeConvexHull( const std::vector<Coordinate>& points );

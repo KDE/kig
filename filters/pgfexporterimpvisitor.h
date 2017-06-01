@@ -54,23 +54,23 @@ public:
     {
     }
   using ObjectImpVisitor::visit;
-  void visit( const LineImp* imp );
-  void visit( const PointImp* imp );
-  void visit( const TextImp* imp );
-  void visit( const AngleImp* imp );
-  void visit( const VectorImp* imp );
-  void visit( const LocusImp* imp );
-  void visit( const CircleImp* imp );
-  void visit( const ConicImp* imp );
-  void visit( const CubicImp* imp );
-  void visit( const SegmentImp* imp );
-  void visit( const RayImp* imp );
-  void visit( const ArcImp* imp );
-  void visit( const FilledPolygonImp* imp );
-  void visit( const ClosedPolygonalImp* imp );
-  void visit( const OpenPolygonalImp* imp );
-  void visit( const BezierImp* imp);
-  void visit( const RationalBezierImp* imp);
+  void visit( const LineImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const PointImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const TextImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const AngleImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const VectorImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const LocusImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const CircleImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const ConicImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const CubicImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const SegmentImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const RayImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const ArcImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const FilledPolygonImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const ClosedPolygonalImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const OpenPolygonalImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const BezierImp* imp) Q_DECL_OVERRIDE;
+  void visit( const RationalBezierImp* imp) Q_DECL_OVERRIDE;
 
   double unit;
 

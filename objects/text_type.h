@@ -28,25 +28,25 @@ protected:
   GenericTextType( const char* fulltypename );
   ~GenericTextType();
 public:
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
-  const ObjectImpType* resultId() const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
-  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const Q_DECL_OVERRIDE;
 
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const;
-  Args sortArgs( const Args& args ) const;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const Q_DECL_OVERRIDE;
+  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
 
-  bool canMove( const ObjectTypeCalcer& ourobj ) const;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
-             const KigDocument& ) const;
+             const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
 
   const ArgsParser& argParser() const;
 };
@@ -59,9 +59,9 @@ class TextType
 public:
   static const TextType* instance();
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
 };
 
 class NumericTextType
@@ -72,8 +72,8 @@ class NumericTextType
 public:
   static const NumericTextType* instance();
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
 };
 #endif

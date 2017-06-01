@@ -44,13 +44,13 @@ public:
    */
   static const ObjectImpType* stype();
 
-  Coordinate attachPoint( ) const;
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& w ) const;
-  bool inRect( const Rect& r, int width, const KigWidget& w ) const;
-  Rect surroundingRect() const;
+  Coordinate attachPoint( ) const Q_DECL_OVERRIDE;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& w ) const Q_DECL_OVERRIDE;
+  bool inRect( const Rect& r, int width, const KigWidget& w ) const Q_DECL_OVERRIDE;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
 
-  ObjectImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -72,15 +72,15 @@ public:
    * Construct a new InvalidImp.
    */
   InvalidImp();
-  InvalidImp* copy() const;
+  InvalidImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  bool canFillInNextEscape() const Q_DECL_OVERRIDE;
+  void fillInNextEscape( QString& s, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -111,15 +111,15 @@ public:
    */
   void setData( double d ) { mdata = d; }
 
-  DoubleImp* copy() const;
+  DoubleImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  bool canFillInNextEscape() const Q_DECL_OVERRIDE;
+  void fillInNextEscape( QString& s, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -150,15 +150,15 @@ public:
    */
   void setData( int d )  { mdata = d; }
 
-  IntImp* copy() const;
+  IntImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  bool canFillInNextEscape() const Q_DECL_OVERRIDE;
+  void fillInNextEscape( QString& s, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -189,15 +189,15 @@ public:
    */
   void setData( const QString& s ) { mdata = s; }
 
-  StringImp* copy() const;
+  StringImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool canFillInNextEscape() const;
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
+  bool canFillInNextEscape() const Q_DECL_OVERRIDE;
+  void fillInNextEscape( QString& s, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 class HierarchyImp
@@ -213,13 +213,13 @@ public:
   const ObjectHierarchy& data() const { return mdata; }
   void setData( const ObjectHierarchy& h ) { mdata = h; }
 
-  HierarchyImp* copy() const;
+  HierarchyImp* copy() const Q_DECL_OVERRIDE;
   const char* baseName() const;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -242,12 +242,12 @@ public:
   const Transformation& data() const { return mdata; }
   void setData( const Transformation& h ) { mdata = h; }
 
-  TransformationImp* copy() const;
+  TransformationImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 class TestResultImp
@@ -260,23 +260,23 @@ public:
 
   TestResultImp( bool truth, const QString& s );
 
-  TestResultImp* copy() const;
+  TestResultImp* copy() const Q_DECL_OVERRIDE;
 
   // const QString& data() const { return mdata; };
   bool truth() const { return mtruth; }
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& d ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 #endif

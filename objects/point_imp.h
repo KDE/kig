@@ -41,8 +41,8 @@ public:
   PointImp( const Coordinate& c );
   ~PointImp();
 
-  Rect surroundingRect() const;
-  Coordinate attachPoint() const;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
+  Coordinate attachPoint() const Q_DECL_OVERRIDE;
 
   /**
    * Get the coordinate of this PointImp.
@@ -53,29 +53,29 @@ public:
    */
   void setCoordinate( const Coordinate& c );
 
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
-  bool inRect( const Rect& r, int width, const KigWidget& ) const;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& d ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
-  ObjectImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
 
-  PointImp* copy() const;
+  PointImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  void fillInNextEscape( QString& s, const KigDocument& ) const;
-  bool canFillInNextEscape() const;
+  void fillInNextEscape( QString& s, const KigDocument& ) const Q_DECL_OVERRIDE;
+  bool canFillInNextEscape() const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 class BogusPointImp
@@ -85,7 +85,7 @@ public:
   BogusPointImp( const Coordinate& c );
   ~BogusPointImp();
   static const ObjectImpType* stype();
-  const ObjectImpType* type() const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
 };
 
 #endif

@@ -32,10 +32,10 @@ class ObjectConstructorActionsProvider
 {
   std::vector<ObjectConstructor*> mctors[NormalModePopupObjects::NumberOfMenus];
 public:
-  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree ) Q_DECL_OVERRIDE;
   bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
-                      KigPart& doc, KigWidget& w, NormalMode& m );
+                      KigPart& doc, KigWidget& w, NormalMode& m ) Q_DECL_OVERRIDE;
 };
 
 #endif // OBJECTCONSTRUCTORACTIONSPROVIDER_H

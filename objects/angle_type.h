@@ -28,12 +28,12 @@ class AngleType
   ~AngleType();
 public:
   static const AngleType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
 };
 
 class HalfAngleType
@@ -43,8 +43,8 @@ class HalfAngleType
   ~HalfAngleType();
 public:
   static const HalfAngleType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

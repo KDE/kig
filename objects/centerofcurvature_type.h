@@ -31,8 +31,8 @@ class CocConicType
   ~CocConicType();
 public:
   static const CocConicType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -46,8 +46,8 @@ class CocCubicType
   ~CocCubicType();
 public:
   static const CocCubicType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -61,8 +61,8 @@ class CocCurveType
   ~CocCurveType();
 public:
   static const CocCurveType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

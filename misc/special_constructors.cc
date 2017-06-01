@@ -293,11 +293,11 @@ public:
   ~ConicConicIntersectionConstructor();
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const;
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const;
-  void plug( KigPart* doc, KigGUIAction* kact );
+                   const KigDocument& ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& w ) const Q_DECL_OVERRIDE;
+  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
 
-  bool isTransform() const;
+  bool isTransform() const Q_DECL_OVERRIDE;
 };
 
 class ConicLineIntersectionConstructor

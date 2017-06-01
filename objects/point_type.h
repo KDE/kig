@@ -32,20 +32,20 @@ class FixedPointType
 public:
   static const FixedPointType* instance();
 
-  bool inherits( int type ) const;
+  bool inherits( int type ) const Q_DECL_OVERRIDE;
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  bool canMove( const ObjectTypeCalcer& ourobj ) const;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
-             const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+             const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
 };
 
 class RelativePointType
@@ -58,14 +58,14 @@ class RelativePointType
 public:
   static const RelativePointType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  bool canMove( const ObjectTypeCalcer& ourobj ) const;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
-             const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+             const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
 //  QStringList specialActions() const;
 //  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
@@ -82,14 +82,14 @@ class ConstrainedRelativePointType
 public:
   static const ConstrainedRelativePointType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  bool canMove( const ObjectTypeCalcer& ourobj ) const;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
-             const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+             const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class CursorPointType
@@ -100,16 +100,16 @@ class CursorPointType
 
 public:
   static const CursorPointType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const;
-  Args sortArgs( const Args& args ) const;
-  bool canMove( const ObjectTypeCalcer& ourobj ) const;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
+  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
-             const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+             const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class ConstrainedPointType
@@ -120,21 +120,21 @@ class ConstrainedPointType
 public:
   static const ConstrainedPointType* instance();
 
-  bool inherits( int type ) const;
+  bool inherits( int type ) const Q_DECL_OVERRIDE;
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  bool canMove( const ObjectTypeCalcer& ourobj ) const;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const;
+  bool canMove( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
   void move( ObjectTypeCalcer& ourobj, const Coordinate& to,
-             const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+             const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   void executeAction( int i, ObjectHolder&, ObjectTypeCalcer& o, KigPart& d, KigWidget& w,
-                      NormalMode& m ) const;
+                      NormalMode& m ) const Q_DECL_OVERRIDE;
 };
 
 class MidPointType
@@ -145,8 +145,8 @@ class MidPointType
 public:
   static const MidPointType* instance();
   // calcx was an overloaded calc, which produced a compilation warning
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class MeasureTransportType
@@ -157,12 +157,12 @@ class MeasureTransportType
 public:
   static const MeasureTransportType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args )const;
-  Args sortArgs( const Args& args ) const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args )const Q_DECL_OVERRIDE;
+  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
 };
 
 class MeasureTransportTypeOld
@@ -173,8 +173,8 @@ class MeasureTransportTypeOld
 public:
   static const MeasureTransportTypeOld* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class PointByCoordsType
@@ -185,8 +185,8 @@ class PointByCoordsType
 public:
   static const PointByCoordsType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class ProjectedPointType
@@ -197,8 +197,8 @@ class ProjectedPointType
 public:
   static const ProjectedPointType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType * resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType * resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

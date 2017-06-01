@@ -39,8 +39,8 @@ public:
   void finalArgsChanged();
 
 public slots:
-  void reject();
-  void accept();
+  void reject() Q_DECL_OVERRIDE;
+  void accept() Q_DECL_OVERRIDE;
 
 private slots:
   void currentIdChanged( int id );

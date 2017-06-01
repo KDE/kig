@@ -36,8 +36,8 @@ class ConicLineIntersectionType
   ~ConicLineIntersectionType();
 public:
   static const ConicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -51,8 +51,8 @@ class ConicLineOtherIntersectionType
   ~ConicLineOtherIntersectionType();
 public:
   static const ConicLineOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 /**
  * Francesca Gatti (frency.gatti@gmail.com), january 2008:
@@ -68,8 +68,8 @@ class CubicLineOtherIntersectionType
   ~CubicLineOtherIntersectionType();
 public:
   static const CubicLineOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 /**
  *
@@ -83,8 +83,8 @@ class CubicLineTwoIntersectionType
   ~CubicLineTwoIntersectionType();
 public:
   static const CubicLineTwoIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 /**
  * circle circle 'other' intersection.  In case we already know one of the
@@ -97,8 +97,8 @@ class CircleCircleOtherIntersectionType
   ~CircleCircleOtherIntersectionType();
 public:
   static const CircleCircleOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class LineLineIntersectionType
@@ -108,8 +108,8 @@ class LineLineIntersectionType
   ~LineLineIntersectionType();
 public:
   static const LineLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class CubicLineIntersectionType
@@ -119,8 +119,8 @@ class CubicLineIntersectionType
   ~CubicLineIntersectionType();
 public:
   static const CubicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class CircleCircleIntersectionType
@@ -130,8 +130,8 @@ class CircleCircleIntersectionType
   ~CircleCircleIntersectionType();
 public:
   static const CircleCircleIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -144,8 +144,8 @@ class ArcLineIntersectionType
   ~ArcLineIntersectionType();
 public:
   static const ArcLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

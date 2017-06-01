@@ -98,11 +98,11 @@ public:
   virtual ~MacroListElement();
 
   Macro* getMacro() const { return mmacro; }
-  virtual bool isMacro() const { return true; }
-  virtual QString name() const;
-  virtual QString description() const;
-  virtual QString icon( bool canNull = false ) const;
-  virtual QString type() const;
+  bool isMacro() const Q_DECL_OVERRIDE { return true; }
+  QString name() const Q_DECL_OVERRIDE;
+  QString description() const Q_DECL_OVERRIDE;
+  QString icon( bool canNull = false ) const Q_DECL_OVERRIDE;
+  QString type() const Q_DECL_OVERRIDE;
 };
 
 MacroListElement::MacroListElement( Macro* m )

@@ -54,20 +54,20 @@ private:
   void moved( const QPoint& p, KigWidget& w );
   void moved( QMouseEvent*, KigWidget& w );
 
-  void leftClicked( QMouseEvent*, KigWidget* );
-  void leftMouseMoved( QMouseEvent*, KigWidget* );
-  void leftReleased( QMouseEvent*, KigWidget* );
-  void midClicked( QMouseEvent*, KigWidget* );
-  void midMouseMoved( QMouseEvent*, KigWidget* );
-  void midReleased( QMouseEvent*, KigWidget* );
-  void rightClicked( QMouseEvent*, KigWidget* );
-  void rightMouseMoved( QMouseEvent*, KigWidget* );
-  void rightReleased( QMouseEvent*, KigWidget* );
-  void mouseMoved( QMouseEvent*, KigWidget* );
+  void leftClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void leftMouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void leftReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void midClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void midMouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void midReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void rightClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void rightMouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void rightReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void mouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
 
-  void cancelConstruction();
+  void cancelConstruction() Q_DECL_OVERRIDE;
 
-  void enableActions();
+  void enableActions() Q_DECL_OVERRIDE;
 
 public:
   DragRectMode( const QPoint& start, KigPart& d, KigWidget& w );

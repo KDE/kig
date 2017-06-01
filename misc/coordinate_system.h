@@ -94,18 +94,18 @@ class EuclideanCoords
 public:
   EuclideanCoords();
   ~EuclideanCoords();
-  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
-  QString coordinateFormatNotice() const;
-  QString coordinateFormatNoticeMarkup() const;
-  Coordinate toScreen (const QString& pt, bool& ok) const;
+  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  QString coordinateFormatNotice() const Q_DECL_OVERRIDE;
+  QString coordinateFormatNoticeMarkup() const Q_DECL_OVERRIDE;
+  Coordinate toScreen (const QString& pt, bool& ok) const Q_DECL_OVERRIDE;
   void drawGrid ( KigPainter& p, bool showgrid = true,
-                  bool showaxes = true ) const;
-  QValidator* coordinateValidator() const;
+                  bool showaxes = true ) const Q_DECL_OVERRIDE;
+  QValidator* coordinateValidator() const Q_DECL_OVERRIDE;
   Coordinate snapToGrid( const Coordinate& c,
-                         const KigWidget& w ) const;
+                         const KigWidget& w ) const Q_DECL_OVERRIDE;
 
-  const char* type() const;
-  int id() const;
+  const char* type() const Q_DECL_OVERRIDE;
+  int id() const Q_DECL_OVERRIDE;
 };
 
 class PolarCoords
@@ -116,18 +116,18 @@ class PolarCoords
 public:
   PolarCoords();
   ~PolarCoords();
-  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const;
-  QString coordinateFormatNotice() const;
-  QString coordinateFormatNoticeMarkup() const;
-  Coordinate toScreen (const QString& pt, bool& ok) const;
+  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  QString coordinateFormatNotice() const Q_DECL_OVERRIDE;
+  QString coordinateFormatNoticeMarkup() const Q_DECL_OVERRIDE;
+  Coordinate toScreen (const QString& pt, bool& ok) const Q_DECL_OVERRIDE;
   void drawGrid ( KigPainter& p, bool showgrid = true,
-                  bool showaxes = true ) const;
-  QValidator* coordinateValidator() const;
+                  bool showaxes = true ) const Q_DECL_OVERRIDE;
+  QValidator* coordinateValidator() const Q_DECL_OVERRIDE;
   Coordinate snapToGrid( const Coordinate& c,
-                         const KigWidget& w ) const;
+                         const KigWidget& w ) const Q_DECL_OVERRIDE;
 
-  const char* type() const;
-  int id() const;
+  const char* type() const Q_DECL_OVERRIDE;
+  int id() const Q_DECL_OVERRIDE;
 };
 
 #endif

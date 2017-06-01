@@ -48,24 +48,24 @@ public:
    */
   static const ObjectImpType* stype();
 
-  ObjectImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
 
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
-  bool inRect( const Rect& r, int width, const KigWidget& ) const;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
   bool valid() const;
-  Rect surroundingRect() const;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  const char* iconForProperty( int which ) const;
-  ObjectImp* property( int which, const KigDocument& w ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
 
-  double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, const KigDocument& ) const;
+  double getParam( const Coordinate& point, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
 
   // getPoint and getParam do not really need the KigDocument arg...
 
@@ -120,12 +120,12 @@ public:
    */
   virtual Coordinate focus2() const;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const Q_DECL_OVERRIDE;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
   bool isVerticalParabola( ConicCartesianData& data ) const;
 };
@@ -143,10 +143,10 @@ protected:
 public:
   ConicImpCart( const ConicCartesianData& data );
   ~ConicImpCart();
-  ConicImpCart* copy() const;
+  ConicImpCart* copy() const Q_DECL_OVERRIDE;
 
-  const ConicCartesianData cartesianData() const;
-  const ConicPolarData polarData() const;
+  const ConicCartesianData cartesianData() const Q_DECL_OVERRIDE;
+  const ConicPolarData polarData() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -160,9 +160,9 @@ class ConicImpPolar
 public:
   ConicImpPolar( const ConicPolarData& data );
   ~ConicImpPolar();
-  ConicImpPolar* copy() const;
+  ConicImpPolar* copy() const Q_DECL_OVERRIDE;
 
-  const ConicPolarData polarData() const;
+  const ConicPolarData polarData() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -187,23 +187,23 @@ public:
                const double startangle, const double angle );
   ~ConicArcImp();
 
-  ConicArcImp* copy() const;
+  ConicArcImp* copy() const Q_DECL_OVERRIDE;
 
-  ObjectImp* transform( const Transformation& t ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const;
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  ObjectImp* transform( const Transformation& t ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const Q_DECL_OVERRIDE;
   bool internalContainsPoint( const Coordinate& p, double threshold,
      const KigDocument& doc ) const;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& w ) const;
-  const char* iconForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
-  double getParam( const Coordinate& point, const KigDocument& ) const;
-  const Coordinate getPoint( double param, const KigDocument& ) const;
+  double getParam( const Coordinate& point, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
 
   double getParam( const Coordinate& point ) const;
   const Coordinate getPoint( double param ) const;
@@ -225,7 +225,7 @@ public:
    */
   Coordinate secondEndPoint() const;
 
-  const ObjectImpType* type() const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
 };
 
 #endif

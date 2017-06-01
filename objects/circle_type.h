@@ -31,8 +31,8 @@ class CircleBCPType
 public:
   static const CircleBCPType* instance();
 
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -46,8 +46,8 @@ class CircleBPRType
 public:
   static const CircleBPRType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -62,8 +62,8 @@ class CircleBTPType
 public:
   static const CircleBTPType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 

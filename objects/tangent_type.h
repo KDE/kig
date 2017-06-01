@@ -31,8 +31,8 @@ class TangentConicType
   ~TangentConicType();
 public:
   static const TangentConicType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -46,8 +46,8 @@ class TangentArcType
   ~TangentArcType();
 public:
   static const TangentArcType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -61,8 +61,8 @@ class TangentCubicType
   ~TangentCubicType();
 public:
   static const TangentCubicType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -76,8 +76,8 @@ class TangentCurveType
   ~TangentCurveType();
 public:
   static const TangentCurveType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

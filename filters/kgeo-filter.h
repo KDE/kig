@@ -37,8 +37,8 @@ class KigFilterKGeo
 {
 public:
   static KigFilterKGeo* instance();
-  bool supportMime ( const QString& mime );
-  KigDocument* load ( const QString& from );
+  bool supportMime ( const QString& mime ) Q_DECL_OVERRIDE;
+  KigDocument* load ( const QString& from ) Q_DECL_OVERRIDE;
 protected:
   KigFilterKGeo();
   ~KigFilterKGeo();

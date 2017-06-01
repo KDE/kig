@@ -32,10 +32,10 @@ class AsyExporter
 {
 public:
   ~AsyExporter();
-  QString exportToStatement() const;
-  QString menuEntryName() const;
-  QString menuIcon() const;
-  void run( const KigPart& doc, KigWidget& w );
+  QString exportToStatement() const Q_DECL_OVERRIDE;
+  QString menuEntryName() const Q_DECL_OVERRIDE;
+  QString menuIcon() const Q_DECL_OVERRIDE;
+  void run( const KigPart& doc, KigWidget& w ) Q_DECL_OVERRIDE;
 };
 
 #endif

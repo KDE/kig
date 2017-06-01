@@ -199,9 +199,9 @@ public:
   ObjectTypeCalcer( const ObjectType* type, const std::vector<ObjectCalcer*>& parents, bool sort=true );
   ~ObjectTypeCalcer();
 
-  const ObjectImp* imp() const;
-  std::vector<ObjectCalcer*> parents() const;
-  void calc( const KigDocument& doc );
+  const ObjectImp* imp() const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> parents() const Q_DECL_OVERRIDE;
+  void calc( const KigDocument& doc ) Q_DECL_OVERRIDE;
 
   /**
    * Set the parents of this ObjectTypeCalcer to np.  This object will
@@ -214,13 +214,13 @@ public:
   const ObjectType* type() const;
 
   const ObjectImpType* impRequirement(
-    ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
-  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
-  bool canMove() const;
-  bool isFreelyTranslatable() const;
-  std::vector<ObjectCalcer*> movableParents() const;
-  Coordinate moveReferencePoint() const;
-  void move( const Coordinate& to, const KigDocument& doc );
+    ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const Q_DECL_OVERRIDE;
+  bool canMove() const Q_DECL_OVERRIDE;
+  bool isFreelyTranslatable() const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> movableParents() const Q_DECL_OVERRIDE;
+  Coordinate moveReferencePoint() const Q_DECL_OVERRIDE;
+  void move( const Coordinate& to, const KigDocument& doc ) Q_DECL_OVERRIDE;
 };
 
 /**
@@ -247,9 +247,9 @@ public:
   ObjectConstCalcer( ObjectImp* imp );
   ~ObjectConstCalcer();
 
-  const ObjectImp* imp() const;
-  void calc( const KigDocument& doc );
-  std::vector<ObjectCalcer*> parents() const;
+  const ObjectImp* imp() const Q_DECL_OVERRIDE;
+  void calc( const KigDocument& doc ) Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> parents() const Q_DECL_OVERRIDE;
 
   /**
    * Set the ObjectImp of this ObjectConstCalcer to the given
@@ -263,8 +263,8 @@ public:
   ObjectImp* switchImp( ObjectImp* newimp );
 
   const ObjectImpType* impRequirement(
-    ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
-  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
+    ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -304,15 +304,15 @@ public:
   ObjectPropertyCalcer( ObjectCalcer* parent, const char* pintname );
   ~ObjectPropertyCalcer();
 
-  const ObjectImp* imp() const;
-  std::vector<ObjectCalcer*> parents() const;
-  void calc( const KigDocument& doc );
+  const ObjectImp* imp() const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> parents() const Q_DECL_OVERRIDE;
+  void calc( const KigDocument& doc ) Q_DECL_OVERRIDE;
 
   ObjectCalcer* parent() const;
 
   const ObjectImpType* impRequirement(
-    ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const;
-  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const;
+    ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const Q_DECL_OVERRIDE;
+  bool isDefinedOnOrThrough( const ObjectCalcer* o ) const Q_DECL_OVERRIDE;
 
   int propLid() const;
   int propGid() const;

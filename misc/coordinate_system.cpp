@@ -63,8 +63,8 @@ public:
 
   CoordinateValidator( CoordinateType type );
   ~CoordinateValidator();
-  State validate ( QString & input,  int & pos ) const;
-  void fixup ( QString & input ) const;
+  State validate ( QString & input,  int & pos ) const Q_DECL_OVERRIDE;
+  void fixup ( QString & input ) const Q_DECL_OVERRIDE;
 
 private:
   CoordinateType mtype;

@@ -31,10 +31,10 @@ class PropertiesActionsProvider
   // easiest way to do it, and I'm too lazy to do it properly ;)
   std::vector<int> mprops[NormalModePopupObjects::NumberOfMenus];
 public:
-  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree );
+  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree ) Q_DECL_OVERRIDE;
   bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
                       NormalModePopupObjects& popup,
-                      KigPart& doc, KigWidget& w, NormalMode& m );
+                      KigPart& doc, KigWidget& w, NormalMode& m ) Q_DECL_OVERRIDE;
 };
 
 #endif // PROPERTIESACTIONSPROVIDER_H

@@ -75,7 +75,7 @@ public:
   QString selectedFile();
 
 protected slots:
-  virtual void accept();
+  void accept() Q_DECL_OVERRIDE;
 
 };
 

@@ -35,8 +35,8 @@ class KigFilterKSeg
 public:
   static KigFilterKSeg* instance();
 
-  bool supportMime ( const QString& mime );
-  KigDocument* load ( const QString& fromfile );
+  bool supportMime ( const QString& mime ) Q_DECL_OVERRIDE;
+  KigDocument* load ( const QString& fromfile ) Q_DECL_OVERRIDE;
 };
 
 #endif

@@ -46,15 +46,15 @@ public:
 
   ~AbstractLineImp();
 
-  bool inRect( const Rect& r, int width, const KigWidget& ) const;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& d ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
   /**
    * Get the slope of this AbstractLineImp.  For a line through
@@ -72,7 +72,7 @@ public:
    */
   LineData data() const;
 
-  bool equals( const ObjectImp& rhs ) const;
+  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -98,33 +98,33 @@ public:
    */
   SegmentImp( const LineData& d );
 
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
-  Rect surroundingRect() const;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const Q_DECL_OVERRIDE;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
 
-  ObjectImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
 
-  const Coordinate getPoint( double param, const KigDocument& ) const;
-  double getParam( const Coordinate&, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
+  double getParam( const Coordinate&, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& d ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
 
-  SegmentImp* copy() const;
+  SegmentImp* copy() const Q_DECL_OVERRIDE;
 
   /**
    * Get the length of this segment.
    */
   double length() const;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const Q_DECL_OVERRIDE;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
@@ -153,28 +153,28 @@ public:
    */
   RayImp( const LineData& d );
 
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
-  Rect surroundingRect() const;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const Q_DECL_OVERRIDE;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
 
-  ObjectImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
 
-  const Coordinate getPoint( double param, const KigDocument& ) const;
-  double getParam( const Coordinate&, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
+  double getParam( const Coordinate&, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  int numberOfProperties() const;
-  const QByteArrayList properties() const;
-  const QByteArrayList propertiesInternalNames() const;
-  ObjectImp* property( int which, const KigDocument& d ) const;
-  const char* iconForProperty( int which ) const;
-  const ObjectImpType* impRequirementForProperty( int which ) const;
+  int numberOfProperties() const Q_DECL_OVERRIDE;
+  const QByteArrayList properties() const Q_DECL_OVERRIDE;
+  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
+  ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
 
-  RayImp* copy() const;
+  RayImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const Q_DECL_OVERRIDE;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 
@@ -201,21 +201,21 @@ public:
    * Construct a LineImp from a LineData.
    */
   LineImp( const LineData& d );
-  void draw( KigPainter& p ) const;
-  bool contains( const Coordinate& p, int width, const KigWidget& si ) const;
-  Rect surroundingRect() const;
+  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
+  bool contains( const Coordinate& p, int width, const KigWidget& si ) const Q_DECL_OVERRIDE;
+  Rect surroundingRect() const Q_DECL_OVERRIDE;
 
-  ObjectImp* transform( const Transformation& ) const;
+  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
 
-  const Coordinate getPoint( double param, const KigDocument& ) const;
-  double getParam( const Coordinate&, const KigDocument& ) const;
+  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
+  double getParam( const Coordinate&, const KigDocument& ) const Q_DECL_OVERRIDE;
 
-  LineImp* copy() const;
+  LineImp* copy() const Q_DECL_OVERRIDE;
 
-  const ObjectImpType* type() const;
-  void visit( ObjectImpVisitor* vtor ) const;
+  const ObjectImpType* type() const Q_DECL_OVERRIDE;
+  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const;
+  bool containsPoint( const Coordinate& p, const KigDocument& doc ) const Q_DECL_OVERRIDE;
   bool internalContainsPoint( const Coordinate& p, double threshold ) const;
 };
 

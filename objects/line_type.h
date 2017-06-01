@@ -30,15 +30,15 @@ class SegmentABType
 public:
   static const SegmentABType* instance();
 
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 
-  QStringList specialActions() const;
+  QStringList specialActions() const Q_DECL_OVERRIDE;
   /**
    * execute the \p i 'th action from the specialActions above.
    */
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
 };
 
 class LineABType
@@ -48,8 +48,8 @@ class LineABType
   ~LineABType();
 public:
   static const LineABType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class RayABType
@@ -59,8 +59,8 @@ class RayABType
   ~RayABType();
 public:
   static const RayABType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class SegmentAxisType
@@ -70,8 +70,8 @@ class SegmentAxisType
   ~SegmentAxisType();
 public:
   static const SegmentAxisType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& d ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class LinePerpendLPType
@@ -82,8 +82,8 @@ class LinePerpendLPType
 public:
   static LinePerpendLPType* instance();
   using ObjectLPType::calc;
-  ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const LineData& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class LineParallelLPType
@@ -94,8 +94,8 @@ class LineParallelLPType
 public:
   static LineParallelLPType* instance();
   using ObjectLPType::calc;
-  ObjectImp* calc( const LineData& a, const Coordinate& b ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const LineData& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class LineByVectorType
@@ -105,8 +105,8 @@ class LineByVectorType
   ~LineByVectorType();
 public:
   static const LineByVectorType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 class HalflineByVectorType
@@ -116,8 +116,8 @@ class HalflineByVectorType
   ~HalflineByVectorType();
 public:
   static const HalflineByVectorType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const;
-  const ObjectImpType* resultId() const;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
 #endif

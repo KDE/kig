@@ -75,7 +75,7 @@ class ArgsPage : public QWizardPage
 public:
   ArgsPage( QWidget* parent, TextLabelModeBase* mode );
 
-  virtual bool validatePage();
+  bool validatePage() Q_DECL_OVERRIDE;
 
   LinksLabel* mlinks;
 

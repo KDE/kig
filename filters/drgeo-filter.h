@@ -37,8 +37,8 @@ protected:
 public:
   static KigFilterDrgeo* instance();
 
-  bool supportMime( const QString& mime );
-  KigDocument* load( const QString& file );
+  bool supportMime( const QString& mime ) Q_DECL_OVERRIDE;
+  KigDocument* load( const QString& file ) Q_DECL_OVERRIDE;
 private:
   KigDocument* importFigure( const QDomNode& f, const bool grid );
 };

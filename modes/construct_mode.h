@@ -44,15 +44,15 @@ public:
 
 protected:
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                                KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+                                KigWidget& w, bool ctrlOrShiftDown ) Q_DECL_OVERRIDE;
+  void midClicked( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) Q_DECL_OVERRIDE;
 
-  void enableActions();
-  void cancelConstruction();
+  void enableActions() Q_DECL_OVERRIDE;
+  void cancelConstruction() Q_DECL_OVERRIDE;
 
-  void redrawScreen( KigWidget* );
+  void redrawScreen( KigWidget* ) Q_DECL_OVERRIDE;
 };
 
 class BaseConstructMode
@@ -78,7 +78,7 @@ class BaseConstructMode
 //  ObjectHolder* mcursorholder;
   std::vector<ObjectHolder*> mparents;
 
-  void leftReleased( QMouseEvent* e, KigWidget* v );
+  void leftReleased( QMouseEvent* e, KigWidget* v ) Q_DECL_OVERRIDE;
 
 public:
   using BaseMode::midClicked;
@@ -92,13 +92,13 @@ protected:
   BaseConstructMode( KigPart& d );
 protected:
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                          KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+                          KigWidget& w, bool ctrlOrShiftDown ) Q_DECL_OVERRIDE;
+  void midClicked( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) Q_DECL_OVERRIDE;
 
-  void enableActions();
-  void cancelConstruction();
+  void enableActions() Q_DECL_OVERRIDE;
+  void cancelConstruction() Q_DECL_OVERRIDE;
   void finish();
 
 protected:
@@ -108,7 +108,7 @@ protected:
   virtual int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) = 0;
   virtual void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) = 0;
 
-  void redrawScreen( KigWidget* );
+  void redrawScreen( KigWidget* ) Q_DECL_OVERRIDE;
 };
 
 class ConstructMode
@@ -119,11 +119,11 @@ public:
   ConstructMode( KigPart& d, const ObjectConstructor* ctor );
   ~ConstructMode();
 
-  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
-  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
-  int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& );
-  int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
-  void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
+  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w ) Q_DECL_OVERRIDE;
+  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w ) Q_DECL_OVERRIDE;
+  int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) Q_DECL_OVERRIDE;
+  int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) Q_DECL_OVERRIDE;
+  void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) Q_DECL_OVERRIDE;
 };
 
 /**
@@ -151,17 +151,17 @@ public:
   using BaseMode::rightClicked;
   using BaseMode::mouseMoved;
 
-  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w );
-  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w );
-  int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& );
-  int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w );
-  void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w );
+  void handlePrelim( const std::vector<ObjectCalcer*>& os, const QPoint& p, KigPainter&, KigWidget& w ) Q_DECL_OVERRIDE;
+  QString selectStatement( const std::vector<ObjectCalcer*>& args, const KigWidget& w ) Q_DECL_OVERRIDE;
+  int isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const int& ) Q_DECL_OVERRIDE;
+  int wantArgs( const std::vector<ObjectCalcer*>&, KigDocument& d, KigWidget& w ) Q_DECL_OVERRIDE;
+  void handleArgs( const std::vector<ObjectCalcer*>& args, KigWidget& w ) Q_DECL_OVERRIDE;
 
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                          KigWidget& w, bool ctrlOrShiftDown );
-  void midClicked( const QPoint& p, KigWidget& w );
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w );
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed );
+                          KigWidget& w, bool ctrlOrShiftDown ) Q_DECL_OVERRIDE;
+  void midClicked( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) Q_DECL_OVERRIDE;
 };
 
 #endif
