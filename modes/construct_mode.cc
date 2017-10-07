@@ -178,7 +178,7 @@ void BaseConstructMode::midClicked( const QPoint& p, KigWidget& w )
 
 void BaseConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
 {
-  // TODO ?
+  cancelConstruction();
 }
 
 void BaseConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
@@ -531,13 +531,9 @@ void TestConstructMode::midClicked( const QPoint& p, KigWidget& w )
     BaseConstructMode::midClicked( p, w );
 }
 
-void TestConstructMode::rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w )
+void TestConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& )
 {
-  if ( mresult ) {
-    // nothing to be done here, really
-  }
-  else
-    BaseConstructMode::rightClicked( oco, p, w );
+  cancelConstruction();
 }
 
 void TestConstructMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftPressed )
