@@ -356,7 +356,6 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect(buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
   mainLayout->addWidget( buttonBox );
 
-//PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   mtypeswidget = new Ui_TypesWidget();
   mtypeswidget->setupUi( mainWidget );
   mainWidget->layout()->setMargin( 0 );
@@ -394,7 +393,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   connect( mtypeswidget->buttonRemove, SIGNAL( clicked() ), this, SLOT( deleteType() ) );
   connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
   connect( mtypeswidget->typeList, SIGNAL( customContextMenuRequested( const QPoint& ) ), this, SLOT( typeListContextMenu( const QPoint& ) ) );
-  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
+  connect( buttonBox->button( QDialogButtonBox::Help ), SIGNAL( clicked() ), this, SLOT( slotHelp() ) );
   connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
   connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
 
