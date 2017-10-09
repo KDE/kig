@@ -169,7 +169,7 @@ void DefineMacroMode::dragRect( const QPoint& p, KigWidget& w )
 void DefineMacroMode::leftClickedObject( ObjectHolder* o, const QPoint&,
                                          KigWidget& w, bool )
 {
-  if ( mwizard->currentId() == MacroWizard::MacroInfoPageId ) return;
+  if ( !o || mwizard->currentId() == MacroWizard::MacroInfoPageId ) return;
   std::vector<ObjectHolder*>* objs = mwizard->currentId() == MacroWizard::GivenArgsPageId ? &mgiven : &mfinal;
   std::vector<ObjectHolder*>::iterator iter = std::find( objs->begin(), objs->end(), o );
   bool isselected = ( iter != objs->end() );
