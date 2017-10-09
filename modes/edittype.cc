@@ -48,14 +48,11 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
   connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
   connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
   mainLayout->addWidget(buttonBox);
 
-  QWidget* base = new QWidget( this );
-//PORTING: Verify that widget was added to mainLayout   setMainWidget( base );
   medittypewidget = new Ui_EditTypeWidget();
-  medittypewidget->setupUi( base );
-  base->layout()->setMargin( 0 );
+  medittypewidget->setupUi( mainWidget );
+  mainWidget->layout()->setMargin( 0 );
 
   medittypewidget->editName->setText( mname );
   medittypewidget->editName->setWhatsThis(
@@ -72,8 +69,6 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
   connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
   connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
-
-  resize( 450, 150 );
 }
 
 EditType::~EditType()
