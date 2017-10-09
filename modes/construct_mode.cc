@@ -325,7 +325,7 @@ void PointConstructMode::midClicked( const QPoint& p, KigWidget& w )
 void PointConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&,
                                        KigWidget& )
 {
-  // TODO ?
+  cancelConstruction();
 }
 
 void PointConstructMode::mouseMoved(
