@@ -61,7 +61,7 @@ GivenArgsPage::GivenArgsPage( QWidget* parent, DefineMacroMode* mode )
 
 bool GivenArgsPage::isComplete() const
 {
-  return mmode->hasGivenArgs();
+  return true;
 }
 
 void GivenArgsPage::setChanged()

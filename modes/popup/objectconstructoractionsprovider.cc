@@ -41,7 +41,8 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     bool add = false;
     if ( popup.objects().empty() )
     {
-      add = menu == NormalModePopupObjects::StartMenu && ! (*i)->isTransform() && ! (*i)->isTest();
+      add = ( menu == NormalModePopupObjects::StartMenu && ! ( *i )->isTransform() && ! ( *i )->isTest() )
+            || ( menu == NormalModePopupObjects::ConstructMenu && ( *i )->wantArgs( {}, d, v ) == ArgsParser::Complete );
     }
     else
     {
@@ -80,7 +81,7 @@ bool ObjectConstructorActionsProvider::executeAction(
 
   ObjectConstructor* ctor = mctors[menu][id];
   std::vector<ObjectCalcer*> osc = getCalcers( os );
-  if ( ! os.empty() && ctor->wantArgs( osc, doc.document(), w ) == ArgsParser::Complete )
+  if ( ctor->wantArgs( osc, doc.document(), w ) == ArgsParser::Complete )
   {
     ctor->handleArgs( osc, doc, w );
     m.clearSelection();
