@@ -15,6 +15,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
+#include <algorithm>
+
 #include "object_hierarchy.h"
 
 #include "../objects/object_holder.h"
@@ -673,18 +675,17 @@ bool operator==( const ObjectHierarchy& lhs, const ObjectHierarchy& rhs )
   return true;
 }
 
-bool ObjectHierarchy::resultDoesNotDependOnGiven() const
+bool ObjectHierarchy::resultDependsOnGiven() const
 {
   std::vector<bool> dependsstack( mnodes.size() + mnumberofargs, false );
 
-  for ( uint i = 0; i < mnumberofargs; ++i )
-    dependsstack[i] = true;
+  std::fill( dependsstack.begin(), dependsstack.begin() + mnumberofargs, true );
+
   for ( uint i = 0; i < mnodes.size(); ++i )
     mnodes[i]->checkDependsOnGiven( dependsstack, i + mnumberofargs );
-  for ( uint i = dependsstack.size() - mnumberofresults; i < dependsstack.size(); ++i )
-    if ( !dependsstack[i] )
-      return true;
-  return false;
+
+  // This could be a call to std::any_of if there was an identity function
+  return std::find( dependsstack.rbegin(), dependsstack.rbegin() + mnumberofresults, false ) == dependsstack.rbegin() + mnumberofresults;
 }
 
 // returns the "minimum" of a and b ( in the partially ordered set of

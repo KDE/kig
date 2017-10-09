@@ -101,7 +101,7 @@ public:
 
   const ObjectImpType* idOfLastResult() const;
 
-  bool resultDoesNotDependOnGiven() const;
+  bool resultDependsOnGiven() const;
   bool allGivenObjectsUsed() const;
 
   ObjectHierarchy transformFinalObject( const Transformation& t ) const;

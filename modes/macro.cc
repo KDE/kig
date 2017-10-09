@@ -85,7 +85,7 @@ bool DefineMacroMode::validateObjects()
                   std::back_inserter( final ),
                   std::mem_fun( memfun ) );
   ObjectHierarchy hier( given, final );
-  if ( hier.resultDoesNotDependOnGiven() )
+  if ( !hier.resultDependsOnGiven() )
   {
     KMessageBox::sorry( mwizard,
                         i18n( "One of the result objects you selected "
