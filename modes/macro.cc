@@ -74,7 +74,6 @@ void DefineMacroMode::finalPageEntered()
 
 bool DefineMacroMode::validateObjects()
 {
-  bool res = true;
   ObjectCalcer* (ObjectHolder::*memfun)() = &ObjectHolder::calcer;
   std::vector<ObjectCalcer*> given;
   std::transform( mgiven.begin(), mgiven.end(),
@@ -93,7 +92,7 @@ bool DefineMacroMode::validateObjects()
                               "Kig cannot calculate this macro because of this. "
                               "Please press Back, and construct the objects "
                               "in the correct order..." ) );
-    res = false;
+    return false;
   }
   else if( !hier.allGivenObjectsUsed() )
   {
@@ -103,12 +102,12 @@ bool DefineMacroMode::validateObjects()
                               "probably means you are expecting Kig to do "
                               "something impossible.  Please check the "
                               "macro and try again." ) );
-    res = false;
+    return false;
   }
 
   static_cast<KigView*>( mdoc.widget() )->realWidget()->redrawScreen( std::vector<ObjectHolder*>() );
 
-  return res;
+  return true;
 }
 
 void DefineMacroMode::finishPressed()
