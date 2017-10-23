@@ -16,6 +16,7 @@ find_package(KF5ConfigWidgets REQUIRED)
 find_package(KF5Archive REQUIRED)
 find_package(KF5XmlGui 5.1 REQUIRED)
 find_package(KF5Crash 5.15 REQUIRED)
+find_package(KF5CoreAddons REQUIRED)
 
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 

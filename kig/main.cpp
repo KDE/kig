@@ -23,10 +23,15 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
+#include <QFile>
+#include <QDir>
+#include <QStandardPaths>
 
 #include <KPluginLoader>
 #include <KAboutData>
 #include <KCrash>
+#include <Kdelibs4ConfigMigrator>
+#include <Kdelibs4Migration>
 
 #include "aboutdata.h"
 #include <klocalizedstring.h>
@@ -45,10 +50,40 @@ static int convertToNative( const QUrl &file, const QByteArray& outfile )
   return (*converterfunction)( file, outfile );
 }
 
-int main(int argc, char **argv)
+static bool configMigration()
 {
+  Kdelibs4ConfigMigrator migrator( QStringLiteral( "kig" ) );
+
+  migrator.setConfigFiles( QStringList() << QStringLiteral( "test.txt" ) );
+
+  return migrator.migrate();
+}
+
+static void dataMigration()
+{
+  Kdelibs4Migration datamigrator;
+  QString file = datamigrator.locateLocal( "data", "kig/kig-types/macros.kigt" );
+
+  if ( !file.isEmpty() )
+  {
+    QFile macros( file );
+    const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
+    const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
+
+    if ( !typesDir.exists() )
+    {
+      writeableDataLocation.mkpath( "kig-types" );
+    }
+
+    macros.copy( typesDir.absoluteFilePath( "macros.kigt" ) );
+  }
+}
+
+int main( int argc, char **argv )
+{
+  configMigration();
   QApplication app( argc, argv );
-  KLocalizedString::setApplicationDomain("kig");
+  KLocalizedString::setApplicationDomain( "kig" );
   KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
   KCrash::initialize();
   QCommandLineParser parser;
@@ -60,6 +95,7 @@ int main(int argc, char **argv)
   QCoreApplication::setOrganizationDomain( i18n( "kde.org" ) );
   KAboutData::setApplicationData( about );
 
+  dataMigration(); // This needs the about AboutData to be set up
   about.setupCommandLine( &parser );
   parser.addHelpOption();
   parser.addOption( convertToNativeOption );
