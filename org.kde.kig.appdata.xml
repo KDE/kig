@@ -62,6 +62,7 @@
   <summary xml:lang="tr">Etkileşimli Geometri</summary>
   <summary xml:lang="uk">Інтерактивна геометрія</summary>
   <summary xml:lang="x-test">xxInteractive Geometryxx</summary>
+  <summary xml:lang="zh-CN">交互几何</summary>
   <summary xml:lang="zh-TW">交互式幾何作圖</summary>
   <description>
     <p>Kig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.</p>
