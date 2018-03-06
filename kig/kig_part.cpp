@@ -723,8 +723,7 @@ void KigPart::fileSave()
 bool KigPart::internalSaveAs()
 {
   // this slot is connected to the KStandardAction::saveAs action...
-  QString formats = i18n( "*.kig|Kig Documents (*.kig)\n"
-                          "*.kigz|Compressed Kig Documents (*.kigz)" );
+  QString formats = i18n( "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)" );
   QString currentDir = url().toLocalFile();
 
   if ( currentDir.isNull() )

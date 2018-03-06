@@ -463,7 +463,7 @@ void TypesDialog::exportType()
       types.push_back( macro );
   }
   if (types.empty()) return;
-  QString file_name = QFileDialog::getSaveFileName( this, i18n( "Export Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n("*.kigt|Kig Types Files\n*|All Files") );
+  QString file_name = QFileDialog::getSaveFileName( this, i18n( "Export Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n("Kig Types Files (*.kigt);;All Files (*)") );
   if ( file_name.isNull() )
     return;
   QFile fi( file_name );
@@ -479,12 +479,12 @@ void TypesDialog::importTypes()
 {
   //TODO : Do this through MIME types
   QStringList toolFilters;
-  toolFilters << i18n( "*.kigt|Kig Types Files" );
+  toolFilters << i18n( "Kig Types Files (*.kigt)" );
 #ifdef WITH_GEOGEBRA
-  toolFilters << i18n( "*.ggt|Geogebra Tool Files" );
+  toolFilters << i18n( "Geogebra Tool Files (*.ggt)" );
 #endif //WITH_GEOGEBRA
-  toolFilters << i18n( "*|All Files" );
-  QStringList file_names = QFileDialog::getOpenFileNames( this, i18n( "Import Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), toolFilters.join( QLatin1String( "\n" ) ) );
+  toolFilters << i18n( "All Files (*)" );
+  QStringList file_names = QFileDialog::getOpenFileNames( this, i18n( "Import Types" ), QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), toolFilters.join( QLatin1String( ";;" ) ) );
 
   std::vector<Macro*> macros;
   for ( QStringList::const_iterator i = file_names.constBegin();

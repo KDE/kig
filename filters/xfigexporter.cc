@@ -574,7 +574,7 @@ void XFigExportImpVisitor::visit(const OpenPolygonalImp* imp)
 void XFigExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), i18n( "*.fig|XFig Documents (*.fig)" ),
+      QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), i18n( "XFig Documents (*.fig)" ),
       i18n( "Export as XFig File" ), &w );
   if ( !kfd->exec() )
     return;

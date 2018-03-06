@@ -535,7 +535,7 @@ void PSTricksExportImpVisitor::visit(const RationalBezierImp* imp)
 void LatexExporter::run( const KigPart& doc, KigWidget& w )
 {
     KigFileDialog* kfd = new KigFileDialog(
-        QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "*.tex|Latex Documents (*.tex)" ),
+        QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "Latex Documents (*.tex)" ),
         i18n( "Export as Latex" ), &w );
     kfd->setOptionCaption( i18n( "Latex Options" ) );
     LatexExporterOptions* opts = new LatexExporterOptions( 0L );

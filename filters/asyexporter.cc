@@ -55,7 +55,7 @@ QString AsyExporter::menuIcon() const
 void AsyExporter::run( const KigPart& doc, KigWidget& w )
 {
   KigFileDialog* kfd = new KigFileDialog(
-      QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "*.asy|Asymptote Documents (*.asy)" ),
+      QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "Asymptote Documents (*.asy)" ),
       i18n( "Export as Asymptote script" ), &w );
   kfd->setOptionCaption( i18n( "Asymptote Options" ) );
   AsyExporterOptions* opts = new AsyExporterOptions( 0L );
