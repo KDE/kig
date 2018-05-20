@@ -43,7 +43,7 @@ QString AsyExporterImpVisitor::emitPenColor( const QColor& c )
 {
   QString pencolor("");
   // Asymptote definition of pen color
-  pencolor = "rgb(" + QString::number(c.red()) + "," + QString::number(c.green()) + "," + QString::number(c.blue()) + ")";
+  pencolor = "rgb(" + QString::number(c.red()/255.0) + "," + QString::number(c.green()/255.0) + "," + QString::number(c.blue()/255.0) + ")";
   return pencolor;
 }
 
