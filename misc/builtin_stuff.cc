@@ -294,6 +294,32 @@ void setupBuiltinStuff()
       actions->add( new ConstructibleAction( &m, "objects_new_midpoint", Qt::Key_M ) );
     };
 
+    {
+      // now for the Golden Ratio Point action.  It does both the golden ratio point of
+      // a segment, and the golden ratio point of two points.  The golden ratio point of
+      // two segments just shows the golden ratio point property, and therefore
+      // doesn't need to be added to the ctors, because there are
+      // already facilities to construct an object's properties..
+      // therefore, we add only an mpotp to the ctors, and add the
+      // merged constructor only to the actions..
+      ctors->add( new GoldenPointOfTwoPointsConstructor() );
+
+      ObjectConstructor* mpotp = new GoldenPointOfTwoPointsConstructor();
+      ObjectConstructor* mpos = new PropertyObjectConstructor(
+        SegmentImp::stype(), I18N_NOOP( "Construct the golden ratio point of this segment" ),
+        "", "", "", "", "golden-point" );
+
+      // make this a static object, so it gets deleted at the end of
+      // the program.
+      static MergeObjectConstructor m(
+        I18N_NOOP( "Golden Ratio Point" ),
+        I18N_NOOP( "The golden ratio point of a segment or two other points" ),
+        "segment_golden_point" );
+      m.merge( mpotp );
+      m.merge( mpos );
+      actions->add( new ConstructibleAction( &m, "objects_new_golden_point", Qt::Key_G ) );
+    };
+
     c = new SimpleObjectTypeConstructor(
       VectorType::instance(),
       I18N_NOOP( "Vector" ),

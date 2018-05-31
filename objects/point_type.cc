@@ -288,6 +288,36 @@ ObjectImp* MidPointType::calcx( const Coordinate& a, const Coordinate& b ) const
   return new PointImp( ( a + b ) / 2 );
 }
 
+static const ArgsParser::spec argsspecGoldenPoint[] =
+{
+  { PointImp::stype(), I18N_NOOP( "Construct the golden ratio point of this point and another point" ),
+    I18N_NOOP( "Select the first of the two points of which you want to construct the golden ratio point..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the golden ratio point of this point and another point" ),
+    I18N_NOOP( "Select the other of the two points of which you want to construct the golden ratio point..." ), false }
+};
+
+KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( GoldenPointType )
+
+GoldenPointType::GoldenPointType()
+  : ObjectABType( "GoldenPoint", argsspecGoldenPoint, 2 )
+{
+}
+
+GoldenPointType::~GoldenPointType()
+{
+}
+
+const GoldenPointType* GoldenPointType::instance()
+{
+  static const GoldenPointType t;
+  return &t;
+}
+
+ObjectImp* GoldenPointType::calcx( const Coordinate& a, const Coordinate& b ) const
+{
+  return new PointImp( a + (sqrt(5) - 1) * (b - a) / 2 );
+}
+
 bool ConstrainedPointType::inherits( int type ) const
 {
   return type == ID_ConstrainedPointType;
@@ -358,6 +388,11 @@ Args CursorPointType::sortArgs( const Args& args ) const
 }
 
 const ObjectImpType* MidPointType::resultId() const
+{
+  return PointImp::stype();
+}
+
+const ObjectImpType* GoldenPointType::resultId() const
 {
   return PointImp::stype();
 }

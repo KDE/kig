@@ -17,6 +17,7 @@ ecm_install_icons(ICONS
   22-actions-perpendicular.png
   32-actions-circlebps.png
   sc-actions-segment_midpoint.svgz
+  sc-actions-segment_golden_point.svgz
   32-actions-genericaffinity.png
   sc-actions-bezier4.svgz
   32-actions-ellipsebffp.png
@@ -117,6 +118,7 @@ ecm_install_icons(ICONS
   22-actions-genericaffinity.png
   32-actions-testcontains.png
   22-actions-segment_midpoint.png
+  22-actions-segment_golden_point.png
   32-actions-kig_text.png
   22-actions-conicasymptotes.png
   22-actions-directrix.png
@@ -220,6 +222,7 @@ ecm_install_icons(ICONS
   sc-actions-bezierN.svgz
   sc-actions-radicalline.svgz
   32-actions-segment_midpoint.png
+  32-actions-segment_golden_point.png
   sc-actions-slope.svgz
   32-actions-ray.png
   22-actions-projection.png

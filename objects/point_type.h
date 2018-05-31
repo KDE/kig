@@ -149,6 +149,18 @@ public:
   const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
 };
 
+class GoldenPointType
+  : public ObjectABType
+{
+  GoldenPointType();
+  ~GoldenPointType();
+public:
+  static const GoldenPointType* instance();
+  // calcx was an overloaded calc, which produced a compilation warning
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+};
+
 class MeasureTransportType
   : public ObjectType
 {

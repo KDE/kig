@@ -100,7 +100,7 @@ const QByteArrayList AbstractLineImp::properties() const
 
 int SegmentImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 5;
+  return Parent::numberOfProperties() + 6;
 }
 
 const QByteArrayList SegmentImp::propertiesInternalNames() const
@@ -108,6 +108,7 @@ const QByteArrayList SegmentImp::propertiesInternalNames() const
   QByteArrayList s = Parent::propertiesInternalNames();
   s << "length";
   s << "mid-point";
+  s << "golden-point";
   s << "support";
   s << "end-point-A";
   s << "end-point-B";
@@ -120,6 +121,7 @@ const QByteArrayList SegmentImp::properties() const
   QByteArrayList s = Parent::properties();
   s << I18N_NOOP( "Length" );
   s << I18N_NOOP( "Mid Point" );
+  s << I18N_NOOP( "Golden Ratio Point" );
   s << I18N_NOOP( "Support Line" );
   s << I18N_NOOP( "First End Point" );
   s << I18N_NOOP( "Second End Point" );
@@ -144,6 +146,8 @@ const char* SegmentImp::iconForProperty( int which ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "segment_midpoint"; // mid point
   else if ( which == Parent::numberOfProperties() + pnum++ )
+    return "segment_golden_point"; // golden ratio point
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return ""; // support line
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return "endpoint1"; // mid point
@@ -163,6 +167,8 @@ ObjectImp* SegmentImp::property( int which, const KigDocument& w ) const
     return new DoubleImp( mdata.dir().length() );
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return new PointImp( ( mdata.a + mdata.b ) / 2 );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return new PointImp( mdata.a + (sqrt(5) - 1) / 2 * (mdata.b - mdata.a) );
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return new LineImp( mdata.a, mdata.b );
   else if ( which == Parent::numberOfProperties() + pnum++ )

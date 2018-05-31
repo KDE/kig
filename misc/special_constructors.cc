@@ -2056,7 +2056,7 @@ QString GenericIntersectionConstructor::useText(
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] =
 {
-  { PointImp::stype(), I18N_NOOP( "Construct Midpoint of This Point and Another One" ),
+  { PointImp::stype(), I18N_NOOP( "Construct midpoint of this point and another one" ),
     I18N_NOOP( "Select the first of the points of which you want to construct the midpoint..." ), false },
   { PointImp::stype(), I18N_NOOP( "Construct the midpoint of this point and another one" ),
     I18N_NOOP( "Select the other of the points of which to construct the midpoint..." ), false }
@@ -2106,6 +2106,66 @@ void MidPointOfTwoPointsConstructor::plug( KigPart*, KigGUIAction* )
 }
 
 bool MidPointOfTwoPointsConstructor::isTransform() const
+{
+  return false;
+}
+
+static const ArgsParser::spec argsspecGoldenPointOfTwoPoints[] =
+{
+  { PointImp::stype(), I18N_NOOP( "Construct golden ratio point of this point and another one" ),
+    I18N_NOOP( "Select the first of the points of which you want to construct the golden ratio point..." ), false },
+  { PointImp::stype(), I18N_NOOP( "Construct the golden ratio point of this point and another one" ),
+    I18N_NOOP( "Select the other of the points of which to construct the golden ratio point..." ), false }
+};
+
+GoldenPointOfTwoPointsConstructor::GoldenPointOfTwoPointsConstructor()
+  : StandardConstructorBase( "Golden Ratio Point",
+                             "Construct the golden ratio point of two points",
+                             "bisection", mparser ),
+    mparser( argsspecGoldenPointOfTwoPoints, 2 )
+{
+}
+
+GoldenPointOfTwoPointsConstructor::~GoldenPointOfTwoPointsConstructor()
+{
+}
+
+void GoldenPointOfTwoPointsConstructor::drawprelim(
+  const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
+  const KigDocument& ) const
+{
+  if ( parents.size() != 2 ) return;
+  assert( parents[0]->imp()->inherits( PointImp::stype() ) );
+  assert( parents[1]->imp()->inherits( PointImp::stype() ) );
+  const Coordinate m =
+    ( static_cast<const PointImp*>( parents[0]->imp() )->coordinate() +
+      (sqrt(5) - 1) / 2 *
+      ( static_cast<const PointImp*>( parents[1]->imp() )->coordinate() -
+        static_cast<const PointImp*>( parents[0]->imp() )->coordinate()
+      )
+    );
+  drawer.draw( PointImp( m ), p, true );
+}
+
+std::vector<ObjectHolder*> GoldenPointOfTwoPointsConstructor::build(
+  const std::vector<ObjectCalcer*>& os, KigDocument& d, KigWidget& ) const
+{
+  ObjectTypeCalcer* seg = new ObjectTypeCalcer( SegmentABType::instance(), os );
+  seg->calc( d );
+//  int index = seg->imp()->propertiesInternalNames().indexOf( "golden-point" );
+//  assert( index != -1 );
+  ObjectPropertyCalcer* prop = new ObjectPropertyCalcer( seg, "golden-point" );
+  prop->calc( d );
+  std::vector<ObjectHolder*> ret;
+  ret.push_back( new ObjectHolder( prop ) );
+  return ret;
+}
+
+void GoldenPointOfTwoPointsConstructor::plug( KigPart*, KigGUIAction* )
+{
+}
+
+bool GoldenPointOfTwoPointsConstructor::isTransform() const
 {
   return false;
 }
