@@ -113,6 +113,7 @@ public:
   ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
   const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
   const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
   SegmentImp* copy() const Q_DECL_OVERRIDE;
 
@@ -168,6 +169,7 @@ public:
   ObjectImp* property( int which, const KigDocument& d ) const Q_DECL_OVERRIDE;
   const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
   const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
 
   RayImp* copy() const Q_DECL_OVERRIDE;
 

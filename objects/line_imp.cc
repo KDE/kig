@@ -628,7 +628,39 @@ bool AbstractLineImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return false;
   else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;
+  else assert( false );
+  return false;
+}
+
+bool SegmentImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return false;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
     return true;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else if ( which == Parent::numberOfProperties() + pnum++ )
+    return true;
+  else assert( false );
+  return false;
+}
+
+bool RayImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+{
+  int pnum = 0;
+
+  if ( which < Parent::numberOfProperties() )
+    return Parent::isPropertyDefinedOnOrThroughThisImp( which );
   else if ( which == Parent::numberOfProperties() + pnum++ )
     return true;
   else if ( which == Parent::numberOfProperties() + pnum++ )
