@@ -248,13 +248,13 @@ void KigPart::setupActions()
   aDeleteObjects  = new QAction(QIcon::fromTheme("edit-delete"), i18n("&Delete Objects"), this);
   actionCollection()->addAction("delete_objects", aDeleteObjects );
   connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
-  aDeleteObjects->setShortcut(QKeySequence(Qt::Key_Delete));
+  actionCollection()->setDefaultShortcut(aDeleteObjects, QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   aCancelConstruction  = new QAction(QIcon::fromTheme("process-stop"), i18n("Cancel Construction"), this);
   actionCollection()->addAction("cancel_construction", aCancelConstruction );
   connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
-  aCancelConstruction->setShortcut(QKeySequence(Qt::Key_Escape));
+  actionCollection()->setDefaultShortcut(aCancelConstruction, QKeySequence(Qt::Key_Escape));
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
@@ -262,7 +262,7 @@ void KigPart::setupActions()
   aRepeatLastConstruction = new QAction(QIcon::fromTheme("system-run"), i18n("Repeat Construction"), this);
   actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
   connect(aRepeatLastConstruction, SIGNAL(triggered(bool) ), SLOT(repeatLastConstruction()));
-  aRepeatLastConstruction->setShortcut(QKeySequence(Qt::Key_Z));
+  actionCollection()->setDefaultShortcut(aRepeatLastConstruction, QKeySequence(Qt::Key_Z));
   aRepeatLastConstruction->setToolTip(
       i18n("Repeat the last construction (with new data)"));
   aRepeatLastConstruction->setEnabled(false);
