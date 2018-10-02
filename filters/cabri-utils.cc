@@ -586,7 +586,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
       else
         myobj->text = txt;
     }
-    else if ( line.startsWith( "NbD:" ) )
+    else if ( line.startsWith( QLatin1String( "NbD:" ) ) )
     {
       // TODO
     }
@@ -692,7 +692,7 @@ bool CabriReader_v12::readStyles( const QString& line, CabriObject_v12* myobj )
     {
       myobj->visible = false;
     }
-    else if ( (*it).startsWith( "DS:" ) )
+    else if ( (*it).startsWith( QLatin1String( "DS:" ) ) )
     {
       QRegExp ticks( "DS:(\\d+)\\s(\\d+)" );
       if ( ticks.exactMatch( (*it) ) )
@@ -704,12 +704,12 @@ bool CabriReader_v12::readStyles( const QString& line, CabriObject_v12* myobj )
       }
     }
     // colors
-    else if ( (*it).startsWith( "color:" ) )
+    else if ( (*it).startsWith( QLatin1String( "color:" ) ) )
     {
       QString color = (*it).remove( 0, 6 );
       myobj->color = translateColor( color );
     }
-    else if ( (*it).startsWith( "fill color:" ) )
+    else if ( (*it).startsWith( QLatin1String( "fill color:" ) ) )
     {
       QString color = (*it).remove( 0, 11 );
       myobj->fillColor = translateColor( color );
@@ -746,7 +746,7 @@ bool CabriReader_v12::readStyles( const QString& line, CabriObject_v12* myobj )
       myobj->gonio = CabriNS::CG_Deg;
     }
     // object ticks
-    else if ( (*it).startsWith( "marks nb:" ) )
+    else if ( (*it).startsWith( QLatin1String( "marks nb:" ) ) )
     {
       QString strticks = (*it).remove( 0, 9 );
       myobj->ticks = strticks.toInt( &ok );

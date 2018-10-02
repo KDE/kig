@@ -120,7 +120,7 @@ private:
   spec findSpec( const ObjectImp* o, const Args& parents ) const;
 public:
   ArgsParser( const struct spec* args, int n );
-  ArgsParser( const std::vector<spec>& args );
+  explicit ArgsParser( const std::vector<spec>& args );
   ArgsParser();
   ~ArgsParser();
 

@@ -141,7 +141,7 @@ protected:
   ConicCartesianData mcartdata;
   ConicPolarData mpolardata;
 public:
-  ConicImpCart( const ConicCartesianData& data );
+  explicit ConicImpCart( const ConicCartesianData& data );
   ~ConicImpCart();
   ConicImpCart* copy() const Q_DECL_OVERRIDE;
 
@@ -158,7 +158,7 @@ class ConicImpPolar
 {
   ConicPolarData mdata;
 public:
-  ConicImpPolar( const ConicPolarData& data );
+  explicit ConicImpPolar( const ConicPolarData& data );
   ~ConicImpPolar();
   ConicImpPolar* copy() const Q_DECL_OVERRIDE;
 

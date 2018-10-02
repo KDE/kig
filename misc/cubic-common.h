@@ -61,7 +61,7 @@ public:
       coeffs[8] = a122;
       coeffs[9] = a222;
     }
-  CubicCartesianData( const double incoeffs[10] );
+  explicit CubicCartesianData( const double incoeffs[10] );
 
   /**
    * Create an invalid CubicCartesianData. This is a special state of a

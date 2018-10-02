@@ -137,7 +137,7 @@ public:
    * your parent ObjectImp type.  Never give 0 as parent, except for
    * the top ObjectImp ObjectImpType.
    */
-  ObjectImpType(
+  explicit ObjectImpType(
     const ObjectImpType* parent, const char* internalname,
     const char* translatedname,
     const char* selectstatement,

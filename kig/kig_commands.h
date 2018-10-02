@@ -101,7 +101,7 @@ class AddObjectsTask
   : public KigCommandTask
 {
 public:
-  AddObjectsTask( const std::vector<ObjectHolder*>& os);
+  explicit AddObjectsTask( const std::vector<ObjectHolder*>& os);
   ~AddObjectsTask ();
   void execute( KigPart& doc ) Q_DECL_OVERRIDE;
   void unexecute( KigPart& doc ) Q_DECL_OVERRIDE;
@@ -115,7 +115,7 @@ class RemoveObjectsTask
   : public AddObjectsTask
 {
 public:
-  RemoveObjectsTask( const std::vector<ObjectHolder*>& os );
+  explicit RemoveObjectsTask( const std::vector<ObjectHolder*>& os );
   void execute( KigPart& ) Q_DECL_OVERRIDE;
   void unexecute( KigPart& ) Q_DECL_OVERRIDE;
 };
@@ -157,8 +157,8 @@ public:
   /**
    * all the DataObjects in \p objs will be watched..
    */
-  MonitorDataObjects( const std::vector<ObjectCalcer*>& objs );
-  MonitorDataObjects( ObjectCalcer* c );
+  explicit MonitorDataObjects( const std::vector<ObjectCalcer*>& objs );
+  explicit MonitorDataObjects( ObjectCalcer* c );
   ~MonitorDataObjects();
 
   /**
@@ -185,7 +185,7 @@ public:
   /**
    * a command that changes the coordinate-system to \p s ..
    */
-  ChangeCoordSystemTask( CoordinateSystem* s );
+  explicit ChangeCoordSystemTask( CoordinateSystem* s );
   ~ChangeCoordSystemTask();
 
   void execute( KigPart& doc ) Q_DECL_OVERRIDE;

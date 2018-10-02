@@ -45,7 +45,7 @@ class TypesModel
   std::vector<BaseListElement*> melems;
 
 public:
-  TypesModel( QObject* parent = 0 );
+  explicit TypesModel( QObject* parent = 0 );
   virtual ~TypesModel();
 
   void addMacros( const std::vector<Macro*>& macros );

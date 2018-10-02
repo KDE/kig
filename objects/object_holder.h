@@ -58,7 +58,7 @@ public:
    * equivalent to the previous constructor, but with a default
    * ObjectDrawer and no name.
    */
-  ObjectHolder( ObjectCalcer* calcer );
+  explicit ObjectHolder( ObjectCalcer* calcer );
   ~ObjectHolder();
 
   const ObjectImp* imp() const;

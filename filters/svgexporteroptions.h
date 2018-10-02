@@ -30,7 +30,7 @@ class SVGExporterOptions
   Ui_SVGExporterOptionsWidget* expwidget;
 
 public:
-  SVGExporterOptions( QWidget* parent );
+  explicit SVGExporterOptions( QWidget* parent );
   ~SVGExporterOptions();
 
   void setGrid( bool grid );

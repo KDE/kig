@@ -244,7 +244,7 @@ public:
    * been constructed using new, and this class is responsible for
    * deleting it.
    */
-  ObjectConstCalcer( ObjectImp* imp );
+  explicit ObjectConstCalcer( ObjectImp* imp );
   ~ObjectConstCalcer();
 
   const ObjectImp* imp() const Q_DECL_OVERRIDE;

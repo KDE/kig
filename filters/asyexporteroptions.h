@@ -30,7 +30,7 @@ class AsyExporterOptions
   Ui_AsyExporterOptionsWidget* expwidget;
 
 public:
-  AsyExporterOptions( QWidget* parent );
+  explicit AsyExporterOptions( QWidget* parent );
   ~AsyExporterOptions();
 
   void setGrid( bool grid );

@@ -352,8 +352,8 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
   okButton->setDefault( true );
   okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
-  connect(buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
-  connect(buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
   mainLayout->addWidget( buttonBox );
 
   mtypeswidget = new Ui_TypesWidget();
@@ -380,22 +380,22 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->resizeColumnToContents( 0 );
 
   popup = new QMenu( this );
-  popup->addAction( QIcon::fromTheme( "document-properties" ), i18n( "&Edit..." ), this, SLOT( editType() ) );
-  popup->addAction( QIcon::fromTheme( "edit-delete" ), i18n( "&Delete" ), this, SLOT( deleteType() ) );
+  popup->addAction( QIcon::fromTheme( "document-properties" ), i18n( "&Edit..." ), this, SLOT(editType()) );
+  popup->addAction( QIcon::fromTheme( "edit-delete" ), i18n( "&Delete" ), this, SLOT(deleteType()) );
   popup->addSeparator();
-  popup->addAction( QIcon::fromTheme( "document-export" ), i18n( "E&xport..." ), this, SLOT( exportType() ) );
+  popup->addAction( QIcon::fromTheme( "document-export" ), i18n( "E&xport..." ), this, SLOT(exportType()) );
 
   // saving types
   mpart.saveTypes();
 
-  connect( mtypeswidget->buttonExport, SIGNAL( clicked() ), this, SLOT( exportType() ) );
-  connect( mtypeswidget->buttonImport, SIGNAL( clicked() ), this, SLOT( importTypes() ) );
-  connect( mtypeswidget->buttonRemove, SIGNAL( clicked() ), this, SLOT( deleteType() ) );
-  connect( mtypeswidget->buttonEdit, SIGNAL( clicked() ), this, SLOT( editType() ) );
-  connect( mtypeswidget->typeList, SIGNAL( customContextMenuRequested( const QPoint& ) ), this, SLOT( typeListContextMenu( const QPoint& ) ) );
-  connect( buttonBox->button( QDialogButtonBox::Help ), SIGNAL( clicked() ), this, SLOT( slotHelp() ) );
-  connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
-  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
+  connect( mtypeswidget->buttonExport, SIGNAL(clicked()), this, SLOT(exportType()) );
+  connect( mtypeswidget->buttonImport, SIGNAL(clicked()), this, SLOT(importTypes()) );
+  connect( mtypeswidget->buttonRemove, SIGNAL(clicked()), this, SLOT(deleteType()) );
+  connect( mtypeswidget->buttonEdit, SIGNAL(clicked()), this, SLOT(editType()) );
+  connect( mtypeswidget->typeList, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(typeListContextMenu(QPoint)) );
+  connect( buttonBox->button( QDialogButtonBox::Help ), SIGNAL(clicked()), this, SLOT(slotHelp()) );
+  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()) );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL(clicked()), this, SLOT(slotCancel()) );
 
   resize( 460, 270 );
 }
@@ -492,7 +492,7 @@ void TypesDialog::importTypes()
   {
     std::vector<Macro*> nmacros;
 #ifdef WITH_GEOGEBRA
-    if( i->endsWith( ".ggt" ) )// The input file is a Geogebra Tool file..
+    if( i->endsWith( QLatin1String( ".ggt" ) ) )// The input file is a Geogebra Tool file..
     {
       loadGeogebraTools( *i, macros, mpart );
       continue;

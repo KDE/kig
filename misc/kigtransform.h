@@ -45,7 +45,7 @@ public:
   Transformation( double data[3][3], bool ishomothety );
 
   /**
-   * Apply this Tranformation.  Apply this transformation to the
+   * Apply this Transformation.  Apply this transformation to the
    * Coordinate c.  Can return an invalid Coordinate.
    * apply0 assumes that c indicates a point at infinity, having
    * [0, c.x, c.y] as homogeneous coordinates

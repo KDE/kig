@@ -96,7 +96,7 @@ public:
   /**
    * Construct a new segment from a LineData.
    */
-  SegmentImp( const LineData& d );
+  explicit SegmentImp( const LineData& d );
 
   void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const Q_DECL_OVERRIDE;
@@ -152,7 +152,7 @@ public:
   /**
    * Construct a ray from a LineData.
    */
-  RayImp( const LineData& d );
+  explicit RayImp( const LineData& d );
 
   void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const Q_DECL_OVERRIDE;
@@ -202,7 +202,7 @@ public:
   /**
    * Construct a LineImp from a LineData.
    */
-  LineImp( const LineData& d );
+  explicit LineImp( const LineData& d );
   void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
   bool contains( const Coordinate& p, int width, const KigWidget& si ) const Q_DECL_OVERRIDE;
   Rect surroundingRect() const Q_DECL_OVERRIDE;

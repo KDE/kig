@@ -145,7 +145,7 @@ class CabriReader_v10
   : public CabriReader
 {
 public:
-  CabriReader_v10( const KigFilterCabri* filter );
+  explicit CabriReader_v10( const KigFilterCabri* filter );
   virtual ~CabriReader_v10();
 
   bool readWindowMetrics( QFile& f ) Q_DECL_OVERRIDE;
@@ -161,7 +161,7 @@ private:
   bool readStyles( const QString& s, CabriObject_v12* myobj );
 
 public:
-  CabriReader_v12( const KigFilterCabri* filter );
+  explicit CabriReader_v12( const KigFilterCabri* filter );
   virtual ~CabriReader_v12();
 
   static QColor translateColor( const QString& s );

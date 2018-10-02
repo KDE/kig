@@ -15,9 +15,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // 02110-1301, USA.
 
-#include <algorithm>
-
 #include "object_hierarchy.h"
+
+#include <algorithm>
 
 #include "../objects/object_holder.h"
 #include "../objects/other_type.h"

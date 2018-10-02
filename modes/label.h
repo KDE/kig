@@ -107,7 +107,7 @@ class TextLabelConstructionMode
   : public TextLabelModeBase
 {
 public:
-  TextLabelConstructionMode( KigPart& d );
+  explicit TextLabelConstructionMode( KigPart& d );
   ~TextLabelConstructionMode();
 
   void finish( const Coordinate& coord, const QString& s,
@@ -135,7 +135,7 @@ class NumericLabelMode
   : public KigMode
 {
 public:
-  NumericLabelMode( KigPart& d );
+  explicit NumericLabelMode( KigPart& d );
   ~NumericLabelMode();
 
   void redrawScreen( KigWidget* w ) Q_DECL_OVERRIDE;

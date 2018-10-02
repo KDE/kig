@@ -60,7 +60,7 @@ public:
       coeffs[4] = e;
       coeffs[5] = f;
     }
-  ConicCartesianData( const double incoeffs[6] );
+  explicit ConicCartesianData( const double incoeffs[6] );
 
   /**
    * Invalid conic.

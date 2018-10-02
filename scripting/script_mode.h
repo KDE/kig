@@ -91,7 +91,7 @@ class ScriptCreationMode
   : public ScriptModeBase
 {
 public:
-  ScriptCreationMode( KigPart& doc );
+  explicit ScriptCreationMode( KigPart& doc );
   virtual ~ScriptCreationMode();
 
   virtual bool queryFinish();

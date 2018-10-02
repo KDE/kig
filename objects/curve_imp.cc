@@ -262,7 +262,7 @@ double CurveImp::revert (int n) const
         t += b;
    nl >>= 1;
  }
-  t += b/2 - b*(rand() / (RAND_MAX+1.0));
+  t += b/2 - b*(qrand() / (RAND_MAX+1.0));
   assert(t <1 && t >0);
   return (t);
 }

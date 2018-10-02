@@ -27,7 +27,7 @@ class NormalMode
   : public BaseMode
 {
 public:
-  NormalMode( KigPart& );
+  explicit NormalMode( KigPart& );
   ~NormalMode();
 
   using BaseMode::midClicked;

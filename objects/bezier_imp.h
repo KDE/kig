@@ -49,7 +49,7 @@ public:
   /**
    * Constructs a Bézier curve.
    */
-  BezierImp( const std::vector<Coordinate>& points );
+  explicit BezierImp( const std::vector<Coordinate>& points );
   ~BezierImp();
   BezierImp* copy() const Q_DECL_OVERRIDE;
 

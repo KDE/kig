@@ -41,7 +41,7 @@ class ImageExporterOptions
   // value like to user changes...
   bool minternallysettingstuff;
 public:
-  ImageExporterOptions( QWidget* parent );
+  explicit ImageExporterOptions( QWidget* parent );
   ~ImageExporterOptions();
 
   void setGrid( bool grid );

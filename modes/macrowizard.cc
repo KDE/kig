@@ -161,7 +161,7 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
 
   registerField( "name*", editname );
   registerField( "description", editdesc );
-  registerField( "icon", iconbutton, "icon", SIGNAL( iconChanged( const QString& ) ) );
+  registerField( "icon", iconbutton, "icon", SIGNAL(iconChanged(QString)) );
 }
 
 
@@ -179,9 +179,9 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
   setPage( FinalArgsPageId, mfinalArgsPage );
   setPage( MacroInfoPageId, new MacroInfoPage( this ) );
 
-  connect( this, SIGNAL( helpRequested() ), this,
-           SLOT( slotHelpClicked() ) );
-  connect( this, SIGNAL( currentIdChanged( int ) ), this, SLOT( currentIdChanged( int ) ) );
+  connect( this, SIGNAL(helpRequested()), this,
+           SLOT(slotHelpClicked()) );
+  connect( this, SIGNAL(currentIdChanged(int)), this, SLOT(currentIdChanged(int)) );
 }
 
 MacroWizard::~MacroWizard()

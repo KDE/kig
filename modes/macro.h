@@ -28,7 +28,7 @@ class DefineMacroMode
   : public BaseMode
 {
 public:
-  DefineMacroMode( KigPart& );
+  explicit DefineMacroMode( KigPart& );
   ~DefineMacroMode();
 
   void dragRect( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;

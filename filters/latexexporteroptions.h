@@ -39,7 +39,7 @@ public:
     FormatCount
   };
 
-  LatexExporterOptions( QWidget* parent );
+  explicit LatexExporterOptions( QWidget* parent );
   ~LatexExporterOptions();
 
   void setFormat( LatexOutputFormat format );

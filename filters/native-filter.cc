@@ -111,7 +111,7 @@ KigDocument* KigFilterNative::load( const QString& file)
 
   QFile kigdoc( file );
   bool iscompressed = false;
-  if ( !file.endsWith( ".kig", Qt::CaseInsensitive ) )
+  if ( !file.endsWith( QLatin1String( ".kig" ), Qt::CaseInsensitive ) )
   {
     // the file is compressed, so we have to decompress it and fetch the
     // kig file inside it...
@@ -122,7 +122,7 @@ KigDocument* KigFilterNative::load( const QString& file)
       KIG_FILTER_PARSE_ERROR;
 
     QString tempname = file.section( '/', -1 );
-    if ( file.endsWith( ".kigz", Qt::CaseInsensitive ) )
+    if ( file.endsWith( QLatin1String( ".kigz" ), Qt::CaseInsensitive ) )
     {
       tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     }
@@ -743,7 +743,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     stdoutstream.setCodec( "UTF-8" );
     return save07( data, stdoutstream );
   }
-  if ( !outfile.endsWith( ".kig", Qt::CaseInsensitive ) )
+  if ( !outfile.endsWith( QLatin1String( ".kig" ), Qt::CaseInsensitive ) )
   {
     // the user wants to save a compressed file, so we have to save our kig
     // file to a temp file and then compress it...
@@ -753,7 +753,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
       return false;
 
     QString tempname = outfile.section( '/', -1 );
-    if ( outfile.endsWith( ".kigz", Qt::CaseInsensitive ) )
+    if ( outfile.endsWith( QLatin1String( ".kigz" ), Qt::CaseInsensitive ) )
       tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     else
       return false;

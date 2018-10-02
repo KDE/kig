@@ -25,7 +25,7 @@
 
 // this class is copied from coordinate_system.cpp, with the following differences:
 // - QDoubleValidator is used instead of KDoubleValidator
-// this way, we avoid all the dependancies needed by the coordinate systems
+// this way, we avoid all the dependencies needed by the coordinate systems
 class CoordinateValidator
   : public QValidator
 {

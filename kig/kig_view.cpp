@@ -306,7 +306,7 @@ KigView::KigView( KigPart* part,
     mupdatingscrollbars( false ),
     mrealwidget( 0 ), mpart( part )
 {
-  connect( part, SIGNAL( recenterScreen() ), this, SLOT( slotInternalRecenterScreen() ) );
+  connect( part, SIGNAL(recenterScreen()), this, SLOT(slotInternalRecenterScreen()) );
 
   mlayout = new QGridLayout( this );
   mlayout->setMargin( 2 );
@@ -315,16 +315,16 @@ KigView::KigView( KigPart* part,
   mrightscroll->setObjectName( "Right Scrollbar" );
   // TODO: make this configurable...
   mrightscroll->setTracking( true );
-  connect( mrightscroll, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slotRightScrollValueChanged( int ) ) );
-  connect( mrightscroll, SIGNAL( sliderReleased() ),
-           this, SLOT( updateScrollBars() ) );
+  connect( mrightscroll, SIGNAL(valueChanged(int)),
+           this, SLOT(slotRightScrollValueChanged(int)) );
+  connect( mrightscroll, SIGNAL(sliderReleased()),
+           this, SLOT(updateScrollBars()) );
   mbottomscroll = new QScrollBar( Qt::Horizontal, this );
   mbottomscroll->setObjectName( "Bottom Scrollbar" );
-  connect( mbottomscroll, SIGNAL( valueChanged( int ) ),
-           this, SLOT( slotBottomScrollValueChanged( int ) ) );
-  connect( mbottomscroll, SIGNAL( sliderReleased() ),
-           this, SLOT( updateScrollBars() ) );
+  connect( mbottomscroll, SIGNAL(valueChanged(int)),
+           this, SLOT(slotBottomScrollValueChanged(int)) );
+  connect( mbottomscroll, SIGNAL(sliderReleased()),
+           this, SLOT(updateScrollBars()) );
   mrealwidget = new KigWidget( part, this, this, fullscreen );
   mrealwidget->setObjectName( "Kig Widget" );
   mlayout->addWidget( mbottomscroll, 1, 0 );

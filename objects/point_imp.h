@@ -38,7 +38,7 @@ public:
   /**
    * Construct a PointImp with coordinate c.
    */
-  PointImp( const Coordinate& c );
+  explicit PointImp( const Coordinate& c );
   ~PointImp();
 
   Rect surroundingRect() const Q_DECL_OVERRIDE;
@@ -82,7 +82,7 @@ class BogusPointImp
   : public PointImp
 {
 public:
-  BogusPointImp( const Coordinate& c );
+  explicit BogusPointImp( const Coordinate& c );
   ~BogusPointImp();
   static const ObjectImpType* stype();
   const ObjectImpType* type() const Q_DECL_OVERRIDE;

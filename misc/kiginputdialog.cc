@@ -84,8 +84,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   d->okButton = buttonBox->button( QDialogButtonBox::Ok );
   d->okButton->setDefault( true );
   d->okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
-  connect( buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
-  connect( buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
+  connect( buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
+  connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
 
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
   d->m_coord2 = c2 ? Coordinate( *c2 ) : Coordinate::invalidCoord();
@@ -111,8 +111,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
   }
   mainlay->addWidget( d->m_lineEditFirst );
 
-  connect( d->m_lineEditFirst, SIGNAL(textChanged(const QString&)),
-           this, SLOT(slotCoordsChanged(const QString&)) );
+  connect( d->m_lineEditFirst, SIGNAL(textChanged(QString)),
+           this, SLOT(slotCoordsChanged(QString)) );
 
   if ( d->m_coord2.valid() )
   {
@@ -121,8 +121,8 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
     d->m_lineEditSecond->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord2, *d->m_doc ) );
     mainlay->addWidget( d->m_lineEditSecond );
 
-    connect( d->m_lineEditSecond, SIGNAL(textChanged(const QString&)),
-             this, SLOT(slotCoordsChanged(const QString&)) );
+    connect( d->m_lineEditSecond, SIGNAL(textChanged(QString)),
+             this, SLOT(slotCoordsChanged(QString)) );
   }
 
   resize( minimumSizeHint() );
@@ -149,8 +149,8 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   okButton->setDefault( true );
   okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
   d->okButton = okButton;
-  connect( buttonBox, SIGNAL( accepted() ), this, SLOT( accept() ) );
-  connect( buttonBox, SIGNAL( rejected() ), this, SLOT( reject() ) );
+  connect( buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
+  connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
 
   d->m_gonio = g;
   d->m_gonioIsNum = true;
@@ -181,8 +181,8 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
               "the left will be converted to the new selected unit." ) );
   horlay->addWidget( d->m_comboBox );
 
-  connect( d->m_lineEditFirst, SIGNAL(textChanged(const QString&)),
-           this, SLOT(slotGonioTextChanged(const QString&)) );
+  connect( d->m_lineEditFirst, SIGNAL(textChanged(QString)),
+           this, SLOT(slotGonioTextChanged(QString)) );
   connect( d->m_comboBox, SIGNAL(activated(int)),
            this, SLOT(slotGonioSystemChanged(int)) );
 

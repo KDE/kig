@@ -140,7 +140,7 @@ ConicPolarData::ConicPolarData( const ConicCartesianData& cartdata )
   e += 2*yf;   // this should be zero!
 
   // now: a > 0 -> ellipse
-  //      a = 0 -> parabula
+  //      a = 0 -> parabola
   //      a < 0 -> hyperbola
 
   double eccentricity = sqrt(1.0 - a);
@@ -221,7 +221,7 @@ const ConicCartesianData calcConicThroughPoints (
     // force the symmetry axes to be
     // parallel to the coordinate system (zero tilt): c = 0
     if (constraints[i] == zerotilt) matrix[numpoints][2] = 1.0;
-    // force a parabula (if zerotilt): b = 0
+    // force a parabola (if zerotilt): b = 0
     if (constraints[i] == parabolaifzt) matrix[numpoints][1] = 1.0;
     // force a circle (if zerotilt): a = b
     if (constraints[i] == circleifzt) {
@@ -617,7 +617,7 @@ const LineData calcConicRadical( const ConicCartesianData& cequation1,
   fval = df + lambda*fval;         // d + xc + xxb + xxx
 
   if (fabs(p0a) < 1e-7)
-  {   // this is the case if we intersect two vertical parabulas!
+  {   // this is the case if we intersect two vertical parabolas!
     p0a = 1e-7;  // fall back to the one zero case
   }
   if (p0a < 0)

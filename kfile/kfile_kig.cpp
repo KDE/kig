@@ -58,7 +58,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
   QString sfile =  metainfo.path();
   bool iscompressed = false;
   QFile f( sfile );
-  if ( !sfile.endsWith( ".kig", Qt::CaseInsensitive ) )
+  if ( !sfile.endsWith( QLatin1String(".kig"), Qt::CaseInsensitive ) )
   {
     iscompressed = true;
 
@@ -67,7 +67,7 @@ bool KigPlugin::readInfo( KFileMetaInfo& metainfo, uint /*what*/ )
       return false;
 
     QString tempname = sfile.section( '/', -1 );
-    if ( sfile.endsWith( ".kigz", Qt::CaseInsensitive ) )
+    if ( sfile.endsWith( QLatin1String(".kigz"), Qt::CaseInsensitive ) )
     {
       tempname.remove( QRegExp( "\\.[Kk][Ii][Gg][Zz]$" ) );
     }

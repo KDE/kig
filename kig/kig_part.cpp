@@ -86,7 +86,7 @@ QStringList getDataFiles( const QString & folder )
     {
       const QString fileName = folderIterator.next();
 
-      if ( fileName.endsWith( ".kigt" ) )
+      if ( fileName.endsWith( QLatin1String( ".kigt" ) ) )
       {
         dataFiles << fileName;
       }
@@ -106,7 +106,7 @@ SetCoordinateSystemAction::SetCoordinateSystemAction(
 {
   setItems( CoordinateSystemFactory::names() );
   setCurrentItem( md.document().coordinateSystem().id() );
-  connect( this, SIGNAL( triggered( int ) ), this, SLOT( slotActivated( int ) ) );
+  connect( this, SIGNAL(triggered(int)), this, SLOT(slotActivated(int)) );
   if(parent)
     parent->addAction("settings_set_coordinate_system", this);
 }
@@ -213,7 +213,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   mhistory = new QUndoStack();
   KUndoActions::createUndoAction( mhistory, actionCollection() );
   KUndoActions::createRedoAction( mhistory, actionCollection() );
-  connect( mhistory, SIGNAL( cleanChanged( bool ) ), this, SLOT( setHistoryClean( bool ) ) );
+  connect( mhistory, SIGNAL(cleanChanged(bool)), this, SLOT(setHistoryClean(bool)) );
 
   // we are read-write by default
   setReadWrite(true);
@@ -230,30 +230,30 @@ void KigPart::setupActions()
   (void) KStandardAction::save(this, SLOT(fileSave()), actionCollection());
 
   // print actions
-  (void) KStandardAction::print( this, SLOT( filePrint() ), actionCollection() );
-  (void) KStandardAction::printPreview( this, SLOT( filePrintPreview() ), actionCollection() );
+  (void) KStandardAction::print( this, SLOT(filePrint()), actionCollection() );
+  (void) KStandardAction::printPreview( this, SLOT(filePrintPreview()), actionCollection() );
 
   // selection actions
   aSelectAll = KStandardAction::selectAll(
-    this, SLOT( slotSelectAll() ), actionCollection() );
+    this, SLOT(slotSelectAll()), actionCollection() );
   aDeselectAll = KStandardAction::deselect(
-    this, SLOT( slotDeselectAll() ), actionCollection() );
+    this, SLOT(slotDeselectAll()), actionCollection() );
   aInvertSelection  = new QAction(i18n("Invert Selection"), this);
   actionCollection()->addAction("edit_invert_selection", aInvertSelection );
-  connect(aInvertSelection, SIGNAL(triggered(bool) ), SLOT( slotInvertSelection() ));
+  connect(aInvertSelection, SIGNAL(triggered(bool)), SLOT(slotInvertSelection()));
 
   // we need icons...
   KIconLoader* l = iconLoader();
 
   aDeleteObjects  = new QAction(QIcon::fromTheme("edit-delete"), i18n("&Delete Objects"), this);
   actionCollection()->addAction("delete_objects", aDeleteObjects );
-  connect(aDeleteObjects, SIGNAL(triggered(bool) ), SLOT(deleteObjects()));
+  connect(aDeleteObjects, SIGNAL(triggered(bool)), SLOT(deleteObjects()));
   actionCollection()->setDefaultShortcut(aDeleteObjects, QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
   aCancelConstruction  = new QAction(QIcon::fromTheme("process-stop"), i18n("Cancel Construction"), this);
   actionCollection()->addAction("cancel_construction", aCancelConstruction );
-  connect(aCancelConstruction, SIGNAL(triggered(bool) ), SLOT(cancelConstruction()));
+  connect(aCancelConstruction, SIGNAL(triggered(bool)), SLOT(cancelConstruction()));
   actionCollection()->setDefaultShortcut(aCancelConstruction, QKeySequence(Qt::Key_Escape));
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
@@ -261,7 +261,7 @@ void KigPart::setupActions()
 
   aRepeatLastConstruction = new QAction(QIcon::fromTheme("system-run"), i18n("Repeat Construction"), this);
   actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
-  connect(aRepeatLastConstruction, SIGNAL(triggered(bool) ), SLOT(repeatLastConstruction()));
+  connect(aRepeatLastConstruction, SIGNAL(triggered(bool)), SLOT(repeatLastConstruction()));
   actionCollection()->setDefaultShortcut(aRepeatLastConstruction, QKeySequence(Qt::Key_Z));
   aRepeatLastConstruction->setToolTip(
       i18n("Repeat the last construction (with new data)"));
@@ -269,84 +269,84 @@ void KigPart::setupActions()
 
   aShowHidden  = new QAction(i18n("U&nhide All"), this);
   actionCollection()->addAction("edit_unhide_all", aShowHidden );
-  connect(aShowHidden, SIGNAL(triggered(bool) ), SLOT( showHidden() ));
+  connect(aShowHidden, SIGNAL(triggered(bool)), SLOT(showHidden()));
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
   aNewMacro  = new QAction(QIcon::fromTheme("system-run"), i18n("&New Macro..."), this);
   actionCollection()->addAction("macro_action", aNewMacro );
-  connect(aNewMacro, SIGNAL(triggered(bool) ), SLOT(newMacro()));
+  connect(aNewMacro, SIGNAL(triggered(bool)), SLOT(newMacro()));
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes  = new QAction(i18n("Manage &Types..."), this);
   actionCollection()->addAction("types_edit", aConfigureTypes );
-  connect(aConfigureTypes, SIGNAL(triggered(bool) ), SLOT(editTypes()));
+  connect(aConfigureTypes, SIGNAL(triggered(bool)), SLOT(editTypes()));
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
   aBrowseHistory  = new QAction(QIcon::fromTheme("view-history"), i18n("&Browse History..."), this);
   actionCollection()->addAction("browse_history", aBrowseHistory );
-  connect( aBrowseHistory, SIGNAL( triggered( bool ) ), SLOT( browseHistory() ) );
+  connect( aBrowseHistory, SIGNAL(triggered(bool)), SLOT(browseHistory()) );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
                                                actionCollection() );
 
-  QAction * a = KStandardAction::zoomIn( m_widget, SLOT( slotZoomIn() ),
+  QAction * a = KStandardAction::zoomIn( m_widget, SLOT(slotZoomIn()),
                                    actionCollection() );
   a->setToolTip( i18n( "Zoom in on the document" ) );
   a->setWhatsThis( i18n( "Zoom in on the document" ) );
 
-  a = KStandardAction::zoomOut( m_widget, SLOT( slotZoomOut() ),
+  a = KStandardAction::zoomOut( m_widget, SLOT(slotZoomOut()),
                            actionCollection() );
   a->setToolTip( i18n( "Zoom out of the document" ) );
   a->setWhatsThis( i18n( "Zoom out of the document" ) );
 
-  a = KStandardAction::fitToPage( m_widget, SLOT( slotRecenterScreen() ),
+  a = KStandardAction::fitToPage( m_widget, SLOT(slotRecenterScreen()),
                              actionCollection() );
   // grr.. why isn't there an icon for this..
   a->setIcon( QIcon( new KIconEngine( "view_fit_to_page", l ) ) );
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
-  a = actionCollection()->addAction(KStandardAction::FullScreen, "fullscreen", m_widget, SLOT( toggleFullScreen() ));
+  a = actionCollection()->addAction(KStandardAction::FullScreen, "fullscreen", m_widget, SLOT(toggleFullScreen()));
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
   a  = new QAction(QIcon::fromTheme("zoom-fit-best"), i18n("&Select Shown Area"), this);
   actionCollection()->addAction("view_select_shown_rect", a );
-  connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomRect() ));
+  connect(a, SIGNAL(triggered(bool)), m_widget, SLOT(zoomRect()));
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   a  = new QAction(QIcon::fromTheme("zoom-original"), i18n("S&elect Zoom Area"), this);
   actionCollection()->addAction("view_zoom_area", a );
-  connect(a, SIGNAL(triggered(bool) ), m_widget, SLOT( zoomArea() ));
+  connect(a, SIGNAL(triggered(bool)), m_widget, SLOT(zoomArea()));
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   aSetCoordinatePrecision = new QAction(i18n("Set Coordinate &Precision..."), this);
   actionCollection()->addAction("settings_set_coordinate_precision", aSetCoordinatePrecision);
   aSetCoordinatePrecision->setToolTip( i18n("Set the floating point precision of coordinates in the document. " ));
-  connect(aSetCoordinatePrecision, SIGNAL( triggered() ), this, SLOT( setCoordinatePrecision() ));
+  connect(aSetCoordinatePrecision, SIGNAL(triggered()), this, SLOT(setCoordinatePrecision()));
   
   aToggleGrid  = new KToggleAction(i18n("Show &Grid"), this);
   actionCollection()->addAction("settings_show_grid", aToggleGrid );
   aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
   aToggleGrid->setChecked( true );
-  connect( aToggleGrid, SIGNAL( triggered() ), this, SLOT( toggleGrid() ) );
+  connect( aToggleGrid, SIGNAL(triggered()), this, SLOT(toggleGrid()) );
 
   aToggleAxes  = new KToggleAction(i18n("Show &Axes"), this);
   actionCollection()->addAction("settings_show_axes", aToggleAxes );
   aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
   aToggleAxes->setChecked( true );
-  connect( aToggleAxes, SIGNAL( triggered() ), this, SLOT( toggleAxes() ) );
+  connect( aToggleAxes, SIGNAL(triggered()), this, SLOT(toggleAxes()) );
 
   aToggleNightVision  = new KToggleAction(i18n("Wear Infrared Glasses"), this);
   actionCollection()->addAction("settings_toggle_nightvision", aToggleNightVision );
   aToggleNightVision->setToolTip( i18n( "Enable/disable hidden objects' visibility." ) );
   aToggleNightVision->setChecked( false );
-  connect( aToggleNightVision, SIGNAL( triggered() ), this, SLOT( toggleNightVision() ) );
+  connect( aToggleNightVision, SIGNAL(triggered()), this, SLOT(toggleNightVision()) );
 
   // select coordinate system KActionMenu..
   aCoordSystem = new SetCoordinateSystemAction( *this, actionCollection() );
@@ -834,7 +834,7 @@ void KigPart::setupMacroTypes()
   };
   // hack: we need to plug the action lists _after_ the gui is
   // built.. i can't find a better solution than this...
-  QTimer::singleShot( 0, this, SLOT( plugActionLists() ) );
+  QTimer::singleShot( 0, this, SLOT(plugActionLists()) );
 }
 
 void KigPart::setupBuiltinMacros()

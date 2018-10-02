@@ -66,9 +66,9 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   medittypewidget->typeIcon->setWhatsThis(
         i18n( "Use this button to change the icon of the current macro type." ) );
 
-  connect( this, SIGNAL( helpClicked() ), this, SLOT( slotHelp() ) );
-  connect(okButton, SIGNAL( clicked() ), this, SLOT( slotOk() ) );
-  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL( clicked() ), this, SLOT( slotCancel() ) );
+  connect( this, SIGNAL(helpClicked()), this, SLOT(slotHelp()) );
+  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()) );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL(clicked()), this, SLOT(slotCancel()) );
 }
 
 EditType::~EditType()

@@ -47,7 +47,7 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
     setIcon( QIcon( new KIconEngine( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) ) );
-  connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
+  connect( this, SIGNAL(triggered()), this, SLOT(slotActivated()) );
   if(parent)
     parent->addAction("action", this );
 }

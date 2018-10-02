@@ -94,7 +94,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   tooltip.replace( QRegExp( "&&" ), "&" );
   setToolTip( tooltip );
   setShortcut( QKeySequence( act->shortcut() ) );
-  connect( this, SIGNAL( triggered() ), this, SLOT( slotActivated() ) );
+  connect( this, SIGNAL(triggered()), this, SLOT(slotActivated()) );
 
     doc.actionCollection()->addAction(act->actionName(), this);
 }

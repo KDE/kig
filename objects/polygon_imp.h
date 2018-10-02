@@ -42,7 +42,7 @@ public:
   static const ObjectImpType* stype();
 
 //  PolygonImp( const std::vector<Coordinate>& points, bool inside = true, bool open = false );
-  AbstractPolygonImp( const std::vector<Coordinate>& points );
+  explicit AbstractPolygonImp( const std::vector<Coordinate>& points );
   AbstractPolygonImp( const uint nsides, const std::vector<Coordinate>& points, 
               const Coordinate& centerofmass );
   ~AbstractPolygonImp();
@@ -103,7 +103,7 @@ class FilledPolygonImp
 {
 public:
   typedef AbstractPolygonImp Parent;
-  FilledPolygonImp( const std::vector<Coordinate>& points );
+  explicit FilledPolygonImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
   static const ObjectImpType* stype3();
   static const ObjectImpType* stype4();
@@ -132,7 +132,7 @@ class ClosedPolygonalImp
 {
 public:
   typedef AbstractPolygonImp Parent;
-  ClosedPolygonalImp( const std::vector<Coordinate>& points );
+  explicit ClosedPolygonalImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
   ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
   void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
@@ -159,7 +159,7 @@ class OpenPolygonalImp
 {
 public:
   typedef AbstractPolygonImp Parent;
-  OpenPolygonalImp( const std::vector<Coordinate>& points );
+  explicit OpenPolygonalImp( const std::vector<Coordinate>& points );
   static const ObjectImpType* stype();
   ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
   void draw( KigPainter& p ) const Q_DECL_OVERRIDE;

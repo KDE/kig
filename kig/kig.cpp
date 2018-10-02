@@ -49,7 +49,7 @@ Kig::Kig()
   KService::Ptr kigpartService = KService::serviceByDesktopName("kig_part");
 
   setObjectName( QLatin1String( "Kig" ) );
-  // setting the configation file
+  // setting the configuration file
   config = new KConfig( "kigrc" );
   // set the shell's ui resource file
   setXMLFile("kigui.rc");
@@ -69,7 +69,7 @@ Kig::Kig()
       createGUI(m_part);
 
       // finally show tip-of-day ( if the user wants it :) )
-      QTimer::singleShot( 0, this, SLOT( startupTipOfDay() ) );
+      QTimer::singleShot( 0, this, SLOT(startupTipOfDay()) );
     }
   }
   else
@@ -104,13 +104,13 @@ void Kig::setupActions()
   setStandardToolBarMenuEnabled(true);
 
   // FIXME: this (recent files) should be app-wide, not specific to each window...
-  m_recentFilesAction = KStandardAction::openRecent( this, SLOT( openUrl( const QUrl& ) ), actionCollection() );
+  m_recentFilesAction = KStandardAction::openRecent( this, SLOT(openUrl(QUrl)), actionCollection() );
   m_recentFilesAction->loadEntries(config->group( QString() ) );
 
-  KStandardAction::keyBindings( guiFactory(), SLOT( configureShortcuts() ), actionCollection() );
+  KStandardAction::keyBindings( guiFactory(), SLOT(configureShortcuts()), actionCollection() );
   KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 
-  KStandardAction::tipOfDay( this, SLOT( tipOfDay() ), actionCollection() );
+  KStandardAction::tipOfDay( this, SLOT(tipOfDay()), actionCollection() );
 }
 
 void Kig::saveProperties(KConfigGroup &config)

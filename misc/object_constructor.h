@@ -190,7 +190,7 @@ class SimpleObjectTypeConstructor
 {
   const ArgsParserObjectType* mtype;
 public:
-  SimpleObjectTypeConstructor(
+  explicit SimpleObjectTypeConstructor(
     const ArgsParserObjectType* t, const char* descname,
     const char* desc, const char* iconfile );
 
@@ -218,7 +218,7 @@ class PropertyObjectConstructor
   ArgsParser mparser;
   const char* mpropinternalname;
 public:
-  PropertyObjectConstructor(
+  explicit PropertyObjectConstructor(
     const ObjectImpType* imprequirement, const char* usetext,
     const char* selectstat, const char* descname, const char* desc,
     const char* iconfile, const char* propertyinternalname );
@@ -241,7 +241,7 @@ public:
  * for object types that are constructed in groups of more than one.
  * For example, the intersection of a circle and line in general
  * produces two points, in general.  Internally, we differentiate
- * betweem them by passing them a parameter of ( in this case ) 1 or
+ * between them by passing them a parameter of ( in this case ) 1 or
  * -1.  There are still other object types that work the same, and
  * they all require this sort of parameter.
  * E.g. CubicLineIntersectionType takes a parameter between 1 and 3.
@@ -255,11 +255,11 @@ class MultiObjectTypeConstructor
   std::vector<int> mparams;
   ArgsParser mparser;
 public:
-  MultiObjectTypeConstructor(
+  explicit MultiObjectTypeConstructor(
     const ArgsParserObjectType* t, const char* descname,
     const char* desc, const char* iconfile,
     const std::vector<int>& params );
-  MultiObjectTypeConstructor(
+  explicit MultiObjectTypeConstructor(
     const ArgsParserObjectType* t, const char* descname,
     const char* desc, const char* iconfile,
     int a, int b, int c = -999, int d = -999 );

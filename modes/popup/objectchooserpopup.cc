@@ -94,7 +94,7 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
     newaction->setData( QVariant::fromValue( i ) );
   }
 
-  connect( this, SIGNAL( triggered( QAction* ) ), this, SLOT( actionActivatedSlot( QAction* ) ) );
+  connect( this, SIGNAL(triggered(QAction*)), this, SLOT(actionActivatedSlot(QAction*)) );
 }
 
 ObjectChooserPopup::~ObjectChooserPopup()

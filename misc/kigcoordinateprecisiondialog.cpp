@@ -40,7 +40,7 @@ KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified,
   ui->m_precisionSpinBox->setEnabled( isUserSpecified );
   ui->m_precisionSpinBox->setValue( currentPrecision );
   
-  connect(ui->m_defaultCheckBox, SIGNAL( stateChanged(int) ), this, SLOT( toggleCoordinateControls(int) ));
+  connect(ui->m_defaultCheckBox, SIGNAL(stateChanged(int)), this, SLOT(toggleCoordinateControls(int)));
 
   show();
 }

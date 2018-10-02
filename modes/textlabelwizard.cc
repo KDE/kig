@@ -66,7 +66,7 @@ TextPage::TextPage( QWidget* parent )
 
   registerField( "wantframe", wantframe );
 
-  connect( mtext, SIGNAL( textChanged() ), parent, SLOT( textChanged() ) );
+  connect( mtext, SIGNAL(textChanged()), parent, SLOT(textChanged()) );
 }
 
 
@@ -102,7 +102,7 @@ ArgsPage::ArgsPage( QWidget* parent, TextLabelModeBase* mode )
   mlinks = new LinksLabel( this );
   lay->addWidget( mlinks );
 
-  connect( mlinks, SIGNAL( changed() ), this, SIGNAL( completeChanged() ) );
+  connect( mlinks, SIGNAL(changed()), this, SIGNAL(completeChanged()) );
 }
 
 bool ArgsPage::validatePage()
@@ -125,12 +125,12 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
   margsPage = new ArgsPage( this, mmode );
   setPage( ArgsPageId, margsPage );
 
-  connect( this, SIGNAL( helpRequested() ), this,
-           SLOT( slotHelpClicked() ) );
-  connect( linksLabel(), SIGNAL( linkClicked( int ) ),
-           SLOT( linkClicked( int ) ) );
-  connect( this, SIGNAL( currentIdChanged( int ) ),
-           this, SLOT( currentIdChanged( int ) ) );
+  connect( this, SIGNAL(helpRequested()), this,
+           SLOT(slotHelpClicked()) );
+  connect( linksLabel(), SIGNAL(linkClicked(int)),
+           SLOT(linkClicked(int)) );
+  connect( this, SIGNAL(currentIdChanged(int)),
+           this, SLOT(currentIdChanged(int)) );
 
   mtextPage->mtext->setFocus();
 }

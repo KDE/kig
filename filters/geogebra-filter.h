@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef KIGFILTERGEOGEBRA_H
-#define KIGFILTERGEOGEBRA_H
+#ifndef GEOGEBRA_FILTER_H
+#define GEOGEBRA_FILTER_H
 
 #include "filter.h"
 
@@ -44,5 +44,5 @@ protected:
     ~KigFilterGeogebra() {}
 };
 
-#endif // KIGFILTERGEOGEBRA_H
+#endif // GEOGEBRA_FILTER_H
 

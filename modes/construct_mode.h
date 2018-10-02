@@ -35,7 +35,7 @@ class PointConstructMode
    */
   ObjectTypeCalcer::shared_ptr mpt;
 public:
-  PointConstructMode( KigPart& d );
+  explicit PointConstructMode( KigPart& d );
   ~PointConstructMode();
 
   using BaseMode::midClicked;

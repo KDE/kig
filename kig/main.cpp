@@ -110,7 +110,7 @@ int main( int argc, char **argv )
   {
     QString outfile = parser.value( "outfile" );
     if ( outfile.isNull() )
-      outfile = "-";
+      outfile = '-';
     if ( urls.isEmpty() )
     {
       qCritical() << "Error: --convert-to-native specified without a file to convert." << endl;

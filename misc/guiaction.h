@@ -89,7 +89,7 @@ class ConstructPointAction
 {
   const char* mactionname;
 public:
-  ConstructPointAction( const char* actionname );
+  explicit ConstructPointAction( const char* actionname );
   ~ConstructPointAction();
 
   QString description() const Q_DECL_OVERRIDE;
@@ -105,7 +105,7 @@ class ConstructTextLabelAction
 {
   const char* mactionname;
 public:
-  ConstructTextLabelAction( const char* actionname );
+  explicit ConstructTextLabelAction( const char* actionname );
 
   QString description() const Q_DECL_OVERRIDE;
   QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
@@ -120,7 +120,7 @@ class AddFixedPointAction
 {
   const char* mactionname;
 public:
-  AddFixedPointAction( const char* actionname );
+  explicit AddFixedPointAction( const char* actionname );
   ~AddFixedPointAction();
   QString description() const Q_DECL_OVERRIDE;
   QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
@@ -135,7 +135,7 @@ class ConstructNumericLabelAction
 {
   const char* mactionname;
 public:
-  ConstructNumericLabelAction( const char* actionname );
+  explicit ConstructNumericLabelAction( const char* actionname );
   ~ConstructNumericLabelAction();
   QString description() const Q_DECL_OVERRIDE;
   QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;

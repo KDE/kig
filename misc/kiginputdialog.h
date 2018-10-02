@@ -75,7 +75,7 @@ public:
    * \param cvalue a pointer to a Coordinate class. If the user inserted
    *               successfully a new Coordinate, the value will be stored
    *               here. If this points to a valid Coordinate, then it will be
-   *               displayed as initial value of the correspondenting text edit
+   *               displayed as initial value of the corresponding text edit
    */
   static void getCoordinate( const QString& caption, const QString& label,
         QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue );

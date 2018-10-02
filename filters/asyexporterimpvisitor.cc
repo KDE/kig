@@ -43,7 +43,7 @@ QString AsyExporterImpVisitor::emitPenColor( const QColor& c )
 {
   QString pencolor("");
   // Asymptote definition of pen color
-  pencolor = "rgb(" + QString::number(c.red()/255.0) + "," + QString::number(c.green()/255.0) + "," + QString::number(c.blue()/255.0) + ")";
+  pencolor = "rgb(" + QString::number(c.red()/255.0) + ',' + QString::number(c.green()/255.0) + ',' + QString::number(c.blue()/255.0) + ')';
   return pencolor;
 }
 
@@ -82,7 +82,7 @@ QString AsyExporterImpVisitor::emitPenSize( const int width )
   else
   {
     // Asymptote definition of pen size
-    pensize = "linewidth(" + QString::number(width/2.0) + ")";
+    pensize = "linewidth(" + QString::number(width/2.0) + ')';
   }
   return  pensize;
 }
@@ -92,7 +92,7 @@ QString AsyExporterImpVisitor::emitPen( const QColor& c, const int width, const 
 {
   QString pen("");
   // Asymptote definition of a pen
-  pen = emitPenColor(c) + "+" + emitPenSize(width) + "+" + emitPenStyle(style);
+  pen = emitPenColor(c) + '+' + emitPenSize(width) + '+' + emitPenStyle(style);
   return  pen;
 }
 
@@ -100,7 +100,7 @@ QString AsyExporterImpVisitor::emitPen( const QColor& c, const int width, const 
 QString AsyExporterImpVisitor::emitCoord( const Coordinate& c )
 {
   QString ret("");
-  ret = "(" + QString::number(c.x) + "," + QString::number(c.y) + ")";
+  ret = '(' + QString::number(c.x) + ',' + QString::number(c.y) + ')';
   return ret;
 }
 

@@ -117,8 +117,8 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     docview->setContextMenu( menu );
   }
 
-  connect( this, SIGNAL( currentIdChanged( int ) ), this, SLOT( currentIdChanged( int ) ) );
-  connect( this, SIGNAL( helpRequested() ), this, SLOT( slotHelpClicked() ) );
+  connect( this, SIGNAL(currentIdChanged(int)), this, SLOT(currentIdChanged(int)) );
+  connect( this, SIGNAL(helpRequested()), this, SLOT(slotHelpClicked()) );
 }
 
 void NewScriptWizard::currentIdChanged( int id )

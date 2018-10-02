@@ -211,7 +211,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
 
   QString versionstring;
   fstream >> versionstring;
-  if ( !versionstring.startsWith( "KSeg Document Version " ) )
+  if ( !versionstring.startsWith( QLatin1String( "KSeg Document Version " ) ) )
     KIG_FILTER_PARSE_ERROR;
 
   QByteArray array;

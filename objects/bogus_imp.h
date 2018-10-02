@@ -100,7 +100,7 @@ public:
   /**
    * Construct a new DoubleImp containing the value d.
    */
-  DoubleImp( const double d );
+  explicit DoubleImp( const double d );
 
   /**
    * Get hold of the contained data.
@@ -139,7 +139,7 @@ public:
   /**
    * Construct a new IntImp containing the value d.
    */
-  IntImp( const int d );
+  explicit IntImp( const int d );
 
   /**
    * Get hold of the contained data.
@@ -178,7 +178,7 @@ public:
   /**
    * Construct a new StringImp containing the string d.
    */
-  StringImp( const QString& d );
+  explicit StringImp( const QString& d );
 
   /**
    * Get hold of the contained data.
@@ -208,7 +208,7 @@ public:
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
-  HierarchyImp( const ObjectHierarchy& h );
+  explicit HierarchyImp( const ObjectHierarchy& h );
 
   const ObjectHierarchy& data() const { return mdata; }
   void setData( const ObjectHierarchy& h ) { mdata = h; }
@@ -237,7 +237,7 @@ public:
   static const ObjectImpType* stype();
   typedef BogusImp Parent;
 
-  TransformationImp( const Transformation& h );
+  explicit TransformationImp( const Transformation& h );
 
   const Transformation& data() const { return mdata; }
   void setData( const Transformation& h ) { mdata = h; }

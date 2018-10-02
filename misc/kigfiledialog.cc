@@ -75,8 +75,8 @@ void KigFileDialog::accept()
     mainLayout->addWidget( buttonBox );
     optdlg->setWindowTitle( moptcaption );
     
-    connect( buttonBox, SIGNAL( accepted() ), optdlg, SLOT( accept() ) );
-    connect( buttonBox, SIGNAL( rejected() ), optdlg, SLOT( reject() ));
+    connect( buttonBox, SIGNAL(accepted()), optdlg, SLOT(accept()) );
+    connect( buttonBox, SIGNAL(rejected()), optdlg, SLOT(reject()));
 
     (optdlg->exec() == QDialog::Accepted) ? QFileDialog::accept() : QFileDialog::reject();
   }

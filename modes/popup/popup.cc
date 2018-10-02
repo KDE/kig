@@ -177,8 +177,8 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
    * in addInternalAction directly adds the action at toplevel.
    */
 
-  connect( this, SIGNAL( triggered( QAction* ) ),
-           this, SLOT( toplevelMenuSlot( QAction* ) ) );
+  connect( this, SIGNAL(triggered(QAction*)),
+           this, SLOT(toplevelMenuSlot(QAction*)) );
 
   for ( int i = 0; i < NumberOfMenus; ++i )
   {

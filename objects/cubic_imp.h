@@ -34,7 +34,7 @@ public:
   typedef CurveImp Parent;
   static const ObjectImpType* stype();
 
-  CubicImp( const CubicCartesianData& data );
+  explicit CubicImp( const CubicCartesianData& data );
   ~CubicImp();
 
   ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;

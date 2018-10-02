@@ -151,7 +151,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   header.setCaseSensitivity( Qt::CaseInsensitive );
   if ( !header.exactMatch( s ) )
   {
-    if ( s.startsWith( "#FIG " ) )
+    if ( s.startsWith( QLatin1String( "#FIG " ) ) )
     {
       notSupported( i18n( "This is an XFig file, not a Cabri figure." ) );
       return 0;

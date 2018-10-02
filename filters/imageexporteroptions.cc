@@ -47,9 +47,9 @@ ImageExporterOptions::ImageExporterOptions( QWidget* parent )
 
   expwidget->comboUnit->addItems( Unit::unitList() );
 
-  connect( expwidget->WidthInput, SIGNAL( valueChanged( double ) ), this, SLOT( slotWidthChanged( double ) ) );
-  connect( expwidget->HeightInput, SIGNAL( valueChanged( double ) ), this, SLOT( slotHeightChanged( double ) ) );
-  connect( expwidget->comboUnit, SIGNAL( activated( int ) ), this, SLOT( slotUnitChanged( int ) ) );
+  connect( expwidget->WidthInput, SIGNAL(valueChanged(double)), this, SLOT(slotWidthChanged(double)) );
+  connect( expwidget->HeightInput, SIGNAL(valueChanged(double)), this, SLOT(slotHeightChanged(double)) );
+  connect( expwidget->comboUnit, SIGNAL(activated(int)), this, SLOT(slotUnitChanged(int)) );
 }
 
 ImageExporterOptions::~ImageExporterOptions()
