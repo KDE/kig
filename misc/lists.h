@@ -51,7 +51,7 @@ public:
 
   /**
    * register this document, so that it receives notifications for
-   * added and removed actions..
+   * added and removed actions.
    */
   void regDoc( KigPart* d );
   void unregDoc( KigPart* d );
@@ -64,7 +64,7 @@ public:
 
 /**
  * The list of object constructors for use in various places, e.g. RMB
- * menu's.  Note that the list owns the ctors it gets..
+ * menu's.  Note that the list owns the ctors it gets.
  */
 class ObjectConstructorList
 {
@@ -123,43 +123,43 @@ public:
 
   /**
    * Add a Macro \p m .  MacroList takes care of adding the action and
-   * ctor in the relevant places..
+   * ctor in the relevant places.
    */
   void add( Macro* m );
   /**
    * Add the Macro's \p ms. MacroList takes care of adding the action
-   * and ctor in the relevant places..
+   * and ctor in the relevant places.
    */
   void add( const vectype& ms );
 
   /**
    * Remove macro \p m .  Macrolist takes care of deleting everything, and
-   * unregistering the action and ctor from the relevant places..
+   * unregistering the action and ctor from the relevant places.
    */
   void remove( Macro* m );
 
   /**
-   * Save macro \p m to file \p f ..
+   * Save macro \p m to file \p f .
    */
   bool save( Macro* m, const QString& f );
   /**
-   * Save macros \p ms to file \p f ..
+   * Save macros \p ms to file \p f .
    */
   bool save( const vectype& ms, const QString& f );
 
   /**
-   * load macro's from file \p f ..
+   * load macro's from file \p f .
    * note that this just returns the loaded macro's, and doesn't add
    * them to the various lists.  Use add() if you want
-   * that behaviour..
+   * that behaviour.
    * The fact that this functions requires a KigPart argument is
    * semantically incorrect, but i haven't been able to work around
-   * it..
+   * it.
    */
   bool load( const QString& f, vectype& ret, const KigPart& );
 
   /**
-   * get access to the list of macro's..
+   * get access to the list of macro's.
    */
   const vectype& macros() const;
 

@@ -129,15 +129,15 @@ public:
 
   /**
    * returns a new ArgsParser that wants the same args, except for the
-   * ones of the given type..
+   * ones of the given type.
    */
   ArgsParser without( const ObjectImpType* type ) const;
-  // checks if os matches the argument list this parser should parse..
+  // checks if os matches the argument list this parser should parse.
   int check( const Args& os ) const;
   int check( const std::vector<ObjectCalcer*>& os ) const;
   /**
    * returns the usetext for the argument that o would be used for,
-   * if sel were used as parents..
+   * if sel were used as parents.
    * \p o should be in \p sel ...
    */
   std::string usetext( const ObjectImp* o, const Args& sel ) const;

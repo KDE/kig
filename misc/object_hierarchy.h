@@ -67,18 +67,18 @@ public:
 
   /**
    * this creates a new ObjectHierarchy, that takes a.size() less
-   * arguments, but uses copies of the ObjectImp's in \p a instead..
+   * arguments, but uses copies of the ObjectImp's in \p a instead.
    */
   ObjectHierarchy withFixedArgs( const Args& a ) const;
 
   std::vector<ObjectImp*> calc( const Args& a, const KigDocument& doc ) const;
 
   /**
-   * saves the ObjectHierarchy data in children xml tags of \p parent ..
+   * saves the ObjectHierarchy data in children xml tags of \p parent .
    */
   void serialize( QDomElement& parent, QDomDocument& doc ) const;
   /**
-   * Deserialize the ObjectHierarchy data from the xml element \p parent ..
+   * Deserialize the ObjectHierarchy data from the xml element \p parent .
    * Since this operation can fail for some reasons, we provide it as a
    * static to return 0 in case of error.
    */

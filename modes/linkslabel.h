@@ -53,7 +53,7 @@ public:
    */
   LinksLabelEditBuf startEdit();
   /**
-   * add a piece of normal text..
+   * add a piece of normal text.
    */
   void addText( const QString& s, LinksLabelEditBuf& buf );
   /**

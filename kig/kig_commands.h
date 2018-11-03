@@ -136,7 +136,7 @@ protected:
 
 /**
  * this class monitors a set of DataObjects for changes and returns an
- * appropriate ChangeObjectImpsCommand if necessary..
+ * appropriate ChangeObjectImpsCommand if necessary.
  * E.g.  MovingMode wants to move certain objects, so it monitors all
  * the parents of the explicitly moving objects:
  * \code
@@ -155,7 +155,7 @@ class MonitorDataObjects
   Private* d;
 public:
   /**
-   * all the DataObjects in \p objs will be watched..
+   * all the DataObjects in \p objs will be watched.
    */
   explicit MonitorDataObjects( const std::vector<ObjectCalcer*>& objs );
   explicit MonitorDataObjects( ObjectCalcer* c );
@@ -163,13 +163,13 @@ public:
 
   /**
    * add \p objs to the list of objs to be watched, and save their
-   * current imp's..
+   * current imp's.
    */
   void monitor( const std::vector<ObjectCalcer*>& objs );
 
   /**
-   * add the generated KigCommandTasks to the command \p comm ..
-   * monitoring stops after this is called..
+   * add the generated KigCommandTasks to the command \p comm
+   * monitoring stops after this is called.
    */
   void finish( KigCommand* comm );
 };
@@ -183,7 +183,7 @@ class ChangeCoordSystemTask
   CoordinateSystem* mcs;
 public:
   /**
-   * a command that changes the coordinate-system to \p s ..
+   * a command that changes the coordinate-system to \p s .
    */
   explicit ChangeCoordSystemTask( CoordinateSystem* s );
   ~ChangeCoordSystemTask();

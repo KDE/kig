@@ -88,12 +88,12 @@ public:
   const std::set<ObjectHolder*>& objectsSet() const;
 
   /**
-   * sets the coordinate system to \p s , and returns the old one..
+   * sets the coordinate system to \p s , and returns the old one.
    */
   CoordinateSystem* switchCoordinateSystem( CoordinateSystem* s );
 
   /**
-   * sets the coordinate system to \p s , and deletes the old one..
+   * sets the coordinate system to \p s , and deletes the old one.
    */
   void setCoordinateSystem( CoordinateSystem* s );
 

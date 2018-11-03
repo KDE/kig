@@ -50,7 +50,7 @@ protected:
 
 protected:
   /**
-   * Objcects were added..
+   * Objects were added.
    */
   void redrawScreen( KigWidget* ) Q_DECL_OVERRIDE;
 

@@ -155,7 +155,7 @@ public:
   void drawFilledRect( const QRect& );
 
   /**
-   * draw a rect..
+   * draw a rect...
    */
   void drawRect( const Rect& r );
 

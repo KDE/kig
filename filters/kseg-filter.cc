@@ -735,7 +735,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     };
   };
 
-  // no more data in the file..
+  // no more data in the file.
   retdoc->addObjects( ret );
   retdoc->addObjects( ret2 );
   retdoc->setAxes( false );

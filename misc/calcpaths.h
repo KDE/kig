@@ -50,7 +50,7 @@ std::vector<ObjectCalcer*> sideOfTreePath( const std::vector<ObjectCalcer*>& fro
 /**
  * This function returns all objects above the given in the
  * dependency graph.  The given objects \p objs are also included
- * themselves..
+ * themselves.
  */
 std::vector<ObjectCalcer*> getAllParents( const std::vector<ObjectCalcer*>& objs );
 /**
@@ -61,7 +61,7 @@ std::vector<ObjectCalcer*> getAllParents( ObjectCalcer* obj );
 /**
  * This function returns all objects below the objects in \p objs in the
  * dependency graphy.  The objects in \p objs are also included
- * themselves..
+ * themselves.
  */
 std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs );
 
@@ -71,7 +71,7 @@ std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs );
 std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj );
 
 /**
- * Returns true if \p o is a descendant of any of the objects in \p os..
+ * Returns true if \p o is a descendant of any of the objects in \p os .
  */
 bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
 bool isChild( const ObjectCalcer* o, ObjectCalcer* op );

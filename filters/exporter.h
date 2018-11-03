@@ -87,7 +87,7 @@ public:
 };
 
 /**
- * This exporter takes care of the "Export to Image" stuff..
+ * This exporter takes care of the "Export to Image" stuff.
  */
 class ImageExporter
   : public KigExporter

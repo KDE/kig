@@ -64,7 +64,7 @@ public:
   ObjectHolder* constrainedPoint( ObjectCalcer* curve, double param ) const;
   ObjectTypeCalcer* constrainedPointCalcer( ObjectCalcer* curve, double param ) const;
   /**
-   * \overload, changes nothing to the semantics, only calcs the param
+   * overload, changes nothing to the semantics, only calcs the param
    * value for you.
    */
   ObjectTypeCalcer* constrainedPointCalcer(

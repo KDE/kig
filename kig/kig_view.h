@@ -206,7 +206,7 @@ public:
   /**
    * this gets called if the user clicks the recenter screen button.
    * It adds a KigCommand to the CommandHistory that recenters the
-   * screen..
+   * screen.
    */
   void slotRecenterScreen();
 

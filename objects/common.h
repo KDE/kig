@@ -78,7 +78,7 @@ std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os );
  *
  * 1. They need to be constructed in the right order: if one ObjectType
  * uses another in its constructor, the other needs to be constructed
- * first.  To achieve this, we use a scheme with ::instance()
+ * first.  To achieve this, we use a scheme with \::instance()
  * functions, that have a static variable in the body of the function
  * ( if we would define them static outside of the function body, C++
  * would provide no guarantee on the order they would be called in ).
@@ -92,7 +92,7 @@ std::vector<ObjectCalcer*> getCalcers( const std::vector<ObjectHolder*>& os );
  * that these things will be constructed before main() is entered.
  *
  * Thus, for your own ObjectType classes: use the scheme with the
- * static ::instance methods, and add
+ * static \::instance methods, and add
  * \code
  * KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE( MyObjectType)
  * \endcode

@@ -128,7 +128,7 @@ public:
 
 /**
  * This class provides wraps ObjectConstructor in a more simple
- * interface for the most common object types..
+ * interface for the most common object types.
  */
 class StandardConstructorBase
   : public ObjectConstructor

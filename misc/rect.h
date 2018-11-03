@@ -91,7 +91,7 @@ public:
   void eat( const Rect& r );
 
   /**
-   * synonym for eat..
+   * synonym for eat.
    */
   Rect& operator|=( const Rect& rhs ) { eat( rhs ); return *this; }
 
@@ -132,7 +132,7 @@ bool operator==( const Rect& r, const Rect& s );
 QDebug& operator<<( QDebug& s, const Rect& t );
 /**
  * this operator returns a Rect that contains both the given
- * rects..
+ * rects.
  */
 Rect operator|( const Rect& lhs, const Rect& rhs );
 

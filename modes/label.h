@@ -66,7 +66,7 @@ protected:
   void setLocationParent( ObjectCalcer* o );
   /**
    * objects you pass here, should be newly created property objects,
-   * that have no children..
+   * that have no children.
    */
   void setPropertyObjects( const argvect& props );
   void setFrame( bool f );
@@ -77,7 +77,7 @@ protected:
   void leftReleased( QMouseEvent*, KigWidget*, ObjectTypeCalcer* prevlabel = 0 );
 
 private:
-  // the KigMode interface..
+  // the KigMode interface.
   void leftClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
   void leftReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
 

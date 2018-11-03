@@ -182,13 +182,13 @@ void calcBorderPoints( double& xa, double& xb, double& ya, double& yb, const Rec
 const LineData calcBorderPoints( const LineData& l, const Rect& r );
 
 /**
- * this does the same as the above function, but only for b..
+ * this does the same as the above function, but only for b.
  */
 void calcRayBorderPoints( const Coordinate& a, Coordinate& b, const Rect& r );
 
 /**
  * This function calculates the center of the circle going through the
- * three given points..
+ * three given points.
  */
 const Coordinate calcCenter(
   const Coordinate& a, const Coordinate& b, const Coordinate& c );
