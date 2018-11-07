@@ -91,6 +91,7 @@
   <url type="homepage">http://edu.kde.org/kig/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kig</url>
   <url type="help">http://docs.kde.org/stable/en/kdeedu/kig/index.html</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kig&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <caption>Interactive geometry with Kig</caption>
