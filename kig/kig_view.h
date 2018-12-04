@@ -200,7 +200,7 @@ public:
 public:
   /**
    * this recenters the screen, that is, resets the shown rect to
-   * mpart->document().suggestedRect()..
+   * mpart->document().suggestedRect().
    */
   void recenterScreen();
   /**
@@ -210,7 +210,7 @@ public:
    */
   void slotRecenterScreen();
 
-  // called when the user clicks the appropriate buttons..
+  // called when the user clicks the appropriate buttons.
   void slotZoomIn();
   void slotZoomOut();
 
