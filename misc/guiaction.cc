@@ -30,11 +30,11 @@
 #include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
 
+#include <KActionCollection>
 #include <KIconEngine>
-#include <kactioncollection.h>
 
 #include <QIcon>
-#include <qregexp.h>
+#include <QRegExp>
 
 int GUIAction::shortcut() const
 {
@@ -93,10 +93,10 @@ KigGUIAction::KigGUIAction( GUIAction* act,
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), "&" );
   setToolTip( tooltip );
-  setShortcut( QKeySequence( act->shortcut() ) );
   connect( this, SIGNAL(triggered()), this, SLOT(slotActivated()) );
 
-    doc.actionCollection()->addAction(act->actionName(), this);
+  doc.actionCollection()->addAction(act->actionName(), this);
+  doc.actionCollection()->setDefaultShortcut( this, QKeySequence( act->shortcut() ) );
 }
 
 void KigGUIAction::slotActivated()
