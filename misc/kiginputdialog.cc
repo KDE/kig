@@ -74,18 +74,16 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
     d( new KigInputDialogPrivate() )
 {
   QWidget *mainWidget = new QWidget( this );
-  QVBoxLayout *mainLayout = new QVBoxLayout;
+  QVBoxLayout *mainLayout = new QVBoxLayout( mainWidget );
   QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel );
-  QVBoxLayout* mainlay = new QVBoxLayout( mainWidget );
   
   setWindowTitle( caption );
   setLayout( mainLayout );
-  mainLayout->addWidget( mainWidget );
   d->okButton = buttonBox->button( QDialogButtonBox::Ok );
   d->okButton->setDefault( true );
   d->okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
-  connect( buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
-  connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
+  connect( buttonBox, &QDialogButtonBox::accepted, this, &KigInputDialog::accept );
+  connect( buttonBox, &QDialogButtonBox::rejected, this, &KigInputDialog::reject );
 
   d->m_coord1 = c1 ? Coordinate( *c1 ) : Coordinate::invalidCoord();
   d->m_coord2 = c2 ? Coordinate( *c2 ) : Coordinate::invalidCoord();
@@ -94,42 +92,36 @@ KigInputDialog::KigInputDialog( const QString& caption, const QString& label,
 
   bool ok = false;
 
-  mainlay->setMargin( 0 );
-  mainlay->activate();
-
   d->m_label = new QLabel( mainWidget );
   d->m_label->setTextFormat( Qt::RichText );
   d->m_label->setText( label );
-  mainlay->addWidget( d->m_label );
+  mainLayout->addWidget( d->m_label );
 
   d->m_lineEditFirst = new QLineEdit( mainWidget );
-//  d->m_lineEditFirst->setValidator( d->m_vtor );
+  d->m_lineEditFirst->setValidator( d->m_vtor );
   if ( d->m_coord1.valid() )
   {
     d->m_lineEditFirst->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord1, *d->m_doc ) );
     ok = true;
   }
-  mainlay->addWidget( d->m_lineEditFirst );
+  mainLayout->addWidget( d->m_lineEditFirst );
 
-  connect( d->m_lineEditFirst, SIGNAL(textChanged(QString)),
-           this, SLOT(slotCoordsChanged(QString)) );
+  connect( d->m_lineEditFirst, &QLineEdit::textChanged, this, &KigInputDialog::slotCoordsChanged );
 
   if ( d->m_coord2.valid() )
   {
     d->m_lineEditSecond = new QLineEdit( mainWidget );
-//    d->m_lineEditSecond->setValidator( d->m_vtor );
+    d->m_lineEditSecond->setValidator( d->m_vtor );
     d->m_lineEditSecond->setText( d->m_doc->coordinateSystem().fromScreen( d->m_coord2, *d->m_doc ) );
-    mainlay->addWidget( d->m_lineEditSecond );
+    mainLayout->addWidget( d->m_lineEditSecond );
 
-    connect( d->m_lineEditSecond, SIGNAL(textChanged(QString)),
-             this, SLOT(slotCoordsChanged(QString)) );
+    connect( d->m_lineEditSecond, &QLineEdit::textChanged, this, &KigInputDialog::slotCoordsChanged );
   }
 
   resize( minimumSizeHint() );
   d->m_lineEditFirst->setFocus();
   d->okButton->setEnabled( ok );
 
-  mainLayout->addWidget( mainWidget );
   mainLayout->addWidget( buttonBox );
 }
 
