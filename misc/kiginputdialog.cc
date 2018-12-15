@@ -31,6 +31,7 @@
 #include <QDialogButtonBox>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPointer>
 #include <QPushButton>
 #include <QValidator>
 #include <QVBoxLayout>
@@ -276,28 +277,32 @@ void KigInputDialog::getTwoCoordinates( const QString& caption, const QString& l
       QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue,
       Coordinate* cvalue2 )
 {
-  KigInputDialog dlg( caption, label, parent, doc, cvalue, cvalue2 );
+  QPointer<KigInputDialog> dlg = new KigInputDialog( caption, label, parent, doc, cvalue, cvalue2 );
 
-  *ok = ( dlg.exec() == Accepted );
+  *ok = ( dlg->exec() == Accepted );
 
   if ( *ok )
   {
-    Coordinate a = dlg.coordinateFirst();
+    Coordinate a = dlg->coordinateFirst();
     *cvalue = a;
     if ( cvalue2 )
     {
-      Coordinate b = dlg.coordinateSecond();
+      Coordinate b = dlg->coordinateSecond();
       *cvalue2 = b;
     }
   }
-
+  delete dlg;
 }
 
 Goniometry KigInputDialog::getAngle( QWidget* parent, bool* ok, const Goniometry& g )
 {
-  KigInputDialog dlg( parent, g );
+  QPointer<KigInputDialog> dlg = new KigInputDialog( parent, g );
 
-  *ok = ( dlg.exec() == Accepted );
+  *ok = ( dlg->exec() == Accepted );
 
-  return dlg.goniometry();
+  Goniometry goniometry = dlg->goniometry();
+
+  delete dlg;
+
+  return goniometry;
 }

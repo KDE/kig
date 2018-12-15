@@ -19,6 +19,7 @@
 
 #include <cassert>
 
+#include <QPointer>
 #include <QPushButton>
 #include <QVBoxLayout>
 
@@ -63,7 +64,7 @@ void KigFileDialog::accept()
   }
   if ( mow )
   {
-    QDialog* optdlg = new QDialog( this );
+    QPointer<QDialog> optdlg = new QDialog( this );
     QDialogButtonBox* buttonBox = new QDialogButtonBox( QDialogButtonBox::Cancel | QDialogButtonBox::Ok );
     QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
     QVBoxLayout* mainLayout = new QVBoxLayout;
@@ -79,6 +80,7 @@ void KigFileDialog::accept()
     connect( buttonBox, SIGNAL(rejected()), optdlg, SLOT(reject()));
 
     (optdlg->exec() == QDialog::Accepted) ? QFileDialog::accept() : QFileDialog::reject();
+    delete optdlg;
   }
   else
     QFileDialog::accept();
