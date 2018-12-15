@@ -882,7 +882,9 @@ void KigPart::filePrintPreview()
 {
   QPrinter printer;
   QPrintPreviewDialog printPreview( &printer );
-  doPrint( printer, document().grid(), document().axes() );
+  connect( &printPreview, &QPrintPreviewDialog::paintRequested, [this](QPrinter *p){
+      doPrint( *p, document().grid(), document().axes() );
+  });
   printPreview.exec();
 }
 
