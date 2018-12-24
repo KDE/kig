@@ -218,9 +218,19 @@ void Kig::fileOpen()
     currentDir = QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation );
   }
 
-  const QString file_name = QFileDialog::getOpenFileName(0, QString(), currentDir,  m_mimeTypes.join( " " ) );
-
-  if (!file_name.isEmpty()) openUrl( QUrl::fromLocalFile( file_name ) );
+  QPointer<QFileDialog> fileOpenDialog = new QFileDialog(this);
+  fileOpenDialog->setWindowTitle(i18nc("@title:window", "Open File"));
+  fileOpenDialog->setDirectory(currentDir);
+  fileOpenDialog->setMimeTypeFilters(m_mimeTypes);
+  fileOpenDialog->setAcceptMode(QFileDialog::AcceptOpen);
+  fileOpenDialog->setFileMode(QFileDialog::ExistingFile);
+  if (fileOpenDialog->exec() == QDialog::Accepted) {
+      QUrl file_url = fileOpenDialog->selectedUrls().first();
+      if (!file_url.isEmpty()) {
+          openUrl( file_url );
+      }
+  }
+  delete fileOpenDialog;
 }
 
 void Kig::tipOfDay() {
