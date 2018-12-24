@@ -211,7 +211,7 @@ void Kig::dropEvent(QDropEvent* e)
 void Kig::fileOpen()
 {
   // this slot is connected to the KStandardAction::open action...
-  QString currentDir = m_part->url().isLocalFile() ? m_part->url().toLocalFile() : QString();
+  QString currentDir = m_part->url().isLocalFile() ? QFileInfo( m_part->url().toLocalFile() ).absolutePath() : QString();
 
   if ( currentDir.isNull() )
   {
