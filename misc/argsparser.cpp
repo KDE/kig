@@ -44,7 +44,7 @@ void ArgsParser::initialize( const std::vector<spec>& args )
   margs = args;
 }
 
-ArgsParser::ArgsParser( const spec* args, int n )
+ArgsParser::ArgsParser( const struct spec* args, int n )
 {
   initialize( args, n );
 }

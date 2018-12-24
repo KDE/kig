@@ -121,21 +121,23 @@ public:
    * \internal Construct an ObjectImpType, with a lot of data about
    * your ObjectImp type.
    *
-   * translatedname is a translatable string like "segment"
-   * selectstatement is a translatable string like "Select this segment"
-   * selectnamestatement is a translatable string like "Select segment %1"
-   * removeastatement is a translatable string like "Remove a Segment"
-   * addastatement is a translatable string like "Add a Segment"
-   * moveastatement is a translatable string like "Move a Segment"
-   * attachtothisstatement is a translatable string like "Attach to
+   * @param parent is the ObjectImpType of
+   * your parent ObjectImp type. Never give 0 as parent, except for
+   * the top ObjectImp ObjectImpType.
+   * @param internalname is an internal name
+   * @param translatedname is a translatable string like "segment"
+   * @param selectstatement is a translatable string like "Select this segment"
+   * @param selectnamestatement is a translatable string like "Select segment %1"
+   * @param removeastatement is a translatable string like "Remove a Segment"
+   * @param addastatement is a translatable string like "Add a Segment"
+   * @param moveastatement is a translatable string like "Move a Segment"
+   * @param attachtothisstatement is a translatable string like "Attach to
    *     this segment"
-   * showastatement is a translatable string like "Show a Segment"
-   * hideastatement is a translatable string like "Hide a Segment"
+   * @param showastatement is a translatable string like "Show a Segment"
+   * @param hideastatement is a translatable string like "Hide a Segment"
    *
    * All translatable strings should have
-   * I18N_NOOP around them !  @param parent is the ObjectImpType of
-   * your parent ObjectImp type.  Never give 0 as parent, except for
-   * the top ObjectImp ObjectImpType.
+   * I18N_NOOP around them!
    */
   explicit ObjectImpType(
     const ObjectImpType* parent, const char* internalname,
