@@ -71,7 +71,7 @@
 
 using namespace std;
 
-static const QString typesFile = "macros.kigt";
+static const QString typesFile = QStringLiteral("macros.kigt");
 
 QStringList getDataFiles( const QString & folder )
 {
@@ -108,7 +108,7 @@ SetCoordinateSystemAction::SetCoordinateSystemAction(
   setCurrentItem( md.document().coordinateSystem().id() );
   connect( this, SIGNAL(triggered(int)), this, SLOT(slotActivated(int)) );
   if(parent)
-    parent->addAction("settings_set_coordinate_system", this);
+    parent->addAction(QStringLiteral("settings_set_coordinate_system"), this);
 }
 
 void SetCoordinateSystemAction::slotActivated( int index )
@@ -196,7 +196,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
 
   // we need a widget, to actually show the document
   m_widget = new KigView( this, false, parentWidget );
-  m_widget->setObjectName( "kig_view" );
+  m_widget->setObjectName( QStringLiteral("kig_view") );
   // notify the part that this is our internal widget
   setWidget( m_widget );
 
@@ -204,7 +204,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   setupActions();
 
   // set our XML-UI resource file
-  setXMLFile("kigpartui.rc");
+  setXMLFile(QStringLiteral("kigpartui.rc"));
 
   // our types...
   setupTypes();
@@ -213,7 +213,7 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   mhistory = new QUndoStack();
   KUndoActions::createUndoAction( mhistory, actionCollection() );
   KUndoActions::createRedoAction( mhistory, actionCollection() );
-  connect( mhistory, SIGNAL(cleanChanged(bool)), this, SLOT(setHistoryClean(bool)) );
+  connect( mhistory, &QUndoStack::cleanChanged, this, &KigPart::setHistoryClean );
 
   // we are read-write by default
   setReadWrite(true);
@@ -239,53 +239,53 @@ void KigPart::setupActions()
   aDeselectAll = KStandardAction::deselect(
     this, SLOT(slotDeselectAll()), actionCollection() );
   aInvertSelection  = new QAction(i18n("Invert Selection"), this);
-  actionCollection()->addAction("edit_invert_selection", aInvertSelection );
-  connect(aInvertSelection, SIGNAL(triggered(bool)), SLOT(slotInvertSelection()));
+  actionCollection()->addAction(QStringLiteral("edit_invert_selection"), aInvertSelection );
+  connect(aInvertSelection, &QAction::triggered, this, &KigPart::slotInvertSelection);
 
   // we need icons...
   KIconLoader* l = iconLoader();
 
-  aDeleteObjects  = new QAction(QIcon::fromTheme("edit-delete"), i18n("&Delete Objects"), this);
-  actionCollection()->addAction("delete_objects", aDeleteObjects );
-  connect(aDeleteObjects, SIGNAL(triggered(bool)), SLOT(deleteObjects()));
+  aDeleteObjects  = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18n("&Delete Objects"), this);
+  actionCollection()->addAction(QStringLiteral("delete_objects"), aDeleteObjects );
+  connect(aDeleteObjects, &QAction::triggered, this, &KigPart::deleteObjects);
   actionCollection()->setDefaultShortcut(aDeleteObjects, QKeySequence(Qt::Key_Delete));
   aDeleteObjects->setToolTip(i18n("Delete the selected objects"));
 
-  aCancelConstruction  = new QAction(QIcon::fromTheme("process-stop"), i18n("Cancel Construction"), this);
-  actionCollection()->addAction("cancel_construction", aCancelConstruction );
-  connect(aCancelConstruction, SIGNAL(triggered(bool)), SLOT(cancelConstruction()));
+  aCancelConstruction  = new QAction(QIcon::fromTheme(QStringLiteral("process-stop")), i18n("Cancel Construction"), this);
+  actionCollection()->addAction(QStringLiteral("cancel_construction"), aCancelConstruction );
+  connect(aCancelConstruction, &QAction::triggered, this, &KigPart::cancelConstruction);
   actionCollection()->setDefaultShortcut(aCancelConstruction, QKeySequence(Qt::Key_Escape));
   aCancelConstruction->setToolTip(
       i18n("Cancel the construction of the object being constructed"));
   aCancelConstruction->setEnabled(false);
 
-  aRepeatLastConstruction = new QAction(QIcon::fromTheme("system-run"), i18n("Repeat Construction"), this);
-  actionCollection()->addAction("repeat_last_construction", aRepeatLastConstruction );
-  connect(aRepeatLastConstruction, SIGNAL(triggered(bool)), SLOT(repeatLastConstruction()));
+  aRepeatLastConstruction = new QAction(QIcon::fromTheme(QStringLiteral("system-run")), i18n("Repeat Construction"), this);
+  actionCollection()->addAction(QStringLiteral("repeat_last_construction"), aRepeatLastConstruction );
+  connect(aRepeatLastConstruction, &QAction::triggered, this, &KigPart::repeatLastConstruction);
   actionCollection()->setDefaultShortcut(aRepeatLastConstruction, QKeySequence(Qt::Key_Z));
   aRepeatLastConstruction->setToolTip(
       i18n("Repeat the last construction (with new data)"));
   aRepeatLastConstruction->setEnabled(false);
 
   aShowHidden  = new QAction(i18n("U&nhide All"), this);
-  actionCollection()->addAction("edit_unhide_all", aShowHidden );
-  connect(aShowHidden, SIGNAL(triggered(bool)), SLOT(showHidden()));
+  actionCollection()->addAction(QStringLiteral("edit_unhide_all"), aShowHidden );
+  connect(aShowHidden, &QAction::triggered, this, &KigPart::showHidden);
   aShowHidden->setToolTip(i18n("Show all hidden objects"));
   aShowHidden->setEnabled( true );
 
-  aNewMacro  = new QAction(QIcon::fromTheme("system-run"), i18n("&New Macro..."), this);
-  actionCollection()->addAction("macro_action", aNewMacro );
-  connect(aNewMacro, SIGNAL(triggered(bool)), SLOT(newMacro()));
+  aNewMacro  = new QAction(QIcon::fromTheme(QStringLiteral("system-run")), i18n("&New Macro..."), this);
+  actionCollection()->addAction(QStringLiteral("macro_action"), aNewMacro );
+  connect(aNewMacro, &QAction::triggered, this, &KigPart::newMacro);
   aNewMacro->setToolTip(i18n("Define a new macro"));
 
   aConfigureTypes  = new QAction(i18n("Manage &Types..."), this);
-  actionCollection()->addAction("types_edit", aConfigureTypes );
-  connect(aConfigureTypes, SIGNAL(triggered(bool)), SLOT(editTypes()));
+  actionCollection()->addAction(QStringLiteral("types_edit"), aConfigureTypes );
+  connect(aConfigureTypes, &QAction::triggered, this, &KigPart::editTypes);
   aConfigureTypes->setToolTip(i18n("Manage macro types."));
 
-  aBrowseHistory  = new QAction(QIcon::fromTheme("view-history"), i18n("&Browse History..."), this);
-  actionCollection()->addAction("browse_history", aBrowseHistory );
-  connect( aBrowseHistory, SIGNAL(triggered(bool)), SLOT(browseHistory()) );
+  aBrowseHistory  = new QAction(QIcon::fromTheme(QStringLiteral("view-history")), i18n("&Browse History..."), this);
+  actionCollection()->addAction(QStringLiteral("browse_history"), aBrowseHistory );
+  connect( aBrowseHistory, &QAction::triggered, this, &KigPart::browseHistory );
   aBrowseHistory->setToolTip( i18n( "Browse the history of the current construction." ) );
 
   KigExportManager::instance()->addMenuAction( this, m_widget->realWidget(),
@@ -308,45 +308,45 @@ void KigPart::setupActions()
   a->setToolTip( i18n( "Recenter the screen on the document" ) );
   a->setWhatsThis( i18n( "Recenter the screen on the document" ) );
 
-  a = actionCollection()->addAction(KStandardAction::FullScreen, "fullscreen", m_widget, SLOT(toggleFullScreen()));
+  a = actionCollection()->addAction(KStandardAction::FullScreen, QStringLiteral("fullscreen"), m_widget, SLOT(toggleFullScreen()));
   a->setToolTip( i18n( "View this document full-screen." ) );
   a->setWhatsThis( i18n( "View this document full-screen." ) );
 
   // TODO: an icon for this..
-  a  = new QAction(QIcon::fromTheme("zoom-fit-best"), i18n("&Select Shown Area"), this);
-  actionCollection()->addAction("view_select_shown_rect", a );
-  connect(a, SIGNAL(triggered(bool)), m_widget, SLOT(zoomRect()));
+  a  = new QAction(QIcon::fromTheme(QStringLiteral("zoom-fit-best")), i18n("&Select Shown Area"), this);
+  actionCollection()->addAction(QStringLiteral("view_select_shown_rect"), a );
+  connect(a, &QAction::triggered, m_widget, &KigView::zoomRect);
   a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
   a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
-  a  = new QAction(QIcon::fromTheme("zoom-original"), i18n("S&elect Zoom Area"), this);
-  actionCollection()->addAction("view_zoom_area", a );
-  connect(a, SIGNAL(triggered(bool)), m_widget, SLOT(zoomArea()));
+  a  = new QAction(QIcon::fromTheme(QStringLiteral("zoom-original")), i18n("S&elect Zoom Area"), this);
+  actionCollection()->addAction(QStringLiteral("view_zoom_area"), a );
+  connect(a, &QAction::triggered, m_widget, &KigView::zoomArea);
 //  a->setToolTip( i18n( "Select the area that you want to be shown in the window." ) );
 //  a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 
   aSetCoordinatePrecision = new QAction(i18n("Set Coordinate &Precision..."), this);
-  actionCollection()->addAction("settings_set_coordinate_precision", aSetCoordinatePrecision);
+  actionCollection()->addAction(QStringLiteral("settings_set_coordinate_precision"), aSetCoordinatePrecision);
   aSetCoordinatePrecision->setToolTip( i18n("Set the floating point precision of coordinates in the document. " ));
-  connect(aSetCoordinatePrecision, SIGNAL(triggered()), this, SLOT(setCoordinatePrecision()));
+  connect(aSetCoordinatePrecision, &QAction::triggered, this, &KigPart::setCoordinatePrecision);
   
   aToggleGrid  = new KToggleAction(i18n("Show &Grid"), this);
-  actionCollection()->addAction("settings_show_grid", aToggleGrid );
+  actionCollection()->addAction(QStringLiteral("settings_show_grid"), aToggleGrid );
   aToggleGrid->setToolTip( i18n( "Show or hide the grid." ) );
   aToggleGrid->setChecked( true );
-  connect( aToggleGrid, SIGNAL(triggered()), this, SLOT(toggleGrid()) );
+  connect( aToggleGrid, &QAction::triggered, this, &KigPart::toggleGrid );
 
   aToggleAxes  = new KToggleAction(i18n("Show &Axes"), this);
-  actionCollection()->addAction("settings_show_axes", aToggleAxes );
+  actionCollection()->addAction(QStringLiteral("settings_show_axes"), aToggleAxes );
   aToggleAxes->setToolTip( i18n( "Show or hide the axes." ) );
   aToggleAxes->setChecked( true );
-  connect( aToggleAxes, SIGNAL(triggered()), this, SLOT(toggleAxes()) );
+  connect( aToggleAxes, &QAction::triggered, this, &KigPart::toggleAxes );
 
   aToggleNightVision  = new KToggleAction(i18n("Wear Infrared Glasses"), this);
-  actionCollection()->addAction("settings_toggle_nightvision", aToggleNightVision );
+  actionCollection()->addAction(QStringLiteral("settings_toggle_nightvision"), aToggleNightVision );
   aToggleNightVision->setToolTip( i18n( "Enable/disable hidden objects' visibility." ) );
   aToggleNightVision->setChecked( false );
-  connect( aToggleNightVision, SIGNAL(triggered()), this, SLOT(toggleNightVision()) );
+  connect( aToggleNightVision, &QAction::triggered, this, &KigPart::toggleNightVision );
 
   // select coordinate system KActionMenu..
   aCoordSystem = new SetCoordinateSystemAction( *this, actionCollection() );
@@ -469,7 +469,7 @@ bool KigPart::saveFile()
   // mimetype:
   const QMimeDatabase mimeDb;
   const QMimeType mimeType = mimeDb.mimeTypeForFile( localFilePath() );
-  if ( mimeType.name() != "application/x-kig" )
+  if ( mimeType.name() != QLatin1String("application/x-kig") )
   {
     // we don't support this mime type...
     if( KMessageBox::warningYesNo( widget(),
@@ -685,24 +685,24 @@ void KigPart::enableConstructActions( bool enabled )
 
 void KigPart::unplugActionLists()
 {
-  unplugActionList( "user_conic_types" );
-  unplugActionList( "user_segment_types" );
-  unplugActionList( "user_point_types" );
-  unplugActionList( "user_circle_types" );
-  unplugActionList( "user_line_types" );
-  unplugActionList( "user_other_types" );
-  unplugActionList( "user_types" );
+  unplugActionList( QStringLiteral("user_conic_types") );
+  unplugActionList( QStringLiteral("user_segment_types") );
+  unplugActionList( QStringLiteral("user_point_types") );
+  unplugActionList( QStringLiteral("user_circle_types") );
+  unplugActionList( QStringLiteral("user_line_types") );
+  unplugActionList( QStringLiteral("user_other_types") );
+  unplugActionList( QStringLiteral("user_types") );
 }
 
 void KigPart::plugActionLists()
 {
-  plugActionList( "user_conic_types", aMNewConic );
-  plugActionList( "user_segment_types", aMNewSegment );
-  plugActionList( "user_point_types", aMNewPoint );
-  plugActionList( "user_circle_types", aMNewCircle );
-  plugActionList( "user_line_types", aMNewLine );
-  plugActionList( "user_other_types", aMNewOther );
-  plugActionList( "user_types", aMNewAll );
+  plugActionList( QStringLiteral("user_conic_types"), aMNewConic );
+  plugActionList( QStringLiteral("user_segment_types"), aMNewSegment );
+  plugActionList( QStringLiteral("user_point_types"), aMNewPoint );
+  plugActionList( QStringLiteral("user_circle_types"), aMNewCircle );
+  plugActionList( QStringLiteral("user_line_types"), aMNewLine );
+  plugActionList( QStringLiteral("user_other_types"), aMNewOther );
+  plugActionList( QStringLiteral("user_types"), aMNewAll );
 }
 
 void KigPart::emitStatusBarText( const QString& text )
@@ -820,7 +820,7 @@ void KigPart::setupMacroTypes()
     alreadysetup = true;
 
     // the user's saved macro types:
-    const QStringList dataFiles = getDataFiles( "kig-types" );
+    const QStringList dataFiles = getDataFiles( QStringLiteral("kig-types") );
     std::vector<Macro*> macros;
     for ( QStringList::const_iterator file = dataFiles.begin();
           file != dataFiles.end(); ++file )
@@ -834,7 +834,7 @@ void KigPart::setupMacroTypes()
   };
   // hack: we need to plug the action lists _after_ the gui is
   // built.. i can't find a better solution than this...
-  QTimer::singleShot( 0, this, SLOT(plugActionLists()) );
+  QTimer::singleShot( 0, this, &KigPart::plugActionLists );
 }
 
 void KigPart::setupBuiltinMacros()
@@ -845,7 +845,7 @@ void KigPart::setupBuiltinMacros()
     alreadysetup = true;
     // builtin macro types ( we try to make the user think these are
     // normal types )..
-    const QStringList builtinfiles = getDataFiles( "builtin-macros" );
+    const QStringList builtinfiles = getDataFiles( QStringLiteral("builtin-macros") );
     for ( QStringList::const_iterator file = builtinfiles.begin();
           file != builtinfiles.end(); ++file )
     {
@@ -1101,11 +1101,11 @@ void KigPart::coordSystemChanged( int id )
 void KigPart::saveTypes()
 {
   const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
-  const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
+  const QDir typesDir( writeableDataLocation.absoluteFilePath( QStringLiteral("kig-types") ) );
 
   if ( !typesDir.exists() )
   {
-    writeableDataLocation.mkpath( "kig-types" );
+    writeableDataLocation.mkpath( QStringLiteral("kig-types") );
   }
 
   const QString typesFileWithPath =  typesDir.absoluteFilePath( typesFile );
@@ -1121,7 +1121,7 @@ void KigPart::saveTypes()
 void KigPart::loadTypes()
 {
   const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
-  const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
+  const QDir typesDir( writeableDataLocation.absoluteFilePath( QStringLiteral("kig-types") ) );
 
   if ( typesDir.exists() )
   {

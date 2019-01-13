@@ -614,7 +614,7 @@ typedef std::pair<double,Coordinate> coordparampair;
 
 struct workitem
 {
-  workitem( coordparampair f, coordparampair s, Rect *o) :
+  workitem( const coordparampair &f, const coordparampair &s, Rect *o) :
     first(f), second(s), overlay(o) {}
   coordparampair first;
   coordparampair second;

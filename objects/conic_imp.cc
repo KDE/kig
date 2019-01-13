@@ -213,14 +213,14 @@ QString ConicImp::conicTypeString() const
     return i18n("Parabola");
   default:
     assert( false );
-    return "";
+    return QLatin1String("");
   }
 }
 
 QString ConicImp::cartesianEquationString( const KigDocument& ) const
 {
   ConicCartesianData data = cartesianData();
-  EquationString ret = EquationString( "" );
+  EquationString ret = EquationString( QLatin1String("") );
   bool needsign = false;
   if ( isVerticalParabola( data ) )
   {
@@ -232,7 +232,7 @@ QString ConicImp::cartesianEquationString( const KigDocument& ) const
     ret.addTerm( f*data.coeffs[1], ret.y2(), needsign );
     ret.addTerm( f*data.coeffs[2], ret.xy(), needsign );
     ret.addTerm( f*data.coeffs[3], ret.x(), needsign );
-    ret.addTerm( f*data.coeffs[5], "", needsign );
+    ret.addTerm( f*data.coeffs[5], QLatin1String(""), needsign );
     return ret;
   }
   ret.addTerm( data.coeffs[0], ret.x2(), needsign );
@@ -240,7 +240,7 @@ QString ConicImp::cartesianEquationString( const KigDocument& ) const
   ret.addTerm( data.coeffs[2], ret.xy(), needsign );
   ret.addTerm( data.coeffs[3], ret.x(), needsign );
   ret.addTerm( data.coeffs[4], ret.y(), needsign );
-  ret.addTerm( data.coeffs[5], "", needsign );
+  ret.addTerm( data.coeffs[5], QLatin1String(""), needsign );
   ret.append( " = 0" );
   return ret;
 
@@ -264,7 +264,7 @@ QString ConicImp::polarEquationString( const KigDocument& w ) const
   ret.append( " = " );
   if ( data.pdimen < 0 ) ret.append( "- " );
   bool needsign = false;
-  ret.addTerm( fabs( data.pdimen ), "", needsign );
+  ret.addTerm( fabs( data.pdimen ), QLatin1String(""), needsign );
   ret.append( "/(1" );
   needsign = true;
   ret.addTerm( -data.ecostheta0, i18n( "cos theta" ), needsign );

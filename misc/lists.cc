@@ -245,25 +245,25 @@ bool MacroList::save( Macro* m, const QString& f )
 
 bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
 {
-  QDomDocument doc( "KigMacroFile" );
+  QDomDocument doc( QStringLiteral("KigMacroFile") );
 
-  QDomElement docelem = doc.createElement( "KigMacroFile" );
-  docelem.setAttribute( "Version", KIGVERSION );
-  docelem.setAttribute( "Number", static_cast<uint>( ms.size() ) );
+  QDomElement docelem = doc.createElement( QStringLiteral("KigMacroFile") );
+  docelem.setAttribute( QStringLiteral("Version"), KIGVERSION );
+  docelem.setAttribute( QStringLiteral("Number"), static_cast<uint>( ms.size() ) );
 
   for ( uint i = 0; i < ms.size(); ++i )
   {
     MacroConstructor* ctor = ms[i]->ctor;
 
-    QDomElement macroelem = doc.createElement( "Macro" );
+    QDomElement macroelem = doc.createElement( QStringLiteral("Macro") );
 
     // name
-    QDomElement nameelem = doc.createElement( "Name" );
+    QDomElement nameelem = doc.createElement( QStringLiteral("Name") );
     nameelem.appendChild( doc.createTextNode( ctor->descriptiveName() ) );
     macroelem.appendChild( nameelem );
 
     // desc
-    QDomElement descelem = doc.createElement( "Description" );
+    QDomElement descelem = doc.createElement( QStringLiteral("Description") );
     descelem.appendChild( doc.createTextNode( ctor->description() ) );
     macroelem.appendChild( descelem );
 
@@ -271,13 +271,13 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
     QByteArray icon = ctor->iconFileName( true );
     if ( !icon.isNull() )
     {
-      QDomElement descelem = doc.createElement( "IconFileName" );
+      QDomElement descelem = doc.createElement( QStringLiteral("IconFileName") );
       descelem.appendChild( doc.createTextNode( icon ) );
       macroelem.appendChild( descelem );
     }
 
     // data
-    QDomElement hierelem = doc.createElement( "Construction" );
+    QDomElement hierelem = doc.createElement( QStringLiteral("Construction") );
     ctor->hierarchy().serialize( hierelem, doc );
     macroelem.appendChild( hierelem );
 
@@ -302,7 +302,7 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
     KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
-  QDomDocument doc( "KigMacroFile" );
+  QDomDocument doc( QStringLiteral("KigMacroFile") );
   if ( !doc.setContent( &file ) )
   {
     KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'", f ) );
@@ -311,7 +311,7 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   file.close();
   QDomElement main = doc.documentElement();
 
-  if ( main.tagName() == "KigMacroFile" )
+  if ( main.tagName() == QLatin1String("KigMacroFile") )
     return loadNew( main, ret, kdoc );
   else
   {
@@ -333,7 +333,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
 //  int number = docelem.attribute( "Number" ).toInt( &sok );
   if ( ! sok ) return false;
 
-  QString version = docelem.attribute( "Version" );
+  QString version = docelem.attribute( QStringLiteral("Version") );
 //  QRegExp re( "(\\d+)\\.(\\d+)\\.(\\d+)" );
 //  re.match( version );
   // unused..
@@ -352,19 +352,19 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
     ObjectHierarchy* hierarchy = 0;
     QByteArray actionname;
     QByteArray iconfile( "system-run" );
-    if ( macroelem.tagName() != "Macro" ) continue; // forward compat ?
+    if ( macroelem.tagName() != QLatin1String("Macro") ) continue; // forward compat ?
     for ( QDomElement dataelem = macroelem.firstChild().toElement();
           ! dataelem.isNull(); dataelem = dataelem.nextSibling().toElement() )
     {
-      if ( dataelem.tagName() == "Name" )
+      if ( dataelem.tagName() == QLatin1String("Name") )
         name = dataelem.text();
-      else if ( dataelem.tagName() == "Description" )
+      else if ( dataelem.tagName() == QLatin1String("Description") )
         description = dataelem.text();
-      else if ( dataelem.tagName() == "Construction" )
+      else if ( dataelem.tagName() == QLatin1String("Construction") )
         hierarchy = ObjectHierarchy::buildSafeObjectHierarchy( dataelem, tmp );
-      else if ( dataelem.tagName() == "ActionName" )
+      else if ( dataelem.tagName() == QLatin1String("ActionName") )
         actionname = dataelem.text().toLatin1();
-      else if ( dataelem.tagName() == "IconFileName" )
+      else if ( dataelem.tagName() == QLatin1String("IconFileName") )
         iconfile = dataelem.text().toLatin1();
       else continue;
     };

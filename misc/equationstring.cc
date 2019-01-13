@@ -67,60 +67,60 @@ void EquationString::addTerm( double coeff, const QString& monomial, bool& needs
 
 const QString EquationString::x3() const
 {
-  return QString::fromUtf8( "x³" );
+  return QStringLiteral( "x³" );
 }
 
 const QString EquationString::y3() const
 {
-  return QString::fromUtf8( "y³" );
+  return QStringLiteral( "y³" );
 }
 
 const QString EquationString::x2y() const
 {
-  return QString::fromUtf8( "x²y" );
+  return QStringLiteral( "x²y" );
 }
 
 const QString EquationString::xy2() const
 {
-  return QString::fromUtf8( "xy²" );
+  return QStringLiteral( "xy²" );
 }
 
 const QString EquationString::x2() const
 {
-  return QString::fromUtf8( "x²" );
+  return QStringLiteral( "x²" );
 }
 
 const QString EquationString::y2() const
 {
-  return QString::fromUtf8( "y²" );
+  return QStringLiteral( "y²" );
 }
 
 const QString EquationString::xy() const
 {
-  return "xy";
+  return QStringLiteral("xy");
 }
 
 const QString EquationString::x() const
 {
-  return "x";
+  return QStringLiteral("x");
 }
 
 const QString EquationString::y() const
 {
-  return "y";
+  return QStringLiteral("y");
 }
 
 /* used in the circle equation */
 
 void EquationString::prettify( void )
 {
-  replace( "( x )", "x" );
-  replace( "( y )", "y" );
+  replace( QLatin1String("( x )"), QLatin1String("x") );
+  replace( QLatin1String("( y )"), QLatin1String("y") );
 }
 
 const QString EquationString::xnym(int n, int m) const
 {
- QString ret="";
+ QString ret=QLatin1String("");
  switch (n)
  {
    case 0: 
@@ -129,22 +129,22 @@ const QString EquationString::xnym(int n, int m) const
      ret += 'x';
      break;
    case 2:
-     ret += QString::fromUtf8( "x²" );
+     ret += QStringLiteral( "x²" );
      break;
    case 3:
-     ret += QString::fromUtf8( "x³" );
+     ret += QStringLiteral( "x³" );
      break;
    case 4: 
-     ret += QString::fromUtf8( "x⁴" );
+     ret += QStringLiteral( "x⁴" );
      break;
    case 5:
-     ret += QString::fromUtf8( "x⁵" );
+     ret += QStringLiteral( "x⁵" );
      break;
    case 6:
-     ret += QString::fromUtf8( "x⁶" );
+     ret += QStringLiteral( "x⁶" );
      break;
    default:
-     ret += QString::fromLatin1( "x^" ) + QString::number( n );
+     ret += QLatin1String( "x^" ) + QString::number( n );
  }
 
  switch (m)
@@ -155,22 +155,22 @@ const QString EquationString::xnym(int n, int m) const
      ret += 'y';
      break;
    case 2:
-     ret += QString::fromUtf8( "y²" );
+     ret += QStringLiteral( "y²" );
      break;
    case 3:
-     ret += QString::fromUtf8( "y³" );
+     ret += QStringLiteral( "y³" );
      break;
    case 4:
-     ret += QString::fromUtf8( "y⁴" );
+     ret += QStringLiteral( "y⁴" );
      break;
    case 5:
-     ret += QString::fromUtf8( "y⁵" );
+     ret += QStringLiteral( "y⁵" );
      break;
    case 6:
-     ret += QString::fromUtf8( "y⁶" );
+     ret += QStringLiteral( "y⁶" );
      break;
    default:
-     ret += QString::fromLatin1( "y^" ) + QString::number( n );
+     ret += QLatin1String( "y^" ) + QString::number( n );
  }
 
  return ret;

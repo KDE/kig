@@ -46,8 +46,8 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
   okButton->setDefault(true);
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
   mainLayout->addWidget(buttonBox);
 
   medittypewidget = new Ui_EditTypeWidget();
@@ -62,13 +62,13 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
         i18n( "Here you can edit the description of the current macro type. "
               "This field is optional, so you can also leave this empty: if "
               "you do so, then your macro type will have no description." ) );
-  medittypewidget->typeIcon->setIcon( !micon.isEmpty() ? micon : "system-run" );
+  medittypewidget->typeIcon->setIcon( !micon.isEmpty() ? micon : QStringLiteral("system-run") );
   medittypewidget->typeIcon->setWhatsThis(
         i18n( "Use this button to change the icon of the current macro type." ) );
 
   connect( this, SIGNAL(helpClicked()), this, SLOT(slotHelp()) );
-  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()) );
-  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL(clicked()), this, SLOT(slotCancel()) );
+  connect(okButton, &QAbstractButton::clicked, this, &EditType::slotOk );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), &QAbstractButton::clicked, this, &EditType::slotCancel );
 }
 
 EditType::~EditType()
@@ -78,7 +78,7 @@ EditType::~EditType()
 
 void EditType::slotHelp()
 {
-  KHelpClient::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( QStringLiteral("working-with-types"), QStringLiteral("kig") );
 }
 
 void EditType::slotOk()

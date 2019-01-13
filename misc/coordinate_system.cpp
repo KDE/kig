@@ -146,13 +146,13 @@ void CoordinateValidator::fixup( QString & input ) const
     switch ( mtype )
     {
     case Polar:
-      input.append( QString::fromLatin1( ";" ) + l.positiveSign() +
-                    QString::fromLatin1( "0" ) );
+      input.append( QLatin1String( ";" ) + l.positiveSign() +
+                    QLatin1String( "0" ) );
       break;
     case Euclidean:
-      input.append( QString::fromLatin1( ";" ) + l.positiveSign() +
-                    QString::fromLatin1( "0" ) + l.decimalPoint() +
-                    QString::fromLatin1( "0" ) );
+      input.append( QLatin1String( ";" ) + l.positiveSign() +
+                    QLatin1String( "0" ) + l.decimalPoint() +
+                    QLatin1String( "0" ) );
       break;
     default:
       break;
@@ -163,7 +163,7 @@ void CoordinateValidator::fixup( QString & input ) const
   mdv.fixup( ds1 );
   QString ds2 = mre.cap( 2 );
   mdv.fixup( ds2 );
-  input = ds1 + QString::fromLatin1( "; " ) + ds2;
+  input = ds1 + QLatin1String( "; " ) + ds2;
 }
 
 EuclideanCoords::EuclideanCoords()
@@ -180,7 +180,7 @@ QString EuclideanCoords::fromScreen( const Coordinate& p, const KigDocument& d )
   int l = d.getCoordinatePrecision();
   QString xs = currentLocale.toString( p.x, 'f', l );
   QString ys = currentLocale.toString( p.y, 'f', l );
-  return QString::fromLatin1( "( %1; %2 )" ).arg( xs ).arg( ys );
+  return QStringLiteral( "( %1; %2 )" ).arg( xs ).arg( ys );
 }
 
 Coordinate EuclideanCoords::toScreen( const QString& s, bool& ok ) const
@@ -389,7 +389,7 @@ QString PolarCoords::fromScreen( const Coordinate& pt, const KigDocument& d ) co
   QString rs = currentLocale.toString( r, 'f', l );
   QString ts = currentLocale.toString( theta, 'f', 0 );
 
-  return QString::fromLatin1( "( %1; %2 )" ).arg( rs ).arg( ts );
+  return QStringLiteral( "( %1; %2 )" ).arg( rs ).arg( ts );
 }
 
 QString PolarCoords::coordinateFormatNotice() const

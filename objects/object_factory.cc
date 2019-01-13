@@ -70,7 +70,7 @@ ObjectTypeCalcer* ObjectFactory::numericValueCalcer(
   const bool needframe = false;
   parents.push_back( new ObjectConstCalcer( new IntImp( needframe ? 1 : 0 ) ) );
   parents.push_back( getAttachPoint( 0, loc, doc ) );
-  parents.push_back( new ObjectConstCalcer( new StringImp( "%1" ) ) );
+  parents.push_back( new ObjectConstCalcer( new StringImp( QStringLiteral("%1") ) ) );
   parents.push_back( new ObjectConstCalcer( new DoubleImp( value ) ) );
 
   ObjectTypeCalcer* ret = new ObjectTypeCalcer( NumericTextType::instance(), parents );

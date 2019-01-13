@@ -133,8 +133,8 @@ bool KigFilterCabri::supportMime( const QString& mime )
 {
   // ugly hack to avoid duplicate extension ( XFig and Cabri files
   // have the same .fig extension ).
-  return ( mime == "image/x-xfig" ) ||
-         ( mime == "application/x-cabri" );
+  return ( mime == QLatin1String("image/x-xfig") ) ||
+         ( mime == QLatin1String("application/x-cabri") );
 }
 
 KigDocument* KigFilterCabri::load( const QString& file )
@@ -496,8 +496,8 @@ KigDocument* KigFilterCabri::load( const QString& file )
       QString txt = obj->text;
       int pos = -1;
       int index = 1;
-      while ( ( pos = txt.indexOf( "\"#" ) ) > -1 )
-        txt.replace( pos, 2, QString( "%%1" ).arg( index++ ) );
+      while ( ( pos = txt.indexOf( QLatin1String("\"#") ) ) > -1 )
+        txt.replace( pos, 2, QStringLiteral( "%%1" ).arg( index++ ) );
       // getting the references to the arguments
       std::vector<ObjectCalcer*> txtincs;
       for ( std::vector<int>::iterator i = obj->incs.begin();

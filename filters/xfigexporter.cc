@@ -67,7 +67,7 @@ QString XFigExporter::menuEntryName() const
 
 QString XFigExporter::menuIcon() const
 {
-  return "kig_xfig";
+  return QStringLiteral("kig_xfig");
 }
 
 class XFigExportImpVisitor

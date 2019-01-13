@@ -247,7 +247,7 @@ const QString AbstractLineImp::equationString() const
   Coordinate p = mdata.a;
   Coordinate q = mdata.b;
 
-  EquationString ret = EquationString( "" );
+  EquationString ret = EquationString( QLatin1String("") );
 
   double a = q.y - p.y;
   double b = p.x - q.x;
@@ -258,14 +258,14 @@ const QString AbstractLineImp::equationString() const
   {
     ret.addTerm( 1.0, ret.x(), needsign );
     ret.addTerm( b/a, ret.y(), needsign );
-    ret.addTerm( c/a, "", needsign );
+    ret.addTerm( c/a, QLatin1String(""), needsign );
     ret.append( " = 0" );
     return ret;
   }
 
   ret.append( "y = " );
   ret.addTerm( -a/b, ret.x(), needsign );
-  ret.addTerm( -c/b, "", needsign );
+  ret.addTerm( -c/b, QLatin1String(""), needsign );
   if ( ! needsign ) ret.append( "0" );
 //  double m = ( q.y - p.y ) / ( q.x - p.x );
 //  double r = - ( q.y - p.y ) * p.x / ( q.x - p.x ) + p.y;

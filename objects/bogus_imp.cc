@@ -86,7 +86,7 @@ InvalidImp::InvalidImp()
 
 void InvalidImp::fillInNextEscape( QString& s, const KigDocument& ) const
 {
-  s = s.arg( "[invalid]" );
+  s = s.arg( QStringLiteral("[invalid]") );
 }
 
 void DoubleImp::fillInNextEscape( QString& s, const KigDocument& ) const

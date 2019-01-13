@@ -249,13 +249,13 @@ QString CircleImp::cartesianEquationString( const KigDocument& ) const
 {
 //  QString ret = i18n( "x² + y² + %1 x + %2 y + %3 = 0" );
   ConicCartesianData data = cartesianData();
-  EquationString ret = EquationString( "" );
+  EquationString ret = EquationString( QLatin1String("") );
   bool needsign = false;
   ret.addTerm( 1., ret.x2(), needsign );
   ret.addTerm( 1., ret.y2(), needsign );
   ret.addTerm( data.coeffs[3], ret.x(), needsign );
   ret.addTerm( data.coeffs[4], ret.y(), needsign );
-  ret.addTerm( data.coeffs[5], "", needsign );
+  ret.addTerm( data.coeffs[5], QLatin1String(""), needsign );
   ret.append( " = 0" );
 //  ret = ret.arg( data.coeffs[3], 0, 'g', 3 );
 //  ret = ret.arg( data.coeffs[4], 0, 'g', 3 );
@@ -265,14 +265,14 @@ QString CircleImp::cartesianEquationString( const KigDocument& ) const
 
 QString CircleImp::simplyCartesianEquationString( const KigDocument& ) const
 {
-  EquationString ret = EquationString( "( x" );
+  EquationString ret = EquationString( QStringLiteral("( x") );
   bool needsign = true;
-  ret.addTerm( -mcenter.x, "", needsign );
-  ret.append( QString::fromUtf8( " )² + ( y" ) );
-  ret.addTerm( -mcenter.y, "", needsign );
-  ret.append( QString::fromUtf8( " )² = " ) );
+  ret.addTerm( -mcenter.x, QLatin1String(""), needsign );
+  ret.append( QStringLiteral( " )² + ( y" ) );
+  ret.addTerm( -mcenter.y, QLatin1String(""), needsign );
+  ret.append( QStringLiteral( " )² = " ) );
   needsign = false;
-  ret.addTerm( mradius*mradius, "", needsign );
+  ret.addTerm( mradius*mradius, QLatin1String(""), needsign );
   ret.prettify();
 
 //  QString ret = i18n( "( x - %1 )² + ( y - %2 )² = %3" );

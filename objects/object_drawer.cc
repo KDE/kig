@@ -168,15 +168,15 @@ bool ObjectDrawer::inRect( const ObjectImp& imp, const Rect& r, const KigWidget&
 
 Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )
 {
-  if ( style == "SolidLine" )
+  if ( style == QLatin1String("SolidLine") )
     return Qt::SolidLine;
-  else if ( style == "DashLine" )
+  else if ( style == QLatin1String("DashLine") )
     return Qt::DashLine;
-  else if ( style == "DotLine" )
+  else if ( style == QLatin1String("DotLine") )
     return Qt::DotLine;
-  else if ( style == "DashDotLine" )
+  else if ( style == QLatin1String("DashDotLine") )
     return Qt::DashDotLine;
-  else if ( style == "DashDotDotLine" )
+  else if ( style == QLatin1String("DashDotDotLine") )
     return Qt::DashDotDotLine;
   else return Qt::SolidLine;
 }
@@ -184,14 +184,14 @@ Qt::PenStyle ObjectDrawer::styleFromString( const QString& style )
 QString ObjectDrawer::styleToString() const
 {
   if ( mstyle == Qt::SolidLine )
-    return "SolidLine";
+    return QStringLiteral("SolidLine");
   else if ( mstyle == Qt::DashLine )
-    return "DashLine";
+    return QStringLiteral("DashLine");
   else if ( mstyle == Qt::DotLine )
-    return "DotLine";
+    return QStringLiteral("DotLine");
   else if ( mstyle == Qt::DashDotLine )
-    return "DashDotLine";
+    return QStringLiteral("DashDotLine");
   else if ( mstyle == Qt::DashDotDotLine )
-    return "DashDotDotLine";
-  return "SolidLine";
+    return QStringLiteral("DashDotDotLine");
+  return QStringLiteral("SolidLine");
 }

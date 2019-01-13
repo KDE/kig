@@ -156,12 +156,12 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
   KIconButton* iconbutton = new KIconButton( this );
   iconlay->addWidget( iconbutton );
   label->setBuddy( iconbutton );
-  iconbutton->setIcon( "system-run" );
+  iconbutton->setIcon( QStringLiteral("system-run") );
   iconlay->addItem( new QSpacerItem( 5, 5, QSizePolicy::Expanding, QSizePolicy::Fixed ) );
 
-  registerField( "name*", editname );
-  registerField( "description", editdesc );
-  registerField( "icon", iconbutton, "icon", SIGNAL(iconChanged(QString)) );
+  registerField( QStringLiteral("name*"), editname );
+  registerField( QStringLiteral("description"), editdesc );
+  registerField( QStringLiteral("icon"), iconbutton, "icon", SIGNAL(iconChanged(QString)) );
 }
 
 
@@ -169,7 +169,7 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
   : QWizard( parent ), mmode( m )
 {
   setModal( false );
-  setObjectName( QLatin1String( "Define Macro Wizard" ) );
+  setObjectName( QStringLiteral( "Define Macro Wizard" ) );
   setWindowTitle( i18n( "Define New Macro" ) );
   setOption( HaveHelpButton );
 
@@ -179,8 +179,8 @@ MacroWizard::MacroWizard( QWidget* parent, DefineMacroMode* m )
   setPage( FinalArgsPageId, mfinalArgsPage );
   setPage( MacroInfoPageId, new MacroInfoPage( this ) );
 
-  connect( this, SIGNAL(helpRequested()), this,
-           SLOT(slotHelpClicked()) );
+  connect( this, &QWizard::helpRequested, this,
+           &MacroWizard::slotHelpClicked );
   connect( this, SIGNAL(currentIdChanged(int)), this, SLOT(currentIdChanged(int)) );
 }
 
@@ -202,7 +202,7 @@ void MacroWizard::accept()
 
 void MacroWizard::slotHelpClicked()
 {
-  KHelpClient::invokeHelp( "defining-macros", "kig" );
+  KHelpClient::invokeHelp( QStringLiteral("defining-macros"), QStringLiteral("kig") );
 }
 
 void MacroWizard::currentIdChanged( int id )

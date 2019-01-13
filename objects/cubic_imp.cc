@@ -421,7 +421,7 @@ Rect CubicImp::surroundingRect() const
 
 QString CubicImp::cartesianEquationString( const KigDocument& ) const
 {
-  EquationString ret = EquationString( "" );
+  EquationString ret = EquationString( QLatin1String("") );
   bool needsign = false;
   if ( isVerticalCubic() )
   {
@@ -437,7 +437,7 @@ QString CubicImp::cartesianEquationString( const KigDocument& ) const
     ret.addTerm( f*mdata.coeffs[3], ret.x2(), needsign );
     ret.addTerm( f*mdata.coeffs[4], ret.xy(), needsign );
     ret.addTerm( f*mdata.coeffs[1], ret.x(), needsign );
-    ret.addTerm( f*mdata.coeffs[0], "", needsign );
+    ret.addTerm( f*mdata.coeffs[0], QLatin1String(""), needsign );
     return ret;
   }
   ret.addTerm( mdata.coeffs[6], ret.x3(), needsign );
@@ -449,7 +449,7 @@ QString CubicImp::cartesianEquationString( const KigDocument& ) const
   ret.addTerm( mdata.coeffs[4], ret.xy(), needsign );
   ret.addTerm( mdata.coeffs[1], ret.x(), needsign );
   ret.addTerm( mdata.coeffs[2], ret.y(), needsign );
-  ret.addTerm( mdata.coeffs[0], "", needsign );
+  ret.addTerm( mdata.coeffs[0], QLatin1String(""), needsign );
   ret.append( " = 0" );
 // ret.prettify();
   return ret;

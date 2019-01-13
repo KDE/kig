@@ -63,7 +63,7 @@ static QString wrapAt( const QString& str, int col = 50 )
     delta = pos + 1;
   }
   ret << str.mid( delta );
-  return ret.join( "<br>" );
+  return ret.join( QStringLiteral("<br>") );
 }
 
 class BaseListElement
@@ -285,7 +285,7 @@ QVariant TypesModel::data( const QModelIndex& index, int role ) const
           "<td rowspan=\"2\" align=\"right\"><img src=\"%3\"></td></tr>"
           "<tr><td>%2</td></tr></table></qt>" );
       static QString macro_no_image(
-          "<qt><b>%1</b> (%3)<br>%2</qt>" );
+          QStringLiteral("<qt><b>%1</b> (%3)<br>%2</qt>") );
 
       if ( melems[ index.row() ]->icon( true ).isEmpty() )
         return macro_no_image
@@ -352,8 +352,8 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   QPushButton *okButton = buttonBox->button( QDialogButtonBox::Ok );
   okButton->setDefault( true );
   okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
-  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
+  connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept );
+  connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject );
   mainLayout->addWidget( buttonBox );
 
   mtypeswidget = new Ui_TypesWidget();
@@ -367,10 +367,10 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->setContextMenuPolicy( Qt::CustomContextMenu );
 
   // improving GUI look'n'feel...
-  mtypeswidget->buttonEdit->setIcon( QIcon::fromTheme( "document-properties" ) );
-  mtypeswidget->buttonRemove->setIcon( QIcon::fromTheme( "edit-delete" ) );
-  mtypeswidget->buttonExport->setIcon( QIcon::fromTheme( "document-export" ) );
-  mtypeswidget->buttonImport->setIcon( QIcon::fromTheme( "document-import" ) );
+  mtypeswidget->buttonEdit->setIcon( QIcon::fromTheme( QStringLiteral("document-properties") ) );
+  mtypeswidget->buttonRemove->setIcon( QIcon::fromTheme( QStringLiteral("edit-delete") ) );
+  mtypeswidget->buttonExport->setIcon( QIcon::fromTheme( QStringLiteral("document-export") ) );
+  mtypeswidget->buttonImport->setIcon( QIcon::fromTheme( QStringLiteral("document-import") ) );
 
   // loading macros...
   mmodel->addMacros( MacroList::instance()->macros() );
@@ -380,22 +380,22 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   mtypeswidget->typeList->resizeColumnToContents( 0 );
 
   popup = new QMenu( this );
-  popup->addAction( QIcon::fromTheme( "document-properties" ), i18n( "&Edit..." ), this, SLOT(editType()) );
-  popup->addAction( QIcon::fromTheme( "edit-delete" ), i18n( "&Delete" ), this, SLOT(deleteType()) );
+  popup->addAction( QIcon::fromTheme( QStringLiteral("document-properties") ), i18n( "&Edit..." ), this, &TypesDialog::editType );
+  popup->addAction( QIcon::fromTheme( QStringLiteral("edit-delete") ), i18n( "&Delete" ), this, &TypesDialog::deleteType );
   popup->addSeparator();
-  popup->addAction( QIcon::fromTheme( "document-export" ), i18n( "E&xport..." ), this, SLOT(exportType()) );
+  popup->addAction( QIcon::fromTheme( QStringLiteral("document-export") ), i18n( "E&xport..." ), this, &TypesDialog::exportType );
 
   // saving types
   mpart.saveTypes();
 
-  connect( mtypeswidget->buttonExport, SIGNAL(clicked()), this, SLOT(exportType()) );
-  connect( mtypeswidget->buttonImport, SIGNAL(clicked()), this, SLOT(importTypes()) );
-  connect( mtypeswidget->buttonRemove, SIGNAL(clicked()), this, SLOT(deleteType()) );
-  connect( mtypeswidget->buttonEdit, SIGNAL(clicked()), this, SLOT(editType()) );
-  connect( mtypeswidget->typeList, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(typeListContextMenu(QPoint)) );
-  connect( buttonBox->button( QDialogButtonBox::Help ), SIGNAL(clicked()), this, SLOT(slotHelp()) );
-  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOk()) );
-  connect(buttonBox->button(QDialogButtonBox::Cancel), SIGNAL(clicked()), this, SLOT(slotCancel()) );
+  connect( mtypeswidget->buttonExport, &QAbstractButton::clicked, this, &TypesDialog::exportType );
+  connect( mtypeswidget->buttonImport, &QAbstractButton::clicked, this, &TypesDialog::importTypes );
+  connect( mtypeswidget->buttonRemove, &QAbstractButton::clicked, this, &TypesDialog::deleteType );
+  connect( mtypeswidget->buttonEdit, &QAbstractButton::clicked, this, &TypesDialog::editType );
+  connect( mtypeswidget->typeList, &QWidget::customContextMenuRequested, this, &TypesDialog::typeListContextMenu );
+  connect( buttonBox->button( QDialogButtonBox::Help ), &QAbstractButton::clicked, this, &TypesDialog::slotHelp );
+  connect(okButton, &QAbstractButton::clicked, this, &TypesDialog::slotOk );
+  connect(buttonBox->button(QDialogButtonBox::Cancel), &QAbstractButton::clicked, this, &TypesDialog::slotCancel );
 
   resize( 460, 270 );
 }
@@ -407,7 +407,7 @@ TypesDialog::~TypesDialog()
 
 void TypesDialog::slotHelp()
 {
-  KHelpClient::invokeHelp( "working-with-types", "kig" );
+  KHelpClient::invokeHelp( QStringLiteral("working-with-types"), QStringLiteral("kig") );
 }
 
 void TypesDialog::slotOk()
@@ -441,7 +441,7 @@ void TypesDialog::deleteType()
         i18np( "Are you sure you want to delete this type?",
               "Are you sure you want to delete these %1 types?", selectedTypes.size() ),
         types, i18n("Are You Sure?"), KStandardGuiItem::cont(), KStandardGuiItem::cancel(),
-        "deleteTypeWarning") == KMessageBox::Cancel )
+        QStringLiteral("deleteTypeWarning")) == KMessageBox::Cancel )
      return;
   bool updates = mtypeswidget->typeList->updatesEnabled();
   mtypeswidget->typeList->setUpdatesEnabled( false );
@@ -582,7 +582,7 @@ bool TypesDialog::loadGeogebraTools( const QString& sFrom, std::vector<Macro*>& 
 
   if ( geogebraFile.open( QIODevice::ReadOnly ) )
   {
-    const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( "geogebra_macro.xml" ) );
+    const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( QStringLiteral("geogebra_macro.xml") ) );
 
     if ( geogebraXMLEntry )
     {
@@ -590,7 +590,7 @@ bool TypesDialog::loadGeogebraTools( const QString& sFrom, std::vector<Macro*>& 
       QXmlNamePool np;
       QXmlQuery geogebraXSLT( QXmlQuery::XSLT20, np );
       const QString encodedData = QString::fromUtf8( geogebraXMLEntry->data().constData() );
-      QFile queryDevice( ":/kig/geogebra/geogebra.xsl" );
+      QFile queryDevice( QStringLiteral(":/kig/geogebra/geogebra.xsl") );
       GeogebraTransformer ggttransformer( document, np );
 
       queryDevice.open( QFile::ReadOnly );

@@ -89,12 +89,12 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
   {
     newaction = addAction(
                 !mobjs[i]->name().isEmpty()
-                ? QString::fromLatin1( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
+                ? QStringLiteral( "%1 %2" ).arg( mobjs[i]->imp()->type()->translatedName() ).arg( mobjs[i]->name() )
                 : mobjs[i]->imp()->type()->translatedName() );
     newaction->setData( QVariant::fromValue( i ) );
   }
 
-  connect( this, SIGNAL(triggered(QAction*)), this, SLOT(actionActivatedSlot(QAction*)) );
+  connect( this, &QMenu::triggered, this, &ObjectChooserPopup::actionActivatedSlot );
 }
 
 ObjectChooserPopup::~ObjectChooserPopup()

@@ -47,9 +47,9 @@ ExporterAction::ExporterAction( const KigPart* doc, KigWidget* w,
   QString iconstr = exp->menuIcon();
   if ( !iconstr.isEmpty() )
     setIcon( QIcon( new KIconEngine( iconstr, const_cast<KigPart*>( doc )->iconLoader() ) ) );
-  connect( this, SIGNAL(triggered()), this, SLOT(slotActivated()) );
+  connect( this, &QAction::triggered, this, &ExporterAction::slotActivated );
   if(parent)
-    parent->addAction("action", this );
+    parent->addAction(QStringLiteral("action"), this );
 }
 
 void ExporterAction::slotActivated()
@@ -77,7 +77,7 @@ QString ImageExporter::menuEntryName() const
 
 QString ImageExporter::menuIcon() const
 {
-  return "image-x-generic";
+  return QStringLiteral("image-x-generic");
 }
 
 void ImageExporter::run( const KigPart& doc, KigWidget& w )
@@ -88,7 +88,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   const QList<QByteArray> mimeFilters = QImageWriter::supportedMimeTypes();
   QStringList mimeFiltersConverted;
   // Since someone didn't get the memo about what's the type of a mime name...
-  for (auto mimeFilter : mimeFilters) {
+  for (const auto &mimeFilter : mimeFilters) {
       mimeFiltersConverted.append( QString::fromUtf8( mimeFilter ) );
   }
   kfd->setMimeTypeFilters( mimeFiltersConverted );
@@ -166,7 +166,7 @@ void KigExportManager::addMenuAction( const KigPart* doc, KigWidget* w,
   for ( uint i = 0; i < mexporters.size(); ++i )
     m->addAction( new ExporterAction( doc, w, coll, mexporters[i] ) );
   if(coll)
-    coll->addAction("file_export", m );
+    coll->addAction(QStringLiteral("file_export"), m );
 }
 
 KigExportManager* KigExportManager::instance()

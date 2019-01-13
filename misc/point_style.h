@@ -37,15 +37,15 @@ namespace Kig {
    */
 inline PointStyle pointStyleFromString( const QString& style )
 {
-if ( style == "Round" )
+if ( style == QLatin1String("Round") )
 return Round;
-else if ( style == "RoundEmpty" )
+else if ( style == QLatin1String("RoundEmpty") )
 return RoundEmpty;
-else if ( style == "Rectangular" )
+else if ( style == QLatin1String("Rectangular") )
 return Rectangular;
-else if ( style == "RectangularEmpty" )
+else if ( style == QLatin1String("RectangularEmpty") )
 return RectangularEmpty;
-else if ( style == "Cross" )
+else if ( style == QLatin1String("Cross") )
 return Cross;
 return PointStyle::Round;
 }
@@ -53,15 +53,15 @@ return PointStyle::Round;
 inline QString pointStyleToString( const PointStyle ps )
 {
 if ( ps == Round )
-return "Round";
+return QStringLiteral("Round");
 else if ( ps == RoundEmpty )
-return "RoundEmpty";
+return QStringLiteral("RoundEmpty");
 else if ( ps == Rectangular )
-return "Rectangular";
+return QStringLiteral("Rectangular");
 else if ( ps == RectangularEmpty )
-return "RectangularEmpty";
+return QStringLiteral("RectangularEmpty");
 else if ( ps == Cross )
-return "Cross";
+return QStringLiteral("Cross");
 assert( false );
 return QString();
 }

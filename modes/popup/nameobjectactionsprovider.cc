@@ -47,7 +47,7 @@ void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const Coordin
        object->imp()->inherits( CurveImp::stype() ) )
     attachto = object;
   ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      QString::fromLatin1( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
+      QStringLiteral( "%1" ), attachto, loc, namelabelneedsframe, args, doc.document() );
   doc.addObject( label );
 }
 

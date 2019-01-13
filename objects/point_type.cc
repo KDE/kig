@@ -432,7 +432,7 @@ void FixedPointType::executeAction(
     Coordinate oldc = static_cast<const PointImp*>( o.imp() )->coordinate();
     KigInputDialog::getCoordinate(
       i18n( "Set Coordinate" ),
-      i18n( "Enter the new coordinate." ) + QString::fromLatin1( "<br>" ) +
+      i18n( "Enter the new coordinate." ) + QLatin1String( "<br>" ) +
       d.document().coordinateSystem().coordinateFormatNoticeMarkup(),
       &w, &ok, d.document(), &oldc );
     if ( ! ok ) break;

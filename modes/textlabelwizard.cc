@@ -55,7 +55,7 @@ TextPage::TextPage( QWidget* parent )
       i18n( "Enter the text for your label here and press \"Next\".\n"
             "If you want to show variable parts, then put %1, %2, ... "
             "at the appropriate places (e.g. \"This segment is %1 units "
-            "long.\").", QString( "%1" ), QString( "%2" ) ) ); // grrr i18n()
+            "long.\").", QStringLiteral( "%1" ), QStringLiteral( "%2" ) ) ); // grrr i18n()
   label->setAlignment( Qt::AlignTop );
   label->setWordWrap( true );
   mtext = new QTextEdit( this );
@@ -64,7 +64,7 @@ TextPage::TextPage( QWidget* parent )
   lay->addWidget( wantframe );
   wantframe->setText( i18n( "Show text in a frame" ) );
 
-  registerField( "wantframe", wantframe );
+  registerField( QStringLiteral("wantframe"), wantframe );
 
   connect( mtext, SIGNAL(textChanged()), parent, SLOT(textChanged()) );
 }
@@ -102,7 +102,7 @@ ArgsPage::ArgsPage( QWidget* parent, TextLabelModeBase* mode )
   mlinks = new LinksLabel( this );
   lay->addWidget( mlinks );
 
-  connect( mlinks, SIGNAL(changed()), this, SIGNAL(completeChanged()) );
+  connect( mlinks, &LinksLabel::changed, this, &QWizardPage::completeChanged );
 }
 
 bool ArgsPage::validatePage()
@@ -115,7 +115,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
   : QWizard( parent ), mmode( mode )
 {
   setModal( false );
-  setObjectName( QLatin1String( "TextLabelWizard" ) );
+  setObjectName( QStringLiteral( "TextLabelWizard" ) );
   setWindowTitle( i18n( "Construct Label" ) );
   setOption( HaveHelpButton );
   setOption( HaveFinishButtonOnEarlyPages );
@@ -125,10 +125,10 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
   margsPage = new ArgsPage( this, mmode );
   setPage( ArgsPageId, margsPage );
 
-  connect( this, SIGNAL(helpRequested()), this,
-           SLOT(slotHelpClicked()) );
-  connect( linksLabel(), SIGNAL(linkClicked(int)),
-           SLOT(linkClicked(int)) );
+  connect( this, &QWizard::helpRequested, this,
+           &TextLabelWizard::slotHelpClicked );
+  connect( linksLabel(), &LinksLabel::linkClicked,
+           this, &TextLabelWizard::linkClicked );
   connect( this, SIGNAL(currentIdChanged(int)),
            this, SLOT(currentIdChanged(int)) );
 
@@ -204,6 +204,6 @@ void TextLabelWizard::currentIdChanged( int id )
 
 void TextLabelWizard::slotHelpClicked()
 {
-  KHelpClient::invokeHelp( "text-labels", "kig" );
+  KHelpClient::invokeHelp( QStringLiteral("text-labels"), QStringLiteral("kig") );
 }
 

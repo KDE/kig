@@ -208,7 +208,7 @@ public:
    * release the reference it had to its old parents, and take a new
    * one on the new parents.
    */
-  void setParents( const std::vector<ObjectCalcer*> np );
+  void setParents( const std::vector<ObjectCalcer*> &np );
   void setType( const ObjectType* t );
 
   const ObjectType* type() const;

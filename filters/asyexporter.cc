@@ -49,7 +49,7 @@ QString AsyExporter::menuEntryName() const
 
 QString AsyExporter::menuIcon() const
 {
-  return "text-plain";
+  return QStringLiteral("text-plain");
 }
 
 void AsyExporter::run( const KigPart& doc, KigWidget& w )

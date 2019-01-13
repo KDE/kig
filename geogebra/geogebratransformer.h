@@ -42,7 +42,7 @@ class ObjectType;
 class GeogebraTransformer : public QAbstractXmlReceiver
 {
 public:
-    GeogebraTransformer( KigDocument * document, QXmlNamePool np ) :
+    GeogebraTransformer( KigDocument * document, const QXmlNamePool &np ) :
     m_document( document ),
     m_currentState ( GeogebraTransformer::ReadingObject ),
     m_currentObject( nullptr ),

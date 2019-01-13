@@ -50,7 +50,7 @@ QString SVGExporter::menuEntryName() const
 
 QString SVGExporter::menuIcon() const
 {
-  return "image-svg+xml";
+  return QStringLiteral("image-svg+xml");
 }
 
 void SVGExporter::run( const KigPart& part, KigWidget& w )

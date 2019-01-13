@@ -83,7 +83,7 @@ QString LatexExporter::menuEntryName() const
 
 QString LatexExporter::menuIcon() const
 {
-    return "text-x-tex";
+    return QStringLiteral("text-x-tex");
 }
 
 class PSTricksExportImpVisitor
@@ -220,13 +220,13 @@ double PSTricksExportImpVisitor::dimRealToCoord( int dim )
 
 QString PSTricksExportImpVisitor::writeStyle( Qt::PenStyle style )
 {
-    QString ret( "linestyle=" );
+    QString ret( QStringLiteral("linestyle=") );
     if ( style == Qt::DashLine )
-        ret += "dashed";
+        ret += QLatin1String("dashed");
     else if ( style == Qt::DotLine )
-        ret += "dotted,dotsep=2pt";
+        ret += QLatin1String("dotted,dotsep=2pt");
     else
-        ret += "solid";
+        ret += QLatin1String("solid");
     return ret;
 }
 
@@ -235,7 +235,7 @@ void PSTricksExportImpVisitor::plotGenericCurve( const CurveImp* imp )
     int width = mcurobj->drawer()->width();
     if ( width == -1 ) width = 1;
 
-    QString prefix = QString( "\\pscurve[linecolor=%1,linewidth=%2,%3]" )
+    QString prefix = QStringLiteral( "\\pscurve[linecolor=%1,linewidth=%2,%3]" )
                      .arg( mcurcolorid )
                      .arg( width / 100.0 )
                      .arg( writeStyle( mcurobj->drawer()->style() ) );
@@ -329,13 +329,13 @@ void PSTricksExportImpVisitor::visit( const PointImp* imp )
     const int ps = mcurobj->drawer()->pointStyle();
     QString pss( "*,fillstyle=solid,fillcolor=" + mcurcolorid );
     if ( ps == 1 )
-        pss = "o,fillstyle=none";
+        pss = QLatin1String("o,fillstyle=none");
     else if ( ps == 2 )
         pss = "square*,fillstyle=solid,fillcolor=" + mcurcolorid;
     else if ( ps == 3 )
-        pss = "square,fillstyle=none";
+        pss = QLatin1String("square,fillstyle=none");
     else if ( ps == 4 )
-        pss = "+,dotangle=45";
+        pss = QLatin1String("+,dotangle=45");
     mstream << pss << "]";
     emitCoord( imp->coordinate() );
     newLine();

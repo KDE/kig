@@ -42,7 +42,7 @@ void PGFExporterImpVisitor::newLine()
 
 QString PGFExporterImpVisitor::emitPenColor( const QColor& c )
 {
-  QString pencolor("");
+  QString pencolor(QLatin1String(""));
   pencolor = "color={rgb,255:red," + QString::number(c.red()) + ";green," + QString::number(c.green()) + ";blue," + QString::number(c.blue()) + '}';
   return pencolor;
 }
@@ -50,19 +50,19 @@ QString PGFExporterImpVisitor::emitPenColor( const QColor& c )
 
 QString PGFExporterImpVisitor::emitPenStyle( const Qt::PenStyle& style )
 {
-  QString penstyle("line style=");
+  QString penstyle(QStringLiteral("line style="));
   // PGF/TikZ definition of pen (line) style
   // TODO: finetune styles
   if ( style == Qt::SolidLine ) {
-    penstyle = "solid";
+    penstyle = QLatin1String("solid");
   } else if ( style == Qt::DashLine ) {
-    penstyle = "dashed";
+    penstyle = QLatin1String("dashed");
   } else if ( style == Qt::DotLine ) {
-    penstyle = "dotted,dotsep=2pt";
+    penstyle = QLatin1String("dotted,dotsep=2pt");
   } else if ( style == Qt::DashDotLine ) {
-    penstyle = "solid";
+    penstyle = QLatin1String("solid");
   } else if ( style == Qt::DashDotDotLine ) {
-    penstyle = "solid";
+    penstyle = QLatin1String("solid");
   }
   return penstyle;
 }
@@ -72,11 +72,11 @@ QString PGFExporterImpVisitor::emitPenSize( const int width )
 {
   // In this function we map the logical (integer) linewidth of Kig
   // to real line widths that can be used in PGF/TikZ.
-  QString pensize("");
+  QString pensize(QLatin1String(""));
   if ( width < 0 )
   {
     // Nothing specified, use TikZ default
-    pensize = "line width=1pt";
+    pensize = QLatin1String("line width=1pt");
   }
   else
   {
@@ -89,7 +89,7 @@ QString PGFExporterImpVisitor::emitPenSize( const int width )
 
 QString PGFExporterImpVisitor::emitPen( const QColor& c, const int width, const Qt::PenStyle& style )
 {
-  QString pen("");
+  QString pen(QLatin1String(""));
   // TikZ definition of a pen
   pen = emitPenColor(c) + ", " + emitPenSize(width) + ", " + emitPenStyle(style);
   return  pen;
@@ -103,7 +103,7 @@ QString PGFExporterImpVisitor::emitStyle( const ObjectDrawer* od )
 
     // TODO: finetune line width
 
-    QString style("");
+    QString style(QLatin1String(""));
     style = emitPen( od->color(), width, od->style() );
     return style;
 }
@@ -111,7 +111,7 @@ QString PGFExporterImpVisitor::emitStyle( const ObjectDrawer* od )
 
 QString PGFExporterImpVisitor::emitCoord( const Coordinate& c )
 {
-  QString ret("");
+  QString ret(QLatin1String(""));
   ret = '(' + QString::number(c.x) + ',' + QString::number(c.y) + ')';
   return ret;
 }
@@ -260,7 +260,7 @@ void PGFExporterImpVisitor::visit( const TextImp* imp )
     }    
     mstream << "at "
             << emitCoord(imp->coordinate())
-            << " {" << imp->text().replace(QString("\n"),QString("\\\\")) << "}";
+            << " {" << imp->text().replace(QStringLiteral("\n"),QStringLiteral("\\\\")) << "}";
     newLine();
 }
 

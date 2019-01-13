@@ -417,17 +417,17 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   int id = 1;
   for ( uint i = 0; i < mnumberofargs; ++i )
   {
-    QDomElement e = doc.createElement( "input" );
-    e.setAttribute( "id", id++ );
-    e.setAttribute( "requirement", margrequirements[i]->internalName() );
+    QDomElement e = doc.createElement( QStringLiteral("input") );
+    e.setAttribute( QStringLiteral("id"), id++ );
+    e.setAttribute( QStringLiteral("requirement"), margrequirements[i]->internalName() );
     // we don't save these atm, since the user can't define them.
     // we only load them from builtin macro's.
     if ( msaveinputtags )
     {
-      QDomElement ut = doc.createElement( "UseText" );
+      QDomElement ut = doc.createElement( QStringLiteral("UseText") );
       ut.appendChild( doc.createTextNode( QString::fromLatin1(musetexts[i].c_str() ) ) );
       e.appendChild( ut );
-      QDomElement ss = doc.createElement( "SelectStatement" );
+      QDomElement ss = doc.createElement( QStringLiteral("SelectStatement") );
       ss.appendChild( doc.createTextNode( QString::fromLatin1(mselectstatements[i].c_str() ) ) );
       e.appendChild( ss );
     }
@@ -438,17 +438,17 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
   {
     bool result = mnodes.size() - ( id - mnumberofargs - 1 ) <= mnumberofresults;
     QDomElement e = doc.createElement( result ? "result" : "intermediate" );
-    e.setAttribute( "id", id++ );
+    e.setAttribute( QStringLiteral("id"), id++ );
 
     if ( mnodes[i]->id() == Node::ID_ApplyType )
     {
       const ApplyTypeNode* node = static_cast<const ApplyTypeNode*>( mnodes[i] );
-      e.setAttribute( "action", "calc" );
-      e.setAttribute( "type", QString::fromLatin1( node->type()->fullName() ) );
+      e.setAttribute( QStringLiteral("action"), QStringLiteral("calc") );
+      e.setAttribute( QStringLiteral("type"), QString::fromLatin1( node->type()->fullName() ) );
       for ( uint i = 0; i < node->parents().size(); ++i )
       {
         int parent = node->parents()[i] + 1;
-        QDomElement arge = doc.createElement( "arg" );
+        QDomElement arge = doc.createElement( QStringLiteral("arg") );
         arge.appendChild( doc.createTextNode( QString::number( parent ) ) );
         e.appendChild( arge );
       };
@@ -456,9 +456,9 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
     else if ( mnodes[i]->id() == Node::ID_FetchProp )
     {
       const FetchPropertyNode* node = static_cast<const FetchPropertyNode*>( mnodes[i] );
-      e.setAttribute( "action", "fetch-property" );
-      e.setAttribute( "property", QString( node->propinternalname() ) );
-      QDomElement arge = doc.createElement( "arg" );
+      e.setAttribute( QStringLiteral("action"), QStringLiteral("fetch-property") );
+      e.setAttribute( QStringLiteral("property"), QString( node->propinternalname() ) );
+      QDomElement arge = doc.createElement( QStringLiteral("arg") );
       arge.appendChild( doc.createTextNode( QString::number( node->parent() + 1 ) ) );
       e.appendChild( arge );
     }
@@ -466,9 +466,9 @@ void ObjectHierarchy::serialize( QDomElement& parent, QDomDocument& doc ) const
     {
       assert( mnodes[i]->id() == ObjectHierarchy::Node::ID_PushStack );
       const PushStackNode* node = static_cast<const PushStackNode*>( mnodes[i] );
-      e.setAttribute( "action", "push" );
+      e.setAttribute( QStringLiteral("action"), QStringLiteral("push") );
       QString type = ObjectImpFactory::instance()->serialize( *node->imp(), e, doc );
-      e.setAttribute( "type", type );
+      e.setAttribute( QStringLiteral("type"), type );
     };
 
     parent.appendChild( e );
@@ -496,15 +496,15 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
   QDomElement e = parent.firstChild().toElement();
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
-    if ( e.tagName() != "input" ) break;
+    if ( e.tagName() != QLatin1String("input") ) break;
 
-    tmp = e.attribute( "id" );
+    tmp = e.attribute( QStringLiteral("id") );
     uint id = tmp.toInt( &ok );
     if ( !ok ) KIG_GENERIC_PARSE_ERROR;
 
     obhi->mnumberofargs = qMax( id, obhi->mnumberofargs );
 
-    tmp = e.attribute( "requirement" );
+    tmp = e.attribute( QStringLiteral("requirement") );
     const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.toLatin1() );
     if ( req == 0 ) req = ObjectImp::stype(); // sucks, i know..
     obhi->margrequirements.resize( obhi->mnumberofargs, ObjectImp::stype() );
@@ -515,12 +515,12 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     QDomElement esub = e.firstChild().toElement();
     for ( ; !esub.isNull(); esub = esub.nextSibling().toElement() )
     {
-      if ( esub.tagName() == "UseText" )
+      if ( esub.tagName() == QLatin1String("UseText") )
       {
         obhi->msaveinputtags = true;
         obhi->musetexts[id - 1] = esub.text().toLatin1().data();
       }
-      else if ( esub.tagName() == "SelectStatement" )
+      else if ( esub.tagName() == QLatin1String("SelectStatement") )
       {
         obhi->msaveinputtags = true;
         obhi->mselectstatements[id - 1] = esub.text().toLatin1().data();
@@ -533,19 +533,19 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
   }
   for (; !e.isNull(); e = e.nextSibling().toElement() )
   {
-    bool result = e.tagName() == "result";
+    bool result = e.tagName() == QLatin1String("result");
     if ( result ) ++obhi->mnumberofresults;
 
-    tmp = e.attribute( "id" );
+    tmp = e.attribute( QStringLiteral("id") );
     int id = tmp.toInt( &ok );
     if ( !ok ) KIG_GENERIC_PARSE_ERROR;
 
-    tmp = e.attribute( "action" );
+    tmp = e.attribute( QStringLiteral("action") );
     Node* newnode = 0;
-    if ( tmp == "calc" )
+    if ( tmp == QLatin1String("calc") )
     {
       // ApplyTypeNode
-      QByteArray typen = e.attribute( "type" ).toLatin1();
+      QByteArray typen = e.attribute( QStringLiteral("type") ).toLatin1();
       const ObjectType* type = ObjectTypeFactory::instance()->find( typen );
       if ( ! type )
       {
@@ -562,17 +562,17 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       {
         QDomElement q = p.toElement();
         if ( q.isNull() ) KIG_GENERIC_PARSE_ERROR; // see above
-        if ( q.tagName() != "arg" ) KIG_GENERIC_PARSE_ERROR;
+        if ( q.tagName() != QLatin1String("arg") ) KIG_GENERIC_PARSE_ERROR;
         int pid = q.text().toInt(&ok );
         if ( !ok ) KIG_GENERIC_PARSE_ERROR;
         parents.push_back( pid - 1 );
       };
       newnode = new ApplyTypeNode( type, parents );
     }
-    else if ( tmp == "fetch-property" )
+    else if ( tmp == QLatin1String("fetch-property") )
     {
       // FetchPropertyNode
-      QByteArray propname = e.attribute( "property" ).toLatin1();
+      QByteArray propname = e.attribute( QStringLiteral("property") ).toLatin1();
       QDomElement arge = e.firstChild().toElement();
       int parent = arge.text().toInt( &ok );
       if ( !ok ) KIG_GENERIC_PARSE_ERROR;
@@ -581,8 +581,8 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     else
     {
       // PushStackNode
-      if ( e.attribute( "action" ) != "push" ) KIG_GENERIC_PARSE_ERROR;
-      QString typen = e.attribute( "type" );
+      if ( e.attribute( QStringLiteral("action") ) != QLatin1String("push") ) KIG_GENERIC_PARSE_ERROR;
+      QString typen = e.attribute( QStringLiteral("type") );
       if ( typen.isNull() ) KIG_GENERIC_PARSE_ERROR;
       ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e, error );
       if ( ( ! imp ) && !error.isEmpty() ) return 0;

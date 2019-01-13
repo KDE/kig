@@ -62,7 +62,7 @@ KigFilterKSeg::~KigFilterKSeg()
 
 bool KigFilterKSeg::supportMime( const QString& mime )
 {
-  return mime == "application/x-kseg";
+  return mime == QLatin1String("application/x-kseg");
 }
 
 struct drawstyle

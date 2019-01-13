@@ -343,7 +343,7 @@ const CubicCartesianData calcCubicNodeThroughPoints (
  */
 
 double calcCubicYvalue ( double x, double ymin, double ymax, int root,
-                         CubicCartesianData data, bool& valid,
+                         const CubicCartesianData &data, bool& valid,
                          int &numroots )
 {
   valid = true;
@@ -392,8 +392,8 @@ const Coordinate calcCubicLineIntersect( const CubicCartesianData& cu,
  * direction)
  */
 
-void calcCubicLineRestriction ( CubicCartesianData data,
-                                Coordinate p, Coordinate v,
+void calcCubicLineRestriction ( const CubicCartesianData &data,
+                                const Coordinate &p, const Coordinate &v,
                                 double& a, double& b, double& c, double& d )
 {
   a = b = c = d = 0;

@@ -142,8 +142,8 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   okButton->setDefault( true );
   okButton->setShortcut( Qt::CTRL | Qt::Key_Return );
   d->okButton = okButton;
-  connect( buttonBox, SIGNAL(accepted()), this, SLOT(accept()) );
-  connect( buttonBox, SIGNAL(rejected()), this, SLOT(reject()) );
+  connect( buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept );
+  connect( buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject );
 
   d->m_gonio = g;
   d->m_gonioIsNum = true;
@@ -174,8 +174,8 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
               "the left will be converted to the new selected unit." ) );
   horlay->addWidget( d->m_comboBox );
 
-  connect( d->m_lineEditFirst, SIGNAL(textChanged(QString)),
-           this, SLOT(slotGonioTextChanged(QString)) );
+  connect( d->m_lineEditFirst, &QLineEdit::textChanged,
+           this, &KigInputDialog::slotGonioTextChanged );
   connect( d->m_comboBox, SIGNAL(activated(int)),
            this, SLOT(slotGonioSystemChanged(int)) );
 

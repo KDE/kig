@@ -104,7 +104,7 @@ bool PropertiesActionsProvider::executeAction(
 //  ///////    Coordinate c = Coordinate::invalidCoord();
     Coordinate c = w.fromScreen( popup.plc() );
     ObjectHolder* label = ObjectFactory::instance()->attachedLabel(
-      QString::fromLatin1( "%1" ), parent->calcer(), c,
+      QStringLiteral( "%1" ), parent->calcer(), c,
       false, args, doc.document() );
     doc.addObject( label );
   }

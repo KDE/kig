@@ -57,7 +57,7 @@ namespace CabriNS
    */
   QString readLine( QFile& file );
 
-  QString readText( QFile& f, const QString& s, const QString& sep = QString( "\n" ) );
+  QString readText( QFile& f, const QString& s, const QString& sep = QStringLiteral( "\n" ) );
 }
 
 /**

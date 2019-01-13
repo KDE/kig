@@ -91,9 +91,9 @@ KigGUIAction::KigGUIAction( GUIAction* act,
     setIcon( QIcon( new KIconEngine( icon, doc.iconLoader() ) ) );
   setWhatsThis( act->description() );
   QString tooltip = act->descriptiveName();
-  tooltip.replace( QRegExp( "&&" ), "&" );
+  tooltip.replace( QRegExp( "&&" ), QStringLiteral("&") );
   setToolTip( tooltip );
-  connect( this, SIGNAL(triggered()), this, SLOT(slotActivated()) );
+  connect( this, &QAction::triggered, this, &KigGUIAction::slotActivated );
 
   doc.actionCollection()->addAction(act->actionName(), this);
   doc.actionCollection()->setDefaultShortcut( this, QKeySequence( act->shortcut() ) );
@@ -225,7 +225,7 @@ void AddFixedPointAction::act( KigPart& doc )
   KigInputDialog::getCoordinate(
     i18n( "Fixed Point" ),
     i18n( "Enter the coordinates for the new point." ) +
-    QString::fromLatin1( "<br>" ) +
+    QLatin1String( "<br>" ) +
     doc.document().coordinateSystem().coordinateFormatNoticeMarkup(),
     doc.widget(), &ok, doc.document(), &c );
   if ( ! ok ) return;

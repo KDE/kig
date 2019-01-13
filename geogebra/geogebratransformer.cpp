@@ -113,7 +113,7 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   }
   else if( name.localName( m_np ) == QLatin1String( "show" ) )
   {
-    m_show = ( ( value.toString()=="true" ) ? true:false );
+    m_show = ( ( value.toString()==QLatin1String("true") ) ? true:false );
   }
   else if( name.localName( m_np ) == QLatin1String( "thickness" ) )
   {
@@ -152,15 +152,15 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   {
     int pt = value.toString().toInt();
     if( pt == SOLIDCIRCLEPOINT )
-      m_pointType = Kig::pointStyleFromString( "Round" );
+      m_pointType = Kig::pointStyleFromString( QStringLiteral("Round") );
     else if( pt == SOLIDDIAMONDPOINT || pt == UPARROWPOINT || pt == DOWNARROWPOINT || pt == RIGHTARROWPOINT || pt == LEFTARROWPOINT )
-      m_pointType = Kig::pointStyleFromString( "Rectangular" );
+      m_pointType = Kig::pointStyleFromString( QStringLiteral("Rectangular") );
     else if( pt == HOLLOWCIRCLEPOINT )
-      m_pointType = Kig::pointStyleFromString( "Round" );//TODO should be mapped to RoundEmpty ( i.e. 1) but for some reason it is not drawing in KIG
+      m_pointType = Kig::pointStyleFromString( QStringLiteral("Round") );//TODO should be mapped to RoundEmpty ( i.e. 1) but for some reason it is not drawing in KIG
     else if( pt == HOLLOWDIAMONDPOINT )
-      m_pointType = Kig::pointStyleFromString( "Rectangular" );//TODO should be mapped to RectangularEmpty ( i.e. 3) but for some reason it is not drawing in KIG
+      m_pointType = Kig::pointStyleFromString( QStringLiteral("Rectangular") );//TODO should be mapped to RectangularEmpty ( i.e. 3) but for some reason it is not drawing in KIG
     else if( pt == CROSSPOINT  || pt == PLUSPOINT )
-      m_pointType = Kig::pointStyleFromString( "Cross" );
+      m_pointType = Kig::pointStyleFromString( QStringLiteral("Cross") );
     else
       m_pointType = Kig::Round;
   }
@@ -182,12 +182,12 @@ void GeogebraTransformer::attribute( const QXmlName& name, const QStringRef& val
   }
   else if( name.localName( m_np ) == QLatin1String( "axes" ) )
   {
-    bool showAxes = value.toString() == "true" ? true:false;
+    bool showAxes = value.toString() == QLatin1String("true") ? true:false;
     m_document->setAxes( showAxes );
   }
   else if( name.localName( m_np ) == QLatin1String( "grid" ) )
   {
-    bool showGrid = value.toString() == "true" ? true:false;
+    bool showGrid = value.toString() == QLatin1String("true") ? true:false;
     m_document->setGrid( showGrid );
   }
 }
@@ -277,7 +277,7 @@ void GeogebraTransformer::startDocument()
 
 void GeogebraTransformer::startElement( const QXmlName& name )
 {
-  if( name.localName( m_np ) == "Section" )
+  if( name.localName( m_np ) == QLatin1String("Section") )
   {
     m_nsections++;
     m_sections.push_back( GeogebraSection() );

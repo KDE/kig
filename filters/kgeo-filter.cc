@@ -50,7 +50,7 @@
 
 bool KigFilterKGeo::supportMime( const QString& mime )
 {
-  return mime == "application/x-kgeo";
+  return mime == QLatin1String("application/x-kgeo");
 }
 
 KigDocument* KigFilterKGeo::load( const QString& sFrom )
@@ -92,7 +92,7 @@ static void visitElem( std::vector<KGeoHierarchyElement>& ret,
   };
 }
 
-static std::vector<KGeoHierarchyElement> sortElems( const std::vector<KGeoHierarchyElement> elems )
+static std::vector<KGeoHierarchyElement> sortElems( const std::vector<KGeoHierarchyElement> &elems )
 {
   std::vector<KGeoHierarchyElement> ret;
   std::vector<bool> seenElems( elems.size(), false );

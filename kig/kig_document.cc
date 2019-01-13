@@ -30,7 +30,7 @@
 #include <iterator>
 #include <cmath>
 
-KigDocument::KigDocument( std::set<ObjectHolder*> objects, CoordinateSystem* coordsystem,
+KigDocument::KigDocument( const std::set<ObjectHolder*> &objects, CoordinateSystem* coordsystem,
                           bool showgrid, bool showaxes, bool nv )
   : mobjects( objects ), mcoordsystem( coordsystem ), mshowgrid( showgrid ),
     mshowaxes( showaxes ), mnightvision( nv ), mcoordinatePrecision( -1 ), mcachedparam( 0.0 )

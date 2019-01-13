@@ -78,7 +78,7 @@ static void visitElem( std::vector<HierElem>& ret,
   };
 }
 
-static std::vector<HierElem> sortElems( const std::vector<HierElem> elems )
+static std::vector<HierElem> sortElems( const std::vector<HierElem> &elems )
 {
   std::vector<HierElem> ret;
   std::vector<bool> seenElems( elems.size(), false );
@@ -97,7 +97,7 @@ KigFilterNative::~KigFilterNative()
 
 bool KigFilterNative::supportMime( const QString& mime )
 {
-  return mime == "application/x-kig";
+  return mime == QLatin1String("application/x-kig");
 }
 
 KigDocument* KigFilterNative::load( const QString& file)
@@ -129,7 +129,7 @@ KigDocument* KigFilterNative::load( const QString& file)
     else
       KIG_FILTER_PARSE_ERROR;
     // reading compressed file
-    KTar ark( file, "application/x-gzip" );
+    KTar ark( file, QStringLiteral("application/x-gzip") );
     ark.open( QIODevice::ReadOnly );
     const KArchiveDirectory* dir = ark.directory();
 //    assert( dir );
@@ -153,7 +153,7 @@ KigDocument* KigFilterNative::load( const QString& file)
   if ( !kigdoc.open( QIODevice::ReadOnly ) )
     KIG_FILTER_PARSE_ERROR;
 
-  QDomDocument doc( "KigDocument" );
+  QDomDocument doc( QStringLiteral("KigDocument") );
   if ( !doc.setContent( &kigdoc ) )
     KIG_FILTER_PARSE_ERROR;
   kigdoc.close();
@@ -169,9 +169,9 @@ KigDocument* KigFilterNative::load( const QDomDocument& doc )
 {
   QDomElement main = doc.documentElement();
 
-  QString version = main.attribute( "CompatibilityVersion" );
-  if ( version.isEmpty() ) version = main.attribute( "Version" );
-  if ( version.isEmpty() ) version = main.attribute( "version" );
+  QString version = main.attribute( QStringLiteral("CompatibilityVersion") );
+  if ( version.isEmpty() ) version = main.attribute( QStringLiteral("Version") );
+  if ( version.isEmpty() ) version = main.attribute( QStringLiteral("version") );
   if ( version.isEmpty() )
     KIG_FILTER_PARSE_ERROR;
 
@@ -222,7 +222,7 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
   {
     QDomElement e = n.toElement();
     if ( e.isNull() ) continue;
-    if ( e.tagName() == "CoordinateSystem" )
+    if ( e.tagName() == QLatin1String("CoordinateSystem") )
     {
       const QByteArray type = e.text().toLatin1();
       CoordinateSystem* s = CoordinateSystemFactory::build( type.data() );
@@ -235,7 +235,7 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
       }
       else ret->setCoordinateSystem( s );
     }
-    else if ( e.tagName() == "Objects" )
+    else if ( e.tagName() == QLatin1String("Objects") )
     {
       std::vector<ObjectCalcer*> retcalcers;
       std::vector<ObjectHolder*> retholders;
@@ -249,10 +249,10 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
         e = o.toElement();
         if ( e.isNull() ) continue;
         uint id;
-        if ( e.tagName() == "Data" || e.tagName() == "Property" || e.tagName() == "Object" )
+        if ( e.tagName() == QLatin1String("Data") || e.tagName() == QLatin1String("Property") || e.tagName() == QLatin1String("Object") )
         {
           // fetch the id
-          QString tmp = e.attribute("id");
+          QString tmp = e.attribute(QStringLiteral("id"));
           id = tmp.toInt(&ok);
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
 
@@ -265,9 +265,9 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
         {
           QDomElement f = p.toElement();
           if ( f.isNull() ) continue;
-          if ( f.tagName() == "Parent" )
+          if ( f.tagName() == QLatin1String("Parent") )
           {
-            QString tmp = f.attribute( "id" );
+            QString tmp = f.attribute( QStringLiteral("id") );
             uint pid = tmp.toInt( &ok );
             if ( ! ok ) KIG_FILTER_PARSE_ERROR;
 
@@ -288,11 +288,11 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
             i != elems.end(); ++i )
       {
         QDomElement e = i->el;
-        bool internal = e.attribute( "internal" ) == "true" ? true : false;
+        bool internal = e.attribute( QStringLiteral("internal") ) == QLatin1String("true") ? true : false;
         ObjectCalcer* o = 0;
-        if ( e.tagName() == "Data" )
+        if ( e.tagName() == QLatin1String("Data") )
         {
-          QString tmp = e.attribute( "type" );
+          QString tmp = e.attribute( QStringLiteral("type") );
           if ( tmp.isNull() )
             KIG_FILTER_PARSE_ERROR;
           QString error;
@@ -304,13 +304,13 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
           }
           o = new ObjectConstCalcer( imp );
         }
-        else if ( e.tagName() == "Property" )
+        else if ( e.tagName() == QLatin1String("Property") )
         {
           QByteArray propname;
           for ( QDomElement ec = e.firstChild().toElement(); !ec.isNull();
                 ec = ec.nextSibling().toElement() )
           {
-            if ( ec.tagName() == "Property" )
+            if ( ec.tagName() == QLatin1String("Property") )
               propname = ec.text().toLatin1();
           };
 
@@ -323,9 +323,9 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
 
           o = new ObjectPropertyCalcer( parent, propname );
         }
-        else if ( e.tagName() == "Object" )
+        else if ( e.tagName() == QLatin1String("Object") )
         {
-          QString tmp = e.attribute( "type" );
+          QString tmp = e.attribute( QStringLiteral("type") );
           if ( tmp.isNull() )
             KIG_FILTER_PARSE_ERROR;
 
@@ -355,15 +355,15 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
 
         if ( ! internal )
         {
-          QString tmp = e.attribute( "color" );
+          QString tmp = e.attribute( QStringLiteral("color") );
           QColor color( tmp );
           if ( !color.isValid() )
             KIG_FILTER_PARSE_ERROR;
 
-          tmp = e.attribute( "shown" );
-          bool shown = !( tmp == "false" || tmp == "no" );
+          tmp = e.attribute( QStringLiteral("shown") );
+          bool shown = !( tmp == QLatin1String("false") || tmp == QLatin1String("no") );
 
-          tmp = e.attribute( "width" );
+          tmp = e.attribute( QStringLiteral("width") );
           int width = tmp.toInt( &ok );
           if ( ! ok ) width = -1;
 
@@ -398,23 +398,23 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
   std::vector<ObjectCalcer::shared_ptr> calcers;
   std::vector<ObjectHolder*> holders;
 
-  QString t = docelem.attribute( "grid" );
-  bool tmphide = ( t == "false" ) || ( t == "no" ) || ( t == "0" );
+  QString t = docelem.attribute( QStringLiteral("grid") );
+  bool tmphide = ( t == QLatin1String("false") ) || ( t == QLatin1String("no") ) || ( t == QLatin1String("0") );
   ret->setGrid( !tmphide );
-  t = docelem.attribute( "axes" );
-  tmphide = ( t == "false" ) || ( t == "no" ) || ( t == "0" );
+  t = docelem.attribute( QStringLiteral("axes") );
+  tmphide = ( t == QLatin1String("false") ) || ( t == QLatin1String("no") ) || ( t == QLatin1String("0") );
   ret->setAxes( !tmphide );
 
   for ( QDomElement subsectionelement = docelem.firstChild().toElement(); ! subsectionelement.isNull();
         subsectionelement = subsectionelement.nextSibling().toElement() )
   {
-    if ( subsectionelement.tagName() == "CoordinateSystem" )
+    if ( subsectionelement.tagName() == QLatin1String("CoordinateSystem") )
     {
       QString tmptype = subsectionelement.text();
       // compatibility code - to support Invisible coord system...
-      if ( tmptype == "Invisible" )
+      if ( tmptype == QLatin1String("Invisible") )
       {
-        tmptype = "Euclidean";
+        tmptype = QLatin1String("Euclidean");
         ret->setGrid( false );
         ret->setAxes( false );
       }
@@ -429,12 +429,12 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
       }
       else ret->setCoordinateSystem( s );
     }
-    else if ( subsectionelement.tagName() == "Hierarchy" )
+    else if ( subsectionelement.tagName() == QLatin1String("Hierarchy") )
     {
       for ( QDomElement e = subsectionelement.firstChild().toElement(); ! e.isNull();
             e = e.nextSibling().toElement() )
       {
-        QString tmp = e.attribute( "id" );
+        QString tmp = e.attribute( QStringLiteral("id") );
         uint id = tmp.toInt( &ok );
         if ( id <= 0 ) KIG_FILTER_PARSE_ERROR;
 
@@ -442,8 +442,8 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
         for ( QDomElement parentel = e.firstChild().toElement(); ! parentel.isNull();
               parentel = parentel.nextSibling().toElement() )
         {
-          if ( parentel.tagName() != "Parent" ) continue;
-          QString tmp = parentel.attribute( "id" );
+          if ( parentel.tagName() != QLatin1String("Parent") ) continue;
+          QString tmp = parentel.attribute( QStringLiteral("id") );
           uint parentid = tmp.toInt( &ok );
           if ( ! ok ) KIG_FILTER_PARSE_ERROR;
           if ( parentid == 0 || parentid > calcers.size() ) KIG_FILTER_PARSE_ERROR;
@@ -454,10 +454,10 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
 
         ObjectCalcer* o = 0;
 
-        if ( e.tagName() == "Data" )
+        if ( e.tagName() == QLatin1String("Data") )
         {
           if ( !parents.empty() ) KIG_FILTER_PARSE_ERROR;
-          QString tmp = e.attribute( "type" );
+          QString tmp = e.attribute( QStringLiteral("type") );
           QString error;
           ObjectImp* imp = ObjectImpFactory::instance()->deserialize( tmp, e, error );
           if ( ( !imp ) && !error.isEmpty() )
@@ -467,10 +467,10 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
           }
           o = new ObjectConstCalcer( imp );
         }
-        else if ( e.tagName() == "Property" )
+        else if ( e.tagName() == QLatin1String("Property") )
         {
           if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
-          QByteArray propname = e.attribute( "which" ).toLatin1();
+          QByteArray propname = e.attribute( QStringLiteral("which") ).toLatin1();
 
           ObjectCalcer* parent = parents[0];
           int propid = parent->imp()->propertiesInternalNames().indexOf( propname );
@@ -478,14 +478,14 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
 
           o = new ObjectPropertyCalcer( parent, propname );
         }
-        else if ( e.tagName() == "Object" )
+        else if ( e.tagName() == QLatin1String("Object") )
         {
-          QString tmp = e.attribute( "type" );
+          QString tmp = e.attribute( QStringLiteral("type") );
           const ObjectType* type =
             ObjectTypeFactory::instance()->find( tmp.toLatin1() );
           if ( ! type )
           {
-            if ( tmp == "MeasureTransport" && parents.size() == 3 )
+            if ( tmp == QLatin1String("MeasureTransport") && parents.size() == 3 )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "TransportOfMeasure" );
@@ -495,27 +495,27 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
               parents[0] = segment;
               parents[1] = circle;
               parents[2] = point;
-            } else if ( tmp == "LineCubicIntersection" )
+            } else if ( tmp == QLatin1String("LineCubicIntersection") )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CubicLineIntersection" );
-            } else if ( tmp == "InvertLine" )
+            } else if ( tmp == QLatin1String("InvertLine") )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
-            } else if ( tmp == "InvertSegment" )
+            } else if ( tmp == QLatin1String("InvertSegment") )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
-            } else if ( tmp == "InvertCircle" )
+            } else if ( tmp == QLatin1String("InvertCircle") )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
-            } else if ( tmp == "InvertArc" )
+            } else if ( tmp == QLatin1String("InvertArc") )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "CircularInversion" );
-            } else if ( tmp == "ConicArcBTPC" )
+            } else if ( tmp == QLatin1String("ConicArcBTPC") )
             {
               warning( i18n( obsoletemessage, tmp ) );
               type = ObjectTypeFactory::instance()->find( "ConicArcBCTP" );
@@ -559,46 +559,46 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
         calcers[id-1] = o;
       }
     }
-    else if ( subsectionelement.tagName() == "View" )
+    else if ( subsectionelement.tagName() == QLatin1String("View") )
     {
       for ( QDomElement e = subsectionelement.firstChild().toElement(); ! e.isNull();
             e = e.nextSibling().toElement() )
       {
-        if ( e.tagName() != "Draw" ) KIG_FILTER_PARSE_ERROR;
+        if ( e.tagName() != QLatin1String("Draw") ) KIG_FILTER_PARSE_ERROR;
 
-        QString tmp = e.attribute( "object" );
+        QString tmp = e.attribute( QStringLiteral("object") );
         uint id = tmp.toInt( &ok );
         if ( !ok ) KIG_FILTER_PARSE_ERROR;
         if ( id <= 0 || id > calcers.size() )
           KIG_FILTER_PARSE_ERROR;
         ObjectCalcer* calcer = calcers[id-1].get();
 
-        tmp = e.attribute( "color" );
+        tmp = e.attribute( QStringLiteral("color") );
         QColor color( tmp );
         if ( !color.isValid() )
           KIG_FILTER_PARSE_ERROR;
 
-        tmp = e.attribute( "shown" );
-        bool shown = !( tmp == "false" || tmp == "no" );
+        tmp = e.attribute( QStringLiteral("shown") );
+        bool shown = !( tmp == QLatin1String("false") || tmp == QLatin1String("no") );
 
-        tmp = e.attribute( "width" );
+        tmp = e.attribute( QStringLiteral("width") );
         int width = tmp.toInt( &ok );
         if ( ! ok ) width = -1;
 
-        tmp = e.attribute( "style" );
+        tmp = e.attribute( QStringLiteral("style") );
         Qt::PenStyle style = ObjectDrawer::styleFromString( tmp );
 
-        tmp = e.attribute( "point-style" );
+        tmp = e.attribute( QStringLiteral("point-style") );
         Kig::PointStyle pointstyle = Kig::pointStyleFromString( tmp );
 
-        tmp = e.attribute( "font" );
+        tmp = e.attribute( QStringLiteral("font") );
         QFont f;
         if ( !tmp.isEmpty() )
           f.fromString( tmp );
 
         ObjectConstCalcer* namecalcer = 0;
-        tmp = e.attribute( "namecalcer" );
-        if ( tmp != "none" && !tmp.isEmpty() )
+        tmp = e.attribute( QStringLiteral("namecalcer") );
+        if ( tmp != QLatin1String("none") && !tmp.isEmpty() )
         {
           int ncid = tmp.toInt( &ok );
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
@@ -621,19 +621,19 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
 
 bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
 {
-  QDomDocument doc( "KigDocument" );
+  QDomDocument doc( QStringLiteral("KigDocument") );
 
   QDomProcessingInstruction xmlpi = doc.createProcessingInstruction(
           QString::fromLatin1( "xml" ), QString::fromLatin1( "version=\"1.0\" encoding=\"utf-8\"" ) );
   doc.appendChild( xmlpi );
 
-  QDomElement docelem = doc.createElement( "KigDocument" );
-  docelem.setAttribute( "Version", KIGVERSION );
-  docelem.setAttribute( "CompatibilityVersion", "0.7.0" );
-  docelem.setAttribute( "grid", kdoc.grid() );
-  docelem.setAttribute( "axes", kdoc.axes() );
+  QDomElement docelem = doc.createElement( QStringLiteral("KigDocument") );
+  docelem.setAttribute( QStringLiteral("Version"), KIGVERSION );
+  docelem.setAttribute( QStringLiteral("CompatibilityVersion"), QStringLiteral("0.7.0") );
+  docelem.setAttribute( QStringLiteral("grid"), kdoc.grid() );
+  docelem.setAttribute( QStringLiteral("axes"), kdoc.axes() );
 
-  QDomElement cselem = doc.createElement( "CoordinateSystem" );
+  QDomElement cselem = doc.createElement( QStringLiteral("CoordinateSystem") );
   cselem.appendChild( doc.createTextNode( kdoc.coordinateSystem().type() ) );
   docelem.appendChild( cselem );
 
@@ -641,7 +641,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   std::vector<ObjectCalcer*> calcers = getAllParents( getAllCalcers( holders ) );
   calcers = calcPath( calcers );
 
-  QDomElement hierelem = doc.createElement( "Hierarchy" );
+  QDomElement hierelem = doc.createElement( QStringLiteral("Hierarchy") );
   std::map<const ObjectCalcer*, int> idmap;
   for ( std::vector<ObjectCalcer*>::const_iterator i = calcers.begin();
         i != calcers.end(); ++i )
@@ -653,24 +653,24 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     QDomElement objectelem;
     if ( dynamic_cast<ObjectConstCalcer*>( *i ) )
     {
-      objectelem = doc.createElement( "Data" );
+      objectelem = doc.createElement( QStringLiteral("Data") );
       QString ser =
         ObjectImpFactory::instance()->serialize( *(*i)->imp(), objectelem, doc );
-      objectelem.setAttribute( "type", ser );
+      objectelem.setAttribute( QStringLiteral("type"), ser );
     }
     else if ( dynamic_cast<const ObjectPropertyCalcer*>( *i ) )
     {
       const ObjectPropertyCalcer* o = static_cast<const ObjectPropertyCalcer*>( *i );
-      objectelem = doc.createElement( "Property" );
+      objectelem = doc.createElement( QStringLiteral("Property") );
 
       QByteArray propname = o->parent()->imp()->getPropName( o->propGid() );
-      objectelem.setAttribute( "which", QString( propname ) );
+      objectelem.setAttribute( QStringLiteral("which"), QString( propname ) );
     }
     else if ( dynamic_cast<const ObjectTypeCalcer*>( *i ) )
     {
       const ObjectTypeCalcer* o = static_cast<const ObjectTypeCalcer*>( *i );
-      objectelem = doc.createElement( "Object" );
-      objectelem.setAttribute( "type", o->type()->fullName() );
+      objectelem = doc.createElement( QStringLiteral("Object") );
+      objectelem.setAttribute( QStringLiteral("type"), o->type()->fullName() );
     }
     else assert( false );
 
@@ -680,17 +680,17 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       std::map<const ObjectCalcer*,int>::const_iterator idp = idmap.find( *i );
       assert( idp != idmap.end() );
       int pid = idp->second;
-      QDomElement pel = doc.createElement( "Parent" );
-      pel.setAttribute( "id", pid );
+      QDomElement pel = doc.createElement( QStringLiteral("Parent") );
+      pel.setAttribute( QStringLiteral("id"), pid );
       objectelem.appendChild( pel );
     }
 
-    objectelem.setAttribute( "id", id++ );
+    objectelem.setAttribute( QStringLiteral("id"), id++ );
     hierelem.appendChild( objectelem );
   }
   docelem.appendChild( hierelem );
 
-  QDomElement windowelem = doc.createElement( "View" );
+  QDomElement windowelem = doc.createElement( QStringLiteral("View") );
   for ( std::vector<ObjectHolder*>::iterator i = holders.begin(); i != holders.end(); ++i )
   {
     std::map<const ObjectCalcer*,int>::const_iterator idp = idmap.find( ( *i )->calcer() );
@@ -698,14 +698,14 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
     int id = idp->second;
 
     const ObjectDrawer* d = ( *i )->drawer();
-    QDomElement drawelem = doc.createElement( "Draw" );
-    drawelem.setAttribute( "object", id );
-    drawelem.setAttribute( "color", d->color().name() );
-    drawelem.setAttribute( "shown", QLatin1String( d->shown() ? "true" : "false" ) );
-    drawelem.setAttribute( "width", QString::number( d->width() ) );
-    drawelem.setAttribute( "style", d->styleToString() );
-    drawelem.setAttribute( "point-style", Kig::pointStyleToString( d->pointStyle() ) );
-    drawelem.setAttribute( "font", d->font().toString() );
+    QDomElement drawelem = doc.createElement( QStringLiteral("Draw") );
+    drawelem.setAttribute( QStringLiteral("object"), id );
+    drawelem.setAttribute( QStringLiteral("color"), d->color().name() );
+    drawelem.setAttribute( QStringLiteral("shown"), QLatin1String( d->shown() ? "true" : "false" ) );
+    drawelem.setAttribute( QStringLiteral("width"), QString::number( d->width() ) );
+    drawelem.setAttribute( QStringLiteral("style"), d->styleToString() );
+    drawelem.setAttribute( QStringLiteral("point-style"), Kig::pointStyleToString( d->pointStyle() ) );
+    drawelem.setAttribute( QStringLiteral("font"), d->font().toString() );
 
     ObjectCalcer* namecalcer = ( *i )->nameCalcer();
     if ( namecalcer )
@@ -713,11 +713,11 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
       std::map<const ObjectCalcer*,int>::const_iterator ncp = idmap.find( namecalcer );
       assert( ncp != idmap.end() );
       int ncid = ncp->second;
-      drawelem.setAttribute( "namecalcer", ncid );
+      drawelem.setAttribute( QStringLiteral("namecalcer"), ncid );
     }
     else
     {
-      drawelem.setAttribute( "namecalcer", "none" );
+      drawelem.setAttribute( QStringLiteral("namecalcer"), QStringLiteral("none") );
     }
 
     windowelem.appendChild( drawelem );
@@ -771,7 +771,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     qDebug() << "tmp saved file: " << tmpfile;
 
     // creating the archive and adding our file
-    KTar ark( outfile,  "application/x-gzip" );
+    KTar ark( outfile,  QStringLiteral("application/x-gzip") );
     ark.open( QIODevice::WriteOnly );
     ark.addLocalFile( tmpfile, tempname + ".kig" );
     ark.close();

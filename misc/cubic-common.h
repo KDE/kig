@@ -106,15 +106,15 @@ const CubicCartesianData calcCubicNodeThroughPoints (
     const std::vector<Coordinate>& points );
 
 double calcCubicYvalue ( double x, double ymin, double ymax,
-                         int root, CubicCartesianData data,
+                         int root, const CubicCartesianData &data,
                          bool& valid, int& numroots );
 
 const Coordinate calcCubicLineIntersect( const CubicCartesianData& c,
                                          const LineData& l,
                                          int root, bool& valid );
 
-void calcCubicLineRestriction ( CubicCartesianData data,
-         Coordinate p1, Coordinate dir,
+void calcCubicLineRestriction ( const CubicCartesianData &data,
+         const Coordinate &p1, const Coordinate &dir,
          double& a, double& b, double& c, double& d );
 
 const CubicCartesianData calcCubicTransformation (

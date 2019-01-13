@@ -285,7 +285,7 @@ std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj )
   return getAllChildren( objs );
 }
 
-std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs )
+std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> &objs )
 {
   std::set<ObjectCalcer*> ret;
   // objects to iterate over...

@@ -234,7 +234,7 @@ void ObjectConstCalcer::setImp( ObjectImp* newimp )
   delete switchImp( newimp );
 }
 
-void ObjectTypeCalcer::setParents( const std::vector<ObjectCalcer*> np )
+void ObjectTypeCalcer::setParents( const std::vector<ObjectCalcer*> &np )
 {
   std::for_each( np.begin(), np.end(),
                  std::bind2nd( std::mem_fun( &ObjectCalcer::addChild ), this ) );

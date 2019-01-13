@@ -465,7 +465,7 @@ ConicCartesianData::ConicCartesianData( const double incoeffs[6] )
 }
 
 const LineData calcConicAsymptote(
-  const ConicCartesianData data,
+  const ConicCartesianData &data,
   int which, bool &valid )
 {
   assert( which == -1 || which == 1 );

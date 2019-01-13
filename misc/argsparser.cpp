@@ -108,7 +108,7 @@ int ArgsParser::check( const std::vector<ObjectCalcer*>& os ) const
 
 template <typename Collection>
 static Collection parse( const Collection& os,
-                         const std::vector<ArgsParser::spec> margs )
+                         const std::vector<ArgsParser::spec> &margs )
 {
   Collection ret( margs.size(), static_cast<typename Collection::value_type>( 0 ) );
 

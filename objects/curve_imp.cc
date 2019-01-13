@@ -269,7 +269,7 @@ double CurveImp::revert (int n) const
 
 QString CurveImp::cartesianEquationString (const KigDocument& doc ) const
 {
-  EquationString ret = EquationString( "" );
+  EquationString ret = EquationString( QLatin1String("") );
   const double threshold = 1e-10;
   const int degmax=6;
   const int N = (degmax + 1)*(degmax + 2)/2;
@@ -391,7 +391,7 @@ QString CurveImp::cartesianEquationString (const KigDocument& doc ) const
             ret.addTerm( sol[j++], ret.xnym(degx,degy), needsign );
            }
       }
-      ret.addTerm( sol[0], "", needsign );
+      ret.addTerm( sol[0], QLatin1String(""), needsign );
       ret.append( " = 0" );
       return ret;
     }

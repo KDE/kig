@@ -37,8 +37,8 @@ public:
   /**
    * constructors...
    */
-  Rect( const Coordinate bottomLeft, const Coordinate topRight );
-  Rect( const Coordinate bottomLeft, const double width, const double height );
+  Rect( const Coordinate &bottomLeft, const Coordinate &topRight );
+  Rect( const Coordinate &bottomLeft, const double width, const double height );
   Rect( double xa, double ya, double width, double height );
   Rect( const Rect& r );
   Rect();
@@ -47,11 +47,11 @@ public:
 
   bool valid();
 
-  void setBottomLeft( const Coordinate p );
-  void setTopLeft( const Coordinate p );
-  void setTopRight( const Coordinate p );
-  void setBottomRight( const Coordinate p );
-  void setCenter( const Coordinate p );
+  void setBottomLeft( const Coordinate &p );
+  void setTopLeft( const Coordinate &p );
+  void setTopRight( const Coordinate &p );
+  void setBottomRight( const Coordinate &p );
+  void setCenter( const Coordinate &p );
   void setLeft( const double p);
   void setRight( const double p);
   void setTop( const double p );
@@ -65,15 +65,15 @@ public:
   /**
    * this makes sure p is in the rect, extending it if necessary...
    */
-  void setContains( Coordinate p );
+  void setContains( const Coordinate &p );
   /**
    * moves the rect while keeping the size constant...
    */
-  void moveBy( const Coordinate p );
+  void moveBy( const Coordinate &p );
   /**
    * synonym for moveBy...
    */
-  Rect& operator+=( const Coordinate p ) { moveBy(p); return *this; }
+  Rect& operator+=( const Coordinate &p ) { moveBy(p); return *this; }
   /**
    * scale: only the size changes, topLeft is kept where it is...
    */

@@ -38,7 +38,7 @@
 
 static int convertToNative( const QUrl &file, const QByteArray& outfile )
 {
-  KPluginLoader libraryLoader( "kigpart" );
+  KPluginLoader libraryLoader( QStringLiteral("kigpart") );
   QLibrary library( libraryLoader.fileName() );
   int ( *converterfunction )( const QUrl&, const QByteArray& );
   converterfunction = ( int ( * )( const QUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );
@@ -62,20 +62,20 @@ static bool configMigration()
 static void dataMigration()
 {
   Kdelibs4Migration datamigrator;
-  QString file = datamigrator.locateLocal( "data", "kig/kig-types/macros.kigt" );
+  QString file = datamigrator.locateLocal( "data", QStringLiteral("kig/kig-types/macros.kigt") );
 
   if ( !file.isEmpty() )
   {
     QFile macros( file );
     const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
-    const QDir typesDir( writeableDataLocation.absoluteFilePath( "kig-types" ) );
+    const QDir typesDir( writeableDataLocation.absoluteFilePath( QStringLiteral("kig-types") ) );
 
     if ( !typesDir.exists() )
     {
-      writeableDataLocation.mkpath( "kig-types" );
+      writeableDataLocation.mkpath( QStringLiteral("kig-types") );
     }
 
-    macros.copy( typesDir.absoluteFilePath( "macros.kigt" ) );
+    macros.copy( typesDir.absoluteFilePath( QStringLiteral("macros.kigt") ) );
   }
 }
 
@@ -87,10 +87,10 @@ int main( int argc, char **argv )
   KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
   KCrash::initialize();
   QCommandLineParser parser;
-  QCommandLineOption convertToNativeOption( QStringList() << "c" << "convert-to-native", i18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ) );
-  QCommandLineOption outfileOption( QStringList() << "o" << "outfile", i18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ), "file" );
+  QCommandLineOption convertToNativeOption( QStringList() << QStringLiteral("c") << QStringLiteral("convert-to-native"), i18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ) );
+  QCommandLineOption outfileOption( QStringList() << QStringLiteral("o") << QStringLiteral("outfile"), i18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ), QStringLiteral("file") );
 
-  QCoreApplication::setApplicationName( "kig" );
+  QCoreApplication::setApplicationName( QStringLiteral("kig") );
   QCoreApplication::setApplicationVersion( i18n( KIGVERSION ) );
   QCoreApplication::setOrganizationDomain( i18n( "kde.org" ) );
   KAboutData::setApplicationData( about );
@@ -100,15 +100,15 @@ int main( int argc, char **argv )
   parser.addHelpOption();
   parser.addOption( convertToNativeOption );
   parser.addOption( outfileOption );
-  parser.addPositionalArgument( "URL", i18n( "Document to open" ) );
+  parser.addPositionalArgument( QStringLiteral("URL"), i18n( "Document to open" ) );
   parser.process( app );
   about.processCommandLine( &parser );
 
   QStringList urls = parser.positionalArguments();
 
-  if ( parser.isSet( "convert-to-native" ) )
+  if ( parser.isSet( QStringLiteral("convert-to-native") ) )
   {
-    QString outfile = parser.value( "outfile" );
+    QString outfile = parser.value( QStringLiteral("outfile") );
     if ( outfile.isNull() )
       outfile = '-';
     if ( urls.isEmpty() )
@@ -125,7 +125,7 @@ int main( int argc, char **argv )
   }
   else
   {
-    if ( parser.isSet( "outfile" ) )
+    if ( parser.isSet( QStringLiteral("outfile") ) )
     {
       qCritical() << "Error: --outfile specified without convert-to-native." << endl;
       return -1;

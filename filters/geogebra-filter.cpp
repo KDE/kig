@@ -46,7 +46,7 @@ KigFilterGeogebra* KigFilterGeogebra::instance()
 
 bool KigFilterGeogebra::supportMime( const QString& mime )
 {
-  return mime == "application/vnd.geogebra.file";
+  return mime == QLatin1String("application/vnd.geogebra.file");
 }
 
 static ObjectHolder* holderFromCalcerAndDrawer( ObjectCalcer* oc, ObjectDrawer* od )
@@ -61,14 +61,14 @@ KigDocument* KigFilterGeogebra::load( const QString& sFrom )
 
   if ( geogebraFile.open( QIODevice::ReadOnly ) )
   {
-    const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( "geogebra.xml" ) );
+    const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( QStringLiteral("geogebra.xml") ) );
 
     if ( geogebraXMLEntry )
     {
       QXmlNamePool np;
       QXmlQuery geogebraXSLT( QXmlQuery::XSLT20, np );
       const QString encodedData = QString::fromUtf8( geogebraXMLEntry->data().constData() );
-      QFile queryDevice( ":/kig/geogebra/geogebra.xsl" );
+      QFile queryDevice( QStringLiteral(":/kig/geogebra/geogebra.xsl") );
       GeogebraTransformer ggbtransform( document, np );
 
       queryDevice.open( QFile::ReadOnly );

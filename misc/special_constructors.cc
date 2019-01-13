@@ -996,7 +996,7 @@ void PolygonBCVConstructor::handlePrelim(
     double ro = 1.0/(2.5);
     Coordinate where = getRotatedCoord( c, (1-ro)*c+ro*v, 4*M_PI/5.0 );
     PointImp ptn = PointImp( where );
-    TextImp text = TextImp( "(5,2)", where, false );
+    TextImp text = TextImp( QStringLiteral("(5,2)"), where, false );
     ptn.draw( p );
     text.draw( p );
     for ( int i = 3; i < 9; ++i )
@@ -1005,7 +1005,7 @@ void PolygonBCVConstructor::handlePrelim(
       ptn = PointImp( where );
       ptn.draw( p );
       if ( i > 5 ) continue;
-      text = TextImp( QString( "(%1)" ).arg(i), where, false );
+      text = TextImp( QStringLiteral( "(%1)" ).arg(i), where, false );
       text.draw( p );
     }
     p.setStyle( Qt::DotLine );
@@ -1083,7 +1083,7 @@ QString PolygonBCVConstructor::useText( const ObjectCalcer&, const std::vector<O
     break;
   }
 
-  return "";
+  return QLatin1String("");
 }
 
 QString PolygonBCVConstructor::selectStatement(
@@ -1105,7 +1105,7 @@ QString PolygonBCVConstructor::selectStatement(
     break;
   }
 
-  return "";
+  return QLatin1String("");
 }
 
 void PolygonBCVConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
@@ -1823,7 +1823,7 @@ QString MeasureTransportConstructor::useText( const ObjectCalcer& o,
       return i18n("Start transport from this point of the curve");
       // well, this isn't impemented yet, should never get here
   }
-  return "";
+  return QLatin1String("");
 }
 
 QString MeasureTransportConstructor::selectStatement(
@@ -1845,7 +1845,7 @@ QString MeasureTransportConstructor::selectStatement(
     break;
   }
 
-  return "";
+  return QLatin1String("");
 }
 
 std::vector<ObjectHolder*> MeasureTransportConstructor::build(

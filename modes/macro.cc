@@ -124,9 +124,9 @@ void DefineMacroMode::finishPressed()
   ObjectHierarchy hier( given, final );
   MacroConstructor* ctor =
     new MacroConstructor( hier,
-                          mwizard->field( "name" ).toString(),
-                          mwizard->field( "description" ).toString(),
-                          mwizard->field( "icon" ).toByteArray() );
+                          mwizard->field( QStringLiteral("name") ).toString(),
+                          mwizard->field( QStringLiteral("description") ).toString(),
+                          mwizard->field( QStringLiteral("icon") ).toByteArray() );
   ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
   MacroList::instance()->add( new Macro( act, ctor ) );
 

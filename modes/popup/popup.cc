@@ -83,7 +83,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
   else if ( single )
   {
     if ( !objs[0]->name().isNull() )
-      title = QString::fromLatin1( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
+      title = QStringLiteral( "%1 %2" ).arg( objs[0]->imp()->type()->translatedName() ).arg( objs[0]->name() );
     else
       title = objs[0]->imp()->type()->translatedName();
   }
@@ -177,8 +177,8 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
    * in addInternalAction directly adds the action at toplevel.
    */
 
-  connect( this, SIGNAL(triggered(QAction*)),
-           this, SLOT(toplevelMenuSlot(QAction*)) );
+  connect( this, &QMenu::triggered,
+           this, &NormalModePopupObjects::toplevelMenuSlot );
 
   for ( int i = 0; i < NumberOfMenus; ++i )
   {
@@ -225,7 +225,7 @@ NormalModePopupObjects::~NormalModePopupObjects()
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& pix, int id )
 {
-  return addInternalAction( menu, pix, "", id );
+  return addInternalAction( menu, pix, QLatin1String(""), id );
 }
 
 QAction* NormalModePopupObjects::addInternalAction( int menu, const QIcon& icon, const QString& name, int id )

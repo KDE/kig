@@ -35,7 +35,7 @@ QDebug& operator<<( QDebug& s, const Rect& t )
   return s;
 }
 
-Rect::Rect( const Coordinate bottomLeft, const Coordinate topRight )
+Rect::Rect( const Coordinate &bottomLeft, const Coordinate &topRight )
   : mBottomLeft(bottomLeft)
 {
   mwidth = topRight.x - bottomLeft.x;
@@ -43,7 +43,7 @@ Rect::Rect( const Coordinate bottomLeft, const Coordinate topRight )
   normalize();
 }
 
-Rect::Rect( const Coordinate p, const double width, const double height )
+Rect::Rect( const Coordinate &p, const double width, const double height )
   : mBottomLeft(p),
     mwidth(width),
     mheight(height)
@@ -73,22 +73,22 @@ Rect::Rect()
 {
 }
 
-void Rect::setBottomLeft( const Coordinate p )
+void Rect::setBottomLeft( const Coordinate &p )
 {
   mBottomLeft = p;
 }
 
-void Rect::setBottomRight( const Coordinate p )
+void Rect::setBottomRight( const Coordinate &p )
 {
   mBottomLeft = p - Coordinate(mwidth,0);
 }
 
-void Rect::setTopRight( const Coordinate p )
+void Rect::setTopRight( const Coordinate &p )
 {
   mBottomLeft = p - Coordinate(mwidth, mheight);
 }
 
-void Rect::setCenter( const Coordinate p )
+void Rect::setCenter( const Coordinate &p )
 {
   mBottomLeft = p - Coordinate(mwidth, mheight)/2;
 }
@@ -141,7 +141,7 @@ void Rect::normalize()
     };
 }
 
-void Rect::moveBy( const Coordinate p )
+void Rect::moveBy( const Coordinate &p )
 {
   mBottomLeft += p;
 }
@@ -237,7 +237,7 @@ bool Rect::intersects( const Rect& p ) const
   return true;
 }
 
-void Rect::setContains( Coordinate p )
+void Rect::setContains( const Coordinate &p )
 {
   normalize();
   if( p.x < left() ) setLeft( p.x );
@@ -258,7 +258,7 @@ Rect Rect::fromQRect( const QRect& r )
   return Rect( r.left(), r.top(), r.right(), r.bottom() );
 }
 
-void Rect::setTopLeft( const Coordinate p )
+void Rect::setTopLeft( const Coordinate &p )
 {
   Coordinate bl = Coordinate( p.x, p.y - mheight );
   setBottomLeft( bl );

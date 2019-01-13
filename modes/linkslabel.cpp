@@ -44,16 +44,16 @@ LinksLabel::LinksLabel( QWidget* parent )
   p = new Private;
   p->layout = new QHBoxLayout( this );
 
-  QLabel* l = new QLabel( QString::fromUtf8( "Dit is een " ), this );
+  QLabel* l = new QLabel( QLatin1String( "Dit is een " ), this );
   p->labels.push_back( l );
   p->layout->addWidget( l );
 
-  KUrlLabel* u = new KUrlLabel( QString::fromUtf8( "http://www.kde.org/" ),
-                                QString::fromUtf8( "url"), this );
+  KUrlLabel* u = new KUrlLabel( QLatin1String( "http://www.kde.org/" ),
+                                QLatin1String( "url"), this );
   p->urllabels.push_back( u );
   p->layout->addWidget( u );
 
-  l = new QLabel( QString::fromUtf8( " !" ), this );
+  l = new QLabel( QLatin1String( " !" ), this );
   p->labels.push_back( l );
   p->layout->addWidget(l );
 
@@ -108,7 +108,7 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
     {
       // we need a KUrlLabel...
       // the url is an unused stub...
-      KUrlLabel* l = new KUrlLabel( QString::fromUtf8( "http://edu.kde.org/kig" ),
+      KUrlLabel* l = new KUrlLabel( QLatin1String( "http://edu.kde.org/kig" ),
                                     i->second, this );
       p->urllabels.push_back( l );
       p->layout->addWidget( l );

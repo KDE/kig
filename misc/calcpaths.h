@@ -63,7 +63,7 @@ std::vector<ObjectCalcer*> getAllParents( ObjectCalcer* obj );
  * dependency graphy.  The objects in \p objs are also included
  * themselves.
  */
-std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> objs );
+std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> &objs );
 
 /**
  * \overload

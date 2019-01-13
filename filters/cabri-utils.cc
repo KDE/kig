@@ -150,22 +150,22 @@ void CabriReader::initColorMap()
   if ( !colors_initialized )
   {
     colors_initialized = true;
-    colormap[ "R" ] = Qt::red;
-    colormap[ "O" ] = Qt::magenta;
-    colormap[ "Y" ] = Qt::yellow;
-    colormap[ "P" ] = Qt::darkMagenta;
-    colormap[ "V" ] = Qt::darkBlue;
-    colormap[ "Bl" ] = Qt::blue;
-    colormap[ "lBl" ] = Qt::cyan;
-    colormap[ "G" ] = Qt::green;
-    colormap[ "dG" ] = Qt::darkGreen;
-    colormap[ "Br" ] = QColor( 165, 42, 42 );
-    colormap[ "dBr" ] = QColor( 128, 128, 0 );
-    colormap[ "lGr" ] = Qt::lightGray;
-    colormap[ "Gr" ] = Qt::gray;
-    colormap[ "dGr" ] = Qt::darkGray;
-    colormap[ "B" ] = Qt::black;
-    colormap[ "W" ] = Qt::white;
+    colormap[ QStringLiteral("R") ] = Qt::red;
+    colormap[ QStringLiteral("O") ] = Qt::magenta;
+    colormap[ QStringLiteral("Y") ] = Qt::yellow;
+    colormap[ QStringLiteral("P") ] = Qt::darkMagenta;
+    colormap[ QStringLiteral("V") ] = Qt::darkBlue;
+    colormap[ QStringLiteral("Bl") ] = Qt::blue;
+    colormap[ QStringLiteral("lBl") ] = Qt::cyan;
+    colormap[ QStringLiteral("G") ] = Qt::green;
+    colormap[ QStringLiteral("dG") ] = Qt::darkGreen;
+    colormap[ QStringLiteral("Br") ] = QColor( 165, 42, 42 );
+    colormap[ QStringLiteral("dBr") ] = QColor( 128, 128, 0 );
+    colormap[ QStringLiteral("lGr") ] = Qt::lightGray;
+    colormap[ QStringLiteral("Gr") ] = Qt::gray;
+    colormap[ QStringLiteral("dGr") ] = Qt::darkGray;
+    colormap[ QStringLiteral("B") ] = Qt::black;
+    colormap[ QStringLiteral("W") ] = Qt::white;
   }
 }
 
@@ -266,7 +266,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     myobj->fillColor = translateColor( tmp );
 
     tmp = secondlinere.cap( 3 );
-    myobj->thick = tmp == "t" ? 1 : tmp == "tT" ? 2 : 3;
+    myobj->thick = tmp == QLatin1String("t") ? 1 : tmp == QLatin1String("tT") ? 2 : 3;
 
     tmp = secondlinere.cap( 4 );
     myobj->lineSegLength = tmp.toInt( &ok );
@@ -281,10 +281,10 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
 
     tmp = secondlinere.cap( 7 );
-    myobj->visible = tmp == "V";
+    myobj->visible = tmp == QLatin1String("V");
 
     tmp = secondlinere.cap( 8 );
-    myobj->fixed = tmp == "St";
+    myobj->fixed = tmp == QLatin1String("St");
   }
   else if ( secondlinere2.exactMatch( line2 ) )  // e.g. for AngVal
   {
@@ -298,7 +298,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     // 4: e.g. "FD"
 
     tmp = secondlinere2.cap( 5 );
-    if ( tmp == "deg" )
+    if ( tmp == QLatin1String("deg") )
       myobj->gonio = CabriNS::CG_Deg;
 
     tmp = secondlinere2.cap( 6 );
@@ -306,10 +306,10 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
 
     tmp = secondlinere2.cap( 7 );
-    myobj->visible = tmp == "V";
+    myobj->visible = tmp == QLatin1String("V");
 
     tmp = secondlinere2.cap( 8 );
-    myobj->fixed = tmp == "St";
+    myobj->fixed = tmp == QLatin1String("St");
 
   }
   else
@@ -365,7 +365,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
       myobj->text = textline;
     }
     else
-      myobj->text = CabriNS::readText( f, textline, "\n" );
+      myobj->text = CabriNS::readText( f, textline, QStringLiteral("\n") );
 
     // Hack: extracting substitution arguments from the parents list
     // and inserting them into the "incs" vector
@@ -373,7 +373,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     // in the arguments list (in forward order)
     // note that we do not check for special escaping of the symbols
     // '"' and '#'
-    int count = myobj->text.count( "\"#" );
+    int count = myobj->text.count( QStringLiteral("\"#") );
     int parentsnum = myobj->parents.size();
     for ( int i = parentsnum - count; i < parentsnum; ++i )
       myobj->incs.push_back( myobj->parents[i] );
@@ -453,36 +453,36 @@ void CabriReader_v12::initColorMap()
     colors_initialized = true;
     CabriReader::initColorMap();
     colormap_v12 = colormap;
-    colormap_v12[ "dkg" ] = QColor( 0, 100, 0 );
-    colormap_v12[ "old" ] = QColor( 107, 142, 35 );
-    colormap_v12[ "olv" ] = QColor( 128, 128, 0 );
-    colormap_v12[ "lig" ] = QColor( 50, 205, 50 );
-    colormap_v12[ "gry" ] = QColor( 173, 255, 47 );
-    colormap_v12[ "gor" ] = QColor( 218, 165, 32 );
-    colormap_v12[ "msg" ] = QColor( 0, 250, 154 );
-    colormap_v12[ "spg" ] = QColor( 0, 255, 127 );
-    colormap_v12[ "pag" ] = QColor( 152, 251, 152 );
-    colormap_v12[ "kki" ] = QColor( 240, 230, 140 );
-    colormap_v12[ "O" ] = QColor( 255, 140, 0 );
-    colormap_v12[ "Br" ] = QColor( 165, 42, 42 );
-    colormap_v12[ "tea" ] = QColor( 0, 128, 128 );
-    colormap_v12[ "pat" ] = QColor( 175, 238, 238 );
-    colormap_v12[ "ltp" ] = QColor( 255, 182, 193 );
-    colormap_v12[ "dBr" ] = QColor( 128, 0, 0 );
-    colormap_v12[ "lsg" ] = QColor( 32, 178, 170 );
-    colormap_v12[ "dob" ] = QColor( 30, 144, 255 );
-    colormap_v12[ "skb" ] = QColor( 135, 206, 235 );
-    colormap_v12[ "plm" ] = QColor( 221, 160, 221 );
-    colormap_v12[ "dep" ] = QColor( 255, 20, 147 );
-    colormap_v12[ "crs" ] = QColor( 220, 20, 60 );
-    colormap_v12[ "rob" ] = QColor( 65, 105, 225 );
-    colormap_v12[ "blv" ] = QColor( 138, 43, 226 );
-    colormap_v12[ "ma" ] = QColor( 254, 0, 255 );
-    colormap_v12[ "mvr" ] = QColor( 199, 21, 133 );
-    colormap_v12[ "ind" ] = QColor( 75, 0, 130 );
-    colormap_v12[ "meo" ] = QColor( 186, 85, 211 );
-    colormap_v12[ "Gr" ] = QColor( 128, 128, 128 );
-    colormap_v12[ "dGr" ] = QColor( 64, 64, 64 );
+    colormap_v12[ QStringLiteral("dkg") ] = QColor( 0, 100, 0 );
+    colormap_v12[ QStringLiteral("old") ] = QColor( 107, 142, 35 );
+    colormap_v12[ QStringLiteral("olv") ] = QColor( 128, 128, 0 );
+    colormap_v12[ QStringLiteral("lig") ] = QColor( 50, 205, 50 );
+    colormap_v12[ QStringLiteral("gry") ] = QColor( 173, 255, 47 );
+    colormap_v12[ QStringLiteral("gor") ] = QColor( 218, 165, 32 );
+    colormap_v12[ QStringLiteral("msg") ] = QColor( 0, 250, 154 );
+    colormap_v12[ QStringLiteral("spg") ] = QColor( 0, 255, 127 );
+    colormap_v12[ QStringLiteral("pag") ] = QColor( 152, 251, 152 );
+    colormap_v12[ QStringLiteral("kki") ] = QColor( 240, 230, 140 );
+    colormap_v12[ QStringLiteral("O") ] = QColor( 255, 140, 0 );
+    colormap_v12[ QStringLiteral("Br") ] = QColor( 165, 42, 42 );
+    colormap_v12[ QStringLiteral("tea") ] = QColor( 0, 128, 128 );
+    colormap_v12[ QStringLiteral("pat") ] = QColor( 175, 238, 238 );
+    colormap_v12[ QStringLiteral("ltp") ] = QColor( 255, 182, 193 );
+    colormap_v12[ QStringLiteral("dBr") ] = QColor( 128, 0, 0 );
+    colormap_v12[ QStringLiteral("lsg") ] = QColor( 32, 178, 170 );
+    colormap_v12[ QStringLiteral("dob") ] = QColor( 30, 144, 255 );
+    colormap_v12[ QStringLiteral("skb") ] = QColor( 135, 206, 235 );
+    colormap_v12[ QStringLiteral("plm") ] = QColor( 221, 160, 221 );
+    colormap_v12[ QStringLiteral("dep") ] = QColor( 255, 20, 147 );
+    colormap_v12[ QStringLiteral("crs") ] = QColor( 220, 20, 60 );
+    colormap_v12[ QStringLiteral("rob") ] = QColor( 65, 105, 225 );
+    colormap_v12[ QStringLiteral("blv") ] = QColor( 138, 43, 226 );
+    colormap_v12[ QStringLiteral("ma") ] = QColor( 254, 0, 255 );
+    colormap_v12[ QStringLiteral("mvr") ] = QColor( 199, 21, 133 );
+    colormap_v12[ QStringLiteral("ind") ] = QColor( 75, 0, 130 );
+    colormap_v12[ QStringLiteral("meo") ] = QColor( 186, 85, 211 );
+    colormap_v12[ QStringLiteral("Gr") ] = QColor( 128, 128, 128 );
+    colormap_v12[ QStringLiteral("dGr") ] = QColor( 64, 64, 64 );
   }
 }
 
@@ -684,11 +684,11 @@ bool CabriReader_v12::readStyles( const QString& line, CabriObject_v12* myobj )
 #ifdef CABRI_DEBUG
   qDebug() << ">>>>>>>>> style line: \"" << line << "\"";
 #endif
-  QStringList styles = line.split( ", ", QString::SkipEmptyParts );
+  QStringList styles = line.split( QStringLiteral(", "), QString::SkipEmptyParts );
   bool ok = true;
   for ( QStringList::iterator it = styles.begin(); it != styles.end(); ++it )
   {
-    if ( (*it) == "invisible" )
+    if ( (*it) == QLatin1String("invisible") )
     {
       myobj->visible = false;
     }
@@ -715,33 +715,33 @@ bool CabriReader_v12::readStyles( const QString& line, CabriObject_v12* myobj )
       myobj->fillColor = translateColor( color );
     }
     // styles
-    else if ( (*it) == "thicker" )
+    else if ( (*it) == QLatin1String("thicker") )
     {
       myobj->thick = 2;
     }
-    else if ( (*it) == "thick" )
+    else if ( (*it) == QLatin1String("thick") )
     {
       myobj->thick = 3;
     }
     // point types
-    else if ( (*it) == "1x1" )
+    else if ( (*it) == QLatin1String("1x1") )
     {
       myobj->pointStyle = 0;
     }
-    else if ( (*it) == "CIRCLE" )
+    else if ( (*it) == QLatin1String("CIRCLE") )
     {
       myobj->pointStyle = 2;
     }
-    else if ( (*it) == "TIMES" )
+    else if ( (*it) == QLatin1String("TIMES") )
     {
       myobj->pointStyle = 3;
     }
-    else if ( (*it) == "PLUS" )
+    else if ( (*it) == QLatin1String("PLUS") )
     {
       myobj->pointStyle = 4;
     }
     // goniometry systems
-    else if ( (*it) == "deg" )
+    else if ( (*it) == QLatin1String("deg") )
     {
       myobj->gonio = CabriNS::CG_Deg;
     }

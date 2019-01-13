@@ -164,7 +164,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
      */
     if ( prevlabel && isChild( o->calcer(), prevlabel ) ) break;
     QMenu p( v );
-    p.setObjectName( "text_label_select_arg_popup" );
+    p.setObjectName( QStringLiteral("text_label_select_arg_popup") );
     QAction* act = p.addAction( i18n( "Name" ) );
     act->setData( QVariant::fromValue( 0 ) );
     QByteArrayList l = o->imp()->properties();
@@ -300,7 +300,7 @@ void TextLabelModeBase::cancelPressed()
 uint percentCount( const QString& s )
 {
 //  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
-  QRegExp re( QString::fromUtf8( "%[\\d]+" ) );
+  QRegExp re( QLatin1String( "%[\\d]+" ) );
   int offset = 0;
   uint percentcount = 0;
   while ( ( offset = re.indexIn( s, offset ) ) != -1 )
@@ -335,7 +335,7 @@ bool TextLabelModeBase::canFinish()
 
 void TextLabelModeBase::finishPressed()
 {
-  bool needframe = d->wiz->field( "wantframe" ).toBool();
+  bool needframe = d->wiz->field( QStringLiteral("wantframe") ).toBool();
   QString s = d->wiz->text();
 
   finish( d->mcoord, s, d->args, needframe, d->locationparent );
@@ -393,7 +393,7 @@ void TextLabelModeBase::updateLinksLabel()
       d->wiz->linksLabel()->addText( subs, buf );
     };
     // we always need a link part...
-    QString linktext( "%1" );
+    QString linktext( QStringLiteral("%1") );
     assert( count < d->args.size() );
     if ( d->args[count] )
     {
@@ -614,7 +614,7 @@ void TextLabelRedefineMode::finish(
 
 void TextLabelModeBase::setFrame( bool f )
 {
-  d->wiz->setField( "wantframe", f );
+  d->wiz->setField( QStringLiteral("wantframe"), f );
 }
 
 void TextLabelModeBase::setLocationParent( ObjectCalcer* o )

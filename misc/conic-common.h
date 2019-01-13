@@ -242,7 +242,7 @@ const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
  * conic does not have the specified asymptote.
  */
 const LineData calcConicAsymptote(
-  const ConicCartesianData data,
+  const ConicCartesianData &data,
   int which, bool &valid );
 
 /**

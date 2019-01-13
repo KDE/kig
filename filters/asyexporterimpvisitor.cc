@@ -41,7 +41,7 @@ void AsyExporterImpVisitor::newLine()
 
 QString AsyExporterImpVisitor::emitPenColor( const QColor& c )
 {
-  QString pencolor("");
+  QString pencolor(QLatin1String(""));
   // Asymptote definition of pen color
   pencolor = "rgb(" + QString::number(c.red()/255.0) + ',' + QString::number(c.green()/255.0) + ',' + QString::number(c.blue()/255.0) + ')';
   return pencolor;
@@ -50,19 +50,19 @@ QString AsyExporterImpVisitor::emitPenColor( const QColor& c )
 
 QString AsyExporterImpVisitor::emitPenStyle( const Qt::PenStyle& style )
 {
-  QString penstyle("");
+  QString penstyle(QLatin1String(""));
   // Asymptote definition of pen (line) style
   // TODO: Needs finetuning of Asymptote linestyle parameters
   if ( style == Qt::SolidLine ) {
-    penstyle = "solid";
+    penstyle = QStringLiteral("solid");
   } else if ( style == Qt::DashLine ) {
-    penstyle = "dashed";
+    penstyle = QStringLiteral("dashed");
   } else if ( style == Qt::DotLine ) {
-    penstyle = "dotted";
+    penstyle = QStringLiteral("dotted");
   } else if ( style == Qt::DashDotLine ) {
-    penstyle = "dashdotted";
+    penstyle = QStringLiteral("dashdotted");
   } else if ( style == Qt::DashDotDotLine ) {
-    penstyle = "longdashdotted";
+    penstyle = QStringLiteral("longdashdotted");
   }
   return penstyle;
 }
@@ -73,11 +73,11 @@ QString AsyExporterImpVisitor::emitPenSize( const int width )
   // In this function we map the logical (integer) linewidth of Kig
   // to real line widths that can be used in Asymptote.
   // Default mapping is currently: asy_width = kig_width / 2.0
-  QString pensize("");
+  QString pensize(QLatin1String(""));
   if ( width < 0 )
   {
     // Nothing specified, use asymptote default
-    pensize = "linewidth(0.5)";
+    pensize = QStringLiteral("linewidth(0.5)");
   }
   else
   {
@@ -90,7 +90,7 @@ QString AsyExporterImpVisitor::emitPenSize( const int width )
 
 QString AsyExporterImpVisitor::emitPen( const QColor& c, const int width, const Qt::PenStyle& style )
 {
-  QString pen("");
+  QString pen(QLatin1String(""));
   // Asymptote definition of a pen
   pen = emitPenColor(c) + '+' + emitPenSize(width) + '+' + emitPenStyle(style);
   return  pen;
@@ -99,7 +99,7 @@ QString AsyExporterImpVisitor::emitPen( const QColor& c, const int width, const 
 
 QString AsyExporterImpVisitor::emitCoord( const Coordinate& c )
 {
-  QString ret("");
+  QString ret(QLatin1String(""));
   ret = '(' + QString::number(c.x) + ',' + QString::number(c.y) + ')';
   return ret;
 }

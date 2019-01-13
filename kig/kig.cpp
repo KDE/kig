@@ -46,13 +46,13 @@
 Kig::Kig()
   : KParts::MainWindow(), m_part( 0 )
 {
-  KService::Ptr kigpartService = KService::serviceByDesktopName("kig_part");
+  KService::Ptr kigpartService = KService::serviceByDesktopName(QStringLiteral("kig_part"));
 
-  setObjectName( QLatin1String( "Kig" ) );
+  setObjectName( QStringLiteral( "Kig" ) );
   // setting the configuration file
-  config = new KConfig( "kigrc" );
+  config = new KConfig( QStringLiteral("kigrc") );
   // set the shell's ui resource file
-  setXMLFile("kigui.rc");
+  setXMLFile(QStringLiteral("kigui.rc"));
   // then, setup our actions
   setupActions();
 
@@ -69,7 +69,7 @@ Kig::Kig()
       createGUI(m_part);
 
       // finally show tip-of-day ( if the user wants it :) )
-      QTimer::singleShot( 0, this, SLOT(startupTipOfDay()) );
+      QTimer::singleShot( 0, this, &Kig::startupTipOfDay );
     }
   }
   else
@@ -147,7 +147,7 @@ void Kig::fileNew()
   // the KDE style guide on the file menu stuff...)
   if ( ! m_part->url().isEmpty() || m_part->isModified() )
   {
-    QString kigBinary = QStandardPaths::findExecutable( "kig" );
+    QString kigBinary = QStandardPaths::findExecutable( QStringLiteral("kig") );
     QProcess::startDetached( kigBinary );
   }
 }
@@ -177,8 +177,8 @@ void Kig::optionsConfigureToolbars()
 
   // use the standard toolbar editor
   KEditToolBar dlg(factory());
-  connect(&dlg, SIGNAL(newToolBarConfig()),
-	  this, SLOT(applyNewToolbarConfig()));
+  connect(&dlg, &KEditToolBar::newToolBarConfig,
+	  this, &Kig::applyNewToolbarConfig);
   dlg.exec();
 }
 
@@ -234,9 +234,9 @@ void Kig::fileOpen()
 }
 
 void Kig::tipOfDay() {
-  KTipDialog::showTip(this, "kig/tips", true);
+  KTipDialog::showTip(this, QStringLiteral("kig/tips"), true);
 }
 
 void Kig::startupTipOfDay() {
-  KTipDialog::showTip(this, "kig/tips");
+  KTipDialog::showTip(this, QStringLiteral("kig/tips"));
 }

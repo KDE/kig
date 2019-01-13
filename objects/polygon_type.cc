@@ -709,7 +709,7 @@ const ObjectImpType* CPolygonalLineIntersectionType::resultId() const
 
 int
 polygonlineintersection( const std::vector<Coordinate>& ppoints, 
-                         const Coordinate a, const Coordinate b,
+                         const Coordinate &a, const Coordinate &b,
                          bool boundleft, bool boundright, bool inside,
 			 bool openpolygon, double& t1, double& t2,
                          std::vector<Coordinate>::const_iterator& intersectionside )
@@ -813,7 +813,7 @@ polygonlineintersection( const std::vector<Coordinate>& ppoints,
 
 int
 polygonlineintersection( const std::vector<Coordinate>& ppoints, 
-                         const Coordinate a, const Coordinate b,
+                         const Coordinate &a, const Coordinate &b,
                          double& t1, double& t2,
                          std::vector<Coordinate>::const_iterator& intersectionside )
 {

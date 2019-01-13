@@ -73,7 +73,7 @@ KigFilterDrgeo::~KigFilterDrgeo()
 
 bool KigFilterDrgeo::supportMime( const QString& mime )
 {
-  return mime == "application/x-drgeo";
+  return mime == QLatin1String("application/x-drgeo");
 }
 
 KigDocument* KigFilterDrgeo::load( const QString& file )
@@ -86,7 +86,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   }
 
   QStringList figures;
-  QDomDocument doc( "drgenius" );
+  QDomDocument doc( QStringLiteral("drgenius") );
   if ( !doc.setContent( &f ) )
     KIG_FILTER_PARSE_ERROR;
   QDomElement main = doc.documentElement();
@@ -96,9 +96,9 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   {
     QDomElement e = n.toElement();
     if ( e.isNull() ) continue;
-    else if ( e.tagName() == "drgeo" )
-      figures.append( e.attribute( "name" ) );
-    else if ( e.tagName() == "macro" )
+    else if ( e.tagName() == QLatin1String("drgeo") )
+      figures.append( e.attribute( QStringLiteral("name") ) );
+    else if ( e.tagName() == QLatin1String("macro") )
       nmacros++;
   }
   if ( figures.isEmpty() ) {
@@ -138,15 +138,15 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   {
     QDomElement e = n.toElement();
     if ( e.isNull() ) continue;
-    else if ( e.tagName() == "drgeo" )
+    else if ( e.tagName() == QLatin1String("drgeo") )
     {
-      if ( e.attribute("name") == myfig )
+      if ( e.attribute(QStringLiteral("name")) == myfig )
       {
 #ifdef DRGEO_DEBUG
         qDebug() << "- Figure: '" << e.attribute("name") << "'";
 #endif
-        bool grid = !e.attribute( "grid" ).isEmpty() &&
-                    ( e.attribute( "grid" ) != "False" );
+        bool grid = !e.attribute( QStringLiteral("grid") ).isEmpty() &&
+                    ( e.attribute( QStringLiteral("grid") ) != QLatin1String("False") );
         return importFigure( e.firstChild(), grid );
       }
     }
@@ -202,10 +202,10 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       {
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
-        else if ( ce.tagName() == "parent" )
-          elem.parents.push_back( ce.attribute( "ref" ) );
+        else if ( ce.tagName() == QLatin1String("parent") )
+          elem.parents.push_back( ce.attribute( QStringLiteral("ref") ) );
       }
-      QString curid = domelem.attribute( "id" );
+      QString curid = domelem.attribute( QStringLiteral("id") );
       elem.id = !curid.isNull() ? curid : QString::number( withoutid++ ) ;
       elems.push_back( elem );
     }
@@ -265,7 +265,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
 #endif
 
     if ( domelem.isNull() ) continue;
-    else if ( domelem.tagName() == "point" )
+    else if ( domelem.tagName() == QLatin1String("point") )
     {
       QString xs;
       QString ys;
@@ -274,14 +274,14 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       {
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
-        else if ( ce.tagName() == "x" )
+        else if ( ce.tagName() == QLatin1String("x") )
           xs = ce.text();
-        else if ( ce.tagName() == "y" )
+        else if ( ce.tagName() == QLatin1String("y") )
           ys = ce.text();
-        else if ( ce.tagName() == "value" )
+        else if ( ce.tagName() == QLatin1String("value") )
           values = ce.text();
       }
-      if ( domelem.attribute( "type" ) == "Free" )
+      if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Free") )
       {
         bool ok;
         bool ok2;
@@ -291,9 +291,9 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           KIG_FILTER_PARSE_ERROR;
         oc = fact->fixedPointCalcer( Coordinate( x, y ) );
       }
-      else if ( domelem.attribute( "type" ) == "Middle_2pts" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Middle_2pts") )
         oc = new ObjectTypeCalcer( MidPointType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Middle_segment" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Middle_segment") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         if ( !parents[0]->imp()->inherits( SegmentImp::stype() ) )
@@ -307,7 +307,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         args.push_back( o2 );
         oc = new ObjectTypeCalcer( MidPointType::instance(), args );
       }
-      else if ( domelem.attribute( "type" ) == "On_curve" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("On_curve") )
       {
         bool ok3;
         double value = values.toDouble( &ok3 );
@@ -335,11 +335,11 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
 //          oc = fact->constrainedPointCalcer( parents[0], value );
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
-                              domelem.attribute( "type" ) ) );
+                              domelem.attribute( QStringLiteral("type") ) ) );
           return 0;
         }
       }
-      else if ( domelem.attribute( "type" ) == "Intersection" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Intersection") )
       {
         if ( ( parents[0]->imp()->inherits( AbstractLineImp::stype() ) ) &&
              ( parents[1]->imp()->inherits( AbstractLineImp::stype() ) ) )
@@ -347,7 +347,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         else
         {
           bool ok;
-          int which = domelem.attribute( "extra" ).toInt( &ok );
+          int which = domelem.attribute( QStringLiteral("extra") ).toInt( &ok );
           if ( !ok ) KIG_FILTER_PARSE_ERROR;
           if ( which == 1 ) which = -1;
           else if ( which == 0 ) which = 1;
@@ -377,79 +377,79 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           oc = new ObjectTypeCalcer( type, args );
         }
       }
-      else if ( domelem.attribute( "type" ) == "Coordinate" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Coordinate") )
         oc = new ObjectTypeCalcer( PointByCoordsType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Reflexion") )
         oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Symmetry") )
         oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Translation") )
         oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Rotation") )
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Scale" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Scale") )
         oc = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
       else
       {
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
-                            domelem.attribute( "type" ) ) );
+                            domelem.attribute( QStringLiteral("type") ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
-    else if( ( domelem.tagName() == "line" ) ||
-             ( domelem.tagName() == "halfLine" ) ||
-             ( domelem.tagName() == "segment" ) ||
-             ( domelem.tagName() == "vector" ) ||
-             ( domelem.tagName() == "circle" ) ||
-             ( domelem.tagName() == "arcCircle" ) ||
-             ( domelem.tagName() == "polygon" ) )
+    else if( ( domelem.tagName() == QLatin1String("line") ) ||
+             ( domelem.tagName() == QLatin1String("halfLine") ) ||
+             ( domelem.tagName() == QLatin1String("segment") ) ||
+             ( domelem.tagName() == QLatin1String("vector") ) ||
+             ( domelem.tagName() == QLatin1String("circle") ) ||
+             ( domelem.tagName() == QLatin1String("arcCircle") ) ||
+             ( domelem.tagName() == QLatin1String("polygon") ) )
     {
       const ObjectType* type = 0;
-      if ( domelem.attribute( "type" ) == "2pts" )
+      if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("2pts") )
       {
-        if( domelem.tagName() == "line" )
+        if( domelem.tagName() == QLatin1String("line") )
           type = LineABType::instance();
-        else if( domelem.tagName() == "halfLine" )
+        else if( domelem.tagName() == QLatin1String("halfLine") )
           type = RayABType::instance();
-        else if( domelem.tagName() == "segment" )
+        else if( domelem.tagName() == QLatin1String("segment") )
           type = SegmentABType::instance();
-        else if( domelem.tagName() == "vector" )
+        else if( domelem.tagName() == QLatin1String("vector") )
           type = VectorType::instance();
-        else if( domelem.tagName() == "circle" )
+        else if( domelem.tagName() == QLatin1String("circle") )
           type = CircleBCPType::instance();
         else
         {
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
-                              domelem.attribute( "type" ) ) );
+                              domelem.attribute( QStringLiteral("type") ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
-      else if( domelem.attribute( "type" ) == "3pts" )
+      else if( domelem.attribute( QStringLiteral("type") ) == QLatin1String("3pts") )
       {
-        if( domelem.tagName() == "arcCircle" )
+        if( domelem.tagName() == QLatin1String("arcCircle") )
           type = ArcBTPType::instance();
         else
         {
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
-                              domelem.attribute( "type" ) ) );
+                              domelem.attribute( QStringLiteral("type") ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
-      else if ( ( domelem.attribute( "type" ) == "segment" ) ||
-                ( domelem.attribute( "type" ) == "radius" ) )
+      else if ( ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("segment") ) ||
+                ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("radius") ) )
       {
-        if( domelem.tagName() == "circle" )
+        if( domelem.tagName() == QLatin1String("circle") )
         {
           type = CircleBPRType::instance();
-          if ( domelem.attribute( "type" ) == "segment" )
+          if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("segment") )
           {
             ObjectPropertyCalcer* o = fact->propertyObjectCalcer( parents[1], "length" );
             o->calc( *ret );
@@ -461,14 +461,14 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         {
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
-                              domelem.attribute( "type" ) ) );
+                              domelem.attribute( QStringLiteral("type") ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
-      else if( domelem.attribute( "type" ) == "npts" )
+      else if( domelem.attribute( QStringLiteral("type") ) == QLatin1String("npts") )
       {
-        if( domelem.tagName() == "polygon" )
+        if( domelem.tagName() == QLatin1String("polygon") )
         {
           if ( parents.size() < 3 ) KIG_FILTER_PARSE_ERROR;
           type = PolygonBNPType::instance();
@@ -477,38 +477,38 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         {
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
-                              domelem.attribute( "type" ) ) );
+                              domelem.attribute( QStringLiteral("type") ) ) );
           return 0;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
-      else if ( domelem.attribute( "type" ) == "perpendicular" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("perpendicular") )
         oc = new ObjectTypeCalcer( LinePerpendLPType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "parallel" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("parallel") )
         oc = new ObjectTypeCalcer( LineParallelLPType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Reflexion" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Reflexion") )
         oc = new ObjectTypeCalcer( LineReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Symmetry" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Symmetry") )
         oc = new ObjectTypeCalcer( PointReflectionType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Translation" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Translation") )
         oc = new ObjectTypeCalcer( TranslatedType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Rotation" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Rotation") )
         oc = new ObjectTypeCalcer( RotationType::instance(), parents );
-      else if ( domelem.attribute( "type" ) == "Scale" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Scale") )
         oc = new ObjectTypeCalcer( ScalingOverCenterType::instance(), parents );
       else
       {
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
-                            domelem.attribute( "type" ) ) );
+                            domelem.attribute( QStringLiteral("type") ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
-    else if( ( domelem.tagName() == "numeric" ) ||
-             ( domelem.tagName() == "equation" ) )
+    else if( ( domelem.tagName() == QLatin1String("numeric") ) ||
+             ( domelem.tagName() == QLatin1String("equation") ) )
     {
       QString xs;
       QString ys;
@@ -517,11 +517,11 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       {
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
-        else if ( ce.tagName() == "x" )
+        else if ( ce.tagName() == QLatin1String("x") )
           xs = ce.text();
-        else if ( ce.tagName() == "y" )
+        else if ( ce.tagName() == QLatin1String("y") )
           ys = ce.text();
-        else if ( ce.tagName() == "value" )
+        else if ( ce.tagName() == QLatin1String("value") )
           value = ce.text();
       }
       bool ok;
@@ -532,7 +532,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         KIG_FILTER_PARSE_ERROR;
       Coordinate m( x, y );
       // types of 'numeric'
-      if ( domelem.attribute( "type" ) == "value" )
+      if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("value") )
       {
         bool ok3;
         double dvalue = value.toDouble( &ok3 );
@@ -540,59 +540,59 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           KIG_FILTER_PARSE_ERROR;
         oc = fact->numericValueCalcer( dvalue, m, *ret );
       }
-      else if ( domelem.attribute( "type" ) == "pt_abscissa" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("pt_abscissa") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "coordinate-x", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "pt_ordinate" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("pt_ordinate") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "coordinate-y", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "segment_length" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("segment_length") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "length", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "circle_perimeter" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("circle_perimeter") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "circumference", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "arc_length" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("arc_length") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "arc-length", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "distance_2pts" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("distance_2pts") )
       {
         if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
         ObjectTypeCalcer* so = new ObjectTypeCalcer( SegmentABType::instance(), parents );
         so->calc( *ret );
         oc = filtersConstructTextObject( m, so, "length", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "vector_norm" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("vector_norm") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "length", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "vector_abscissa" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("vector_abscissa") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "length-x", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "vector_ordinate" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("vector_ordinate") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "length-y", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "slope" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("slope") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "slope", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "distance_pt_line" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("distance_pt_line") )
       {
         if ( parents.size() != 2 ) KIG_FILTER_PARSE_ERROR;
         std::vector<ObjectCalcer*> args;
@@ -613,12 +613,12 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         oc = filtersConstructTextObject( m, so, "length", *ret, false );
       }
       // types of 'equation'
-      else if ( domelem.attribute( "type" ) == "line" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("line") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "equation", *ret, false );
       }
-      else if ( domelem.attribute( "type" ) == "circle" )
+      else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("circle") )
       {
         if ( parents.size() != 1 ) KIG_FILTER_PARSE_ERROR;
         oc = filtersConstructTextObject( m, parents[0], "simply-cartesian-equation", *ret, false );
@@ -627,16 +627,16 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       {
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
-                            domelem.attribute( "type" ) ) );
+                            domelem.attribute( QStringLiteral("type") ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
-    else if ( domelem.tagName() == "angle" )
+    else if ( domelem.tagName() == QLatin1String("angle") )
     {
-      if ( domelem.attribute( "type" ) == "3pts" )
+      if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("3pts") )
       {
         if ( parents.size() != 3 ) KIG_FILTER_PARSE_ERROR;
         oc = new ObjectTypeCalcer( HalfAngleType::instance(), parents );
@@ -645,14 +645,14 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       {
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
-                            domelem.attribute( "type" ) ) );
+                            domelem.attribute( QStringLiteral("type") ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
-    else if ( domelem.tagName() == "script" )
+    else if ( domelem.tagName() == QLatin1String("script") )
     {
       QString xs;
       QString ys;
@@ -661,11 +661,11 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       {
         QDomElement ce = c.toElement();
         if ( ce.isNull() ) continue;
-        else if ( ce.tagName() == "x" )
+        else if ( ce.tagName() == QLatin1String("x") )
           xs = ce.text();
-        else if ( ce.tagName() == "y" )
+        else if ( ce.tagName() == QLatin1String("y") )
           ys = ce.text();
-        else if ( ce.tagName() == "code" )
+        else if ( ce.tagName() == QLatin1String("code") )
           text = ce.text();
       }
       bool ok;
@@ -680,33 +680,33 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       // possible idea: construct a new script object with the parents of Guile
       // one and the Guile code inserted commented... depends on a better
       // handling of arguments in scripts?
-      if ( domelem.attribute( "type" ) == "nitems" )
+      if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("nitems") )
         oc = fact->labelCalcer( text, Coordinate( x, y ), false, std::vector<ObjectCalcer*>(), *ret );
       else
       {
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
-                            domelem.attribute( "type" ) ) );
+                            domelem.attribute( QStringLiteral("type") ) ) );
         return 0;
       }
     }
-    else if ( domelem.tagName() == "locus" )
+    else if ( domelem.tagName() == QLatin1String("locus") )
     {
-      if ( domelem.attribute( "type" ) == "None" )
+      if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("None") )
         oc = fact->locusCalcer( parents[0], parents[1] );
       else
       {
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
-                            domelem.attribute( "type" ) ) );
+                            domelem.attribute( QStringLiteral("type") ) ) );
         return 0;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
 #endif
     }
-    else if ( ( domelem.tagName() == "boundingBox" ) ||
-              ( domelem.tagName() == "customUI" ) )
+    else if ( ( domelem.tagName() == QLatin1String("boundingBox") ) ||
+              ( domelem.tagName() == QLatin1String("customUI") ) )
     {
       // ignoring these elements, since they are not useful to us...
       nignored++;
@@ -718,7 +718,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
 #endif
       notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                           "which Kig does not currently support.", domelem.tagName() , 
-                          domelem.attribute( "type" ) ) );
+                          domelem.attribute( QStringLiteral("type") ) ) );
       return 0;
     }
     curid++;
@@ -726,10 +726,10 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       continue;
 
 // reading color
-    QColor co( domelem.attribute( "color" ) );
+    QColor co( domelem.attribute( QStringLiteral("color") ) );
     if ( ! co.isValid() )
     {
-      if ( domelem.attribute( "color" ) == "Bordeaux" )
+      if ( domelem.attribute( QStringLiteral("color") ) == QLatin1String("Bordeaux") )
         co.setRgb( 145, 0, 0 );
       else
         co = Qt::blue;
@@ -740,29 +740,29 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
 // Thick  -> the biggest one
     int w = -1;
     Qt::PenStyle s = Qt::SolidLine;
-    if ( domelem.tagName() == "point" )
+    if ( domelem.tagName() == QLatin1String("point") )
     {
-      if ( domelem.attribute( "thickness" ) == "Normal" )
+      if ( domelem.attribute( QStringLiteral("thickness") ) == QLatin1String("Normal") )
         w = 7;
-      else if ( domelem.attribute( "thickness" ) == "Thick" )
+      else if ( domelem.attribute( QStringLiteral("thickness") ) == QLatin1String("Thick") )
         w = 9;
     }
     else
     {
-      if ( domelem.attribute( "thickness" ) == "Dashed" )
+      if ( domelem.attribute( QStringLiteral("thickness") ) == QLatin1String("Dashed") )
         s = Qt::DotLine;
-      if ( domelem.attribute( "thickness" ) == "Thick" )
+      if ( domelem.attribute( QStringLiteral("thickness") ) == QLatin1String("Thick") )
         w = 2;
     }
-    QString ps = domelem.attribute( "style" );
+    QString ps = domelem.attribute( QStringLiteral("style") );
     Kig::PointStyle pointstyle = Kig::pointStyleFromString( ps );
 // show this object?
-    bool show = ( ( domelem.attribute( "masked" ) != "True" ) &&
-                  ( domelem.attribute( "masked" ) != "Alway" ) );
+    bool show = ( ( domelem.attribute( QStringLiteral("masked") ) != QLatin1String("True") ) &&
+                  ( domelem.attribute( QStringLiteral("masked") ) != QLatin1String("Alway") ) );
 // costructing the ObjectDrawer*
     ObjectDrawer* d = new ObjectDrawer( co, w, show, s, pointstyle );
 // reading object name
-    QString strname = domelem.attribute( "name" );
+    QString strname = domelem.attribute( QStringLiteral("name") );
     ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( strname ) );
 
 // creating the ObjectHolder*
@@ -778,19 +778,19 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
               << oc->imp()->type()->internalName() << endl;
 #endif
 
-    if ( domelem.tagName() == "point" )
+    if ( domelem.tagName() == QLatin1String("point") )
     {
       if ( !strname.isEmpty() )
       {
         std::vector<ObjectCalcer*> args2;
         args2.push_back( o->nameCalcer() );
-        oc2 = fact->attachedLabelCalcer( QString::fromLatin1( "%1" ), oc,
+        oc2 = fact->attachedLabelCalcer( QStringLiteral( "%1" ), oc,
                  static_cast<const PointImp*>( oc->imp() )->coordinate(),
                  false, args2, *ret );
         co = Qt::black;
       }
     }
-    else if ( domelem.tagName() == "angle" )
+    else if ( domelem.tagName() == QLatin1String("angle") )
     {
       oc2 = filtersConstructTextObject(
                static_cast<const PointImp*>( holders[curid-1-nignored]->calcer()->parents()[1]->imp() )->coordinate(),
