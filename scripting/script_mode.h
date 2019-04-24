@@ -56,13 +56,13 @@ public:
   using BaseMode::rightClicked;
   using BaseMode::mouseMoved;
 
-  void dragRect( const QPoint& p, KigWidget& w );
+  void dragRect( const QPoint& p, KigWidget& w ) override;
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                          KigWidget& w, bool actrlOrShiftDown );
+                          KigWidget& w, bool actrlOrShiftDown ) override;
   void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p,
-                   KigWidget& w, bool shiftpressed );
-  void midClicked( const QPoint&, KigWidget& );
-  void rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& );
+                   KigWidget& w, bool shiftpressed ) override;
+  void midClicked( const QPoint&, KigWidget& ) override;
+  void rightClicked( const std::vector<ObjectHolder*>&, const QPoint&, KigWidget& ) override;
 
   void argsPageEntered();
   void codePageEntered();
@@ -70,11 +70,11 @@ public:
   virtual bool queryFinish() = 0;
   virtual bool queryCancel() = 0;
 
-  void redrawScreen( KigWidget* w );
+  void redrawScreen( KigWidget* w ) override;
 
   void killMode();
 
-  void enableActions();
+  void enableActions() override;
 
   void setScriptType( ScriptType::Type type );
 
@@ -94,8 +94,8 @@ public:
   explicit ScriptCreationMode( KigPart& doc );
   virtual ~ScriptCreationMode();
 
-  virtual bool queryFinish();
-  virtual bool queryCancel();
+  bool queryFinish() override;
+  bool queryCancel() override;
 };
 
 /**
@@ -115,8 +115,8 @@ public:
   ScriptEditMode( ObjectTypeCalcer* exec_calc, KigPart& doc );
   virtual ~ScriptEditMode();
 
-  virtual bool queryFinish();
-  virtual bool queryCancel();
+  bool queryFinish() override;
+  bool queryCancel() override;
 };
 
 #endif

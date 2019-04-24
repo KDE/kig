@@ -49,8 +49,8 @@ public:
   void setType( ScriptType::Type type );
 
 public slots:
-  void accept();
-  void reject();
+  void accept() override;
+  void reject() override;
 
 protected slots:
   void slotHelpClicked();

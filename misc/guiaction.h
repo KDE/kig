@@ -176,12 +176,12 @@ public:
                    const char* actionname, const ScriptType::Type type,
                    const char* icon = "" );
   ~NewScriptAction();
-  QString description() const;
-  QByteArray iconFileName( const bool canBeNull = false ) const;
-  QString descriptiveName() const;
-  const char* actionName() const;
-  void act( KigPart& );
-  int shortcut() const;
+  QString description() const override;
+  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString descriptiveName() const override;
+  const char* actionName() const override;
+  void act( KigPart& ) override;
+  int shortcut() const override;
 };
 
 #endif // KIG_ENABLE_PYTHON_SCRIPTING

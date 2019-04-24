@@ -29,15 +29,15 @@ class PythonCompiledScriptImp
 public:
   typedef BogusImp Parent;
   static const ObjectImpType* stype();
-  const ObjectImpType* type() const;
+  const ObjectImpType* type() const override;
 
   PythonCompiledScriptImp( const CompiledPythonScript& s );
 
-  void visit( ObjectImpVisitor* vtor ) const;
-  ObjectImp* copy() const;
-  bool equals( const ObjectImp& rhs ) const;
+  void visit( ObjectImpVisitor* vtor ) const override;
+  ObjectImp* copy() const override;
+  bool equals( const ObjectImp& rhs ) const override;
 
-  bool isCache() const;
+  bool isCache() const override;
 
   CompiledPythonScript& data() const { return mscript; };
 };
