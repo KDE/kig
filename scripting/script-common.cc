@@ -44,7 +44,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
 {
   if ( type == Python )
   {
-    QString tempcode = QString::fromLatin1( "def calc( " );
+    QString tempcode = QStringLiteral( "def calc( " );
     bool firstarg = true;
     KLocalizedString temparg = ki18nc( "Note to translators: this should be a default "
                             "name for an argument in a Python function. The "
@@ -55,7 +55,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
     uint id = 1;
     for ( std::list<ObjectHolder*>::const_iterator i = args.begin(); i != args.end(); ++i )
     {
-      if ( !firstarg ) tempcode += ", ";
+      if ( !firstarg ) tempcode += QLatin1String(", ");
       else firstarg = false;
       QString n = ( *i )->name();
       tempcode += n.isEmpty() ? temparg.subs( id ).toString() : n;
@@ -100,7 +100,7 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
   }
 
   qDebug() << "No such script type: " << type;
-  return "";
+  return QLatin1String("");
 }
 
 const char* ScriptType::icon( ScriptType::Type type )

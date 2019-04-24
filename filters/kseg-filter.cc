@@ -707,7 +707,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       std::vector<ObjectCalcer*> args2;
       args2.push_back( object->nameCalcer() );
       ObjectCalcer* oc2 = fact->attachedLabelCalcer(
-               QString::fromLatin1( "%1" ), object->calcer(),
+               QStringLiteral( "%1" ), object->calcer(),
                static_cast<const PointImp*>( object->imp() )->coordinate(),
                false, args2, *retdoc );
       oc2->calc( *retdoc );

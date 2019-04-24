@@ -69,7 +69,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
     if ( !popup.objects().empty() &&
          getPythonExecuteTypeFromCalcer( popup.objects().front()->calcer() ) )
     {
-      popup.addInternalAction( menu, "Edit Script...", nextfree );
+      popup.addInternalAction( menu, QStringLiteral("Edit Script..."), nextfree );
     }
     nextfree++;
   }

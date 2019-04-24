@@ -56,7 +56,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   : QWizard( parent ),
     mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 ), mIconLoader( il )
 {
-  setObjectName( QLatin1String( "New Script Wizard" ) );
+  setObjectName( QStringLiteral( "New Script Wizard" ) );
   setWindowTitle( i18n( "New Script" ) );
   setOption( HaveHelpButton );
 
@@ -90,7 +90,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     // there is no KDE textditor component installed, so we'll use a
     // simplier KTextEdit
     textedit = new QTextEdit( secondPage );
-    textedit->setObjectName( "textedit" );
+    textedit->setObjectName( QStringLiteral("textedit") );
     textedit->setFont( QFontDatabase::systemFont( QFontDatabase::FixedFont ) );
     textedit->setAcceptRichText( false );
     lay2->addWidget( textedit );
@@ -104,7 +104,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     lay2->addWidget( docview );
 
     // displaying the left border with line numbers
-    QAction *a = docview->actionCollection()->action( "view_line_numbers" );
+    QAction *a = docview->actionCollection()->action( QStringLiteral("view_line_numbers") );
     if ( a )
     {
       a->trigger();
@@ -118,7 +118,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   }
 
   connect( this, SIGNAL(currentIdChanged(int)), this, SLOT(currentIdChanged(int)) );
-  connect( this, SIGNAL(helpRequested()), this, SLOT(slotHelpClicked()) );
+  connect( this, &QWizard::helpRequested, this, &NewScriptWizard::slotHelpClicked );
 }
 
 void NewScriptWizard::currentIdChanged( int id )
@@ -160,7 +160,7 @@ void NewScriptWizard::accept()
 
 void NewScriptWizard::slotHelpClicked()
 {
-  KHelpClient::invokeHelp( "scripting", "kig" );
+  KHelpClient::invokeHelp( QStringLiteral("scripting"), QStringLiteral("kig") );
 }
 
 void NewScriptWizard::setText( const QString& text )

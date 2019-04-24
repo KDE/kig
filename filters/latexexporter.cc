@@ -329,13 +329,13 @@ void PSTricksExportImpVisitor::visit( const PointImp* imp )
     const int ps = mcurobj->drawer()->pointStyle();
     QString pss( "*,fillstyle=solid,fillcolor=" + mcurcolorid );
     if ( ps == 1 )
-        pss = QLatin1String("o,fillstyle=none");
+        pss = QStringLiteral("o,fillstyle=none");
     else if ( ps == 2 )
         pss = "square*,fillstyle=solid,fillcolor=" + mcurcolorid;
     else if ( ps == 3 )
-        pss = QLatin1String("square,fillstyle=none");
+        pss = QStringLiteral("square,fillstyle=none");
     else if ( ps == 4 )
-        pss = QLatin1String("+,dotangle=45");
+        pss = QStringLiteral("+,dotangle=45");
     mstream << pss << "]";
     emitCoord( imp->coordinate() );
     newLine();

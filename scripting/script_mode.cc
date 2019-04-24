@@ -221,7 +221,7 @@ bool ScriptCreationMode::queryFinish()
        * interact with the result.  We do this by adding a text label (located at
        * the origin) that contains the DoubleImp (IntImp) value.
        */
-      QString s = QString("%1");
+      QString s = QStringLiteral("%1");
       Coordinate coord = Coordinate( 0., 0. );
       bool needframe = false;
       std::vector<ObjectCalcer*> args;
@@ -235,7 +235,7 @@ bool ScriptCreationMode::queryFinish()
        * if the python script returns a StringImp we need a way to let the user
        * interact with the result, see above.
        */
-      QString s = QString("%1");
+      QString s = QStringLiteral("%1");
       Coordinate coord = Coordinate( 0., 0. );
       bool needframe = false;
       std::vector<ObjectCalcer*> args;

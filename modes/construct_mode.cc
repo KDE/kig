@@ -491,7 +491,7 @@ void TestConstructMode::leftClickedObject( ObjectHolder* o, const QPoint& p,
     std::vector<ObjectCalcer*> parents;
     parents.push_back( new ObjectConstCalcer( new IntImp( test_has_frame_dflt ) ) );
     parents.push_back( new ObjectConstCalcer( new PointImp( loc ) ) );
-    parents.push_back( new ObjectConstCalcer( new StringImp( QLatin1String( "%1" ) ) ) );
+    parents.push_back( new ObjectConstCalcer( new StringImp( QStringLiteral( "%1" ) ) ) );
     assert( mresult->imp()->inherits( TestResultImp::stype() ) );
 //    parents.push_back(
 //      new ObjectPropertyCalcer(

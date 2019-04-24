@@ -414,7 +414,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
       // compatibility code - to support Invisible coord system...
       if ( tmptype == QLatin1String("Invisible") )
       {
-        tmptype = QLatin1String("Euclidean");
+        tmptype = QStringLiteral("Euclidean");
         ret->setGrid( false );
         ret->setAxes( false );
       }
@@ -624,7 +624,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   QDomDocument doc( QStringLiteral("KigDocument") );
 
   QDomProcessingInstruction xmlpi = doc.createProcessingInstruction(
-          QString::fromLatin1( "xml" ), QString::fromLatin1( "version=\"1.0\" encoding=\"utf-8\"" ) );
+          QStringLiteral( "xml" ), QStringLiteral( "version=\"1.0\" encoding=\"utf-8\"" ) );
   doc.appendChild( xmlpi );
 
   QDomElement docelem = doc.createElement( QStringLiteral("KigDocument") );

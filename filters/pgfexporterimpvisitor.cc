@@ -54,15 +54,15 @@ QString PGFExporterImpVisitor::emitPenStyle( const Qt::PenStyle& style )
   // PGF/TikZ definition of pen (line) style
   // TODO: finetune styles
   if ( style == Qt::SolidLine ) {
-    penstyle = QLatin1String("solid");
+    penstyle = QStringLiteral("solid");
   } else if ( style == Qt::DashLine ) {
-    penstyle = QLatin1String("dashed");
+    penstyle = QStringLiteral("dashed");
   } else if ( style == Qt::DotLine ) {
-    penstyle = QLatin1String("dotted,dotsep=2pt");
+    penstyle = QStringLiteral("dotted,dotsep=2pt");
   } else if ( style == Qt::DashDotLine ) {
-    penstyle = QLatin1String("solid");
+    penstyle = QStringLiteral("solid");
   } else if ( style == Qt::DashDotDotLine ) {
-    penstyle = QLatin1String("solid");
+    penstyle = QStringLiteral("solid");
   }
   return penstyle;
 }
@@ -76,7 +76,7 @@ QString PGFExporterImpVisitor::emitPenSize( const int width )
   if ( width < 0 )
   {
     // Nothing specified, use TikZ default
-    pensize = QLatin1String("line width=1pt");
+    pensize = QStringLiteral("line width=1pt");
   }
   else
   {
