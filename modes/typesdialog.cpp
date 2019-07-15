@@ -562,7 +562,7 @@ void TypesDialog::slotCancel()
 QModelIndexList TypesDialog::selectedRows() const
 {
   QModelIndexList indexes = mtypeswidget->typeList->selectionModel()->selectedRows();
-  qSort( indexes );
+  std::sort( indexes.begin(), indexes.end() );
   return indexes;
 }
 
