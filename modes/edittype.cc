@@ -52,7 +52,7 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
 
   medittypewidget = new Ui_EditTypeWidget();
   medittypewidget->setupUi( mainWidget );
-  mainWidget->layout()->setMargin( 0 );
+  mainWidget->layout()->setContentsMargins( 0, 0, 0, 0 );
 
   medittypewidget->editName->setText( mname );
   medittypewidget->editName->setWhatsThis(

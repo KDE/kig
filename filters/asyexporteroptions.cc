@@ -28,7 +28,7 @@ AsyExporterOptions::AsyExporterOptions( QWidget* parent )
   expwidget = new Ui_AsyExporterOptionsWidget();
   expwidget->setupUi( this );
 
-  layout()->setMargin( 0 );
+  layout()->setContentsMargins( 0, 0, 0, 0 );
 }
 
 AsyExporterOptions::~AsyExporterOptions()

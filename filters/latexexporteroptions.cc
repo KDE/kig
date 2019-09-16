@@ -28,7 +28,7 @@ LatexExporterOptions::LatexExporterOptions( QWidget* parent )
   expwidget = new Ui_LatexExporterOptionsWidget();
   expwidget->setupUi( this );
 
-  layout()->setMargin( 0 );
+  layout()->setContentsMargins( 0, 0, 0, 0 );
 }
 
 LatexExporterOptions::~LatexExporterOptions()

@@ -28,7 +28,7 @@ SVGExporterOptions::SVGExporterOptions( QWidget* parent )
   expwidget = new Ui_SVGExporterOptionsWidget();
   expwidget->setupUi( this );
 
-  layout()->setMargin( 0 );
+  layout()->setContentsMargins( 0, 0, 0, 0 );
 }
 
 SVGExporterOptions::~SVGExporterOptions()

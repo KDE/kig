@@ -358,7 +358,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
 
   mtypeswidget = new Ui_TypesWidget();
   mtypeswidget->setupUi( mainWidget );
-  mainWidget->layout()->setMargin( 0 );
+  mainWidget->layout()->setContentsMargins( 0, 0, 0, 0 );
 
   // model creation and usage
   mmodel = new TypesModel( mtypeswidget->typeList );

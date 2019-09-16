@@ -48,7 +48,7 @@ TextPage::TextPage( QWidget* parent )
   setFinalPage( true );
 
   QVBoxLayout* lay = new QVBoxLayout( this );
-  lay->setMargin( 0 );
+  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   QLabel* label = new QLabel( this );
   lay->addWidget( label );
   label->setText(
@@ -91,7 +91,7 @@ ArgsPage::ArgsPage( QWidget* parent, TextLabelModeBase* mode )
   setFinalPage( true );
 
   QVBoxLayout* lay = new QVBoxLayout( this );
-  lay->setMargin( 0 );
+  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   QLabel* label = new QLabel( this );
   lay->addWidget( label );
   label->setText(

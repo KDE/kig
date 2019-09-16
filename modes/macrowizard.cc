@@ -52,7 +52,7 @@ GivenArgsPage::GivenArgsPage( QWidget* parent, DefineMacroMode* mode )
   setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
 
   QVBoxLayout* lay = new QVBoxLayout( this );
-  lay->setMargin( 0 );
+  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   QLabel* label = new QLabel( this );
   lay->addWidget( label );
   label->setText( i18n( "Select the \"given\" objects for your new macro and press \"Next\"." ) );
@@ -92,7 +92,7 @@ FinalArgsPage::FinalArgsPage( QWidget* parent, DefineMacroMode* mode )
   setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
 
   QVBoxLayout* lay = new QVBoxLayout( this );
-  lay->setMargin( 0 );
+  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   QLabel* label = new QLabel( this );
   lay->addWidget( label );
   label->setText( i18n( "Select the final object(s) for your new macro." ) );
@@ -132,7 +132,7 @@ MacroInfoPage::MacroInfoPage( QWidget* parent )
 
   //TODO Make this a ui file
   QGridLayout* lay = new QGridLayout( this );
-  lay->setMargin( 0 );
+  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   QLabel* label = new QLabel( this );
   lay->addWidget( label, 0, 0 );
   label->setText( i18n( "&Name:" ) );

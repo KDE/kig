@@ -43,7 +43,7 @@ ImageExporterOptions::ImageExporterOptions( QWidget* parent )
   maspectratio = (double)msize.height() / (double)msize.width();
 
   expwidget->keepAspectRatio->setChecked( true );
-  layout()->setMargin( 0 );
+  layout()->setContentsMargins( 0, 0, 0, 0 );
 
   expwidget->comboUnit->addItems( Unit::unitList() );
 

@@ -309,7 +309,7 @@ KigView::KigView( KigPart* part,
   connect( part, &KigPart::recenterScreen, this, &KigView::slotInternalRecenterScreen );
 
   mlayout = new QGridLayout( this );
-  mlayout->setMargin( 2 );
+  mlayout->setContentsMargins( 2 ,  2 ,  2 ,  2 );
   mlayout->setSpacing( 2 );
   mrightscroll = new QScrollBar( Qt::Vertical, this );
   mrightscroll->setObjectName( QStringLiteral("Right Scrollbar") );

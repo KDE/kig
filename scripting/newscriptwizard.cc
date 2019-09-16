@@ -64,7 +64,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   firstPage->setTitle( i18n( "Select Arguments" ) );
   firstPage->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   QVBoxLayout* lay1 = new QVBoxLayout( firstPage );
-  lay1->setMargin( 0 );
+  lay1->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   QLabel* infoText = new QLabel( firstPage );
   lay1->addWidget( infoText );
   infoText->setText( i18n( "Select the argument objects (if any)\n"
@@ -77,7 +77,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
   secondPage->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   secondPage->setFinalPage( true );
   QVBoxLayout* lay2 = new QVBoxLayout( secondPage );
-  lay2->setMargin( 0 );
+  lay2->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   mLabelFillCode = new QLabel( secondPage );
   lay2->addWidget( mLabelFillCode );
   setPage( CodePageId, secondPage );

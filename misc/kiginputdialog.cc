@@ -148,7 +148,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   d->m_gonio = g;
   d->m_gonioIsNum = true;
 
-  mainlay->setMargin( 0 );
+  mainlay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
   mainlay->activate();
 
   d->m_label = new QLabel( mainWidget );
