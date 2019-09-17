@@ -467,7 +467,7 @@ QSize KigWidget::sizeHint() const
 
 void KigWidget::wheelEvent( QWheelEvent* e )
 {
-  int delta = e->delta();
+  int delta = e->angleDelta().y();
   Qt::Orientation orient = e->orientation();
   if ( orient == Qt::Vertical )
     mview->scrollVertical( delta );
