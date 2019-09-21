@@ -61,7 +61,8 @@ public:
   static QStringList systemList();
   static Goniometry::System intToSystem( const int index );
 
-  Goniometry& operator= ( const Goniometry& g );
+  Goniometry( const Goniometry &g ) = default;
+  Goniometry& operator= ( const Goniometry& g ) = default;
 
 private:
   double mvalue;

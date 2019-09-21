@@ -74,13 +74,6 @@ double Goniometry::getValue( Goniometry::System system )
   return convert( mvalue, msys, system );
 }
 
-Goniometry& Goniometry::operator=( const Goniometry& g )
-{
-  mvalue = g.value();
-  msys = g.system();
-  return *this;
-}
-
 double Goniometry::convert( const double angle, const Goniometry::System from, const Goniometry::System to )
 {
   switch( from )
