@@ -21,6 +21,7 @@
 #include "guiaction.h"
 #include "object_hierarchy.h"
 #include "../kig/kig_part.h"
+#include "kig_version.h"
 
 #include <kmessagebox.h>
 #include <qfile.h>
@@ -248,7 +249,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
   QDomDocument doc( QStringLiteral("KigMacroFile") );
 
   QDomElement docelem = doc.createElement( QStringLiteral("KigMacroFile") );
-  docelem.setAttribute( QStringLiteral("Version"), KIGVERSION );
+  docelem.setAttribute( QStringLiteral("Version"), KIG_VERSION_STRING );
   docelem.setAttribute( QStringLiteral("Number"), static_cast<uint>( ms.size() ) );
 
   for ( uint i = 0; i < ms.size(); ++i )

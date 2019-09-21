@@ -91,7 +91,7 @@ int main( int argc, char **argv )
   QCommandLineOption outfileOption( QStringList() << QStringLiteral("o") << QStringLiteral("outfile"), i18n( "File to output the created native file to. '-' means output to stdout. Default is stdout as well." ), QStringLiteral("file") );
 
   QCoreApplication::setApplicationName( QStringLiteral("kig") );
-  QCoreApplication::setApplicationVersion( i18n( KIGVERSION ) );
+  QCoreApplication::setApplicationVersion( KIG_VERSION_STRING );
   QCoreApplication::setOrganizationDomain( i18n( "kde.org" ) );
   KAboutData::setApplicationData( about );
 

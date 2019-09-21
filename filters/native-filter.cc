@@ -30,7 +30,7 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 
-#include <config-kig.h>
+#include <kig_version.h>
 
 #include <iostream>
 #include <vector>
@@ -628,7 +628,7 @@ bool KigFilterNative::save07( const KigDocument& kdoc, QTextStream& stream )
   doc.appendChild( xmlpi );
 
   QDomElement docelem = doc.createElement( QStringLiteral("KigDocument") );
-  docelem.setAttribute( QStringLiteral("Version"), KIGVERSION );
+  docelem.setAttribute( QStringLiteral("Version"), KIG_VERSION_STRING );
   docelem.setAttribute( QStringLiteral("CompatibilityVersion"), QStringLiteral("0.7.0") );
   docelem.setAttribute( QStringLiteral("grid"), kdoc.grid() );
   docelem.setAttribute( QStringLiteral("axes"), kdoc.axes() );

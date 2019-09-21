@@ -44,7 +44,7 @@
 #include "../objects/polygon_imp.h"
 #include "../objects/text_imp.h"
 
-#include <config-kig.h>
+#include <kig_version.h>
 
 #include <cmath>
 #include <algorithm>
@@ -590,7 +590,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
             //  stream << "\\usepackage[latin1]{inputenc}\n";
             stream << "\\usepackage{pstricks}\n";
             stream << "\\usepackage{pst-plot}\n";
-            stream << "\\author{Kig " << KIGVERSION << "}\n";
+            stream << "\\author{Kig " << KIG_VERSION_STRING << "}\n";
             stream << "\\begin{document}\n";
         }
 
