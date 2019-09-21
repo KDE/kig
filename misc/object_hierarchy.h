@@ -65,6 +65,9 @@ public:
   ObjectHierarchy( const ObjectHierarchy& h );
   ~ObjectHierarchy();
 
+  // The default provided version is wrong, since we don't use it just mark it as deleted, if you need it, implement it following the copy constructor
+  ObjectHierarchy &operator=( const ObjectHierarchy& h ) = delete; 
+
   /**
    * this creates a new ObjectHierarchy, that takes a.size() less
    * arguments, but uses copies of the ObjectImp's in \p a instead.

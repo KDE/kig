@@ -211,7 +211,6 @@ public:
   explicit HierarchyImp( const ObjectHierarchy& h );
 
   const ObjectHierarchy& data() const { return mdata; }
-  void setData( const ObjectHierarchy& h ) { mdata = h; }
 
   HierarchyImp* copy() const Q_DECL_OVERRIDE;
   const char* baseName() const;
