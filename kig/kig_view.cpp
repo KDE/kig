@@ -59,7 +59,7 @@ KigWidget::KigWidget( KigPart* part,
   part->addWidget(this);
 
   setFocusPolicy(Qt::ClickFocus);
-  setAttribute( Qt::WA_NoBackground, true );
+  setAttribute( Qt::WA_OpaquePaintEvent, true );
   setMouseTracking(true);
 
   curPix = QPixmap( size() );
