@@ -390,7 +390,11 @@ PythonScripter::PythonScripter()
   // the newstring stuff is to prevent warnings about conversion from
   // const char* to char*..
   char* s = newstring( "kig" );
+#if PY_VERSION_HEX >= 0x03000000
+  PyImport_AppendInittab( s, PyInit_kig );
+#else
   PyImport_AppendInittab( s, initkig );
+#endif
   //  we can't delete this yet, since python keeps a pointer to it..
   // This means we have a small but harmless memory leak here, but it
   // doesn't hurt at all, since it could only be freed at the end of
