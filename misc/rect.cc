@@ -18,6 +18,18 @@
 #include "rect.h"
 #include "common.h"
 
+Rect& Rect::operator=( const Rect& other )
+{
+  if (this != &other)
+  {
+    setBottomLeft( other.bottomLeft() );
+    setWidth( other.width() );
+    setHeight( other.height() );
+  }
+  normalize();
+  return *this;
+}
+
 bool operator==( const Rect& r, const Rect& s )
 {
   return ( r.bottomLeft() == s.bottomLeft()

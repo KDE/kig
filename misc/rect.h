@@ -67,6 +67,10 @@ public:
    */
   void setContains( const Coordinate &p );
   /**
+   * Assignment operator.
+   */
+  Rect& operator=( const Rect& other );
+  /**
    * moves the rect while keeping the size constant...
    */
   void moveBy( const Coordinate &p );
