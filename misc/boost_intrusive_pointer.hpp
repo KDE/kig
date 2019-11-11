@@ -34,7 +34,7 @@
 //  This software is provided "as is" without express or implied
 //  warranty, and with no claim as to its suitability for any purpose.
 //
-//  See http://www.boost.org/libs/smart_ptr/intrusive_ptr.html for documentation.
+//  See https://www.boost.org/libs/smart_ptr/intrusive_ptr.html for documentation.
 //
 
 #include <functional>           // for std::less

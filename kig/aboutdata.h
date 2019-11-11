@@ -30,7 +30,7 @@ inline KAboutData kigAboutData( const char* name, const char* iname )
   KAboutData tmp( name, i18n(iname), KIG_VERSION_STRING,
 				   i18n(description), KAboutLicense::GPL,
 				   i18n( "(C) 2002-2005, The Kig developers" ),
-				   QString(), QStringLiteral("http://edu.kde.org/kig") );
+				   QString(), QStringLiteral("https://edu.kde.org/kig") );
 
   tmp.addAuthor( i18n("David E. Narvaez"),
                  i18n("Current maintainer."),

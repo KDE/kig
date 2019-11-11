@@ -48,7 +48,7 @@ LinksLabel::LinksLabel( QWidget* parent )
   p->labels.push_back( l );
   p->layout->addWidget( l );
 
-  KUrlLabel* u = new KUrlLabel( QStringLiteral( "http://www.kde.org/" ),
+  KUrlLabel* u = new KUrlLabel( QStringLiteral( "https://www.kde.org/" ),
                                 QStringLiteral( "url"), this );
   p->urllabels.push_back( u );
   p->layout->addWidget( u );
@@ -108,7 +108,7 @@ void LinksLabel::applyEdit( LinksLabelEditBuf& buf )
     {
       // we need a KUrlLabel...
       // the url is an unused stub...
-      KUrlLabel* l = new KUrlLabel( QStringLiteral( "http://edu.kde.org/kig" ),
+      KUrlLabel* l = new KUrlLabel( QStringLiteral( "https://edu.kde.org/kig" ),
                                     i->second, this );
       p->urllabels.push_back( l );
       p->layout->addWidget( l );

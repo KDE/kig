@@ -74,7 +74,7 @@ endif(BoostPython_FOUND)
 set_package_properties(
    BoostPython PROPERTIES
    DESCRIPTION "Python scripting support in Boost"
-   URL "http://www.boost.org/"
+   URL "https://www.boost.org/"
    TYPE OPTIONAL
    PURPOSE "Kig can optionally use Boost.Python for Python scripting"
 )
@@ -82,7 +82,7 @@ set_package_properties(
 set_package_properties(
    Qt5XmlPatterns PROPERTIES
    DESCRIPTION "Qt5 XmlPatterns Module"
-   URL "http://qt.io/"
+   URL "https://qt.io/"
    TYPE OPTIONAL
    PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
 )
