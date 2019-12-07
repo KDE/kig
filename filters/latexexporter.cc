@@ -1,6 +1,6 @@
 // Copyright (C)  2004  Pino Toscano <toscano.pino@tiscali.it>
-// Copyright (C)  2010,2011 Raoul Bourquin (asymptote exporter part)
-// Copyright (C)  2012 Raoul Bourquin (PGF/TikZ exporter part)
+// Copyright (C)  2010,2011 Raoul Bourquin <raoulb@bluewin.ch> (asymptote exporter part)
+// Copyright (C)  2012 Raoul Bourquin <raoulb@bluewin.ch> (PGF/TikZ exporter part)
 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
