@@ -477,8 +477,26 @@ bool KigPart::saveFile()
                            "its own. Save to Kig's format instead?" ),
                      i18n( "Format Not Supported" ), KGuiItem( i18n( "Save Kig Format" ) ), KStandardGuiItem::cancel() ) == KMessageBox::No )
       return false;
+    else
+    {
+      QFileInfo save( url().toLocalFile() );
+      QString extension = save.completeSuffix();
+
+      if ( extension.isEmpty() )
+      {
+        setUrl( QUrl::fromLocalFile( QString( "%1.kig" ).arg( save.absoluteFilePath() ) ) );
+      }
+      else
+      {
+        QString newFileName = save.absoluteFilePath();
+
+        newFileName.replace( newFileName.lastIndexOf( extension ), extension.length(), QLatin1String( "kig" ) );
+        setUrl( QUrl::fromLocalFile( newFileName ) );
+      }
+    }
+
     internalSaveAs();
-  };
+  }
 
   if ( KigFilters::instance()->save( document(), localFilePath() ) )
   {
