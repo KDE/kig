@@ -145,7 +145,7 @@ KigDocument* KigFilterNative::load( const QString& file)
       KIG_FILTER_PARSE_ERROR;
     dynamic_cast<const KArchiveFile*>( kigz )->copyTo( tempdir );
     qDebug() << "extracted file: " << tempdir + kigz->name()
-              << "exists: " << QFile::exists( tempdir + kigz->name() ) << endl;
+              << "exists: " << QFile::exists( tempdir + kigz->name() );
 
     kigdoc.setFileName( tempdir + kigz->name() );
   }

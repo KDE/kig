@@ -1017,7 +1017,7 @@ extern "C" KIGPART_EXPORT int convertToNative( const QUrl &url, const QByteArray
   if ( ! url.isLocalFile() )
   {
     // TODO
-    qCritical() << "--convert-to-native only supports local files for now." << endl;
+    qCritical() << "--convert-to-native only supports local files for now.";
     return -1;
   }
 
@@ -1026,7 +1026,7 @@ extern "C" KIGPART_EXPORT int convertToNative( const QUrl &url, const QByteArray
   QFileInfo fileinfo( file );
   if ( ! fileinfo.exists() )
   {
-    qCritical() << "The file \"" << file << "\" does not exist" << endl;
+    qCritical() << "The file \"" << file << "\" does not exist";
     return -1;
   };
 
@@ -1036,14 +1036,14 @@ extern "C" KIGPART_EXPORT int convertToNative( const QUrl &url, const QByteArray
   KigFilter* filter = KigFilters::instance()->find( mimeType.name() );
   if ( !filter )
   {
-    qCritical() << "The file \"" << file << "\" is of a filetype not currently supported by Kig." << endl;
+    qCritical() << "The file \"" << file << "\" is of a filetype not currently supported by Kig.";
     return -1;
   };
 
   KigDocument* doc = filter->load (file);
   if ( !doc )
   {
-    qCritical() << "Parse error in file \"" << file << "\"." << endl;
+    qCritical() << "Parse error in file \"" << file << "\".";
     return -1;
   }
 
@@ -1057,7 +1057,7 @@ extern "C" KIGPART_EXPORT int convertToNative( const QUrl &url, const QByteArray
   bool success = KigFilters::instance()->save( *doc, out );
   if ( !success )
   {
-    qCritical() << "something went wrong while saving" << endl;
+    qCritical() << "something went wrong while saving";
     return -1;
   }
 

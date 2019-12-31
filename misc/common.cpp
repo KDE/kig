@@ -176,7 +176,7 @@ void calcRayBorderPoints( const double xa, const double ya, double& xb,
     yb = r.bottom();
     return;
   };
-  qCritical() << "damn" << endl;
+  qCritical() << "damn";
 }
 
 bool isOnLine( const Coordinate& o, const Coordinate& a,

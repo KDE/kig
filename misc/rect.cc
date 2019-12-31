@@ -42,8 +42,7 @@ QDebug& operator<<( QDebug& s, const Rect& t )
   s << "left: " << t.left()
     << "bottom: " << t.bottom()
     << "right: " << t.right()
-    << "top: " << t.top()
-    << endl;
+    << "top: " << t.top();
   return s;
 }
 

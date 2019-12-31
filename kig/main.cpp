@@ -44,7 +44,7 @@ static int convertToNative( const QUrl &file, const QByteArray& outfile )
   converterfunction = ( int ( * )( const QUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );
   if ( !converterfunction )
   {
-    qCritical() << "Error: broken Kig installation: different library and application version !" << endl;
+    qCritical() << "Error: broken Kig installation: different library and application version !";
     return -1;
   }
   return (*converterfunction)( file, outfile );
@@ -113,12 +113,12 @@ int main( int argc, char **argv )
       outfile = '-';
     if ( urls.isEmpty() )
     {
-      qCritical() << "Error: --convert-to-native specified without a file to convert." << endl;
+      qCritical() << "Error: --convert-to-native specified without a file to convert.";
       return -1;
     }
     if ( urls.count() > 1 )
     {
-      qCritical() << "Error: --convert-to-native specified with more than one file to convert." << endl;
+      qCritical() << "Error: --convert-to-native specified with more than one file to convert.";
       return -1;
     }
     return convertToNative( QUrl::fromLocalFile( urls[0] ), outfile.toLocal8Bit() );
@@ -127,7 +127,7 @@ int main( int argc, char **argv )
   {
     if ( parser.isSet( QStringLiteral("outfile") ) )
     {
-      qCritical() << "Error: --outfile specified without convert-to-native." << endl;
+      qCritical() << "Error: --outfile specified without convert-to-native.";
       return -1;
     }
 
