@@ -527,6 +527,15 @@ ObjectImp* PythonScripter::calc( CompiledPythonScript& script, const Args& args 
     handle<> argstuph( PyTuple_New( args.size() ) );
     for ( int i = 0; i < (int) objectvect.size(); ++i )
     {
+      /*
+       * this fixes bug https://bugs.kde.org/show_bug.cgi?id=401512
+       *
+       * it isn't completely clear whether we need XINCREF (test for null pointer)
+       * instead of INCREF.  However I think that the arguments should never be
+       * null pointers
+       *    mp
+       */
+      Py_INCREF((objectvect.begin() +i)->ptr());
       PyTuple_SetItem( argstuph.get(), i, (objectvect.begin() +i)->ptr() );
     };
     tuple argstup( argstuph );
