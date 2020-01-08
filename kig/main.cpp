@@ -97,7 +97,6 @@ int main( int argc, char **argv )
 
   dataMigration(); // This needs the about AboutData to be set up
   about.setupCommandLine( &parser );
-  parser.addHelpOption();
   parser.addOption( convertToNativeOption );
   parser.addOption( outfileOption );
   parser.addPositionalArgument( QStringLiteral("URL"), i18n( "Document to open" ) );
