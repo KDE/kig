@@ -427,8 +427,8 @@ PythonScripter::PythonScripter()
 PythonScripter::~PythonScripter()
 {
   PyErr_Clear();
-  Py_Finalize();
   delete d;
+  Py_FinalizeEx();
 }
 
 class CompiledPythonScript::Private
