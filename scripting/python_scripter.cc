@@ -428,7 +428,8 @@ PythonScripter::~PythonScripter()
 {
   PyErr_Clear();
   delete d;
-  Py_FinalizeEx();
+  // Py_FinalizeEx();
+  Py_Finalize();  // maintained for compatibility reasons with python2
 }
 
 class CompiledPythonScript::Private
