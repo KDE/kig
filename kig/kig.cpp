@@ -148,7 +148,7 @@ void Kig::fileNew()
   if ( ! m_part->url().isEmpty() || m_part->isModified() )
   {
     QString kigBinary = QStandardPaths::findExecutable( QStringLiteral("kig") );
-    QProcess::startDetached( kigBinary );
+    QProcess::startDetached( kigBinary, QStringList() );
   }
 }
 
