@@ -92,9 +92,9 @@
     <p xml:lang="x-test">xxKig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.xx</p>
     <p xml:lang="zh-TW">Kig 是一套互動式的數學軟體，可以學習與教導幾何。它允許您探索數學的圖形與觀念，也有繪圖工具，可以建構點、向量、線、多邊形等，並且所有的元素都可以直接用滑鼠來修改。Kig 可以協助老師與學生學習推論與理解幾何理論。</p>
   </description>
-  <url type="homepage">http://edu.kde.org/kig/</url>
+  <url type="homepage">https://edu.kde.org/kig/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kig</url>
-  <url type="help">http://docs.kde.org/stable/en/kdeedu/kig/index.html</url>
+  <url type="help">https://docs.kde.org/?application=kig</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kig&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
@@ -118,7 +118,7 @@
       <caption xml:lang="x-test">xxInteractive geometry with Kigxx</caption>
       <caption xml:lang="zh-CN">Kig 的交互式几何学</caption>
       <caption xml:lang="zh-TW">使用 Kig 來交互式幾何作圖</caption>
-      <image>http://kde.org/images/screenshots/kig.png</image>
+      <image>https://cdn.kde.org/screenshots/kig/kig.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
