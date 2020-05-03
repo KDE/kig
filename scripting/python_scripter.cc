@@ -569,6 +569,7 @@ void PythonScripter::saveErrors()
   PyObject* poexcvalue;
   PyObject* poexctraceback;
   PyErr_Fetch( &poexctype, &poexcvalue, &poexctraceback );
+  PyErr_NormalizeException( &poexctype, &poexcvalue, &poexctraceback );
   handle<> exctypeh( poexctype );
   handle<> excvalueh( poexcvalue );
 
