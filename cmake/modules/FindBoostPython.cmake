@@ -31,11 +31,11 @@ int main() { return 0; }
 " ${varname} )
 endmacro(BoostPython_TRY_COMPILE)
 
-find_package(Boost QUIET COMPONENTS python)
+find_package(Boost QUIET COMPONENTS python3)
 
 cmake_push_check_state()
 set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${Boost_INCLUDE_DIRS})
-set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${Boost_PYTHON_LIBRARY})
+set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${Boost_PYTHON3_LIBRARY})
 
 check_include_file_cxx(boost/shared_ptr.hpp HAVE_BOOST_SHARED_PTR_HPP)
 
@@ -47,11 +47,11 @@ set(BoostPython_COMPILES)
 
 # If shared_ptr.hpp or Python library is not available, then there is
 # no point to do anything.
-if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
+if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON3_FOUND)
   if(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
     # First try: check if CMake Python is suitable.
-    set(Python_ADDITIONAL_VERSIONS "2.7;2.6;2.5;2.4;2.3;2.2")
-    find_package(PythonLibs QUIET)
+    set(Python_ADDITIONAL_VERSIONS "3.9;3.8;3.7;3.6;3.5")
+    find_package(PythonLibs 3 QUIET)
     if(PYTHONLIBS_FOUND)
       cmake_push_check_state()
       set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${PYTHON_INCLUDE_DIRS})
@@ -63,7 +63,7 @@ if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
         set(BoostPython_COMPILES Yes)
         set(BoostPython_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}
             CACHE INTERNAL "Includes search path for Boost+Python")
-        set(BoostPython_LIBRARIES    ${PYTHON_LIBRARIES}    ${Boost_PYTHON_LIBRARY}
+        set(BoostPython_LIBRARIES    ${PYTHON_LIBRARIES}    ${Boost_PYTHON3_LIBRARY}
             CACHE INTERNAL "Linker flags for Boost+Python")
       endif(BoostPython_FromCMake)
     endif(PYTHONLIBS_FOUND)
@@ -73,7 +73,9 @@ if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
     # Second try: try pkg-config way
     find_package(PkgConfig)
     if(PKG_CONFIG_FOUND)
-      set(PYTHON_VERSIONS "python;python2.7;python2.6;python2.5;python2.4;python2.3;python2.2")
+      # Prefer the -embed version from Python 3.8, as it is the way to
+      # actually link against the Python library.
+      set(PYTHON_VERSIONS "python3-embed;python-3.9-embed;python-3.8-embed;python3;python-3.7;python-3.6;python-3.5")
       foreach(_pyver ${PYTHON_VERSIONS})
         if(NOT BoostPython_INCLUDES OR NOT BoostPython_LIBS)
           pkg_check_modules(${_pyver} QUIET ${_pyver})
@@ -88,7 +90,7 @@ if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
               set(BoostPython_COMPILES Yes)
               set(BoostPython_INCLUDE_DIRS ${${_pyver}_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}
                   CACHE INTERNAL "Includes search path for Boost+Python")
-              set(BoostPython_LIBRARIES    ${${_pyver}_LDFLAGS}      ${Boost_PYTHON_LIBRARY}
+              set(BoostPython_LIBRARIES    ${${_pyver}_LDFLAGS}      ${Boost_PYTHON3_LIBRARY}
                   CACHE INTERNAL "Linker flags for Boost+Python")
             endif(BoostPython_${_pyver})
 
@@ -97,7 +99,7 @@ if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
       endforeach(_pyver ${PYTHON_VERSIONS})
     endif(PKG_CONFIG_FOUND)
   endif(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES )
-endif(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON_FOUND)
+endif(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON3_FOUND)
 
 cmake_pop_check_state()
 
