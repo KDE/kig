@@ -82,6 +82,8 @@ static void dataMigration()
 int main( int argc, char **argv )
 {
   configMigration();
+  // Fixes blurry icons with Fractional scaling
+  QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication app( argc, argv );
   KLocalizedString::setApplicationDomain( "kig" );
   KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
