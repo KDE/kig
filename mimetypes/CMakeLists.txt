@@ -5,7 +5,6 @@ ecm_install_icons(ICONS
   sc-mimetypes-application-x-kig.svgz
   32-mimetypes-application-x-kig.png
   16-mimetypes-application-x-kig.png
-  16-mimetypes-application-x-kig.png
   128-mimetypes-application-x-kig.png
   DESTINATION ${ICON_INSTALL_DIR}
   THEME hicolor
