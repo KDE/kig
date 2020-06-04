@@ -58,8 +58,6 @@ add_subdirectory( icons )
 add_subdirectory( kig )
 add_subdirectory( mimetypes )
 add_subdirectory( macros )
-# reenable after porting kig's kkfile plugns to the strigi api
-#add_subdirectory( kfile )
 add_subdirectory( data )
 add_subdirectory( pykig )
 
