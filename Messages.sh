@@ -8,7 +8,5 @@ for file in macros/*.kigt; do
 	cat "$file" | grep '<UseText>' | sed -e 's/^ *<UseText>\([^<]*\)<\/UseText>/i18n( "\1" );/' | sed -e 's/&amp;/\&/g' >> rc.cpp
 	cat "$file" | grep '<SelectStatement>' | sed -e 's/^ *<SelectStatement>\([^<]*\)<\/SelectStatement>/i18n( "\1" );/' | sed -e 's/&amp;/\&/g' >> rc.cpp
 done
-$XGETTEXT tips.cpp rc.cpp $(find . -name "*.cpp" -o -name "*.h" -o -name "*.cc" | grep -v \./kfile/) -o $podir/kig.pot
-$XGETTEXT kfile/kfile_drgeo.cpp kfile/kfile_drgeo.h -o $podir/kfile_drgeo.pot
-$XGETTEXT kfile/kfile_kig.cpp kfile/kfile_kig.h -o $podir/kfile_kig.pot
+$XGETTEXT tips.cpp rc.cpp $(find . -name "*.cpp" -o -name "*.h" -o -name "*.cc") -o $podir/kig.pot
 rm -f tips.cpp
