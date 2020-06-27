@@ -32,6 +32,13 @@ int main() { return 0; }
 endmacro(BoostPython_TRY_COMPILE)
 
 find_package(Boost QUIET COMPONENTS python3)
+if(NOT Boost_PYTHON3_FOUND)
+  find_package(Boost QUIET COMPONENTS python)
+  if(Boost_PYTHON_FOUND)
+    set(Boost_PYTHON3_LIBRARY ${Boost_PYTHON_LIBRARY})
+    set(Boost_PYTHON3_FOUND TRUE)
+  endif(Boost_PYTHON_FOUND)
+endif(NOT Boost_PYTHON3_FOUND)
 
 cmake_push_check_state()
 set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${Boost_INCLUDE_DIRS})
