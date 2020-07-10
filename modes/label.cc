@@ -36,16 +36,17 @@
 #include "../objects/text_type.h"
 
 #include <QIcon>
-#include <qaction.h>
-#include <qevent.h>
-#include <qmenu.h>
-#include <qregexp.h>
-#include <qvariant.h>
+#include <QAction>
+#include <QEvent>
+#include <QMenu>
+#include <QRegExp>
+#include <QVariant>
+#include <QMouseEvent>
 
 #include <KIconEngine>
-#include <kcursor.h>
+#include <KCursor>
 #include <QDebug>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
 #include <algorithm>
 #include <functional>

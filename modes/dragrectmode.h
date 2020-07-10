@@ -23,7 +23,7 @@
 
 #include "../misc/rect.h"
 
-#include <qpoint.h>
+#include <QPoint>
 #include <vector>
 
 class ObjectHolder;

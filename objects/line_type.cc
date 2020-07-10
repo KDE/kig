@@ -29,7 +29,7 @@
 #include "../misc/common.h"
 #include "../misc/calcpaths.h"
 
-#include <qstringlist.h>
+#include <QStringList>
 
 static const ArgsParser::spec argsspecSegmentAB[] =
 {

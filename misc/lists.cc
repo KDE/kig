@@ -23,11 +23,11 @@
 #include "../kig/kig_part.h"
 #include "kig_version.h"
 
-#include <kmessagebox.h>
-#include <qfile.h>
-#include <qtextstream.h>
+#include <KMessageBox>
+#include <QFile>
+#include <QTextStream>
 #include <qdom.h>
-#include <qregexp.h>
+#include <QRegExp>
 #include <algorithm>
 #include <iterator>
 using namespace std;

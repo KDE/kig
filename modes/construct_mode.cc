@@ -36,11 +36,12 @@
 #include "popup/popup.h"
 #include "popup/objectchooserpopup.h"
 
-#include <qevent.h>
+#include <QEvent>
 
-#include <kcursor.h>
+#include <KCursor>
 #include <QAction>
 
+#include <QMouseEvent>
 #include <algorithm>
 #include <functional>
 #include <iterator>

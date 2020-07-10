@@ -20,7 +20,7 @@
 
 #include "../misc/unit.h"
 
-#include <qwidget.h>
+#include <QWidget>
 
 class QSize;
 class Ui_ImageExporterOptionsWidget;

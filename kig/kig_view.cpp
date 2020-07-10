@@ -30,10 +30,11 @@
 #include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
 
-#include <qapplication.h>
-#include <qevent.h>
-#include <qlayout.h>
-#include <qscrollbar.h>
+#include <QApplication>
+#include <QEvent>
+#include <QLayout>
+#include <QScrollBar>
+#include <QWheelEvent>
 
 #include <QDebug>
 

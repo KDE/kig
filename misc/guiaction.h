@@ -24,8 +24,8 @@
 #include "../scripting/script-common.h"
 #endif
 
-#include <qstring.h>
-#include <qbytearray.h>
+#include <QString>
+#include <QByteArray>
 #include <QAction>
 
 class GUIAction;

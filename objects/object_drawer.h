@@ -18,8 +18,8 @@
 #ifndef KIG_OBJECTS_OBJECT_DRAWER_H
 #define KIG_OBJECTS_OBJECT_DRAWER_H
 
-#include <qcolor.h>
-#include <qfont.h>
+#include <QColor>
+#include <QFont>
 #include <qnamespace.h>
 
 #include "../misc/point_style.h"

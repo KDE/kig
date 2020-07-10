@@ -19,7 +19,7 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include <qstring.h>
+#include <QString>
 
 #include <vector>
 

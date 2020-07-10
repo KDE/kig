@@ -33,8 +33,8 @@
 #include "historydialog.h"
 #include "typesdialog.h"
 
-#include <qundostack.h>
-#include <kcursor.h>
+#include <QUndoStack>
+#include <KCursor>
 #include <QAction>
 
 #include <algorithm>

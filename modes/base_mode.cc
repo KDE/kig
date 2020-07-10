@@ -24,8 +24,9 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
 
-#include <qevent.h>
-#include <kcursor.h>
+#include <QEvent>
+#include <KCursor>
+#include <QMouseEvent>
 
 BaseMode::BaseMode( KigPart& d )
   : KigMode( d )

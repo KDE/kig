@@ -21,7 +21,7 @@
 #ifndef KIG_MISC_UNIT_H
 #define KIG_MISC_UNIT_H
 
-#include <qstringlist.h>
+#include <QStringList>
 
 /**
  * This small class server as helper to perform conversions between

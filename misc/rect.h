@@ -24,7 +24,7 @@
 
 #include "coordinate.h"
 
-#include <qrect.h>
+#include <QRect>
 #include <QDebug>
 
 /**

@@ -50,9 +50,9 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <qcolor.h>
-#include <qfile.h>
-#include <qregexp.h>
+#include <QColor>
+#include <QFile>
+#include <QRegExp>
 
 #include <QDebug>
 

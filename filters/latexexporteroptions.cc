@@ -19,8 +19,8 @@
 
 #include "ui_latexexporteroptionswidget.h"
 
-#include <qcheckbox.h>
-#include <qlayout.h>
+#include <QCheckBox>
+#include <QLayout>
 
 LatexExporterOptions::LatexExporterOptions( QWidget* parent )
   : QWidget( parent )

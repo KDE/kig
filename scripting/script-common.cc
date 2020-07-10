@@ -18,7 +18,7 @@
 #include "script-common.h"
 #include "../objects/text_imp.h"
 
-#include <qstring.h>
+#include <QString>
 
 #include <QDebug>
 

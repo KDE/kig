@@ -18,7 +18,7 @@
 #ifndef KIG_lINKS_LABEL_H
 #define KIG_lINKS_LABEL_H
 
-#include <qwidget.h>
+#include <QWidget>
 
 #include <vector>
 #include <utility>

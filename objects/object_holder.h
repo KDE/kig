@@ -20,7 +20,7 @@
 
 #include "object_calcer.h"
 
-#include <qstring.h>
+#include <QString>
 
 /**
  * An ObjectHolder represents an object as it is known to the

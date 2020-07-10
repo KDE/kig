@@ -22,7 +22,7 @@
 
 #include "../misc/coordinate.h"
 
-#include <qstringlist.h>
+#include <QStringList>
 
 #include <iterator>
 

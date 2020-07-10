@@ -58,7 +58,7 @@
 #include "../objects/text_imp.h"
 #include "../objects/transform_types.h"
 
-#include <qpen.h>
+#include <QPen>
 
 #include <algorithm>
 #include <functional>

@@ -32,8 +32,8 @@
 #include "cubic-common.h"
 #include "coordinate_system.h"
 
-#include <qpen.h>
-#include <qpolygon.h>
+#include <QPen>
+#include <QPolygon>
 
 #include <cmath>
 #include <stack>

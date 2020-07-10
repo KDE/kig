@@ -18,7 +18,7 @@
 #ifndef KIG_MODES_TEXTLABELWIZARD_H
 #define KIG_MODES_TEXTLABELWIZARD_H
 
-#include <qwizard.h>
+#include <QWizard>
 
 class ArgsPage;
 class LinksLabel;

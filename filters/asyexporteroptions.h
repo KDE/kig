@@ -18,7 +18,7 @@
 #ifndef KIG_FILTERS_ASYEXPORTEROPTIONS_H
 #define KIG_FILTERS_ASYEXPORTEROPTIONS_H
 
-#include <qwidget.h>
+#include <QWidget>
 
 class Ui_AsyExporterOptionsWidget;
 

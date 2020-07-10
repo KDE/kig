@@ -21,7 +21,7 @@
 #ifndef KIG_MODES_TYPESDIALOG_H
 #define KIG_MODES_TYPESDIALOG_H
 
-#include <qabstractitemmodel.h>
+#include <QAbstractItemModel>
 
 #include <QDialog>
 

@@ -22,10 +22,10 @@
 #ifndef KIGPART_H
 #define KIGPART_H
 
-#include <qlist.h>
+#include <QList>
 
 #include <KParts/ReadWritePart>
-#include <kselectaction.h>
+#include <KSelectAction>
 
 #include <vector>
 

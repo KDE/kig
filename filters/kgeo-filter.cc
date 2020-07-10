@@ -42,8 +42,8 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
+#include <KConfig>
+#include <KConfigGroup>
 
 #include <algorithm>
 #include <functional>

@@ -22,8 +22,8 @@
 
 #undef CABRI_DEBUG
 
-#include <qbytearray.h>
-#include <qcolor.h>
+#include <QByteArray>
+#include <QColor>
 
 #include "../misc/rect.h"
 #include "../objects/object_drawer.h"

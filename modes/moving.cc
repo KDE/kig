@@ -29,7 +29,7 @@
 #include "../misc/calcpaths.h"
 #include "../misc/coordinate_system.h"
 
-#include <qevent.h>
+#include <QMouseEvent>
 
 #include <functional>
 #include <algorithm>

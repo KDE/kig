@@ -17,7 +17,7 @@
 
 #include "bogus_imp.h"
 
-#include <qstringlist.h>
+#include <QStringList>
 
 #include "../misc/rect.h"
 

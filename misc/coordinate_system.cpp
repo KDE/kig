@@ -31,8 +31,8 @@
 #include <string>
 #include <cmath>
 
-#include <qpainter.h>
-#include <qregexp.h>
+#include <QPainter>
+#include <QRegExp>
 #include <QDoubleValidator>
 
 #include <QDebug>

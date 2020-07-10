@@ -20,10 +20,10 @@
 #include "label.h"
 #include "linkslabel.h"
 
-#include <qcheckbox.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qtextedit.h>
+#include <QCheckBox>
+#include <QLabel>
+#include <QLayout>
+#include <QTextEdit>
 
 #include <QDialog>
 

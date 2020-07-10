@@ -19,9 +19,9 @@
 #include "linkslabel.h"
 
 
-#include <qlabel.h>
+#include <QLabel>
 #include <kurllabel.h>
-#include <qlayout.h>
+#include <QLayout>
 
 #include <vector>
 #include <algorithm>

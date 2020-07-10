@@ -25,7 +25,7 @@
 #include "coordinate.h"
 #include "rect.h"
 
-#include <qrect.h>
+#include <QRect>
 
 #include <vector>
 #include <assert.h>

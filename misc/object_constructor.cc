@@ -36,7 +36,7 @@
 
 #include "../modes/construct_mode.h"
 
-#include <qpen.h>
+#include <QPen>
 
 #include <algorithm>
 #include <functional>

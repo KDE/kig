@@ -19,12 +19,12 @@
 
 #include "ui_imageexporteroptionswidget.h"
 
-#include <qapplication.h>
-#include <qcheckbox.h>
-#include <qdesktopwidget.h>
-#include <qlayout.h>
-#include <qsize.h>
-#include <qspinbox.h>
+#include <QApplication>
+#include <QCheckBox>
+#include <QDesktopWidget>
+#include <QLayout>
+#include <QSize>
+#include <QSpinBox>
 
 ImageExporterOptions::ImageExporterOptions( QWidget* parent )
   : QWidget( parent ), minternallysettingstuff( false )

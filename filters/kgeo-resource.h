@@ -43,7 +43,7 @@
 #define RESOURCE_H
 
 #include <iostream>
-#include <qstring.h>
+#include <QString>
 
 ///////////////////////////////////////////////////////////////////
 // resource.h  -- contains macros used for commands

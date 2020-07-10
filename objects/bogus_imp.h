@@ -22,7 +22,7 @@
 #include "../misc/object_hierarchy.h"
 #include "../misc/kigtransform.h"
 
-#include <qstring.h>
+#include <QString>
 
 /**
  * This is the base class for the so-called BogusImp's.  These

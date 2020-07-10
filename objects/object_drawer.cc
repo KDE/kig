@@ -20,7 +20,7 @@
 #include "object_imp.h"
 #include "../misc/kigpainter.h"
 
-#include <qpen.h>
+#include <QPen>
 #include <qnamespace.h>
 #include <cassert>
 

@@ -23,9 +23,9 @@
 
 #include "ui_edittypewidget.h"
 
-#include <kicondialog.h>
-#include <klineedit.h>
-#include <kmessagebox.h>
+#include <KIconDialog>
+#include <KLineEdit>
+#include <KMessageBox>
 #include <KHelpClient>
 #include <QDialogButtonBox>
 #include <KConfigGroup>

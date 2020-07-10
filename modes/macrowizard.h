@@ -18,7 +18,7 @@
 #ifndef MACROWIZARD_H
 #define MACROWIZARD_H
 
-#include <qwizard.h>
+#include <QWizard>
 
 class DefineMacroMode;
 class GivenArgsPage;

@@ -22,7 +22,7 @@
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 
-#include <qevent.h>
+#include <QMouseEvent>
 #include <qglobal.h>
 #include <QAction>
 

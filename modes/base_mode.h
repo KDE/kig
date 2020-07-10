@@ -20,7 +20,7 @@
 
 #include "mode.h"
 
-#include <qpoint.h>
+#include <QPoint>
 #include <vector>
 
 class KigWidget;

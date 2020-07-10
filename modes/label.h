@@ -22,7 +22,7 @@
 
 #include "../objects/object_calcer.h"
 
-#include <qpoint.h>
+#include <QPoint>
 
 #include <vector>
 

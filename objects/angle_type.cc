@@ -34,7 +34,7 @@
 #include <cmath>
 #include <math.h>
 
-#include <qstringlist.h>
+#include <QStringList>
 
 static const char* constructanglethroughpoint =
   I18N_NOOP( "Construct an angle through this point" );

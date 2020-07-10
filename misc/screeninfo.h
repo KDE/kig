@@ -18,7 +18,7 @@
 #ifndef SCREENINFO_H
 #define SCREENINFO_H
 
-#include <qrect.h>
+#include <QRect>
 
 #include "rect.h"
 

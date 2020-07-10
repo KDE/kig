@@ -27,9 +27,9 @@
 #include "screeninfo.h"
 #include "../misc/point_style.h"
 
-#include <qpainter.h>
-#include <qcolor.h>
-#include <qfont.h>
+#include <QPainter>
+#include <QColor>
+#include <QFont>
 
 #include <vector>
 

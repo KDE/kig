@@ -34,7 +34,7 @@
 #include <Kdelibs4Migration>
 
 #include "aboutdata.h"
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 
 static int convertToNative( const QUrl &file, const QByteArray& outfile )
 {

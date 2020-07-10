@@ -45,12 +45,12 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <qfont.h>
-#include <qpen.h>
-#include <qbrush.h>
-#include <qfile.h>
-#include <qdatastream.h>
-#include <qbuffer.h>
+#include <QFont>
+#include <QPen>
+#include <QBrush>
+#include <QFile>
+#include <QDataStream>
+#include <QBuffer>
 
 KigFilterKSeg::KigFilterKSeg()
 {

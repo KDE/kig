@@ -38,7 +38,7 @@
 
 using std::find;
 
-#include <qstringlist.h>
+#include <QStringList>
 
 /*
  * oriented arc by three points

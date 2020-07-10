@@ -20,7 +20,7 @@
 
 #include "base_mode.h"
 
-#include <qpoint.h>
+#include <QPoint>
 #include <set>
 
 class NormalMode

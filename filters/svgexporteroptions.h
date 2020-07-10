@@ -18,7 +18,7 @@
 #ifndef KIG_FILTERS_SVGEXPORTEROPTIONS_H
 #define KIG_FILTERS_SVGEXPORTEROPTIONS_H
 
-#include <qwidget.h>
+#include <QWidget>
 
 class Ui_SVGExporterOptionsWidget;
 

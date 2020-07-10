@@ -22,7 +22,7 @@
 #ifndef KIG_COMMANDS_H
 #define KIG_COMMANDS_H
 
-#include <qundostack.h>
+#include <QUndoStack>
 
 #include <QDebug>
 

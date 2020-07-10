@@ -18,7 +18,7 @@
 #ifndef KIG_SCRIPTING_NEWSCRIPTWIZARD_H
 #define KIG_SCRIPTING_NEWSCRIPTWIZARD_H
 
-#include <qwizard.h>
+#include <QWizard>
 
 #include "script-common.h"
 

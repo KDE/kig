@@ -20,7 +20,7 @@
 #ifndef KIG_MISC_GONIOMETRY_H
 #define KIG_MISC_GONIOMETRY_H
 
-#include <qstringlist.h>
+#include <QStringList>
 
 /**
  * Manage an angle and convert it from/to other goniometric systems.

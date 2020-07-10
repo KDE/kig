@@ -19,8 +19,8 @@
 
 #include "ui_svgexporteroptionswidget.h"
 
-#include <qcheckbox.h>
-#include <qlayout.h>
+#include <QCheckBox>
+#include <QLayout>
 
 SVGExporterOptions::SVGExporterOptions( QWidget* parent )
   : QWidget( parent )

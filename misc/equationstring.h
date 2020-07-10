@@ -18,7 +18,7 @@
 #ifndef KIG_EQUATIONSTRING_H
 #define KIG_EQUATIONSTRING_H
 
-#include <qstring.h>
+#include <QString>
 
 /**
  * Simple class that represents an equation.

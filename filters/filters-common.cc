@@ -19,8 +19,8 @@
 
 #include <vector>
 
-#include <qbytearray.h>
-#include <qstring.h>
+#include <QByteArray>
+#include <QString>
 
 #include "../objects/object_calcer.h"
 #include "../objects/object_factory.h"

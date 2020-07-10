@@ -27,9 +27,9 @@
 #include "../misc/guiaction.h"
 #include "../objects/object_imp.h"
 
-#include <klineedit.h>
-#include <kmessagebox.h>
-#include <kcursor.h>
+#include <KLineEdit>
+#include <KMessageBox>
+#include <KCursor>
 
 #include <functional>
 #include <algorithm>

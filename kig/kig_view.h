@@ -22,8 +22,8 @@
 #ifndef KIG_VIEW_H
 #define KIG_VIEW_H
 
-#include <qwidget.h>
-#include <qpixmap.h>
+#include <QWidget>
+#include <QPixmap>
 
 #include <kparts/part.h>
 

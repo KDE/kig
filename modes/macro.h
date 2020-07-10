@@ -20,7 +20,7 @@
 
 #include "base_mode.h"
 
-#include <qobject.h>
+#include <QObject>
 
 class MacroWizard;
 
