@@ -84,7 +84,7 @@ void KigWidget::mousePressEvent (QMouseEvent* e)
 {
   if( e->button() & Qt::LeftButton )
     return mpart->mode()->leftClicked( e, this );
-  if ( e->button() & Qt::MidButton )
+  if ( e->button() & Qt::MiddleButton )
     return mpart->mode()->midClicked( e, this );
   if ( e->button() & Qt::RightButton )
     return mpart->mode()->rightClicked( e, this );
@@ -94,7 +94,7 @@ void KigWidget::mouseMoveEvent (QMouseEvent* e)
 {
   if( ( e->buttons() & Qt::LeftButton ) == Qt::LeftButton )
     return mpart->mode()->leftMouseMoved( e, this );
-  if ( ( e->buttons() & Qt::MidButton ) == Qt::MidButton )
+  if ( ( e->buttons() & Qt::MiddleButton ) == Qt::MidButton )
     return mpart->mode()->midMouseMoved( e, this );
   if ( ( e->buttons() & Qt::RightButton ) == Qt::RightButton )
     return mpart->mode()->rightMouseMoved( e, this );
@@ -105,7 +105,7 @@ void KigWidget::mouseReleaseEvent (QMouseEvent* e)
 {
   if( e->button() & Qt::LeftButton )
     return mpart->mode()->leftReleased( e, this );
-  if ( e->button() & Qt::MidButton )
+  if ( e->button() & Qt::MiddleButton )
     return mpart->mode()->midReleased( e, this );
   if ( e->button() & Qt::RightButton )
     return mpart->mode()->rightReleased( e, this );
