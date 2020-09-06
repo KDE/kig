@@ -264,6 +264,7 @@ if (Qt5XmlPatterns_FOUND)
   target_link_libraries(kigpart Qt5::XmlPatterns)
 endif(Qt5XmlPatterns_FOUND)
 
+ki18n_install(po)
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES org.kde.kig.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
