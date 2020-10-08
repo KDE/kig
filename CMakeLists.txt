@@ -265,6 +265,9 @@ if (Qt5XmlPatterns_FOUND)
 endif(Qt5XmlPatterns_FOUND)
 
 ki18n_install(po)
+if (KF5DocTools_FOUND)
+    kdoctools_install(po)
+endif()
 install(TARGETS kigpart DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES org.kde.kig.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
