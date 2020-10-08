@@ -32,8 +32,8 @@ Devriese</holder>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2015-09-27</date>
-<releaseinfo>&kig; 1.0 (Applications 15.12)</releaseinfo>
+<date>2020-10-08</date>
+<releaseinfo>&kig; 1.0 (Applications 20.12)</releaseinfo>
 
 <abstract>
 <para>
@@ -193,8 +193,8 @@ current cursor position and select it by clicking the &LMB;.
 <para>
 You can always cancel the construction of the new object by
 pressing the &Esc; button or by clicking
-on the <guiicon>Cancel Construction</guiicon> button (red octagon with an
-<quote>X</quote>) on the toolbar.
+on the <guiicon>Cancel Construction</guiicon> button (red circle with an
+inside bar) on the toolbar.
 </para>
 <screenshot>
 <screeninfo>Constructing a circle.</screeninfo>
