@@ -525,9 +525,9 @@ ObjectImp* PythonScripter::calc( CompiledPythonScript& script, const Args& args 
     };
     tuple argstup( argstuph );
 
-    handle<> reth( PyEval_CallObject( calcfunc.ptr(), argstup.ptr() ) );
+    handle<> reth( PyObject_CallObject( calcfunc.ptr(), argstup.ptr() ) );
 //    object resulto = calcfunc( argstup );
-//    handle<> reth( PyEval_CallObject( calcfunc.ptr(), args ) );
+//    handle<> reth( PyObject_CallObject( calcfunc.ptr(), args ) );
     object resulto( reth );
 
     extract<ObjectImp&> result( resulto );
