@@ -361,22 +361,18 @@ BOOST_PYTHON_MODULE_INIT( kig )
 
 }
 
-PythonScripter* PythonScripter::instance()
-{
-  static PythonScripter t;
-  return &t;
-}
-
-class PythonScripter::Private
+// helper class to initialize Python in a constructor;
+// this way, PythonScripter::Private inherits from it and thus
+// already has Python initialized before the class members
+// (like 'mainnamespace') are initialized
+class PythonInitializer
 {
 public:
-  dict mainnamespace;
+  PythonInitializer();
 };
 
-PythonScripter::PythonScripter()
+PythonInitializer::PythonInitializer()
 {
-  d = new Private;
-
   // tell the python interpreter about our API..
 
   PyImport_AppendInittab( "kig", PyInit_kig );
@@ -386,6 +382,23 @@ PythonScripter::PythonScripter()
   PyRun_SimpleString( "import math; from math import *;" );
   PyRun_SimpleString( "import kig; from kig import *;" );
   PyRun_SimpleString( "import traceback;" );
+}
+
+PythonScripter* PythonScripter::instance()
+{
+  static PythonScripter t;
+  return &t;
+}
+
+class PythonScripter::Private : private PythonInitializer
+{
+public:
+  dict mainnamespace;
+};
+
+PythonScripter::PythonScripter()
+{
+  d = new Private;
 
   // find the main namespace..
 
@@ -512,9 +525,9 @@ ObjectImp* PythonScripter::calc( CompiledPythonScript& script, const Args& args 
     };
     tuple argstup( argstuph );
 
-    handle<> reth( PyEval_CallObject( calcfunc.ptr(), argstup.ptr() ) );
+    handle<> reth( PyObject_CallObject( calcfunc.ptr(), argstup.ptr() ) );
 //    object resulto = calcfunc( argstup );
-//    handle<> reth( PyEval_CallObject( calcfunc.ptr(), args ) );
+//    handle<> reth( PyObject_CallObject( calcfunc.ptr(), args ) );
     object resulto( reth );
 
     extract<ObjectImp&> result( resulto );

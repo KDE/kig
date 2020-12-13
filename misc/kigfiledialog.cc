@@ -80,7 +80,6 @@ void KigFileDialog::accept()
     connect( buttonBox, &QDialogButtonBox::rejected, optdlg.data(), &QDialog::reject);
 
     (optdlg->exec() == QDialog::Accepted) ? QFileDialog::accept() : QFileDialog::reject();
-    delete optdlg;
   }
   else
     QFileDialog::accept();
