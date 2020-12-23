@@ -37,7 +37,7 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   : QDialog( parent ),
     mname( name ), mdesc( desc ), micon( icon )
 {
-  setWindowTitle( i18n( "Edit Type" ) );
+  setWindowTitle( i18nc("@title:window", "Edit Type") );
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
   QWidget *mainWidget = new QWidget(this);
   QVBoxLayout *mainLayout = new QVBoxLayout;

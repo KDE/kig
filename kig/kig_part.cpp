@@ -142,7 +142,7 @@ private:
 KigPrintDialogPage::KigPrintDialogPage( QWidget* parent )
  : QWidget( parent )
 {
-  setWindowTitle( i18n( "Kig Options" ) );
+  setWindowTitle( i18nc("@title:window", "Kig Options") );
 
   QVBoxLayout* vl = new QVBoxLayout( this );
 
@@ -911,7 +911,7 @@ void KigPart::filePrint()
   QPrinter printer;
   KigPrintDialogPage* kp = new KigPrintDialogPage();
   QPrintDialog printDialog( &printer, m_widget );
-  printDialog.setWindowTitle( i18n("Print Geometry") );
+  printDialog.setWindowTitle( i18nc("@title:window", "Print Geometry") );
   printDialog.setOptionTabs( { kp } );
   printer.setFullPage( true );
   //Unsupported in Qt

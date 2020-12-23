@@ -58,7 +58,7 @@ NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLo
     mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 ), mIconLoader( il )
 {
   setObjectName( QStringLiteral( "New Script Wizard" ) );
-  setWindowTitle( i18n( "New Script" ) );
+  setWindowTitle( i18nc("@title:window", "New Script") );
   setOption( HaveHelpButton );
 
   QWizardPage* firstPage = new QWizardPage( this );

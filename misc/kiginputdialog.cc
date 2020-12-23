@@ -137,7 +137,7 @@ KigInputDialog::KigInputDialog( QWidget* parent, const Goniometry& g )
   QVBoxLayout* mainlay = new QVBoxLayout( mainWidget );
   QHBoxLayout* horlay = new QHBoxLayout( mainWidget );
 
-  setWindowTitle( i18n( "Set Angle Size" ) );
+  setWindowTitle( i18nc("@title:window", "Set Angle Size") );
   setLayout( mainLayout );
   okButton->setDefault( true );
   okButton->setShortcut( Qt::CTRL | Qt::Key_Return );

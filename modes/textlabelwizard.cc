@@ -116,7 +116,7 @@ TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
 {
   setModal( false );
   setObjectName( QStringLiteral( "TextLabelWizard" ) );
-  setWindowTitle( i18n( "Construct Label" ) );
+  setWindowTitle( i18nc("@title:window", "Construct Label") );
   setOption( HaveHelpButton );
   setOption( HaveFinishButtonOnEarlyPages );
 

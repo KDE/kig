@@ -32,8 +32,8 @@ Devriese</holder>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2020-10-08</date>
-<releaseinfo>&kig; 1.0 (Applications 20.12)</releaseinfo>
+<date>2020-12-23</date>
+<releaseinfo>Applications 20.12</releaseinfo>
 
 <abstract>
 <para>
@@ -88,7 +88,7 @@ people, please open a review request for the change, so that
 it can be evaluated for the inclusion in the distribution
 (if you do this, it will be licensed under the
 terms of &kig;'s license, the <ulink
-url="http://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>,
+url="https://www.gnu.org/licenses/licenses.html#GPL">GPL</ulink>,
 so that other people can freely use and adapt it).
 </para>
 </chapter>
@@ -192,9 +192,9 @@ current cursor position and select it by clicking the &LMB;.
 </para>
 <para>
 You can always cancel the construction of the new object by
-pressing the &Esc; button or by clicking
-on the <guiicon>Cancel Construction</guiicon> button (red circle with an
-inside bar) on the toolbar.
+pressing the &Esc; button or by clicking on the &nbsp;<inlinemediaobject>
+<imageobject> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject>
+</inlinemediaobject> <guibutton>Cancel Construction</guibutton> button on the toolbar.
 </para>
 <screenshot>
 <screeninfo>Constructing a circle.</screeninfo>
@@ -291,7 +291,8 @@ Press the &Del; key.
 </listitem>
 <listitem>
 <para>
-Press the <guiicon>Delete Objects</guiicon> button on the toolbar.
+Press the &nbsp;<inlinemediaobject> <imageobject> <imagedata fileref="edit-delete.png" format="PNG"/>
+</imageobject> </inlinemediaobject> <guibutton>Delete Objects</guibutton> button on the toolbar.
 </para>
 </listitem>
 <listitem>
@@ -352,7 +353,7 @@ Infrared Glasses</guimenuitem></menuchoice>.
 In &kig;, you can undo almost any change you make in the
 document. Just use the
 <guiicon>Undo</guiicon>/<guiicon>Redo</guiicon> buttons on the
-toolbar, the <guimenu>Edit</guimenu> menu or the appropriate shortcuts.
+toolbar, the <guimenu>Edit</guimenu> menu or the appropriate keyboard shortcuts.
 </para>
 </sect1>
 
@@ -417,14 +418,14 @@ defined object as reference, for example:</para>
 <guisubmenu>Angles</guisubmenu><guimenuitem>Angle by Three Points</guimenuitem> 
 </menuchoice> and make your desired angle of rotation somewhere in the &kig; window, generally in 
 an unobtrusive place. If desired, right click on the angle and click on 
-<menuchoice><guimenu>Add Text Label</guimenu><guimenuitem>Angle in Degrees</guimenuitem></menuchoice>.</para></listitem>
+<menuchoice><guisubmenu>Add Text Label</guisubmenu><guimenuitem>Angle in Degrees</guimenuitem></menuchoice>.</para></listitem>
 <listitem><para>Click with the &RMB; on the angle and select <guimenuitem>Set 
 Size</guimenuitem> and insert the new size for this angle in the dialog.
 </para></listitem>
-<listitem><para>Click on <guimenu>Objects</guimenu> and construct your desired object.
+<listitem><para>Click on <guimenu>Objects</guimenu> menu and construct your desired object.
 </para></listitem>
-<listitem><para>Right click on your shape, and select on <menuchoice><guimenu>
-Transform</guimenu><guimenuitem>Rotate</guimenuitem></menuchoice>.</para></listitem>
+<listitem><para>Right click on your shape, and select on <menuchoice><guisubmenu>Transform</guisubmenu>
+<guimenuitem>Rotate</guimenuitem></menuchoice>.</para></listitem>
 <listitem><para>Set your desired point of rotation.</para></listitem>
 <listitem><para>Click on your angle.</para></listitem>
 <listitem><para>Your shape is rotated!</para></listitem>
@@ -452,11 +453,11 @@ rotation.</para>
 </menuchoice> and construct the object by selecting the start and end point somewhere
 in the &kig; window.</para></listitem>
 <listitem><para>To adjust length and direction of the vector you have to edit its start
-and end point. Select them and choose in the context menu <guimenuitem>Set Coordinate...</guimenuitem>
+and end point. Select them and choose <guimenuitem>Set Coordinate...</guimenuitem> in the context menu.
 </para></listitem>
 <listitem><para>Click on <guimenu>Objects</guimenu> and construct your desired object.
 </para></listitem>
-<listitem><para>Right click on your object, and select on <menuchoice><guimenu>Transform</guimenu>
+<listitem><para>Right click on your object, and select on <menuchoice><guisubmenu>Transform</guisubmenu>
 <guimenuitem>Translate</guimenuitem></menuchoice>.</para></listitem>
 <listitem><para>Select the vector to translate by.</para></listitem>
 </orderedlist>
@@ -505,12 +506,13 @@ following image should make this a bit more clear:
 </screenshot>
 
 <para>
-Next comes defining the macro. Select <guimenuitem>New
-Macro...</guimenuitem> from the <guimenu>Types</guimenu> menu, or
-click on the button on the toolbar. A wizard will appear and
-ask you to select the given objects. In our example, these
-are the three points. Select the three points (click on them
-to select, click again to unselect) and click the
+Next comes defining the macro. Select the <menuchoice><guimenu>Types</guimenu>
+<guimenuitem>New Macro...</guimenuitem></menuchoice> menu item, or
+click on the &nbsp;<inlinemediaobject> <imageobject> <imagedata fileref="system-run.png"
+format="PNG"/></imageobject> </inlinemediaobject> <guibutton>New Macro...</guibutton>
+button on the toolbar. A wizard will appear and ask you to select the given objects.
+In our example, these are the three points. Select the three points (click on
+them to select, click again to unselect) and click the
 <guibutton>Next</guibutton> button to continue. Finally,
 select the last objects (only the circle in our example).
 </para>
@@ -589,10 +591,11 @@ about objects (also known as <quote>properties</quote>).
 </para>
 <para>
 To start constructing a text label, simply press the
-<guibutton>Text Label</guibutton> button in the &kig; toolbar or
-select <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other
-</guisubmenu><guimenuitem>Text Label</guimenuitem>
-</menuchoice> in the menubar.
+&nbsp;<inlinemediaobject> <imageobject> <imagedata fileref="kig_text.png" format="PNG"/>
+</imageobject> </inlinemediaobject> <guibutton>Text Label</guibutton>
+button in the &kig; toolbar or select the <menuchoice><guimenu>Objects</guimenu>
+<guisubmenu>Other</guisubmenu><guimenuitem>Text Label</guimenuitem>
+</menuchoice> menu item.
 </para>
 <para>
 Next, you have to choose a location for the text label. You
@@ -716,15 +719,15 @@ travels while the first one moves around the circle is its locus.
 </para>
 <para>
 Actually constructing the locus of a point is very easy. Click
-the <guiicon>locus</guiicon> button in the toolbar, or select
-<menuchoice><guimenu>Objects</guimenu>
-<guisubmenu>Other</guisubmenu>
-<guimenuitem>Locus</guimenuitem>
-</menuchoice>
-from the menubar. Then select the constrained point as the
+the &nbsp;<inlinemediaobject><imageobject> <imagedata fileref="locus.png"
+format="PNG"/> </imageobject></inlinemediaobject> <guibutton>Locus</guibutton>
+button in the toolbar, or select the <menuchoice><guimenu>Objects</guimenu>
+<guisubmenu>Other</guisubmenu><guimenuitem>Locus</guimenuitem></menuchoice>
+menu item. Then select the constrained point as the
 moving point (the text <guilabel>Moving Point</guilabel> will
 appear as you move the mouse over it), and the other as the
-dependent point. The locus of the dependent point will then be drawn.
+<guilabel>Dependent point</guilabel>. The locus of the dependent
+point will then be drawn.
 </para>
 </sect1>
 </chapter>
@@ -749,8 +752,9 @@ then &kig; will show it for you.
 <para>
 Suppose you were not aware of the &kig; built-in type <quote>Mid Point</quote>,
 and you wanted to show the midpoint of two given points. You
-would then click on the <guibutton>Python Script</guibutton>
-button in the toolbar, or select
+would then click on the &nbsp;<inlinemediaobject> <imageobject> <imagedata
+fileref="text-x-python3.png" format="PNG"/></imageobject> </inlinemediaobject>
+<guibutton>Python Script</guibutton> button in the toolbar, or select
 <menuchoice><guimenu>Objects</guimenu><guisubmenu>Other</guisubmenu>
 <guimenuitem>Python Script</guimenuitem></menuchoice> from the
 menubar. You are then presented with a wizard that allows you
@@ -781,9 +785,8 @@ code is valid Python code. People familiar with Python will
 notice that we are actually defining a Python function called
 <function>calc</function>. It is therefore necessary to adhere
 to the Python rules for defining functions. For example, every
-line of the function should start with a &Tab;.
-The first line not starting with a &Tab; ends the
-definition of the function.
+line of the function should start with a tab. The first line not
+starting with a tab ends the definition of the function.
 </para>
 <para>
 The Python function that we want to define is called
@@ -854,7 +857,7 @@ can use &eg; the <function>Point.coordinate()</function> method. You can
 also return all kinds of objects, not just a <classname>Point</classname>.
 Many more classes and methods are available in the &kig; Python code,
 and a more complete reference is provided <ulink
-url="http://edu.kde.org/kig/manual/scripting-api/index.html">on
+url="https://edu.kde.org/kig/manual/scripting-api/index.html">on
 the &kig; website</ulink>.
 </para>
 </chapter>
@@ -923,7 +926,7 @@ to files, import them from files, edit and delete them.
 <para>
 &kig; allows you to export a &kig; file to some interesting
 formats, like images, <application>XFig</application> and
-<application>LaTeX</application> files, and <acronym>SVG</acronym>
+<application>LaTeX</application> files, and &SVG;
 vectorial images. This is rather useful, because not all programs
 support the &kig; file format yet.
 </para>
@@ -991,7 +994,7 @@ Reviewed by &Philip.Rodrigues; &Philip.Rodrigues.mail;.
 <title>Free Software</title>
 <para>
 &kig; is <ulink
-url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
+url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware">
 Free Software</ulink>. This means that its source code is
 freely available on the Internet, and everyone can use it,
 read it, modify it, and distribute it.
@@ -1007,7 +1010,7 @@ software, you are allowed (and encouraged) to fix problems
 you encounter while using it, to add features you miss, to
 distribute your modified program, and to send these
 modifications back for inclusion through the review tools
-available for the KDE community.
+available for the &kde; community.
 </para>
 <para>
 If you are uncertain of your rights to use this software, or
@@ -1015,7 +1018,7 @@ other people's right to use any modifications you make to this
 program &etc;, please read the license. You can find it in the
 <filename>COPYING</filename> file in the &kig; source tree or
 the license link in the <guilabel>About
-Kig</guilabel> dialog.
+&kig;</guilabel> dialog.
 </para>
 </sect1>
 

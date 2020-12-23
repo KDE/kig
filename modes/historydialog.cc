@@ -36,7 +36,7 @@
 HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
   : QDialog( parent ), mch( kch )
 {
-  setWindowTitle( i18n( "History Browser" ) );
+  setWindowTitle( i18nc("@title:window", "History Browser") );
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
   QWidget *mainWidget = new QWidget(this);
   QVBoxLayout *mainLayout = new QVBoxLayout;

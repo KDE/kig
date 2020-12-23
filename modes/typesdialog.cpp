@@ -343,7 +343,7 @@ TypesDialog::TypesDialog( QWidget* parent, KigPart& part )
   : QDialog( parent ),
     mpart( part )
 {
-  setWindowTitle( i18n( "Manage Types" ) );
+  setWindowTitle( i18nc("@title:window", "Manage Types") );
   QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help );
   QWidget *mainWidget = new QWidget( this );
   QVBoxLayout *mainLayout = new QVBoxLayout;
