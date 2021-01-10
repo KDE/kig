@@ -490,7 +490,7 @@ bool isSingular( const double& a, const double& b,
  * test must be done relative to the magnitude of the two
  * row (or column) vectors!
  */
-  return ( std::fabs(det) < test_threshold*norm1*norm2 );
+  return ( std::fabs(det) <= test_threshold*norm1*norm2 );
 }
 
 const double double_inf = HUGE_VAL;
