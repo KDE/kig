@@ -15,7 +15,7 @@ add_executable(kig ${kig_SRCS})
 
 target_link_libraries(kig KF5::Parts KF5::ConfigCore KF5::Crash)
 
-install(TARGETS kig ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS kig ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 ########### install files ###############
