@@ -1,4 +1,4 @@
 install(FILES
    python-kig.xml
-   DESTINATION ${CMAKE_INSTALL_DATADIR}/katepart5/syntax)
+   DESTINATION ${KDE_INSTALL_DATADIR}/katepart5/syntax)
 

@@ -275,7 +275,7 @@ ecm_install_icons(ICONS
   sc-actions-rbezier4.svgz
   32-actions-circlebpd.png
   sc-actions-testcollinear.svgz
-  DESTINATION ${CMAKE_INSTALL_DATADIR}/kig/icons
+  DESTINATION ${KDE_INSTALL_DATADIR}/kig/icons
   THEME hicolor
 )
 

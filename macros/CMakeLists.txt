@@ -6,6 +6,6 @@ install(FILES
    osculating_circle.kigt
    square.kigt
    vector_difference.kigt
-   DESTINATION ${CMAKE_INSTALL_DATADIR}/kig/builtin-macros)
+   DESTINATION ${KDE_INSTALL_DATADIR}/kig/builtin-macros)
 
 

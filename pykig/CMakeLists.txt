@@ -1,4 +1,4 @@
 
-install(PROGRAMS pykig.py DESTINATION ${BIN_INSTALL_DIR} )
+install(PROGRAMS pykig.py DESTINATION ${KDE_INSTALL_BINDIR} )
 
 
