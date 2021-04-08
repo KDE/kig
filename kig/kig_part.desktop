@@ -67,6 +67,6 @@ Name[zh_CN]=KigPart
 Name[zh_TW]=KigPart
 MimeType=application/x-kig;application/x-kgeo;image/x-xfig;application/x-cabri;application/x-drgeo;application/x-kseg;application/vnd.geogebra.file;
 X-KDE-ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart
-X-KDE-Library=kigpart
+X-KDE-Library=kf5/parts/kigpart
 Type=Service
 Icon=kig

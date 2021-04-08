@@ -38,7 +38,7 @@
 
 static int convertToNative( const QUrl &file, const QByteArray& outfile )
 {
-  KPluginLoader libraryLoader( QStringLiteral("kigpart") );
+  KPluginLoader libraryLoader( QStringLiteral("kf5/parts/kigpart") );
   QLibrary library( libraryLoader.fileName() );
   int ( *converterfunction )( const QUrl&, const QByteArray& );
   converterfunction = ( int ( * )( const QUrl&, const QByteArray& ) ) library.resolve( "convertToNative" );

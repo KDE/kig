@@ -96,8 +96,8 @@ QStringList getDataFiles( const QString & folder )
   return dataFiles;
 }
 
-// export this library...
-K_PLUGIN_FACTORY( KigPartFactory, registerPlugin< KigPart >(); )
+// export this class from this library...
+K_PLUGIN_CLASS_WITH_JSON( KigPart, "kig_part.json")
 
 SetCoordinateSystemAction::SetCoordinateSystemAction(
   KigPart& d, KActionCollection* parent )
@@ -189,9 +189,6 @@ KigPart::KigPart( QWidget *parentWidget, QObject *parent,
   : KParts::ReadWritePart( parent ),
     mMode( 0 ), mRememberConstruction( 0 ), mdocument( new KigDocument() )
 {
-  // we need an instance
-  setComponentData( kigAboutData( "kig", I18N_NOOP( "KigPart" ) ) );
-
   mMode = new NormalMode( *this );
 
   // we need a widget, to actually show the document
