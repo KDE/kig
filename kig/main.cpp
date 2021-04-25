@@ -105,6 +105,10 @@ int main( int argc, char **argv )
   parser.process( app );
   about.processCommandLine( &parser );
 
+  // Add our custom icons to the search path
+  const QStringList iconDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "kig/icons", QStandardPaths::LocateDirectory);
+  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << iconDirs);
+
   QStringList urls = parser.positionalArguments();
 
   if ( parser.isSet( QStringLiteral("convert-to-native") ) )
