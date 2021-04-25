@@ -27,8 +27,6 @@
 #include "../../modes/normal.h"
 #include "../../objects/text_type.h"
 
-#include <KIconEngine>
-
 /**
  * this is a local function that looks for a python script associated
  * to a clicked object
@@ -60,8 +58,7 @@ void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu,
 {
   if ( menu == NormalModePopupObjects::StartMenu )
   {
-    KIconLoader* l = popup.part().iconLoader();
-    popup.addInternalAction( menu, QIcon( new KIconEngine( ScriptType::icon( ScriptType::Python ), l ) ), i18n( "Python Script" ), nextfree++ );
+    popup.addInternalAction( menu, QIcon::fromTheme( ScriptType::icon( ScriptType::Python ) ), i18n( "Python Script" ), nextfree++ );
     mns++;
   }
   else if ( menu == NormalModePopupObjects::ToplevelMenu )

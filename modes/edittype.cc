@@ -23,7 +23,6 @@
 
 #include "ui_edittypewidget.h"
 
-#include <KIconDialog>
 #include <KLineEdit>
 #include <KMessageBox>
 #include <KHelpClient>

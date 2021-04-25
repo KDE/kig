@@ -43,7 +43,6 @@
 #include <QVariant>
 #include <QMouseEvent>
 
-#include <KIconEngine>
 #include <KCursor>
 #include <QDebug>
 #include <KMessageBox>
@@ -176,7 +175,7 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
       const char* iconfile = o->imp()->iconForProperty( i );
       if ( iconfile && *iconfile )
       {
-        act = p.addAction( QIcon( new KIconEngine( QLatin1String( iconfile ), mdoc.iconLoader() ) ), s );
+        act = p.addAction( QIcon::fromTheme( iconfile ), s );
       }
       else
       {

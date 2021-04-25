@@ -31,7 +31,6 @@
 #include "../objects/bogus_imp.h"
 
 #include <KActionCollection>
-#include <KIconEngine>
 
 #include <QIcon>
 #include <QRegExp>
@@ -88,7 +87,7 @@ KigGUIAction::KigGUIAction( GUIAction* act,
 {
   QByteArray icon = act->iconFileName( true );
   if ( !icon.isEmpty() )
-    setIcon( QIcon( new KIconEngine( icon, doc.iconLoader() ) ) );
+    setIcon( QIcon::fromTheme(icon) );
   setWhatsThis( act->description() );
   QString tooltip = act->descriptiveName();
   tooltip.replace( QRegExp( "&&" ), QStringLiteral("&") );

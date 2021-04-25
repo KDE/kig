@@ -50,8 +50,6 @@
 #include "objecttypeactionsprovider.h"
 #include "propertiesactionsprovider.h"
 
-#include <KIconEngine>
-
 #include <config-kig.h>
 
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
@@ -157,7 +155,6 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
     };
 
   // creating the menus and setting their title and icon
-  KIconLoader* l = part.iconLoader();
   for ( uint i = 0; i < NumberOfMenus; ++i )
   {
     if ( i == ToplevelMenu ) continue;
@@ -166,7 +163,7 @@ NormalModePopupObjects::NormalModePopupObjects( KigPart& part,
       mmenus[i]->setTitle( menunames[i] );
     if ( !menuicons[i].isEmpty() )
     {
-      mmenus[i]->setIcon( QIcon( new KIconEngine( menuicons[i], l ) ) );
+      mmenus[i]->setIcon( QIcon::fromTheme( menuicons[i] ) );
     }
   }
   mmenus[ToplevelMenu] = mmenuslast[ToplevelMenu] = this;

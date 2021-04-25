@@ -30,8 +30,6 @@
 
 #include <QIcon>
 
-#include <KIconEngine>
-
 void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
                                             int menu, int& nextfree )
 {
@@ -62,7 +60,7 @@ void PropertiesActionsProvider::fillUpMenu( NormalModePopupObjects& popup,
     {
       if ( iconfile && *iconfile )
       {
-        popup.addInternalAction( menu, QIcon( new KIconEngine( iconfile, popup.part().iconLoader() ) ), i18n( o->imp()->properties()[i] ), nextfree++ );
+        popup.addInternalAction( menu, QIcon::fromTheme( iconfile ), i18n( o->imp()->properties()[i] ), nextfree++ );
       }
       else
       {

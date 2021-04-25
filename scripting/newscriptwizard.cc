@@ -28,7 +28,6 @@
 #include <QVBoxLayout>
 
 #include <KActionCollection>
-#include <KIconEngine>
 #include <KHelpClient>
 
 #include <KTextEditor/ConfigInterface>
@@ -53,9 +52,9 @@ NewScriptWizard::~NewScriptWizard()
   }
 }
 
-NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLoader* il )
+NewScriptWizard::NewScriptWizard( QWidget* parent, ScriptModeBase* mode )
   : QWizard( parent ),
-    mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 ), mIconLoader( il )
+    mmode( mode ), textedit( 0 ), document( 0 ), docview( 0 )
 {
   setObjectName( QStringLiteral( "New Script Wizard" ) );
   setWindowTitle( i18nc("@title:window", "New Script") );
@@ -191,7 +190,7 @@ QString NewScriptWizard::text() const
 void NewScriptWizard::setType( ScriptType::Type type )
 {
   mLabelFillCode->setText( ScriptType::fillCodeStatement( type ) );
-  QIcon scriptIcon( new KIconEngine( ScriptType::icon( type ), mIconLoader ) );
+  QIcon scriptIcon = QIcon::fromTheme( ScriptType::icon( type ) );
   if ( type != ScriptType::Unknown )
   {
     setWindowIcon( scriptIcon );

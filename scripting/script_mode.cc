@@ -116,7 +116,7 @@ ScriptModeBase::ScriptModeBase( KigPart& doc )
   : BaseMode( doc ), mwizard( 0 ), mpart( doc ),
     mwawd( SelectingArgs )
 {
-  mwizard = new NewScriptWizard( doc.widget(), this, doc.iconLoader() );
+  mwizard = new NewScriptWizard( doc.widget(), this );
 
   doc.redrawScreen();
 }

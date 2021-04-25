@@ -27,8 +27,6 @@
 #include "../../modes/construct_mode.h"
 #include "../../modes/normal.h"
 
-#include <KIconEngine>
-
 void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )
 {
   const KigDocument& d = popup.part().document();
@@ -59,7 +57,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
       QByteArray iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
-        popup.addInternalAction( menu, QIcon( new KIconEngine( iconfile, popup.part().iconLoader() ) ), (*i)->descriptiveName(), nextfree++ );
+        popup.addInternalAction( menu, QIcon::fromTheme( iconfile ), (*i)->descriptiveName(), nextfree++ );
       }
       else
         popup.addInternalAction( menu, (*i)->descriptiveName(), nextfree++ );
