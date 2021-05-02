@@ -204,7 +204,7 @@ static bool visit( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& from
   std::vector<ObjectCalcer*> parents = o->parents();
   for ( uint i = 0; i < parents.size(); ++i )
   {
-    bool v = visit( parents[i], from, ret );
+    bool v = ::visit( parents[i], from, ret );
     somedepend |= v;
     alldepend &= v;
     deps[i] = v;
