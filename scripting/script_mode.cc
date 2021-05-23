@@ -137,12 +137,18 @@ void ScriptModeBase::enableActions()
 
 void ScriptModeBase::codePageEntered()
 {
-  if ( mwizard->text().isEmpty() )
+  QString wizardText { mwizard->text() };
+  if ( wizardText.isEmpty() )
   {
     // insert template code..
-    QString tempcode = ScriptType::templateCode( mtype, margs );
-    mwizard->setText( tempcode );
-  };
+    wizardText = ScriptType::templateCode( mtype, margs );
+  }
+  else
+  {
+    ScriptType::updateCodeFunction( mtype, margs, wizardText );
+  }
+
+  mwizard->setText( wizardText );
   mwawd = EnteringCode;
   mdoc.redrawScreen();
 }

@@ -31,6 +31,14 @@ public:
    */
   static QString templateCode( ScriptType::Type type, std::list<ObjectHolder*> args );
   /**
+   * Update the existing script function definition with the new argument selection
+   */
+  static void updateCodeFunction( ScriptType::Type type, std::list<ObjectHolder*> args, QString & script);
+  /**
+   * Return the function definition for the script
+   */
+  static QString scriptFunctionDefinition( ScriptType::Type type, std::list<ObjectHolder*> args );
+  /**
    * Returns the icon's name for a script language.
    */
   static const char* icon( ScriptType::Type type );

@@ -31,25 +31,9 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
 {
   if ( type == Python )
   {
-    QString tempcode = QStringLiteral( "def calc( " );
-    bool firstarg = true;
-    KLocalizedString temparg = ki18nc( "Note to translators: this should be a default "
-                            "name for an argument in a Python function. The "
-                            "default is \"arg%1\" which would become arg1, "
-                            "arg2, etc. Give something which seems "
-                            "appropriate for your language.", "arg%1" );
-
-    uint id = 1;
-    for ( std::list<ObjectHolder*>::const_iterator i = args.begin(); i != args.end(); ++i )
-    {
-      if ( !firstarg ) tempcode += QLatin1String(", ");
-      else firstarg = false;
-      QString n = ( *i )->name();
-      tempcode += n.isEmpty() ? temparg.subs( id ).toString() : n;
-      id++;
-    };
+    QString tempcode { ScriptType::scriptFunctionDefinition( type, args ) };
     tempcode +=
-      " ):\n"
+      "\n"
       "\t# Calculate whatever you want to show here, and return it.\n";
     if ( args.empty() )
     {
@@ -88,6 +72,48 @@ QString ScriptType::templateCode( ScriptType::Type type, std::list<ObjectHolder*
 
   qDebug() << "No such script type: " << type;
   return QLatin1String("");
+}
+
+QString ScriptType::scriptFunctionDefinition( ScriptType::Type type, std::list<ObjectHolder*> args )
+{
+  if ( type == Python )
+  {
+    QString newHeader {QStringLiteral( "def calc( " )};
+    bool firstarg {true};
+    KLocalizedString temparg {ki18nc( "Note to translators: this should be a default "
+                                      "name for an argument in a Python function. The "
+                                      "default is \"arg%1\" which would become arg1, "
+                                      "arg2, etc. Give something which seems "
+                                      "appropriate for your language.", "arg%1" )};
+
+    uint id { 1 };
+    for ( auto i { args.begin() }; i != args.end(); ++i )
+    {
+      if ( !firstarg ) newHeader += QLatin1String( ", " );
+      else firstarg = false;
+      QString n = ( *i )->name();
+      newHeader += n.isEmpty() ? temparg.subs( id ).toString() : n;
+      id++;
+    };
+    newHeader += " ):";
+
+    return newHeader;
+  }
+
+  qDebug() << "No such script type: " << type;
+  return QLatin1String("");
+}
+
+void ScriptType::updateCodeFunction( ScriptType::Type type, std::list<ObjectHolder*> args, QString & script )
+{
+  if ( type == Python )
+  {
+    QString newHeader { ScriptType::scriptFunctionDefinition( type, args ) };
+    size_t newlinePos = script.toStdString().find_first_of( '\n', 0 );
+
+    script.remove( 0, newlinePos );
+    script.insert( 0, newHeader );
+  }
 }
 
 const char* ScriptType::icon( ScriptType::Type type )
