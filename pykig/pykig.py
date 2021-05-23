@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#-------------------------------python------------------------pykig.py--#
-#                                                                       #
-#                         From Python to Kig                            #
-#                                                                       #
-#--Maurizio Paolini-Daniele Zambelli-----------------------------2005---#
-#
-# Some comments translated to English by Bartosz Dziewoński
-# during Google Code-In 2011
-#
+# SPDX-FileCopyrightText: 2005 Maurizio Paolini-Daniele Zambelli
+# SPDX-FileCopyrightText: 2011 Bartosz Dziewoński
 # (licensed under GPL)
 
 version="0.2.11"

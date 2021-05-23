@@ -1,27 +1,10 @@
 /*
     This file is part of Kig, a KDE program for Interactive Geometry...
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
+    SPDX-FileCopyrightText: 2000 Marc Bartsch <marc.bartsch@topmail.de>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
-
-
-/// note: this code comes from KGeo by Marc Bartsch..
-
-
-/***************************************************************************
-                          resource.h  -  description
-                             -------------------
-    begin                : Die Okt  3 09:00:59 CEST 2000
-    SPDX-FileCopyrightText: 2000 Marc Bartsch
-    email                : marc.bartsch@topmail.de
-  ***************************************************************************/
-
-/***************************************************************************
- *                                                                         *
- *   SPDX-License-Identifier: GPL-2.0-or-later
- *                                                                         *
- ***************************************************************************/
 
 #ifndef RESOURCE_H
 #define RESOURCE_H
