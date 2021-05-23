@@ -5,7 +5,7 @@
 #  BoostPython_INCLUDE_DIRS - the include directory for boost+python
 #  BoostPython_LIBRARIES - the needed libs for boost+python
 
-# Copyright (c) 2006, Pino Toscano, <toscano.pino@tiscali.it>
+# SPDX-FileCopyrightText: 2006 Pino Toscano <toscano.pino@tiscali.it>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.

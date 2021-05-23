@@ -1,22 +1,9 @@
-/**
-   This file is part of Kig, a KDE program for Interactive Geometry...
-   Copyright (C) 2002  Dominique Devriese <devriese@kde.org>
+/*
+    This file is part of Kig, a KDE program for Interactive Geometry...
+    SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
-   USA
-**/
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
 
 
 /// note: this code comes from KGeo by Marc Bartsch..
@@ -26,16 +13,13 @@
                           resource.h  -  description
                              -------------------
     begin                : Die Okt  3 09:00:59 CEST 2000
-    copyright            : (C) 2000 by Marc Bartsch
+    SPDX-FileCopyrightText: 2000 Marc Bartsch
     email                : marc.bartsch@topmail.de
   ***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *   SPDX-License-Identifier: GPL-2.0-or-later
  *                                                                         *
  ***************************************************************************/
 
