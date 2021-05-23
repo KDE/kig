@@ -6,9 +6,7 @@
 #  BoostPython_LIBRARIES - the needed libs for boost+python
 
 # SPDX-FileCopyrightText: 2006 Pino Toscano <toscano.pino@tiscali.it>
-#
-# Redistribution and use is allowed according to the terms of the BSD license.
-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+# SPDX-License-Identifier: BSD-3-Clause
 
 if(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
     # Already in cache, be silent
