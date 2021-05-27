@@ -6,6 +6,7 @@
 // this is a collection of definitions we need from KSeg.  It includes
 // code from defs.H and G_drawstyle.H.  Thanks to Ilya Baran for
 // making KSeg GPL, so there are no license probs or whatever..
+// Send comments and/or bug reports to: ibaran@mit.edu
 
 #ifndef DEFS_H
 #define DEFS_H

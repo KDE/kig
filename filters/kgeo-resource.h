@@ -6,6 +6,8 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
+/// note: this code comes from KGeo by Marc Bartsch.
+
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
