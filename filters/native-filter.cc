@@ -116,7 +116,7 @@ KigDocument* KigFilterNative::load( const QString& file)
     else
       KIG_FILTER_PARSE_ERROR;
     // reading compressed file
-    KTar ark( file, QStringLiteral("application/x-gzip") );
+    KTar ark( file, QStringLiteral("application/gzip") );
     ark.open( QIODevice::ReadOnly );
     const KArchiveDirectory* dir = ark.directory();
 //    assert( dir );
@@ -758,7 +758,7 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     qDebug() << "tmp saved file: " << tmpfile;
 
     // creating the archive and adding our file
-    KTar ark( outfile,  QStringLiteral("application/x-gzip") );
+    KTar ark( outfile,  QStringLiteral("application/gzip") );
     ark.open( QIODevice::WriteOnly );
     ark.addLocalFile( tmpfile, tempname + ".kig" );
     ark.close();
