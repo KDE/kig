@@ -108,6 +108,10 @@ KigDocument* KigFilterNative::load( const QString& file)
     if ( tempdir.isEmpty() )
       KIG_FILTER_PARSE_ERROR;
 
+    if (!tempdir.endsWith(QLatin1Char('/'))) {
+        tempdir += QLatin1Char('/');
+    }
+
     QString tempname = file.section( '/', -1 );
     if ( file.endsWith( QLatin1String( ".kigz" ), Qt::CaseInsensitive ) )
     {
@@ -745,7 +749,11 @@ bool KigFilterNative::save07( const KigDocument& data, const QString& outfile )
     else
       return false;
 
-    QString tmpfile = tempdir + tempname + ".kig";
+    if (!tempdir.endsWith(QLatin1Char('/'))) {
+        tempdir += QLatin1Char('/');
+    }
+
+    const QString tmpfile = tempdir + tempname + ".kig";
     QFile ftmpfile( tmpfile );
     if ( !ftmpfile.open( QIODevice::WriteOnly ) )
       return false;
