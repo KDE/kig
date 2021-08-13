@@ -13,7 +13,9 @@ find_package(Qt5Svg REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
 find_package(Qt5XmlPatterns 5.5.1)
 
-find_package(ECM 1.7 REQUIRED NO_MODULE)
+find_package(ECM REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
+
 find_package(KF5Parts REQUIRED)
 find_package(KF5DocTools REQUIRED)
 find_package(KF5I18n REQUIRED)
@@ -24,8 +26,6 @@ find_package(KF5Archive REQUIRED)
 find_package(KF5XmlGui 5.1 REQUIRED)
 find_package(KF5Crash 5.15 REQUIRED)
 find_package(KF5CoreAddons REQUIRED)
-
-set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 
 set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
