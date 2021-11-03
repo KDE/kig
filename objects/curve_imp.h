@@ -30,7 +30,7 @@ public:
    */
   static const ObjectImpType* stype();
 
-  Coordinate attachPoint() const Q_DECL_OVERRIDE;
+  Coordinate attachPoint() const override;
 
   // param is between 0 and 1.  Note that 0 and 1 should be the
   // end-points.  E.g. for a Line, getPoint(0) returns a more or less
@@ -43,7 +43,7 @@ public:
   // Coordinate::invalidCoord() ) if you need to in some cases.
   virtual const Coordinate getPoint( double param, const KigDocument& ) const = 0;
 
-  CurveImp* copy() const Q_DECL_OVERRIDE = 0;
+  CurveImp* copy() const override = 0;
 
   /**
    * Return whether this Curve contains the given point.  This is

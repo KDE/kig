@@ -14,8 +14,8 @@ class CubicB9PType
   ~CubicB9PType();
 public:
   static const CubicB9PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class CubicNodeB6PType
@@ -25,8 +25,8 @@ class CubicNodeB6PType
   ~CubicNodeB6PType();
 public:
   static const CubicNodeB6PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class CubicCuspB4PType
@@ -36,8 +36,8 @@ class CubicCuspB4PType
   ~CubicCuspB4PType();
 public:
   static const CubicCuspB4PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class VerticalCubicB4PType
@@ -47,8 +47,8 @@ class VerticalCubicB4PType
   ~VerticalCubicB4PType();
 public:
   static const VerticalCubicB4PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 #endif

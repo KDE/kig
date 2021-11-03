@@ -35,7 +35,7 @@ class LengthImpType
 public:
   LengthImpType( const ObjectImpType* parent, const char* internalname );
   ~LengthImpType();
-  bool match( const ObjectImpType* t ) const Q_DECL_OVERRIDE;
+  bool match( const ObjectImpType* t ) const override;
 };
 
 extern LengthImpType lengthimptypeinstance;
@@ -46,7 +46,7 @@ class AngleImpType
 public:
   AngleImpType( const ObjectImpType* parent, const char* internalname );
   ~AngleImpType();
-  bool match( const ObjectImpType* t ) const Q_DECL_OVERRIDE;
+  bool match( const ObjectImpType* t ) const override;
 };
 
 extern AngleImpType angleimptypeinstance;
@@ -57,7 +57,7 @@ class WeightImpType
 public:
   WeightImpType( const ObjectImpType* parent, const char* internalname );
   ~WeightImpType();
-  bool match( const ObjectImpType* t ) const Q_DECL_OVERRIDE;
+  bool match( const ObjectImpType* t ) const override;
 };
 
 extern WeightImpType weightimptypeinstance;
@@ -80,7 +80,7 @@ class InvertibleImpType
 public:
   InvertibleImpType( const ObjectImpType* parent, const char* internalname );
   ~InvertibleImpType();
-  bool match( const ObjectImpType* t ) const Q_DECL_OVERRIDE;
+  bool match( const ObjectImpType* t ) const override;
 };
 
 extern InvertibleImpType invertibleimptypeinstance;

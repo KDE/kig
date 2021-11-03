@@ -36,7 +36,7 @@ private:
         const KigDocument& doc, Coordinate* c1, Coordinate* c2 );
   KigInputDialog( QWidget* parent, const Goniometry& g );
   virtual ~KigInputDialog();
-  void keyPressEvent( QKeyEvent* e ) Q_DECL_OVERRIDE;
+  void keyPressEvent( QKeyEvent* e ) override;
 
   KigInputDialogPrivate* d;
   

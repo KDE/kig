@@ -14,8 +14,8 @@ class VectorType
   ~VectorType();
 public:
   static const VectorType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class VectorSumType
@@ -25,8 +25,8 @@ class VectorSumType
   ~VectorSumType();
 public:
   static const VectorSumType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 #endif

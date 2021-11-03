@@ -18,9 +18,9 @@ public:
   explicit DefineMacroMode( KigPart& );
   ~DefineMacroMode();
 
-  void dragRect( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void dragRect( const QPoint& p, KigWidget& w ) override;
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                          KigWidget& w, bool ctrlOrShiftDown ) Q_DECL_OVERRIDE;
+                          KigWidget& w, bool ctrlOrShiftDown ) override;
   using BaseMode::midClicked;
   using BaseMode::rightClicked;
   using BaseMode::mouseMoved;
@@ -36,10 +36,10 @@ public:
   bool hasFinalArgs() const;
 
 protected:
-  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
-  void midClicked( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
-  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) Q_DECL_OVERRIDE;
-  void enableActions() Q_DECL_OVERRIDE;
+  void rightClicked( const std::vector<ObjectHolder*>& oco, const QPoint& p, KigWidget& w ) override;
+  void midClicked( const QPoint& p, KigWidget& w ) override;
+  void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w, bool shiftpressed ) override;
+  void enableActions() override;
   /**
    * quit this mode...
    */

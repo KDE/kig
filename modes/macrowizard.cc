@@ -24,7 +24,7 @@ class GivenArgsPage
 public:
   GivenArgsPage( QWidget* parent, DefineMacroMode* mode );
 
-  bool isComplete() const Q_DECL_OVERRIDE;
+  bool isComplete() const override;
 
   void setChanged();
 
@@ -63,8 +63,8 @@ class FinalArgsPage
 public:
   FinalArgsPage( QWidget* parent, DefineMacroMode* mode );
 
-  bool isComplete() const Q_DECL_OVERRIDE;
-  bool validatePage() Q_DECL_OVERRIDE;
+  bool isComplete() const override;
+  bool validatePage() override;
 
   void setChanged();
 

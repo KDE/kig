@@ -97,21 +97,21 @@ public:
       mcolormap[Qt::white] = 7;
     }
   using ObjectImpVisitor::visit;
-  void visit( const LineImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const PointImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const TextImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const AngleImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const VectorImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const LocusImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const CircleImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const ConicImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const CubicImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const SegmentImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const RayImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const ArcImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const FilledPolygonImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const ClosedPolygonalImp* imp ) Q_DECL_OVERRIDE;
-  void visit( const OpenPolygonalImp* imp ) Q_DECL_OVERRIDE;
+  void visit( const LineImp* imp ) override;
+  void visit( const PointImp* imp ) override;
+  void visit( const TextImp* imp ) override;
+  void visit( const AngleImp* imp ) override;
+  void visit( const VectorImp* imp ) override;
+  void visit( const LocusImp* imp ) override;
+  void visit( const CircleImp* imp ) override;
+  void visit( const ConicImp* imp ) override;
+  void visit( const CubicImp* imp ) override;
+  void visit( const SegmentImp* imp ) override;
+  void visit( const RayImp* imp ) override;
+  void visit( const ArcImp* imp ) override;
+  void visit( const FilledPolygonImp* imp ) override;
+  void visit( const ClosedPolygonalImp* imp ) override;
+  void visit( const OpenPolygonalImp* imp ) override;
 };
 
 void XFigExportImpVisitor::mapColor( const ObjectDrawer* obj )

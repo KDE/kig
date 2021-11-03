@@ -22,8 +22,8 @@ class KigFilterKSeg
 public:
   static KigFilterKSeg* instance();
 
-  bool supportMime ( const QString& mime ) Q_DECL_OVERRIDE;
-  KigDocument* load ( const QString& fromfile ) Q_DECL_OVERRIDE;
+  bool supportMime ( const QString& mime ) override;
+  KigDocument* load ( const QString& fromfile ) override;
 };
 
 #endif

@@ -21,12 +21,12 @@ class ArcBTPType
 public:
   static const ArcBTPType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
 
-  bool inherits( int type ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  bool inherits( int type ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 /**
@@ -41,12 +41,12 @@ class ArcBCPAType
 public:
   static const ArcBCPAType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
 
-  bool inherits( int type ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  bool inherits( int type ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 /**
@@ -62,9 +62,9 @@ class ConicArcBCTPType
 public:
   static const ConicArcBCTPType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
 
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const override;
 };
 
 /**
@@ -81,9 +81,9 @@ class ConicArcB5PType
 public:
   static const ConicArcB5PType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
 
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const override;
 };
 
 #endif

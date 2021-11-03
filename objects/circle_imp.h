@@ -28,29 +28,29 @@ public:
    */
   CircleImp( const Coordinate& center, double radius );
   ~CircleImp();
-  CircleImp* copy() const Q_DECL_OVERRIDE;
+  CircleImp* copy() const override;
 
-  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
+  ObjectImp* transform( const Transformation& ) const override;
 
-  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
-  bool inRect( const Rect& r, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
+  void draw( KigPainter& p ) const override;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const override;
   bool valid() const;
-  Rect surroundingRect() const Q_DECL_OVERRIDE;
+  Rect surroundingRect() const override;
 
-  double getParam( const Coordinate& point, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
+  double getParam( const Coordinate& point, const KigDocument& ) const override;
+  const Coordinate getPoint( double param, const KigDocument& ) const override;
 
-  int numberOfProperties() const Q_DECL_OVERRIDE;
-  const QByteArrayList properties() const Q_DECL_OVERRIDE;
-  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
-  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
-  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
+  int numberOfProperties() const override;
+  const QByteArrayList properties() const override;
+  const QByteArrayList propertiesInternalNames() const override;
+  ObjectImp* property( int which, const KigDocument& w ) const override;
+  const char* iconForProperty( int which ) const override;
+  const ObjectImpType* impRequirementForProperty( int which ) const override;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const override;
 
-  const ObjectImpType* type() const Q_DECL_OVERRIDE;
-  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* type() const override;
+  void visit( ObjectImpVisitor* vtor ) const override;
 
   /**
    * Return the center of this circle.
@@ -82,23 +82,23 @@ public:
   /**
    * Always returns 1, since a circle always is an ellipse.
    */
-  int conicType() const Q_DECL_OVERRIDE;
-  const ConicCartesianData cartesianData() const Q_DECL_OVERRIDE;
-  const ConicPolarData polarData() const Q_DECL_OVERRIDE;
+  int conicType() const override;
+  const ConicCartesianData cartesianData() const override;
+  const ConicPolarData polarData() const override;
   /**
    * The first focus of a circle is simply its center.
    */
-  Coordinate focus1() const Q_DECL_OVERRIDE;
+  Coordinate focus1() const override;
   /**
    * The second focus of a circle is simply its center.
    */
-  Coordinate focus2() const Q_DECL_OVERRIDE;
+  Coordinate focus2() const override;
 
   /**
    * Return a string containing the cartesian equation of this circle.
    * This will be of the form "x^2 + y^2 + a x + b y + c = 0"
    */
-  QString cartesianEquationString( const KigDocument& w ) const Q_DECL_OVERRIDE;
+  QString cartesianEquationString( const KigDocument& w ) const override;
   /**
    * Return a string containing the cartesian equation of this circle.
    * This will be of the form "( x - x0 )^2 + ( y - y0 )^2 = r^2"
@@ -108,9 +108,9 @@ public:
    * Return a string containing the polar equation of this circle.
    * This will be of the form "rho = r  [centered at p]"
    */
-  QString polarEquationString( const KigDocument& w ) const Q_DECL_OVERRIDE;
+  QString polarEquationString( const KigDocument& w ) const override;
 
-  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
+  bool equals( const ObjectImp& rhs ) const override;
 };
 
 #endif

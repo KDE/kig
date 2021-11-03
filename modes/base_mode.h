@@ -24,16 +24,16 @@ class BaseMode
   std::vector<ObjectHolder*> moco;
 
 public:
-  void leftClicked( QMouseEvent* e, KigWidget* v ) Q_DECL_OVERRIDE;
-  void leftMouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void leftReleased( QMouseEvent* e, KigWidget* v ) Q_DECL_OVERRIDE;
-  void midClicked( QMouseEvent* e, KigWidget* v ) Q_DECL_OVERRIDE;
-  void midReleased( QMouseEvent* e, KigWidget* v ) Q_DECL_OVERRIDE;
-  void rightClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void mouseMoved( QMouseEvent* e, KigWidget* v ) Q_DECL_OVERRIDE;
+  void leftClicked( QMouseEvent* e, KigWidget* v ) override;
+  void leftMouseMoved( QMouseEvent*, KigWidget* ) override;
+  void leftReleased( QMouseEvent* e, KigWidget* v ) override;
+  void midClicked( QMouseEvent* e, KigWidget* v ) override;
+  void midReleased( QMouseEvent* e, KigWidget* v ) override;
+  void rightClicked( QMouseEvent*, KigWidget* ) override;
+  void mouseMoved( QMouseEvent* e, KigWidget* v ) override;
 
 protected:
-  void enableActions() Q_DECL_OVERRIDE;
+  void enableActions() override;
 
   std::vector<ObjectHolder*> oco();
   QPoint pointLocation();

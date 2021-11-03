@@ -62,13 +62,13 @@ public:
   ConstructibleAction( ObjectConstructor* ctor, const QByteArray& actionname,
                        int shortcut = 0 );
   ~ConstructibleAction();
-  QString description() const Q_DECL_OVERRIDE;
-  QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
-  QString descriptiveName() const Q_DECL_OVERRIDE;
-  const char* actionName() const Q_DECL_OVERRIDE;
-  int shortcut() const Q_DECL_OVERRIDE;
-  void act( KigPart& ) Q_DECL_OVERRIDE;
-  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
+  QString description() const override;
+  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString descriptiveName() const override;
+  const char* actionName() const override;
+  int shortcut() const override;
+  void act( KigPart& ) override;
+  void plug( KigPart* doc, KigGUIAction* kact ) override;
 };
 
 class ConstructPointAction
@@ -79,12 +79,12 @@ public:
   explicit ConstructPointAction( const char* actionname );
   ~ConstructPointAction();
 
-  QString description() const Q_DECL_OVERRIDE;
-  QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
-  QString descriptiveName() const Q_DECL_OVERRIDE;
-  const char* actionName() const Q_DECL_OVERRIDE;
-  int shortcut() const Q_DECL_OVERRIDE;
-  void act( KigPart& ) Q_DECL_OVERRIDE;
+  QString description() const override;
+  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString descriptiveName() const override;
+  const char* actionName() const override;
+  int shortcut() const override;
+  void act( KigPart& ) override;
 };
 
 class ConstructTextLabelAction
@@ -94,12 +94,12 @@ class ConstructTextLabelAction
 public:
   explicit ConstructTextLabelAction( const char* actionname );
 
-  QString description() const Q_DECL_OVERRIDE;
-  QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
-  QString descriptiveName() const Q_DECL_OVERRIDE;
-  const char* actionName() const Q_DECL_OVERRIDE;
-  int shortcut() const Q_DECL_OVERRIDE;
-  void act( KigPart& ) Q_DECL_OVERRIDE;
+  QString description() const override;
+  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString descriptiveName() const override;
+  const char* actionName() const override;
+  int shortcut() const override;
+  void act( KigPart& ) override;
 };
 
 class AddFixedPointAction
@@ -109,12 +109,12 @@ class AddFixedPointAction
 public:
   explicit AddFixedPointAction( const char* actionname );
   ~AddFixedPointAction();
-  QString description() const Q_DECL_OVERRIDE;
-  QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
-  QString descriptiveName() const Q_DECL_OVERRIDE;
-  const char* actionName() const Q_DECL_OVERRIDE;
-  int shortcut() const Q_DECL_OVERRIDE;
-  void act( KigPart& ) Q_DECL_OVERRIDE;
+  QString description() const override;
+  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString descriptiveName() const override;
+  const char* actionName() const override;
+  int shortcut() const override;
+  void act( KigPart& ) override;
 };
 
 class ConstructNumericLabelAction
@@ -124,12 +124,12 @@ class ConstructNumericLabelAction
 public:
   explicit ConstructNumericLabelAction( const char* actionname );
   ~ConstructNumericLabelAction();
-  QString description() const Q_DECL_OVERRIDE;
-  QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
-  QString descriptiveName() const Q_DECL_OVERRIDE;
-  const char* actionName() const Q_DECL_OVERRIDE;
-  int shortcut() const Q_DECL_OVERRIDE;
-  void act( KigPart& ) Q_DECL_OVERRIDE;
+  QString description() const override;
+  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString descriptiveName() const override;
+  const char* actionName() const override;
+  int shortcut() const override;
+  void act( KigPart& ) override;
 };
 
 #if 0

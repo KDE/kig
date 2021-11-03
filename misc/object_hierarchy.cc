@@ -60,14 +60,14 @@ public:
 
   const ObjectImp* imp() const { return mimp; }
 
-  int id() const Q_DECL_OVERRIDE;
-  Node* copy() const Q_DECL_OVERRIDE;
+  int id() const override;
+  Node* copy() const override;
   void apply( std::vector<const ObjectImp*>& stack,
-              int loc, const KigDocument& ) const Q_DECL_OVERRIDE;
-  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const Q_DECL_OVERRIDE;
+              int loc, const KigDocument& ) const override;
+  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const override;
 
-  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const Q_DECL_OVERRIDE;
-  void checkArgumentsUsed( std::vector<bool>& usedstack ) const Q_DECL_OVERRIDE;
+  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const override;
+  void checkArgumentsUsed( std::vector<bool>& usedstack ) const override;
 };
 
 void PushStackNode::checkArgumentsUsed( std::vector<bool>& ) const
@@ -111,18 +111,18 @@ public:
   ApplyTypeNode( const ObjectType* type, const std::vector<int>& parents )
     : mtype( type ), mparents( parents ) {}
   ~ApplyTypeNode();
-  Node* copy() const Q_DECL_OVERRIDE;
+  Node* copy() const override;
 
   const ObjectType* type() const { return mtype; }
   const std::vector<int>& parents() const { return mparents; }
 
-  int id() const Q_DECL_OVERRIDE;
+  int id() const override;
   void apply( std::vector<const ObjectImp*>& stack,
-              int loc, const KigDocument& ) const Q_DECL_OVERRIDE;
-  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const Q_DECL_OVERRIDE;
+              int loc, const KigDocument& ) const override;
+  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const override;
 
-  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const Q_DECL_OVERRIDE;
-  void checkArgumentsUsed( std::vector<bool>& usedstack ) const Q_DECL_OVERRIDE;
+  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const override;
+  void checkArgumentsUsed( std::vector<bool>& usedstack ) const override;
 };
 
 int ApplyTypeNode::id() const { return ID_ApplyType; }
@@ -184,17 +184,17 @@ public:
   FetchPropertyNode( const int parent, const QByteArray& name, const int propgid = -1 )
     : mpropgid( propgid ), mparent( parent ), mname( name ) {}
   ~FetchPropertyNode();
-  Node* copy() const Q_DECL_OVERRIDE;
+  Node* copy() const override;
 
-  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const Q_DECL_OVERRIDE;
-  void checkArgumentsUsed( std::vector<bool>& usedstack ) const Q_DECL_OVERRIDE;
+  void checkDependsOnGiven( std::vector<bool>& dependsstack, int loc ) const override;
+  void checkArgumentsUsed( std::vector<bool>& usedstack ) const override;
   int parent() const { return mparent; }
   const QByteArray& propinternalname() const { return mname; }
 
-  int id() const Q_DECL_OVERRIDE;
+  int id() const override;
   void apply( std::vector<const ObjectImp*>& stack,
-              int loc, const KigDocument& ) const Q_DECL_OVERRIDE;
-  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const Q_DECL_OVERRIDE;
+              int loc, const KigDocument& ) const override;
+  void apply( std::vector<ObjectCalcer*>& stack, int loc ) const override;
 };
 
 FetchPropertyNode::~FetchPropertyNode()

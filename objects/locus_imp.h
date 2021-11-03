@@ -54,34 +54,34 @@ public:
 
   LocusImp( CurveImp*, const ObjectHierarchy& );
   ~LocusImp();
-  LocusImp* copy() const Q_DECL_OVERRIDE;
+  LocusImp* copy() const override;
 
-  ObjectImp* transform( const Transformation& ) const Q_DECL_OVERRIDE;
+  ObjectImp* transform( const Transformation& ) const override;
 
-  void draw( KigPainter& p ) const Q_DECL_OVERRIDE;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
-  Rect surroundingRect() const Q_DECL_OVERRIDE;
-  bool inRect( const Rect& r, int width, const KigWidget& ) const Q_DECL_OVERRIDE;
-  const Coordinate getPoint( double param, const KigDocument& ) const Q_DECL_OVERRIDE;
+  void draw( KigPainter& p ) const override;
+  bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
+  Rect surroundingRect() const override;
+  bool inRect( const Rect& r, int width, const KigWidget& ) const override;
+  const Coordinate getPoint( double param, const KigDocument& ) const override;
 
   // TODO ?
-  int numberOfProperties() const Q_DECL_OVERRIDE;
-  const QByteArrayList properties() const Q_DECL_OVERRIDE;
-  const QByteArrayList propertiesInternalNames() const Q_DECL_OVERRIDE;
-  ObjectImp* property( int which, const KigDocument& w ) const Q_DECL_OVERRIDE;
-  const char* iconForProperty( int which ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirementForProperty( int which ) const Q_DECL_OVERRIDE;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const Q_DECL_OVERRIDE;
+  int numberOfProperties() const override;
+  const QByteArrayList properties() const override;
+  const QByteArrayList propertiesInternalNames() const override;
+  ObjectImp* property( int which, const KigDocument& w ) const override;
+  const char* iconForProperty( int which ) const override;
+  const ObjectImpType* impRequirementForProperty( int which ) const override;
+  bool isPropertyDefinedOnOrThroughThisImp( int which ) const override;
 
   const CurveImp* curve() const;
   const ObjectHierarchy& hierarchy() const;
 
-  const ObjectImpType* type() const Q_DECL_OVERRIDE;
-  void visit( ObjectImpVisitor* vtor ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* type() const override;
+  void visit( ObjectImpVisitor* vtor ) const override;
 
-  bool equals( const ObjectImp& rhs ) const Q_DECL_OVERRIDE;
+  bool equals( const ObjectImp& rhs ) const override;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& d ) const Q_DECL_OVERRIDE;
+  bool containsPoint( const Coordinate& p, const KigDocument& d ) const override;
   bool internalContainsPoint( const Coordinate& p, double threshold, const KigDocument& doc ) const;
 
   //virtual QString LocusTypeString(const KigDocument& w) const;

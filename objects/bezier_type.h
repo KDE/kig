@@ -18,14 +18,14 @@ class BezierQuadricType
 public:
   static const BezierQuadricType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -39,14 +39,14 @@ class BezierCubicType
 public:
   static const BezierCubicType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -60,19 +60,19 @@ class BezierCurveType
 public:
   static const BezierCurveType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
 
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 }; 
 
 /**
@@ -86,14 +86,14 @@ class RationalBezierQuadricType
 public:
   static const RationalBezierQuadricType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -107,14 +107,14 @@ class RationalBezierCubicType
 public:
   static const RationalBezierCubicType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -128,19 +128,19 @@ class RationalBezierCurveType
 public:
   static const RationalBezierCurveType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
 
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 }; 
 
 

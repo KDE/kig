@@ -106,12 +106,12 @@ protected:
                         const struct ArgsParser::spec argsspec[],
                         int n );
 public:
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
   const ArgsParser& argsParser() const;
 
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
 };
 
 #endif

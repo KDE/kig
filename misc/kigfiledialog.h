@@ -61,7 +61,7 @@ public:
   QString selectedFile();
 
 protected slots:
-  void accept() Q_DECL_OVERRIDE;
+  void accept() override;
 
 };
 

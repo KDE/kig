@@ -19,8 +19,8 @@ class CircularInversionType
 public:
   static const CircularInversionType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 /**
@@ -34,8 +34,8 @@ class InvertPointType
 public:
   static const InvertPointType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class InvertLineType
@@ -46,8 +46,8 @@ class InvertLineType
 public:
   static const InvertLineType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class InvertSegmentType
@@ -58,8 +58,8 @@ class InvertSegmentType
 public:
   static const InvertSegmentType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class InvertCircleType
@@ -70,8 +70,8 @@ class InvertCircleType
 public:
   static const InvertCircleType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class InvertArcType
@@ -82,8 +82,8 @@ class InvertArcType
 public:
   static const InvertArcType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 #endif

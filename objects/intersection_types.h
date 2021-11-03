@@ -23,8 +23,8 @@ class ConicLineIntersectionType
   ~ConicLineIntersectionType();
 public:
   static const ConicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 /**
@@ -38,8 +38,8 @@ class ConicLineOtherIntersectionType
   ~ConicLineOtherIntersectionType();
 public:
   static const ConicLineOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 /**
  * Francesca Gatti (frency.gatti@gmail.com), january 2008:
@@ -55,8 +55,8 @@ class CubicLineOtherIntersectionType
   ~CubicLineOtherIntersectionType();
 public:
   static const CubicLineOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 /**
  *
@@ -70,8 +70,8 @@ class CubicLineTwoIntersectionType
   ~CubicLineTwoIntersectionType();
 public:
   static const CubicLineTwoIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 /**
  * circle circle 'other' intersection.  In case we already know one of the
@@ -84,8 +84,8 @@ class CircleCircleOtherIntersectionType
   ~CircleCircleOtherIntersectionType();
 public:
   static const CircleCircleOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class LineLineIntersectionType
@@ -95,8 +95,8 @@ class LineLineIntersectionType
   ~LineLineIntersectionType();
 public:
   static const LineLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class CubicLineIntersectionType
@@ -106,8 +106,8 @@ class CubicLineIntersectionType
   ~CubicLineIntersectionType();
 public:
   static const CubicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class CircleCircleIntersectionType
@@ -117,8 +117,8 @@ class CircleCircleIntersectionType
   ~CircleCircleIntersectionType();
 public:
   static const CircleCircleIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 /**
@@ -131,8 +131,8 @@ class ArcLineIntersectionType
   ~ArcLineIntersectionType();
 public:
   static const ArcLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 #endif

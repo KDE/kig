@@ -42,13 +42,13 @@ class KigWidget : public QWidget
   KigView* mview;
 
   // we reimplement these from QWidget to suit our needs
-  void mousePressEvent( QMouseEvent* e ) Q_DECL_OVERRIDE;
-  void mouseMoveEvent( QMouseEvent* e ) Q_DECL_OVERRIDE;
-  void mouseReleaseEvent( QMouseEvent* e ) Q_DECL_OVERRIDE;
-  void paintEvent( QPaintEvent* e ) Q_DECL_OVERRIDE;
-  void wheelEvent( QWheelEvent* e ) Q_DECL_OVERRIDE;
-  void resizeEvent( QResizeEvent* ) Q_DECL_OVERRIDE;
-  QSize sizeHint() const Q_DECL_OVERRIDE;
+  void mousePressEvent( QMouseEvent* e ) override;
+  void mouseMoveEvent( QMouseEvent* e ) override;
+  void mouseReleaseEvent( QMouseEvent* e ) override;
+  void paintEvent( QPaintEvent* e ) override;
+  void wheelEvent( QWheelEvent* e ) override;
+  void resizeEvent( QResizeEvent* ) override;
+  QSize sizeHint() const override;
 
   /**
    * this is called to match a rect's dimensions to the dimensions of

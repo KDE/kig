@@ -50,34 +50,34 @@ class Kig : public KParts::MainWindow
    *
    * \param e
    */
-  void dragEnterEvent( QDragEnterEvent* e ) Q_DECL_OVERRIDE;
+  void dragEnterEvent( QDragEnterEvent* e ) override;
 
   /**
    * The user dropped something onto us...
    *
    * \param e
    */
-  void dropEvent( QDropEvent* e ) Q_DECL_OVERRIDE;
+  void dropEvent( QDropEvent* e ) override;
 
   /**
    * this is called by the framework before closing the window, to
    * allow the user to save his changes... returning false cancels the
    * close request...
    */
-  bool queryClose() Q_DECL_OVERRIDE;
+  bool queryClose() override;
 
   /**
    * This method is called when it is time for the app to save its
    * properties for session management purposes.
    */
-  void saveProperties(KConfigGroup &) Q_DECL_OVERRIDE;
+  void saveProperties(KConfigGroup &) override;
 
   /**
    * This method is called when this app is restored.  The KConfig
    * object points to the session management config file that was saved
    * with \ref saveProperties
    */
-  void readProperties(const KConfigGroup &) Q_DECL_OVERRIDE;
+  void readProperties(const KConfigGroup &) override;
 
  private slots:
   void fileNew();

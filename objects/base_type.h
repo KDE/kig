@@ -18,13 +18,13 @@ protected:
   ObjectABType( const char* fulltypename, const ArgsParser::spec* argsspec, int n );
   ~ObjectABType();
 public:
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 
   // mp: calcx was an overloaded calc, which caused a compilation warning
   virtual ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const = 0;
@@ -37,7 +37,7 @@ protected:
   ObjectLPType( const char* fullname, const ArgsParser::spec* spec, int n );
   ~ObjectLPType();
 public:
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
 
   virtual ObjectImp* calc( const LineData& a, const Coordinate& b ) const = 0;
 };

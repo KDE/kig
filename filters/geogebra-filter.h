@@ -22,8 +22,8 @@ class KigFilterGeogebra : public KigFilter
 {
 public:
     static KigFilterGeogebra* instance();
-    KigDocument* load ( const QString& fromfile ) Q_DECL_OVERRIDE;
-    bool supportMime ( const QString& mime ) Q_DECL_OVERRIDE;
+    KigDocument* load ( const QString& fromfile ) override;
+    bool supportMime ( const QString& mime ) override;
 
 protected:
     KigFilterGeogebra() {}

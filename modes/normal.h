@@ -22,32 +22,32 @@ public:
   using BaseMode::mouseMoved;
 
 protected:
-  void dragRect( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+  void dragRect( const QPoint& p, KigWidget& w ) override;
   void dragObject( const std::vector<ObjectHolder*>& os, const QPoint& pointClickedOn,
-                   KigWidget& w, bool ctrlOrShiftDown ) Q_DECL_OVERRIDE;
+                   KigWidget& w, bool ctrlOrShiftDown ) override;
   void leftClickedObject( ObjectHolder* o, const QPoint& p,
-                          KigWidget& w, bool ctrlOrShiftDown ) Q_DECL_OVERRIDE;
-  void midClicked( const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
-  void rightClicked( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w ) Q_DECL_OVERRIDE;
+                          KigWidget& w, bool ctrlOrShiftDown ) override;
+  void midClicked( const QPoint& p, KigWidget& w ) override;
+  void rightClicked( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w ) override;
   void mouseMoved( const std::vector<ObjectHolder*>& os, const QPoint& p, KigWidget& w,
-                   bool shiftpressed ) Q_DECL_OVERRIDE;
-  void selectAll() Q_DECL_OVERRIDE;
-  void deselectAll() Q_DECL_OVERRIDE;
-  void invertSelection() Q_DECL_OVERRIDE;
+                   bool shiftpressed ) override;
+  void selectAll() override;
+  void deselectAll() override;
+  void invertSelection() override;
 
 protected:
   /**
    * Objects were added.
    */
-  void redrawScreen( KigWidget* ) Q_DECL_OVERRIDE;
+  void redrawScreen( KigWidget* ) override;
 
-  void enableActions() Q_DECL_OVERRIDE;
+  void enableActions() override;
 
-  void deleteObjects() Q_DECL_OVERRIDE;
-  void showHidden() Q_DECL_OVERRIDE;
-  void newMacro() Q_DECL_OVERRIDE;
-  void editTypes() Q_DECL_OVERRIDE;
-  void browseHistory() Q_DECL_OVERRIDE;
+  void deleteObjects() override;
+  void showHidden() override;
+  void newMacro() override;
+  void editTypes() override;
+  void browseHistory() override;
 
 public:
   void selectObject( ObjectHolder* o );

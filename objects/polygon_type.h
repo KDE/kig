@@ -18,14 +18,14 @@ class TriangleB3PType
 public:
   static const TriangleB3PType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -39,19 +39,19 @@ class PolygonBNPType
 public:
   static const PolygonBNPType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
 
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -65,19 +65,19 @@ class OpenPolygonType
 public:
   static const OpenPolygonType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
 
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 /**
@@ -91,19 +91,19 @@ class PolygonBCVType
 public:
   static const PolygonBCVType* instance();
 
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
-  bool canMove( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
+  bool canMove( const ObjectTypeCalcer& o ) const override;
+  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
+  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
   void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const Q_DECL_OVERRIDE;
+             const KigDocument& d ) const override;
+  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
 };
 
 int polygonlineintersection( const std::vector<Coordinate>& ppoints, 
@@ -128,8 +128,8 @@ protected:
   ~PolygonLineIntersectionType();
 public:
   static const PolygonLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class OPolygonalLineIntersectionType
@@ -139,7 +139,7 @@ class OPolygonalLineIntersectionType
   ~OPolygonalLineIntersectionType();
 public:
   static const OPolygonalLineIntersectionType* instance();
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const override;
 };
 
 class CPolygonalLineIntersectionType
@@ -149,7 +149,7 @@ class CPolygonalLineIntersectionType
   ~CPolygonalLineIntersectionType();
 public:
   static const CPolygonalLineIntersectionType* instance();
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const override;
 };
 
 class PolygonPolygonIntersectionType
@@ -159,8 +159,8 @@ class PolygonPolygonIntersectionType
   ~PolygonPolygonIntersectionType();
 public:
   static const PolygonPolygonIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class PolygonVertexType
@@ -170,8 +170,8 @@ class PolygonVertexType
   ~PolygonVertexType();
 public:
   static const PolygonVertexType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class PolygonSideType
@@ -181,8 +181,8 @@ class PolygonSideType
   ~PolygonSideType();
 public:
   static const PolygonSideType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConvexHullType
@@ -192,8 +192,8 @@ class ConvexHullType
   ~ConvexHullType();
 public:
   static const ConvexHullType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 #endif

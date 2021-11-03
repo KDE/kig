@@ -132,35 +132,35 @@ public:
 
   virtual ~StandardConstructorBase();
 
-  const QString descriptiveName() const Q_DECL_OVERRIDE;
-  const QString description() const Q_DECL_OVERRIDE;
-  const QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
+  const QString descriptiveName() const override;
+  const QString description() const override;
+  const QByteArray iconFileName( const bool canBeNull = false ) const override;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const uint& ) const Q_DECL_OVERRIDE;
+                                  const uint& ) const override;
   int wantArgs(
     const std::vector<ObjectCalcer*>& os, const KigDocument& d,
     const KigWidget& v
-    ) const Q_DECL_OVERRIDE;
+    ) const override;
 
   void handleArgs( const std::vector<ObjectCalcer*>& os,
                    KigPart& d,
                    KigWidget& v
-    ) const Q_DECL_OVERRIDE;
+    ) const override;
 
   void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v
-    ) const Q_DECL_OVERRIDE;
+    ) const override;
 
   virtual void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                            const KigDocument& ) const = 0;
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                   const KigDocument& d, const KigWidget& v ) const Q_DECL_OVERRIDE;
+                   const KigDocument& d, const KigWidget& v ) const override;
 
   QString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const Q_DECL_OVERRIDE;
+    const KigWidget& w ) const override;
 
   virtual std::vector<ObjectHolder*> build(
     const std::vector<ObjectCalcer*>& os,
@@ -184,15 +184,15 @@ public:
   ~SimpleObjectTypeConstructor();
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const Q_DECL_OVERRIDE;
+                   const KigDocument& ) const override;
 
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
                                     KigDocument& d,
-                                    KigWidget& w ) const Q_DECL_OVERRIDE;
+                                    KigWidget& w ) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
+  void plug( KigPart* doc, KigGUIAction* kact ) override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 /**
@@ -213,14 +213,14 @@ public:
   ~PropertyObjectConstructor();
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const Q_DECL_OVERRIDE;
+                   const KigDocument& ) const override;
 
   std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
-                                    KigDocument& d, KigWidget& w ) const Q_DECL_OVERRIDE;
+                                    KigDocument& d, KigWidget& w ) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
+  void plug( KigPart* doc, KigGUIAction* kact ) override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 /**
@@ -253,15 +253,15 @@ public:
   ~MultiObjectTypeConstructor();
 
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const Q_DECL_OVERRIDE;
+                   const KigDocument& ) const override;
 
   std::vector<ObjectHolder*> build(
     const std::vector<ObjectCalcer*>& os,
-    KigDocument& d, KigWidget& w ) const Q_DECL_OVERRIDE;
+    KigDocument& d, KigWidget& w ) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
+  void plug( KigPart* doc, KigGUIAction* kact ) override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 /**
@@ -284,32 +284,32 @@ public:
 
   void merge( ObjectConstructor* e );
 
-  const QString descriptiveName() const Q_DECL_OVERRIDE;
-  const QString description() const Q_DECL_OVERRIDE;
-  const QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
+  const QString descriptiveName() const override;
+  const QString description() const override;
+  const QByteArray iconFileName( const bool canBeNull = false ) const override;
 
-  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const Q_DECL_OVERRIDE;
+  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const override;
 
   int wantArgs( const std::vector<ObjectCalcer*>& os,
                       const KigDocument& d,
                       const KigWidget& v
-    ) const Q_DECL_OVERRIDE;
+    ) const override;
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                   const KigDocument& d, const KigWidget& v ) const Q_DECL_OVERRIDE;
+                   const KigDocument& d, const KigWidget& v ) const override;
 
   QString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const Q_DECL_OVERRIDE;
+    const KigWidget& w ) const override;
 
-  void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d, KigWidget& v ) const Q_DECL_OVERRIDE;
+  void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d, KigWidget& v ) const override;
 
   void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
-                     const KigDocument& d, const KigWidget& v ) const Q_DECL_OVERRIDE;
+                     const KigDocument& d, const KigWidget& v ) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
+  void plug( KigPart* doc, KigGUIAction* kact ) override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 /**
@@ -340,31 +340,31 @@ public:
 
   const ObjectHierarchy& hierarchy() const;
 
-  const QString descriptiveName() const Q_DECL_OVERRIDE;
-  const QString description() const Q_DECL_OVERRIDE;
-  const QByteArray iconFileName( const bool canBeNull = false ) const Q_DECL_OVERRIDE;
+  const QString descriptiveName() const override;
+  const QString description() const override;
+  const QByteArray iconFileName( const bool canBeNull = false ) const override;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const uint& ) const Q_DECL_OVERRIDE;
+                                  const uint& ) const override;
   int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
-                      const KigWidget& v ) const Q_DECL_OVERRIDE;
+                      const KigWidget& v ) const override;
 
   void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d,
-                   KigWidget& v ) const Q_DECL_OVERRIDE;
+                   KigWidget& v ) const override;
 
   QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
                    const KigDocument& d, const KigWidget& v
-    ) const Q_DECL_OVERRIDE;
+    ) const override;
 
   QString selectStatement(
     const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const Q_DECL_OVERRIDE;
+    const KigWidget& w ) const override;
 
   void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
                      const KigDocument& d, const KigWidget& v
-    ) const Q_DECL_OVERRIDE;
+    ) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) Q_DECL_OVERRIDE;
+  void plug( KigPart* doc, KigGUIAction* kact ) override;
 
   void setBuiltin( bool builtin );
 
@@ -373,7 +373,7 @@ public:
    * cause transform types are shown separately in an object's RMB
    * menu..
    */
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 
   void setName( const QString& name );
   void setDescription( const QString& desc );

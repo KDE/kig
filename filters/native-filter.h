@@ -44,8 +44,8 @@ private:
 public:
   static KigFilterNative* instance();
 
-  bool supportMime( const QString& mime ) Q_DECL_OVERRIDE;
-  KigDocument* load( const QString& file ) Q_DECL_OVERRIDE;
+  bool supportMime( const QString& mime ) override;
+  KigDocument* load( const QString& file ) override;
   KigDocument* load( const QDomDocument& doc );
 
   bool save( const KigDocument& data, const QString& file );

@@ -30,8 +30,8 @@ class KigFilterCabri
 public:
   static KigFilterCabri* instance();
 
-  bool supportMime ( const QString& mime ) Q_DECL_OVERRIDE;
-  KigDocument* load ( const QString& fromfile ) Q_DECL_OVERRIDE;
+  bool supportMime ( const QString& mime ) override;
+  KigDocument* load ( const QString& fromfile ) override;
   
   friend class CabriReader;
 };

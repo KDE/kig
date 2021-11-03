@@ -50,8 +50,8 @@ public:
 
   CoordinateValidator( CoordinateType type );
   ~CoordinateValidator();
-  State validate ( QString & input,  int & pos ) const Q_DECL_OVERRIDE;
-  void fixup ( QString & input ) const Q_DECL_OVERRIDE;
+  State validate ( QString & input,  int & pos ) const override;
+  void fixup ( QString & input ) const override;
 
 private:
   CoordinateType mtype;

@@ -19,10 +19,10 @@ class LatexExporter
 {
 public:
   ~LatexExporter();
-  QString exportToStatement() const Q_DECL_OVERRIDE;
-  QString menuEntryName() const Q_DECL_OVERRIDE;
-  QString menuIcon() const Q_DECL_OVERRIDE;
-  void run( const KigPart& doc, KigWidget& w ) Q_DECL_OVERRIDE;
+  QString exportToStatement() const override;
+  QString menuEntryName() const override;
+  QString menuIcon() const override;
+  void run( const KigPart& doc, KigWidget& w ) override;
 };
 
 #endif

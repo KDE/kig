@@ -38,7 +38,7 @@ public:
   void enterTextPageEntered();
   void selectArgumentsPageEntered();
   void linkClicked( int );
-  void redrawScreen( KigWidget* w ) Q_DECL_OVERRIDE;
+  void redrawScreen( KigWidget* w ) override;
   bool percentCountChanged( uint percentcount );
   bool canFinish();
 
@@ -65,14 +65,14 @@ protected:
 
 private:
   // the KigMode interface.
-  void leftClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void leftReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void leftClicked( QMouseEvent*, KigWidget* ) override;
+  void leftReleased( QMouseEvent*, KigWidget* ) override;
 
-  void mouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void mouseMoved( QMouseEvent*, KigWidget* ) override;
 
-  void enableActions() Q_DECL_OVERRIDE;
+  void enableActions() override;
 
-  void cancelConstruction() Q_DECL_OVERRIDE;
+  void cancelConstruction() override;
 
   void killMode();
 
@@ -99,7 +99,7 @@ public:
 
   void finish( const Coordinate& coord, const QString& s,
                const argvect& props, bool needframe,
-               ObjectCalcer* locationparent ) Q_DECL_OVERRIDE;
+               ObjectCalcer* locationparent ) override;
 };
 
 class TextLabelRedefineMode
@@ -108,11 +108,11 @@ class TextLabelRedefineMode
   ObjectTypeCalcer* mlabel;
   void finish( const Coordinate& coord, const QString& s,
                const argvect& props, bool needframe,
-               ObjectCalcer* locationparent ) Q_DECL_OVERRIDE;
+               ObjectCalcer* locationparent ) override;
 public:
   TextLabelRedefineMode( KigPart& d, ObjectTypeCalcer* label );
   ~TextLabelRedefineMode();
-  void leftReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void leftReleased( QMouseEvent*, KigWidget* ) override;
 };
 
 /**
@@ -125,15 +125,15 @@ public:
   explicit NumericLabelMode( KigPart& d );
   ~NumericLabelMode();
 
-  void redrawScreen( KigWidget* w ) Q_DECL_OVERRIDE;
+  void redrawScreen( KigWidget* w ) override;
 
-  void leftClicked( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void leftReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void mouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void leftClicked( QMouseEvent*, KigWidget* ) override;
+  void leftReleased( QMouseEvent*, KigWidget* ) override;
+  void mouseMoved( QMouseEvent*, KigWidget* ) override;
 
-  void enableActions() Q_DECL_OVERRIDE;
+  void enableActions() override;
 
-  void cancelConstruction() Q_DECL_OVERRIDE;
+  void cancelConstruction() override;
 
   void killMode();
 

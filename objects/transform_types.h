@@ -16,10 +16,10 @@ class TranslatedType
   ~TranslatedType();
 public:
   static const TranslatedType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class PointReflectionType
@@ -29,10 +29,10 @@ class PointReflectionType
   ~PointReflectionType();
 public:
   static const PointReflectionType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class LineReflectionType
@@ -42,10 +42,10 @@ class LineReflectionType
   ~LineReflectionType();
 public:
   static const LineReflectionType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class RotationType
@@ -55,10 +55,10 @@ class RotationType
   ~RotationType();
 public:
   static const RotationType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ScalingOverCenterType
@@ -68,10 +68,10 @@ class ScalingOverCenterType
   ~ScalingOverCenterType();
 public:
   static const ScalingOverCenterType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ScalingOverCenter2Type
@@ -81,10 +81,10 @@ class ScalingOverCenter2Type
   ~ScalingOverCenter2Type();
 public:
   static const ScalingOverCenter2Type* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ScalingOverLineType
@@ -94,10 +94,10 @@ class ScalingOverLineType
   ~ScalingOverLineType();
 public:
   static const ScalingOverLineType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ScalingOverLine2Type
@@ -107,10 +107,10 @@ class ScalingOverLine2Type
   ~ScalingOverLine2Type();
 public:
   static const ScalingOverLine2Type* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ProjectiveRotationType
@@ -120,10 +120,10 @@ class ProjectiveRotationType
   ~ProjectiveRotationType();
 public:
   static const ProjectiveRotationType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class HarmonicHomologyType
@@ -133,10 +133,10 @@ class HarmonicHomologyType
   ~HarmonicHomologyType();
 public:
   static const HarmonicHomologyType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class AffinityB2TrType
@@ -146,10 +146,10 @@ class AffinityB2TrType
   ~AffinityB2TrType();
 public:
   static const AffinityB2TrType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class AffinityGI3PType
@@ -159,10 +159,10 @@ class AffinityGI3PType
   ~AffinityGI3PType();
 public:
   static const AffinityGI3PType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ProjectivityB2QuType
@@ -172,10 +172,10 @@ class ProjectivityB2QuType
   ~ProjectivityB2QuType();
 public:
   static const ProjectivityB2QuType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ProjectivityGI4PType
@@ -185,10 +185,10 @@ class ProjectivityGI4PType
   ~ProjectivityGI4PType();
 public:
   static const ProjectivityGI4PType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class CastShadowType
@@ -198,10 +198,10 @@ class CastShadowType
   ~CastShadowType();
 public:
   static const CastShadowType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 class ApplyTransformationObjectType
@@ -211,9 +211,9 @@ class ApplyTransformationObjectType
   ~ApplyTransformationObjectType();
 public:
   static const ApplyTransformationObjectType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  bool isTransform() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  bool isTransform() const override;
 };
 
 class SimilitudeType
@@ -223,10 +223,10 @@ class SimilitudeType
   ~SimilitudeType();
 public:
   static const SimilitudeType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 
-  bool isTransform() const Q_DECL_OVERRIDE;
+  bool isTransform() const override;
 };
 
 #endif

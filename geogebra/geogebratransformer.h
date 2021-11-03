@@ -41,18 +41,18 @@ public:
     const GeogebraSection & getSection( size_t sectionIdx ) const { return m_sections[sectionIdx]; };
 
     // QAbstractXmlReceiver implementation
-    void atomicValue ( const QVariant & ) Q_DECL_OVERRIDE;
-    void attribute ( const QXmlName & name, const QStringRef & value ) Q_DECL_OVERRIDE;
-    void characters ( const QStringRef & ) Q_DECL_OVERRIDE;
-    void comment ( const QString & ) Q_DECL_OVERRIDE;
-    void endDocument() Q_DECL_OVERRIDE;
-    void endElement() Q_DECL_OVERRIDE;
-    void endOfSequence() Q_DECL_OVERRIDE;
-    void namespaceBinding ( const QXmlName & ) Q_DECL_OVERRIDE;
-    void processingInstruction ( const QXmlName &, const QString & ) Q_DECL_OVERRIDE;
-    void startDocument() Q_DECL_OVERRIDE;
-    void startElement ( const QXmlName & name ) Q_DECL_OVERRIDE;
-    void startOfSequence() Q_DECL_OVERRIDE;
+    void atomicValue ( const QVariant & ) override;
+    void attribute ( const QXmlName & name, const QStringRef & value ) override;
+    void characters ( const QStringRef & ) override;
+    void comment ( const QString & ) override;
+    void endDocument() override;
+    void endElement() override;
+    void endOfSequence() override;
+    void namespaceBinding ( const QXmlName & ) override;
+    void processingInstruction ( const QXmlName &, const QString & ) override;
+    void startDocument() override;
+    void startElement ( const QXmlName & name ) override;
+    void startOfSequence() override;
 
 private:
     void resetDrawerVars()

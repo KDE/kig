@@ -52,9 +52,9 @@ protected:
   virtual void moveTo( const Coordinate& o, bool snaptogrid ) = 0;
 
 public:
-  void leftReleased( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void leftMouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
-  void mouseMoved( QMouseEvent*, KigWidget* ) Q_DECL_OVERRIDE;
+  void leftReleased( QMouseEvent*, KigWidget* ) override;
+  void leftMouseMoved( QMouseEvent*, KigWidget* ) override;
+  void mouseMoved( QMouseEvent*, KigWidget* ) override;
 };
 
 class MovingMode
@@ -62,8 +62,8 @@ class MovingMode
 {
   class Private;
   Private* d;
-  void stopMove() Q_DECL_OVERRIDE;
-  void moveTo( const Coordinate& o, bool snaptogrid ) Q_DECL_OVERRIDE;
+  void stopMove() override;
+  void moveTo( const Coordinate& o, bool snaptogrid ) override;
 public:
   MovingMode( const std::vector<ObjectHolder*>& objects, const Coordinate& c,
 	      KigWidget&, KigPart& );
@@ -77,8 +77,8 @@ class PointRedefineMode
   std::vector<ObjectCalcer::shared_ptr> moldparents;
   const ObjectType* moldtype;
   MonitorDataObjects* mmon;
-  void stopMove() Q_DECL_OVERRIDE;
-  void moveTo( const Coordinate& o, bool snaptogrid ) Q_DECL_OVERRIDE;
+  void stopMove() override;
+  void moveTo( const Coordinate& o, bool snaptogrid ) override;
 public:
   PointRedefineMode( ObjectHolder* p, KigPart& d, KigWidget& v );
   ~PointRedefineMode();

@@ -27,8 +27,8 @@ public:
   void setText( const QString& newtext );
 
 public slots:
-  void reject() Q_DECL_OVERRIDE;
-  void accept() Q_DECL_OVERRIDE;
+  void reject() override;
+  void accept() override;
 
 private slots:
   void textChanged();

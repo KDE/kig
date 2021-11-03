@@ -135,9 +135,9 @@ public:
   explicit CabriReader_v10( const KigFilterCabri* filter );
   virtual ~CabriReader_v10();
 
-  bool readWindowMetrics( QFile& f ) Q_DECL_OVERRIDE;
-  CabriObject* readObject( QFile& f ) Q_DECL_OVERRIDE;
-  void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType ) Q_DECL_OVERRIDE;
+  bool readWindowMetrics( QFile& f ) override;
+  CabriObject* readObject( QFile& f ) override;
+  void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType ) override;
 };
 
 class CabriReader_v12
@@ -153,9 +153,9 @@ public:
 
   static QColor translateColor( const QString& s );
 
-  bool readWindowMetrics( QFile& f ) Q_DECL_OVERRIDE;
-  CabriObject* readObject( QFile& f ) Q_DECL_OVERRIDE;
-  void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType ) Q_DECL_OVERRIDE;
+  bool readWindowMetrics( QFile& f ) override;
+  CabriObject* readObject( QFile& f ) override;
+  void decodeStyle( CabriObject* obj, Qt::PenStyle& ps, Kig::PointStyle& pointType ) override;
 };
 
 #endif

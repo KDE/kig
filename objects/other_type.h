@@ -17,15 +17,15 @@ class LocusType
 public:
   static const LocusType* instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
 
-  bool inherits( int type ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  bool inherits( int type ) const override;
+  const ObjectImpType* resultId() const override;
 
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& args ) const override;
+  Args sortArgs( const Args& args ) const override;
 };
 
 class CopyObjectType
@@ -36,13 +36,13 @@ protected:
   ~CopyObjectType();
 public:
   static CopyObjectType* instance();
-  bool inherits( int type ) const Q_DECL_OVERRIDE;
-  ObjectImp* calc( const Args& parents, const KigDocument& d ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const Q_DECL_OVERRIDE;
-  Args sortArgs( const Args& args ) const Q_DECL_OVERRIDE;
+  bool inherits( int type ) const override;
+  ObjectImp* calc( const Args& parents, const KigDocument& d ) const override;
+  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+  bool isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const override;
+  const ObjectImpType* resultId() const override;
+  std::vector<ObjectCalcer*> sortArgs( const std::vector<ObjectCalcer*>& os ) const override;
+  Args sortArgs( const Args& args ) const override;
 };
 
 #endif

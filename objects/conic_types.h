@@ -14,8 +14,8 @@ class ConicB5PType
   ~ConicB5PType();
 public:
   static const ConicB5PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicBAAPType
@@ -25,8 +25,8 @@ class ConicBAAPType
   ~ConicBAAPType();
 public:
   static const ConicBAAPType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicBFFPType
@@ -36,13 +36,13 @@ protected:
   ConicBFFPType( const char* fullname, const ArgsParser::spec*, int n );
   ~ConicBFFPType();
 public:
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
 
   /**
    * -1 for hyperbola, 1 for ellipse.
    */
   virtual int type() const = 0;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  const ObjectImpType* resultId() const override;
 };
 
 class EllipseBFFPType
@@ -52,7 +52,7 @@ class EllipseBFFPType
   ~EllipseBFFPType();
 public:
   static const EllipseBFFPType* instance();
-  int type() const Q_DECL_OVERRIDE;
+  int type() const override;
 };
 
 class HyperbolaBFFPType
@@ -62,7 +62,7 @@ class HyperbolaBFFPType
   ~HyperbolaBFFPType();
 public:
   static const HyperbolaBFFPType* instance();
-  int type() const Q_DECL_OVERRIDE;
+  int type() const override;
 };
 
 class ConicBDFPType
@@ -72,8 +72,8 @@ class ConicBDFPType
   ~ConicBDFPType();
 public:
   static const ConicBDFPType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ParabolaBTPType
@@ -83,8 +83,8 @@ class ParabolaBTPType
   ~ParabolaBTPType();
 public:
   static const ParabolaBTPType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class EquilateralHyperbolaB4PType
@@ -94,8 +94,8 @@ class EquilateralHyperbolaB4PType
   ~EquilateralHyperbolaB4PType();
 public:
   static const EquilateralHyperbolaB4PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicPolarPointType
@@ -105,8 +105,8 @@ class ConicPolarPointType
   ~ConicPolarPointType();
 public:
   static const ConicPolarPointType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicPolarLineType
@@ -116,8 +116,8 @@ class ConicPolarLineType
   ~ConicPolarLineType();
 public:
   static const ConicPolarLineType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicDirectrixType
@@ -127,8 +127,8 @@ class ConicDirectrixType
   ~ConicDirectrixType();
 public:
   static const ConicDirectrixType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ParabolaBDPType
@@ -139,8 +139,8 @@ class ParabolaBDPType
 public:
   static const ParabolaBDPType* instance();
   using ObjectLPType::calc;
-  ObjectImp* calc( const LineData& l, const Coordinate& c ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const LineData& l, const Coordinate& c ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicAsymptoteType
@@ -150,8 +150,8 @@ class ConicAsymptoteType
   ~ConicAsymptoteType();
 public:
   static const ConicAsymptoteType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
 };
 
 class ConicRadicalType
@@ -161,11 +161,11 @@ class ConicRadicalType
   ~ConicRadicalType();
 public:
   static const ConicRadicalType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const Q_DECL_OVERRIDE;
-  const ObjectImpType* resultId() const Q_DECL_OVERRIDE;
-  QStringList specialActions() const Q_DECL_OVERRIDE;
+  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+  const ObjectImpType* resultId() const override;
+  QStringList specialActions() const override;
   void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const Q_DECL_OVERRIDE;
+                      KigPart& d, KigWidget& w, NormalMode& m ) const override;
 };
 
 #endif
