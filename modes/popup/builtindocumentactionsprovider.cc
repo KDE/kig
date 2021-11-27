@@ -31,7 +31,7 @@ void BuiltinDocumentActionsProvider::fillUpMenu( NormalModePopupObjects& popup, 
     QStringList l = CoordinateSystemFactory::names();
     mnumberofcoordsystems = l.count();
     int current = popup.part().document().coordinateSystem().id();
-    QAction* act = 0;
+    QAction* act = nullptr;
     for ( int i = 0; i < mnumberofcoordsystems; ++i )
     {
       act = popup.addInternalAction( menu, l.at( i ), nextfree++ );

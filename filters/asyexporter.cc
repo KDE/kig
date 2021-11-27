@@ -45,7 +45,7 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
       QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "Asymptote Documents (*.asy)" ),
       i18n( "Export as Asymptote script" ), &w );
   kfd->setOptionCaption( i18n( "Asymptote Options" ) );
-  AsyExporterOptions* opts = new AsyExporterOptions( 0L );
+  AsyExporterOptions* opts = new AsyExporterOptions( nullptr );
   kfd->setOptionsWidget( opts );
   opts->setGrid( true );
   opts->setAxes( true );

@@ -287,13 +287,13 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   QFile file( f );
   if ( ! file.open( QIODevice::ReadOnly ) )
   {
-    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'", f ) );
+    KMessageBox::sorry( nullptr, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
   QDomDocument doc( QStringLiteral("KigMacroFile") );
   if ( !doc.setContent( &file ) )
   {
-    KMessageBox::sorry( 0, i18n( "Could not open macro file '%1'", f ) );
+    KMessageBox::sorry( nullptr, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
   file.close();
@@ -304,7 +304,7 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   else
   {
     KMessageBox::detailedSorry(
-      0, i18n( "Kig cannot open the macro file \"%1\".", f ),
+      nullptr, i18n( "Kig cannot open the macro file \"%1\".", f ),
       i18n( "This file was created by a very old Kig version (pre-0.4). "
             "Support for this format has been removed from recent Kig versions. "
             "You can try to import this macro using a previous Kig version "
@@ -337,7 +337,7 @@ bool MacroList::loadNew( const QDomElement& docelem, std::vector<Macro*>& ret, c
         ! macroelem.isNull(); macroelem = macroelem.nextSibling().toElement() )
   {
     QString name, description;
-    ObjectHierarchy* hierarchy = 0;
+    ObjectHierarchy* hierarchy = nullptr;
     QByteArray actionname;
     QByteArray iconfile( "system-run" );
     if ( macroelem.tagName() != QLatin1String("Macro") ) continue; // forward compat ?

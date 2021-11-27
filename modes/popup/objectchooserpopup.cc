@@ -54,7 +54,7 @@ int ObjectChooserPopup::getObjectFromList( const QPoint& p, KigWidget* w,
       id = ppp->mselected;
 
       delete ppp;
-      ppp = 0;
+      ppp = nullptr;
     }
     else
     {
@@ -72,7 +72,7 @@ ObjectChooserPopup::ObjectChooserPopup( const QPoint& p, KigWidget& view,
   : QMenu(), mplc( p ), mview( view ), mobjs( objs ), mselected( -1 )
 {
   addSection( i18np( "%1 Object", "%1 Objects", mobjs.size() ) );
-  QAction* newaction = 0;
+  QAction* newaction = nullptr;
   for ( uint i = 0; i < mobjs.size(); i++ )
   {
     newaction = addAction(

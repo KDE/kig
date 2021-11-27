@@ -56,7 +56,7 @@ ObjectTypeCalcer* ObjectFactory::numericValueCalcer(
   parents.reserve( 4 );
   const bool needframe = false;
   parents.push_back( new ObjectConstCalcer( new IntImp( needframe ? 1 : 0 ) ) );
-  parents.push_back( getAttachPoint( 0, loc, doc ) );
+  parents.push_back( getAttachPoint( nullptr, loc, doc ) );
   parents.push_back( new ObjectConstCalcer( new StringImp( QStringLiteral("%1") ) ) );
   parents.push_back( new ObjectConstCalcer( new DoubleImp( value ) ) );
 
@@ -357,7 +357,7 @@ ObjectTypeCalcer* ObjectFactory::locusCalcer(
 
   ObjectHierarchy hier( hierparents, moving );
 
-  std::vector<ObjectCalcer*> realparents( 2 + sideOfTree.size(), 0 );
+  std::vector<ObjectCalcer*> realparents( 2 + sideOfTree.size(), nullptr );
   realparents[0] = new ObjectConstCalcer( new HierarchyImp( hier ) );
   realparents[1] = curve;
   std::copy( sideOfTree.begin(), sideOfTree.end(), realparents.begin() + 2 );
@@ -383,7 +383,7 @@ ObjectTypeCalcer* ObjectFactory::labelCalcer(
  bool needframe, const std::vector<ObjectCalcer*>& parents,
  const KigDocument& doc ) const
 {
-  return attachedLabelCalcer( s, 0, loc, needframe, parents, doc );
+  return attachedLabelCalcer( s, nullptr, loc, needframe, parents, doc );
 }
 
 ObjectTypeCalcer* ObjectFactory::attachedLabelCalcer(
@@ -471,7 +471,7 @@ ObjectPropertyCalcer* ObjectFactory::propertyObjectCalcer(
   ObjectCalcer* o, const char* p ) const
 {
   int wp = o->imp()->propertiesInternalNames().indexOf( p );
-  if ( wp == -1 ) return 0;
+  if ( wp == -1 ) return nullptr;
   return new ObjectPropertyCalcer( o, p );
 }
 
@@ -490,7 +490,7 @@ void ObjectFactory::redefinePoint(
   ObjectCalcer* (ObjectHolder::*calcmeth)() = &ObjectHolder::calcer;
   std::transform( hos.begin(), hos.end(), std::back_inserter( os ),
                   std::mem_fun( calcmeth ) );
-  ObjectCalcer* v = 0;
+  ObjectCalcer* v = nullptr;
 
   // we don't want one of our children as a parent...
   std::set<ObjectCalcer*> children = getAllChildren( point );
@@ -513,7 +513,7 @@ void ObjectFactory::redefinePoint(
     {
       // point already was constrained -> simply update the param
       // DataObject and make sure point is on the right curve...
-      ObjectCalcer* dataobj = 0;
+      ObjectCalcer* dataobj = nullptr;
       std::vector<ObjectCalcer*> parents = point->parents();
       assert( parents.size() == 2 );
       assert ( parents[0]->imp()->inherits( DoubleImp::stype() ) );

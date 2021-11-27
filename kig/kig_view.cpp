@@ -290,9 +290,9 @@ KigView::KigView( KigPart* part,
                   bool fullscreen,
                   QWidget* parent )
   : QWidget( parent ),
-    mlayout( 0 ), mrightscroll( 0 ), mbottomscroll( 0 ),
+    mlayout( nullptr ), mrightscroll( nullptr ), mbottomscroll( nullptr ),
     mupdatingscrollbars( false ),
-    mrealwidget( 0 ), mpart( part )
+    mrealwidget( nullptr ), mpart( part )
 {
   connect( part, &KigPart::recenterScreen, this, &KigView::slotInternalRecenterScreen );
 

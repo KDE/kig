@@ -794,7 +794,7 @@ void KigPainter::drawCurve( const CurveImp* curve )
   workstack.push( workitem(
                     coordparampair( 0., coo1 ),
                     coordparampair( 1., coo2 ),
-                    0 ) );
+                    nullptr ) );
 
   // maxlength is the square of the maximum size that we allow
   // between two points..

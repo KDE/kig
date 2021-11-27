@@ -56,13 +56,13 @@ public:
 
     typedef T element_type;
 
-    intrusive_ptr(): p_(0)
+    intrusive_ptr(): p_(nullptr)
     {
     }
 
     intrusive_ptr(T * p, bool add_ref = true): p_(p)
     {
-        if(p_ != 0 && add_ref) intrusive_ptr_add_ref(p_);
+        if(p_ != nullptr && add_ref) intrusive_ptr_add_ref(p_);
     }
 
 #if !defined(BOOST_NO_MEMBER_TEMPLATES) || defined(BOOST_MSVC6_MEMBER_TEMPLATES)
@@ -76,12 +76,12 @@ public:
 
     intrusive_ptr(intrusive_ptr const & rhs): p_(rhs.p_)
     {
-        if(p_ != 0) intrusive_ptr_add_ref(p_);
+        if(p_ != nullptr) intrusive_ptr_add_ref(p_);
     }
 
     ~intrusive_ptr()
     {
-        if(p_ != 0) intrusive_ptr_release(p_);
+        if(p_ != nullptr) intrusive_ptr_release(p_);
     }
 
 #if !defined(BOOST_NO_MEMBER_TEMPLATES) || defined(BOOST_MSVC6_MEMBER_TEMPLATES)
@@ -125,13 +125,13 @@ public:
 
     operator unspecified_bool_type () const
     {
-        return p_ == 0? 0: &intrusive_ptr::get;
+        return p_ == nullptr? nullptr: &intrusive_ptr::get;
     }
 
     // operator! is a Borland-specific workaround
     bool operator! () const
     {
-        return p_ == 0;
+        return p_ == nullptr;
     }
 
     void swap(intrusive_ptr & rhs)

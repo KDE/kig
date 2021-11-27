@@ -160,7 +160,7 @@ void MovingMode::moveTo( const Coordinate& o, bool snaptogrid )
 }
 
 PointRedefineMode::PointRedefineMode( ObjectHolder* p, KigPart& d, KigWidget& v )
-  : MovingModeBase( d, v ), mp( p ), mmon( 0 )
+  : MovingModeBase( d, v ), mp( p ), mmon( nullptr )
 {
   assert( dynamic_cast<ObjectTypeCalcer*>( p->calcer() ) );
   moldtype = static_cast<ObjectTypeCalcer*>( p->calcer() )->type();

@@ -60,7 +60,7 @@ void BaseConstructMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( (pointLocation() - e->pos()).manhattanLength() > 4 ) return;
 
-  ObjectHolder* o = 0;
+  ObjectHolder* o = nullptr;
   bool keyCtrlOrShift = ( e->modifiers() & ( Qt::ControlModifier | Qt::ShiftModifier) ) != 0;
   std::vector<ObjectHolder*> moco = oco();
   if ( ! moco.empty() )
@@ -307,7 +307,7 @@ void PointConstructMode::leftClickedObject(
 
 void PointConstructMode::midClicked( const QPoint& p, KigWidget& w )
 {
-  leftClickedObject( 0, p, w, true );
+  leftClickedObject( nullptr, p, w, true );
 }
 
 void PointConstructMode::rightClicked( const std::vector<ObjectHolder*>&, const QPoint&,

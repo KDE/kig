@@ -32,7 +32,7 @@ KigMode::~KigMode()
 }
 
 KigMode::KigMode( KigPart& d )
-  : mdoc( d ), mevloop( 0 )
+  : mdoc( d ), mevloop( nullptr )
 {
 }
 
@@ -109,7 +109,7 @@ void KigMode::redrawScreen( KigWidget* )
 
 StdConstructionMode* KigMode::toStdConstructionMode()
 {
-  return 0;
+  return nullptr;
 }
 
 void KigMode::selectAll()

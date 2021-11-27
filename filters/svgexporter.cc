@@ -46,7 +46,7 @@ void SVGExporter::run( const KigPart& part, KigWidget& w )
       QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), i18n( "Scalable Vector Graphics (*.svg)" ),
       i18n( "Export as SVG" ), &w );
   kfd->setOptionCaption( i18n( "SVG Options" ) );
-  SVGExporterOptions* opts = new SVGExporterOptions( 0L );
+  SVGExporterOptions* opts = new SVGExporterOptions( nullptr );
   kfd->setOptionsWidget( opts );
   opts->setGrid( part.document().grid() );
   opts->setAxes( part.document().axes() );

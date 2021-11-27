@@ -97,12 +97,12 @@ template <typename Collection>
 static Collection parse( const Collection& os,
                          const std::vector<ArgsParser::spec> &margs )
 {
-  Collection ret( margs.size(), static_cast<typename Collection::value_type>( 0 ) );
+  Collection ret( margs.size(), static_cast<typename Collection::value_type>( nullptr ) );
 
   for ( typename Collection::const_iterator o = os.begin(); o != os.end(); ++o )
   {
     for( uint i = 0; i < margs.size(); ++i )
-      if ( hasimp( **o, margs[i].type ) && ret[i] == 0 )
+      if ( hasimp( **o, margs[i].type ) && ret[i] == nullptr )
       {
         // object o is of a type that we're looking for
         ret[i] = *o;
@@ -114,7 +114,7 @@ static Collection parse( const Collection& os,
   // remove 0's from the output..
   ret.erase(
     std::remove( ret.begin(), ret.end(),
-                 static_cast<typename Collection::value_type>( 0 ) ),
+                 static_cast<typename Collection::value_type>( nullptr ) ),
     ret.end() );
   return ret;
 }
@@ -142,7 +142,7 @@ ArgsParser ArgsParser::without( const ObjectImpType* type ) const
 ArgsParser::spec ArgsParser::findSpec( const ObjectImp* obj, const Args& parents ) const
 {
   spec ret;
-  ret.type = 0;
+  ret.type = nullptr;
 
   std::vector<bool> found( margs.size(), false );
 

@@ -65,7 +65,7 @@ const ObjectImpType* MeasureTransportCalcer::impRequirement(
   else
   {
     assert( false );
-    return 0;
+    return nullptr;
   }
 }
 

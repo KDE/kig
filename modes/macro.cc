@@ -114,7 +114,7 @@ void DefineMacroMode::finishPressed()
                           mwizard->field( QStringLiteral("name") ).toString(),
                           mwizard->field( QStringLiteral("description") ).toString(),
                           mwizard->field( QStringLiteral("icon") ).toByteArray() );
-  ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
+  ConstructibleAction* act = new ConstructibleAction( ctor, nullptr );
   MacroList::instance()->add( new Macro( act, ctor ) );
 
   abandonMacro();
@@ -181,7 +181,7 @@ void DefineMacroMode::mouseMoved( const std::vector<ObjectHolder*>& os, const QP
   if ( os.empty() )
   {
     w.setCursor( Qt::ArrowCursor );
-    mdoc.emitStatusBarText( 0 );
+    mdoc.emitStatusBarText( nullptr );
     w.updateWidget();
   }
   else

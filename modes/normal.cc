@@ -221,7 +221,7 @@ void NormalMode::rightClicked( const std::vector<ObjectHolder*>& os,
   QPoint pt = QCursor::pos();
   if( !os.empty() )
   {
-    ObjectHolder* o = 0;
+    ObjectHolder* o = nullptr;
     int id = ObjectChooserPopup::getObjectFromList( pt, &w, os );
     if ( id >= 0 )
       o = os[id];
@@ -253,7 +253,7 @@ void NormalMode::mouseMoved( const std::vector<ObjectHolder*>& os,
   if( os.empty() )
   {
     w.setCursor( Qt::ArrowCursor );
-    mdoc.emitStatusBarText( 0 );
+    mdoc.emitStatusBarText( nullptr );
     w.updateWidget();
   }
   else

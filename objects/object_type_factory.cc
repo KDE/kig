@@ -48,7 +48,7 @@ void ObjectTypeFactory::add( const ObjectType* type )
 const ObjectType* ObjectTypeFactory::find( const char* name ) const
 {
   maptype::const_iterator i = mmap.find( std::string( name ) );
-  if ( i == mmap.end() ) return 0;
+  if ( i == mmap.end() ) return nullptr;
   else return i->second;
 }
 

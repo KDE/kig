@@ -110,7 +110,7 @@ class KigPrintDialogPage
   : public QWidget
 {
 public:
-  KigPrintDialogPage( QWidget* parent = 0 );
+  KigPrintDialogPage( QWidget* parent = nullptr );
   ~KigPrintDialogPage();
 
   bool printShowGrid();
@@ -174,7 +174,7 @@ bool KigPrintDialogPage::isValid( QString& )
 KigPart::KigPart( QWidget *parentWidget, QObject *parent,
                   const QVariantList& )
   : KParts::ReadWritePart( parent ),
-    mMode( 0 ), mRememberConstruction( 0 ), mdocument( new KigDocument() )
+    mMode( nullptr ), mRememberConstruction( nullptr ), mdocument( new KigDocument() )
 {
   mMode = new NormalMode( *this );
 
@@ -495,7 +495,7 @@ bool KigPart::queryClose()
 {
   if ( KParts::ReadWritePart::queryClose() )
   {
-    if ( mode()->eventLoop() != 0 )
+    if ( mode()->eventLoop() != nullptr )
     {
       cancelConstruction();
     }
@@ -733,7 +733,7 @@ bool KigPart::internalSaveAs()
     currentDir = QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation );
   }
 
-  const QString file_name = QFileDialog::getSaveFileName( 0, QString(), currentDir, formats );
+  const QString file_name = QFileDialog::getSaveFileName( nullptr, QString(), currentDir, formats );
   if (file_name.isEmpty()) return false;
   else if ( QFileInfo( file_name ).exists() )
   {
@@ -773,7 +773,7 @@ void KigPart::doneMode( KigMode* d )
 
 void KigPart::actionRemoved( GUIAction* a, GUIUpdateToken& t )
 {
-  KigGUIAction* rem = 0;
+  KigGUIAction* rem = nullptr;
   for ( std::vector<KigGUIAction*>::iterator i = aActions.begin(); i != aActions.end(); ++i )
   {
     if ( (*i)->guiAction() == a )
@@ -862,8 +862,8 @@ void KigPart::setupBuiltinMacros()
         macro->ctor->setBuiltin( true );
         ctors->add( macro->ctor );
         actions->add( macro->action );
-        macro->ctor = 0;
-        macro->action = 0;
+        macro->ctor = nullptr;
+        macro->action = nullptr;
         delete macro;
       };
     };
@@ -958,7 +958,7 @@ void KigPart::hideObjects( const std::vector<ObjectHolder*>& inos )
     if ( (*i)->shown() )
       os.push_back( *i );
   };
-  KigCommand* kc = 0;
+  KigCommand* kc = nullptr;
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->hideAStatement() );
@@ -977,7 +977,7 @@ void KigPart::showObjects( const std::vector<ObjectHolder*>& inos )
     if ( !(*i)->shown() )
       os.push_back( *i );
   };
-  KigCommand* kc = 0;
+  KigCommand* kc = nullptr;
   if ( os.size() == 0 ) return;
   else if ( os.size() == 1 )
     kc = new KigCommand( *this, os[0]->imp()->type()->showAStatement() );

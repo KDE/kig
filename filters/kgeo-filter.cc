@@ -127,7 +127,7 @@ KigDocument* KigFilterKGeo::loadObjects( KConfig* c )
 
   std::vector<KGeoHierarchyElement> sortedElems = sortElems( elems );
   std::vector<ObjectHolder*> os;
-  os.resize( number, 0 );
+  os.resize( number, nullptr );
   const ObjectFactory* factory = ObjectFactory::instance();
 
   // now we iterate over the elems again in the newly determined
@@ -148,7 +148,7 @@ KigDocument* KigFilterKGeo::loadObjects( KConfig* c )
       parents.push_back( os[parentid]->calcer() );
     };
 
-    ObjectCalcer* o = 0;
+    ObjectCalcer* o = nullptr;
     switch (objID)
     {
     case ID_point:

@@ -421,7 +421,7 @@ const ObjectImpType* PolygonBCVType::impRequirement( const ObjectImp* obj, const
   if ( obj->inherits( IntImp::stype() ) )
     return IntImp::stype();
 
-  return 0;
+  return nullptr;
 }
 
 bool PolygonBCVType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const

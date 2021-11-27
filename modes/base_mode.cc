@@ -65,7 +65,7 @@ void BaseMode::leftReleased( QMouseEvent* e, KigWidget* v )
 {
   if( (mplc - e->pos()).manhattanLength() > 4 ) return;
 
-  ObjectHolder* o = 0;
+  ObjectHolder* o = nullptr;
   bool keyCtrl = ( e->modifiers() & Qt::ControlModifier ) != 0;
   bool keyShift = ( e->modifiers() & Qt::ShiftModifier ) != 0;
   if ( ! moco.empty() )

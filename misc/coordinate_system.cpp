@@ -63,7 +63,7 @@ const char CoordinateValidator::reEuclidean[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\
 const char CoordinateValidator::rePolar[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\s*([0-9.,+-]+) ?°?\\s*\\)?\\s*";
 
 CoordinateValidator::CoordinateValidator( CoordinateType type )
-  : QValidator( 0L ), mtype( type ), mdv( 0L )
+  : QValidator( nullptr ), mtype( type ), mdv( nullptr )
 {
   switch ( mtype )
   {
@@ -555,7 +555,7 @@ CoordinateSystem* CoordinateSystemFactory::build( int which )
     return new EuclideanCoords;
   else if ( which == Polar )
     return new PolarCoords;
-  else return 0;
+  else return nullptr;
 }
 
 static const char euclideanTypeString[] = "Euclidean";
@@ -567,7 +567,7 @@ CoordinateSystem* CoordinateSystemFactory::build( const char* type )
     return new EuclideanCoords;
   if ( std::string( polarTypeString ) == type )
     return new PolarCoords;
-  else return 0;
+  else return nullptr;
 }
 
 const char* EuclideanCoords::type() const

@@ -27,7 +27,7 @@ KigFilter* KigFilters::find(const QString& mime)
     {
       if ((*i)->supportMime(mime)) return *i;
     };
-  return 0;
+  return nullptr;
 }
 
 KigFilters::KigFilters()
@@ -62,7 +62,7 @@ bool KigFilter::supportMime( const QString& )
 
 void KigFilter::fileNotFound( const QString& file ) const
 {
-  KMessageBox::sorry( 0,
+  KMessageBox::sorry( nullptr,
                       i18n( "The file \"%1\" could not be opened.  "
                             "This probably means that it does not "
                             "exist, or that it cannot be opened due to "
@@ -77,21 +77,21 @@ void KigFilter::parseError( const QString& explanation ) const
   const QString title = i18n( "Parse Error" );
 
   if ( explanation.isEmpty() )
-    KMessageBox::sorry( 0, text, title );
+    KMessageBox::sorry( nullptr, text, title );
   else
-    KMessageBox::detailedSorry( 0, text, explanation, title );
+    KMessageBox::detailedSorry( nullptr, text, explanation, title );
 }
 
 void KigFilter::notSupported( const QString& explanation ) const
 {
-  KMessageBox::detailedSorry( 0,
+  KMessageBox::detailedSorry( nullptr,
                               i18n( "Kig cannot open this file." ),
                               explanation, i18n( "Not Supported" ) );
 }
 
 void KigFilter::warning( const QString& explanation ) const
 {
-  KMessageBox::information( 0, explanation );
+  KMessageBox::information( nullptr, explanation );
 }
 
 bool KigFilters::save( const KigDocument& data, const QString& tofile )

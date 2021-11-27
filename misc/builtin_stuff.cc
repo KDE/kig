@@ -37,7 +37,7 @@ void setupBuiltinStuff()
   {
     ObjectConstructorList* ctors = ObjectConstructorList::instance();
     GUIActionList* actions = GUIActionList::instance();
-    ObjectConstructor* c = 0;
+    ObjectConstructor* c = nullptr;
 
     // point by coords...
     c = new SimpleObjectTypeConstructor(

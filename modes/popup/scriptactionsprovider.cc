@@ -24,12 +24,12 @@
 static ObjectTypeCalcer* getPythonExecuteTypeFromCalcer( ObjectCalcer* o )
 {
   ObjectTypeCalcer* oc = dynamic_cast<ObjectTypeCalcer *>( o );
-  if ( !oc ) return 0;
+  if ( !oc ) return nullptr;
   const PythonExecuteType* pythonexec = dynamic_cast<const PythonExecuteType*>( oc->type() );
   if ( pythonexec ) return oc;
 
   const GenericTextType* text = dynamic_cast<const GenericTextType*>( oc->type() );
-  if ( !text ) return 0;
+  if ( !text ) return nullptr;
   std::vector<ObjectCalcer*> parents = oc->parents();
 
   for (uint i = 3; i < parents.size(); i++)
@@ -41,7 +41,7 @@ static ObjectTypeCalcer* getPythonExecuteTypeFromCalcer( ObjectCalcer* o )
       if ( pythonexec ) return oc;
     }
   }
-  return 0;
+  return nullptr;
 }
 
 void ScriptActionsProvider::fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree )

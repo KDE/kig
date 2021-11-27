@@ -80,7 +80,7 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   }
   kfd->setMimeTypeFilters( mimeFiltersConverted );
   kfd->setOptionCaption( i18n( "Image Options" ) );
-  ImageExporterOptions* opts = new ImageExporterOptions( 0L );
+  ImageExporterOptions* opts = new ImageExporterOptions( nullptr );
   kfd->setOptionsWidget( opts );
   opts->setImageSize( w.size() );
   opts->setGrid( doc.document().grid() );

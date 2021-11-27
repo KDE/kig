@@ -278,7 +278,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   { \
     error = i18n( "An error was encountered at line %1 in file %2.", \
               __LINE__, __FILE__ ); \
-    return 0; \
+    return nullptr; \
   }
 
   bool ok = true;
@@ -306,7 +306,7 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
   else if ( type == QLatin1String("hierarchy") )
   {
     ObjectHierarchy* hier = ObjectHierarchy::buildSafeObjectHierarchy( parent, error );
-    if ( ! hier ) return 0;
+    if ( ! hier ) return nullptr;
     HierarchyImp* imp = new HierarchyImp( *hier );
     delete hier;
     return imp;
@@ -494,6 +494,6 @@ ObjectImp* ObjectImpFactory::deserialize( const QString& type,
                 "Perhaps you have compiled Kig without support "
                 "for this object type,"
                 "or perhaps you are using an older Kig version.", type );
-  return 0;
+  return nullptr;
 }
 

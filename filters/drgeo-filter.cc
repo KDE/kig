@@ -69,7 +69,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
   if ( ! f.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
-    return 0;
+    return nullptr;
   }
 
   QStringList figures;
@@ -94,13 +94,13 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
                      "figures.", file ) );
     else
       warning( i18n( "There are no figures in Dr. Geo file \"%1\".", file ) );
-    return 0;
+    return nullptr;
   }
 
   int nfig = figures.count();
   // no figures, no party...
   if ( nfig == 0 )
-    return 0;
+    return nullptr;
 
   QString myfig = figures.at( 0 );
 
@@ -114,7 +114,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
                       "Please select which to import:" ),
                 figures, 0, false, &ok );
     if ( !ok )
-      return 0;
+      return nullptr;
   }
 
 #ifdef DRGEO_DEBUG
@@ -139,7 +139,7 @@ KigDocument* KigFilterDrgeo::load( const QString& file )
     }
   }
 
-  return 0;
+  return nullptr;
 }
 
 static int convertDrgeoIndex( const std::vector<DrGeoHierarchyElement>& es, const QString& myid )
@@ -217,8 +217,8 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
   const ObjectFactory* fact = ObjectFactory::instance();
   std::vector<ObjectHolder*> holders;
   std::vector<ObjectHolder*> holders2;
-  ObjectTypeCalcer* oc = 0;
-  ObjectCalcer* oc2 = 0;
+  ObjectTypeCalcer* oc = nullptr;
+  ObjectCalcer* oc2 = nullptr;
   int nignored = 0;
 
   // there's no need to sort the objects because it seems that DrGeo objects
@@ -323,7 +323,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
                               domelem.attribute( QStringLiteral("type") ) ) );
-          return 0;
+          return nullptr;
         }
       }
       else if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("Intersection") )
@@ -340,7 +340,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           else if ( which == 0 ) which = 1;
           else KIG_FILTER_PARSE_ERROR;
           std::vector<ObjectCalcer*> args = parents;
-          const ObjectType* type = 0;
+          const ObjectType* type = nullptr;
           args.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
           if ( ( parents[0]->imp()->inherits( CircleImp::stype() ) ) &&
                ( parents[1]->imp()->inherits( CircleImp::stype() ) ) )
@@ -359,7 +359,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           {
             notSupported( i18n( "This Dr. Geo file contains an intersection type, "
                                 "which Kig does not currently support." ) );
-            return 0;
+            return nullptr;
           }
           oc = new ObjectTypeCalcer( type, args );
         }
@@ -381,7 +381,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
                             domelem.attribute( QStringLiteral("type") ) ) );
-        return 0;
+        return nullptr;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
@@ -395,7 +395,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
              ( domelem.tagName() == QLatin1String("arcCircle") ) ||
              ( domelem.tagName() == QLatin1String("polygon") ) )
     {
-      const ObjectType* type = 0;
+      const ObjectType* type = nullptr;
       if ( domelem.attribute( QStringLiteral("type") ) == QLatin1String("2pts") )
       {
         if( domelem.tagName() == QLatin1String("line") )
@@ -413,7 +413,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
                               domelem.attribute( QStringLiteral("type") ) ) );
-          return 0;
+          return nullptr;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -426,7 +426,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
                               domelem.attribute( QStringLiteral("type") ) ) );
-          return 0;
+          return nullptr;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -449,7 +449,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
                               domelem.attribute( QStringLiteral("type") ) ) );
-          return 0;
+          return nullptr;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -465,7 +465,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
           notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                               "which Kig does not currently support.", domelem.tagName() , 
                               domelem.attribute( QStringLiteral("type") ) ) );
-          return 0;
+          return nullptr;
         }
         oc = new ObjectTypeCalcer( type, parents );
       }
@@ -488,7 +488,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
                             domelem.attribute( QStringLiteral("type") ) ) );
-        return 0;
+        return nullptr;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
@@ -615,7 +615,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
                             domelem.attribute( QStringLiteral("type") ) ) );
-        return 0;
+        return nullptr;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
@@ -633,7 +633,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
                             domelem.attribute( QStringLiteral("type") ) ) );
-        return 0;
+        return nullptr;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
@@ -674,7 +674,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
                             domelem.attribute( QStringLiteral("type") ) ) );
-        return 0;
+        return nullptr;
       }
     }
     else if ( domelem.tagName() == QLatin1String("locus") )
@@ -686,7 +686,7 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
         notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                             "which Kig does not currently support.", domelem.tagName() , 
                             domelem.attribute( QStringLiteral("type") ) ) );
-        return 0;
+        return nullptr;
       }
 #ifdef DRGEO_DEBUG
       qDebug() << "+++++++++ oc:" << oc;
@@ -706,10 +706,10 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
       notSupported( i18n( "This Dr. Geo file contains a \"%1 %2\" object, "
                           "which Kig does not currently support.", domelem.tagName() , 
                           domelem.attribute( QStringLiteral("type") ) ) );
-      return 0;
+      return nullptr;
     }
     curid++;
-    if ( oc == 0 )
+    if ( oc == nullptr )
       continue;
 
 // reading color
@@ -784,15 +784,15 @@ KigDocument* KigFilterDrgeo::importFigure( const QDomNode& f, const bool grid )
                holders[curid-1-nignored]->calcer(), "angle-degrees", *ret, false );
     }
 
-    oc = 0;
+    oc = nullptr;
 
-    if ( oc2 != 0 )
+    if ( oc2 != nullptr )
     {
       oc2->calc( *ret );
       ObjectDrawer* d2 = new ObjectDrawer( co );
       ObjectHolder* o2 = new ObjectHolder( oc2, d2 );
       holders2.push_back( o2 );
-      oc2 = 0;
+      oc2 = nullptr;
     }
   }
 

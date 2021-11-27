@@ -47,7 +47,7 @@
 
 static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& parents, int which )
 {
-  if ( parents.size() != 2 ) return 0;
+  if ( parents.size() != 2 ) return nullptr;
   int nlines = 0;
   int ncircles = 0;
   int nconics = 0;
@@ -58,13 +58,13 @@ static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& p
     else if ( parents[i]->imp()->inherits( CircleImp::stype() ) ) { ++ncircles; ++nconics; }
     else if ( parents[i]->imp()->inherits( ConicImp::stype() ) ) ++nconics;
     else if ( parents[i]->imp()->inherits( ArcImp::stype() ) ) ++narcs;
-    else return 0;
+    else return nullptr;
   };
 #ifdef CABRI_DEBUG
   qDebug() << "which: " << which;
 #endif
   if ( nlines == 2 )
-    return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
+    return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : nullptr;
   else if ( nlines == 1 && nconics == 1 )
   {
     std::vector<ObjectCalcer*> intparents( parents );
@@ -97,7 +97,7 @@ static ObjectTypeCalcer* intersectionPoints( const std::vector<ObjectCalcer*>& p
     intparents.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
     return new ObjectTypeCalcer( ArcLineIntersectionType::instance(), intparents );
   }
-  else return 0;
+  else return nullptr;
 }
 
 static int priorTo( const std::vector<uint>& ids, uint id )
@@ -130,7 +130,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   if ( ! f.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
-    return 0;
+    return nullptr;
   }
 
   QString s = CabriNS::readLine( f );
@@ -141,7 +141,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     if ( s.startsWith( QLatin1String( "#FIG " ) ) )
     {
       notSupported( i18n( "This is an XFig file, not a Cabri figure." ) );
-      return 0;
+      return nullptr;
     }
     else
       KIG_FILTER_PARSE_ERROR;
@@ -161,7 +161,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     KIG_FILTER_PARSE_ERROR;
 
   CabriNS::CabriVersion curVer;
-  CabriReader* reader = 0;
+  CabriReader* reader = nullptr;
 
 #ifdef CABRI_DEBUG
   qDebug() << ">>>>>>>>> version: " << header.cap( 3 );
@@ -187,21 +187,21 @@ KigDocument* KigFilterCabri::load( const QString& file )
     notSupported( i18n( "This Cabri version (%1) is not supported yet.\n"
                         "Please contact the Kig authors to help supporting this Cabri "
                         "version.", header.cap( 3 ) ) );
-    return 0;
+    return nullptr;
   }
 
   s = CabriNS::readLine( f );
   if ( !reader->readWindowMetrics( f ) )
-    return 0;
+    return nullptr;
 
   // reading center point
   CabriObject* center_point = reader->readObject( f );
   if ( !center_point )
-    return 0;
+    return nullptr;
   // reading axes
   CabriObject* axes = reader->readObject( f );
   if ( !axes )
-    return 0;
+    return nullptr;
   bool haveaxes = axes->visible;
   bool havegrid = false;
 
@@ -213,7 +213,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
   const ObjectFactory* fact = ObjectFactory::instance();
 
   std::vector<ObjectCalcer*> args;
-  ObjectCalcer* oc = 0;
+  ObjectCalcer* oc = nullptr;
   std::vector<uint> idsToSkip;
   int previd = 0;
   uint lowerbound = 2;
@@ -226,7 +226,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     // we do one object each iteration..
     CabriObject* obj = reader->readObject( f );
     if ( !obj )
-      return 0;
+      return nullptr;
 
 #ifdef CABRI_DEBUG
     qDebug() << "+++++ " << obj->id << " - " << obj->type;
@@ -267,7 +267,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
       }
 
     if ( obj->id - priorTo( idsToSkip, obj->id ) != calcers.size() + 3 ) KIG_FILTER_PARSE_ERROR;
-    oc = 0;
+    oc = nullptr;
 #ifdef CABRI_DEBUG
     if ( args.size() > 0 )
       for ( uint j = 0; j < args.size(); ++j )
@@ -317,7 +317,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
         args[1] = secondpoint;
       }
       if ( args.size() != 2 ) KIG_FILTER_PARSE_ERROR;
-      const ObjectType* t = 0;
+      const ObjectType* t = nullptr;
       if ( obj->type == "Line" ) t = LineABType::instance();
       else if ( obj->type == "Ray" ) t = RayABType::instance();
       else if ( obj->type == "Seg" ) t = SegmentABType::instance();
@@ -365,7 +365,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
       }
       if ( args.size() != 2 || obj->data.size() != 0 )
         KIG_FILTER_PARSE_ERROR;
-      const ObjectType* t = 0;
+      const ObjectType* t = nullptr;
       if ( obj->type == "Perp" ) t = LinePerpendLPType::instance();
       else if ( obj->type == "Par" ) t = LineParallelLPType::instance();
       else assert( false );
@@ -445,7 +445,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
       if ( args.size() != 1 || !obj->data.empty() )
         KIG_FILTER_PARSE_ERROR;
       ObjectCalcer* parent = args[0];
-      ObjectCalcer* midpoint = 0;
+      ObjectCalcer* midpoint = nullptr;
       if ( parent->imp()->inherits( SegmentImp::stype() ) )
         midpoint = fact->propertyObjectCalcer( parent, "mid-point" ) ;
 //       else if ( parent->imp()->inherits( VectorImp::stype() ) )
@@ -641,13 +641,13 @@ KigDocument* KigFilterCabri::load( const QString& file )
     {
       notSupported( i18n( "This Cabri file contains a \"%1\" object, "
                           "which Kig does not currently support.", QString( obj->type ) ) );
-      return 0;
+      return nullptr;
     }
 #ifdef CABRI_DEBUG
     qDebug() << "+++++++++ oc: " << oc;
 #endif
 
-    if ( oc == 0 ) KIG_FILTER_PARSE_ERROR;
+    if ( oc == nullptr ) KIG_FILTER_PARSE_ERROR;
 
     oc->calc( *ret );
 #ifdef CABRI_DEBUG
@@ -662,7 +662,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     reader->decodeStyle( obj, ls, ps );
     ObjectDrawer* d = new ObjectDrawer( obj->color, obj->thick, obj->visible, ls, ps );
 
-    ObjectHolder* oh = 0;
+    ObjectHolder* oh = nullptr;
     if ( !obj->name.isEmpty() )
     {
       ObjectConstCalcer* name = new ObjectConstCalcer( new StringImp( obj->name ) );
@@ -675,7 +675,7 @@ KigDocument* KigFilterCabri::load( const QString& file )
     assert( oh );
     holders.push_back( oh );
 
-    oc = 0;
+    oc = nullptr;
     previd = obj->id;
     delete obj;
   }

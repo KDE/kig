@@ -29,7 +29,7 @@ void addNameLabel( ObjectCalcer* object, ObjectCalcer* namecalcer, const Coordin
   std::vector<ObjectCalcer*> args;
   args.push_back( namecalcer );
   const bool namelabelneedsframe = false;
-  ObjectCalcer* attachto = 0;
+  ObjectCalcer* attachto = nullptr;
   if ( object->imp()->inherits( PointImp::stype() ) || 
        object->imp()->attachPoint().valid() || 
        object->imp()->inherits( CurveImp::stype() ) )

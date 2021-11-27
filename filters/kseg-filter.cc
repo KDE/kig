@@ -82,7 +82,7 @@ static Coordinate readKSegCoordinate( QDataStream& stream )
 
 static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& parents, int which )
 {
-  if ( parents.size() != 2 ) return 0;
+  if ( parents.size() != 2 ) return nullptr;
   int nlines = 0;
   int nconics = 0;
   int narcs = 0;
@@ -91,10 +91,10 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
     if ( parents[i]->imp()->inherits( AbstractLineImp::stype() ) ) ++nlines;
     else if ( parents[i]->imp()->inherits( ConicImp::stype() ) ) ++nconics;
     else if ( parents[i]->imp()->inherits( ArcImp::stype() ) ) ++narcs;
-    else return 0;
+    else return nullptr;
   };
   if ( nlines == 2 )
-    return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : 0;
+    return which == -1 ? new ObjectTypeCalcer( LineLineIntersectionType::instance(), parents ) : nullptr;
   else if ( nlines == 1 && nconics == 1 )
   {
     std::vector<ObjectCalcer*> intparents( parents );
@@ -119,7 +119,7 @@ static ObjectTypeCalcer* intersectionPoint( const std::vector<ObjectCalcer*>& pa
     intparents.push_back( new ObjectConstCalcer( new IntImp( which ) ) );
     return new ObjectTypeCalcer( ArcLineIntersectionType::instance(), intparents );
   }
-  else return 0;
+  else return nullptr;
 }
 
 ObjectCalcer* KigFilterKSeg::transformObject( KigDocument& kigdoc,
@@ -127,7 +127,7 @@ ObjectCalcer* KigFilterKSeg::transformObject( KigDocument& kigdoc,
                                               int subtype, bool& ok )
 {
   ok = true;
-  ObjectCalcer* retobj = 0;
+  ObjectCalcer* retobj = nullptr;
   switch( subtype )
   {
     case G_TRANSLATED:
@@ -168,7 +168,7 @@ ObjectCalcer* KigFilterKSeg::transformObject( KigDocument& kigdoc,
                             "transformation, which Kig currently "
                             "cannot import." ) );
         ok = false;
-        return 0;
+        return nullptr;
       }
       break;
     }
@@ -189,7 +189,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   if ( ! ffile.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
-    return 0;
+    return nullptr;
   };
 
   KigDocument* retdoc = new KigDocument();
@@ -228,7 +228,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
   unsigned int count;
   stream >> count;
 
-  ret.resize( count, 0 );
+  ret.resize( count, nullptr );
   const ObjectFactory* fact = ObjectFactory::instance();
 
   // KSeg topologically sorts the objects before saving, that means we
@@ -239,7 +239,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     stream >> styleid;
     short nparents;
     stream >> nparents;
-    std::vector<ObjectCalcer*> parents( nparents, 0 );
+    std::vector<ObjectCalcer*> parents( nparents, nullptr );
     for ( short j = 0; j < nparents; ++j )
     {
       int parent;
@@ -281,8 +281,8 @@ KigDocument* KigFilterKSeg::load( const QString& file )
     };
 
     // now load the object data..
-    ObjectHolder* object = 0;
-    ObjectCalcer* o = 0;
+    ObjectHolder* object = nullptr;
+    ObjectCalcer* o = nullptr;
     bool ok = true;
 
     QColor color = style.pen.color();
@@ -545,19 +545,19 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       {
         notSupported( i18n( "This KSeg file contains a filled circle, "
                             "which Kig does not currently support." ) );
-        return 0;
+        return nullptr;
       };
       case G_ARCSECTOR:
       {
         notSupported( i18n( "This KSeg file contains an arc sector, "
                             "which Kig does not currently support." ) );
-        return 0;
+        return nullptr;
       };
       case G_ARCSEGMENT:
       {
         notSupported( i18n( "This KSeg file contains an arc segment, "
                             "which Kig does not currently support." ) );
-        return 0;
+        return nullptr;
       };
       case G_LOCUS:
       {
@@ -672,7 +672,7 @@ KigDocument* KigFilterKSeg::load( const QString& file )
       if ( ok )
         KIG_FILTER_PARSE_ERROR
       else
-        return 0;
+        return nullptr;
     }
 
     ObjectDrawer* d = new ObjectDrawer( color, width, visible, style.pen.style() );

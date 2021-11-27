@@ -248,7 +248,7 @@ std::vector<ObjectImp*> ObjectHierarchy::calc( const Args& a, const KigDocument&
     assert( a[i]->inherits( margrequirements[i] ) );
 
   std::vector<const ObjectImp*> stack;
-  stack.resize( mnodes.size() + mnumberofargs, 0 );
+  stack.resize( mnodes.size() + mnumberofargs, nullptr );
   std::copy( a.begin(), a.end(), stack.begin() );
   for( uint i = 0; i < mnodes.size(); ++i )
   {
@@ -473,7 +473,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
   { \
     error = i18n( "An error was encountered at line %1 in file %2.", \
               __LINE__, __FILE__ ); \
-    return 0; \
+    return nullptr; \
   }
 
   ObjectHierarchy* obhi = new ObjectHierarchy();
@@ -493,7 +493,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
 
     tmp = e.attribute( QStringLiteral("requirement") );
     const ObjectImpType* req = ObjectImpType::typeFromInternalName( tmp.toLatin1() );
-    if ( req == 0 ) req = ObjectImp::stype(); // sucks, i know..
+    if ( req == nullptr ) req = ObjectImp::stype(); // sucks, i know..
     obhi->margrequirements.resize( obhi->mnumberofargs, ObjectImp::stype() );
     obhi->musetexts.resize( obhi->mnumberofargs, "" );
     obhi->mselectstatements.resize( obhi->mnumberofargs, "" );
@@ -528,7 +528,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
     if ( !ok ) KIG_GENERIC_PARSE_ERROR;
 
     tmp = e.attribute( QStringLiteral("action") );
-    Node* newnode = 0;
+    Node* newnode = nullptr;
     if ( tmp == QLatin1String("calc") )
     {
       // ApplyTypeNode
@@ -541,7 +541,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
                       "Perhaps you have compiled Kig without support "
                       "for this object type, "
                       "or perhaps you are using an older Kig version.", QString( typen ) );
-        return 0;
+        return nullptr;
       }
 
       std::vector<int> parents;
@@ -572,7 +572,7 @@ ObjectHierarchy* ObjectHierarchy::buildSafeObjectHierarchy( const QDomElement& p
       QString typen = e.attribute( QStringLiteral("type") );
       if ( typen.isNull() ) KIG_GENERIC_PARSE_ERROR;
       ObjectImp* imp = ObjectImpFactory::instance()->deserialize( typen, e, error );
-      if ( ( ! imp ) && !error.isEmpty() ) return 0;
+      if ( ( ! imp ) && !error.isEmpty() ) return nullptr;
       newnode = new PushStackNode( imp );
     };
     obhi->mnodes.resize( qMax( size_t(id - obhi->mnumberofargs), obhi->mnodes.size() ) );
@@ -605,7 +605,7 @@ std::vector<ObjectCalcer*> ObjectHierarchy::buildObjects( const std::vector<Obje
     assert( os[i]->imp()->inherits( margrequirements[i] ) );
 
   std::vector<ObjectCalcer*> stack;
-  stack.resize( mnodes.size() + mnumberofargs, 0 );
+  stack.resize( mnodes.size() + mnumberofargs, nullptr );
   std::copy( os.begin(), os.end(), stack.begin() );
 
   for( uint i = 0; i < mnodes.size(); ++i )

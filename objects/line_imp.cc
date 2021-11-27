@@ -512,7 +512,7 @@ const ObjectImpType* AbstractLineImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "line", I18N_NOOP( "line" ),
-    I18N_NOOP( "Select a Line" ), 0, 0, 0, 0, 0, 0, 0 );
+    I18N_NOOP( "Select a Line" ), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr );
   return &t;
 }
 

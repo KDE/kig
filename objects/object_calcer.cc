@@ -29,7 +29,7 @@ void ObjectTypeCalcer::calc( const KigDocument& doc )
 
 ObjectTypeCalcer::ObjectTypeCalcer( const ObjectType* type, 
       const std::vector<ObjectCalcer*>& parents, bool sort )
-  : mparents( ( sort )?type->sortArgs( parents ):parents ), mtype( type ), mimp( 0 )
+  : mparents( ( sort )?type->sortArgs( parents ):parents ), mtype( type ), mimp( nullptr )
 {
   std::for_each( mparents.begin(), mparents.end(),
                  std::bind2nd( std::mem_fun( &ObjectCalcer::addChild ), this ) );
@@ -122,14 +122,14 @@ const ObjectType* ObjectTypeCalcer::type() const
 }
 
 ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, const char* pname )
-  : mimp( 0 ), mparent( parent ), mparenttype( 0 )
+  : mimp( nullptr ), mparent( parent ), mparenttype( nullptr )
 {
   mparent->addChild( this );
   mpropgid = mparent->imp()->getPropGid( pname );
 }
 
 ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, int propid, bool islocal )
-  : mimp( 0 ), mparent( parent ), mparenttype( 0 )
+  : mimp( nullptr ), mparent( parent ), mparenttype( nullptr )
 {
   mparent->addChild( this );
   if ( islocal )
@@ -161,7 +161,7 @@ std::vector<ObjectCalcer*> ObjectPropertyCalcer::parents() const
 void ObjectPropertyCalcer::calc( const KigDocument& doc )
 {
   //if ( mparenttype != mparent->imp()->type() )
-  if ( mparenttype == 0 || *mparenttype != typeid( *(mparent->imp()) ) )
+  if ( mparenttype == nullptr || *mparenttype != typeid( *(mparent->imp()) ) )
   {
     mpropid = mparent->imp()->getPropLid( mpropgid );
 //    mparenttype = mparent->imp()->type();

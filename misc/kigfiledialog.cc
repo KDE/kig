@@ -15,7 +15,7 @@
 KigFileDialog::KigFileDialog( const QString& startDir, const QString& filter,
               const QString& caption,  QWidget* parent )
   : QFileDialog( parent, caption, startDir, filter ),
-    mow( 0L )
+    mow( nullptr )
 {
   setAcceptMode( QFileDialog::AcceptSave );
   setFileMode( QFileDialog::AnyFile );

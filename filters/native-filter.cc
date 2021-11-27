@@ -93,7 +93,7 @@ KigDocument* KigFilterNative::load( const QString& file)
   if ( ! ffile.open( QIODevice::ReadOnly ) )
   {
     fileNotFound( file );
-    return 0;
+    return nullptr;
   };
 
   QFile kigdoc( file );
@@ -182,7 +182,7 @@ KigDocument* KigFilterNative::load( const QDomDocument& doc )
   {
     notSupported( i18n( "This file was created by Kig version \"%1\", "
                         "which this version cannot open.", version ) );
-    return 0;
+    return nullptr;
   }
   else if ( major == 0 && minor <= 3 )
   {
@@ -193,7 +193,7 @@ KigDocument* KigFilterNative::load( const QDomDocument& doc )
                         "version (0.4 to 0.6),\n"
                         "and then save it again, which will save it in the "
                         "new format.", version ) );
-    return 0;
+    return nullptr;
   }
   else if ( major == 0 && minor <= 6 )
     return load04( main );
@@ -271,14 +271,14 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
           KIG_FILTER_PARSE_ERROR;
       elems = sortElems( elems );
 
-      retcalcers.resize( elems.size(), 0 );
+      retcalcers.resize( elems.size(), nullptr );
 
       for ( std::vector<HierElem>::iterator i = elems.begin();
             i != elems.end(); ++i )
       {
         QDomElement e = i->el;
         bool internal = e.attribute( QStringLiteral("internal") ) == QLatin1String("true") ? true : false;
-        ObjectCalcer* o = 0;
+        ObjectCalcer* o = nullptr;
         if ( e.tagName() == QLatin1String("Data") )
         {
           QString tmp = e.attribute( QStringLiteral("type") );
@@ -289,7 +289,7 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
           if ( ( !imp ) && !error.isEmpty() )
           {
             parseError( error );
-            return 0;
+            return nullptr;
           }
           o = new ObjectConstCalcer( imp );
         }
@@ -327,7 +327,7 @@ KigDocument* KigFilterNative::load04( const QDomElement& docelem )
                                 "Perhaps you have compiled Kig without support "
                                 "for this object type,"
                                 "or perhaps you are using an older Kig version.", tmp ) );
-            return 0;
+            return nullptr;
           };
 
           std::vector<ObjectCalcer*> parents;
@@ -441,7 +441,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
           parents.push_back( parent );
         }
 
-        ObjectCalcer* o = 0;
+        ObjectCalcer* o = nullptr;
 
         if ( e.tagName() == QLatin1String("Data") )
         {
@@ -452,7 +452,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
           if ( ( !imp ) && !error.isEmpty() )
           {
             parseError( error );
-            return 0;
+            return nullptr;
           }
           o = new ObjectConstCalcer( imp );
         }
@@ -524,7 +524,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
                                   "Perhaps you have compiled Kig without support "
                                   "for this object type,"
                                   "or perhaps you are using an older Kig version.", tmp ) );
-              return 0;
+              return nullptr;
             }
           }
 
@@ -544,7 +544,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
         else KIG_FILTER_PARSE_ERROR;
 
         o->calc( *ret );
-        calcers.resize( id, 0 );
+        calcers.resize( id, nullptr );
         calcers[id-1] = o;
       }
     }
@@ -585,7 +585,7 @@ KigDocument* KigFilterNative::load07( const QDomElement& docelem )
         if ( !tmp.isEmpty() )
           f.fromString( tmp );
 
-        ObjectConstCalcer* namecalcer = 0;
+        ObjectConstCalcer* namecalcer = nullptr;
         tmp = e.attribute( QStringLiteral("namecalcer") );
         if ( tmp != QLatin1String("none") && !tmp.isEmpty() )
         {

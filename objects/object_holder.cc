@@ -11,7 +11,7 @@
 #include "../misc/coordinate.h"
 
 ObjectHolder::ObjectHolder( ObjectCalcer* calcer )
-  : mcalcer( calcer ), mdrawer( new ObjectDrawer ), mnamecalcer( 0 )
+  : mcalcer( calcer ), mdrawer( new ObjectDrawer ), mnamecalcer( nullptr )
 {
 }
 
@@ -23,7 +23,7 @@ ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer,
 }
 
 ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer )
-  : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( 0 )
+  : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( nullptr )
 {
 }
 

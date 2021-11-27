@@ -32,7 +32,7 @@
 #include <KXMLGUIFactory>
 
 Kig::Kig()
-  : KParts::MainWindow(), m_part( 0 )
+  : KParts::MainWindow(), m_part( nullptr )
 {
   KService::Ptr kigpartService = KService::serviceByDesktopName(QStringLiteral("kig_part"));
 

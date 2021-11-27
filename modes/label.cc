@@ -81,7 +81,7 @@ TextLabelModeBase::~TextLabelModeBase()
 TextLabelModeBase::TextLabelModeBase( KigPart& doc )
   : KigMode( doc ), d( new Private )
 {
-  d->locationparent = 0;
+  d->locationparent = nullptr;
   d->lpc = 0;
   d->mwawd = SelectingLocation;
   d->wiz = new TextLabelWizard( doc.widget(), this );
@@ -104,7 +104,7 @@ void TextLabelModeBase::leftClicked( QMouseEvent* e, KigWidget* )
 
 void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v )
 {
-  leftReleased( e, v, 0 );
+  leftReleased( e, v, nullptr );
 }
 
 /*
@@ -233,7 +233,7 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
   {
     std::vector<ObjectHolder*> os = mdoc.document().whatAmIOn( w->fromScreen( e->pos() ), *w );
     bool attachable = false;
-    d->locationparent = 0;
+    d->locationparent = nullptr;
     for ( std::vector<ObjectHolder*>::iterator i = os.begin(); i != os.end(); ++i )
     {
       if( (*i)->imp()->attachPoint().valid() ||
@@ -264,7 +264,7 @@ void TextLabelModeBase::mouseMoved( QMouseEvent* e, KigWidget* w )
     else
     {
       w->setCursor( Qt::CrossCursor );
-      mdoc.emitStatusBarText( 0 );
+      mdoc.emitStatusBarText( nullptr );
       w->updateWidget();
     };
   }
@@ -309,7 +309,7 @@ bool TextLabelModeBase::canFinish()
     assert( d->args.size() == 0 );
 
   for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
-    finish = finish && ( *i != 0 );
+    finish = finish && ( *i != nullptr );
 
   if ( ! finish )
   {
@@ -339,14 +339,14 @@ bool TextLabelModeBase::percentCountChanged( uint percentcount )
   }
   else if ( d->lpc < percentcount )
   {
-    d->args.resize( percentcount, 0 );
+    d->args.resize( percentcount, nullptr );
   };
 
   if ( percentcount != 0 )
   {
     bool finished = true;
     for ( argvect::iterator i = d->args.begin(); i != d->args.end(); ++i )
-      finished &= ( *i != 0 );
+      finished &= ( *i != nullptr );
     assert( percentcount == d->args.size() );
     finish = finished;
   };
@@ -470,7 +470,7 @@ void TextLabelConstructionMode::finish(
         i != props.end(); ++i )
     args.push_back( i->get() );
 
-  ObjectHolder* label = 0;
+  ObjectHolder* label = nullptr;
   if ( locationparent )
     label = ObjectFactory::instance()->attachedLabel( s, locationparent, coord, needframe, args, mdoc.document() );
   else
@@ -569,7 +569,7 @@ void TextLabelRedefineMode::finish(
    * is actually a child of this label
    */
   if ( locationparent && isChild( locationparent, mlabel ) )
-    locationparent = 0;
+    locationparent = nullptr;
   /*
    * take advantage of the method "getAttachPoint" that should
    * do all the work; it is also used when creating a new label

@@ -525,7 +525,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
         QStandardPaths::writableLocation( QStandardPaths::DocumentsLocation ), i18n( "Latex Documents (*.tex)" ),
         i18n( "Export as Latex" ), &w );
     kfd->setOptionCaption( i18n( "Latex Options" ) );
-    LatexExporterOptions* opts = new LatexExporterOptions( 0L );
+    LatexExporterOptions* opts = new LatexExporterOptions( nullptr );
     kfd->setOptionsWidget( opts );
 
     opts->setGrid( doc.document().grid() );

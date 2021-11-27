@@ -188,7 +188,7 @@ BogusPointImp::~BogusPointImp()
 const ObjectImpType* BogusPointImp::stype()
 {
   static const ObjectImpType t(
-    0, "boguspoint",
+    nullptr, "boguspoint",
     "SHOULDNOTBESEEN",
     "SHOULDNOTBESEEN",
     "SHOULDNOTBESEEN",

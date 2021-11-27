@@ -336,7 +336,7 @@ void ConicRadicalConstructor::drawprelim(
       args.push_back( &zeroindex );
       ObjectImp* data = mtype->calc( args, doc );
       drawer.draw( *data, p, true );
-      delete data; data = 0;
+      delete data; data = nullptr;
       args.pop_back();
       args.pop_back();
     };
@@ -1114,7 +1114,7 @@ void PolygonBCVConstructor::drawprelim( const ObjectDrawer& drawer, KigPainter& 
   ObjectImp* data = mtype->calc( args, doc );
   drawer.draw( *data, p, true );
   delete data;
-  data = 0;
+  data = nullptr;
 }
 
 void PolygonBCVConstructor::plug( KigPart*, KigGUIAction* )

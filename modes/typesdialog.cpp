@@ -101,7 +101,7 @@ MacroListElement::~MacroListElement()
 {
   // do NOT delete the associated macro, but instead safely release the
   // pointer, as it's kept elsewhere
-  mmacro = 0;
+  mmacro = nullptr;
 }
 
 QString MacroListElement::name() const
@@ -180,7 +180,7 @@ void TypesModel::removeElements( const QModelIndexList& elems )
 
         delete (*mit);
         mit = melems.erase( mit );
-        element = 0;
+        element = nullptr;
 
         endRemoveRows();
       }
@@ -221,11 +221,11 @@ bool TypesModel::isMacro( const QModelIndex& index ) const
 Macro* TypesModel::macroFromIndex( const QModelIndex& index ) const
 {
   if ( !index.isValid() || index.row() < 0 || index.row() >= static_cast<int>( melems.size() ) )
-    return 0;
+    return nullptr;
 
   BaseListElement* el = melems[ index.row() ];
   if ( !el->isMacro() )
-    return 0;
+    return nullptr;
 
   return static_cast<MacroListElement*>( el )->getMacro();
 }
@@ -593,7 +593,7 @@ bool TypesDialog::loadGeogebraTools( const QString& sFrom, std::vector<Macro*>& 
         const GeogebraSection f = ggttransformer.getSection( i );
         ObjectHierarchy hrchy( f.getInputObjects(), f.getOutputObjects() );
         MacroConstructor* ctor = new MacroConstructor( hrchy, ggttransformer.getSection( i ).getName(), ggttransformer.getSection( i ).getDescription() );
-        ConstructibleAction* act = new ConstructibleAction( ctor, 0 );
+        ConstructibleAction* act = new ConstructibleAction( ctor, nullptr );
 
         Macro* newmacro = new Macro( act, ctor );
         vec.push_back( newmacro );

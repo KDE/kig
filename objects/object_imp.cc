@@ -258,7 +258,7 @@ const ObjectImpType* ObjectImpType::typeFromInternalName( const char* string )
   QByteArray s( string );
   std::map<QByteArray, const ObjectImpType*>::iterator i = sd()->namemap.find( s );
   if ( i == sd()->namemap.end() )
-    return 0;
+    return nullptr;
   else return i->second;
 }
 
@@ -270,7 +270,7 @@ bool ObjectImp::inherits( const ObjectImpType* t ) const
 const ObjectImpType* ObjectImp::stype()
 {
   static const ObjectImpType t(
-    0, "any",
+    nullptr, "any",
     I18N_NOOP( "Object" ),
     I18N_NOOP( "Select this object" ),
     I18N_NOOP( "Select object %1" ),

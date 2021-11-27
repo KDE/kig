@@ -18,7 +18,7 @@ class LinksLabel : public QWidget
   Q_OBJECT
 
 public:
-  explicit LinksLabel( QWidget* parent = 0 );
+  explicit LinksLabel( QWidget* parent = nullptr );
   ~LinksLabel();
 
   class LinksLabelEditBuf

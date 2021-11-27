@@ -356,7 +356,7 @@ const ObjectImpType* CursorPointType::impRequirement( const ObjectImp* o, const 
   if ( o->inherits( PointImp::stype() ) )
     return PointImp::stype();
 
-  return 0;
+  return nullptr;
 }
 
 bool CursorPointType::isDefinedOnOrThrough( const ObjectImp*, const Args& ) const
@@ -699,7 +699,7 @@ const ObjectImpType* MeasureTransportType::impRequirement( const ObjectImp* obj,
   if ( obj->inherits( ArcImp::stype () ) )
     return ArcImp::stype ();
 
-  return 0;
+  return nullptr;
 }
 
 bool MeasureTransportType::isDefinedOnOrThrough( const ObjectImp* o, const Args& ) const

@@ -32,7 +32,7 @@ class TypesModel
   std::vector<BaseListElement*> melems;
 
 public:
-  explicit TypesModel( QObject* parent = 0 );
+  explicit TypesModel( QObject* parent = nullptr );
   virtual ~TypesModel();
 
   void addMacros( const std::vector<Macro*>& macros );

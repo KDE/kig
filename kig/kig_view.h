@@ -95,7 +95,7 @@ public:
    */
   KigWidget( KigPart* doc,
              KigView* view,
-             QWidget* parent = 0,
+             QWidget* parent = nullptr,
              bool fullscreen = false
 	   );
   ~KigWidget();
@@ -234,7 +234,7 @@ class KigView
 public:
   explicit KigView( KigPart* part,
                     bool fullscreen = false,
-                    QWidget* parent = 0
+                    QWidget* parent = nullptr
                   );
   ~KigView();
 

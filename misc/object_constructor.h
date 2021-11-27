@@ -332,10 +332,10 @@ class MacroConstructor
 public:
   MacroConstructor( const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
                     const QString& name, const QString& description,
-                    const QByteArray& iconfile = 0 );
+                    const QByteArray& iconfile = nullptr );
   MacroConstructor( const ObjectHierarchy& hier, const QString& name,
                     const QString& desc,
-                    const QByteArray& iconfile = 0 );
+                    const QByteArray& iconfile = nullptr );
   ~MacroConstructor();
 
   const ObjectHierarchy& hierarchy() const;

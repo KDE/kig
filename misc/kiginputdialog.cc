@@ -46,8 +46,8 @@ public:
 };
 
 KigInputDialogPrivate::KigInputDialogPrivate()
-  : m_label( 0L ), m_lineEditFirst( 0L ), m_lineEditSecond( 0L ), m_comboBox( 0L ),
-    m_doc( 0 )
+  : m_label( nullptr ), m_lineEditFirst( nullptr ), m_lineEditSecond( nullptr ), m_comboBox( nullptr ),
+    m_doc( nullptr )
 {
 }
 
@@ -257,7 +257,7 @@ Goniometry KigInputDialog::goniometry() const
 void KigInputDialog::getCoordinate( const QString& caption, const QString& label,
       QWidget* parent, bool* ok, const KigDocument& doc, Coordinate* cvalue )
 {
-  getTwoCoordinates( caption, label, parent, ok, doc, cvalue, 0 );
+  getTwoCoordinates( caption, label, parent, ok, doc, cvalue, nullptr );
 }
 
 void KigInputDialog::getTwoCoordinates( const QString& caption, const QString& label,

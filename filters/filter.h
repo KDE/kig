@@ -42,7 +42,7 @@ protected:
                          "line %1 in file %2.", \
         __LINE__, __FILE__ ); \
     parseError( locs ); \
-    return 0; \
+    return nullptr; \
   }
 
 /**

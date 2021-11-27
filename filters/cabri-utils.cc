@@ -13,6 +13,14 @@
 
 #include <KLocalizedString>
 
+#define KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR \
+{ \
+  QString locs = i18n( "An error was encountered at line %1 in file %2.", \
+      __LINE__, __FILE__ ); \
+  parseError( locs ); \
+  return nullptr; \
+}
+
 #define KIG_CABRI_FILTER_PARSE_ERROR \
 { \
   QString locs = i18n( "An error was encountered at line %1 in file %2.", \
@@ -218,25 +226,25 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
 
   QRegExp firstlinere( "^([^:]+): ([^,]+), ([^,]+), CN:([^,]*), VN:(.*)$" );
   if ( ! firstlinere.exactMatch( line1 ) )
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   tmp = firstlinere.cap( 1 );
   myobj->id = tmp.toUInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   tmp = firstlinere.cap( 2 );
   myobj->type = tmp.toLatin1();
 
   tmp = firstlinere.cap( 3 );
   myobj->specification = tmp.toInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
   // for "Eq/Co" this is presumably what we want:
   //  0: x coordinate (of point)
   //  1: y coordinate (of point)
 
   tmp = firstlinere.cap( 4 );
   uint numberOfParents = tmp.toUInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   tmp = firstlinere.cap( 5 );
   // i have no idea what this number means..
@@ -257,15 +265,15 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
 
     tmp = secondlinere.cap( 4 );
     myobj->lineSegLength = tmp.toInt( &ok );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     tmp = secondlinere.cap( 5 );
     myobj->lineSegSplit = tmp.toInt( &ok );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     tmp = secondlinere.cap( 6 );
     myobj->specialAppearanceSwitch = tmp.toInt( &ok );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     tmp = secondlinere.cap( 7 );
     myobj->visible = tmp == QLatin1String("V");
@@ -290,7 +298,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
 
     tmp = secondlinere2.cap( 6 );
     myobj->specialAppearanceSwitch = tmp.toInt( &ok );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     tmp = secondlinere2.cap( 7 );
     myobj->visible = tmp == QLatin1String("V");
@@ -300,12 +308,12 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
 
   }
   else
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   QString line3 = CabriNS::readLine( f );
   QRegExp thirdlinere( "^(Const: ([^,]*),? ?)?(Val: ([^,]*)(,(.*))?)?$" );
   if ( ! thirdlinere.exactMatch( line3 ) )
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   tmp = thirdlinere.cap( 2 );
   const QStringList parentsids = tmp.split( ' ', QString::SkipEmptyParts );
@@ -313,10 +321,10 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
         i != parentsids.end(); ++i )
   {
     myobj->parents.push_back( ( *i ).toInt( &ok ) );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
   }
   if ( myobj->parents.size() != numberOfParents )
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   tmp = thirdlinere.cap( 4 );
   const QStringList valIds = tmp.split( ' ', QString::SkipEmptyParts );
@@ -324,7 +332,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
         i != valIds.end(); ++i )
   {
     myobj->data.push_back( ( *i ).toDouble( &ok ) );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
   }
 
   QString thirdlineextra = thirdlinere.cap( 6 );
@@ -334,18 +342,18 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
     if ( textMetrics.indexIn( thirdlineextra ) != -1 )
     {
       double xa = textMetrics.cap( 1 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       double ya = textMetrics.cap( 2 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       double tw = textMetrics.cap( 3 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       double th = textMetrics.cap( 4 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       myobj->textRect = Rect( xa, ya, tw, th );
     }
     QString textline = CabriNS::readLine( f );
     if ( textline.isEmpty() )
-      KIG_CABRI_FILTER_PARSE_ERROR;
+      KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
     if ( myobj->type == "Formula" )
     {
       // Just hope there is no escaping!
@@ -371,7 +379,7 @@ CabriObject* CabriReader_v10::readObject( QFile& f )
   {
     QRegExp fontlinere( "^p: (\\d+), ([^,]+), S: (\\d+) C: (\\d+) Fa: (\\d+)$" );
     if ( !fontlinere.exactMatch( line4 ) )
-      KIG_CABRI_FILTER_PARSE_ERROR;
+      KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     line4 = CabriNS::readLine( f );
   }
@@ -504,7 +512,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
 #endif
   QRegExp firstlinere( "^([^:]+): ([^,]+), (Const: [,0-9\\s]+)?(int ind:([^,]+),\\s)?(cart, )?(side:(\\d+), )?(inc\\.elmts: ([,0-9\\s]+))?(axis:(x|y), )?(on mark, )?(Val: ([^,]+))?(.*)$" );
   if ( !firstlinere.exactMatch( line ) )
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   bool ok = true;
   QString tmp;
@@ -512,7 +520,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   // id
   tmp = firstlinere.cap( 1 );
   myobj->id = tmp.toUInt( &ok );
-  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+  if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   // type
   tmp = firstlinere.cap( 2 );
@@ -521,7 +529,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   // parents
   tmp = firstlinere.cap( 3 );
   if ( !extractValuesFromString( tmp, myobj->parents ) )
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   // data
   tmp = firstlinere.cap( 15 );
@@ -529,7 +537,7 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   for ( QStringList::const_iterator i = valIds.begin(); i != valIds.end(); ++i )
   {
     myobj->data.push_back( ( *i ).toDouble( &ok ) );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
   }
 
   // intersection id (if present)
@@ -537,13 +545,13 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   if ( !tmp.isEmpty() )
   {
     long intId = tmp.toLong( &ok, 16 );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 #ifdef CABRI_DEBUG
     qDebug() << "+++++++++ intId: " << intId;
 #endif
     if ( intId == 0 ) myobj->intersectionId = -1;
     else if ( intId == 0x10000 ) myobj->intersectionId = 1;
-    else KIG_CABRI_FILTER_PARSE_ERROR;
+    else KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
   }
 
   // side of a polygon (if present)
@@ -551,13 +559,13 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
   if ( !tmp.isEmpty() )
   {
     myobj->side = tmp.toInt( &ok );
-    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+    if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
   }
 
   // inc.elements (if present)
   tmp = firstlinere.cap( 10 );
   if ( !extractValuesFromString( tmp, myobj->incs ) )
-    KIG_CABRI_FILTER_PARSE_ERROR;
+    KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
   line = CabriNS::readLine( f );
 
@@ -580,13 +588,13 @@ CabriObject* CabriReader_v12::readObject( QFile& f )
     else if ( textMetrics.exactMatch( line ) )
     {
       double xa = textMetrics.cap( 1 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       double ya = textMetrics.cap( 2 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       double tw = textMetrics.cap( 3 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       double th = textMetrics.cap( 4 ).toDouble( &ok );
-      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR;
+      if ( !ok ) KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
       myobj->textRect = Rect( xa, ya, tw, th );
     }
     else

@@ -638,7 +638,7 @@ const ObjectImpType* AbstractPolygonImp::stype()
   static const ObjectImpType t(
     Parent::stype(), "abstractpolygon",
     I18N_NOOP( "polygon" ),
-    I18N_NOOP( "Select this polygon" ), 0, 0, 0, 0, 0, 0, 0 );
+    I18N_NOOP( "Select this polygon" ), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr );
   return &t;
 }
 

@@ -58,7 +58,7 @@ public:
   /**
    * Default constructor
    */
-  explicit KigPart( QWidget* parentWidget, QObject* parent = 0,
+  explicit KigPart( QWidget* parentWidget, QObject* parent = nullptr,
            const QVariantList& = QVariantList() );
 
   /**
