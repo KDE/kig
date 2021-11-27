@@ -13,7 +13,7 @@
 #include <QList>
 #include <QStringList>
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 class Coordinate;
 class KigDocument;
