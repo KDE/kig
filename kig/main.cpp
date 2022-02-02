@@ -54,7 +54,7 @@ static void dataMigration()
   if ( !file.isEmpty() )
   {
     QFile macros( file );
-    const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
+    const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppLocalDataLocation ) );
     const QDir typesDir( writeableDataLocation.absoluteFilePath( QStringLiteral("kig-types") ) );
 
     if ( !typesDir.exists() )

@@ -63,7 +63,7 @@ static const QString typesFile = QStringLiteral("macros.kigt");
 QStringList getDataFiles( const QString & folder )
 {
   QStringList dataFiles;
-  const QStringList allFolders = QStandardPaths::locateAll( QStandardPaths::DataLocation, folder, QStandardPaths::LocateDirectory );
+  const QStringList allFolders = QStandardPaths::locateAll( QStandardPaths::AppLocalDataLocation, folder, QStandardPaths::LocateDirectory );
 
   for( const QString & folderPath : allFolders )
   {
@@ -1102,7 +1102,7 @@ void KigPart::coordSystemChanged( int id )
 
 void KigPart::saveTypes()
 {
-  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppLocalDataLocation ) );
   const QDir typesDir( writeableDataLocation.absoluteFilePath( QStringLiteral("kig-types") ) );
 
   if ( !typesDir.exists() )
@@ -1122,7 +1122,7 @@ void KigPart::saveTypes()
 
 void KigPart::loadTypes()
 {
-  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::DataLocation ) );
+  const QDir writeableDataLocation ( QStandardPaths::writableLocation( QStandardPaths::AppLocalDataLocation ) );
   const QDir typesDir( writeableDataLocation.absoluteFilePath( QStringLiteral("kig-types") ) );
 
   if ( typesDir.exists() )
