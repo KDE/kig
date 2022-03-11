@@ -86,7 +86,7 @@ QValidator::State CoordinateValidator::validate( QString & input, int & pos ) co
 {
   QString tinput = withoutSpaces( input );
   if ( tinput.isEmpty() )
-    return Invalid;
+    return Intermediate;
   if ( tinput.at( tinput.length() - 1 ) == ')' ) tinput.truncate( tinput.length() - 1 );
   if ( mtype )
   {
