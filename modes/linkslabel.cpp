@@ -9,7 +9,6 @@
 #include <kurllabel.h>
 #include <QLayout>
 
-#include <vector>
 #include <algorithm>
 #include <functional>
 
