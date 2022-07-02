@@ -80,8 +80,8 @@ set_package_properties(
 )
 
 set_package_properties(
-   Qt5XmlPatterns PROPERTIES
-   DESCRIPTION "Qt5 XmlPatterns Module"
+   Qt${QT_MAJOR_VERSION}XmlPatterns PROPERTIES
+   DESCRIPTION "Qt${QT_MAJOR_VERSION} XmlPatterns Module"
    URL "https://qt.io/"
    TYPE OPTIONAL
    PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
@@ -210,14 +210,14 @@ set(kigpart_PART_SRCS
    kig/kig_view.cpp
 )
 
-if (Qt5XmlPatterns_FOUND)
+if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
   set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
   geogebra/geogebratransformer.cpp
   geogebra/geogebrasection.cpp
   filters/geogebra-filter.cpp)
-  qt5_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/geogebra/geogebra.qrc)
+  qt_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/geogebra/geogebra.qrc)
   add_definitions(-DWITH_GEOGEBRA=1)
-endif(Qt5XmlPatterns_FOUND)
+endif()
 
 ki18n_wrap_ui(kigpart_PART_SRCS
    modes/typeswidget.ui
@@ -250,9 +250,9 @@ generate_export_header(kigpart)
 kcoreaddons_desktop_to_json(kigpart kig/kig_part.desktop)
 
 target_link_libraries(kigpart
-  Qt5::Gui
-  Qt5::Svg
-  Qt5::PrintSupport
+  Qt::Gui
+  Qt::Svg
+  Qt::PrintSupport
   KF5::Crash
   KF5::Parts
   KF5::I18n
@@ -267,9 +267,9 @@ if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
 endif(BoostPython_FOUND)
 
-if (Qt5XmlPatterns_FOUND)
-  target_link_libraries(kigpart Qt5::XmlPatterns)
-endif(Qt5XmlPatterns_FOUND)
+if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
+  target_link_libraries(kigpart Qt::XmlPatterns)
+endif(Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
 
 ki18n_install(po)
 if (KF5DocTools_FOUND)
