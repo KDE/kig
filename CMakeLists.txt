@@ -260,7 +260,6 @@ target_link_libraries(kigpart
   KF5::IconThemes
   KF5::ConfigWidgets
   KF5::Archive
-  ${KDE5_KUTILS_LIBS}
 )
 
 if(BoostPython_FOUND)
