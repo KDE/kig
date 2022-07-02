@@ -50,8 +50,10 @@ void AsyExporter::run( const KigPart& doc, KigWidget& w )
   opts->setGrid( true );
   opts->setAxes( true );
   opts->setExtraFrame( false );
-  if ( !kfd->exec() )
+  if ( !kfd->exec() ) {
+      delete kfd;
     return;
+  }
 
   QString file_name = kfd->selectedFile();
   bool showgrid = opts->showGrid();
