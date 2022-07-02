@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
 # KDE Application Version, managed by release script
 set(RELEASE_SERVICE_VERSION_MAJOR "22")
@@ -9,25 +9,11 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kig VERSION ${RELEASE_SERVICE_VERSION})
 
-find_package(Qt5Svg REQUIRED)
-find_package(Qt5PrintSupport REQUIRED)
-find_package(Qt5XmlPatterns 5.5.1)
+
+set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
 find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
-
-find_package(KF5Parts REQUIRED)
-find_package(KF5DocTools REQUIRED)
-find_package(KF5I18n REQUIRED)
-find_package(KF5TextEditor REQUIRED)
-find_package(KF5IconThemes REQUIRED)
-find_package(KF5ConfigWidgets REQUIRED)
-find_package(KF5Archive REQUIRED)
-find_package(KF5XmlGui 5.1 REQUIRED)
-find_package(KF5Crash 5.15 REQUIRED)
-find_package(KF5CoreAddons REQUIRED)
-
-set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
 include(ECMAddAppIcon)
 include(ECMInstallIcons)
@@ -38,6 +24,25 @@ include(KDECMakeSettings)
 include(FeatureSummary)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
+
+set(QT_MIN_VERSION "5.15.0")
+set(KF5_MIN_VERSION "5.90.0")
+set(KDE_COMPILERSETTINGS_LEVEL "5.82")
+
+find_package(KF5Parts ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5DocTools ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5TextEditor ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5IconThemes ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5ConfigWidgets ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5Archive ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5CoreAddons ${KF5_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}Svg ${QT_REQUIRED_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_REQUIRED_VERSION}REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}XmlPatterns ${QT_REQUIRED_VERSION})
+
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KIG VERSION_HEADER kig_version.h)
 
