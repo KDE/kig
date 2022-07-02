@@ -275,7 +275,7 @@ ki18n_install(po)
 if (KF5DocTools_FOUND)
     kdoctools_install(po)
 endif()
-install(TARGETS kigpart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/parts)
+install(TARGETS kigpart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/parts)
 install(FILES org.kde.kig.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 # unit tests
