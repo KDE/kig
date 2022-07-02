@@ -12,10 +12,8 @@
 
 inline KAboutData kigAboutData( const char* name, const char* iname )
 {
-  const char* description = I18N_NOOP( "KDE Interactive Geometry" );
-
   KAboutData tmp( name, i18n(iname), KIG_VERSION_STRING,
-				   i18n(description), KAboutLicense::GPL,
+                   i18n("KDE Interactive Geometry"), KAboutLicense::GPL,
 				   i18n( "(C) 2002-2005, The Kig developers" ),
 				   QString(), QStringLiteral("https://edu.kde.org/kig") );
 
