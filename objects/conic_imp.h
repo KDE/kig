@@ -46,7 +46,7 @@ public:
   int numberOfProperties() const override;
   const ObjectImpType* impRequirementForProperty( int which ) const override;
   bool isPropertyDefinedOnOrThroughThisImp( int which ) const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   const char* iconForProperty( int which ) const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
@@ -183,7 +183,7 @@ public:
      const KigDocument& doc ) const;
 
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;

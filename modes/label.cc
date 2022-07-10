@@ -34,6 +34,7 @@
 #include <KCursor>
 #include <QDebug>
 #include <KMessageBox>
+#include <KLazyLocalizedString>
 
 #include <algorithm>
 #include <functional>
@@ -155,11 +156,11 @@ void TextLabelModeBase::leftReleased( QMouseEvent* e, KigWidget* v,
     p.setObjectName( QStringLiteral("text_label_select_arg_popup") );
     QAction* act = p.addAction( i18n( "Name" ) );
     act->setData( QVariant::fromValue( 0 ) );
-    QByteArrayList l = o->imp()->properties();
+    QList<KLazyLocalizedString> l = o->imp()->properties();
     assert( l.size() == o->imp()->numberOfProperties() );
     for ( int i = 0; i < l.size(); ++i )
     {
-      QString s = i18n( l[i] );
+      QString s = l[i].toString();
       const char* iconfile = o->imp()->iconForProperty( i );
       if ( iconfile && *iconfile )
       {

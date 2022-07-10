@@ -280,47 +280,47 @@ const QByteArrayList OpenPolygonalImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList AbstractPolygonImp::properties() const
+const QList<KLazyLocalizedString> AbstractPolygonImp::properties() const
 {
   return Parent::properties();
 }
 
-const QByteArrayList FilledPolygonImp::properties() const
+const QList<KLazyLocalizedString> FilledPolygonImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l += I18N_NOOP( "Number of sides" );
-  l += I18N_NOOP( "Perimeter" );
-  l += I18N_NOOP( "Surface" );
-  l += I18N_NOOP( "Boundary Polygonal" );
-  l += I18N_NOOP( "Open Boundary Polygonal" );
-  l += I18N_NOOP( "Center of Mass of the Vertices" );
-  l += I18N_NOOP( "Winding Number" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l += kli18n( "Number of sides" );
+  l += kli18n( "Perimeter" );
+  l += kli18n( "Surface" );
+  l += kli18n( "Boundary Polygonal" );
+  l += kli18n( "Open Boundary Polygonal" );
+  l += kli18n( "Center of Mass of the Vertices" );
+  l += kli18n( "Winding Number" );
   assert( l.size() == FilledPolygonImp::numberOfProperties() );
   return l;
 }
 
-const QByteArrayList ClosedPolygonalImp::properties() const
+const QList<KLazyLocalizedString> ClosedPolygonalImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l += I18N_NOOP( "Number of sides" );
-  l += I18N_NOOP( "Perimeter" );
-  l += I18N_NOOP( "Surface" );
-  l += I18N_NOOP( "Inside Polygon" );
-  l += I18N_NOOP( "Open Polygonal Curve" );
-  l += I18N_NOOP( "Center of Mass of the Vertices" );
-  l += I18N_NOOP( "Winding Number" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l += kli18n( "Number of sides" );
+  l += kli18n( "Perimeter" );
+  l += kli18n( "Surface" );
+  l += kli18n( "Inside Polygon" );
+  l += kli18n( "Open Polygonal Curve" );
+  l += kli18n( "Center of Mass of the Vertices" );
+  l += kli18n( "Winding Number" );
   assert( l.size() == ClosedPolygonalImp::numberOfProperties() );
   return l;
 }
 
-const QByteArrayList OpenPolygonalImp::properties() const
+const QList<KLazyLocalizedString> OpenPolygonalImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l += I18N_NOOP( "Number of sides" );
-  l += I18N_NOOP( "Length" );
-  l += I18N_NOOP( "Bézier Curve" );
-  l += I18N_NOOP( "Associated Polygon" );
-  l += I18N_NOOP( "Closed Polygonal Curve" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l += kli18n( "Number of sides" );
+  l += kli18n( "Length" );
+  l += kli18n( "Bézier Curve" );
+  l += kli18n( "Associated Polygon" );
+  l += kli18n( "Closed Polygonal Curve" );
   assert( l.size() == OpenPolygonalImp::numberOfProperties() );
   return l;
 }

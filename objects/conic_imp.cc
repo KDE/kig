@@ -4,6 +4,7 @@
 
 #include "conic_imp.h"
 
+#include <KLazyLocalizedString>
 #include <math.h>
 
 #include "bogus_imp.h"
@@ -64,15 +65,15 @@ const QByteArrayList ConicImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList ConicImp::properties() const
+const QList<KLazyLocalizedString> ConicImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Conic Type" );
-  l << I18N_NOOP( "Center" );
-  l << I18N_NOOP( "First Focus" );
-  l << I18N_NOOP( "Second Focus" );
-  l << I18N_NOOP( "Cartesian Equation" );
-  l << I18N_NOOP( "Polar Equation" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Conic Type" );
+  l << kli18n( "Center" );
+  l << kli18n( "First Focus" );
+  l << kli18n( "Second Focus" );
+  l << kli18n( "Cartesian Equation" );
+  l << kli18n( "Polar Equation" );
   assert( l.size() == ConicImp::numberOfProperties() );
   return l;
 }
@@ -514,12 +515,12 @@ int ConicArcImp::numberOfProperties() const
   return Parent::numberOfProperties() + 3;
 }
 
-const QByteArrayList ConicArcImp::properties() const
+const QList<KLazyLocalizedString> ConicArcImp::properties() const
 {
-  QByteArrayList ret = Parent::properties();
-  ret << I18N_NOOP( "Supporting Conic" );
-  ret << I18N_NOOP( "First End Point" );
-  ret << I18N_NOOP( "Second End Point" );
+  QList<KLazyLocalizedString> ret = Parent::properties();
+  ret << kli18n( "Supporting Conic" );
+  ret << kli18n( "First End Point" );
+  ret << kli18n( "Second End Point" );
   assert( ret.size() == ConicArcImp::numberOfProperties() );
   return ret;
 }

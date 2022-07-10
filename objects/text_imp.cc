@@ -65,10 +65,10 @@ const QByteArrayList TextImp::propertiesInternalNames() const
   return ret;
 }
 
-const QByteArrayList TextImp::properties() const
+const QList<KLazyLocalizedString> TextImp::properties() const
 {
-  QByteArrayList ret = Parent::properties();
-  ret << I18N_NOOP( "Text" );
+  QList<KLazyLocalizedString> ret = Parent::properties();
+  ret << kli18n( "Text" );
   return ret;
 }
 
@@ -212,10 +212,10 @@ const QByteArrayList NumericTextImp::propertiesInternalNames() const
   return ret;
 }
 
-const QByteArrayList NumericTextImp::properties() const
+const QList<KLazyLocalizedString> NumericTextImp::properties() const
 {
-  QByteArrayList ret = Parent::properties();
-  ret << I18N_NOOP( "Numeric value" );
+  QList<KLazyLocalizedString> ret = Parent::properties();
+  ret << kli18n( "Numeric value" );
   return ret;
 }
 
@@ -304,10 +304,10 @@ const QByteArrayList BoolTextImp::propertiesInternalNames() const
   return ret;
 }
 
-const QByteArrayList BoolTextImp::properties() const
+const QList<KLazyLocalizedString> BoolTextImp::properties() const
 {
-  QByteArrayList ret = Parent::properties();
-  ret << I18N_NOOP( "Numeric value" );
+  QList<KLazyLocalizedString> ret = Parent::properties();
+  ret << kli18n( "Numeric value" );
   return ret;
 }
 

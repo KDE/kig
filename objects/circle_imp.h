@@ -7,6 +7,8 @@
 
 #include "conic_imp.h"
 
+#include <KLazyLocalizedString>
+
 /**
  * An ObjectImp representing a circle.  This class is a subclass of
  * ConicImp, ensuring that a circle can be used as a conic.
@@ -42,7 +44,7 @@ public:
   const Coordinate getPoint( double param, const KigDocument& ) const override;
 
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;

@@ -4,6 +4,7 @@
 
 #include "bogus_imp.h"
 
+#include <KLazyLocalizedString>
 #include <QStringList>
 
 #include "../misc/rect.h"
@@ -318,10 +319,10 @@ int TestResultImp::numberOfProperties() const
   return Parent::numberOfProperties() + 1;
 }
 
-const QByteArrayList TestResultImp::properties() const
+const QList<KLazyLocalizedString> TestResultImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Test Result" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Test Result" );
   assert( l.size() == TestResultImp::numberOfProperties() );
   return l;
 }

@@ -44,7 +44,7 @@ public:
 
   Coordinate attachPoint() const override;
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;
@@ -111,7 +111,7 @@ public:
   Rect surroundingRect() const override;
 
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;
@@ -185,7 +185,7 @@ public:
   bool valid() const;
 
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& d ) const override;
   const char* iconForProperty( int which ) const override;

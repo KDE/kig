@@ -15,6 +15,7 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
+#include <KLazyLocalizedString>
 #include <math.h>
 
 CircleImp::CircleImp( const Coordinate& center, double radius )
@@ -125,16 +126,16 @@ const QByteArrayList CircleImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList CircleImp::properties() const
+const QList<KLazyLocalizedString> CircleImp::properties() const
 {
-  QByteArrayList l = CurveImp::properties();
-  l << I18N_NOOP( "Surface" );
-  l << I18N_NOOP( "Circumference" );
-  l << I18N_NOOP( "Radius" );
-  l << I18N_NOOP( "Center" );
-  l << I18N_NOOP( "Expanded Cartesian Equation" );
-  l << I18N_NOOP( "Cartesian Equation" );
-  l << I18N_NOOP( "Polar Equation" );
+  QList<KLazyLocalizedString> l = CurveImp::properties();
+  l << kli18n( "Surface" );
+  l << kli18n( "Circumference" );
+  l << kli18n( "Radius" );
+  l << kli18n( "Center" );
+  l << kli18n( "Expanded Cartesian Equation" );
+  l << kli18n( "Cartesian Equation" );
+  l << kli18n( "Polar Equation" );
   assert( l.size() == CircleImp::numberOfProperties() );
   return l;
 }

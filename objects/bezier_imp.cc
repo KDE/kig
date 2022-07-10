@@ -18,6 +18,8 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
+#include <KLazyLocalizedString>
+
 #include <cmath>
 //#include <gsl/gsl_poly.h>
 
@@ -115,12 +117,12 @@ const QByteArrayList BezierImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList BezierImp::properties() const
+const QList<KLazyLocalizedString> BezierImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l += I18N_NOOP( "Number of control points" );
-  l += I18N_NOOP( "Control polygon" );
-  l += I18N_NOOP( "Cartesian Equation" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l += kli18n( "Number of control points" );
+  l += kli18n( "Control polygon" );
+  l += kli18n( "Cartesian Equation" );
   assert( l.size() == BezierImp::numberOfProperties() );
   return l;
 }
@@ -413,12 +415,12 @@ const QByteArrayList RationalBezierImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList RationalBezierImp::properties() const
+const QList<KLazyLocalizedString> RationalBezierImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l += I18N_NOOP( "Number of control points" );
-  l += I18N_NOOP( "Control polygon" );
-  l += I18N_NOOP( "Cartesian Equation" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l += kli18n( "Number of control points" );
+  l += kli18n( "Control polygon" );
+  l += kli18n( "Cartesian Equation" );
   assert( l.size() == RationalBezierImp::numberOfProperties() );
   return l;
 }

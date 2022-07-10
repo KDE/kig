@@ -112,12 +112,12 @@ const QByteArrayList AngleImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList AngleImp::properties() const
+const QList<KLazyLocalizedString> AngleImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Angle in Radians" );
-  l << I18N_NOOP( "Angle in Degrees" );
-  l << I18N_NOOP( "Angle Bisector" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Angle in Radians" );
+  l << kli18n( "Angle in Degrees" );
+  l << kli18n( "Angle Bisector" );
   assert( l.size() == AngleImp::numberOfProperties() );
   return l;
 }
@@ -222,14 +222,14 @@ const QByteArrayList VectorImp::propertiesInternalNames() const
   return ret;
 }
 
-const QByteArrayList VectorImp::properties() const
+const QList<KLazyLocalizedString> VectorImp::properties() const
 {
-  QByteArrayList ret = Parent::properties();
-  ret << I18N_NOOP( "Length" );
-  ret << I18N_NOOP( "Midpoint" );
-  ret << I18N_NOOP( "X length" );
-  ret << I18N_NOOP( "Y length" );
-  ret << I18N_NOOP( "Opposite Vector" );
+  QList<KLazyLocalizedString> ret = Parent::properties();
+  ret << kli18n( "Length" );
+  ret << kli18n( "Midpoint" );
+  ret << kli18n( "X length" );
+  ret << kli18n( "Y length" );
+  ret << kli18n( "Opposite Vector" );
   assert( ret.size() == VectorImp::numberOfProperties() );
   return ret;
 }
@@ -384,19 +384,19 @@ int ArcImp::numberOfProperties() const
   return Parent::numberOfProperties() + 10;
 }
 
-const QByteArrayList ArcImp::properties() const
+const QList<KLazyLocalizedString> ArcImp::properties() const
 {
-  QByteArrayList ret = Parent::properties();
-  ret << I18N_NOOP( "Center" );
-  ret << I18N_NOOP( "Radius" );
-  ret << I18N_NOOP( "Angle" );
-  ret << I18N_NOOP( "Angle in Degrees" );
-  ret << I18N_NOOP( "Angle in Radians" );
-  ret << I18N_NOOP( "Sector Surface" );
-  ret << I18N_NOOP( "Arc Length" );
-  ret << I18N_NOOP( "Support Circle" );
-  ret << I18N_NOOP( "First End Point" );
-  ret << I18N_NOOP( "Second End Point" );
+  QList<KLazyLocalizedString> ret = Parent::properties();
+  ret << kli18n( "Center" );
+  ret << kli18n( "Radius" );
+  ret << kli18n( "Angle" );
+  ret << kli18n( "Angle in Degrees" );
+  ret << kli18n( "Angle in Radians" );
+  ret << kli18n( "Sector Surface" );
+  ret << kli18n( "Arc Length" );
+  ret << kli18n( "Support Circle" );
+  ret << kli18n( "First End Point" );
+  ret << kli18n( "Second End Point" );
   assert( ret.size() == ArcImp::numberOfProperties() );
   return ret;
 }

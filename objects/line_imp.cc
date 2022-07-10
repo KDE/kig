@@ -14,6 +14,7 @@
 #include "../misc/equationstring.h"
 #include "../kig/kig_view.h"
 
+#include <KLazyLocalizedString>
 #include <cmath>
 using namespace std;
 
@@ -76,11 +77,11 @@ const QByteArrayList AbstractLineImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList AbstractLineImp::properties() const
+const QList<KLazyLocalizedString> AbstractLineImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Slope" );
-  l << I18N_NOOP( "Equation" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Slope" );
+  l << kli18n( "Equation" );
   assert( l.size() == AbstractLineImp::numberOfProperties() );
   return l;
 }
@@ -103,15 +104,15 @@ const QByteArrayList SegmentImp::propertiesInternalNames() const
   return s;
 }
 
-const QByteArrayList SegmentImp::properties() const
+const QList<KLazyLocalizedString> SegmentImp::properties() const
 {
-  QByteArrayList s = Parent::properties();
-  s << I18N_NOOP( "Length" );
-  s << I18N_NOOP( "Mid Point" );
-  s << I18N_NOOP( "Golden Ratio Point" );
-  s << I18N_NOOP( "Support Line" );
-  s << I18N_NOOP( "First End Point" );
-  s << I18N_NOOP( "Second End Point" );
+  QList<KLazyLocalizedString> s = Parent::properties();
+  s << kli18n( "Length" );
+  s << kli18n( "Mid Point" );
+  s << kli18n( "Golden Ratio Point" );
+  s << kli18n( "Support Line" );
+  s << kli18n( "First End Point" );
+  s << kli18n( "Second End Point" );
   assert( s.size() == SegmentImp::numberOfProperties() );
   return s;
 }
@@ -180,11 +181,11 @@ const QByteArrayList RayImp::propertiesInternalNames() const
   return s;
 }
 
-const QByteArrayList RayImp::properties() const
+const QList<KLazyLocalizedString> RayImp::properties() const
 {
-  QByteArrayList s = Parent::properties();
-  s << I18N_NOOP( "Support Line" );
-  s << I18N_NOOP( "End Point" );
+  QList<KLazyLocalizedString> s = Parent::properties();
+  s << kli18n( "Support Line" );
+  s << kli18n( "End Point" );
   assert( s.size() == RayImp::numberOfProperties() );
   return s;
 }

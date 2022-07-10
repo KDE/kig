@@ -8,6 +8,7 @@
 
 #include "../misc/coordinate.h"
 
+#include <KLazyLocalizedString>
 #include <map>
 
 class ObjectImpType::StaticPrivate
@@ -34,10 +35,10 @@ void ObjectImp::fillInNextEscape( QString&, const KigDocument& ) const
   assert( false );
 }
 
-const QByteArrayList ObjectImp::properties() const
+const QList<KLazyLocalizedString> ObjectImp::properties() const
 {
-  QByteArrayList ret;
-  ret << I18N_NOOP( "Object Type" );
+  QList<KLazyLocalizedString> ret;
+  ret << kli18n( "Object Type" );
   return ret;
 }
 

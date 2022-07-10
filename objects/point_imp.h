@@ -45,7 +45,7 @@ public:
   bool inRect( const Rect& r, int width, const KigWidget& ) const override;
 
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& d ) const override;
   const char* iconForProperty( int which ) const override;

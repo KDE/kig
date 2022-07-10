@@ -43,7 +43,7 @@ public:
   Rect surroundingRect() const override;
 
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;
@@ -98,7 +98,7 @@ public:
   void draw( KigPainter& p ) const override;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;
@@ -125,7 +125,7 @@ public:
   void draw( KigPainter& p ) const override;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;
@@ -152,7 +152,7 @@ public:
   void draw( KigPainter& p ) const override;
   bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
   int numberOfProperties() const override;
-  const QByteArrayList properties() const override;
+  const QList<KLazyLocalizedString> properties() const override;
   const QByteArrayList propertiesInternalNames() const override;
   ObjectImp* property( int which, const KigDocument& w ) const override;
   const char* iconForProperty( int which ) const override;

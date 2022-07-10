@@ -11,6 +11,8 @@
 #include "../kig/kig_document.h"
 #include "../kig/kig_view.h"
 
+#include <klazylocalizedstring.h>
+
 PointImp::PointImp( const Coordinate& c )
   : mc( c )
 {
@@ -54,12 +56,12 @@ const QByteArrayList PointImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList PointImp::properties() const
+const QList<KLazyLocalizedString> PointImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Coordinate" );
-  l << I18N_NOOP( "X coordinate" );
-  l << I18N_NOOP( "Y coordinate" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Coordinate" );
+  l << kli18n( "X coordinate" );
+  l << kli18n( "Y coordinate" );
   assert( l.size() == PointImp::numberOfProperties() );
   return l;
 }

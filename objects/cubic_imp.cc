@@ -15,6 +15,7 @@
 
 #include <math.h>
 #include <QString>
+#include <KLazyLocalizedString>
 
 CubicImp::CubicImp( const CubicCartesianData& data )
   : CurveImp(), mdata( data )
@@ -273,10 +274,10 @@ const QByteArrayList CubicImp::propertiesInternalNames() const
  * cartesian equation property contributed by Carlo Sardi
  */
 
-const QByteArrayList CubicImp::properties() const
+const QList<KLazyLocalizedString> CubicImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Cartesian Equation" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Cartesian Equation" );
   assert( l.size() == CubicImp::numberOfProperties() );
   return l;
 

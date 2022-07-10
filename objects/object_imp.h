@@ -7,6 +7,8 @@
 
 #include "common.h"
 
+#include <KLazyLocalizedString>
+
 class IntImp;
 class DoubleImp;
 class StringImp;
@@ -323,7 +325,7 @@ public:
   virtual int numberOfProperties() const;
   // the names of the properties as perceived by the user..  put
   // I18N_NOOP's around them here..
-  virtual const QByteArrayList properties() const;
+  virtual const QList<KLazyLocalizedString> properties() const;
   // the names of the properties as known only by kig internally.  No
   // need for I18N_NOOP.  Preferably choose some lowercase name with
   // only letters and dashes, no spaces..

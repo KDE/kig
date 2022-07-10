@@ -15,6 +15,7 @@
 #include "../kig/kig_view.h"
 #include "../kig/kig_document.h"
 
+#include <KLazyLocalizedString>
 #include <cmath>
 
 using namespace std;
@@ -86,10 +87,10 @@ const QByteArrayList LocusImp::propertiesInternalNames() const
   return l;
 }
 
-const QByteArrayList LocusImp::properties() const
+const QList<KLazyLocalizedString> LocusImp::properties() const
 {
-  QByteArrayList l = Parent::properties();
-  l << I18N_NOOP( "Cartesian Equation" );
+  QList<KLazyLocalizedString> l = Parent::properties();
+  l << kli18n( "Cartesian Equation" );
   assert( l.size() == LocusImp::numberOfProperties() );
   return l;
 }
