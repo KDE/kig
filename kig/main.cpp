@@ -73,7 +73,7 @@ int main( int argc, char **argv )
   QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication app( argc, argv );
   KLocalizedString::setApplicationDomain( "kig" );
-  KAboutData about = kigAboutData( "kig", I18N_NOOP( "Kig" ) );
+  KAboutData about = kigAboutData( "kig" );
   KCrash::initialize();
   QCommandLineParser parser;
   QCommandLineOption convertToNativeOption( QStringList() << QStringLiteral("c") << QStringLiteral("convert-to-native"), i18n( "Do not show a GUI. Convert the specified file to the native Kig format. Output goes to stdout unless --outfile is specified." ) );

@@ -10,9 +10,9 @@
 
 #include <kig_version.h>
 
-inline KAboutData kigAboutData( const char* name, const char* iname )
+inline KAboutData kigAboutData( const char* name)
 {
-  KAboutData tmp( name, i18n(iname), KIG_VERSION_STRING,
+  KAboutData tmp( name, i18n("Kig"), KIG_VERSION_STRING,
                    i18n("KDE Interactive Geometry"), KAboutLicense::GPL,
 				   i18n( "(C) 2002-2005, The Kig developers" ),
 				   QString(), QStringLiteral("https://edu.kde.org/kig") );
