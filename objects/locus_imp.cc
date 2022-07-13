@@ -187,15 +187,15 @@ const ObjectImpType* LocusImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "locus",
-    I18N_NOOP( "locus" ),
+    kli18n( "locus" ),
     I18N_NOOP( "Select this locus" ),
     I18N_NOOP( "Select locus %1" ),
-    I18N_NOOP( "Remove a Locus" ),
-    I18N_NOOP( "Add a Locus" ),
-    I18N_NOOP( "Move a Locus" ),
-    I18N_NOOP( "Attach to this locus" ),
-    I18N_NOOP( "Show a Locus" ),
-    I18N_NOOP( "Hide a Locus" )
+    kli18n( "Remove a Locus" ),
+    kli18n( "Add a Locus" ),
+    kli18n( "Move a Locus" ),
+    kli18n( "Attach to this locus" ),
+    kli18n( "Show a Locus" ),
+    kli18n( "Hide a Locus" )
     );
   return &t;
 }

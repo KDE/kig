@@ -147,15 +147,15 @@ const ObjectImpType* PointImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "point",
-    I18N_NOOP( "point" ),
+    kli18n( "point" ),
     I18N_NOOP( "Select this point" ),
     I18N_NOOP( "Select point %1" ),
-    I18N_NOOP( "Remove a Point" ),
-    I18N_NOOP( "Add a Point" ),
-    I18N_NOOP( "Move a Point" ),
-    I18N_NOOP( "Attach to this point" ),
-    I18N_NOOP( "Show a Point" ),
-    I18N_NOOP( "Hide a Point" )
+    kli18n( "Remove a Point" ),
+    kli18n( "Add a Point" ),
+    kli18n( "Move a Point" ),
+    kli18n( "Attach to this point" ),
+    kli18n( "Show a Point" ),
+    kli18n( "Hide a Point" )
     );
   return &t;
 }
@@ -191,15 +191,15 @@ const ObjectImpType* BogusPointImp::stype()
 {
   static const ObjectImpType t(
     nullptr, "boguspoint",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN",
-    "SHOULDNOTBESEEN"
+    KLazyLocalizedString(),
+    "",
+    "",
+    KLazyLocalizedString(),
+    KLazyLocalizedString(),
+    KLazyLocalizedString(),
+    KLazyLocalizedString(),
+    KLazyLocalizedString(),
+    KLazyLocalizedString()
     );
   return &t;
 }

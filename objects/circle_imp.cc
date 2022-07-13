@@ -334,15 +334,15 @@ const ObjectImpType* CircleImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "circle",
-    I18N_NOOP( "circle" ),
+    kli18n( "circle" ),
     I18N_NOOP( "Select this circle" ),
     I18N_NOOP( "Select circle %1" ),
-    I18N_NOOP( "Remove a Circle" ),
-    I18N_NOOP( "Add a Circle" ),
-    I18N_NOOP( "Move a Circle" ),
-    I18N_NOOP( "Attach to this circle" ),
-    I18N_NOOP( "Show a Circle" ),
-    I18N_NOOP( "Hide a Circle" )
+    kli18n( "Remove a Circle" ),
+    kli18n( "Add a Circle" ),
+    kli18n( "Move a Circle" ),
+    kli18n( "Attach to this circle" ),
+    kli18n( "Show a Circle" ),
+    kli18n( "Hide a Circle" )
     );
   return &t;
 }

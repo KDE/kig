@@ -200,7 +200,7 @@ bool StringImp::canFillInNextEscape() const
 const ObjectImpType* InvalidImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "invalid", "", "", "", "", "", "", "", "", "" );
+    Parent::stype(), "invalid", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 
@@ -208,19 +208,19 @@ const ObjectImpType* StringImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "string",
-    "string", "", "", "", "", "", "", "", "" );
+    kli18n("string"), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 const ObjectImpType* HierarchyImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "hierarchy", "", "", "", "", "", "", "", "", "" );
+    Parent::stype(), "hierarchy", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 const ObjectImpType* TransformationImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "transformation", "", "", "", "", "", "", "", "", "");
+    Parent::stype(), "transformation", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 
@@ -258,7 +258,7 @@ const ObjectImpType* DoubleImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "double",
-    "double", "", "", "", "", "", "", "", "" );
+    kli18n("double"), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 
@@ -266,7 +266,7 @@ const ObjectImpType* IntImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "int",
-    "int", "", "", "", "", "", "", "", "" );
+    kli18n("int"), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 
@@ -274,14 +274,14 @@ const ObjectImpType* BogusImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "bogus",
-    "", "", "", "", "", "", "", "", "" );
+    KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 
 const ObjectImpType* TestResultImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "testresult", "", "", "", "", "", "", "", "", "" );
+    Parent::stype(), "testresult", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 
 }

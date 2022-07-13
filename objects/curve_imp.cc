@@ -15,15 +15,15 @@ const ObjectImpType* CurveImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "curve",
-    I18N_NOOP( "curve" ),
+    kli18n( "curve" ),
     I18N_NOOP( "Select this curve" ),
     I18N_NOOP( "Select curve %1" ),
-    I18N_NOOP( "Remove a Curve" ),
-    I18N_NOOP( "Add a Curve" ),
-    I18N_NOOP( "Move a Curve" ),
-    I18N_NOOP( "Attach to this curve" ),
-    I18N_NOOP( "Show a Curve" ),
-    I18N_NOOP( "Hide a Curve" )
+    kli18n( "Remove a Curve" ),
+    kli18n( "Add a Curve" ),
+    kli18n( "Move a Curve" ),
+    kli18n( "Attach to this curve" ),
+    kli18n( "Show a Curve" ),
+    kli18n( "Hide a Curve" )
     );
   return &t;
 }

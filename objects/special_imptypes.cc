@@ -39,8 +39,8 @@ double getDoubleFromImp( const ObjectImp* obj, bool& valid )
 
 LengthImpType::LengthImpType( const ObjectImpType* parent,
     const char* internalname )
-  : ObjectImpType( parent, internalname, snbs, snbs,
-                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
+  : ObjectImpType( parent, internalname, KLazyLocalizedString(), snbs,
+                   snbs, KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() )
 {
 }
 
@@ -59,8 +59,8 @@ LengthImpType lengthimptypeinstance(
 
 AngleImpType::AngleImpType( const ObjectImpType* parent,
     const char* internalname )
-  : ObjectImpType( parent, internalname, snbs, snbs,
-                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
+  : ObjectImpType( parent, internalname, KLazyLocalizedString(), snbs,
+                   snbs, KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() )
 {
 }
 
@@ -78,8 +78,8 @@ AngleImpType angleimptypeinstance(
 
 WeightImpType::WeightImpType( const ObjectImpType* parent,
     const char* internalname )
-  : ObjectImpType( parent, internalname, snbs, snbs,
-                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
+  : ObjectImpType( parent, internalname, KLazyLocalizedString(), snbs,
+                   snbs, KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString())
 {
 }
 
@@ -98,8 +98,8 @@ WeightImpType weightimptypeinstance(
 
 InvertibleImpType::InvertibleImpType( const ObjectImpType* parent,
     const char* internalname )
-  : ObjectImpType( parent, internalname, snbs, I18N_NOOP( "Select this object" ),
-                   snbs, snbs, snbs, snbs, snbs, snbs, snbs )
+  : ObjectImpType( parent, internalname, KLazyLocalizedString(), I18N_NOOP( "Select this object" ),
+                   snbs, KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString())
 {
 }
 

@@ -512,8 +512,8 @@ bool AbstractLineImp::equals( const ObjectImp& rhs ) const
 const ObjectImpType* AbstractLineImp::stype()
 {
   static const ObjectImpType t(
-    Parent::stype(), "line", I18N_NOOP( "line" ),
-    I18N_NOOP( "Select a Line" ), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr );
+    Parent::stype(), "line", kli18n( "line" ),
+    I18N_NOOP( "Select a Line" ), nullptr, KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString());
   return &t;
 }
 
@@ -521,15 +521,15 @@ const ObjectImpType* LineImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "line",
-    I18N_NOOP( "line" ),
+    kli18n( "line" ),
     I18N_NOOP( "Select this line" ),
     I18N_NOOP( "Select line %1" ),
-    I18N_NOOP( "Remove a Line" ),
-    I18N_NOOP( "Add a Line" ),
-    I18N_NOOP( "Move a Line" ),
-    I18N_NOOP( "Attach to this line" ),
-    I18N_NOOP( "Show a Line" ),
-    I18N_NOOP( "Hide a Line" )
+    kli18n( "Remove a Line" ),
+    kli18n( "Add a Line" ),
+    kli18n( "Move a Line" ),
+    kli18n( "Attach to this line" ),
+    kli18n( "Show a Line" ),
+    kli18n( "Hide a Line" )
     );
   return &t;
 }
@@ -538,15 +538,15 @@ const ObjectImpType* SegmentImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "segment",
-    I18N_NOOP( "segment" ),
+    kli18n( "segment" ),
     I18N_NOOP( "Select this segment" ),
     I18N_NOOP( "Select segment %1" ),
-    I18N_NOOP( "Remove a Segment" ),
-    I18N_NOOP( "Add a Segment" ),
-    I18N_NOOP( "Move a Segment" ),
-    I18N_NOOP( "Attach to this segment" ),
-    I18N_NOOP( "Show a Segment" ),
-    I18N_NOOP( "Hide a Segment" )
+    kli18n( "Remove a Segment" ),
+    kli18n( "Add a Segment" ),
+    kli18n( "Move a Segment" ),
+    kli18n( "Attach to this segment" ),
+    kli18n( "Show a Segment" ),
+    kli18n( "Hide a Segment" )
     );
   return &t;
 }
@@ -555,15 +555,15 @@ const ObjectImpType* RayImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "ray",
-    I18N_NOOP( "half-line" ),
+    kli18n( "half-line" ),
     I18N_NOOP( "Select this half-line" ),
     I18N_NOOP( "Select half-line %1" ),
-    I18N_NOOP( "Remove a Half-Line" ),
-    I18N_NOOP( "Add a Half-Line" ),
-    I18N_NOOP( "Move a Half-Line" ),
-    I18N_NOOP( "Attach to this half-line" ),
-    I18N_NOOP( "Show a Half-Line" ),
-    I18N_NOOP( "Hide a Half-Line" )
+    kli18n( "Remove a Half-Line" ),
+    kli18n( "Add a Half-Line" ),
+    kli18n( "Move a Half-Line" ),
+    kli18n( "Attach to this half-line" ),
+    kli18n( "Show a Half-Line" ),
+    kli18n( "Hide a Half-Line" )
     );
   return &t;
 }

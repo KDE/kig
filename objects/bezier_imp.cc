@@ -206,15 +206,15 @@ const ObjectImpType* BezierImp::stype()
 {
   static const ObjectImpType B(
     Parent::stype(), "bezier",
-    I18N_NOOP( "Bézier Curve" ),
+    kli18n( "Bézier Curve" ),
     I18N_NOOP( "Select this Bézier Curve" ),
     I18N_NOOP( "Select Bézier Curve %1" ),
-    I18N_NOOP( "Remove a Bézier Curve" ),
-    I18N_NOOP( "Add a Bézier Curve" ),
-    I18N_NOOP( "Move a Bézier Curve" ),
-    I18N_NOOP( "Attach to this Bézier Curve" ),
-    I18N_NOOP( "Show a Bézier Curve" ),
-    I18N_NOOP( "Hide a Bézier Curve" )
+    kli18n( "Remove a Bézier Curve" ),
+    kli18n( "Add a Bézier Curve" ),
+    kli18n( "Move a Bézier Curve" ),
+    kli18n( "Attach to this Bézier Curve" ),
+    kli18n( "Show a Bézier Curve" ),
+    kli18n( "Hide a Bézier Curve" )
     );
 
   return &B;
@@ -224,15 +224,15 @@ const ObjectImpType* BezierImp::stype2()
 {
   static const ObjectImpType B3(
     BezierImp::stype(), "bezier_quadratic",
-    I18N_NOOP( "Bézier Quadratic" ),
+    kli18n( "Bézier Quadratic" ),
     I18N_NOOP( "Select this Bézier Quadratic" ),
     I18N_NOOP( "Select Bézier Quadratic %1" ),
-    I18N_NOOP( "Remove a Bézier Quadratic" ),
-    I18N_NOOP( "Add a Bézier Quadratic" ),
-    I18N_NOOP( "Move a Bézier Quadratic" ),
-    I18N_NOOP( "Attach to this Bézier Quadratic" ),
-    I18N_NOOP( "Show a Bézier Quadratic" ),
-    I18N_NOOP( "Hide a Bézier Quadratic" )
+    kli18n( "Remove a Bézier Quadratic" ),
+    kli18n( "Add a Bézier Quadratic" ),
+    kli18n( "Move a Bézier Quadratic" ),
+    kli18n( "Attach to this Bézier Quadratic" ),
+    kli18n( "Show a Bézier Quadratic" ),
+    kli18n( "Hide a Bézier Quadratic" )
     );
 
   return &B3;
@@ -242,15 +242,15 @@ const ObjectImpType* BezierImp::stype3()
 {
   static const ObjectImpType B4(
     BezierImp::stype(), "bezier_cubic",
-    I18N_NOOP( "Bézier Cubic" ),
+    kli18n( "Bézier Cubic" ),
     I18N_NOOP( "Select this Bézier Cubic" ),
     I18N_NOOP( "Select Bézier Cubic %1" ),
-    I18N_NOOP( "Remove a Bézier Cubic" ),
-    I18N_NOOP( "Add a Bézier Cubic" ),
-    I18N_NOOP( "Move a Bézier Cubic" ),
-    I18N_NOOP( "Attach to this Bézier Cubic" ),
-    I18N_NOOP( "Show a Bézier Cubic" ),
-    I18N_NOOP( "Hide a Bézier Cubic" )
+    kli18n( "Remove a Bézier Cubic" ),
+    kli18n( "Add a Bézier Cubic" ),
+    kli18n( "Move a Bézier Cubic" ),
+    kli18n( "Attach to this Bézier Cubic" ),
+    kli18n( "Show a Bézier Cubic" ),
+    kli18n( "Hide a Bézier Cubic" )
     );
 
   return &B4;
@@ -504,15 +504,15 @@ const ObjectImpType* RationalBezierImp::stype()
 {
   static const ObjectImpType R(
     Parent::stype(), "rational_bezier",
-    I18N_NOOP( "Rational Bézier Curve" ),
+    kli18n( "Rational Bézier Curve" ),
     I18N_NOOP( "Select this Rational Bézier Curve" ),
     I18N_NOOP( "Select Rational Bézier Curve %1" ),
-    I18N_NOOP( "Remove a Rational Bézier Curve" ),
-    I18N_NOOP( "Add a Rational Bézier Curve" ),
-    I18N_NOOP( "Move a Rational Bézier Curve" ),
-    I18N_NOOP( "Attach to this Rational Bézier Curve" ),
-    I18N_NOOP( "Show a Rational Bézier Curve" ),
-    I18N_NOOP( "Hide a Rational Bézier Curve" )
+    kli18n( "Remove a Rational Bézier Curve" ),
+    kli18n( "Add a Rational Bézier Curve" ),
+    kli18n( "Move a Rational Bézier Curve" ),
+    kli18n( "Attach to this Rational Bézier Curve" ),
+    kli18n( "Show a Rational Bézier Curve" ),
+    kli18n( "Hide a Rational Bézier Curve" )
     );
 
   return &R;
@@ -522,15 +522,15 @@ const ObjectImpType* RationalBezierImp::stype2()
 {
   static const ObjectImpType R3(
     BezierImp::stype(), "rational_bezier_quadratic",
-    I18N_NOOP( "Rational Bézier Quadratic" ),
+    kli18n( "Rational Bézier Quadratic" ),
     I18N_NOOP( "Select this Rational Bézier Quadratic" ),
     I18N_NOOP( "Select Rational Bézier Quadratic %1" ),
-    I18N_NOOP( "Remove a Rational Bézier Quadratic" ),
-    I18N_NOOP( "Add a Rational Bézier Quadratic" ),
-    I18N_NOOP( "Move a Rational Bézier Quadratic" ),
-    I18N_NOOP( "Attach to this Rational Bézier Quadratic" ),
-    I18N_NOOP( "Show a Rational Bézier Quadratic" ),
-    I18N_NOOP( "Hide a Rational Bézier Quadratic" )
+    kli18n( "Remove a Rational Bézier Quadratic" ),
+    kli18n( "Add a Rational Bézier Quadratic" ),
+    kli18n( "Move a Rational Bézier Quadratic" ),
+    kli18n( "Attach to this Rational Bézier Quadratic" ),
+    kli18n( "Show a Rational Bézier Quadratic" ),
+    kli18n( "Hide a Rational Bézier Quadratic" )
     );
 
   return &R3;
@@ -540,15 +540,15 @@ const ObjectImpType* RationalBezierImp::stype3()
 {
   static const ObjectImpType R4(
     BezierImp::stype(), "rational_bezier_cubic",
-    I18N_NOOP( "Rational Bézier Cubic" ),
+    kli18n( "Rational Bézier Cubic" ),
     I18N_NOOP( "Select this Rational Bézier Cubic" ),
     I18N_NOOP( "Select Rational Bézier Cubic %1" ),
-    I18N_NOOP( "Remove a Rational Bézier Cubic" ),
-    I18N_NOOP( "Add a Rational Bézier Cubic" ),
-    I18N_NOOP( "Move a Rational Bézier Cubic" ),
-    I18N_NOOP( "Attach to this Rational Bézier Cubic" ),
-    I18N_NOOP( "Show a Rational Bézier Cubic" ),
-    I18N_NOOP( "Hide a Rational Bézier Cubic" )
+    kli18n( "Remove a Rational Bézier Cubic" ),
+    kli18n( "Add a Rational Bézier Cubic" ),
+    kli18n( "Move a Rational Bézier Cubic" ),
+    kli18n( "Attach to this Rational Bézier Cubic" ),
+    kli18n( "Show a Rational Bézier Cubic" ),
+    kli18n( "Hide a Rational Bézier Cubic" )
     );
 
   return &R4;

@@ -637,8 +637,8 @@ const ObjectImpType* AbstractPolygonImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "abstractpolygon",
-    I18N_NOOP( "polygon" ),
-    I18N_NOOP( "Select this polygon" ), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr );
+    kli18n( "polygon" ),
+    I18N_NOOP( "Select this polygon" ), nullptr, KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
   return &t;
 }
 
@@ -646,15 +646,15 @@ const ObjectImpType* FilledPolygonImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "polygon",
-    I18N_NOOP( "polygon" ),
+    kli18n( "polygon" ),
     I18N_NOOP( "Select this polygon" ),
     I18N_NOOP( "Select polygon %1" ),
-    I18N_NOOP( "Remove a Polygon" ),
-    I18N_NOOP( "Add a Polygon" ),
-    I18N_NOOP( "Move a Polygon" ),
-    I18N_NOOP( "Attach to this polygon" ),
-    I18N_NOOP( "Show a Polygon" ),
-    I18N_NOOP( "Hide a Polygon" )
+    kli18n( "Remove a Polygon" ),
+    kli18n( "Add a Polygon" ),
+    kli18n( "Move a Polygon" ),
+    kli18n( "Attach to this polygon" ),
+    kli18n( "Show a Polygon" ),
+    kli18n( "Hide a Polygon" )
     );
 
   return &t;
@@ -664,15 +664,15 @@ const ObjectImpType* ClosedPolygonalImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "closedpolygonal",
-    I18N_NOOP( "closed polygonal curve" ),
+    kli18n( "closed polygonal curve" ),
     I18N_NOOP( "Select this closed polygonal curve" ),
     I18N_NOOP( "Select closed polygonal curve %1" ),
-    I18N_NOOP( "Remove a closed polygonal curve" ),
-    I18N_NOOP( "Add a closed polygonal curve" ),
-    I18N_NOOP( "Move a closed polygonal curve" ),
-    I18N_NOOP( "Attach to this closed polygonal curve" ),
-    I18N_NOOP( "Show a closed polygonal curve" ),
-    I18N_NOOP( "Hide a closed polygonal curve" )
+    kli18n( "Remove a closed polygonal curve" ),
+    kli18n( "Add a closed polygonal curve" ),
+    kli18n( "Move a closed polygonal curve" ),
+    kli18n( "Attach to this closed polygonal curve" ),
+    kli18n( "Show a closed polygonal curve" ),
+    kli18n( "Hide a closed polygonal curve" )
     );
 
   return &t;
@@ -682,15 +682,15 @@ const ObjectImpType* OpenPolygonalImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "polygonal",
-    I18N_NOOP( "polygonal curve" ),
+    kli18n( "polygonal curve" ),
     I18N_NOOP( "Select this polygonal curve" ),
     I18N_NOOP( "Select polygonal curve %1" ),
-    I18N_NOOP( "Remove a polygonal curve" ),
-    I18N_NOOP( "Add a polygonal curve" ),
-    I18N_NOOP( "Move a polygonal curve" ),
-    I18N_NOOP( "Attach to this polygonal curve" ),
-    I18N_NOOP( "Show a polygonal curve" ),
-    I18N_NOOP( "Hide a polygonal curve" )
+    kli18n( "Remove a polygonal curve" ),
+    kli18n( "Add a polygonal curve" ),
+    kli18n( "Move a polygonal curve" ),
+    kli18n( "Attach to this polygonal curve" ),
+    kli18n( "Show a polygonal curve" ),
+    kli18n( "Hide a polygonal curve" )
     );
 
   return &t;
@@ -700,15 +700,15 @@ const ObjectImpType* FilledPolygonImp::stype3()
 {
   static const ObjectImpType t3(
     FilledPolygonImp::stype(), "triangle",
-    I18N_NOOP( "triangle" ),
+    kli18n( "triangle" ),
     I18N_NOOP( "Select this triangle" ),
     I18N_NOOP( "Select triangle %1" ),
-    I18N_NOOP( "Remove a Triangle" ),
-    I18N_NOOP( "Add a Triangle" ),
-    I18N_NOOP( "Move a Triangle" ),
-    I18N_NOOP( "Attach to this triangle" ),
-    I18N_NOOP( "Show a Triangle" ),
-    I18N_NOOP( "Hide a Triangle" )
+    kli18n( "Remove a Triangle" ),
+    kli18n( "Add a Triangle" ),
+    kli18n( "Move a Triangle" ),
+    kli18n( "Attach to this triangle" ),
+    kli18n( "Show a Triangle" ),
+    kli18n( "Hide a Triangle" )
     );
 
   return &t3;
@@ -718,15 +718,15 @@ const ObjectImpType* FilledPolygonImp::stype4()
 {
   static const ObjectImpType t4(
     FilledPolygonImp::stype(), "quadrilateral",
-    I18N_NOOP( "quadrilateral" ),
+    kli18n( "quadrilateral" ),
     I18N_NOOP( "Select this quadrilateral" ),
     I18N_NOOP( "Select quadrilateral %1" ),
-    I18N_NOOP( "Remove a Quadrilateral" ),
-    I18N_NOOP( "Add a Quadrilateral" ),
-    I18N_NOOP( "Move a Quadrilateral" ),
-    I18N_NOOP( "Attach to this quadrilateral" ),
-    I18N_NOOP( "Show a Quadrilateral" ),
-    I18N_NOOP( "Hide a Quadrilateral" )
+    kli18n( "Remove a Quadrilateral" ),
+    kli18n( "Add a Quadrilateral" ),
+    kli18n( "Move a Quadrilateral" ),
+    kli18n( "Attach to this quadrilateral" ),
+    kli18n( "Show a Quadrilateral" ),
+    kli18n( "Hide a Quadrilateral" )
     );
 
   return &t4;

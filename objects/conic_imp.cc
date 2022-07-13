@@ -368,15 +368,15 @@ const ObjectImpType* ConicImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "conic",
-    I18N_NOOP( "conic" ),
+    kli18n( "conic" ),
     I18N_NOOP( "Select this conic" ),
     I18N_NOOP( "Select conic %1" ),
-    I18N_NOOP( "Remove a Conic" ),
-    I18N_NOOP( "Add a Conic" ),
-    I18N_NOOP( "Move a Conic" ),
-    I18N_NOOP( "Attach to this conic" ),
-    I18N_NOOP( "Show a Conic" ),
-    I18N_NOOP( "Hide a Conic" )
+    kli18n( "Remove a Conic" ),
+    kli18n( "Add a Conic" ),
+    kli18n( "Move a Conic" ),
+    kli18n( "Attach to this conic" ),
+    kli18n( "Show a Conic" ),
+    kli18n( "Hide a Conic" )
     );
   return &t;
 }
@@ -594,15 +594,15 @@ const ObjectImpType* ConicArcImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "conic arc",
-    I18N_NOOP( "conic arc" ),
+    kli18n( "conic arc" ),
     I18N_NOOP( "Select this conic arc" ),
     I18N_NOOP( "Select conic arc %1" ),
-    I18N_NOOP( "Remove a Conic Arc" ),
-    I18N_NOOP( "Add a Conic Arc" ),
-    I18N_NOOP( "Move a Conic Arc" ),
-    I18N_NOOP( "Attach to this conic arc" ),
-    I18N_NOOP( "Show a Conic Arc" ),
-    I18N_NOOP( "Hide a Conic Arc" )
+    kli18n( "Remove a Conic Arc" ),
+    kli18n( "Add a Conic Arc" ),
+    kli18n( "Move a Conic Arc" ),
+    kli18n( "Attach to this conic arc" ),
+    kli18n( "Show a Conic Arc" ),
+    kli18n( "Hide a Conic Arc" )
     );
   return &t;
 }

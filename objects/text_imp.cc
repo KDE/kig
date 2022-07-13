@@ -131,15 +131,15 @@ const ObjectImpType* TextImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "label",
-    I18N_NOOP( "label" ),
+    kli18n( "label" ),
     I18N_NOOP( "Select this label" ),
     I18N_NOOP( "Select label %1" ),
-    I18N_NOOP( "Remove a Label" ),
-    I18N_NOOP( "Add a Label" ),
-    I18N_NOOP( "Move a Label" ),
-    I18N_NOOP( "Attach to this label" ),
-    I18N_NOOP( "Show a Label" ),
-    I18N_NOOP( "Hide a Label" )
+    kli18n( "Remove a Label" ),
+    kli18n( "Add a Label" ),
+    kli18n( "Move a Label" ),
+    kli18n( "Attach to this label" ),
+    kli18n( "Show a Label" ),
+    kli18n( "Hide a Label" )
     );
   return &t;
 }
@@ -177,15 +177,15 @@ const ObjectImpType* NumericTextImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "numeric-label",
-    I18N_NOOP( "numeric label" ),
+    kli18n( "numeric label" ),
     I18N_NOOP( "Select this numeric label" ),
     I18N_NOOP( "Select numeric label %1" ),
-    I18N_NOOP( "Remove a Numeric Label" ),
-    I18N_NOOP( "Add a Numeric Label" ),
-    I18N_NOOP( "Move a Numeric Label" ),
-    I18N_NOOP( "Attach to this numeric label" ),
-    I18N_NOOP( "Show a Numeric Label" ),
-    I18N_NOOP( "Hide a Numeric Label" )
+    kli18n( "Remove a Numeric Label" ),
+    kli18n( "Add a Numeric Label" ),
+    kli18n( "Move a Numeric Label" ),
+    kli18n( "Attach to this numeric label" ),
+    kli18n( "Show a Numeric Label" ),
+    kli18n( "Hide a Numeric Label" )
     );
   return &t;
 }
@@ -269,15 +269,15 @@ const ObjectImpType* BoolTextImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "boolean-label",
-    I18N_NOOP( "boolean label" ),
+    kli18n( "boolean label" ),
     I18N_NOOP( "Select this boolean label" ),
     I18N_NOOP( "Select boolean label %1" ),
-    I18N_NOOP( "Remove a Boolean Label" ),
-    I18N_NOOP( "Add a Boolean Label" ),
-    I18N_NOOP( "Move a Boolean Label" ),
-    I18N_NOOP( "Attach to this boolean label" ),
-    I18N_NOOP( "Show a Boolean Label" ),
-    I18N_NOOP( "Hide a Boolean Label" )
+    kli18n( "Remove a Boolean Label" ),
+    kli18n( "Add a Boolean Label" ),
+    kli18n( "Move a Boolean Label" ),
+    kli18n( "Attach to this boolean label" ),
+    kli18n( "Show a Boolean Label" ),
+    kli18n( "Hide a Boolean Label" )
     );
   return &t;
 }

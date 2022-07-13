@@ -85,15 +85,15 @@ class ObjectImpType
 {
   const ObjectImpType* mparent;
   const char* minternalname;
-  const char* mtranslatedname;
+  KLazyLocalizedString mtranslatedname;
   const char* mselectstatement;
   const char* mselectnamestatement;
-  const char* mremoveastatement;
-  const char* maddastatement;
-  const char* mmoveastatement;
-  const char* mattachtothisstatement;
-  const char* mshowastatement;
-  const char* mhideastatement;
+  KLazyLocalizedString mremoveastatement;
+  KLazyLocalizedString maddastatement;
+  KLazyLocalizedString mmoveastatement;
+  KLazyLocalizedString mattachtothisstatement;
+  KLazyLocalizedString mshowastatement;
+  KLazyLocalizedString mhideastatement;
   class StaticPrivate;
   static StaticPrivate* sd();
 public:
@@ -130,15 +130,15 @@ public:
    */
   explicit ObjectImpType(
     const ObjectImpType* parent, const char* internalname,
-    const char* translatedname,
+    const KLazyLocalizedString &translatedname,
     const char* selectstatement,
     const char* selectnamestatement,
-    const char* removeastatement,
-    const char* addastatement,
-    const char* moveastatement,
-    const char* attachtothisstatement,
-    const char* showastatement,
-    const char* hideastatement );
+    const KLazyLocalizedString &removeastatement,
+    const KLazyLocalizedString &addastatement,
+    const KLazyLocalizedString &moveastatement,
+    const KLazyLocalizedString &attachtothisstatement,
+    const KLazyLocalizedString &showastatement,
+    const KLazyLocalizedString &hideastatement );
   virtual ~ObjectImpType();
 
   /**

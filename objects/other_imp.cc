@@ -594,15 +594,15 @@ const ObjectImpType* AngleImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "angle",
-    I18N_NOOP( "angle" ),
+    kli18n( "angle" ),
     I18N_NOOP( "Select this angle" ),
     I18N_NOOP( "Select angle %1" ),
-    I18N_NOOP( "Remove an Angle" ),
-    I18N_NOOP( "Add an Angle" ),
-    I18N_NOOP( "Move an Angle" ),
-    I18N_NOOP( "Attach to this angle" ),
-    I18N_NOOP( "Show an Angle" ),
-    I18N_NOOP( "Hide an Angle" )
+    kli18n( "Remove an Angle" ),
+    kli18n( "Add an Angle" ),
+    kli18n( "Move an Angle" ),
+    kli18n( "Attach to this angle" ),
+    kli18n( "Show an Angle" ),
+    kli18n( "Hide an Angle" )
     );
   return &t;
 }
@@ -610,15 +610,15 @@ const ObjectImpType* VectorImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "vector",
-    I18N_NOOP( "vector" ),
+    kli18n( "vector" ),
     I18N_NOOP( "Select this vector" ),
     I18N_NOOP( "Select vector %1" ),
-    I18N_NOOP( "Remove a Vector" ),
-    I18N_NOOP( "Add a Vector" ),
-    I18N_NOOP( "Move a Vector" ),
-    I18N_NOOP( "Attach to this vector" ),
-    I18N_NOOP( "Show a Vector" ),
-    I18N_NOOP( "Hide a Vector" )
+    kli18n( "Remove a Vector" ),
+    kli18n( "Add a Vector" ),
+    kli18n( "Move a Vector" ),
+    kli18n( "Attach to this vector" ),
+    kli18n( "Show a Vector" ),
+    kli18n( "Hide a Vector" )
     );
   return &t;
 }
@@ -626,15 +626,15 @@ const ObjectImpType* ArcImp::stype()
 {
   static const ObjectImpType t(
     Parent::stype(), "arc",
-    I18N_NOOP( "arc" ),
+    kli18n( "arc" ),
     I18N_NOOP( "Select this arc" ),
     I18N_NOOP( "Select arc %1" ),
-    I18N_NOOP( "Remove an Arc" ),
-    I18N_NOOP( "Add an Arc" ),
-    I18N_NOOP( "Move an Arc" ),
-    I18N_NOOP( "Attach to this arc" ),
-    I18N_NOOP( "Show an Arc" ),
-    I18N_NOOP( "Hide an Arc" )
+    kli18n( "Remove an Arc" ),
+    kli18n( "Add an Arc" ),
+    kli18n( "Move an Arc" ),
+    kli18n( "Attach to this arc" ),
+    kli18n( "Show an Arc" ),
+    kli18n( "Hide an Arc" )
     );
   return &t;
 }

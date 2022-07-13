@@ -182,16 +182,16 @@ bool ObjectImp::canFillInNextEscape() const
 }
 
 ObjectImpType::ObjectImpType( const ObjectImpType* parent,
-                              const char* internalname,
-                              const char* translatedname,
+                              const char*internalname,
+                              const KLazyLocalizedString &translatedname,
                               const char* selectstatement,
                               const char* selectnamestatement,
-                              const char* removeastatement,
-                              const char* addastatement,
-                              const char* moveastatement,
-                              const char* attachtothisstatement,
-                              const char* showastatement,
-                              const char* hideastatement )
+                              const KLazyLocalizedString &removeastatement,
+                              const KLazyLocalizedString &addastatement,
+                              const KLazyLocalizedString &moveastatement,
+                              const KLazyLocalizedString &attachtothisstatement,
+                              const KLazyLocalizedString &showastatement,
+                              const KLazyLocalizedString &hideastatement )
   : mparent( parent ), minternalname( internalname ),
     mtranslatedname( translatedname ), mselectstatement( selectstatement ),
     mselectnamestatement( selectnamestatement ),
@@ -226,7 +226,7 @@ const char* ObjectImpType::internalName() const
 
 QString ObjectImpType::translatedName() const
 {
-  return i18n( mtranslatedname );
+  return mtranslatedname.toString();
 }
 
 const char* ObjectImpType::selectStatement() const
@@ -241,17 +241,17 @@ const char* ObjectImpType::selectNameStatement() const
 
 QString ObjectImpType::removeAStatement() const
 {
-  return i18n( mremoveastatement );
+  return mremoveastatement.toString();
 }
 
 QString ObjectImpType::addAStatement() const
 {
-  return i18n( maddastatement );
+  return maddastatement.toString();
 }
 
 QString ObjectImpType::moveAStatement() const
 {
-  return i18n( mmoveastatement );
+  return mmoveastatement.toString();
 }
 
 const ObjectImpType* ObjectImpType::typeFromInternalName( const char* string )
@@ -272,15 +272,15 @@ const ObjectImpType* ObjectImp::stype()
 {
   static const ObjectImpType t(
     nullptr, "any",
-    I18N_NOOP( "Object" ),
+    kli18n( "Object" ),
     I18N_NOOP( "Select this object" ),
     I18N_NOOP( "Select object %1" ),
-    I18N_NOOP( "Remove an object" ),
-    I18N_NOOP( "Add an object" ),
-    I18N_NOOP( "Move an object" ),
-    I18N_NOOP( "Attach to this object" ),
-    I18N_NOOP( "Show an object" ),
-    I18N_NOOP( "Hide an object" ) );
+    kli18n( "Remove an object" ),
+    kli18n( "Add an object" ),
+    kli18n( "Move an object" ),
+    kli18n( "Attach to this object" ),
+    kli18n( "Show an object" ),
+    kli18n( "Hide an object" ) );
   return &t;
 }
 
@@ -297,17 +297,17 @@ bool ObjectImp::isCache() const
 
 QString ObjectImpType::attachToThisStatement() const
 {
-  return i18n( mattachtothisstatement );
+  return mattachtothisstatement.toString();
 }
 
 QString ObjectImpType::showAStatement() const
 {
-  return i18n( mshowastatement );
+  return mshowastatement.toString();
 }
 
 QString ObjectImpType::hideAStatement() const
 {
-  return i18n( mhideastatement );
+  return mhideastatement.toString();
 }
 
 bool ObjectImp::isPropertyDefinedOnOrThroughThisImp( int ) const
