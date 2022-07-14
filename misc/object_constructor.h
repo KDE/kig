@@ -120,9 +120,9 @@ public:
 class StandardConstructorBase
   : public ObjectConstructor
 {
-  const char* mdescname;
-  const char* mdesc;
-  const char* miconfile;
+  const char* mdescname; //  TODO Use KLazyLocalizedString
+  const char* mdesc; // TODO Use KLazyLocalizedString
+  const char* miconfile; //TODO use QStringLiteral
   const ArgsParser& margsparser;
 public:
   StandardConstructorBase( const char* descname,
