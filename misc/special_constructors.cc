@@ -371,7 +371,7 @@ static const struct ArgsParser::spec argsspecpp[] =
 };
 
 LocusConstructor::LocusConstructor()
-  : StandardConstructorBase( I18N_NOOP( "Locus" ), I18N_NOOP( "A locus" ),
+  : StandardConstructorBase( i18n( "Locus" ), i18n( "A locus" ),
                              "locus", margsparser ),
     margsparser( argsspecpp, 2 )
 {
@@ -579,8 +579,8 @@ bool PointSequenceConstructor::isTransform() const
 
 PolygonBNPTypeConstructor::PolygonBNPTypeConstructor()
   : PointSequenceConstructor(
-    I18N_NOOP( "Polygon by Its Vertices" ),
-    I18N_NOOP( "Construct a polygon by giving its vertices" ),
+    i18n( "Polygon by Its Vertices" ),
+    i18n( "Construct a polygon by giving its vertices" ),
     "kig_polygon",
     PolygonBNPType::instance() )
 {
@@ -658,8 +658,8 @@ void PolygonBNPTypeConstructor::drawprelim( const ObjectDrawer& drawer, KigPaint
 
 OpenPolygonTypeConstructor::OpenPolygonTypeConstructor()
   : PointSequenceConstructor(
-    I18N_NOOP( "Open Polygon (Polygonal Line)" ),
-    I18N_NOOP( "Construct an open polygon" ),
+    i18n( "Open Polygon (Polygonal Line)" ),
+    i18n( "Construct an open polygon" ),
     "openpolygon",
     OpenPolygonType::instance() )
 {
@@ -1575,8 +1575,8 @@ bool GenericAffinityConstructor::isAlreadySelectedOK(const std::vector< ObjectCa
 
 GenericProjectivityConstructor::GenericProjectivityConstructor()
   : MergeObjectConstructor(
-    I18N_NOOP( "Generic Projective Transformation" ),
-    I18N_NOOP( "The unique projective transformation that maps four points (or a quadrilateral) onto four other points (or a quadrilateral)" ),
+    i18n( "Generic Projective Transformation" ),
+    i18n( "The unique projective transformation that maps four points (or a quadrilateral) onto four other points (or a quadrilateral)" ),
     "genericprojectivity" )
 {
   SimpleObjectTypeConstructor* b2qu =
@@ -1608,8 +1608,8 @@ bool GenericProjectivityConstructor::isAlreadySelectedOK(const std::vector< Obje
 
 InversionConstructor::InversionConstructor()
   : MergeObjectConstructor(
-    I18N_NOOP( "Inversion of Point, Line or Circle" ),
-    I18N_NOOP( "The inversion of a point, line or circle with respect to a circle" ),
+    i18n( "Inversion of Point, Line or Circle" ),
+    i18n( "The inversion of a point, line or circle with respect to a circle" ),
     "inversion" )
 {
   SimpleObjectTypeConstructor* pointobj =

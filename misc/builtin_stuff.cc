@@ -129,8 +129,8 @@ void setupBuiltinStuff()
       AngleImp::stype(),
       I18N_NOOP( "Construct Bisector of This Angle" ),
       I18N_NOOP( "Select the angle you want to construct the bisector of..." ),
-      I18N_NOOP( "Angle Bisector" ),
-      I18N_NOOP( "The bisector of an angle" ),
+      i18n( "Angle Bisector" ),
+      i18n( "The bisector of an angle" ),
       "angle_bisector",
       "angle-bisector" );
     actions->add( new ConstructibleAction( &anglebisectionctor, "objects_new_angle_bisector" ) );
@@ -641,7 +641,7 @@ void setupBuiltinStuff()
     c = new TestConstructor(
       ConvexPolygonTestType::instance(),
       i18n( "Convex Polygon Test" ),
-      I18N_NOOP( "Test whether a given polygon is convex" ),
+      i18n( "Test whether a given polygon is convex" ),
       "test" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_convexpolygontest" ) );

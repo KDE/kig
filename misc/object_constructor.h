@@ -121,7 +121,7 @@ class StandardConstructorBase
   : public ObjectConstructor
 {
       QString mdescname;
-      QString mdesc; // TODO Use KLazyLocalizedString
+      QString mdesc;
   QString miconfile;
   const ArgsParser& margsparser;
 public:
@@ -205,10 +205,9 @@ class PropertyObjectConstructor
   ArgsParser mparser;
   const char* mpropinternalname;
 public:
-  explicit PropertyObjectConstructor(
-    const ObjectImpType* imprequirement, const char* usetext,
-    const char* selectstat, const char* descname, const char* desc,
-    const char* iconfile, const char* propertyinternalname );
+  explicit PropertyObjectConstructor(const ObjectImpType* imprequirement, const char* usetext,
+    const char* selectstat, const QString &descname, const QString &desc,
+    const QString &iconfile, const char* propertyinternalname );
 
   ~PropertyObjectConstructor();
 
