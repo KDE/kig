@@ -27,8 +27,7 @@ EditType::EditType( QWidget* parent, const QString& name, const QString& desc,
   setWindowTitle( i18nc("@title:window", "Edit Type") );
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
   QWidget *mainWidget = new QWidget(this);
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
+  QVBoxLayout *mainLayout = new QVBoxLayout(this);
   mainLayout->addWidget(mainWidget);
   QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
   okButton->setDefault(true);

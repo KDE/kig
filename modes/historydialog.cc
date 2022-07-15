@@ -26,18 +26,15 @@ HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
   setWindowTitle( i18nc("@title:window", "History Browser") );
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
   QWidget *mainWidget = new QWidget(this);
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
+  QVBoxLayout *mainLayout = new QVBoxLayout(this);
   mainLayout->addWidget(mainWidget);
   connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
   connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
-  //PORTING SCRIPT: WARNING mainLayout->addWidget(buttonBox) must be last item in layout. Please move it.
   mainLayout->addWidget(buttonBox);
 
   QWidget* main = new QWidget( this );
   mwidget = new Ui_HistoryWidget();
   mwidget->setupUi( main );
-//PORTING: Verify that widget was added to mainLayout   setMainWidget( main );
 
   mtotalsteps = mch->count() + 1;
 

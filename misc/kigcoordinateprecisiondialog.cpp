@@ -18,8 +18,7 @@ KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified,
   ui = new Ui::KigCoordinatePrecisionDialog();
   QWidget *mainWidget = new QWidget(this);
   QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel );
-  QVBoxLayout *mainLayout = new QVBoxLayout;
-  setLayout(mainLayout);
+  QVBoxLayout *mainLayout = new QVBoxLayout(this);
   mainLayout->addWidget(mainWidget);
   mainLayout->addWidget( buttonBox );
   ui->setupUi(mainWidget);
