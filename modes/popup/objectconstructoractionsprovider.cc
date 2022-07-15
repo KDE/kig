@@ -44,7 +44,7 @@ void ObjectConstructorActionsProvider::fillUpMenu( NormalModePopupObjects& popup
     };
     if ( add )
     {
-      QByteArray iconfile = (*i)->iconFileName();
+      QString iconfile = (*i)->iconFileName();
       if ( !iconfile.isEmpty() && !iconfile.isNull() )
       {
         popup.addInternalAction( menu, QIcon( new KIconEngine( iconfile, popup.part().iconLoader() ) ), (*i)->descriptiveName(), nextfree++ );

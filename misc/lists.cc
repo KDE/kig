@@ -256,7 +256,7 @@ bool MacroList::save( const std::vector<Macro*>& ms, const QString& f )
     macroelem.appendChild( descelem );
 
     // icon
-    QByteArray icon = ctor->iconFileName( true );
+    QString icon = ctor->iconFileName( true );
     if ( !icon.isNull() )
     {
       QDomElement descelem = doc.createElement( QStringLiteral("IconFileName") );

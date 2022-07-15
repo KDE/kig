@@ -42,77 +42,77 @@ void setupBuiltinStuff()
     // point by coords...
     c = new SimpleObjectTypeConstructor(
       PointByCoordsType::instance(),
-      I18N_NOOP( "Point by Numeric Labels" ),
-      I18N_NOOP( "A point whose coordinates are given by two numeric labels" ),
+      i18n( "Point by Numeric Labels" ),
+      i18n( "A point whose coordinates are given by two numeric labels" ),
       "pointxy" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_point_by_coords" ) );
 
     // segment...
     c = new SimpleObjectTypeConstructor(
-      SegmentABType::instance(), I18N_NOOP( "Segment" ),
-      I18N_NOOP( "A segment constructed from its start and end point" ),
+      SegmentABType::instance(), i18n( "Segment" ),
+      i18n( "A segment constructed from its start and end point" ),
       "segment" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_segment", Qt::Key_S ) );
 
     // segment axis...
     c = new SimpleObjectTypeConstructor(
-      SegmentAxisType::instance(), I18N_NOOP( "Segment Axis" ),
-      I18N_NOOP( "The perpendicular line through a given segment's mid point." ),
+      SegmentAxisType::instance(), i18n( "Segment Axis" ),
+      i18n( "The perpendicular line through a given segment's mid point." ),
       "segmentaxis" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_segment_axis" ) );
 
     // line by two points..
     c = new SimpleObjectTypeConstructor(
-      LineABType::instance(), I18N_NOOP( "Line by Two Points" ),
-      I18N_NOOP( "A line constructed through two points"), "line" );
+      LineABType::instance(), i18n( "Line by Two Points" ),
+      i18n( "A line constructed through two points"), "line" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linettp", Qt::Key_L ) );
 
     // ray by two points..
     c = new SimpleObjectTypeConstructor(
-      RayABType::instance(), I18N_NOOP( "Half-Line" ),
-      I18N_NOOP( "A half-line by its start point, and another point somewhere on it." ),
+      RayABType::instance(), i18n( "Half-Line" ),
+      i18n( "A half-line by its start point, and another point somewhere on it." ),
       "ray" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_ray", Qt::Key_R ) );
 
     // perpendicular line
     c = new SimpleObjectTypeConstructor(
-      LinePerpendLPType::instance(), I18N_NOOP( "Perpendicular" ),
-      I18N_NOOP( "A line constructed through a point, perpendicular to another line or segment." ),
+      LinePerpendLPType::instance(), i18n( "Perpendicular" ),
+      i18n( "A line constructed through a point, perpendicular to another line or segment." ),
       "perpendicular" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineperpend" ) );
 
     // parallel line
     c = new SimpleObjectTypeConstructor(
-      LineParallelLPType::instance(), I18N_NOOP( "Parallel" ),
-      I18N_NOOP( "A line constructed through a point, and parallel to another line or segment" ),
+      LineParallelLPType::instance(), i18n( "Parallel" ),
+      i18n( "A line constructed through a point, and parallel to another line or segment" ),
       "parallel" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineparallel" ) );
 
     // circle
     c = new SimpleObjectTypeConstructor(
-      CircleBCPType::instance(), I18N_NOOP( "Circle by Center && Point" ),
-      I18N_NOOP( "A circle constructed by its center and a point that pertains to it" ),
+      CircleBCPType::instance(), i18n( "Circle by Center && Point" ),
+      i18n( "A circle constructed by its center and a point that pertains to it" ),
       "circlebcp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebcp", Qt::Key_C ) );
 
     c = new SimpleObjectTypeConstructor(
-      CircleBTPType::instance(), I18N_NOOP( "Circle by Three Points" ),
-      I18N_NOOP( "A circle constructed through three points" ),
+      CircleBTPType::instance(), i18n( "Circle by Three Points" ),
+      i18n( "A circle constructed through three points" ),
       "circlebtp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebtp" ) );
 
     c = new SimpleObjectTypeConstructor(
-      CircleBPRType::instance(), I18N_NOOP( "Circle by Point && Radius" ),
-      I18N_NOOP( "A circle defined by its center and the length of the radius" ),
+      CircleBPRType::instance(), i18n( "Circle by Point && Radius" ),
+      i18n( "A circle defined by its center and the length of the radius" ),
       "circlebps" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_circlebpr" ) );
@@ -137,120 +137,120 @@ void setupBuiltinStuff()
 
     // conic stuff
     c = new SimpleObjectTypeConstructor(
-      ConicB5PType::instance(), I18N_NOOP( "Conic by Five Points" ),
-      I18N_NOOP( "A conic constructed through five points" ),
+      ConicB5PType::instance(), i18n( "Conic by Five Points" ),
+      i18n( "A conic constructed through five points" ),
       "conicb5p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicb5p" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicBAAPType::instance(),
-      I18N_NOOP( "Hyperbola by Asymptotes && Point" ),
-      I18N_NOOP( "A hyperbola with given asymptotes through a point" ),
+      i18n( "Hyperbola by Asymptotes && Point" ),
+      i18n( "A hyperbola with given asymptotes through a point" ),
       "conicbaap" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicbaap" ) );
 
     c = new SimpleObjectTypeConstructor(
       EllipseBFFPType::instance(),
-      I18N_NOOP( "Ellipse by Focuses && Point" ), // focuses is used in preference to foci
-      I18N_NOOP( "An ellipse constructed by its focuses and a point that pertains to it" ),
+      i18n( "Ellipse by Focuses && Point" ), // focuses is used in preference to foci
+      i18n( "An ellipse constructed by its focuses and a point that pertains to it" ),
       "ellipsebffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_ellipsebffp" ) );
 
     c = new SimpleObjectTypeConstructor(
       HyperbolaBFFPType::instance(),
-      I18N_NOOP( "Hyperbola by Focuses && Point" ), // focuses is used in preference to foci
-      I18N_NOOP( "A hyperbola constructed by its focuses and a point that pertains to it" ),
+      i18n( "Hyperbola by Focuses && Point" ), // focuses is used in preference to foci
+      i18n( "A hyperbola constructed by its focuses and a point that pertains to it" ),
       "hyperbolabffp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_hyperbolabffp" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicBDFPType::instance(),
-      I18N_NOOP( "Conic by Directrix, Focus && Point" ),
-      I18N_NOOP( "A conic with given directrix and focus, through a point" ),
+      i18n( "Conic by Directrix, Focus && Point" ),
+      i18n( "A conic with given directrix and focus, through a point" ),
       "conicbdfp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicbdfp" ) );
 
     c = new SimpleObjectTypeConstructor(
       ParabolaBTPType::instance(),
-      I18N_NOOP( "Vertical Parabola by Three Points" ),
-      I18N_NOOP( "A vertical parabola constructed through three points" ),
+      i18n( "Vertical Parabola by Three Points" ),
+      i18n( "A vertical parabola constructed through three points" ),
       "parabolabtp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_parabolabtp" ) );
 
     c = new SimpleObjectTypeConstructor(
       CubicB9PType::instance(),
-      I18N_NOOP( "Cubic Curve by Nine Points" ),
-      I18N_NOOP( "A cubic curve constructed through nine points" ),
+      i18n( "Cubic Curve by Nine Points" ),
+      i18n( "A cubic curve constructed through nine points" ),
       "cubicb9p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_cubicb9p" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicPolarPointType::instance(),
-      I18N_NOOP( "Polar Point of a Line" ),
-      I18N_NOOP( "The polar point of a line with respect to a conic." ),
+      i18n( "Polar Point of a Line" ),
+      i18n( "The polar point of a line with respect to a conic." ),
       "polarpoint" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_pointpolar" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicPolarLineType::instance(),
-      I18N_NOOP( "Polar Line of a Point" ),
-      I18N_NOOP( "The polar line of a point with respect to a conic." ),
+      i18n( "Polar Line of a Point" ),
+      i18n( "The polar line of a point with respect to a conic." ),
       "polarline" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linepolar" ) );
 
     c = new SimpleObjectTypeConstructor(
       CubicNodeB6PType::instance(),
-      I18N_NOOP( "Cubic Curve with Node by Six Points" ),
-      I18N_NOOP( "A cubic curve with a nodal point at the origin through six points" ),
+      i18n( "Cubic Curve with Node by Six Points" ),
+      i18n( "A cubic curve with a nodal point at the origin through six points" ),
       "cubicnodeb6p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_cubicnodeb6p" ) );
 
     c = new SimpleObjectTypeConstructor(
       CubicCuspB4PType::instance(),
-      I18N_NOOP( "Cubic Curve with Cusp by Four Points" ),
-      I18N_NOOP( "A cubic curve with a horizontal cusp at the origin through four points" ),
+      i18n( "Cubic Curve with Cusp by Four Points" ),
+      i18n( "A cubic curve with a horizontal cusp at the origin through four points" ),
       "cubiccuspb4p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_cubiccuspb4p" ) );
 
     c = new SimpleObjectTypeConstructor(
       VerticalCubicB4PType::instance(),
-      I18N_NOOP( "Cubic Function by Four Points" ),
-      I18N_NOOP( "A cubic function through four points" ),
+      i18n( "Cubic Function by Four Points" ),
+      i18n( "A cubic function through four points" ),
       "verticalcubicb4p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_verticalcubicb4p" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicDirectrixType::instance(),
-      I18N_NOOP( "Directrix of a Conic" ),
-      I18N_NOOP( "The directrix line of a conic." ),
+      i18n( "Directrix of a Conic" ),
+      i18n( "The directrix line of a conic." ),
       "directrix" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linedirectrix" ) );
 
     c = new SimpleObjectTypeConstructor(
       AngleType::instance(),
-      I18N_NOOP( "Angle by Three Points" ),
-      I18N_NOOP( "An angle defined by three points" ),
+      i18n( "Angle by Three Points" ),
+      i18n( "An angle defined by three points" ),
       "angle" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_angle", Qt::Key_A ) );
 
     c = new SimpleObjectTypeConstructor(
       EquilateralHyperbolaB4PType::instance(),
-      I18N_NOOP( "Equilateral Hyperbola by Four Points" ),
-      I18N_NOOP( "An equilateral hyperbola constructed through four points" ),
+      i18n( "Equilateral Hyperbola by Four Points" ),
+      i18n( "An equilateral hyperbola constructed through four points" ),
       "equilateralhyperbolab4p" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_equilateralhyperbolab4p" ) );
@@ -273,8 +273,8 @@ void setupBuiltinStuff()
       // make this a static object, so it gets deleted at the end of
       // the program.
       static MergeObjectConstructor m(
-        I18N_NOOP( "Mid Point" ),
-        I18N_NOOP( "The midpoint of a segment or two other points" ),
+        i18n( "Mid Point" ),
+        i18n( "The midpoint of a segment or two other points" ),
         "bisection" );
       m.merge( mpotp );
       m.merge( mpos );
@@ -299,8 +299,8 @@ void setupBuiltinStuff()
       // make this a static object, so it gets deleted at the end of
       // the program.
       static MergeObjectConstructor m(
-        I18N_NOOP( "Golden Ratio Point" ),
-        I18N_NOOP( "The golden ratio point of a segment or two other points" ),
+        i18n( "Golden Ratio Point" ),
+        i18n( "The golden ratio point of a segment or two other points" ),
         "segment_golden_point" );
       m.merge( mpotp );
       m.merge( mpos );
@@ -309,64 +309,64 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       VectorType::instance(),
-      I18N_NOOP( "Vector" ),
-      I18N_NOOP( "Construct a vector from two given points." ),
+      i18n( "Vector" ),
+      i18n( "Construct a vector from two given points." ),
       "vector" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_vector", Qt::Key_V ) );
 
     c = new SimpleObjectTypeConstructor(
       VectorSumType::instance(),
-      I18N_NOOP( "Vector Sum" ),
-      I18N_NOOP( "Construct the vector sum of two vectors." ),
+      i18n( "Vector Sum" ),
+      i18n( "Construct the vector sum of two vectors." ),
       "vectorsum" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_vectorsum", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
       LineByVectorType::instance(),
-      I18N_NOOP( "Line by Vector" ),
-      I18N_NOOP( "Construct the line by a given vector though a given point." ),
+      i18n( "Line by Vector" ),
+      i18n( "Construct the line by a given vector though a given point." ),
       "linebyvector" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linebyvector", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
       HalflineByVectorType::instance(),
-      I18N_NOOP( "Half-Line by Vector" ),
-      I18N_NOOP( "Construct the half-line by a given vector starting at given point." ),
+      i18n( "Half-Line by Vector" ),
+      i18n( "Construct the half-line by a given vector starting at given point." ),
       "halflinebyvector" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_halflinebyvector", 0 ) );
 
     c = new SimpleObjectTypeConstructor(
       ArcBTPType::instance(),
-      I18N_NOOP( "Arc by Three Points" ),
-      I18N_NOOP( "Construct an arc through three points." ),
+      i18n( "Arc by Three Points" ),
+      i18n( "Construct an arc through three points." ),
       "arc" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_arcbtp" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicArcBCTPType::instance(),
-      I18N_NOOP( "Conic Arc by Center and Three Points" ),
-      I18N_NOOP( "Construct a conic arc with given center through three points." ),
+      i18n( "Conic Arc by Center and Three Points" ),
+      i18n( "Construct a conic arc with given center through three points." ),
       "conicarc" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicarcbctp" ) );
 
     c = new SimpleObjectTypeConstructor(
       ConicArcB5PType::instance(),
-      I18N_NOOP( "Conic Arc by Five Points" ),
-      I18N_NOOP( "Construct a conic arc through five points." ),
+      i18n( "Conic Arc by Five Points" ),
+      i18n( "Construct a conic arc through five points." ),
       "conicarc" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_conicarcb5p" ) );
 
     c = new SimpleObjectTypeConstructor(
       ArcBCPAType::instance(),
-      I18N_NOOP( "Arc by Center, Angle && Point" ),
-      I18N_NOOP( "Construct an arc by its center and a given angle, "
+      i18n( "Arc by Center, Angle && Point" ),
+      i18n( "Construct an arc by its center and a given angle, "
                  "starting at a given point" ),
       "arcbcpa" );
     ctors->add( c );
@@ -374,8 +374,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ParabolaBDPType::instance(),
-      I18N_NOOP( "Parabola by Directrix && Focus" ),
-      I18N_NOOP( "A parabola defined by its directrix and focus" ),
+      i18n( "Parabola by Directrix && Focus" ),
+      i18n( "A parabola defined by its directrix and focus" ),
       "parabolabdp" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_parabolabdp" ) );
@@ -395,80 +395,80 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       TranslatedType::instance(),
-      I18N_NOOP( "Translate" ),
-      I18N_NOOP( "The translation of an object by a vector" ),
+      i18n( "Translate" ),
+      i18n( "The translation of an object by a vector" ),
       "translation" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_translation" ) );
 
     c = new SimpleObjectTypeConstructor(
       PointReflectionType::instance(),
-      I18N_NOOP( "Reflect in Point" ),
-      I18N_NOOP( "An object reflected in a point" ),
+      i18n( "Reflect in Point" ),
+      i18n( "An object reflected in a point" ),
       "centralsymmetry" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_pointreflection" ) );
 
     c = new SimpleObjectTypeConstructor(
       LineReflectionType::instance(),
-      I18N_NOOP( "Reflect in Line" ),
-      I18N_NOOP( "An object reflected in a line" ),
+      i18n( "Reflect in Line" ),
+      i18n( "An object reflected in a line" ),
       "mirrorpoint" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_linereflection" ) );
 
     c = new SimpleObjectTypeConstructor(
       RotationType::instance(),
-      I18N_NOOP( "Rotate" ),
-      I18N_NOOP( "An object rotated by an angle around a point" ),
+      i18n( "Rotate" ),
+      i18n( "An object rotated by an angle around a point" ),
       "rotation" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_rotation" ) );
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverCenterType::instance(),
-      I18N_NOOP( "Scale" ),
-      I18N_NOOP( "Scale an object over a point, by the ratio given by the length of a segment" ),
+      i18n( "Scale" ),
+      i18n( "Scale an object over a point, by the ratio given by the length of a segment" ),
       "scale" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingovercenter" ) );
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverLineType::instance(),
-      I18N_NOOP( "Scale over Line" ),
-      I18N_NOOP( "An object scaled over a line, by the ratio given by the length of a segment" ),
+      i18n( "Scale over Line" ),
+      i18n( "An object scaled over a line, by the ratio given by the length of a segment" ),
       "stretch" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline" ) );
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverCenter2Type::instance(),
-      I18N_NOOP( "Scale (ratio given by two segments)" ),
-      I18N_NOOP( "Scale an object over a point, by the ratio given by the length of two segments" ),
+      i18n( "Scale (ratio given by two segments)" ),
+      i18n( "Scale an object over a point, by the ratio given by the length of two segments" ),
       "scale" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingovercenter2" ) );
 
     c = new SimpleObjectTypeConstructor(
       ScalingOverLine2Type::instance(),
-      I18N_NOOP( "Scale over Line (ratio given by two segments)" ),
-      I18N_NOOP( "An object scaled over a line, by the ratio given by the length of two segments" ),
+      i18n( "Scale over Line (ratio given by two segments)" ),
+      i18n( "An object scaled over a line, by the ratio given by the length of two segments" ),
       "stretch" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_scalingoverline2" ) );
 
     c = new SimpleObjectTypeConstructor(
       SimilitudeType::instance(),
-      I18N_NOOP( "Apply Similitude" ),
-      I18N_NOOP( "Apply a similitude to an object (the sequence of a scaling and rotation around a center)" ),
+      i18n( "Apply Similitude" ),
+      i18n( "Apply a similitude to an object (the sequence of a scaling and rotation around a center)" ),
       "similitude" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_similitude" ) );
 
     c = new SimpleObjectTypeConstructor(
       HarmonicHomologyType::instance(),
-      I18N_NOOP( "Harmonic Homology" ),
-      I18N_NOOP( "The harmonic homology with a given center and a given axis (this is a projective transformation)" ),
+      i18n( "Harmonic Homology" ),
+      i18n( "The harmonic homology with a given center and a given axis (this is a projective transformation)" ),
       "harmonichomology" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_harmonichomology" ) );
@@ -483,8 +483,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       CastShadowType::instance(),
-      I18N_NOOP( "Draw Projective Shadow" ),
-      I18N_NOOP( "The shadow of an object with a given light source and projection plane (indicated by a line)" ),
+      i18n( "Draw Projective Shadow" ),
+      i18n( "The shadow of an object with a given light source and projection plane (indicated by a line)" ),
       "castshadow" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_castshadow" ) );
@@ -499,8 +499,8 @@ void setupBuiltinStuff()
 
     c = new MultiObjectTypeConstructor(
       ConicAsymptoteType::instance(),
-      I18N_NOOP( "Asymptotes of a Hyperbola" ),
-      I18N_NOOP( "The two asymptotes of a hyperbola." ),
+      i18n( "Asymptotes of a Hyperbola" ),
+      i18n( "The two asymptotes of a hyperbola." ),
       "conicasymptotes", -1, 1 );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_lineconicasymptotes" ) );
@@ -513,8 +513,8 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       TriangleB3PType::instance(),
-      I18N_NOOP( "Triangle by Its Vertices" ),
-      I18N_NOOP( "Construct a triangle given its three vertices." ),
+      i18n( "Triangle by Its Vertices" ),
+      i18n( "Construct a triangle given its three vertices." ),
       "triangle" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_trianglebtp" ) );
@@ -540,8 +540,8 @@ void setupBuiltinStuff()
     actions->add( new ConstructibleAction( c, "objects_new_polygonsides" ));
 
     c = new SimpleObjectTypeConstructor(
-      ConvexHullType::instance(), I18N_NOOP( "Convex Hull" ),
-      I18N_NOOP( "A polygon that corresponds to the convex hull of another polygon" ),
+      ConvexHullType::instance(), i18n( "Convex Hull" ),
+      i18n( "A polygon that corresponds to the convex hull of another polygon" ),
       "convexhull" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_convexhull" ) );
@@ -552,16 +552,16 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       BezierQuadricType::instance(),
-      I18N_NOOP( "Bézier Quadratic by its Control Points" ),
-      I18N_NOOP( "Construct a Bézier quadratic given its three control points." ),
+      i18n( "Bézier Quadratic by its Control Points" ),
+      i18n( "Construct a Bézier quadratic given its three control points." ),
       "bezier3" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_bezierquadratic" ) );
 
      c = new SimpleObjectTypeConstructor(
       BezierCubicType::instance(),
-      I18N_NOOP( "Bézier Cubic by its Control Points" ),
-      I18N_NOOP( "Construct a Bézier cubic given its four control points." ),
+      i18n( "Bézier Cubic by its Control Points" ),
+      i18n( "Construct a Bézier cubic given its four control points." ),
       "bezier4" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_beziercubic" ) );
@@ -572,16 +572,16 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       RationalBezierQuadricType::instance(),
-      I18N_NOOP( "Rational Bézier Quadratic by its Control Points" ),
-      I18N_NOOP( "Construct a Rational Bézier quadratic given its three control points." ),
+      i18n( "Rational Bézier Quadratic by its Control Points" ),
+      i18n( "Construct a Rational Bézier quadratic given its three control points." ),
       "rbezier3" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_rationalbezierquadratic" ) );
 
      c = new SimpleObjectTypeConstructor(
       RationalBezierCubicType::instance(),
-      I18N_NOOP( "Rational Bézier Cubic by its Control Points" ),
-      I18N_NOOP( "Construct a Rational Bézier cubic given its four control points." ),
+      i18n( "Rational Bézier Cubic by its Control Points" ),
+      i18n( "Construct a Rational Bézier cubic given its four control points." ),
       "rbezier4" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_rationalbeziercubic" ) );
@@ -600,47 +600,47 @@ void setupBuiltinStuff()
     // tests
     c = new TestConstructor(
       AreParallelType::instance(),
-      I18N_NOOP( "Parallel Test" ),
-      I18N_NOOP( "Test whether two given lines are parallel" ),
+      i18n( "Parallel Test" ),
+      i18n( "Test whether two given lines are parallel" ),
       "testparallel" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areparallel" ) );
 
     c = new TestConstructor(
       AreOrthogonalType::instance(),
-      I18N_NOOP( "Orthogonal Test" ),
-      I18N_NOOP( "Test whether two given lines are orthogonal" ),
+      i18n( "Orthogonal Test" ),
+      i18n( "Test whether two given lines are orthogonal" ),
       "testorthogonal" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_areorthogonal" ) );
 
     c = new TestConstructor(
       AreCollinearType::instance(),
-      I18N_NOOP( "Collinear Test" ),
-      I18N_NOOP( "Test whether three given points are collinear" ),
+      i18n( "Collinear Test" ),
+      i18n( "Test whether three given points are collinear" ),
       "testcollinear" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_arecollinear" ) );
 
     c = new TestConstructor(
       ContainsTestType::instance(),
-      I18N_NOOP( "Contains Test" ),
-      I18N_NOOP( "Test whether a given curve contains a given point" ),
+      i18n( "Contains Test" ),
+      i18n( "Test whether a given curve contains a given point" ),
       "testcontains" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_containstest" ) );
 
     c = new TestConstructor(
       InPolygonTestType::instance(),
-      I18N_NOOP( "In Polygon Test" ),
-      I18N_NOOP( "Test whether a given polygon contains a given point" ),
+      i18n( "In Polygon Test" ),
+      i18n( "Test whether a given polygon contains a given point" ),
       "test" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_inpolygontest" ) );
 
     c = new TestConstructor(
       ConvexPolygonTestType::instance(),
-      I18N_NOOP( "Convex Polygon Test" ),
+      i18n( "Convex Polygon Test" ),
       I18N_NOOP( "Test whether a given polygon is convex" ),
       "test" );
     ctors->add( c );
@@ -648,16 +648,16 @@ void setupBuiltinStuff()
 
     c = new TestConstructor(
       ExistenceTestType::instance(),
-      I18N_NOOP( "Existence Test" ),
-      I18N_NOOP( "Test whether a given object is constructible" ),
+      i18n( "Existence Test" ),
+      i18n( "Test whether a given object is constructible" ),
       "test" );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_existencetest" ) );
 
     c = new TestConstructor(
       SameDistanceType::instance(),
-      I18N_NOOP( "Distance Test" ),
-      I18N_NOOP( "Test whether a given point have the same distance from a given point "
+      i18n( "Distance Test" ),
+      i18n( "Test whether a given point have the same distance from a given point "
                  "and from another given point" ),
       "testdistance" );
     ctors->add( c );
@@ -665,8 +665,8 @@ void setupBuiltinStuff()
 
     c = new TestConstructor(
       VectorEqualityTestType::instance(),
-      I18N_NOOP( "Vector Equality Test" ),
-      I18N_NOOP( "Test whether two vectors are equal" ),
+      i18n( "Vector Equality Test" ),
+      i18n( "Test whether two vectors are equal" ),
       "test" );
 //      "testequal" );
     ctors->add( c );
@@ -686,9 +686,9 @@ void setupBuiltinStuff()
 
     c = new SimpleObjectTypeConstructor(
       ProjectedPointType::instance(),
-      I18N_NOOP( "Point Projection" ),
-      I18N_NOOP( "Project a point on a line" ),
-      "projection" );
+      i18n( "Point Projection" ),
+      i18n( "Project a point on a line" ),
+      QStringLiteral("projection") );
     ctors->add( c );
     actions->add( new ConstructibleAction( c, "objects_new_projection" ) );
 

@@ -35,7 +35,7 @@ public:
 
   virtual const QString descriptiveName() const = 0;
   virtual const QString description() const = 0;
-  virtual const QByteArray iconFileName( const bool canBeNull = false ) const = 0;
+  virtual const QString iconFileName( const bool canBeNull = false ) const = 0;
 
   /**
    * the following function is called in case of duplication of arguments
@@ -120,21 +120,21 @@ public:
 class StandardConstructorBase
   : public ObjectConstructor
 {
-  const char* mdescname; //  TODO Use KLazyLocalizedString
-  const char* mdesc; // TODO Use KLazyLocalizedString
-  const char* miconfile; //TODO use QStringLiteral
+      QString mdescname;
+      QString mdesc; // TODO Use KLazyLocalizedString
+  QString miconfile;
   const ArgsParser& margsparser;
 public:
-  StandardConstructorBase( const char* descname,
-                           const char* desc,
-                           const char* iconfile,
+  StandardConstructorBase( const QString &descname,
+                           const QString &desc,
+                           const QString &iconfile,
                            const ArgsParser& parser );
 
   virtual ~StandardConstructorBase();
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const uint& ) const override;
@@ -178,8 +178,8 @@ class SimpleObjectTypeConstructor
   const ArgsParserObjectType* mtype;
 public:
   explicit SimpleObjectTypeConstructor(
-    const ArgsParserObjectType* t, const char* descname,
-    const char* desc, const char* iconfile );
+    const ArgsParserObjectType* t, const QString &descname,
+    const QString &desc, const QString &iconfile );
 
   ~SimpleObjectTypeConstructor();
 
@@ -243,12 +243,12 @@ class MultiObjectTypeConstructor
   ArgsParser mparser;
 public:
   explicit MultiObjectTypeConstructor(
-    const ArgsParserObjectType* t, const char* descname,
-    const char* desc, const char* iconfile,
+    const ArgsParserObjectType* t, const QString &descname,
+    const QString &desc, const QString &iconfile,
     const std::vector<int>& params );
   explicit MultiObjectTypeConstructor(
-    const ArgsParserObjectType* t, const char* descname,
-    const char* desc, const char* iconfile,
+    const ArgsParserObjectType* t, const QString &descname,
+    const QString &desc, const QString &iconfile,
     int a, int b, int c = -999, int d = -999 );
   ~MultiObjectTypeConstructor();
 
@@ -272,21 +272,21 @@ public:
 class MergeObjectConstructor
   : public ObjectConstructor
 {
-  const char* mdescname;
-  const char* mdesc;
-  const char* miconfilename;
+  const QString mdescname;
+  const QString mdesc;
+  const QString miconfilename;
   typedef std::vector<ObjectConstructor*> vectype;
   vectype mctors;
 public:
-  MergeObjectConstructor( const char* descname, const char* desc,
-                          const char* iconfilename );
+  MergeObjectConstructor( const QString &descname, const QString &desc,
+                          const QString &iconfilename );
   ~MergeObjectConstructor();
 
   void merge( ObjectConstructor* e );
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const override;
 
@@ -342,7 +342,7 @@ public:
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
 
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
                                   const uint& ) const override;

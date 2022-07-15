@@ -41,7 +41,7 @@ public:
   virtual ~GUIAction();
 
   virtual QString description() const = 0;
-  virtual QByteArray iconFileName( const bool canBeNull = false ) const = 0;
+  virtual QString iconFileName( const bool canBeNull = false ) const = 0;
   virtual QString descriptiveName() const = 0;
   virtual const char* actionName() const = 0;
   virtual int shortcut() const = 0;
@@ -63,7 +63,7 @@ public:
                        int shortcut = 0 );
   ~ConstructibleAction();
   QString description() const override;
-  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString iconFileName( const bool canBeNull = false ) const override;
   QString descriptiveName() const override;
   const char* actionName() const override;
   int shortcut() const override;
@@ -80,7 +80,7 @@ public:
   ~ConstructPointAction();
 
   QString description() const override;
-  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString iconFileName( const bool canBeNull = false ) const override;
   QString descriptiveName() const override;
   const char* actionName() const override;
   int shortcut() const override;
@@ -95,7 +95,7 @@ public:
   explicit ConstructTextLabelAction( const char* actionname );
 
   QString description() const override;
-  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString iconFileName( const bool canBeNull = false ) const override;
   QString descriptiveName() const override;
   const char* actionName() const override;
   int shortcut() const override;
@@ -110,7 +110,7 @@ public:
   explicit AddFixedPointAction( const char* actionname );
   ~AddFixedPointAction();
   QString description() const override;
-  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString iconFileName( const bool canBeNull = false ) const override;
   QString descriptiveName() const override;
   const char* actionName() const override;
   int shortcut() const override;
@@ -125,7 +125,7 @@ public:
   explicit ConstructNumericLabelAction( const char* actionname );
   ~ConstructNumericLabelAction();
   QString description() const override;
-  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString iconFileName( const bool canBeNull = false ) const override;
   QString descriptiveName() const override;
   const char* actionName() const override;
   int shortcut() const override;
@@ -141,7 +141,7 @@ public:
   TestAction( const char* actionname );
   ~TestAction();
   QString description() const;
-  QByteArray iconFileName( const bool canBeNull = false ) const;
+  QString iconFileName( const bool canBeNull = false ) const;
   QString descriptiveName() const;
   const char* actionName() const;
   void act( KigPart& );
@@ -164,7 +164,7 @@ public:
                    const char* icon = "" );
   ~NewScriptAction();
   QString description() const override;
-  QByteArray iconFileName( const bool canBeNull = false ) const override;
+  QString iconFileName( const bool canBeNull = false ) const override;
   QString descriptiveName() const override;
   const char* actionName() const override;
   void act( KigPart& ) override;

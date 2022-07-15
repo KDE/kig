@@ -82,19 +82,19 @@ public:
 class PointSequenceConstructor
   : public ObjectConstructor
 {
-  const char* mdescname;
-  const char* mdesc;
-  const char* miconfile;
+  const QString mdescname;
+  const QString mdesc;
+  const QString miconfile;
   const ObjectType* mtype;
 public:
-  PointSequenceConstructor( const char* descname,
-			    const char* desc,
-			    const char* iconfile,
-			    const ObjectType* type );
+  PointSequenceConstructor(const QString &descname,
+                const QString &desc,
+                const QString &iconfile,
+                const ObjectType* type );
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
   void handleArgs( const std::vector<ObjectCalcer*>& os,
                            KigPart& d,
                            KigWidget& v
@@ -167,7 +167,7 @@ public:
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const override;
   int wantArgs( const std::vector<ObjectCalcer*>& os,
                               const KigDocument& d,
@@ -225,7 +225,7 @@ public:
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
  
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const override;
 
@@ -267,7 +267,7 @@ public:
 
   const QString descriptiveName() const override;
   const QString description() const override;
-  const QByteArray iconFileName( const bool canBeNull = false ) const override;
+  const QString iconFileName( const bool canBeNull = false ) const override;
   bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os,
                               const uint& ) const override;
   int wantArgs( const std::vector<ObjectCalcer*>& os,
@@ -416,8 +416,8 @@ class TestConstructor
 {
   const ArgsParserObjectType* mtype;
 public:
-  TestConstructor( const ArgsParserObjectType* type, const char* descname,
-    const char* desc, const char* iconfile );
+  TestConstructor( const ArgsParserObjectType* type, const QString &descname,
+    const QString &desc, const QString &iconfile );
   ~TestConstructor();
   void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
                    const KigDocument& ) const override;

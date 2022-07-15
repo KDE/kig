@@ -31,15 +31,15 @@
 
 const QString StandardConstructorBase::descriptiveName() const
 {
-  return i18n( mdescname );
+  return mdescname;
 }
 
 const QString StandardConstructorBase::description() const
 {
-  return i18n( mdesc );
+  return mdesc;
 }
 
-const QByteArray StandardConstructorBase::iconFileName( const bool ) const
+const QString StandardConstructorBase::iconFileName( const bool ) const
 {
   return miconfile;
 }
@@ -49,9 +49,8 @@ bool StandardConstructorBase::isAlreadySelectedOK( const std::vector<ObjectCalce
   return false;
 }
 
-StandardConstructorBase::StandardConstructorBase(
-  const char* descname, const char* desc,
-  const char* iconfile, const ArgsParser& parser )
+StandardConstructorBase::StandardConstructorBase(const QString &descname, const QString &desc,
+  const QString &iconfile, const ArgsParser& parser )
   : mdescname( descname ),
     mdesc( desc ),
     miconfile( iconfile ),
@@ -97,9 +96,8 @@ void StandardConstructorBase::handlePrelim(
   drawprelim( drawer, p, args, d );
 }
 
-SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(
-  const ArgsParserObjectType* t, const char* descname,
-  const char* desc, const char* iconfile )
+SimpleObjectTypeConstructor::SimpleObjectTypeConstructor(const ArgsParserObjectType* t, const QString &descname,
+  const QString &desc, const QString &iconfile )
   : StandardConstructorBase( descname, desc, iconfile,
                              t->argsParser() ),
     mtype( t )
@@ -136,9 +134,8 @@ StandardConstructorBase::~StandardConstructorBase()
 {
 }
 
-MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ArgsParserObjectType* t, const char* descname,
-  const char* desc, const char* iconfile,
+MultiObjectTypeConstructor::MultiObjectTypeConstructor(const ArgsParserObjectType* t, const QString &descname,
+  const QString &desc, const QString &iconfile,
   const std::vector<int>& params )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams( params ),
@@ -146,9 +143,8 @@ MultiObjectTypeConstructor::MultiObjectTypeConstructor(
 {
 }
 
-MultiObjectTypeConstructor::MultiObjectTypeConstructor(
-  const ArgsParserObjectType* t, const char* descname,
-  const char* desc, const char* iconfile,
+MultiObjectTypeConstructor::MultiObjectTypeConstructor(const ArgsParserObjectType* t, const QString &descname,
+  const QString &desc, const QString &iconfile,
   int a, int b, int c, int d )
   : StandardConstructorBase( descname, desc, iconfile, mparser ),
     mtype( t ), mparams(),
@@ -206,8 +202,7 @@ MergeObjectConstructor::~MergeObjectConstructor()
     delete *i;
 }
 
-MergeObjectConstructor::MergeObjectConstructor(
-  const char* descname, const char* desc, const char* iconfilename )
+MergeObjectConstructor::MergeObjectConstructor(const QString &descname, const QString &desc, const QString &iconfilename )
   : ObjectConstructor(), mdescname( descname ), mdesc( desc ),
     miconfilename( iconfilename ), mctors()
 {
@@ -224,15 +219,15 @@ void MergeObjectConstructor::merge( ObjectConstructor* e )
 
 const QString MergeObjectConstructor::descriptiveName() const
 {
-  return i18n( mdescname );
+  return mdescname;
 }
 
 const QString MergeObjectConstructor::description() const
 {
-  return i18n( mdesc );
+  return mdesc;
 }
 
-const QByteArray MergeObjectConstructor::iconFileName( const bool ) const
+const QString MergeObjectConstructor::iconFileName( const bool ) const
 {
   return miconfilename;
 }
@@ -366,9 +361,9 @@ const QString MacroConstructor::description() const
   return mdesc;
 }
 
-const QByteArray MacroConstructor::iconFileName( const bool canBeNull ) const
+const QString MacroConstructor::iconFileName( const bool canBeNull ) const
 {
-  return ( miconfile.isNull() && !canBeNull ) ? QByteArray( "system-run" ) : miconfile;
+  return ( miconfile.isNull() && !canBeNull ) ? QStringLiteral( "system-run" ) : miconfile;
 }
 
 bool MacroConstructor::isAlreadySelectedOK( const std::vector<ObjectCalcer*>&, const uint& ) const

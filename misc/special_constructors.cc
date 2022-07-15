@@ -487,9 +487,9 @@ bool LocusConstructor::isTransform() const
  */
 
 PointSequenceConstructor::PointSequenceConstructor(
-  const char* descname,
-  const char* desc,
-  const char* iconfile,
+  const QString &descname,
+  const QString &desc,
+  const QString &iconfile,
   const ObjectType* type )
   : mdescname( descname ),
     mdesc( desc ),
@@ -500,15 +500,15 @@ PointSequenceConstructor::PointSequenceConstructor(
 
 const QString PointSequenceConstructor::descriptiveName() const
 {
-  return i18n( mdescname );
+  return mdescname;
 }
 
 const QString PointSequenceConstructor::description() const
 {
-  return i18n( mdesc );
+  return mdesc;
 }
 
-const QByteArray PointSequenceConstructor::iconFileName( const bool ) const
+const QString PointSequenceConstructor::iconFileName( const bool ) const
 {
   return miconfile;
 }
@@ -888,9 +888,9 @@ const QString PolygonBCVConstructor::description() const
   return i18n("Construct a regular polygon with a given center and vertex");
 }
 
-const QByteArray PolygonBCVConstructor::iconFileName( const bool ) const
+const QString PolygonBCVConstructor::iconFileName( const bool ) const
 {
-  return "hexagonbcv";
+  return QStringLiteral("hexagonbcv");
 }
 
 bool PolygonBCVConstructor::isAlreadySelectedOK(
@@ -1260,9 +1260,9 @@ const QString RationalBezierCurveTypeConstructor::description() const
   return i18n( "Construct a Bézier curve by giving its control points and positive weights" );
 }
 
-const QByteArray RationalBezierCurveTypeConstructor::iconFileName( const bool ) const
+const QString RationalBezierCurveTypeConstructor::iconFileName( const bool ) const
 {
-  return "rbezierN";
+  return QStringLiteral("rbezierN");
 }
 
 bool RationalBezierCurveTypeConstructor::isAlreadySelectedOK(
@@ -1681,9 +1681,9 @@ const QString MeasureTransportConstructor::description() const
   return i18n("Transport the measure of a segment or arc over a line or circle.");
 }
 
-const QByteArray MeasureTransportConstructor::iconFileName( const bool ) const
+const QString MeasureTransportConstructor::iconFileName( const bool ) const
 {
-  return "measuretransport";
+  return QStringLiteral("measuretransport");
 }
 
 bool MeasureTransportConstructor::isAlreadySelectedOK(
@@ -2157,8 +2157,8 @@ bool GoldenPointOfTwoPointsConstructor::isTransform() const
   return false;
 }
 
-TestConstructor::TestConstructor( const ArgsParserObjectType* type, const char* descname,
-                                  const char* desc, const char* iconfile )
+TestConstructor::TestConstructor(const ArgsParserObjectType* type, const QString &descname,
+                                  const QString &desc, const QString &iconfile )
   : StandardConstructorBase( descname, desc, iconfile, type->argsParser() ),
     mtype( type )
 {
