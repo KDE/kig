@@ -305,8 +305,8 @@ public:
 
 ConicRadicalConstructor::ConicRadicalConstructor()
   : StandardConstructorBase(
-    I18N_NOOP( "Radical Lines for Conics" ),
-    I18N_NOOP( "The lines constructed through the intersections "
+    i18n( "Radical Lines for Conics" ),
+    i18n( "The lines constructed through the intersections "
                "of two conics.  This is also defined for "
                "non-intersecting conics." ),
     "conicsradicalline", mparser ),
@@ -741,8 +741,8 @@ static const struct ArgsParser::spec argsspecpv[] =
 };
 
 PolygonVertexTypeConstructor::PolygonVertexTypeConstructor()
-  : StandardConstructorBase( I18N_NOOP( "Vertices of a Polygon" ),
-       I18N_NOOP( "The vertices of a polygon." ),
+  : StandardConstructorBase( i18n( "Vertices of a Polygon" ),
+       i18n( "The vertices of a polygon." ),
        "polygonvertices", margsparser ),
     mtype( PolygonVertexType::instance() ),
     margsparser( argsspecpv, 1 )
@@ -808,8 +808,8 @@ static const struct ArgsParser::spec argsspecps[] =
 };
 
 PolygonSideTypeConstructor::PolygonSideTypeConstructor()
-  : StandardConstructorBase( I18N_NOOP( "Sides of a Polygon" ),
-       I18N_NOOP( "The sides of a polygon." ),
+  : StandardConstructorBase( i18n( "Sides of a Polygon" ),
+       i18n( "The sides of a polygon." ),
        "polygonsides", margsparser ),
     mtype( PolygonSideType::instance() ),
     margsparser( argsspecps, 1 )
