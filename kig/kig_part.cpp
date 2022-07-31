@@ -390,7 +390,7 @@ bool KigPart::openFile()
   QFileInfo fileinfo( localFilePath() );
   if ( ! fileinfo.exists() )
   {
-    KMessageBox::sorry( widget(),
+    KMessageBox::error( widget(),
                         i18n( "The file \"%1\" you tried to open does not exist. "
                               "Please verify that you entered the correct path.", localFilePath() ),
                         i18n( "File Not Found" ) );
@@ -409,7 +409,7 @@ bool KigPart::openFile()
   if ( !filter )
   {
     // we don't support this mime type...
-    KMessageBox::sorry
+    KMessageBox::error
       (
         widget(),
         i18n( "You tried to open a document of type \"%1\"; unfortunately, Kig does not support this format. If you think the format in question would be worth implementing support for, you can open a feature request in <a href=\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist\">KDE's bug tracking system</a>"

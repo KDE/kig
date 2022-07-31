@@ -504,7 +504,7 @@ void TypesDialog::editType()
     return;
   if ( indexes.count() > 1 )
   {
-    KMessageBox::sorry( this,
+    KMessageBox::error( this,
                         i18n( "There is more than one type selected. You can "
                               "only edit one type at a time. Please select "
                               "only the type you want to edit and try again." ),

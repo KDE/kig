@@ -314,7 +314,7 @@ bool TextLabelModeBase::canFinish()
 
   if ( ! finish )
   {
-    KMessageBox::sorry( mdoc.widget(),
+    KMessageBox::error( mdoc.widget(),
                         i18n( "There are '%n' parts in the text that you have not selected a "
                               "value for. Please remove them or select enough arguments." ) );
   };

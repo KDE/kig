@@ -560,7 +560,7 @@ void LatexExporter::run( const KigPart& doc, KigWidget& w )
     QFile file( file_name );
     if ( ! file.open( QIODevice::WriteOnly ) )
     {
-        KMessageBox::sorry( &w, i18n( "The file \"%1\" could not be opened. Please "
+        KMessageBox::error( &w, i18n( "The file \"%1\" could not be opened. Please "
                                       "check if the file permissions are set correctly." ,
                                       file_name ) );
         return;

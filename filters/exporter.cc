@@ -101,14 +101,14 @@ void ImageExporter::run( const KigPart& doc, KigWidget& w )
   qDebug() << "mimetype: " << mimeType.name();
   if ( !QImageWriter::supportedMimeTypes().contains( mimeType.name().toUtf8() ) )
   {
-    KMessageBox::sorry( &w, i18n( "Sorry, this file format is not supported." ) );
+    KMessageBox::error( &w, i18n( "Sorry, this file format is not supported." ) );
     return;
   };
 
   QFile file( filename );
   if ( ! file.open( QIODevice::WriteOnly ) )
   {
-    KMessageBox::sorry( &w,
+    KMessageBox::error( &w,
                         i18n( "The file \"%1\" could not be opened. Please check if the file permissions are set correctly." ,
                           filename ) );
     return;

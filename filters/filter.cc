@@ -62,7 +62,7 @@ bool KigFilter::supportMime( const QString& )
 
 void KigFilter::fileNotFound( const QString& file ) const
 {
-  KMessageBox::sorry( nullptr,
+  KMessageBox::error( nullptr,
                       i18n( "The file \"%1\" could not be opened.  "
                             "This probably means that it does not "
                             "exist, or that it cannot be opened due to "
@@ -77,7 +77,7 @@ void KigFilter::parseError( const QString& explanation ) const
   const QString title = i18n( "Parse Error" );
 
   if ( explanation.isEmpty() )
-    KMessageBox::sorry( nullptr, text, title );
+    KMessageBox::error( nullptr, text, title );
   else
     KMessageBox::detailedSorry( nullptr, text, explanation, title );
 }

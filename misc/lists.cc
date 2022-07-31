@@ -287,13 +287,13 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
   QFile file( f );
   if ( ! file.open( QIODevice::ReadOnly ) )
   {
-    KMessageBox::sorry( nullptr, i18n( "Could not open macro file '%1'", f ) );
+    KMessageBox::error( nullptr, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
   QDomDocument doc( QStringLiteral("KigMacroFile") );
   if ( !doc.setContent( &file ) )
   {
-    KMessageBox::sorry( nullptr, i18n( "Could not open macro file '%1'", f ) );
+    KMessageBox::error( nullptr, i18n( "Could not open macro file '%1'", f ) );
     return false;
   }
   file.close();

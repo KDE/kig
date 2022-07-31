@@ -73,7 +73,7 @@ bool DefineMacroMode::validateObjects()
   ObjectHierarchy hier( given, final );
   if ( !mgiven.empty() && !hier.resultDependsOnGiven() )
   {
-    KMessageBox::sorry( mwizard,
+    KMessageBox::error( mwizard,
                         i18n( "One of the result objects you selected "
                               "cannot be calculated from the given objects. "
                               "Kig cannot calculate this macro because of this. "
@@ -83,7 +83,7 @@ bool DefineMacroMode::validateObjects()
   }
   else if( !hier.allGivenObjectsUsed() )
   {
-    KMessageBox::sorry( mwizard,
+    KMessageBox::error( mwizard,
                         i18n( "One of the given objects is not used in the "
                               "calculation of the resultant objects.  This "
                               "probably means you are expecting Kig to do "

@@ -196,7 +196,7 @@ bool ScriptCreationMode::queryFinish()
     }
     else
     {
-      KMessageBox::sorry(
+      KMessageBox::error(
         mwizard, i18n( "There seems to be an error in your script. The Python interpreter "
                        "reported no errors, but the script does not generate "
                        "a valid object. Please fix the script, and click the Finish button "
@@ -338,7 +338,7 @@ bool ScriptEditMode::queryFinish()
     }
     else
     {
-      KMessageBox::sorry(
+      KMessageBox::error(
         mwizard, i18n( "There seems to be an error in your script. The Python interpreter "
                               "reported no errors, but the script does not generate "
                               "a valid object. Please fix the script." ) );
