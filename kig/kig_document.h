@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_KIG_KIG_DOCUMENT_H
-#define KIG_KIG_KIG_DOCUMENT_H
+#pragma once
 
 #include <set>
 #include <vector>
@@ -142,5 +141,3 @@ public:
      */
     std::vector<ObjectCalcer *> findIntersectionPoints(const ObjectCalcer *c1, const ObjectCalcer *c2) const;
 };
-
-#endif

@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_EQUATIONSTRING_H
-#define KIG_EQUATIONSTRING_H
+#pragma once
 
 #include <QString>
 
@@ -52,5 +51,3 @@ public:
     const QString y() const;
     const QString xnym(int n, int m) const;
 };
-
-#endif

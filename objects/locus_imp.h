@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_LOCUS_IMP_H
-#define KIG_OBJECTS_LOCUS_IMP_H
+#pragma once
 
 #include "../misc/object_hierarchy.h"
 #include "curve_imp.h"
@@ -86,5 +85,3 @@ public:
 
     // virtual QString LocusTypeString(const KigDocument& w) const;
 };
-
-#endif

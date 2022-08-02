@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
-#define KIG_FILTERS_IMAGEEXPORTEROPTIONS_H
+#pragma once
 
 #include "../misc/unit.h"
 
@@ -45,5 +44,3 @@ protected slots:
     void slotHeightChanged(double);
     void slotUnitChanged(int);
 };
-
-#endif

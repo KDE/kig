@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef BOGUS_IMP_H
-#define BOGUS_IMP_H
+#pragma once
 
 #include "../misc/kigtransform.h"
 #include "../misc/object_hierarchy.h"
@@ -293,5 +292,3 @@ public:
 
     bool equals(const ObjectImp &rhs) const override;
 };
-
-#endif

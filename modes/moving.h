@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef MOVING_H
-#define MOVING_H
+#pragma once
 
 #include "mode.h"
 
@@ -83,5 +82,3 @@ public:
     PointRedefineMode(ObjectHolder *p, KigPart &d, KigWidget &v);
     ~PointRedefineMode();
 };
-
-#endif

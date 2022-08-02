@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_BEZIER_IMP_H
-#define KIG_OBJECTS_BEZIER_IMP_H
+#pragma once
 
 #include "curve_imp.h"
 
@@ -147,5 +146,3 @@ public:
 
     bool equals(const ObjectImp &rhs) const override;
 };
-
-#endif

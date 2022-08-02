@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_GUIACTION_H
-#define KIG_MISC_GUIACTION_H
+#pragma once
 
 #include <config-kig.h>
 
@@ -168,5 +167,3 @@ public:
 };
 
 #endif // KIG_ENABLE_PYTHON_SCRIPTING
-
-#endif

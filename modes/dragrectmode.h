@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODES_DRAGRECTMODE_H
-#define KIG_MODES_DRAGRECTMODE_H
+#pragma once
 
 #include "mode.h"
 
@@ -86,5 +85,3 @@ public:
      */
     bool cancelled() const;
 };
-
-#endif

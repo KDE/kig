@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_CUBIC_COMMON_H
-#define KIG_MISC_CUBIC_COMMON_H
+#pragma once
 
 #include "common.h"
 
@@ -93,5 +92,3 @@ const Coordinate calcCubicLineIntersect(const CubicCartesianData &c, const LineD
 void calcCubicLineRestriction(const CubicCartesianData &data, const Coordinate &p1, const Coordinate &dir, double &a, double &b, double &c, double &d);
 
 const CubicCartesianData calcCubicTransformation(const CubicCartesianData &data, const Transformation &t, bool &valid);
-
-#endif

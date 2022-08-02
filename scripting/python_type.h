@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_SCRIPTING_PYTHON_TYPE_H
-#define KIG_SCRIPTING_PYTHON_TYPE_H
+#pragma once
 
 #include "../objects/object_type.h"
 
@@ -46,5 +45,3 @@ public:
     //   virtual void executeAction( int i, RealObject* o, KigDocument& d, KigWidget& w,
     //                               NormalMode& m ) const;
 };
-
-#endif

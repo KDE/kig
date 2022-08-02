@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_SVGEXPORTER_H
-#define KIG_FILTERS_SVGEXPORTER_H
+#pragma once
 
 #include "exporter.h"
 
@@ -23,5 +22,3 @@ public:
     QString menuIcon() const override;
     void run(const KigPart &part, KigWidget &w) override;
 };
-
-#endif

@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_COMMON_H
-#define KIG_MISC_COMMON_H
+#pragma once
 
 #include "coordinate.h"
 #include "rect.h"
@@ -256,5 +255,3 @@ int kigSgn(const T &a)
 }
 
 extern const double test_threshold;
-
-#endif

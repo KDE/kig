@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_COORDINATE_SYSTEM_H
-#define KIG_MISC_COORDINATE_SYSTEM_H
+#pragma once
 
 #include <qnamespace.h>
 
@@ -108,5 +107,3 @@ public:
     const char *type() const override;
     int id() const override;
 };
-
-#endif

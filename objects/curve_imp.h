@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_CURVE_IMP_H
-#define KIG_OBJECTS_CURVE_IMP_H
+#pragma once
 
 #include "object_imp.h"
 
@@ -53,5 +52,3 @@ public:
     virtual bool containsPoint(const Coordinate &p, const KigDocument &) const = 0;
     QString cartesianEquationString(const KigDocument &w) const;
 };
-
-#endif

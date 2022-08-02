@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_SPECIAL_IMPTYPES_H
-#define KIG_OBJECTS_SPECIAL_IMPTYPES_H
+#pragma once
 
 #include "object_imp.h"
 
@@ -80,5 +79,3 @@ public:
 };
 
 extern InvertibleImpType invertibleimptypeinstance;
-
-#endif

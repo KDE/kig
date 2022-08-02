@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_DRGEO_FILTER_H
-#define KIG_FILTERS_DRGEO_FILTER_H
+#pragma once
 
 #include "filter.h"
 
@@ -30,5 +29,3 @@ public:
 private:
     KigDocument *importFigure(const QDomNode &f, const bool grid);
 };
-
-#endif

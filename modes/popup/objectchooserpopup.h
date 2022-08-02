@@ -4,8 +4,7 @@
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
-#ifndef OBJECTCHOOSERPOPUP_H
-#define OBJECTCHOOSERPOPUP_H
+#pragma once
 
 #include <QMenu>
 
@@ -52,5 +51,3 @@ protected:
 
     int mselected;
 };
-
-#endif // OBJECTCHOOSERPOPUP_H

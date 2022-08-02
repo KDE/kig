@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_VECTOR_TYPE_H
-#define KIG_OBJECTS_VECTOR_TYPE_H
+#pragma once
 
 #include "base_type.h"
 
@@ -28,5 +27,3 @@ public:
     ObjectImp *calc(const Args &args, const KigDocument &) const override;
     const ObjectImpType *resultId() const override;
 };
-
-#endif

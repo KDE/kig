@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef OBJECT_TYPE_FACTORY_H
-#define OBJECT_TYPE_FACTORY_H
+#pragma once
 
 #include "common.h"
 
@@ -22,5 +21,3 @@ public:
     void add(const ObjectType *type);
     const ObjectType *find(const char *name) const;
 };
-
-#endif

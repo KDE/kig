@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_TEXT_IMP_H
-#define KIG_OBJECTS_TEXT_IMP_H
+#pragma once
 
 #include "object_imp.h"
 
@@ -95,5 +94,3 @@ public:
     const ObjectImpType *impRequirementForProperty(int which) const override;
     bool isPropertyDefinedOnOrThroughThisImp(int which) const override;
 };
-
-#endif

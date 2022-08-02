@@ -4,8 +4,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_CABRI_UTILS_H
-#define KIG_FILTERS_CABRI_UTILS_H
+#pragma once
 
 #undef CABRI_DEBUG
 
@@ -147,5 +146,3 @@ public:
     CabriObject *readObject(QFile &f) override;
     void decodeStyle(CabriObject *obj, Qt::PenStyle &ps, Kig::PointStyle &pointType) override;
 };
-
-#endif

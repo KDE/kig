@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MODES_TYPESDIALOG_H
-#define KIG_MODES_TYPESDIALOG_H
+#pragma once
 
 #include <QAbstractItemModel>
 
@@ -86,5 +85,3 @@ private:
     // This method is called in the importTypes() slot in case the file being imported is a geogebra-tool file.
     bool loadGeogebraTools(const QString &, std::vector<Macro *> &, KigPart &);
 };
-
-#endif

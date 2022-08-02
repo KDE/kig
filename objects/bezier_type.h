@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_BEZIER_TYPE_H
-#define KIG_OBJECTS_BEZIER_TYPE_H
+#pragma once
 
 #include "base_type.h"
 
@@ -136,5 +135,3 @@ public:
     void move(ObjectTypeCalcer &o, const Coordinate &to, const KigDocument &d) const override;
     const Coordinate moveReferencePoint(const ObjectTypeCalcer &o) const override;
 };
-
-#endif

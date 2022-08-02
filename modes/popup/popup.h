@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MODES_POPUP_H
-#define KIG_MODES_POPUP_H
+#pragma once
 
 #include <vector>
 
@@ -108,5 +107,3 @@ protected:
 private:
     bool monlylabels;
 };
-
-#endif

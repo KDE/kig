@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_OBJECT_CONSTRUCTOR_H
-#define KIG_MISC_OBJECT_CONSTRUCTOR_H
+#pragma once
 
 #include "argsparser.h"
 #include "object_hierarchy.h"
@@ -326,5 +325,3 @@ public:
     void setDescription(const QString &desc);
     void setIcon(QByteArray &icon);
 };
-
-#endif

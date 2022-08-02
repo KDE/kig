@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_TEXT_TYPE_H
-#define KIG_OBJECTS_TEXT_TYPE_H
+#pragma once
 
 #include "object_type.h"
 
@@ -60,4 +59,3 @@ public:
     QStringList specialActions() const override;
     void executeAction(int i, ObjectHolder &o, ObjectTypeCalcer &c, KigPart &d, KigWidget &w, NormalMode &m) const override;
 };
-#endif

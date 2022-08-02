@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_SCRIPTING_SCRIPT_COMMON_H
-#define KIG_SCRIPTING_SCRIPT_COMMON_H
+#pragma once
 
 #include <algorithm>
 #include <list>
@@ -52,5 +51,3 @@ public:
      */
     static ScriptType::Type intToType(int type);
 };
-
-#endif

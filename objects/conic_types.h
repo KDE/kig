@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_CONIC_TYPES_H
-#define KIG_OBJECTS_CONIC_TYPES_H
+#pragma once
 
 #include "base_type.h"
 
@@ -166,5 +165,3 @@ public:
     QStringList specialActions() const override;
     void executeAction(int i, ObjectHolder &o, ObjectTypeCalcer &t, KigPart &d, KigWidget &w, NormalMode &m) const override;
 };
-
-#endif

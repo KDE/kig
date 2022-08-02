@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_OTHER_TYPE_H
-#define KIG_MISC_OTHER_TYPE_H
+#pragma once
 
 #include "../misc/object_hierarchy.h"
 #include "base_type.h"
@@ -44,5 +43,3 @@ public:
     std::vector<ObjectCalcer *> sortArgs(const std::vector<ObjectCalcer *> &os) const override;
     Args sortArgs(const Args &args) const override;
 };
-
-#endif

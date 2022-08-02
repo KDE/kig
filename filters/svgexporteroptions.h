@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_SVGEXPORTEROPTIONS_H
-#define KIG_FILTERS_SVGEXPORTEROPTIONS_H
+#pragma once
 
 #include <QWidget>
 
@@ -24,5 +23,3 @@ public:
     void setAxes(bool axes);
     bool showAxes() const;
 };
-
-#endif

@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODES_CONSTRUCT_MODE_H
-#define KIG_MODES_CONSTRUCT_MODE_H
+#pragma once
 
 #include "base_mode.h"
 
@@ -147,5 +146,3 @@ public:
     void rightClicked(const std::vector<ObjectHolder *> &oco, const QPoint &p, KigWidget &w) override;
     void mouseMoved(const std::vector<ObjectHolder *> &os, const QPoint &p, KigWidget &w, bool shiftpressed) override;
 };
-
-#endif

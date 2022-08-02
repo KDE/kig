@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_OBJECT_HIERARCHY_H
-#define KIG_MISC_OBJECT_HIERARCHY_H
+#pragma once
 
 #include "../objects/common.h"
 
@@ -103,5 +102,3 @@ public:
 };
 
 bool operator==(const ObjectHierarchy &lhs, const ObjectHierarchy &rhs);
-
-#endif

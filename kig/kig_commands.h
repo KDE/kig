@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_COMMANDS_H
-#define KIG_COMMANDS_H
+#pragma once
 
 #include <QUndoStack>
 
@@ -217,5 +216,3 @@ public:
     void execute(KigPart &doc) override;
     void unexecute(KigPart &doc) override;
 };
-
-#endif

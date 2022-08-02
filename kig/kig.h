@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_KIG_H
-#define KIG_KIG_H
+#pragma once
 
 #include <KParts/MainWindow>
 #include <KParts/ReadWritePart>
@@ -97,5 +96,3 @@ private:
 
     KConfig *config;
 };
-
-#endif // KIG_KIG_H

@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_LINE_IMP_H
-#define KIG_OBJECTS_LINE_IMP_H
+#pragma once
 
 #include "curve_imp.h"
 
@@ -203,5 +202,3 @@ public:
     bool containsPoint(const Coordinate &p, const KigDocument &doc) const override;
     bool internalContainsPoint(const Coordinate &p, double threshold) const;
 };
-
-#endif

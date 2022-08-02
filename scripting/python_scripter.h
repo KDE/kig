@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_SCRIPTING_PYTHON_SCRIPTER_H
-#define KIG_SCRIPTING_PYTHON_SCRIPTER_H
+#pragma once
 
 #include "../objects/common.h"
 
@@ -54,5 +53,3 @@ public:
     CompiledPythonScript compile(const char *code);
     ObjectImp *calc(CompiledPythonScript &script, const Args &args);
 };
-
-#endif

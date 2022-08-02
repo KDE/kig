@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef POPUPACTIONPROVIDER_H
-#define POPUPACTIONPROVIDER_H
+#pragma once
 
 #include <vector>
 
@@ -43,5 +42,3 @@ public:
     virtual bool
     executeAction(int menu, int &id, const std::vector<ObjectHolder *> &os, NormalModePopupObjects &popup, KigPart &doc, KigWidget &w, NormalMode &m) = 0;
 };
-
-#endif // POPUPACTIONPROVIDER_H

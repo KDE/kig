@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_PART_MODE_H
-#define KIG_PART_MODE_H
+#pragma once
 
 //#include <qnamespace.h>
 
@@ -85,5 +84,3 @@ protected:
 private:
     QEventLoop *mevloop;
 };
-
-#endif

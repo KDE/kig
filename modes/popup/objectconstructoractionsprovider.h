@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef OBJECTCONSTRUCTORACTIONSPROVIDER_H
-#define OBJECTCONSTRUCTORACTIONSPROVIDER_H
+#pragma once
 
 #include "popupactionprovider.h"
 
@@ -23,5 +22,3 @@ public:
     bool
     executeAction(int menu, int &id, const std::vector<ObjectHolder *> &os, NormalModePopupObjects &popup, KigPart &doc, KigWidget &w, NormalMode &m) override;
 };
-
-#endif // OBJECTCONSTRUCTORACTIONSPROVIDER_H

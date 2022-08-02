@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_KIGTRANSFORM_H
-#define KIG_MISC_KIGTRANSFORM_H
+#pragma once
 
 #include "coordinate.h"
 #include <vector>
@@ -163,5 +162,3 @@ bool operator==(const Transformation &lhs, const Transformation &rhs);
 // QString getTransformMessage ( const Objects& os, const Object *o );
 
 // bool isHomoteticTransformation ( double transformation[3][3] );
-
-#endif // KIG_MISC_KIGTRANSFORM_H

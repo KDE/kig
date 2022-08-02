@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_OBJECT_FACTORY_H
-#define KIG_OBJECTS_OBJECT_FACTORY_H
+#pragma once
 
 #include "common.h"
 
@@ -126,5 +125,3 @@ public:
     ObjectPropertyCalcer *propertyObjectCalcer(ObjectCalcer *o, const char *p) const;
     ObjectHolder *propertyObject(ObjectCalcer *o, const char *p) const;
 };
-
-#endif

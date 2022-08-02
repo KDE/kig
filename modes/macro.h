@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODES_MACRO_H
-#define KIG_MODES_MACRO_H
+#pragma once
 
 #include "base_mode.h"
 
@@ -50,5 +49,3 @@ protected:
     std::vector<ObjectHolder *> mgiven;
     std::vector<ObjectHolder *> mfinal;
 };
-
-#endif

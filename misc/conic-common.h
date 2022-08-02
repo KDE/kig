@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_CONIC_COMMON_H
-#define KIG_MISC_CONIC_COMMON_H
+#pragma once
 
 #include "coordinate.h"
 #include "kignumerics.h"
@@ -235,5 +234,3 @@ const LineData calcConicRadical(const ConicCartesianData &cequation1, const Coni
  * conic cannot be calculated.
  */
 const ConicCartesianData calcConicTransformation(const ConicCartesianData &data, const Transformation &t, bool &valid);
-
-#endif // KIG_MISC_CONIC_COMMON_H

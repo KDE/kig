@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef POINT_STYLE_H
-#define POINT_STYLE_H
+#pragma once
 
 #include <QString>
 #include <cassert>
@@ -47,5 +46,3 @@ inline QString pointStyleToString(const PointStyle ps)
     return QString();
 }
 }
-
-#endif // POINT_STYLE_H

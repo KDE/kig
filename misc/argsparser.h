@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_ARGSPARSER_H
-#define KIG_MISC_ARGSPARSER_H
+#pragma once
 
 #include "../objects/common.h"
 
@@ -177,5 +176,3 @@ public:
     bool checkArgs(const Args &os) const;
     bool checkArgs(const Args &os, uint minobjects) const;
 };
-
-#endif

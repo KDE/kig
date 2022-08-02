@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_OBJECT_DRAWER_H
-#define KIG_OBJECTS_OBJECT_DRAWER_H
+#pragma once
 
 #include <QColor>
 #include <QFont>
@@ -140,5 +139,3 @@ private:
     Kig::PointStyle mpointstyle;
     QFont mfont;
 };
-
-#endif

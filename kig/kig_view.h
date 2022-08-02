@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_VIEW_H
-#define KIG_VIEW_H
+#pragma once
 
 #include <QPixmap>
 #include <QWidget>
@@ -253,4 +252,3 @@ private slots:
     void slotRightScrollValueChanged(int);
     void slotBottomScrollValueChanged(int);
 };
-#endif

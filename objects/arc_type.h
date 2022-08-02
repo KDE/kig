@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_ARC_TYPE_H
-#define KIG_OBJECTS_ARC_TYPE_H
+#pragma once
 
 #include "../misc/object_hierarchy.h"
 #include "base_type.h"
@@ -85,5 +84,3 @@ public:
 
     const ObjectImpType *resultId() const override;
 };
-
-#endif

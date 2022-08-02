@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
-#ifndef KIG_lINKS_LABEL_H
-#define KIG_lINKS_LABEL_H
+#pragma once
 
 #include <QWidget>
 
@@ -77,5 +76,3 @@ private:
     class Private;
     Private *p;
 };
-
-#endif // KDE_URLS_LABEL_H

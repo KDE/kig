@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_OBJECT_CALCER_H
-#define KIG_OBJECTS_OBJECT_CALCER_H
+#pragma once
 
 #include "../misc/boost_intrusive_pointer.hpp"
 #include "common.h"
@@ -301,5 +300,3 @@ public:
     int propLid() const;
     int propGid() const;
 };
-
-#endif

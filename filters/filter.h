@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef FILTER_H
-#define FILTER_H
+#pragma once
 
 #include <QString>
 
@@ -82,4 +81,3 @@ public:
      */
     virtual KigDocument *load(const QString &fromfile) = 0;
 };
-#endif

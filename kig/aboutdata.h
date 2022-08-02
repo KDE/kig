@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_ABOUTDATA_H
-#define KIG_ABOUTDATA_H
+#pragma once
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -82,5 +81,3 @@ inline KAboutData kigAboutData(const char *name)
 
     return tmp;
 }
-
-#endif // KIG_ABOUTDATA_H

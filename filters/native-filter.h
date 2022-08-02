@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_NATIVE_FILTER_H
-#define KIG_FILTERS_NATIVE_FILTER_H
+#pragma once
 
 #include "filter.h"
 
@@ -51,5 +50,3 @@ public:
     bool save(const KigDocument &data, const QString &file);
     //  bool save( const KigDocument& data, QTextStream& stream );
 };
-
-#endif

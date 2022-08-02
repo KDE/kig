@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIGPART_H
-#define KIGPART_H
+#pragma once
 
 #include <QList>
 
@@ -288,5 +287,3 @@ public:
     void loadTypes();
     void deleteTypes();
 };
-
-#endif // KIGPART_H

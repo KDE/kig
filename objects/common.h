@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_COMMON_H
-#define KIG_OBJECTS_COMMON_H
+#pragma once
 
 #include <cassert>
 #include <set>
@@ -93,5 +92,3 @@ public:
 };
 
 #define KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(type) static class FakeClass _fake_class_instance_##type(type::instance());
-
-#endif

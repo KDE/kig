@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 */
 
-#ifndef GEOGEBRATRANSFORMER_H
-#define GEOGEBRATRANSFORMER_H
+#pragma once
 
 #include <QAbstractXmlReceiver>
 #include <QMap>
@@ -125,5 +124,3 @@ private:
     Qt::PenStyle m_type;
     int m_r, m_g, m_b, m_alpha; // m_alpha is causing trouble at the moment as Geogebra somehow generates decimal values for it
 };
-
-#endif // GEOGEBRATRANSFORMER_H

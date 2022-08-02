@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_CUBIC_IMP_H
-#define KIG_OBJECTS_CUBIC_IMP_H
+#pragma once
 
 #include "curve_imp.h"
 
@@ -65,5 +64,3 @@ public:
     bool internalContainsPoint(const Coordinate &p, double threshold) const;
     bool isVerticalCubic() const;
 };
-
-#endif

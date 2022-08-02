@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODE_BASE_MODE_H
-#define KIG_MODE_BASE_MODE_H
+#pragma once
 
 #include "mode.h"
 
@@ -49,5 +48,3 @@ protected:
     BaseMode(KigPart &);
     ~BaseMode();
 };
-
-#endif

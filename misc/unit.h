@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_UNIT_H
-#define KIG_MISC_UNIT_H
+#pragma once
 
 #include <QStringList>
 
@@ -67,5 +66,3 @@ private:
     Unit::MetricalUnit munit;
     int mdpi;
 };
-
-#endif

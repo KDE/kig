@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_KIGINPUTDIALOG_H
-#define KIG_MISC_KIGINPUTDIALOG_H
+#pragma once
 
 class QString;
 class Coordinate;
@@ -100,5 +99,3 @@ public:
      */
     static Goniometry getAngle(QWidget *parent, bool *ok, const Goniometry &g);
 };
-
-#endif

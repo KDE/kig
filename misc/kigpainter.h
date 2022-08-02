@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIGPAINTER_H
-#define KIGPAINTER_H
+#pragma once
 
 #include "../misc/point_style.h"
 #include "coordinate.h"
@@ -284,5 +283,3 @@ protected:
 
     std::vector<QRect> mOverlay;
 };
-
-#endif

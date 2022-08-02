@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODE_LABEL_H
-#define KIG_MODE_LABEL_H
+#pragma once
 
 #include "mode.h"
 
@@ -131,5 +130,3 @@ public:
 private:
     QPoint mplc;
 };
-
-#endif

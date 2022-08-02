@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_KGEO_FILTER_H
-#define KIG_FILTERS_KGEO_FILTER_H
+#pragma once
 
 #include "filter.h"
 
@@ -38,5 +37,3 @@ protected:
     bool grid;
     bool axes;
 };
-
-#endif

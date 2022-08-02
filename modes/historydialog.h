@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MODES_HISTORYDIALOG_H
-#define KIG_MODES_HISTORYDIALOG_H
+#pragma once
 
 class QUndoStack;
 class QWidget;
@@ -41,5 +40,3 @@ private:
 
     int mtotalsteps;
 };
-
-#endif

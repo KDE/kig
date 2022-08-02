@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_POINT_IMP_H
-#define KIG_OBJECTS_POINT_IMP_H
+#pragma once
 
 #include "../misc/coordinate.h"
 #include "object_imp.h"
@@ -76,5 +75,3 @@ public:
     static const ObjectImpType *stype();
     const ObjectImpType *type() const override;
 };
-
-#endif

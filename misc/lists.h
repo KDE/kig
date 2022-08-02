@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_LISTS_H
-#define KIG_MISC_LISTS_H
+#pragma once
 
 #include <set>
 #include <vector>
@@ -160,5 +159,3 @@ public:
 private:
     bool loadNew(const QDomElement &docelem, std::vector<Macro *> &ret, const KigPart &);
 };
-
-#endif

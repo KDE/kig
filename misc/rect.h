@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef RECT_H
-#define RECT_H
+#pragma once
 
 #include "coordinate.h"
 
@@ -141,5 +140,3 @@ QDebug &operator<<(QDebug &s, const Rect &t);
  * rects.
  */
 Rect operator|(const Rect &lhs, const Rect &rhs);
-
-#endif

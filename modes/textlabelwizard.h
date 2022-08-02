@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODES_TEXTLABELWIZARD_H
-#define KIG_MODES_TEXTLABELWIZARD_H
+#pragma once
 
 #include <QWizard>
 
@@ -41,5 +40,3 @@ private:
     TextPage *mtextPage;
     ArgsPage *margsPage;
 };
-
-#endif // TEXTLABELWIZARD_H

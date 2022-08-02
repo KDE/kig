@@ -8,8 +8,7 @@
 
 /// note: this code comes from KGeo by Marc Bartsch.
 
-#ifndef RESOURCE_H
-#define RESOURCE_H
+#pragma once
 
 #include <QString>
 #include <iostream>
@@ -161,5 +160,3 @@
 #define ID_overlayRectSize 24
 
 #define PI 3.1415926535
-
-#endif // RESOURCE_H

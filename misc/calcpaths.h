@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_CALCPATHS_H
-#define KIG_MISC_CALCPATHS_H
+#pragma once
 
 #include "../objects/common.h"
 
@@ -72,5 +71,3 @@ bool isChild(const ObjectCalcer *o, ObjectCalcer *op);
  * given curve is in fact a curve.
  */
 bool isPointOnCurve(const ObjectCalcer *point, const ObjectCalcer *curve);
-
-#endif

@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_SCRIPTING_NEWSCRIPTWIZARD_H
-#define KIG_SCRIPTING_NEWSCRIPTWIZARD_H
+#pragma once
 
 #include <QWizard>
 
@@ -50,5 +49,3 @@ protected:
     KTextEditor::View *docview;
     KIconLoader *mIconLoader;
 };
-
-#endif

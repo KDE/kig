@@ -4,8 +4,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MODES_EDITTYPE_H
-#define KIG_MODES_EDITTYPE_H
+#pragma once
 
 #include <QDialog>
 
@@ -37,5 +36,3 @@ private slots:
     void slotOk();
     void slotCancel();
 };
-
-#endif

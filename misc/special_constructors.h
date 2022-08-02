@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_SPECIAL_CONSTRUCTORS_H
-#define KIG_MISC_SPECIAL_CONSTRUCTORS_H
+#pragma once
 
 #include "object_constructor.h"
 
@@ -368,5 +367,3 @@ bool relativePrimes(int n, int p);
 
 std::vector<ObjectCalcer *> removeDuplicatedPoints(std::vector<ObjectCalcer *> points);
 bool coincidentPoints(const ObjectImp *p1, const ObjectImp *p2);
-
-#endif

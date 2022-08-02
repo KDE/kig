@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_SCRIPTING_SCRIPT_MODE_H
-#define KIG_SCRIPTING_SCRIPT_MODE_H
+#pragma once
 
 #include "script-common.h"
 
@@ -99,5 +98,3 @@ public:
     bool queryFinish() override;
     bool queryCancel() override;
 };
-
-#endif

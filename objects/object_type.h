@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_OBJECT_TYPE_H
-#define KIG_OBJECTS_OBJECT_TYPE_H
+#pragma once
 
 #include "../misc/argsparser.h"
 #include "common.h"
@@ -107,5 +106,3 @@ public:
     std::vector<ObjectCalcer *> sortArgs(const std::vector<ObjectCalcer *> &args) const override;
     Args sortArgs(const Args &args) const override;
 };
-
-#endif

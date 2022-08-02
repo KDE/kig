@@ -6,8 +6,7 @@
 
 */
 
-#ifndef GEOGEBRA_FILTER_H
-#define GEOGEBRA_FILTER_H
+#pragma once
 
 #include "filter.h"
 
@@ -33,5 +32,3 @@ protected:
     {
     }
 };
-
-#endif // GEOGEBRA_FILTER_H

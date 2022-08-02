@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2005 Pino Toscano <toscano.pino@tiscali.it>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_KIGFILEDIALOG_H
-#define KIG_MISC_KIGFILEDIALOG_H
+#pragma once
 
 #include <QFileDialog>
 
@@ -61,5 +60,3 @@ public:
 protected slots:
     void accept() override;
 };
-
-#endif

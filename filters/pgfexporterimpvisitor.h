@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_PGFEXPORTERIMPVISITOR_H
-#define KIG_FILTERS_PGFEXPORTERIMPVISITOR_H
+#pragma once
 
 #include "../kig/kig_document.h"
 #include "../kig/kig_part.h"
@@ -119,5 +118,3 @@ private:
      */
     void plotGenericCurve(const CurveImp *imp);
 };
-
-#endif

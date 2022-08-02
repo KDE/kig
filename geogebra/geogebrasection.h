@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 */
 
-#ifndef GEOGEBRASECTION_H
-#define GEOGEBRASECTION_H
+#pragma once
 
 #include "../objects/object_calcer.h"
 
@@ -50,5 +49,3 @@ private:
      */
     std::vector<ObjectDrawer *> m_drawers;
 };
-
-#endif // GEOGEBRASECTION_H

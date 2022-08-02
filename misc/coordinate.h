@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_COORDINATE_H
-#define KIG_MISC_COORDINATE_H
+#pragma once
 
 class QPoint;
 class QDebug;
@@ -153,5 +152,3 @@ double Coordinate::squareLength() const
 {
     return x * x + y * y;
 }
-
-#endif

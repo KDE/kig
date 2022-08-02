@@ -4,8 +4,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_MISC_GONIOMETRY_H
-#define KIG_MISC_GONIOMETRY_H
+#pragma once
 
 #include <QStringList>
 
@@ -56,5 +55,3 @@ private:
     typedef Goniometry::System goniosys;
     goniosys msys;
 };
-
-#endif

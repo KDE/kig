@@ -3,8 +3,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_CABRI_FILTER_H
-#define KIG_FILTERS_CABRI_FILTER_H
+#pragma once
 
 #include "filter.h"
 
@@ -35,5 +34,3 @@ public:
 
     friend class CabriReader;
 };
-
-#endif

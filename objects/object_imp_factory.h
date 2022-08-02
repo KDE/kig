@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_OBJECT_IMP_FACTORY_H
-#define KIG_OBJECTS_OBJECT_IMP_FACTORY_H
+#pragma once
 
 #include "common.h"
 
@@ -24,5 +23,3 @@ public:
      */
     QString serialize(const ObjectImp &d, QDomElement &parent, QDomDocument &doc) const;
 };
-
-#endif

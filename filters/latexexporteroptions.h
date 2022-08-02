@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_FILTERS_LATEXEXPORTEROPTIONS_H
-#define KIG_FILTERS_LATEXEXPORTEROPTIONS_H
+#pragma once
 
 #include <QWidget>
 
@@ -36,5 +35,3 @@ public:
     void setExtraFrame(bool frame);
     bool showExtraFrame() const;
 };
-
-#endif

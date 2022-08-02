@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_SPECIAL_CALCERS_H
-#define KIG_OBJECTS_SPECIAL_CALCERS_H
+#pragma once
 
 class MeasureTransportCalcer : public ObjectCalcer
 {
@@ -20,5 +19,3 @@ public:
     void calc(const KigDocument &);
     const ObjectImpType *impRequirement(ObjectCalcer *o, const std::vector<ObjectCalcer *> &os) const;
 };
-
-#endif

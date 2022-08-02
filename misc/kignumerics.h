@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KIG_MISC_KIGNUMERICS_H
-#define KIG_MISC_KIGNUMERICS_H
+#pragma once
 
 #include <cmath>
 
@@ -25,5 +24,3 @@ bool GaussianElimination(double *matrix[], int numrows, int numcols, int scambio
 void BackwardSubstitution(double *matrix[], int numrows, int numcols, int scambio[], double solution[]);
 
 bool Invert3by3matrix(const double m[3][3], double inv[3][3]);
-
-#endif // KIG_MISC_KIGNUMERICS_H

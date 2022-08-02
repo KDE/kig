@@ -5,8 +5,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef SCRIPTACTIONSPROVIDER_H
-#define SCRIPTACTIONSPROVIDER_H
+#pragma once
 
 #include <config-kig.h>
 
@@ -29,5 +28,3 @@ public:
 };
 
 #endif
-
-#endif // SCRIPTACTIONSPROVIDER_H

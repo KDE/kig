@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_OTHER_IMP_H
-#define KIG_OBJECTS_OTHER_IMP_H
+#pragma once
 
 #include "../misc/common.h"
 #include "../misc/coordinate.h"
@@ -249,5 +248,3 @@ public:
     bool containsPoint(const Coordinate &p, const KigDocument &doc) const override;
     bool internalContainsPoint(const Coordinate &p, double threshold) const;
 };
-
-#endif

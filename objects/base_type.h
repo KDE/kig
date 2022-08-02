@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef KIG_OBJECTS_BASE_TYPE_H
-#define KIG_OBJECTS_BASE_TYPE_H
+#pragma once
 
 #include "object_type.h"
 
@@ -40,5 +39,3 @@ public:
 
     virtual ObjectImp *calc(const LineData &a, const Coordinate &b) const = 0;
 };
-
-#endif

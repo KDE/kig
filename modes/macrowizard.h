@@ -2,8 +2,7 @@
 
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef MACROWIZARD_H
-#define MACROWIZARD_H
+#pragma once
 
 #include <QWizard>
 
@@ -38,5 +37,3 @@ private:
     GivenArgsPage *mgivenArgsPage;
     FinalArgsPage *mfinalArgsPage;
 };
-
-#endif // MACROWIZARD_H
