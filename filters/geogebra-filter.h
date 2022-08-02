@@ -11,8 +11,8 @@
 
 #include "filter.h"
 
-#include <QMap>
 #include <QAbstractXmlReceiver>
+#include <QMap>
 #include <QXmlNamePool>
 
 class ObjectCalcer;
@@ -21,14 +21,17 @@ class ObjectType;
 class KigFilterGeogebra : public KigFilter
 {
 public:
-    static KigFilterGeogebra* instance();
-    KigDocument* load ( const QString& fromfile ) override;
-    bool supportMime ( const QString& mime ) override;
+    static KigFilterGeogebra *instance();
+    KigDocument *load(const QString &fromfile) override;
+    bool supportMime(const QString &mime) override;
 
 protected:
-    KigFilterGeogebra() {}
-    ~KigFilterGeogebra() {}
+    KigFilterGeogebra()
+    {
+    }
+    ~KigFilterGeogebra()
+    {
+    }
 };
 
 #endif // GEOGEBRA_FILTER_H
-

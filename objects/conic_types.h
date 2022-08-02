@@ -7,166 +7,164 @@
 
 #include "base_type.h"
 
-class ConicB5PType
-  : public ArgsParserObjectType
+class ConicB5PType : public ArgsParserObjectType
 {
-  ConicB5PType();
-  ~ConicB5PType();
+    ConicB5PType();
+    ~ConicB5PType();
+
 public:
-  static const ConicB5PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicB5PType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicBAAPType
-  : public ArgsParserObjectType
+class ConicBAAPType : public ArgsParserObjectType
 {
-  ConicBAAPType();
-  ~ConicBAAPType();
+    ConicBAAPType();
+    ~ConicBAAPType();
+
 public:
-  static const ConicBAAPType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicBAAPType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicBFFPType
-  : public ArgsParserObjectType
+class ConicBFFPType : public ArgsParserObjectType
 {
 protected:
-  ConicBFFPType( const char* fullname, const ArgsParser::spec*, int n );
-  ~ConicBFFPType();
-public:
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
+    ConicBFFPType(const char *fullname, const ArgsParser::spec *, int n);
+    ~ConicBFFPType();
 
-  /**
-   * -1 for hyperbola, 1 for ellipse.
-   */
-  virtual int type() const = 0;
-  const ObjectImpType* resultId() const override;
+public:
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+
+    /**
+     * -1 for hyperbola, 1 for ellipse.
+     */
+    virtual int type() const = 0;
+    const ObjectImpType *resultId() const override;
 };
 
-class EllipseBFFPType
-  : public ConicBFFPType
+class EllipseBFFPType : public ConicBFFPType
 {
-  EllipseBFFPType();
-  ~EllipseBFFPType();
+    EllipseBFFPType();
+    ~EllipseBFFPType();
+
 public:
-  static const EllipseBFFPType* instance();
-  int type() const override;
+    static const EllipseBFFPType *instance();
+    int type() const override;
 };
 
-class HyperbolaBFFPType
-  : public ConicBFFPType
+class HyperbolaBFFPType : public ConicBFFPType
 {
-  HyperbolaBFFPType();
-  ~HyperbolaBFFPType();
+    HyperbolaBFFPType();
+    ~HyperbolaBFFPType();
+
 public:
-  static const HyperbolaBFFPType* instance();
-  int type() const override;
+    static const HyperbolaBFFPType *instance();
+    int type() const override;
 };
 
-class ConicBDFPType
-  : public ArgsParserObjectType
+class ConicBDFPType : public ArgsParserObjectType
 {
-  ConicBDFPType();
-  ~ConicBDFPType();
+    ConicBDFPType();
+    ~ConicBDFPType();
+
 public:
-  static const ConicBDFPType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicBDFPType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ParabolaBTPType
-  : public ArgsParserObjectType
+class ParabolaBTPType : public ArgsParserObjectType
 {
-  ParabolaBTPType();
-  ~ParabolaBTPType();
+    ParabolaBTPType();
+    ~ParabolaBTPType();
+
 public:
-  static const ParabolaBTPType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ParabolaBTPType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class EquilateralHyperbolaB4PType
-  : public ArgsParserObjectType
+class EquilateralHyperbolaB4PType : public ArgsParserObjectType
 {
-  EquilateralHyperbolaB4PType();
-  ~EquilateralHyperbolaB4PType();
+    EquilateralHyperbolaB4PType();
+    ~EquilateralHyperbolaB4PType();
+
 public:
-  static const EquilateralHyperbolaB4PType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const EquilateralHyperbolaB4PType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicPolarPointType
-  : public ArgsParserObjectType
+class ConicPolarPointType : public ArgsParserObjectType
 {
-  ConicPolarPointType();
-  ~ConicPolarPointType();
+    ConicPolarPointType();
+    ~ConicPolarPointType();
+
 public:
-  static const ConicPolarPointType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicPolarPointType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicPolarLineType
-  : public ArgsParserObjectType
+class ConicPolarLineType : public ArgsParserObjectType
 {
-  ConicPolarLineType();
-  ~ConicPolarLineType();
+    ConicPolarLineType();
+    ~ConicPolarLineType();
+
 public:
-  static const ConicPolarLineType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicPolarLineType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicDirectrixType
-  : public ArgsParserObjectType
+class ConicDirectrixType : public ArgsParserObjectType
 {
-  ConicDirectrixType();
-  ~ConicDirectrixType();
+    ConicDirectrixType();
+    ~ConicDirectrixType();
+
 public:
-  static const ConicDirectrixType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicDirectrixType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ParabolaBDPType
-  : public ObjectLPType
+class ParabolaBDPType : public ObjectLPType
 {
-  ParabolaBDPType();
-  ~ParabolaBDPType();
+    ParabolaBDPType();
+    ~ParabolaBDPType();
+
 public:
-  static const ParabolaBDPType* instance();
-  using ObjectLPType::calc;
-  ObjectImp* calc( const LineData& l, const Coordinate& c ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ParabolaBDPType *instance();
+    using ObjectLPType::calc;
+    ObjectImp *calc(const LineData &l, const Coordinate &c) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicAsymptoteType
-  : public ArgsParserObjectType
+class ConicAsymptoteType : public ArgsParserObjectType
 {
-  ConicAsymptoteType();
-  ~ConicAsymptoteType();
+    ConicAsymptoteType();
+    ~ConicAsymptoteType();
+
 public:
-  static const ConicAsymptoteType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicAsymptoteType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class ConicRadicalType
-  : public ArgsParserObjectType
+class ConicRadicalType : public ArgsParserObjectType
 {
-  ConicRadicalType();
-  ~ConicRadicalType();
+    ConicRadicalType();
+    ~ConicRadicalType();
+
 public:
-  static const ConicRadicalType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
-  QStringList specialActions() const override;
-  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& t,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const override;
+    static const ConicRadicalType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+    QStringList specialActions() const override;
+    void executeAction(int i, ObjectHolder &o, ObjectTypeCalcer &t, KigPart &d, KigWidget &w, NormalMode &m) const override;
 };
 
 #endif
-

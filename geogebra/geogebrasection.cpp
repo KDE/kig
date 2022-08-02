@@ -7,52 +7,52 @@
 
 #include "geogebrasection.h"
 
-const QString & GeogebraSection::getName() const
+const QString &GeogebraSection::getName() const
 {
-  return m_name;
+    return m_name;
 }
 
-void GeogebraSection::setName( const QString& name )
+void GeogebraSection::setName(const QString &name)
 {
-  m_name = name;
+    m_name = name;
 }
 
-const QString & GeogebraSection::getDescription() const
+const QString &GeogebraSection::getDescription() const
 {
-  return m_description;
+    return m_description;
 }
 
-void GeogebraSection::setDescription( const QString& desc )
+void GeogebraSection::setDescription(const QString &desc)
 {
-  m_description = desc;
+    m_description = desc;
 }
 
-const std::vector< ObjectCalcer* > & GeogebraSection::getInputObjects() const
+const std::vector<ObjectCalcer *> &GeogebraSection::getInputObjects() const
 {
-  return m_inputObjects;
+    return m_inputObjects;
 }
 
-void GeogebraSection::addInputObject( ObjectCalcer* inp )
+void GeogebraSection::addInputObject(ObjectCalcer *inp)
 {
-  m_inputObjects.push_back( inp );
+    m_inputObjects.push_back(inp);
 }
 
-const std::vector< ObjectCalcer* > & GeogebraSection::getOutputObjects() const
+const std::vector<ObjectCalcer *> &GeogebraSection::getOutputObjects() const
 {
-  return m_outputObjects;
+    return m_outputObjects;
 }
 
-void GeogebraSection::addOutputObject( ObjectCalcer* op )
+void GeogebraSection::addOutputObject(ObjectCalcer *op)
 {
-  m_outputObjects.push_back( op );
+    m_outputObjects.push_back(op);
 }
 
-const std::vector< ObjectDrawer* > & GeogebraSection::getDrawers() const
+const std::vector<ObjectDrawer *> &GeogebraSection::getDrawers() const
 {
-  return m_drawers;
+    return m_drawers;
 }
 
-void GeogebraSection::addDrawer( ObjectDrawer* od )
+void GeogebraSection::addDrawer(ObjectDrawer *od)
 {
-  m_drawers.push_back( od );
+    m_drawers.push_back(od);
 }

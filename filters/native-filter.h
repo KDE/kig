@@ -18,38 +18,38 @@ class QString;
  * change in the file format.  This filter no longer supports pre-0.4
  * formats, it did up until Kig 0.6.
  */
-class KigFilterNative
-  : public KigFilter
+class KigFilterNative : public KigFilter
 {
 private:
-  /**
-   * this is the load function for the Kig format that is used,
-   * starting at Kig 0.4
-   */
-  KigDocument* load04( const QDomElement& doc );
-  /**
-   * this is the load function for the Kig format that is used
-   * starting at Kig 0.7
-   */
-  KigDocument* load07( const QDomElement& doc );
+    /**
+     * this is the load function for the Kig format that is used,
+     * starting at Kig 0.4
+     */
+    KigDocument *load04(const QDomElement &doc);
+    /**
+     * this is the load function for the Kig format that is used
+     * starting at Kig 0.7
+     */
+    KigDocument *load07(const QDomElement &doc);
 
-  /**
-   * save in the Kig format that is used starting at Kig 0.7
-   */
-  bool save07( const KigDocument& data, const QString& outfile );
-  bool save07( const KigDocument& data, QTextStream& file );
+    /**
+     * save in the Kig format that is used starting at Kig 0.7
+     */
+    bool save07(const KigDocument &data, const QString &outfile);
+    bool save07(const KigDocument &data, QTextStream &file);
 
-  KigFilterNative();
-  ~KigFilterNative();
+    KigFilterNative();
+    ~KigFilterNative();
+
 public:
-  static KigFilterNative* instance();
+    static KigFilterNative *instance();
 
-  bool supportMime( const QString& mime ) override;
-  KigDocument* load( const QString& file ) override;
-  KigDocument* load( const QDomDocument& doc );
+    bool supportMime(const QString &mime) override;
+    KigDocument *load(const QString &file) override;
+    KigDocument *load(const QDomDocument &doc);
 
-  bool save( const KigDocument& data, const QString& file );
-//  bool save( const KigDocument& data, QTextStream& stream );
+    bool save(const KigDocument &data, const QString &file);
+    //  bool save( const KigDocument& data, QTextStream& stream );
 };
 
 #endif

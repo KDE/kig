@@ -5,8 +5,8 @@
 #ifndef KIG_OBJECTS_LOCUS_IMP_H
 #define KIG_OBJECTS_LOCUS_IMP_H
 
-#include "curve_imp.h"
 #include "../misc/object_hierarchy.h"
+#include "curve_imp.h"
 
 /**
  * LocusImp is an imp that consists of a copy of the curveimp that the
@@ -41,51 +41,50 @@
  * new "bezier" curves, to be added shortly
  */
 
-class LocusImp
-  : public CurveImp
+class LocusImp : public CurveImp
 {
-  CurveImp* mcurve;
-  const ObjectHierarchy mhier;
+    CurveImp *mcurve;
+    const ObjectHierarchy mhier;
 
-  void getInterval(double& x1,double& x2,double incr,const Coordinate& p, const KigDocument& doc) const;
+    void getInterval(double &x1, double &x2, double incr, const Coordinate &p, const KigDocument &doc) const;
+
 public:
-  typedef CurveImp Parent;
-  static const ObjectImpType* stype();
+    typedef CurveImp Parent;
+    static const ObjectImpType *stype();
 
-  LocusImp( CurveImp*, const ObjectHierarchy& );
-  ~LocusImp();
-  LocusImp* copy() const override;
+    LocusImp(CurveImp *, const ObjectHierarchy &);
+    ~LocusImp();
+    LocusImp *copy() const override;
 
-  ObjectImp* transform( const Transformation& ) const override;
+    ObjectImp *transform(const Transformation &) const override;
 
-  void draw( KigPainter& p ) const override;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
-  Rect surroundingRect() const override;
-  bool inRect( const Rect& r, int width, const KigWidget& ) const override;
-  const Coordinate getPoint( double param, const KigDocument& ) const override;
+    void draw(KigPainter &p) const override;
+    bool contains(const Coordinate &p, int width, const KigWidget &) const override;
+    Rect surroundingRect() const override;
+    bool inRect(const Rect &r, int width, const KigWidget &) const override;
+    const Coordinate getPoint(double param, const KigDocument &) const override;
 
-  // TODO ?
-  int numberOfProperties() const override;
-  const QList<KLazyLocalizedString> properties() const override;
-  const QByteArrayList propertiesInternalNames() const override;
-  ObjectImp* property( int which, const KigDocument& w ) const override;
-  const char* iconForProperty( int which ) const override;
-  const ObjectImpType* impRequirementForProperty( int which ) const override;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const override;
+    // TODO ?
+    int numberOfProperties() const override;
+    const QList<KLazyLocalizedString> properties() const override;
+    const QByteArrayList propertiesInternalNames() const override;
+    ObjectImp *property(int which, const KigDocument &w) const override;
+    const char *iconForProperty(int which) const override;
+    const ObjectImpType *impRequirementForProperty(int which) const override;
+    bool isPropertyDefinedOnOrThroughThisImp(int which) const override;
 
-  const CurveImp* curve() const;
-  const ObjectHierarchy& hierarchy() const;
+    const CurveImp *curve() const;
+    const ObjectHierarchy &hierarchy() const;
 
-  const ObjectImpType* type() const override;
-  void visit( ObjectImpVisitor* vtor ) const override;
+    const ObjectImpType *type() const override;
+    void visit(ObjectImpVisitor *vtor) const override;
 
-  bool equals( const ObjectImp& rhs ) const override;
+    bool equals(const ObjectImp &rhs) const override;
 
-  bool containsPoint( const Coordinate& p, const KigDocument& d ) const override;
-  bool internalContainsPoint( const Coordinate& p, double threshold, const KigDocument& doc ) const;
+    bool containsPoint(const Coordinate &p, const KigDocument &d) const override;
+    bool internalContainsPoint(const Coordinate &p, double threshold, const KigDocument &doc) const;
 
-  //virtual QString LocusTypeString(const KigDocument& w) const;
-
+    // virtual QString LocusTypeString(const KigDocument& w) const;
 };
 
 #endif

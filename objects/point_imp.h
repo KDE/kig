@@ -5,74 +5,76 @@
 #ifndef KIG_OBJECTS_POINT_IMP_H
 #define KIG_OBJECTS_POINT_IMP_H
 
-#include "object_imp.h"
 #include "../misc/coordinate.h"
+#include "object_imp.h"
 
 /**
  * An ObjectImp representing a point.
  */
-class PointImp
-  : public ObjectImp
+class PointImp : public ObjectImp
 {
-  Coordinate mc;
+    Coordinate mc;
+
 public:
-  typedef ObjectImp Parent;
-  /**
-   * Returns the ObjectImpType representing PointImp's.
-   */
-  static const ObjectImpType* stype();
+    typedef ObjectImp Parent;
+    /**
+     * Returns the ObjectImpType representing PointImp's.
+     */
+    static const ObjectImpType *stype();
 
-  /**
-   * Construct a PointImp with coordinate c.
-   */
-  explicit PointImp( const Coordinate& c );
-  ~PointImp();
+    /**
+     * Construct a PointImp with coordinate c.
+     */
+    explicit PointImp(const Coordinate &c);
+    ~PointImp();
 
-  Rect surroundingRect() const override;
-  Coordinate attachPoint() const override;
+    Rect surroundingRect() const override;
+    Coordinate attachPoint() const override;
 
-  /**
-   * Get the coordinate of this PointImp.
-   */
-  const Coordinate& coordinate() const { return mc; }
-  /**
-   * Set the coordinate of this PointImp.
-   */
-  void setCoordinate( const Coordinate& c );
+    /**
+     * Get the coordinate of this PointImp.
+     */
+    const Coordinate &coordinate() const
+    {
+        return mc;
+    }
+    /**
+     * Set the coordinate of this PointImp.
+     */
+    void setCoordinate(const Coordinate &c);
 
-  void draw( KigPainter& p ) const override;
-  bool contains( const Coordinate& p, int width, const KigWidget& ) const override;
-  bool inRect( const Rect& r, int width, const KigWidget& ) const override;
+    void draw(KigPainter &p) const override;
+    bool contains(const Coordinate &p, int width, const KigWidget &) const override;
+    bool inRect(const Rect &r, int width, const KigWidget &) const override;
 
-  int numberOfProperties() const override;
-  const QList<KLazyLocalizedString> properties() const override;
-  const QByteArrayList propertiesInternalNames() const override;
-  ObjectImp* property( int which, const KigDocument& d ) const override;
-  const char* iconForProperty( int which ) const override;
-  const ObjectImpType* impRequirementForProperty( int which ) const override;
-  bool isPropertyDefinedOnOrThroughThisImp( int which ) const override;
+    int numberOfProperties() const override;
+    const QList<KLazyLocalizedString> properties() const override;
+    const QByteArrayList propertiesInternalNames() const override;
+    ObjectImp *property(int which, const KigDocument &d) const override;
+    const char *iconForProperty(int which) const override;
+    const ObjectImpType *impRequirementForProperty(int which) const override;
+    bool isPropertyDefinedOnOrThroughThisImp(int which) const override;
 
-  ObjectImp* transform( const Transformation& ) const override;
+    ObjectImp *transform(const Transformation &) const override;
 
-  PointImp* copy() const override;
+    PointImp *copy() const override;
 
-  const ObjectImpType* type() const override;
-  void visit( ObjectImpVisitor* vtor ) const override;
+    const ObjectImpType *type() const override;
+    void visit(ObjectImpVisitor *vtor) const override;
 
-  void fillInNextEscape( QString& s, const KigDocument& ) const override;
-  bool canFillInNextEscape() const override;
+    void fillInNextEscape(QString &s, const KigDocument &) const override;
+    bool canFillInNextEscape() const override;
 
-  bool equals( const ObjectImp& rhs ) const override;
+    bool equals(const ObjectImp &rhs) const override;
 };
 
-class BogusPointImp
-  : public PointImp
+class BogusPointImp : public PointImp
 {
 public:
-  explicit BogusPointImp( const Coordinate& c );
-  ~BogusPointImp();
-  static const ObjectImpType* stype();
-  const ObjectImpType* type() const override;
+    explicit BogusPointImp(const Coordinate &c);
+    ~BogusPointImp();
+    static const ObjectImpType *stype();
+    const ObjectImpType *type() const override;
 };
 
 #endif

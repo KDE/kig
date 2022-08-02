@@ -14,15 +14,14 @@ class KigWidget;
 /**
  * Export to LaTex.
  */
-class LatexExporter
-  : public KigExporter
+class LatexExporter : public KigExporter
 {
 public:
-  ~LatexExporter();
-  QString exportToStatement() const override;
-  QString menuEntryName() const override;
-  QString menuIcon() const override;
-  void run( const KigPart& doc, KigWidget& w ) override;
+    ~LatexExporter();
+    QString exportToStatement() const override;
+    QString menuEntryName() const override;
+    QString menuIcon() const override;
+    void run(const KigPart &doc, KigWidget &w) override;
 };
 
 #endif

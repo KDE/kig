@@ -12,7 +12,7 @@
  * calc()-ing.  This means that child objects must appear after their
  * parents ( for you graph people, this is just a topological sort.. )
  */
-std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os );
+std::vector<ObjectCalcer *> calcPath(const std::vector<ObjectCalcer *> &os);
 
 /**
  * This is a different function for more or less the same purpose.  It
@@ -23,7 +23,7 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& os );
  * \p from are normally not included in the output, unless they appear
  * somewhere in the middle of the calc-path towards \p to ...
  */
-std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
+std::vector<ObjectCalcer *> calcPath(const std::vector<ObjectCalcer *> &from, const ObjectCalcer *to);
 
 /**
  * This function returns all objects on the side of the path through
@@ -32,36 +32,36 @@ std::vector<ObjectCalcer*> calcPath( const std::vector<ObjectCalcer*>& from, con
  * \p from themselves, but of which one of the direct children does.
  * We need this function for Locus stuff...
  */
-std::vector<ObjectCalcer*> sideOfTreePath( const std::vector<ObjectCalcer*>& from, const ObjectCalcer* to );
+std::vector<ObjectCalcer *> sideOfTreePath(const std::vector<ObjectCalcer *> &from, const ObjectCalcer *to);
 
 /**
  * This function returns all objects above the given in the
  * dependency graph.  The given objects \p objs are also included
  * themselves.
  */
-std::vector<ObjectCalcer*> getAllParents( const std::vector<ObjectCalcer*>& objs );
+std::vector<ObjectCalcer *> getAllParents(const std::vector<ObjectCalcer *> &objs);
 /**
  * \overload
  */
-std::vector<ObjectCalcer*> getAllParents( ObjectCalcer* obj );
+std::vector<ObjectCalcer *> getAllParents(ObjectCalcer *obj);
 
 /**
  * This function returns all objects below the objects in \p objs in the
  * dependency graphy.  The objects in \p objs are also included
  * themselves.
  */
-std::set<ObjectCalcer*> getAllChildren( const std::vector<ObjectCalcer*> &objs );
+std::set<ObjectCalcer *> getAllChildren(const std::vector<ObjectCalcer *> &objs);
 
 /**
  * \overload
  */
-std::set<ObjectCalcer*> getAllChildren( ObjectCalcer* obj );
+std::set<ObjectCalcer *> getAllChildren(ObjectCalcer *obj);
 
 /**
  * Returns true if \p o is a descendant of any of the objects in \p os .
  */
-bool isChild( const ObjectCalcer* o, const std::vector<ObjectCalcer*>& os );
-bool isChild( const ObjectCalcer* o, ObjectCalcer* op );
+bool isChild(const ObjectCalcer *o, const std::vector<ObjectCalcer *> &os);
+bool isChild(const ObjectCalcer *o, ObjectCalcer *op);
 
 /**
  * Return true if the given \p point is ( by construction ) on the given
@@ -71,6 +71,6 @@ bool isChild( const ObjectCalcer* o, ObjectCalcer* op );
  * Note that it is assumed that the given point is in fact a point and the
  * given curve is in fact a curve.
  */
-bool isPointOnCurve( const ObjectCalcer* point, const ObjectCalcer* curve );
+bool isPointOnCurve(const ObjectCalcer *point, const ObjectCalcer *curve);
 
 #endif

@@ -9,19 +9,20 @@
 
 class ObjectImpFactory
 {
-  ObjectImpFactory();
-  ~ObjectImpFactory();
+    ObjectImpFactory();
+    ~ObjectImpFactory();
+
 public:
-  static const ObjectImpFactory* instance();
-  /**
-   * loads data from \p parent , and returns a new ObjectImp from the type
-   * string \p type .
-   */
-  ObjectImp* deserialize( const QString& type, const QDomElement& parent, QString& error ) const;
-  /**
-   * adds data to \p parent , and returns a type string.
-   */
-  QString serialize( const ObjectImp& d, QDomElement& parent, QDomDocument& doc ) const;
+    static const ObjectImpFactory *instance();
+    /**
+     * loads data from \p parent , and returns a new ObjectImp from the type
+     * string \p type .
+     */
+    ObjectImp *deserialize(const QString &type, const QDomElement &parent, QString &error) const;
+    /**
+     * adds data to \p parent , and returns a type string.
+     */
+    QString serialize(const ObjectImp &d, QDomElement &parent, QDomDocument &doc) const;
 };
 
 #endif

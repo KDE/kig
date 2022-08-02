@@ -9,8 +9,8 @@
 #define KIG_MISC_CONIC_COMMON_H
 
 #include "coordinate.h"
-#include <vector>
 #include "kignumerics.h"
+#include <vector>
 
 class ConicPolarData;
 class Transformation;
@@ -24,43 +24,42 @@ class LineData;
 class ConicCartesianData
 {
 public:
-  double coeffs[6];
-  ConicCartesianData();
-  /**
-   * Construct a ConicCartesianData from a ConicPolarData.
-   * Construct a ConicCartesianData that is the cartesian
-   * representation of the conic represented by d.
-   */
-  explicit ConicCartesianData( const ConicPolarData& d );
-  /**
-   * Construct a ConicCartesianData from its coefficients
-   * Construct a ConicCartesianData using the coefficients a through f
-   * from the equation "ax^2 + by^2 + cxy + dx + ey + f = 0"
-   */
-  ConicCartesianData( double a, double b, double c,
-                      double d, double e, double f )
+    double coeffs[6];
+    ConicCartesianData();
+    /**
+     * Construct a ConicCartesianData from a ConicPolarData.
+     * Construct a ConicCartesianData that is the cartesian
+     * representation of the conic represented by d.
+     */
+    explicit ConicCartesianData(const ConicPolarData &d);
+    /**
+     * Construct a ConicCartesianData from its coefficients
+     * Construct a ConicCartesianData using the coefficients a through f
+     * from the equation "ax^2 + by^2 + cxy + dx + ey + f = 0"
+     */
+    ConicCartesianData(double a, double b, double c, double d, double e, double f)
     {
-      coeffs[0] = a;
-      coeffs[1] = b;
-      coeffs[2] = c;
-      coeffs[3] = d;
-      coeffs[4] = e;
-      coeffs[5] = f;
+        coeffs[0] = a;
+        coeffs[1] = b;
+        coeffs[2] = c;
+        coeffs[3] = d;
+        coeffs[4] = e;
+        coeffs[5] = f;
     }
-  explicit ConicCartesianData( const double incoeffs[6] );
+    explicit ConicCartesianData(const double incoeffs[6]);
 
-  /**
-   * Invalid conic.
-   * Return a ConicCartesianData representing an invalid conic.
-   * \see valid()
-   */
-  static ConicCartesianData invalidData();
-  /**
-   * Test validity.
-   * Return whether this is a valid conic.
-   * \see invalidData()
-   */
-  bool valid() const;
+    /**
+     * Invalid conic.
+     * Return a ConicCartesianData representing an invalid conic.
+     * \see valid()
+     */
+    static ConicCartesianData invalidData();
+    /**
+     * Test validity.
+     * Return whether this is a valid conic.
+     * \see invalidData()
+     */
+    bool valid() const;
 };
 
 /**
@@ -72,40 +71,39 @@ public:
 class ConicPolarData
 {
 public:
-  /**
-   * Construct a ConicPolarData from a ConicCartesianData.
-   *
-   * Construct a ConicPolarData that is the polar
-   * representation of the conic represented by d.
-   */
-  explicit ConicPolarData( const ConicCartesianData& data );
-  explicit ConicPolarData();
-  /**
-   * Construct a ConicPolarData using the parameters from the equation
-   * \f$ \rho(\theta) = \frac{p}{1 - e \cos\theta}\f$
-   */
-  ConicPolarData( const Coordinate& focus1, double dimen,
-                  double ecostheta0, double esintheta0 );
+    /**
+     * Construct a ConicPolarData from a ConicCartesianData.
+     *
+     * Construct a ConicPolarData that is the polar
+     * representation of the conic represented by d.
+     */
+    explicit ConicPolarData(const ConicCartesianData &data);
+    explicit ConicPolarData();
+    /**
+     * Construct a ConicPolarData using the parameters from the equation
+     * \f$ \rho(\theta) = \frac{p}{1 - e \cos\theta}\f$
+     */
+    ConicPolarData(const Coordinate &focus1, double dimen, double ecostheta0, double esintheta0);
 
-  /**
-   * The first focus of this conic.
-   */
-  Coordinate focus1;
-  /**
-   * The pdimen value from the polar equation.
-   */
-  double pdimen;
-  /**
-   * The ecostheta0 value from the polar equation.
-   */
-  double ecostheta0;
-  /**
-   * The esintheta0 value from the polar equation.
-   */
-  double esintheta0;
+    /**
+     * The first focus of this conic.
+     */
+    Coordinate focus1;
+    /**
+     * The pdimen value from the polar equation.
+     */
+    double pdimen;
+    /**
+     * The ecostheta0 value from the polar equation.
+     */
+    double ecostheta0;
+    /**
+     * The esintheta0 value from the polar equation.
+     */
+    double esintheta0;
 };
 
-bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs );
+bool operator==(const ConicPolarData &lhs, const ConicPolarData &rhs);
 
 /**
  * These are the constraint values that can be passed to the
@@ -121,10 +119,7 @@ bool operator==( const ConicPolarData& lhs, const ConicPolarData& rhs );
  * ysymmetry: the returned conic should be symmetric over the Y-axis.
  * xsymmetry: the returned conic should be symmetric over the X-axis.
  */
-enum LinearConstraints {
-  noconstraint, zerotilt, parabolaifzt, circleifzt,
-  equilateral, ysymmetry, xsymmetry
-};
+enum LinearConstraints { noconstraint, zerotilt, parabolaifzt, circleifzt, equilateral, ysymmetry, xsymmetry };
 
 /**
  * Calculate a conic through a given set of points.  points should
@@ -137,13 +132,12 @@ enum LinearConstraints {
  * through the given set of points, or if not enough constraints are
  * given for a conic to be calculated.
  */
-const ConicCartesianData calcConicThroughPoints (
-    const std::vector<Coordinate>& points,
-    const LinearConstraints c1 = noconstraint,
-    const LinearConstraints c2 = noconstraint,
-    const LinearConstraints c3 = noconstraint,
-    const LinearConstraints c4 = noconstraint,
-    const LinearConstraints c5 = noconstraint);
+const ConicCartesianData calcConicThroughPoints(const std::vector<Coordinate> &points,
+                                                const LinearConstraints c1 = noconstraint,
+                                                const LinearConstraints c2 = noconstraint,
+                                                const LinearConstraints c3 = noconstraint,
+                                                const LinearConstraints c4 = noconstraint,
+                                                const LinearConstraints c5 = noconstraint);
 
 /**
  * This function is used by ConicBFFP.  It calcs the polar equation
@@ -153,25 +147,19 @@ const ConicCartesianData calcConicThroughPoints (
  * points are taken to be the focuses, and a third point is chosen in
  * a sensible way..
  */
-const ConicPolarData calcConicBFFP(
-  const std::vector<Coordinate>& args,
-  int type );
+const ConicPolarData calcConicBFFP(const std::vector<Coordinate> &args, int type);
 
 /**
  * function used by ConicBDFP.  It calcs the conic with directrix d,
  * focus f, and point p on the conic..
  */
-const ConicPolarData calcConicBDFP(
-  const LineData& d, const Coordinate& f, const Coordinate& p );
+const ConicPolarData calcConicBDFP(const LineData &d, const Coordinate &f, const Coordinate &p);
 
 /**
  * This calcs the hyperbola defined by its two asymptotes line1 and
  * line2, and a point p on the edge.
  */
-const ConicCartesianData calcConicByAsymptotes(
-  const LineData& line1,
-  const LineData& line2,
-  const Coordinate& p );
+const ConicCartesianData calcConicByAsymptotes(const LineData &line1, const LineData &line2, const Coordinate &p);
 
 /**
  * This function calculates the polar line of the point cpole with
@@ -181,10 +169,7 @@ const ConicCartesianData calcConicByAsymptotes(
  * is not valid.  The latter condition only occurs if a "line at
  * infinity" would have had to be returned.
  */
-const LineData calcConicPolarLine (
-  const ConicCartesianData& data,
-  const Coordinate& cpole,
-  bool& valid );
+const LineData calcConicPolarLine(const ConicCartesianData &data, const Coordinate &cpole, bool &valid);
 
 /**
  * This function calculates the polar point of the line polar with
@@ -194,9 +179,7 @@ const LineData calcConicPolarLine (
  * is not valid.  The latter condition only occurs if a "point at
  * infinity" would have had to be returned.
  */
-const Coordinate calcConicPolarPoint (
-  const ConicCartesianData& data,
-  const LineData& polar );
+const Coordinate calcConicPolarPoint(const ConicCartesianData &data, const LineData &polar);
 
 /**
  * This function calculates the intersection of a given line ( l ) and
@@ -214,10 +197,7 @@ const Coordinate calcConicPolarPoint (
  * of the point you already know ( i.e. the value returned by
  * conicimp->getParam( otherpoint ) ).
  */
-const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
-                                         const LineData& l,
-					 double knownparam,
-                                         int which );
+const Coordinate calcConicLineIntersect(const ConicCartesianData &c, const LineData &l, double knownparam, int which);
 
 /**
  * This function calculates the asymptote of the given conic ( data ).
@@ -228,9 +208,7 @@ const Coordinate calcConicLineIntersect( const ConicCartesianData& c,
  * line is not valid.  The latter condition only occurs if the given
  * conic does not have the specified asymptote.
  */
-const LineData calcConicAsymptote(
-  const ConicCartesianData &data,
-  int which, bool &valid );
+const LineData calcConicAsymptote(const ConicCartesianData &data, int which, bool &valid);
 
 /**
  * This function calculates the radical line of two conics.  A radical
@@ -245,9 +223,7 @@ const LineData calcConicAsymptote(
  * valid.  The latter condition only occurs if the given conics do not
  * have the specified radical line.
  */
-const LineData calcConicRadical( const ConicCartesianData& cequation1,
-                                 const ConicCartesianData& cequation2,
-                                 int which, int zeroindex, bool& valid );
+const LineData calcConicRadical(const ConicCartesianData &cequation1, const ConicCartesianData &cequation2, int which, int zeroindex, bool &valid);
 
 /**
  * This calculates the image of the given conic ( data ) through the
@@ -258,8 +234,6 @@ const LineData calcConicRadical( const ConicCartesianData& cequation1,
  * transformation is singular, and as such, the transformation of the
  * conic cannot be calculated.
  */
-const ConicCartesianData calcConicTransformation (
-  const ConicCartesianData& data,
-  const Transformation& t, bool& valid );
+const ConicCartesianData calcConicTransformation(const ConicCartesianData &data, const Transformation &t, bool &valid);
 
 #endif // KIG_MISC_CONIC_COMMON_H

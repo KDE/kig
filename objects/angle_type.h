@@ -8,30 +8,29 @@
 
 #include "base_type.h"
 
-class AngleType
-  : public ArgsParserObjectType
+class AngleType : public ArgsParserObjectType
 {
-  AngleType();
-  ~AngleType();
-public:
-  static const AngleType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    AngleType();
+    ~AngleType();
 
-  QStringList specialActions() const override;
-  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const override;
+public:
+    static const AngleType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    QStringList specialActions() const override;
+    void executeAction(int i, ObjectHolder &o, ObjectTypeCalcer &c, KigPart &d, KigWidget &w, NormalMode &m) const override;
 };
 
-class HalfAngleType
-  : public ArgsParserObjectType
+class HalfAngleType : public ArgsParserObjectType
 {
-  HalfAngleType();
-  ~HalfAngleType();
+    HalfAngleType();
+    ~HalfAngleType();
+
 public:
-  static const HalfAngleType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const HalfAngleType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

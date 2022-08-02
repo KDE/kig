@@ -11,79 +11,79 @@
  * Circular inversion (new style)
  */
 
-class CircularInversionType
-  : public ArgsParserObjectType
+class CircularInversionType : public ArgsParserObjectType
 {
-  CircularInversionType();
-  ~CircularInversionType();
-public:
-  static const CircularInversionType* instance();
+    CircularInversionType();
+    ~CircularInversionType();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+public:
+    static const CircularInversionType *instance();
+
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * Inversion of a point, line
  */
-class InvertPointType
-  : public ArgsParserObjectType
+class InvertPointType : public ArgsParserObjectType
 {
-  InvertPointType();
-  ~InvertPointType();
-public:
-  static const InvertPointType* instance();
+    InvertPointType();
+    ~InvertPointType();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+public:
+    static const InvertPointType *instance();
+
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class InvertLineType
-  : public ArgsParserObjectType
+class InvertLineType : public ArgsParserObjectType
 {
-  InvertLineType();
-  ~InvertLineType();
-public:
-  static const InvertLineType* instance();
+    InvertLineType();
+    ~InvertLineType();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+public:
+    static const InvertLineType *instance();
+
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class InvertSegmentType
-  : public ArgsParserObjectType
+class InvertSegmentType : public ArgsParserObjectType
 {
-  InvertSegmentType();
-  ~InvertSegmentType();
-public:
-  static const InvertSegmentType* instance();
+    InvertSegmentType();
+    ~InvertSegmentType();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+public:
+    static const InvertSegmentType *instance();
+
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class InvertCircleType
-  : public ArgsParserObjectType
+class InvertCircleType : public ArgsParserObjectType
 {
-  InvertCircleType();
-  ~InvertCircleType();
-public:
-  static const InvertCircleType* instance();
+    InvertCircleType();
+    ~InvertCircleType();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+public:
+    static const InvertCircleType *instance();
+
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class InvertArcType
-  : public ArgsParserObjectType
+class InvertArcType : public ArgsParserObjectType
 {
-  InvertArcType();
-  ~InvertArcType();
-public:
-  static const InvertArcType* instance();
+    InvertArcType();
+    ~InvertArcType();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+public:
+    static const InvertArcType *instance();
+
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

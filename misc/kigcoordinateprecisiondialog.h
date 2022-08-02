@@ -12,21 +12,20 @@
 
 #include <ui_kigcoordinateprecisiondialog.h>
 
-class KigCoordinatePrecisionDialog
-  : public QDialog
+class KigCoordinatePrecisionDialog : public QDialog
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision );
-  virtual ~KigCoordinatePrecisionDialog();
-  int getUserSpecifiedCoordinatePrecision() const;
+    KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision);
+    virtual ~KigCoordinatePrecisionDialog();
+    int getUserSpecifiedCoordinatePrecision() const;
 
 private:
-  Ui::KigCoordinatePrecisionDialog* ui;
-  
+    Ui::KigCoordinatePrecisionDialog *ui;
+
 private slots:
-  void toggleCoordinateControls( int state );
+    void toggleCoordinateControls(int state);
 };
 
 #endif // KIGCOORDINATEPRECISIONDIALOG_H

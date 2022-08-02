@@ -31,195 +31,158 @@ class QByteArray;
 class ObjectConstructor
 {
 public:
-  virtual ~ObjectConstructor();
+    virtual ~ObjectConstructor();
 
-  virtual const QString descriptiveName() const = 0;
-  virtual const QString description() const = 0;
-  virtual const QString iconFileName( const bool canBeNull = false ) const = 0;
+    virtual const QString descriptiveName() const = 0;
+    virtual const QString description() const = 0;
+    virtual const QString iconFileName(const bool canBeNull = false) const = 0;
 
-  /**
-   * the following function is called in case of duplication of arguments
-   * and returns true if this is acceptable; this will return false for
-   * typical objects
-   */
-  virtual bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                              const uint& ) const = 0;
-  /**
-   * can this constructor do something useful with \p os ?  return
-   * ArgsParser::Complete, Valid or NotGood
-   */
-  virtual int wantArgs( const std::vector<ObjectCalcer*>& os,
-                              const KigDocument& d,
-                              const KigWidget& v
-    ) const = 0;
+    /**
+     * the following function is called in case of duplication of arguments
+     * and returns true if this is acceptable; this will return false for
+     * typical objects
+     */
+    virtual bool isAlreadySelectedOK(const std::vector<ObjectCalcer *> &os, const uint &) const = 0;
+    /**
+     * can this constructor do something useful with \p os ?  return
+     * ArgsParser::Complete, Valid or NotGood
+     */
+    virtual int wantArgs(const std::vector<ObjectCalcer *> &os, const KigDocument &d, const KigWidget &v) const = 0;
 
-  /**
-   * do something fun with \p os .. This func is only called if wantArgs
-   * returned Complete.. handleArgs should <i>not</i> do any
-   * drawing.. after somebody calls this function, he should
-   * redrawScreen() himself.
-   */
-  virtual void handleArgs( const std::vector<ObjectCalcer*>& os,
-                           KigPart& d,
-                           KigWidget& v
-    ) const = 0;
+    /**
+     * do something fun with \p os .. This func is only called if wantArgs
+     * returned Complete.. handleArgs should <i>not</i> do any
+     * drawing.. after somebody calls this function, he should
+     * redrawScreen() himself.
+     */
+    virtual void handleArgs(const std::vector<ObjectCalcer *> &os, KigPart &d, KigWidget &v) const = 0;
 
-  /**
-   * return a string describing what you would use \p o for if it were
-   * selected...  \p o should be part of \p sel .
-   */
-  virtual QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                           const KigDocument& d, const KigWidget& v
-    ) const = 0;
+    /**
+     * return a string describing what you would use \p o for if it were
+     * selected...  \p o should be part of \p sel .
+     */
+    virtual QString useText(const ObjectCalcer &o, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const = 0;
 
-  /**
-   * return a string describing what argument you want next, if the
-   * given selection of objects were selected.
-   */
-  virtual QString selectStatement(
-    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const = 0;
+    /**
+     * return a string describing what argument you want next, if the
+     * given selection of objects were selected.
+     */
+    virtual QString selectStatement(const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &w) const = 0;
 
-  /**
-   * show a preliminary version of what you would do when \ref handleArgs
-   * would be called..  E.g. if this constructor normally constructs a
-   * locus through some 5 points, then it will try to draw a locus
-   * through whatever number of points it gets..
-   */
-  virtual void handlePrelim( KigPainter& p,
-                             const std::vector<ObjectCalcer*>& sel,
-                             const KigDocument& d,
-                             const KigWidget& v
-    ) const = 0;
+    /**
+     * show a preliminary version of what you would do when \ref handleArgs
+     * would be called..  E.g. if this constructor normally constructs a
+     * locus through some 5 points, then it will try to draw a locus
+     * through whatever number of points it gets..
+     */
+    virtual void handlePrelim(KigPainter &p, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const = 0;
 
-  virtual void plug( KigPart* doc, KigGUIAction* kact ) = 0;
+    virtual void plug(KigPart *doc, KigGUIAction *kact) = 0;
 
-  virtual bool isTransform() const = 0;
-  virtual bool isTest() const;
-  virtual bool isIntersection() const;
+    virtual bool isTransform() const = 0;
+    virtual bool isTest() const;
+    virtual bool isIntersection() const;
 
-  /**
-   * Which construct mode should be used for this ObjectConstructor.
-   * In fact, this is not a pretty design.  The Kig
-   * GUIAction-ObjectConstructor stuff should be reworked into a
-   * general GUIAction, which just models something which can be
-   * executed given a certain number of arguments.  The code for
-   * drawPrelim and such should all be in the ConstructMode, and the
-   * new GUIAction should just start the correct KigMode with the
-   * correct arguments.
-   *
-   * This function is only overridden in TestConstructor.
-   */
-  virtual BaseConstructMode* constructMode( KigPart& doc );
+    /**
+     * Which construct mode should be used for this ObjectConstructor.
+     * In fact, this is not a pretty design.  The Kig
+     * GUIAction-ObjectConstructor stuff should be reworked into a
+     * general GUIAction, which just models something which can be
+     * executed given a certain number of arguments.  The code for
+     * drawPrelim and such should all be in the ConstructMode, and the
+     * new GUIAction should just start the correct KigMode with the
+     * correct arguments.
+     *
+     * This function is only overridden in TestConstructor.
+     */
+    virtual BaseConstructMode *constructMode(KigPart &doc);
 };
 
 /**
  * This class provides wraps ObjectConstructor in a more simple
  * interface for the most common object types.
  */
-class StandardConstructorBase
-  : public ObjectConstructor
+class StandardConstructorBase : public ObjectConstructor
 {
-      QString mdescname;
-      QString mdesc;
-  QString miconfile;
-  const ArgsParser& margsparser;
+    QString mdescname;
+    QString mdesc;
+    QString miconfile;
+    const ArgsParser &margsparser;
+
 public:
-  StandardConstructorBase( const QString &descname,
-                           const QString &desc,
-                           const QString &iconfile,
-                           const ArgsParser& parser );
+    StandardConstructorBase(const QString &descname, const QString &desc, const QString &iconfile, const ArgsParser &parser);
 
-  virtual ~StandardConstructorBase();
+    virtual ~StandardConstructorBase();
 
-  const QString descriptiveName() const override;
-  const QString description() const override;
-  const QString iconFileName( const bool canBeNull = false ) const override;
+    const QString descriptiveName() const override;
+    const QString description() const override;
+    const QString iconFileName(const bool canBeNull = false) const override;
 
-  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const uint& ) const override;
-  int wantArgs(
-    const std::vector<ObjectCalcer*>& os, const KigDocument& d,
-    const KigWidget& v
-    ) const override;
+    bool isAlreadySelectedOK(const std::vector<ObjectCalcer *> &os, const uint &) const override;
+    int wantArgs(const std::vector<ObjectCalcer *> &os, const KigDocument &d, const KigWidget &v) const override;
 
-  void handleArgs( const std::vector<ObjectCalcer*>& os,
-                   KigPart& d,
-                   KigWidget& v
-    ) const override;
+    void handleArgs(const std::vector<ObjectCalcer *> &os, KigPart &d, KigWidget &v) const override;
 
-  void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
-                     const KigDocument& d, const KigWidget& v
-    ) const override;
+    void handlePrelim(KigPainter &p, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const override;
 
-  virtual void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                           const KigDocument& ) const = 0;
+    virtual void drawprelim(const ObjectDrawer &drawer, KigPainter &p, const std::vector<ObjectCalcer *> &parents, const KigDocument &) const = 0;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                   const KigDocument& d, const KigWidget& v ) const override;
+    QString useText(const ObjectCalcer &o, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const override;
 
-  QString selectStatement(
-    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const override;
+    QString selectStatement(const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &w) const override;
 
-  virtual std::vector<ObjectHolder*> build(
-    const std::vector<ObjectCalcer*>& os,
-    KigDocument& d, KigWidget& w
-    ) const = 0;
+    virtual std::vector<ObjectHolder *> build(const std::vector<ObjectCalcer *> &os, KigDocument &d, KigWidget &w) const = 0;
 };
 
 /**
  * A standard implementation of StandardConstructorBase for simple
  * types.
  */
-class SimpleObjectTypeConstructor
-  : public StandardConstructorBase
+class SimpleObjectTypeConstructor : public StandardConstructorBase
 {
-  const ArgsParserObjectType* mtype;
+    const ArgsParserObjectType *mtype;
+
 public:
-  explicit SimpleObjectTypeConstructor(
-    const ArgsParserObjectType* t, const QString &descname,
-    const QString &desc, const QString &iconfile );
+    explicit SimpleObjectTypeConstructor(const ArgsParserObjectType *t, const QString &descname, const QString &desc, const QString &iconfile);
 
-  ~SimpleObjectTypeConstructor();
+    ~SimpleObjectTypeConstructor();
 
-  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const override;
+    void drawprelim(const ObjectDrawer &drawer, KigPainter &p, const std::vector<ObjectCalcer *> &parents, const KigDocument &) const override;
 
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
-                                    KigDocument& d,
-                                    KigWidget& w ) const override;
+    std::vector<ObjectHolder *> build(const std::vector<ObjectCalcer *> &os, KigDocument &d, KigWidget &w) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) override;
+    void plug(KigPart *doc, KigGUIAction *kact) override;
 
-  bool isTransform() const override;
+    bool isTransform() const override;
 };
 
 /**
  * A standard implementation of StandardConstructorBase for property
  * objects...
  */
-class PropertyObjectConstructor
-  : public StandardConstructorBase
+class PropertyObjectConstructor : public StandardConstructorBase
 {
-  ArgsParser mparser;
-  const char* mpropinternalname;
+    ArgsParser mparser;
+    const char *mpropinternalname;
+
 public:
-  explicit PropertyObjectConstructor(const ObjectImpType* imprequirement, const char* usetext,
-    const char* selectstat, const QString &descname, const QString &desc,
-    const QString &iconfile, const char* propertyinternalname );
+    explicit PropertyObjectConstructor(const ObjectImpType *imprequirement,
+                                       const char *usetext,
+                                       const char *selectstat,
+                                       const QString &descname,
+                                       const QString &desc,
+                                       const QString &iconfile,
+                                       const char *propertyinternalname);
 
-  ~PropertyObjectConstructor();
+    ~PropertyObjectConstructor();
 
-  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const override;
+    void drawprelim(const ObjectDrawer &drawer, KigPainter &p, const std::vector<ObjectCalcer *> &parents, const KigDocument &) const override;
 
-  std::vector<ObjectHolder*> build( const std::vector<ObjectCalcer*>& os,
-                                    KigDocument& d, KigWidget& w ) const override;
+    std::vector<ObjectHolder *> build(const std::vector<ObjectCalcer *> &os, KigDocument &d, KigWidget &w) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) override;
+    void plug(KigPart *doc, KigGUIAction *kact) override;
 
-  bool isTransform() const override;
+    bool isTransform() const override;
 };
 
 /**
@@ -234,33 +197,35 @@ public:
  * This class knows about that, and constructs the objects along this
  * scheme..
  */
-class MultiObjectTypeConstructor
-  : public StandardConstructorBase
+class MultiObjectTypeConstructor : public StandardConstructorBase
 {
-  const ArgsParserObjectType* mtype;
-  std::vector<int> mparams;
-  ArgsParser mparser;
+    const ArgsParserObjectType *mtype;
+    std::vector<int> mparams;
+    ArgsParser mparser;
+
 public:
-  explicit MultiObjectTypeConstructor(
-    const ArgsParserObjectType* t, const QString &descname,
-    const QString &desc, const QString &iconfile,
-    const std::vector<int>& params );
-  explicit MultiObjectTypeConstructor(
-    const ArgsParserObjectType* t, const QString &descname,
-    const QString &desc, const QString &iconfile,
-    int a, int b, int c = -999, int d = -999 );
-  ~MultiObjectTypeConstructor();
+    explicit MultiObjectTypeConstructor(const ArgsParserObjectType *t,
+                                        const QString &descname,
+                                        const QString &desc,
+                                        const QString &iconfile,
+                                        const std::vector<int> &params);
+    explicit MultiObjectTypeConstructor(const ArgsParserObjectType *t,
+                                        const QString &descname,
+                                        const QString &desc,
+                                        const QString &iconfile,
+                                        int a,
+                                        int b,
+                                        int c = -999,
+                                        int d = -999);
+    ~MultiObjectTypeConstructor();
 
-  void drawprelim( const ObjectDrawer& drawer, KigPainter& p, const std::vector<ObjectCalcer*>& parents,
-                   const KigDocument& ) const override;
+    void drawprelim(const ObjectDrawer &drawer, KigPainter &p, const std::vector<ObjectCalcer *> &parents, const KigDocument &) const override;
 
-  std::vector<ObjectHolder*> build(
-    const std::vector<ObjectCalcer*>& os,
-    KigDocument& d, KigWidget& w ) const override;
+    std::vector<ObjectHolder *> build(const std::vector<ObjectCalcer *> &os, KigDocument &d, KigWidget &w) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) override;
+    void plug(KigPart *doc, KigGUIAction *kact) override;
 
-  bool isTransform() const override;
+    bool isTransform() const override;
 };
 
 /**
@@ -268,47 +233,39 @@ public:
  * makes them appear to the user as a single ObjectConstructor.  It is
  * e.g. used for the "intersection" constructor.
  */
-class MergeObjectConstructor
-  : public ObjectConstructor
+class MergeObjectConstructor : public ObjectConstructor
 {
-  const QString mdescname;
-  const QString mdesc;
-  const QString miconfilename;
-  typedef std::vector<ObjectConstructor*> vectype;
-  vectype mctors;
+    const QString mdescname;
+    const QString mdesc;
+    const QString miconfilename;
+    typedef std::vector<ObjectConstructor *> vectype;
+    vectype mctors;
+
 public:
-  MergeObjectConstructor( const QString &descname, const QString &desc,
-                          const QString &iconfilename );
-  ~MergeObjectConstructor();
+    MergeObjectConstructor(const QString &descname, const QString &desc, const QString &iconfilename);
+    ~MergeObjectConstructor();
 
-  void merge( ObjectConstructor* e );
+    void merge(ObjectConstructor *e);
 
-  const QString descriptiveName() const override;
-  const QString description() const override;
-  const QString iconFileName( const bool canBeNull = false ) const override;
+    const QString descriptiveName() const override;
+    const QString description() const override;
+    const QString iconFileName(const bool canBeNull = false) const override;
 
-  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, const uint& ) const override;
+    bool isAlreadySelectedOK(const std::vector<ObjectCalcer *> &os, const uint &) const override;
 
-  int wantArgs( const std::vector<ObjectCalcer*>& os,
-                      const KigDocument& d,
-                      const KigWidget& v
-    ) const override;
+    int wantArgs(const std::vector<ObjectCalcer *> &os, const KigDocument &d, const KigWidget &v) const override;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                   const KigDocument& d, const KigWidget& v ) const override;
+    QString useText(const ObjectCalcer &o, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const override;
 
-  QString selectStatement(
-    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const override;
+    QString selectStatement(const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &w) const override;
 
-  void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d, KigWidget& v ) const override;
+    void handleArgs(const std::vector<ObjectCalcer *> &os, KigPart &d, KigWidget &v) const override;
 
-  void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
-                     const KigDocument& d, const KigWidget& v ) const override;
+    void handlePrelim(KigPainter &p, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) override;
+    void plug(KigPart *doc, KigGUIAction *kact) override;
 
-  bool isTransform() const override;
+    bool isTransform() const override;
 };
 
 /**
@@ -319,64 +276,55 @@ public:
  * given similar input objects, it will produce objects in the given
  * way.  The data is saved in a \ref ObjectHierarchy.
  */
-class MacroConstructor
-  : public ObjectConstructor
+class MacroConstructor : public ObjectConstructor
 {
-  ObjectHierarchy mhier;
-  QString mname;
-  QString mdesc;
-  bool mbuiltin;
-  QByteArray miconfile;
-  ArgsParser mparser;
+    ObjectHierarchy mhier;
+    QString mname;
+    QString mdesc;
+    bool mbuiltin;
+    QByteArray miconfile;
+    ArgsParser mparser;
+
 public:
-  MacroConstructor( const std::vector<ObjectCalcer*>& input, const std::vector<ObjectCalcer*>& output,
-                    const QString& name, const QString& description,
-                    const QByteArray& iconfile = nullptr );
-  MacroConstructor( const ObjectHierarchy& hier, const QString& name,
-                    const QString& desc,
-                    const QByteArray& iconfile = nullptr );
-  ~MacroConstructor();
+    MacroConstructor(const std::vector<ObjectCalcer *> &input,
+                     const std::vector<ObjectCalcer *> &output,
+                     const QString &name,
+                     const QString &description,
+                     const QByteArray &iconfile = nullptr);
+    MacroConstructor(const ObjectHierarchy &hier, const QString &name, const QString &desc, const QByteArray &iconfile = nullptr);
+    ~MacroConstructor();
 
-  const ObjectHierarchy& hierarchy() const;
+    const ObjectHierarchy &hierarchy() const;
 
-  const QString descriptiveName() const override;
-  const QString description() const override;
-  const QString iconFileName( const bool canBeNull = false ) const override;
+    const QString descriptiveName() const override;
+    const QString description() const override;
+    const QString iconFileName(const bool canBeNull = false) const override;
 
-  bool isAlreadySelectedOK( const std::vector<ObjectCalcer*>& os, 
-                                  const uint& ) const override;
-  int wantArgs( const std::vector<ObjectCalcer*>& os, const KigDocument& d,
-                      const KigWidget& v ) const override;
+    bool isAlreadySelectedOK(const std::vector<ObjectCalcer *> &os, const uint &) const override;
+    int wantArgs(const std::vector<ObjectCalcer *> &os, const KigDocument &d, const KigWidget &v) const override;
 
-  void handleArgs( const std::vector<ObjectCalcer*>& os, KigPart& d,
-                   KigWidget& v ) const override;
+    void handleArgs(const std::vector<ObjectCalcer *> &os, KigPart &d, KigWidget &v) const override;
 
-  QString useText( const ObjectCalcer& o, const std::vector<ObjectCalcer*>& sel,
-                   const KigDocument& d, const KigWidget& v
-    ) const override;
+    QString useText(const ObjectCalcer &o, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const override;
 
-  QString selectStatement(
-    const std::vector<ObjectCalcer*>& sel, const KigDocument& d,
-    const KigWidget& w ) const override;
+    QString selectStatement(const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &w) const override;
 
-  void handlePrelim( KigPainter& p, const std::vector<ObjectCalcer*>& sel,
-                     const KigDocument& d, const KigWidget& v
-    ) const override;
+    void handlePrelim(KigPainter &p, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const override;
 
-  void plug( KigPart* doc, KigGUIAction* kact ) override;
+    void plug(KigPart *doc, KigGUIAction *kact) override;
 
-  void setBuiltin( bool builtin );
+    void setBuiltin(bool builtin);
 
-  /**
-   * is this the ctor for a transformation type.  We want to know this
-   * cause transform types are shown separately in an object's RMB
-   * menu..
-   */
-  bool isTransform() const override;
+    /**
+     * is this the ctor for a transformation type.  We want to know this
+     * cause transform types are shown separately in an object's RMB
+     * menu..
+     */
+    bool isTransform() const override;
 
-  void setName( const QString& name );
-  void setDescription( const QString& desc );
-  void setIcon( QByteArray& icon );
+    void setName(const QString &name);
+    void setDescription(const QString &desc);
+    void setIcon(QByteArray &icon);
 };
 
 #endif

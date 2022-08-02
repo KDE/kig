@@ -13,49 +13,47 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
-KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision ) : QDialog()
+KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision)
+    : QDialog()
 {
-  ui = new Ui::KigCoordinatePrecisionDialog();
-  QWidget *mainWidget = new QWidget(this);
-  QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Ok | QDialogButtonBox::Cancel );
-  QVBoxLayout *mainLayout = new QVBoxLayout(this);
-  mainLayout->addWidget(mainWidget);
-  mainLayout->addWidget( buttonBox );
-  ui->setupUi(mainWidget);
+    ui = new Ui::KigCoordinatePrecisionDialog();
+    QWidget *mainWidget = new QWidget(this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->addWidget(mainWidget);
+    mainLayout->addWidget(buttonBox);
+    ui->setupUi(mainWidget);
 
-  ui->m_defaultCheckBox->setCheckState( isUserSpecified ? Qt::Unchecked : Qt::Checked) ;
-  ui->m_precisionLabel->setEnabled( isUserSpecified );
-  ui->m_precisionSpinBox->setEnabled( isUserSpecified );
-  ui->m_precisionSpinBox->setValue( currentPrecision );
+    ui->m_defaultCheckBox->setCheckState(isUserSpecified ? Qt::Unchecked : Qt::Checked);
+    ui->m_precisionLabel->setEnabled(isUserSpecified);
+    ui->m_precisionSpinBox->setEnabled(isUserSpecified);
+    ui->m_precisionSpinBox->setValue(currentPrecision);
 
-  connect(ui->m_defaultCheckBox, &QCheckBox::stateChanged, this, &KigCoordinatePrecisionDialog::toggleCoordinateControls);
-  connect( buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept );
-  connect( buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject );
+    connect(ui->m_defaultCheckBox, &QCheckBox::stateChanged, this, &KigCoordinatePrecisionDialog::toggleCoordinateControls);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
-  show();
+    show();
 }
 
 KigCoordinatePrecisionDialog::~KigCoordinatePrecisionDialog()
 {
-  delete ui;
+    delete ui;
 }
 
 int KigCoordinatePrecisionDialog::getUserSpecifiedCoordinatePrecision() const
 {
-  if( ui->m_defaultCheckBox->checkState() == Qt::Unchecked )
-  {
-    return ui->m_precisionSpinBox->value();
-  }
-  
-  return -1;
+    if (ui->m_defaultCheckBox->checkState() == Qt::Unchecked) {
+        return ui->m_precisionSpinBox->value();
+    }
+
+    return -1;
 }
 
-void KigCoordinatePrecisionDialog::toggleCoordinateControls( int state )
+void KigCoordinatePrecisionDialog::toggleCoordinateControls(int state)
 {
-  bool controlsEnabled = ( state == Qt::Unchecked );
-  
-  ui->m_precisionLabel->setEnabled( controlsEnabled );
-  ui->m_precisionSpinBox->setEnabled( controlsEnabled );
+    bool controlsEnabled = (state == Qt::Unchecked);
+
+    ui->m_precisionLabel->setEnabled(controlsEnabled);
+    ui->m_precisionSpinBox->setEnabled(controlsEnabled);
 }
-
-

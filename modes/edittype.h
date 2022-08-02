@@ -16,26 +16,26 @@ class Ui_EditTypeWidget;
  */
 class EditType : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  Ui_EditTypeWidget* medittypewidget;
+    Ui_EditTypeWidget *medittypewidget;
 
-  QString mname;
-  QString mdesc;
-  QString micon;
+    QString mname;
+    QString mdesc;
+    QString micon;
+
 public:
-  explicit EditType( QWidget* parent, const QString& name = QString(),
-                     const QString& desc = QString(), const QString& icon = QString() );
-  ~EditType();
+    explicit EditType(QWidget *parent, const QString &name = QString(), const QString &desc = QString(), const QString &icon = QString());
+    ~EditType();
 
-  QString name() const;
-  QString description() const;
-  QString icon() const;
+    QString name() const;
+    QString description() const;
+    QString icon() const;
 
 private slots:
-  void slotHelp();
-  void slotOk();
-  void slotCancel();
+    void slotHelp();
+    void slotOk();
+    void slotCancel();
 };
 
 #endif

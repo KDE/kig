@@ -11,16 +11,14 @@
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
-#include <iostream>
 #include <QString>
+#include <iostream>
 
 ///////////////////////////////////////////////////////////////////
 // resource.h  -- contains macros used for commands
 
-
 ///////////////////////////////////////////////////////////////////
 // COMMAND VALUES FOR MENUBAR AND TOOLBAR ENTRIES
-
 
 ///////////////////////////////////////////////////////////////////
 // File-menu entries
@@ -159,7 +157,6 @@
 #define MinimumPointSize 3
 
 #define Str_AppName "KGeo"
-
 
 #define ID_overlayRectSize 24
 

@@ -16,39 +16,39 @@ class KIconLoader;
 
 namespace KTextEditor
 {
-  class Document;
-  class View;
+class Document;
+class View;
 }
 class ScriptModeBase;
 
-class NewScriptWizard
-  : public QWizard
+class NewScriptWizard : public QWizard
 {
-  Q_OBJECT
-  ScriptModeBase* mmode;
+    Q_OBJECT
+    ScriptModeBase *mmode;
+
 public:
-  NewScriptWizard( QWidget* parent, ScriptModeBase* mode, KIconLoader* il );
-  ~NewScriptWizard();
+    NewScriptWizard(QWidget *parent, ScriptModeBase *mode, KIconLoader *il);
+    ~NewScriptWizard();
 
-  void setText( const QString& text );
-  QString text() const;
+    void setText(const QString &text);
+    QString text() const;
 
-  void setType( ScriptType::Type type );
+    void setType(ScriptType::Type type);
 
 public slots:
-  void accept() override;
-  void reject() override;
+    void accept() override;
+    void reject() override;
 
 protected slots:
-  void slotHelpClicked();
-  void currentIdChanged( int id );
+    void slotHelpClicked();
+    void currentIdChanged(int id);
 
 protected:
-  QLabel* mLabelFillCode;
-  QTextEdit* textedit;
-  KTextEditor::Document* document;
-  KTextEditor::View* docview;
-  KIconLoader* mIconLoader;
+    QLabel *mLabelFillCode;
+    QTextEdit *textedit;
+    KTextEditor::Document *document;
+    KTextEditor::View *docview;
+    KIconLoader *mIconLoader;
 };
 
 #endif

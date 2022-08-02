@@ -10,14 +10,12 @@
 
 #include "popupactionprovider.h"
 
-class BuiltinObjectActionsProvider
-  : public PopupActionProvider
+class BuiltinObjectActionsProvider : public PopupActionProvider
 {
 public:
-  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree ) override;
-  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
-                      NormalModePopupObjects& popup,
-                      KigPart& doc, KigWidget& w, NormalMode& m ) override;
+    void fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree) override;
+    bool
+    executeAction(int menu, int &id, const std::vector<ObjectHolder *> &os, NormalModePopupObjects &popup, KigPart &doc, KigWidget &w, NormalMode &m) override;
 };
 
 #endif // BUILTINOBJECTACTIONSPROVIDER_H

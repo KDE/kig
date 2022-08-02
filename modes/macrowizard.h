@@ -13,29 +13,30 @@ class FinalArgsPage;
 
 class MacroWizard : public QWizard
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  MacroWizard( QWidget* parent, DefineMacroMode* m );
-  ~MacroWizard();
+    MacroWizard(QWidget *parent, DefineMacroMode *m);
+    ~MacroWizard();
 
-  static const int GivenArgsPageId = 0;
-  static const int FinalArgsPageId = 1;
-  static const int MacroInfoPageId = 2;
+    static const int GivenArgsPageId = 0;
+    static const int FinalArgsPageId = 1;
+    static const int MacroInfoPageId = 2;
 
-  void givenArgsChanged();
-  void finalArgsChanged();
+    void givenArgsChanged();
+    void finalArgsChanged();
 
 public slots:
-  void reject() override;
-  void accept() override;
+    void reject() override;
+    void accept() override;
 
 private slots:
-  void currentIdChanged( int id );
-  void slotHelpClicked();
+    void currentIdChanged(int id);
+    void slotHelpClicked();
+
 private:
-  DefineMacroMode* mmode;
-  GivenArgsPage* mgivenArgsPage;
-  FinalArgsPage* mfinalArgsPage;
+    DefineMacroMode *mmode;
+    GivenArgsPage *mgivenArgsPage;
+    FinalArgsPage *mfinalArgsPage;
 };
 
 #endif // MACROWIZARD_H

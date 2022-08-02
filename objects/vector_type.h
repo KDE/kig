@@ -7,26 +7,26 @@
 
 #include "base_type.h"
 
-class VectorType
-  : public ObjectABType
+class VectorType : public ObjectABType
 {
-  VectorType();
-  ~VectorType();
+    VectorType();
+    ~VectorType();
+
 public:
-  static const VectorType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const override;
-  const ObjectImpType* resultId() const override;
+    static const VectorType *instance();
+    ObjectImp *calcx(const Coordinate &a, const Coordinate &b) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class VectorSumType
-  : public ArgsParserObjectType
+class VectorSumType : public ArgsParserObjectType
 {
-  VectorSumType();
-  ~VectorSumType();
+    VectorSumType();
+    ~VectorSumType();
+
 public:
-  static const VectorSumType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const VectorSumType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

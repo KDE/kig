@@ -10,46 +10,46 @@
 /**
  * the center of curvature of a conic at a point
  */
-class CocConicType
-  : public ArgsParserObjectType
+class CocConicType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  CocConicType();
-  ~CocConicType();
+    typedef ArgsParserObjectType Parent;
+    CocConicType();
+    ~CocConicType();
+
 public:
-  static const CocConicType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CocConicType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * the center of curvature of a cubic at a point
  */
-class CocCubicType
-  : public ArgsParserObjectType
+class CocCubicType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  CocCubicType();
-  ~CocCubicType();
+    typedef ArgsParserObjectType Parent;
+    CocCubicType();
+    ~CocCubicType();
+
 public:
-  static const CocCubicType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CocCubicType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * the center of curvature of a curve at a point
  */
-class CocCurveType
-  : public ArgsParserObjectType
+class CocCurveType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  CocCurveType();
-  ~CocCurveType();
+    typedef ArgsParserObjectType Parent;
+    CocCurveType();
+    ~CocCurveType();
+
 public:
-  static const CocCurveType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CocCurveType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

@@ -26,12 +26,12 @@ class QStringList;
 class CoordinateSystemFactory
 {
 public:
-  enum { Euclidean = 0, Polar = 1 };
+    enum { Euclidean = 0, Polar = 1 };
 
-  static QStringList names();
-  static QString setCoordinateSystemStatement( int id );
-  static CoordinateSystem* build( int which );
-  static CoordinateSystem* build( const char* type );
+    static QStringList names();
+    static QString setCoordinateSystemStatement(int id);
+    static CoordinateSystem *build(int which);
+    static CoordinateSystem *build(const char *type);
 };
 
 /**
@@ -48,73 +48,65 @@ class CoordinateSystem
 //  : public Qt
 {
 public:
-  CoordinateSystem();
-  virtual ~CoordinateSystem();
+    CoordinateSystem();
+    virtual ~CoordinateSystem();
 
-  virtual QString fromScreen ( const Coordinate& pt, const KigDocument& w ) const = 0;
-  /**
-   * This returns a notice to say in which format coordinates should
-   * be entered.  This should be something like:
-   * i18n( "Enter coordinates in the following form: \"(x,y)\", where
-   * x is the x coordinate, and y is the y coordinate." );
-   */
-  virtual QString coordinateFormatNotice() const = 0;
-  /**
-   * Like \ref coordinateFormatNotice(), but with HTML tags useful to
-   * have a rich text...
-   */
-  virtual QString coordinateFormatNoticeMarkup() const = 0;
-  virtual Coordinate toScreen (const QString& pt, bool& ok) const = 0;
-  virtual void drawGrid ( KigPainter& p, bool showgrid = true,
-                          bool showaxes = true ) const = 0;
-  virtual QValidator* coordinateValidator() const = 0;
-  virtual Coordinate snapToGrid( const Coordinate& c,
-                                 const KigWidget& w ) const = 0;
+    virtual QString fromScreen(const Coordinate &pt, const KigDocument &w) const = 0;
+    /**
+     * This returns a notice to say in which format coordinates should
+     * be entered.  This should be something like:
+     * i18n( "Enter coordinates in the following form: \"(x,y)\", where
+     * x is the x coordinate, and y is the y coordinate." );
+     */
+    virtual QString coordinateFormatNotice() const = 0;
+    /**
+     * Like \ref coordinateFormatNotice(), but with HTML tags useful to
+     * have a rich text...
+     */
+    virtual QString coordinateFormatNoticeMarkup() const = 0;
+    virtual Coordinate toScreen(const QString &pt, bool &ok) const = 0;
+    virtual void drawGrid(KigPainter &p, bool showgrid = true, bool showaxes = true) const = 0;
+    virtual QValidator *coordinateValidator() const = 0;
+    virtual Coordinate snapToGrid(const Coordinate &c, const KigWidget &w) const = 0;
 
-  virtual const char* type() const = 0;
-  virtual int id() const = 0;
+    virtual const char *type() const = 0;
+    virtual int id() const = 0;
 };
 
-class EuclideanCoords
-  : public CoordinateSystem
+class EuclideanCoords : public CoordinateSystem
 {
 public:
-  EuclideanCoords();
-  ~EuclideanCoords();
-  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const override;
-  QString coordinateFormatNotice() const override;
-  QString coordinateFormatNoticeMarkup() const override;
-  Coordinate toScreen (const QString& pt, bool& ok) const override;
-  void drawGrid ( KigPainter& p, bool showgrid = true,
-                  bool showaxes = true ) const override;
-  QValidator* coordinateValidator() const override;
-  Coordinate snapToGrid( const Coordinate& c,
-                         const KigWidget& w ) const override;
+    EuclideanCoords();
+    ~EuclideanCoords();
+    QString fromScreen(const Coordinate &pt, const KigDocument &w) const override;
+    QString coordinateFormatNotice() const override;
+    QString coordinateFormatNoticeMarkup() const override;
+    Coordinate toScreen(const QString &pt, bool &ok) const override;
+    void drawGrid(KigPainter &p, bool showgrid = true, bool showaxes = true) const override;
+    QValidator *coordinateValidator() const override;
+    Coordinate snapToGrid(const Coordinate &c, const KigWidget &w) const override;
 
-  const char* type() const override;
-  int id() const override;
+    const char *type() const override;
+    int id() const override;
 };
 
-class PolarCoords
-  : public CoordinateSystem
+class PolarCoords : public CoordinateSystem
 {
-  void drawGridLine( KigPainter& p, const Coordinate& center,
-                     double radius ) const;
-public:
-  PolarCoords();
-  ~PolarCoords();
-  QString fromScreen( const Coordinate& pt, const KigDocument& w ) const override;
-  QString coordinateFormatNotice() const override;
-  QString coordinateFormatNoticeMarkup() const override;
-  Coordinate toScreen (const QString& pt, bool& ok) const override;
-  void drawGrid ( KigPainter& p, bool showgrid = true,
-                  bool showaxes = true ) const override;
-  QValidator* coordinateValidator() const override;
-  Coordinate snapToGrid( const Coordinate& c,
-                         const KigWidget& w ) const override;
+    void drawGridLine(KigPainter &p, const Coordinate &center, double radius) const;
 
-  const char* type() const override;
-  int id() const override;
+public:
+    PolarCoords();
+    ~PolarCoords();
+    QString fromScreen(const Coordinate &pt, const KigDocument &w) const override;
+    QString coordinateFormatNotice() const override;
+    QString coordinateFormatNoticeMarkup() const override;
+    Coordinate toScreen(const QString &pt, bool &ok) const override;
+    void drawGrid(KigPainter &p, bool showgrid = true, bool showaxes = true) const override;
+    QValidator *coordinateValidator() const override;
+    Coordinate snapToGrid(const Coordinate &c, const KigWidget &w) const override;
+
+    const char *type() const override;
+    int id() const override;
 };
 
 #endif

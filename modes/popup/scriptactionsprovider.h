@@ -14,19 +14,18 @@
 
 #include "popupactionprovider.h"
 
+#include "../../scripting/python_type.h"
 #include "../../scripting/script-common.h"
 #include "../../scripting/script_mode.h"
-#include "../../scripting/python_type.h"
 
-class ScriptActionsProvider
-  : public PopupActionProvider
+class ScriptActionsProvider : public PopupActionProvider
 {
-  int mns;
+    int mns;
+
 public:
-  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree ) override;
-  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
-                      NormalModePopupObjects& popup,
-                      KigPart& doc, KigWidget& w, NormalMode& m ) override;
+    void fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree) override;
+    bool
+    executeAction(int menu, int &id, const std::vector<ObjectHolder *> &os, NormalModePopupObjects &popup, KigPart &doc, KigWidget &w, NormalMode &m) override;
 };
 
 #endif

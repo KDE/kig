@@ -19,31 +19,34 @@ class KigDocument;
 class KigFilters
 {
 public:
-  static KigFilters* instance();
-  KigFilter* find (const QString& mime);
+    static KigFilters *instance();
+    KigFilter *find(const QString &mime);
 
-  /**
-   * saving is always done with the native filter.  We don't support
-   * output filters..
-   */
-  bool save ( const KigDocument& data, const QString& outfile );
+    /**
+     * saving is always done with the native filter.  We don't support
+     * output filters..
+     */
+    bool save(const KigDocument &data, const QString &outfile);
+
 protected:
-  KigFilters();
-  static KigFilters* sThis;
-  typedef std::vector<KigFilter*> vect;
-  vect mFilters;
+    KigFilters();
+    static KigFilters *sThis;
+    typedef std::vector<KigFilter *> vect;
+    vect mFilters;
 };
 
 // KigFilter::load functions should use this macro to conveniently
 // return a very useful parse error in a filter's load function..
-#define KIG_FILTER_PARSE_ERROR \
-  { \
-    QString locs = i18n( "An error was encountered at " \
-                         "line %1 in file %2.", \
-        __LINE__, __FILE__ ); \
-    parseError( locs ); \
-    return nullptr; \
-  }
+#define KIG_FILTER_PARSE_ERROR                                                                                                                                 \
+    {                                                                                                                                                          \
+        QString locs = i18n(                                                                                                                                   \
+            "An error was encountered at "                                                                                                                     \
+            "line %1 in file %2.",                                                                                                                             \
+            __LINE__,                                                                                                                                          \
+            __FILE__);                                                                                                                                         \
+        parseError(locs);                                                                                                                                      \
+        return nullptr;                                                                                                                                        \
+    }
 
 /**
  * This is the base class for an input filter.
@@ -54,28 +57,29 @@ protected:
 class KigFilter
 {
 protected:
-  // shows errors to the user..
-  void fileNotFound( const QString& file ) const;
-  void parseError( const QString& explanation = QString() ) const;
-  void notSupported( const QString& explanation ) const;
-  void warning( const QString& explanation ) const;
+    // shows errors to the user..
+    void fileNotFound(const QString &file) const;
+    void parseError(const QString &explanation = QString()) const;
+    void notSupported(const QString &explanation) const;
+    void warning(const QString &explanation) const;
+
 public:
-  KigFilter();
-  virtual ~KigFilter();
+    KigFilter();
+    virtual ~KigFilter();
 
-  /**
-   * can the filter handle the mimetype \p mime ?
-   */
-  virtual bool supportMime ( const QString& mime );
+    /**
+     * can the filter handle the mimetype \p mime ?
+     */
+    virtual bool supportMime(const QString &mime);
 
-  /**
-   * load file \p fromfile and build a KigDocument from it..  If this
-   * function returns 0, that means that an error occurred while
-   * loading ( implementations of this function are responsible for
-   * showing an error message themselves, using the above error
-   * functions ). If this functions returns non-0, the caller owns
-   * the returned KigDocument ( that was allocated with "new" ).
-   */
-  virtual KigDocument* load ( const QString& fromfile ) = 0;
+    /**
+     * load file \p fromfile and build a KigDocument from it..  If this
+     * function returns 0, that means that an error occurred while
+     * loading ( implementations of this function are responsible for
+     * showing an error message themselves, using the above error
+     * functions ). If this functions returns non-0, the caller owns
+     * the returned KigDocument ( that was allocated with "new" ).
+     */
+    virtual KigDocument *load(const QString &fromfile) = 0;
 };
 #endif

@@ -5,66 +5,66 @@
 #ifndef KIG_OBJECTS_ARC_TYPE_H
 #define KIG_OBJECTS_ARC_TYPE_H
 
-#include "base_type.h"
 #include "../misc/object_hierarchy.h"
+#include "base_type.h"
 
 /**
  * an arc by a start point, an intermediate point and an end point
  * (with orientation)
  */
-class ArcBTPType
-  : public ArgsParserObjectType
+class ArcBTPType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  ArcBTPType();
-  ~ArcBTPType();
+    typedef ArgsParserObjectType Parent;
+    ArcBTPType();
+    ~ArcBTPType();
+
 public:
-  static const ArcBTPType* instance();
+    static const ArcBTPType *instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+    const ObjectImpType *impRequirement(const ObjectImp *o, const Args &parents) const override;
 
-  bool inherits( int type ) const override;
-  const ObjectImpType* resultId() const override;
+    bool inherits(int type) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * an arc by a point (center), a starting point and an angle
  */
-class ArcBCPAType
-  : public ArgsParserObjectType
+class ArcBCPAType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  ArcBCPAType();
-  ~ArcBCPAType();
+    typedef ArgsParserObjectType Parent;
+    ArcBCPAType();
+    ~ArcBCPAType();
+
 public:
-  static const ArcBCPAType* instance();
+    static const ArcBCPAType *instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
 
-  const ObjectImpType* impRequirement( const ObjectImp* o, const Args& parents ) const override;
+    const ObjectImpType *impRequirement(const ObjectImp *o, const Args &parents) const override;
 
-  bool inherits( int type ) const override;
-  const ObjectImpType* resultId() const override;
+    bool inherits(int type) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * a conic arc by a start point, an intermediate point, an end point and
  * the conic center
  */
-class ConicArcBCTPType
-  : public ArgsParserObjectType
+class ConicArcBCTPType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  ConicArcBCTPType();
-  ~ConicArcBCTPType();
+    typedef ArgsParserObjectType Parent;
+    ConicArcBCTPType();
+    ~ConicArcBCTPType();
+
 public:
-  static const ConicArcBCTPType* instance();
+    static const ConicArcBCTPType *instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
 
-  const ObjectImpType* resultId() const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
@@ -72,18 +72,18 @@ public:
  * intermediate (used to compute angles), intermediate and
  * end point
  */
-class ConicArcB5PType
-  : public ArgsParserObjectType
+class ConicArcB5PType : public ArgsParserObjectType
 {
-  typedef ArgsParserObjectType Parent;
-  ConicArcB5PType();
-  ~ConicArcB5PType();
+    typedef ArgsParserObjectType Parent;
+    ConicArcB5PType();
+    ~ConicArcB5PType();
+
 public:
-  static const ConicArcB5PType* instance();
+    static const ConicArcB5PType *instance();
 
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
 
-  const ObjectImpType* resultId() const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

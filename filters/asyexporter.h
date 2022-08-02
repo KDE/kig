@@ -14,15 +14,14 @@ class KigWidget;
 /**
  * Export to Asymptote.
  */
-class AsyExporter
-  : public KigExporter
+class AsyExporter : public KigExporter
 {
 public:
-  ~AsyExporter();
-  QString exportToStatement() const override;
-  QString menuEntryName() const override;
-  QString menuIcon() const override;
-  void run( const KigPart& doc, KigWidget& w ) override;
+    ~AsyExporter();
+    QString exportToStatement() const override;
+    QString menuEntryName() const override;
+    QString menuIcon() const override;
+    void run(const KigPart &doc, KigWidget &w) override;
 };
 
 #endif

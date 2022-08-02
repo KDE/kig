@@ -14,15 +14,14 @@ class KigWidget;
 /**
  * Export to Scalable Vector Graphics (SVG)
  */
-class SVGExporter
-  : public KigExporter
+class SVGExporter : public KigExporter
 {
 public:
-  ~SVGExporter();
-  QString exportToStatement() const override;
-  QString menuEntryName() const override;
-  QString menuIcon() const override;
-  void run( const KigPart& part, KigWidget& w ) override;
+    ~SVGExporter();
+    QString exportToStatement() const override;
+    QString menuEntryName() const override;
+    QString menuIcon() const override;
+    void run(const KigPart &part, KigWidget &w) override;
 };
 
 #endif

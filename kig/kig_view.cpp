@@ -7,15 +7,14 @@
 
 #include "kig_view.h"
 
-
-#include "kig_part.h"
-#include "kig_document.h"
-#include "kig_commands.h"
 #include "../misc/coordinate_system.h"
 #include "../misc/kiginputdialog.h"
 #include "../misc/kigpainter.h"
-#include "../modes/mode.h"
 #include "../modes/dragrectmode.h"
+#include "../modes/mode.h"
+#include "kig_commands.h"
+#include "kig_document.h"
+#include "kig_part.h"
 
 #include <QApplication>
 #include <QEvent>
@@ -25,570 +24,545 @@
 
 #include <QDebug>
 
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 #include <iterator>
 
-KigWidget::KigWidget( KigPart* part,
-                      KigView* view,
-                      QWidget* parent,
-                      bool fullscreen )
-  : QWidget( parent,
-             fullscreen ? Qt::FramelessWindowHint : Qt::Widget ),
-    mpart( part ),
-    mview( view ),
-    stillPix(size()),
-    curPix(size()),
-    msi( Rect(), rect() ),
-    misfullscreen( fullscreen ),
-    mispainting( false ),
-    malreadyresized( false )
+KigWidget::KigWidget(KigPart *part, KigView *view, QWidget *parent, bool fullscreen)
+    : QWidget(parent, fullscreen ? Qt::FramelessWindowHint : Qt::Widget)
+    , mpart(part)
+    , mview(view)
+    , stillPix(size())
+    , curPix(size())
+    , msi(Rect(), rect())
+    , misfullscreen(fullscreen)
+    , mispainting(false)
+    , malreadyresized(false)
 {
-  part->addWidget(this);
+    part->addWidget(this);
 
-  setFocusPolicy(Qt::ClickFocus);
-  setAttribute( Qt::WA_OpaquePaintEvent, true );
-  setMouseTracking(true);
+    setFocusPolicy(Qt::ClickFocus);
+    setAttribute(Qt::WA_OpaquePaintEvent, true);
+    setMouseTracking(true);
 
-  curPix = QPixmap( size() );
-  stillPix = QPixmap( size() );
+    curPix = QPixmap(size());
+    stillPix = QPixmap(size());
 }
 
 KigWidget::~KigWidget()
 {
-  mpart->delWidget( this );
+    mpart->delWidget(this);
 }
 
-void KigWidget::paintEvent(QPaintEvent* e)
+void KigWidget::paintEvent(QPaintEvent *e)
 {
-  mispainting = true;
-  std::vector<QRect> overlay;
-  overlay.push_back( e->rect() );
-  updateWidget( overlay );
+    mispainting = true;
+    std::vector<QRect> overlay;
+    overlay.push_back(e->rect());
+    updateWidget(overlay);
 }
 
-void KigWidget::mousePressEvent (QMouseEvent* e)
+void KigWidget::mousePressEvent(QMouseEvent *e)
 {
-  if( e->button() & Qt::LeftButton )
-    return mpart->mode()->leftClicked( e, this );
-  if ( e->button() & Qt::MiddleButton )
-    return mpart->mode()->midClicked( e, this );
-  if ( e->button() & Qt::RightButton )
-    return mpart->mode()->rightClicked( e, this );
+    if (e->button() & Qt::LeftButton)
+        return mpart->mode()->leftClicked(e, this);
+    if (e->button() & Qt::MiddleButton)
+        return mpart->mode()->midClicked(e, this);
+    if (e->button() & Qt::RightButton)
+        return mpart->mode()->rightClicked(e, this);
 }
 
-void KigWidget::mouseMoveEvent (QMouseEvent* e)
+void KigWidget::mouseMoveEvent(QMouseEvent *e)
 {
-  if( ( e->buttons() & Qt::LeftButton ) == Qt::LeftButton )
-    return mpart->mode()->leftMouseMoved( e, this );
-  if ( ( e->buttons() & Qt::MiddleButton ) == Qt::MidButton )
-    return mpart->mode()->midMouseMoved( e, this );
-  if ( ( e->buttons() & Qt::RightButton ) == Qt::RightButton )
-    return mpart->mode()->rightMouseMoved( e, this );
-  return mpart->mode()->mouseMoved( e, this );
+    if ((e->buttons() & Qt::LeftButton) == Qt::LeftButton)
+        return mpart->mode()->leftMouseMoved(e, this);
+    if ((e->buttons() & Qt::MiddleButton) == Qt::MidButton)
+        return mpart->mode()->midMouseMoved(e, this);
+    if ((e->buttons() & Qt::RightButton) == Qt::RightButton)
+        return mpart->mode()->rightMouseMoved(e, this);
+    return mpart->mode()->mouseMoved(e, this);
 }
 
-void KigWidget::mouseReleaseEvent (QMouseEvent* e)
+void KigWidget::mouseReleaseEvent(QMouseEvent *e)
 {
-  if( e->button() & Qt::LeftButton )
-    return mpart->mode()->leftReleased( e, this );
-  if ( e->button() & Qt::MiddleButton )
-    return mpart->mode()->midReleased( e, this );
-  if ( e->button() & Qt::RightButton )
-    return mpart->mode()->rightReleased( e, this );
+    if (e->button() & Qt::LeftButton)
+        return mpart->mode()->leftReleased(e, this);
+    if (e->button() & Qt::MiddleButton)
+        return mpart->mode()->midReleased(e, this);
+    if (e->button() & Qt::RightButton)
+        return mpart->mode()->rightReleased(e, this);
 }
 
-void KigWidget::updateWidget( const std::vector<QRect>& overlay )
+void KigWidget::updateWidget(const std::vector<QRect> &overlay)
 {
-  if ( !mispainting )
-  {
-    QRect r;
-    int rectinited = false;
-    for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
-      if ( rectinited )
-        r |= *i;
-      else
-      {
-        r = *i;
-        rectinited = true;
-      }
-    for ( std::vector<QRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i )
-      if ( rectinited )
-        r |= *i;
-      else
-      {
-        r = *i;
-        rectinited = true;
-      }
-    repaint( r );
-    return;
-  }
+    if (!mispainting) {
+        QRect r;
+        int rectinited = false;
+        for (std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i)
+            if (rectinited)
+                r |= *i;
+            else {
+                r = *i;
+                rectinited = true;
+            }
+        for (std::vector<QRect>::const_iterator i = overlay.begin(); i != overlay.end(); ++i)
+            if (rectinited)
+                r |= *i;
+            else {
+                r = *i;
+                rectinited = true;
+            }
+        repaint(r);
+        return;
+    }
 
-  oldOverlay = overlay;
+    oldOverlay = overlay;
 
-  QPainter p( this );
-  p.drawPixmap( overlay.front().topLeft(), curPix, overlay.front() );
-  p.end();
-  mispainting = false;
+    QPainter p(this);
+    p.drawPixmap(overlay.front().topLeft(), curPix, overlay.front());
+    p.end();
+    mispainting = false;
 }
 
 void KigWidget::updateEntireWidget()
 {
-  std::vector<QRect> overlay;
-  overlay.push_back( QRect( QPoint( 0, 0 ), size() ) );
-  updateWidget( overlay );
+    std::vector<QRect> overlay;
+    overlay.push_back(QRect(QPoint(0, 0), size()));
+    updateWidget(overlay);
 }
 
-void KigWidget::resizeEvent( QResizeEvent* e )
+void KigWidget::resizeEvent(QResizeEvent *e)
 {
-  QSize osize = e->oldSize();
-  QSize nsize = e->size();
-  Rect orect = msi.shownRect();
+    QSize osize = e->oldSize();
+    QSize nsize = e->size();
+    Rect orect = msi.shownRect();
 
-  curPix = QPixmap( nsize );
-  stillPix = QPixmap( nsize );
-  msi.setViewRect( rect() );
+    curPix = QPixmap(nsize);
+    stillPix = QPixmap(nsize);
+    msi.setViewRect(rect());
 
-  Rect nrect( 0., 0.,
-              orect.width() * nsize.width() / osize.width(),
-              orect.height() * nsize.height() / osize.height() );
-  nrect = matchScreenShape( nrect );
-  nrect.setCenter( orect.center() );
-  msi.setShownRect( nrect );
+    Rect nrect(0., 0., orect.width() * nsize.width() / osize.width(), orect.height() * nsize.height() / osize.height());
+    nrect = matchScreenShape(nrect);
+    nrect.setCenter(orect.center());
+    msi.setShownRect(nrect);
 
-  // horrible hack...  We need to somehow differentiate between the
-  // resizeEvents we get on startup, and the ones generated by the
-  // user.  The first requires recentering the screen, the latter
-  // does not..
-  if ( !malreadyresized )
-  {
-    recenterScreen();
-    malreadyresized = true;
-  }
+    // horrible hack...  We need to somehow differentiate between the
+    // resizeEvents we get on startup, and the ones generated by the
+    // user.  The first requires recentering the screen, the latter
+    // does not..
+    if (!malreadyresized) {
+        recenterScreen();
+        malreadyresized = true;
+    }
 
-  mpart->redrawScreen( this );
-  updateScrollBars();
+    mpart->redrawScreen(this);
+    updateScrollBars();
 }
 
-void KigWidget::updateCurPix( const std::vector<QRect>& ol )
+void KigWidget::updateCurPix(const std::vector<QRect> &ol)
 {
-  // we make curPix look like stillPix again...
-  QPainter p( &curPix );
-  for ( std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i )
-    p.drawPixmap( i->topLeft(), stillPix, *i );
-  for ( std::vector<QRect>::const_iterator i = ol.begin(); i != ol.end(); ++i )
-    p.drawPixmap( i->topLeft(), stillPix, *i );
-  p.end();
+    // we make curPix look like stillPix again...
+    QPainter p(&curPix);
+    for (std::vector<QRect>::const_iterator i = oldOverlay.begin(); i != oldOverlay.end(); ++i)
+        p.drawPixmap(i->topLeft(), stillPix, *i);
+    for (std::vector<QRect>::const_iterator i = ol.begin(); i != ol.end(); ++i)
+        p.drawPixmap(i->topLeft(), stillPix, *i);
+    p.end();
 
-  // we add ol to oldOverlay, so that part of the widget will be
-  // updated too in updateWidget...
-  std::copy( ol.begin(), ol.end(), std::back_inserter( oldOverlay ) );
+    // we add ol to oldOverlay, so that part of the widget will be
+    // updated too in updateWidget...
+    std::copy(ol.begin(), ol.end(), std::back_inserter(oldOverlay));
 }
 
 void KigWidget::recenterScreen()
 {
-  msi.setShownRect( matchScreenShape( mpart->document().suggestedRect() ) );
+    msi.setShownRect(matchScreenShape(mpart->document().suggestedRect()));
 }
 
-Rect KigWidget::matchScreenShape( const Rect& r ) const
+Rect KigWidget::matchScreenShape(const Rect &r) const
 {
-  return r.matchShape( Rect::fromQRect( rect() ) );
+    return r.matchShape(Rect::fromQRect(rect()));
 }
 
 void KigWidget::slotZoomIn()
 {
-  Rect nr = msi.shownRect();
-  Coordinate c = nr.center();
-  nr /= 2;
-  nr.setCenter( c );
-  KigCommand* cd =
-    new KigCommand( *mpart,
-                    i18n( "Zoom In" ) );
-  cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mpart->history()->push( cd );
+    Rect nr = msi.shownRect();
+    Coordinate c = nr.center();
+    nr /= 2;
+    nr.setCenter(c);
+    KigCommand *cd = new KigCommand(*mpart, i18n("Zoom In"));
+    cd->addTask(new KigViewShownRectChangeTask(*this, nr));
+    mpart->history()->push(cd);
 }
 
 void KigWidget::slotZoomOut()
 {
-  Rect nr = msi.shownRect();
-  Coordinate c = nr.center();
-  nr *= 2;
-  nr.setCenter( c );
+    Rect nr = msi.shownRect();
+    Coordinate c = nr.center();
+    nr *= 2;
+    nr.setCenter(c);
 
-  // zooming in is undoable..  I know this isn't really correct,
-  // because the current view doesn't really belong to the document (
-  // althought KGeo and KSeg both save them along, iirc ).  However,
-  // undoing a zoom or another operation affecting the window seems a
-  // bit too useful to not be available.  Please try to convince me if
-  // you feel otherwise ;-)
-  KigCommand* cd =
-    new KigCommand( *mpart,
-                    i18n( "Zoom Out" ) );
-  cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mpart->history()->push( cd );
+    // zooming in is undoable..  I know this isn't really correct,
+    // because the current view doesn't really belong to the document (
+    // althought KGeo and KSeg both save them along, iirc ).  However,
+    // undoing a zoom or another operation affecting the window seems a
+    // bit too useful to not be available.  Please try to convince me if
+    // you feel otherwise ;-)
+    KigCommand *cd = new KigCommand(*mpart, i18n("Zoom Out"));
+    cd->addTask(new KigViewShownRectChangeTask(*this, nr));
+    mpart->history()->push(cd);
 }
 
 void KigWidget::clearStillPix()
 {
-  stillPix.fill(Qt::white);
-  oldOverlay.clear();
-  oldOverlay.push_back ( QRect( QPoint(0,0), size() ) );
+    stillPix.fill(Qt::white);
+    oldOverlay.clear();
+    oldOverlay.push_back(QRect(QPoint(0, 0), size()));
 }
 
-void KigWidget::redrawScreen( const std::vector<ObjectHolder*>& _selection, bool dos )
+void KigWidget::redrawScreen(const std::vector<ObjectHolder *> &_selection, bool dos)
 {
-  std::vector<ObjectHolder*> nonselection;
-  std::vector<ObjectHolder*> selection = _selection;
-  std::set<ObjectHolder*> objs = mpart->document().objectsSet();
-  std::sort( selection.begin(), selection.end() );
-  std::set_difference( objs.begin(), objs.end(), selection.begin(), selection.end(),
-                       std::back_inserter( nonselection ) );
+    std::vector<ObjectHolder *> nonselection;
+    std::vector<ObjectHolder *> selection = _selection;
+    std::set<ObjectHolder *> objs = mpart->document().objectsSet();
+    std::sort(selection.begin(), selection.end());
+    std::set_difference(objs.begin(), objs.end(), selection.begin(), selection.end(), std::back_inserter(nonselection));
 
-  // update the screen...
-  clearStillPix();
-  KigPainter p( msi, &stillPix, mpart->document() );
-  p.drawGrid( mpart->document().coordinateSystem(), mpart->document().grid(),
-              mpart->document().axes() );
-  p.drawObjects( selection, true );
-  p.drawObjects( nonselection, false );
-  updateCurPix( p.overlay() );
-  if ( dos ) updateEntireWidget();
+    // update the screen...
+    clearStillPix();
+    KigPainter p(msi, &stillPix, mpart->document());
+    p.drawGrid(mpart->document().coordinateSystem(), mpart->document().grid(), mpart->document().axes());
+    p.drawObjects(selection, true);
+    p.drawObjects(nonselection, false);
+    updateCurPix(p.overlay());
+    if (dos)
+        updateEntireWidget();
 }
 
-const ScreenInfo& KigWidget::screenInfo() const
+const ScreenInfo &KigWidget::screenInfo() const
 {
-  return msi;
+    return msi;
 }
 
 const Rect KigWidget::showingRect() const
 {
-  return msi.shownRect();
+    return msi.shownRect();
 }
 
-const Coordinate KigWidget::fromScreen( const QPoint& p )
+const Coordinate KigWidget::fromScreen(const QPoint &p)
 {
-  return msi.fromScreen( p );
+    return msi.fromScreen(p);
 }
 
 double KigWidget::pixelWidth() const
 {
-  return msi.pixelWidth();
+    return msi.pixelWidth();
 }
 
-const Rect KigWidget::fromScreen( const QRect& r )
+const Rect KigWidget::fromScreen(const QRect &r)
 {
-  return msi.fromScreen( r );
+    return msi.fromScreen(r);
 }
-
 
 void KigWidget::updateScrollBars()
 {
-  mview->updateScrollBars();
+    mview->updateScrollBars();
 }
 
-KigView::KigView( KigPart* part,
-                  bool fullscreen,
-                  QWidget* parent )
-  : QWidget( parent ),
-    mlayout( nullptr ), mrightscroll( nullptr ), mbottomscroll( nullptr ),
-    mupdatingscrollbars( false ),
-    mrealwidget( nullptr ), mpart( part )
+KigView::KigView(KigPart *part, bool fullscreen, QWidget *parent)
+    : QWidget(parent)
+    , mlayout(nullptr)
+    , mrightscroll(nullptr)
+    , mbottomscroll(nullptr)
+    , mupdatingscrollbars(false)
+    , mrealwidget(nullptr)
+    , mpart(part)
 {
-  connect( part, &KigPart::recenterScreen, this, &KigView::slotInternalRecenterScreen );
+    connect(part, &KigPart::recenterScreen, this, &KigView::slotInternalRecenterScreen);
 
-  mlayout = new QGridLayout( this );
-  mlayout->setContentsMargins( 2 ,  2 ,  2 ,  2 );
-  mlayout->setSpacing( 2 );
-  mrightscroll = new QScrollBar( Qt::Vertical, this );
-  mrightscroll->setObjectName( QStringLiteral("Right Scrollbar") );
-  // TODO: make this configurable...
-  mrightscroll->setTracking( true );
-  connect( mrightscroll, &QAbstractSlider::valueChanged,
-           this, &KigView::slotRightScrollValueChanged );
-  connect( mrightscroll, &QAbstractSlider::sliderReleased,
-           this, &KigView::updateScrollBars );
-  mbottomscroll = new QScrollBar( Qt::Horizontal, this );
-  mbottomscroll->setObjectName( QStringLiteral("Bottom Scrollbar") );
-  connect( mbottomscroll, &QAbstractSlider::valueChanged,
-           this, &KigView::slotBottomScrollValueChanged );
-  connect( mbottomscroll, &QAbstractSlider::sliderReleased,
-           this, &KigView::updateScrollBars );
-  mrealwidget = new KigWidget( part, this, this, fullscreen );
-  mrealwidget->setObjectName( QStringLiteral("Kig Widget") );
-  mlayout->addWidget( mbottomscroll, 1, 0 );
-  mlayout->addWidget( mrealwidget, 0, 0 );
-  mlayout->addWidget( mrightscroll, 0, 1 );
+    mlayout = new QGridLayout(this);
+    mlayout->setContentsMargins(2, 2, 2, 2);
+    mlayout->setSpacing(2);
+    mrightscroll = new QScrollBar(Qt::Vertical, this);
+    mrightscroll->setObjectName(QStringLiteral("Right Scrollbar"));
+    // TODO: make this configurable...
+    mrightscroll->setTracking(true);
+    connect(mrightscroll, &QAbstractSlider::valueChanged, this, &KigView::slotRightScrollValueChanged);
+    connect(mrightscroll, &QAbstractSlider::sliderReleased, this, &KigView::updateScrollBars);
+    mbottomscroll = new QScrollBar(Qt::Horizontal, this);
+    mbottomscroll->setObjectName(QStringLiteral("Bottom Scrollbar"));
+    connect(mbottomscroll, &QAbstractSlider::valueChanged, this, &KigView::slotBottomScrollValueChanged);
+    connect(mbottomscroll, &QAbstractSlider::sliderReleased, this, &KigView::updateScrollBars);
+    mrealwidget = new KigWidget(part, this, this, fullscreen);
+    mrealwidget->setObjectName(QStringLiteral("Kig Widget"));
+    mlayout->addWidget(mbottomscroll, 1, 0);
+    mlayout->addWidget(mrealwidget, 0, 0);
+    mlayout->addWidget(mrightscroll, 0, 1);
 
-  resize( sizeHint() );
-  mrealwidget->recenterScreen();
-  part->redrawScreen( mrealwidget );
-  updateScrollBars();
+    resize(sizeHint());
+    mrealwidget->recenterScreen();
+    part->redrawScreen(mrealwidget);
+    updateScrollBars();
 }
 
 void KigView::updateScrollBars()
 {
-  // we update the scrollbars to reflect the new "total size" of the
-  // document...  The total size is scaled in entireDocumentRect().
-  // ( it is scaled as a rect that contains all the points in the
-  // document, and then enlarged a bit, and scaled to match the screen
-  // width/height ratio...)
-  // What we do here is tell the scroll bars what they should show as
-  // their total size..
+    // we update the scrollbars to reflect the new "total size" of the
+    // document...  The total size is scaled in entireDocumentRect().
+    // ( it is scaled as a rect that contains all the points in the
+    // document, and then enlarged a bit, and scaled to match the screen
+    // width/height ratio...)
+    // What we do here is tell the scroll bars what they should show as
+    // their total size..
 
-  // see the doc of this variable in the header for this...
-  mupdatingscrollbars = true;
+    // see the doc of this variable in the header for this...
+    mupdatingscrollbars = true;
 
-  Rect er = mrealwidget->entireDocumentRect();
-  Rect sr = mrealwidget->screenInfo().shownRect();
+    Rect er = mrealwidget->entireDocumentRect();
+    Rect sr = mrealwidget->screenInfo().shownRect();
 
-  // we define the total rect to be the smallest rect that contains
-  // both er and sr...
-  er |= sr;
+    // we define the total rect to be the smallest rect that contains
+    // both er and sr...
+    er |= sr;
 
-  // we need ints, not doubles, so since "pixelwidth == widgetcoord /
-  // internalcoord", we use "widgetcoord/pixelwidth", which would then
-  // equal "internalcoord", which has to be an int ( by definition.. )
-  // I know, I'm a freak to think about these sorts of things... ;)
-  double pw = mrealwidget->screenInfo().pixelWidth();
+    // we need ints, not doubles, so since "pixelwidth == widgetcoord /
+    // internalcoord", we use "widgetcoord/pixelwidth", which would then
+    // equal "internalcoord", which has to be an int ( by definition.. )
+    // I know, I'm a freak to think about these sorts of things... ;)
+    double pw = mrealwidget->screenInfo().pixelWidth();
 
-  // what the scrollbars reflect is the bottom resp. the left side of
-  // the shown rect.  This is why the maximum value is not er.top()
-  // (which would be the maximum value of the top of the shownRect),
-  // but er.top() - sr.height(), which is the maximum value the bottom of
-  // the shownRect can reach...
+    // what the scrollbars reflect is the bottom resp. the left side of
+    // the shown rect.  This is why the maximum value is not er.top()
+    // (which would be the maximum value of the top of the shownRect),
+    // but er.top() - sr.height(), which is the maximum value the bottom of
+    // the shownRect can reach...
 
-  int rightmin = static_cast<int>( er.bottom() / pw );
-  int rightmax = static_cast<int>( ( er.top() - sr.height() ) / pw );
+    int rightmin = static_cast<int>(er.bottom() / pw);
+    int rightmax = static_cast<int>((er.top() - sr.height()) / pw);
 
-  mrightscroll->setMinimum( rightmin );
-  mrightscroll->setMaximum( rightmax );
-  mrightscroll->setSingleStep( (int)( sr.height() / pw / 10 ) );
-  mrightscroll->setPageStep( (int)( sr.height() / pw / 1.2 ) );
+    mrightscroll->setMinimum(rightmin);
+    mrightscroll->setMaximum(rightmax);
+    mrightscroll->setSingleStep((int)(sr.height() / pw / 10));
+    mrightscroll->setPageStep((int)(sr.height() / pw / 1.2));
 
-  // note that since Qt has a coordinate system with the lowest y
-  // values at the top, and we have it the other way around ( i know I
-  // shouldn't have done this.. :( ), we invert the value that the
-  // scrollbar shows.  This is inverted again in
-  // slotRightScrollValueChanged()...
-  mrightscroll->setValue( (int) ( rightmin + ( rightmax - ( sr.bottom() / pw ) ) ) );
+    // note that since Qt has a coordinate system with the lowest y
+    // values at the top, and we have it the other way around ( i know I
+    // shouldn't have done this.. :( ), we invert the value that the
+    // scrollbar shows.  This is inverted again in
+    // slotRightScrollValueChanged()...
+    mrightscroll->setValue((int)(rightmin + (rightmax - (sr.bottom() / pw))));
 
-  mbottomscroll->setMinimum( (int)( er.left() / pw ) );
-  mbottomscroll->setMaximum( (int)( ( er.right() - sr.width() ) / pw ) );
-  mbottomscroll->setSingleStep( (int)( sr.width() / pw / 10 ) );
-  mbottomscroll->setPageStep( (int)( sr.width() / pw / 1.2 ) );
-  mbottomscroll->setValue( (int)( sr.left() / pw ) );
+    mbottomscroll->setMinimum((int)(er.left() / pw));
+    mbottomscroll->setMaximum((int)((er.right() - sr.width()) / pw));
+    mbottomscroll->setSingleStep((int)(sr.width() / pw / 10));
+    mbottomscroll->setPageStep((int)(sr.width() / pw / 1.2));
+    mbottomscroll->setValue((int)(sr.left() / pw));
 
-  mupdatingscrollbars = false;
+    mupdatingscrollbars = false;
 }
 
 Rect KigWidget::entireDocumentRect() const
 {
-  return matchScreenShape( mpart->document().suggestedRect() );
+    return matchScreenShape(mpart->document().suggestedRect());
 }
 
-void KigView::slotRightScrollValueChanged( int v )
+void KigView::slotRightScrollValueChanged(int v)
 {
-  if ( ! mupdatingscrollbars )
-  {
-    // we invert the inversion that was done in updateScrollBars() (
-    // check the documentation there..; )
-    v = mrightscroll->minimum() + ( mrightscroll->maximum() - v );
-    double pw = mrealwidget->screenInfo().pixelWidth();
-    double nb = double( v ) * pw;
-    mrealwidget->scrollSetBottom( nb );
-  };
+    if (!mupdatingscrollbars) {
+        // we invert the inversion that was done in updateScrollBars() (
+        // check the documentation there..; )
+        v = mrightscroll->minimum() + (mrightscroll->maximum() - v);
+        double pw = mrealwidget->screenInfo().pixelWidth();
+        double nb = double(v) * pw;
+        mrealwidget->scrollSetBottom(nb);
+    };
 }
 
-void KigView::slotBottomScrollValueChanged( int v )
+void KigView::slotBottomScrollValueChanged(int v)
 {
-  if ( ! mupdatingscrollbars )
-  {
-    double pw = mrealwidget->screenInfo().pixelWidth();
-    double nl = double( v ) * pw;
-    mrealwidget->scrollSetLeft( nl );
-  };
+    if (!mupdatingscrollbars) {
+        double pw = mrealwidget->screenInfo().pixelWidth();
+        double nl = double(v) * pw;
+        mrealwidget->scrollSetLeft(nl);
+    };
 }
 
-void KigWidget::scrollSetBottom( double rhs )
+void KigWidget::scrollSetBottom(double rhs)
 {
-  Rect sr = msi.shownRect();
-  Coordinate bl = sr.bottomLeft();
-  bl.y = rhs;
-  sr.setBottomLeft( bl );
-  msi.setShownRect( sr );
-  mpart->redrawScreen( this );
+    Rect sr = msi.shownRect();
+    Coordinate bl = sr.bottomLeft();
+    bl.y = rhs;
+    sr.setBottomLeft(bl);
+    msi.setShownRect(sr);
+    mpart->redrawScreen(this);
 }
 
-void KigWidget::scrollSetLeft( double rhs )
+void KigWidget::scrollSetLeft(double rhs)
 {
-  Rect sr = msi.shownRect();
-  Coordinate bl = sr.bottomLeft();
-  bl.x = rhs;
-  sr.setBottomLeft( bl );
-  msi.setShownRect( sr );
-  mpart->redrawScreen( this );
+    Rect sr = msi.shownRect();
+    Coordinate bl = sr.bottomLeft();
+    bl.x = rhs;
+    sr.setBottomLeft(bl);
+    msi.setShownRect(sr);
+    mpart->redrawScreen(this);
 }
 
-const ScreenInfo& KigView::screenInfo() const
+const ScreenInfo &KigView::screenInfo() const
 {
-  return mrealwidget->screenInfo();
+    return mrealwidget->screenInfo();
 }
 
 KigView::~KigView()
 {
 }
 
-KigWidget* KigView::realWidget() const
+KigWidget *KigView::realWidget() const
 {
-  return mrealwidget;
+    return mrealwidget;
 }
 
-const KigDocument& KigWidget::document() const
+const KigDocument &KigWidget::document() const
 {
-  return mpart->document();
+    return mpart->document();
 }
 
 QSize KigWidget::sizeHint() const
 {
-  return QSize( 630, 450 );
+    return QSize(630, 450);
 }
 
-void KigWidget::wheelEvent( QWheelEvent* e )
+void KigWidget::wheelEvent(QWheelEvent *e)
 {
-    mview->scrollVertical( e->angleDelta().y() );
-    mview->scrollHorizontal( e->angleDelta().x() );
+    mview->scrollVertical(e->angleDelta().y());
+    mview->scrollHorizontal(e->angleDelta().x());
 }
 
-void KigView::scrollHorizontal( int delta )
+void KigView::scrollHorizontal(int delta)
 {
-  if ( delta >= 0 )
-    for ( int i = 0; i < delta; i += 120 )
-      mbottomscroll->triggerAction( QScrollBar::SliderSingleStepSub );
-  else
-    for ( int i = 0; i >= delta; i -= 120 )
-      mbottomscroll->triggerAction( QScrollBar::SliderSingleStepAdd );
+    if (delta >= 0)
+        for (int i = 0; i < delta; i += 120)
+            mbottomscroll->triggerAction(QScrollBar::SliderSingleStepSub);
+    else
+        for (int i = 0; i >= delta; i -= 120)
+            mbottomscroll->triggerAction(QScrollBar::SliderSingleStepAdd);
 }
 
-void KigView::scrollVertical( int delta )
+void KigView::scrollVertical(int delta)
 {
-  if ( delta >= 0 )
-    for ( int i = 0; i < delta; i += 120 )
-      mrightscroll->triggerAction( QScrollBar::SliderSingleStepSub );
-  else
-    for ( int i = 0; i >= delta; i -= 120 )
-      mrightscroll->triggerAction( QScrollBar::SliderSingleStepAdd );
+    if (delta >= 0)
+        for (int i = 0; i < delta; i += 120)
+            mrightscroll->triggerAction(QScrollBar::SliderSingleStepSub);
+    else
+        for (int i = 0; i >= delta; i -= 120)
+            mrightscroll->triggerAction(QScrollBar::SliderSingleStepAdd);
 }
 
 bool KigWidget::isFullScreen() const
 {
-  return misfullscreen;
+    return misfullscreen;
 }
 
 void KigView::slotZoomIn()
 {
-  mrealwidget->slotZoomIn();
+    mrealwidget->slotZoomIn();
 }
 
 void KigView::slotZoomOut()
 {
-  mrealwidget->slotZoomOut();
+    mrealwidget->slotZoomOut();
 }
 
 void KigWidget::slotRecenterScreen()
 {
-  Rect nr = mpart->document().suggestedRect();
-  KigCommand* cd =
-    new KigCommand( *mpart,
-                    i18n( "Recenter View" ) );
+    Rect nr = mpart->document().suggestedRect();
+    KigCommand *cd = new KigCommand(*mpart, i18n("Recenter View"));
 
-  cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-  mpart->history()->push( cd );
+    cd->addTask(new KigViewShownRectChangeTask(*this, nr));
+    mpart->history()->push(cd);
 }
 
 void KigView::toggleFullScreen()
 {
-  mrealwidget->setFullScreen( ! mrealwidget->isFullScreen() );
-  if ( mrealwidget->isFullScreen() )
-    topLevelWidget()->setWindowState( topLevelWidget()->windowState() | Qt::WindowFullScreen ); // set
-  else
-    topLevelWidget()->setWindowState( topLevelWidget()->windowState() & ~Qt::WindowFullScreen ); // reset
+    mrealwidget->setFullScreen(!mrealwidget->isFullScreen());
+    if (mrealwidget->isFullScreen())
+        topLevelWidget()->setWindowState(topLevelWidget()->windowState() | Qt::WindowFullScreen); // set
+    else
+        topLevelWidget()->setWindowState(topLevelWidget()->windowState() & ~Qt::WindowFullScreen); // reset
 }
 
-void KigWidget::setFullScreen( bool f )
+void KigWidget::setFullScreen(bool f)
 {
-  misfullscreen = f;
+    misfullscreen = f;
 }
 
 void KigWidget::zoomRect()
 {
-  mpart->emitStatusBarText( i18n( "Select the rectangle that should be shown." ) );
-  DragRectMode d( *mpart, *this );
-  mpart->runMode( &d );
-  if ( ! d.cancelled() )
-  {
-    Rect nr = d.rect();
-    KigCommand* cd =
-      new KigCommand( *mpart,
-                      i18n( "Change Shown Part of Screen" ) );
+    mpart->emitStatusBarText(i18n("Select the rectangle that should be shown."));
+    DragRectMode d(*mpart, *this);
+    mpart->runMode(&d);
+    if (!d.cancelled()) {
+        Rect nr = d.rect();
+        KigCommand *cd = new KigCommand(*mpart, i18n("Change Shown Part of Screen"));
 
-    cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-    mpart->history()->push( cd );
-  };
+        cd->addTask(new KigViewShownRectChangeTask(*this, nr));
+        mpart->history()->push(cd);
+    };
 
-  mpart->redrawScreen( this );
-  updateScrollBars();
+    mpart->redrawScreen(this);
+    updateScrollBars();
 }
 
 void KigView::zoomRect()
 {
-  mrealwidget->zoomRect();
+    mrealwidget->zoomRect();
 }
 
-void KigWidget::setShowingRect( const Rect& r )
+void KigWidget::setShowingRect(const Rect &r)
 {
-  msi.setShownRect( r.matchShape( Rect::fromQRect( rect() ) ) );
+    msi.setShownRect(r.matchShape(Rect::fromQRect(rect())));
 }
 
 void KigView::slotRecenterScreen()
 {
-  mrealwidget->slotRecenterScreen();
+    mrealwidget->slotRecenterScreen();
 }
 
 void KigView::slotInternalRecenterScreen()
 {
-  mrealwidget->recenterScreen();
+    mrealwidget->recenterScreen();
 }
 
 void KigWidget::zoomArea()
 {
-//  mpart->emitStatusBarText( i18n( "Select the area that should be shown." ) );
-  Rect oldrect = showingRect();
-  Coordinate tl = oldrect.topLeft();
-  Coordinate br = oldrect.bottomRight();
-  bool ok = true;
-  KigInputDialog::getTwoCoordinates( i18n( "Select Zoom Area" ),
-        i18n( "Select the zoom area by entering the coordinates<br />"
-              "of the upper left corner and the lower right corner." ) +
-        QLatin1String( "<br />" ) +
-        mpart->document().coordinateSystem().coordinateFormatNoticeMarkup(),
-        this, &ok, mpart->document(), &tl, &br );
-  if ( ok )
-  {
-    Coordinate nc1( tl.x, br.y );
-    Coordinate nc2( br.x, tl.y );
-    Rect nr( nc1, nc2 );
-    KigCommand* cd = new KigCommand( *mpart, i18n( "Change Shown Part of Screen" ) );
+    //  mpart->emitStatusBarText( i18n( "Select the area that should be shown." ) );
+    Rect oldrect = showingRect();
+    Coordinate tl = oldrect.topLeft();
+    Coordinate br = oldrect.bottomRight();
+    bool ok = true;
+    KigInputDialog::getTwoCoordinates(i18n("Select Zoom Area"),
+                                      i18n("Select the zoom area by entering the coordinates<br />"
+                                           "of the upper left corner and the lower right corner.")
+                                          + QLatin1String("<br />") + mpart->document().coordinateSystem().coordinateFormatNoticeMarkup(),
+                                      this,
+                                      &ok,
+                                      mpart->document(),
+                                      &tl,
+                                      &br);
+    if (ok) {
+        Coordinate nc1(tl.x, br.y);
+        Coordinate nc2(br.x, tl.y);
+        Rect nr(nc1, nc2);
+        KigCommand *cd = new KigCommand(*mpart, i18n("Change Shown Part of Screen"));
 
-    cd->addTask( new KigViewShownRectChangeTask( *this, nr ) );
-    mpart->history()->push( cd );
-  }
+        cd->addTask(new KigViewShownRectChangeTask(*this, nr));
+        mpart->history()->push(cd);
+    }
 
-  mpart->redrawScreen( this );
-  updateScrollBars();
+    mpart->redrawScreen(this);
+    updateScrollBars();
 }
 
 void KigView::zoomArea()
 {
-  mrealwidget->zoomArea();
+    mrealwidget->zoomArea();
 }
-

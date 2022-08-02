@@ -17,30 +17,31 @@
  */
 class ScreenInfo
 {
-  Rect mkrect;
-  QRect mqrect;
+    Rect mkrect;
+    QRect mqrect;
+
 public:
-  ScreenInfo( const Rect& docRect, const QRect& viewRect );
+    ScreenInfo(const Rect &docRect, const QRect &viewRect);
 
-  Coordinate fromScreen( const QPoint& p ) const;
-  Rect fromScreen( const QRect& r ) const;
+    Coordinate fromScreen(const QPoint &p) const;
+    Rect fromScreen(const QRect &r) const;
 
-  QPoint toScreen( const Coordinate& p ) const;
-  QRect toScreen( const Rect& r ) const;
-  QPointF toScreenF( const Coordinate& p ) const;
-  QRectF toScreenF( const Rect& r ) const;
+    QPoint toScreen(const Coordinate &p) const;
+    QRect toScreen(const Rect &r) const;
+    QPointF toScreenF(const Coordinate &p) const;
+    QRectF toScreenF(const Rect &r) const;
 
-  double pixelWidth() const;
+    double pixelWidth() const;
 
-  double normalMiss( int width ) const;
+    double normalMiss(int width) const;
 
-  const Rect& shownRect() const;
+    const Rect &shownRect() const;
 
-  void setShownRect( const Rect& r );
+    void setShownRect(const Rect &r);
 
-  const QRect viewRect() const;
+    const QRect viewRect() const;
 
-  void setViewRect( const QRect& r );
+    void setViewRect(const QRect &r);
 };
 
 #endif

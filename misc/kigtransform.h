@@ -23,143 +23,133 @@ class LineData;
  */
 class Transformation
 {
-  double mdata[3][3];
-  bool mIsHomothety;
-  bool mIsAffine;
-  Transformation();
+    double mdata[3][3];
+    bool mIsHomothety;
+    bool mIsAffine;
+    Transformation();
+
 public:
-  ~Transformation();
-  Transformation( double data[3][3], bool ishomothety );
+    ~Transformation();
+    Transformation(double data[3][3], bool ishomothety);
 
-  /**
-   * Apply this Transformation.  Apply this transformation to the
-   * Coordinate c.  Can return an invalid Coordinate.
-   * apply0 assumes that c indicates a point at infinity, having
-   * [0, c.x, c.y] as homogeneous coordinates
-   */
-  const Coordinate apply( const double x0, const double x1, const double x2 ) const;
-  const Coordinate apply( const Coordinate& c ) const;
-  const Coordinate apply0( const Coordinate& c ) const;
+    /**
+     * Apply this Transformation.  Apply this transformation to the
+     * Coordinate c.  Can return an invalid Coordinate.
+     * apply0 assumes that c indicates a point at infinity, having
+     * [0, c.x, c.y] as homogeneous coordinates
+     */
+    const Coordinate apply(const double x0, const double x1, const double x2) const;
+    const Coordinate apply(const Coordinate &c) const;
+    const Coordinate apply0(const Coordinate &c) const;
 
-  /**
-   * Returns whether this is a homothetic (affine) transformation.
-   */
-  bool isHomothetic() const;
-  bool isAffine() const;
-  double getProjectiveIndicator( const Coordinate& c ) const;
-  double getAffineDeterminant() const;
-  double getRotationAngle() const;
-  const Coordinate apply2by2only( const Coordinate& c ) const;
-  /**
-   * \ifnot creating-python-scripting-doc
-   * a homothetic transformation maintains the ratio's of lengths.
-   * This means that every length is multiplied by a fixed number when
-   * it is projected...  This function does that calculation for
-   * you..
-   * \endif
-   */
-  double apply( double length ) const;
-  double data( int r, int c ) const;
-  /**
-   * The inverse Transformation.  Returns the inverse Transformation
-   * of this Transformation.
-   */
-  const Transformation inverse( bool& valid ) const;
+    /**
+     * Returns whether this is a homothetic (affine) transformation.
+     */
+    bool isHomothetic() const;
+    bool isAffine() const;
+    double getProjectiveIndicator(const Coordinate &c) const;
+    double getAffineDeterminant() const;
+    double getRotationAngle() const;
+    const Coordinate apply2by2only(const Coordinate &c) const;
+    /**
+     * \ifnot creating-python-scripting-doc
+     * a homothetic transformation maintains the ratio's of lengths.
+     * This means that every length is multiplied by a fixed number when
+     * it is projected...  This function does that calculation for
+     * you..
+     * \endif
+     */
+    double apply(double length) const;
+    double data(int r, int c) const;
+    /**
+     * The inverse Transformation.  Returns the inverse Transformation
+     * of this Transformation.
+     */
+    const Transformation inverse(bool &valid) const;
 
-  /**
-   * Identity.  Returns the Identity Transformation, i.e. a
-   * Transformation that doesn't do anything.
-   */
-  static const Transformation identity();
-  /**
-   * Scaling over Point.  Returns a Transformation that scales points
-   * by a certain factor with relation to a center point.
-   */
-  static const Transformation scalingOverPoint( double factor, const Coordinate& center = Coordinate() );
-  /**
-   * Scaling over Line.  Returns a Transformation that scales points
-   * by a certain factor with relation to a line.  Note: This is not a
-   * homothetic transformation.
-   */
-  static const Transformation scalingOverLine( double factor, const LineData& l );
-  /**
-   * Translation.  Returns a Translation by a vector c.
-   */
-  static const Transformation translation( const Coordinate& c );
-  /**
-   * Rotation.  Returns a Rotation by a certain angle, around a
-   * certain center.
-   */
-  static const Transformation rotation( double angle, const Coordinate& center = Coordinate() );
-  /**
-   * Point Reflection.  Returns a reflection over a point
-   * \note This equals scaling( -1, c );
-   */
-  static const Transformation pointReflection( const Coordinate& c );
-  /**
-   * Line Reflection.  Returns a reflection over a line
-   * \note This equals scaling( -1, l );
-   */
-  static const Transformation lineReflection( const LineData& l );
-  /**
-   * Harmonic Homology. Returns a Transformation that transforms points in
-   * such a way that it appears to cast a shadow, given a certain
-   * light source (center), and a line (axis) indicating a plane.
-   */
-  static const Transformation harmonicHomology( const Coordinate& center,
-                                          const LineData& axis );
-  /**
-   * Affinity given the image of 3 points. Returns the unique
-   * affinity that transforms 3 given points into 3 given points.
-   */
-  static const Transformation affinityGI3P(
-                const std::vector<Coordinate>& FromPoints,
-                const std::vector<Coordinate>& ToPoints,
-                bool& valid );
-  /**
-   * Projectivity given the image of 4 points. Returns the unique
-   * projectivity that transforms 4 given points into 4 given points.
-   */
-  static const Transformation projectivityGI4P(
-                const std::vector<Coordinate>& FromPoints,
-                const std::vector<Coordinate>& ToPoints,
-                bool& valid );
-  /**
-   * Cast Shadow.  Returns a Transformation that transforms points in
-   * such a way that it appears to cast a shadow, given a certain
-   * light source, and a line indicating a plane.
-   */
-  static const Transformation castShadow( const Coordinate& ls,
-                                          const LineData& d );
-  /**
-   * Projective Rotation.  This is really only a test example of a
-   * projective non-affine transformation...
-   */
-  static const Transformation projectiveRotation( double alpha,
-                                                  const Coordinate& d,
-                                                  const Coordinate& t );
+    /**
+     * Identity.  Returns the Identity Transformation, i.e. a
+     * Transformation that doesn't do anything.
+     */
+    static const Transformation identity();
+    /**
+     * Scaling over Point.  Returns a Transformation that scales points
+     * by a certain factor with relation to a center point.
+     */
+    static const Transformation scalingOverPoint(double factor, const Coordinate &center = Coordinate());
+    /**
+     * Scaling over Line.  Returns a Transformation that scales points
+     * by a certain factor with relation to a line.  Note: This is not a
+     * homothetic transformation.
+     */
+    static const Transformation scalingOverLine(double factor, const LineData &l);
+    /**
+     * Translation.  Returns a Translation by a vector c.
+     */
+    static const Transformation translation(const Coordinate &c);
+    /**
+     * Rotation.  Returns a Rotation by a certain angle, around a
+     * certain center.
+     */
+    static const Transformation rotation(double angle, const Coordinate &center = Coordinate());
+    /**
+     * Point Reflection.  Returns a reflection over a point
+     * \note This equals scaling( -1, c );
+     */
+    static const Transformation pointReflection(const Coordinate &c);
+    /**
+     * Line Reflection.  Returns a reflection over a line
+     * \note This equals scaling( -1, l );
+     */
+    static const Transformation lineReflection(const LineData &l);
+    /**
+     * Harmonic Homology. Returns a Transformation that transforms points in
+     * such a way that it appears to cast a shadow, given a certain
+     * light source (center), and a line (axis) indicating a plane.
+     */
+    static const Transformation harmonicHomology(const Coordinate &center, const LineData &axis);
+    /**
+     * Affinity given the image of 3 points. Returns the unique
+     * affinity that transforms 3 given points into 3 given points.
+     */
+    static const Transformation affinityGI3P(const std::vector<Coordinate> &FromPoints, const std::vector<Coordinate> &ToPoints, bool &valid);
+    /**
+     * Projectivity given the image of 4 points. Returns the unique
+     * projectivity that transforms 4 given points into 4 given points.
+     */
+    static const Transformation projectivityGI4P(const std::vector<Coordinate> &FromPoints, const std::vector<Coordinate> &ToPoints, bool &valid);
+    /**
+     * Cast Shadow.  Returns a Transformation that transforms points in
+     * such a way that it appears to cast a shadow, given a certain
+     * light source, and a line indicating a plane.
+     */
+    static const Transformation castShadow(const Coordinate &ls, const LineData &d);
+    /**
+     * Projective Rotation.  This is really only a test example of a
+     * projective non-affine transformation...
+     */
+    static const Transformation projectiveRotation(double alpha, const Coordinate &d, const Coordinate &t);
 
-  /**
-   * Similitude.  Sequence of a rotation and a scaling with relation
-   * to a certain center.
-   */
-  static const Transformation similitude(
-    const Coordinate& center, double theta, double factor );
+    /**
+     * Similitude.  Sequence of a rotation and a scaling with relation
+     * to a certain center.
+     */
+    static const Transformation similitude(const Coordinate &center, double theta, double factor);
 
-  /**
-   * Sequence.  This creates a Transformation that executes first
-   * transformation b, and then a.
-   */
-  friend const Transformation operator*( const Transformation& a, const Transformation& b );
+    /**
+     * Sequence.  This creates a Transformation that executes first
+     * transformation b, and then a.
+     */
+    friend const Transformation operator*(const Transformation &a, const Transformation &b);
 
-  /**
-   * Equality.  Tests two Transformation's for equality.
-   */
-  friend bool operator==( const Transformation& lhs, const Transformation& rhs );
+    /**
+     * Equality.  Tests two Transformation's for equality.
+     */
+    friend bool operator==(const Transformation &lhs, const Transformation &rhs);
 };
 
-const Transformation operator*( const Transformation&, const Transformation& );
-bool operator==( const Transformation& lhs, const Transformation& rhs );
+const Transformation operator*(const Transformation &, const Transformation &);
+bool operator==(const Transformation &lhs, const Transformation &rhs);
 
 // enum tWantArgsResult { tComplete, tNotComplete, tNotGood };
 

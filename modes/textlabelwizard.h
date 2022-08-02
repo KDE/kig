@@ -14,31 +14,32 @@ class TextPage;
 
 class TextLabelWizard : public QWizard
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  TextLabelWizard( QWidget* parent, TextLabelModeBase* mode );
-  ~TextLabelWizard();
+    TextLabelWizard(QWidget *parent, TextLabelModeBase *mode);
+    ~TextLabelWizard();
 
-  static const int TextPageId = 0;
-  static const int ArgsPageId = 1;
+    static const int TextPageId = 0;
+    static const int ArgsPageId = 1;
 
-  LinksLabel* linksLabel();
-  QString text() const;
-  void setText( const QString& newtext );
+    LinksLabel *linksLabel();
+    QString text() const;
+    void setText(const QString &newtext);
 
 public slots:
-  void reject() override;
-  void accept() override;
+    void reject() override;
+    void accept() override;
 
 private slots:
-  void textChanged();
-  void linkClicked( int which );
-  void currentIdChanged( int id );
-  void slotHelpClicked();
+    void textChanged();
+    void linkClicked(int which);
+    void currentIdChanged(int id);
+    void slotHelpClicked();
+
 private:
-  TextLabelModeBase* mmode;
-  TextPage* mtextPage;
-  ArgsPage* margsPage;
+    TextLabelModeBase *mmode;
+    TextPage *mtextPage;
+    ArgsPage *margsPage;
 };
 
 #endif // TEXTLABELWIZARD_H

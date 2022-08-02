@@ -8,50 +8,59 @@
 #ifndef GEOGEBRATRANSFORMER_H
 #define GEOGEBRATRANSFORMER_H
 
+#include <QAbstractXmlReceiver>
 #include <QMap>
 #include <QSet>
-#include <QAbstractXmlReceiver>
 #include <QXmlNamePool>
 
 #include <vector>
 
-#include "geogebrasection.h"
 #include "../misc/point_style.h"
+#include "geogebrasection.h"
 
 class KigDocument;
 class ObjectHolder;
 class ObjectType;
 
-/* This class 'transforms' the XML representation of the GeoGebra file into Kig's 
+/* This class 'transforms' the XML representation of the GeoGebra file into Kig's
  * internal representation of objects ( with proper parent-child relationship ).
  */
 class GeogebraTransformer : public QAbstractXmlReceiver
 {
 public:
-    GeogebraTransformer( KigDocument * document, const QXmlNamePool &np ) :
-    m_document( document ),
-    m_currentState ( GeogebraTransformer::ReadingObject ),
-    m_currentObject( nullptr ),
-    m_nsections( 0 ),
-    m_np( np )
-    {}
-    ~GeogebraTransformer() {}
+    GeogebraTransformer(KigDocument *document, const QXmlNamePool &np)
+        : m_document(document)
+        , m_currentState(GeogebraTransformer::ReadingObject)
+        , m_currentObject(nullptr)
+        , m_nsections(0)
+        , m_np(np)
+    {
+    }
+    ~GeogebraTransformer()
+    {
+    }
 
-    size_t getNumberOfSections() const { return m_nsections; };
-    const GeogebraSection & getSection( size_t sectionIdx ) const { return m_sections[sectionIdx]; };
+    size_t getNumberOfSections() const
+    {
+        return m_nsections;
+    };
+    const GeogebraSection &getSection(size_t sectionIdx) const
+    {
+        return m_sections[sectionIdx];
+    };
 
     // QAbstractXmlReceiver implementation
-    void atomicValue ( const QVariant & ) override;
-    void attribute ( const QXmlName & name, const QStringRef & value ) override;
-    void characters ( const QStringRef & ) override;
-    void comment ( const QString & ) override;
+    void atomicValue(const QVariant &) override;
+    void attribute(const QXmlName &name, const QStringRef &value) override;
+    void characters(const QStringRef &) override;
+    void comment(const QString &) override;
     void endDocument() override;
     void endElement() override;
     void endOfSequence() override;
-    void namespaceBinding ( const QXmlName & ) override;
-    void processingInstruction ( const QXmlName &, const QString & ) override;
+    void namespaceBinding(const QXmlName &) override;
+    void processingInstruction(const QXmlName &, const QString &) override;
     void startDocument() override;
-    void startElement ( const QXmlName & name ) override;
+    void startElement(const QXmlName &name) override;
     void startOfSequence() override;
 
 private:
@@ -86,23 +95,23 @@ private:
 
     // Enumerations of the point styles used by Geogebra.
     enum {
-      SOLIDCIRCLEPOINT = 0,
-      CROSSPOINT,
-      HOLLOWCIRCLEPOINT,
-      PLUSPOINT,
-      SOLIDDIAMONDPOINT,
-      HOLLOWDIAMONDPOINT,
-      UPARROWPOINT,
-      DOWNARROWPOINT,
-      RIGHTARROWPOINT,
-      LEFTARROWPOINT
+        SOLIDCIRCLEPOINT = 0,
+        CROSSPOINT,
+        HOLLOWCIRCLEPOINT,
+        PLUSPOINT,
+        SOLIDDIAMONDPOINT,
+        HOLLOWDIAMONDPOINT,
+        UPARROWPOINT,
+        DOWNARROWPOINT,
+        RIGHTARROWPOINT,
+        LEFTARROWPOINT
     };
 
-    KigDocument * m_document;
+    KigDocument *m_document;
     State m_currentState;
     QMap<QByteArray, ObjectCalcer *> m_objectMap;
     std::vector<ObjectCalcer *> m_currentArgStack;
-    const ObjectType * m_currentObject;
+    const ObjectType *m_currentObject;
     QSet<QByteArray> m_inputObjectLabels;
     QSet<QByteArray> m_outputObjectLabels;
     QByteArray m_currentObjectLabel;
@@ -111,10 +120,10 @@ private:
     QXmlNamePool m_np;
     /* members required for constructing the object-drawers*/
     bool m_show;
-    int  m_thickness;
+    int m_thickness;
     Kig::PointStyle m_pointType;
-    Qt::PenStyle  m_type;
-    int  m_r, m_g, m_b, m_alpha; // m_alpha is causing trouble at the moment as Geogebra somehow generates decimal values for it
+    Qt::PenStyle m_type;
+    int m_r, m_g, m_b, m_alpha; // m_alpha is causing trouble at the moment as Geogebra somehow generates decimal values for it
 };
 
 #endif // GEOGEBRATRANSFORMER_H

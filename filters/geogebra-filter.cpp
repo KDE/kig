@@ -8,13 +8,13 @@
 
 #include "geogebra-filter.h"
 
-#include <kig/kig_document.h>
-#include <objects/object_factory.h>
-#include <objects/object_calcer.h>
-#include <objects/object_holder.h>
-#include <objects/bogus_imp.h>
-#include <objects/object_type_factory.h>
 #include <geogebra/geogebratransformer.h>
+#include <kig/kig_document.h>
+#include <objects/bogus_imp.h>
+#include <objects/object_calcer.h>
+#include <objects/object_factory.h>
+#include <objects/object_holder.h>
+#include <objects/object_type_factory.h>
 
 #include <KZip>
 #include <QDebug>
@@ -24,63 +24,57 @@
 
 #include <algorithm>
 
-KigFilterGeogebra* KigFilterGeogebra::instance()
+KigFilterGeogebra *KigFilterGeogebra::instance()
 {
-  static KigFilterGeogebra f;
-  return &f;
+    static KigFilterGeogebra f;
+    return &f;
 }
 
-bool KigFilterGeogebra::supportMime( const QString& mime )
+bool KigFilterGeogebra::supportMime(const QString &mime)
 {
-  return mime == QLatin1String("application/vnd.geogebra.file");
+    return mime == QLatin1String("application/vnd.geogebra.file");
 }
 
-static ObjectHolder* holderFromCalcerAndDrawer( ObjectCalcer* oc, ObjectDrawer* od )
+static ObjectHolder *holderFromCalcerAndDrawer(ObjectCalcer *oc, ObjectDrawer *od)
 {
-  return new ObjectHolder( oc, od );
+    return new ObjectHolder(oc, od);
 }
 
-KigDocument* KigFilterGeogebra::load( const QString& sFrom )
+KigDocument *KigFilterGeogebra::load(const QString &sFrom)
 {
-  KZip geogebraFile( sFrom );
-  KigDocument * document = new KigDocument();
+    KZip geogebraFile(sFrom);
+    KigDocument *document = new KigDocument();
 
-  if ( geogebraFile.open( QIODevice::ReadOnly ) )
-  {
-    const KZipFileEntry* geogebraXMLEntry = dynamic_cast<const KZipFileEntry*>( geogebraFile.directory()->entry( QStringLiteral("geogebra.xml") ) );
+    if (geogebraFile.open(QIODevice::ReadOnly)) {
+        const KZipFileEntry *geogebraXMLEntry = dynamic_cast<const KZipFileEntry *>(geogebraFile.directory()->entry(QStringLiteral("geogebra.xml")));
 
-    if ( geogebraXMLEntry )
-    {
-      QXmlNamePool np;
-      QXmlQuery geogebraXSLT( QXmlQuery::XSLT20, np );
-      const QString encodedData = QString::fromUtf8( geogebraXMLEntry->data().constData() );
-      QFile queryDevice( QStringLiteral(":/kig/geogebra/geogebra.xsl") );
-      GeogebraTransformer ggbtransform( document, np );
+        if (geogebraXMLEntry) {
+            QXmlNamePool np;
+            QXmlQuery geogebraXSLT(QXmlQuery::XSLT20, np);
+            const QString encodedData = QString::fromUtf8(geogebraXMLEntry->data().constData());
+            QFile queryDevice(QStringLiteral(":/kig/geogebra/geogebra.xsl"));
+            GeogebraTransformer ggbtransform(document, np);
 
-      queryDevice.open( QFile::ReadOnly );
-      geogebraXSLT.setFocus( encodedData );
-      geogebraXSLT.setQuery( &queryDevice );
-      geogebraXSLT.evaluateTo( &ggbtransform );
-      queryDevice.close();
+            queryDevice.open(QFile::ReadOnly);
+            geogebraXSLT.setFocus(encodedData);
+            geogebraXSLT.setQuery(&queryDevice);
+            geogebraXSLT.evaluateTo(&ggbtransform);
+            queryDevice.close();
 
-      assert( ggbtransform.getNumberOfSections() == 1 );
+            assert(ggbtransform.getNumberOfSections() == 1);
 
-      const GeogebraSection & gs = ggbtransform.getSection( 0 );
-      const std::vector<ObjectCalcer *> & f = gs.getOutputObjects();
-      const std::vector<ObjectDrawer *> & d = gs.getDrawers();
-      std::vector<ObjectHolder *> holders( f.size() );
+            const GeogebraSection &gs = ggbtransform.getSection(0);
+            const std::vector<ObjectCalcer *> &f = gs.getOutputObjects();
+            const std::vector<ObjectDrawer *> &d = gs.getDrawers();
+            std::vector<ObjectHolder *> holders(f.size());
 
-      std::transform( f.cbegin(), f.cend(), d.begin(), holders.begin(), holderFromCalcerAndDrawer );
+            std::transform(f.cbegin(), f.cend(), d.begin(), holders.begin(), holderFromCalcerAndDrawer);
 
-      document->addObjects( holders );
+            document->addObjects(holders);
+        }
+    } else {
+        qWarning() << "Failed to open zip archive";
     }
-  }
-  else
-  {
-    qWarning() << "Failed to open zip archive";
-  }
 
-  return document;
+    return document;
 }
-
-

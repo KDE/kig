@@ -30,61 +30,83 @@ class ObjectHolder;
  * cases..  When this is the case, mobjs is empty, some
  * PopupActionProviders are disabled, and some others enabled..
  */
-class NormalModePopupObjects
-  : public QMenu
+class NormalModePopupObjects : public QMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  NormalModePopupObjects( KigPart& part, KigWidget& view,
-                          NormalMode& mode, 
-                          const std::vector<ObjectHolder*>& objs, const QPoint& p );
-  ~NormalModePopupObjects();
+    NormalModePopupObjects(KigPart &part, KigWidget &view, NormalMode &mode, const std::vector<ObjectHolder *> &objs, const QPoint &p);
+    ~NormalModePopupObjects();
 
-  // the different "menu's", the toplevel is considered as just
-  // another menu..
-  enum { TransformMenu = 0, TestMenu, ConstructMenu, StartMenu, ShowMenu,
-         SetColorMenu, SetSizeMenu, SetStyleMenu, ToplevelMenu,
-         SetCoordinateSystemMenu, NumberOfMenus };
+    // the different "menu's", the toplevel is considered as just
+    // another menu..
+    enum {
+        TransformMenu = 0,
+        TestMenu,
+        ConstructMenu,
+        StartMenu,
+        ShowMenu,
+        SetColorMenu,
+        SetSizeMenu,
+        SetStyleMenu,
+        ToplevelMenu,
+        SetCoordinateSystemMenu,
+        NumberOfMenus
+    };
 
-  // used by the PopupActionProvider's to add actions to us..
-  QAction* addInternalAction( int menu, const QString& name, int id );
-  QAction* addInternalAction( int menu, const QIcon& icon, const QString& name, int id );
-  QAction* addInternalAction( int menu, const QIcon& pix, int id );
-  QAction* addInternalAction( int menu, QAction* act );
+    // used by the PopupActionProvider's to add actions to us..
+    QAction *addInternalAction(int menu, const QString &name, int id);
+    QAction *addInternalAction(int menu, const QIcon &icon, const QString &name, int id);
+    QAction *addInternalAction(int menu, const QIcon &pix, int id);
+    QAction *addInternalAction(int menu, QAction *act);
 
-  std::vector<ObjectHolder*> objects() const { return mobjs; }
-  KigPart& part() { return mpart; }
-  KigWidget& widget() { return mview; }
-  QPoint plc() { return mplc; }
+    std::vector<ObjectHolder *> objects() const
+    {
+        return mobjs;
+    }
+    KigPart &part()
+    {
+        return mpart;
+    }
+    KigWidget &widget()
+    {
+        return mview;
+    }
+    QPoint plc()
+    {
+        return mplc;
+    }
 
-  bool onlyLabels() const { return monlylabels; }
+    bool onlyLabels() const
+    {
+        return monlylabels;
+    }
 
 protected:
-  void activateAction( int menu, int action );
+    void activateAction(int menu, int action);
 
 private slots:
-  void toplevelMenuSlot( QAction* );
+    void toplevelMenuSlot(QAction *);
 
 protected:
-  QPoint mplc;
-  KigPart& mpart;
-  KigWidget& mview;
-  std::vector<ObjectHolder*> mobjs;
-  NormalMode& mmode;
+    QPoint mplc;
+    KigPart &mpart;
+    KigWidget &mview;
+    std::vector<ObjectHolder *> mobjs;
+    NormalMode &mmode;
 
-  std::vector<PopupActionProvider*> mproviders;
+    std::vector<PopupActionProvider *> mproviders;
 
-  QMenu* mmenus[NumberOfMenus];
-  QMenu* mmenuslast[NumberOfMenus];
-  /* mp: usually mmenus[i] = mmenuslast[i], however, if there are too many entries
-   * in the submenu, new subsubmenus are added and mmenuslast[i] points to
-   * the last of these (where new actions can be inserted)
-   * presently this happens only in the "start" menu for a point
-   */
+    QMenu *mmenus[NumberOfMenus];
+    QMenu *mmenuslast[NumberOfMenus];
+    /* mp: usually mmenus[i] = mmenuslast[i], however, if there are too many entries
+     * in the submenu, new subsubmenus are added and mmenuslast[i] points to
+     * the last of these (where new actions can be inserted)
+     * presently this happens only in the "start" menu for a point
+     */
 
 private:
-  bool monlylabels;
+    bool monlylabels;
 };
 
 #endif

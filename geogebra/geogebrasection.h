@@ -17,34 +17,38 @@
 class GeogebraSection
 {
 public:
-    GeogebraSection() :
-    m_name( QString() ),
-    m_description( QString() )
-    { }
-    ~GeogebraSection() { }
+    GeogebraSection()
+        : m_name(QString())
+        , m_description(QString())
+    {
+    }
+    ~GeogebraSection()
+    {
+    }
 
-    const QString & getName() const;
-    const QString & getDescription() const;
-    const std::vector<ObjectCalcer*> & getInputObjects() const;
-    const std::vector<ObjectCalcer*> & getOutputObjects() const;
-    const std::vector<ObjectDrawer*> & getDrawers() const;
-    void addInputObject( ObjectCalcer* );
-    void addOutputObject( ObjectCalcer* );
-    void addDrawer( ObjectDrawer* );
-    void setDescription( const QString& );
-    void setName( const QString& );
+    const QString &getName() const;
+    const QString &getDescription() const;
+    const std::vector<ObjectCalcer *> &getInputObjects() const;
+    const std::vector<ObjectCalcer *> &getOutputObjects() const;
+    const std::vector<ObjectDrawer *> &getDrawers() const;
+    void addInputObject(ObjectCalcer *);
+    void addOutputObject(ObjectCalcer *);
+    void addDrawer(ObjectDrawer *);
+    void setDescription(const QString &);
+    void setName(const QString &);
+
 private:
     QString m_name;
     QString m_description;
-    std::vector<ObjectCalcer*> m_inputObjects;
-    std::vector<ObjectCalcer*> m_outputObjects;
+    std::vector<ObjectCalcer *> m_inputObjects;
+    std::vector<ObjectCalcer *> m_outputObjects;
     /* There will be exactly one drawer in m_drawers as there will be output objects in m_outputObjects
      * but we can't use a vector-pair of ObjectDrawer* and ObjectCalcer*
      * ( std::vector< std::pair< ObjectCalcer*, ObjectDrawer* > > )
      * since we need a separate vector containing just the outputObjects for building the ObjectHierarchy
      * needed while reading Geogebra-tools.
      */
-    std::vector<ObjectDrawer*> m_drawers;
+    std::vector<ObjectDrawer *> m_drawers;
 };
 
-#endif //GEOGEBRASECTION_H
+#endif // GEOGEBRASECTION_H

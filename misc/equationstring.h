@@ -29,29 +29,28 @@
 // * @author Pino Toscano
 // */
 
- /*
-  * What follows is based on code by Maurizio Paolini
-  */
+/*
+ * What follows is based on code by Maurizio Paolini
+ */
 
-class EquationString
- : public QString
+class EquationString : public QString
 {
 public:
-  EquationString( const QString& string );
-  double trunc( double );
-  void prettify( void );
-  void addTerm( double coeff, const QString& unknowns, bool& needsign );
+    EquationString(const QString &string);
+    double trunc(double);
+    void prettify(void);
+    void addTerm(double coeff, const QString &unknowns, bool &needsign);
 
-  const QString x3() const;
-  const QString y3() const;
-  const QString x2y() const;
-  const QString xy2() const;
-  const QString x2() const;
-  const QString y2() const;
-  const QString xy() const;
-  const QString x() const;
-  const QString y() const;
-  const QString xnym(int n, int m) const;
+    const QString x3() const;
+    const QString y3() const;
+    const QString x2y() const;
+    const QString xy2() const;
+    const QString x2() const;
+    const QString y2() const;
+    const QString xy() const;
+    const QString x() const;
+    const QString y() const;
+    const QString xnym(int n, int m) const;
 };
 
 #endif

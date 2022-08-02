@@ -11,35 +11,34 @@
 
 class LineData;
 
-class ObjectABType
-  : public ArgsParserObjectType
+class ObjectABType : public ArgsParserObjectType
 {
 protected:
-  ObjectABType( const char* fulltypename, const ArgsParser::spec* argsspec, int n );
-  ~ObjectABType();
-public:
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  bool canMove( const ObjectTypeCalcer& o ) const override;
-  bool isFreelyTranslatable( const ObjectTypeCalcer& o ) const override;
-  std::vector<ObjectCalcer*> movableParents( const ObjectTypeCalcer& ourobj ) const override;
-  void move( ObjectTypeCalcer& o, const Coordinate& to,
-             const KigDocument& d ) const override;
-  const Coordinate moveReferencePoint( const ObjectTypeCalcer& o ) const override;
+    ObjectABType(const char *fulltypename, const ArgsParser::spec *argsspec, int n);
+    ~ObjectABType();
 
-  // mp: calcx was an overloaded calc, which caused a compilation warning
-  virtual ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const = 0;
+public:
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    bool canMove(const ObjectTypeCalcer &o) const override;
+    bool isFreelyTranslatable(const ObjectTypeCalcer &o) const override;
+    std::vector<ObjectCalcer *> movableParents(const ObjectTypeCalcer &ourobj) const override;
+    void move(ObjectTypeCalcer &o, const Coordinate &to, const KigDocument &d) const override;
+    const Coordinate moveReferencePoint(const ObjectTypeCalcer &o) const override;
+
+    // mp: calcx was an overloaded calc, which caused a compilation warning
+    virtual ObjectImp *calcx(const Coordinate &a, const Coordinate &b) const = 0;
 };
 
-class ObjectLPType
-  : public ArgsParserObjectType
+class ObjectLPType : public ArgsParserObjectType
 {
 protected:
-  ObjectLPType( const char* fullname, const ArgsParser::spec* spec, int n );
-  ~ObjectLPType();
-public:
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
+    ObjectLPType(const char *fullname, const ArgsParser::spec *spec, int n);
+    ~ObjectLPType();
 
-  virtual ObjectImp* calc( const LineData& a, const Coordinate& b ) const = 0;
+public:
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+
+    virtual ObjectImp *calc(const LineData &a, const Coordinate &b) const = 0;
 };
 
 #endif

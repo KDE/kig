@@ -12,17 +12,16 @@
 
 #include "popup.h"
 
-class PropertiesActionsProvider
-  : public PopupActionProvider
+class PropertiesActionsProvider : public PopupActionProvider
 {
-  // we don't really need NumberOfMenus vectors, but this is the
-  // easiest way to do it, and I'm too lazy to do it properly ;)
-  std::vector<int> mprops[NormalModePopupObjects::NumberOfMenus];
+    // we don't really need NumberOfMenus vectors, but this is the
+    // easiest way to do it, and I'm too lazy to do it properly ;)
+    std::vector<int> mprops[NormalModePopupObjects::NumberOfMenus];
+
 public:
-  void fillUpMenu( NormalModePopupObjects& popup, int menu, int& nextfree ) override;
-  bool executeAction( int menu, int& id, const std::vector<ObjectHolder*>& os,
-                      NormalModePopupObjects& popup,
-                      KigPart& doc, KigWidget& w, NormalMode& m ) override;
+    void fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree) override;
+    bool
+    executeAction(int menu, int &id, const std::vector<ObjectHolder *> &os, NormalModePopupObjects &popup, KigPart &doc, KigWidget &w, NormalMode &m) override;
 };
 
 #endif // PROPERTIESACTIONSPROVIDER_H

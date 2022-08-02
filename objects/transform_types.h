@@ -7,226 +7,226 @@
 
 #include "object_type.h"
 
-double getDoubleFromImp( const ObjectImp*, bool& );
+double getDoubleFromImp(const ObjectImp *, bool &);
 
-class TranslatedType
-  : public ArgsParserObjectType
+class TranslatedType : public ArgsParserObjectType
 {
-  TranslatedType();
-  ~TranslatedType();
-public:
-  static const TranslatedType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    TranslatedType();
+    ~TranslatedType();
 
-  bool isTransform() const override;
+public:
+    static const TranslatedType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class PointReflectionType
-  : public ArgsParserObjectType
+class PointReflectionType : public ArgsParserObjectType
 {
-  PointReflectionType();
-  ~PointReflectionType();
-public:
-  static const PointReflectionType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    PointReflectionType();
+    ~PointReflectionType();
 
-  bool isTransform() const override;
+public:
+    static const PointReflectionType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class LineReflectionType
-  : public ArgsParserObjectType
+class LineReflectionType : public ArgsParserObjectType
 {
-  LineReflectionType();
-  ~LineReflectionType();
-public:
-  static const LineReflectionType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    LineReflectionType();
+    ~LineReflectionType();
 
-  bool isTransform() const override;
+public:
+    static const LineReflectionType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class RotationType
-  : public ArgsParserObjectType
+class RotationType : public ArgsParserObjectType
 {
-  RotationType();
-  ~RotationType();
-public:
-  static const RotationType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    RotationType();
+    ~RotationType();
 
-  bool isTransform() const override;
+public:
+    static const RotationType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ScalingOverCenterType
-  : public ArgsParserObjectType
+class ScalingOverCenterType : public ArgsParserObjectType
 {
-  ScalingOverCenterType();
-  ~ScalingOverCenterType();
-public:
-  static const ScalingOverCenterType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ScalingOverCenterType();
+    ~ScalingOverCenterType();
 
-  bool isTransform() const override;
+public:
+    static const ScalingOverCenterType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ScalingOverCenter2Type
-  : public ArgsParserObjectType
+class ScalingOverCenter2Type : public ArgsParserObjectType
 {
-  ScalingOverCenter2Type();
-  ~ScalingOverCenter2Type();
-public:
-  static const ScalingOverCenter2Type* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ScalingOverCenter2Type();
+    ~ScalingOverCenter2Type();
 
-  bool isTransform() const override;
+public:
+    static const ScalingOverCenter2Type *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ScalingOverLineType
-  : public ArgsParserObjectType
+class ScalingOverLineType : public ArgsParserObjectType
 {
-  ScalingOverLineType();
-  ~ScalingOverLineType();
-public:
-  static const ScalingOverLineType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ScalingOverLineType();
+    ~ScalingOverLineType();
 
-  bool isTransform() const override;
+public:
+    static const ScalingOverLineType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ScalingOverLine2Type
-  : public ArgsParserObjectType
+class ScalingOverLine2Type : public ArgsParserObjectType
 {
-  ScalingOverLine2Type();
-  ~ScalingOverLine2Type();
-public:
-  static const ScalingOverLine2Type* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ScalingOverLine2Type();
+    ~ScalingOverLine2Type();
 
-  bool isTransform() const override;
+public:
+    static const ScalingOverLine2Type *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ProjectiveRotationType
-  : public ArgsParserObjectType
+class ProjectiveRotationType : public ArgsParserObjectType
 {
-  ProjectiveRotationType();
-  ~ProjectiveRotationType();
-public:
-  static const ProjectiveRotationType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ProjectiveRotationType();
+    ~ProjectiveRotationType();
 
-  bool isTransform() const override;
+public:
+    static const ProjectiveRotationType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class HarmonicHomologyType
-  : public ArgsParserObjectType
+class HarmonicHomologyType : public ArgsParserObjectType
 {
-  HarmonicHomologyType();
-  ~HarmonicHomologyType();
-public:
-  static const HarmonicHomologyType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    HarmonicHomologyType();
+    ~HarmonicHomologyType();
 
-  bool isTransform() const override;
+public:
+    static const HarmonicHomologyType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class AffinityB2TrType
-  : public ArgsParserObjectType
+class AffinityB2TrType : public ArgsParserObjectType
 {
-  AffinityB2TrType();
-  ~AffinityB2TrType();
-public:
-  static const AffinityB2TrType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    AffinityB2TrType();
+    ~AffinityB2TrType();
 
-  bool isTransform() const override;
+public:
+    static const AffinityB2TrType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class AffinityGI3PType
-  : public ArgsParserObjectType
+class AffinityGI3PType : public ArgsParserObjectType
 {
-  AffinityGI3PType();
-  ~AffinityGI3PType();
-public:
-  static const AffinityGI3PType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    AffinityGI3PType();
+    ~AffinityGI3PType();
 
-  bool isTransform() const override;
+public:
+    static const AffinityGI3PType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ProjectivityB2QuType
-  : public ArgsParserObjectType
+class ProjectivityB2QuType : public ArgsParserObjectType
 {
-  ProjectivityB2QuType();
-  ~ProjectivityB2QuType();
-public:
-  static const ProjectivityB2QuType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ProjectivityB2QuType();
+    ~ProjectivityB2QuType();
 
-  bool isTransform() const override;
+public:
+    static const ProjectivityB2QuType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ProjectivityGI4PType
-  : public ArgsParserObjectType
+class ProjectivityGI4PType : public ArgsParserObjectType
 {
-  ProjectivityGI4PType();
-  ~ProjectivityGI4PType();
-public:
-  static const ProjectivityGI4PType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    ProjectivityGI4PType();
+    ~ProjectivityGI4PType();
 
-  bool isTransform() const override;
+public:
+    static const ProjectivityGI4PType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class CastShadowType
-  : public ArgsParserObjectType
+class CastShadowType : public ArgsParserObjectType
 {
-  CastShadowType();
-  ~CastShadowType();
-public:
-  static const CastShadowType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    CastShadowType();
+    ~CastShadowType();
 
-  bool isTransform() const override;
+public:
+    static const CastShadowType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
-class ApplyTransformationObjectType
-  : public ArgsParserObjectType
+class ApplyTransformationObjectType : public ArgsParserObjectType
 {
-  ApplyTransformationObjectType();
-  ~ApplyTransformationObjectType();
+    ApplyTransformationObjectType();
+    ~ApplyTransformationObjectType();
+
 public:
-  static const ApplyTransformationObjectType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
-  bool isTransform() const override;
+    static const ApplyTransformationObjectType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+    bool isTransform() const override;
 };
 
-class SimilitudeType
-  : public ArgsParserObjectType
+class SimilitudeType : public ArgsParserObjectType
 {
-  SimilitudeType();
-  ~SimilitudeType();
-public:
-  static const SimilitudeType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    SimilitudeType();
+    ~SimilitudeType();
 
-  bool isTransform() const override;
+public:
+    static const SimilitudeType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
+
+    bool isTransform() const override;
 };
 
 #endif

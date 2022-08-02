@@ -12,14 +12,15 @@
 
 class ObjectTypeFactory
 {
-  typedef std::map<std::string, const ObjectType*> maptype;
-  maptype mmap;
-  ObjectTypeFactory();
-  ~ObjectTypeFactory();
+    typedef std::map<std::string, const ObjectType *> maptype;
+    maptype mmap;
+    ObjectTypeFactory();
+    ~ObjectTypeFactory();
+
 public:
-  static ObjectTypeFactory* instance();
-  void add( const ObjectType* type );
-  const ObjectType* find( const char* name ) const;
+    static ObjectTypeFactory *instance();
+    void add(const ObjectType *type);
+    const ObjectType *find(const char *name) const;
 };
 
 #endif

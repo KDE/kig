@@ -9,21 +9,18 @@
 
 class ObjectCalcer;
 
-class KigFilterKSeg
-  : public KigFilter
+class KigFilterKSeg : public KigFilter
 {
-  KigFilterKSeg();
-  ~KigFilterKSeg();
+    KigFilterKSeg();
+    ~KigFilterKSeg();
 
-  ObjectCalcer* transformObject( KigDocument& kigdoc,
-                                 std::vector<ObjectCalcer*>& parents,
-                                 int subtype, bool& ok );
+    ObjectCalcer *transformObject(KigDocument &kigdoc, std::vector<ObjectCalcer *> &parents, int subtype, bool &ok);
 
 public:
-  static KigFilterKSeg* instance();
+    static KigFilterKSeg *instance();
 
-  bool supportMime ( const QString& mime ) override;
-  KigDocument* load ( const QString& fromfile ) override;
+    bool supportMime(const QString &mime) override;
+    KigDocument *load(const QString &fromfile) override;
 };
 
 #endif

@@ -16,30 +16,30 @@
  * transformations, Circles might dynamically change types to
  * Conics.
  */
-class ConicLineIntersectionType
-  : public ArgsParserObjectType
+class ConicLineIntersectionType : public ArgsParserObjectType
 {
-  ConicLineIntersectionType();
-  ~ConicLineIntersectionType();
+    ConicLineIntersectionType();
+    ~ConicLineIntersectionType();
+
 public:
-  static const ConicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicLineIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * conic line 'other' intersection.  In case we already know one of the
  * two intersections
  */
-class ConicLineOtherIntersectionType
-  : public ArgsParserObjectType
+class ConicLineOtherIntersectionType : public ArgsParserObjectType
 {
-  ConicLineOtherIntersectionType();
-  ~ConicLineOtherIntersectionType();
+    ConicLineOtherIntersectionType();
+    ~ConicLineOtherIntersectionType();
+
 public:
-  static const ConicLineOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ConicLineOtherIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 /**
  * Francesca Gatti (frency.gatti@gmail.com), january 2008:
@@ -48,91 +48,91 @@ public:
  * three intersections
  */
 
-class CubicLineOtherIntersectionType
-  : public ArgsParserObjectType
+class CubicLineOtherIntersectionType : public ArgsParserObjectType
 {
-  CubicLineOtherIntersectionType();
-  ~CubicLineOtherIntersectionType();
+    CubicLineOtherIntersectionType();
+    ~CubicLineOtherIntersectionType();
+
 public:
-  static const CubicLineOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CubicLineOtherIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 /**
  *
  * one of the two cubic line intersection points,  in case we already know one of the
  * three intersections
  */
-class CubicLineTwoIntersectionType
-  : public ArgsParserObjectType
+class CubicLineTwoIntersectionType : public ArgsParserObjectType
 {
-  CubicLineTwoIntersectionType();
-  ~CubicLineTwoIntersectionType();
+    CubicLineTwoIntersectionType();
+    ~CubicLineTwoIntersectionType();
+
 public:
-  static const CubicLineTwoIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CubicLineTwoIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 /**
  * circle circle 'other' intersection.  In case we already know one of the
  * two intersections
  */
-class CircleCircleOtherIntersectionType
-  : public ArgsParserObjectType
+class CircleCircleOtherIntersectionType : public ArgsParserObjectType
 {
-  CircleCircleOtherIntersectionType();
-  ~CircleCircleOtherIntersectionType();
+    CircleCircleOtherIntersectionType();
+    ~CircleCircleOtherIntersectionType();
+
 public:
-  static const CircleCircleOtherIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CircleCircleOtherIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class LineLineIntersectionType
-  : public ArgsParserObjectType
+class LineLineIntersectionType : public ArgsParserObjectType
 {
-  LineLineIntersectionType();
-  ~LineLineIntersectionType();
+    LineLineIntersectionType();
+    ~LineLineIntersectionType();
+
 public:
-  static const LineLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const LineLineIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class CubicLineIntersectionType
-  : public ArgsParserObjectType
+class CubicLineIntersectionType : public ArgsParserObjectType
 {
-  CubicLineIntersectionType();
-  ~CubicLineIntersectionType();
+    CubicLineIntersectionType();
+    ~CubicLineIntersectionType();
+
 public:
-  static const CubicLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CubicLineIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class CircleCircleIntersectionType
-  : public ArgsParserObjectType
+class CircleCircleIntersectionType : public ArgsParserObjectType
 {
-  CircleCircleIntersectionType();
-  ~CircleCircleIntersectionType();
+    CircleCircleIntersectionType();
+    ~CircleCircleIntersectionType();
+
 public:
-  static const CircleCircleIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const CircleCircleIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 /**
  * arc line intersection.
  */
-class ArcLineIntersectionType
-  : public ArgsParserObjectType
+class ArcLineIntersectionType : public ArgsParserObjectType
 {
-  ArcLineIntersectionType();
-  ~ArcLineIntersectionType();
+    ArcLineIntersectionType();
+    ~ArcLineIntersectionType();
+
 public:
-  static const ArcLineIntersectionType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const ArcLineIntersectionType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

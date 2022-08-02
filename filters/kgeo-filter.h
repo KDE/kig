@@ -19,24 +19,24 @@ class KConfig;
  * Status: a significant part of KGeo's format is supported, not all
  * yet, though..
  */
-class KigFilterKGeo
-  : public KigFilter
+class KigFilterKGeo : public KigFilter
 {
 public:
-  static KigFilterKGeo* instance();
-  bool supportMime ( const QString& mime ) override;
-  KigDocument* load ( const QString& from ) override;
+    static KigFilterKGeo *instance();
+    bool supportMime(const QString &mime) override;
+    KigDocument *load(const QString &from) override;
+
 protected:
-  KigFilterKGeo();
-  ~KigFilterKGeo();
+    KigFilterKGeo();
+    ~KigFilterKGeo();
 
-  void loadMetrics ( KConfig* );
-  KigDocument* loadObjects ( KConfig* );
+    void loadMetrics(KConfig *);
+    KigDocument *loadObjects(KConfig *);
 
-  int xMax;
-  int yMax;
-  bool grid;
-  bool axes;
+    int xMax;
+    int yMax;
+    bool grid;
+    bool axes;
 };
 
 #endif

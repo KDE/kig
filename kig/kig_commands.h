@@ -5,7 +5,6 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 #ifndef KIG_COMMANDS_H
 #define KIG_COMMANDS_H
 
@@ -27,48 +26,49 @@ class Rect;
  * a KigCommand represents almost every action performed in Kig.
  * Used mainly in the Undo/Redo stuff...
  */
-class KigCommand
-  : public QUndoCommand
+class KigCommand : public QUndoCommand
 {
-  class Private;
-  Private* d;
+    class Private;
+    Private *d;
+
 public:
-  KigCommand( KigPart& inDoc, const QString& name );
-  ~KigCommand();
+    KigCommand(KigPart &inDoc, const QString &name);
+    ~KigCommand();
 
-  /**
-   * To avoid confusion, this doesn't add a command to anything, this
-   * creates an AddCommand ;)
-   */
-  static KigCommand* addCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
-  /**
-   * \overload
-   */
-  static KigCommand* addCommand( KigPart& doc, ObjectHolder* os );
-  /**
-   * make sure that when you delete something, you are also deleting
-   * its parents.  This class assumes you've done that.
-   * \ref KigDocument::delObjects() takes care of this for you.
-   */
-  static KigCommand* removeCommand( KigPart& doc, const std::vector<ObjectHolder*>& os );
-  /**
-   * \overload
-   */
-  static KigCommand* removeCommand( KigPart& doc, ObjectHolder* o );
+    /**
+     * To avoid confusion, this doesn't add a command to anything, this
+     * creates an AddCommand ;)
+     */
+    static KigCommand *addCommand(KigPart &doc, const std::vector<ObjectHolder *> &os);
+    /**
+     * \overload
+     */
+    static KigCommand *addCommand(KigPart &doc, ObjectHolder *os);
+    /**
+     * make sure that when you delete something, you are also deleting
+     * its parents.  This class assumes you've done that.
+     * \ref KigDocument::delObjects() takes care of this for you.
+     */
+    static KigCommand *removeCommand(KigPart &doc, const std::vector<ObjectHolder *> &os);
+    /**
+     * \overload
+     */
+    static KigCommand *removeCommand(KigPart &doc, ObjectHolder *o);
 
-  /**
-   * This creates directly a command to change the coordinate system
-   * to \p s .
-   * \sa ChangeCoordSystemTask
-   */
-  static KigCommand* changeCoordSystemCommand( KigPart& doc, CoordinateSystem* s );
+    /**
+     * This creates directly a command to change the coordinate system
+     * to \p s .
+     * \sa ChangeCoordSystemTask
+     */
+    static KigCommand *changeCoordSystemCommand(KigPart &doc, CoordinateSystem *s);
 
-  void addTask( KigCommandTask* );
+    void addTask(KigCommandTask *);
 
-  void redo() override;
-  void undo() override;
+    void redo() override;
+    void undo() override;
+
 private:
-  Q_DISABLE_COPY( KigCommand )
+    Q_DISABLE_COPY(KigCommand)
 };
 
 /**
@@ -77,48 +77,47 @@ private:
 class KigCommandTask
 {
 public:
-  KigCommandTask();
-  virtual ~KigCommandTask();
+    KigCommandTask();
+    virtual ~KigCommandTask();
 
-  virtual void execute( KigPart& doc ) = 0;
-  virtual void unexecute( KigPart& doc ) = 0;
+    virtual void execute(KigPart &doc) = 0;
+    virtual void unexecute(KigPart &doc) = 0;
 };
 
-class AddObjectsTask
-  : public KigCommandTask
+class AddObjectsTask : public KigCommandTask
 {
 public:
-  explicit AddObjectsTask( const std::vector<ObjectHolder*>& os);
-  ~AddObjectsTask ();
-  void execute( KigPart& doc ) override;
-  void unexecute( KigPart& doc ) override;
+    explicit AddObjectsTask(const std::vector<ObjectHolder *> &os);
+    ~AddObjectsTask();
+    void execute(KigPart &doc) override;
+    void unexecute(KigPart &doc) override;
+
 protected:
-  bool undone;
+    bool undone;
 
-  std::vector<ObjectHolder*> mobjs;
+    std::vector<ObjectHolder *> mobjs;
 };
 
-class RemoveObjectsTask
-  : public AddObjectsTask
+class RemoveObjectsTask : public AddObjectsTask
 {
 public:
-  explicit RemoveObjectsTask( const std::vector<ObjectHolder*>& os );
-  void execute( KigPart& ) override;
-  void unexecute( KigPart& ) override;
+    explicit RemoveObjectsTask(const std::vector<ObjectHolder *> &os);
+    void execute(KigPart &) override;
+    void unexecute(KigPart &) override;
 };
 
-class ChangeObjectConstCalcerTask
-  : public KigCommandTask
+class ChangeObjectConstCalcerTask : public KigCommandTask
 {
 public:
-  ChangeObjectConstCalcerTask( ObjectConstCalcer* calcer, ObjectImp* newimp );
-  ~ChangeObjectConstCalcerTask();
+    ChangeObjectConstCalcerTask(ObjectConstCalcer *calcer, ObjectImp *newimp);
+    ~ChangeObjectConstCalcerTask();
 
-  void execute( KigPart& ) override;
-  void unexecute( KigPart& ) override;
+    void execute(KigPart &) override;
+    void unexecute(KigPart &) override;
+
 protected:
-  ObjectConstCalcer::shared_ptr mcalcer;
-  ObjectImp* mnewimp;
+    ObjectConstCalcer::shared_ptr mcalcer;
+    ObjectImp *mnewimp;
 };
 
 /**
@@ -138,85 +137,85 @@ protected:
  */
 class MonitorDataObjects
 {
-  class Private;
-  Private* d;
+    class Private;
+    Private *d;
+
 public:
-  /**
-   * all the DataObjects in \p objs will be watched.
-   */
-  explicit MonitorDataObjects( const std::vector<ObjectCalcer*>& objs );
-  explicit MonitorDataObjects( ObjectCalcer* c );
-  ~MonitorDataObjects();
+    /**
+     * all the DataObjects in \p objs will be watched.
+     */
+    explicit MonitorDataObjects(const std::vector<ObjectCalcer *> &objs);
+    explicit MonitorDataObjects(ObjectCalcer *c);
+    ~MonitorDataObjects();
 
-  /**
-   * add \p objs to the list of objs to be watched, and save their
-   * current imp's.
-   */
-  void monitor( const std::vector<ObjectCalcer*>& objs );
+    /**
+     * add \p objs to the list of objs to be watched, and save their
+     * current imp's.
+     */
+    void monitor(const std::vector<ObjectCalcer *> &objs);
 
-  /**
-   * add the generated KigCommandTasks to the command \p comm
-   * monitoring stops after this is called.
-   */
-  void finish( KigCommand* comm );
+    /**
+     * add the generated KigCommandTasks to the command \p comm
+     * monitoring stops after this is called.
+     */
+    void finish(KigCommand *comm);
 };
 
 /**
  * A task to change the coordinate system.
  */
-class ChangeCoordSystemTask
-  : public KigCommandTask
+class ChangeCoordSystemTask : public KigCommandTask
 {
-  CoordinateSystem* mcs;
-public:
-  /**
-   * a command that changes the coordinate-system to \p s .
-   */
-  explicit ChangeCoordSystemTask( CoordinateSystem* s );
-  ~ChangeCoordSystemTask();
+    CoordinateSystem *mcs;
 
-  void execute( KigPart& doc ) override;
-  void unexecute( KigPart& doc ) override;
+public:
+    /**
+     * a command that changes the coordinate-system to \p s .
+     */
+    explicit ChangeCoordSystemTask(CoordinateSystem *s);
+    ~ChangeCoordSystemTask();
+
+    void execute(KigPart &doc) override;
+    void unexecute(KigPart &doc) override;
 };
 
-class ChangeParentsAndTypeTask
-  : public KigCommandTask
+class ChangeParentsAndTypeTask : public KigCommandTask
 {
-  class Private;
-  Private* d;
-public:
-  ChangeParentsAndTypeTask( ObjectTypeCalcer* o, const std::vector<ObjectCalcer*>& newparents,
-                            const ObjectType* newtype );
-  ~ChangeParentsAndTypeTask();
+    class Private;
+    Private *d;
 
-  void execute( KigPart& doc ) override;
-  void unexecute( KigPart& doc ) override;
+public:
+    ChangeParentsAndTypeTask(ObjectTypeCalcer *o, const std::vector<ObjectCalcer *> &newparents, const ObjectType *newtype);
+    ~ChangeParentsAndTypeTask();
+
+    void execute(KigPart &doc) override;
+    void unexecute(KigPart &doc) override;
 };
 
-class KigViewShownRectChangeTask
-  : public KigCommandTask
+class KigViewShownRectChangeTask : public KigCommandTask
 {
-  class Private;
-  Private* d;
-public:
-  KigViewShownRectChangeTask( KigWidget& v, const Rect& newrect );
-  ~KigViewShownRectChangeTask();
+    class Private;
+    Private *d;
 
-  void execute( KigPart& doc ) override;
-  void unexecute( KigPart& doc ) override;
+public:
+    KigViewShownRectChangeTask(KigWidget &v, const Rect &newrect);
+    ~KigViewShownRectChangeTask();
+
+    void execute(KigPart &doc) override;
+    void unexecute(KigPart &doc) override;
 };
 
-class ChangeObjectDrawerTask
-  : public KigCommandTask
+class ChangeObjectDrawerTask : public KigCommandTask
 {
-  ObjectHolder* mholder;
-  ObjectDrawer* mnewdrawer;
-public:
-  ChangeObjectDrawerTask( ObjectHolder* holder, ObjectDrawer* newdrawer );
-  ~ChangeObjectDrawerTask();
+    ObjectHolder *mholder;
+    ObjectDrawer *mnewdrawer;
 
-  void execute( KigPart& doc ) override;
-  void unexecute( KigPart& doc ) override;
+public:
+    ChangeObjectDrawerTask(ObjectHolder *holder, ObjectDrawer *newdrawer);
+    ~ChangeObjectDrawerTask();
+
+    void execute(KigPart &doc) override;
+    void unexecute(KigPart &doc) override;
 };
 
 #endif

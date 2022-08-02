@@ -5,7 +5,6 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-
 #ifndef KIG_IFACE_H
 #define KIG_IFACE_H
 
@@ -13,12 +12,11 @@
 
 class KigIface : virtual public DCOPObject
 {
-  K_DCOP
+    K_DCOP
 public:
-  KigIface();
-  ~KigIface();
-k_dcop:
-  virtual void openUrl(const QString& s) = 0;
+    KigIface();
+    ~KigIface();
+    k_dcop : virtual void openUrl(const QString &s) = 0;
 };
 
 #endif

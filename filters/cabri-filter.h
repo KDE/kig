@@ -22,18 +22,18 @@ class CabriReader;
  * format from zero, by just looking at the input and output from a
  * (properly licensed) Cabri program...
  */
-class KigFilterCabri
-  : public KigFilter
+class KigFilterCabri : public KigFilter
 {
-  KigFilterCabri();
-  ~KigFilterCabri();
-public:
-  static KigFilterCabri* instance();
+    KigFilterCabri();
+    ~KigFilterCabri();
 
-  bool supportMime ( const QString& mime ) override;
-  KigDocument* load ( const QString& fromfile ) override;
-  
-  friend class CabriReader;
+public:
+    static KigFilterCabri *instance();
+
+    bool supportMime(const QString &mime) override;
+    KigDocument *load(const QString &fromfile) override;
+
+    friend class CabriReader;
 };
 
 #endif

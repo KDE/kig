@@ -9,102 +9,101 @@
 
 class LineData;
 
-class SegmentABType
-  : public ObjectABType
+class SegmentABType : public ObjectABType
 {
-  SegmentABType();
-  ~SegmentABType();
+    SegmentABType();
+    ~SegmentABType();
+
 public:
-  static const SegmentABType* instance();
+    static const SegmentABType *instance();
 
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const override;
-  const ObjectImpType* resultId() const override;
+    ObjectImp *calcx(const Coordinate &a, const Coordinate &b) const override;
+    const ObjectImpType *resultId() const override;
 
-  QStringList specialActions() const override;
-  /**
-   * execute the \p i 'th action from the specialActions above.
-   */
-  void executeAction( int i, ObjectHolder& o, ObjectTypeCalcer& c,
-                      KigPart& d, KigWidget& w, NormalMode& m ) const override;
+    QStringList specialActions() const override;
+    /**
+     * execute the \p i 'th action from the specialActions above.
+     */
+    void executeAction(int i, ObjectHolder &o, ObjectTypeCalcer &c, KigPart &d, KigWidget &w, NormalMode &m) const override;
 };
 
-class LineABType
-  : public ObjectABType
+class LineABType : public ObjectABType
 {
-  LineABType();
-  ~LineABType();
+    LineABType();
+    ~LineABType();
+
 public:
-  static const LineABType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const override;
-  const ObjectImpType* resultId() const override;
+    static const LineABType *instance();
+    ObjectImp *calcx(const Coordinate &a, const Coordinate &b) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class RayABType
-  : public ObjectABType
+class RayABType : public ObjectABType
 {
-  RayABType();
-  ~RayABType();
+    RayABType();
+    ~RayABType();
+
 public:
-  static const RayABType* instance();
-  ObjectImp* calcx( const Coordinate& a, const Coordinate& b ) const override;
-  const ObjectImpType* resultId() const override;
+    static const RayABType *instance();
+    ObjectImp *calcx(const Coordinate &a, const Coordinate &b) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class SegmentAxisType
-  : public ArgsParserObjectType
+class SegmentAxisType : public ArgsParserObjectType
 {
-  SegmentAxisType();
-  ~SegmentAxisType();
+    SegmentAxisType();
+    ~SegmentAxisType();
+
 public:
-  static const SegmentAxisType* instance();
-  ObjectImp* calc( const Args& parents, const KigDocument& d ) const override;
-  const ObjectImpType* resultId() const override;
+    static const SegmentAxisType *instance();
+    ObjectImp *calc(const Args &parents, const KigDocument &d) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class LinePerpendLPType
-  : public ObjectLPType
+class LinePerpendLPType : public ObjectLPType
 {
-  LinePerpendLPType();
-  ~LinePerpendLPType();
+    LinePerpendLPType();
+    ~LinePerpendLPType();
+
 public:
-  static LinePerpendLPType* instance();
-  using ObjectLPType::calc;
-  ObjectImp* calc( const LineData& a, const Coordinate& b ) const override;
-  const ObjectImpType* resultId() const override;
+    static LinePerpendLPType *instance();
+    using ObjectLPType::calc;
+    ObjectImp *calc(const LineData &a, const Coordinate &b) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class LineParallelLPType
-  : public ObjectLPType
+class LineParallelLPType : public ObjectLPType
 {
-  LineParallelLPType();
-  ~LineParallelLPType();
+    LineParallelLPType();
+    ~LineParallelLPType();
+
 public:
-  static LineParallelLPType* instance();
-  using ObjectLPType::calc;
-  ObjectImp* calc( const LineData& a, const Coordinate& b ) const override;
-  const ObjectImpType* resultId() const override;
+    static LineParallelLPType *instance();
+    using ObjectLPType::calc;
+    ObjectImp *calc(const LineData &a, const Coordinate &b) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class LineByVectorType
-  : public ArgsParserObjectType
+class LineByVectorType : public ArgsParserObjectType
 {
-  LineByVectorType();
-  ~LineByVectorType();
+    LineByVectorType();
+    ~LineByVectorType();
+
 public:
-  static const LineByVectorType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const LineByVectorType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
-class HalflineByVectorType
-  : public ArgsParserObjectType
+class HalflineByVectorType : public ArgsParserObjectType
 {
-  HalflineByVectorType();
-  ~HalflineByVectorType();
+    HalflineByVectorType();
+    ~HalflineByVectorType();
+
 public:
-  static const HalflineByVectorType* instance();
-  ObjectImp* calc( const Args& args, const KigDocument& ) const override;
-  const ObjectImpType* resultId() const override;
+    static const HalflineByVectorType *instance();
+    ObjectImp *calc(const Args &args, const KigDocument &) const override;
+    const ObjectImpType *resultId() const override;
 };
 
 #endif

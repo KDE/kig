@@ -18,29 +18,28 @@ class Ui_HistoryWidget;
  * The HistoryDialog represents a small dialog to navigate back and forth in
  * the history of a construction.
  */
-class HistoryDialog
-  : public QDialog
+class HistoryDialog : public QDialog
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-  HistoryDialog( QUndoStack* kch, QWidget* parent );
-  virtual ~HistoryDialog();
+    HistoryDialog(QUndoStack *kch, QWidget *parent);
+    virtual ~HistoryDialog();
 
 private slots:
-  void updateWidgets();
+    void updateWidgets();
 
-  void goToFirst();
-  void goBack();
-  void goToNext();
-  void goToLast();
+    void goToFirst();
+    void goBack();
+    void goToNext();
+    void goToLast();
 
 private:
-  QUndoStack* mch;
+    QUndoStack *mch;
 
-  Ui_HistoryWidget* mwidget;
+    Ui_HistoryWidget *mwidget;
 
-  int mtotalsteps;
+    int mtotalsteps;
 };
 
 #endif
