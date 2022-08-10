@@ -79,12 +79,12 @@ void KigFilter::parseError( const QString& explanation ) const
   if ( explanation.isEmpty() )
     KMessageBox::error( nullptr, text, title );
   else
-    KMessageBox::detailedSorry( nullptr, text, explanation, title );
+    KMessageBox::detailedError( nullptr, text, explanation, title );
 }
 
 void KigFilter::notSupported( const QString& explanation ) const
 {
-  KMessageBox::detailedSorry( nullptr,
+  KMessageBox::detailedError( nullptr,
                               i18n( "Kig cannot open this file." ),
                               explanation, i18n( "Not Supported" ) );
 }

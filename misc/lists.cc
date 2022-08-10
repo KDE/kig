@@ -303,7 +303,7 @@ bool MacroList::load( const QString& f, std::vector<Macro*>& ret, const KigPart&
     return loadNew( main, ret, kdoc );
   else
   {
-    KMessageBox::detailedSorry(
+    KMessageBox::detailedError(
       nullptr, i18n( "Kig cannot open the macro file \"%1\".", f ),
       i18n( "This file was created by a very old Kig version (pre-0.4). "
             "Support for this format has been removed from recent Kig versions. "
