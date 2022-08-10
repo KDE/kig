@@ -7,6 +7,7 @@ include_directories(  ${CMAKE_CURRENT_BINARY_DIR}/..  )
 set(kig_SRCS
   main.cpp
   kig.cpp
+  kig.h
 )
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kig.png")
