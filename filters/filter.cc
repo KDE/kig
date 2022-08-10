@@ -7,44 +7,44 @@
 
 #include "filter.h"
 
-#include "kgeo-filter.h"
 #include "cabri-filter.h"
-#include "native-filter.h"
-#include "kseg-filter.h"
 #include "drgeo-filter.h"
+#include "kgeo-filter.h"
+#include "kseg-filter.h"
+#include "native-filter.h"
 #ifdef WITH_GEOGEBRA
 #include "geogebra-filter.h"
-#endif //WITH_GEOGEBRA
+#endif // WITH_GEOGEBRA
 
 #include <KLocalizedString>
 #include <KMessageBox>
 
-KigFilters* KigFilters::sThis;
+KigFilters *KigFilters::sThis;
 
-KigFilter* KigFilters::find(const QString& mime)
+KigFilter *KigFilters::find(const QString &mime)
 {
-  for (vect::iterator i = mFilters.begin(); i != mFilters.end(); ++i)
-    {
-      if ((*i)->supportMime(mime)) return *i;
+    for (vect::iterator i = mFilters.begin(); i != mFilters.end(); ++i) {
+        if ((*i)->supportMime(mime))
+            return *i;
     };
-  return nullptr;
+    return nullptr;
 }
 
 KigFilters::KigFilters()
 {
-  mFilters.push_back( KigFilterKGeo::instance() );
-  mFilters.push_back( KigFilterKSeg::instance() );
-  mFilters.push_back( KigFilterCabri::instance() );
-  mFilters.push_back( KigFilterNative::instance() );
-  mFilters.push_back( KigFilterDrgeo::instance() );
+    mFilters.push_back(KigFilterKGeo::instance());
+    mFilters.push_back(KigFilterKSeg::instance());
+    mFilters.push_back(KigFilterCabri::instance());
+    mFilters.push_back(KigFilterNative::instance());
+    mFilters.push_back(KigFilterDrgeo::instance());
 #ifdef WITH_GEOGEBRA
-  mFilters.push_back( KigFilterGeogebra::instance() );
-#endif //WITH_GEOGEBRA
+    mFilters.push_back(KigFilterGeogebra::instance());
+#endif // WITH_GEOGEBRA
 }
 
-KigFilters* KigFilters::instance()
+KigFilters *KigFilters::instance()
 {
-  return sThis ? sThis : ( sThis = new KigFilters() );
+    return sThis ? sThis : (sThis = new KigFilters());
 }
 
 KigFilter::KigFilter()
@@ -55,46 +55,45 @@ KigFilter::~KigFilter()
 {
 }
 
-bool KigFilter::supportMime( const QString& )
+bool KigFilter::supportMime(const QString &)
 {
-  return false;
+    return false;
 }
 
-void KigFilter::fileNotFound( const QString& file ) const
+void KigFilter::fileNotFound(const QString &file) const
 {
-  KMessageBox::error( nullptr,
-                      i18n( "The file \"%1\" could not be opened.  "
+    KMessageBox::error(nullptr,
+                       i18n("The file \"%1\" could not be opened.  "
                             "This probably means that it does not "
                             "exist, or that it cannot be opened due to "
-                            "its permissions", file ) );
+                            "its permissions",
+                            file));
 }
 
-void KigFilter::parseError( const QString& explanation ) const
+void KigFilter::parseError(const QString &explanation) const
 {
-  const QString text =
-    i18n( "An error was encountered while parsing this file.  It "
-          "cannot be opened." );
-  const QString title = i18n( "Parse Error" );
+    const QString text = i18n(
+        "An error was encountered while parsing this file.  It "
+        "cannot be opened.");
+    const QString title = i18n("Parse Error");
 
-  if ( explanation.isEmpty() )
-    KMessageBox::error( nullptr, text, title );
-  else
-    KMessageBox::detailedError( nullptr, text, explanation, title );
+    if (explanation.isEmpty())
+        KMessageBox::error(nullptr, text, title);
+    else
+        KMessageBox::detailedError(nullptr, text, explanation, title);
 }
 
-void KigFilter::notSupported( const QString& explanation ) const
+void KigFilter::notSupported(const QString &explanation) const
 {
-  KMessageBox::detailedError( nullptr,
-                              i18n( "Kig cannot open this file." ),
-                              explanation, i18n( "Not Supported" ) );
+    KMessageBox::detailedError(nullptr, i18n("Kig cannot open this file."), explanation, i18n("Not Supported"));
 }
 
-void KigFilter::warning( const QString& explanation ) const
+void KigFilter::warning(const QString &explanation) const
 {
-  KMessageBox::information( nullptr, explanation );
+    KMessageBox::information(nullptr, explanation);
 }
 
-bool KigFilters::save( const KigDocument& data, const QString& tofile )
+bool KigFilters::save(const KigDocument &data, const QString &tofile)
 {
-  return KigFilterNative::instance()->save( data, tofile );
+    return KigFilterNative::instance()->save(data, tofile);
 }

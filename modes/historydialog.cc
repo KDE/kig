@@ -7,118 +7,113 @@
 
 #include "historydialog.h"
 
-
 #include "ui_historywidget.h"
 
-#include <QIntValidator>
 #include <QDebug>
 #include <QDialogButtonBox>
 #include <QIcon>
+#include <QIntValidator>
 #include <QPushButton>
 #include <QUndoStack>
 #include <QVBoxLayout>
 
 #include <KConfigGroup>
 
-HistoryDialog::HistoryDialog( QUndoStack* kch, QWidget* parent )
-  : QDialog( parent ), mch( kch )
+HistoryDialog::HistoryDialog(QUndoStack *kch, QWidget *parent)
+    : QDialog(parent)
+    , mch(kch)
 {
-  setWindowTitle( i18nc("@title:window", "History Browser") );
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
-  QWidget *mainWidget = new QWidget(this);
-  QVBoxLayout *mainLayout = new QVBoxLayout(this);
-  mainLayout->addWidget(mainWidget);
-  connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
-  connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
-  mainLayout->addWidget(buttonBox);
+    setWindowTitle(i18nc("@title:window", "History Browser"));
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+    QWidget *mainWidget = new QWidget(this);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->addWidget(mainWidget);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+    mainLayout->addWidget(buttonBox);
 
-  QWidget* main = new QWidget( this );
-  mwidget = new Ui_HistoryWidget();
-  mwidget->setupUi( main );
+    QWidget *main = new QWidget(this);
+    mwidget = new Ui_HistoryWidget();
+    mwidget->setupUi(main);
 
-  mtotalsteps = mch->count() + 1;
+    mtotalsteps = mch->count() + 1;
 
-  bool reversed = layoutDirection() == Qt::RightToLeft;
+    bool reversed = layoutDirection() == Qt::RightToLeft;
 
-  mwidget->buttonFirst->setIcon( QIcon::fromTheme( reversed ? "go-last" : "go-first" ) );
-  connect( mwidget->buttonFirst, &QAbstractButton::clicked, this, &HistoryDialog::goToFirst );
+    mwidget->buttonFirst->setIcon(QIcon::fromTheme(reversed ? "go-last" : "go-first"));
+    connect(mwidget->buttonFirst, &QAbstractButton::clicked, this, &HistoryDialog::goToFirst);
 
-  mwidget->buttonBack->setIcon( QIcon::fromTheme( reversed ? "go-next" : "go-previous" ) );
-  connect( mwidget->buttonBack, &QAbstractButton::clicked, this, &HistoryDialog::goBack );
+    mwidget->buttonBack->setIcon(QIcon::fromTheme(reversed ? "go-next" : "go-previous"));
+    connect(mwidget->buttonBack, &QAbstractButton::clicked, this, &HistoryDialog::goBack);
 
-  mwidget->editStep->setValidator( new QIntValidator( 1, mtotalsteps, mwidget->editStep ) );
-  mwidget->labelSteps->setText( QString::number( mtotalsteps ) );
+    mwidget->editStep->setValidator(new QIntValidator(1, mtotalsteps, mwidget->editStep));
+    mwidget->labelSteps->setText(QString::number(mtotalsteps));
 
-  mwidget->buttonNext->setIcon( QIcon::fromTheme( reversed ? "go-previous" : "go-next" ) );
-  connect( mwidget->buttonNext, &QAbstractButton::clicked, this, &HistoryDialog::goToNext );
+    mwidget->buttonNext->setIcon(QIcon::fromTheme(reversed ? "go-previous" : "go-next"));
+    connect(mwidget->buttonNext, &QAbstractButton::clicked, this, &HistoryDialog::goToNext);
 
-  mwidget->buttonLast->setIcon( QIcon::fromTheme( reversed ? "go-first" : "go-last" ) );
-  connect( mwidget->buttonLast, &QAbstractButton::clicked, this, &HistoryDialog::goToLast );
+    mwidget->buttonLast->setIcon(QIcon::fromTheme(reversed ? "go-first" : "go-last"));
+    connect(mwidget->buttonLast, &QAbstractButton::clicked, this, &HistoryDialog::goToLast);
 
-  updateWidgets();
+    updateWidgets();
 
-  resize( 400, 200 );
+    resize(400, 200);
 }
 
 HistoryDialog::~HistoryDialog()
 {
-  delete mwidget;
+    delete mwidget;
 }
 
 void HistoryDialog::goToFirst()
 {
-  int undosteps = mch->index();
-  for ( int i = 0; i < undosteps; ++i )
-  {
-    mch->undo();
-  }
+    int undosteps = mch->index();
+    for (int i = 0; i < undosteps; ++i) {
+        mch->undo();
+    }
 
-  updateWidgets();
+    updateWidgets();
 }
 
 void HistoryDialog::goBack()
 {
-  mch->undo();
+    mch->undo();
 
-  updateWidgets();
+    updateWidgets();
 }
 
 void HistoryDialog::goToNext()
 {
-  mch->redo();
+    mch->redo();
 
-  updateWidgets();
+    updateWidgets();
 }
 
 void HistoryDialog::goToLast()
 {
-  int redosteps = mch->count() - mch->index();
-  for ( int i = 0; i < redosteps; ++i )
-  {
-    mch->redo();
-  }
+    int redosteps = mch->count() - mch->index();
+    for (int i = 0; i < redosteps; ++i) {
+        mch->redo();
+    }
 
-  updateWidgets();
+    updateWidgets();
 }
 
 void HistoryDialog::updateWidgets()
 {
-  int currentstep = mch->index() + 1;
+    int currentstep = mch->index() + 1;
 
-  mwidget->editStep->setText( QString::number( currentstep ) );
-  if ( mch->index() > 0 )
-  {
-    mwidget->description->setPlainText( mch->text( mch->index() - 1 ) );
-  }
-  else
-  {
-    mwidget->description->setPlainText( i18n( "Start of the construction" ) );
-  }
+    mwidget->editStep->setText(QString::number(currentstep));
+    if (mch->index() > 0) {
+        mwidget->description->setPlainText(mch->text(mch->index() - 1));
+    } else {
+        mwidget->description->setPlainText(i18n("Start of the construction"));
+    }
 
-  bool notfirst = currentstep > 1;
-  bool notlast = currentstep < mtotalsteps;
-  mwidget->buttonFirst->setEnabled( notfirst );
-  mwidget->buttonBack->setEnabled( notfirst );
-  mwidget->buttonNext->setEnabled( notlast );
-  mwidget->buttonLast->setEnabled( notlast );
+    bool notfirst = currentstep > 1;
+    bool notlast = currentstep < mtotalsteps;
+    mwidget->buttonFirst->setEnabled(notfirst);
+    mwidget->buttonBack->setEnabled(notfirst);
+    mwidget->buttonNext->setEnabled(notlast);
+    mwidget->buttonLast->setEnabled(notlast);
 }

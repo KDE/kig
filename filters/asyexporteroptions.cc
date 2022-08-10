@@ -9,46 +9,46 @@
 #include <QCheckBox>
 #include <QLayout>
 
-AsyExporterOptions::AsyExporterOptions( QWidget* parent )
-  : QWidget( parent )
+AsyExporterOptions::AsyExporterOptions(QWidget *parent)
+    : QWidget(parent)
 {
-  expwidget = new Ui_AsyExporterOptionsWidget();
-  expwidget->setupUi( this );
+    expwidget = new Ui_AsyExporterOptionsWidget();
+    expwidget->setupUi(this);
 
-  layout()->setContentsMargins( 0, 0, 0, 0 );
+    layout()->setContentsMargins(0, 0, 0, 0);
 }
 
 AsyExporterOptions::~AsyExporterOptions()
 {
-  delete expwidget;
+    delete expwidget;
 }
 
-void AsyExporterOptions::setGrid( bool grid )
+void AsyExporterOptions::setGrid(bool grid)
 {
-  expwidget->showGridCheckBox->setChecked( grid );
+    expwidget->showGridCheckBox->setChecked(grid);
 }
 
 bool AsyExporterOptions::showGrid() const
 {
-  return expwidget->showGridCheckBox->isChecked();
+    return expwidget->showGridCheckBox->isChecked();
 }
 
-void AsyExporterOptions::setAxes( bool axes )
+void AsyExporterOptions::setAxes(bool axes)
 {
-  expwidget->showAxesCheckBox->setChecked( axes );
+    expwidget->showAxesCheckBox->setChecked(axes);
 }
 
 bool AsyExporterOptions::showAxes() const
 {
-  return expwidget->showAxesCheckBox->isChecked();
+    return expwidget->showAxesCheckBox->isChecked();
 }
 
-void AsyExporterOptions::setExtraFrame( bool frame )
+void AsyExporterOptions::setExtraFrame(bool frame)
 {
-  expwidget->showFrameCheckBox->setChecked( frame );
+    expwidget->showFrameCheckBox->setChecked(frame);
 }
 
 bool AsyExporterOptions::showExtraFrame() const
 {
-  return expwidget->showFrameCheckBox->isChecked();
+    return expwidget->showFrameCheckBox->isChecked();
 }

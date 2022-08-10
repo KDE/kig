@@ -4,18 +4,18 @@
 
 #include "guiaction.h"
 
-#include "coordinate_system.h"
 #include "coordinate.h"
+#include "coordinate_system.h"
 #include "object_constructor.h"
 
-#include "../kig/kig_part.h"
 #include "../kig/kig_document.h"
+#include "../kig/kig_part.h"
 #include "../misc/kiginputdialog.h"
 #include "../modes/construct_mode.h"
 #include "../modes/label.h"
-#include "../objects/object_holder.h"
-#include "../objects/object_factory.h"
 #include "../objects/bogus_imp.h"
+#include "../objects/object_factory.h"
+#include "../objects/object_holder.h"
 
 #include <KActionCollection>
 #include <KIconEngine>
@@ -25,7 +25,7 @@
 
 int GUIAction::shortcut() const
 {
-  return 0;
+    return 0;
 }
 
 GUIAction::~GUIAction()
@@ -36,64 +36,63 @@ ConstructibleAction::~ConstructibleAction()
 {
 }
 
-ConstructibleAction::ConstructibleAction(
-  ObjectConstructor* ctor,
-  const QByteArray& actionname,
-  int shortcut )
-  : GUIAction(), mctor( ctor ), mactionname( actionname ), mshortcut( shortcut )
+ConstructibleAction::ConstructibleAction(ObjectConstructor *ctor, const QByteArray &actionname, int shortcut)
+    : GUIAction()
+    , mctor(ctor)
+    , mactionname(actionname)
+    , mshortcut(shortcut)
 {
 }
 
 QString ConstructibleAction::description() const
 {
-  return mctor->description();
+    return mctor->description();
 }
 
-QString ConstructibleAction::iconFileName( const bool canBeNull ) const
+QString ConstructibleAction::iconFileName(const bool canBeNull) const
 {
-  return mctor->iconFileName( canBeNull );
+    return mctor->iconFileName(canBeNull);
 }
 
 QString ConstructibleAction::descriptiveName() const
 {
-  return mctor->descriptiveName();
+    return mctor->descriptiveName();
 }
 
-void ConstructibleAction::act( KigPart& d )
+void ConstructibleAction::act(KigPart &d)
 {
-  BaseConstructMode* m = mctor->constructMode( d );
-  d.runMode( m );
-  delete m;
-  d.rememberConstruction( this );
+    BaseConstructMode *m = mctor->constructMode(d);
+    d.runMode(m);
+    delete m;
+    d.rememberConstruction(this);
 }
 
-KigGUIAction::KigGUIAction( GUIAction* act,
-                            KigPart& doc )
-  : QAction( act->descriptiveName(), doc.actionCollection() ),
-  mact( act ),
-  mdoc( doc )
+KigGUIAction::KigGUIAction(GUIAction *act, KigPart &doc)
+    : QAction(act->descriptiveName(), doc.actionCollection())
+    , mact(act)
+    , mdoc(doc)
 {
-  QString icon = act->iconFileName( true );
-  if ( !icon.isEmpty() )
-    setIcon( QIcon( new KIconEngine( icon, doc.iconLoader() ) ) );
-  setWhatsThis( act->description() );
-  QString tooltip = act->descriptiveName();
-  tooltip.replace( QRegExp( "&&" ), QStringLiteral("&") );
-  setToolTip( tooltip );
-  connect( this, &QAction::triggered, this, &KigGUIAction::slotActivated );
+    QString icon = act->iconFileName(true);
+    if (!icon.isEmpty())
+        setIcon(QIcon(new KIconEngine(icon, doc.iconLoader())));
+    setWhatsThis(act->description());
+    QString tooltip = act->descriptiveName();
+    tooltip.replace(QRegExp("&&"), QStringLiteral("&"));
+    setToolTip(tooltip);
+    connect(this, &QAction::triggered, this, &KigGUIAction::slotActivated);
 
-  doc.actionCollection()->addAction(act->actionName(), this);
-  doc.actionCollection()->setDefaultShortcut( this, QKeySequence( act->shortcut() ) );
+    doc.actionCollection()->addAction(act->actionName(), this);
+    doc.actionCollection()->setDefaultShortcut(this, QKeySequence(act->shortcut()));
 }
 
 void KigGUIAction::slotActivated()
 {
-  mact->act( mdoc );
+    mact->act(mdoc);
 }
 
-const char* ConstructibleAction::actionName() const
+const char *ConstructibleAction::actionName() const
 {
-  return mactionname;
+    return mactionname;
 }
 
 ConstructPointAction::~ConstructPointAction()
@@ -102,127 +101,128 @@ ConstructPointAction::~ConstructPointAction()
 
 QString ConstructPointAction::description() const
 {
-  return i18n(
-    "A normal point, i.e. one that is either independent or attached "
-    "to a line, circle, segment."
-    );
+    return i18n(
+        "A normal point, i.e. one that is either independent or attached "
+        "to a line, circle, segment.");
 }
 
-QString ConstructPointAction::iconFileName( const bool ) const
+QString ConstructPointAction::iconFileName(const bool) const
 {
-  return QStringLiteral("point");
+    return QStringLiteral("point");
 }
 
 QString ConstructPointAction::descriptiveName() const
 {
-  return i18n("Point");
+    return i18n("Point");
 }
 
-const char* ConstructPointAction::actionName() const
+const char *ConstructPointAction::actionName() const
 {
-  return mactionname;
+    return mactionname;
 }
 
 int ConstructPointAction::shortcut() const
 {
-  return Qt::Key_P;
+    return Qt::Key_P;
 }
 
-void ConstructPointAction::act( KigPart& d )
+void ConstructPointAction::act(KigPart &d)
 {
-  PointConstructMode m( d );
-  d.runMode( &m );
+    PointConstructMode m(d);
+    d.runMode(&m);
 }
 
-ConstructPointAction::ConstructPointAction( const char* actionname )
-  : mactionname( actionname )
+ConstructPointAction::ConstructPointAction(const char *actionname)
+    : mactionname(actionname)
 {
 }
 
-GUIAction* KigGUIAction::guiAction()
+GUIAction *KigGUIAction::guiAction()
 {
-  return mact;
+    return mact;
 }
 
-void KigGUIAction::plug( KigPart* doc )
+void KigGUIAction::plug(KigPart *doc)
 {
-  mact->plug( doc, this );
+    mact->plug(doc, this);
 }
 
-void ConstructibleAction::plug( KigPart* doc, KigGUIAction* kact )
+void ConstructibleAction::plug(KigPart *doc, KigGUIAction *kact)
 {
-  mctor->plug( doc, kact );
+    mctor->plug(doc, kact);
 }
 
 QString ConstructTextLabelAction::description() const
 {
-  return i18n( "Construct a text label." );
+    return i18n("Construct a text label.");
 }
 
-QString ConstructTextLabelAction::iconFileName( const bool ) const
+QString ConstructTextLabelAction::iconFileName(const bool) const
 {
-  return QStringLiteral("kig_text");
+    return QStringLiteral("kig_text");
 }
 
 QString ConstructTextLabelAction::descriptiveName() const
 {
-  return i18n( "Text Label" );
+    return i18n("Text Label");
 }
 
-const char* ConstructTextLabelAction::actionName() const
+const char *ConstructTextLabelAction::actionName() const
 {
-  return mactionname;
+    return mactionname;
 }
 
-void ConstructTextLabelAction::act( KigPart& d )
+void ConstructTextLabelAction::act(KigPart &d)
 {
-  TextLabelConstructionMode m( d );
-  d.runMode( &m );
+    TextLabelConstructionMode m(d);
+    d.runMode(&m);
 }
 
-ConstructTextLabelAction::ConstructTextLabelAction( const char* actionname )
-  : mactionname( actionname )
+ConstructTextLabelAction::ConstructTextLabelAction(const char *actionname)
+    : mactionname(actionname)
 {
 }
 
 QString AddFixedPointAction::description() const
 {
-  return i18n( "Construct a Point by its Coordinates" );
+    return i18n("Construct a Point by its Coordinates");
 }
 
-QString AddFixedPointAction::iconFileName( const bool ) const
+QString AddFixedPointAction::iconFileName(const bool) const
 {
-  return QStringLiteral("pointxy");
+    return QStringLiteral("pointxy");
 }
 
 QString AddFixedPointAction::descriptiveName() const
 {
-  return i18n( "Point by Coordinates" );
+    return i18n("Point by Coordinates");
 }
 
-const char* AddFixedPointAction::actionName() const
+const char *AddFixedPointAction::actionName() const
 {
-  return mactionname;
+    return mactionname;
 }
 
-void AddFixedPointAction::act( KigPart& doc )
+void AddFixedPointAction::act(KigPart &doc)
 {
-  bool ok;
-  Coordinate c = Coordinate::invalidCoord();
-  KigInputDialog::getCoordinate(
-    i18n( "Fixed Point" ),
-    i18n( "Enter the coordinates for the new point." ) +
-    QLatin1String( "<br>" ) +
-    doc.document().coordinateSystem().coordinateFormatNoticeMarkup(),
-    doc.widget(), &ok, doc.document(), &c );
-  if ( ! ok ) return;
-  ObjectHolder* p = ObjectFactory::instance()->fixedPoint( c );
-  p->calc( doc.document() );
-  doc.addObject( p );
+    bool ok;
+    Coordinate c = Coordinate::invalidCoord();
+    KigInputDialog::getCoordinate(i18n("Fixed Point"),
+                                  i18n("Enter the coordinates for the new point.") + QLatin1String("<br>")
+                                      + doc.document().coordinateSystem().coordinateFormatNoticeMarkup(),
+                                  doc.widget(),
+                                  &ok,
+                                  doc.document(),
+                                  &c);
+    if (!ok)
+        return;
+    ObjectHolder *p = ObjectFactory::instance()->fixedPoint(c);
+    p->calc(doc.document());
+    doc.addObject(p);
 }
 
-AddFixedPointAction::AddFixedPointAction( const char* actionname )
-  : mactionname( actionname )
+AddFixedPointAction::AddFixedPointAction(const char *actionname)
+    : mactionname(actionname)
 {
 }
 
@@ -232,32 +232,32 @@ AddFixedPointAction::~AddFixedPointAction()
 
 QString ConstructNumericLabelAction::description() const
 {
-  return i18n( "Construct a Numeric Value" );
+    return i18n("Construct a Numeric Value");
 }
 
-QString ConstructNumericLabelAction::iconFileName( const bool ) const
+QString ConstructNumericLabelAction::iconFileName(const bool) const
 {
-  return QStringLiteral("kig_numericvalue");
+    return QStringLiteral("kig_numericvalue");
 }
 
 QString ConstructNumericLabelAction::descriptiveName() const
 {
-  return i18n( "Numeric Value" );
+    return i18n("Numeric Value");
 }
 
-const char* ConstructNumericLabelAction::actionName() const
+const char *ConstructNumericLabelAction::actionName() const
 {
-  return mactionname;
+    return mactionname;
 }
 
-void ConstructNumericLabelAction::act( KigPart& doc )
+void ConstructNumericLabelAction::act(KigPart &doc)
 {
-  NumericLabelMode m( doc );
-  doc.runMode( &m );
+    NumericLabelMode m(doc);
+    doc.runMode(&m);
 }
 
-ConstructNumericLabelAction::ConstructNumericLabelAction( const char* actionname )
-  : mactionname( actionname )
+ConstructNumericLabelAction::ConstructNumericLabelAction(const char *actionname)
+    : mactionname(actionname)
 {
 }
 
@@ -267,26 +267,26 @@ ConstructNumericLabelAction::~ConstructNumericLabelAction()
 
 int ConstructNumericLabelAction::shortcut() const
 {
-  return Qt::Key_N;
+    return Qt::Key_N;
 }
 
-void GUIAction::plug( KigPart*, KigGUIAction* )
+void GUIAction::plug(KigPart *, KigGUIAction *)
 {
 }
 
 int ConstructibleAction::shortcut() const
 {
-  return mshortcut;
+    return mshortcut;
 }
 
 int ConstructTextLabelAction::shortcut() const
 {
-  return Qt::Key_B;
+    return Qt::Key_B;
 }
 
 int AddFixedPointAction::shortcut() const
 {
-  return Qt::Key_F;
+    return Qt::Key_F;
 }
 
 #if 0
@@ -345,16 +345,17 @@ void TestAction::act( KigPart& doc )
 #include "../scripting/python_type.h"
 #include "../scripting/script_mode.h"
 
-NewScriptAction::NewScriptAction( const char* descname, const char* description,
-                                  const char* actionname, const ScriptType::Type type,
-                                  const char* icon )
-  : GUIAction(), mactionname( actionname ), mdescname( descname ),
-    mdescription( description ), micon( icon ), mtype( type )
+NewScriptAction::NewScriptAction(const char *descname, const char *description, const char *actionname, const ScriptType::Type type, const char *icon)
+    : GUIAction()
+    , mactionname(actionname)
+    , mdescname(descname)
+    , mdescription(description)
+    , micon(icon)
+    , mtype(type)
 {
-  if ( QString( micon ).isEmpty() )
-  {
-    micon = ScriptType::icon( type );
-  }
+    if (QString(micon).isEmpty()) {
+        micon = ScriptType::icon(type);
+    }
 }
 
 NewScriptAction::~NewScriptAction()
@@ -363,34 +364,34 @@ NewScriptAction::~NewScriptAction()
 
 QString NewScriptAction::description() const
 {
-  return i18n( mdescription );
+    return i18n(mdescription);
 }
 
-QString NewScriptAction::iconFileName( const bool ) const
+QString NewScriptAction::iconFileName(const bool) const
 {
-  return micon;
+    return micon;
 }
 
 QString NewScriptAction::descriptiveName() const
 {
-  return i18n( mdescname );
+    return i18n(mdescname);
 }
 
-const char* NewScriptAction::actionName() const
+const char *NewScriptAction::actionName() const
 {
-  return mactionname;
+    return mactionname;
 }
 
-void NewScriptAction::act( KigPart& doc )
+void NewScriptAction::act(KigPart &doc)
 {
-  ScriptCreationMode m( doc );
-  m.setScriptType( mtype );
-  doc.runMode( &m );
+    ScriptCreationMode m(doc);
+    m.setScriptType(mtype);
+    doc.runMode(&m);
 }
 
 int NewScriptAction::shortcut() const
 {
-  return 0;
+    return 0;
 }
 
 #endif // if KIG_ENABLE_PYTHON_SCRIPTING ( NewScriptAction )

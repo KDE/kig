@@ -9,367 +9,434 @@
 
 #include "../misc/rect.h"
 
-Coordinate BogusImp::attachPoint( ) const
+Coordinate BogusImp::attachPoint() const
 {
-  return Coordinate::invalidCoord();
+    return Coordinate::invalidCoord();
 }
 
-void BogusImp::draw( KigPainter& ) const
-{
-}
-
-bool BogusImp::contains( const Coordinate&, int, const KigWidget& ) const
-{
-  return false;
-}
-
-bool BogusImp::inRect( const Rect&, int, const KigWidget& ) const
-{
-  return false;
-}
-
-DoubleImp::DoubleImp( const double d )
-  : mdata( d )
+void BogusImp::draw(KigPainter &) const
 {
 }
 
-IntImp::IntImp( const int d )
-  : mdata( d )
+bool BogusImp::contains(const Coordinate &, int, const KigWidget &) const
+{
+    return false;
+}
+
+bool BogusImp::inRect(const Rect &, int, const KigWidget &) const
+{
+    return false;
+}
+
+DoubleImp::DoubleImp(const double d)
+    : mdata(d)
 {
 }
 
-StringImp::StringImp( const QString& d )
-  : mdata( d )
+IntImp::IntImp(const int d)
+    : mdata(d)
 {
 }
 
-DoubleImp* DoubleImp::copy() const
+StringImp::StringImp(const QString &d)
+    : mdata(d)
 {
-  return new DoubleImp( mdata );
 }
 
-IntImp* IntImp::copy() const
+DoubleImp *DoubleImp::copy() const
 {
-  return new IntImp( mdata );
+    return new DoubleImp(mdata);
 }
 
-StringImp* StringImp::copy() const
+IntImp *IntImp::copy() const
 {
-  return new StringImp( mdata );
+    return new IntImp(mdata);
 }
 
-ObjectImp* BogusImp::transform( const Transformation& ) const
+StringImp *StringImp::copy() const
 {
-  return copy();
+    return new StringImp(mdata);
 }
 
-InvalidImp* InvalidImp::copy() const
+ObjectImp *BogusImp::transform(const Transformation &) const
 {
-  return new InvalidImp();
+    return copy();
+}
+
+InvalidImp *InvalidImp::copy() const
+{
+    return new InvalidImp();
 }
 
 InvalidImp::InvalidImp()
 {
 }
 
-void InvalidImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void InvalidImp::fillInNextEscape(QString &s, const KigDocument &) const
 {
-  s = s.arg( QStringLiteral("[invalid]") );
+    s = s.arg(QStringLiteral("[invalid]"));
 }
 
-void DoubleImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void DoubleImp::fillInNextEscape(QString &s, const KigDocument &) const
 {
-  s = s.arg( mdata );
+    s = s.arg(mdata);
 }
 
-void IntImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void IntImp::fillInNextEscape(QString &s, const KigDocument &) const
 {
-  s = s.arg( mdata );
+    s = s.arg(mdata);
 }
 
-void StringImp::fillInNextEscape( QString& s, const KigDocument& ) const
+void StringImp::fillInNextEscape(QString &s, const KigDocument &) const
 {
-  s = s.arg( mdata );
+    s = s.arg(mdata);
 }
 
-HierarchyImp::HierarchyImp( const ObjectHierarchy& h )
-  : BogusImp(), mdata( h )
-{
-}
-
-HierarchyImp* HierarchyImp::copy() const
-{
-  return new HierarchyImp( mdata );
-}
-
-void InvalidImp::visit( ObjectImpVisitor* vtor ) const
-{
-  vtor->visit( this );
-}
-
-void DoubleImp::visit( ObjectImpVisitor* vtor ) const
-{
-  vtor->visit( this );
-}
-
-void IntImp::visit( ObjectImpVisitor* vtor ) const
-{
-  vtor->visit( this );
-}
-
-void StringImp::visit( ObjectImpVisitor* vtor ) const
-{
-  vtor->visit( this );
-}
-
-void HierarchyImp::visit( ObjectImpVisitor* vtor ) const
-{
-  vtor->visit( this );
-}
-
-TransformationImp::TransformationImp( const Transformation& h )
-  : mdata( h )
+HierarchyImp::HierarchyImp(const ObjectHierarchy &h)
+    : BogusImp()
+    , mdata(h)
 {
 }
 
-TransformationImp* TransformationImp::copy() const
+HierarchyImp *HierarchyImp::copy() const
 {
-  return new TransformationImp( mdata );
+    return new HierarchyImp(mdata);
 }
 
-void TransformationImp::visit( ObjectImpVisitor* vtor ) const
+void InvalidImp::visit(ObjectImpVisitor *vtor) const
 {
-  vtor->visit( this );
+    vtor->visit(this);
 }
 
-bool InvalidImp::equals( const ObjectImp& rhs ) const
+void DoubleImp::visit(ObjectImpVisitor *vtor) const
 {
-  return !rhs.valid();
+    vtor->visit(this);
 }
 
-bool DoubleImp::equals( const ObjectImp& rhs ) const
+void IntImp::visit(ObjectImpVisitor *vtor) const
 {
-  return rhs.inherits( DoubleImp::stype() ) &&
-    static_cast<const DoubleImp&>( rhs ).data() == mdata;
+    vtor->visit(this);
 }
 
-bool IntImp::equals( const ObjectImp& rhs ) const
+void StringImp::visit(ObjectImpVisitor *vtor) const
 {
-  return rhs.inherits( IntImp::stype() ) &&
-    static_cast<const IntImp&>( rhs ).data() == mdata;
+    vtor->visit(this);
 }
 
-bool StringImp::equals( const ObjectImp& rhs ) const
+void HierarchyImp::visit(ObjectImpVisitor *vtor) const
 {
-  return rhs.inherits( StringImp::stype() ) &&
-    static_cast<const StringImp&>( rhs ).data() == mdata;
+    vtor->visit(this);
 }
 
-bool HierarchyImp::equals( const ObjectImp& rhs ) const
+TransformationImp::TransformationImp(const Transformation &h)
+    : mdata(h)
 {
-  return rhs.inherits( HierarchyImp::stype() ) &&
-    static_cast<const HierarchyImp&>( rhs ).data() == mdata;
 }
 
-bool TransformationImp::equals( const ObjectImp& rhs ) const
+TransformationImp *TransformationImp::copy() const
 {
-  return rhs.inherits( TransformationImp::stype() ) &&
-    static_cast<const TransformationImp&>( rhs ).data() == mdata;
+    return new TransformationImp(mdata);
+}
+
+void TransformationImp::visit(ObjectImpVisitor *vtor) const
+{
+    vtor->visit(this);
+}
+
+bool InvalidImp::equals(const ObjectImp &rhs) const
+{
+    return !rhs.valid();
+}
+
+bool DoubleImp::equals(const ObjectImp &rhs) const
+{
+    return rhs.inherits(DoubleImp::stype()) && static_cast<const DoubleImp &>(rhs).data() == mdata;
+}
+
+bool IntImp::equals(const ObjectImp &rhs) const
+{
+    return rhs.inherits(IntImp::stype()) && static_cast<const IntImp &>(rhs).data() == mdata;
+}
+
+bool StringImp::equals(const ObjectImp &rhs) const
+{
+    return rhs.inherits(StringImp::stype()) && static_cast<const StringImp &>(rhs).data() == mdata;
+}
+
+bool HierarchyImp::equals(const ObjectImp &rhs) const
+{
+    return rhs.inherits(HierarchyImp::stype()) && static_cast<const HierarchyImp &>(rhs).data() == mdata;
+}
+
+bool TransformationImp::equals(const ObjectImp &rhs) const
+{
+    return rhs.inherits(TransformationImp::stype()) && static_cast<const TransformationImp &>(rhs).data() == mdata;
 }
 
 bool InvalidImp::canFillInNextEscape() const
 {
-  return true;
+    return true;
 }
 
 bool DoubleImp::canFillInNextEscape() const
 {
-  return true;
+    return true;
 }
 
 bool IntImp::canFillInNextEscape() const
 {
-  return true;
+    return true;
 }
 
 bool StringImp::canFillInNextEscape() const
 {
-  return true;
+    return true;
 }
 
-const ObjectImpType* InvalidImp::stype()
+const ObjectImpType *InvalidImp::stype()
 {
-  static const ObjectImpType t(
-    Parent::stype(), "invalid", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
+    static const ObjectImpType t(Parent::stype(),
+                                 "invalid",
+                                 KLazyLocalizedString(),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
 }
 
-const ObjectImpType* StringImp::stype()
+const ObjectImpType *StringImp::stype()
 {
-  static const ObjectImpType t(
-    Parent::stype(), "string",
-    kli18n("string"), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
+    static const ObjectImpType t(Parent::stype(),
+                                 "string",
+                                 kli18n("string"),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
 }
-const ObjectImpType* HierarchyImp::stype()
+const ObjectImpType *HierarchyImp::stype()
 {
-  static const ObjectImpType t(
-    Parent::stype(), "hierarchy", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
+    static const ObjectImpType t(Parent::stype(),
+                                 "hierarchy",
+                                 KLazyLocalizedString(),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
 }
-const ObjectImpType* TransformationImp::stype()
+const ObjectImpType *TransformationImp::stype()
 {
-  static const ObjectImpType t(
-    Parent::stype(), "transformation", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
-}
-
-const ObjectImpType* InvalidImp::type() const
-{
-  return InvalidImp::stype();
-}
-
-const ObjectImpType* DoubleImp::type() const
-{
-  return DoubleImp::stype();
-}
-
-const ObjectImpType* IntImp::type() const
-{
-  return IntImp::stype();
-}
-
-const ObjectImpType* StringImp::type() const
-{
-  return StringImp::stype();
-}
-
-const ObjectImpType* HierarchyImp::type() const
-{
-  return HierarchyImp::stype();
-}
-
-const ObjectImpType* TransformationImp::type() const
-{
-  return TransformationImp::stype();
+    static const ObjectImpType t(Parent::stype(),
+                                 "transformation",
+                                 KLazyLocalizedString(),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
 }
 
-const ObjectImpType* DoubleImp::stype()
+const ObjectImpType *InvalidImp::type() const
 {
-  static const ObjectImpType t(
-    Parent::stype(), "double",
-    kli18n("double"), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
+    return InvalidImp::stype();
 }
 
-const ObjectImpType* IntImp::stype()
+const ObjectImpType *DoubleImp::type() const
 {
-  static const ObjectImpType t(
-    Parent::stype(), "int",
-    kli18n("int"), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
+    return DoubleImp::stype();
 }
 
-const ObjectImpType* BogusImp::stype()
+const ObjectImpType *IntImp::type() const
 {
-  static const ObjectImpType t(
-    Parent::stype(), "bogus",
-    KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
+    return IntImp::stype();
 }
 
-const ObjectImpType* TestResultImp::stype()
+const ObjectImpType *StringImp::type() const
 {
-  static const ObjectImpType t(
-    Parent::stype(), "testresult", KLazyLocalizedString(), "", "", KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString(), KLazyLocalizedString() );
-  return &t;
-
+    return StringImp::stype();
 }
 
-TestResultImp::TestResultImp( bool t, const QString& s )
-  : StringImp( s ), mtruth( t )
+const ObjectImpType *HierarchyImp::type() const
+{
+    return HierarchyImp::stype();
+}
+
+const ObjectImpType *TransformationImp::type() const
+{
+    return TransformationImp::stype();
+}
+
+const ObjectImpType *DoubleImp::stype()
+{
+    static const ObjectImpType t(Parent::stype(),
+                                 "double",
+                                 kli18n("double"),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
+}
+
+const ObjectImpType *IntImp::stype()
+{
+    static const ObjectImpType t(Parent::stype(),
+                                 "int",
+                                 kli18n("int"),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
+}
+
+const ObjectImpType *BogusImp::stype()
+{
+    static const ObjectImpType t(Parent::stype(),
+                                 "bogus",
+                                 KLazyLocalizedString(),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
+}
+
+const ObjectImpType *TestResultImp::stype()
+{
+    static const ObjectImpType t(Parent::stype(),
+                                 "testresult",
+                                 KLazyLocalizedString(),
+                                 "",
+                                 "",
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString(),
+                                 KLazyLocalizedString());
+    return &t;
+}
+
+TestResultImp::TestResultImp(bool t, const QString &s)
+    : StringImp(s)
+    , mtruth(t)
 {
 }
 
-TestResultImp* TestResultImp::copy() const
+TestResultImp *TestResultImp::copy() const
 {
-  return new TestResultImp( mtruth, data() );
+    return new TestResultImp(mtruth, data());
 }
 
-const ObjectImpType* TestResultImp::type() const
+const ObjectImpType *TestResultImp::type() const
 {
-  return stype();
+    return stype();
 }
 
-void TestResultImp::visit( ObjectImpVisitor* vtor ) const
+void TestResultImp::visit(ObjectImpVisitor *vtor) const
 {
-  vtor->visit( this );
+    vtor->visit(this);
 }
 
-bool TestResultImp::equals( const ObjectImp& rhs ) const
+bool TestResultImp::equals(const ObjectImp &rhs) const
 {
-  return rhs.inherits( TestResultImp::stype() ) &&
-// (FIXME?)    static_cast<const TestResultImp&>( rhs ).mdata == mdata &&
-    static_cast<const TestResultImp&>( rhs ).mtruth == mtruth;
-
+    return rhs.inherits(TestResultImp::stype()) &&
+        // (FIXME?)    static_cast<const TestResultImp&>( rhs ).mdata == mdata &&
+        static_cast<const TestResultImp &>(rhs).mtruth == mtruth;
 }
 
 int TestResultImp::numberOfProperties() const
 {
-  return Parent::numberOfProperties() + 1;
+    return Parent::numberOfProperties() + 1;
 }
 
 const QList<KLazyLocalizedString> TestResultImp::properties() const
 {
-  QList<KLazyLocalizedString> l = Parent::properties();
-  l << kli18n( "Test Result" );
-  assert( l.size() == TestResultImp::numberOfProperties() );
-  return l;
+    QList<KLazyLocalizedString> l = Parent::properties();
+    l << kli18n("Test Result");
+    assert(l.size() == TestResultImp::numberOfProperties());
+    return l;
 }
 
 const QByteArrayList TestResultImp::propertiesInternalNames() const
 {
-  QByteArrayList s = Parent::propertiesInternalNames();
-  s << "test-result";
-  assert( s.size() == TestResultImp::numberOfProperties() );
-  return s;
+    QByteArrayList s = Parent::propertiesInternalNames();
+    s << "test-result";
+    assert(s.size() == TestResultImp::numberOfProperties());
+    return s;
 }
 
-ObjectImp* TestResultImp::property( int which, const KigDocument& d ) const
+ObjectImp *TestResultImp::property(int which, const KigDocument &d) const
 {
-  if ( which < Parent::numberOfProperties() )
-    return Parent::property( which, d );
-  if ( which == Parent::numberOfProperties() )
-    return new StringImp( data() );
-  else assert( false );
-  return new InvalidImp;
+    if (which < Parent::numberOfProperties())
+        return Parent::property(which, d);
+    if (which == Parent::numberOfProperties())
+        return new StringImp(data());
+    else
+        assert(false);
+    return new InvalidImp;
 }
 
-const char* TestResultImp::iconForProperty( int which ) const
+const char *TestResultImp::iconForProperty(int which) const
 {
-  if ( which < Parent::numberOfProperties() )
-    return Parent::iconForProperty( which );
-  if ( which == Parent::numberOfProperties() )
-    return ""; // test-result
-  else assert( false );
-  return "";
+    if (which < Parent::numberOfProperties())
+        return Parent::iconForProperty(which);
+    if (which == Parent::numberOfProperties())
+        return ""; // test-result
+    else
+        assert(false);
+    return "";
 }
 
-const ObjectImpType* TestResultImp::impRequirementForProperty( int which ) const
+const ObjectImpType *TestResultImp::impRequirementForProperty(int which) const
 {
-  if ( which < Parent::numberOfProperties() )
-    return Parent::impRequirementForProperty( which );
-  else return TestResultImp::stype();
+    if (which < Parent::numberOfProperties())
+        return Parent::impRequirementForProperty(which);
+    else
+        return TestResultImp::stype();
 }
 
-bool TestResultImp::isPropertyDefinedOnOrThroughThisImp( int which ) const
+bool TestResultImp::isPropertyDefinedOnOrThroughThisImp(int which) const
 {
-  if ( which < Parent::numberOfProperties() )
-    return Parent::impRequirementForProperty( which );
-  else return false;
+    if (which < Parent::numberOfProperties())
+        return Parent::impRequirementForProperty(which);
+    else
+        return false;
 }
 
 Rect BogusImp::surroundingRect() const
 {
-  return Rect::invalidRect();
+    return Rect::invalidRect();
 }

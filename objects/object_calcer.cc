@@ -4,336 +4,323 @@
 
 #include "object_calcer.h"
 
+#include "../misc/coordinate.h"
+#include "bogus_imp.h"
+#include "common.h"
 #include "object_holder.h"
 #include "object_imp.h"
-#include "bogus_imp.h"
 #include "object_type.h"
-#include "../misc/coordinate.h"
-#include "common.h"
 
 #include <algorithm>
+#include <iterator>
 #include <set>
 #include <typeinfo>
-#include <iterator>
 
-void ObjectTypeCalcer::calc( const KigDocument& doc )
+void ObjectTypeCalcer::calc(const KigDocument &doc)
 {
-  Args a;
-  a.reserve( mparents.size() );
-  std::transform( mparents.begin(), mparents.end(),
-                  std::back_inserter( a ), std::mem_fun( &ObjectCalcer::imp ) );
-  ObjectImp* n = mtype->calc( a, doc );
-  delete mimp;
-  mimp = n;
+    Args a;
+    a.reserve(mparents.size());
+    std::transform(mparents.begin(), mparents.end(), std::back_inserter(a), std::mem_fun(&ObjectCalcer::imp));
+    ObjectImp *n = mtype->calc(a, doc);
+    delete mimp;
+    mimp = n;
 }
 
-ObjectTypeCalcer::ObjectTypeCalcer( const ObjectType* type, 
-      const std::vector<ObjectCalcer*>& parents, bool sort )
-  : mparents( ( sort )?type->sortArgs( parents ):parents ), mtype( type ), mimp( nullptr )
+ObjectTypeCalcer::ObjectTypeCalcer(const ObjectType *type, const std::vector<ObjectCalcer *> &parents, bool sort)
+    : mparents((sort) ? type->sortArgs(parents) : parents)
+    , mtype(type)
+    , mimp(nullptr)
 {
-  std::for_each( mparents.begin(), mparents.end(),
-                 std::bind2nd( std::mem_fun( &ObjectCalcer::addChild ), this ) );
+    std::for_each(mparents.begin(), mparents.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::addChild), this));
 }
 
 ObjectCalcer::~ObjectCalcer()
 {
 }
 
-ObjectConstCalcer::ObjectConstCalcer( ObjectImp* imp )
-  : mimp( imp )
+ObjectConstCalcer::ObjectConstCalcer(ObjectImp *imp)
+    : mimp(imp)
 {
 }
 
 ObjectConstCalcer::~ObjectConstCalcer()
 {
-  delete mimp;
+    delete mimp;
 }
 
-const ObjectImp* ObjectConstCalcer::imp() const
+const ObjectImp *ObjectConstCalcer::imp() const
 {
-  return mimp;
+    return mimp;
 }
 
-void ObjectConstCalcer::calc( const KigDocument& )
+void ObjectConstCalcer::calc(const KigDocument &)
 {
 }
 
-std::vector<ObjectCalcer*> ObjectConstCalcer::parents() const
+std::vector<ObjectCalcer *> ObjectConstCalcer::parents() const
 {
-  // we have no parents..
-  return std::vector<ObjectCalcer*>();
+    // we have no parents..
+    return std::vector<ObjectCalcer *>();
 }
 
 void ObjectCalcer::ref()
 {
-  ++refcount;
+    ++refcount;
 }
 
 void ObjectCalcer::deref()
 {
-  if ( --refcount <= 0 ) delete this;
+    if (--refcount <= 0)
+        delete this;
 }
 
-void intrusive_ptr_add_ref( ObjectCalcer* p )
+void intrusive_ptr_add_ref(ObjectCalcer *p)
 {
-  p->ref();
+    p->ref();
 }
 
-void intrusive_ptr_release( ObjectCalcer* p )
+void intrusive_ptr_release(ObjectCalcer *p)
 {
-  p->deref();
+    p->deref();
 }
 
-const ObjectImp* ObjectTypeCalcer::imp() const
+const ObjectImp *ObjectTypeCalcer::imp() const
 {
-  return mimp;
+    return mimp;
 }
 
-std::vector<ObjectCalcer*> ObjectTypeCalcer::parents() const
+std::vector<ObjectCalcer *> ObjectTypeCalcer::parents() const
 {
-  return mparents;
+    return mparents;
 }
 
-void ObjectCalcer::addChild( ObjectCalcer* c )
+void ObjectCalcer::addChild(ObjectCalcer *c)
 {
-  mchildren.push_back( c );
-  ref();
+    mchildren.push_back(c);
+    ref();
 }
 
-void ObjectCalcer::delChild( ObjectCalcer* c )
+void ObjectCalcer::delChild(ObjectCalcer *c)
 {
-  std::vector<ObjectCalcer*>::iterator i = std::find( mchildren.begin(), mchildren.end(), c );
-  assert( i != mchildren.end() );
+    std::vector<ObjectCalcer *>::iterator i = std::find(mchildren.begin(), mchildren.end(), c);
+    assert(i != mchildren.end());
 
-  mchildren.erase( i );
-  deref();
+    mchildren.erase(i);
+    deref();
 }
 
 ObjectTypeCalcer::~ObjectTypeCalcer()
 {
-  std::for_each( mparents.begin(), mparents.end(),
-                 std::bind2nd( std::mem_fun( &ObjectCalcer::delChild ), this ) );
-  delete mimp;
+    std::for_each(mparents.begin(), mparents.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::delChild), this));
+    delete mimp;
 }
 
-const ObjectType* ObjectTypeCalcer::type() const
+const ObjectType *ObjectTypeCalcer::type() const
 {
-  return mtype;
+    return mtype;
 }
 
-ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, const char* pname )
-  : mimp( nullptr ), mparent( parent ), mparenttype( nullptr )
+ObjectPropertyCalcer::ObjectPropertyCalcer(ObjectCalcer *parent, const char *pname)
+    : mimp(nullptr)
+    , mparent(parent)
+    , mparenttype(nullptr)
 {
-  mparent->addChild( this );
-  mpropgid = mparent->imp()->getPropGid( pname );
+    mparent->addChild(this);
+    mpropgid = mparent->imp()->getPropGid(pname);
 }
 
-ObjectPropertyCalcer::ObjectPropertyCalcer( ObjectCalcer* parent, int propid, bool islocal )
-  : mimp( nullptr ), mparent( parent ), mparenttype( nullptr )
+ObjectPropertyCalcer::ObjectPropertyCalcer(ObjectCalcer *parent, int propid, bool islocal)
+    : mimp(nullptr)
+    , mparent(parent)
+    , mparenttype(nullptr)
 {
-  mparent->addChild( this );
-  if ( islocal )
-  {
-    mpropgid = parent->imp()->getPropGid( parent->imp()->propertiesInternalNames()[propid] );
-  } else {
-    mpropgid = propid;
-  }
+    mparent->addChild(this);
+    if (islocal) {
+        mpropgid = parent->imp()->getPropGid(parent->imp()->propertiesInternalNames()[propid]);
+    } else {
+        mpropgid = propid;
+    }
 }
 
 ObjectPropertyCalcer::~ObjectPropertyCalcer()
 {
-  mparent->delChild( this );
-  delete mimp;
+    mparent->delChild(this);
+    delete mimp;
 }
 
-const ObjectImp* ObjectPropertyCalcer::imp() const
+const ObjectImp *ObjectPropertyCalcer::imp() const
 {
-  return mimp;
+    return mimp;
 }
 
-std::vector<ObjectCalcer*> ObjectPropertyCalcer::parents() const
+std::vector<ObjectCalcer *> ObjectPropertyCalcer::parents() const
 {
-  std::vector<ObjectCalcer*> ret;
-  ret.push_back( mparent );
-  return ret;
+    std::vector<ObjectCalcer *> ret;
+    ret.push_back(mparent);
+    return ret;
 }
 
-void ObjectPropertyCalcer::calc( const KigDocument& doc )
+void ObjectPropertyCalcer::calc(const KigDocument &doc)
 {
-  //if ( mparenttype != mparent->imp()->type() )
-  if ( mparenttype == nullptr || *mparenttype != typeid( *(mparent->imp()) ) )
-  {
-    mpropid = mparent->imp()->getPropLid( mpropgid );
-//    mparenttype = mparent->imp()->type();
-    mparenttype = &typeid( *(mparent->imp()) );
-//    printf ("changing type, new type: %s\n", mparenttype->internalName());
-  }
-  ObjectImp* n;
-  if ( mpropid >= 0 )
-  {
-    n = mparent->imp()->property( mpropid, doc );
-  } else n = new InvalidImp;
-  delete mimp;
-  mimp = n;
+    // if ( mparenttype != mparent->imp()->type() )
+    if (mparenttype == nullptr || *mparenttype != typeid(*(mparent->imp()))) {
+        mpropid = mparent->imp()->getPropLid(mpropgid);
+        //    mparenttype = mparent->imp()->type();
+        mparenttype = &typeid(*(mparent->imp()));
+        //    printf ("changing type, new type: %s\n", mparenttype->internalName());
+    }
+    ObjectImp *n;
+    if (mpropid >= 0) {
+        n = mparent->imp()->property(mpropid, doc);
+    } else
+        n = new InvalidImp;
+    delete mimp;
+    mimp = n;
 }
 
-ObjectImp* ObjectConstCalcer::switchImp( ObjectImp* newimp )
+ObjectImp *ObjectConstCalcer::switchImp(ObjectImp *newimp)
 {
-  ObjectImp* ret = mimp;
-  mimp = newimp;
-  return ret;
+    ObjectImp *ret = mimp;
+    mimp = newimp;
+    return ret;
 }
 
-std::vector<ObjectCalcer*> ObjectCalcer::children() const
+std::vector<ObjectCalcer *> ObjectCalcer::children() const
 {
-  return mchildren;
+    return mchildren;
 }
 
-const ObjectImpType* ObjectPropertyCalcer::impRequirement(
-  ObjectCalcer*, const std::vector<ObjectCalcer*>& ) const
+const ObjectImpType *ObjectPropertyCalcer::impRequirement(ObjectCalcer *, const std::vector<ObjectCalcer *> &) const
 {
-  int proplid = mparent->imp()->getPropLid( mpropgid );
-  return mparent->imp()->impRequirementForProperty( proplid );
+    int proplid = mparent->imp()->getPropLid(mpropgid);
+    return mparent->imp()->impRequirementForProperty(proplid);
 }
 
-const ObjectImpType* ObjectConstCalcer::impRequirement(
-  ObjectCalcer*, const std::vector<ObjectCalcer*>& ) const
+const ObjectImpType *ObjectConstCalcer::impRequirement(ObjectCalcer *, const std::vector<ObjectCalcer *> &) const
 {
-  assert( false );
-  return ObjectImp::stype();
+    assert(false);
+    return ObjectImp::stype();
 }
 
-const ObjectImpType* ObjectTypeCalcer::impRequirement(
- ObjectCalcer* o, const std::vector<ObjectCalcer*>& os ) const
+const ObjectImpType *ObjectTypeCalcer::impRequirement(ObjectCalcer *o, const std::vector<ObjectCalcer *> &os) const
 {
-  Args args;
-  args.reserve( mparents.size() );
-  std::transform(
-    os.begin(), os.end(),
-    std::back_inserter( args ),
-    std::mem_fun( &ObjectCalcer::imp ) );
-  assert( std::find( args.begin(), args.end(), o->imp() ) != args.end() );
-  return mtype->impRequirement( o->imp(), args );
+    Args args;
+    args.reserve(mparents.size());
+    std::transform(os.begin(), os.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    assert(std::find(args.begin(), args.end(), o->imp()) != args.end());
+    return mtype->impRequirement(o->imp(), args);
 }
 
-void ObjectConstCalcer::setImp( ObjectImp* newimp )
+void ObjectConstCalcer::setImp(ObjectImp *newimp)
 {
-  delete switchImp( newimp );
+    delete switchImp(newimp);
 }
 
-void ObjectTypeCalcer::setParents( const std::vector<ObjectCalcer*> &np )
+void ObjectTypeCalcer::setParents(const std::vector<ObjectCalcer *> &np)
 {
-  std::for_each( np.begin(), np.end(),
-                 std::bind2nd( std::mem_fun( &ObjectCalcer::addChild ), this ) );
-  std::for_each( mparents.begin(), mparents.end(),
-                 std::bind2nd( std::mem_fun( &ObjectCalcer::delChild ), this ) );
-  mparents = np;
+    std::for_each(np.begin(), np.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::addChild), this));
+    std::for_each(mparents.begin(), mparents.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::delChild), this));
+    mparents = np;
 }
 
-void ObjectTypeCalcer::setType( const ObjectType* t )
+void ObjectTypeCalcer::setType(const ObjectType *t)
 {
-  mtype = t;
+    mtype = t;
 }
 
 bool ObjectCalcer::canMove() const
 {
-  return false;
+    return false;
 }
 
 bool ObjectCalcer::isFreelyTranslatable() const
 {
-  return false;
+    return false;
 }
 
 Coordinate ObjectCalcer::moveReferencePoint() const
 {
-  assert( false );
-  return Coordinate::invalidCoord();
+    assert(false);
+    return Coordinate::invalidCoord();
 }
 
-void ObjectCalcer::move( const Coordinate&, const KigDocument& )
+void ObjectCalcer::move(const Coordinate &, const KigDocument &)
 {
-  assert( false );
+    assert(false);
 }
 
 bool ObjectTypeCalcer::canMove() const
 {
-  return mtype->canMove( *this );
+    return mtype->canMove(*this);
 }
 
 bool ObjectTypeCalcer::isFreelyTranslatable() const
 {
-  return mtype->isFreelyTranslatable( *this );
+    return mtype->isFreelyTranslatable(*this);
 }
 
 Coordinate ObjectTypeCalcer::moveReferencePoint() const
 {
-  return mtype->moveReferencePoint( *this );
+    return mtype->moveReferencePoint(*this);
 }
 
-void ObjectTypeCalcer::move( const Coordinate& to, const KigDocument& doc )
+void ObjectTypeCalcer::move(const Coordinate &to, const KigDocument &doc)
 {
-  // we need to check if type can in fact move, because this check is
-  // not done for us in all circumstances ( e.g. LineABType::move uses
-  // move on its parents to move them ), and the ObjectType's depend
-  // on move only being called if canMove() returns true..
-  if ( mtype->canMove( *this ) )
-    mtype->move( *this, to, doc );
+    // we need to check if type can in fact move, because this check is
+    // not done for us in all circumstances ( e.g. LineABType::move uses
+    // move on its parents to move them ), and the ObjectType's depend
+    // on move only being called if canMove() returns true..
+    if (mtype->canMove(*this))
+        mtype->move(*this, to, doc);
 }
 
-ObjectCalcer* ObjectPropertyCalcer::parent() const
+ObjectCalcer *ObjectPropertyCalcer::parent() const
 {
-  return mparent;
+    return mparent;
 }
 
 ObjectCalcer::ObjectCalcer()
-  : refcount( 0 )
+    : refcount(0)
 {
 }
 
-std::vector<ObjectCalcer*> ObjectCalcer::movableParents() const
+std::vector<ObjectCalcer *> ObjectCalcer::movableParents() const
 {
-  return std::vector<ObjectCalcer*>();
+    return std::vector<ObjectCalcer *>();
 }
 
-std::vector<ObjectCalcer*> ObjectTypeCalcer::movableParents() const
+std::vector<ObjectCalcer *> ObjectTypeCalcer::movableParents() const
 {
-  return mtype->movableParents( *this );
+    return mtype->movableParents(*this);
 }
 
-bool ObjectConstCalcer::isDefinedOnOrThrough( const ObjectCalcer* ) const
+bool ObjectConstCalcer::isDefinedOnOrThrough(const ObjectCalcer *) const
 {
-  return false;
-}
-
-bool ObjectPropertyCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
-{
-  return o == mparent &&
-    mparent->imp()->isPropertyDefinedOnOrThroughThisImp( 
-       mparent->imp()->getPropLid( mpropgid ) );
-}
-
-bool ObjectTypeCalcer::isDefinedOnOrThrough( const ObjectCalcer* o ) const
-{
-  Args args;
-  args.reserve( mparents.size() );
-  std::transform(
-    mparents.begin(), mparents.end(),
-    std::back_inserter( args ),
-    std::mem_fun( &ObjectCalcer::imp ) );
-  if ( std::find( args.begin(), args.end(), o->imp() ) == args.end() )
     return false;
+}
 
-  return mtype->isDefinedOnOrThrough( o->imp(), args );
+bool ObjectPropertyCalcer::isDefinedOnOrThrough(const ObjectCalcer *o) const
+{
+    return o == mparent && mparent->imp()->isPropertyDefinedOnOrThroughThisImp(mparent->imp()->getPropLid(mpropgid));
+}
+
+bool ObjectTypeCalcer::isDefinedOnOrThrough(const ObjectCalcer *o) const
+{
+    Args args;
+    args.reserve(mparents.size());
+    std::transform(mparents.begin(), mparents.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    if (std::find(args.begin(), args.end(), o->imp()) == args.end())
+        return false;
+
+    return mtype->isDefinedOnOrThrough(o->imp(), args);
 }
 
 int ObjectPropertyCalcer::propLid() const
 {
-  return mparent->imp()->getPropLid( mpropgid );
+    return mparent->imp()->getPropLid(mpropgid);
 }
 
 int ObjectPropertyCalcer::propGid() const
 {
-  return mpropgid;
+    return mpropgid;
 }
-

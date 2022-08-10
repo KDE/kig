@@ -12,15 +12,12 @@
 #include "../objects/object_calcer.h"
 #include "../objects/object_factory.h"
 
-ObjectTypeCalcer* filtersConstructTextObject(
-  const Coordinate& c, ObjectCalcer* o,
-  const QByteArray& arg, const KigDocument& doc, bool needframe )
+ObjectTypeCalcer *filtersConstructTextObject(const Coordinate &c, ObjectCalcer *o, const QByteArray &arg, const KigDocument &doc, bool needframe)
 {
-  const ObjectFactory* fact = ObjectFactory::instance();
-  ObjectCalcer* propo = fact->propertyObjectCalcer( o, arg );
-  propo->calc( doc );
-  std::vector<ObjectCalcer*> args;
-  args.push_back( propo );
-  return fact->labelCalcer( QStringLiteral( "%1" ), c, needframe,
-                            args, doc );
+    const ObjectFactory *fact = ObjectFactory::instance();
+    ObjectCalcer *propo = fact->propertyObjectCalcer(o, arg);
+    propo->calc(doc);
+    std::vector<ObjectCalcer *> args;
+    args.push_back(propo);
+    return fact->labelCalcer(QStringLiteral("%1"), c, needframe, args, doc);
 }

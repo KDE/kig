@@ -13,100 +13,97 @@
 
 #include <iterator>
 
-const char* ObjectType::fullName() const
+const char *ObjectType::fullName() const
 {
-  return mfulltypename;
+    return mfulltypename;
 }
 
 ObjectType::~ObjectType()
 {
 }
 
-ObjectType::ObjectType( const char fulltypename[] )
-  : mfulltypename( fulltypename )
+ObjectType::ObjectType(const char fulltypename[])
+    : mfulltypename(fulltypename)
 {
-  ObjectTypeFactory::instance()->add( this );
+    ObjectTypeFactory::instance()->add(this);
 }
 
-bool ObjectType::canMove( const ObjectTypeCalcer& ) const
+bool ObjectType::canMove(const ObjectTypeCalcer &) const
 {
-  return false;
+    return false;
 }
 
-bool ObjectType::isFreelyTranslatable( const ObjectTypeCalcer& ) const
+bool ObjectType::isFreelyTranslatable(const ObjectTypeCalcer &) const
 {
-  return false;
+    return false;
 }
 
-void ObjectType::move( ObjectTypeCalcer&, const Coordinate&, const KigDocument& ) const
+void ObjectType::move(ObjectTypeCalcer &, const Coordinate &, const KigDocument &) const
 {
-  // we can't do an assert here, because sometimes ( like in
-  // ObjectABType::move, ObjectType::move is called without checking
-  // the object's canMove().
-//   assert( false );
+    // we can't do an assert here, because sometimes ( like in
+    // ObjectABType::move, ObjectType::move is called without checking
+    // the object's canMove().
+    //   assert( false );
 }
 
-bool ObjectType::inherits( int ) const
+bool ObjectType::inherits(int) const
 {
-  return false;
+    return false;
 }
 
-ArgsParserObjectType::ArgsParserObjectType( const char fulltypename[],
-                                            const struct ArgsParser::spec argsspec[],
-                                            int n )
-  : ObjectType( fulltypename ), margsparser( argsspec, n )
+ArgsParserObjectType::ArgsParserObjectType(const char fulltypename[], const struct ArgsParser::spec argsspec[], int n)
+    : ObjectType(fulltypename)
+    , margsparser(argsspec, n)
 {
 }
 
-const ObjectImpType* ArgsParserObjectType::impRequirement( const ObjectImp* o, const Args& parents ) const
+const ObjectImpType *ArgsParserObjectType::impRequirement(const ObjectImp *o, const Args &parents) const
 {
-  return margsparser.impRequirement( o, parents );
+    return margsparser.impRequirement(o, parents);
 }
 
-const ArgsParser& ArgsParserObjectType::argsParser() const
+const ArgsParser &ArgsParserObjectType::argsParser() const
 {
-  return margsparser;
+    return margsparser;
 }
 
 bool ObjectType::isTransform() const
 {
-  return false;
+    return false;
 }
 
 QStringList ObjectType::specialActions() const
 {
-  return QStringList();
+    return QStringList();
 }
 
-void ObjectType::executeAction( int, ObjectHolder&, ObjectTypeCalcer&, KigPart&, KigWidget&,
-                                NormalMode& ) const
+void ObjectType::executeAction(int, ObjectHolder &, ObjectTypeCalcer &, KigPart &, KigWidget &, NormalMode &) const
 {
-  assert( false );
+    assert(false);
 }
 
-const Coordinate ObjectType::moveReferencePoint( const ObjectTypeCalcer& ) const
+const Coordinate ObjectType::moveReferencePoint(const ObjectTypeCalcer &) const
 {
-  assert( false );
-  return Coordinate::invalidCoord();
+    assert(false);
+    return Coordinate::invalidCoord();
 }
 
-std::vector<ObjectCalcer*> ArgsParserObjectType::sortArgs( const std::vector<ObjectCalcer*>& args ) const
+std::vector<ObjectCalcer *> ArgsParserObjectType::sortArgs(const std::vector<ObjectCalcer *> &args) const
 {
-  return margsparser.parse( args );
+    return margsparser.parse(args);
 }
 
-Args ArgsParserObjectType::sortArgs( const Args& args ) const
+Args ArgsParserObjectType::sortArgs(const Args &args) const
 {
-  return margsparser.parse( args );
+    return margsparser.parse(args);
 }
 
-std::vector<ObjectCalcer*> ObjectType::movableParents( const ObjectTypeCalcer& ) const
+std::vector<ObjectCalcer *> ObjectType::movableParents(const ObjectTypeCalcer &) const
 {
-  return std::vector<ObjectCalcer*>();
+    return std::vector<ObjectCalcer *>();
 }
 
-bool ArgsParserObjectType::isDefinedOnOrThrough( const ObjectImp* o, const Args& parents ) const
+bool ArgsParserObjectType::isDefinedOnOrThrough(const ObjectImp *o, const Args &parents) const
 {
-  return margsparser.isDefinedOnOrThrough( o, parents );
+    return margsparser.isDefinedOnOrThrough(o, parents);
 }
-

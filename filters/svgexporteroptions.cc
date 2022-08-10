@@ -9,36 +9,36 @@
 #include <QCheckBox>
 #include <QLayout>
 
-SVGExporterOptions::SVGExporterOptions( QWidget* parent )
-  : QWidget( parent )
+SVGExporterOptions::SVGExporterOptions(QWidget *parent)
+    : QWidget(parent)
 {
-  expwidget = new Ui_SVGExporterOptionsWidget();
-  expwidget->setupUi( this );
+    expwidget = new Ui_SVGExporterOptionsWidget();
+    expwidget->setupUi(this);
 
-  layout()->setContentsMargins( 0, 0, 0, 0 );
+    layout()->setContentsMargins(0, 0, 0, 0);
 }
 
 SVGExporterOptions::~SVGExporterOptions()
 {
-  delete expwidget;
+    delete expwidget;
 }
 
-void SVGExporterOptions::setGrid( bool grid )
+void SVGExporterOptions::setGrid(bool grid)
 {
-  expwidget->showGridCheckBox->setChecked( grid );
+    expwidget->showGridCheckBox->setChecked(grid);
 }
 
 bool SVGExporterOptions::showGrid() const
 {
-  return expwidget->showGridCheckBox->isChecked();
+    return expwidget->showGridCheckBox->isChecked();
 }
 
-void SVGExporterOptions::setAxes( bool axes )
+void SVGExporterOptions::setAxes(bool axes)
 {
-  expwidget->showAxesCheckBox->setChecked( axes );
+    expwidget->showAxesCheckBox->setChecked(axes);
 }
 
 bool SVGExporterOptions::showAxes() const
 {
-  return expwidget->showAxesCheckBox->isChecked();
+    return expwidget->showAxesCheckBox->isChecked();
 }

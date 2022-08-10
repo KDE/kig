@@ -9,159 +9,160 @@
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 
+#include <QAction>
 #include <QMouseEvent>
 #include <qglobal.h>
-#include <QAction>
 
-DragRectMode::DragRectMode( const QPoint& start, KigPart& d, KigWidget& w )
-  : KigMode( d ), mstart( start ), mnc( true ), mstartselected( true ),
-    mcancelled( false )
+DragRectMode::DragRectMode(const QPoint &start, KigPart &d, KigWidget &w)
+    : KigMode(d)
+    , mstart(start)
+    , mnc(true)
+    , mstartselected(true)
+    , mcancelled(false)
 {
-  moved( start, w );
+    moved(start, w);
 }
 
-DragRectMode::DragRectMode( KigPart& d, KigWidget& w )
-  : KigMode( d ), mnc( true ), mstartselected( false ),
-    mcancelled( false )
+DragRectMode::DragRectMode(KigPart &d, KigWidget &w)
+    : KigMode(d)
+    , mnc(true)
+    , mstartselected(false)
+    , mcancelled(false)
 {
-  w.updateCurPix();
-  w.updateWidget();
+    w.updateCurPix();
+    w.updateWidget();
 }
 
-void DragRectMode::moved( const QPoint& p, KigWidget& w )
+void DragRectMode::moved(const QPoint &p, KigWidget &w)
 {
-  // update the rect...
-  w.updateCurPix();
-  std::vector<QRect> overlay;
-  if ( mstartselected )
-  {
-    KigPainter pt( w.screenInfo(), &w.curPix, mdoc.document() );
-    pt.drawFilledRect( QRect( p,  mstart ) );
-    overlay = pt.overlay();
-  };
-  w.updateWidget( overlay );
+    // update the rect...
+    w.updateCurPix();
+    std::vector<QRect> overlay;
+    if (mstartselected) {
+        KigPainter pt(w.screenInfo(), &w.curPix, mdoc.document());
+        pt.drawFilledRect(QRect(p, mstart));
+        overlay = pt.overlay();
+    };
+    w.updateWidget(overlay);
 }
 
-void DragRectMode::released( const QPoint& p, KigWidget& w, bool nc )
+void DragRectMode::released(const QPoint &p, KigWidget &w, bool nc)
 {
-  if ( mstartselected )
-  {
-    mrect =  w.fromScreen( QRect( mstart, p ) );
-    mret = mdoc.document().whatIsInHere( mrect, w );
-    mnc = nc;
+    if (mstartselected) {
+        mrect = w.fromScreen(QRect(mstart, p));
+        mret = mdoc.document().whatIsInHere(mrect, w);
+        mnc = nc;
 
-    mdoc.doneMode( this );
-  };
+        mdoc.doneMode(this);
+    };
 }
 
 void DragRectMode::enableActions()
 {
-  KigMode::enableActions();
+    KigMode::enableActions();
 
-  mdoc.aCancelConstruction->setEnabled( true );
+    mdoc.aCancelConstruction->setEnabled(true);
 }
 
-std::vector<ObjectHolder*> DragRectMode::ret() const
+std::vector<ObjectHolder *> DragRectMode::ret() const
 {
-  return mret;
+    return mret;
 }
 
 bool DragRectMode::needClear() const
 {
-  return mnc;
+    return mnc;
 }
 
-void DragRectMode::moved( QMouseEvent* e, KigWidget& w )
+void DragRectMode::moved(QMouseEvent *e, KigWidget &w)
 {
-  moved( e->pos(), w );
+    moved(e->pos(), w);
 }
 
-void DragRectMode::released( QMouseEvent* e, KigWidget& w )
+void DragRectMode::released(QMouseEvent *e, KigWidget &w)
 {
-  released( e->pos(), w, ! ( e->modifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) );
+    released(e->pos(), w, !(e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier)));
 }
 
 DragRectMode::~DragRectMode()
 {
 }
 
-void DragRectMode::mouseMoved( QMouseEvent* e, KigWidget* w )
+void DragRectMode::mouseMoved(QMouseEvent *e, KigWidget *w)
 {
-  moved( e, *w );
+    moved(e, *w);
 }
 
-void DragRectMode::leftMouseMoved( QMouseEvent* e, KigWidget* w )
+void DragRectMode::leftMouseMoved(QMouseEvent *e, KigWidget *w)
 {
-  moved( e, *w );
+    moved(e, *w);
 }
 
-void DragRectMode::midMouseMoved( QMouseEvent* e, KigWidget* w )
+void DragRectMode::midMouseMoved(QMouseEvent *e, KigWidget *w)
 {
-  moved( e, *w );
+    moved(e, *w);
 }
 
-void DragRectMode::rightMouseMoved( QMouseEvent* e, KigWidget* w )
+void DragRectMode::rightMouseMoved(QMouseEvent *e, KigWidget *w)
 {
-  moved( e, *w );
+    moved(e, *w);
 }
 
-void DragRectMode::leftReleased( QMouseEvent* e, KigWidget* w )
+void DragRectMode::leftReleased(QMouseEvent *e, KigWidget *w)
 {
-  released( e, *w );
+    released(e, *w);
 }
 
-void DragRectMode::midReleased( QMouseEvent* e, KigWidget* w )
+void DragRectMode::midReleased(QMouseEvent *e, KigWidget *w)
 {
-  released( e, *w );
+    released(e, *w);
 }
 
-void DragRectMode::rightReleased( QMouseEvent* e, KigWidget* w )
+void DragRectMode::rightReleased(QMouseEvent *e, KigWidget *w)
 {
-  released( e, *w );
+    released(e, *w);
 }
 
 Rect DragRectMode::rect() const
 {
-  return mrect;
+    return mrect;
 }
 
-void DragRectMode::clicked( const QMouseEvent* e, KigWidget& w )
+void DragRectMode::clicked(const QMouseEvent *e, KigWidget &w)
 {
-  clicked( e->pos(), w );
+    clicked(e->pos(), w);
 }
 
-void DragRectMode::leftClicked( QMouseEvent* e, KigWidget* w )
+void DragRectMode::leftClicked(QMouseEvent *e, KigWidget *w)
 {
-  clicked( e, *w );
+    clicked(e, *w);
 }
 
-void DragRectMode::midClicked( QMouseEvent* e, KigWidget* w )
+void DragRectMode::midClicked(QMouseEvent *e, KigWidget *w)
 {
-  clicked( e, *w );
+    clicked(e, *w);
 }
 
-void DragRectMode::rightClicked( QMouseEvent* e, KigWidget* w )
+void DragRectMode::rightClicked(QMouseEvent *e, KigWidget *w)
 {
-  clicked( e, *w );
+    clicked(e, *w);
 }
 
-void DragRectMode::clicked( const QPoint& p, KigWidget& )
+void DragRectMode::clicked(const QPoint &p, KigWidget &)
 {
-  if ( !mstartselected )
-  {
-    mstartselected = true;
-    mstart = p;
-  };
+    if (!mstartselected) {
+        mstartselected = true;
+        mstart = p;
+    };
 }
 
 bool DragRectMode::cancelled() const
 {
-  return mcancelled;
+    return mcancelled;
 }
 
 void DragRectMode::cancelConstruction()
 {
-  mcancelled = true;
-  mdoc.doneMode( this );
+    mcancelled = true;
+    mdoc.doneMode(this);
 }
-

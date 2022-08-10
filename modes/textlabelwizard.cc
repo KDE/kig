@@ -17,180 +17,175 @@
 #include <KHelpClient>
 
 // defined in label.cc
-extern uint percentCount( const QString& s );
+extern uint percentCount(const QString &s);
 
 class TextPage : public QWizardPage
 {
 public:
-  TextPage( QWidget* parent );
+    TextPage(QWidget *parent);
 
-  QTextEdit* mtext;
+    QTextEdit *mtext;
 };
 
-TextPage::TextPage( QWidget* parent )
-  : QWizardPage( parent )
+TextPage::TextPage(QWidget *parent)
+    : QWizardPage(parent)
 {
-  setTitle( i18n( "Enter Label Text" ) );
-  setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-  setFinalPage( true );
+    setTitle(i18n("Enter Label Text"));
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    setFinalPage(true);
 
-  QVBoxLayout* lay = new QVBoxLayout( this );
-  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
-  QLabel* label = new QLabel( this );
-  lay->addWidget( label );
-  label->setText(
-      i18n( "Enter the text for your label here and press \"Next\".\n"
-            "If you want to show variable parts, then put %1, %2, ... "
-            "at the appropriate places (e.g. \"This segment is %1 units "
-            "long.\").", QStringLiteral( "%1" ), QStringLiteral( "%2" ) ) ); // grrr i18n()
-  label->setAlignment( Qt::AlignTop );
-  label->setWordWrap( true );
-  mtext = new QTextEdit( this );
-  lay->addWidget( mtext );
-  QCheckBox* wantframe = new QCheckBox( this );
-  lay->addWidget( wantframe );
-  wantframe->setText( i18n( "Show text in a frame" ) );
+    QVBoxLayout *lay = new QVBoxLayout(this);
+    lay->setContentsMargins(0, 0, 0, 0);
+    QLabel *label = new QLabel(this);
+    lay->addWidget(label);
+    label->setText(
+        i18n("Enter the text for your label here and press \"Next\".\n"
+             "If you want to show variable parts, then put %1, %2, ... "
+             "at the appropriate places (e.g. \"This segment is %1 units "
+             "long.\").",
+             QStringLiteral("%1"),
+             QStringLiteral("%2"))); // grrr i18n()
+    label->setAlignment(Qt::AlignTop);
+    label->setWordWrap(true);
+    mtext = new QTextEdit(this);
+    lay->addWidget(mtext);
+    QCheckBox *wantframe = new QCheckBox(this);
+    lay->addWidget(wantframe);
+    wantframe->setText(i18n("Show text in a frame"));
 
-  registerField( QStringLiteral("wantframe"), wantframe );
+    registerField(QStringLiteral("wantframe"), wantframe);
 
-  connect( mtext, SIGNAL(textChanged()), parent, SLOT(textChanged()) );
+    connect(mtext, SIGNAL(textChanged()), parent, SLOT(textChanged()));
 }
-
 
 class ArgsPage : public QWizardPage
 {
 public:
-  ArgsPage( QWidget* parent, TextLabelModeBase* mode );
+    ArgsPage(QWidget *parent, TextLabelModeBase *mode);
 
-  bool validatePage() override;
+    bool validatePage() override;
 
-  LinksLabel* mlinks;
+    LinksLabel *mlinks;
 
 private:
-  TextLabelModeBase* mmode;
+    TextLabelModeBase *mmode;
 };
 
-ArgsPage::ArgsPage( QWidget* parent, TextLabelModeBase* mode )
-  : QWizardPage( parent ), mmode( mode )
+ArgsPage::ArgsPage(QWidget *parent, TextLabelModeBase *mode)
+    : QWizardPage(parent)
+    , mmode(mode)
 {
-  setTitle( i18n( "Select Arguments" ) );
-  setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-  setFinalPage( true );
+    setTitle(i18n("Select Arguments"));
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    setFinalPage(true);
 
-  QVBoxLayout* lay = new QVBoxLayout( this );
-  lay->setContentsMargins( 0 ,  0 ,  0 ,  0 );
-  QLabel* label = new QLabel( this );
-  lay->addWidget( label );
-  label->setText(
-      i18n( "Now select the argument(s) you need.  For every argument, "
-            "click on it, select an object and a property in the Kig "
-            "window, and click finish when you are done..." ) );
-  label->setWordWrap( true );
-  mlinks = new LinksLabel( this );
-  lay->addWidget( mlinks );
+    QVBoxLayout *lay = new QVBoxLayout(this);
+    lay->setContentsMargins(0, 0, 0, 0);
+    QLabel *label = new QLabel(this);
+    lay->addWidget(label);
+    label->setText(
+        i18n("Now select the argument(s) you need.  For every argument, "
+             "click on it, select an object and a property in the Kig "
+             "window, and click finish when you are done..."));
+    label->setWordWrap(true);
+    mlinks = new LinksLabel(this);
+    lay->addWidget(mlinks);
 
-  connect( mlinks, &LinksLabel::changed, this, &QWizardPage::completeChanged );
+    connect(mlinks, &LinksLabel::changed, this, &QWizardPage::completeChanged);
 }
 
 bool ArgsPage::validatePage()
 {
-  return mmode->canFinish();
+    return mmode->canFinish();
 }
 
-
-TextLabelWizard::TextLabelWizard( QWidget* parent, TextLabelModeBase* mode )
-  : QWizard( parent ), mmode( mode )
+TextLabelWizard::TextLabelWizard(QWidget *parent, TextLabelModeBase *mode)
+    : QWizard(parent)
+    , mmode(mode)
 {
-  setModal( false );
-  setObjectName( QStringLiteral( "TextLabelWizard" ) );
-  setWindowTitle( i18nc("@title:window", "Construct Label") );
-  setOption( HaveHelpButton );
-  setOption( HaveFinishButtonOnEarlyPages );
+    setModal(false);
+    setObjectName(QStringLiteral("TextLabelWizard"));
+    setWindowTitle(i18nc("@title:window", "Construct Label"));
+    setOption(HaveHelpButton);
+    setOption(HaveFinishButtonOnEarlyPages);
 
-  mtextPage = new TextPage( this );
-  setPage( TextPageId, mtextPage );
-  margsPage = new ArgsPage( this, mmode );
-  setPage( ArgsPageId, margsPage );
+    mtextPage = new TextPage(this);
+    setPage(TextPageId, mtextPage);
+    margsPage = new ArgsPage(this, mmode);
+    setPage(ArgsPageId, margsPage);
 
-  connect( this, &QWizard::helpRequested, this,
-           &TextLabelWizard::slotHelpClicked );
-  connect( linksLabel(), &LinksLabel::linkClicked,
-           this, &TextLabelWizard::linkClicked );
-  connect( this, SIGNAL(currentIdChanged(int)),
-           this, SLOT(currentIdChanged(int)) );
+    connect(this, &QWizard::helpRequested, this, &TextLabelWizard::slotHelpClicked);
+    connect(linksLabel(), &LinksLabel::linkClicked, this, &TextLabelWizard::linkClicked);
+    connect(this, SIGNAL(currentIdChanged(int)), this, SLOT(currentIdChanged(int)));
 
-  mtextPage->mtext->setFocus();
+    mtextPage->mtext->setFocus();
 }
 
 TextLabelWizard::~TextLabelWizard()
 {
 }
 
-LinksLabel* TextLabelWizard::linksLabel()
+LinksLabel *TextLabelWizard::linksLabel()
 {
-  return margsPage->mlinks;
+    return margsPage->mlinks;
 }
 
 QString TextLabelWizard::text() const
 {
-  return mtextPage->mtext->toPlainText();
+    return mtextPage->mtext->toPlainText();
 }
 
-void TextLabelWizard::setText( const QString& newtext )
+void TextLabelWizard::setText(const QString &newtext)
 {
-  mtextPage->mtext->setPlainText( newtext );
+    mtextPage->mtext->setPlainText(newtext);
 }
 
 void TextLabelWizard::reject()
 {
-  QWizard::reject();
-  mmode->cancelPressed();
+    QWizard::reject();
+    mmode->cancelPressed();
 }
 
 void TextLabelWizard::accept()
 {
-  if( validateCurrentPage() )
-  {
-    QWizard::accept();
-    mmode->finishPressed();
-  }
+    if (validateCurrentPage()) {
+        QWizard::accept();
+        mmode->finishPressed();
+    }
 }
 
 void TextLabelWizard::textChanged()
 {
-  uint percentcount = percentCount( text() );
-  bool finish = mmode->percentCountChanged( percentcount );
-  (void)finish;
-  button( QWizard::FinishButton )->setEnabled( percentcount == 0 );
-  button( QWizard::NextButton )->setEnabled( percentcount > 0 );
+    uint percentcount = percentCount(text());
+    bool finish = mmode->percentCountChanged(percentcount);
+    (void)finish;
+    button(QWizard::FinishButton)->setEnabled(percentcount == 0);
+    button(QWizard::NextButton)->setEnabled(percentcount > 0);
 }
 
-void TextLabelWizard::linkClicked( int which )
+void TextLabelWizard::linkClicked(int which)
 {
-  mmode->linkClicked( which );
+    mmode->linkClicked(which);
 }
 
-void TextLabelWizard::currentIdChanged( int id )
+void TextLabelWizard::currentIdChanged(int id)
 {
-  switch ( id )
-  {
+    switch (id) {
     case TextPageId:
-      mmode->enterTextPageEntered();
-      // simulate a text change
-      textChanged();
-      break;
+        mmode->enterTextPageEntered();
+        // simulate a text change
+        textChanged();
+        break;
     case ArgsPageId:
-      mmode->selectArgumentsPageEntered();
-      break;
+        mmode->selectArgumentsPageEntered();
+        break;
     case -1: // no id - skip it
-      break;
-    default:
-      ;
-  }
+        break;
+    default:;
+    }
 }
 
 void TextLabelWizard::slotHelpClicked()
 {
-  KHelpClient::invokeHelp( QStringLiteral("text-labels"), QStringLiteral("kig") );
+    KHelpClient::invokeHelp(QStringLiteral("text-labels"), QStringLiteral("kig"));
 }
-

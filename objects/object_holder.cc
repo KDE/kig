@@ -10,142 +10,145 @@
 
 #include "../misc/coordinate.h"
 
-ObjectHolder::ObjectHolder( ObjectCalcer* calcer )
-  : mcalcer( calcer ), mdrawer( new ObjectDrawer ), mnamecalcer( nullptr )
+ObjectHolder::ObjectHolder(ObjectCalcer *calcer)
+    : mcalcer(calcer)
+    , mdrawer(new ObjectDrawer)
+    , mnamecalcer(nullptr)
 {
 }
 
-ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer,
-                            ObjectConstCalcer* namecalcer )
-  : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( namecalcer )
+ObjectHolder::ObjectHolder(ObjectCalcer *calcer, ObjectDrawer *drawer, ObjectConstCalcer *namecalcer)
+    : mcalcer(calcer)
+    , mdrawer(drawer)
+    , mnamecalcer(namecalcer)
 {
-  assert( !namecalcer || namecalcer->imp()->inherits( StringImp::stype() ) );
+    assert(!namecalcer || namecalcer->imp()->inherits(StringImp::stype()));
 }
 
-ObjectHolder::ObjectHolder( ObjectCalcer* calcer, ObjectDrawer* drawer )
-  : mcalcer( calcer ), mdrawer( drawer ), mnamecalcer( nullptr )
+ObjectHolder::ObjectHolder(ObjectCalcer *calcer, ObjectDrawer *drawer)
+    : mcalcer(calcer)
+    , mdrawer(drawer)
+    , mnamecalcer(nullptr)
 {
 }
 
 ObjectHolder::~ObjectHolder()
 {
-  delete mdrawer;
+    delete mdrawer;
 }
 
-const ObjectImp* ObjectHolder::imp() const
+const ObjectImp *ObjectHolder::imp() const
 {
-  return mcalcer->imp();
+    return mcalcer->imp();
 }
 
-const ObjectCalcer* ObjectHolder::calcer() const
+const ObjectCalcer *ObjectHolder::calcer() const
 {
-  return mcalcer.get();
+    return mcalcer.get();
 }
 
-const ObjectDrawer* ObjectHolder::drawer() const
+const ObjectDrawer *ObjectHolder::drawer() const
 {
-  return mdrawer;
+    return mdrawer;
 }
 
-const ObjectConstCalcer* ObjectHolder::nameCalcer() const
+const ObjectConstCalcer *ObjectHolder::nameCalcer() const
 {
-  return mnamecalcer.get();
+    return mnamecalcer.get();
 }
 
-void ObjectHolder::setDrawer( ObjectDrawer* d )
+void ObjectHolder::setDrawer(ObjectDrawer *d)
 {
-  delete switchDrawer( d );
+    delete switchDrawer(d);
 }
 
-void ObjectHolder::calc( const KigDocument& d )
+void ObjectHolder::calc(const KigDocument &d)
 {
-  mcalcer->calc( d );
+    mcalcer->calc(d);
 }
 
-void ObjectHolder::draw( KigPainter& p, bool selected ) const
+void ObjectHolder::draw(KigPainter &p, bool selected) const
 {
-  mdrawer->draw( *imp(), p, selected );
+    mdrawer->draw(*imp(), p, selected);
 }
 
-bool ObjectHolder::contains( const Coordinate& pt, const KigWidget& w, bool nv ) const
+bool ObjectHolder::contains(const Coordinate &pt, const KigWidget &w, bool nv) const
 {
-  return mdrawer->contains( *imp(), pt, w, nv );
+    return mdrawer->contains(*imp(), pt, w, nv);
 }
 
-bool ObjectHolder::inRect( const Rect& r, const KigWidget& w ) const
+bool ObjectHolder::inRect(const Rect &r, const KigWidget &w) const
 {
-  return mdrawer->inRect( *imp(), r, w );
+    return mdrawer->inRect(*imp(), r, w);
 }
 
-ObjectCalcer* ObjectHolder::calcer()
+ObjectCalcer *ObjectHolder::calcer()
 {
-  return mcalcer.get();
+    return mcalcer.get();
 }
 
-ObjectDrawer* ObjectHolder::drawer()
+ObjectDrawer *ObjectHolder::drawer()
 {
-  return mdrawer;
+    return mdrawer;
 }
 
-ObjectConstCalcer* ObjectHolder::nameCalcer()
+ObjectConstCalcer *ObjectHolder::nameCalcer()
 {
-  return mnamecalcer.get();
+    return mnamecalcer.get();
 }
 
 const Coordinate ObjectHolder::moveReferencePoint() const
 {
-  return mcalcer->moveReferencePoint();
+    return mcalcer->moveReferencePoint();
 }
 
-void ObjectHolder::move( const Coordinate& to, const KigDocument& doc )
+void ObjectHolder::move(const Coordinate &to, const KigDocument &doc)
 {
-  mcalcer->move( to, doc );
+    mcalcer->move(to, doc);
 }
 
 bool ObjectHolder::canMove() const
 {
-  return mcalcer->canMove();
+    return mcalcer->canMove();
 }
 
 bool ObjectHolder::isFreelyTranslatable() const
 {
-  return mcalcer->isFreelyTranslatable();
+    return mcalcer->isFreelyTranslatable();
 }
 
-ObjectDrawer* ObjectHolder::switchDrawer( ObjectDrawer* d )
+ObjectDrawer *ObjectHolder::switchDrawer(ObjectDrawer *d)
 {
-  ObjectDrawer* tmp = mdrawer;
-  mdrawer = d;
-  return tmp;
+    ObjectDrawer *tmp = mdrawer;
+    mdrawer = d;
+    return tmp;
 }
 
-bool ObjectHolder::shown( ) const
+bool ObjectHolder::shown() const
 {
-  return mdrawer->shown( );
+    return mdrawer->shown();
 }
 
 const QString ObjectHolder::name() const
 {
-  if ( mnamecalcer )
-  {
-    assert( mnamecalcer->imp()->inherits( StringImp::stype() ) );
-    return static_cast<const StringImp*>( mnamecalcer->imp() )->data();
-  }
-  else
-    return QString();
+    if (mnamecalcer) {
+        assert(mnamecalcer->imp()->inherits(StringImp::stype()));
+        return static_cast<const StringImp *>(mnamecalcer->imp())->data();
+    } else
+        return QString();
 }
 
-void ObjectHolder::setNameCalcer( ObjectConstCalcer* namecalcer )
+void ObjectHolder::setNameCalcer(ObjectConstCalcer *namecalcer)
 {
-  assert( !mnamecalcer );
-  mnamecalcer = namecalcer;
+    assert(!mnamecalcer);
+    mnamecalcer = namecalcer;
 }
 
 QString ObjectHolder::selectStatement() const
 {
-  const QString n = name();
-  if ( n.isEmpty() )
-    return i18n( imp()->type()->selectStatement() );
-  else
-    return i18n( imp()->type()->selectNameStatement(), n );
+    const QString n = name();
+    if (n.isEmpty())
+        return i18n(imp()->type()->selectStatement());
+    else
+        return i18n(imp()->type()->selectNameStatement(), n);
 }

@@ -16,100 +16,96 @@
 
 Goniometry::Goniometry()
 {
-  mvalue = 0.0;
-  msys = Rad;
+    mvalue = 0.0;
+    msys = Rad;
 }
 
-Goniometry::Goniometry( double value, Goniometry::System system )
+Goniometry::Goniometry(double value, Goniometry::System system)
 {
-  mvalue = value;
-  msys = system;
+    mvalue = value;
+    msys = system;
 }
 
 Goniometry::~Goniometry()
 {
 }
 
-void Goniometry::setValue( double value )
+void Goniometry::setValue(double value)
 {
-  mvalue = value;
+    mvalue = value;
 }
 
 double Goniometry::value() const
 {
-  return mvalue;
+    return mvalue;
 }
 
-void Goniometry::setSystem( Goniometry::System system )
+void Goniometry::setSystem(Goniometry::System system)
 {
-  msys = system;
+    msys = system;
 }
 
-void Goniometry::convertTo( Goniometry::System system )
+void Goniometry::convertTo(Goniometry::System system)
 {
-  mvalue = convert( mvalue, msys, system );
-  msys = system;
+    mvalue = convert(mvalue, msys, system);
+    msys = system;
 }
 
 Goniometry::System Goniometry::system() const
 {
-  return msys;
+    return msys;
 }
 
-double Goniometry::getValue( Goniometry::System system )
+double Goniometry::getValue(Goniometry::System system)
 {
-  return convert( mvalue, msys, system );
+    return convert(mvalue, msys, system);
 }
 
-double Goniometry::convert( const double angle, const Goniometry::System from, const Goniometry::System to )
+double Goniometry::convert(const double angle, const Goniometry::System from, const Goniometry::System to)
 {
-  switch( from )
-  {
-    case Deg:
-    {
-      if ( to == Rad )
-        return angle * M_PI / 180;
-      if ( to == Grad )
-        return angle * 10 / 9;
-      break;
+    switch (from) {
+    case Deg: {
+        if (to == Rad)
+            return angle * M_PI / 180;
+        if (to == Grad)
+            return angle * 10 / 9;
+        break;
     }
-    case Rad:
-    {
-      if ( to == Deg )
-        return angle * 180 / M_PI;
-      if ( to == Grad )
-        return angle * 200 / M_PI;
-      break;
+    case Rad: {
+        if (to == Deg)
+            return angle * 180 / M_PI;
+        if (to == Grad)
+            return angle * 200 / M_PI;
+        break;
     }
-    case Grad:
-    {
-      if ( to == Deg )
-        return angle * 9 / 10;
-      if ( to == Rad )
-        return angle * M_PI / 200;
-      break;
+    case Grad: {
+        if (to == Deg)
+            return angle * 9 / 10;
+        if (to == Rad)
+            return angle * M_PI / 200;
+        break;
     }
-  }
-  return angle;
+    }
+    return angle;
 }
 
 QStringList Goniometry::systemList()
 {
-  QStringList sl;
-  sl << i18nc( "Translators: Degrees", "Deg" );
-  sl << i18nc( "Translators: Radians", "Rad" );
-  sl << i18nc( "Translators: Gradians", "Grad" );
-  return sl;
+    QStringList sl;
+    sl << i18nc("Translators: Degrees", "Deg");
+    sl << i18nc("Translators: Radians", "Rad");
+    sl << i18nc("Translators: Gradians", "Grad");
+    return sl;
 }
 
-Goniometry::System Goniometry::intToSystem( const int index )
+Goniometry::System Goniometry::intToSystem(const int index)
 {
-  if( index == 0 )
-    return Deg;
-  else if( index == 1 )
+    if (index == 0)
+        return Deg;
+    else if (index == 1)
+        return Rad;
+    else if (index == 2)
+        return Grad;
+    qDebug() << "No goniometric system with index " << index;
     return Rad;
-  else if( index == 2 )
-    return Grad;
-  qDebug() << "No goniometric system with index " << index;
-  return Rad;
 }
