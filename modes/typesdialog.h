@@ -68,7 +68,7 @@ public:
     TypesDialog(QWidget *parent, KigPart &);
     ~TypesDialog();
 
-private slots:
+private Q_SLOTS:
     void slotHelp();
     void slotOk();
     void slotCancel();

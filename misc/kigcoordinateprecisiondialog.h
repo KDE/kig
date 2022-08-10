@@ -24,7 +24,7 @@ public:
 private:
     Ui::KigCoordinatePrecisionDialog *ui;
 
-private slots:
+private Q_SLOTS:
     void toggleCoordinateControls(int state);
 };
 

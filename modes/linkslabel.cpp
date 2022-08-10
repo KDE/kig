@@ -52,7 +52,7 @@ void LinksLabel::urlClicked()
     const QObject *o = sender();
     std::vector<KUrlLabel *>::iterator i = std::find(p->urllabels.begin(), p->urllabels.end(), static_cast<const KUrlLabel *>(o));
     assert(i != p->urllabels.end());
-    emit linkClicked(i - p->urllabels.begin());
+    Q_EMIT linkClicked(i - p->urllabels.begin());
 }
 
 LinksLabel::LinksLabelEditBuf LinksLabel::startEdit()
@@ -113,5 +113,5 @@ void LinksLabel::applyEdit(LinksLabelEditBuf &buf)
     std::for_each(p->urllabels.begin(), p->urllabels.end(), mem_fun(&QWidget::show));
     std::for_each(p->labels.begin(), p->labels.end(), mem_fun(&QWidget::show));
 
-    emit changed();
+    Q_EMIT changed();
 }

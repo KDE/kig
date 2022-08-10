@@ -421,7 +421,7 @@ bool KigPart::openFile()
     std::vector<ObjectCalcer *> tmp = calcPath(getAllParents(getAllCalcers(document().objects())));
     for (std::vector<ObjectCalcer *>::iterator i = tmp.begin(); i != tmp.end(); ++i)
         (*i)->calc(document());
-    emit recenterScreen();
+    Q_EMIT recenterScreen();
 
     redrawScreen();
 
@@ -678,7 +678,7 @@ void KigPart::plugActionLists()
 
 void KigPart::emitStatusBarText(const QString &text)
 {
-    emit setStatusBarText(text);
+    Q_EMIT setStatusBarText(text);
 }
 
 void KigPart::fileSaveAs()

@@ -206,7 +206,7 @@ void TypesModel::elementChanged(const QModelIndex &index)
 
     QModelIndex left = createIndex(index.row(), 1);
     QModelIndex right = createIndex(index.row(), 2);
-    emit dataChanged(left, right);
+    Q_EMIT dataChanged(left, right);
 }
 
 bool TypesModel::isMacro(const QModelIndex &index) const

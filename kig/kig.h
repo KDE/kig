@@ -28,7 +28,7 @@ public:
      */
     virtual ~Kig();
 
-public slots:
+public Q_SLOTS:
     /**
      * Open file in this window
      * \param file file to open
@@ -77,7 +77,7 @@ protected:
      */
     void readProperties(const KConfigGroup &) override;
 
-private slots:
+private Q_SLOTS:
     void fileNew();
     void fileOpen();
     void optionsConfigureToolbars();

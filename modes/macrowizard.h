@@ -24,11 +24,11 @@ public:
     void givenArgsChanged();
     void finalArgsChanged();
 
-public slots:
+public Q_SLOTS:
     void reject() override;
     void accept() override;
 
-private slots:
+private Q_SLOTS:
     void currentIdChanged(int id);
     void slotHelpClicked();
 

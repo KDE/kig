@@ -39,7 +39,7 @@ public:
     void setImageSize(const QSize &size);
     QSize imageSize() const;
 
-protected slots:
+protected Q_SLOTS:
     void slotWidthChanged(double);
     void slotHeightChanged(double);
     void slotUnitChanged(int);

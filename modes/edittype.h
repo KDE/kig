@@ -31,7 +31,7 @@ public:
     QString description() const;
     QString icon() const;
 
-private slots:
+private Q_SLOTS:
     void slotHelp();
     void slotOk();
     void slotCancel();

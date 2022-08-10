@@ -36,7 +36,7 @@ class ExporterAction : public QAction
 
 public:
     ExporterAction(const KigPart *doc, KigWidget *w, KActionCollection *parent, KigExporter *exp);
-private slots:
+private Q_SLOTS:
     void slotActivated();
 };
 

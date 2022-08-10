@@ -84,7 +84,7 @@ public:
 protected:
     void activateAction(int menu, int action);
 
-private slots:
+private Q_SLOTS:
     void toplevelMenuSlot(QAction *);
 
 protected:

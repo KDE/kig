@@ -25,11 +25,11 @@ public:
     QString text() const;
     void setText(const QString &newtext);
 
-public slots:
+public Q_SLOTS:
     void reject() override;
     void accept() override;
 
-private slots:
+private Q_SLOTS:
     void textChanged();
     void linkClicked(int which);
     void currentIdChanged(int id);

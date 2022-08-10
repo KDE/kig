@@ -25,7 +25,7 @@ public:
     HistoryDialog(QUndoStack *kch, QWidget *parent);
     virtual ~HistoryDialog();
 
-private slots:
+private Q_SLOTS:
     void updateWidgets();
 
     void goToFirst();

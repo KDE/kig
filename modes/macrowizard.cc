@@ -52,7 +52,7 @@ bool GivenArgsPage::isComplete() const
 
 void GivenArgsPage::setChanged()
 {
-    emit completeChanged();
+    Q_EMIT completeChanged();
 }
 
 class FinalArgsPage : public QWizardPage
@@ -96,7 +96,7 @@ bool FinalArgsPage::validatePage()
 
 void FinalArgsPage::setChanged()
 {
-    emit completeChanged();
+    Q_EMIT completeChanged();
 }
 
 class MacroInfoPage : public QWizardPage

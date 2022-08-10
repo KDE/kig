@@ -37,7 +37,7 @@ class SetCoordinateSystemAction : public KSelectAction
 
 public:
     SetCoordinateSystemAction(KigPart &d, KActionCollection *parent);
-private slots:
+private Q_SLOTS:
     void slotActivated(int index);
 };
 
@@ -88,7 +88,7 @@ public:
     void redrawScreen();
     void redrawScreen(KigWidget *w);
 
-public slots:
+public Q_SLOTS:
     void fileSaveAs();
     void fileSave();
 
@@ -134,7 +134,7 @@ public:
     void rememberConstruction(ConstructibleAction *);
     void coordSystemChanged(int);
 
-signals: // these signals are for telling KigView it should do something...
+Q_SIGNALS: // these signals are for telling KigView it should do something...
     /**
      * emitted when we want to suggest a new size for the view
      * ( basically after loading a file, and on startup... )

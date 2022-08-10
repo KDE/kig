@@ -29,7 +29,7 @@ public:
     GUIAction *guiAction();
 
     void plug(KigPart *doc);
-private slots:
+private Q_SLOTS:
     void slotActivated();
 };
 

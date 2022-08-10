@@ -56,7 +56,7 @@ public:
      */
     void applyEdit(LinksLabelEditBuf &buf);
 
-signals:
+Q_SIGNALS:
     /**
      * the user clicked on a link.  The index is the order in which it
      * was added.  E.g. this signal is emitted with arg 0 if the link
@@ -69,7 +69,7 @@ signals:
      */
     void changed();
 
-private slots:
+private Q_SLOTS:
     void urlClicked();
 
 private:

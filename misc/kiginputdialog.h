@@ -40,7 +40,7 @@ private:
     Coordinate coordinateSecond() const;
     Goniometry goniometry() const;
 
-private slots:
+private Q_SLOTS:
     void slotCoordsChanged(const QString &);
     void slotGonioSystemChanged(int index);
     void slotGonioTextChanged(const QString &txt);

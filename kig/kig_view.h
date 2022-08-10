@@ -238,7 +238,7 @@ public:
     void scrollHorizontal(int delta);
     void scrollVertical(int delta);
 
-public slots:
+public Q_SLOTS:
     void updateScrollBars();
     void slotZoomIn();
     void slotZoomOut();
@@ -248,7 +248,7 @@ public slots:
     void slotRecenterScreen();
     void toggleFullScreen();
 
-private slots:
+private Q_SLOTS:
     void slotRightScrollValueChanged(int);
     void slotBottomScrollValueChanged(int);
 };

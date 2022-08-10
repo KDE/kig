@@ -41,7 +41,7 @@ protected:
     ObjectChooserPopup(const QPoint &p, KigWidget &view, const std::vector<ObjectHolder *> &objs);
     ~ObjectChooserPopup();
 
-protected slots:
+protected Q_SLOTS:
     void actionActivatedSlot(QAction *);
 
 protected:
