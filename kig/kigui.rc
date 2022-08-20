@@ -1,5 +1,6 @@
-<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_shell" version="4">
+<?xml version="1.0"?>
+<!DOCTYPE gui SYSTEM "kpartgui.dtd">
+<gui version="4" name="kig_shell">
 <MenuBar>
 	<Menu name="file" noMerge="1"><text>&amp;File</text>
 		<Action name="file_new"/>
@@ -26,4 +27,4 @@
   <Separator/>
   <Merge />
 </ToolBar>
-</kpartgui>
+</gui>

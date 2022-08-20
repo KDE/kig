@@ -1,5 +1,6 @@
-<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kig_part" version="10">
+<?xml version="1.0"?>
+<!DOCTYPE gui SYSTEM "kpartgui.dtd">
+<gui version="10" name="kig_part">
   <MenuBar>
     <Menu name="file">
       <text>&amp;File</text>
@@ -320,4 +321,4 @@
     <Action name="view_select_shown_rect" />
     <Action name="view_zoom_area" />
   </ToolBar>
-</kpartgui>
+</gui>
