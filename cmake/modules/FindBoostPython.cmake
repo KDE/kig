@@ -23,6 +23,7 @@ include(FindPackageHandleStandardArgs)
 macro(BoostPython_TRY_COMPILE varname)
   check_cxx_source_compiles("
 #include <boost/python.hpp>
+#include <boost/shared_ptr.hpp>
 const char* greet() { return \"Hello world!\"; }
 BOOST_PYTHON_MODULE(hello) { boost::python::def(\"greet\", greet); }
 int main() { return 0; }
@@ -39,10 +40,6 @@ if(NOT Boost_PYTHON3_FOUND)
 endif(NOT Boost_PYTHON3_FOUND)
 
 cmake_push_check_state()
-set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${Boost_INCLUDE_DIRS})
-set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${Boost_PYTHON3_LIBRARY})
-
-check_include_file_cxx(boost/shared_ptr.hpp HAVE_BOOST_SHARED_PTR_HPP)
 
 # This variable is not checked/used when user provide both
 # BoostPython_INCLUDE_DIRS and BoostPython_LIBRARIES, by design.
@@ -52,15 +49,15 @@ set(BoostPython_COMPILES)
 
 # If shared_ptr.hpp or Python library is not available, then there is
 # no point to do anything.
-if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON3_FOUND)
+if(Boost_PYTHON3_FOUND)
   if(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
     # First try: check if CMake Python is suitable.
     set(Python_ADDITIONAL_VERSIONS "3.9;3.8;3.7;3.6;3.5")
     find_package(PythonLibs 3 QUIET)
     if(PYTHONLIBS_FOUND)
       cmake_push_check_state()
-      set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${PYTHON_INCLUDE_DIRS})
-      set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${PYTHON_LIBRARIES})
+      set(CMAKE_REQUIRED_INCLUDES  ${CMAKE_REQUIRED_INCLUDES}  ${PYTHON_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+      set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_PYTHON3_LIBRARY})
       BoostPython_TRY_COMPILE(BoostPython_FromCMake)
       cmake_pop_check_state()
 
@@ -104,7 +101,7 @@ if(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON3_FOUND)
       endforeach(_pyver ${PYTHON_VERSIONS})
     endif(PKG_CONFIG_FOUND)
   endif(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES )
-endif(HAVE_BOOST_SHARED_PTR_HPP AND Boost_PYTHON3_FOUND)
+endif(Boost_PYTHON3_FOUND)
 
 cmake_pop_check_state()
 

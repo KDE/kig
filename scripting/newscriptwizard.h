@@ -34,11 +34,11 @@ public:
 
     void setType(ScriptType::Type type);
 
-public slots:
+public Q_SLOTS:
     void accept() override;
     void reject() override;
 
-protected slots:
+protected Q_SLOTS:
     void slotHelpClicked();
     void currentIdChanged(int id);
 
