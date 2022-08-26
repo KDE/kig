@@ -52,7 +52,7 @@ set(BoostPython_COMPILES)
 if(Boost_PYTHON3_FOUND)
   if(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
     # First try: check if CMake Python is suitable.
-    set(Python_ADDITIONAL_VERSIONS "3.9;3.8;3.7;3.6;3.5")
+    set(Python_ADDITIONAL_VERSIONS "3.10;3.9;3.8;3.7;3.6;3.5")
     find_package(PythonLibs 3 QUIET)
     if(PYTHONLIBS_FOUND)
       cmake_push_check_state()
