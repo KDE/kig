@@ -7,11 +7,9 @@
 #include "macro.h"
 
 #include <QLabel>
-#include <QLayout>
 
-#include <QDebug>
-#include <QDialog>
 #include <QLineEdit>
+#include <QLayout>
 
 #include <KHelpClient>
 #include <KIconButton>

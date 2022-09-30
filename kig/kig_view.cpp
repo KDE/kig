@@ -16,13 +16,9 @@
 #include "kig_document.h"
 #include "kig_part.h"
 
-#include <QApplication>
-#include <QEvent>
-#include <QLayout>
+#include <QGridLayout>
 #include <QScrollBar>
 #include <QWheelEvent>
-
-#include <QDebug>
 
 #include <algorithm>
 #include <cmath>

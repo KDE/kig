@@ -7,10 +7,8 @@
 
 #include "kigcoordinateprecisiondialog.h"
 
-#include <QBoxLayout>
 #include <QCheckBox>
 #include <QDialogButtonBox>
-#include <QLabel>
 #include <QVBoxLayout>
 
 KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified, int currentPrecision)

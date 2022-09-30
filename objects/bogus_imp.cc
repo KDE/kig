@@ -5,7 +5,6 @@
 #include "bogus_imp.h"
 
 #include <KLazyLocalizedString>
-#include <QStringList>
 
 #include "../misc/rect.h"
 

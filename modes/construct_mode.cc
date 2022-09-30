@@ -23,10 +23,7 @@
 #include "popup/objectchooserpopup.h"
 #include "popup/popup.h"
 
-#include <QEvent>
 
-#include <KCursor>
-#include <QAction>
 
 #include <QMouseEvent>
 #include <algorithm>

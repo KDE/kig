@@ -7,11 +7,9 @@
 
 #pragma once
 
-#include <QAbstractItemModel>
-
-#include <QDialog>
-
 #include "../misc/lists.h"
+#include <QAbstractTableModel>
+#include <QDialog>
 
 #include <vector>
 

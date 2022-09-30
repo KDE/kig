@@ -9,10 +9,8 @@
 
 #include <QCheckBox>
 #include <QLabel>
-#include <QLayout>
 #include <QTextEdit>
-
-#include <QDialog>
+#include <QVBoxLayout>
 
 #include <KHelpClient>
 

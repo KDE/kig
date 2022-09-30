@@ -9,7 +9,6 @@
 
 #include "ui_historywidget.h"
 
-#include <QDebug>
 #include <QDialogButtonBox>
 #include <QIcon>
 #include <QIntValidator>
@@ -17,7 +16,6 @@
 #include <QUndoStack>
 #include <QVBoxLayout>
 
-#include <KConfigGroup>
 
 HistoryDialog::HistoryDialog(QUndoStack *kch, QWidget *parent)
     : QDialog(parent)

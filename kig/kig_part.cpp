@@ -44,17 +44,15 @@
 #include <QStandardPaths>
 #include <QTimer>
 
-#include <KAboutData>
 #include <KActionCollection>
 #include <KIconEngine>
 #include <KIconLoader>
 #include <KMessageBox>
+#include <KParts/OpenUrlArguments>
 #include <KPluginFactory>
 #include <KStandardAction>
 #include <KToggleAction>
 #include <KUndoActions>
-
-#include <KParts/OpenUrlArguments>
 
 using namespace std;
 

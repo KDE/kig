@@ -10,10 +10,6 @@
 
 #include "filter.h"
 
-#include <QAbstractXmlReceiver>
-#include <QMap>
-#include <QXmlNamePool>
-
 class ObjectCalcer;
 class ObjectType;
 

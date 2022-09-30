@@ -7,11 +7,9 @@
 
 #include "kig.h"
 
-#include <QAction>
 #include <QApplication>
 #include <QDropEvent>
 #include <QFileDialog>
-#include <QMessageBox>
 #include <QMimeData>
 #include <QProcess>
 #include <QStandardPaths>

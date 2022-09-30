@@ -11,8 +11,6 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-#include <KCursor>
-#include <QEvent>
 #include <QMouseEvent>
 
 BaseMode::BaseMode(KigPart &d)

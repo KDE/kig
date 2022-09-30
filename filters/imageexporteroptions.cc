@@ -11,7 +11,6 @@
 #include <QDesktopWidget>
 #include <QLayout>
 #include <QSize>
-#include <QSpinBox>
 
 ImageExporterOptions::ImageExporterOptions(QWidget *parent)
     : QWidget(parent)

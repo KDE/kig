@@ -7,14 +7,11 @@
 
 #include "script_mode.h"
 
-#include <QAction>
-#include <QDialog>
 #include <QFontDatabase>
 #include <QLabel>
 #include <QTextEdit>
 #include <QVBoxLayout>
 
-#include <KActionCollection>
 #include <KHelpClient>
 #include <KIconEngine>
 

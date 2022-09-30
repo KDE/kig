@@ -9,7 +9,6 @@
 #include "../kig/kig_view.h"
 #include "../misc/kigpainter.h"
 
-#include <QAction>
 #include <QMouseEvent>
 #include <qglobal.h>
 

@@ -7,9 +7,7 @@
 
 #pragma once
 
-#include <QUndoStack>
-
-#include <QDebug>
+#include <QUndoCommand>
 
 #include "../objects/object_holder.h"
 

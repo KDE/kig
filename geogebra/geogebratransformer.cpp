@@ -16,13 +16,10 @@
 #include <objects/object_holder.h>
 #include <objects/object_type_factory.h>
 
-#include <KZip>
 #include <QDebug>
 
 #include <QColor>
-#include <QFile>
 #include <QXmlName>
-#include <QXmlQuery>
 
 void GeogebraTransformer::atomicValue(const QVariant &)
 {

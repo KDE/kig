@@ -22,7 +22,6 @@
 #include "../../objects/point_imp.h"
 
 #include <QInputDialog>
-#include <QRegExpValidator>
 
 void addNameLabel(ObjectCalcer *object, ObjectCalcer *namecalcer, const Coordinate &loc, KigPart &doc)
 {

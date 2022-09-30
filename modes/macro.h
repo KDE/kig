@@ -6,8 +6,6 @@
 
 #include "base_mode.h"
 
-#include <QObject>
-
 class MacroWizard;
 
 class DefineMacroMode : public BaseMode

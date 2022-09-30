@@ -10,10 +10,7 @@
 
 #include "ui_edittypewidget.h"
 
-#include <KConfigGroup>
 #include <KHelpClient>
-#include <KIconDialog>
-#include <KLineEdit>
 #include <KMessageBox>
 #include <QDialogButtonBox>
 #include <QPushButton>

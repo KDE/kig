@@ -9,7 +9,6 @@
 
 #include "../kig/kig_part.h"
 
-#include <QAction>
 
 void KigMode::enableActions()
 {

@@ -10,8 +10,6 @@
 #include "coordinate.h"
 #include "rect.h"
 
-#include <QRect>
-
 #include <assert.h>
 #include <vector>
 

@@ -20,9 +20,6 @@
 #include "popup/popup.h"
 #include "typesdialog.h"
 
-#include <KCursor>
-#include <QAction>
-#include <QUndoStack>
 
 #include <algorithm>
 #include <functional>

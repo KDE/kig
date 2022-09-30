@@ -19,7 +19,6 @@
 #include <QIcon>
 
 #include <KIconEngine>
-#include <KLazyLocalizedString>
 
 void PropertiesActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree)
 {

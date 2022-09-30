@@ -14,8 +14,6 @@
 #include "dragrectmode.h"
 #include "macrowizard.h"
 
-#include <KCursor>
-#include <KLineEdit>
 #include <KMessageBox>
 
 #include <algorithm>

@@ -37,7 +37,6 @@
 #include "../objects/transform_types.h"
 #include "../objects/vector_type.h"
 
-#include <QColor>
 #include <QFile>
 #include <QRegExp>
 

@@ -24,7 +24,6 @@
 #include <QStandardPaths>
 #include <QVBoxLayout>
 
-#include <KConfigGroup>
 #include <KHelpClient>
 #include <KIconLoader>
 #include <KMessageBox>

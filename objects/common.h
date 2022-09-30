@@ -10,7 +10,6 @@
 
 #include <QByteArray>
 #include <QList>
-#include <QStringList>
 
 #include <KLocalizedString>
 

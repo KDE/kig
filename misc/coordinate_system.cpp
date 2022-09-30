@@ -19,10 +19,7 @@
 #include <string>
 
 #include <QDoubleValidator>
-#include <QPainter>
 #include <QRegExp>
-
-#include <QDebug>
 
 static QString withoutSpaces(const QString &str)
 {

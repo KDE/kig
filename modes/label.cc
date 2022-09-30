@@ -23,18 +23,15 @@
 #include "../objects/text_type.h"
 
 #include <QAction>
-#include <QEvent>
 #include <QIcon>
 #include <QMenu>
 #include <QMouseEvent>
 #include <QRegExp>
 #include <QVariant>
 
-#include <KCursor>
 #include <KIconEngine>
 #include <KLazyLocalizedString>
 #include <KMessageBox>
-#include <QDebug>
 
 #include <algorithm>
 #include <functional>

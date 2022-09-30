@@ -13,8 +13,6 @@
 
 #include <cmath>
 
-#include <QDebug>
-
 using std::atan2;
 using std::cos;
 using std::fabs;

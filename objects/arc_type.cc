@@ -25,7 +25,6 @@
 
 using std::find;
 
-#include <QStringList>
 
 /*
  * oriented arc by three points

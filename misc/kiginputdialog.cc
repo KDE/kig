@@ -13,7 +13,6 @@
 
 #include "../kig/kig_document.h"
 
-#include <QApplication>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QLabel>
@@ -23,7 +22,6 @@
 #include <QVBoxLayout>
 #include <QValidator>
 
-#include <KConfigGroup>
 #include <KLocalizedString>
 
 class KigInputDialogPrivate
