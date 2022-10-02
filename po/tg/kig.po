@@ -1,0 +1,7215 @@
+# translation of kig.po to
+# translation of kig.po to Tajik
+# translation of kig.po to Тоҷикӣ
+# Copyright (C) 2004, 2003, 2005 Free Software Foundation, Inc.
+# 2004, infoDev, a World Bank organization
+# 2004, Khujand Computer Technologies, Inc.
+# 2004, Youth Opportunities, NGO
+# Youth Opportunities NGO, 2003.
+# Marina Kolucheva <youth_opportunities@tajik.net>, 2004.
+# Victor Ibragimov <youth_opportunities@tajik.net>, 2004.
+# Akmal Salomov <youth_opportunities@tajik.net>, 2004.
+# Erkin Pulatov <erkin_pulatov@mail.ru>, 2004.
+# Victor Ibragimov <youth_opportunities@tajikngo.org>, 2005, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2019-09-29 12:43+0500\n"
+"Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
+"Language-Team: English <kde-i18n-doc@kde.org>\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"<youth_opportunities@tajik.net>\n"
+"X-Generator: Lokalize 19.04.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, fuzzy, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Марина Колючева Виктор Ибрагимов Акмал Саломов Масрур Каримов "
+
+#, fuzzy, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "youth_opportunities@tajik.net"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Давраи аз рӯи марказ ва нуқта"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "Сохтани доира давра аз рӯи марказ ва нуқта дар ӯ саҳид"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Хати тамосро барои доираи нав низ интихоб кунед..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Доираи расмкаши && ҳисса(ҳамчун диаметр)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr "Доира бо марказ ва дарозии ҳисса ҳамчун диаметр муайян мешавад"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Доираро ба диаметр созед, дарозии ин ҳисса дода шудааст"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+"Ҳиссаи дарози кадоме, ки диаметри доираи навро медиҳад интихоб кунед..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Секунҷаи баробарпаҳлу"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Секунҷаи баробарпаҳлу бо ду қулла дода шудааст"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Гузаронидан"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Гузаронидани хати каҷ"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Интихоби ин хати каҷ"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Пайвастшавии доира"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Пайвастшавии доира бо нуқтаи хатти каҷ"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Пайвастшавии доира бо хатти каҷ"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Пайвастшавии доира бо нуқта"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Интихоб кардани нуқта..."
+
+#, kde-format
+msgid "Square"
+msgstr "Росткунҷа"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Росткунҷаро бо дуто ҳамҷавори хати амудӣ"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Гуногунии векторҳо"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Сохтани вектори гуногун аз рӯи ду вектор"
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Сохтани гуногунии ин ва дигар вектор"
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Сохтани гуногунии дигар ва ин вектор"
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Сохтани вектори гуногуншакл, дар ин нуқта оғоз ёбад"
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Аз ду вектор яктоашро барои ёфтани ҷамъи он, интихоб кунед..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Аз дигар вектор яктоашро барои ёфтани ҷамъи он, интихоб кунед..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Нуқтаро барои сохтани дар он вектори гуногуншакл, интихоб кунед..."
+
+#: filters/asyexporter.cc:29
+#, fuzzy, kde-format
+#| msgid "Export to &Latex..."
+msgid "Export to &Asymptote..."
+msgstr "Содир &Латекс..."
+
+#: filters/asyexporter.cc:34
+#, fuzzy, kde-format
+msgid "&Asymptote..."
+msgstr "Воридот..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.tex|Латекс ҳуҷҷатҳо (*.tex)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr ""
+
+#: filters/asyexporter.cc:48
+#, fuzzy, kde-format
+#| msgid "Image Options"
+msgid "Asymptote Options"
+msgstr "Интихоби тасвир"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr "Файли \"%1\" нашояд боз шуд. Ҳуқуқи дастрасии худро биозмоед."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Интихоби SVG"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, fuzzy, kde-format
+msgid "Show Extra Frame"
+msgstr "Нигоҳдодани иловагии чаҳорчӯб"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, fuzzy, kde-format
+msgid "Show Axes"
+msgstr "&Намоиши меҳварҳо"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, fuzzy, kde-format
+msgid "Show Grid"
+msgstr "&Намоиши хатҳои шабака"
+
+#: filters/cabri-filter.cc:143
+#, fuzzy, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Ин файли XFig аст, наинки шакли Cabri."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Файли Cabri дорои объекти \"%1\" мебошад, ки дар айни замон бо Kig пуштибонӣ "
+"намешавад."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, fuzzy, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Хатогӣ ҳангоми хондани файли \"%1\" рӯй дод. Он кушода нахоҳад шуд."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Файли Dr. Geo \"%1\" дорои макросҳо аст."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Шакле дар файли Dr. Geo \"%1\" нест."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Филтри Dr. Geo"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Файли Dr. Geo дорои зиёд аз як шакл аст.\n"
+"Яктоашро барои содирот интихоб кунед."
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Файли Dr. Geo дорои объекти \"%1 %2\", кидар айни замон бо Kig пуштибонӣ "
+"намешавад."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+"Ин файли Dr. Geo дорои навъи нуқтаи буришаст, ки дар айни замон бо Kig "
+"пуштибонӣ намешавад."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Содир кардан ба тасвирот"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Тасвирот..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Содирот ҳамчун тасвир"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Интихоби тасвир"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Форматҳои файли пуштибонӣ нашаванда."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Натавонистам тасвироти \"%1\"-ро нигоҳ дорам"
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Содир кардан ба"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Натавонистам файли \"%1\"-ро бикушоям. Мумкин он мавҷуд набошад ё шумо "
+"ҳуқуқи дастрасӣ ба онро надоред"
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+#| msgid ""
+#| "An error was encountered while parsing the file \"%1\".  It cannot be "
+#| "opened."
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "Хатогӣ ҳангоми хондани файли \"%1\" рӯй дод. Он кушода нахоҳад шуд."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Хатои таҳлилот"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Пуштибонӣ намешавад"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+#| msgid "Kig cannot open the file \"%1\"."
+msgid "Kig cannot open this file."
+msgstr "Натавонистам файли \"%1\"-ро боз кунам."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Иҷозат"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, fuzzy, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "&Нигоҳдоштани навъ муносибат"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Бузургӣ:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Васеъӣ:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"Ин санадоти KSeg таъғиротро аз рӯи ҷадвале, ки Kig дар айни ҳол пуштибонӣ "
+"намекунад, истифода мекунад."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+"Ин санадоти KSeg дорои доираи пуршудае аст, ки Kig дар айни ҳол инро "
+"пуштибонӣ намекунад."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+"Ин санадоти KSeg дорои сектори қавс аст, ки Kig инро дарҳол пуштибонӣ "
+"намекунад."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+"Ин санадоти KSeg дорои сектори бурише аст, ки Kig инро дарҳол пуштибонӣ "
+"намекунад."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Содир &Латекс..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Латекс..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Латекс ҳуҷҷатҳо (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Содироти латекс"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Интихоби латекс"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, fuzzy, kde-format
+#| msgid "Document to open"
+msgid "Document options"
+msgstr "Санад барои кушодан"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, fuzzy, kde-format
+#| msgid "Zoom in on the document"
+msgid "Standalone document"
+msgstr "Калон кардани масштаби ҳуҷҷат"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Ин файл бо барномаи Kig раванди \"%1\" эҷод карда шуд ва акнун ин формат "
+"пуштибонӣ намешавад."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Ин файл бо раванди Kig \"%1\"эҷод шуда буд.\n"
+". Пуштибонии формати кӯҳна аз равандҳои пештараи барнома ҳузф карда шуд. "
+"Шумо метавонед ин файлро бо раванди кӯҳнаи Kig (0.4 to 0.6) боз кунед,\n"
+"ва баъд онро боз нигоҳ доред (инро дар формати нав нигоҳ медорад)."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Ин файли Kig дорои низоми координат аст, ки бо раванди мазкури Kig пуштибонӣ "
+"намешавад.\n"
+"Системаи координатии стандартӣ истифода бурда мешавад."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Ин файли Kig дорои объекти навъи \"%1\" аст, ки бо раванди мазкури Kig "
+"пуштибонӣ намешавад. Балки барнома бе дастгирии ин навъ талфиф шудааст, "
+"балки шумо раванди қадими Kig-ро истифода карда истодаед."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "&Содироти SVG..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "*.svg|Scalable Vector Graphics (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Содироти SVG"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "Интихоби SVG"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Афсӯс, чизе хатто шуд дар вақти ба ёдгирии SVG файл \"%1\""
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Содир кардан ба &файли XFig"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&Файли XFig..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+#| msgid "*.fig|XFig Documents (*.fig)"
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|Санадоти XFig (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Содир кардан ба файли XFig"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "Геометрияи интерактивии KDE"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "(C) 2002-2004, Коргардонҳои Kig"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+#| msgid "Original author, long time maintainer, design and lots of code."
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "Муаллифиибтидоӣ, вақти дарози автогрейдер, лоиҳакаши ва рамзҳои бисёр."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr ""
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Кори шиддатнок дар гирди Kig, ҳамчунин хати каҷи конусшакл, хатҳои каҷи "
+"тартиби саввум, таъғирдиҳӣ ва озмоиши хосият."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr ""
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+#| msgid ""
+#| "Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
+#| "translation, miscellaneous stuff here and there."
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr "Содироти файлҳои Dr. Geo, услубҳои нуқта ва хат, ҳисобот оиди хатогӣ."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr ""
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Кӯмак ба амалӣ гардонидани ГМТ, Franco тамоми қисмҳои мушкилии кодро "
+"навиштааст, зеро ки он математикаро хеле хуб медонад."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr ""
+
+#: kig/aboutdata.h:46
+#, fuzzy, kde-format
+#| msgid "Responsible for the nice application SVG Icon."
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr " SVG Барои ишораҳои зебои масъул аст."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr ""
+
+#: kig/aboutdata.h:52
+#, fuzzy, kde-format
+#| msgid "Construct the asymptotes of this conic"
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Сохтани асимптотаи ин хати каҷи конусшакл"
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr ""
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "The French translator, who also sent me some useful feedback, like "
+#| "feature requests and bug reports."
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr "Ҳисоботҳои зиёд оиди хатогӣ ва ҷумлаҳои нав."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr ""
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"Муаллифи KGeo, ки дар барномаи он идея иқтибос ёфта буд, якчанд кодҳои "
+"ибтидоӣ ва тасвироти коркардашуда ҳам ҳамчунин."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Бародари domi, ки ба он алгоритми ҳисоб намудани координати маркази доира аз "
+"се нуқтаро навиштааст."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+#| msgid "Sent me a patch for some bugs."
+msgid "Contributed a patch for some bugs."
+msgstr "Тасҳеҳгар барои дур сохтани якхел хатогиҳо."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr ""
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+#| msgid ""
+#| "Gave me some good feedback on Kig, some feature requests, cleanups and "
+#| "style fixes, and someone to chat with on irc :)"
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr "Якчанд ҷумлаҳо, ислоҳот, тасҳеҳот дар услуб"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr " SVG Барои ишораҳои зебои масъул аст."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr ""
+
+#: kig/aboutdata.h:80
+#, fuzzy, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Барои объектҳо ва ишораҳои нав масъул аст"
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr "Китобхонаи kig ёфт нашуд."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, fuzzy, kde-format
+#| msgid "Remove %1 Objects"
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Ҳузфи %1 объектҳо"
+msgstr[1] "Ҳузфи %1 объектҳо"
+
+#: kig/kig_commands.cpp:103
+#, fuzzy, kde-format
+#| msgid "Add %1 Objects"
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Афзудани %1 объектҳо"
+msgstr[1] "Афзудани %1 объектҳо"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "&Мондани тартиботи координатаҳо"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Параметрҳои Kig"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Намоиши шабака"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Намоиши меҳварҳо"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Табдилдиҳии ҷудокунӣ"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Ҳузфи объектҳо"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Ҳузфи объектҳои интихобшуда"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Барҳамдиҳии сафбандӣ"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Барҳамдиҳии сафбандии объект"
+
+#: kig/kig_part.cpp:237
+#, fuzzy, kde-format
+msgid "Repeat Construction"
+msgstr "Барҳамдиҳии сафбандӣ"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, fuzzy, kde-format
+msgid "U&nhide All"
+msgstr "Намоиши &ҳамааш"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Намоиши ҳама пинҳонӣ мавзӯъҳо"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Макроси нав..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Таъин кардани макроси нав"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "&Идора кардани намудҳо..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Идора кардани намудҳои макрос"
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr ""
+
+#: kig/kig_part.cpp:263
+#, fuzzy, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Барҳамдиҳии сафбандӣ"
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Калон кардани масштаби ҳуҷҷат"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Камтар кардани масштаби ҳуҷҷат"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Ба рӯи ҳуҷҷат"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Намоиши ҳуҷҷат дар экрани пурра."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "&Интихоб кардани доира барои намоиш"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Интихоб кардани доира барои намоиш дар тиреза."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "&Интихоб кардани доира барои намоиш"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, fuzzy, kde-format
+#| msgid "Set &Coordinate..."
+msgid "Set Coordinate &Precision..."
+msgstr "Сабт кардани &координата..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr ""
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "&Намоиши хатҳои шабака"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Намоиш ё пинҳони шабақа"
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "&Намоиши меҳварҳо"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "намоиш ё пинҳони тира"
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr ""
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr ""
+
+#: kig/kig_part.cpp:347
+#, fuzzy, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Барҳамдиҳии сафбандӣ"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Файли \"%1\" мавҷуд надорад. Мутмаин бошед, ки шумо роҳи саҳеҳро ворид "
+"кардед."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Файл ёфт нашуд"
+
+#: kig/kig_part.cpp:394
+#, fuzzy, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"Шумо сайъи боз кардани санади навъи \"%1\"-ро карда истодаед. Мутаассифона "
+"Kig онро дастгирӣ намекунад. Шумо доим метавонед дарбеҳро бо дастгирии "
+"формати мазкур ба муаллифи барнома бо нишони devriese@kde.org бифиристед."
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, fuzzy, kde-format
+msgid "Format Not Supported"
+msgstr "Формат пуштибонӣ намешавад"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig метавонад файлҳоро танҳо дар андозаи худ нигоҳ дорад. Инро иҷро кунам?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr ""
+
+#: kig/kig_part.cpp:695
+#, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Файли \"%1\" аллакай маҷуд аст. Оё мехоҳед ин файлро бознависӣ кунед?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Файлро таъғир диҳам?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Чоп"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Пинҳони %1 объект"
+msgstr[1] "Пинҳони %1 объектҳо"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Намоиши %1 объект"
+msgstr[1] "Намоиши %1 объектҳо"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Вусъат додани масштаб"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Камтар кардани масштаб"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Тасвиротро ғайри марказӣ кардан"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Интихоб кардани росткунҷа барои намоиш."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Таъғир додани қисми тасвиршавандаи экран"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Канореро барои вусъат додан интихоб кунед"
+
+#: kig/kig_view.cpp:539
+#, fuzzy, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Маҳали масштабониро бо ишора намудани координати кунҷи болоии чап ва поёнии "
+"ростро низ муайян кунед."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, fuzzy, kde-format
+msgid "&File"
+msgstr "&Пинҳон кардан"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, fuzzy, kde-format
+msgid "&Edit"
+msgstr "Таъғир додан..."
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, fuzzy, kde-format
+msgid "&View"
+msgstr "&Пинҳон кардан"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Мавзӯъҳо"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Нуқтаҳо"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Хатҳо"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Доира ва қавс"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "&Бисёркунҷаҳо"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Векторҳо ва порчаҳо"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "&Доирот ва қавс"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Калонтарин конусшакл"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "&Хатҳои каҷи тартиботи саввум"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr ""
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Кунҷҳо"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Тағйиротҳо"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Геометрияи дифференциалӣ"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "Сан&ҷишҳо"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Дигар"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Навъҳо"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr ""
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Нуқтаҳо"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Хатҳо"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Векторҳо ва порчаҳо"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Доирот ва қавс"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Хатҳои каҷи конусшакл"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, fuzzy, kde-format
+#| msgid "Hide a Curve"
+msgid "Bézier Curves"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Кунҷҳо"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Тағйирот"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Санҷишот"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Обектҳои дигар"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr ""
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr ""
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Ғайри интерфейси графикӣ. Таъғир додани файли ишорашуда ба формати Kig. "
+"Ҷамъбаст ба stdout меравад, фақат агар калид ба --outfile ишора шуда набошад."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr "Файл барои хурӯҷ. '-' - хурӯҷи стандартӣ (пешфарзӣ)."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Санад барои кушодан"
+
+#: misc/builtin_stuff.cc:43
+#, fuzzy, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Нуқта аз рӯи координатҳо"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr ""
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Порча"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Порча аз рӯи нуқтаҳои аввал ва охир"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Порчаи Axis"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Хати перпендикулярӣ аз байни сегмент."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Хат аз рӯи ду нуқта"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Сохтани хат аз рӯи ду нуқта"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Шуоъ"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "Шуоъ аз рӯи нуқтаи ибтидоӣ ва ба он тааллуқ дошта."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Перпендикуляр"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr "Хат аз рӯи нуқта, ки ба дигар хат ё порча перпендикуляр бошад."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Хати мувозӣ"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr "Эҷоди хат аз рӯи нуқта, ки ба дигар хат ё порча мувозӣ бошад."
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Доира аз рӯи марказ ва нуқта"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Доира аз рӯи маркази он ва нуқтае, ки ба он тааллуқ дорад"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Доира аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Сохтани доира аз рӯи се нуқтае, ки ба он тааллуқ дорад"
+
+#: misc/builtin_stuff.cc:107
+#, fuzzy, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Доираи расмкаши && ҳисса(ҳамчун шуоъ)"
+
+#: misc/builtin_stuff.cc:108
+#, fuzzy, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Доира, ки аз рӯи марказ муайян шуда ва дарозии радиуси он аст"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Сохтани хати байнии кунҷ"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Кунҷро барои сохтани хати байнии он интихоб кунед..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Хати байнии кунҷ"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Хати байнии кунҷ"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Хати каҷи конусшакл аз рӯи 5 нуқта"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Сохтани хати каҷи конусшакл аз рӯи 5 нуқта"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Гипербола аз рӯи асимптотҳо ва нуқта"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "Сохтани гипербола аз рӯи асимптотҳо ва нуқта"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Эллипс аз рӯи фокусҳо ва нуқта"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "Эллипс аз рӯи фокус ва нуқтаи дар канори он буда"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Гипербола аз рӯи фокусҳо ва нуқта"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr "Сохтани гипербола аз рӯи фокусҳо ва нуқтаи дар ӯ саҳид"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Хати каҷи конусшакл аз рӯи директриса, фокус ва нуқта"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+"Сохтани хати каҷи конусшакл аз рӯи директрисаи мавҷудбуда ва фокус аз дохили "
+"нуқта"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Параболаи амудӣ аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Сохтани параболаи амудӣ аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Хати каҷи тартиботи саввум аз рӯи 9 нуқта"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Сохтани хати каҷи тартиботи саввум аз рӯи 9 нуқта"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Нуқтаи қутб дар хат"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Нуқтаи хати мутақобилӣ нисбат ба хати каҷи конусшакл."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Хати нуқтаи мутақобилӣ"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Хати нуқтаи мутақобилӣ нисбат ба хати каҷи конусшакл."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Хати каҷи тартиби саввум бо сари аз рӯи 6 нуқта"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "Хати каҷи тартиби саввум бо нуқтаи узелӣ дар манбаъи аз 6 нуқта"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Хати каҷи тартиби саввум аз рӯи қулла ва 4 нуқта"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr "Хати каҷи тартиби саввум аз рӯи уфуқӣ ва 4 нуқта"
+
+#: misc/builtin_stuff.cc:209
+#, fuzzy, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Хати каҷи тартиби саввум аз рӯи қулла ва 4 нуқта"
+
+#: misc/builtin_stuff.cc:210
+#, fuzzy, kde-format
+msgid "A cubic function through four points"
+msgstr "Сохтани хати каҷи конусшакл аз рӯи 5 нуқта"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Директрисаи хати каҷи конусшакл"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Хати директрисаи хати каҷи конусшакл."
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Кунҷ аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Сохтани кунҷ аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Гиперболаи баробарпаҳлӯ аз рӯи чаҳор нуқта"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Сохтани гиперболаи баробарпаҳлӯ аз рӯи чаҳор нуқта"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Сохтани нуқта дар байни порча"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Нуқтаи байнӣ"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Сохтани нуқта дар байни порча ё байни ду нуқтаи дигар"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this segment"
+msgid "Construct the golden ratio point of this segment"
+msgstr "Сохтани нуқта дар байни порча"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+#| msgid "Move a Point"
+msgid "Golden Ratio Point"
+msgstr "Гузаронидани нуқта"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "The midpoint of a segment or two other points"
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Сохтани нуқта дар байни порча ё байни ду нуқтаи дигар"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Вектор"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Сохтани вектор аз рӯи ду нуқта"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Ҳисобкунандаи вектор"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Сохтани ҳисобкунандаи вектор аз рӯи ду вектор"
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Хати векторӣ"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Сохтани хати рости векторӣ аз нуқтаи дода шуда"
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Шуоъи векторӣ"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "Сохтани шуоъи векторӣ, ки дар нуқтаи додашуда оғоз мешавад"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Қавс аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Сохтани қавс аз рӯи се нуқта."
+
+#: misc/builtin_stuff.cc:308
+#, fuzzy, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Қавс аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:309
+#, fuzzy, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "Сохтани қавс аз рӯи се нуқта."
+
+#: misc/builtin_stuff.cc:315
+#, fuzzy, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Хати каҷи конусшакл аз рӯи 5 нуқта"
+
+#: misc/builtin_stuff.cc:316
+#, fuzzy, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Сохтани қавс аз рӯи се нуқта."
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Сохтани қавс аз рӯи се нуқта"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "Қавс аз рӯи марказ, кунҷ ва нуқта"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Парабола аз рӯи директриса ва фокус"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Сохтани парабола аз рӯи директриса ва фокус"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Параллелӣ ҷойгир кардан"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Параллелӣ гузаронидани объект аз рӯи вектор"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Аз нуқта зоҳир кардан"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Объекте, ки аз рӯи нуқта тасвир шудааст"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Аз хат тасвир кардан"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Объекте, ки аз рӯи хат тасвир шудааст"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Гардонидан"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Гардонидани объект аз рӯи кунҷи гирди нуқта"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Масштабонӣ"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Ба ҷадвал даровардани объект аз рӯи нуқта ва коэфитсиент ба намуди дарозии "
+"порча"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Масштабонӣ аз байни хат"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Ба ҷадвал даровардани объект аз рӯи нуқта ва коэфитсиент ба намуди дарозии "
+"порча"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Маштаб (муомилаи ду ҳиссаи додашуда)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr "Ҷадвали объект аз рӯи нуқта, рафтор, додашудаи дарозаи ду ҳисса "
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr ""
+"Ба ҷадвал даровардани объект аз рӯи нуқта ва коэфитсиент ба намуди дарозии "
+"порча"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr "Объект, ҳисоб кардан бо дарозак, рафтор, додашудаи дарозаи ду ҳисса "
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Истифодаи таъғироти ҳаммонандӣ"
+
+#: misc/builtin_stuff.cc:398
+#, fuzzy, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Истифодаи таъғироти ҳаммонандӣ ба объект (масштабонӣ ва тобиш аз рӯи марказ)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Гомологияи мутаносиб"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Гомологияи мутаносибӣ аз марказ ва тираи додашуда (таъғироти проективӣ)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Кашидани сояи проективӣ"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr "Сояи объекти равшании ишорашуда ва нақшаи проективӣ (аз рӯи хат)"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Асимптотаи гипербола"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Ду асимптотаи гипербола."
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Секунҷа бо қуллаҳояш"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Секунҷаро бо се қуллааш созед."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Тани барҷаста"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Секунҷае ки бо тани барҷастаи дигар секунҷа мувофиқ аст"
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Хати каҷи тартиботи саввум аз рӯи 9 нуқта"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Сохтани қавс аз рӯи се нуқта."
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:495
+#, fuzzy, kde-format
+#| msgid "Construct a cubic curve through this point"
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Сохтани хати каҷи тартиботи саввум аз ин нуқта"
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Хати каҷи тартиботи саввум аз рӯи 9 нуқта"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+#| msgid "Construct a triangle given its three vertices."
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Секунҷаро бо се қуллааш созед."
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:513
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "Сохтани қавс аз рӯи се нуқта."
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Озмоиши параллелият"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Озмоиши параллелияти ду хат"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Озмоиши ортоголоият"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Озмоиши ортоголияти ду хат"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Озмоиши коллинеарият"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Озмоидан, ки се нуқта дар як хати рост омадаанд"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Озмоиши мансубият"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Озмоиши мансубияти нуқтаи хати каҷ"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Дар санҷиши бисёркунҷа"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Оё санҷиш дар худ нуқтаи бисёркунҷаи додашударо нигоҳ дорад"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Санҷиши барҷастаи бисёркунҷа "
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Оё дар санҷиш бисёркунҷаи додашуда барҷаста аст"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+#| msgid "Distance Test"
+msgid "Existence Test"
+msgstr "Озмоиши фосилот"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+#| msgid "Test whether a given polygon is convex"
+msgid "Test whether a given object is constructible"
+msgstr "Оё дар санҷиш бисёркунҷаи додашуда барҷаста аст"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Озмоиши фосилот"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr "Озмоиши баробарии фосилот аз як нуқта то ду нуқтаи дигар"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Озмоиши баробарии векторҳо"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Озмоиши баробарии ду вектор"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+#| msgid "Project this point onto the circle"
+msgid "Project a point on a line"
+msgstr "Нақшакашии ин нуқта ба давра"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Ҳуруфҳои Python"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Сохтани объект, ки дар асоси ҳуруфи Python шудааст."
+
+#: misc/coordinate_system.cpp:322
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Координатҳоро ба формати зерин ворид кунед: \"x;y\", ки x - абсисса, y - "
+"ордината."
+
+#: misc/coordinate_system.cpp:329
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Координатҳоро ба формати зерин ворид кунед: \"x;y\", ки x - абсисса, y - "
+"ордината."
+
+#: misc/coordinate_system.cpp:371
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Координатҳоро ба формати зерин ворид кунед: \"r; θ°\", ки r ва θ - "
+"координатҳои қутбӣ."
+
+#: misc/coordinate_system.cpp:379
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Координатҳоро ба формати зерин ворид кунед: \"r; θ°\", ки r ва θ - "
+"координатҳои қутбӣ."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Евклидӣ"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Қутбӣ"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Мондани тартиботи координатаҳои Евклид"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Мондани тартиботи координатаҳои қутбӣ"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Градус"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Рад"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Град"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr "Нуқтаи оддӣ (мустақил, ки дар хати доира ё порча ҷой гирифтааст)."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Нуқта"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Эҷоди тамға"
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Тамғот"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Сохтани нуқта аз рӯи координатҳо"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Нуқта аз рӯи координатҳо"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Нуқтаи қайдкардашуда"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Координатаҳои нуқтаи навро ворид кунед."
+
+#: misc/guiaction.cc:235
+#, fuzzy, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Эҷоди тамға"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Мондани андозаи кунҷ"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Мондани андозаи кунҷи нав:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr ""
+"Истифода бурдани таҳрири ин минтақа, барои иваз кардани андозаи ин кунҷ."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Натавонистам файли макроси '%1'-ро боз кунам"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Натавонистам файли макросҳои \"%1\"-ро боз кунам."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Ин файл бо раванди хеле қадимтариниKig (то 0.4) эҷод карда шуд. Пуштибонии "
+"формати қадим аз раванди охирини барнома гирифта шуд. Ин макронавъро бо ёрии "
+"Kig раванди 0.4 ё 0.6 ворид кунед, баъд онро ба формати нав содир кунед."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Номи макро #%1"
+
+#: misc/object_hierarchy.cc:541
+#, fuzzy, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Ин файли Kig дорои объекти навъи \"%1\" аст, ки бо раванди мазкури Kig "
+"пуштибонӣ намешавад. Балки барнома бе дастгирии ин навъ талфиф шудааст, "
+"балки шумо раванди қадими Kig-ро истифода карда истодаед."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Тираҳои қатъии ду хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Сохтани хатҳо ба буриши ду хати каҷи конусшакл. Ин ҳамчунин барои хатҳои "
+"каҷи конусшакл, ки якдигарро намебуранд, муайян шудааст."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Нуқтаи ҳаракаткунанда"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr "Нуқтаи ҳаракаткунандаро интихоб кунед..."
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Нуқтаи пайрав"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr "Нуқтаи навбатиро интихоб кунед, ки аз он ҶНГ сохта шавад..."
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "ҶНГ"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Ҷойи нуқтаҳои геометрӣ"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Нуқтаи тобеъ"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Бисёркунҷа бо қуллаҳояш"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Бисёркунҷарор созед ва қуллаҳояшро нишон диҳед"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:555
+#, fuzzy, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Сохтани парабола бо ин директриса"
+
+#: misc/special_constructors.cc:560
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Хати рост интихоб кунед..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, fuzzy, kde-format
+msgid "Construct an open polygon"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:624
+#, fuzzy, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Сохтани парабола бо ин директриса"
+
+#: misc/special_constructors.cc:629
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Хати рост интихоб кунед..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, fuzzy, kde-format
+msgid "Polygon"
+msgstr "Афзудани нуқта"
+
+#: misc/special_constructors.cc:658
+#, fuzzy, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: misc/special_constructors.cc:661
+#, fuzzy, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Пинҳон намудани нуқта"
+
+#: misc/special_constructors.cc:661
+#, fuzzy, kde-format
+msgid "The vertices of a polygon."
+msgstr "Хати директрисаи хати каҷи конусшакл."
+
+#: misc/special_constructors.cc:718
+#, fuzzy, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "Sides of a Polygon"
+msgstr "Пинҳон намудани нуқта"
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "The sides of a polygon."
+msgstr "Хати директрисаи хати каҷи конусшакл."
+
+#: misc/special_constructors.cc:789
+#, fuzzy, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Инро ҳамчун марказ истифода бурда ба ҷадвал даровардан"
+
+#: misc/special_constructors.cc:794
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Бо ин хати ҳамчун директриса, сохтани хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:939
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: misc/special_constructors.cc:943
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Сохтани парабола бо ин директриса"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr ""
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr ""
+
+#: misc/special_constructors.cc:970
+#, fuzzy, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Байни қавсро интихоб кунед..."
+
+#: misc/special_constructors.cc:974
+#, fuzzy, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Хати рост интихоб кунед..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr ""
+
+#: misc/special_constructors.cc:1062
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Bézier Curve by its Control Points"
+msgstr "Хати каҷи тартиботи саввум аз рӯи 9 нуқта"
+
+#: misc/special_constructors.cc:1063
+#, fuzzy, kde-format
+#| msgid "Construct a polygon by giving its vertices"
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Бисёркунҷарор созед ва қуллаҳояшро нишон диҳед"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a Bézier curve with this control point"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Хати рост интихоб кунед..."
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Хати каҷи тартиботи саввум аз рӯи 9 нуқта"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+#| msgid "Construct a polygon by giving its vertices"
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "Бисёркунҷарор созед ва қуллаҳояшро нишон диҳед"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr ""
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Хати рост интихоб кунед..."
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Сохтани тираҳои қатъии ин доира"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Сохтани тираҳои қатъии ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Мутобиқати умумӣ"
+
+#: misc/special_constructors.cc:1397
+#, fuzzy, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Мутобиқати нодирӣ, ки 3 нуқтаи додашударо ба 3 нуқтаи додашудаи дигар тасвир "
+"мекунад"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Таъғироти проективӣ"
+
+#: misc/special_constructors.cc:1420
+#, fuzzy, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Таъғироти проективӣ, ки 4 нуқтаи додашударо ба 4 нуқтаи дигар тасвир медиҳад"
+
+#: misc/special_constructors.cc:1447
+#, fuzzy, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Хати нуқтаи мутақобилӣ нисбат ба хати каҷи конусшакл."
+
+#: misc/special_constructors.cc:1447
+#, fuzzy, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Хати нуқтаи мутақобилӣ нисбат ба хати каҷи конусшакл."
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Гузаронидани ченакҳо"
+
+#: misc/special_constructors.cc:1510
+#, fuzzy, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Гузаронидани ченаки порча ба доира"
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Порча барои гузаронидан"
+
+#: misc/special_constructors.cc:1614
+#, fuzzy, kde-format
+msgid "Arc to transport"
+msgstr "Порча барои гузаронидан"
+
+#: misc/special_constructors.cc:1616
+#, fuzzy, kde-format
+msgid "Value to transport"
+msgstr "Порча барои гузаронидан"
+
+#: misc/special_constructors.cc:1618
+#, fuzzy, kde-format
+msgid "Transport a measure on this line"
+msgstr "Гузаронидани ченак ба ин давра"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Гузаронидани ченак ба ин давра"
+
+#: misc/special_constructors.cc:1623
+#, fuzzy, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Нақшакашии ин нуқта ба давра"
+
+#: misc/special_constructors.cc:1625
+#, fuzzy, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Сохтани нуқтаи қутбии ин хат"
+
+#: misc/special_constructors.cc:1627
+#, fuzzy, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Нақшакашии ин нуқта ба давра"
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Интихоби хати каҷи конусшакл..."
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Интихоби хати каҷи конусшакл..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Бурида гузаштан бо ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Бурида гузаштан бо ин хат"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, fuzzy, kde-format
+#| msgid "Intersect with this conic"
+msgid "Intersect with this cubic"
+msgstr "Бурида гузаштан бо ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Бурида гузаштан бо ин давра"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Бурида гузаштан"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Бурида гузаштани ду объект"
+
+#: misc/special_constructors.cc:1766
+#, fuzzy, kde-format
+msgid "Intersect this Circle"
+msgstr "Бурида гузаштан бо ин давра"
+
+#: misc/special_constructors.cc:1768
+#, fuzzy, kde-format
+msgid "Intersect this Conic"
+msgstr "Бурида гузаштан бо ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:1770
+#, fuzzy, kde-format
+msgid "Intersect this Segment"
+msgstr "Бурида гузаштан бо ин хат"
+
+#: misc/special_constructors.cc:1772
+#, fuzzy, kde-format
+msgid "Intersect this Half-line"
+msgstr "Бурида гузаштан бо ин хат"
+
+#: misc/special_constructors.cc:1774
+#, fuzzy, kde-format
+msgid "Intersect this Line"
+msgstr "Бурида гузаштан бо ин хат"
+
+#: misc/special_constructors.cc:1776
+#, fuzzy, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Бурида гузаштан бо ин хати каҷи тартиби саввум"
+
+#: misc/special_constructors.cc:1778
+#, fuzzy, kde-format
+msgid "Intersect this Arc"
+msgstr "Бурида гузаштан бо ин қавс"
+
+#: misc/special_constructors.cc:1780
+#, fuzzy, kde-format
+msgid "Intersect this Polygon"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: misc/special_constructors.cc:1782
+#, fuzzy, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: misc/special_constructors.cc:1788
+#, fuzzy, kde-format
+msgid "with this Circle"
+msgstr "Пинҳони давра"
+
+#: misc/special_constructors.cc:1790
+#, fuzzy, kde-format
+msgid "with this Conic"
+msgstr "Хати тамос ба ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:1792
+#, fuzzy, kde-format
+#| msgid "Select this segment"
+msgid "with this Segment"
+msgstr "Интихоб намудани ин порча"
+
+#: misc/special_constructors.cc:1794
+#, fuzzy, kde-format
+msgid "with this Half-line"
+msgstr "Пинҳони хат"
+
+#: misc/special_constructors.cc:1796
+#, fuzzy, kde-format
+msgid "with this Line"
+msgstr "Пинҳони хат"
+
+#: misc/special_constructors.cc:1798
+#, fuzzy, kde-format
+msgid "with this Cubic Curve"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: misc/special_constructors.cc:1800
+#, fuzzy, kde-format
+msgid "with this Arc"
+msgstr "Бурида гузаштан бо ин қавс"
+
+#: misc/special_constructors.cc:1802
+#, fuzzy, kde-format
+msgid "with this Polygon"
+msgstr "Афзудани нуқта"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+msgid "with this Polygonal"
+msgstr "Афзудани нуқта"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct midpoint of this point and another one"
+msgstr "Сохтани байни ин ва дигар нуқтаҳо"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "Аз ду нуқта якеро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Сохтани байни ин ва дигар нуқтаҳо"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "Нуқтаи дуввумро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Сохтани байни ин ва дигар нуқтаҳо"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "Аз ду нуқта якеро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Сохтани байни ин ва дигар нуқтаҳо"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+#| msgid "Select the other of the points of which to construct the midpoint..."
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "Нуқтаи дуввумро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Объекти якумро барои сохтани буришот интихоб кунед..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Объекти дуввумро барои сохтани буришот интихоб кунед..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Хати тамос"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Хати тамос ба хати каҷ"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Хати тамос ба ин давра"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Хати тамос ба ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Хати тамос ба ин қавс"
+
+#: misc/special_constructors.cc:2014
+#, fuzzy, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Хати тамос ба ин давра"
+
+#: misc/special_constructors.cc:2016
+#, fuzzy, kde-format
+msgid "Tangent to This Curve"
+msgstr "Хати тамос ба ин давра"
+
+#: misc/special_constructors.cc:2018
+#, fuzzy, kde-format
+msgid "Tangent at This Point"
+msgstr "Хати тамос ба ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr ""
+
+#: misc/special_constructors.cc:2038
+#, fuzzy, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Хати тамос ба хати каҷ"
+
+#: misc/special_constructors.cc:2058
+#, fuzzy, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Хати тамос ба ин хати каҷи конусшакл"
+
+#: misc/special_constructors.cc:2060
+#, fuzzy, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Хати тамос ба ин давра"
+
+#: misc/special_constructors.cc:2062
+#, fuzzy, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Хати тамос ба ин давра"
+
+#: misc/special_constructors.cc:2064
+#, fuzzy, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Хати тамос ба ин хати каҷи конусшакл"
+
+#: misc/unit.cc:105
+#, fuzzy, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr " пикселҳо"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr ""
+
+#: misc/unit.cc:107
+#, fuzzy, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "хат"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, fuzzy, kde-format
+msgid "Which object?"
+msgstr "Ба ҷадвал даровардани ин объект"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Дар ҷое клик кунед, ки дар онҷо бояд нуқтаи нав (хати каҷ) чойгир шавад..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Акнун макони нишонаи навро интихоб кунед"
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Тағйири навъ"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Дар инҷо метавонед ном, тасвирот ва ишораи макронавъро тағйир диҳед."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Дар ин ҷо шумо метавонед таҳрир кардани тасвири макрои ҷори. Ин минтақаи "
+"иловагӣ, барои ҳамин шумо метавонед онро холи монед:агар шумо ин хел карда "
+"моненд, но гоҳ макрои шумо ягон тасвир надорд.  "
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Ин кнопкаро барои иваз кардани тасвири макро истифода баред."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Дар инҷо метавонед ном, тасвирот ва ишораи макронавъро тағйир диҳед."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Ном:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Тасвирот:"
+
+#: modes/historydialog.cc:24
+#, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr ""
+
+#: modes/historydialog.cc:108
+#, fuzzy, kde-format
+msgid "Start of the construction"
+msgstr "Барҳамдиҳии сафбандӣ"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, fuzzy, kde-format
+msgid "First step"
+msgstr "Фокуси якӯм"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr ""
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Ном"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, fuzzy, kde-format
+msgid "<unnamed object>"
+msgstr "объекти беном"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Дар матни ворид кардашуда гузориши ғайри аргументии '%n', ки барои онҳо "
+"интихоб нашудааст, мебошад."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "аргументи %1"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Интихоби аргументи %1"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Таъғири навиштаҷот"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Set Value"
+msgstr "Интихоби &услуб"
+
+#: modes/label.cc:595
+#, fuzzy, kde-format
+msgid "Enter value:"
+msgstr "Матни навиштаҷот"
+
+#: modes/label.cc:624
+#, fuzzy, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Нуқтаи охирони қавсро интихоб кунед..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Яке аз объектҳои натиҷавии бо шумо интихобшуда набояд аз рӯи натиҷавӣ сохта "
+"шавад. Kig наметавонад аҳамиятҳои барои сохтан муҳимро ҳисоб кунад. Ба рӯи "
+"\"Бозгашт\" пахш кунед ва объектҳоро саҳеҳ созед..."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Яке аз объектҳои додашуда ҳангоми ҳисоб намудани объектҳои натиҷавӣ, "
+"истифода карда нашуд."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Объектҳои даромад"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Объектҳои \"даромад\"-ро барои макронавъи худ интихоб кунед ва ба рӯи \"Идома"
+"\" пахш кунед."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Объекти баромад"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Объекти баромадро барои макрои навъи худ интихоб кунед."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Ном ва тасвироти намуди навъро ворид кунед."
+
+#: modes/macrowizard.cc:119
+#, fuzzy, kde-format
+#| msgid "Name:"
+msgid "&Name:"
+msgstr "Ном:"
+
+#: modes/macrowizard.cc:126
+#, fuzzy, kde-format
+#| msgid "Description:"
+msgid "&Description:"
+msgstr "Тасвирот:"
+
+#: modes/macrowizard.cc:132
+#, fuzzy, kde-format
+#| msgid "Icon"
+msgid "&Icon:"
+msgstr "Ишора"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Эҷоди макронавъ"
+
+#: modes/moving.cc:136
+#, fuzzy, kde-format
+#| msgid "Move %1 Objects"
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Гузаронидани %1 объектҳо"
+msgstr[1] "Гузаронидани %1 объектҳо"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Аз нав муайян намудани нуқта"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, fuzzy, kde-format
+msgid "Gray"
+msgstr "Град"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, fuzzy, kde-format
+msgid "Red"
+msgstr "Рад"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "&Пинҳон кардан"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "&Гузаронидан"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, fuzzy, kde-format
+msgid "&Delete"
+msgstr "&Ҳузфи объектҳо"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "&Дигар ранг"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Таъғир намудани ранги объект"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Тағйири васеъии объект"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Тағйири услуби нуқта"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Тағйири услуби объект"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "Муқаррар намудани &ном..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "&Ном"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Муқаррар намудани намуди объект"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Номи объект:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, fuzzy, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 объектҳо"
+msgstr[1] "%1 объектҳо"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Санадоти Kig"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Таъғир намудан"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "&Озмоидан"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "&Сохтан"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr ""
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Афзудани &навиштаҷот"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "&Ранг"
+
+#: modes/popup/popup.cc:119
+#, fuzzy, kde-format
+msgid "Set &Pen Width"
+msgstr "Сабт намудани &дарозӣ..."
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Интихоби &услуб"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Интихоби &низоми координат"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, fuzzy, kde-format
+#| msgid "Export..."
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Содирот..."
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+msgid "Edit Script..."
+msgstr "Таъғир додан..."
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Матни навиштаҷот"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Матни навиштаҷотро ворид кунед ва ба рӯи \"Идома\" пахш кунед.\n"
+"Барои тасвир намудани таъғирот %1, %2, ... дар ҷойҳои лозимӣ ворид кунед "
+"(мисол \"Дарозии порча %1 ада аст.\")."
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Намоиши матн дар чорчӯба"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Далелҳо"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Аргументҳои лозимиро интихоб кунед. Барои ҳар як аргумент, шумо бояд дар он "
+"зер кунед, мавзӯъ ва хусусиятҳоро аз тирезаи Kig интихоб кунед ва баъд ба "
+"рӯи \"Иҷро шуд\" пахш кунед..."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Эҷоди навиштаҷот"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr ""
+
+#: modes/typesdialog.cpp:301
+#, fuzzy, kde-format
+msgid "Type"
+msgstr "&Навъҳо"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Тасвирот"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Идоракунии навъҳо"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, fuzzy, kde-format
+msgid "&Edit..."
+msgstr "Таъғир додан..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, fuzzy, kde-format
+msgid "E&xport..."
+msgstr "Содирот..."
+
+#: modes/typesdialog.cpp:425
+#, fuzzy, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Оё мутмаинед, ки мехоҳед ин %1 навъро ҳузф кунед?"
+msgstr[1] "Оё мутмаинед, ки мехоҳед ин %1 навъҳоро ҳузф кунед?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Оё мутмаинед?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Намудҳои Воридот"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig Намудҳои файлҳо\n"
+"*|Ҳама файлҳо"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig Намудҳои файлҳо\n"
+"*|Ҳама файлҳо"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Намудҳои Воридот"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr "Каме зиёд аз як навъ интихоб шудааст."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Зиёд аз як навъ интихоб шудааст"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Навъро интихоб кунед..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Ин рӯйхати макро аст... Шумо метавонед  интихоб кунед, нест кунед, таҳрир "
+"кунед,Содирот ва воридот мекунад онҳоро..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Шакли таҳрири интихобшуда."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Таҳрири интихобшуда"
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Ҳамаи таҳлили интихобшударо ба парванда содирот кунед."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Воридоти макро дар як ё зиёд парванда нигоҳ дошта мешаванд."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, fuzzy, kde-format
+msgid "&Import..."
+msgstr "Воридот..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Сохтани кунҷ аз ин нуқта"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr ""
+"Нуқтаро интихоб кунед, ки аз он шуоъи якӯм мегузарад ва аз кунҷ мебарояд..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Сохтани кунҷ дар ин нуқта"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Нуқтаеро барои дар он кунҷ сохтанро интихоб кунед..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr ""
+"Нуқтаро интихоб кунед, ки аз он шуоъи дуввум мугузарад ва аз кунҷ мебарояд..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Ғафсии &хат"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Таъғири кунҷ"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Сохтани қавс, ки дар ин нуқта оғоз меёбад"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Нуқтаи ибтидоиро барои қавс интихоб кунед..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Сохтани қавс аз ин нуқта"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Нуқтаро интихоб кунед, ки аз он қавси нав хоҳад гузашт..."
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Сохтани қавс, ки дар ин нуқта хотима ёбад"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Нуқтаи охирони қавсро интихоб кунед..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Сохтани давра аз рӯи ин нуқта ҳамчун марказ"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Байни қавсро интихоб кунед..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Сохтани қавс бо ин кунҷ"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Кунҷи қавсро интихоб кунед..."
+
+#: objects/arc_type.cc:204
+#, fuzzy, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Сохтани қавс, ки дар ин нуқта оғоз меёбад"
+
+#: objects/arc_type.cc:205
+#, fuzzy, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Нуқтаи ибтидоиро барои қавс интихоб кунед..."
+
+#: objects/arc_type.cc:206
+#, fuzzy, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Сохтани хати каҷи конусшакл аз ин нуқта"
+
+#: objects/arc_type.cc:207
+#, fuzzy, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Нуқтаро интихоб кунед, ки аз он хатиконусшакли нав гузарад..."
+
+#: objects/arc_type.cc:208
+#, fuzzy, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Сохтани қавс, ки дар ин нуқта хотима ёбад"
+
+#: objects/arc_type.cc:209
+#, fuzzy, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Нуқтаи охирони қавсро интихоб кунед..."
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Сохтани давра аз рӯи ин нуқта ҳамчун марказ"
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Байни қавсро интихоб кунед..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr ""
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+msgid "Control polygon"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Нобаробарии декарт"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+#, fuzzy
+#| msgid "Hide a Curve"
+msgid "Bézier Curve"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+#| msgid "Select this curve"
+msgid "Select this Bézier Curve"
+msgstr "Интихоби ин хати каҷ"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+#| msgid "Select curve %1"
+msgid "Select Bézier Curve %1"
+msgstr "Интихоб намудани хати каҷи %1"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+#| msgid "Remove a Curve"
+msgid "Remove a Bézier Curve"
+msgstr "Ҳузф намудани хати каҷ"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+#| msgid "Add a Curve"
+msgid "Add a Bézier Curve"
+msgstr "Афзудани хати каҷ"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+#| msgid "Move a Curve"
+msgid "Move a Bézier Curve"
+msgstr "Гузаронидани хати каҷ"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+#| msgid "Attach to this curve"
+msgid "Attach to this Bézier Curve"
+msgstr "Ба ин хати каҷ илова намудан"
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+#| msgid "Show a Curve"
+msgid "Show a Bézier Curve"
+msgstr "Намоиши хати каҷ тартиботи саввум"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+#| msgid "Hide a Curve"
+msgid "Hide a Bézier Curve"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+msgid "Bézier Quadratic"
+msgstr "Афзудани навиштаҷот"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+#| msgid "Select this arc"
+msgid "Select this Bézier Quadratic"
+msgstr "Интихоб намудани ин қавс"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+#| msgid "Select arc %1"
+msgid "Select Bézier Quadratic %1"
+msgstr "Интихоб намудани қавси %1"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+msgid "Remove a Bézier Quadratic"
+msgstr "Ҳузфи навиштаҷот"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+msgid "Add a Bézier Quadratic"
+msgstr "Афзудани навиштаҷот"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+msgid "Move a Bézier Quadratic"
+msgstr "Гузаронидани хати каҷ"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+#| msgid "Attach to this arc"
+msgid "Attach to this Bézier Quadratic"
+msgstr "Ба ин қавс илова намудан"
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+msgid "Show a Bézier Quadratic"
+msgstr "Намоиши хати каҷ тартиботи саввум"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+msgid "Hide a Bézier Quadratic"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+#| msgid "Select this arc"
+msgid "Select this Bézier Cubic"
+msgstr "Интихоб намудани ин қавс"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+#| msgid "Select circle %1"
+msgid "Select Bézier Cubic %1"
+msgstr "Интихоб намудани давраи %1"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+#| msgid "Remove a Conic"
+msgid "Remove a Bézier Cubic"
+msgstr "Ҳузф намудани хати каҷи конусшакл"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+#| msgid "Add a Cubic Curve"
+msgid "Add a Bézier Cubic"
+msgstr "Афзудани хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+#| msgid "Move a Cubic Curve"
+msgid "Move a Bézier Cubic"
+msgstr "Гузаронидани хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+#| msgid "Attach to this arc"
+msgid "Attach to this Bézier Cubic"
+msgstr "Ба ин қавс илова намудан"
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+#| msgid "Show a Cubic Curve"
+msgid "Show a Bézier Cubic"
+msgstr "Намоиши хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+#| msgid "Hide a Cubic Curve"
+msgid "Hide a Bézier Cubic"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr ""
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Интихоб намудани нуқтаи %1"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+msgid "Remove a Rational Bézier Curve"
+msgstr "Ҳузфи нуқта"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+msgid "Add a Rational Bézier Curve"
+msgstr "Афзудани нуқта"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+msgid "Move a Rational Bézier Curve"
+msgstr "Гузаронидани нуқта"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Ба ин нуқта илова намудан"
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+msgid "Show a Rational Bézier Curve"
+msgstr "Нишон додани нуқта"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+msgid "Hide a Rational Bézier Curve"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+msgid "Rational Bézier Quadratic"
+msgstr "Интихоб намудани хати каҷи конусшакли %1"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Интихоб намудани ин хати каҷи конусшакл"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Интихоб намудани хати каҷи конусшакли %1"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Ҳузфи нуқта"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Афзудани нуқта"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Гузаронидани нуқта"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Ба ин хати каҷи конусшакл илова намудан"
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Нишон додани нуқта"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Интихоб кардани ин кунҷ"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Интихоб кардани кунҷи %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+#| msgid "Attach to this conic"
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Ба ин хати каҷи конусшакл илова намудан"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Хати рост интихоб кунед..."
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Хати рост интихоб кунед..."
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two conics of which you want to construct the "
+#| "radical line..."
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Барои сохтани тираи қатъӣ аз ду хати каҷи конусшакл, якӯмашро интихоб "
+"кунед..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+#| msgid "Select this segment"
+msgid "Select this value as weight"
+msgstr "Интихоб намудани ин порча"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+msgid "int"
+msgstr "хат"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Натиҷаи озмоиш"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Гузаронидани хатти каҷ..."
+
+#: objects/centerofcurvature_type.cc:23
+#, fuzzy, kde-format
+msgid "Select a point on the curve..."
+msgstr "Интихоби хати каҷи конусшакл..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Сатҳ"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Давра"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Қутоъ"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr ""
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Табдил додани нобаробарии декарт"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Нобаробарии қутбӣ"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [дар %2 ҳаммарказ карда шуд]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "давра"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Интихоб намудани ин давра"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Интихоб намудани давраи %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Ҳузф намудани давра"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Афзудани давра"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Гузаронидани давра"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Ба ин давра илова намудан"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Намоиши давра"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Пинҳони давра"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Сохтани давра аз рӯи ин нуқта"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Маркази доираи навро интихоб кунед..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Нуқтаро интихоб кунед, ки аз он давраи нав гузарад..."
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "With this radius"
+msgstr "Бурида гузаштан бо ин қавс"
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "Select the length of the radius..."
+msgstr "Кунҷи тобишро интихоб кунед..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Навъи конусшакл"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Фокуси якӯм"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Фокуси дуюм"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Эллипс"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Гипербола"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Парабола"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr ""
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr ""
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr ""
+
+#: objects/conic_imp.cc:266
+#, fuzzy, kde-format
+msgid "[centered at %1]"
+msgstr "rho = %1   [дар %2 ҳаммарказ карда шуд]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "Хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Интихоб намудани ин хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Интихоб намудани хати каҷи конусшакли %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Ҳузф намудани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Афзудани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Гузаронидани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Ба ин хати каҷи конусшакл илова намудан"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Намоиши хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Пинҳон намудани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr ""
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Нуқтаи ибтидоии охирин"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Нуқтаи дуввуми охирин"
+
+#: objects/conic_imp.cc:603
+#, fuzzy
+msgid "conic arc"
+msgstr "Хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:604
+#, fuzzy, kde-format
+msgid "Select this conic arc"
+msgstr "Интихоб намудани ин хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:605
+#, fuzzy, kde-format
+msgid "Select conic arc %1"
+msgstr "Интихоб намудани хати каҷи конусшакли %1"
+
+#: objects/conic_imp.cc:606
+#, fuzzy
+msgid "Remove a Conic Arc"
+msgstr "Ҳузф намудани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:607
+#, fuzzy
+msgid "Add a Conic Arc"
+msgstr "Афзудани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:608
+#, fuzzy
+msgid "Move a Conic Arc"
+msgstr "Гузаронидани хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:609
+#, fuzzy
+msgid "Attach to this conic arc"
+msgstr "Ба ин хати каҷи конусшакл илова намудан"
+
+#: objects/conic_imp.cc:610
+#, fuzzy
+msgid "Show a Conic Arc"
+msgstr "Намоиши хати каҷи конусшакл"
+
+#: objects/conic_imp.cc:611
+#, fuzzy
+msgid "Hide a Conic Arc"
+msgstr "Пинҳон намудани хати каҷи конусшакл"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Сохтани хати каҷи конусшакл аз ин нуқта"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Нуқтаро интихоб кунед, ки аз он хатиконусшакли нав гузарад..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Бо истифодаи ин асимптота, хати каҷи конусшакл сохтан"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Асимптотаи якӯми хати каҷи конусшаклро интихоб кунед..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Асимптотаи дуввуми хати каҷи конусшаклро интихоб кунед..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Бо истифодаи ин фокус сохтани эллипс"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Фокуси якӯми эллипсро интихоб кунед..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Фокуси дуввуми эллипсро интихоб кунед..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Аз рӯи ин нуқта эҷод намудани эллипс"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Нуқтаеро интихоб кунед, ки аз он эллипси нав гузарад..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Сохтани гипербола ҳамроҳи ин фокус"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Фокуси якӯми гиперболаро интихоб кунед..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Фокуси дуввуми гиперболаро интихоб кунед..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Аз байни ин нуқта гипербола созед"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Нуқтаеро интихоб кунед, ки аз он гиперболаи нав гузарад..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Бо ин хати ҳамчун директриса, сохтани хати каҷи конусшакл"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Директрисаи хати каҷи конусшаклро интихоб кунед..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Бо ин нуқтаи ҳамчун фокус, сохтани хати каҷи конусшакл"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Фокусро барои хати каҷи конусшакл интихоб кунед..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Аз байни ин нуқта парабола сохтан"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Нуқтаеро интихоб кунед, ки аз он параболаи нав гузарад..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Сохтани нуқтаи қутбии ин хати каҷи конусшакл"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr ""
+"Хати каҷи конусшаклро интихоб кунед, ки аз он нуқтаи қутбиро мехоҳед созед..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Сохтани нуқтаи қутбии ин хат"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr ""
+"Хатеро интихоб кунед, ки аз он бояд нуқтаи қутбиро сохтан лозим бошад..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Сохтани нуқтаи қутбии ин хати каҷи конусшакл"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Сохтани директрисаи ин хати каҷи конусшакл"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Сохтани парабола бо ин директриса"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Директрисаро барои парабола интихоб кунед..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Сохтани парабола бо ин фокус"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Фокусро барои параболаи нав интихоб кунед..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Сохтани асимптотаи ин хати каҷи конусшакл"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr ""
+"Хати каҷи конусшаклро интихоб кунед, ки дар он мехоҳед асимптота созед..."
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Тираҳои қатъии ин хати каҷи конусшаклро сохтан"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Барои сохтани тираи қатъӣ аз ду хати каҷи конусшакл, якӯмашро интихоб "
+"кунед..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Барои сохтани тираи қатъӣ аз ду хати каҷи конусшакл, дуввумашро интихоб "
+"кунед..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Гузаронидани тираҳои қатъӣ"
+
+#: objects/conic_types.cc:619
+#, fuzzy, kde-format
+#| msgid "Switch Radical Lines"
+msgid "Switch Conic Radical Lines"
+msgstr "Гузаронидани тираҳои қатъӣ"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "хати каҷи тартиботи саввум"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Интихоб намудани ин хати каҷи тартиботи саввум"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Интихоб намудани хати каҷи тартиботи саввуми %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Ҳузф намудани хати каҷи тартиботи саввум"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Афзудани хати каҷи тартиботи саввум"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Гузаронидани хати каҷи тартиботи саввум"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Ба ин хати каҷи тартиботи саввум илова намудан"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Намоиши хати каҷи тартиботи саввум"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Сохтани хати каҷи тартиботи саввум аз ин нуқта"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Нуқтаеро интихоб кунед, ки аз он хати каҷи тартиботи саввум гузарад"
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "хати каҷ"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Интихоби ин хати каҷ"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Интихоб намудани хати каҷи %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Ҳузф намудани хати каҷ"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Афзудани хати каҷ"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Гузаронидани хати каҷ"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Ба ин хати каҷ илова намудан"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Намоиши хати каҷ тартиботи саввум"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr ""
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Нуқтаи буриш аллакай ихтисор шуд"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Бурида гузаштан бо ин хати каҷи тартиботи саввум"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Бурида гузаштан бо ин қавс"
+
+#: objects/inversion_type.cc:19
+#, fuzzy, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Бурида гузаштан бо ин давра"
+
+#: objects/inversion_type.cc:20
+#, fuzzy, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr ""
+"Давраеро интихоб кунед, ки дар он ченакро аз порча гузаронидан лозим бошад"
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the object to invert..."
+msgstr "Дигар нуқтаро барои тасвирот интихоб кунед..."
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Select the point to invert..."
+msgstr "Дигар нуқтаро барои тасвирот интихоб кунед..."
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Сохтани нуқтаи қутбии ин хат"
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Select the line to invert..."
+msgstr "Хатеро барои тасвир кардан аз он, интихоб кунед..."
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Select the segment to invert..."
+msgstr "Дигар нуқтаро барои тасвирот интихоб кунед..."
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Сохтани директрисаи ин хати каҷи конусшакл"
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Select the circle to invert..."
+msgstr "Объекти якумро барои сохтани буришот интихоб кунед..."
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Сохтани директрисаи ин хати каҷи конусшакл"
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Select the arc to invert..."
+msgstr "Объекти якумро барои сохтани буришот интихоб кунед..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Коэффитсиенти кунҷӣ"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Баробар кардан"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Дарозӣ"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+#, fuzzy
+msgid "Support Line"
+msgstr "Пуштибонӣ намешавад"
+
+#: objects/line_imp.cc:194
+#, fuzzy
+msgid "End Point"
+msgstr "Нуқтаи байнӣ"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "хат"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Интихоб кардани хат"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Интихоб кардани ҳамин хат"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Интихоб кардани хати %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Нест кардани хат"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Иловаи хат"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Аз ҷое ба ҷое гузарондани хат"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Иловаи ҳамроҳи ҳамин хат"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Нишон додани хат"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Пинҳони хат"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "порча"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Интихоб намудани ин порча"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Интихоби порчаи %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Ҳузф намудани порча"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Афзудани порча"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Гузаронидани порча"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Ба ин порча илова намудан"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Нишон додани порча"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Пинҳон намудани порча"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "шуоъ"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Интихоб намудани шуоъ"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Интихоб намудани шуоъи %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Ҳузфи шуоъ"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Афзудани шуоъ"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Гузаронидани шуоъ"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Ба ин шуоъ илова намудан"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Нишон додани шуоъ"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Пинҳон намудани шуоъ"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Сохтани порчае, ки дар ин нуқта оғоз шавад"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Нуқтаи ибтидоии порчаро интихоб кунед..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Сохтани порчае, ки дар ин нуқта хотима ёбад"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Нуқтаи охири порчаро интихоб кунед..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Сохтани хат аз ин нуқта"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Тақтаро интихоб кунед, ки аз он хат гузарад..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Боз як нуқтаро интихоб кунед, ки аз он хат гузарад..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Сохтани шуоъ, ки дар ин нуқта оғоз шавад"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Нуқтаи ибтидоии шуоъро интихоб кунед..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Сохтани шуоъ аз ин нуқта"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Аввали шуоъро интихоб кунед..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Эҷоди тираи ин порча"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Порчаеро интихоб кунед, ки дар он тираро кашидан лзим бошад..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Сохтани хати рост, ки бо ин мувозӣ бошад"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Хати рост интихоб кунед..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Сохтани хати рости мувозӣ аз ин нуқта"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Нуқтаро интихоб кунед, ки аз он хати рост гузарад..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Сохтани перпендикуляр ба ин хат"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Хате интихоб кунед, ки ба хати нав перпендикуляр бошад..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Сохтани перпендикуляр аз ин нуқта"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Сабт намудани &дарозӣ..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Сабт намудани дарозии порча"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Интихоб кардани дарозии нав: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Тағйири андозаи порча"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Сохтани хати рост аз рӯи ин вектор"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Векторро барои ҷиҳати хати рост интихоб кунед..."
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Сохтани шуоъ аз ин вектор"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Векторро барои ишора намудани ҷиҳати шуоъ интихоб кунед..."
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "ҷойи нуқтаҳои геометрӣ"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Интиҳоб намудани ин ҷойи нуқтаҳои геометрӣ"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Интиҳоб намудани ин ҶНГ (ҷойи нуқтаҳои геометрӣ) %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Ҳузфи ҶНГ"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Афзудани ҶНГ"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Ҷойгир кардани ҶНГ"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Ба ин ҶНГ илова намудан"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Нишон додани ҶНГ"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Пинҳон намудани ҶНГ"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Навъи объект"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Объект"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Интихоб намудани ин объект"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Интихоб намудани объекти %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Ҳузф намудани объект"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Афзудани объект"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Гузаронидани объект"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Ба ин объект илова намудан"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Намоиши объект"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Пинҳон намудани объект"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Кунҷ дар радианҳо"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Кунҷ дар дараҷаҳо"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Нуқтаи байнӣ"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "Дарозӣ аз рӯи X"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Дарозӣ аз рӯи Y"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Вектори муқобил"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Кунҷ"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Сатҳи сектор"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Дарозии қавс"
+
+#: objects/other_imp.cc:398
+#, fuzzy
+msgid "Support Circle"
+msgstr "Намоиши давра"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "кунҷ"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Интихоб кардани ин кунҷ"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Интихоб кардани кунҷи %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Нест кардани кунҷ"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Иловаи кунҷ"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Аз ҷое ба ҷое гузарондани кунҷ"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Иловаи ҳамроҳи ҳамин кунҷ"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Нишон додани кунҷ"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Пинҳон намудани кунҷ"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "вектор"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Интихоби ин вектор"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Интихоб намудани вектори %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Ҳузф намудани вектор"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Афзудани вектор"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Гузарондани вектор"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Ба ин вектор илова намудан"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Намоиши вектор"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Пинҳон намудани вектор"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "қавс"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Интихоб намудани ин қавс"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Интихоб намудани қавси %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Ҳузф намудани қавс"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Афзудани қавс"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Гузаронидани қавс"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Ба ин қавс илова намудан"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Нишон додани қавс"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Пинҳони қавс"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Координата"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "Координатаи X"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Координатаи Y"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "нуқта"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Интихоб намудани нуқтаи %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Ҳузфи нуқта"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Афзудани нуқта"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Гузаронидани нуқта"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Ба ин нуқта илова намудан"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Нишон додани нуқта"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Сохтани мобайни ин ва дигра нуқта"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Нуқтаи аввалро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Нуқтаи дуввумро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another point"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Сохтани мобайни ин ва дигра нуқта"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Нуқтаи аввалро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the other of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Нуқтаи дуввумро барои сохтани нуқтаи байнӣ интихоб кунед..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Сабт кардани &координата..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Аз нав муайян намудан"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Сабт намудани &параметр..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Сабт намудани координата"
+
+#: objects/point_type.cc:413
+#, fuzzy, kde-format
+msgid "Enter the new coordinate."
+msgstr "Координатаи навро ворид кунед: "
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Сабт кардани параметри нуқта"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Параметри нав интихоб кунед: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Таъғири параметри нуқта"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr ""
+"Давраеро интихоб кунед, ки дар он ченакро аз порча гузаронидан лозим бошад"
+
+#: objects/point_type.cc:744
+#, fuzzy, kde-format
+msgid "Select a point on the circle..."
+msgstr "Интихоби хати каҷи конусшакл..."
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Порчаро барои гузаронидани ченаки он ба давра, интихоб кунед..."
+
+#: objects/point_type.cc:794
+#, fuzzy, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: objects/point_type.cc:795
+#, fuzzy, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+#| msgid "Select the point to reflect in..."
+msgid "Select a point to project onto a line..."
+msgstr "Дигар нуқтаро барои тасвирот интихоб кунед..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr ""
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+#, fuzzy
+msgid "Perimeter"
+msgstr "Чоп"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+msgid "Boundary Polygonal"
+msgstr "Афзудани нуқта"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr ""
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+#, fuzzy
+msgid "Center of Mass of the Vertices"
+msgstr "Хати тамос ба ин давра"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr ""
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+msgid "Inside Polygon"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+msgid "Open Polygonal Curve"
+msgstr "Афзудани нуқта"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+msgid "Associated Polygon"
+msgstr "Афзудани нуқта"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+msgid "Closed Polygonal Curve"
+msgstr "Гузаронидани нуқта"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr ""
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, fuzzy, kde-format
+msgid "Select this polygon"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: objects/polygon_imp.cc:630
+#, fuzzy, kde-format
+msgid "Select polygon %1"
+msgstr "Интихоб намудани нуқтаи %1"
+
+#: objects/polygon_imp.cc:631
+#, fuzzy
+msgid "Remove a Polygon"
+msgstr "Ҳузфи нуқта"
+
+#: objects/polygon_imp.cc:632
+#, fuzzy
+msgid "Add a Polygon"
+msgstr "Афзудани нуқта"
+
+#: objects/polygon_imp.cc:633
+#, fuzzy
+msgid "Move a Polygon"
+msgstr "Гузаронидани нуқта"
+
+#: objects/polygon_imp.cc:634
+#, fuzzy
+msgid "Attach to this polygon"
+msgstr "Ба ин нуқта илова намудан"
+
+#: objects/polygon_imp.cc:635
+#, fuzzy
+msgid "Show a Polygon"
+msgstr "Нишон додани нуқта"
+
+#: objects/polygon_imp.cc:636
+#, fuzzy
+msgid "Hide a Polygon"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+msgid "closed polygonal curve"
+msgstr "Интихоб намудани нуқтаи %1"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Интихоб намудани нуқтаи %1"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+msgid "Remove a closed polygonal curve"
+msgstr "Ҳузфи нуқта"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+msgid "Add a closed polygonal curve"
+msgstr "Афзудани нуқта"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+msgid "Move a closed polygonal curve"
+msgstr "Гузаронидани нуқта"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+msgid "Attach to this closed polygonal curve"
+msgstr "Ба ин нуқта илова намудан"
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+msgid "Show a closed polygonal curve"
+msgstr "Нишон додани нуқта"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+msgid "Hide a closed polygonal curve"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/polygon_imp.cc:662
+#, fuzzy
+#| msgid "Evolute of a curve"
+msgid "polygonal curve"
+msgstr "Гузаронидани хати каҷ"
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+msgid "Select this polygonal curve"
+msgstr "Интихоб кардани ҳамин нуқта"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Интихоб намудани нуқтаи %1"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+msgid "Remove a polygonal curve"
+msgstr "Ҳузфи нуқта"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+msgid "Add a polygonal curve"
+msgstr "Афзудани нуқта"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+msgid "Move a polygonal curve"
+msgstr "Гузаронидани нуқта"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+msgid "Attach to this polygonal curve"
+msgstr "Ба ин нуқта илова намудан"
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+msgid "Show a polygonal curve"
+msgstr "Нишон додани нуқта"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+msgid "Hide a polygonal curve"
+msgstr "Пинҳон намудани нуқта"
+
+#: objects/polygon_imp.cc:679
+#, fuzzy
+msgid "triangle"
+msgstr "кунҷ"
+
+#: objects/polygon_imp.cc:680
+#, fuzzy, kde-format
+msgid "Select this triangle"
+msgstr "Интихоб кардани ин кунҷ"
+
+#: objects/polygon_imp.cc:681
+#, fuzzy, kde-format
+msgid "Select triangle %1"
+msgstr "Интихоб кардани кунҷи %1"
+
+#: objects/polygon_imp.cc:682
+#, fuzzy
+msgid "Remove a Triangle"
+msgstr "Нест кардани кунҷ"
+
+#: objects/polygon_imp.cc:683
+#, fuzzy
+msgid "Add a Triangle"
+msgstr "Иловаи кунҷ"
+
+#: objects/polygon_imp.cc:684
+#, fuzzy
+msgid "Move a Triangle"
+msgstr "Аз ҷое ба ҷое гузарондани кунҷ"
+
+#: objects/polygon_imp.cc:685
+#, fuzzy
+msgid "Attach to this triangle"
+msgstr "Иловаи ҳамроҳи ҳамин кунҷ"
+
+#: objects/polygon_imp.cc:686
+#, fuzzy
+msgid "Show a Triangle"
+msgstr "Нишон додани кунҷ"
+
+#: objects/polygon_imp.cc:687
+#, fuzzy
+msgid "Hide a Triangle"
+msgstr "Пинҳон намудани кунҷ"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr ""
+
+#: objects/polygon_imp.cc:697
+#, fuzzy, kde-format
+msgid "Select this quadrilateral"
+msgstr "Интихоби навиштаҷот"
+
+#: objects/polygon_imp.cc:698
+#, fuzzy, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Интихоби навиштаҷоти %1"
+
+#: objects/polygon_imp.cc:699
+#, fuzzy
+msgid "Remove a Quadrilateral"
+msgstr "Ҳузфи навиштаҷот"
+
+#: objects/polygon_imp.cc:700
+#, fuzzy
+msgid "Add a Quadrilateral"
+msgstr "Афзудани навиштаҷот"
+
+#: objects/polygon_imp.cc:701
+#, fuzzy
+msgid "Move a Quadrilateral"
+msgstr "Гузаронидани хати каҷ"
+
+#: objects/polygon_imp.cc:702
+#, fuzzy
+msgid "Attach to this quadrilateral"
+msgstr "Ба ин навиштаҷот илова кардан"
+
+#: objects/polygon_imp.cc:703
+#, fuzzy
+msgid "Show a Quadrilateral"
+msgstr "Намоиши хати каҷ тартиботи саввум"
+
+#: objects/polygon_imp.cc:704
+#, fuzzy
+msgid "Hide a Quadrilateral"
+msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#: objects/polygon_type.cc:24
+#, fuzzy, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Сохтани парабола бо ин директриса"
+
+#: objects/polygon_type.cc:25
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Хати рост интихоб кунед..."
+
+#: objects/polygon_type.cc:470
+#, fuzzy, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/polygon_type.cc:471
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:474
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/polygon_type.cc:475
+#, fuzzy, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:788
+#, fuzzy, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#: objects/polygon_type.cc:789
+#, fuzzy, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Intersect with this polygon"
+msgstr "Бурида гузаштан бо ин хат"
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Объекти дуввумро барои сохтани буришот интихоб кунед..."
+
+#: objects/polygon_type.cc:930
+#, fuzzy, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/polygon_type.cc:931
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:974
+#, fuzzy, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/polygon_type.cc:975
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/polygon_type.cc:1022
+#, fuzzy, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Сохтани хати қутбии ин нуқта"
+
+#: objects/polygon_type.cc:1023
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Хати каҷи конусшаклро барои сохтани директриса интихоб кунед..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Нақшакашии ин нуқта ба давра"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Як нуқтаеро интихоб кунед, ки аз он хати тамос гузарад..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Параллелнокии қавс"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Аз хатҳои параллелии имконӣ, яктоашро интихоб кунед..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Ба ин хат параллел аст?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Дигареро аз хатҳои параллелии имконӣ интихоб кунед..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Ин хатҳо параллеланд."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Ин хатҳо параллел нестанд."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Ин хат ортогоналист?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Яке аз хатҳои ортогоналии имкониро интихоб кунед..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Бо ин хат ортогонал аст"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Дигар хатҳои ортогоналии имконироинтихоб кунед..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Ин хатҳо ортогоналианд"
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Ин хатҳо ортогоналӣ нестанд"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Коллинеарии ин нуқта"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Якӯмро ах ин се нуқта интихоб кунед..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "ва ин дуввум нуқта"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Дуввумро аз се нуқта интихоб кунед..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "ва ин саввум нуқта"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Нуқтаи охиринро интихоб кунед..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Ин нуқта коллинеарноканд"
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Ин нуқтаҳо колинеарнок нестанд"
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Мансубияти хати каҷ"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Нуқта интихоб кунед..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Мансубияти нуқтаи ин хати каҷ"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Хати каҷ интихоб кунед..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Хати каҷ дорои нуқта мебошад"
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Хати каҷ дорои нуқта намебошад"
+
+#: objects/tests_type.cc:180
+#, fuzzy, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Мансубияти хати каҷ"
+
+#: objects/tests_type.cc:181
+#, fuzzy, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Мансубияти нуқтаи ин хати каҷ"
+
+#: objects/tests_type.cc:181
+#, fuzzy, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Хати каҷ интихоб кунед..."
+
+#: objects/tests_type.cc:208
+#, fuzzy, kde-format
+msgid "This polygon contains the point."
+msgstr "Хати каҷ дорои нуқта мебошад"
+
+#: objects/tests_type.cc:210
+#, fuzzy, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Хати каҷ дорои нуқта намебошад"
+
+#: objects/tests_type.cc:223
+#, fuzzy, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Мансубияти хати каҷ"
+
+#: objects/tests_type.cc:223
+#, fuzzy, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Нуқта интихоб кунед..."
+
+#: objects/tests_type.cc:249
+#, fuzzy, kde-format
+msgid "This polygon is convex."
+msgstr "Хати каҷ дорои нуқта мебошад"
+
+#: objects/tests_type.cc:251
+#, fuzzy, kde-format
+msgid "This polygon is not convex."
+msgstr "Хати каҷ дорои нуқта намебошад"
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Озмоиши фосилот байни нуқтаҳо"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Нуқтаеро интихоб кунед, ки тахминан дар фосилаи баробар аз дутои дигар низ "
+"воқеъ бошанд..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "аз ин нуқта"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Якӯмро аз ду нуқта интихоб кунед..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "ва дувумро"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Охиронро аз ду нуқтаи дигар инихоб кунед..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Фосилот баробар аст."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Фосилот баробар нест."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Айнияти векторҳо"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Вектори ибтидоиро интихоб кунед..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Айнияти векторҳо"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Вектори дуввумро интихоб кунед..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Векторҳо баробаранд"
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Векторҳо гуногунанд"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+#| msgid "Check whether this point is on a curve"
+msgid "Check whether this object exists"
+msgstr "Мансубияти хати каҷ"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+#| msgid "Select the object to scale..."
+msgid "Select the object for the existence check..."
+msgstr "Объектро барои ба ҷадвалдарорӣ интихоб кунед..."
+
+#: objects/tests_type.cc:375
+#, fuzzy, kde-format
+#| msgid "Object Type"
+msgid "The object exists."
+msgstr "Навъи объект"
+
+#: objects/tests_type.cc:377
+#, fuzzy, kde-format
+#| msgid "The two vectors are not the same."
+msgid "The object does not exist."
+msgstr "Векторҳо гуногунанд"
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Матн"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "навиштаҷот"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Интихоби навиштаҷот"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Интихоби навиштаҷоти %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Ҳузфи навиштаҷот"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Афзудани навиштаҷот"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Гузаронидани навиштаҷот"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Ба ин навиштаҷот илова кардан"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Намоиши навиштаҷот"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Пинҳони навиштаҷот"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr ""
+
+#: objects/text_imp.cc:184
+#, fuzzy, kde-format
+msgid "Select this numeric label"
+msgstr "Интихоби навиштаҷот"
+
+#: objects/text_imp.cc:185
+#, fuzzy, kde-format
+msgid "Select numeric label %1"
+msgstr "Интихоби навиштаҷоти %1"
+
+#: objects/text_imp.cc:186
+#, fuzzy
+msgid "Remove a Numeric Label"
+msgstr "Ҳузфи навиштаҷот"
+
+#: objects/text_imp.cc:187
+#, fuzzy
+msgid "Add a Numeric Label"
+msgstr "Афзудани навиштаҷот"
+
+#: objects/text_imp.cc:188
+#, fuzzy
+msgid "Move a Numeric Label"
+msgstr "Гузаронидани навиштаҷот"
+
+#: objects/text_imp.cc:189
+#, fuzzy
+msgid "Attach to this numeric label"
+msgstr "Ба ин навиштаҷот илова кардан"
+
+#: objects/text_imp.cc:190
+#, fuzzy
+msgid "Show a Numeric Label"
+msgstr "Намоиши навиштаҷот"
+
+#: objects/text_imp.cc:191
+#, fuzzy
+msgid "Hide a Numeric Label"
+msgstr "Пинҳони навиштаҷот"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr ""
+
+#: objects/text_imp.cc:277
+#, fuzzy
+msgid "boolean label"
+msgstr "Гузаронидани навиштаҷот"
+
+#: objects/text_imp.cc:278
+#, fuzzy, kde-format
+msgid "Select this boolean label"
+msgstr "Интихоби навиштаҷот"
+
+#: objects/text_imp.cc:279
+#, fuzzy, kde-format
+msgid "Select boolean label %1"
+msgstr "Интихоби навиштаҷоти %1"
+
+#: objects/text_imp.cc:280
+#, fuzzy
+msgid "Remove a Boolean Label"
+msgstr "Ҳузфи навиштаҷот"
+
+#: objects/text_imp.cc:281
+#, fuzzy
+msgid "Add a Boolean Label"
+msgstr "Афзудани навиштаҷот"
+
+#: objects/text_imp.cc:282
+#, fuzzy
+msgid "Move a Boolean Label"
+msgstr "Гузаронидани навиштаҷот"
+
+#: objects/text_imp.cc:283
+#, fuzzy
+msgid "Attach to this boolean label"
+msgstr "Ба ин навиштаҷот илова кардан"
+
+#: objects/text_imp.cc:284
+#, fuzzy
+msgid "Show a Boolean Label"
+msgstr "Намоиши навиштаҷот"
+
+#: objects/text_imp.cc:285
+#, fuzzy
+msgid "Hide a Boolean Label"
+msgstr "Пинҳони навиштаҷот"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Копӣ кардани матн"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "&Чорчӯба"
+
+#: objects/text_type.cc:158
+#, fuzzy, kde-format
+msgid "Set &Font..."
+msgstr "Сабт намудани &дарозӣ..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Пинҳон кардани/Намоиши чорчӯбаи аломат"
+
+#: objects/text_type.cc:192
+#, fuzzy, kde-format
+msgid "Change Label Font"
+msgstr "Таъғири навиштаҷот"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Аз нав муайян кардан..."
+
+#: objects/text_type.cc:266
+#, fuzzy, kde-format
+msgid "Change &Value..."
+msgstr "Таъғири навиштаҷот"
+
+#: objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Enter the new value:"
+msgstr "Координатаи навро ворид кунед: "
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr ""
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Аз ҷое ба ҷое гузарондани параллелӣ ҳамин мавзӯъ"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Объектеро барои параллелӣ гузаронидан интихоб кунед..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Параллелӣ аз рӯи ин вектор гузаронидан"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Вектореро барои гузаронидан интихоб кунед"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Тасвир намудани ин объект"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Объектро барои тасвир намудан интихоб кунед..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Аз ин нуқта тасвир кардан"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Дигар нуқтаро барои тасвирот интихоб кунед..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Аз ин хат тасвиронидан"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Хатеро барои тасвир кардан аз он, интихоб кунед..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Тоб додани ин объект"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Объектро барои тоб додан интихоб кунед..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Дар гирди ин нуқта тоб додан"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Маркази тобишро интихоб кунед..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Аз ин кунҷ тоб додан"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Кунҷи тобишро интихоб кунед..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Ба ҷадвал даровардани ин объект"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Объектро барои ба ҷадвалдарорӣ интихоб кунед..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Инро ҳамчун марказ истифода бурда ба ҷадвал даровардан"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Марказро барои ҷадвалдарорӣ интихоб кунед..."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid "Scale by this length"
+msgstr "Инро ҳамчун марказ истифода бурда ба ҷадвал даровардан"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, fuzzy, kde-format
+msgid "Scale this length..."
+msgstr "Сабт намудани &дарозӣ..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, fuzzy, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, fuzzy, kde-format
+msgid "...to this other length"
+msgstr "Аз рӯи дарозии ин порча ҷадвал кардан"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, fuzzy, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Объектро барои ҷадвалкунӣ интихоб кунед"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Аз ин хат ҷадвал кардан"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Хатро интихоб кунед, ки аз он ҷадвалкунӣ ҳосил шавад"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Ин объектро прексионӣ тоб додан"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Объектеро барои тоб додани проексионӣ интихоб кунед"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Прексионӣ бо ин шуоъ тоб додан"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr "Шуоъро барои проексионӣ тоб додани ин объект интихоб кунед"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Прексионӣ аз рӯи ин кунҷ тоб додан"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr "Кунҷи тобиши проексионии объектро интихоб кунед"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Гомологияи баробарандозавии ин объект"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Объекти таъғирдиҳиро интихоб кунед..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Гомологияи баробарандозавӣ бо истифодаи ин ҳамчун марказ"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Маркази гомологияи бароарандозаро интихоб кунед..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Гомологияи баробарандоза аз рӯи ин тира"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Тираро барои гомологияи баробарандоза интихоб кунед..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Монандии умумии ин объект"
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Map this triangle"
+msgstr "Иловаи ҳамроҳи ҳамин кунҷ"
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Порчаро барои гузаронидани ченаки он ба давра, интихоб кунед..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr ""
+
+#: objects/transform_types.cc:412
+#, fuzzy, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr ""
+"Нуқтаеро интихоб кунед, ки таъғир додани монандӣ ба нуқтаи ибтидоӣ тасвир "
+"хоҳад дод..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Аввали аз ин се нуқтаи ибтидоӣ"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "Аз се нуқтаи ибтидоии монандии умумӣ якӯмашро интихоб кунед..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Аз се нуқта дуввумаш"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Аз се нуқтаи ибтидоии монандии умумӣ,якӯмашро интихоб кунед..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Аз се нуқта охиронаш"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Аз се нуқтаи ибтидоии монандии умумӣ, охиронашро интихоб кунед..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Нуқтае, ки ба якӯм мутобиқ аст"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Аз се нуқтаи ибтидоии монандии умумӣ, якӯмашро интихоб кунед..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Нуқтае, ки ба дуввум мутобиқ аст"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Аз се нуқтаи ибтидоии монандии умумӣ, дуввумашро интихоб кунед..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Нуқтае, ки ба саввум мутобиқ аст"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Аз се нуқтаи ибтидоии монандии умумӣ, охиронашро интихоб кунед..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Таъғироти прексионии ин объект"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr ""
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr ""
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr ""
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Аз чаҳор нуқтаи ибтидоӣ, якӯмаш"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи ибтидоии монандии умумӣ, якӯмашро интихоб кунед..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Аз чаҳор нуқтаи ибтидоӣ, дуввумаш"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи ибтидоии монандии умумӣ, дуввумашро интихоб кунед..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Аз чаҳор нуқтаи ибтидоӣ, саввумаш"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи ибтидоии монандии умумӣ, саввумашро интихоб кунед..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Аз чаҳор нуқтаи ибтидоӣ, охиронаш"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи ибтидоии барои проексияохиронашро интихоб кунед..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи охирин барои проексияякӯмашро интихоб кунед..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи охирин барои проексиядуввумашро интихоб кунед..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи охирин барои проексиясаввумашро интихоб кунед..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Ҳолати таъғирёфтаи нуқтаи чорӯм"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr "Аз чаҳор нуқтаи охирин барои проексияохиринашро интихоб кунед..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Аз ин объект соя афкандан"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Объектро барои сафбандии сояи он интихоб кунед..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Аз ин манбаъи шуоъ соя афкандан"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Манбаъи шуоъро барои соя интихоб кунед..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Соя афкандан дар нақшае, ки бо ин хат муайян шудааст"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Фазое барои соя интихоб кунед..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Таъғир додани ин объект"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Бо истифодаи ин таъғирот дигаргун кардан"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Таъғироти монандиро ба ин объект истифода бурдан"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Бо истифодаи ин ҳамчун марказ, таъғироти монандиро истифода баред"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Марказро барои таъғир додани монандӣ интихоб кунед..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Таъғироти монандиро аз ин нуқта истифода бурдан"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+"Нуқтаеро интихоб кунед, ки таъғир додани монандӣ ба дигар низ тасвир хоҳад "
+"дод..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr ""
+"Истифода бурдани таъғироти монандӣ, ки нуқтаро ба ин нуқта тасвир медиҳад"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+"Нуқтаеро интихоб кунед, ки таъғир додани монандӣ ба нуқтаи ибтидоӣ тасвир "
+"хоҳад дод..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Сохтани вектор аз ин нуқта"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Нуқтаи авваларо барои вектори нав интихоб кунед..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Сохтани вектор ба ин нуқта"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Нуқтаи охиринро барои вектори нав интихоб кунед..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Ҷамъбасти ин ва дигар векторро сохтан"
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "Аз ду вектор якеашро барои ёфтани ҷамъи он, интихоб кунед..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Сохтани ҷамбасткунандаи ин ва дигар векторҳо"
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Дуввум векторро интихоб кунед..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Сохтани ҷамъбасткунандаи вектор, ки дар ин нуқта оғоз ёбад"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr ""
+"Нуқтаро барои сохтани дар он вектори ҷамъбасткунандаро интихоб кунед..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Нухсаи аслии нав"
+
+#: scripting/newscriptwizard.cc:57
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the argument objects ( if any )\n"
+#| "in the Kig window and press \"Next\"."
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Интихоб кардани асоси ()\n"
+"Дар оинаи Kig  ва матбуот\"Баъдан\"."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Даровардани рамз"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Акнун рамзро дароред:"
+
+#: scripting/script-common.cc:19
+#, fuzzy, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Даровардани рамз ба python:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Аз баҷои хатои ҳангоми иҷроӣ, объект генератсия карда намешавад. Онро ислоҳ "
+"кунед ва ба рӯи тугмаи \"Иҷро шуд\" пахш кунед."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Хатое, ки бо тафсиркунандаи Python дода шуд:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Аз баҷои хатои ҳангоми иҷроӣ, объект генератсия карда намешавад. Онро ислоҳ "
+"кунед ва ба рӯи тугмаи \"Иҷро шуд\" пахш кунед."
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Таъғир додан..."
+
+#: scripting/script_mode.cc:307
+#, fuzzy, kde-format
+msgid "Edit Python Script"
+msgstr "Ҳуруфҳои Python"
+
+#: scripting/script_mode.cc:315
+#, fuzzy, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Аз баҷои хатои ҳангоми иҷроӣ, объект генератсия карда намешавад. Онро ислоҳ "
+"кунед ва ба рӯи тугмаи \"Иҷро шуд\" пахш кунед."
+
+#: scripting/script_mode.cc:320
+#, fuzzy, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Аз баҷои хатои ҳангоми иҷроӣ, объект генератсия карда намешавад. Онро ислоҳ "
+"кунед ва ба рӯи тугмаи \"Иҷро шуд\" пахш кунед."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Дар Kig шумо доим метавонед рӯи тугмаи рости муш ба ягон объект ё фазои "
+"холӣ барои тамоми амалҳои ба объект истифодашавандаро ба амал оваред, пахш "
+"кунед. Мисоли: номгузории объектҳо, таъғири ранг ва услуби хат, эҷоди "
+"объекти нав, ва мисли инҳо ғайраҳоро карда мешавад.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Нуқтаҳоро метавон ғайри истифодаи меню ё навори асбобҳо созед, барои ин "
+"бояд ба рӯи <em>тугмаи байнии муш</em> ба ҷои холӣ зер кунед.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig метавонад якчанд андозаи парвандаро ҳӯй кунад: парвандҳои вай (<code>."
+"kig</code> парвандҳо),\n"
+"<em>KGeo</em> парвандҳо, <em>KSeg</em>парвандҳо, ва, қисман <em>Dr. Geo</em>-"
+"ро\n"
+"ва <em>Cabri&#8482;</em> парвандҳо.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>Kig имконияти зиёд аз 40 объект ва 10 тағиротҳое, ки шумо метавонед созед "
+"ва истифода баред\n"
+"Дар ҳуҷҷататон: кушоед <em>Объектҳо</em>меню барои ҳамаро дидан</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Шумо метавонед обектҳои интихобшударо истифода баред барои саркардани "
+"сохтмони объект\n"
+"кадомҳое, ки объекти интихобшударо ҳамчун асос талаб мекунад. Мисол, агар "
+"шумо дуто дошта бошед\n"
+"нуқтаи интихобшударо шумо метавонед интихоб кунед <em>Аввал->Се нуқтаи "
+"доира</em> Аз\n"
+"popup меню барои саркардан, барои сохтани се нуқтаи доира.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Kig can extends its object set using external macros. You can find "
+#| "some\n"
+#| "interesting macro on Kig website:\n"
+#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>Kig метавонад калон шавад барои гирифтани объект . Якхел вақт шумо "
+"метавонед\n"
+"Аҷоиботи макро дар  Kig website:\n"
+"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Агар шумо дар таги мушак аз якто зиёд объект дошта бошед ва шумо мехоҳед "
+"боз интихоб кунед дигар\n"
+"аз онҳо шумо метавонед зер кунед <em>кнопкаи  чапи мушак</em>,дар вақти "
+"гузаронидон\n"
+"<em>Shift</em> калид, барои ёфтани рӯйхати объектҳо дар таги мушак\n"
+"онгоҳ шумо метавонед интихоб кунед.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Сохтани байни ин ва дигар нуқта"
+
+#, fuzzy
+#~| msgid "Construct the midpoint of this point and another point"
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "Сохтани мобайни ин ва дигра нуқта"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Якӯмро аз ду нуқта интихоб кунед..."
+
+#, fuzzy
+#~| msgid "Construct a segment starting at this point"
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Сохтани порчае, ки дар ин нуқта оғоз шавад"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the second of the two points..."
+#~ msgstr "Якӯмро аз ду нуқта интихоб кунед..."
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "Тағиротҳоро дар санадоти %1 нигоҳ дорам?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "Тағиротҳоро нигоҳ дорам?"
+
+#, fuzzy
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kgeo *.seg|Тамоми форматҳои пуштибонӣ шаванда(*.kig *.kgeo *."
+#~ "seg)\n"
+#~ "*.kig|Kig (*.kig)\n"
+#~ "*.kgeo|KGeos (*.kgeo)\n"
+#~ "*.seg|KSeg (*.seg)\n"
+#~ "*.fgeo|Dr. Geo (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri (*.fig *.FIG)"
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a cubic with this control point"
+#~ msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new cubic..."
+#~ msgstr "Хати рост интихоб кунед..."
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a rational cubic with this control point"
+#~ msgstr "Сохтани доира давра аз рӯи ҳамин нуқта ҳамчун марказ"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select the first of the two conics of which you want to construct the "
+#~| "radical line..."
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational cubic..."
+#~ msgstr ""
+#~ "Барои сохтани тираи қатъӣ аз ду хати каҷи конусшакл, якӯмашро интихоб "
+#~ "кунед..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a quadric with this control point"
+#~ msgstr "Сохтани давра аз рӯи ин нуқта ҳамчун марказ"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new quadric..."
+#~ msgstr "Хати рост интихоб кунед..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a rational quadric with this control point"
+#~ msgstr "Сохтани давра аз рӯи ин нуқта ҳамчун марказ"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select the first of the two conics of which you want to construct the "
+#~| "radical line..."
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational quadric..."
+#~ msgstr ""
+#~ "Барои сохтани тираи қатъӣ аз ду хати каҷи конусшакл, якӯмашро интихоб "
+#~ "кунед..."
+
+#, fuzzy
+#~| msgid "Hide a Curve"
+#~ msgid "Bezier Curve"
+#~ msgstr "Пинҳон намудани хати каҷи тартиботи саввум"
+
+#, fuzzy
+#~ msgid "Construct a open polygon (polyline) with this vertex"
+#~ msgstr "Сохтани парабола бо ин директриса"
+
+#, fuzzy
+#~ msgid "Select a point to be a vertex of the new open polygon..."
+#~ msgstr "Хати рост интихоб кунед..."
+
+#, fuzzy
+#~ msgid "Construct a polygon with this control point"
+#~ msgstr "Сохтани парабола бо ин директриса"
+
+#~ msgid "%1 Objects"
+#~ msgstr "%1 объектҳо"
+
+#, fuzzy
+#~ msgid "&Help"
+#~ msgstr "&Пинҳон кардан"
+
+#~ msgid "Icon"
+#~ msgstr "Ишора"
+
+#~ msgid ""
+#~ "Here you can manage types; you can remove them, and load and save them "
+#~ "from and to files..."
+#~ msgstr ""
+#~ "Дар ин ҷо шумо метавонед намудҳоро идоракунед, пурбор кунед, нигоҳ доред "
+#~ "аз ва дар ин файл..."
+
+#~ msgid "Edit..."
+#~ msgstr "Таъғир додан..."
+
+#~ msgid ""
+#~ "Construct a circle with the radius given by the length of this segment"
+#~ msgstr "Эҷоди доира бо радиус - бо дарозии ин порча"
+
+#~ msgid ""
+#~ "Select the segment whose length gives the radius of the new circle..."
+#~ msgstr ""
+#~ "Порчаеро интихоб кунед, ки аз рӯи радиуси доираи нав баромад кунад..."
+
+#~ msgid "Please select a figure."
+#~ msgstr "Шакл интихоб кунед."
+
+#~ msgid "Overwrite"
+#~ msgstr "Таъғир додан"
+
+#~ msgid "x² + y² + %1 x + %2 y + %3 = 0"
+#~ msgstr "x² + y² + %1 x + %2 y + %3 = 0"
+
+#~ msgid "( x - %1 )² + ( y - %2 )² = %3"
+#~ msgstr "( x - %1 )² + ( y - %2 )² = %3"
+
+#~ msgid "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0"
+#~ msgstr "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0"
+
+#~ msgid ""
+#~ "rho = %1/(1 + %2 cos theta + %3 sin theta)\n"
+#~ "    [centered at %4]"
+#~ msgstr ""
+#~ "rho = %1/(1 + %2 cos theta + %3 sin theta)\n"
+#~ "    [дар %4 ҳаммарказ карда шуд]"
+
+#, fuzzy
+#~ msgid ""
+#~ "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y"
+#~ msgstr ""
+#~ "%7 x³+ %10 y³ + %8 x²y + %9 xy² +%6 y² + %4 x² + %5 xy + %2 x + %3 y + %1 "
+#~ "= 0"
+
+#~ msgid "Scale by the length of this segment"
+#~ msgstr "Аз рӯи дарозии ин порча ҷадвал кардан"
+
+#, fuzzy
+#~ msgid "Scale the length of this segment..."
+#~ msgstr "Аз рӯи дарозии ин порча ҷадвал кардан"
+
+#~ msgid "Select a segment whose length is the factor for the scaling"
+#~ msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the first of two segments whose ratio is the factor for the scaling"
+#~ msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад"
+
+#, fuzzy
+#~ msgid "...to the length of this segment"
+#~ msgstr "Аз рӯи дарозии ин порча ҷадвал кардан"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select the second of two segments whose ratio is the factor for the "
+#~ "scaling"
+#~ msgstr "Порчаро интихоб кунед, ки коэфитсиенти ҷадвалкунӣ бошад"
+
+#~ msgid "Full Screen"
+#~ msgstr "Дар экрани васеъӣ"

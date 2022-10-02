@@ -1,0 +1,6882 @@
+# kig Bahasa Melayu (Malay) (ms)
+#
+# Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2008-07-09 21:09+0800\n"
+"Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
+"Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
+"Language: ms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=1;\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sharuzzaman Ahmat Raslan"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sharuzzaman@myrealbox.com"
+
+#, fuzzy, kde-format
+msgid "Circle by Center && Line"
+msgstr "Banding fail setiap baris."
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr ""
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr ""
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr ""
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr ""
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr ""
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+
+#, fuzzy, kde-format
+msgid "Equilateral Triangle"
+msgstr "Segitiga ada tiga bahagian."
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr ""
+
+#, kde-format
+msgid "Evolute"
+msgstr ""
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr ""
+
+#, fuzzy, kde-format
+msgid "Evolute of this curve"
+msgstr "Sunting hos ini"
+
+#, fuzzy, kde-format
+msgid "Osculating Circle"
+msgstr "Bulatan adalah betul-betul bulat."
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr ""
+
+#, fuzzy, kde-format
+msgid "Select the point..."
+msgstr "Titik Lekapan"
+
+#, fuzzy, kde-format
+msgid "Square"
+msgstr "Segiempat Sama"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr ""
+
+#, fuzzy, kde-format
+msgid "Vector Difference"
+msgstr "Grafik vektor DXF"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr ""
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr ""
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr ""
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr ""
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr ""
+
+#: filters/asyexporter.cc:29
+#, fuzzy, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Dokumen yang hendak dibuka"
+
+#: filters/asyexporter.cc:34
+#, fuzzy, kde-format
+msgid "&Asymptote..."
+msgstr "Import..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+msgid "Asymptote Documents (*.asy)"
+msgstr "Metrik font TeX"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr ""
+
+#: filters/asyexporter.cc:48
+#, fuzzy, kde-format
+msgid "Asymptote Options"
+msgstr "Opsyen RAID"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Opsyen RAID"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, fuzzy, kde-format
+msgid "Show Extra Frame"
+msgstr "Papar nombor baris"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, fuzzy, kde-format
+msgid "Show Axes"
+msgstr "P&apar Paksi"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, fuzzy, kde-format
+msgid "Show Grid"
+msgstr "Papar &Grid"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr ""
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr ""
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr ""
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr ""
+
+#: filters/drgeo-filter.cc:111
+#, fuzzy, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Name=Dr. Geo Info"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+
+#: filters/exporter.cc:58
+#, fuzzy, kde-format
+msgid "&Export to image"
+msgstr "Dokumen yang hendak dibuka"
+
+#: filters/exporter.cc:63
+#, fuzzy, kde-format
+msgid "&Image..."
+msgstr "Imej"
+
+#: filters/exporter.cc:73
+#, fuzzy, kde-format
+msgid "Export as Image"
+msgstr "Path imej boot:        %s"
+
+#: filters/exporter.cc:81
+#, fuzzy, kde-format
+msgid "Image Options"
+msgstr "Opsyen RAID"
+
+#: filters/exporter.cc:102
+#, fuzzy, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "%s: maaf, format format `prof' belum lagi disokong\n"
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr ""
+
+#: filters/exporter.cc:144
+#, fuzzy, kde-format
+msgid "&Export To"
+msgstr "Sambung '%1' ke '%2'"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+
+#: filters/filter.cc:76
+#, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr ""
+
+#: filters/filter.cc:78
+#, fuzzy, kde-format
+msgid "Parse Error"
+msgstr "Name=Ralat proses"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, fuzzy, kde-format
+msgid "Not Supported"
+msgstr "Tidak Disokong"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+msgid "Kig cannot open this file."
+msgstr "Tidak dapat membuka '%1'. Fail tidak wujud."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Resolusi"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, fuzzy, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "Teruskan usaha anda!"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Tinggi:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, fuzzy, kde-format
+msgid "Width:"
+msgstr "Lebar:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+
+#: filters/latexexporter.cc:63
+#, fuzzy, kde-format
+msgid "Export to &Latex..."
+msgstr "Dokumen yang hendak dibuka"
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+msgid "Latex Documents (*.tex)"
+msgstr "Metrik font TeX"
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+msgid "Export as Latex"
+msgstr "Format sebagai Swap?"
+
+#: filters/latexexporter.cc:512
+#, fuzzy, kde-format
+msgid "Latex Options"
+msgstr "Opsyen RAID"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, fuzzy, kde-format
+#| msgid "Document to open"
+msgid "Document options"
+msgstr "Dokumen untuk dibuka"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, fuzzy, kde-format
+#| msgid "Zoom in on the document"
+msgid "Standalone document"
+msgstr "Zoom masuk pada dokumen"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+
+#: filters/svgexporter.cc:30
+#, fuzzy, kde-format
+msgid "&Export to SVG..."
+msgstr "Dokumen yang hendak dibuka"
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr ""
+
+#: filters/svgexporter.cc:47
+#, fuzzy, kde-format
+msgid "Export as SVG"
+msgstr "Format sebagai Swap?"
+
+#: filters/svgexporter.cc:49
+#, fuzzy, kde-format
+msgid "SVG Options"
+msgstr "Opsyen RAID"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr ""
+
+#: filters/xfigexporter.cc:46
+#, fuzzy, kde-format
+msgid "Export to &XFig file"
+msgstr "Tidak dapat memuatkan fail!"
+
+#: filters/xfigexporter.cc:51
+#, fuzzy, kde-format
+msgid "&XFig File..."
+msgstr "Fail Wujud"
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+msgid "XFig Documents (*.fig)"
+msgstr "Manual dan dokumen bantuan"
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+msgid "Export as XFig File"
+msgstr "tidak dapat tukarnama fail `%s' sebagai `%s'"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, fuzzy, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "Name=KDevelop: KDE/C++"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Original author, former maintainer, design and lots of code."
+msgstr ""
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr ""
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr ""
+
+#: kig/aboutdata.h:34
+#, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr ""
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr ""
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, fuzzy, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr ""
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr ""
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr ""
+
+#: kig/aboutdata.h:55
+#, kde-format
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr ""
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr ""
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr ""
+
+#: kig/aboutdata.h:73
+#, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr ""
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr ""
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr ""
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr ""
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, fuzzy, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "akan membuang %s\n"
+msgstr[1] "akan membuang %s\n"
+
+#: kig/kig_commands.cpp:103
+#, fuzzy, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Tambah Bar Alatan"
+msgstr[1] "Tambah Bar Alatan"
+
+#: kig/kig_part.cpp:85
+#, fuzzy, kde-format
+msgid "&Set Coordinate System"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Opsyen RAID"
+
+#: kig/kig_part.cpp:129
+#, fuzzy, kde-format
+msgid "Show grid"
+msgstr "Papar penanda"
+
+#: kig/kig_part.cpp:132
+#, fuzzy, kde-format
+msgid "Show axes"
+msgstr "Papar penanda"
+
+#: kig/kig_part.cpp:217
+#, fuzzy, kde-format
+msgid "Invert Selection"
+msgstr "Terbal&ik Pilihan"
+
+#: kig/kig_part.cpp:224
+#, fuzzy, kde-format
+msgid "&Delete Objects"
+msgstr "Kepastian Pemadaman"
+
+#: kig/kig_part.cpp:228
+#, fuzzy, kde-format
+msgid "Delete the selected objects"
+msgstr "Padam giliran dipilih"
+
+#: kig/kig_part.cpp:230
+#, fuzzy, kde-format
+msgid "Cancel Construction"
+msgstr "Batal fungsi semasa"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr ""
+
+#: kig/kig_part.cpp:237
+#, fuzzy, kde-format
+msgid "Repeat Construction"
+msgstr "Batal fungsi semasa"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, fuzzy, kde-format
+msgid "U&nhide All"
+msgstr "Laras Semua..."
+
+#: kig/kig_part.cpp:247
+#, fuzzy, kde-format
+msgid "Show all hidden objects"
+msgstr "P_apar pada Semua Ruangkerja"
+
+#: kig/kig_part.cpp:250
+#, fuzzy, kde-format
+msgid "&New Macro..."
+msgstr "Mulakan Makro"
+
+#: kig/kig_part.cpp:253
+#, fuzzy, kde-format
+msgid "Define a new macro"
+msgstr "Tajuk laman baru"
+
+#: kig/kig_part.cpp:255
+#, fuzzy, kde-format
+msgid "Manage &Types..."
+msgstr "Kedua-dua jenis"
+
+#: kig/kig_part.cpp:258
+#, fuzzy, kde-format
+msgid "Manage macro types."
+msgstr "Pemproses macro GNU."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr ""
+
+#: kig/kig_part.cpp:263
+#, fuzzy, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Batal fungsi semasa"
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Zoom masuk pada dokumen"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Zoom keluar pada dokumen"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Tengahkan skrin pada dokumen"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr ""
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "Pilih Kawa&san Dipapar"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr ""
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "&Pilih Kawasan Zoom"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, fuzzy, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr ""
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Papar &Grid"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr ""
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "P&apar Paksi"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr ""
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr ""
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr ""
+
+#: kig/kig_part.cpp:347
+#, fuzzy, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Batal fungsi semasa"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Fail Tidak Dijumpai"
+
+#: kig/kig_part.cpp:394
+#, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Format Tidak Disokong"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Simpan Format Kig"
+
+#: kig/kig_part.cpp:695
+#, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr ""
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, fuzzy, kde-format
+msgid "Overwrite File?"
+msgstr "Fail Wujud"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Geometri Cetakan"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Zoom Kedalam"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Zoom Keluar"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Ulangtengah Paparan"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr ""
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr ""
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Pilih Kawasan Zoom"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, fuzzy, kde-format
+msgid "&File"
+msgstr "Sembunyi _Bantuan"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, fuzzy, kde-format
+msgid "&Edit"
+msgstr "&Sunting..."
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, fuzzy, kde-format
+msgid "&View"
+msgstr "Sembunyi _Bantuan"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, fuzzy, kde-format
+msgid "&Objects"
+msgstr "Objek"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, fuzzy, kde-format
+msgid "&Points"
+msgstr "Titik Mount"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, fuzzy, kde-format
+msgid "&Lines"
+msgstr "Garis"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr ""
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr ""
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, fuzzy, kde-format
+msgid "&Vectors && Segments"
+msgstr "Jumlah Segmen:"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, fuzzy, kde-format
+msgid "Co&nics && Cubics"
+msgstr "Pe_ngawal Domain Winbind"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, fuzzy, kde-format
+msgid "More Conics"
+msgstr "Lebih Aksesori"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr ""
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr ""
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr ""
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr ""
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, fuzzy, kde-format
+msgid "&Differential geometry"
+msgstr "Geometri Cetakan"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr ""
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, fuzzy, kde-format
+msgid "&Other"
+msgstr "Lain-lain"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, fuzzy, kde-format
+msgid "&Types"
+msgstr "Kedua-dua jenis"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr ""
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, fuzzy, kde-format
+msgid "Points"
+msgstr "Titik Mount"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Garis"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, fuzzy, kde-format
+msgid "Vectors && Segments"
+msgstr "Jumlah Segmen:"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr ""
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr ""
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, fuzzy, kde-format
+msgid "Bézier Curves"
+msgstr "Sembunyi _Bantuan"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr ""
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr ""
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr ""
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, fuzzy, kde-format
+msgid "Other Objects"
+msgstr "Port lain"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr ""
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr ""
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Dokumen untuk dibuka"
+
+#: misc/builtin_stuff.cc:43
+#, fuzzy, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Pakej                                  Diperlukan oleh\n"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr ""
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr ""
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr ""
+
+#: misc/builtin_stuff.cc:63
+#, fuzzy, kde-format
+msgid "Line by Two Points"
+msgstr "Banding fail setiap baris."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:69
+#, fuzzy, kde-format
+msgid "Half-Line"
+msgstr "Nombor baris:"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr ""
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr ""
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+
+#: misc/builtin_stuff.cc:85
+#, fuzzy, kde-format
+msgid "Parallel"
+msgstr "Selari..."
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr ""
+
+#: misc/builtin_stuff.cc:100
+#, fuzzy, kde-format
+msgid "Circle by Three Points"
+msgstr "Banding tiga fail tiap-tiap baris."
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:107
+#, fuzzy, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Banding fail setiap baris."
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr ""
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr ""
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr ""
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr ""
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr ""
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr ""
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr ""
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:181
+#, fuzzy, kde-format
+msgid "Polar Point of a Line"
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr ""
+
+#: misc/builtin_stuff.cc:188
+#, fuzzy, kde-format
+msgid "Polar Line of a Point"
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr ""
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr ""
+
+#: misc/builtin_stuff.cc:215
+#, fuzzy, kde-format
+msgid "The directrix line of a conic."
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:219
+#, fuzzy, kde-format
+msgid "Angle by Three Points"
+msgstr "Banding tiga fail tiap-tiap baris."
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, fuzzy, kde-format
+msgid "Mid Point"
+msgstr "Titik Lekapan"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+msgid "Golden Ratio Point"
+msgstr "Titik Lekapan"
+
+#: misc/builtin_stuff.cc:274
+#, kde-format
+msgid "The golden ratio point of a segment or two other points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:281
+#, fuzzy, kde-format
+msgid "Vector"
+msgstr "Grafik vektor DXF"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:285
+#, fuzzy, kde-format
+msgid "Vector Sum"
+msgstr "Jumlah pertengahan"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr ""
+
+#: misc/builtin_stuff.cc:290
+#, fuzzy, kde-format
+msgid "Line by Vector"
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr ""
+
+#: misc/builtin_stuff.cc:297
+#, fuzzy, kde-format
+msgid "Half-Line by Vector"
+msgstr "Banding fail setiap baris."
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr ""
+
+#: misc/builtin_stuff.cc:303
+#, fuzzy, kde-format
+msgid "Arc by Three Points"
+msgstr "Banding tiga fail tiap-tiap baris."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:308
+#, fuzzy, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Banding tiga fail tiap-tiap baris."
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:315
+#, fuzzy, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Banding tiga fail tiap-tiap baris."
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr ""
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr ""
+
+#: misc/builtin_stuff.cc:349
+#, fuzzy, kde-format
+msgid "Translate"
+msgstr "Terjemah \\n->\\r\\n"
+
+#: misc/builtin_stuff.cc:349
+#, fuzzy, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Terjemahan versi ini oleh:"
+
+#: misc/builtin_stuff.cc:354
+#, fuzzy, kde-format
+msgid "Reflect in Point"
+msgstr "Name=Papar dalam Tetingkap Yang Dinyatakan"
+
+#: misc/builtin_stuff.cc:355
+#, fuzzy, kde-format
+msgid "An object reflected in a point"
+msgstr "Titik lekapan sedang digunakan"
+
+#: misc/builtin_stuff.cc:360
+#, fuzzy, kde-format
+msgid "Reflect in Line"
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:360
+#, fuzzy, kde-format
+msgid "An object reflected in a line"
+msgstr "Ralat dalam %s pada baris %d: "
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr ""
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Skala"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:376
+#, fuzzy, kde-format
+msgid "Scale over Line"
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+
+#: misc/builtin_stuff.cc:397
+#, fuzzy, kde-format
+msgid "Apply Similitude"
+msgstr "Terap perubahan"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr ""
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:419
+#, fuzzy, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Guna Katalaluan Bayang"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr ""
+
+#: misc/builtin_stuff.cc:435
+#, fuzzy, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Dua aksara satu-lajur diperlukan"
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr ""
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr ""
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr ""
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr ""
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:495
+#, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:513
+#, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:529
+#, fuzzy, kde-format
+msgid "Parallel Test"
+msgstr "Ujian Checksum"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr ""
+
+#: misc/builtin_stuff.cc:533
+#, fuzzy, kde-format
+msgid "Orthogonal Test"
+msgstr "Ujian Checksum"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr ""
+
+#: misc/builtin_stuff.cc:537
+#, fuzzy, kde-format
+msgid "Collinear Test"
+msgstr "Ujian Checksum"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr ""
+
+#: misc/builtin_stuff.cc:541
+#, fuzzy, kde-format
+msgid "Contains Test"
+msgstr "Ujian Checksum"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:545
+#, fuzzy, kde-format
+msgid "In Polygon Test"
+msgstr "Name=Papar dalam Tetingkap Yang Dinyatakan"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:549
+#, fuzzy, kde-format
+msgid "Convex Polygon Test"
+msgstr "Mainkan ujian bunyi"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr ""
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+msgid "Existence Test"
+msgstr "Ujian Checksum"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr ""
+
+#: misc/builtin_stuff.cc:558
+#, fuzzy, kde-format
+msgid "Distance Test"
+msgstr "Ujian Checksum"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:565
+#, fuzzy, kde-format
+msgid "Vector Equality Test"
+msgstr "Mainkan ujian bunyi"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr ""
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+msgid "Project a point on a line"
+msgstr "Papar nombor baris"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, fuzzy, kde-format
+msgid "Python Script"
+msgstr "Skrip Pengguna"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr ""
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr ""
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr ""
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Tetap Sistem Koordinat Euclidean"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Tetap Sistem Koordinat Polar"
+
+#: misc/goniometry.cc:95
+#, fuzzy, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Sharuzzaman Ahmat Raslan"
+
+#: misc/goniometry.cc:96
+#, fuzzy, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Sharuzzaman Ahmat Raslan"
+
+#: misc/goniometry.cc:97
+#, fuzzy, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Sharuzzaman Ahmat Raslan"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+
+#: misc/guiaction.cc:116
+#, fuzzy, kde-format
+msgid "Point"
+msgstr "titik 1"
+
+#: misc/guiaction.cc:157
+#, fuzzy, kde-format
+msgid "Construct a text label."
+msgstr "Edit Label But"
+
+#: misc/guiaction.cc:167
+#, fuzzy, kde-format
+msgid "Text Label"
+msgstr "Teks baru"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr ""
+
+#: misc/guiaction.cc:198
+#, fuzzy, kde-format
+msgid "Point by Coordinates"
+msgstr "Pakej                                  Diperlukan oleh\n"
+
+#: misc/guiaction.cc:210
+#, fuzzy, kde-format
+msgid "Fixed Point"
+msgstr "Titik Lekapan"
+
+#: misc/guiaction.cc:211
+#, fuzzy, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Sila masukkan lokasi baru bagi %s."
+
+#: misc/guiaction.cc:235
+#, fuzzy, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Edit Label But"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Guna Hint Saiz"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr ""
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, fuzzy, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Tidak dapat membuka '%1'. Fail tidak wujud."
+
+#: misc/lists.cc:292
+#, fuzzy, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "tidak dapat membuka file keluaran guile %s"
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+
+#: misc/lists.cc:347
+#, fuzzy, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Mulakan Makro"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr ""
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, fuzzy, kde-format
+msgid "Moving Point"
+msgstr "Titik Lekapan"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+
+#: misc/special_constructors.cc:328
+#, fuzzy, kde-format
+msgid "Following Point"
+msgstr "Titik Lekapan"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr ""
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr ""
+
+#: misc/special_constructors.cc:413
+#, fuzzy, kde-format
+msgid "Dependent Point"
+msgstr "Titik Lekapan"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr ""
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr ""
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr ""
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, fuzzy, kde-format
+msgid "Construct an open polygon"
+msgstr "Label Bertindan"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:624
+#, fuzzy, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:629
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Laksana arahan pada Access Point"
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr ""
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr ""
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr ""
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "Sides of a Polygon"
+msgstr "Segiempat tepat ada empat bahagian."
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "The sides of a polygon."
+msgstr "Segiempat tepat ada empat bahagian."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr ""
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr ""
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr ""
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr ""
+
+#: misc/special_constructors.cc:954
+#, fuzzy, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:957
+#, fuzzy, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr ""
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr ""
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr ""
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Laksana arahan pada Access Point"
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr ""
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Laksana arahan pada Access Point"
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Sila masukkan lokasi baru bagi %s."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr ""
+
+#: misc/special_constructors.cc:1396
+#, fuzzy, kde-format
+msgid "Generic Affinity"
+msgstr "ralat umum"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+
+#: misc/special_constructors.cc:1419
+#, fuzzy, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Tindih tajuk biasa"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1505
+#, fuzzy, kde-format
+msgid "Measure Transport"
+msgstr "Memulakan pengangkutan Emel"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr ""
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, fuzzy, kde-format
+msgid "Segment to transport"
+msgstr "Dokumen yang hendak dibuka"
+
+#: misc/special_constructors.cc:1614
+#, fuzzy, kde-format
+msgid "Arc to transport"
+msgstr "Dokumen yang hendak dibuka"
+
+#: misc/special_constructors.cc:1616
+#, fuzzy, kde-format
+msgid "Value to transport"
+msgstr "Dokumen yang hendak dibuka"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr ""
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr ""
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr ""
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Sila masukkan lokasi baru bagi %s."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Laksana arahan pada Access Point"
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Laksana arahan pada Access Point"
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, fuzzy, kde-format
+msgid "Intersect with this conic"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, fuzzy, kde-format
+msgid "Intersect with this line"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, fuzzy, kde-format
+msgid "Intersect with this cubic"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, fuzzy, kde-format
+msgid "Intersect with this circle"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr ""
+
+#: misc/special_constructors.cc:1692
+#, fuzzy, kde-format
+msgid "The intersection of two objects"
+msgstr "Dua aksara satu-lajur diperlukan"
+
+#: misc/special_constructors.cc:1766
+#, fuzzy, kde-format
+msgid "Intersect this Circle"
+msgstr "Sunting hos ini"
+
+#: misc/special_constructors.cc:1768
+#, fuzzy, kde-format
+msgid "Intersect this Conic"
+msgstr "Sunting hos ini"
+
+#: misc/special_constructors.cc:1770
+#, fuzzy, kde-format
+msgid "Intersect this Segment"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:1772
+#, fuzzy, kde-format
+msgid "Intersect this Half-line"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:1774
+#, fuzzy, kde-format
+msgid "Intersect this Line"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr ""
+
+#: misc/special_constructors.cc:1778
+#, fuzzy, kde-format
+msgid "Intersect this Arc"
+msgstr "Sunting hos ini"
+
+#: misc/special_constructors.cc:1780
+#, fuzzy, kde-format
+msgid "Intersect this Polygon"
+msgstr "Sunting hos ini"
+
+#: misc/special_constructors.cc:1782
+#, fuzzy, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Sunting hos ini"
+
+#: misc/special_constructors.cc:1788
+#, fuzzy, kde-format
+msgid "with this Circle"
+msgstr "Comment=Proses selesai dengan ralat"
+
+#: misc/special_constructors.cc:1790
+#, fuzzy, kde-format
+msgid "with this Conic"
+msgstr "Comment=Proses selesai dengan ralat"
+
+#: misc/special_constructors.cc:1792
+#, fuzzy, kde-format
+msgid "with this Segment"
+msgstr "Pilih aksara ini"
+
+#: misc/special_constructors.cc:1794
+#, fuzzy, kde-format
+msgid "with this Half-line"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:1796
+#, fuzzy, kde-format
+msgid "with this Line"
+msgstr "Papar nombor baris"
+
+#: misc/special_constructors.cc:1798
+#, fuzzy, kde-format
+msgid "with this Cubic Curve"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: misc/special_constructors.cc:1800
+#, fuzzy, kde-format
+msgid "with this Arc"
+msgstr "Comment=Proses selesai dengan ralat"
+
+#: misc/special_constructors.cc:1802
+#, fuzzy, kde-format
+msgid "with this Polygon"
+msgstr "Comment=Proses selesai dengan ralat"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+msgid "with this Polygonal"
+msgstr "Comment=Proses selesai dengan ralat"
+
+#: misc/special_constructors.cc:1814
+#, kde-format
+msgid "Construct midpoint of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr ""
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr ""
+
+#: misc/special_constructors.cc:1869
+#, kde-format
+msgid "Construct golden ratio point of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: misc/special_constructors.cc:1873
+#, kde-format
+msgid "Construct the golden ratio point of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: misc/special_constructors.cc:1979
+#, fuzzy, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Anda mesti pilih partisyen untuk dipadam."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr ""
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr ""
+
+#: misc/special_constructors.cc:1985
+#, fuzzy, kde-format
+msgid "The line tangent to a curve"
+msgstr "Gerak ke baris sebelumnya"
+
+#: misc/special_constructors.cc:2008
+#, fuzzy, kde-format
+msgid "Tangent to This Circle"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: misc/special_constructors.cc:2010
+#, fuzzy, kde-format
+msgid "Tangent to This Conic"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: misc/special_constructors.cc:2012
+#, fuzzy, kde-format
+msgid "Tangent to This Arc"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2016
+#, fuzzy, kde-format
+msgid "Tangent to This Curve"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr ""
+
+#: misc/special_constructors.cc:2038
+#, fuzzy, kde-format
+msgid "Center Of Curvature"
+msgstr "Pusat Kawalan"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr ""
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr ""
+
+#: misc/unit.cc:105
+#, fuzzy, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "piksel"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr ""
+
+#: misc/unit.cc:107
+#, fuzzy, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "Nombor baris:"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, fuzzy, kde-format
+msgid "Which object?"
+msgstr "Objek LightWave"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr ""
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Jenis MIME"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr ""
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr ""
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Nama:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Huraian:"
+
+#: modes/historydialog.cc:24
+#, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr ""
+
+#: modes/historydialog.cc:108
+#, fuzzy, kde-format
+msgid "Start of the construction"
+msgstr "Batal fungsi semasa"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, fuzzy, kde-format
+msgid "First step"
+msgstr "Nama pertama:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr ""
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Nama"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, fuzzy, kde-format
+msgid "<unnamed object>"
+msgstr "Objek LightWave"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+
+#: modes/label.cc:368
+#, fuzzy, kde-format
+msgid "argument %1"
+msgstr "hujah tidak dijangka"
+
+#: modes/label.cc:397
+#, fuzzy, kde-format
+msgid "Selecting argument %1"
+msgstr "hujah tidak dijangka"
+
+#: modes/label.cc:500
+#, fuzzy, kde-format
+msgid "Change Label"
+msgstr "Tukar Susunan Tab"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Set Value"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: modes/label.cc:595
+#, fuzzy, kde-format
+msgid "Enter value:"
+msgstr "Sila guna mod teks"
+
+#: modes/label.cc:624
+#, fuzzy, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Laksana arahan pada Access Point"
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+
+#: modes/macrowizard.cc:35
+#, fuzzy, kde-format
+msgid "Given Objects"
+msgstr "Nama Diberi"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+
+#: modes/macrowizard.cc:74
+#, fuzzy, kde-format
+msgid "Final Object"
+msgstr "Objek LightWave"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr ""
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr ""
+
+#: modes/macrowizard.cc:119
+#, fuzzy, kde-format
+#| msgid "Name:"
+msgid "&Name:"
+msgstr "Nama:"
+
+#: modes/macrowizard.cc:126
+#, fuzzy, kde-format
+#| msgid "Description:"
+msgid "&Description:"
+msgstr "Huraian:"
+
+#: modes/macrowizard.cc:132
+#, fuzzy, kde-format
+#| msgid "Icon"
+msgid "&Icon:"
+msgstr "Ikon"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Tajuk laman baru"
+
+#: modes/moving.cc:136
+#, fuzzy, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "/Mudah Alih"
+msgstr[1] "/Mudah Alih"
+
+#: modes/moving.cc:218
+#, fuzzy, kde-format
+msgid "Redefine Point"
+msgstr "Titik Lekapan"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, fuzzy, kde-format
+msgid "Gray"
+msgstr "Sharuzzaman Ahmat Raslan"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, fuzzy, kde-format
+msgid "Red"
+msgstr "Sharuzzaman Ahmat Raslan"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, fuzzy, kde-format
+msgid "&Hide"
+msgstr "Sembunyi _Bantuan"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, fuzzy, kde-format
+msgid "&Show"
+msgstr "Papar penanda"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, fuzzy, kde-format
+msgid "&Move"
+msgstr "Pindah"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, fuzzy, kde-format
+msgid "&Delete"
+msgstr "Kepastian Pemadaman"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, fuzzy, kde-format
+msgid "&Custom Color"
+msgstr "%1 (widget tersendiri)"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, fuzzy, kde-format
+msgid "Change Object Color"
+msgstr "Tukar Susunan Tab"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, fuzzy, kde-format
+msgid "Change Object Width"
+msgstr "Tukar Susunan Tab"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, fuzzy, kde-format
+msgid "Change Point Style"
+msgstr "Tukar Susunan Tab"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, fuzzy, kde-format
+msgid "Change Object Style"
+msgstr "Tukar Susunan Tab"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, fuzzy, kde-format
+msgid "Set &Name..."
+msgstr "Name=KDevAdaProject"
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, fuzzy, kde-format
+msgid "&Name"
+msgstr "Nama:"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, fuzzy, kde-format
+msgid "Set Object Name"
+msgstr "Name=KDevelop: KDE/C++"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, fuzzy, kde-format
+msgid "Set Name of this Object:"
+msgstr "       alternatives --set <nama> <path>\n"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, fuzzy, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "Objek"
+msgstr[1] "Objek"
+
+#: modes/popup/popup.cc:70
+#, fuzzy, kde-format
+msgid "Kig Document"
+msgstr "Dokumen yang hendak dibuka"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr ""
+
+#: modes/popup/popup.cc:114
+#, fuzzy, kde-format
+msgid "T&est"
+msgstr "EST"
+
+#: modes/popup/popup.cc:115
+#, fuzzy, kde-format
+msgid "Const&ruct"
+msgstr "Label Bertindan"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr ""
+
+#: modes/popup/popup.cc:117
+#, fuzzy, kde-format
+msgid "Add Te&xt Label"
+msgstr "Teks baru"
+
+#: modes/popup/popup.cc:118
+#, fuzzy, kde-format
+msgid "Set Co&lor"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: modes/popup/popup.cc:119
+#, fuzzy, kde-format
+msgid "Set &Pen Width"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: modes/popup/popup.cc:120
+#, fuzzy, kde-format
+msgid "Set St&yle"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: modes/popup/popup.cc:122
+#, fuzzy, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr ""
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+msgid "Edit Script..."
+msgstr "Skrip Pra-Pemasangan"
+
+#: modes/textlabelwizard.cc:31
+#, fuzzy, kde-format
+msgid "Enter Label Text"
+msgstr "Sila guna mod teks"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+
+#: modes/textlabelwizard.cc:52
+#, fuzzy, kde-format
+msgid "Show text in a frame"
+msgstr "_Kerangka pada fail imej:"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, fuzzy, kde-format
+msgid "Select Arguments"
+msgstr "Pilih Partisyen"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Label Bertindan"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr ""
+
+#: modes/typesdialog.cpp:301
+#, fuzzy, kde-format
+msgid "Type"
+msgstr "Kedua-dua jenis"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Huraian"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Kedua-dua jenis"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Sunting..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr ""
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Adakah Anda Pasti?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Jenis Eksport"
+
+#: modes/typesdialog.cpp:455
+#, kde-format
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:475
+#, kde-format
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Jenis Import"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Lebih Dari Satu Jenis Dipilih"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, fuzzy, kde-format
+msgid "Select types here..."
+msgstr "Teks servis disini"
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, fuzzy, kde-format
+msgid "Edit the selected type."
+msgstr "(dipilih)"
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, fuzzy, kde-format
+msgid "&Import..."
+msgstr "Import..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr ""
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr ""
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr ""
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr ""
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr ""
+
+#: objects/angle_type.cc:90
+#, fuzzy, kde-format
+msgid "Set Si&ze"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, fuzzy, kde-format
+msgid "Resize Angle"
+msgstr "Tidak dapat mengubah saiz tetingkap atas"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr ""
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr ""
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr ""
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr ""
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr ""
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr ""
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr ""
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr ""
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr ""
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr ""
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr ""
+
+#: objects/arc_type.cc:205
+#, fuzzy, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/arc_type.cc:206
+#, fuzzy, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Jambatan Tanpawayar Titik ke Titik"
+
+#: objects/arc_type.cc:207
+#, fuzzy, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr ""
+
+#: objects/arc_type.cc:209
+#, fuzzy, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Pilih Peranti untuk Eksport"
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+#, fuzzy
+msgid "Number of control points"
+msgstr "Nombor baris:"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+msgid "Control polygon"
+msgstr "Label Bertindan"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr ""
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+#, fuzzy
+msgid "Bézier Curve"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+msgid "Remove a Bézier Curve"
+msgstr "akan membuang %s\n"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+msgid "Add a Bézier Curve"
+msgstr "Tambah Bar Alatan"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+msgid "Move a Bézier Curve"
+msgstr "/Mudah Alih"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+msgid "Attach to this Bézier Curve"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+msgid "Show a Bézier Curve"
+msgstr "Papar penanda"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+msgid "Hide a Bézier Curve"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+msgid "Bézier Quadratic"
+msgstr "Tambah Bar Alatan"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+msgid "Remove a Bézier Quadratic"
+msgstr "akan membuang %s\n"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+msgid "Add a Bézier Quadratic"
+msgstr "Tambah Bar Alatan"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+msgid "Move a Bézier Quadratic"
+msgstr "/Mudah Alih"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+msgid "Attach to this Bézier Quadratic"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+msgid "Show a Bézier Quadratic"
+msgstr "Papar penanda"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+msgid "Hide a Bézier Quadratic"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+msgid "Remove a Bézier Cubic"
+msgstr "akan membuang %s\n"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+msgid "Add a Bézier Cubic"
+msgstr "Tambah Bar Alatan ke '%1'"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+msgid "Move a Bézier Cubic"
+msgstr "Gerak tab kiri"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+msgid "Attach to this Bézier Cubic"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+msgid "Show a Bézier Cubic"
+msgstr "Papar nombor baris"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+msgid "Hide a Bézier Cubic"
+msgstr "_Sorok pilihan lanjutan"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr ""
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+msgid "Remove a Rational Bézier Curve"
+msgstr "akan membuang %s\n"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+msgid "Add a Rational Bézier Curve"
+msgstr "Tambah Bar Alatan"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+msgid "Move a Rational Bézier Curve"
+msgstr "/Mudah Alih"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+msgid "Show a Rational Bézier Curve"
+msgstr "Papar penanda"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+msgid "Hide a Rational Bézier Curve"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+msgid "Rational Bézier Quadratic"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "akan membuang %s\n"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Tambah Bar Alatan"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+msgid "Move a Rational Bézier Quadratic"
+msgstr "/Mudah Alih"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Papar penanda"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Pilih Partisyen"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+msgid "Select this value as weight"
+msgstr "Pilih aksara ini"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+msgid "int"
+msgstr "Nombor baris:"
+
+#: objects/bogus_imp.cc:387
+#, fuzzy
+msgid "Test Result"
+msgstr "Ujian Checksum"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, fuzzy, kde-format
+msgid "Select the curve..."
+msgstr "Pilih Partisyen"
+
+#: objects/centerofcurvature_type.cc:23
+#, fuzzy, kde-format
+msgid "Select a point on the curve..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr ""
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr ""
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Radius"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr ""
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr ""
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr ""
+
+#: objects/circle_imp.cc:233
+#, fuzzy, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "Pada penghujung tugas:"
+
+#: objects/circle_imp.cc:337
+#, fuzzy
+msgid "circle"
+msgstr "Bulatan"
+
+#: objects/circle_imp.cc:338
+#, fuzzy, kde-format
+msgid "Select this circle"
+msgstr "Pilih aksara ini"
+
+#: objects/circle_imp.cc:339
+#, fuzzy, kde-format
+msgid "Select circle %1"
+msgstr "Pilih Partisyen"
+
+#: objects/circle_imp.cc:340
+#, fuzzy
+msgid "Remove a Circle"
+msgstr "akan membuang %s\n"
+
+#: objects/circle_imp.cc:341
+#, fuzzy
+msgid "Add a Circle"
+msgstr "Tambah Bar Alatan"
+
+#: objects/circle_imp.cc:342
+#, fuzzy
+msgid "Move a Circle"
+msgstr "/Mudah Alih"
+
+#: objects/circle_imp.cc:343
+#, fuzzy
+msgid "Attach to this circle"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/circle_imp.cc:344
+#, fuzzy
+msgid "Show a Circle"
+msgstr "Papar penanda"
+
+#: objects/circle_imp.cc:345
+#, fuzzy
+msgid "Hide a Circle"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr ""
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr ""
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr ""
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr ""
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "With this radius"
+msgstr "Comment=Proses selesai dengan ralat"
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "Select the length of the radius..."
+msgstr "_Pilih pakej individu"
+
+#: objects/conic_imp.cc:73
+#, fuzzy
+msgid "Conic Type"
+msgstr "Jenis MIME"
+
+#: objects/conic_imp.cc:75
+#, fuzzy
+msgid "First Focus"
+msgstr "Nama pertama:"
+
+#: objects/conic_imp.cc:76
+#, fuzzy
+msgid "Second Focus"
+msgstr "Tahap kedua..."
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr ""
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr ""
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr ""
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr ""
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr ""
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr ""
+
+#: objects/conic_imp.cc:266
+#, fuzzy, kde-format
+msgid "[centered at %1]"
+msgstr "Pada penghujung tugas:"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr ""
+
+#: objects/conic_imp.cc:379
+#, fuzzy, kde-format
+msgid "Select this conic"
+msgstr "Pilih aksara ini"
+
+#: objects/conic_imp.cc:380
+#, fuzzy, kde-format
+msgid "Select conic %1"
+msgstr "Pilih Partisyen"
+
+#: objects/conic_imp.cc:381
+#, fuzzy
+msgid "Remove a Conic"
+msgstr "akan membuang %s\n"
+
+#: objects/conic_imp.cc:382
+#, fuzzy
+msgid "Add a Conic"
+msgstr "Tambah Bar Alatan"
+
+#: objects/conic_imp.cc:383
+#, fuzzy
+msgid "Move a Conic"
+msgstr "/Mudah Alih"
+
+#: objects/conic_imp.cc:384
+#, fuzzy
+msgid "Attach to this conic"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/conic_imp.cc:385
+#, fuzzy
+msgid "Show a Conic"
+msgstr "Papar penanda"
+
+#: objects/conic_imp.cc:386
+#, fuzzy
+msgid "Hide a Conic"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr ""
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+#, fuzzy
+msgid "First End Point"
+msgstr "Name=Plugin Kate Pertama Saya"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+#, fuzzy
+msgid "Second End Point"
+msgstr "Titik lekapan tidak sah"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr ""
+
+#: objects/conic_imp.cc:604
+#, fuzzy, kde-format
+msgid "Select this conic arc"
+msgstr "Pilih aksara ini"
+
+#: objects/conic_imp.cc:605
+#, fuzzy, kde-format
+msgid "Select conic arc %1"
+msgstr "Pilih Partisyen"
+
+#: objects/conic_imp.cc:606
+#, fuzzy
+msgid "Remove a Conic Arc"
+msgstr "akan membuang %s\n"
+
+#: objects/conic_imp.cc:607
+#, fuzzy
+msgid "Add a Conic Arc"
+msgstr "Tambah Bar Alatan"
+
+#: objects/conic_imp.cc:608
+#, fuzzy
+msgid "Move a Conic Arc"
+msgstr "/Mudah Alih"
+
+#: objects/conic_imp.cc:609
+#, fuzzy
+msgid "Attach to this conic arc"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/conic_imp.cc:610
+#, fuzzy
+msgid "Show a Conic Arc"
+msgstr "Papar penanda"
+
+#: objects/conic_imp.cc:611
+#, fuzzy
+msgid "Hide a Conic Arc"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr ""
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr ""
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr ""
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr ""
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr ""
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr ""
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr ""
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr ""
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr ""
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr ""
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr ""
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr ""
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr ""
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr ""
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr ""
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr ""
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr ""
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr ""
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr ""
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr ""
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr ""
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr ""
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr ""
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr ""
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr ""
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr ""
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr ""
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr ""
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+
+#: objects/conic_types.cc:604
+#, fuzzy, kde-format
+msgid "Switch Radical Lines"
+msgstr "Baris per inci"
+
+#: objects/conic_types.cc:619
+#, fuzzy, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Baris per inci"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr ""
+
+#: objects/cubic_imp.cc:348
+#, fuzzy, kde-format
+msgid "Select this cubic curve"
+msgstr "Pilih peranti ethernet untuk akaun ini."
+
+#: objects/cubic_imp.cc:349
+#, fuzzy, kde-format
+msgid "Select cubic curve %1"
+msgstr "_Pilih pakej individu"
+
+#: objects/cubic_imp.cc:350
+#, fuzzy
+msgid "Remove a Cubic Curve"
+msgstr "gagal untuk membuang %s: %s\n"
+
+#: objects/cubic_imp.cc:351
+#, fuzzy
+msgid "Add a Cubic Curve"
+msgstr "Tambah Bar Alatan ke '%1'"
+
+#: objects/cubic_imp.cc:352
+#, fuzzy
+msgid "Move a Cubic Curve"
+msgstr "Gerak tab kiri"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr ""
+
+#: objects/cubic_imp.cc:354
+#, fuzzy
+msgid "Show a Cubic Curve"
+msgstr "Papar nombor baris"
+
+#: objects/cubic_imp.cc:355
+#, fuzzy
+msgid "Hide a Cubic Curve"
+msgstr "_Sorok pilihan lanjutan"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr ""
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr ""
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr ""
+
+#: objects/curve_imp.cc:19
+#, fuzzy, kde-format
+msgid "Select this curve"
+msgstr "Pilih aksara ini"
+
+#: objects/curve_imp.cc:20
+#, fuzzy, kde-format
+msgid "Select curve %1"
+msgstr "Pilih Partisyen"
+
+#: objects/curve_imp.cc:21
+#, fuzzy
+msgid "Remove a Curve"
+msgstr "akan membuang %s\n"
+
+#: objects/curve_imp.cc:22
+#, fuzzy
+msgid "Add a Curve"
+msgstr "Tambah Bar Alatan"
+
+#: objects/curve_imp.cc:23
+#, fuzzy
+msgid "Move a Curve"
+msgstr "/Mudah Alih"
+
+#: objects/curve_imp.cc:24
+#, fuzzy
+msgid "Attach to this curve"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/curve_imp.cc:25
+#, fuzzy
+msgid "Show a Curve"
+msgstr "Papar penanda"
+
+#: objects/curve_imp.cc:26
+#, fuzzy
+msgid "Hide a Curve"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr ""
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr ""
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr ""
+
+#: objects/intersection_types.cc:526
+#, fuzzy, kde-format
+msgid "Intersect with this arc"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr ""
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr ""
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Dua aksara satu-lajur diperlukan"
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the object to invert..."
+msgstr "Jambatan Tanpawayar Titik ke Titik"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr ""
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Select the point to invert..."
+msgstr "Jambatan Tanpawayar Titik ke Titik"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr ""
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Select the line to invert..."
+msgstr "Gerak ke baris sebelumnya"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr ""
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Select the segment to invert..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr ""
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Select the circle to invert..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr ""
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Select the arc to invert..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr ""
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr ""
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+#, fuzzy
+msgid "Length"
+msgstr "Panjang Katalaluan"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+#, fuzzy
+msgid "Support Line"
+msgstr "Tidak Disokong"
+
+#: objects/line_imp.cc:194
+#, fuzzy
+msgid "End Point"
+msgstr "Titik Lekapan"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+#, fuzzy
+msgid "line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:545
+#, fuzzy, kde-format
+msgid "Select a Line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:561
+#, fuzzy, kde-format
+msgid "Select this line"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:562
+#, fuzzy, kde-format
+msgid "Select line %1"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:563
+#, fuzzy
+msgid "Remove a Line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:564
+#, fuzzy
+msgid "Add a Line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:565
+#, fuzzy
+msgid "Move a Line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:566
+#, fuzzy
+msgid "Attach to this line"
+msgstr "Gerak ke baris sebelumnya"
+
+#: objects/line_imp.cc:567
+#, fuzzy
+msgid "Show a Line"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:568
+#, fuzzy
+msgid "Hide a Line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr ""
+
+#: objects/line_imp.cc:577
+#, fuzzy, kde-format
+msgid "Select this segment"
+msgstr "Pilih aksara ini"
+
+#: objects/line_imp.cc:578
+#, fuzzy, kde-format
+msgid "Select segment %1"
+msgstr "Pilih Partisyen"
+
+#: objects/line_imp.cc:579
+#, fuzzy
+msgid "Remove a Segment"
+msgstr "akan membuang %s\n"
+
+#: objects/line_imp.cc:580
+#, fuzzy
+msgid "Add a Segment"
+msgstr "Tambah Bar Alatan"
+
+#: objects/line_imp.cc:581
+#, fuzzy
+msgid "Move a Segment"
+msgstr "/Mudah Alih"
+
+#: objects/line_imp.cc:582
+#, fuzzy
+msgid "Attach to this segment"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/line_imp.cc:583
+#, fuzzy
+msgid "Show a Segment"
+msgstr "Papar penanda"
+
+#: objects/line_imp.cc:584
+#, fuzzy
+msgid "Hide a Segment"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/line_imp.cc:592
+#, fuzzy
+msgid "half-line"
+msgstr "Nombor baris:"
+
+#: objects/line_imp.cc:593
+#, fuzzy, kde-format
+msgid "Select this half-line"
+msgstr "  -a             - pilih semua yg sama dgn baris perintah.\n"
+
+#: objects/line_imp.cc:594
+#, fuzzy, kde-format
+msgid "Select half-line %1"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:595
+#, fuzzy
+msgid "Remove a Half-Line"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:596
+#, fuzzy
+msgid "Add a Half-Line"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:597
+#, fuzzy
+msgid "Move a Half-Line"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr ""
+
+#: objects/line_imp.cc:599
+#, fuzzy
+msgid "Show a Half-Line"
+msgstr "Papar nombor baris"
+
+#: objects/line_imp.cc:600
+#, fuzzy
+msgid "Hide a Half-Line"
+msgstr "Papar nombor baris"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr ""
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr ""
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr ""
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr ""
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr ""
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr ""
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr ""
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr ""
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:104
+#, fuzzy, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/line_type.cc:104
+#, fuzzy, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr ""
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr ""
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr ""
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr ""
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr ""
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr ""
+
+#: objects/line_type.cc:224
+#, fuzzy, kde-format
+msgid "Set &Length..."
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: objects/line_type.cc:241
+#, fuzzy, kde-format
+msgid "Set Segment Length"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: objects/line_type.cc:241
+#, fuzzy, kde-format
+msgid "Choose the new length: "
+msgstr "Tajuk laman baru"
+
+#: objects/line_type.cc:249
+#, fuzzy, kde-format
+msgid "Resize Segment"
+msgstr "Tidak dapat mengubah saiz tetingkap atas"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr ""
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr ""
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr ""
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr ""
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr ""
+
+#: objects/locus_imp.cc:187
+#, fuzzy, kde-format
+msgid "Select this locus"
+msgstr "Pilih aksara ini"
+
+#: objects/locus_imp.cc:188
+#, fuzzy, kde-format
+msgid "Select locus %1"
+msgstr "Pilih Partisyen"
+
+#: objects/locus_imp.cc:189
+#, fuzzy
+msgid "Remove a Locus"
+msgstr "akan membuang %s\n"
+
+#: objects/locus_imp.cc:190
+#, fuzzy
+msgid "Add a Locus"
+msgstr "Tambah Bar Alatan"
+
+#: objects/locus_imp.cc:191
+#, fuzzy
+msgid "Move a Locus"
+msgstr "/Mudah Alih"
+
+#: objects/locus_imp.cc:192
+#, fuzzy
+msgid "Attach to this locus"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/locus_imp.cc:193
+#, fuzzy
+msgid "Show a Locus"
+msgstr "Papar penanda"
+
+#: objects/locus_imp.cc:194
+#, fuzzy
+msgid "Hide a Locus"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/object_imp.cc:41
+#, fuzzy
+msgid "Object Type"
+msgstr "Jenis MIME"
+
+#: objects/object_imp.cc:279
+#, fuzzy
+msgid "Object"
+msgstr "Objek LightWave"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, fuzzy, kde-format
+msgid "Select this object"
+msgstr "Pilih aksara ini"
+
+#: objects/object_imp.cc:281
+#, fuzzy, kde-format
+msgid "Select object %1"
+msgstr "Objek LightWave"
+
+#: objects/object_imp.cc:282
+#, fuzzy
+msgid "Remove an object"
+msgstr "Objek LightWave"
+
+#: objects/object_imp.cc:283
+#, fuzzy
+msgid "Add an object"
+msgstr "Tambah Bar Alatan"
+
+#: objects/object_imp.cc:284
+#, fuzzy
+msgid "Move an object"
+msgstr "Objek LightWave"
+
+#: objects/object_imp.cc:285
+#, fuzzy
+msgid "Attach to this object"
+msgstr "Tidak dapat memulakan objek keadaan perkakasan X."
+
+#: objects/object_imp.cc:286
+#, fuzzy
+msgid "Show an object"
+msgstr "Papar penanda"
+
+#: objects/object_imp.cc:287
+#, fuzzy
+msgid "Hide an object"
+msgstr "Objek LightWave"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+#, fuzzy
+msgid "Angle in Radians"
+msgstr "Name=Papar dalam Tetingkap Yang Dinyatakan"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+#, fuzzy
+msgid "Angle in Degrees"
+msgstr "Name=Papar dalam Tetingkap Yang Dinyatakan"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr ""
+
+#: objects/other_imp.cc:226
+#, fuzzy
+msgid "X length"
+msgstr "Panjang Katalaluan"
+
+#: objects/other_imp.cc:227
+#, fuzzy
+msgid "Y length"
+msgstr "Panjang Katalaluan"
+
+#: objects/other_imp.cc:228
+#, fuzzy
+msgid "Opposite Vector"
+msgstr "Grafik vektor DXF"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr ""
+
+#: objects/other_imp.cc:396
+#, fuzzy
+msgid "Sector Surface"
+msgstr "Sektor pertama bagi partisyen but"
+
+#: objects/other_imp.cc:397
+#, fuzzy
+msgid "Arc Length"
+msgstr "Panjang Katalaluan"
+
+#: objects/other_imp.cc:398
+#, fuzzy
+msgid "Support Circle"
+msgstr "Papar penanda"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr ""
+
+#: objects/other_imp.cc:599
+#, fuzzy, kde-format
+msgid "Select this angle"
+msgstr "Pilih aksara ini"
+
+#: objects/other_imp.cc:600
+#, fuzzy, kde-format
+msgid "Select angle %1"
+msgstr "Pilih Partisyen"
+
+#: objects/other_imp.cc:601
+#, fuzzy
+msgid "Remove an Angle"
+msgstr "akan membuang %s\n"
+
+#: objects/other_imp.cc:602
+#, fuzzy
+msgid "Add an Angle"
+msgstr "Tambah Bar Alatan"
+
+#: objects/other_imp.cc:603
+#, fuzzy
+msgid "Move an Angle"
+msgstr "/Mudah Alih"
+
+#: objects/other_imp.cc:604
+#, fuzzy
+msgid "Attach to this angle"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/other_imp.cc:605
+#, fuzzy
+msgid "Show an Angle"
+msgstr "Papar penanda"
+
+#: objects/other_imp.cc:606
+#, fuzzy
+msgid "Hide an Angle"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/other_imp.cc:613
+#, fuzzy
+msgid "vector"
+msgstr "Grafik vektor DXF"
+
+#: objects/other_imp.cc:614
+#, fuzzy, kde-format
+msgid "Select this vector"
+msgstr "Pilih aksara ini"
+
+#: objects/other_imp.cc:615
+#, fuzzy, kde-format
+msgid "Select vector %1"
+msgstr "Pilih Partisyen"
+
+#: objects/other_imp.cc:616
+#, fuzzy
+msgid "Remove a Vector"
+msgstr "akan membuang %s\n"
+
+#: objects/other_imp.cc:617
+#, fuzzy
+msgid "Add a Vector"
+msgstr "Tambah Bar Alatan"
+
+#: objects/other_imp.cc:618
+#, fuzzy
+msgid "Move a Vector"
+msgstr "/Mudah Alih"
+
+#: objects/other_imp.cc:619
+#, fuzzy
+msgid "Attach to this vector"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/other_imp.cc:620
+#, fuzzy
+msgid "Show a Vector"
+msgstr "Papar penanda"
+
+#: objects/other_imp.cc:621
+#, fuzzy
+msgid "Hide a Vector"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr ""
+
+#: objects/other_imp.cc:629
+#, fuzzy, kde-format
+msgid "Select this arc"
+msgstr "Pilih aksara ini"
+
+#: objects/other_imp.cc:630
+#, fuzzy, kde-format
+msgid "Select arc %1"
+msgstr "Pilih Partisyen"
+
+#: objects/other_imp.cc:631
+#, fuzzy
+msgid "Remove an Arc"
+msgstr "akan membuang %s\n"
+
+#: objects/other_imp.cc:632
+#, fuzzy
+msgid "Add an Arc"
+msgstr "Tambah Bar Alatan"
+
+#: objects/other_imp.cc:633
+#, fuzzy
+msgid "Move an Arc"
+msgstr "/Mudah Alih"
+
+#: objects/other_imp.cc:634
+#, fuzzy
+msgid "Attach to this arc"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/other_imp.cc:635
+#, fuzzy
+msgid "Show an Arc"
+msgstr "Papar penanda"
+
+#: objects/other_imp.cc:636
+#, fuzzy
+msgid "Hide an Arc"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/point_imp.cc:62
+#, fuzzy
+msgid "Coordinate"
+msgstr "Sistem Koordinat"
+
+#: objects/point_imp.cc:63
+#, fuzzy
+msgid "X coordinate"
+msgstr "Sistem Koordinat"
+
+#: objects/point_imp.cc:64
+#, fuzzy
+msgid "Y coordinate"
+msgstr "Sistem Koordinat"
+
+#: objects/point_imp.cc:153
+#, fuzzy
+msgid "point"
+msgstr "titik 1"
+
+#: objects/point_imp.cc:154
+#, fuzzy, kde-format
+msgid "Select this point"
+msgstr "Pilih aksara ini"
+
+#: objects/point_imp.cc:155
+#, fuzzy, kde-format
+msgid "Select point %1"
+msgstr "Titik Lekapan"
+
+#: objects/point_imp.cc:156
+#, fuzzy
+msgid "Remove a Point"
+msgstr "Titik Lekapan"
+
+#: objects/point_imp.cc:157
+#, fuzzy
+msgid "Add a Point"
+msgstr "Tambah Bar Alatan"
+
+#: objects/point_imp.cc:158
+#, fuzzy
+msgid "Move a Point"
+msgstr "Titik Lekapan"
+
+#: objects/point_imp.cc:159
+#, fuzzy
+msgid "Attach to this point"
+msgstr "Jambatan Tanpawayar Titik ke Titik"
+
+#: objects/point_imp.cc:160
+#, fuzzy
+msgid "Show a Point"
+msgstr "Papar penanda"
+
+#: objects/point_imp.cc:161
+#, fuzzy
+msgid "Hide a Point"
+msgstr "Titik Lekapan"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr ""
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/point_type.cc:386
+#, fuzzy, kde-format
+msgid "Set &Coordinate..."
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr ""
+
+#: objects/point_type.cc:394
+#, fuzzy, kde-format
+msgid "Set &Parameter..."
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: objects/point_type.cc:412
+#, fuzzy, kde-format
+msgid "Set Coordinate"
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: objects/point_type.cc:413
+#, fuzzy, kde-format
+msgid "Enter the new coordinate."
+msgstr "Tajuk laman baru"
+
+#: objects/point_type.cc:452
+#, fuzzy, kde-format
+msgid "Set Point Parameter"
+msgstr "Tetap buddy '%1' ke '%2'"
+
+#: objects/point_type.cc:452
+#, fuzzy, kde-format
+msgid "Choose the new parameter: "
+msgstr "Tajuk laman baru"
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr ""
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr ""
+
+#: objects/point_type.cc:744
+#, fuzzy, kde-format
+msgid "Select a point on the circle..."
+msgstr "Laksana arahan pada Access Point"
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr ""
+
+#: objects/point_type.cc:794
+#, fuzzy, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Sila masukkan lokasi baru bagi %s."
+
+#: objects/point_type.cc:795
+#, fuzzy, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Sila masukkan lokasi baru bagi %s."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+#, fuzzy
+msgid "Number of sides"
+msgstr "Nombor baris:"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Perimeter"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+msgid "Boundary Polygonal"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr ""
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+#, fuzzy
+msgid "Center of Mass of the Vertices"
+msgstr "Pusat Konfigurasi Menu"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+#, fuzzy
+msgid "Winding Number"
+msgstr "Nombor baris:"
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+msgid "Inside Polygon"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+msgid "Open Polygonal Curve"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+msgid "Associated Polygon"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+msgid "Closed Polygonal Curve"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr ""
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, fuzzy, kde-format
+msgid "Select this polygon"
+msgstr "Pilih aksara ini"
+
+#: objects/polygon_imp.cc:630
+#, fuzzy, kde-format
+msgid "Select polygon %1"
+msgstr "Pilih Partisyen"
+
+#: objects/polygon_imp.cc:631
+#, fuzzy
+msgid "Remove a Polygon"
+msgstr "akan membuang %s\n"
+
+#: objects/polygon_imp.cc:632
+#, fuzzy
+msgid "Add a Polygon"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:633
+#, fuzzy
+msgid "Move a Polygon"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:634
+#, fuzzy
+msgid "Attach to this polygon"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/polygon_imp.cc:635
+#, fuzzy
+msgid "Show a Polygon"
+msgstr "Papar penanda"
+
+#: objects/polygon_imp.cc:636
+#, fuzzy
+msgid "Hide a Polygon"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+msgid "closed polygonal curve"
+msgstr "Pilih Partisyen"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Pilih aksara ini"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Pilih Partisyen"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+msgid "Remove a closed polygonal curve"
+msgstr "akan membuang %s\n"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+msgid "Add a closed polygonal curve"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+msgid "Move a closed polygonal curve"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+msgid "Attach to this closed polygonal curve"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+msgid "Show a closed polygonal curve"
+msgstr "Papar penanda"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+msgid "Hide a closed polygonal curve"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/polygon_imp.cc:662
+msgid "polygonal curve"
+msgstr ""
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+msgid "Select this polygonal curve"
+msgstr "Pilih aksara ini"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Pilih Partisyen"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+msgid "Remove a polygonal curve"
+msgstr "akan membuang %s\n"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+msgid "Add a polygonal curve"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+msgid "Move a polygonal curve"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+msgid "Attach to this polygonal curve"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+msgid "Show a polygonal curve"
+msgstr "Papar penanda"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+msgid "Hide a polygonal curve"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/polygon_imp.cc:679
+#, fuzzy
+msgid "triangle"
+msgstr "Segitiga"
+
+#: objects/polygon_imp.cc:680
+#, fuzzy, kde-format
+msgid "Select this triangle"
+msgstr "Pilih aksara ini"
+
+#: objects/polygon_imp.cc:681
+#, fuzzy, kde-format
+msgid "Select triangle %1"
+msgstr "Pilih Partisyen"
+
+#: objects/polygon_imp.cc:682
+#, fuzzy
+msgid "Remove a Triangle"
+msgstr "akan membuang %s\n"
+
+#: objects/polygon_imp.cc:683
+#, fuzzy
+msgid "Add a Triangle"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:684
+#, fuzzy
+msgid "Move a Triangle"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:685
+#, fuzzy
+msgid "Attach to this triangle"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/polygon_imp.cc:686
+#, fuzzy
+msgid "Show a Triangle"
+msgstr "Papar penanda"
+
+#: objects/polygon_imp.cc:687
+#, fuzzy
+msgid "Hide a Triangle"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr ""
+
+#: objects/polygon_imp.cc:697
+#, fuzzy, kde-format
+msgid "Select this quadrilateral"
+msgstr "Pilih aksara ini"
+
+#: objects/polygon_imp.cc:698
+#, fuzzy, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Pilih Partisyen"
+
+#: objects/polygon_imp.cc:699
+#, fuzzy
+msgid "Remove a Quadrilateral"
+msgstr "akan membuang %s\n"
+
+#: objects/polygon_imp.cc:700
+#, fuzzy
+msgid "Add a Quadrilateral"
+msgstr "Tambah Bar Alatan"
+
+#: objects/polygon_imp.cc:701
+#, fuzzy
+msgid "Move a Quadrilateral"
+msgstr "/Mudah Alih"
+
+#: objects/polygon_imp.cc:702
+#, fuzzy
+msgid "Attach to this quadrilateral"
+msgstr "Pilihan %s %s tidak dapat ditambah ke %s ini: %s."
+
+#: objects/polygon_imp.cc:703
+#, fuzzy
+msgid "Show a Quadrilateral"
+msgstr "Papar penanda"
+
+#: objects/polygon_imp.cc:704
+#, fuzzy
+msgid "Hide a Quadrilateral"
+msgstr "Sembunyi _Bantuan"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr ""
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr ""
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr ""
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr ""
+
+#: objects/polygon_type.cc:474
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Sunting hos ini"
+
+#: objects/polygon_type.cc:475
+#, fuzzy, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Sunting hos ini"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Sunting hos ini"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/polygon_type.cc:788
+#, fuzzy, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Sunting hos ini"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr ""
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Intersect with this polygon"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "_Pilih pakej individu"
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr ""
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr ""
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr ""
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr ""
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr ""
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr ""
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr ""
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr ""
+
+#: objects/tests_type.cc:18
+#, fuzzy, kde-format
+msgid "Is this line parallel?"
+msgstr "Ini adalah pilihan yang dicadangkan."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr ""
+
+#: objects/tests_type.cc:19
+#, fuzzy, kde-format
+msgid "Parallel to this line?"
+msgstr "Gerak ke baris sebelumnya"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr ""
+
+#: objects/tests_type.cc:46
+#, fuzzy, kde-format
+msgid "These lines are parallel."
+msgstr "Tetapan ini adalah keseluruhan-sistem."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr ""
+
+#: objects/tests_type.cc:57
+#, fuzzy, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Ini adalah pilihan yang dicadangkan."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr ""
+
+#: objects/tests_type.cc:58
+#, fuzzy, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Gerak ke baris sebelumnya"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr ""
+
+#: objects/tests_type.cc:85
+#, fuzzy, kde-format
+msgid "These lines are orthogonal."
+msgstr "Tetapan ini adalah keseluruhan-sistem."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr ""
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr ""
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr ""
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr ""
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr ""
+
+#: objects/tests_type.cc:98
+#, fuzzy, kde-format
+msgid "with this third point"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr ""
+
+#: objects/tests_type.cc:126
+#, fuzzy, kde-format
+msgid "These points are collinear."
+msgstr "Tetapan ini adalah keseluruhan-sistem."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr ""
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr ""
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, fuzzy, kde-format
+msgid "Select the point you want to test..."
+msgstr "Adakah anda mahu menguji tetapan?"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr ""
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr ""
+
+#: objects/tests_type.cc:165
+#, fuzzy, kde-format
+msgid "This curve contains the point."
+msgstr "Pakej ini mengandungi backend CUPS"
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr ""
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr ""
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr ""
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr ""
+
+#: objects/tests_type.cc:208
+#, fuzzy, kde-format
+msgid "This polygon contains the point."
+msgstr "Pakej ini mengandungi backend CUPS"
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr ""
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr ""
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr ""
+
+#: objects/tests_type.cc:249
+#, fuzzy, kde-format
+msgid "This polygon is convex."
+msgstr "Ini adalah pilihan yang dicadangkan."
+
+#: objects/tests_type.cc:251
+#, fuzzy, kde-format
+msgid "This polygon is not convex."
+msgstr "%s tidak bersambung pada volum ini"
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr ""
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+
+#: objects/tests_type.cc:268
+#, fuzzy, kde-format
+msgid "from this point"
+msgstr "Pasang pakej dari CD ini. "
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr ""
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr ""
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr ""
+
+#: objects/tests_type.cc:297
+#, fuzzy, kde-format
+msgid "The two distances are the same."
+msgstr "%s dan %s adalah fail yang sama"
+
+#: objects/tests_type.cc:299
+#, fuzzy, kde-format
+msgid "The two distances are not the same."
+msgstr "-s  --report-identical-files  Lapor apabila dua fail adalah sama."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr ""
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr ""
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr ""
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr ""
+
+#: objects/tests_type.cc:341
+#, fuzzy, kde-format
+msgid "The two vectors are the same."
+msgstr "%s dan %s adalah fail yang sama"
+
+#: objects/tests_type.cc:343
+#, fuzzy, kde-format
+msgid "The two vectors are not the same."
+msgstr "-s  --report-identical-files  Lapor apabila dua fail adalah sama."
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Check whether this object exists"
+msgstr "Pilih aksara ini"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/tests_type.cc:375
+#, fuzzy, kde-format
+msgid "The object exists."
+msgstr "Jenis MIME"
+
+#: objects/tests_type.cc:377
+#, fuzzy, kde-format
+msgid "The object does not exist."
+msgstr "-s  --report-identical-files  Lapor apabila dua fail adalah sama."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Teks"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "label"
+
+#: objects/text_imp.cc:138
+#, fuzzy, kde-format
+msgid "Select this label"
+msgstr "Pilih aksara ini"
+
+#: objects/text_imp.cc:139
+#, fuzzy, kde-format
+msgid "Select label %1"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:140
+#, fuzzy
+msgid "Remove a Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:141
+#, fuzzy
+msgid "Add a Label"
+msgstr "Tambah Bar Alatan"
+
+#: objects/text_imp.cc:142
+#, fuzzy
+msgid "Move a Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:143
+#, fuzzy
+msgid "Attach to this label"
+msgstr "Label ini telah digunakan"
+
+#: objects/text_imp.cc:144
+#, fuzzy
+msgid "Show a Label"
+msgstr "Papar penanda"
+
+#: objects/text_imp.cc:145
+#, fuzzy
+msgid "Hide a Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr ""
+
+#: objects/text_imp.cc:184
+#, fuzzy, kde-format
+msgid "Select this numeric label"
+msgstr "Pilih aksara ini"
+
+#: objects/text_imp.cc:185
+#, fuzzy, kde-format
+msgid "Select numeric label %1"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:186
+#, fuzzy
+msgid "Remove a Numeric Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:187
+#, fuzzy
+msgid "Add a Numeric Label"
+msgstr "Tambah Bar Alatan"
+
+#: objects/text_imp.cc:188
+#, fuzzy
+msgid "Move a Numeric Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:189
+#, fuzzy
+msgid "Attach to this numeric label"
+msgstr "Label ini telah digunakan"
+
+#: objects/text_imp.cc:190
+#, fuzzy
+msgid "Show a Numeric Label"
+msgstr "Papar penanda"
+
+#: objects/text_imp.cc:191
+#, fuzzy
+msgid "Hide a Numeric Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr ""
+
+#: objects/text_imp.cc:277
+#, fuzzy
+msgid "boolean label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:278
+#, fuzzy, kde-format
+msgid "Select this boolean label"
+msgstr "Pilih aksara ini"
+
+#: objects/text_imp.cc:279
+#, fuzzy, kde-format
+msgid "Select boolean label %1"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:280
+#, fuzzy
+msgid "Remove a Boolean Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:281
+#, fuzzy
+msgid "Add a Boolean Label"
+msgstr "Tambah Bar Alatan"
+
+#: objects/text_imp.cc:282
+#, fuzzy
+msgid "Move a Boolean Label"
+msgstr "Label Bertindan"
+
+#: objects/text_imp.cc:283
+#, fuzzy
+msgid "Attach to this boolean label"
+msgstr "Label ini telah digunakan"
+
+#: objects/text_imp.cc:284
+#, fuzzy
+msgid "Show a Boolean Label"
+msgstr "Papar penanda"
+
+#: objects/text_imp.cc:285
+#, fuzzy
+msgid "Hide a Boolean Label"
+msgstr "Label Bertindan"
+
+#: objects/text_type.cc:156
+#, fuzzy, kde-format
+msgid "&Copy Text"
+msgstr "Teks baru"
+
+#: objects/text_type.cc:157
+#, fuzzy, kde-format
+msgid "&Toggle Frame"
+msgstr "Toggle tambahan awalan"
+
+#: objects/text_type.cc:158
+#, fuzzy, kde-format
+msgid "Set &Font..."
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: objects/text_type.cc:182
+#, fuzzy, kde-format
+msgid "Toggle Label Frame"
+msgstr "Resolusi frame buffer"
+
+#: objects/text_type.cc:192
+#, fuzzy, kde-format
+msgid "Change Label Font"
+msgstr "Tukar Susunan Tab"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr ""
+
+#: objects/text_type.cc:266
+#, fuzzy, kde-format
+msgid "Change &Value..."
+msgstr "Tukar Susunan Tab"
+
+#: objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Enter the new value:"
+msgstr "Tajuk laman baru"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr ""
+
+#: objects/transform_types.cc:21
+#, fuzzy, kde-format
+msgid "Translate this object"
+msgstr "%s bukan objek prosedur"
+
+#: objects/transform_types.cc:21
+#, fuzzy, kde-format
+msgid "Select the object to translate..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/transform_types.cc:22
+#, fuzzy, kde-format
+msgid "Translate by this vector"
+msgstr "Terjemahan versi ini oleh:"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr ""
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, fuzzy, kde-format
+msgid "Reflect this object"
+msgstr "%s bukan objek prosedur"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, fuzzy, kde-format
+msgid "Select the object to reflect..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/transform_types.cc:54
+#, fuzzy, kde-format
+msgid "Reflect in this point"
+msgstr "Titik lekapan sedang digunakan"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr ""
+
+#: objects/transform_types.cc:86
+#, fuzzy, kde-format
+msgid "Reflect in this line"
+msgstr "Ralat dalam %s pada baris %d: "
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr ""
+
+#: objects/transform_types.cc:117
+#, fuzzy, kde-format
+msgid "Rotate this object"
+msgstr "%s bukan objek prosedur"
+
+#: objects/transform_types.cc:117
+#, fuzzy, kde-format
+msgid "Select the object to rotate..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr ""
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr ""
+
+#: objects/transform_types.cc:121
+#, fuzzy, kde-format
+msgid "Rotate by this angle"
+msgstr "Terjemahan versi ini oleh:"
+
+#: objects/transform_types.cc:121
+#, fuzzy, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "_Pilih pakej individu"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, fuzzy, kde-format
+msgid "Scale this object"
+msgstr "%s bukan objek prosedur"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, fuzzy, kde-format
+msgid "Select the object to scale..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, fuzzy, kde-format
+msgid "Scale with this center"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid "Scale by this length"
+msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, fuzzy, kde-format
+msgid "Scale this length..."
+msgstr "Tetap 'wordrap' bagi '%1'"
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, fuzzy, kde-format
+msgid "...to this other length"
+msgstr "Giliran ini _terdapat untuk komputer lain"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, fuzzy, kde-format
+msgid "Select the object to scale"
+msgstr "Pilih kernel untuk boot"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, fuzzy, kde-format
+msgid "Scale over this line"
+msgstr "Simpan dengan tindih versi lama lukisan ini?"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr ""
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr ""
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr ""
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr ""
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr ""
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr ""
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr ""
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr ""
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, fuzzy, kde-format
+msgid "Select the object to transform..."
+msgstr "Pilih kernel untuk boot"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr ""
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr ""
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr ""
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr ""
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr ""
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Map this triangle"
+msgstr "Sunting hos ini"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr ""
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr ""
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr ""
+
+#: objects/transform_types.cc:450
+#, fuzzy, kde-format
+msgid "First of 3 starting points"
+msgstr "Name=Plugin Kate Pertama Saya"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:452
+#, fuzzy, kde-format
+msgid "Second of 3 starting points"
+msgstr ""
+"Titik Lekapan Aktif:\n"
+"--------------------"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:455
+#, fuzzy, kde-format
+msgid "Third of 3 starting points"
+msgstr ""
+"Titik Lekapan Aktif:\n"
+"--------------------"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr ""
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr ""
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr ""
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr ""
+
+#: objects/transform_types.cc:510
+#, fuzzy, kde-format
+msgid "Map this quadrilateral"
+msgstr "Sunting hos ini"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr ""
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr ""
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+
+#: objects/transform_types.cc:554
+#, fuzzy, kde-format
+msgid "First of 4 starting points"
+msgstr "Name=Plugin Kate Pertama Saya"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:558
+#, fuzzy, kde-format
+msgid "Second of 4 starting points"
+msgstr ""
+"Titik Lekapan Aktif:\n"
+"--------------------"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:562
+#, fuzzy, kde-format
+msgid "Third of 4 starting points"
+msgstr ""
+"Titik Lekapan Aktif:\n"
+"--------------------"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:566
+#, fuzzy, kde-format
+msgid "Fourth of 4 starting points"
+msgstr ""
+"Titik Lekapan Aktif:\n"
+"--------------------"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr ""
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr ""
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr ""
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr ""
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr ""
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr ""
+
+#: objects/transform_types.cc:629
+#, fuzzy, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Pilih Peranti untuk Eksport"
+
+#: objects/transform_types.cc:809
+#, fuzzy, kde-format
+msgid "Transform this object"
+msgstr "%s bukan objek prosedur"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr ""
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr ""
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr ""
+
+#: objects/transform_types.cc:884
+#, fuzzy, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Pilih Peranti untuk Eksport"
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr ""
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr ""
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr ""
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr ""
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr ""
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr ""
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr ""
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr ""
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr ""
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr ""
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr ""
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr ""
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Teks baru"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+
+#: scripting/newscriptwizard.cc:63
+#, fuzzy, kde-format
+msgid "Enter Code"
+msgstr "Kod Ralat"
+
+#: scripting/script-common.cc:18
+#, fuzzy, kde-format
+msgid "Now fill in the code:"
+msgstr "Sila isikan maklumat pengesahan"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr ""
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr ""
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Skrip Pra-Pemasangan"
+
+#: scripting/script_mode.cc:307
+#, fuzzy, kde-format
+msgid "Edit Python Script"
+msgstr "Skrip Pra-Pemasangan"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, kde-format
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#, fuzzy
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Anda mesti pilih partisyen untuk dipadam."
+
+#, fuzzy
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#, fuzzy
+#~ msgid "Select the second of the two points..."
+#~ msgstr "_Pilih pakej individu"
+
+#, fuzzy
+#~ msgid "Save changes to document %1?"
+#~ msgstr "Berbalik ke yang Ter_akhir Disimpan"
+
+#, fuzzy
+#~ msgid "Save Changes?"
+#~ msgstr "_Simpan Perubahan"
+
+#, fuzzy
+#~ msgid "Construct a cubic with this control point"
+#~ msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new cubic..."
+#~ msgstr "Laksana arahan pada Access Point"
+
+#, fuzzy
+#~ msgid "Construct a rational cubic with this control point"
+#~ msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new quadric..."
+#~ msgstr "Laksana arahan pada Access Point"
+
+#, fuzzy
+#~ msgid "Construct a rational quadric with this control point"
+#~ msgstr "Apa yang kami buat dengan maklumat ini?"
+
+#, fuzzy
+#~ msgid "Bezier Curve"
+#~ msgstr "Sembunyi _Bantuan"
+
+#, fuzzy
+#~ msgid "%1 Objects"
+#~ msgstr "Objek"
+
+#, fuzzy
+#~ msgid "&Help"
+#~ msgstr "Sembunyi _Bantuan"

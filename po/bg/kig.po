@@ -1,0 +1,6881 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2007-04-21 19:02+0000\n"
+"Last-Translator: Zlatko Popov <zlatkopopov@fsa-bg.org>\n"
+"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Окръжност по център и права"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "Окръжност, построена по зададени център и допирателна"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Построяване на окръжност по зададена допирателна към правата"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Изберете допирателна към новата окръжност..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Окръжност по точка и отсечка (за диаметър)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr "Окръжност, определена по център и дължина на отсечка за диаметър"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Построяване на окръжност с диаметър, равен на дължината на отсечката"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr "Изберете отсечка, чиято дължина да е диаметър на новата окръжност..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Равностранен триъгълник"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Равностранен триъгълник по дадени координати на два от върховете"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Еволюта"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Еволюта на крива"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Еволюта на кривата"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Допирателна окръжност"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Допирателна окръжност на крива в точка"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Допирателна окръжност на крива"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Допирателна окръжност в точка"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Избор на точка..."
+
+#, kde-format
+msgid "Square"
+msgstr "Квадрат"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Квадрат по дадени два съседни върха"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Разлика на вектори"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Построяване на разликата на два вектора."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Построяване на разликата на този и друг вектор"
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Построяване на разликата на друг вектор и този"
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Построяване на разликата на вектори, с начало дадената точка."
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Избор на първият вектор от двата вектора, чиято разлика искате да "
+"построите..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Избор на втория от двата вектора, чиято разлика искате да построите..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Избор на точката, в която трябва се построи разликата на векторите..."
+
+#: filters/asyexporter.cc:29
+#, fuzzy, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Експортиране като ф&айл Latex..."
+
+#: filters/asyexporter.cc:34
+#, fuzzy, kde-format
+msgid "&Asymptote..."
+msgstr "Импортиране..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.tex|Документи Latex (*.tex)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr ""
+
+#: filters/asyexporter.cc:48
+#, fuzzy, kde-format
+msgid "Asymptote Options"
+msgstr "Настройки на изображението"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"Файлът \"%1\" не може да се отвори. Моля, проверете си права за достъп."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, fuzzy, kde-format
+msgid "Options"
+msgstr "Настройки на SVG"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, fuzzy, kde-format
+msgid "Show Extra Frame"
+msgstr "Показване на допълнителна рамка"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, fuzzy, kde-format
+msgid "Show Axes"
+msgstr "Показване на &осите"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, fuzzy, kde-format
+msgid "Show Grid"
+msgstr "Показване на &мрежа"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Това е XFig файл, а не фигура цифра Cabri."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Файлът Cabri съдържа обект \"%1\", който не се поддържа от тази версия на "
+"програмата."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, fuzzy, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Грешка при анализ на файла \"%1\". Файлът не може да се отвори."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Файлът Dr. Geo \"%1\" съдържа само макроси."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Във файла Dr. Geo \"%1\" не се съдържат фигури."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Филтър Dr. Geo"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Текущият файл Dr. Geo съдържа повече от една фигура.\n"
+"Моля, изберете само една за импортиране:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Файлът Dr. Geo съдържа обекти \"%1 %2\", който не се поддържа от тази версия "
+"на програмата."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+"Файлът Dr. Geo съдържа тип сечение, който не се поддържа от тази версия на "
+"програмата."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Експортиране като изображение"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Изображение..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Експортиране като изображение"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Настройки на изображението"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Типът на файл не се поддържа."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Грешка при запис на изображение \"%1\""
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Експортиране в"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Файлът \"%1\" не може да се отвори. Вероятно файлът не съществува или нямате "
+"права за достъп до него."
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "Грешка при анализ на файла \"%1\". Файлът не може да се отвори."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Грешка при анализ"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Не се поддържа"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+msgid "Kig cannot open this file."
+msgstr "Файлът \"%1\" не може да се отвори."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Разделителна способност"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, fuzzy, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "Запазване на &съотношението"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Височина:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Широчина:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"Документът KSeg използва преобразувание, който не се поддържа от тази версия "
+"на програмата и не може да се импортира."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+"Файлът KSeg съдържа запълнен кръг, който не се поддържа от тази версия на "
+"програмата."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+"Файлът KSeg съдържа дъговиден сектор, който не се поддържа от тази версия на "
+"програмата."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+"Файлът KSeg съдържа дъговидна отсечка, която не се поддържа от тази версия "
+"на програмата."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Експортиране като ф&айл Latex..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Файл Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Документи Latex (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Експортиране във файл Latex"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Настройки на Latex"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, fuzzy, kde-format
+msgid "Document options"
+msgstr "Документ за отваряне"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, fuzzy, kde-format
+msgid "Standalone document"
+msgstr "Увеличаване на документа"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Файлът е създаден с версия \"%1\" и не може да се отвори с текущата версия."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Файлът е създаден с версия \"%1\".\n"
+"Поддръжката на стари формати е премахната."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Файлът съдържа координатна система, която не се поддържа от тази версия на "
+"програмата.\n"
+"Вместо това, ще бъде използвана стандартна координатна система."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Файлът съдържа обект от тип \"%1\", който не се поддържа от тази версия на "
+"програмата.\n"
+"Вероятно сте компилирали програмата без поддръжка на този тип или използвате "
+"стара версия."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "Експортиране като фа&йл SVG..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&Файл SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "*.svg|Векторни изображения (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Експортиране като SVG"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "Настройки на SVG"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Грешка при запис на файла SVG \"%1\""
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Експортиране във &файл XFig"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&Файл XFig..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|Документи XFig (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Експортиране като файл XFig"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "Интерактивна геометрия"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "(C) 2002-2005, The Kig developers"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "Original author, long time maintainer, design and lots of code."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr ""
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr ""
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr ""
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr ""
+
+#: kig/aboutdata.h:46
+#, fuzzy, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Responsible for the nice application SVG Icon."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, fuzzy, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Построяване на окръжност със зададения център "
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr ""
+
+#: kig/aboutdata.h:52
+#, fuzzy, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Построяване на асимптотите на кривата"
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr ""
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"The French translator, who also sent me some useful feedback, like feature "
+"requests and bug reports."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr ""
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr "Sent me a patch for some bugs."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr ""
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Gave me some good feedback on Kig, some feature requests, cleanups and style "
+"fixes, and someone to chat with on irc :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Responsible for the nice application SVG Icon."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr ""
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Resonsible for the new object action icons."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr "Не е намерена необходимата библиотека на Kig."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, fuzzy, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Премахване на %1 обекта"
+msgstr[1] "Премахване на %1 обекта"
+
+#: kig/kig_commands.cpp:103
+#, fuzzy, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Добавяне на %1 обекта"
+msgstr[1] "Добавяне на %1 обекта"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "Коор&динатна система"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Настройки на програмата"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Показване на координатната мрежа"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Показване на координатните оси"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Преобръщане на избраното"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Изтриване на обекти"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Изтриване на избраните обекти"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Отмяна на построението"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Отмяна на построението на обекта"
+
+#: kig/kig_part.cpp:237
+#, fuzzy, kde-format
+msgid "Repeat Construction"
+msgstr "Отмяна на построението"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "Показване на &всички"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Показване на всички скрити обекти"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Създаване на макрос..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Дефиниране на нов макрос"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "&Управление на типове..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Управление на типове макроси."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr ""
+
+#: kig/kig_part.cpp:263
+#, fuzzy, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Отмяна на построението"
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Увеличаване на документа"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Намаляване на документа"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Центриране по документа"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Показване на документа на цял екран."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "&Избор на област за изобразяване"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Изберете областта, която искате да бъде изобразена в прозореца."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "Из&бор на област за увеличаване"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, fuzzy, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Задаване на коор&дината..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr ""
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Показване на &мрежа"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Показване/скриване на мрежата."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "Показване на &осите"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Показване/скриване на осите."
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Инфрачервени очила"
+
+#: kig/kig_part.cpp:317
+#, fuzzy, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Видимост на скритите обекти."
+
+#: kig/kig_part.cpp:347
+#, fuzzy, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Отмяна на построението"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Файлът \"%1\" не съществува. Моля, проверете дали сте въвели правилния път."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Файлът не е намерен"
+
+#: kig/kig_part.cpp:394
+#, fuzzy, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"Опитвате се да отворите обект от тип \"%1\". Програмата не поддържа формата. "
+"Ако мислите, че за този формат трябва да има поддръжка, може да пишете на "
+"адрес devriese@kde.org."
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Неподдържан формат"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Програмата поддържа запис на файлове само в нейните формати. Запис във "
+"формат на Kig?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Запис"
+
+#: kig/kig_part.cpp:695
+#, fuzzy, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+"*.kig|Документи Kig (*.kig)\n"
+"*.kigz|Компресирани документи Kig (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Вече има файл \"%1\". Искате ли да бъде презаписан?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Презапис на файл"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Отпечатване"
+
+#: kig/kig_part.cpp:921
+#, fuzzy, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Скриване на обект"
+msgstr[1] "Скриване на обект"
+
+#: kig/kig_part.cpp:940
+#, fuzzy, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Показване на обект"
+msgstr[1] "Показване на обект"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Увеличаване"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Намаляване"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Центриране"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Изберете правоъгълник, който искате да бъде показан."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Промяна на показваната част от екрана"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Избор на област за увеличение"
+
+#: kig/kig_view.cpp:539
+#, fuzzy, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Изберете област за увеличаване чрез въвеждане на координатите на горния ляв "
+"и долния десен ъгъл."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, fuzzy, kde-format
+msgid "&File"
+msgstr "&Скриване"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, fuzzy, kde-format
+msgid "&Edit"
+msgstr "&Редактиране..."
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, fuzzy, kde-format
+msgid "&View"
+msgstr "&Скриване"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Обекти"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Точки"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Прави"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Кръгове и дъги"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "Правилни &многоъгълници"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Вектори и отсечки"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "К&риви от втора и трета степен"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Други криви от втора степен"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "Кр&иви от трета степен"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr ""
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Ъгли"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "Прео&бразувания"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "Ди&ференциална геометрия"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "Т&естове"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Други"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Типове"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr ""
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Точки"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Прави"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Вектори и отсечки"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Кръгове и дъги"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Криви от втора степен"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, fuzzy, kde-format
+msgid "Bézier Curves"
+msgstr "Скриване на крива"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Ъгли"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Преобразувания"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Тестове"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Други обекти"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr ""
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr ""
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Без графичен интерфейс. Конвертиране на избрания файл във формат на Kig. "
+"Изхода ще е в stdout, освен ако не е избран --outfile"
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr "Файл за изход \"-\" означава stdout, който е изход по подразбиране"
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Документ за отваряне"
+
+#: misc/builtin_stuff.cc:43
+#, fuzzy, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Точка по координати"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr ""
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Отсечка"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Отсечка, построена по начална и крайна точка"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Ос на отсечка"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Перпендикулярната права, минаваща през средата на дадена отсечка."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Права по две точки"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Права през две точки"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Лъч"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "Лъч по неговата начална точка и произволна прилежаща точка"
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Перпендикулярна права"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Права, минаваща през точка и перпендикулярна на друга права или отсечка"
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Успоредна права"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr "Права, минаваща през точка и успоредна на друга права или отсечка"
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Окръжност по център и точка"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Окръжност по център и прилежаща точка"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Окръжност по три точки"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Окръжност, построена по зададени три точки"
+
+#: misc/builtin_stuff.cc:107
+#, fuzzy, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Окръжност по точка и отсечка (за радиус)"
+
+#: misc/builtin_stuff.cc:108
+#, fuzzy, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Окръжност, определена по център и дължина на отсечка за радиус"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Построяване ъглополовяща на ъгъл"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Изберете ъгъла, чиято ъглополовяща искате да построите..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Ъглополовяща"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Ъглополовящата на ъгъл"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Крива от втора степен по пет точки"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Конична крива, минаваща през зададени пет точки"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Хипербола по асимптоти и точка"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "Хипербола по дадени асимптоти и минаваща през точка"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Елипса по фокуси и точка"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "Елипса, построена по зададени фокуси и прилежаща точка"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Хипербола по фокуси и точка"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr "Хипербола по зададени фокуси и прилежаща точка"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Конична крива по директриса, фокус и точка"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr "Конична крива по директриса, фокус и минаваща през дадена точка"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Вертикална парабола по три точки"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Вертикална парабола по дадени три точки"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Крива от трета степен по девет точки"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Крива от трета степен, минаваща през дадени девет точки"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Полюс на крива"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Полюс на крива от втора степен."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Поляра на точка"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Поляра на точка на конична крива"
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Крива от трета степен по шест точки"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "Крива от трета степен с пресечна точка и минаваща през шест точки"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Крива от трета степен с връх и четири точки"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr "Крива от трета степен с хоризонтален връх и четири точки"
+
+#: misc/builtin_stuff.cc:209
+#, fuzzy, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Крива от трета степен с връх и четири точки"
+
+#: misc/builtin_stuff.cc:210
+#, fuzzy, kde-format
+msgid "A cubic function through four points"
+msgstr "Конична крива, минаваща през зададени пет точки"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Директриса на крива от втора степен"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Директриса на крива от втора степен"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Ъгъл по три точки"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Ъгъл по три точки"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Равностранна хипербола по четири точки"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Равностранна хипербола, минаваща през четири точки"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Построяване средата на отсечката"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Среда"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Среда на отсечка или между две точки"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr "Построяване средата на отсечката"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+msgid "Golden Ratio Point"
+msgstr "Преместване на точка"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Среда на отсечка или между две точки"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Вектор"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Построяване на вектор по зададедени две точки"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Сума на вектори"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Построяване на сума на вектори на два вектора"
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Права по зададен вектор"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Построяване на права по даден вектор, минаващ през дадена точка"
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Лъч по зададен вектор"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "Построяване на лъч по даден вектор с начало дадена точка"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Дъга по три точки"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Построяване на дъга, минаваща през три точки"
+
+#: misc/builtin_stuff.cc:308
+#, fuzzy, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Дъга по три точки"
+
+#: misc/builtin_stuff.cc:309
+#, fuzzy, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "Построяване на дъга, минаваща през три точки"
+
+#: misc/builtin_stuff.cc:315
+#, fuzzy, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Крива от втора степен по пет точки"
+
+#: misc/builtin_stuff.cc:316
+#, fuzzy, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Построяване на дъга, минаваща през три точки"
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Дъга по център, ъгъл и точка"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "Построяване на дъга по център и даден ъгъл с начало дадена точка"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Парабола по директриса и фокус"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Парабола, определена по нейната директриса и фокус"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Пренасяне"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Пренасяне на обект по даден вектор"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Симетрия относно точка"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Обект, симетричен на дадения относно дадена точка"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Симетрия относно права"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Обект, симетричен на дадения относно дадена права"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Ротация"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Завъртане на обект по ъгъл около точка"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Мащабиране"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Мащабиране на обект спрямо точка по коефициент, зададен като дължина на "
+"отсечка"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Мащабиране на обект спрямо права"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Мащабиране на обект спрямо права по коефициент, зададен като дължина на "
+"отсечка"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Мащабиране (коефициент зададен като две отсечки)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Мащабиране на обект спрямо точка по коефициент, зададен като дължина на две "
+"отсечки"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Мащабиране спрямо права (коефициент зададен като две отсечки)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Мащабиране на обект спрямо права по коефициент, зададен като дължина на две "
+"отсечки"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Прилагане на подобие"
+
+#: misc/builtin_stuff.cc:398
+#, fuzzy, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Прилагане на подобие на обект (последователност от мащабиране и завъртане "
+"около център)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Хармонична хомология"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr "Хармонична хомология по даден център и оси (проективно преобразувание)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Чертаене на проективна сянка"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Проективна сянка на обект по дадени яркост и проективна равнина (определена "
+"от права)"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Асимптоти на хипербола"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Двете асимптоти на хипербола"
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Триъгълник по върховете му"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Построяване на триъгълник по дадени три върха"
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Изпъкнала обвивка"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Многоъгълник, съответстващ на изпъкнала обвивка на друг"
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Крива от трета степен по девет точки"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Построяване на дъга, минаваща през три точки"
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:495
+#, fuzzy, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Построяване на крива от трета степен през точката"
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Крива от трета степен по девет точки"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Построяване на триъгълник по дадени три върха"
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:513
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "Построяване на дъга, минаваща през три точки"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Проверка за успоредност"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Проверка за успоредност на две прави"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Проверка за ортогоналност"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Проверка за ортогоналност на две прави"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Проверка за колинеарност"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Проверка за колинеарност на дадени три точки"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Проверка за принадлежност"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Проверка за принадлежност на дадена точка към дадена крива"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Проверка за принадлежност към многоъгълник"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Проверка за принадлежност на дадена точка към даден многоъгълник"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Проверка за изпъкналост на многоъгълник"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Проверка дали многоъгълникът е изпъкнал"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+msgid "Existence Test"
+msgstr "Проверка на разстояние"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Проверка дали многоъгълникът е изпъкнал"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Проверка на разстояние"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Проверка дали дадена точка е на едно и също разстояние от две други точки"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Проверка за равенство на вектори"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Проверка дали два вектора са равни"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+msgid "Project a point on a line"
+msgstr "Проектиране на точката върху окръжността"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Скрипт на Питон"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Създаване на скрипт на Питон"
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Въведете координатите във формат \"x;y\",\n"
+"където x е абсцисата, а и y е ординатата."
+
+#: misc/coordinate_system.cpp:329
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Въведете координатите във формат \"x;y\", където x е абсцисата, а и y е "
+"ординатата."
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Въведете координатите във формат \"r; θ°\",\n"
+"където r и θ са полярни координати."
+
+#: misc/coordinate_system.cpp:379
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Въведете координатите във формат \"r; θ°\", където r и θ са полярни "
+"координати."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Евклидова"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Полярна"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Евклидова координатна система"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Полярна координатна система"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr ""
+
+#: misc/goniometry.cc:96
+#, fuzzy, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Радиус"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr ""
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr "Точка, самостоятелна или принадлежаща към права, окръжност или отсечка"
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Точка"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Създаване на надпис"
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Надпис"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Построяване на точка по дадени координати"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Точка по координати"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Фиксирана точка"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Въведете координатите на новата точка."
+
+#: misc/guiaction.cc:235
+#, fuzzy, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Създаване на надпис"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Избор на големина на ъгъла"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Въведете големината на ъгъла:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Използвайте това поле, за да промените големината на ъгъла."
+
+#: misc/kiginputdialog.cc:155
+#, fuzzy, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Изберете от списъка единицата, която ще използвате при промяна големината на "
+"ъгъла.<br>При избор на друга единица, стойността на полето вляво ще бъде "
+"преобразувана."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Файлът макрос \"%1\" не може да се отвори."
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Файлът макрос \"%1\" не може да се отвори."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Файлът е създаден със стара версия на програмата (преди 0.4). Настоящата "
+"версия не поддържа този формат. Може да импортирате този макрос с помощта на "
+"по-стара версия на програмата и след това да го експортирате в новия формат."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Макрос %1"
+
+#: misc/object_hierarchy.cc:541
+#, fuzzy, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Файлът съдържа обект от тип \"%1\", който не се поддържа от тази версия на "
+"програмата.\n"
+"Вероятно сте компилирали програмата без поддръжка на този тип или използвате "
+"стара версия."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Радикални оси на криви от втора степен"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Построяване на прави през пресечните точки на две криви от втора степен. "
+"Това е определено и за непресичащи се криви."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Движеща точка"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+"Изберете движещата се точка, която ще се мести при чертаене на геометричното "
+"място от точки..."
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Следваща точка"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr "Изберете следващата точка, чрез която ще бъде построено ГМТ..."
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "ГМТ"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Геометрично място от точки"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Зависима точка"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Многоъгълник по зададени върхове"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Построяване на многоъгълник по зададени върхове"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr "... с върха (щракнете върху първия връх за край на построението)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Построяване на многоъгълник по върха"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Изберете точка, която да е връх на новия многоъгълник..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, fuzzy, kde-format
+msgid "Construct an open polygon"
+msgstr "Построяване на страните на многоъгълника"
+
+#: misc/special_constructors.cc:622
+#, fuzzy, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr "... с върха (щракнете върху първия връх за край на построението)"
+
+#: misc/special_constructors.cc:624
+#, fuzzy, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Построяване на многоъгълник по върха"
+
+#: misc/special_constructors.cc:629
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Изберете точка, която да е връх на новия многоъгълник..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Многоъгълник"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Построяване на върховете на многоъгълника..."
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Върхове на многоъгълник"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Върховете на многоъгълника"
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Построяване страните на многоъгълника..."
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Страни на многоъгълник"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Страните на многоъгълника"
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Правилен многоъгълник по даден център"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Построяване на правилен многоъгълник по даден център и връх"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Построяване на правилен многоъгълник с точката за център"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Построяване на правилен многоъгълник с точката за връх"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Промяна на броя на страните (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Промяна на броя на страните (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Избор на център на новия многоъгълник..."
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Избор на връх на новия многоъгълник..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Движете курсора, за да получите желания брой страни..."
+
+#: misc/special_constructors.cc:1062
+#, fuzzy, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Крива от трета степен по девет точки"
+
+#: misc/special_constructors.cc:1063
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Построяване на многоъгълник по зададени върхове"
+
+#: misc/special_constructors.cc:1098
+#, fuzzy, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr "... с върха (щракнете върху първия връх за край на построението)"
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Построяване на окръжност със зададения център "
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Изберете точка за връх на новия триъгълник..."
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Крива от трета степен по девет точки"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "Построяване на многоъгълник по зададени върхове"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr ""
+
+#: misc/special_constructors.cc:1205
+#, fuzzy, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr "... с върха (щракнете върху първия връх за край на построението)"
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Построяване на окръжност със зададения център "
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Изберете точка за връх на новия триъгълник..."
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Построяване на радикалните оси на окръжността"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Построяване на радикалните оси на кривата"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Общо подобие"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Единственото подобие, съпоставящо три точки (или триъгълник) на други три "
+"точки (или триъгълник)"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Проективно преобразуване"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Единственото проективно преобразуване, което съпоставя четири точки (или "
+"четириъгълник) на други четири точки (или четириъгълник)"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Инверсия на точка, права или окръжност"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Инверсия на точка, права или окръжност относно окръжност"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Пренасяне на мерки"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Пренасяне на мерките на отсечка или дъга върху права или окръжност"
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Отсечка за пренасяне"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Дъга за пренасяне"
+
+#: misc/special_constructors.cc:1616
+#, fuzzy, kde-format
+msgid "Value to transport"
+msgstr "Дъга за пренасяне"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Пренасяне на мерките на правата"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Пренасяне на мерките на окръжността"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Начало на пренасяне в точката на окръжността"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Начало на пренасяне в точката на правата"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Начало на пренасяне в точката на кривата"
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Изберете точка от окръжността..."
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Изберете точка от окръжността..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Сечение с кривата от втора степен"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Сечение с правата"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, fuzzy, kde-format
+msgid "Intersect with this cubic"
+msgstr "Сечение с кривата от втора степен"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Сечение с окръжността"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Сечение"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Сечение на два обекта"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Сечение на окръжността"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Сечение на кривата от втора степен"
+
+#: misc/special_constructors.cc:1770
+#, fuzzy, kde-format
+msgid "Intersect this Segment"
+msgstr "Сечение на правата"
+
+#: misc/special_constructors.cc:1772
+#, fuzzy, kde-format
+msgid "Intersect this Half-line"
+msgstr "Сечение на правата"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Сечение на правата"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Сечение на кривата от трета степен"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Сечение на дъгата"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Сечение на многоъгълника"
+
+#: misc/special_constructors.cc:1782
+#, fuzzy, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Сечение на многоъгълника"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "с окръжността"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "с кривата от втора степен"
+
+#: misc/special_constructors.cc:1792
+#, fuzzy, kde-format
+msgid "with this Segment"
+msgstr "Избор на отсечката"
+
+#: misc/special_constructors.cc:1794
+#, fuzzy, kde-format
+msgid "with this Half-line"
+msgstr "с правата"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "с правата"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "с кривата от трета степен"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "с дъгата"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "с многоъгълника"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+msgid "with this Polygonal"
+msgstr "с многоъгълника"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+msgid "Construct midpoint of this point and another one"
+msgstr "Построяване на средата между тази и друга точка"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "Избор на първата от точките, чиято среда искате да построите..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Построяване на средата между тази и друга точка"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "Избор на втората от двете точки, чиято среда искате да построите..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Построяване на средата между тази и друга точка"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "Избор на първата от точките, чиято среда искате да построите..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Построяване на средата между тази и друга точка"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "Избор на втората от двете точки, чиято среда искате да построите..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Избор на първия обект за сечението..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Избор на втория обект за сечението..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Допирателна"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Допирателна към кривата"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Допирателна към окръжността"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Допирателна към кривата от втора степен"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Допирателна към дъгата"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Допирателна към кривата от трета степен"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Допирателна към кривата"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Допирателна към точката"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Център на кривина"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Център на допирателната окръжност към кривата"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Център на кривината на кривата от втора степен"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Център на кривината на кривата от трета степен"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Център на кривината на кривата"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Център на кривината в точката"
+
+#: misc/unit.cc:105
+#, fuzzy, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr " пиксела"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr ""
+
+#: misc/unit.cc:107
+#, fuzzy, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "права"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Избор на обект"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Щракнете на мястото, където искате да бъде новата точка или кривата, към "
+"която да принадлежи..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Сега изберете местоположението на резултата"
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Редактиране на тип"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Промяна на името на текущия тип на макроса."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Промяна на описанието на текущия тип на макроса. Полето не е задължително."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Промяна на иконата на текущия тип на макроса."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Името на макроса не може да е празно."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Промяна на името, описанието и иконата на типа на макроса."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Име:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Описание:"
+
+#: modes/historydialog.cc:24
+#, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr ""
+
+#: modes/historydialog.cc:108
+#, fuzzy, kde-format
+msgid "Start of the construction"
+msgstr "Отмяна на построението"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, fuzzy, kde-format
+msgid "First step"
+msgstr "Първи фокус"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr ""
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Име"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<неименуван обект>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"В текста има %n елемента, за които не сте въвели стойност. Премахнете ги или "
+"въведете необходимите аргументи."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "аргумент %1"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Избор на аргумент %1"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Промяна на надписа"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Set Value"
+msgstr "Избор на сти&л"
+
+#: modes/label.cc:595
+#, fuzzy, kde-format
+msgid "Enter value:"
+msgstr "Текст на надписа"
+
+#: modes/label.cc:624
+#, fuzzy, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Изберете крайната точка на дъгата..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Един от избраните изходни обекти не може да бъде изчислен по зададените "
+"обекти. Програмата не може да изчисли макроса. Моля, натиснете бутон \"Назад"
+"\" и постройте обекта правилно..."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Един от дадените обекти не е използван при изчисление на крайния обект. "
+"Моля, проверете макроса и опитайте отново."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Начални обекти"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Изберете \"началните\" обекти за вашия нов макрос и натиснете бутона \"Напред"
+"\"."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Краен обект"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Изберете краен обект за вашия нов макрос."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Въведете име и описание на новия тип макрос."
+
+#: modes/macrowizard.cc:119
+#, fuzzy, kde-format
+msgid "&Name:"
+msgstr "Име:"
+
+#: modes/macrowizard.cc:126
+#, fuzzy, kde-format
+msgid "&Description:"
+msgstr "Описание:"
+
+#: modes/macrowizard.cc:132
+#, fuzzy, kde-format
+msgid "&Icon:"
+msgstr "Икона"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Дефиниране на макрос"
+
+#: modes/moving.cc:136
+#, fuzzy, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Преместване на %1 обекта"
+msgstr[1] "Преместване на %1 обекта"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Повторно определяне на точка"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, fuzzy, kde-format
+msgid "Red"
+msgstr "Радиус"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "&Скриване"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "&Показване"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "Пре&местване"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, fuzzy, kde-format
+msgid "&Delete"
+msgstr "&Изтриване на обекти"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "&Друг цвят"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Промяна на цвета на обекта"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Промяна на дължината на обекта"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Промяна на стила на точката"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Промяна на стила на обекта"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "Задаване на &име..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "&Име"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Име на обект"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Задаване на име на обекта:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, fuzzy, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 обекта"
+msgstr[1] "%1 обекта"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Документ Kig"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "Пр&еобразуване"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "П&роверка"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "По&строяване"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr ""
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "&Добавяне на надпис"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "Избор на &цвят"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "&Широчина на писалката"
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Избор на сти&л"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Коор&динатна система"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, fuzzy, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Експортиране..."
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+msgid "Edit Script..."
+msgstr "Редактиране на скрипт..."
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Текст на надписа"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Въведете текста на надписа и натиснете бутона \"Напред\".\n"
+"За показване на променливите, въведете %1, %2,... на необходимите места "
+"(например: \"Дължината на отсечката е %1 единици.\")."
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Показване на текста в рамка"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Аргументи"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Изберете необходимите аргументи. Щракнете върху всеки аргумент, изберете "
+"нужния обект и параметър от основния прозорец на програмата, след което "
+"натиснете бутона за край..."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Създаване на надпис"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr ""
+
+#: modes/typesdialog.cpp:301
+#, fuzzy, kde-format
+msgid "Type"
+msgstr "&Типове"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Описание"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Управление на типовете"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Редактиране..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "&Експортиране..."
+
+#: modes/typesdialog.cpp:425
+#, fuzzy, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] ""
+"Сигурни ли сте, че искате типът да бъде изтрит?\n"
+"Сигурни ли сте, че искате типовете да бъдат изтрити (%n)?"
+msgstr[1] ""
+"Сигурни ли сте, че искате типът да бъде изтрит?\n"
+"Сигурни ли сте, че искате типовете да бъдат изтрити (%n)?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Потвърждение"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Експортиране на типове"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Типове файлове Kig\n"
+"*|Всички файлове"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Типове файлове Kig\n"
+"*|Всички файлове"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Импортиране на типове"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Избрани са няколко типа. Може да променяте само по един тип. Моля, изберете "
+"само един тип и опитайте отново."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Избрани са няколко типа"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Изберете типове..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Това е списък на макросите. Може да ги избирате, изтривате, експортирате и "
+"импортирате..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Редактиране на избрания тип."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Изтриване от списъка на всички избрани типове."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Експортиране на всички избрани типове във файл."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Импортиране на макроси, съдържащи се в един или повече файлове."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, fuzzy, kde-format
+msgid "&Import..."
+msgstr "Импортиране..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Построяване на ъгъл през точката"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "Изберете точка, през която да минава първия лъч на ъгъла..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Построяване на ъгъл в точката"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Изберете точка, в която да построите ъгъла..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Изберете точка, през която да минава втория лъч на ъгъла..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Избор на &размер"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Промяна на ъгъл"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Построяване на дъга с начало точката"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Изберете начална точка на дъгата..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Построяване на дъга през точката"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Изберете точка, през която да минава дъгата..."
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Построяване на дъга, завършваща в точката"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Изберете крайната точка на дъгата..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Построяване на дъга с точката за център"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Изберете центъра на дъгата..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Построяване на дъга с ъгъла"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Изберете ъгъл за дъгата..."
+
+#: objects/arc_type.cc:204
+#, fuzzy, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Построяване на дъга с начало точката"
+
+#: objects/arc_type.cc:205
+#, fuzzy, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Изберете начална точка на дъгата..."
+
+#: objects/arc_type.cc:206
+#, fuzzy, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Построяване на крива от втора степен през точката"
+
+#: objects/arc_type.cc:207
+#, fuzzy, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Изберете точка, през която да минава кривата от втора степен..."
+
+#: objects/arc_type.cc:208
+#, fuzzy, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Построяване на дъга, завършваща в точката"
+
+#: objects/arc_type.cc:209
+#, fuzzy, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Изберете крайната точка на дъгата..."
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Построяване на дъга с точката за център"
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Изберете центъра на дъгата..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+#, fuzzy
+msgid "Number of control points"
+msgstr "Брой страни"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+msgid "Control polygon"
+msgstr "Построяване на страните на многоъгълника"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Декартово уравнение"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+#, fuzzy
+msgid "Bézier Curve"
+msgstr "Скриване на крива"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Избор на кривата"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Избор на кривата %1"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+msgid "Remove a Bézier Curve"
+msgstr "Премахване на крива"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+msgid "Add a Bézier Curve"
+msgstr "Добавяне на крива"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+msgid "Move a Bézier Curve"
+msgstr "Преместване на крива"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+msgid "Attach to this Bézier Curve"
+msgstr "Прикрепяне към крива"
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+msgid "Show a Bézier Curve"
+msgstr "Показване на крива"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+msgid "Hide a Bézier Curve"
+msgstr "Скриване на крива"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+msgid "Bézier Quadratic"
+msgstr "Добавяне на четириъгълник"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Избор на дъгата"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Избор на дъгата %1"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+msgid "Remove a Bézier Quadratic"
+msgstr "Премахване на четириъгълник"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+msgid "Add a Bézier Quadratic"
+msgstr "Добавяне на четириъгълник"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+msgid "Move a Bézier Quadratic"
+msgstr "Преместване на четириъгълник"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+msgid "Attach to this Bézier Quadratic"
+msgstr "Прикрепяне към дъга"
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+msgid "Show a Bézier Quadratic"
+msgstr "Показване на четириъгълник"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+msgid "Hide a Bézier Quadratic"
+msgstr "Скриване на четириъгълник"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Избор на дъгата"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Избор на окръжността %1"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+msgid "Remove a Bézier Cubic"
+msgstr "Премахване на крива от втора степен"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+msgid "Add a Bézier Cubic"
+msgstr "Добавяне на крива от трета степен"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+msgid "Move a Bézier Cubic"
+msgstr "Преместване на крива от трета степен"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+msgid "Attach to this Bézier Cubic"
+msgstr "Прикрепяне към дъга"
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+msgid "Show a Bézier Cubic"
+msgstr "Показване на крива от трета степен"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+msgid "Hide a Bézier Cubic"
+msgstr "Скриване на крива от трета степен"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr ""
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Избор на многоъгълника"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Избор на многоъгълника %1"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+msgid "Remove a Rational Bézier Curve"
+msgstr "Премахване на многоъгълник"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+msgid "Add a Rational Bézier Curve"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+msgid "Move a Rational Bézier Curve"
+msgstr "Преместване на многоъгълник"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Прикрепяне към многоъгълник"
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+msgid "Show a Rational Bézier Curve"
+msgstr "Показване на многоъгълник"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+msgid "Hide a Rational Bézier Curve"
+msgstr "Скриване на многоъгълник"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+msgid "Rational Bézier Quadratic"
+msgstr "Избор на кривата от втора степен %1"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Избор на кривата от втора степен"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Избор на кривата от втора степен %1"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Премахване на многоъгълник"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Преместване на многоъгълник"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Прикрепяне към кривата от втора степен"
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Показване на многоъгълник"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Скриване на многоъгълник"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Избор на триъгълника"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Избор на триъгълника %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Прикрепяне към кривата от втора степен"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Построяване на окръжност със зададения център "
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Изберете точка за връх на новия триъгълник..."
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Построяване на окръжност със зададения център "
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Изберете точка за връх на новия триъгълник..."
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Построяване на окръжност със зададения център "
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Изберете първата крива от двете криви, на който искате да постройте "
+"радикалните оси..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+msgid "Select this value as weight"
+msgstr "Избор на отсечката"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Построяване на окръжност със зададения център "
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+msgid "int"
+msgstr "права"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Резултат"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Избор на крива..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Изберете точка от кривата..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Повърхнина"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Обиколка"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Радиус"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr ""
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Разложено декартово уравнение"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Полярно уравнение"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [центрирано в %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "окръжност"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Избор на окръжността"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Избор на окръжността %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Премахване на окръжност"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Добавяне на окръжност"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Преместване на окръжност"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Прикрепяне към окръжността"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Показване на окръжност"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Скриване на окръжност"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Построяване на окръжност през точката"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Построяване на окръжност със зададения център "
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Изберете център на новата окръжност..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Изберете точка, през която да минава окръжността..."
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "With this radius"
+msgstr "с дъгата"
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "Select the length of the radius..."
+msgstr "Изберете ъгъл на завъртане..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Конически тип"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Първи фокус"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Втори фокус"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Елипса"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Хипербола"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Парабола"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr ""
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr ""
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr ""
+
+#: objects/conic_imp.cc:266
+#, fuzzy, kde-format
+msgid "[centered at %1]"
+msgstr "rho = %1   [центрирано в %2]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "крива от втора степен"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Избор на кривата от втора степен"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Избор на кривата от втора степен %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Премахване на крива от втора степен"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Добавяне на крива от втора степен"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Преместване на крива от втора степен"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Прикрепяне към кривата от втора степен"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Показване на крива от втора степен"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Скриване на крива от втора степен"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr ""
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Първа крайна точка"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Втора крайна точка"
+
+#: objects/conic_imp.cc:603
+#, fuzzy
+msgid "conic arc"
+msgstr "крива от втора степен"
+
+#: objects/conic_imp.cc:604
+#, fuzzy, kde-format
+msgid "Select this conic arc"
+msgstr "Избор на кривата от втора степен"
+
+#: objects/conic_imp.cc:605
+#, fuzzy, kde-format
+msgid "Select conic arc %1"
+msgstr "Избор на кривата от втора степен %1"
+
+#: objects/conic_imp.cc:606
+#, fuzzy
+msgid "Remove a Conic Arc"
+msgstr "Премахване на крива от втора степен"
+
+#: objects/conic_imp.cc:607
+#, fuzzy
+msgid "Add a Conic Arc"
+msgstr "Добавяне на крива от втора степен"
+
+#: objects/conic_imp.cc:608
+#, fuzzy
+msgid "Move a Conic Arc"
+msgstr "Преместване на крива от втора степен"
+
+#: objects/conic_imp.cc:609
+#, fuzzy
+msgid "Attach to this conic arc"
+msgstr "Прикрепяне към кривата от втора степен"
+
+#: objects/conic_imp.cc:610
+#, fuzzy
+msgid "Show a Conic Arc"
+msgstr "Показване на крива от втора степен"
+
+#: objects/conic_imp.cc:611
+#, fuzzy
+msgid "Hide a Conic Arc"
+msgstr "Скриване на крива от втора степен"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Построяване на крива от втора степен през точката"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Изберете точка, през която да минава кривата от втора степен..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Построяване на крива от втора степен с асимптотата"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Изберете първата асимптота на кривата..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Изберете втората асимптота на кривата..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Построяване на елипса с фокуса"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Изберете първия фокус на елипсата..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Изберете втория фокус на елипсата..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Построяване на елипса, минаваща през точката"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Изберете точка, през която да минава елипсата..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Построяване на хипербола с фокуса"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Изберете първия фокус на хиперболата..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Изберете втория фокус на хиперболата..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Построяване на хипербола, минаваща през точката"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Изберете точка, през която да минава хиперболата..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Построяване на конична крива с линията за директриса"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Изберете директрисата на кривата от втора степен..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Построяване на конична крива с точката за фокус"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Изберете фокус на кривата от втора степен..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Построяване на парабола през точката"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Изберете точка, през която да минава параболата..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Построяване на полярна точка на кривата"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "Изберете кривата, на която искате да построите полярна точка..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Построяване на полярна точка на линията"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Изберете линията, на която искате да построите полярна точка..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Построяване на полярна линия на кривата"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Построяване на полярна права на точката"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Построяване на директриса на кривата"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Изберете кривата, на която искате да построите директриса..."
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Построяване на парабола с директрисата"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Изберете директриса на новата парабола..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Построяване на парабола с фокуса"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Изберете фокуса на новата парабола..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Построяване на асимптотите на кривата"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Изберете кривата, на която искате да построите асимптотите..."
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Построяване на радикалните оси на кривата"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Изберете първата крива от двете криви, на който искате да постройте "
+"радикалните оси..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Изберете втората крива от двете криви, на който искате да постройте "
+"радикалните оси..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Размяна на радикалните оси"
+
+#: objects/conic_types.cc:619
+#, fuzzy, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Размяна на радикалните оси"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "крива от трета степен"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Избор на кривата от трета степен"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Избор на кривата от трета степен %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Премахване на крива от трета степен"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Добавяне на крива от трета степен"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Преместване на крива от трета степен"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Прикрепяне към крива от трета степен"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Показване на крива от трета степен"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Скриване на крива от трета степен"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Построяване на крива от трета степен през точката"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Изберете точка, през която да минава кривата от трета степен..."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "крива"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Избор на кривата"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Избор на кривата %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Премахване на крива"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Добавяне на крива"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Преместване на крива"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Прикрепяне към крива"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Показване на крива"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Скриване на крива"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr ""
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Точката на пресичане е вече изчислена"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Сечение с кривата от трета степен"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Сечение с дъгата"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Обръщане спрямо окръжността"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Изберете окръжност, спрямо която да се извърши обръщането..."
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Изчисляване обръщането на точката"
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the object to invert..."
+msgstr "Изберете точка за обръщане..."
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Изчисляване обръщането на точката"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Изберете точка за обръщане..."
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Изчисляване обръщането на линията"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Изберете линия за обръщане..."
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Изчисляване обръщането на сегмента"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Изберете сегмент за обръщане..."
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Изчисляване обръщането на окръжността"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Изберете окръжност за обръщане..."
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Изчисляване обръщането на дъгата"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Изберете дъга за обръщане..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Ъглов коефициент"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Уравнение"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Дължина"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+#, fuzzy
+msgid "Support Line"
+msgstr "Не се поддържа"
+
+#: objects/line_imp.cc:194
+#, fuzzy
+msgid "End Point"
+msgstr "Среда"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "права"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Избор на правата"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Избор на правата"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Избор на правата %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Премахване на права"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Добавяне на права"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Преместване на права"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Прикрепяне към права"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Показване на права"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Скриване на права"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "отсечка"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Избор на отсечката"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Избор на отсечката %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Премахване на отсечка"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Добавяне на отсечка"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Преместване на отсечка"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Прикрепяне към отсечка"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Показване на отсечка"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Скриване на отсечка"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "лъч"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Избор на лъча"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Избор на лъча %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Премахване на лъч"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Добавяне на лъч"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Преместване на лъч"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Прикрепяне към лъч"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Показване на лъч"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Скриване на лъч"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Построяване на отсечка, с начало в точката"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Изберете началната точка на отсечката..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Построяване на отсечка, с край в точката"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Изберете крайната точка на отсечката..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Построяване на права през точката"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Изберете точка, през която да минава правата..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Изберете още една точка, през която да минава правата..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Построяване на лъч, с начало в точката"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Избор на начална точка на лъча..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Построяване на лъч през точката"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Изберете точка, през която да минава лъча..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Построяване оста на отсечката"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Изберете отсечката, на която трябва да построите оста..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Построяване на права, успоредна на правата"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Изберете права, успоредна на новата права..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Построяване на успоредна права през точката"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Изберете точка, през която да минава правата..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Построяване на права, перпендикулярна на правата"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Изберете права, перпендикулярна на новата права..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Построяване на перпендикулярна права през точката"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "&Дължина..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Дължина на отсечка"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Изберете нова дължина: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Промяна на дължина на отсечка"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Построяване на права по вектора"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Изберете вектор по посока на правата..."
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Построяване на лъч по вектора"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Изберете вектор по посока на лъча..."
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "ГМТ"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Избор на ГМТ"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Избор на ГМТ %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Премахване на ГМТ"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Добавяне на ГМТ"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Преместване на ГМТ"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Прикрепяне към ГМТ"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Показване на ГМТ"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Скриване на ГМТ"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Тип на обекта"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Обект"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Избор на обекта"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Избор на обекта %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Премахване на обект"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Добавяне на обект"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Преместване на обект"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Прикрепяне към обект"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Показване на обект"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Скриване на обект"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Ъгъл в радиани"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Ъгъл в градуси"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Среда"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "Дължина по X"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Дължина по Y"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Противоположен вектор"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Ъгъл"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Площ на отрез"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Дължина на дъга"
+
+#: objects/other_imp.cc:398
+#, fuzzy
+msgid "Support Circle"
+msgstr "Показване на окръжност"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "ъгъл"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Избор на ъгъла"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Избор на ъгъла %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Премахване на ъгъл"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Добавяне на ъгъл"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Преместване на ъгъл"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Прикрепяне към ъгъл"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Показване на ъгъл"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Скриване на ъгъл"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "вектор"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Избор на вектора"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Избор на вектора %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Премахване на вектор"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Добавяне на вектор"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Преместване на вектор"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Прикрепяне към вектора"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Показване на вектор"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Скриване на вектор"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "дъга"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Избор на дъгата"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Избор на дъгата %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Премахване на дъга"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Добавяне на дъга"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Преместване на дъга"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Прикрепяне към дъга"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Показване на дъга"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Скриване на дъга"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Координата"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "Координата X"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Координата Y"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "точка"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Избор на точката"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Избор на точката %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Премахване на точка"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Добавяне на точка"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Преместване на точка"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Прикрепяне към точката"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Показване на точка"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Скриване на точка"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Построяване на средата между две точки"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Изберете първата от двете точки, на които искате да построите средата..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Изберете втората от двете точки, на които искате да построите средата..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Построяване на средата между две точки"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Изберете първата от двете точки, на които искате да построите средата..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Изберете втората от двете точки, на които искате да построите средата..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Задаване на коор&дината..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Повторно дефиниране"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Задаване на &параметър..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Задаване на координата"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Въведете новата координата."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Задаване на параметър на точката"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Въведете новия параметър: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Промяна на праметъра на точката"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Изберете окръжност, върху която да нанесете мярката..."
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Изберете точка от окръжността..."
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Изберете отсечка, която да нанесете върху окръжността..."
+
+#: objects/point_type.cc:794
+#, fuzzy, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+
+#: objects/point_type.cc:795
+#, fuzzy, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "Изберете точка, спрямо която да бъде извършено отражението..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Брой страни"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Периметър"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+msgid "Boundary Polygonal"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr ""
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Център на разстоянието между върховете"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Брой на извивките"
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+msgid "Inside Polygon"
+msgstr "Скриване на многоъгълник"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+msgid "Open Polygonal Curve"
+msgstr "Многоъгълник"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+msgid "Associated Polygon"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+msgid "Closed Polygonal Curve"
+msgstr "Преместване на многоъгълник"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "многоъгълник"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Избор на многоъгълника"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Избор на многоъгълника %1"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Премахване на многоъгълник"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Преместване на многоъгълник"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Прикрепяне към многоъгълник"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Показване на многоъгълник"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Скриване на многоъгълник"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+msgid "closed polygonal curve"
+msgstr "многоъгълник"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Избор на многоъгълника"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Избор на многоъгълника %1"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+msgid "Remove a closed polygonal curve"
+msgstr "Премахване на многоъгълник"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+msgid "Add a closed polygonal curve"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+msgid "Move a closed polygonal curve"
+msgstr "Преместване на многоъгълник"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+msgid "Attach to this closed polygonal curve"
+msgstr "Прикрепяне към многоъгълник"
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+msgid "Show a closed polygonal curve"
+msgstr "Показване на многоъгълник"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+msgid "Hide a closed polygonal curve"
+msgstr "Скриване на многоъгълник"
+
+#: objects/polygon_imp.cc:662
+#, fuzzy
+msgid "polygonal curve"
+msgstr "многоъгълник"
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+msgid "Select this polygonal curve"
+msgstr "Избор на многоъгълника"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Избор на многоъгълника %1"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+msgid "Remove a polygonal curve"
+msgstr "Премахване на многоъгълник"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+msgid "Add a polygonal curve"
+msgstr "Добавяне на многоъгълник"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+msgid "Move a polygonal curve"
+msgstr "Преместване на многоъгълник"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+msgid "Attach to this polygonal curve"
+msgstr "Прикрепяне към многоъгълник"
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+msgid "Show a polygonal curve"
+msgstr "Показване на многоъгълник"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+msgid "Hide a polygonal curve"
+msgstr "Скриване на многоъгълник"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "триъгълник"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Избор на триъгълника"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Избор на триъгълника %1"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Премахване на триъгълник"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Добавяне на триъгълник"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Преместване на триъгълник"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Прикрепяне към триъгълник"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Показване на триъгълник"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Скриване на триъгълник"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "четириъгълник"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Избор на четириъгълника"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Избор на четириъгълника %1"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Премахване на четириъгълник"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Добавяне на четириъгълник"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Преместване на четириъгълник"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Прикрепяне към четириъгълник"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Показване на четириъгълник"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Скриване на четириъгълник"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Построяване на триъгълник по неговите върхове"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Изберете точка за връх на новия триъгълник..."
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Сечение на многоъгълника с права"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+
+#: objects/polygon_type.cc:474
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Сечение на многоъгълника с права"
+
+#: objects/polygon_type.cc:475
+#, fuzzy, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Сечение на многоъгълника с права"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Сечение на многоъгълника с права"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+
+#: objects/polygon_type.cc:788
+#, fuzzy, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Сечение на многоъгълника с права"
+
+#: objects/polygon_type.cc:789
+#, fuzzy, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Intersect with this polygon"
+msgstr "Сечение с правата"
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Избор на втория обект за сечението..."
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Построяване на върховете на многоъгълника"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Изберете многоъгълник, на който искате да построите върхове..."
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Построяване на страните на многоъгълника"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Изберете многоъгълник, на който искате да построите страни..."
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Построяване на изпъкналата обвивка на многоъгълника"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Изберете многоъгълник, чиято изпъкнала обвивка искате да построите..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Проектиране на точката върху окръжността"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Изберете точката, през която да минава допирателната..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Успоредност на права"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Изберете първата от двете прави..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Успоредна на правата"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Изберете втората права..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Правите са успоредни."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Правите не са успоредни."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Перпендикулярност на права"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Изберете първата от възможно перпендикулярните прави..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Перпендикулярна на правата"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Изберете втората от възможно перпендикулярните прави..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Правите са перпендикулярни."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Правите не са перпендикулярни."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Колинеарност на точка"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Изберете първата от трите възможно колинеарни точки..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "и втората точка"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Изберете втората от трите възможно колинеарни точки..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "и третата точка"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Изберете последната от трите възможно колинеарни точки..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Точките са колинеарни."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Точките не са колинеарни."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Проверка за принадлежност на точка към крива"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Изберете точката, която искате да проверите..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Проверка за принадлежност на точката към кривата"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Изберете крива, към която може да принадлежи точката..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Точката принадлежи на кривата."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Точката не принадлежи на кривата."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Проверка за принадлежност на точка към многоъгълник"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Проверка за принадлежност на точката към многоъгълника"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Изберете многоъгълник, към който може да принадлежи точката..."
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Точката принадлежи на многоъгълника."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Точката не принадлежи на многоъгълника."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Проверка за изпъкналост на многоъгълник"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Изберете многоъгълник, който искате да проверите за изпъкналост..."
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Многоъгълникът е изпъкнал."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Многоъгълникът не е изпъкнал."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Проверка за равноотдалеченост на точка"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Изберете точка, която би могла да е равноотдалечена от други две точки..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "от точката"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Изберете първата от другите две точки..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "и от втората точка"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Изберете втората от другите две точки..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Двете разстояния са еднакви."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Двете разстояния не са еднакви."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Равенство на вектори"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Изберете първия вектор..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Проверка за равенство на два вектора"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Изберете втория вектор..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Векторите са еднакви."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Векторите не са еднакви."
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Check whether this object exists"
+msgstr "Проверка за принадлежност на точка към крива"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Изберете обект за мащабиране..."
+
+#: objects/tests_type.cc:375
+#, fuzzy, kde-format
+msgid "The object exists."
+msgstr "Тип на обекта"
+
+#: objects/tests_type.cc:377
+#, fuzzy, kde-format
+msgid "The object does not exist."
+msgstr "Векторите не са еднакви."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Текст"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "надпис"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Избор на надписа"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Избор на надписа %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Премахване на надпис"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Добавяне на надпис"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Преместване на надпис"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Прибавяне към надпис"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Скриване на надпис"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Показване на надпис"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr ""
+
+#: objects/text_imp.cc:184
+#, fuzzy, kde-format
+msgid "Select this numeric label"
+msgstr "Избор на надписа"
+
+#: objects/text_imp.cc:185
+#, fuzzy, kde-format
+msgid "Select numeric label %1"
+msgstr "Избор на надписа %1"
+
+#: objects/text_imp.cc:186
+#, fuzzy
+msgid "Remove a Numeric Label"
+msgstr "Премахване на надпис"
+
+#: objects/text_imp.cc:187
+#, fuzzy
+msgid "Add a Numeric Label"
+msgstr "Добавяне на надпис"
+
+#: objects/text_imp.cc:188
+#, fuzzy
+msgid "Move a Numeric Label"
+msgstr "Преместване на надпис"
+
+#: objects/text_imp.cc:189
+#, fuzzy
+msgid "Attach to this numeric label"
+msgstr "Прибавяне към надпис"
+
+#: objects/text_imp.cc:190
+#, fuzzy
+msgid "Show a Numeric Label"
+msgstr "Скриване на надпис"
+
+#: objects/text_imp.cc:191
+#, fuzzy
+msgid "Hide a Numeric Label"
+msgstr "Показване на надпис"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr ""
+
+#: objects/text_imp.cc:277
+#, fuzzy
+msgid "boolean label"
+msgstr "Преместване на надпис"
+
+#: objects/text_imp.cc:278
+#, fuzzy, kde-format
+msgid "Select this boolean label"
+msgstr "Избор на надписа"
+
+#: objects/text_imp.cc:279
+#, fuzzy, kde-format
+msgid "Select boolean label %1"
+msgstr "Избор на надписа %1"
+
+#: objects/text_imp.cc:280
+#, fuzzy
+msgid "Remove a Boolean Label"
+msgstr "Премахване на надпис"
+
+#: objects/text_imp.cc:281
+#, fuzzy
+msgid "Add a Boolean Label"
+msgstr "Добавяне на надпис"
+
+#: objects/text_imp.cc:282
+#, fuzzy
+msgid "Move a Boolean Label"
+msgstr "Преместване на надпис"
+
+#: objects/text_imp.cc:283
+#, fuzzy
+msgid "Attach to this boolean label"
+msgstr "Прибавяне към надпис"
+
+#: objects/text_imp.cc:284
+#, fuzzy
+msgid "Show a Boolean Label"
+msgstr "Скриване на надпис"
+
+#: objects/text_imp.cc:285
+#, fuzzy
+msgid "Hide a Boolean Label"
+msgstr "Показване на надпис"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Копиране на текст"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "&Рамка"
+
+#: objects/text_type.cc:158
+#, fuzzy, kde-format
+msgid "Set &Font..."
+msgstr "&Дължина..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Рамка на надписа"
+
+#: objects/text_type.cc:192
+#, fuzzy, kde-format
+msgid "Change Label Font"
+msgstr "Промяна на надписа"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Повторно дефиниране..."
+
+#: objects/text_type.cc:266
+#, fuzzy, kde-format
+msgid "Change &Value..."
+msgstr "Промяна на надписа"
+
+#: objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Enter the new value:"
+msgstr "Въведете новата координата."
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr ""
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Пренасяне на обекта"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Изберете обект за пренасяне..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Пренасяне по вектора"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Изберете вектор, по който да се пренесе обекта..."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Отражение на обекта"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Изберете обект, който да бъде отразен..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Отражение спрямо точката"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Изберете точка, спрямо която да бъде извършено отражението..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Отражение спрямо правата"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Изберете права, спрямо която да бъде извършено отражението..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Завъртане на обекта"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Изберете обект за завъртане..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Завъртане около точката"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Изберете център на завъртане..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Завъртане по ъгъла"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Изберете ъгъл на завъртане..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Мащабиране на обекта"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Изберете обект за мащабиране..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Мащабиране с центъра"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Изберете среда за мащабиране..."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid "Scale by this length"
+msgstr "Мащабиране с центъра"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, fuzzy, kde-format
+msgid "Scale this length..."
+msgstr "&Дължина..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, fuzzy, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Изберете първата от двете отсечки, които да са коефициент на мащабиране..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, fuzzy, kde-format
+msgid "...to this other length"
+msgstr "в триъгълника"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, fuzzy, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Изберете втората от двете отсечки, които да са коефициент на мащабиране..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Изберете обект за мащабиране"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Мащабиране чрез правата"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Изберете права, чрез която да се мащабира"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Проективно завъртане на обект"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Изберете обект за проективно завъртане"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Проективно завъртане с лъча"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr ""
+"Изберете лъча на проективното завъртане, което искате да приложите върху "
+"обекта"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Проективно завъртане по ъгъла"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr ""
+"Изберете ъгъла на проективното завъртане, което искате да приложите върху "
+"обекта"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Хармонична хомология на обекта"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Изберете обект за преобразуване..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Хармонична хомология с центъра"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Изберете точка за център на хармоничната хомология..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Хармонична хомология с оста"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Изберете оста на хармоничната хомология..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Общо подобие на обект"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Изчертаване на триъгълника"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr ""
+"Изберете триъгълника, който трябва да бъде трансформиран в даден "
+"триъгълник..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "в триъгълника"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "Изберете триъгълник, подобен на първия..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Първата от трите начални точки"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "Изберете първата от трите начални точки на общото подобие..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Втората от трите начални точки"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Изберете втората от трите начални точки на общото подобие..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Третата от трите начални точки"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Изберете третата от трите начални точки на общото подобие..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Точка, съответстваща на първата"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Изберете първата от трите крайни точки на общото подобие..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Точка, съответстваща на втората"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Изберете втората от трите крайни точки на общото подобие..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Точка, съответстваща на третата"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Изберете третата от трите крайни точки на общото подобие..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Проективно преобразувание на обекта"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Изчертаване на четириъгълника"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Изберете четириъгълник, който да се преобразува в дадения..."
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "в четириъгълника"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Изберете четириъгълник, получен чрез проективно преобразувание от първия..."
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Първата от четирите начални точки"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr ""
+"Изберете първата от четирите начални точки на проективното преобразувание..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Втората от четирите начални точки"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr ""
+"Изберете втората от четирите начални точки на проективното преобразувание..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Третата от четирите начални точки"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr ""
+"Изберете третата от четирите начални точки на проективното преобразувание..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Четвъртата от четирите начални точки"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr ""
+"Изберете четвъртата от четирите начални точки на проективното "
+"преобразувание..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr ""
+"Изберете първата от четирите крайни точки на проективното преобразувание..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr ""
+"Изберете втората от четирите крайни точки на проективното преобразувание..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr ""
+"Изберете третата от четирите крайни точки на проективното преобразувание..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Точка, съответстваща на четвъртата"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr ""
+"Изберете четвъртата от четирите крайни точки на проективното "
+"преобразувание..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Сянка на обекта"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Изберете обект, на който искате да изчертаете сянка..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Сянка от светлинния източник"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Изберете светлинен източник за сянката..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Сянка върху хоризонта, представен от правата"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Изберете хоризонт за сянката..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Преобразуване на обекта"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Преобразуване с помощта на това преобразувание"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Прилагане на подобие на обекта"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Прилагане на подобие с центъра"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Изберете център на подобието..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Прилагане на подобие, съпоставящо точката на друга точка"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr "Изберете точка, която да се съпостави чрез подобие на друга точка..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Прилагане на подобие, изобразяващо точка в точката"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr "Изберете точка, в която чрез подобие да се изобрази първата точка..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Построяване на вектор през точката"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Изберете начална точка на новия вектор..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Построяване на вектор към точката"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Изберете крайна точка на новия вектор..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Построяване на сума на вектори на този и друг вектор"
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr ""
+"Изберете първия от двата вектора, на който искате да построите сумата..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Построяване на сума на вектори на друг вектор и този"
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr ""
+"Изберете втория от двата вектора, на който искате да построите сумата..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Построяване на сума на вектори, с начало в точката"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Изберете точка, в която да построите сумата на векторите..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Нов скрипт"
+
+#: scripting/newscriptwizard.cc:57
+#, fuzzy, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Изберете аргументите обекти (ако има) от основния прозорец на програмата и "
+"натиснете бутона \"Напред\"."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Въвеждане на код"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Въведете кода:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Въведете кода на Питон:"
+
+#: scripting/script-common.cc:80
+#, fuzzy, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "аргумент %1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Открита е грешка при изпълнение на скрипта. Моля, коригирайте скрипта и "
+"отново натиснете бутона \"Готово\"."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Интерпретаторът на Питон генерира следната информация за грешка:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Скриптът има грешка. Интерпретаторът не съобщава за грешка, но скрипта не "
+"генерира валиден обект. Моля, коригирайте скрипта и отново натиснете бутона "
+"\"Готово\"."
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Редактиране на скрипт..."
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Редактиране на скрипт на Питон"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr "Открита е грешка при изпълнение на скрипта. Моля, коригирайте скрипта."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Скриптът има грешка. Интерпретаторът не съобщава за грешка, но скрипта не "
+"генерира валиден обект. Моля, коригирайте скрипта."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Едно от удобствата на програмата Kig са контекстните менюта, до който "
+"имате достъп чрез натискане с десния бутон на мишката върху произволен обект "
+"или празно място. Чрез тези менюта може да видите имената на обектите, да "
+"промените цветовете и стиловете им.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Може да чертаете нови точки без използване на менюто или лентата с "
+"инструменти, просто като щракнете със <em>средния бутон на мишката</em> "
+"някъде в документа.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Програмата Kig поддържа няколко файлови формата: нейните (<code>.kig</"
+"code>), както и файловете на <em>KGeo</em>, <em>KSeg</em>, частично на "
+"<em>Dr. Geo</em> и <em>Cabri&#8482;</em>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>Програмата Kig има повече от 40 обекта и 10 преобразувания, който може да "
+"създавате и използвате във вашите документи. Използвайте менюто <em>Обекти</"
+"em>, за да ги видите.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Може да използвате избраните обекти за създаване на нов обект, който "
+"изисква тези обекти като аргументи. Например, ако сте избрали две точки, от "
+"изскачащото меню може да изберете <em>Начало->Кръг по три точки</em>, за да "
+"построите кръг по три точки.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>Може да разширите множеството от обекти на Kig с помощта на допълнителни "
+"макроси. Интересни макроси може да намерете на уеб сайта на Kig: <a href="
+"\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Ако има повече от един обект под показалеца на мишката, може да щракнете "
+"левия бутон на мишката заедно с натиснат клавиша <em>Shift</em> или "
+"<em>Control</em>, за получите списък с всички обекти под показалеца на "
+"мишката. След това може да изберете от списъка кой обект искате да изберете."
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""

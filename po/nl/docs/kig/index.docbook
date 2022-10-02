@@ -1,0 +1,1062 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Dutch "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>Het handboek van &kig;</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+&Jaap.Woldringh; 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-23</date>
+<releaseinfo
+>Applicaties 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kig; is een toepassing voor interactieve meetkunde door &kde;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Interactieve meetkunde</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>&kig; is een toepassing voor interactieve meetkunde. Het programma heeft twee doelen: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Ervoor zorgen dat studenten interactief wiskundige figuren en ideeën kunnen bestuderen met behulp van de computer. </para
+></listitem>
+
+<listitem
+><para
+>Een <acronym
+>WYSIWYG</acronym
+>-hulpmiddel maken waarmee wiskundige figuren getekend kunnen worden die in andere documenten kunnen worden opgenomen.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Problemen met &kig; kunt u melden via het interne bugrapporteerhulpmiddel (<menuchoice
+><guimenu
+>Help</guimenu
+><guimenuitem
+>Bug rapporteren...</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>Omdat &kig; macro's en de constructie van meetkundige plaatsen ondersteunt, kunnen ook tamelijk geavanceerde macro's worden gedefinieerd. Als u een interessante macro heeft gemaakt, waarvan u denkt dat die ook handig kan zijn voor andere mensen, open dan een onderzoeksverzoek, zodat deze kan worden bekeken om opgenomen te worden in de distributie. (Als u dit doet, wordt uw macro uitgegeven onder de voorwaarden van de licentie van &kig;, de <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>, zodat anderen die vrij kunnen gebruiken en aanpassen). </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Beginselen van het gebruik</title>
+<sect1 id="constructing-objects">
+<title
+>Objecten tekenen</title>
+<sect2 id="constructing-points">
+<title
+>Punten tekenen</title>
+<para
+>U kunt op verschillende manieren punten tekenen:</para>
+<itemizedlist>
+<listitem>
+<para
+>Selecteer <menuchoice
+><guimenu
+>Objecten</guimenu
+><guisubmenu
+>Punten</guisubmenu
+><guimenuitem
+> Punt</guimenuitem
+></menuchoice
+> in de menubalk of klik op de bijbehorende knop in de werkbalk. U kunt dan een punt tekenen door te klikken op de gewenste positie in het venster.</para>
+
+<note
+><para
+>Met behulp van de &Shift;-toets, kunt u de roostermodus inschakelen. Hierin wordt elk punt van de tekening exact aan een roosterpunt gekoppeld.</para
+></note>
+<note
+><para
+>Dit werkt trouwens ook voor het tekenen van andere objecten: klik op de gewenste menu-ingang of werkbalkknop en selecteer die zaken die nodig zijn om het object te tekenen.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Omdat u vaak punten zult moeten tekenen, kunt u ook eenvoudig ergens op het scherm klikken met de &MMB;. Er wordt daar dan een punt getekend, zonder gebruik van een menu of knop. </para>
+</listitem>
+<listitem>
+<para
+>U kunt punten tekenen terwijl u andere objecten maakt in de achtergrond, waarbij u ze desgewenst selecteert voor het object dat u aan het maken bent. Zie ook de <xref linkend="constructing-other-objects"/>. voor meer informatie. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Er is een punt getekend</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Er is een punt getekend</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Andere objecten tekenen</title>
+<para
+>U kunt een object anders dan een punt tekenen door de bijbehorende ingang te selecteren in het menu <guimenu
+>Objecten</guimenu
+>, of door te klikken op één van de werkbalkknoppen. </para>
+<screenshot>
+<screeninfo
+>Een cirkel tekenen</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Een cirkel tekenen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Hiermee begint het tekenen van het gekozen objecttype. Bij elk van deze typen zijn argumenten nodig. Als u bijvoorbeeld "Cirkel met behulp van middelpunt en punt" selecteert, moet u twee punten geven: één voor het middelpunt en één voor het punt op de cirkel. </para>
+<para
+>Deze argumenten zijn ook objecten, die u kunt selecteren door er gewoon op te klikken.Als u de muisaanwijzer beweegt boven een argument dat u wilt gebruiken om een object te tekenen, wordt er een voorlopige afbeelding getoond die laat zien hoe het object er uit gaan zien. U kunt, voor objecten die punten nodig hebben als argumenten, een nieuw punt plaatsen op de huidige muispositie door te klikken met de &LMB;. </para>
+<para
+>U kunt het tekenen van een nieuw object altijd annuleren door op de &Esc;-toets te drukken of door op de knop &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Tekenen Stoppen</guibutton
+> te klikken. </para>
+<screenshot>
+<screeninfo
+>Een cirkel tekenen.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Een cirkel tekenen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Objecten selecteren</title>
+<para
+>U kunt op twee manieren objecten selecteren: </para>
+<itemizedlist>
+<listitem>
+<para
+>U kunt een object selecteren door erop te klikken. De huidige selectie gaat dan verloren.U kunt meerdere objecten tegelijkertijd selecteren door tijdens het klikken op een object de &Ctrl;-toets ingedrukt te houden. </para>
+</listitem>
+<listitem>
+<para
+>Door te klikken en te slepen over een leeg deel van het scherm worden alle objecten in de zo ontstane rechthoek geselecteerd. Hiermee wordt ook de huidige selectie gewist. Zoals in de vorige situatie kunt u dit voorkomen door de &Ctrl;-toets ingedrukt te houden. </para>
+</listitem>
+</itemizedlist>
+<para
+>Met meer dan een object onder de muis (aangegeven door  <guilabel
+>Welk object?</guilabel
+> in de statusbalk en bij de muisaanwijzer)  kunt u eenvoudig een object selecteren of aan de huidige selectie toevoegen. Klik met de &LMB; terwijl u de &Shift;-toets ingedrukt houdt, of klik met de &RMB;, u krijgt dan een venstertje waarin alle objecten onder de muis worden genoemd. U kunt hierin het gewenste object kiezen. Zoals al eerder is gezegd wordt de selectie door de &Ctrl;-toets beïnvloed. </para>
+<screenshot>
+<screeninfo
+>Objecten selecteren</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Objecten selecteren</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Objecten verplaatsen</title>
+<para
+>U moet objecten eerst <link linkend="selecting-objects"
+>selecteren</link
+> voor u ze kunt verplaatsen. </para>
+<para
+>Als u de objecten die u wilt verplaatsen heeft geselecteerd, kunt u ze verplaatsen door ze met de &LMB; te verslepen. Laat de &LMB; weer los als u klaar bent. </para>
+<note
+><para
+>Bij sommige objecttypen (vooral bij gecompliceerde meetkundige plaatsen) kan het verplaatsen daarvan traag zijn op oudere (langzame) hardware. Dit is natuurlijk jammer, maar helaas onvermijdelijk door het vele rekenwerk. </para
+></note
+> <note
+><para
+>U kunt objecten ook verplaatsen door met de &RMB; op een object te klikken en <guimenuitem
+>Verplaatsen</guimenuitem
+> te selecteren in het menu. Door de muis te bewegen verplaatst u het object. Als u het object op de juiste plaats heeft gebracht, kunt u het verplaatsen stoppen door met de &LMB; te klikken.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Objecten verwijderen</title>
+<para
+>U kunt objecten verwijderen door ze te <link linkend="selecting-objects"
+>selecteren</link
+> en daarna één van het volgende te doen: <itemizedlist>
+<listitem>
+<para
+>De &Del;-toets indrukken. </para>
+</listitem>
+<listitem>
+<para
+>Druk op de knop &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Objecten wissen</guibutton
+> in de taakbalk. </para>
+</listitem>
+<listitem>
+<para
+>Door met de <mousebutton
+>rechter</mousebutton
+> muisknop op één van de objecten te klikken en <guimenuitem
+>Verwijderen</guimenuitem
+> te selecteren in het <link linkend="objects-context-menus"
+>contextmenu</link
+> dat verschijnt. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Objecten tonen en verbergen</title>
+<para
+>In &kig; kunnen objecten worden verborgen. Dit kunt u doen door de objecten te selecteren, er met de &RMB; op te klikken en <guimenuitem
+>Verbergen</guimenuitem
+> te selecteren in het <link linkend="objects-context-menus"
+>contextmenu</link
+> dat verschijnt. </para>
+<para
+>Als u de objecten weer wilt terughalen, klikt u op <menuchoice
+><guimenu
+>Bewerken</guimenu
+><guimenuitem
+>Alles tonen</guimenuitem
+></menuchoice
+>. Hierdoor worden alle verborgen objecten weer getoond. </para>
+
+<sect2 id="night-vision">
+<title
+>Nachtvisie</title>
+<para
+>Nachtvisie is een speciale manier van werken met verborgen objecten. Wanneer u iets in een of meer objecten moet verplaatsen of wijzigen zonder alle verborgen objecten die er zijn weer zichtbaar te maken, dan kan nachtvisie nuttig zijn. </para>
+<para
+>In principe kunt u dan de verborgen objecten zien alsof zij zichtbaar zijn, zodat u ze zoals gewoonlijk kunt manipuleren. Bij gebruik van nachtvisie zijn de verborgen objecten zichtbaar in een grijze kleur. </para>
+<para
+>Om de nachtvisie aan/uit te schakelen, kies <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Nachtvisie</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Ongedaan maken/opnieuw</title>
+<para
+>In &kig; kan bijna elke verandering in het document ongedaan worden gemaakt. Klik hiervoor op de knop <guiicon
+>Ongedaan maken</guiicon
+> /<guiicon
+>Opnieuw</guiicon
+> in de werkbalk, in het menu <guimenu
+>Bewerken</guimenu
+> of gebruik de bijbehorende sneltoetsen. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Volledig scherm</title>
+<para
+>&kig; kan ook worden gebruikt in een volledig scherm. Klik hiervoor op de daartoe aanwezige knop in de werkbalk of selecteer <menuchoice
+><guimenu
+>Beeld</guimenu
+> <guimenuitem
+>Volledig-scherm aan/uit</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Als u het volledig scherm weer wilt verlaten, klikt u met de &RMB; op het scherm op een plaats waar geen object is en selecteert u <guimenuitem
+>Volledig scherm aan/uit</guimenuitem
+>, of drukt u op de sneltoetsen <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>Objecttypen van &kig;</title>
+<para
+>&kig; ondersteunt een groot aantal objecttypen. Let er wel op dat niet alle beschikbare objecttypen aanwezig zijn in de werkbalken, maar dat er ook nog enkele objecten zijn die u alleen kunt tekenen via het menu <guimenu
+>Objecten</guimenu
+> in de menubalk. Natuurlijk kunt u, net als bij alle andere &kde;-toepassingen, de inhoud van de werkbalken aanpassen. Probeer de optie <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Werkbalken instellen...</guimenuitem
+></menuchoice
+> als u dit wilt. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Gevorderd gebruik</title>
+<sect1 id="objects-context-menus">
+<title
+>Contextmenu's</title>
+<para
+>&kig; heeft contextmenu's voor de objecten. Door met de &RMB; op een object te klikken wordt een contextmenu geopend. Er zijn vele opties: om andere objecten te tekenen, kleuren, pendikte en stijl in te stellen, en zelfs om objecten te verbergen, te verplaatsen of te verwijderen. Sommige objecten bevatten eigen opties (u kunt bijvoorbeeld bepaalde punten opnieuw definiëren zodat ze beperkt worden tot een lijn als ze dat daarvoor niet waren, enzovoort). Deze opties zijn allemaal erg begrijpelijk. </para>
+
+<para
+>Voor sommige acties in het contextmenu van een object is een ander gedefinieerd object nodig, bij voorbeeld:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Een figuur een bepaald aantal graden roteren om een punt:</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Klik op <menuchoice
+><guimenu
+>Objecten</guimenu
+> <guisubmenu
+>Hoeken</guisubmenu
+><guimenuitem
+>Hoek met drie punten</guimenuitem
+> </menuchoice
+> en maak de gewenste rotatiehoek ergens op een onopvallende plaats in het &kig;venster. Indien gewenst, rechtsklik op de hoek en  klik op <menuchoice
+><guimenu
+>Bijschrift toevoegen</guimenu
+><guimenuitem
+>Hoek in graden</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Klik met de &RMB; op de hoek en selecteer <guimenuitem
+>Grootte instellen</guimenuitem
+> en voer de nieuwe grootte in van de hoek in de dialoog. </para
+></listitem>
+<listitem
+><para
+>Klik op <guimenu
+>Objecten</guimenu
+> en teken het gewenste object. </para
+></listitem>
+<listitem
+><para
+>Rechtsklik op de figuur, en selecteer <menuchoice
+><guimenu
+> Transformeren</guimenu
+><guimenuitem
+>Roteren</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Selecteer het rotatiepunt.</para
+></listitem>
+<listitem
+><para
+>Klik op de hoek.</para
+></listitem>
+<listitem
+><para
+>En uw figuur is geroteerd!</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Een object transleren (verschuiven)</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Klik op <menuchoice
+><guimenu
+>Objecten</guimenu
+> <guisubmenu
+>Vectoren &amp; Lijstukken</guisubmenu
+><guimenuitem
+>Vector</guimenuitem
+> </menuchoice
+> enteken het object door ergens in het &kig;venster het beginpunt en het eindpunt te selecteren.</para
+></listitem>
+<listitem
+><para
+>U kunt de lengte en de richting van de vector aanpassen door het beginpunt en het eindpunt aan te passen. Selecteer die en kies in het contextmenu <guimenuitem
+>Coördinaat instellen...</guimenuitem
+> </para
+></listitem>
+<listitem
+><para
+>Klik op <guimenu
+>Objecten</guimenu
+> en teken het gewenste object. </para
+></listitem>
+<listitem
+><para
+>Rechtsklik op het object, en selecteer <menuchoice
+><guimenu
+>Transformeren</guimenu
+> <guimenuitem
+>Transleren</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Selecteer de vector voor de translatie.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Documentcontextmenu's</title>
+<para
+>Door met de <mousebutton
+>rechter</mousebutton
+> muisknop te klikken op het document (&ie; niet op een object) verschijnt er een menu waarmee u een nieuw object kunt gaan tekenen, het gebruikte coördinatenstelsel kunt wijzigen, verborgen objecten tonen en zelfs inzoomen en uitzoomen op het document, en het volledige scherm kunt instellen. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Macro's definiëren</title>
+<para
+>Eén van de wat meer gevorderde mogelijkheden van &kig; is de ondersteuning voor macro's. Hiermee kunt u nieuwe objecttypen creëren met behulp van andere reeds gedefinieerde objecten. </para>
+<para
+>Laten we een voorbeeld geven. Stelt u zich voor dat u een macro wilt maken die een cirkel tekent als drie punten die erop liggen zijn gegeven. U zou dan de drie punten invoeren, en daarna enkele middens van twee punten en (middel)loodlijnen tekenen tot u het middelpunt van de cirkel vindt. U kunt nu de reeds bestaande opdracht <quote
+>Cirkel met middelpunt &amp; punt</quote
+> gebruiken (met behulp van een van de drie gegeven punten). De volgende afbeelding moet dit allemaal iets duidelijker maken: </para>
+<screenshot>
+<screeninfo
+>Macro's testen</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Macro's testen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Hierna komt het definiëren van de macro.  Selecteer <menuchoice
+><guimenu
+>Types</guimenu
+> <guimenuitem
+>Niuewe macro...</guimenuitem
+></menuchoice
+>, of klik op de &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Nieuwe macro...</guibutton
+> in de werkbalk.  Er verschijnt een assistent waarin gevraagd wordt om de objecten die gegeven zijn te selecteren. In ons voorbeeld zijn het de drie punten. Selecteer deze drie punten (als u klikt worden ze geselecteerd, als u nog eens klikt gedeselecteerd) en klik op <guibutton
+>Volgende</guibutton
+> om door te gaan. Selecteer tenslotte de laatste objecten (in ons voorbeeld alleen de cirkel). </para>
+
+<screenshot>
+<screeninfo
+>De macroassistent</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>De macroassistent</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Als u klaar bent met de vorige stappen, klikt u op de knop <guibutton
+>Volgende</guibutton
+> om door te gaan. Vul een naam in en eventueel een beschrijving van uw nieuwe type, en klik op de knop <guibutton
+>Voltooien</guibutton
+>. Uw macrotype is nu klaar. </para>
+
+<para
+>Om het nieuwe macrotype te gebruiken, klik op de knop ervan in de werkbalk of gebruik het menu <guimenu
+>Objecten</guimenu
+>. Het maken van een macro is net als het maken van elk ander object. </para>
+<screenshot>
+<screeninfo
+>Uw nieuwe type gebruiken</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Uw nieuwe type gebruiken</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Werken met typen</title>
+<para
+>Zoals u heeft gezien in het vorige hoofdstuk, kunt u met &kig; uw eigen objecten maken. Als u een object heeft gemaakt, wordt het door &kig; zelf opgeslagen bij het afsluiten en geladen bij het opstarten. Het is dus niet nodig om macrodefinities zelf op te slaan of te laden. Maar &kig; stelt u ook in staat meer met de macro's te doen. Als u klikt op <guimenuitem
+>Typen beheren...</guimenuitem
+> in het menu <guimenu
+>Typen</guimenu
+>, verschijnt er een dialoogvenster waarin u uw eigen typen kunt bewerken. Typen die u niet meer gebruikt kunt u hiermee verwijderen, u kunt typen in een bestand opslaan en u kunt ze zelfs inlezen uit een ander bestand. </para>
+<screenshot>
+<screeninfo
+>Dialoogvenster Typen beheren</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het dialoogvenster Typen beheren</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Tekstlabels</title>
+<para
+>Met &kig; kunt u teksten aan een tekening toevoegen. Zo kunt u bijvoorbeeld namen, uitleg en andere tekst bij uw tekeningen zetten. Ook kan &kig; hiermee variabele informatie tonen over objecten (ook wel bekend als <quote
+>eigenschappen</quote
+>). </para>
+<para
+>Om een tekst te maken klikt u op de knop  &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Bijschrift</guibutton
+>  in de werkbalk van &kig; , of selecteer in het menu  <menuchoice
+><guimenu
+>Objecten</guimenu
+> <guisubmenu
+>Anders</guisubmenu
+><guimenuitem
+>Bijschrift</guimenuitem
+> </menuchoice
+>. </para>
+<para
+>Nu moet u de plaats van de tekst aangeven. U kunt gewoon een plaats op het scherm kiezen, maar u kunt de tekst ook <quote
+>koppelen</quote
+> aan een object. </para>
+<screenshot>
+<screeninfo
+>Een label aan een cirkel koppelen...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Een label aan een cirkel koppelen...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Nadat u een plaats heeft gekozen, verschijnt het dialoogvenster Tekstlabel. Hierin kunt u de gewenste tekst intypen. Klik op <guibutton
+>Voltooien</guibutton
+> om de tekst op te nemen in uw document. </para>
+<screenshot>
+<screeninfo
+>Het dialoogvenster Tekstlabel</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het dialoogvenster Tekstlabel</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Het vorige voorbeeld was erg eenvoudig, en beperkt tot alleen tekst. Het is echter ook mogelijk veranderlijke informatie over objecten in een tekst op te nemen (u kunt bijvoorbeeld een tekst maken: <quote
+>Dit lijnstuk is %1 eenheden lang</quote
+> waarin <token
+>%i</token
+> vervangen zal worden door de lengte van het betreffende lijnstuk). </para>
+<para
+>Als voorbeeld, vult u een tekst in met een aantal argumenten (<token
+>%1</token
+>, <token
+>%2</token
+>, enzovoort). Klik op <guibutton
+>Volgende</guibutton
+> als u klaar bent. U kunt altijd weer teruggaan als u de tekst of argumenten wilt wijzigen met de knop <guibutton
+>Vorige</guibutton
+>. </para>
+<para
+>De assistent toont nu de tekst die u heeft ingevuld waarin alle argumenten vervangen zijn door zoiets als <guilabel
+>argument 1</guilabel
+>. Het selecteren van de eigenschap die bij een bepaald argument hoort gebeurt door eerst te klikken op het argument waarom het gaat. Daarna klikt u op het object dat u eraan wilt koppelen en daarna selecteert u de gewenste eigenschap in het nu verschenen contextmenu.In het voorbeeld hierboven zou u klikken op <guilabel
+>argument 1</guilabel
+>, daarna op het juiste lijnstuk in het venster van &kig; en als laatste op de eigenschap <guilabel
+>Lengte</guilabel
+>. Hierna kunt u de rest van de variabelen invullen of een andere eigenschap kiezen voor één van de variabele gedeelten als u die zou willen veranderen. Als u klaar bent drukt u op <guibutton
+>Voltooien</guibutton
+> om de tekst te voltooien. </para>
+<screenshot>
+<screeninfo
+>Een eigenschap kiezen voor een variabele</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Een eigenschap kiezen voor een variabele</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Meetkundige plaatsen</title>
+<para
+>In &kig; worden meetkundige plaatsen gebruikt. Een meetkundige plaats wordt in de wiskunde gedefinieerd als de verzameling van punten met een bepaalde eigenschap zoals <quote
+>(In een plat vlak is) de meetkundige plaats van alle punten die even ver liggen vanaf een bepaald punt een cirkel</quote
+>. Hier volgt een voorbeeld hoe in &kig; meetkundige plaatsen worden gebruikt. </para>
+<para
+>Beschouw de volgende meetkundige constructie: we tekenen een cirkel en een punt dat zich op de omtrek van de cirkel kan bewegen (dit kunt u doen door met de &MMB; te klikken op de omtrek van een cirkel: als u daarna het punt probeert te verplaatsen zult u zien dat het punt niet van de cirkel af kan gaan). Daarna tekenen we een lijnstuk vanaf dat punt tot aan het middelpunt van de cirkel, en vervolgens het midden van dat lijnstuk. </para>
+<screenshot>
+<screeninfo
+>Een eenvoudige constructie met een meetkundige plaats</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Een eenvoudige constructie met een meetkundige plaats</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Als u nu het punt dat gedwongen op de cirkel ligt verplaatst zult u zien dat het tweede punt meebeweegt. Als u een pen zou houden boven het tweede punt en u het eerste punt de hele cirkel rond zou bewegen, wordt er een nieuwe cirkel getekend, met een straal half zo groot als van de eerste. Deze meetkundige plaats is de weg die het tweede punt beschrijft terwijl het eerste punt rond de cirkel beweegt. </para>
+<para
+>Het werkelijk tekenen van de meetkundige plaats van een punt is erg eenvoudig. Klik op de knop &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>Meetkundige plaats</guibutton
+> in de werkbalk, of selecteer in het menu <menuchoice
+><guimenu
+>Objecten</guimenu
+> <guisubmenu
+>Anders</guisubmenu
+><guimenuitem
+>Meetkundige plaats</guimenuitem
+></menuchoice
+>. Selecteer daarna het gedwongen punt als het bewegende punt (de tekst  <guilabel
+>Bewegend punt</guilabel
+> verschijnt als u de muis erover beweegt), en het andere als het  <guilabel
+>Afhankelijke punt</guilabel
+>. Daarna wordt de meetkundige plaats van het afhankelijke punt getekend. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Scripts</title>
+<para
+>In &kig; kan de gebruiker eigen typen maken met behulp van de scripttaal Python. Dit is een zeer geavanceerde functie, en ik ken slechts één ander programma voor interactieve geometrie dat ook zulke functionaliteit heeft: het <acronym
+>GNOME</acronym
+>-programma &drgeo;. </para>
+<para
+>Met scripts in Python kunt u in &kig; uw eigen objecten definiëren vanuit bepaalde oorspronkelijke objecten. Als u bijvoorbeeld een wiskundeleraar bent en een leuke manier heeft om een interessant punt of kegelsnede te berekenen, dan kunt u heel eenvoudig in Python-code opschrijven hoe het punt wordt berekend in plaats van te stoeien met ingewikkelde constructies en macro's. &kig; zal het dan voor u demonstreren. </para>
+<para
+>Stel sat u niet weet van het bestaan van in &kig; ingebouwde type <quote
+>Middenpunt</quote
+>, en u wilt het midden tonen tussen twee punten. U zou dan klikken op de knop &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Python Script</guibutton
+> in de werkbalk, of  <menuchoice
+><guimenu
+>Objecten</guimenu
+><guisubmenu
+>Anders</guisubmenu
+> <guimenuitem
+>Python Script</guimenuitem
+></menuchoice
+> selecteren in het menu. Daarna ziet u dan de assistent die u verder helpt. </para>
+<screenshot>
+<screeninfo
+>De assistent Scriptobject</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>De assistent Scriptobject</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Het eerste dat u moet doen is het selecteren van de argumenten voor het scriptobject. In ons voorbeeld moeten we de twee punten selecteren waarvan we het midden willen verkrijgen. Selecteer deze twee punten in het hoofdvenster van &kig; en klik op <guibutton
+>Volgende</guibutton
+> om door te gaan. </para>
+<para
+>Nu krijgt u een tekstvak te zien waarin u de programmacode voor het scriptobject kunt invoeren. Er staan al wat programmaregels in van een sjabloon, met wat commentaar. Het is belangrijk dat de code die u invoert goede Python-code is. Als u al bekend bent met Python zult u opmerken dat we hier een functie definiëren met de naam <function
+>calc</function
+>. Daarom moet u wel weten hoe in Python functies worden gedefinieerd. Elke regel van het functieblok moet bijvoorbeeld beginnen met een tab. De eerste regel die niet begint met een tab geeft het einde van de functiedefinitie aan. </para>
+<para
+>De Python-functie die we hier willen definiëren heet <quote
+>calc</quote
+>, en accepteert in ons voorbeeld twee argumenten. Deze argumenten komen overeen met de objecten die u heeft geselecteerd als argumenten in de vorige stap. Hier verschijnen er dus evenveel argumenten als u daar geselecteerd heeft. Ze heten <parameter
+>arg1</parameter
+> en <parameter
+>arg2</parameter
+>, maar als u wilt kunt u die namen veranderen in duidelijker namen. </para>
+<para
+>In deze functie kunt u alle soorten berekeningen uitvoeren die u nodig acht, waarbij u waar nodig beide argumenten kunt gebruiken. Het object dat u wenst moet het eindresultaat zijn. In ons voorbeeld is dat een Point-object (een punt dus). De argumenten zijn ook Point-objecten waarbij we de functie <function
+>Point.coordinate()</function
+> kunnen gebruiken om de coördinaten van de twee gegeven punten in vast te leggen. </para>
+<para
+>De berekening die in ons voorbeeld moet worden gedaan is erg eenvoudig, we tellen de coördinaten van beide punten simpelweg bij elkaar op en delen het resultaat door twee. Daarna tekenen we een nieuw punt met de berekende coördinaten. De Python-code luidt als volgt:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>De code invoeren</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>De code invoeren voor het midden van twee punten in de assistent Scriptobject.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Het nieuwe object zal verschijnen in het &kig;-document als u op de knop <guibutton
+>Voltooien</guibutton
+> heeft geklikt. Wanneer u één van de punten verplaatst zal het zojuist gemaakte punt met de twee punten meebewegen. Op deze manier kunt u  veel ingewikkelder objecten maken, en u wordt aangemoedigd om dat eens te proberen. </para>
+<screenshot>
+<screeninfo
+>Er is een scriptobject geconstrueerd</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het zojuist geconstrueerde scriptobject. </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Alle objecten van &kig; kunnen worden gebruikt in de Python-code. Zoals we zojuist zagen zijn punten van de "class" <classname
+>Point</classname
+>., waarbij u bijvoorbeeld de "method" <function
+>Point.coordinate()</function
+> kunt gebruiken. Evenzo kunt u alle soorten objecten maken, niet alleen objecten van de "class" <classname
+>Point</classname
+>. In Python-scripts in &kig; kunt u nog veel meer "classes" en "methods" gebruiken. Een vollediger naslagwerk op dit gebied kunt u vinden op de <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+> website van &kig;</ulink
+>.
+Noot: class(es) en method(s) zijn termen uit de programmeertaal, in dit geval Python. Om succesvol met zo'n taal aan de gang te gaan moeten dit soort begrippen uiteraard bekend zijn of kunnen worden opgezocht, reden om die niet te vertalen. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>Mogelijkheden van &kig;</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; is een open-sourcetoepassing. Dat betekent dat u vrij bent om het te gebruiken en aan te passen als u dat wilt. Er zijn enkele beperkingen aan het verspreiden van &kig;, hoofdzakelijk dat iedereen dezelfde rechten om &kig; te gebruiken moet hebben, met inbegrip van uw wijzigingen ,als u en ik. </para>
+<para
+>Vrije software wordt ontwikkeld op een erg open manier en de ontwikkelaars ontvangen meestal graag ondersteuning van gebruikers. Als u vragen, klachten of wat dan ook over &kig; neem dan contact op via de e-maillijst kde-edu <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&kig; is een KPart-toepassing. Dit betekent dat het mogelijk is om het in te bedden in andere &kde;-software. Als u een <literal role="extension"
+>.kig</literal
+>-bestand in &konqueror; opent kan het direct in het scherm van &konqueror; worden getoond zonder dat u een externe applicatie hoeft te starten. </para>
+</listitem>
+<listitem>
+<para
+>Het gebruik van &kig; moet eenvoudig te leren zijn. Het tekenen van objecten is eenvoudig en interactief, waarbij er steeds voorlopige resultaten worden getoond, enzovoort. Verplaatsen, selecteren en het opbouwen van een tekening werken allemaal zoals u zou verwachten, net als het ongedaan maken van bewerkingen. </para>
+</listitem>
+<listitem>
+<para
+>&kig; heeft ondersteuning voor macro's op een manier die eenvoudig te leren is. Deze macro's zijn objecten die voor de gebruiker er net zo uitzien als normale objecten. De macro's worden opgeslagen bij afsluiten en ingelezen bij opstarten, ze gaan dus niet verloren bij afsluiten. In het dialoogvenster <guilabel
+>Typen beheren</guilabel
+> kunt u deze objecten beheren (zie <xref linkend="working-with-types"/>). U kunt deze typen exporteren (opslaan in) naar bestanden, ze uit bestanden importeren (inlezen) en verwijderen. </para>
+</listitem>
+<listitem>
+<para
+>&kig; slaat de gegevens op in een duidelijk &XML;-formaat. </para>
+</listitem>
+<listitem>
+<para
+>Met &kig; kunt u meetkundige plaatsen tekenen. </para>
+</listitem>
+<listitem>
+<para
+>Met &kig; kunt u uw &kig;-bestanden exporteren naar enkele interessante bestandsformaten, zoals afbeeldingen en<application
+>XFig</application
+>- en <application
+>LaTeX</application
+>-bestanden, en &SVG;-vectorafbeeldingen. Dit is erg handig, omdat (tot nu toe) niet alle programma's het &kig;-formaat ondersteunen. </para>
+</listitem>
+<listitem>
+<para
+>&kig; heeft een erg flexibel transformatiesysteem. </para>
+</listitem>
+<listitem>
+<para
+>Met &kig; willen we graag compatibel zijn met de concurrenten. Daarom worden in &kig; de bestandsformaten van &kgeo; en &kseg; ondersteund, gedeeltelijk die van &drgeo; en &cabri;, en ondersteuning voor andere formaten is ook voorgenomen. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Dankbetuigingen en licentie</title>
+
+<para
+>Belangrijkste auteurs: </para>
+<para
+>&kig; copyright 2011-2015 David E. Narvaez <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>&kig; copyright 2002-2013 Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>&kig; copyright 2004-2010 Pino Toscano <email
+>pino@kde.org</email
+> </para>
+<para
+>&kig; copyright 2002-2005 Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Documentatiecopyright 2002-2004 Dominique Devriese. <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Documentatiecopyright 2004-2005 Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>Nagelezen (Engelse tekst) door &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+&meld.fouten;&vertaling.jaap; &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Meewerken</title>
+<sect1 id="kig-is-free">
+<title
+>Vrije software</title>
+<para
+>&kig; is <ulink url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+>vrije software</ulink
+>. Dat betekent dat de broncode vrij beschikbaar is op het internet, waarbij iedereen die kan gebruiken, bekijken, aanpassen en verspreiden. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Meewerken</title>
+<para
+>In dit hoofdstuk wil ik u (de gebruiker) de rechten die de licentie van &kig; u geeft duidelijk maken. Net als met alle andere vrije software is het u toegestaan (en aanbevolen) om problemen op te lossen die u opmerkt u tijdens het werken met dit programma, om functies toe te voegen die u mist en om uw gewijzigde versie verder te verspreiden en de wijzigingen terug te sturen voor invoegen via de hulpmiddelen voor revisie beschikbaar voor de &kde;-gemeenschap. </para>
+<para
+>Als u niet zeker weet wat uw rechten zijn bij het gebruik van deze software, of die van andere gebruikers wat betreft de veranderingen die door u zijn aangebracht &etc;, leest u dan de licentie. U kunt deze vinden in het bestand <filename
+>COPYING</filename
+> bij de bronbestanden van &kig; of in het tabblad <guilabel
+>licentie</guilabel
+> in het dialoogvenster <guilabel
+>Info over &kig;</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Hoe kan ik meehelpen?</title>
+<para
+>Elke medewerking is welkom. Als u vindt dat de pictogrammen lelijk zijn, dat de handleiding toe is aan vernieuwing, of dat u een geweldige macro heeft ontwikkeld die u wilt delen met de rest van de wereld, twijfel dan niet om het naar me op te sturen. Uw toevoegingen zullen worden verspreid onder de voorwaarden van de &GNU;-<acronym
+>GPL</acronym
+>; de voorwaarden van deze licentie kunt u vinden in het bestand <filename
+>COPYING</filename
+> bij de broncodebestanden van &kig; en in het hoofdstuk <link linkend="credits"
+>Dankbetuigingen en licentie</link
+> in deze handleiding. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

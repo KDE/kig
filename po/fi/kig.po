@@ -1,0 +1,7084 @@
+# translation of kig.po to Finnish
+# KDE Finnish translation sprint participants:
+# Author: Lliehu
+# Marko Gronroos <magi@iki.fi>, 2004.
+# Ilpo Kantonen <ilpo@iki.fi>, 2005, 2006.
+# Kim Enkovaara <kim.enkovaara@iki.fi>, 2006.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015.
+# Tommi Nieminen <translator@legisign.org>, 2018, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2022-07-20 22:01+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-POT-Import-Date: 2012-12-01 22:23:16+0000\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Marko Grönroos, Ilpo Kantonen, Lasse Liehu, Tommi Nieminen"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"magi@iki.fi, ilpo@iki.fi, lasse.liehu@gmail.com, translator@legisign.org"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Ympyrä keskipisteen && tangentin mukaan"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr ""
+"Ympyrä, joka on muodostettu sen keskipisteen ja annetun janan muodostaman "
+"tangentin mukaan"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Muodosta tämän janan tangenttina oleva ympyrä"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Valitse jana, joka toimii uuden ympyrän tangenttina…"
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Ympyrä pisteen ja janan mukaan (halkaisijana)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+"Ympyrä, joka on määritelty sen keskipisteen ja säteen mukaisen janan "
+"pituuden mukaan"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Muodosta ympyrä, jonka säde on tämän janan pituinen"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr "Valitse jana, jonka pituus määrittelee uuden ympyrän säteen…"
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Tasasivuinen kolmio"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Tasasivuinen kolmio annettuine kaksine sivuineen"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Evoluutio"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Kaaren keskipisteiden ura"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Tämän kaaren keskipisteiden ura"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Oskuloiva ympyrä"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Käyrän oskuloiva ympyrä pisteessä"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Oskuloi tämän käyrän ympyrä"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Tämän pisteen oskuloiva ympyrä"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Valitse piste…"
+
+#, kde-format
+msgid "Square"
+msgstr "Neliö"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Neliö annetuilla kahdella vierekkäisellä sivulla"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Vektorierotus"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Muodosta kahden vektorin vektorierotus."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Muodosta tämän ja annetun toisen vektorin erotus."
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Muodosta annetun toisen ja tämän vektorin erotus."
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Muodosta vektorien erotus alkaen tästä pisteestä."
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Valitse ensimmäinen kahdesta vektorista, joiden erotuksen haluat muodostaa…"
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Valitse toinen kahdesta vektorista, joiden erotuksen haluat muodostaa…"
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Valitse piste, johon erotusvektori muodostetaan…"
+
+#: filters/asyexporter.cc:29
+#, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Vie &Asymptote-ohjelmana…"
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr "&Asymptote…"
+
+#: filters/asyexporter.cc:45
+#, kde-format
+msgid "Asymptote Documents (*.asy)"
+msgstr "Asymptote-tiedostot (*.asy)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr "Vie Asymptote-ohjelmana"
+
+#: filters/asyexporter.cc:48
+#, kde-format
+msgid "Asymptote Options"
+msgstr "Asymptote-valinnat"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"Tiedostoa \"%1\" ei saa avattua. Tarkista, että tiedoston oikeudet on "
+"asetettu oikein."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Valinnat"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Näytä ylimääräinen kehys"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Näytä akselit"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Näytä ruudukko"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Tämä on XFig-tiedosto, ei Cabri-kaavio."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Tätä Cabrin versiota (%1) ei vielä tueta.\n"
+"Auta sen tukemisessa ottamalla yhteyttä Kigin tekijöihin."
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr "Tämä Cabri-tiedosto sisältää olion ”%1”, jota Kig ei tue."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Tiedoston %2 rivillä %1 tapahtui virhe."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr ""
+"Dr. Geo -tiedosto \"%1\" on makrotiedosto, joten se ei sisällä kaavioita."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Dr. Geo -tiedosto \"%1\" ei sisällä kaavioita."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo -suodatin"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Valittu Dr. Geo -tiedosto sisältää useampia kaavioita.\n"
+"Valitse tuotava kaavio:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr "Dr. Geo -tiedosto sisältää olion ”%1 %2”, jota Kig ei tue."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr "Dr. Geo -tiedosto sisältää leikkaustyypin, jota Kig ei tue."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Vie kuvana"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Kuvana…"
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Vie kuvana"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Kuvan asetukset"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Tätä tiedostomuotoa ei tueta."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Tallennettaessa kuvana tiedostoon \"%1\" tapahtui virhe."
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Vie"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Tiedostoa \"%1\" ei saa avattua. Tämä todennäköisesti tarkoittaa, että sitä "
+"joko ei ole olemassa tai että sitä ei voida avata puuttuvien oikeuksien "
+"vuoksi."
+
+#: filters/filter.cc:76
+#, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "Tätä tiedostoa luettaessa tapahtui virhe.  Sitä ei voida avata."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Jäsennysvirhe"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Ei tuettu"
+
+#: filters/filter.cc:88
+#, kde-format
+msgid "Kig cannot open this file."
+msgstr "Kig ei voi avata tätä tiedostoa."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Kuvatarkkuus"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "Säilytä muoto"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Korkeus:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Leveys:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr "Tuotava KSeg-kaavio käyttää skaalausmuunnosta, jota Kig ei tue."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr "Tuotava KSeg-tiedosto sisältää täytetyn ympyrän, jota Kig ei tue."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr "Tuotava KSeg-tiedosto sisältää kaarisektorin, jota Kig ei tue."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr "Tuotava KSeg-tiedosto sisältää kaarisegmentin, jota Kig ei tue."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Vie &Latexina…"
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex…"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Latex Documents (*.tex)"
+msgstr "LaTeX-tiedostot (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Vie Latexina"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Latex-asetukset"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "Tulostemuoto"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr "PSTricks"
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr "Tikz/PGF"
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "Asymptote"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, kde-format
+msgid "Document options"
+msgstr "Kaavion valinnat"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr "Vain kuva"
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr "Itsenäinen kaavio"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Tiedosto on luotu Kigin versiolla \"%1\", jota tämä versio ei kykene "
+"lukemaan."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Tämä tiedosto on luotu Kigin versiolla \"%1\".\n"
+"Kigistä on poistettu tuki vanhemmille (versiota 0.4 varhaisemmille) "
+"tiedostomuodoille.\n"
+"Voit yrittää avata tämän tiedoston vanhemmalla Kigin versiolla (0.4:sta 0.6:"
+"een),\n"
+"ja sitten tallentaa sen uudelleen, jolloin se tallennetaan uudessa "
+"tiedostomuodossa."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Kig-tiedostossa käytetään koordinaattijärjestelmää, jota tämä Kig-versio ei "
+"tue.\n"
+"Se korvataan käyttämällä tavallista koordinaattijärjestelmää."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Kig-tiedostossa on ”%1”-tyypin olio, jota tämä Kig-versio ei tue. Kig on "
+"saatettu kääntää ilman tämän oliotyypin tukea tai käytössä on Kigin vanha "
+"versio."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Kig-tiedostossa on tyypin %1 olio, joka on vanhentunut. Tallenna muodostelma "
+"eri nimellä ja tarkista, että se toimii odotetusti."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "&Vie SVG:nä…"
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG…"
+
+# SVG on erisnimi.
+#: filters/svgexporter.cc:46
+#, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "SVG-tiedostot (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Vie SVG:nä"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG-asetukset"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Tallennettaessa SVG-tiedostoon \"%1\" tapahtui virhe."
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Vie kaavio &XFig-tiedostona"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig-tiedostona…"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "XFig Documents (*.fig)"
+msgstr "XFig-tiedostot (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Vie kaavio XFig-tiedostona"
+
+# pmap: =/gen=Kigin/
+# pmap: =/elat=Kigistä/
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE:n vuorovaikutteinen geometria"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "© 2002–2005 Kigin kehittäjät"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr "David E. Narvaez"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr "Nykyinen ylläpitäjä."
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "Alkuperäinen tekijä, aiempi ylläpitäjä, suunnittelu ja paljon koodia."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Teki paljon tärkeää työtä ympäri Kigiä, kuten kartioleikkaukset, kolmannen "
+"asteen käyrät, transformaatiot ja ominaisuuksien testaustuen."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Aiempi ylläpitäjä, Dr. Geo -tuontisuodatin, piste- ja suoratyylit, italian "
+"käännös, sekalaisia asioita sinne tänne."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Auttoi paljon Paikka-olion toteutuksessa, joka vaatii melkoisesti "
+"matematiikkaa. Franco kirjoitti vaikeimmat osat."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr "Francesca Gatti"
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Vastaa uran algebrallisen yhtälön laskennasta."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr "Petr Gajdos"
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Bézier-käyrät ja niihin liittyvät kuvakkeet."
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr "Raoul Bourquin"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Teki asymptote-vientisuodattimen."
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, kde-format
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"Ranskan kielen kääntäjä, joka lähetti hyödyllistä palautetta, kuten pyyntöjä "
+"ominaisuuksista ja vikailmoituksia."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"KGeon tekijä, jolta sain idean, hiukan koodia ja suurimman osan kuvituksesta."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Domin veli, jonka hän sai toteuttamaan algoritmin joka laskee ympyrän "
+"keskipisteen, kun kolme pistettä on annettu."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud’homme"
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr "Lähetti korjauksia joihinkin ohjelmavirheisiin."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Lähetti hyvää Kigiä koskevaa palautetta, joitain pyyntöjä ominaisuuksista, "
+"siistimistä ja tyylikorjauksia, ja jutusteli ircissä :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Vastaa hienosta SVG-kuvakkeesta."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Vastaa kohteiden hienoista toimintokuvakkeista."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr "Tarvittavaa Kig-ohjelmakirjastoa ei löytynyt. Tarkista asennuksesi."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr "Avaa tiedosto"
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Poista %1 olio"
+msgstr[1] "Poista %1 oliota"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Lisää %1 olio"
+msgstr[1] "Lisää %1 oliota"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "&Aseta koordinaattijärjestelmä"
+
+#: kig/kig_part.cpp:125
+#, kde-format
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Kig-asetukset"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Näytä ruudukko"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Näytä akselit"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Käännä valinta"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Poista oliot"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Poista valitut oliot"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Peru muodostaminen"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Peru olio muodostaminen"
+
+#: kig/kig_part.cpp:237
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Toista muodostaminen"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Toista viimeisin muodostaminen (uudella datalla)"
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "&Näytä kaikki"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Näytä kaikki piilo-oliot"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Uusi makro"
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Määrittele uusi makro"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "&Makrojen hallinta…"
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Makrojen hallinta."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr "&Selaa historiaa…"
+
+#: kig/kig_part.cpp:263
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Selaa nykyisen muodostelman historiaa."
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Lähennä kaaviota"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Loitonna kaaviota"
+
+# ”Uudelleen” on tarpeeton sana.
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Keskitä näyttö kaavioon"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Näytä kaavio koko näytössä."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "&Valitse näytettävä alue"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Valitse alue, jonka haluat näytettävän ikkunassa."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "&Määritä näytettävä alue"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Aseta &koordinaattien tarkkuus…"
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr "Aseta kaavion koordinaattien liukulukutarkkuus. "
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Näytä &ruudukko"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Näytä tai piilota ruudukko."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "Näytä &akselit"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Näytä tai piilota akselit."
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Käytä infrapunalaseja"
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Salli/estä piilotettujen olioiden näkyminen."
+
+#: kig/kig_part.cpp:347
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Toista muodostaminen (%1)"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "Toista %1 (uudella datalla)"
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Tiedostoa ”%1”, jota yritit avata, ei ole olemassa. Tarkista, että antamasi "
+"polku oli oikea."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Tiedostoa ei löydy"
+
+#: kig/kig_part.cpp:394
+#, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"Yritit avata ”%1”-tyyppisen tiedoston. Kig ei valitettavasti tue tätä "
+"tiedostomuotoa. Jos sille kannattaisi mielestäsi toteuttaa tuki, voit tehdä "
+"pyynnön ominaisuuden toteuttamiseksi <a href=\"https://bugs.kde.org/"
+"enter_bug.cgi?product=kig&bug_severity=wishlist\">KDE:n "
+"vianseurantajärjestelmään</a>"
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Tiedostomuotoa ei tueta"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig ei tue tallennusta mihinkään muuhun kuin omaan tiedostomuotoonsa. "
+"Tallennetaanko Kigin tiedostomuodossa?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Talleta Kigin muodossa"
+
+#: kig/kig_part.cpp:695
+#, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr "Kig-tiedostot (*.kig);;Pakatut Kig-tiedostot (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Tiedosto \"%1\" on jo olemassa. Haluatko kirjoittaa sen yli?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Korvataanko tiedosto?"
+
+#: kig/kig_part.cpp:857
+#, kde-format
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Tulostusgeometria"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Piilota %1 olio"
+msgstr[1] "Piilota %1 oliota"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Näytä %1 olio"
+msgstr[1] "Näytä %1 oliota"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Lähennä"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Loitonna"
+
+# ”Uudelleen” on tarpeeton sana.
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Keskitä näyttö"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Valitse näytettävä suorakaide."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Muuta kuvaruudun näytettävää osaa"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Valitse näytettävä alue"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Valitse suurennusalue antamalla vasemman yläkulman<br /> ja oikean alakulman "
+"koordinaatit."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Tiedosto"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "&Muokkaa"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&Näytä"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Oliot"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "P&isteet"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Suorat"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Ympyrät ja kaaret"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "&Monikulmiot"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Vektorit ja janat"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "Kartioleikkaukset ja kolmannen asteen käyrät"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Lisää kartioleikkauksia"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "K&olmannen asteen käyrät"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr "&Bézier-käyrät"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "Kulm&at"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Muunnokset"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Differentiaaligeometria"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "T&estit"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "M&uut"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "Ma&krot"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "T&yökalut"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Päätyökalurivi"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Pisteet"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Suorat"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Vektorit && janat"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Ympyrät && kaaret"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Kartioleikkaukset"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, kde-format
+msgid "Bézier Curves"
+msgstr "Bézier-käyrät"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Kulmat"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Muunnokset"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Testit"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Muut oliot"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Näkymä"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "&Asetukset"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Älä näytä graafista käyttöliittymää. Muunna annettu tiedosto Kigin omaan "
+"tiedostomuotoon. Tulostus tehdään oletustulosteeseen, paitsi jos --outfile "
+"on annettu."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Tiedosto, johon luotu Kig-muotoinen tiedosto kirjoitetaan. '-' tarkoittaa "
+"tulostusta oletustulosteeseen, joka on myös oletuksena."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr "kde.org"
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Avattava kaavio"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Piste numerokenttien mukaan"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "Piste, jonka koordinaatit määräytyvät kahden numerokentän mukaan"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Jana"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Alku- ja päätepisteestä muodostettu jana"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Janan akseli"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Annetun janan keskipisteen läpi kulkeva kohtisuora suora."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Suora kahden pisteen mukaan"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Kahden pisteen läpi kulkevaksi muodostettu suora"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Puolisuora"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr ""
+"Alkupisteen ja suoralla olevan toisen pisteen mukaan muodostettu puolisuora."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Kohtisuora"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Toisen suoran tai janan kanssa kohtisuora ja pisteen läpi kulkeva suora."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Yhdensuuntaissuora"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+"Pisteen kautta kulkeva, toisen suoran tai janan kanssa yhdensuuntainen suora."
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Ympyrä keskipisteen ja pisteen mukaan"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Keskipisteen ja kehällä olevan pisteen mukaan muodostettu ympyrä."
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Ympyrä kolmen pisteen mukaan"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Kolmen kehäpisteen läpi kulkevaksi muodostettu ympyrä"
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Ympyrä pisteen && säteen mukaan"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Ympyrä, joka on määritelty sen keskipisteen ja säteen pituuden mukaan"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Muodosta tämän kulman puolittaja"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Valitse kulma, jolle haluat muodostaa puolittajan…"
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Kulman puolittaja"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Kulman puolittaja"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Kartioleikkaus viiden pisteen mukaan"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Kartioleikkaus, joka on muodostettu viiden pisteen läpi kulkevaksi"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Hyperbeli asymptoottien && pisteen mukaan"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr ""
+"Hyperbeli, joka on muodostettu pisteen läpi kulkevien asymptoottien väliin"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Ellipsi polttopisteiden && pisteen mukaan"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr ""
+"Ellipsi, joka on muodostettu sen polttopisteiden ja kehällä olevan pisteen "
+"mukaan"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Hyperbeli polttopisteiden && pisteen mukaan"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr ""
+"Hyperbeli, joka on muodostettu sen polttopisteiden ja kehällä olevan pisteen "
+"mukaan"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Kartioleikkaus johtosuoran, polttopisteen && pisteen mukaan"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+"Pisteen läpi kulkeva kartioleikkaus annetulla johtosuoralla ja "
+"polttopisteellä"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Pystysuuntainen paraabeli kolmen pisteen mukaan"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Kolmen pisteen läpi kulkevaksi muodostettu pystysuuntainen paraabeli"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Kolmannen asteen käyrä yhdeksän pisteen mukaan"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr ""
+"Kolmannen asteen käyrä, joka on muodostettu sen yhdeksän pisteen mukaan"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Suoran polaaripiste"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Suoran polaaripiste suhteessa kartioleikkaukseen."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Pisteen polaarisuora"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Pisteen polaarisuora suhteessa kartioleikkaukseen."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Kolmannen asteen käyrä solmulla kuuden pisteen mukaan"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr ""
+"Kuuden pisteen läpi kulkeva kolmannen asteen käyrä, jolla on solmun "
+"muodostava piste origossa"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Kolmannen asteen käyrä sakaralla neljän pisteen mukaan"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+"Neljän pisteen läpi kulkeva kolmannen asteen käyrä, jossa on vaakasuuntainen "
+"sakara origossa"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Kolmannen asteen käyrä neljän pisteen mukaan"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr ""
+"Kolmannen asteen käyrä, joka on muodostettu neljän pisteen läpi kulkevaksi"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Kartioleikkauksen johtosuora"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Kartioleikkauksen johtosuora"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Kulma kolmen pisteen mukaan"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Kulma, joka on määritelty kolmen pisteen mukaan"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Tasasivuinen hyperbeli neljän pisteen mukaan"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr ""
+"Tasasivuinen hyperbeli, joka on muodostettu kulkemaan neljän annetun pisteen "
+"läpi"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Muodosta tämän janan keskipiste"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Keskipiste"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Janan tai kahden muun pisteen keskipiste"
+
+#: misc/builtin_stuff.cc:264
+#, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr "Muodosta tämän janan kultaisen leikkauksen piste"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, kde-format
+msgid "Golden Ratio Point"
+msgstr "Kultaisen leikkauksen piste"
+
+#: misc/builtin_stuff.cc:274
+#, kde-format
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Janan tai kahden muun pisteen kultaisen leikkauksen piste"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Vektori"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Muodosta vektori kahden annetun pisteen mukaan."
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Vektorisumma"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Muodosta kahden vektorin vektorisumma."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Vektorin suuntainen suora"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr ""
+"Muodosta annetun pisteen läpi kulkeva, annetun vektorin suuntainen suora."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Vektorin suuntainen puolisuora"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr ""
+"Muodosta annetusta pisteestä alkava, annetun vektorin suuntainen puolisuora."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Kaari kolmen pisteen mukaan"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Muodosta kolmen annetun pisteen läpi kulkeva kaari"
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Kartioleikkauksen kaari keskipisteen ja kolmen pisteen mukaan"
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr ""
+"Muodosta kolmen annetun pisteen läpi kulkeva kartioleikkauksen kaari "
+"annetulla keskuspisteellä."
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Kartioleikkauksen kaari viiden pisteen mukaan"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Muodosta viiden annetun pisteen läpi kulkeva kartioleikkauksen kaari."
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Kaari keskipisteen, kulman && pisteen mukaan"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "Muodosta kaari antamalla sen keskipiste, kulma ja alkupiste"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Paraabeli johtosuoran && polttopisteen mukaan"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Johtosuoran ja polttopisteen perusteella määritelty paraabeli"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Siirrä"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Olion siirto vektorin mukaan"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Peilaa pisteen mukaan"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Pisteen mukaan peilattu olio"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Peilaa suoran mukaan"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Suoran mukaan peilattu olio"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Kierrä"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Pisteen ympäri kulman mukaan kierretty olio"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Skaalaa"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Skaalaa oliota pisteeseen nähden janan pituuden määrittämän suhteen verran"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Skaalaa suoran yli"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr "Suoran yli janan pituuden määrittämän suhteen verran skaalattu olio"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Skaalaa (suhde annettu kahdella segmentillä)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Skaalaa oliota pisteeseen nähden kahden segmentin pituuden määrittämän "
+"suhteen verran"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Skaalaa oliota suoraan nähden (suhde annettu kahdella segmentillä)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Suoran yli kahden segmentin pituuden määrittämän suhteen verran skaalattu "
+"olio"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Yhdenmuotoisuuskuvaus"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Sovella olioon yhdenmuotoisuuskuvausta (keskipisteen ympäri tapahtuvaa "
+"skaalausta ja kiertoa)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Harmoninen homologia"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Harmoninen homologia annetulla keskipisteellä ja akselilla (tämä on "
+"projektiivinen kuvaus)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Piirrä projektiivinen varjo"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Olion varjo annetulla valonlähteellä ja (suoran määrittelemällä) "
+"projektiotasolla"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Hyperbelin asymptootit"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Hyperbelin kaksi asymptoottia"
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Kolmio kärkipisteiden mukaan"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Muodosta kolmio annetuista kolmesta kärkipisteestä."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Konveksinen verho"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Monikulmio, joka vastaa toisen monikulmion konveksista verhoa"
+
+#: misc/builtin_stuff.cc:487
+#, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Kvadraattinen Bézier-käyrä ohjauspisteiden mukaan"
+
+#: misc/builtin_stuff.cc:488
+#, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Muodosta kvadraattinen Bézier-käyrä kolmen ohjauspisteen mukaan"
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr "Kuutiollinen Bézier-käyrä ohjauspisteiden mukaan"
+
+#: misc/builtin_stuff.cc:495
+#, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Muodosta kuutiollinen Bézier-käyrä neljän ohjauspisteen mukaan"
+
+#: misc/builtin_stuff.cc:505
+#, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Rationaalinen kvadraattinen Bézier-käyrä ohjauspisteiden mukaan"
+
+#: misc/builtin_stuff.cc:506
+#, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr ""
+"Muodosta rationaalinen kvadraattinen Bézier-käyrä kolmen ohjauspisteen mukaan"
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr "Rationaalinen kuutiollinen Bézier-käyrä ohjauspisteiden mukaan"
+
+#: misc/builtin_stuff.cc:513
+#, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr ""
+"Muodosta rationaalinen kuutiollinen Bézier-käyrä neljän ohjauspisteen mukaan"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Yhdensuuntaisuustesti"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Testaa, ovatko kaksi annettua suoraa yhdensuuntaiset"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Kohtisuoruustesti"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Testaa, ovatko kaksi annettua suoraa kohtisuorat"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Samasuoraisuustesti"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Testaa, ovatko kolme annettua pistettä samalla suoralla"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Sisällystesti"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Testaa, sisältääko annettu käyrä annetun pisteen"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Monikulmiotesti"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Testaa, sisältääko annettu monikulmio annetun pisteen"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Konveksinen monikulmiotesti"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Testaa, onko annettu monikulmio konveksi"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Olemassaolotesti"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Testaa, onko annettu olio muodostettavissa"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Etäisyystesti"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Testaa, onko pisteellä sama etäisyys toisesta pisteestä kuin kolmannella "
+"pisteellä"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Vektorien yhtäsuuruustesti"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Testaa, ovatko kaksi vektoria yhtäsuuret"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr "Pisteen projektio"
+
+#: misc/builtin_stuff.cc:584
+#, kde-format
+msgid "Project a point on a line"
+msgstr "Projisoi piste suoralle"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python-ohjelma"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Luo uusi Python-ohjelma"
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Anna koordinaatit seuraavassa muodossa: \"x;y\",\n"
+"jossa x on x-koordinaatti ja y on y-koordinaatti."
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Anna koordinaatit seuraavassa muodossa: <b>”x;y”</b>,<br /> jossa x on x-"
+"koordinaatti ja y on y-koordinaatti."
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Anna koordinaatit seuraavassa muodossa: ”r; θ°”,\n"
+"jossa r ja θ ovat polaarikoordinaatit."
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Anna koordinaatit seuraavassa muodossa: <b>\"r; θ°\"</b>,<br />jossa r ja θ "
+"ovat polaarikoordinaatit."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Euklidinen"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Polaarinen"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Aseta euklidinen koordinaattijärjestelmä"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Aseta polaarinen koordinaattijärjestelmä"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "astetta"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "radiaania"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "goonia"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+"Normaalipiste, eli piste, joka on joko riippumaton tai kiinnitetty suoraan, "
+"ympyrään tai janaan."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Piste"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Luo tekstikenttä"
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Tekstikenttä"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Luo piste sen koordinaattien perusteella"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Piste koordinaattien mukaan"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Kiintopiste"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Anna uuden pisteen koordinaatit."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Luo numerokenttä"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Numerokenttä"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr "&Käytä koordinaattien oletustarkkuutta"
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr "&Määritä koordinaattien tarkkuus:"
+
+#: misc/kiginputdialog.cc:125
+#, kde-format
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Aseta kulman suuruus"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Anna kulman uusi suuruus:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Käytä tätä kenttää muuttaaksesi kulman suuruutta."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Valitse tästä luettelosta geometrinen yksikkö, jota haluat käyttää tämän "
+"kulman suuruuden muokkauksessa.<br />\n"
+"Jos vaihdat toiseen yksikköön, arvo muokkauskentässä vasemmalla muunnetaan "
+"uudelle valitulle yksikölle."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Makrotiedostoa '%1' ei voitu avata"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig ei pysty avaamaan makrotiedostoa \"%1\"."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Tiedosto on luotu hyvin vanhalla Kigin versiolla (vanhempi kuin 0.4). Tuki "
+"tälle tiedostomuodolle on poistettu nykyisistä Kig-versioista. Voit yrittää "
+"tuoda tämän makron käyttämällä varhaisempaa Kig-versiota (0.4:stä 0.6:een) "
+"ja sitten viemällä sen uudelleen uuteen tiedostomuotoon."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Nimeämätön makro #%1"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Kig-tiedostossa on tyypin ”%1” olio, jota tämä Kig-versio ei tue. Kig on "
+"saatettu kääntää ilman tämän oliotyypin tukea tai käytössä olla Kigin vanha "
+"versio."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Kahden kartioleikkauksen juurisuorat"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Suorat, jotka on muodostettu kahden kartioleikkauksen leikkauksesta. "
+"Toiminto on määritelty myös muille kuin leikkaaville kartioleikkauksille."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Liikkuva piste"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr "Valitse liikkuva piste, jota liikutetaan kun uraa piirretään…"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Seuraava piste"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr "Valitse seuraava piste, jonka sijaintien läpi ura piirretään…"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Ura"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Ura"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Riippuva piste"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Monikulmio kärkipisteiden mukaan"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Muodosta monikulmio antamalla sen kärkipisteet"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+"… tällä kärkipisteellä (lopeta muodostaminen napsauttamalla ensimmäistä "
+"kärkipistettä)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Muodosta monikulmio tällä kärkipisteellä"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Valitse uuden monikulmion kärkipiste…"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr "Avonainen monikulmio (murtoviiva)"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Construct an open polygon"
+msgstr "Muodosta avonainen monikulmio"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"… tällä kärkipisteellä (lopeta muodostaminen napsauttamalla viimeistä "
+"kärkipistettä)"
+
+#: misc/special_constructors.cc:624
+#, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Muodosta murtoviiva tällä kärkipisteellä"
+
+#: misc/special_constructors.cc:629
+#, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Valitse uuden murtoviivan kärkipiste…"
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Monikulmio"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Muodosta tämän monikulmion kärkipisteet…"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Monikulmion kärkipisteet"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Monikulmion kärkipisteet."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Muodosta tämän monikulmion sivut…"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Monikulmion sivut"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Monikulmion sivut."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Säännöllinen monikulmio annetulla keskipisteellä"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr ""
+"Muodosta säännöllinen monikulmio annetuilla keskipisteellä ja kärkipisteellä"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Muodosta säännöllinen monikulmio annetulla keskipisteellä"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Muodosta säännöllinen monikulmio tällä kärkipisteellä"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Säädä sivujen lukumäärää (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Säädä sivujen lukumäärää (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Valitse uuden monikulmion keskipiste…"
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Valitse uuden monikulmion kärkipiste…"
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Siirrä kursoria saadaksesi halutun määrän sivuja…"
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Bézier-käyrä ohjauspisteiden mukaan"
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Muodosta Bézier-käyrä antamalla sen ohjauspisteet"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+"… tällä ohjauspisteellä (lopeta muodostaminen napsauttamalla viimeistä "
+"ohjauspistettä)"
+
+#: misc/special_constructors.cc:1100
+#, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Muodosta Bézier-käyrä tällä ohjauspisteellä"
+
+#: misc/special_constructors.cc:1105
+#, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Valitse uuden Bézier-käyrän ohjauspiste…"
+
+#: misc/special_constructors.cc:1138
+#, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Rationaalinen Bézier-käyrä ohjauspisteiden mukaan"
+
+#: misc/special_constructors.cc:1143
+#, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr ""
+"Muodosta Bézier-käyrä antamalla sen ohjauspisteet ja positiiviset painot"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr "… sijoita tämä paino viimeksi valittuun ohjauspisteeseen"
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"… tällä ohjauspisteellä (lopeta muodostaminen napsauttamalla viimeistä "
+"ohjauspistettä tai painoa)"
+
+#: misc/special_constructors.cc:1207
+#, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Muodosta rationaalinen Bézier-käyrä tällä ohjauspisteellä"
+
+#: misc/special_constructors.cc:1213
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Valitse uuden rationaalisen Bézier-käyrän ohjauspiste…"
+
+#: misc/special_constructors.cc:1215
+#, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Valitse numerokenttä viimeksi valitun pisteen painoksi…"
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Muodosta tämän ympyrän juurisuorat"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Muodosta tämän kartioleikkauksen juurisuorat"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Affiini muunnos"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Yksikäsitteinen affiini muunnos, joka kuvaa kolme annettua pistettä (tai "
+"kolmion) kolmeksi muuksi annetuksi pisteeksi (tai kolmioksi)"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Yleinen projektiivinen kuvaus"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Yksikäsitteinen projektiivinen kuvaus, joka kuvaa neljä annettua pistettä "
+"(tai nelikulmion) neljään muuhun pisteeseen (tai nelikulmioon)"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Peilaa pisteen, suoran tai ympyrän mukaan"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Pisteen, suoran tai ympyrän käänteismuunnos suhteessa ympyrään"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Mitan siirto"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Siirtää janan tai kaaren mitan suoralle tai ympyrälle"
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Siirrettävä jana"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Siirrettävä kaari"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Siirrettävä arvo"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Siirrä mitta tällä suoralla"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Siirrä mitta tähän ympyrään"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Aloita siirto ympyrän tästä pisteestä"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Aloita siirto tästä suoran pisteestä"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Aloita siirto tästä käyrän pisteestä"
+
+#: misc/special_constructors.cc:1637
+#, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Valitse siirrettävä jana, kaari tai numerokenttä…"
+
+#: misc/special_constructors.cc:1641
+#, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Valitse kohdesuora tai -ympyrä…"
+
+#: misc/special_constructors.cc:1645
+#, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Valitse alkupiste suoralla tai ympyrän kehällä…"
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Leikkaa tämän kartioleikkauksen kanssa"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Leikkaa tämän suoran kanssa"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Leikkaa tämän kolmannen asteen käyrän kanssa"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Leikkaa tämän ympyrän kanssa"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Leikkaus"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Luo kahden olion leikkauspisteet"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Leikkaa tämä ympyrä"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Leikkaa tämä kartioleikkaus"
+
+#: misc/special_constructors.cc:1770
+#, kde-format
+msgid "Intersect this Segment"
+msgstr "Leikkaa tämä jana"
+
+#: misc/special_constructors.cc:1772
+#, kde-format
+msgid "Intersect this Half-line"
+msgstr "Leikkaa tämä puolisuora"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Leikkaa tämä suora"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Leikkaa tämä kolmannen asteen käyrä"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Leikkaa tämä kaari"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Leikkaa tämä monikulmio"
+
+# Käsittääkseni käyttäjä näkee tämän vain, jos monikulmainen muoto on murtoviiva.
+#: misc/special_constructors.cc:1782
+#, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Leikkaa tämä murtoviiva"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "tällä ympyrällä"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "tällä kartioleikkauksella"
+
+#: misc/special_constructors.cc:1792
+#, kde-format
+msgid "with this Segment"
+msgstr "tällä janalla"
+
+#: misc/special_constructors.cc:1794
+#, kde-format
+msgid "with this Half-line"
+msgstr "tällä puolisuoralla"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "tällä suoralla"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "tällä kolmannen asteen käyrällä"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "tällä kaarella"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "tällä monikulmiolla"
+
+# Käsittääkseni käyttäjä näkee tämän vain, jos monikulmainen muoto on murtoviiva.
+#: misc/special_constructors.cc:1804
+#, kde-format
+msgid "with this Polygonal"
+msgstr "tällä murtoviivalla"
+
+#: misc/special_constructors.cc:1814
+#, kde-format
+msgid "Construct midpoint of this point and another one"
+msgstr "Muodosta tämän ja toisen pisteen keskipiste"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "Valitse ensimmäinen piste, jonka mukaan haluat muodostaa keskipisteen…"
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Muodosta tämän ja toisen pisteen keskipiste"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "Valitse toinen piste, jonka mukaan keskipiste muodostetaan…"
+
+#: misc/special_constructors.cc:1869
+#, kde-format
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Muodosta tämän ja toisen pisteen kultaisen leikkauksen piste"
+
+#: misc/special_constructors.cc:1870
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Valitse ensimmäinen pisteistä, jonka mukaan haluat muodostaa kultaisen "
+"leikkauksen pisteen…"
+
+#: misc/special_constructors.cc:1873
+#, kde-format
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Muodosta tämän ja toisen pisteen kultaisen leikkauksen piste"
+
+#: misc/special_constructors.cc:1874
+#, kde-format
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr ""
+"Valitse toinen pisteistä, jonka mukaan kultaisen leikkauksen piste "
+"muodostetaan…"
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Valitse ensimmäinen leikkaava olio…"
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Valitse toinen leikkaava olio…"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Tangentti"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Käyrän tangenttisuora"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Tämän ympyrän tangetti"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Tämän kartioleikkauksen tangentti"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Tämän kaaren tangentti"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Tangentti tälle kolmannen asteen käyrälle"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Tämän kaaren tangetti"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Tämän pisteen tangentti"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Kaarevuuskeskipiste"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Käyrän oskuloivan ympyrän keskipiste"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Tämän kartioleikkauksen kaarevuuskeskipiste"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Tämän kolmannen asteen käyrän kaarevuuskeskipiste"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Tämän käyrän kaarevuuskeskipiste"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Tämän pisteen kaarevuuskeskipiste"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr " kuvapistettä"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr " cm"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr " in"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Mikä näistä kohteista?"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Napsauta paikkaa, johon haluat sijoittaa uuden pisteen, tai käyrää, johon "
+"haluat kiinnittää sen…"
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Merkitse tuloskentän sijainti."
+
+#: modes/edittype.cc:25
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Muokkaa tyyppiä"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Tästä voit muuttaa nykyisen makrotyypin nimeä."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Tässä voit muokata nykyisen makrotyypin kuvausta. Tämä kenttä on "
+"lisäominaisuus, voit jättää sen tyhjäksi: Jos jätät tyhjäksi, silloin "
+"makrotyypillä ei ole kuvausta."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Käytä tätä painiketta vaihtaaksesi nykyisen makrotyypin kuvakke."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Makron nimi ei voi olla tyhjä."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Tästä voit muuttaa makron nimeä, kuvausta ja kuvaketta."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Nimi:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Kuvaus:"
+
+#: modes/historydialog.cc:24
+#, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "Historiaselain"
+
+#: modes/historydialog.cc:108
+#, kde-format
+msgid "Start of the construction"
+msgstr "Muodostelman aloitus"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Nykyisen askeleen kuvaus:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Ensimmäinen askel"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Askel taaksepäin"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Askel eteenpäin"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Viimeinen askel"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Nimi"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<nimetön kohde>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Tekstissä on \"%n\" osaa, joille et ole valinnut arvoa. Ole hyvä ja poista "
+"ne, tai valitse riittävä määrä argumentteja."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "argumentti %1"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Valitaan argumenttia %1"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Muuta kenttää"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Aseta arvo"
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "Anna arvo:"
+
+#: modes/label.cc:624
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Valitse uuden numerokentän sijainti.."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Yhtä valitsemistasi tulosolioista ei voida laskea annetuista olioista. Kig "
+"ei tämän vuoksi kykene laskemaan tätä makroa. Napsauta ”Takaisin” ja "
+"muodosta oliot kelvollisessa järjestyksessä…"
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Yhtä annetuista olioista ei käytetä tulosolioiden laskentaan. Tämä "
+"tarkoittaa todennäköisesti, että Kigin odotetaan tekevän jotakin mahdotonta. "
+"Tarkista makro ja yritä uudelleen."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Annetut oliot"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Valitse parametreina toimivat \"annetut\" oliot uudelle makrollesi ja paina "
+"\"Seuraava\"."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Lopullinen olio"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Valitse lopullinen kohde/kohteet uudelle makrollesi."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Anna uudelle makrollesi nimi ja kuvaus."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "&Nimi:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "&Kuvaus:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "K&uvake:"
+
+#: modes/macrowizard.cc:154
+#, kde-format
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Määrittele uusi makro:"
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Siirrä %1 olio"
+msgstr[1] "Siirrä %1 olioa"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Määritä piste uudelleen"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "Musta"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "Harmaa"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "Punainen"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "Vihreä"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "Syaani"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "Keltainen"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "Tummanpunainen"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "&Piilota"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "&Näytä"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "&Siirrä"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Poista"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "&Mukautettu väri"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Muuta olion väriä"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Muuta olion paksuutta"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Muuta pistetyyliä"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Muuta oliotyyliä"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "Aseta &nimi…"
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "&Nimi"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Aseta olion nimi"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Aseta tämän olion nimi:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 olio"
+msgstr[1] "%1 olioa"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Kig-kaavio"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Muunna"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "&Testi"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "M&uodosta"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "&Aloita"
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Lisää te&kstikenttä"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "Aseta &väri"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "Aseta kynän &leveys"
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Aseta t&yyli"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Aseta koordinaatti&järjestelmä"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Lisää…"
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, kde-format
+msgid "Edit Script..."
+msgstr "Muokkaa skriptiä…"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Anna kentän teksti"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Kirjoita tekstikentän teksti tähän ja paina \"Seuraava\".\n"
+"Jos haluat käyttää kentässä muuttujia, kirjoita %1, %2, … haluamiisi kohtiin "
+"(esim. \"Tämä jana on %1 yksikköä pitkä.\")."
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Näytä teksti kehyksessä"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Argumenttien valinta"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Valitse tarvitsemasi argumentit. Napsauta kutakin argumenttia vuorotellen,"
+"valitse argumentille olio Kig-ikkunasta ja olion jokin ominaisuus. Valitse "
+"lopuksi \"Valmis\"…"
+
+#: modes/textlabelwizard.cc:106
+#, kde-format
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Luo nimiö"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr "Makro"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "Tyyppi"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Kuvaus"
+
+#: modes/typesdialog.cpp:331
+#, kde-format
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Hallitse tyyppejä"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Muokkaa…"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "&Vie…"
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Haluatko varmasti poistaa tämän tyypin?"
+msgstr[1] "Haluatko varmasti poistaa nämä %1 tyyppiä?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Oletko varma?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Vie makroja"
+
+#: modes/typesdialog.cpp:455
+#, kde-format
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr "Kig-tyyppitiedostot (*.kigt);;Kaikki tiedostot (*)"
+
+#: modes/typesdialog.cpp:475
+#, kde-format
+msgid "Kig Types Files (*.kigt)"
+msgstr "Kig-tyyppitiedostot (*.kigt)"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr "Geogebran työkalutiedostot (*.ggt)"
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr "Kaikki tiedostot (*)"
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Tuo makroja"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Olet valinnut useampia kuin yhden makron. Voit muokata vain yhtä makroa "
+"kerrallaan. Ole hyvä ja valitse vain makro, jota haluat muokata, ja yritä "
+"uudelleen."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Useampi kuin yksi makro valittu"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Valitse tyypit tästä…"
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Tämä on luettelo nykyisistä makrotyypeistä… Voit valita, muokata, poistaa, "
+"viedä ja tuoda niitä…"
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Muokkaa valittua tyyppiä."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Poista kaikki valitut tyypit luetelosta."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Vie kaikki valitut tyypit tiedostoon."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Tuo makrot, jotka sisältyvät yhteen tai useampaan tiedostoon."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Tuo…"
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Muodosta kulma tämän pisteen läpi"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr ""
+"Valitse piste, jonka läpi kulman ensimmäisen puolisuoran tulisi kulkea…"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Muodosta kulma tästä pisteestä"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Valitse piste, josta kulma muodostetaan…"
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Valitse piste, jonka läpi kulman toisen puolisuoran tulisi kulkea…"
+
+# Kulman suuruus
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Aseta &suuruus"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr "N&äytä tai piilota suoran kulman merkintä"
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Muuta kulman suuruutta"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Muodosta tästä pisteestä alkava kaari"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Valitse uuden kaaren alkupiste…"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva kaari"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Valitse piste, jonka läpi uuden kaaren tulee kulkea…"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Muodosta tähän pisteeseen päättyvä kaari"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Valitse uuden kaaren päätepiste…"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Muodosta kaari tällä keskipisteellä"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Valitse uuden kaaren keskipiste…"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Muodosta kaari tällä kulmalla"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Valitse uuden kaaren kulma…"
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Muodosta tästä pisteestä alkava kartioleikkauksen kaari"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Valitse uuden kartioleikkauksen kaaren alkupiste…"
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva kartioleikkauksen kaari"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Valitse piste, jonka läpi uusi kartioleikkauksen kaari kulkee…"
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Muodosta tähän pisteeseen päättyvä kartioleikkauksen kaari"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Valitse uuden kartioleikkauksen kaaren päätepiste…"
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Muodosta kartioleikkauksen kaari tällä keskipisteellä"
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Valitse uuden kartioleikkauksen kaaren keskipiste…"
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr "Ohjauspisteiden lukumäärä"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+msgid "Control polygon"
+msgstr "Ohjausmonikulmio"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Karteesinen yhtälö"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+msgid "Bézier Curve"
+msgstr "Bézier-käyrä"
+
+#: objects/bezier_imp.cc:202
+#, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Valitse tämä Bézier-käyrä"
+
+#: objects/bezier_imp.cc:203
+#, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Valitse Bézier-käyrä %1"
+
+#: objects/bezier_imp.cc:204
+msgid "Remove a Bézier Curve"
+msgstr "Poista Bézier-käyrä"
+
+#: objects/bezier_imp.cc:205
+msgid "Add a Bézier Curve"
+msgstr "Lisää Bézier-käyrä"
+
+#: objects/bezier_imp.cc:206
+msgid "Move a Bézier Curve"
+msgstr "Siirrä Bézier-käyrää"
+
+#: objects/bezier_imp.cc:207
+msgid "Attach to this Bézier Curve"
+msgstr "Liitä tähän Bézier-käyrään"
+
+#: objects/bezier_imp.cc:208
+msgid "Show a Bézier Curve"
+msgstr "Näytä Bézier-käyrä"
+
+#: objects/bezier_imp.cc:209
+msgid "Hide a Bézier Curve"
+msgstr "Piilota Bézier-käyrä"
+
+#: objects/bezier_imp.cc:218
+msgid "Bézier Quadratic"
+msgstr "Kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:219
+#, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Valitse tämä kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:220
+#, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Valitse kvadraattinen Bézier-käyrä %1"
+
+#: objects/bezier_imp.cc:221
+msgid "Remove a Bézier Quadratic"
+msgstr "Poista kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:222
+msgid "Add a Bézier Quadratic"
+msgstr "Lisää kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:223
+msgid "Move a Bézier Quadratic"
+msgstr "Siirrä kvadraattista Bézier-käyrää"
+
+#: objects/bezier_imp.cc:224
+msgid "Attach to this Bézier Quadratic"
+msgstr "Liitä tähän kvadraattiseen Bézier-käyrään"
+
+#: objects/bezier_imp.cc:225
+msgid "Show a Bézier Quadratic"
+msgstr "Näytä kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:226
+msgid "Hide a Bézier Quadratic"
+msgstr "Piilota kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr "Kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:236
+#, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Valitse tämä kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:237
+#, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Valitse kuutiollinen Bézier-käyrä %1"
+
+#: objects/bezier_imp.cc:238
+msgid "Remove a Bézier Cubic"
+msgstr "Poista kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:239
+msgid "Add a Bézier Cubic"
+msgstr "Lisää kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:240
+msgid "Move a Bézier Cubic"
+msgstr "Siirrä kuutiollista Bézier-käyrää"
+
+#: objects/bezier_imp.cc:241
+msgid "Attach to this Bézier Cubic"
+msgstr "Liitä tähän kuutiolliseen Bézier-käyrään"
+
+#: objects/bezier_imp.cc:242
+msgid "Show a Bézier Cubic"
+msgstr "Näytä kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:243
+msgid "Hide a Bézier Cubic"
+msgstr "Piilota kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr "Rationaalinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:491
+#, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Valitse tämä rationaalinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:492
+#, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Valitse rationaalinen Bézier-käyrä %1"
+
+#: objects/bezier_imp.cc:493
+msgid "Remove a Rational Bézier Curve"
+msgstr "Poista rationaalinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:494
+msgid "Add a Rational Bézier Curve"
+msgstr "Lisää rationaalinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:495
+msgid "Move a Rational Bézier Curve"
+msgstr "Siirrä rationaalista Bézier-käyrää"
+
+#: objects/bezier_imp.cc:496
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Liitä tähän rationaaliseen Bézier-käyrään"
+
+#: objects/bezier_imp.cc:497
+msgid "Show a Rational Bézier Curve"
+msgstr "Näytä rationaalinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:498
+msgid "Hide a Rational Bézier Curve"
+msgstr "Piilota rationaalinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:507
+msgid "Rational Bézier Quadratic"
+msgstr "Rationaalinen kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:508
+#, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Valitse tämä rationaalinen kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:509
+#, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Valitse rationaalinen kvadraattinen Bézier-käyrä %1"
+
+#: objects/bezier_imp.cc:510
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Poista rationaalinen kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:511
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Lisää rationaalinen kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:512
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Siirrä rationaalista kvadraattista Bézier-käyrää"
+
+#: objects/bezier_imp.cc:513
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Kiinnitä tähän rationaaliseen kvadraattiseen Bézier-käyrään"
+
+#: objects/bezier_imp.cc:514
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Näytä rationaalinen kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:515
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Piilota rationaalinen kvadraattinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr "Rationaalinen kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:525
+#, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Valitse tämä rationaalinen kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:526
+#, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Valitse rationaalinen kuutiollinen Bézier-käyrä %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr "Poista rationaalinen kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr "Lisää rationaalinen kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr "Siirrä rationaalista kuutiollista Bézier-käyrää"
+
+#: objects/bezier_imp.cc:530
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Liitä tähän rationaaliseen kuutiolliseen Bézier-käyrään"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr "Näytä rationaalinen kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr "Piilota rationaalinen kuutiollinen Bézier-käyrä"
+
+#: objects/bezier_type.cc:26
+#, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Muodosta kvadraattinen Bézier-käyrä tällä ohjauspisteellä"
+
+#: objects/bezier_type.cc:27
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Valitse uuden kvadraattisen Bézier-käyrän ohjauspiste…"
+
+#: objects/bezier_type.cc:121
+#, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Muodosta kuutiollinen Bézier-käyrä tällä ohjauspisteellä"
+
+#: objects/bezier_type.cc:122
+#, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Valitse uuden kuutiollisen Bézier-käyrän ohjauspiste…"
+
+#: objects/bezier_type.cc:328
+#, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr ""
+"Muodosta rationaalinen kvadraattinen Bézier-käyrä tällä ohjauspisteellä"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Valitse kolme pistettä ja kolme numerokenttää muodostettavan rationaalisen "
+"Bézier-käyrän painoiksi…"
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, kde-format
+msgid "Select this value as weight"
+msgstr "Valitse tämä arvo painoksi"
+
+#: objects/bezier_type.cc:433
+#, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Muodosta rationaalinen kuutiollinen Bézier-käyrä tällä ohjauspisteellä"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr "string"
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr "double"
+
+#: objects/bogus_imp.cc:307
+msgid "int"
+msgstr "int"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Testin tulos"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Valitse käyrä…"
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Valitse piste kaarella…"
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Pinta-ala"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Ympärysmitta"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Säde"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Keskipiste"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Karteesinen yhtälö laajennettuna"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Polaarinen yhtälö"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [keskitetty kohtaan %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "ympyrä"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Valitse tämä ympyrä"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Valitse ympyrä %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Poista ympyrä"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Lisää ympyrä"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Siirrä ympyrää"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Kiinnitä tähän ympyrään"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Näytä ympyrä"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Piilota ympyrä"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva ympyrä"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Muodosta ympyrä, jolla on tämä keskipiste"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Aseta uuden ympyrän keskipiste…"
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Valitse piste, jonka läpi uusi ympyrä kulkee…"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "Tällä säteellä"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Valitse säteen pituus…"
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Kartioleikkauksen tyyppi"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Ensimmäinen polttopiste"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Toinen polttopiste"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Ellipsi"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Hyperbeli"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Paraabeli"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "rhoo"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "kosini theeta"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "sini theeta"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[keskitetty kohtaan %1]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "kartioleikkaus"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Valitse tämä kartioleikkaus"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Valitse kartioleikkaus %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Poista kartioleikkaus"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Lisää kartioleikkaus"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Siirrä kartioleikkausta"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Kiinnitä tähän kartioleikkaukseen"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Näytä kartioleikkaus"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Piilota kartioleikkaus"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Apukartioleikkaus"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Ensimmäinen päätepiste"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Toinen päätepiste"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "kartioleikkauksen kaari"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Valitse tämä kartioleikkauksen kaari"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "Valitse kartioleikkauksen kaari %1"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Poista kartioleikkauksen kaari"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Lisää kartioleikkauksen kaari"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Siirrä kartioleikkauksen kaarta"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Kiinnitä tähän kartioleikkauksen kaareen"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Näytä kartioleikkauken kaari"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Piilota kartioleikkauksen kaari"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva kartioleikkaus"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Valitse piste, jonka läpi uusi kartioleikkaus kulkee…"
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Muodosta kartioleikkaus tällä asymptootilla"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Valitse uuden kartioleikkauksen ensimmäinen asymptootti…"
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Valitse uuden kartioleikkauksen toinen asymptootti…"
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Muodosta ellipsi tällä polttopisteellä"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Valitse uuden ellipsin ensimmäinen polttopiste…"
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Valitse uuden ellipsin toinen polttopiste…"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva ellipsi"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Valitse piste, jonka läpi uusi ellipsi kulkee…"
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Muodosta hyperbeli tällä polttopisteellä"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Valitse uuden hyperbelin ensimmäinen polttopiste…"
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Valitse uuden hyperbelin toinen polttopiste…"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva hyperbeli"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Valitse piste, jonka läpi uusi hyperbeli kulkee…"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Muodosta kartioleikkaus tällä johtosuoralla"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Valitse uuden kartioleikkauksen johtosuora…"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Muodosta kartioleikkaus tällä polttopisteellä"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Valitse uuden kartioleikkauksen polttopiste…"
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva paraabeli"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Valitse piste, jonka läpi uusi paraabeli kulkee…"
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Muodosta polaarinen piste suhteessa tähän kartioleikkaukseen"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr ""
+"Valitse kartioleikkaus, johon suhteessa haluat muodostaa polaarisen pisteen"
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Muodosta tämän suoran polaarinen piste"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Valitse suora, josta haluat muodostaa polaarisen pisteen…"
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Muodosta polaarinen suora tämän kartioleikkauksen suhteen"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Muodosta tämän pisteen polaarinen suora"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Muodosta tämän kartioleikkauksen johtosuora"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Valitse kartioleikkaus, jolle haluat muodostaa johtosuoran…"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Muodosta paraabeli tällä johtosuoralla"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Valitse uuden paraabelin johtosuora…"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Muodosta paraabeli tällä polttopisteellä"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Valitse uuden paraabelin polttopiste…"
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Muodosta tämän kartioleikkauksen asymptootit"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Valitse kartioleikkaus, jonka asymptootit haluat muodostaa…"
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Muodosta tämän kartioleikkauksen juurisuorat"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Valitse ensimmäinen kahdesta kartioleikkauksesta, joille haluat muodostaa "
+"juurisuorat…"
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Valitse toinen kahdesta kartioleikkauksesta, joille haluat muodostaa "
+"juurisuorat…"
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Vaihda juurisuorat"
+
+#: objects/conic_types.cc:619
+#, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Vaihda kartioleikkauksen juurisuorat"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "kolmannen asteen käyrä"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Valitse tämä kolmannen asteen käyrä"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Valitse kolmannen asteen käyrä %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Poista kolmannen asteen käyrä"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Lisää kolmannen asteen käyrä"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Siirrä kolmannen asteen käyrää"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Liitä tähän kolmannen asteen käyrään"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Näytä kolmannen asteen käyrä"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Piilota kolmannen asteen käyrä"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Muodosta kolmannen asteen käyrä tämän pisteen läpi"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Valitse piste, jonka läpi kolmannen asteen käyrä kulkee…"
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "käyrä"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Valitse tämä käyrä"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Valitse käyrä %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Poista käyrä"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Lisää käyrä"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Siirrä käyrää"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Liitä tähän käyrään"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Näytä käyrä"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Piilota käyrä"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Mahdollisesti transkendenttikäyrä"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Ennestään laskettu leikkauspiste"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Leikkaa tällä kolmannen asteen käyrällä"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Leikkaa tällä kaarella"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Käännä tämän ympyrän suhteen"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Valitse ympyrä, jota vasten käänteismuunnos tehdään…"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Muodosta tämän olion käänteismuunnos"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Valitse olio, josta käänteismuunnos lasketaan…"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Muodosta tämän pisteen käänteismuunnos"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Valitse piste, josta lasketaan käänteismuunnos…"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Muodosta tämän suoran käänteismuunnos"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Valitse suora, jonka suhteen käänteismuunnos"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Muodosta tämän segmentin käänteismuunnos"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Valitse segmentti, josta lasketaan käänteismuunnos…"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Muodosta tämän ympyrän käänteismuunnos"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Valitse ympyrä, josta tehdään käänteismuunnos…"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Muodosta tämän kaaren käänteismuunnos"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Valitse kaari, josta tehdään käänteismuunnos…"
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Tangentin kulmakerroin"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Yhtälö"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Pituus"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Apusuora"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Päätepiste"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "suora"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Valitse suora"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Valitse tämä suora"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Valitse suora %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Poista suora"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Lisää suora"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Siirrä suoraa"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Liitä tähän suoraan"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Näytä suora"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Piilota suora"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "jana"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Valitse tämä jana"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Valitse jana %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Poista jana"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Lisää jana"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Siirrä janaa"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Liitä tähän janaan"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Näytä jana"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Piilota jana"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "puolisuora"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Valitse tämä puolisuora"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Valitse puolisuora %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Poista puolisuora"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Lisää puolisuora"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Siirrä puolisuoraa"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Liitä tähän puolisuoraan"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Näytä puolisuora"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Piilota puolisuora"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Muodosta tästä pisteestä lähtevä jana"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Valitse uuden janan alkupiste…"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Muodosta tähän pisteeseen päättyvä jana"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Valitse uuden janan päätepiste…"
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Muodosta suora tämän pisteen läpi"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Valitse piste, jonka läpi suora kulkee…"
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Valitse toinen piste, jonka läpi suora kulkee…"
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Muodosta tästä pisteestä alkava puolisuora"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Valitse uuden puolisuoran alkupiste…"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva puolisuora"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Valitse piste, jonka läpi puolisuora kulkee…"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Muodosta tämän janan akseli"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Valitse jana, josta haluat piirtää akselin…"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Modosta tämän suoran kanssa yhdensuuntainen suora"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Valitse uuden suoran kanssa yhdensuuntainen suora…"
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva yhdensuuntainen suora"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Valitse piste, jonka läpi uusi suora kulkee…"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Muodosta tämän suoran kanssa kohtisuora"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Valitse uuden suoran kanssa kohtisuora suora…"
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Muodosta tämän pisteen läpi kulkeva kohtisuora"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Aseta &pituus…"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Aseta janan pituus"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Valitse uusi pituus: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Muuta janan pituutta"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Muodosta tämän vektorin mukainen suora"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Valitse uuden suoran suuntainen vektori…"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Muodosta tämän vektorin mukainen puolisuora"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Valitse uuden puolisuoran suuntainen vektori…"
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "ura"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Valitse tämä ura"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Valitse ura %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Poista ura"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Lisää ura"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Siirrä uraa"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Liitä tähän uraan"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Näytä ura"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Piilota ura"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Oliotyyppi"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Olio"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Valitse tämä olio"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Valitse olio %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Poista olio"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Lisää olio"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Siirrä oliota"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Kiinnitä tähän olioon"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Näytä olio"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Piilota olio"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Kulma radiaaneina"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Kulma asteina"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Keskipiste"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X-pituus"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y-pituus"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Vastavektori"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Kulma"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Sektorin pinta"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Kaaren pituus"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Apuympyrä"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "kulma"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Valitse tämä kulma"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Valitse kulma %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Poista kulma"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Lisää kulma"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Siirrä kulmaa"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Liitä tähän kulmaan"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Näytä kulma"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Piilota kulma"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "vektori"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Valitse tämä vektori"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Valitse vektori %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Poista vektori"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Lisää vektori"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Siirrä vektoria"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Liitä tähän vektoriin"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Näytä vektori"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Piilota vektori"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "kaari"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Valitse tämä kaari"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Valitse kaari %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Poista kaari"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Lisää kaari"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Siirrä kaarta"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Liitä tähän kaareen"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Näytä kaari"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Piilota kaari"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Koordinaatti"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X-koordinaatti"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y-koordinaatti"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "piste"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Valitse tämä piste"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Valitse piste %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Poista piste"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Lisää piste"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Siirrä pistettä"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Liitä tähän pisteeseen"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Näytä piste"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Piilota piste"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Muodosta tämän ja toisen pisteen keskipiste"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Valitse ensimmäinen kahdesta pisteesta, joille haluat muodostaa keskipisteen…"
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Valitse toinen kahdesta pisteesta, joille haluat muodostaa keskipisteen…"
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, kde-format
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Muodosta tämän ja toisen pisteen kultaisen leikkauksen piste"
+
+#: objects/point_type.cc:275
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Valitse ensimmäinen kahdesta pisteesta, joille haluat muodostaa kultaisen "
+"leikkauksen pisteen…"
+
+#: objects/point_type.cc:279
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Valitse toinen kahdesta pisteesta, joille haluat muodostaa kultaisen "
+"leikkauksen pisteen…"
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Aseta &koordinaatti…"
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Määrittele uudelleen"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Aseta &parametri…"
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Aseta koordinaatti"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Anna uusi koordinaatti."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Aseta pisteen parametri"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Valitse uusi parametri: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Muuta rajoitetun pisteen parametria"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Valitse ympyrä, johon mitta siirretään…"
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Valitse piste ympyrällä…"
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Valitse ympyrälle siirrettävä suora…"
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Valitse numero/pituus pisteen x-koordinaatiksi…"
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Valitse numero/pituus pisteen y-koordinaatiksi…"
+
+#: objects/point_type.cc:820
+#, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "Valitse piste, joka projisoidaan suoralle…"
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr "Suora, jolla projisoitu piste tulee olemaan…"
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Sivujen lukumäärä"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Kehä"
+
+#: objects/polygon_imp.cc:291
+msgid "Boundary Polygonal"
+msgstr "Rajaava murtoviiva"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr "Avonainen rajaava murtoviiva"
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Kärkipisteiden massakeskipiste"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Kierrosluku"
+
+#: objects/polygon_imp.cc:305
+msgid "Inside Polygon"
+msgstr "Sisämonikulmio"
+
+#: objects/polygon_imp.cc:306
+msgid "Open Polygonal Curve"
+msgstr "Avonainen murtoviiva"
+
+#: objects/polygon_imp.cc:319
+msgid "Associated Polygon"
+msgstr "Murtoviivaan liittyvä monikulmio"
+
+#: objects/polygon_imp.cc:320
+msgid "Closed Polygonal Curve"
+msgstr "Umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "monikulmio"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Valitse tämä monikulmio"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Valitse monikulmio %1"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Poista monikulmio"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Lisää monikulmio"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Siirrä monikulmio"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Liitä tähän monikulmioon"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Näytä monikulmio"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Piilota monikulmio"
+
+#: objects/polygon_imp.cc:645
+msgid "closed polygonal curve"
+msgstr "umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:646
+#, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Valitse tämä umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:647
+#, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Valitse umpinainen murtoviiva %1"
+
+#: objects/polygon_imp.cc:648
+msgid "Remove a closed polygonal curve"
+msgstr "Poista umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:649
+msgid "Add a closed polygonal curve"
+msgstr "Lisää umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:650
+msgid "Move a closed polygonal curve"
+msgstr "Siirrä umpinaista murtoviivaa"
+
+#: objects/polygon_imp.cc:651
+msgid "Attach to this closed polygonal curve"
+msgstr "Liitä tähän umpinaiseen murtoviivaan"
+
+#: objects/polygon_imp.cc:652
+msgid "Show a closed polygonal curve"
+msgstr "Näytä umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:653
+msgid "Hide a closed polygonal curve"
+msgstr "Piilota umpinainen murtoviiva"
+
+#: objects/polygon_imp.cc:662
+msgid "polygonal curve"
+msgstr "murtoviiva"
+
+#: objects/polygon_imp.cc:663
+#, kde-format
+msgid "Select this polygonal curve"
+msgstr "Valitse tämä murtoviiva"
+
+#: objects/polygon_imp.cc:664
+#, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Valitse murtoviiva %1"
+
+#: objects/polygon_imp.cc:665
+msgid "Remove a polygonal curve"
+msgstr "Poista murtoviiva"
+
+#: objects/polygon_imp.cc:666
+msgid "Add a polygonal curve"
+msgstr "Lisää murtoviiva"
+
+#: objects/polygon_imp.cc:667
+msgid "Move a polygonal curve"
+msgstr "Siirrä murtoviivaa"
+
+#: objects/polygon_imp.cc:668
+msgid "Attach to this polygonal curve"
+msgstr "Liitä tähän murtoviivaan"
+
+#: objects/polygon_imp.cc:669
+msgid "Show a polygonal curve"
+msgstr "Näytä murtoviiva"
+
+#: objects/polygon_imp.cc:670
+msgid "Hide a polygonal curve"
+msgstr "Piilota murtoviiva"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "kolmio"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Valitse tämä kolmio"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Valitse kolmio %1"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Poista kolmio"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Lisää kolmio"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Siirrä kolmio"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Liitä tähän kolmioon"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Näytä kolmio"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Piilota kolmio"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "nelikulmio"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Valitse tämä nelikulmio"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Valitse nelikulmio %1"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Poista nelikulmio"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Lisää nelikulmio"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Siirrä nelikulmio"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Liitä tähän nelikulmioon"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Näytä nelikulmio"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Piilota nelikulmio"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Muodosta kolmio tällä kärkipisteellä"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Valitse uuden kolmion kärkipiste…"
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Leikkaa tämä monikulmio suoralla"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Valitse monikulmio, jonka haluat leikata suoralla…"
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Leikkaa tämä suora monikulmiolla"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Valitse suora, jonka haluat leikata monikulmiolla…"
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Leikkaa tämä murtoviiva suoralla"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Valitse murtoviiva, jonka haluat leikata suoralla…"
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Leikkaa tämä suora murtoviivalla"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Valitse suora, jonka haluat leikata murtoviivalla…"
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Leikkaa tämä monikulmio toisella monikulmiolla"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Valitse monikulmio, jonka haluat leikata toisella monikulmiolla…"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Leikkaa tällä monikulmiolla"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Valitse toinen monikulmio leikkaukseen…"
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Muodosta tämän monikulmion kärkipisteet"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Valitse monikulmio, jolle haluat luoda kärkipisteet…"
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Muodosta tämän monikulmion sivut"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Valitse monikulmio, jolle haluat muodostaa sivut…"
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Muodosta tämän monikulmion konveksinen verho"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Valitse monikulmio, jolle haluat muodostaa konveksinen verho…"
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Projisoi tämä piste ympyrälle"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Valitse piste, jonka läpi tangentti kulkee…"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Onko tämä suora yhdensuuntainen?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Valitse ensimmäinen kahdesta mahdollisesti yhdensuuntaisesta suorasta…"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Yhdensuuntainen tämän suoran kanssa?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Valitse toinen kahdesta mahdollisesti yhdensuuntaisesta suorasta…"
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Nämä suorat ovat yhdensuuntaiset."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Nämä suorat eivät ole yhdensuuntaiset."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Onko tämä suora kohtisuora?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Valitse ensimmäinen kahdesta mahdollisesti kohtisuorasta suorasta…"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Kohtisuora tämän suoran kanssa?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Valitse toinen kahdesta mahdollisesti kohtisuorasta suorasta…"
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Nämä suorat ovat kohtisuorassa."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Nämä suorat eivät kohtisuorassa."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Selvitä onko tämä piste samalla suoralla"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr ""
+"Valitse ensimmäinen kolmesta mahdollisesti samalla suoralla olevasta "
+"pisteestä…"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "ja tämä toinen piste"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr ""
+"Valitse toinen kolmesta mahdollisesti samalla suoralla olevasta pisteestä…"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "tällä kolmannella pisteellä"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr ""
+"Valitse viimeinen kolmesta mahdollisesti samalla suoralla olevasta pisteestä…"
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Nämä pisteet ovat samalla suoralla."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Nämä pisteet eivät ole samalla suoralla."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Selvitä onko tämä piste käyrällä"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Valitse piste jonka haluat selvittää…"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Selvitä onko piste tällä käyrällä"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Valitse käyrä, jolla piste saattaisi olla…"
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Tämä käyrä sisältää annetun pisteen."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Tämä käyrä ei sisällä annettua pistettä."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Selvitä onko tämä piste monikulmiolla"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Selvitä onko piste tällä monikulmiolla"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Valitse monikulmio, jolla piste saattaisi olla…"
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Tämä monikulmio sisältää annetun pisteen."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Tämä monikulmio ei sisällä annettua pistettä."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Selvitä onko tämä monikulmio konveksi"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Valitse monikulmio jonka konveksisuuden haluat selvittää…"
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Tämä monikulmio on konveksi."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Tämä käyrä ei ole konveksi."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Selvitä onko tällä pisteellä sama etäisyys"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Valitse piste, joka saattaa olla samalla etäisyydellä kahdesta muusta "
+"pisteestä…"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "tästä pisteestä"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Valitse ensimmäinen kahdesta muusta pisteestä…"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "ja tästä toisesta pisteestä"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Valitse toinen kahdesta muusta pisteestä…"
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Kaksi etäisyyttä ovat samat."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Kaksi etäisyyttä eivät ole samat."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Selvitä onko tämä vektori yhtä suuri kuin toinen vektori"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Valitse ensimmäinen kahdesta mahdollisesti yhtä suuresta vektorista…"
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Selvitä onko tämä vektori yhtä suuri kuin toinen vektori"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Valitse toinen kahdesta mahdollisesti yhtä suuresta vektorista…"
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Kaksi vektoria ovat samat."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Kaksi vektoria eivät ole samat."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Selvitä onko tämä olio olemassa"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Valitse olemassaolotestattava olio…"
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Olio on olemassa."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "Oliota ei ole olemassa."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Teksti"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "kenttä"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Valitse tämä kenttä"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Valitse kenttä %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Poista kenttä"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Lisää kenttä"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Siirrä kenttää"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Liitä tähän kenttään"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Näytä kenttä"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Piilota kenttä"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "numerokenttä"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Valitse tämä numerokenttä"
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "Valitse numerokenttä %1"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Poista numerokenttä"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Lisää numerokenttä"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Siirrä numerokenttää"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Liitä tähän numerokenttään"
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Näytä numerokenttä"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Piilota numerokenttä"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Numerokenttä"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "totuuskenttä"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Valitse tämä totuuskenttä"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "Valitse totuuskenttä %1"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Poista totuuskenttä"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Lisää totuuskenttä"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Siirrä totuuskenttää"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Liitä tähän totuuskenttään"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Näytä totuuskenttä"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Piilota totuuskenttä"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Kopioi teksti"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "N&äytä tai piilota kehys"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "Aseta &fontti…"
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Näytä tai piilota kentän kehys"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Muuta kentän fonttia"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Määrittele uudelleen…"
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "Muuta &arvoa…"
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Anna uusi arvo:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Muuta näytettyä arvoa"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Siirrä tätä oliota"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Valitse siirrettävä olio…"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Siirrä tämän vektorin verran"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Valitse vektori jonka mukaan siirretään…"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Peilaa tämä olio"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Valitse peilattava olio…"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Peilaa tämän pisteen mukaan"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Valitse piste, jonka suhteen peilaus tehdään…"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Peilaa tämän suoran mukaan"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Valitse suora, jonka suhteen peilaus tehdään"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Kierrä tätä olioa"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Valitse kierrettävä olio…"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Kierrä tämän pisteen ympäri"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Valitse kierron keskipiste…"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Kierrä tämän kulman verran"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Valitse kierron kulma…"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Skaalaa tätä oliota"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Valitse skaalattava olio…"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Skaalaa tämän keskipisteen mukaan"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Valitse skaalauksen keskipiste…"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Skaalaa tällä pituudella"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "Valitse pituus tai jana, jonka pituus määrää skaalauskertoimen…"
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Skaalaa tätä pituutta…"
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Valitse ensimmäinen kahdesta pituudesta, joiden suhde määrää "
+"skaalauskertoimen…"
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr "…tähän toiseen pituuteen"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Valitse toinen kahdesta pituudesta, joiden suhde määrää skaalauskertoimen…"
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Valitse skaalattava olio"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Skaalaa tälle suoralle"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Valitse suora jolle skaalataan"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Kierrä tätä oliota projektiivisesti"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Valitse projektiivisesti kierrettävä olio"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Kierrä tätä puolisuoraa projektiivisesti"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr "Valitse olioon sovellettavan projektiivisen kierron puolisuora"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Kierrä tätä kulmaa projektiivisesti"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr "Valitse olioon sovellettavan projektiivisen kierron kulma"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Tämän olion harmoninen homologia"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Valitse muunnettava olio…"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Harmoninen homologia tällä keskipisteellä"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Valitse harmonisen homologian keskipiste…"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Harmoninen homologia tällä akselille"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Valitse harmonisen homologian akseli…"
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Tämän olion affiini muunnos"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Kuvaa tämä kolmio"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Valitse kolmio, joka pitäisi muuntaa annetuksi kolmioksi…"
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "tälle toiselle kolmiolle"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "Valitse kolmio, joka on ensimmäisen kolmion affiininen kuvaus…"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Ensimmäinen kolmesta alkupisteestä"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "Valitse ensimmäinen affiinin muunnoksen kolmesta alkupisteestä…"
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Toinen kolmesta alkupisteestä"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Valitse toinen affiinin muunnoksen kolmesta alkupisteestä…"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Kolmas kolmesta alkupisteestä"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Valitse kolmas affiinin muunnoksen kolmesta alkupisteestä…"
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Ensimmäisen pisteen kuvauspiste"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Valitse ensimmäinen affiinin muunnoksen kolmesta päätepisteestä…"
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Toisen pisteen kuvauspiste"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Valitse toinen affiinin muunnoksen kolmesta päätepisteestä…"
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Kolmannen pisteen kuvauspiste"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Valitse kolmas affiinin muunnoksen kolmesta päätepisteestä…"
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Tämän olion yleinen projektiivinen muunnos"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Kuvaa tämä nelikulmio"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Valitse nelikulmio, joka pitäisi muuntaa annetuksi nelikulmioksi…"
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "tähän toiseen nelikulmioon"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Valitse nelikulmio, joka on projektiivisen transformaation kuva "
+"ensimmäiselle nelikulmiolle…"
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Ensimmäinen neljästä alkupisteestä"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr "Valitse ensimmäinen yleisen projektion neljästä alkupisteestä…"
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Toinen neljästä alkupisteestä"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr "Valitse toinen yleisen projektion neljästä alkupisteestä…"
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Kolmas neljästä alkupisteestä"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr "Valitse kolmas yleisen projektion neljästä alkupisteestä…"
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Neljäs neljästä alkupisteestä"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr "Valitse neljäs yleisen projektion neljästä alkupisteestä…"
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr "Valitse ensimmäinen yleisen projektion neljästä päätepisteestä…"
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr "Valitse toinen yleisen projektion neljästä päätepisteestä…"
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr "Valitse kolmas yleisen projektion neljästä päätepisteestä…"
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Neljännen pisteen muunnettu paikka"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr "Valitse neljäs yleisen projektion neljästä päätepisteestä…"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Luo varjo tälle oliolle"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Valitse olio, jonka varjon haluat muodostaa…"
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Luo tämän valonlähteen muodostama varjo"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Valitse valonlähde, josta varjon tulisi muodostua…"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Luo varjo tämän suoran esittämälle horisontille"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Valitse varjolle horisontti…"
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Muunna tämä olio"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Muunna käyttäen tätä muunnosta"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Sovella yhdenmuotoisuuskuvausta tähän olioin"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Sovella yhdenmuotoisuuskuvausta käyttäen tätä keskipistettä"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Valitse yhdenmuotoisuuskuvauksen keskipiste…"
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Sovella yhdenmuotoisuuskuvausta tästä pisteestä toiseen pisteeseen"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr "Valitse piste, jonka yhdenmuotoisuuskuvaus kuvaa toiseen pisteeseen…"
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Sovella yhdenmuotoisuuskuvausta tähän pisteeseen"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr "Valitse piste, johon yhdenmuotoisuuskuvaus kuvaa ensimmäisen pisteen…"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Muodosta vektori tästä pisteestä"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Valitse uuden vektorin alkupiste…"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Muodosta vektori tähän pisteeseen"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Valitse uuden vektorin loppupiste…"
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Muodosta tämän ja toisen vektorin summa."
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr ""
+"Valitse ensimmäinen kahdesta vektorista, joiden summan haluat muodostaa…"
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Muodosta tämän ja annetun toisen vektorin summa."
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Valitse toinen kahdesta vektorista, joiden summan haluat muodostaa…"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Muodosta vektorien summa alkaen tästä pisteestä."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Valitse piste, johon summavektori muodostetaan…"
+
+#: scripting/newscriptwizard.cc:46
+#, kde-format
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Uusi skripti"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Valitse (mahdolliset) argumenttioliot\n"
+"Kig-ikkunassa ja paina ”Seuraava”."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Kirjoita ohjelman lähdekoodi"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Anna nyt koodi:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Anna nyt Python-koodi:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Python-tulkki kohtasi ohjelman suorituksen aikana poikkeuksen. Korjaa "
+"ohjelma ja napsauta ”Valmis”-painiketta uudelleen."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python-tulkki tulosti seuraavan virhetulosteen:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Ohjelmassa vaikuttaa olevan virhe. Python-tulkki ei ilmoittanut virheitä, "
+"mutta ohjelmasi ei luo kelvollisia olioita. Korjaa ohjelma ja napsauta "
+"Valmis-painiketta uudelleen."
+
+#: scripting/script_mode.cc:285
+#, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Muokkaa skriptiä"
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Muokkaa Python-ohjelmaa"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr "Python-tulkki kohtasi virheen suorittaessaan ohjelmaa. Korjaa ohjelma."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Ohjelmassa vaikuttaa olevan virhe. Python-tulkki ei ilmoittanut virheitä, "
+"mutta ohjelma ei luo kelvollisia olioita. Korjaa ohjelma."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>Kig-muodostelmaa voi ohjata pykig.py-nimisellä \n"
+"Python-ohjelmalla, joka käynnistetään komennolla \n"
+"<code>pykig.py</code>. Seuraavassa on hyvä esimerkki \n"
+"(<code>hexagons.kpy</code>) kokeiltavaksi:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>Viimeisimmän muodostuksen voi toistaa Z-näppäimellä.\n"
+"Tästä on apua, jos haluaa luoda samoin muodostettava olioiden,\n"
+"sarjan, varsinkin ellei niiden muodostamiseen ole oikotietä.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Ponnahdusvalikot, joihin pääset napsauttamalla olioa\n"
+"oikealla hiiripainikkeella tai tyhjää tilaa piirrosalueella, ovat eräs\n"
+"Kigin käyttökelpoisimmista työkaluista. Niiden avulla voit määrittää\n"
+"olioen nimiä, muuttaa niiden värejä ja viivatyylejä ja tehdä monia\n"
+"muita asioita.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Uusia pisteitä voi määrittää käyttämättä valikkoa tai työkaluriviä\n"
+"yksinkertaisesti napsauttamalla <em>keskimmäisellä hiiripainikkeella</em>\n"
+"jotakin kohtaa Kig-kaaviossa.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig osaa avata monia tiedostomuotoja: omia tiedostojaan (<code>.kig</"
+"code>-tiedostoja),\n"
+"<em>KGeo</em>-tiedostoja, <em>KSeg</em>-tiedostoja sekä osittain <em>Dr. "
+"Geo</em>-\n"
+"ja <em>Cabri&#8482;</em>-tiedostoja.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>Kigissä on yli 20 oliotyyppiä, 10 muunnosta sekä yli 80 muodostelmaa, "
+"joita voit käyttää omissa\n"
+"kaavioissasi: avaa <em>oliot</em>-valikko nähdäksesi ne kaikki.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Valittuja olioita voi käyttää alettaessa luoda oliota, joka tarvitsee\n"
+"ne argumenteikseen. Esimerkiksi, jos on kaksi valittua pistettä, voi\n"
+"valita ponnahdusvalikosta <em>Aloita → Ympyrä kolmen pisteen mukaan</em>,\n"
+"jolloin aletaan luoda ympyrää kolmesta pisteestä.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, kde-format
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>Kig voi laajentaa olioitaan ulkoisin makroin. Joitakin kiintoisia\n"
+"makroja löytyy Kigin sivustolta:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Jos osoittimen alla on useampi kohde ja haluat valita jonkun\n"
+"niistä, voit napsauttaa <em>hiiren vasemmalla painikkeella</em> samaan "
+"aikaan kun pidät\n"
+"<em>vaihto</em>näppäintä alaspainettuna saadaksesi luettelon osoittimen alla "
+"olevista kohteista.\n"
+"Voit valita niistä haluamasi.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p>Muodostaessasi uraa voit napsauttaa sitä hiiren <em>oikealla</em> "
+"painikkeella\n"
+"ja valita <em>katseerinen yhtälö</em> nähdäksesi sen karteesisen yhtälön, \n"
+"jos se on alhaisen asteen algebrallinen käyrä.</p>\n"
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Muodosta tämän ja toisen pisteen keskipiste"
+
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "Muodosta janan akseli tämän ja toisen pisteen perusteella"
+
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Valitse ensimmäinen kahdesta pisteestä…"
+
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Muodosta janan akseli edellisen ja tämän pisteen perusteella"
+
+#~ msgid "Select the second of the two points..."
+#~ msgstr "Valitse toinen kahdesta pisteestä…"
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "Tallennetaanko muutokset kaavioon %1?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "Tallennetaanko muutokset?"
+
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|Kaikki tuetut tiedostomuodot (*.kig "
+#~ "*.kigz *.seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig-kaaviot (*.kig)\n"
+#~ "*.kigz|Pakatut Kig-kaaviot (*.kigz)\n"
+#~ "*.kgeo|KGeo-kaaviot (*.kgeo)\n"
+#~ "*.seg|KSeg-kaaviot (*.seg)\n"
+#~ "*.fgeo|Dr. Geo -kaaviot (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri-kaaviot (*.fig *.FIG)"
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a cubic with this control point"
+#~ msgstr "Muodosta ympyrä, jolla on tämä keskipiste"
+
+#, fuzzy
+#~| msgid "Select a point to be a vertex of the new triangle..."
+#~ msgid "Select a point to be a control point of the new cubic..."
+#~ msgstr "Valitse uuden kolmion kärkipiste..."
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a rational cubic with this control point"
+#~ msgstr "Muodosta ympyrä, jolla on tämä keskipiste"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select the first of the two conics of which you want to construct the "
+#~| "radical line..."
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational cubic..."
+#~ msgstr ""
+#~ "Valitse ensimmäinen kahdesta kartioleikkauksesta, joille haluat muodostaa "
+#~ "juurisuorat..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a quadric with this control point"
+#~ msgstr "Muodosta kaari tällä keskipisteellä"
+
+#, fuzzy
+#~| msgid "Select a point to be a vertex of the new triangle..."
+#~ msgid "Select a point to be a control point of the new quadric..."
+#~ msgstr "Valitse uuden kolmion kärkipiste..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a rational quadric with this control point"
+#~ msgstr "Muodosta kaari tällä keskipisteellä"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select the first of the two conics of which you want to construct the "
+#~| "radical line..."
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational quadric..."
+#~ msgstr ""
+#~ "Valitse ensimmäinen kahdesta kartioleikkauksesta, joille haluat muodostaa "
+#~ "juurisuorat..."
+
+#, fuzzy
+#~| msgid "Hide a Curve"
+#~ msgid "Bezier Curve"
+#~ msgstr "Piilota käyrä"
+
+#, fuzzy
+#~| msgid "Construct a polygon with this vertex"
+#~ msgid "Construct a open polygon (polyline) with this vertex"
+#~ msgstr "Muodosta monikulmio tällä kärkipisteellä"
+
+#, fuzzy
+#~| msgid "Select a point to be a vertex of the new polygon..."
+#~ msgid "Select a point to be a vertex of the new open polygon..."
+#~ msgstr "Valitse uuden monikulmion kärkipiste..."
+
+#, fuzzy
+#~| msgid "Construct a polygon with this vertex"
+#~ msgid "Construct a polygon with this control point"
+#~ msgstr "Muodosta monikulmio tällä kärkipisteellä"
+
+#~ msgid "%1 Objects"
+#~ msgstr "%1 objektia"
+
+#, fuzzy
+#~ msgid "&Help"
+#~ msgstr "&Piilota"
+
+#~ msgid "Icon"
+#~ msgstr "Kuvake"
+
+#~ msgid ""
+#~ "Here you can manage types; you can remove them, and load and save them "
+#~ "from and to files..."
+#~ msgstr ""
+#~ "Tässä ikkunassa voit hallita makroja; voit poistaa niitä ja ladata tai "
+#~ "tallentaa niitä tiedostoista tai tiedostoihin..."
+
+#~ msgid "Edit..."
+#~ msgstr "Muokkaa..."
+
+#~ msgid ""
+#~ "Construct a circle with the radius given by the length of this segment"
+#~ msgstr "Muodosta ympyrä, jonka säde on tämän janan pituinen"
+
+#~ msgid ""
+#~ "Select the segment whose length gives the radius of the new circle..."
+#~ msgstr "Valitse jana, jonka pituus määrittelee uuden ympyrän säteen..."
+
+#~ msgid "Please select a figure."
+#~ msgstr "Valitse kaavio."
+
+#~ msgid "Overwrite"
+#~ msgstr "Korvaa"
+
+#~ msgid "x² + y² + %1 x + %2 y + %3 = 0"
+#~ msgstr "x² + y² + %1 x + %2 y + %3 = 0"
+
+#~ msgid "( x - %1 )² + ( y - %2 )² = %3"
+#~ msgstr "( x - %1 )² + ( y - %2 )² = %3"
+
+#~ msgid "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0"
+#~ msgstr "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0"
+
+#~ msgid ""
+#~ "rho = %1/(1 + %2 cos theta + %3 sin theta)\n"
+#~ "    [centered at %4]"
+#~ msgstr ""
+#~ "rho = %1/(1 + %2 cos theta + %3 sin theta)\n"
+#~ "    [keskitetty kohtaan %4]"
+
+#~ msgid ""
+#~ "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y"
+#~ msgstr ""
+#~ "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y"
+
+#~ msgid " + %1 = 0"
+#~ msgstr " + %1 = 0"
+
+#~ msgid "Scale by the length of this segment"
+#~ msgstr "Skaalaa tämän janan pituuden mukaan"
+
+#~ msgid "Scale the length of this segment..."
+#~ msgstr "Skaalaa tämän segmentin pituus..."
+
+#~ msgid "...to the length of this other segment"
+#~ msgstr "...tähän toisen janan pituuteen"
+
+#~ msgid "Select a segment whose length is the factor for the scaling"
+#~ msgstr "Valitse jana, jonka pituus määrää skaalauskertoimen"
+
+#~ msgid ""
+#~ "Select the first of two segments whose ratio is the factor for the scaling"
+#~ msgstr ""
+#~ "Valitse kahdesta janasta ensimmäinen, jonka pituus määrää "
+#~ "skaalauskertoimen"
+
+#~ msgid "...to the length of this segment"
+#~ msgstr "...tämän janan pituuteen"
+
+#~ msgid ""
+#~ "Select the second of two segments whose ratio is the factor for the "
+#~ "scaling"
+#~ msgstr ""
+#~ "Valitse kahdesta janasta toinen, jonka pituus määrää skaalauskertoimen"
+
+#~ msgid "Full Screen"
+#~ msgstr "Koko kuvaruutu"

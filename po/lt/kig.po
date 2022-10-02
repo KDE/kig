@@ -1,0 +1,7105 @@
+# translation of kig.po to Lithuanian
+# Donatas Glodenis <dgvirtual@akl.lt>, 2005.
+# Valdas Jankūnas <zmuogs@gmail.com>, 2008-2009.
+# Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>, 2011.
+# Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2015-12-30 18:09+0200\n"
+"Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
+"Language-Team: lt <kde-i18n-lt@kde.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Donatas Glodenis, Valdas Jankūnas"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "dgvirtual@akl.lt, skroblas@erdves.lt"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Apskritimas, nurodant centrą ir liestinę"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr ""
+"Konstruojamas apskritimas su nurodytu centrų ir tiese, kuri yra šio "
+"apskritimo liestinė"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Ši tiesė yra konstruojamo apskritimo liestinė"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Parinkite tiesę, kuri turi būti naujojo apskritimo liestinė..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Apskritimas, nurodant centrą ir atkarpą (kaip skersmenį)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+"Apskritimas su nurodytu centru ir atkarpa, nuo kurios ilgio priklauso "
+"apskritimo skersmuo"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Nuo šios atkarpos ilgio priklausys konstruojamo apskritimo skersmuo"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+"Parinkite atkarpą, nuo kurios ilgio priklausys naujojo apskritimo skersmuo..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Lygiakraštis trikampis"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Lygiakraštis trikampis, su nurodytais dviejų kampų taškais"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Evoliutė"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Kreivės evoliutė"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Šios kreivės evoliutė"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Oskuliacinis apskritimas"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Kreivės taško oskulacinis apskritimas"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Šios kreivės oskulacinis apskritimas"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Oskuliacinis apskritimas šiame taške"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Parinkite tašką..."
+
+#, kde-format
+msgid "Square"
+msgstr "Kvadratas"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Kvadratas, su nurodytais priešingais kampais"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Vektorių skirtumas"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Konstruojamas vektorius, kuris yra dviejų vektorių skirtumas."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Konstruoti šio ir kito vektorių skirtumo vektorių"
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Konstruoti ano ir šio vektorių skirtumo vektorių"
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Skirtumo vektorių konstruoti nuo šio taško"
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų vektorių, pagal kuriuos bus konstruojamas "
+"skirtumo vektorius..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Parinkite antrąjį vektorių, pagal kuriuos bus konstruojamas skirtumo "
+"vektorius..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Parinkite tašką, kuris bus konstruojamo skirtumo vektoriaus pradžia..."
+
+#: filters/asyexporter.cc:29
+#, fuzzy, kde-format
+#| msgid "Export to &Latex..."
+msgid "Export to &Asymptote..."
+msgstr "Eksportuoti į &Latex..."
+
+#: filters/asyexporter.cc:34
+#, fuzzy, kde-format
+#| msgid "&Import..."
+msgid "&Asymptote..."
+msgstr "&Importuoti..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.tex|Latex dokumentai (*.tex)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr ""
+
+#: filters/asyexporter.cc:48
+#, fuzzy, kde-format
+#| msgid "Image Options"
+msgid "Asymptote Options"
+msgstr "Paveikslėlio parinktys"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"Neina atverti failo „%1“. Pažiūrėkite ar teisingos prieigos prie failo "
+"teisės."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Parinktys"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Rodyti papildomą rėmelį"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Rodyti ašis"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Rodyti tinklelį"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Tai XFig failas, o ne Cabri figūra."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Šios laidos (%1) Cabri dokumentai dar nėra palaikomi.\n"
+"Jūs galite susisiekti su Kig autoriais ir padėti įgyvendinti šios Cabri "
+"laidos dokumentų palaikymą."
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Cabri faile yra „%1“ objektas, kurio Kig programa dar kolkas nepalaiko."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "%2 failo %1 eilutėje aptikta klaida."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Failas „%1“ yra Dr. Geo makrokomandų failas, taigi, jame figūrų nėra."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Dr. Geo faile „%1“ figūrų nėra."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo filtras"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Šiame Dr. Geo faile yra daugiau nei viena figūra.\n"
+"Parinkite kurią iš jų importuoti:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Dr. Geo faile yra „%1 %2“ objektas, kurio Kig programa dar kolkas nepalaiko."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+"Dr. Geo faile yra sankirtos tipas, kurios Kig programa dar kolkas nepalaiko."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Eksportuoti į paveikslą"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Paveikslėlį..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Eksportuoti į paveikslėlį"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Paveikslėlio parinktys"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Deja, šis failo formatas nėra palaikomas."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Apgailestaujame, įrašant į failą „%1“, įvyko klaida."
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Eksportuoti į"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Failas „%1“ negali būti atvertas.  Tai turbūt reiškia, kad jis neegzistuoja, "
+"arba negali būti atvertas dėl jo leidimų."
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+#| msgid ""
+#| "An error was encountered while parsing the file \"%1\".  It cannot be "
+#| "opened."
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "Nagrinėjant failą „%1“ aptikta klaida.  Failas nebus atvertas."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Nagrinėjimo klaida"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Nepalaikoma"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+#| msgid "Kig cannot open the file \"%1\"."
+msgid "Kig cannot open this file."
+msgstr "Kig negali atidaryto failo „%1“."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Skiriamoji geba"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "&Išlaikyti proporciją"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Aukštis:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Plotis:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"KSeg dokumente yra mastelio transformacija, kurios Kig programa dar nesugeba "
+"importuoti."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr "KSeg faile yra skritulys, kurio Kig programa dar kolkas nepalaiko."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+"KSeg faile yra skritulio nuopjova, kurios Kig programa dar kolkas nepalaiko."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+"KSeg faile yra skritulio išpjova, kurios Kig programa dar kolkas nepalaiko."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Eksportuoti į &Latex..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Latex dokumentai (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Eksportuoti į Latex dokumentą"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Latex parinktys"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, fuzzy, kde-format
+#| msgid "Document to open"
+msgid "Document options"
+msgstr "Atidaryti dokumentą"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, fuzzy, kde-format
+#| msgid "Zoom in on the document"
+msgid "Standalone document"
+msgstr "Didinti rodomą vaizdą"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Kig programa nesugeba atverti šio failo, nes jį sukūrė „%1“ laidos Kig "
+"programa."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Šį failą sukūrė „%1“ laidos Kig programa.\n"
+"Kig nebepalaiko senesnės nei 0.4 laidos Kig failo formato.\n"
+"Išeitis būtų tokia: šį failą atverti su senesne Kig programa, kurios laida\n"
+"gali būti nuo 0.4 iki 0.6, ir vėl jį įrašyti ― failas bus įrašytas naujuoju "
+"formatu,\n"
+"kurį supras šios laidos Kig programa."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Šiame Kig faile yra koordinačių sistema, kurios šios laidos Kig programa jau "
+"nebepalaiko.\n"
+"Tad, bus naudojama standartinė koordinačių sistema."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Šiame Kig faile yra „%1“ tipo objektas, kurio šios laidos Kig programa "
+"nepalaiko. Greičiausiai kompiliuojant Kig programą nurodyta, kad ji "
+"nepalaikytų šio tipo objekto, arba Jūs dirbate senesnės laidos Kig programa."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Šiame Kig faile yra „%1“ tipo objektas, kuris jau nebenaudojamas. "
+"Konstrukciją įrašykite į kitokio pavadinimo failą ir patikrinkite ar jis "
+"veikia kaip tikėtasi."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "&Eksportuoti į SVG..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "*.svg|Scalable Vector Graphics (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Eksportuoti į SVG"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG parinktys"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Berašant į SVG failą „%1“, įvyko klaida."
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Eksportuoti į &XFig failą"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig failą..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+#| msgid "*.fig|XFig Documents (*.fig)"
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|XFig dokumentai (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Eksportuoti į XFig failą"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE interaktyvi geometrija"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "© 2002-2005, Kig kūrėjai"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+#| msgid "Original author, long time maintainer, design and lots of code."
+msgid "Original author, former maintainer, design and lots of code."
+msgstr ""
+"Originalo autorius, ilgametis projekto puoselėtojas, išvaizdos ir daugybės "
+"programinio kodo autorius."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Atliko nemažai su Kig susijusių darbų, tokių kaip kūgio pjūvių, kubinių "
+"kreivių, transformacijų ir savybių testų įgyvendinimas."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+#| msgid ""
+#| "Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
+#| "translation, miscellaneous stuff here and there."
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Dabartinis projekto tvarkytojas, įgyvendino Dr. Geo importo filtrą bei taškų "
+"ir linijų stilius, išvertė į Italų kalbą, ir kt."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Labai padėjo įgyvendinant hodografo objektą, rūpinosi kad matematiniai "
+"skaičiavimai programoje būtų teisingi, įgyvendino sunkiausias programos "
+"dalis."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr ""
+
+#: kig/aboutdata.h:46
+#, fuzzy, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Atsakingas už gražų programos SVG ženkliuką."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, fuzzy, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr ""
+
+#: kig/aboutdata.h:52
+#, fuzzy, kde-format
+#| msgid "Construct the asymptotes of this conic"
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Brėžti šio kūgio pjūvio asimptotes"
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "The French translator, who also sent me some useful feedback, like "
+#| "feature requests and bug reports."
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"Išvertė į prancūzų kalbą, suteikė pravarčios pagalbos siūlidamas naujų naujų "
+"idėjų ir pranešdamas apie klaidas."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"KGeo programos autorius, šio autoriaus programa — Kig įkvėpėjas, iš jos "
+"paimta dauguma meno kūrinių ir kažkiek pirminio kodo."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Dominique brolis, kuris parašė algoritmą, randantį apskritimo, einantį per "
+"tris taškus, centrą."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud'homme"
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+#| msgid "Sent me a patch for some bugs."
+msgid "Contributed a patch for some bugs."
+msgstr "Siuntė pataisas kai kurioms programos klaidoms pataisyti."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+#| msgid ""
+#| "Gave me some good feedback on Kig, some feature requests, cleanups and "
+#| "style fixes, and someone to chat with on irc :)"
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Šiek tiek padėjo Kig projekte, davė gerų pasiūlimų, apvalė ir pataisė "
+"stilių, bei dalyvavo pokalbiuose irc kanale :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Atsakingas už gražų programos SVG ženkliuką."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Atsakingas už naujų objektų ženkliukus."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr ""
+"Nepavyko rasti būtinos Kig bibliotekos, patikrinkite ar programa įdiegta "
+"gerai."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Pašalinti %1 objektą"
+msgstr[1] "Pašalinti %1 objektus"
+msgstr[2] "Pašalinti %1 objektų"
+msgstr[3] "Pašalinti %1 objektą"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Pridėti %1 objektą"
+msgstr[1] "Pridėti %1 objektus"
+msgstr[2] "Pridėti %1 objektų"
+msgstr[3] "Pridėti %1 objektą"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "Keisti koordinačių &sistemą"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Kig parinktys"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Rodyti tinklelį"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Rodyti ašis"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Invertuoti išranką"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "Paša&linti objektus"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Pažymėtus objektus pašalinti"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Atsisakyti konstravimo"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Atsisakyti šiuo metu konstruojamo objekto"
+
+#: kig/kig_part.cpp:237
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Kartoti konstravimą"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Kartoti praeitą konstrąvimą (su naujais duomenim)"
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "&Rodyti visus"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Rodyti visus slepiamus objektus"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "Nauja &makrokomanda..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Kurti naują makrokomandą"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "&Tvarkyti tipus..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Tvarkyti makrokomandų tipus."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr "&Naršyti praeitį..."
+
+#: kig/kig_part.cpp:263
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Naršyti konstravimo praeitį."
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Didinti rodomą vaizdą"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Mažinti rodomą vaizdą"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Dokumentą perkelti į ekrano centrą"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Šį dokumentą rodyti visame ekrane."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "Parinkti rodytiną &sritį"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Parinkite sritį, kurią reikia rodyti lange."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "Parinkti vaizdo didinimo &langą"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, fuzzy, kde-format
+#| msgid "Set &Coordinate..."
+msgid "Set Coordinate &Precision..."
+msgstr "Keisti k&oordinates..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr ""
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Ro&dyti tinklelį"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Rodyti ar slėpti tinklelį."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "Rodyti &ašis"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Rodyti ar slėpti ašis."
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Užsidėti infraraudonuosius akinius"
+
+#: kig/kig_part.cpp:317
+#, fuzzy, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Įgalinti arba drausti slepiamų objektų matomumą."
+
+#: kig/kig_part.cpp:347
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Kartoti konstravimą (%1)"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "Kartoti %1 (su naujais duomenim)"
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Norima atverti neegzistuojantį failą „%1“. Patikrinkite ar kelias įvestas "
+"teisingai."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Nepavyko rasti failo"
+
+#: kig/kig_part.cpp:394
+#, fuzzy, kde-format
+#| msgid ""
+#| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+#| "support this format. If you think the format in question would be worth "
+#| "implementing support for, you can always ask us nicely on mailto:pino@kde."
+#| "org or do the work yourself and send me a patch."
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"Norima atverti „%1“ formato dokumentą; deja, Kig programa nesupranta šio "
+"formato. Jei manote, kad šį formatą būtina įgyvendinti Kig programoje, "
+"galite Mūsų maloniai paprašyti nusiuntę laišką į mailto:pino@kde.org, arba "
+"parašykite pataisą ir ją atsiųskite mums."
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Formatas nepriimtinas"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Duomenis rašyti failan Kig programa tesugeba tik gimtuoju formatu. Įrašyti "
+"Kig-o gimtuoju formatu?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Įrašyti Kig formatu"
+
+#: kig/kig_part.cpp:695
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kig|Kig Documents (*.kig)\n"
+#| "*.kigz|Compressed Kig Documents (*.kigz)"
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+"*.kig|Kig dokumentai (*.kig)\n"
+"*.kigz|Suspausti Kig dokumentai (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Failas pavadinimu „%1“ jau egzistuoja. Perrašyti failą?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Perrašyti failą?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Spausdinti geometriją"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Slėpti %1 objektą"
+msgstr[1] "Slėpti %1 objektus"
+msgstr[2] "Slėpti %1 objektų"
+msgstr[3] "Slėpti %1 objektą"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Rodyti %1 objektą"
+msgstr[1] "Rodyti %1 objektus"
+msgstr[2] "Rodyti %1 objektų"
+msgstr[3] "Rodyti %1 objektą"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Padidinti"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Sumažinti"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Vaizdas į centrą"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Nurodykite stačiakampę sritį, kuria reikia parodyti."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Keisti lange rodomą sritį"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Nurodykit vaizdo mastelio keitimo langą"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Vaizdo mastelio keitimo langas nurodomas įvedant jo viršutiniojo<br/> "
+"kairiojo ir apatiniojo dešiniojo kampo koordinates."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Failas"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "&Keisti"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&Rodymas"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Objektai"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Taškai"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Tiesės"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Apskritimai ir lankai"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "&Daugiakampiai"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Vektoriai ir atkarpos"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "&Kūgio pjūviai ir kubinės kreivės"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Daugiau kūgio pjūvių"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "&Kubinės kreivės"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr ""
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Kampai"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Transformacijos"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Diferencialinė geometrija"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "&Testai"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Kita"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Tipai"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "&Priemonės"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Pagrindinė priemonių juosta"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Taškai"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Tiesės"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Vektoriai ir atkarpos"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Apskritimai ir lankai"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Kūgio pjūviai"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, fuzzy, kde-format
+msgid "Bézier Curves"
+msgstr "Slėpti kreivę"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Kampai"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Transformacijos"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Testai"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Kiti objektai"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Rodymas"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "&Nuostatos"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Nerodyti grafinės sąsajos. Nurodytajį failą konvertuoti į gimtąjį Kig "
+"formatą. Nenurodžius „--outfile“, išvedama bus į „stdout“."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Failas, į kurį išvesti sukurtą gimtąjį failą. „-“ reikš „stdout“ išvesį, "
+"kuri yra numatytoji."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Atidaryti dokumentą"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Taškas pagal skaitines etiketes"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr ""
+"Taškas, kurio koordinates apsprendžia dviejose etiketėse įrašytos skaitinės "
+"etiketes"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Atkarpa"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Konstruojama atkarpa, nurodant jos pradžios ir galo taškus"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Atkarpos ašis"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr ""
+"Nurodytai atkarpai statmena tiesė, einanti per tos atkarpos vidurio tašką."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Tiesė per du taškus"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Konstruojama tiesė, kuri eina per nurodytus du taškus."
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Pustiesė"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr ""
+"Konstruojama pustiesė, nurodant jos pradžios tašką ir tašką, per kurį ji "
+"turi eiti."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Statmuo"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Konstruojama nurodytai tiesei ar atkarpai statmena tiesė, kuri eina per "
+"nurodytą tašką."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Lygiagretė"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+"Konstruojama nurodytai tiesei ar atkarpai lygiagreti tiesė, kuri eina per "
+"nurodytą tašką."
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Apskritimas, nurodant centrą ir tašką"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr ""
+"Konstruojamas apskritimas su nurodytu centru ir kuris eina per nurodytą "
+"tašką."
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Apskritimas, nurodant tris taškus"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Konstruojamas apskritimas, kuris eina per nurodytus tris taškus."
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Apskritimas, nurodant centrą ir spindulio ilgį"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Konstruojamas apskritimas su nurodytu centru ir spindulio ilgiu"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Konstruoti šio kampo pusiaukampinę"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Nurodykite kuriam kampui konstruoti pusiaukampinę..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Pusiaukampinė"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Nurodyto kampo pusiaukampinė"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Kūgio pjūvis, nurodant penkis taškus"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Konstruojama kūgio pjūvio kreivė, kuri eina per penkis taškus"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Hiperbolė, nurodant asimptotes ir tašką"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr ""
+"Konstruojama hiperbolė, nurodant jos asimptotes ir tašką, per kurį turi eiti "
+"hiperbolė"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Elipsė, nurodant židinius ir tašką"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr ""
+"Konstruojama elipsė, nurodant jos židinius ir tašką, per kurį turi eiti "
+"elipsė"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Hiperbolė, nurodant židinius ir tašką"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr ""
+"Konstruojama hiperbolė, nurodant jos židinius ir tašką, per kurį ji turi eiti"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Kūgio pjūvis, nurodant direktrisę, židinį ir tašką"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+"Konstruojama kūgio pjūvio kreivė, nurodant jos direktrisę, židinį ir tašką, "
+"per kurį ji turi eiti"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Vertikali parabolė nurodant tris taškus"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Konstruojama per tris nurodytus taškus einanti vertikali parabolė"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Kubinė kreivė, nurodant devynis taškus"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Konstruojama per devynis nurodytus taškus einanti kubinė kreivė"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Linijos polinis taškas"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr ""
+"Pagal nurodytą kūgio pjūvio kreivę konstruojamas nurodytos linijos polinis "
+"taškas."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Taško polinė linija"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr ""
+"Pagal nurodytą kūgio pjūvio kreivę konstruojama nurodyto taško polinė linija."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Kubinė kreivė su mazgu koord. pr., nurodant šešis taškus"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr ""
+"Konstruojama per šešis nurodytus taškus einanti kubinė kreivė, kurios mazgas "
+"yra koordinačių pradžioje"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Kubinė kreivė su lūžiu koord. pr., nurodant keturis taškus"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+"Konstruojama per keturis nurodytus taškus einanti kubinė kreivė, turinti "
+"lūžio tašką koordinačių pradžioje"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Kubinė funkcija, nurodant keturis taškus"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr ""
+"Konstruojama per keturis nurodytus taškus einanti kubinio daugianario "
+"funkcija"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Kūgio pjūvio direktrisė"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Kūgio pjūvio direktrisė ― tiesė."
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Kampas pagal tris taškus"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Kampas, apibrėžtas trimis taškais"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Lygiašonė hiperbolė, nurodant keturis taškus"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Pagal nurodytus keturis taškus konstruojama lygiašonė hiperbolė"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Padėti šios atkarpos vidurio tašką"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Vidurio taškas"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Atkarpos arba atstumo tarp dviejų taškų vidurio taškas"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this segment"
+msgid "Construct the golden ratio point of this segment"
+msgstr "Padėti šios atkarpos vidurio tašką"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+#| msgid "Move a Point"
+msgid "Golden Ratio Point"
+msgstr "Perkelti tašką"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "The midpoint of a segment or two other points"
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Atkarpos arba atstumo tarp dviejų taškų vidurio taškas"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Vektorius"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Pagal du nurodytus taškus brėžiamas vektorius."
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Vektorių suma"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Brėžiamas vektorius, kuris yra dviejų vektorių suma."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Tiesė pagal vektorių"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Per nurodytą tašką ir vektoriumi nurodyta kryptimi brėžiama tiesė."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Pustiesė pagal vektorių"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr ""
+"Nuo nurodyto pradžios taško ir vektoriumi nurodyta kryptimi brėžiama "
+"pustiesė."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Lankas per tris taškus"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Per tris taškus brėžiamas lankas."
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Kūgio pjūvio lankas, nurodant jo centrą ir tris taškus"
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr ""
+"Brėžiamas per tris taškus einantis ir nurodyto centro kūgio pjūvio lankas."
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Kūgio pjūvio lankas, nurodant penkis taškus"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Brėžiamas per penkis taškus einantis kūgio pjūvio lankas."
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Lankas, nurodant centrą, kampą ir tašką"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr ""
+"Nuo nurodyto pradžios taško apie nurodytą centrą brėžiamas nurodyto kampo "
+"lankas"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Parabolė, nurodant direktrisę ir židinį"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Pagal nurodytą direktrisę ir židinį brėžiama parabolė"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Postūmis"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Objektas perstumiamas pagal vektorių"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Atspindys nuo taško"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Objekto atspindys nuo atško"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Atspindys nuo tiesės"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Objekto atspindys nuo tiesės"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Sukti"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Apie tašką nurodytu kampu pasuktas objektas"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Mastelis"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Apie nurodytą tašką keičiamas objekto mastelis, mastelio vertė priklauso nuo "
+"nurodytos atkarpos ilgio."
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Mastelis apie tiesę"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Apie nurodytą tiesę keičiamas objekto mastelis, mastelio vertė priklauso nuo "
+"nurodytos atkarpos ilgio"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Mastelis (vertė pagal dvi atkarpas)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Apie nurodytą tašką keičiamas objekto mastelis, mastelio vertė priklauso nuo "
+"dviejų atkarpų ilgių."
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Mastelis apie tiesę (vertė pagal dvi atkarpas)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Apie nurodytą tiesę keičiamas objekto mastelis, mastelio vertė priklauso nuo "
+"dviejų atkarpų ilgių"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Panašumo transformacija"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr "Vykdo objekto panašumo transformaciją (pakeičia mastelį ir pasuka)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Harmoninė homologija"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Harmoninė homologija, nurodant jos centrą ir ašį (projekcinė transformacija)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Brėžti projekcinį šešėlį"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Ant projekcinės tiesės brėžiamas šviesos šaltinio apšviesto objekto metamas "
+"šešėlis"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Hiperbolės asimptotės"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Brėžiamos dvi hiperbolės asimptotės."
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Trikampis, nurodant jo viršūnes"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Nurodžius tris taškus, kaip trikampio viršūnes, brėžiamas trikampis."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Iškilusis apvalkalas"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr ""
+"Pagal duotą daugiakampį brėžiamas naujas daugiakampis, kuris yra pirmojo "
+"iškilusis apvalkalas"
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Kubinė kreivė, nurodant devynis taškus"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr ""
+"Brėžiamas per tris taškus einantis ir nuorodyto centro kūgio pjūvio lankas."
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:495
+#, fuzzy, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Kubinę kreivę brėžti per šį tašką"
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Kubinė kreivė, nurodant devynis taškus"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Nurodžius tris taškus, kaip trikampio viršūnes, brėžiamas trikampis."
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:513
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr ""
+"Brėžiamas per tris taškus einantis ir nuorodyto centro kūgio pjūvio lankas."
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Lygiagretumo testas"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Tigrinama, ar dvi nurodytos tiesės yra lygiagrečios"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Ortogonalumo testas"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Tikrinama, ar dvi nurodytos tiesės yra ortogonalios"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Kolinearumo testas"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Tikrinama, ar nurodyti trys taškai yra kolinearūs"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Taško kreivėje testas"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Tikrinama, ar nurodytas taškas priklauso nurodytai kreivei"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Taško daugiakampyje testas"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Tikrinama, ar nurodytas taškas yra daugiakampio viduje"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Daugiakampio iškilumo testas"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Tikrinama, ar nurodytas daugiakampis yra iškilusis"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Egzistavimo testas"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Tikrinama, ar įmanoma nubrėžti nurodytą objektą"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Atstumo testas"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Tikrinama, ar atstumai, nuo nurodyto taško iki kitų dviejų taškų, yra vienodi"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Vektorių vienodumo testas"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Tikrinama, ar du vektoriai yra vienodi"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+#| msgid "Project this point onto the circle"
+msgid "Project a point on a line"
+msgstr "Šio taško projekcija apskritime"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python scenarijus"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Kuriamas naujas Python scenarijus."
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Koordinates įveskite šiuo formatu: „x;y“,\n"
+"čia x tai x koordinatė, o y — y koordinatė"
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Koordinates įveskite šiuo formatu: <b>„x;y“</b>,<br />čia x tai x "
+"koordinatė, o y — y koordinatė"
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Koordinates įveskite šiuo formatu: „r;Θ°“,\n"
+"čia r ir Θ tai polinės koordinatės."
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Koordinates įveskite šiuo formatu: <b>„r;Θ°“</b>,<br/>čia r ir Θ yra plinės "
+"koordinatės."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Euklidinė"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Polinė"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Nustatyti Euklidinę koordinačių sistemą"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Nustatyti polinę koordinačių sistemą"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Laipsniai"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Radianai"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Gradai"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+"Paprastas taškas, kuris, pavyzdžiui, gali būti nepriklausomas, arba "
+"priskirtas tiesei, apskritimui, ar atkarpai."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Taškas"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Užrašoma tekstinė etiketė."
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Tekstinė etiketė"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Nurodytose koordinatėse dedamas taškas"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Taškas, nurodant koordinates"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Neslankus taškas"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Įveskite naujojo taško koordinates."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Užrašoma skaitinė vertė"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Skaitinė vertė"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Keisti kampo skaitinę vertę"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Įveskite naują kampo skaitinę vertę:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Šiame įvesties laukelyje keičiam šio kampo skaitinė vertė."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Šiame sąraše parinkite kampo matavimo vienetą.<br/>\n"
+"Pakeitus kampo matavimo vienetą, šio kampo skaitinė vertė, rodoma kairėje "
+"esančiame įvesties laukelyje, bus automatiškai perskaičiuota atsižvelgiant į "
+"naujai parinktą matavimo vienetą."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Nepavyksta atverti makrokomando failo „%1“"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig programai nepavyksta atverti makrokomandos failo „%1“."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Šis failas kurtas laibai senos laidos Kig programa (ankstesnės nei 0.4). "
+"Naujų laidų Kig programoms šis formatas jau nebepriimtinas. Išeitis būtų "
+"tokia: šią makrokomandą importuoti senesnės laidos (nuo 0.4 iki 0.6) Kig "
+"programa ir tada ją eksportuoti naujuoju formatu, kurį suprantą naujos "
+"laidos Kig."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Makrokomanda be pavadinimo nr. %1"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Šiame Kig faile yra „%1“ tipo objektas, kuris šios laidos Kig programai nėra "
+"priimtinas. Ko gero, kompiliuojant Kig, nebuvo nurodyta palaikyti minėto "
+"tipo objektą, arba Kig laida yra per sena."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Kūgio pjūvių chordinės tiesės"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Brėžiamos per kūgio pjūvių sankirtos taškus einančios tiesės. Jos galimos ir "
+"tarp nesusikertančių kūgio pjūvių."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Slankus taškas"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr "Parinkite slankųjį tašką, kuris slinks piešiant hodografą..."
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Sekantis taškas"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+"Parinkite sekantįjį tašką, per jo pozicijų visumą bus brėžiamas hodografas..."
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Hodografas"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Hodografas"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Priklausomas taškas"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Daugiakampis, nurodant jo viršūnes"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Nurodžius taškus, kaip daugiakampio viršūnes, brėžiamas daugiakampis"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+"... įskaitant ir šią viršūnę (parinkus pirmąją viršūnę daugiakampis bus "
+"užbaigtas)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Čia brėžti daugiakampio viršūnę"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Parinkite tašką, kuris bus naujojo daugiakampio viršūnė..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, fuzzy, kde-format
+msgid "Construct an open polygon"
+msgstr "Brėžti šio daugiakampio kraštines"
+
+#: misc/special_constructors.cc:622
+#, fuzzy, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"... įskaitant ir šią viršūnę (parinkus pirmąją viršūnę daugiakampis bus "
+"užbaigtas)"
+
+#: misc/special_constructors.cc:624
+#, fuzzy, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Čia brėžti daugiakampio viršūnę"
+
+#: misc/special_constructors.cc:629
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Parinkite tašką, kuris bus naujojo daugiakampio viršūnė..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Daugiakampis"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Padėti šio daugiakampio viršūnių taškus..."
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Daugiakampio viršūnių taškai"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Padedami daugiakampio viršūnių taškai."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Brėžti šio daugiakampio kraštines..."
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Daugiakampio kraštinės"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Brėžiamos daugiakampio kraštinės."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Paprastas daugiakampis, nurodant jo centrą ir viršūnę"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr ""
+"Apie nurodytą centrą brėžiamas paprastas daugiakampis su nurodyta viršūne"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Paprastą daugiakampį brėžti apie šį centrą"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Čia brėžti paprasto daugiakampio viršūnę"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Keiskite kraštinių skaičių (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Keiskite kraštinių skaičių (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Parinkite naujojo daugiakampio centrą..."
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Parinkite naujojo daugiakampio viršūnės tašką..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Slinkdami žymeklį, parinkite reikiamą kraštinių skaičių..."
+
+#: misc/special_constructors.cc:1062
+#, fuzzy, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Kubinė kreivė, nurodant devynis taškus"
+
+#: misc/special_constructors.cc:1063
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Nurodžius taškus, kaip daugiakampio viršūnes, brėžiamas daugiakampis"
+
+#: misc/special_constructors.cc:1098
+#, fuzzy, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+"... įskaitant ir šią viršūnę (parinkus pirmąją viršūnę daugiakampis bus "
+"užbaigtas)"
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Parinkite tašką, kuris bus naujojo trikampio viršūnė..."
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Kubinė kreivė, nurodant devynis taškus"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "Nurodžius taškus, kaip daugiakampio viršūnes, brėžiamas daugiakampis"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr ""
+
+#: misc/special_constructors.cc:1205
+#, fuzzy, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"... įskaitant ir šią viršūnę (parinkus pirmąją viršūnę daugiakampis bus "
+"užbaigtas)"
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Parinkite tašką, kuris bus naujojo trikampio viršūnė..."
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Kaip taško X koordinatę parinkite skaičių arba ilgį..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Brėžti šio apskritimo chordines tieses"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Brėžti šio kūgio pjūvio chordines tieses"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Bendroji afininė transformacija"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Vienintelė afininė transformacija, kuri tris taškus (arba trikampį) "
+"atvaizduoja į kitus tris taškus (ar trikampį)"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Bendroji projekcinė transformacija"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Vienintelė projekcinė transformacija, kuri keturis takus (arba keturkampį) "
+"atvaizduoja į kitus keturis taškus (ar keturkampį)"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Taško, tiesės ar apskritimo inversija"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Taško, tiesės ar apskritimo inversija apie inversinį apskritimą"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Perkelti matmenį"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Atkarpos ar lanko matmuo perkeliamas į tiesę arba apskritimą."
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Perkelti šią atkarpą"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Perkelti šį lanką"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Perkelti šią vertę"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Matmenį perkelti į šią tiesę"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Matmenį perkelti į šį apskritimą"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Perkeliamo matmens pradžia bus šiame apskritimo taške"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Perkeliamo matmens pradžia bus šiame tiesės taške"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Perkeliamo matmens pradžia bus šiame kreivės taške"
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Kaip taško X koordinatę parinkite skaičių arba ilgį..."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+#| msgid "Select a point on the circle..."
+msgid "Select a destination line or circle..."
+msgstr "Apskritime parinkite tašką..."
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+#| msgid "Select a point on the circle..."
+msgid "Choose a starting point on the line/circle..."
+msgstr "Apskritime parinkite tašką..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Sankirta su šiuo kūgio pjūviu"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Sankirta su šia tiese"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Sankirta su šia kubine kreive"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Sankirta su šiuo apskritimu"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Sankirta"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Dviejų objektų sankirta"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Šio apskritimo sankirta"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Šio kūgio pjūvio sankirta"
+
+#: misc/special_constructors.cc:1770
+#, fuzzy, kde-format
+msgid "Intersect this Segment"
+msgstr "Šios tiesės sankirta"
+
+#: misc/special_constructors.cc:1772
+#, fuzzy, kde-format
+msgid "Intersect this Half-line"
+msgstr "Šios tiesės sankirta"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Šios tiesės sankirta"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Šios kubinės kreivės sankirta"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Šio lanko sankirta"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Šio daugiakampio sankirta"
+
+#: misc/special_constructors.cc:1782
+#, fuzzy, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Šio daugiakampio sankirta"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "su šiuo apskritimu"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "su šiuo kūgio pjūviu"
+
+#: misc/special_constructors.cc:1792
+#, fuzzy, kde-format
+msgid "with this Segment"
+msgstr "Pažymėti šią atkarpą"
+
+#: misc/special_constructors.cc:1794
+#, fuzzy, kde-format
+msgid "with this Half-line"
+msgstr "su šia tiese"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "su šia tiese"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "su šia kubine kreive"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "su šiuo lanku"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "su šiuo daugiakampiu"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+msgid "with this Polygonal"
+msgstr "su šiuo daugiakampiu"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct midpoint of this point and another one"
+msgstr "Vidurio tašką dėti tarp šio ir kito taško"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Vidurio tašką dėti tarp šio ir kito taško"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr ""
+"Parinkite antrąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Vidurio tašką dėti tarp šio ir kito taško"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Vidurio tašką dėti tarp šio ir kito taško"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+#| msgid "Select the other of the points of which to construct the midpoint..."
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr ""
+"Parinkite antrąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Parinkite pirmąjį objektą, kuris kirs antrąjį..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Parinkite antrąjį objektą, kuris kirs pirmąjį..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Liestinė"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Brėžiama tiesė, kuri yra kreivės liestinė"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Šio apskritimo liestinė"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Šio kūgio pjūvio liestinė"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Šio lanko liestinė"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Šios kubinės kreivės liestinė"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Šios kreivės liestinė"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Liestinė šiame taške"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Kreivio centras"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Kreivės oskuliacinio apskritimo centras"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Šio kūgio pjūvio kreivio centras"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Šios kubinės kreivės kreivio centras"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Šios kreivės kreivio centras"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Šio kreivio, šiame taške, centras"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "pikseliai"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "cm"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "coliai"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Kuris objektas?"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Pele spustelėkite tą vietą kur reikia padėti tašką, arba tą kreivę kuriai "
+"reikia priskirti tašką..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Dabar parinkite etiketės vietą."
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Keisti tipą"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Čia galima keisti dabartinės makrokomandos tipo pavadinimą."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Čia galima keisti dabartinės makrokomandos tipo aprašymą. Tačiau tai daryti "
+"neprivalu, tad šį laukelį galima palikti tuščią: tada makrokomandos tipas "
+"tiesiog bus be aprašymo."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Dabartinės makrokomandos ženkliukas keičiamas paspaudus šį mygtuką."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Makrokomanda turi turėti pavadinimą."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr ""
+"Čia galima keisti šios makrokomandos tipo pavadinimą, aprašymą ir ženkliuką."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Pavadinimas:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Aprašymas:"
+
+#: modes/historydialog.cc:24
+#, fuzzy, kde-format
+#| msgid "History Browser"
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "Praeities naršyklė"
+
+#: modes/historydialog.cc:108
+#, kde-format
+msgid "Start of the construction"
+msgstr "Konstravimo pradžia"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Dabartinio žingsnio aprašymas:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Pirmasis žingsnis"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Vienu žingsniu atgal"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Vienu žingsniu pirmyn"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Paskutinysis žingsnis"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<objektas be pavadinimo>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Tekste yra „%n“ dalių, kurioms dar nėra priskirtos vertės. Jas arba "
+"pašalinkite, arba parinkite tiek argumentų, kad jų pakaktų."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "%1 argumentas"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Parenkamas %1 argumentas"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Keisti etiketę"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Keisti vertę"
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "Įveskite vertę:"
+
+#: modes/label.cc:624
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Parinkite naujosios skaitinės etikės vietą..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Kig negali apskaičiuoti šios makrokomandos, nes pagal nurodytus objektus "
+"neįmanoma apskaičiuoti vieno iš parinktų galutinių objektų. Spauskite "
+"„Grįžti“, ir tinkama tvarka konstruokite objektus..."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Ko gero, iš Kig tikimasi to kas neįmanoma, nes vienas iš nurodytų objektų "
+"nėra naudojamas kuriant naujuosius objektus. Patikrinkite makrokomandą ir "
+"badykite dar kartą."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Duotieji objektai"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Naujajai makrokomandai parinkite „duotuosius“ objektus, po to spauskite "
+"„Tęsti“."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Rezultato objektai"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Naujajai makrokomandai parinkite galutinį objektą ar objektus."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Įveskite naujojo tipo pavadinimą ir aprašymą."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "Pa&vadinimas:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "&Aprašymas:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "&Ženkliukas:"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Kurti naują makrokomandą"
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Perstumti %1 objektą"
+msgstr[1] "Perstumti %1 objektus"
+msgstr[2] "Perstumti %1 objektų"
+msgstr[3] "Perstumti %1 objektą"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Tašką apibrėžti iš naujo"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, fuzzy, kde-format
+#| msgctxt "Translators: Radians"
+#| msgid "Rad"
+msgid "Red"
+msgstr "Radianai"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Pašalinti"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, fuzzy, kde-format
+#| msgid "Change Label"
+msgid "Change Object Color"
+msgstr "Keisti etiketę"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, fuzzy, kde-format
+#| msgid "Change Label Font"
+msgid "Change Object Width"
+msgstr "Keisti etiketės šriftą"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, fuzzy, kde-format
+#| msgid "Change Label"
+msgid "Change Object Style"
+msgstr "Keisti etiketę"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, fuzzy, kde-format
+#| msgid "Set &Parameter..."
+msgid "Set &Name..."
+msgstr "Keisti &parametrą..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, fuzzy, kde-format
+#| msgid "&Name:"
+msgid "&Name"
+msgstr "Pa&vadinimas:"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, fuzzy, kde-format
+#| msgid "Select object %1"
+msgid "Set Object Name"
+msgstr "Pažymėti objektą %1"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, fuzzy, kde-format
+#| msgid "Scale this object"
+msgid "Set Name of this Object:"
+msgstr "Keisti šio objekto mastelį"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, fuzzy, kde-format
+#| msgid "Add %1 Object"
+#| msgid_plural "Add %1 Objects"
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "Pridėti %1 objektą"
+msgstr[1] "Pridėti %1 objektus"
+msgstr[2] "Pridėti %1 objektų"
+msgstr[3] "Pridėti %1 objektą"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr ""
+
+#: modes/popup/popup.cc:113
+#, fuzzy, kde-format
+#| msgid "&Transformations"
+msgid "&Transform"
+msgstr "&Transformacijos"
+
+#: modes/popup/popup.cc:114
+#, fuzzy, kde-format
+#| msgid "T&ests"
+msgid "T&est"
+msgstr "&Testai"
+
+#: modes/popup/popup.cc:115
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgid "Const&ruct"
+msgstr "Etiketės kūrimas"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr ""
+
+#: modes/popup/popup.cc:117
+#, fuzzy, kde-format
+#| msgid "Text Label"
+msgid "Add Te&xt Label"
+msgstr "Tekstinė etiketė"
+
+#: modes/popup/popup.cc:118
+#, fuzzy, kde-format
+#| msgid "Set Coordinate"
+msgid "Set Co&lor"
+msgstr "Keisti koordinates"
+
+#: modes/popup/popup.cc:119
+#, fuzzy, kde-format
+#| msgid "Set &Length..."
+msgid "Set &Pen Width"
+msgstr "Keisti &ilgį..."
+
+#: modes/popup/popup.cc:120
+#, fuzzy, kde-format
+#| msgid "Set Si&ze"
+msgid "Set St&yle"
+msgstr "Keisti &dydį"
+
+#: modes/popup/popup.cc:122
+#, fuzzy, kde-format
+#| msgid "&Set Coordinate System"
+msgid "Set Coordinate S&ystem"
+msgstr "Keisti koordinačių &sistemą"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr ""
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgid "Edit Script..."
+msgstr "Rengti scenarijų"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Įveskite etiketės tekstą"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Čia įveskite tekstą, kuris bus rodomas etiketėje, ir, po to, spauskite "
+"„Tęsti“.\n"
+"Prireikus tekste pateikti kintamųjų vertes, tose teksto vietose reikia "
+"įrašyti %1, %2,... (pavyzdžiui: „Tai %1 laipsnių kampas.“)."
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Tekstą įrėminti"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Pažymėti visus argumentus"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Dabar pažymėkite jums reikalingą argumentą ar argumentus. Po to, pele "
+"spustelėje vieną iš argumentų, Kig lange parinkite parinktam argumentui "
+"priskirtiną objektą ir jo savybę. Pastarąją operaciją atlikite su visais "
+"argumentais. Baigę, spauskite mygtuką „Tinka“."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Etiketės kūrimas"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr "Makrokomanda"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "Tipas"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Aprašymas"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Tvarkyti tipus"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Redaguoti..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "&Eksportuoti..."
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Ar iš tikro pašalinti šį tipą?"
+msgstr[1] "Ar iš tikro pašalinti %1 tipus?"
+msgstr[2] "Ar iš tikro pašalinti %1 tipų?"
+msgstr[3] "Ar iš tikro pašalinti %1 tipą?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Ar esate įsitikinę?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Eksportuoti tipus"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig tipo failai\n"
+"*|Visi failai"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig tipo failai\n"
+"*|Visi failai"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Importuoti tipus"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Pažymėtas daugiau nei vienas tipas. Vienu metu galima keisti tik vieną tipą. "
+"Prašom pažymėkite tik tipą, kurį norite keisti, ir bandykite vėl."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Pažymėtas daugiau nei vienas tipas"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Čia pažymėkite tipus..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Tai dabartinių makrokomandų sąrašas... Makrokomandas galima žymėti, keisti, "
+"pašalinti, eksportuoti bei importuoti..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Redaguoti pažymėtąjį tipą."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Pašalinti visus sąraše pažymėtus tipus."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Visus pažymėtus tipus eksportuoti į failą."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Makrokomandas importuoti iš failų."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Importuoti..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Kampą brėžti nuo šio taško"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "Parinkite tašką pirmoje pustiesėje, nuo kurios bus brėžiamas kampas..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Kampą brėžti apie šį tašką"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Parinkite tašką, apie kurį bus brėžiamas kampas..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Parinkite tašką antroje pustiesėje, iki kurios bus brėžiamas kampas..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Keisti &dydį"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Keisti kampo vertę"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Lanką brėžti nuo šio taško"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Parinkite tašką, nuo kurio bus brėžiamas naujasis lankas..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Lanką brėžti per šį tašką"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Nurodykite tašką, per kurį bus brėžiamas naujasis lankas..."
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Lanką brėžti iki šio taško"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Parinkite tašką, iki kurio bus brėžiamas naujasis lankas..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Lanką brėžti apie šį centrą"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Parinkite tašką, apie kurį bus brėžiamas naujasis lankas..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Brėžti tokio kampo lanką"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Parinkite naujojo lanko kampą..."
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Kūgio pjūvio lanką brėžti nuo šio taško"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Parinkite naujojo kūgio pjūvio lanko pradžios tašką..."
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Kūgio pjūvio lanką brėžti per šį tašką"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr ""
+"Parinkite tašką, per kurį bus brėžiamas naujasis kūgio pjūvio lankas..."
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Kūgio pjūvio lanką brėžti iki šio taško"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Parinkite naujojo kūgio pjūvio lanko pabaigos tašką..."
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Kūgio pjūvio lanką brėžti apie šį centrą"
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Parinkite naujojo kūgio pjūvio lanko centrą..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+#, fuzzy
+msgid "Number of control points"
+msgstr "Kraštinių skaičius"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+msgid "Control polygon"
+msgstr "Brėžti šio daugiakampio kraštines"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Dekarto lygtis"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+#, fuzzy
+msgid "Bézier Curve"
+msgstr "Slėpti kreivę"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Pažymėti šią kreivę"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Pažymėti kreivę %1"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+msgid "Remove a Bézier Curve"
+msgstr "Pašalinti kreivę"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+msgid "Add a Bézier Curve"
+msgstr "Pridėti kreivę"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+msgid "Move a Bézier Curve"
+msgstr "Perkelti kreivę"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+msgid "Attach to this Bézier Curve"
+msgstr "Priskirti šiai kreivei"
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+msgid "Show a Bézier Curve"
+msgstr "Rodyti kreivę"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+msgid "Hide a Bézier Curve"
+msgstr "Slėpti kreivę"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+msgid "Bézier Quadratic"
+msgstr "Pridėti keturkampį"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Pažymėti šį lanką"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Pažymėti lanką %1"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+msgid "Remove a Bézier Quadratic"
+msgstr "Pašalinti keturkampį"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+msgid "Add a Bézier Quadratic"
+msgstr "Pridėti keturkampį"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+msgid "Move a Bézier Quadratic"
+msgstr "Perkelti keturkampį"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+msgid "Attach to this Bézier Quadratic"
+msgstr "Priskirti šiam lankui"
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+msgid "Show a Bézier Quadratic"
+msgstr "Rodyti keturkampį"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+msgid "Hide a Bézier Quadratic"
+msgstr "Slėpti keturkampį"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Pažymėti šį lanką"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Pažymėti apskritimą %1"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+msgid "Remove a Bézier Cubic"
+msgstr "Pašalinti kūgio pjūvį"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+msgid "Add a Bézier Cubic"
+msgstr "Pridėti kubinę kreivę"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+msgid "Move a Bézier Cubic"
+msgstr "Perkelti kubinę kreivę"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+msgid "Attach to this Bézier Cubic"
+msgstr "Priskirti šiam lankui"
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+msgid "Show a Bézier Cubic"
+msgstr "Rodyti kubinę kreivę"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+msgid "Hide a Bézier Cubic"
+msgstr "Slėpti kubinę kreivę"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr ""
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Pažymėti šį daugiakampį"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Pažymėti daugiakampį %1"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+msgid "Remove a Rational Bézier Curve"
+msgstr "Pašalinti daugiakampį"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+msgid "Add a Rational Bézier Curve"
+msgstr "Pridėti daugiakampį"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+msgid "Move a Rational Bézier Curve"
+msgstr "Perkelti daugiakampį"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Priskirti šiam daugiakampiui"
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+msgid "Show a Rational Bézier Curve"
+msgstr "Rodyti daugiakampį"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+msgid "Hide a Rational Bézier Curve"
+msgstr "Slėpti daugiakampį"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+msgid "Rational Bézier Quadratic"
+msgstr "Pažymėti kūgio pjūvio lanką %1"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Pažymėti šį kūgio pjūvio lanką"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Pažymėti kūgio pjūvio lanką %1"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Pašalinti daugiakampį"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Pridėti daugiakampį"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Perkelti daugiakampį"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Priskirti šiam kūgio pjūvio lankui"
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Rodyti daugiakampį"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Slėpti daugiakampį"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Pažymėti šį trikampį"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Pažymėti trikampį %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Priskirti šiam kūgio pjūviui"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Parinkite tašką, kuris bus naujojo trikampio viršūnė..."
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Parinkite tašką, kuris bus naujojo trikampio viršūnė..."
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų kūgio pjūvių, kuriems bus brėžiama chordinė "
+"tiesė..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+msgid "Select this value as weight"
+msgstr "Pažymėti šią atkarpą"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "coliai"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Testo rezultatas"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Parinkite kreivę..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Kreivėje parinkite tašką..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Paviršius"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Apskritimo ilgis"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Spindulys"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Centras"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Išplėsta Dekarto lygtis"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Polinė lygtis"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "ro = %1   [centras ties %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "apskritimas"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Pažymėti šį apskritimą"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Pažymėti apskritimą %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Pašalinti apskritimą"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Pridėti apskritimą"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Perkelti apskritimą"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Priskirti šiam apskritimui"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Rodyti apskritimą"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Slėpti apskritimą"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Apskritimą brėžti per šį tašką"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Šis taškas yra konstruojamo apskritimo centras"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Parinkite tašką, kuris turi būti naujojo apskritimo centru..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiamas naujasis apskritimas..."
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "Tokiu spinduliu"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Parinkite spindulio ilgį..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Kūgio pjūvio tipas"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Pirmasis židinys"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Antrasis židinys"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Elipsė"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Hiperbolė"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Parabolė"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "ro"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "COS teta"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "SIN teta"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[centras ties %1]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "kūgio pjūvis"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Pažymėti šį kūgio pjūvį"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Pažymėti kūgio pjūvį %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Pašalinti kūgio pjūvį"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Pridėti kūgio pjūvį"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Perkelti kūgio pjūvį"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Priskirti šiam kūgio pjūviui"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Rodyti kūgio pjūvį"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Slėpti kūgio pjūvį"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Atraminis kūgio pjūvis"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Pirmasis pabaigos taškas"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Antrasis pabaigos taškas"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "kūgio pjūvio lankas"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Pažymėti šį kūgio pjūvio lanką"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "Pažymėti kūgio pjūvio lanką %1"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Pašalinti kūgio pjūvio lanką"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Pridėti kūgio pjūvio lanką"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Perkelti kūgio pjūvio lanką"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Priskirti šiam kūgio pjūvio lankui"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Rodyti kūgio pjūvio lanką"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Slėpti kūgio pjūvio lanką"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Kūgio pjūvį brėžti per šį tašką"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiamas naujasis kūgio pjūvis..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Šį tiesė bus kūgio pjūvio asimptotė"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Parinkite pirmąją naujojo kūgio pjūvio asimptotę..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Parinkite antrąją naujojo kūgio pjūvio asimptotę..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Čia bus elipsės židinys"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Parinkite pirmąjį naujosios elipsės židinį..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Parinkite antrąjį naujosios elipsės židinį..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Elipsę brėžti per šį tašką"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji elipsė..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Čia bus hiperbolės židinys"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Parinkite pirmąjį naujosios hiperbolės židinį..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Parinkite antrąjį naujosios hiperbolės židinį..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Hiperbolę brėžti per šį tašką"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji hiperbolė..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Ši tiesė bus kūgio pjūvio direktrisė"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Parinkite naujojo kūgio pjūvio direktrisę..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Šis taškas bus kūgio pjūvio židinys"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Parinkite naujojo kūgio pjūvio židinį..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Parabolę brėžti per šį tašką"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji parabolė..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Dedant polinį tašką atsižvelgti į šį kūgio pjūvį"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "Parinkite kūgio pjūvį, kurio atžvilgiu bus dedamas polinis taškas..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Dėti šios tiesės polinį tašką"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Parinkite tiesę, kuriai bus dedamas polinis taškas..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Brėžti polinę tiesę atsižvelgiant į šį kūgio pjūvį"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Brėžtio šio taško polinę liniją"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Brėžti šio kūgio pjūvio direktrisę"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Parinkite kūgio pjūvį, kuriam bus brėžiama direktrisė..."
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Šį tiesė bus parabolės direktrisė"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Parinkite naujosios parabolės direktrisę..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Čia bus parabolės židinys"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Parinkite naujosios parabolės židinį..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Brėžti šio kūgio pjūvio asimptotes"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Parinkite kūgio pjūvį, kuriam bus brėžiamos asimptotės..."
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Brėžti šio kūgio pjūvio chordines tieses"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų kūgio pjūvių, kuriems bus brėžiama chordinė "
+"tiesė..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Parinkite antrąjį iš dviejų kūgio pjūvių, kuriems bus brėžiama chordinė "
+"tiesė..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Sukeisti chordines tieses"
+
+#: objects/conic_types.cc:619
+#, fuzzy, kde-format
+#| msgid "Switch Radical Lines"
+msgid "Switch Conic Radical Lines"
+msgstr "Sukeisti chordines tieses"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "kubinė kreivė"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Pažymėti šią kubinę kreivę"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Pažymėti kubinę kreivę %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Pašalinti kubinę kreivę"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Pridėti kubinę kreivę"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Perkelti kubinę kreivę"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Priskirti šiai kubinei kreivei"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Rodyti kubinę kreivę"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Slėpti kubinę kreivę"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Kubinę kreivę brėžti per šį tašką"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji kubinė kreivė..."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "kreivė"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Pažymėti šią kreivę"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Pažymėti kreivę %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Pašalinti kreivę"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Pridėti kreivę"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Perkelti kreivę"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Priskirti šiai kreivei"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Rodyti kreivę"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Slėpti kreivę"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Transcendentinė kreivė (gal būt)"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Jau apskaičiuotas sankirtos taškas"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Sankirta su šia kubine kreive"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Sankirta su šiuo lanku"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Inversija atsižvelgiant į šį apskritimą"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Parinkite apskritimą, kurio atžvilgiu bus vykdoma inversija..."
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Apskaičiuoti šio objekto inversiją"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Parinkite kurį objektą invertuoti..."
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Apskaičiuoti šio taško inversiją"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Parinkite kurį tašką invertuoti..."
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Apskaičiuoti šios tiesės inversiją"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Parinkite kurią tiesę invertuoti..."
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Apskaičiuoti šios atkarpos inversiją"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Parinkite kurią atkarpą invertuoti..."
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Apskaičiuoti šio apskritimo inversiją"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Parinkite kurį apskritimą invertuoti..."
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Apskaičiuoti šio lanko inversiją"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Parinkite kurį lanką invertuoti..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Posvyris"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Lygtis"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Ilgis"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Atraminė tiesė"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Pabaigos taškas"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "tiesė"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Parinkite tiesę"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Pažymėti šią tiesę"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Pažymėti tiesę %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Pašalinti tiesę"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Pridėti tiesę"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Perkelti tiesę"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Priskirti šiai tiesei"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Rodyti tiesę"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Slėpti tiesę"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "atkarpa"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Pažymėti šią atkarpą"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Pažymėti atkarpą %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Pašalinti atkarpą"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Pridėti atkarpą"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Perkelti atkarpą"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Priskirti šiai atkarpai"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Rodyti atkarpą"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Slėpti atkarpą"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "pustiesė"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Pažymėti šia pustiesę"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Pažymėti pustiesę %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Pašalinti pustiesę"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Pridėti pustiesę"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Perkelti pustiesę"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Priskirti šiai pustiesei"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Rodyti pustiesę"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Slėpti pustiesę"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Atkarpą brėžti nuo šio taško"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Parinkite naujosios atkarpos pradžios tašką..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Atkarpą brėžti iki šio taško"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Parinkite naujosios atkarpos pabaigos tašką..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Tiesę brėžti per šį tašką"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji tiesė..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Parinkite kitą tašką, per kurį bus brėžiama naujoji tiesė..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Pustiesę brėžti nuo šio taško"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Parinkite naujosios pustiesės pradžios tašką..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Pustiesę brėžti per šį tašką"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji pustiesė..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Ašį konstruoti šiai atkarpai"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Parinkite atkarpą, kuriai reikia nubrėžti ašį..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Lygiagretę brėžti šiai tiesei"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Parinkite tiesę, kuri bus lygiagreti naujajai tiesei..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Lygiagretę brėžti per šį tašką"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama naujoji tiesė..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Statmenį brėžti šiai tiesei"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Parinkite tiesę, kuri bus statmena naujajai tiesei..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Statmenį brėžti per šį tašką"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Keisti &ilgį..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Keisti atkarpos ilgį"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Įveskite naują ilgį:"
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Keisti atkarpos dydį"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Tiesę brėžti pagal šį vektorių"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Parinkite vektorių, kuris nusakys naujosios tiesės kryptį..."
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Pustiesę brėžti pagal šį vektorių"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Parinkite vektorių, kuris nusakys naujosios pustiesės kryptį..."
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "hodografas"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Pažymėti šį hodografą"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Pažymėti hodografą %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Pašalinti hodografą"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Pridėti hodografą"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Perkelti hodografą"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Priskirti šiam hodografui"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Rodyti hodografą"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Slėpti hodografą"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Objekto tipas"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "objektas"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Pažymėti šį objektą"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Pažymėti objektą %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Pašalinti objektą"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Pridėti objektą"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Perkelti objektą"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Priskirti šiam objektui"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Rodyti objektą"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Slėpti objektą"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Kapas radianais"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Kampas laipsniais"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Vidutio taškas"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X ilgis"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y ilgis"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Priešingas vektorius"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Kampas"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Išpjovos plotas"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Lanko ilgis"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Atraminis apskritimas"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "kampas"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Pažymėti šį kampą"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Pažymėti kampą %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Pašalinti kampą"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Pridėti kampą"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Perkelti kampą"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Priskirti šiam kampui"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Rodyti kampą"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Slėpti kampą"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "vektorius"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Pažymėti šį vektorių"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Pažymėti vektorių %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Pašalinti vektorių"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Pridėti vektorių"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Perkelti vektorių"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Priskirti šiam vektoriui"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Rodyti vektorių"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Slėpti vektorių"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "lankas"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Pažymėti šį lanką"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Pažymėti lanką %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Pašalinti lanką"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Pridėti lanką"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Perkelti lanką"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Priskirti šiam lankui"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Rodyti lanką"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Slėpti lanką"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Koordinatė"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X koordinatė"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y koordinatė"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "taškas"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Pažymėti šį tašką"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Pažymėti tašką %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Pašalinti tašką"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Pridėti tašką"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Perkelti tašką"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Priskirti šiam taškui"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Rodyti tašką"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Slėpti tašką"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Vidurio tašką dėti tarp šio ir kkito taškų"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Parinkite antrąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another point"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Vidurio tašką dėti tarp šio ir kkito taškų"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Parinkite pirmąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the other of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Parinkite antrąjį iš dviejų taškų, tarp kurių bus dedamas vidurio taškas..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Keisti k&oordinates..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Apibrėžti iš naujo"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Keisti &parametrą..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Keisti koordinates"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Įveskite naujas koordinates."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Keisti taško parametrą"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Įveskite naują parametrą:"
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Pakesiti suvaržyto taško parametrą"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Parinkite ant kurio apskritimo perkelti matmenį..."
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Apskritime parinkite tašką..."
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Parinkite kurį lanką perkelti ant apskritimo..."
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Kaip taško X koordinatę parinkite skaičių arba ilgį..."
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Kaip taško Y koordinatę parinkite skaičių arba ilgį..."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+#| msgid "Select the point to reflect in..."
+msgid "Select a point to project onto a line..."
+msgstr "Parinkite pagal kurį tašką bus vykdoma atspindžio transformacija..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Kraštinių skaičius"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Perimetras"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+msgid "Boundary Polygonal"
+msgstr "Pridėti daugiakampį"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr ""
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Viršūnių masės centras"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Vijų skaičius"
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+msgid "Inside Polygon"
+msgstr "Slėpti daugiakampį"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+msgid "Open Polygonal Curve"
+msgstr "Daugiakampis"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+msgid "Associated Polygon"
+msgstr "Pridėti daugiakampį"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+msgid "Closed Polygonal Curve"
+msgstr "Perkelti daugiakampį"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "daugiakampis"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Pažymėti šį daugiakampį"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Pažymėti daugiakampį %1"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Pašalinti daugiakampį"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Pridėti daugiakampį"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Perkelti daugiakampį"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Priskirti šiam daugiakampiui"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Rodyti daugiakampį"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Slėpti daugiakampį"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+msgid "closed polygonal curve"
+msgstr "daugiakampis"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Pažymėti šį daugiakampį"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Pažymėti daugiakampį %1"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+msgid "Remove a closed polygonal curve"
+msgstr "Pašalinti daugiakampį"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+msgid "Add a closed polygonal curve"
+msgstr "Pridėti daugiakampį"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+msgid "Move a closed polygonal curve"
+msgstr "Perkelti daugiakampį"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+msgid "Attach to this closed polygonal curve"
+msgstr "Priskirti šiam daugiakampiui"
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+msgid "Show a closed polygonal curve"
+msgstr "Rodyti daugiakampį"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+msgid "Hide a closed polygonal curve"
+msgstr "Slėpti daugiakampį"
+
+#: objects/polygon_imp.cc:662
+#, fuzzy
+msgid "polygonal curve"
+msgstr "daugiakampis"
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+msgid "Select this polygonal curve"
+msgstr "Pažymėti šį daugiakampį"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Pažymėti daugiakampį %1"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+msgid "Remove a polygonal curve"
+msgstr "Pašalinti daugiakampį"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+msgid "Add a polygonal curve"
+msgstr "Pridėti daugiakampį"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+msgid "Move a polygonal curve"
+msgstr "Perkelti daugiakampį"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+msgid "Attach to this polygonal curve"
+msgstr "Priskirti šiam daugiakampiui"
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+msgid "Show a polygonal curve"
+msgstr "Rodyti daugiakampį"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+msgid "Hide a polygonal curve"
+msgstr "Slėpti daugiakampį"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "trikampis"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Pažymėti šį trikampį"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Pažymėti trikampį %1"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Pašalinti trikampį"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Pridėti trikampį"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Perkelti trikampį"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Priskirti šiam trikampiui"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Rodyti trikampį"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Slėpti trikampį"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "keturkampis"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Pažymėti šį keturkampį"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Pažymėti keturkampį %1"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Pašalinti keturkampį"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Pridėti keturkampį"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Perkelti keturkampį"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Priskirti šiam keturkampiui"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Rodyti keturkampį"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Slėpti keturkampį"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Šiame taške brėžti trikampio viršūnę"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Parinkite tašką, kuris bus naujojo trikampio viršūnė..."
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Tiesės ir šio daugiakampio sankirta"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Parinkite daugiakampį, kuris turėtu kirti tiesę..."
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Daugiakampio ir šios tiesės sankirta"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Parinkite tiesę, kuri turėtu kirsti daugiakampį..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Tiesės ir šio daugiakampio sankirta"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Parinkite daugiakampį, kuris turėtu kirti tiesę..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Daugiakampio ir šios tiesės sankirta"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Parinkite tiesę, kuri turėtu kirsti daugiakampį..."
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Šio ir kito daugiakampių sankirta"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Parinkite daugiakampį, kuris turėtu kirsti kitą daugiakampį..."
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Sankirta su šiuo daugiakampiu"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Sankirtai nurodykite antrą daugiakampį..."
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Padėti šio daugiakampio viršūnių taškus"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Parinkite daugiakampį, kuriam reikia padėti viršūnių taškus..."
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Brėžti šio daugiakampio kraštines"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Parinkite daugiakampį, kuriam reikia brėžti kraštines..."
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Iškilųjį apvalkalą brėžti šiam daugiakampiui"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr ""
+"Parinkite daugiakampį, apie kurį bus brėžiamas iškilusis daugiakampis..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Šio taško projekcija apskritime"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Parinkite tašką, per kurį bus brėžiama lietinė..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Ši tiesė lygiagreti?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Parinkite pirmąją iš dviejų galimai lygiagrečių tiesių..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Lygiagreti šiai tiesei?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Parinkite antrąją iš dviejų galimai lygiagrečių tiesių..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Šios tiesės lygiagrečios."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Šios tiesės nėra lygiagrečios."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Ar ši tiesė ortogonali?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Parinkite pirmąją iš dviejų galimai ortogonalių tiesių..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Ortogonali šiai tiesei?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Parinkite antrąją iš dviejų galimai ortogonalių tiesių..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Šios tiesės ortogonalios."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Šios tiesės nėra ortogonalios."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Tikrinti ar šis taškas yra kolinearus"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Parinkite pirmąjį iš trijų galimai kolinearių taškų..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "ir šis antrasis taškas"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Parinkite antrąjį iš trijų galimai kolinearių taškų..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "kartu su šiuo trečiuojų tašku"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Parinkite paskutinįjį iš trijų galimai kolinearių taškų..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Šie taškai kolinearūs."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Šie taškai nėra kolinearūs."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Tikrinti ar šis taškas priklauso kreivei"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Parinkite tikrinamą tašką..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Tikrinti ar taškas priklauso kreivei"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Parinkite kreivę, kuriai galetų priklausyti taškas..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Taškas priklauso šiai kreivei."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Tašakas nepriklauso šiai kreivei."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Tikrinti ar šis taškas priklauso daugiakampiui"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Tikrinti ar taškas priklauso šiam daugiakampiui"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Parinkite daugiakampį, kuriam galėtų priklausyti taškas..."
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Taškas priklauso šiam daugiakampiui."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Taškas nepriklauso šiam daugiakampiui."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Tikrinti ar šis daugiakampis yra iškilusis"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Parinkite kurio daugiakampio iškilumą tikrinti..."
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Tai iškilusis daugiakampis."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Šis daugiakampis nėra iškilusis."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Tikrinti ar šis taškas tiek pat nutolęs"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Parinkite kurio taško atstumų iki kitų dviejų taškų vienodumą tikrinti..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "tarp šio taško"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Parinkite pirmąjį iš kitų dviejų taškų..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "bei tarp šio taško"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Parinkite antrąjį iš kitų dviejų taškų..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Dveji atstumai lygūs."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Dveji atstumai skiriasi."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Tikrinti ar šis vektorius yra lygus kitam vektoriui"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Parinkite pirmajį iš dviejų galimai lygių vektorių..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Tikrinti ar šis vektorius yra lygus kitam vektoriui"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Parinkite antrąjį iš dviejų galimai lygiu vektorių..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Dveji vektoriai lygūs."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Dveji vektoriai skiriasi."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Tikrinti ar šis objektas egzistuoja"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Egzistavimo testui nurodykite objektą..."
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Objektas egzistuoja."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "Objekto nėra."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Tekstas"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "etiketė"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Pažymėti šią etiketę"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Pažymėti etiketę %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Pašalinti eitiketę"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Pridėti etiketę"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Perkelti etiketę"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Priskirti šiai etiketei"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Rodyti etiketę"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Slėpti etiketę"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "skaitinė etiketė"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Pažymėti šią skaitinę etiketę"
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "Pažymėti skaitinę etiketę %1"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Pašalinti skaitinę etiketę"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Pridėti skaitinę etiketę"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Perkelti skaitinę etiketę"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Priskirti šiai skaitinei etiketei"
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Rodyti skaitinę etiketę"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Slėpti skaitinę etiketę"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Skaitinė vertė"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "loginė etiketė"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Pažymėti šią loginę etiketę"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "Pažymėti loginę etiketę %1"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Pašalinti loginę etiketę"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Pridėti loginę etiketę"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Perkelti loginę etiketę"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Priskirti šiai loginei etiketei"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Rodyti loginę etiketę"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Slėpti loginę etiketę"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Kopijuoti tekstą"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "&Rodyti ar slėpti rėmelį"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "Nustatyti š&riftą..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Rodyti ar slėpti etiketės rėmelį"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Keisti etiketės šriftą"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Apibrėžti iš naujo..."
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "Keisti &vertę..."
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Įveskite naują vertę:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Keisti rodomą vertę"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Perstumti šį objektą"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Parinkite kurį objektą perstumti..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Perstumti pagal šį vektorių"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Parinkite pagal kurį vektorių vykdyti postūmio transformaciją..."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Šio objekto atspindys"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Parinkite objektą, kuriam bus įvykdyta atspindžio transformacija..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Atspindėti nuo šio taško"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Parinkite pagal kurį tašką bus vykdoma atspindžio transformacija..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Atspindėti nuo šios tiesės"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Parinkite pagal kurią tiesę bus vykdoma atspindžio transformacija..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Sukti šį objektą"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Parinkite kurį objektą pasukti..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Sukti apie šį tašką"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Parinkite tašką, apie kurį bus sukama..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Sukti šiuo kampu"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Parinkite kampą, kuriuo bus sukama..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Keisti šio objekto mastelį"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Parinkite kurio objekto mastelį keisti..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Mastelį keisti apie šį centrą"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Parinkite tašką, kuris bus mastelio keitimo centras..."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Mastelio vertė pagal šį ilgį"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "Parinkite ilgį arba atkarpą, kurios ilgis lems mastelio vertę..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Mastelio vertę nusakys dalmuo, kuriame šis ilgis bus daliklis..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr "Parinkite pirmąjį iš dviejų ilgių, kuris lems mastelio vertę..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr "... o šis ilgis — dalijamasis"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr "Parinkite antrąjį iš dviejų ilgių, kuris nulems mastelio vertę..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Parinkite objektą, kurio mastelį reikia keisti..."
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Mastelį keisti apie šią tiesę"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Parinkite apie kurią liniją keisti mastelį..."
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Projekciškai sukti šį objektą"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Parinkite projekciškai sukamą objektą..."
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Projekciškai sukti su šia pustiese"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr "Parinkite pustiesę, pagal kurią objektas bus projekciškai sukamas..."
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Projekciškai sukti šiuo kampu"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr "Parinkite kampą, kuriuo objektas bus projekciškai sukamas..."
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Šio objekto harmoninė homologija"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Parinkite kurį objektą transformuoti..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Čia bus harmoninės homologijos centras"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Parinkite harmoninės homologijos centrą..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Tai bus harmoninės homologijos ašis"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Parinkite harmoninės homologijos ašį..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Šio objekto bendroji afininė transformacija"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Atvaizduoti šį trikampį"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Parinkite trikampį, kuris bus transformuotas į duotąjį trikampį..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "į šį kitą trikampį"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr ""
+"Parinkite trikampį, kuris yra pirmojo trikampio afininės transformacijos "
+"vaizdas..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Pirmasis iš trijų pradinių taškų"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr ""
+"Parinkite pirmąjį iš trijų bendrosios afininės transformacijos pradinių "
+"taškų..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Antrasis iš trijų pradinių taškų"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr ""
+"Parinkite antrąjį iš trijų bendrosios afininės transformacijos pradinių "
+"taškų..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Trečiasis iš trijų pradinių taškų"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr ""
+"Parinkite trečiąjį iš trijų bendrosios afininės transformacijos pradinių "
+"taškų..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Transformuota pirmojo taško vieta"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr ""
+"Parinkite pirmąjį iš trijų bendrosios afininės transformacijos galutinių "
+"taškų..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Transformuota antrojo taško vieta"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr ""
+"Parinkite antrąjį iš trijų bendrosios afininės transformacijos galutinių "
+"taškų..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Transformuota trečiojo taško vieta"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr ""
+"Parinkite trečiąjė iš trijų bendrosios afininės transformacijos galutinių "
+"taškų..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Šio objekto bendroji projekcinė transformacija"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Atvaizduoti šį keturkampį"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Parinkite keturkampį, kuris bus transformuotas į duotąjį keturkampį..."
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "į šį kitą keturkampį"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Parinkite keturkampį, kuris yra pirmojo keturkampio projekcinės "
+"transformacijos vaizdas..."
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Pirmasis iš keturių pradinių taškų"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr ""
+"Parinkite pirmąjį iš keturių bedrosios projekscinės transformacijos pradinių "
+"taškų..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Antrasis iš keturių pradinių taškų"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr ""
+"Parinkite antrąjį iš keturių bendrosios projekcinės transformacijos pradinių "
+"taškų..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Trečiasis iš keturių pradinių taškų"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr ""
+"Parinkite trečiąjį iš keturių bendrosios projekcinės transformacijos "
+"pradinių taškų..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Ketvirtasis iš keturių pradinių taškų"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr ""
+"Parinkite ketvirtąjį iš keturių bendrosios projekcinės transformacijos "
+"pradinių taškų..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr ""
+"Parinkite pirmąjį iš keturių bendrosios projekcinės transcormacijos "
+"galutinių taškų..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr ""
+"Parinkite antrąjį iš keturių bendrosios projekcinės transformacijos "
+"galutinių taškų..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr ""
+"Parinkite trečiąjį iš keturių bendrosios projekcinės transformacijos "
+"galutinių taškų..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Transformuota ketvirtojo taško vieta"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr ""
+"Parinkite ketvirtąjį iš keturių bendrosios projekcinės transformacijos "
+"galutinių taškų..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Mesti šio objekto šešėlį"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Parinkite objektą, kuris mes šešėlį..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Objektą apšviečia šis šviesos šaltinis"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Parinkite šviesos šaltinį, kuriuo apšviestas objektas mes šešėlį..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Šešėlį mesti ant horizonto, kurį vaizduoja ši tiesė"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Šešėliui parinkite horizontą..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Transformuoti šį objektą"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Transformuoti šia transformacija"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Vykdyti šio objekto panašumo transformaciją"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Čia bus panašumo transformacijos centras"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Parinkite panašumo transformacijos centrą..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Šį tašką, taikant panašumo transformaciją, atvaizduoti į kitą tašką"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+"Parinkite tašką, kuris panašumo transformacija atvaizduojamas į kitą tašką..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Tašką, taikant panašumo transformaciją, atvaizduoti į šį tašką"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+"Parinkite tašką, į kurį panašumo transformacija atvaizduojamas kitas "
+"taškas..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Vektoriaus pradžia šiame taške"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Parinkite naujojo vektoriaus pradžios tašką..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Vektoriaus galas šiame taške"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Parinkite vektoriaus pabaigos tašką..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Brėžti šio ir kito vektorių sumos vektorių"
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "Parinkite pirmąjį iš dviejų sumuojamų vektorių..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Brėžti kito ir šio vektorių  sumos vektorių"
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Parinkite antrąjį iš dviejų sumuojamų vektorių..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Sumos vektoriaus pradžia šiame taške"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Parinkite sumos vektoriaus pradžios tašką..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Naujas scenarijus"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Kig lange argumentui pažymėkite objektus (jei tokių yra)\n"
+"ir spauskite mygtuką „Tęsti“."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Įveskite kodą"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Dabar įveskite kodą:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Dabar įveskite Python kodą:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "argumentas%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Vykdant scenarijų, Python interpretatorius jame rado klaidą. Pataisykite "
+"scenarijų, ir, po to, vėl spauskite mygtuką „Tinka“."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python interpretatorius praneša apie klaidą:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Scenarijuje, ko gero, yra klaida. Python interpretatorius apie klaidą "
+"nepraneša, tačiau scenarijus teisingo objekto negeneruoja. Pataisykite "
+"scenarijų, ir, po to, vėl spauskite mygtuką „Tinka“"
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Rengti scenarijų"
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Rengti Python scenarijų"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Vykdant scenarijų, Python interpretatorius jame rado klaidą. Taisykite "
+"scenarijų."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Scenarijuje, ko gero, yra klaida. Python interpretatorius apie klaidą "
+"nepraneša, tačiau scenarijus teisingo objekto negeneruoja. Taisykite "
+"scenarijų."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>  Kig programoje konstravimą galima valdyti „pykig“\n"
+"python scenarijumi, kuris paleidžiamas komanda <code>pykig.py</code>.\n"
+"  Galite išbandyti žemiau pateiktą neblogą pavyzdį (<code>hexagons.kpy</"
+"code>):\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>  Paskutinįjį konstrukcijos kūrimą pakartosite paspaudę klavišą „Z“;\n"
+"tai labai paranku, kai reikia sukurti tos pačios konstrukcijos objektų "
+"seriją,\n"
+"ir ypač tada, kai tai konstrukcijai nėra paskirtas spartusis klavišas.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>  Viena iš efektyviausių priemonių Kig programoje — tai meniu,\n"
+"kuris atsiranda spustelėjus objektą, ar tuščią dokumento vietą\n"
+"dešiniuoju pelės klavišu.  Naudojant šį meniu galima objektui priskirti\n"
+"pavadinimą, keisti jo spalvą, linijų stilių, bei daugelį kitų įdomių dalykų."
+"</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>  Padėti naujus taškus galima ir nenaudojant menių arba priemonių juostą: "
+"norimoje Kig dokumento vietoje tiesiog spustelėkite <em>vidurinįjį pelės "
+"klavišą</em>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>  Kig programa supranta keletą failų formatų: gimtuosius failus (<code>."
+"kig</code> failai),\n"
+"<em>KGeo</em> failus, <em>KSeg</em> failus, ir, dalinai, <em>Dr. Geo</em>\n"
+"bei <em>Cabri™</em> failus.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>  Dirbdami Kig programa, galėsite panaudoti daugiau nei 20 objektų\n"
+"ir 10 transformacijos būdų su daugiau nei 80 konstrukcijų: juos visus "
+"rasite\n"
+"meniu punkte <em>Objektai</em>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>  Pažymėtus objektus galima panaudoti naujo objekto konstravimui,\n"
+"kuriam būtini argumentai, pažymėtų objektų pavidalu. Pavyzdžiui, jei yra\n"
+"pažymėti du taškai, tai vieno iš šių taškų kontekstiniame meniu parinkę\n"
+"„Pradėti → Apskritimas per tris taškus“ pradėsite apskritimo per tris\n"
+"taškus konstravimą.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Kig can extends its object set using external macros. You can find "
+#| "some\n"
+#| "interesting macros on the Kig website:\n"
+#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>  Kig objektų sąrašą galima išplėsti naudojant išorines makrokomandas. "
+"Nemažai\n"
+"įdomių makrokomandų galima rasti Kig tinklapyje: <a href=\"http://edu.kde."
+"org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>  Jei po pelės žymekliu yra dagiau nei vienas objektas, ir kažkurį\n"
+"iš jų reikia pažymėti, tai, nuspaudę <em>Lyg2</em> klavišą, tą objektų\n"
+"santalką spustelėkite <em>kairiuoju pelės klavišu</em> — atsiras\n"
+"kontekstinis meniu, kuriame galėsite pažymėti norimą objektą.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p>Konstruojant hodografą, jei jis yra žemo laipsnio algebrinės kreivės "
+"pavidalo,\n"
+"tai jį spustelėjus <em>dešiniuoju</em> pelės mygtuku ir\n"
+"parinkus <em>Dekarto lygtis</em> bus pateikta to hodografo lygtis.</p>\n"
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Tarp šio ir kito taško padedamas vidurio taškas"

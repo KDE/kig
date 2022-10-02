@@ -1,0 +1,1085 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % German "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>Das Handbuch zu &kig;</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Sebastian</firstname
+><surname
+>Stein</surname
+><affiliation
+><address
+><email
+>kbruch@hpfsc.de</email
+></address
+></affiliation
+><contrib
+>Deutsche Übersetzung</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-23</date>
+<releaseinfo
+>Anwendungen 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kig; ist Anwendung für interaktive Geometrie von &kde;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Interaktive Geometrie</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Einleitung</title>
+
+<para
+>&kig; ist eine Anwendung für interaktive Geometrie. Es soll hauptsächlich 2 Zwecken dienen: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Schüler sollen mit Hilfe des Computers mathematische Figuren und Konzepte interaktiv entdecken können. </para
+></listitem>
+
+<listitem
+><para
+>Es soll ein <acronym
+>WYSIWYG</acronym
+>-Werkzeug zum Zeichnen von mathematischen Figuren und deren Verwenden in anderen Dokumenten sein.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Probleme mit &kig; können Sie über das interne Fehlermeldungssystem (<menuchoice
+><guimenu
+>Hilfe</guimenu
+> <guimenuitem
+>Probleme oder Wünsche berichten ...</guimenuitem
+> </menuchoice
+>). </para>
+
+<para
+>Seit &kig; Makros und geometrische Orte unterstützt, ist es möglich, sehr ausgefeilte Makros zu definieren. Falls Sie ein interessantes Makro erstellt haben, das vielleicht für andere Benutzer ebenfalls von Interesse sein könnte, dann schicken Sie einen „Review Request“, so dass überprüft werden kann, ob es in das Programm eingefügt werden kann. Dann wird es unter &kig;s Lizenz, der <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>, veröffentlicht, damit andere Benutzer es frei benutzen und anpassen können. </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Grundlagen</title>
+<sect1 id="constructing-objects">
+<title
+>Objekte konstruieren</title>
+<sect2 id="constructing-points">
+<title
+>Punkte konstruieren</title>
+<para
+>Punkte können auf verschiedene Weise konstruiert werden:</para>
+<itemizedlist>
+<listitem>
+<para
+>Wählen Sie dazu <menuchoice
+><guimenu
+>Objekte</guimenu
+> <guisubmenu
+>Punkte</guisubmenu
+> <guimenuitem
+>Punkt</guimenuitem
+></menuchoice
+> aus der Menüleiste oder drücken Sie den entsprechenden Knopf in der Werkzeugleiste. Jetzt können Sie einen Punkt durch einen Klick an der gewünschten Position im Fenster konstruieren.</para>
+
+<note
+><para
+>Mit der &Shift;taste aktivieren Sie einen Gitterfangmodus. Damit können Sie jeden Punkt einer Konstruktion genau auf Punkte des Gitternetzes setzen.</para
+></note>
+<note
+><para
+>Genauso können Sie andere Objekte erstellen: Auf den gewünschten Eintrag in der Menüleiste oder den entsprechenden Knopf in der Werkzeugleiste drücken und dann die gewünschten Einträge auswählen, um das Objekt zu konstruieren.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Da das Konstruieren von Punkten sehr häufig ist, können Sie dies einfach durch einen Klick mit der &MMBn; an einer beliebigen Stelle im Fenster tun, ohne die Menüs oder Knöpfe zu benutzen. </para>
+</listitem>
+<listitem>
+<para
+>Sie können Punkte konstruieren, während Sie im Hintergrund ein anderes Objekt erstellen. Dadurch werden die Punkte zu dem Objekt, das Sie bearbeiten hinzugefügt. Mehr dazu finden Sie unter <xref linkend="constructing-other-objects"/>.  </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Ein Punkt wurde konstruiert</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ein Punkt wurde konstruiert</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Andere Objekte konstruieren</title>
+<para
+>Andere Objekte als Punkte können Sie wie üblich durch die Auswahl des entsprechenden Eintrags im Menü <guimenu
+>Objekte</guimenu
+> oder den entsprechenden Knopf in der Werkzeugleiste konstruieren. </para>
+<screenshot>
+<screeninfo
+>Konstruieren eines Kreises</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konstruieren eines Kreises</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>So beginnen Sie die Konstruktion des gewählten Objekttyps. Alle diese Objekttypen benötigen Parameter. Wenn Sie zum Beispiel einen Kreis durch Mittelpunkt und Punkt konstruieren wollen, dann müssen Sie zwei Punkte angeben: den Mittelpunkt und einen Punkt auf dem Kreis. </para>
+<para
+>Diese Parameter sind ebenfalls Objekte, die Sie einfach durch Klicken auswählen können. Bewegen Sie den Mauszeiger über ein Objekt, das Sie als Parameter für die Konstruktion verwenden wollen, wird eine Vorschau des neuen Objekts gezeigt, sodass Sie das Ergebnis sehen können. Für Objekte, die Punkte als Parameter benötigen, können Sie einen neuen Punkt an der aktuellen Position des Mauszeigers durch einen Klick mit der &LMBn; erstellen. Dieser Punkt wird sofort als Parameter gewählt.  </para>
+<para
+>Sie können die Konstruktion eines neuen Objektes jederzeit abbrechen, indem Sie die &Esc;-Taste betätigen oder den Knopf <inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Konstruktion abbrechen</guibutton
+> in der Werkzeugleiste drücken. </para>
+<screenshot>
+<screeninfo
+>Einen Kreis konstruieren</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konstruieren eines Kreises</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Objekte auswählen</title>
+<para
+>Objekte können auf folgende Weise ausgewählt werden: </para>
+<itemizedlist>
+<listitem>
+<para
+>Durch einen Klick auf ein Objekt wird dieses ausgewählt und die aktuelle Auswahl aufgehoben. Möchten Sie mehrere Objekte gleichzeitig wählen, dann halten Sie während des Klicks die &Ctrl;-Taste gedrückt. </para>
+</listitem>
+<listitem>
+<para
+>Mit einem Klick und anschließendem Ziehen an eine leere Stelle auf der Zeichenfläche können Sie alle Objekte im angezeigten Rechteck auf einmal auswählen. Dadurch wird die aktuelle Auswahl aufgehoben. Mit gedrückter &Ctrl;-Taste jedoch werden die neuen Objekte zur aktuellen Auswahl hinzugefügt. </para>
+</listitem>
+</itemizedlist>
+<para
+>Befinden sich mehrere Objekte unter dem Mauszeiger, wird <guilabel
+>Welches Objekt?</guilabel
+> in der Statusleiste und am Mauszeiger angezeigt. Dann können Sie angeben, welches Objekt ausgewählt oder der Auswahl hinzugefügt werden soll. Klicken Sie mir der &LMBn; während Sie die &Shift;taste gedrückt halten oder drücken Sie die &RMB;, um ein Kontextmenü mit allen Objekten unter dem Mauszeiger zu sehen. Dann können Sie das gewünschte Objekt wählen. Wie oben beschrieben, können Sie mit der &Ctrl;-Taste das Verhalten der Auswahl beeinflussen. </para>
+<screenshot>
+<screeninfo
+>Objekte auswählen</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Objekte auswählen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Objekte verschieben</title>
+<para
+>Um Objekte verschieben zu können, müssen Sie sie zuerst <link linkend="selecting-objects"
+>auswählen</link
+>. </para>
+<para
+>Um die ausgewählten Objekte zu verschieben, halten Sie die <mousebutton
+>linke</mousebutton
+> Maustaste auf einem gewählten Objekt gedrückt. Jetzt können Sie durch Ziehen mit der Maus die Objekte verschieben. Sind Sie damit fertig, dann lassen Sie die linke Maustaste einfach wieder los. </para>
+<note
+><para
+>Für einige Objekte (besonders wenn sie durch komplizierte geometrische Orte definiert sind) kann das Verschieben von Objekten auf älterer Hardware sehr langsam sein. Das lässt sich leider nicht verhindern, da im Hintergrund Berechnungen stattfinden müssen. </para
+></note
+> <note
+><para
+>Klicken Sie mit der &RMBn; auf ein ausgewähltes Objekt und wählen dann <guimenuitem
+>Verschieben</guimenuitem
+>, dann können Sie das Objekt durch Bewegung der Maus verschieben. Ist die gewünschte Position für das Objekt erreicht, dann können Sie das Verschieben durch einen Klick mit der <mousebutton
+>linken</mousebutton
+> Maustaste beenden.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Objekte löschen</title>
+<para
+>Objekte müssen zuerst <link linkend="selecting-objects"
+>ausgewählt</link
+> werden und können dann auf verschiedene Weise gelöscht werden: <itemizedlist>
+<listitem>
+<para
+>durch Drücken der Taste &Del; </para>
+</listitem>
+<listitem>
+<para
+>durch Drücken des Knopfes &nbsp;<inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/></imageobject
+></inlinemediaobject
+> <guibutton
+>Objekte löschen</guibutton
+> in der Werkzeugleiste. </para>
+</listitem>
+<listitem>
+<para
+>durch Klicken mit der <mousebutton
+>rechten</mousebutton
+> Maustaste auf ein Objekt und Auswählen von <guimenuitem
+>Löschen</guimenuitem
+> im erscheinenden <link linkend="objects-context-menus"
+>Kontextmenü</link
+>. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Objekte zeigen und ausblenden</title>
+<para
+>In &kig; können Objekte ausgeblendet werden. Dazu wählen Sie das Objekt aus, klicken mit der <mousebutton
+>rechten</mousebutton
+> Maustaste darauf und wählen aus dem <link linkend="objects-context-menus"
+>Kontextmenü</link
+> den Eintrag <guimenuitem
+>Ausblenden</guimenuitem
+>. </para>
+<para
+>Um ein Objekt wieder anzuzeigen, wählen Sie <menuchoice
+><guimenu
+>Bearbeiten</guimenu
+> <guimenuitem
+>Alle zeigen</guimenuitem
+></menuchoice
+>. Es werden alle momentan ausgeblendeten Objekte wieder angezeigt. </para>
+
+<sect2 id="night-vision">
+<title
+>Nachtsicht</title>
+<para
+>Nachtsicht ist eine besondere Art, um ausgeblendete Objekte zu bearbeiten. Wenn Sie Objekte bewegen oder ändern möchten, ohne alle ausgeblendeten Objekte wieder anzuzeigen, ist der Nachtsichtmodus sehr hilfreich. </para>
+<para
+>In diesem Modus werden die ausgeblendeten Objekte wie sichtbare Objekte angezeigt, sodass Sie sie wie sonst auch bearbeiten können.Im Nachtsichtmodus werden die ausgeblendeten Objekte in grauer Farbe angezeigt. </para>
+<para
+>Um den Nachtsichtmodus ein- und auszuschalten, wählen Sie im Menü  <menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Nachtsichtmodus</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Rückgängig/Wiederherstellen</title>
+<para
+>In &kig; können Sie fast jede Änderung rückgängig machen. Verwenden Sie dazu die Knöpfe <guiicon
+>Rückgängig</guiicon
+>/<guiicon
+>Wiederherstellen</guiicon
+> aus der Werkzeugleiste, die Einträge im Menü <guimenu
+>Bearbeiten</guimenu
+> oder die entsprechenden Tastenkürzel. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Vollbildmodus</title>
+<para
+>&kig; verfügt über einen Vollbildmodus. Um diesen zu nutzen, wählen Sie <menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Vollbildmodus</guimenuitem
+></menuchoice
+> oder den entsprechenden Knopf aus der Werkzeugleiste. </para>
+<para
+>Um den Vollbildmodus zu verlassen, klicken Sie mit der &RMBn; Maustaste an einer Stelle ohne Objekte auf die Zeichenfläche und wählen <guimenuitem
+>Vollbildmodus beenden</guimenuitem
+> oder drücken Sie <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>&kig; Objekt Typen</title>
+<para
+>&kig; unterstützt eine Vielzahl von Objekten. Beachten Sie, dass nicht alle Objekte in der Werkzeugleiste verfügbar sind, einige Objekte können Sie nur über die Menüleiste im Menü <guimenu
+>Objekte</guimenu
+> konstruieren. Natürlich können Sie wie überall in &kde; die Symbole in der Werkzeugleiste anpassen. Dies erreichen Sie unter <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Werkzeugleisten einrichten ...</guimenuitem
+></menuchoice
+>. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Erweiterte Anwendung</title>
+<sect1 id="objects-context-menus">
+<title
+>Kontextmenüs</title>
+<para
+>&kig; bietet Kontextmenüs für alle Objekte. Dazu genügt ein Klick mit der &RMBn; auf das Objekt und das Kontextmenü erscheint. Dieses Kontextmenü hat viele Optionen: andere Objekte konstruieren, Farben, Stiftbreite und Linienstil ändern, Ausblenden, Verschieben oder Löschen von Objekten. Einige Objekte haben besondere Optionen (&eg; können Sie bestimmte Punkte einer Linie zuordnen). Diese Optionen sollten selbsterklärend sein. </para>
+
+<para
+>Einige Aktionen im Kontextmenü von Objekten erfordern ein anderes bereits definiertes Objekt als Referenz, wie zum Beispiel hier:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Drehung eines Objekts um einen bestimmten Winkel</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Klicken Sie auf <menuchoice
+><guimenu
+>Objekte</guimenu
+><guisubmenu
+>Winkel</guisubmenu
+><guimenuitem
+>Winkel durch drei Punkte</guimenuitem
+></menuchoice
+> und konstruieren Sie irgendwo im Ansichtsbereich den gewünschten Winkel. Sie können mit der &RMBn; auf den Winkel klicken und im Kontextmenü <menuchoice
+><guisubmenu
+>Textfeld hinzufügen</guisubmenu
+><guimenuitem
+>Winkel in Grad</guimenuitem
+></menuchoice
+> wählen.</para
+></listitem>
+<listitem
+><para
+>Klicken Sie nochmal mit der &RMBn; auf den Winkel, wählen Sie <guimenuitem
+>Größe ändern</guimenuitem
+> und geben Sie im Dialog den neuen Wert des Winkels ein. </para
+></listitem>
+<listitem
+><para
+>Klicken Sie wieder auf <guimenu
+>Objekte</guimenu
+> und konstruieren Sie ein Objekt. </para
+></listitem>
+<listitem
+><para
+>Klicken Sie mit der &RMBn; auf dieses Objekt und wählen Sie  <menuchoice
+><guisubmenu
+>Umformen</guisubmenu
+><guimenuitem
+>Drehen</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Wählen Sie den Drehpunkt für das Objekt.</para
+></listitem>
+<listitem
+><para
+>Klicken Sie auf den vorher konstruierten Winkel.</para
+></listitem>
+<listitem
+><para
+>Ihr Objekt wird gedreht.</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Ein Objekt verschieben</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Wählen Sie dazu <menuchoice
+><guimenu
+>Objekte</guimenu
+> <guisubmenu
+>Vektoren &amp; Strecken</guisubmenu
+> <guimenuitem
+>Vektor</guimenuitem
+></menuchoice
+>. Jetzt können Sie einen Vektor durch Auswahl von Start- und Endpunkt an einer beliebigen Position im Fenster konstruieren.</para
+></listitem>
+<listitem
+><para
+>Um die Länge des Vektors zu ändern, müssen Sie den Start- und Endpunkt bearbeiten. Wählen Sie diese Punkte aus und ändern Sie deren Koordinaten mit <guimenuitem
+>Koordinaten ändern ...</guimenuitem
+> </para
+></listitem>
+<listitem
+><para
+>Klicken Sie wieder auf <guimenu
+>Objekte</guimenu
+> und konstruieren Sie ein Objekt. </para
+></listitem>
+<listitem
+><para
+>Klicken Sie mit der &RMBn; auf dieses Objekt und wählen Sie  <menuchoice
+><guisubmenu
+>Umformen</guisubmenu
+><guimenuitem
+>Verschieben</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Wählen Sie einen Verschiebungsvektor.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Kontextmenüs für den Ansichtsbereich</title>
+<para
+>Ein Klick mit der <mousebutton
+>rechten</mousebutton
+> Maustaste auf einen freien Bereich der Ansicht (&ie; nicht auf ein Objekt) zeigt ein Kontextmenü, mit dem Sie neue Objekte konstruieren, das Koordinatensystem ändern, Objekte wieder anzeigen, die Vergrößerung einstellen und auch in den Vollbildmodus wechseln können. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Makros definieren</title>
+<para
+>Ein weiteres Merkmal von &kig; ist die Unterstützung von Makros. Damit können Sie neue Objekte definieren, die aus anderen, bereits definierten Objekten zusammensetzt sind. </para>
+<para
+>Ein Beispiel: Nehmen wir an, Sie wollen ein Makro zur Konstruktion eines Kreises durch drei Punkte erstellen. Dazu konstruieren Sie drei Punkte und die Linien dazwischen. Auf diesen Linien zeichnen Sie in der Mitte die Senkrechten, deren Schnittpunkt den Mittelpunkt für den Kreis durch die drei Ausgangspunkte bildet. Jetzt können Sie den vorhandenen Befehl <guimenuitem
+>Kreis durch Mittelpunkt &amp; Punkt</guimenuitem
+> (mit einem der drei Punkte als Parameter für diesen Befehl) verwenden. Das folgende Bild veranschaulicht die Konstruktion: </para>
+<screenshot>
+<screeninfo
+>Ein Test Makro</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ein Test Makro</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Jetzt muss das Makro definiert werden. Dazu wählen Sie <guimenuitem
+>Neues Makro ...</guimenuitem
+> aus dem Menü <guimenu
+>Typen</guimenu
+> aus oder klicken auf den Knopf <inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Neues Makro</guibutton
+> in der Werkzeugleiste. Ein Assistent erscheint und fordert zum Markieren der gegebenen Objekte auf. In unserem Beispiel sind das die drei Punkte. Wählen Sie jetzt die drei Punkte aus (durch Klicken, ein weiterer Klick hebt die Markierung für das Objekt wieder auf) und bestätigen Sie dies mit dem Knopf <guibutton
+>Weiter</guibutton
+>. Abschließend wählen Sie das letzte Objekt (in unserem Beispiel nur den Kreis) aus. </para>
+
+<screenshot>
+<screeninfo
+>Der Makro Assistent</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Der Makro Assistent</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Nachdem die vorherigen Schritte erledigt wurden, drücken Sie den Knopf <guibutton
+>Weiter</guibutton
+>. Geben Sie nun einen Namen und optional eine Beschreibung für den neuen Typ ein und beenden Sie die Eingabe mit <guibutton
+>Fertigstellen</guibutton
+>. Das Makro ist jetzt vollständig definiert. </para>
+
+<para
+>Um das Makro zu benutzen, wählen Sie es aus der Werkzeugleiste direkt aus oder rufen es im Menü <guimenu
+>Objekte</guimenu
+> auf. Ein Makro zu konstruieren, funktioniert genauso wie die Konstruktion eines beliebigen Objekts. </para>
+<screenshot>
+<screeninfo
+>Das neue Makro benutzen</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Das neue Makro benutzen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Arbeiten mit Makros</title>
+<para
+>Wie im vorherigen Kapitel gezeigt wurde, können Sie in &kig; eigene Objekte definieren. &kig; stellt weiterhin sicher, dass bei jedem Beenden die angelegten Objekte gespeichert werden und beim nächsten Start wieder zur Verfügung stehen. Ein manuelles Speichern oder Laden der Makrodefinitionen ist nicht notwendig. Sie können Makros aber auch bearbeiten. Mit <guimenuitem
+>Typen verwalten ...</guimenuitem
+> im Menü <guimenu
+>Typen</guimenu
+> öffnet sich ein Fenster zur Verwaltung der Makros. Sie können ungenutzte Makros löschen, Makros in Dateien speichern und sogar Makros aus anderen Dateien laden. </para>
+<screenshot>
+<screeninfo
+>Der Dialog „Typen verwalten“</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Der Dialog „Typen verwalten“</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Textfelder</title>
+<para
+>In &kig; können Sie einer Konstruktion Textfelder hinzufügen. Das ist sehr nützlich um Namen, Erklärungen oder anderen Text in Konstruktionen anzuzeigen. &kig; kann außerdem variable Informationen von Objekten (<quote
+>Eigenschaften</quote
+>) anzeigen. </para>
+<para
+>Um ein Textfeld zu konstruieren, klicken Sie einfach auf den Knopf <inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Textfeld</guibutton
+> in der Werkzeugleiste oder wählen Sie in der Menüleiste <menuchoice
+><guimenu
+>Objekte</guimenu
+><guisubmenu
+>Sonstige</guisubmenu
+> <guimenuitem
+>Textfeld</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Jetzt müssen Sie eine Position für das Textfeld festlegen. Sie können entweder eine beliebige Position auf der Zeichenfläche auswählen oder das Textfeld an ein anderes Objekt <quote
+>anhängen</quote
+>. </para>
+<screenshot>
+<screeninfo
+>Ein Textfeld an einen Kreis hängen ...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ein Textfeld an einen Kreis hängen ...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Nach der Auswahl der Position des Textfeldes wird ein Dialog angezeigt. Hier geben Sie den Text für das neue Textfeld ein und bestätigen mit <guibutton
+>Fertigstellen</guibutton
+>. Das Textfeld sollte jetzt in der Zeichnung angezeigt werden. </para>
+<screenshot>
+<screeninfo
+>Das Textfeldfenster</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Das Textfeldfenster</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Das vorherige Beispiel war einfach, es wurde nur Text angezeigt. Sie können aber auch veränderliche Informationen über die Objekte im Textfeld anzeigen (&eg; können Sie ein Textfeld mit dem Inhalt <quote
+>Diese Strecke ist <token
+>%1</token
+> Einheiten lang.</quote
+> anzeigen, wobei <token
+>%1</token
+> automatisch mit der Länge der entsprechenden Strecke ersetzt wird). </para>
+<para
+>Dazu müssen Sie den Text mit Platzhaltern (<token
+>%1</token
+>, <token
+>%2</token
+> &etc;) eingeben. Danach bestätigen Sie mit dem Knopf <guibutton
+>Weiter</guibutton
+>. Wollen Sie den Text oder die Platzhalter später noch ändern, können Sie mit dem Knopf <guibutton
+>Zurück</guibutton
+> wieder zur Bearbeitung gehen. </para>
+<para
+>Der Assistent zeigt nun den eingegebenen Text mit den Platzhaltern in der Form <guilabel
+>Argument 1</guilabel
+>. Um festzulegen, was für ein bestimmtes Argument angezeigt werden soll, müssen Sie zuerst das Argument im Text anklicken. Jetzt klicken Sie auf das Objekt, dessen Eigenschaft Sie anzeigen lassen wollen und wählen die gewünschte Eigenschaft aus dem erscheinenden Aufklappfenster. In unserem Beispiel oben klicken Sie auf <guilabel
+>Argument 1</guilabel
+>, in der Arbeitsfläche von &kig; auf die entsprechende Strecke und wählen die Eigenschaft <guilabel
+>Länge</guilabel
+> aus. Danach können Sie weitere variable Teile des Textes eingeben oder andere Eigenschaften für einen variablen Teil auswählen. Haben Sie alle Eingaben fertiggestellt, dann beenden Sie die Konstruktion des Textfeldes mit dem Knopf <guibutton
+>Fertigstellen</guibutton
+>. </para>
+<screenshot>
+<screeninfo
+>Eine Eigenschaft für den variablen Teil auswählen</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Eine Eigenschaft für den variablen Teil auswählen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Geometrische Orte</title>
+<para
+>&kig; unterstützt geometrische Orte. Ein geometrischer Ort ist in der Mathematik definiert als Menge aller Punkte oder Linien, die bestimmte Bedingungen erfüllen, wie zum Beispiel <quote
+>der geometrische Ort von Punkten mit gleichem Abstand zu einem vorgegebenen Punkt ist ein Kreis</quote
+>. Hier ein Beispiel für die Anwendung geometrischer Orte in &kig;: </para>
+<para
+>Betrachten Sie folgende geometrische Konstruktion: Sie zeichnen einen Kreis mit einem Punkt auf dessen Rand. Den Punkt konstruieren Sie, indem Sie die Maus auf den Kreisrand bewegen und die &MMB; drücken. Versuchen Sie jetzt den neuen Punkt zu bewegen, dann werden Sie feststellen, dass Sie ihn nur auf dem Kreis bewegen können. Jetzt konstruieren Sie eine Strecke zwischen diesem Punkt und dem Mittelpunkt des Kreises. Anschließend konstruieren Sie den Mittelpunkt der Strecke. </para>
+<screenshot>
+<screeninfo
+>Eine einfache Konstruktion mittels geometrischem Ort</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Eine einfache Konstruktion mittels geometrischem Ort</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Bewegen Sie nun diesen auf den Kreis beschränkten Punkt, dann bewegen sich die Strecke und ihr Mittelpunkt ebenfalls mit. Wenn Sie jetzt einen Stift auf den Mittelpunkt der Strecke halten und den Punkt auf dem Kreis einmal herum bewegen, dann wird ein neuer Kreis mit der halben Größe gezeichnet. Der Weg, den der Mittelpunkt bei der Bewegung des ersten Punktes auf dem Kreis zurücklegt, ist der geometrische Ort. </para>
+<para
+>Es ist sehr einfach, einen geometrischen Ort zu konstruieren. Dazu klicken Sie auf den Knopf <inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+><guibutton
+>Geometrischer Ort</guibutton
+> in der Werkzeugleiste oder wählen im Menü <menuchoice
+><guimenu
+>Objekte</guimenu
+> <guisubmenu
+>Sonstige</guisubmenu
+> <guimenuitem
+>Geometrischer Ort</guimenuitem
+></menuchoice
+> aus. Jetzt wählen Sie zuerst den abhängigen Punkt (der Text <guilabel
+>Abhängiger Punkt</guilabel
+> erscheint) und dann den sich bewegenden Punkt aus. Der geometrische Ort des abhängigen Punktes wird dann gezeichnet. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Skripte</title>
+<para
+>&kig; bietet die Möglichkeit, eigene Objekte in der Skript-Sprache Python zu definieren. Das ist eine sehr fortgeschrittene Funktion und ich kenne nur noch ein anderes Programm für interaktive Geometrie mit dieser Funktion (das <acronym
+>GNOME</acronym
+>-Programm &drgeo;). </para>
+<para
+>Mit Python-Skripten in &kig; können Sie eigene Objekte aus vorhandenen Objekten erstellen. So können Sie &eg; einen bestimmten Punkt eines Kegels berechnen wollen. Anstatt nun mit komplexen Konstruktionen und Makros zu hantieren, können Sie die Rechenvorschrift einfach in der Sprache Python aufschreiben und &kig; wird den Punkt entsprechend darstellen. </para>
+<para
+>Nehmen wir an, Ihnen ist das in &kig; vorhandene Objekt <quote
+>Mittelpunkt</quote
+> nicht bekannt und Sie wollen den Mittelpunkt zwischen zwei vorgegebenen Punkten konstruieren. Dazu klicken Sie auf den Knopf <inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Python-Skript</guibutton
+> in der Werkzeugleiste oder wählen <menuchoice
+><guimenu
+>Objekte</guimenu
+><guisubmenu
+>Sonstige</guisubmenu
+> <guimenuitem
+>Python-Skript</guimenuitem
+></menuchoice
+> in der Menüleiste. Es wird nun ein Assistent angezeigt, der Sie durch den Prozess begleitet. </para>
+<screenshot>
+<screeninfo
+>Der Skriptobjekt Assistent</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Der Skriptobjekt Assistent</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Zuerst müssen Sie die Argumente des Skriptobjektes wählen. In unserem Beispiel sind das die zwei Punkte, zwischen denen wir den Mittelpunkt anzeigen wollen. Diese wählen Sie im Hauptfenster von &kig; aus und bestätigen mit einem Klick auf den Knopf <guibutton
+>Weiter</guibutton
+>. </para>
+<para
+>Jetzt wird ein Texteingabefeld angezeigt, in das Sie den Quelltext für das Skriptobjekt eingeben können. Ein Quelltextgerüst und einige Kommentare sind bereits vorhanden. Es ist wichtig sicher zu stellen, dass Sie korrekten Python-Quelltext eingeben. Benutzer, die mit Python vertraut sind, werden bemerken, dass wir eine Funktion <function
+>calc</function
+> definieren. Halten Sie sich an die Python-Regeln zur Definition einer Funktion. So muss jede Zeile der Funktion mit einem &Tab; eingerückt werden. Die erste Zeile ohne &Tab; am Zeilenanfang beendet die Funktionsdefinition. </para>
+<para
+>Die Python-Funktion, die wir definieren wollen, heißt <quote
+>calc</quote
+> und verarbeitet in unserem Beispiel zwei Argumente. Das sind die im vorherigen Schritt ausgewählten Objekte. Die Anzahl der Argumente muss immer mit der Anzahl der gewählten Objekte übereinstimmen. Die Argumente heißen <parameter
+>arg1</parameter
+> und <parameter
+>arg2</parameter
+>, aber Sie können natürlich die Namen ändern. </para>
+<para
+>In der Funktion können Sie alle Arten von Berechnungen mit den Argumenten durchführen, die nötig sind. Sie müssen das Objekt zurückgeben, dass Sie definieren wollen. In diesem Fall ist es ein <classname
+>Point</classname
+>-Objekt. Die beiden Argumente sind ebenfalls <classname
+>Point</classname
+>-Objekte und Sie können die Funktion <function
+>Point.coordinate()</function
+> nutzen, um die Koordinaten der angegebenen Punkte zu verarbeiten. </para>
+<para
+>In diesem Beispiel ist die notwendige Berechnung sehr einfach. Addieren Sie die beiden Koordinatenpaare und teilen Sie das Ergebnis durch 2. Mit diesen neuen Koordinaten erstellen Sie ein neues Point-Objekt. Der dazu notwendige Python-Quelltext lautet:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Quelltext eingeben</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Quelltext für den Mittelpunkt im Skriptobjekt Assistent eingeben</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Drücken Sie nun den Knopf <guibutton
+>Fertigstellen</guibutton
+>, wird das neue Objekt im Arbeitsbereich von &kig; angezeigt. Bewegen Sie einen der Punkte, dann bewegt sich der neu erstellte Punkt entsprechend mit. Sie können natürlich weitaus komplexere Objekte erstellen, probieren Sie es einfach aus. </para>
+<screenshot>
+<screeninfo
+>Ein Skriptobjekt erstellt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Das neu erstellte Skriptobjekt </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Alle &kig; Objekte können im Python-Quelltext benutzt werden. Wie weiter oben gezeigt wurde, gehören Punkte zur <classname
+>Point</classname
+>-Klasse und Sie können &eg; die Koordinaten über die Funktion <function
+>Point.coordinate()</function
+> ermitteln. Sie können alle Arten von Objekten zurückgeben, nicht nur <classname
+>Point</classname
+>-Objekte. Viele weitere Klassen und Funktionen stehen in &kig; im Python-Quelltext zur Verfügung, eine vollständigere Referenz finden Sie <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+>hier</ulink
+>.  </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>&kig;s Merkmale</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; ist eine OpenSource Anwendung. Das bedeutet, Sie dürfen es frei verändern und nutzen, wie Sie wollen. Die Weitergabe von &kig; unterliegt einigen Einschränkungen, hauptsächlich dass jeder die gleichen Rechte wie Sie an &kig;s Benutzung hat, dazu gehören auch die eigenen Änderungen. </para>
+<para
+>Freie Software wird in einem sehr offenen Umfeld entwickelt und die Entwickler reagieren meist sehr schnell auf die Rückmeldung durch die Benutzer. Wenn Sie also Fragen, Probleme oder sonstige Hinweise zu &kig; haben, dann schreiben Sie an die Mailingliste <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&kig; ist eine KPart-Anwendung. Das bedeutet, Sie können sie in andere &kde; Programme einbetten. Öffnen Sie &eg; eine <literal role="extension"
+>.kig</literal
+>-Datei in &konqueror;, dann wird sie direkt angezeigt, ohne dass eine externe Anwendung gestartet werden muss. </para>
+</listitem>
+<listitem>
+<para
+>Arbeiten mit &kig; ist unkompliziert. Das Konstruieren von Objekten ist einfach und interaktiv, das vorläufige Ergebnis wird als Vorschau angezeigt. Verschieben, Auswählen und Konstruieren funktioniert genau so, wie Sie es erwarten. Die Möglichkeiten um Eingaben rückgängig zu machen, sind ebenfalls sehr intuitiv. </para>
+</listitem>
+<listitem>
+<para
+>&kig; unterstützt die Erstellung von Makros auf eine sehr unkomplizierte Art und Weise. Diese Objekte stehen dem Benutzer wie normale Objekte zur Verfügung. Sie werden beim Beenden gespeichert und beim Start geladen, sodass sie beim Beenden des Programms nicht verloren gehen. Diese Objekte können Sie im Dialog <link linkend="working-with-types"
+>Typen verwalten</link
+> bearbeiten. Sie können Objekte in Dateien exportieren, aus Dateien importieren, bearbeiten und löschen. </para>
+</listitem>
+<listitem>
+<para
+>&kig; speichert seine Daten in einem dokumentierten &XML;-Format. </para>
+</listitem>
+<listitem>
+<para
+>&kig; unterstützt die Konstruktion von geometrischen Orten. </para>
+</listitem>
+<listitem>
+<para
+>&kig; erlaubt den Export einer &kig;-Datei in einige interessante Formate wie Bilder, <application
+>XFig-</application
+> und <application
+>LaTeX-</application
+> Dateien und das &SVG;-Vektorformat. Das ist sehr nützlich, da noch nicht alle Programme das Dateiformat von &kig; unterstützten. </para>
+</listitem>
+<listitem>
+<para
+>&kig; verfügt über ein sehr flexibles Transformationssystem. </para>
+</listitem>
+<listitem>
+<para
+>&kig; versucht kompatibel mit seinen Mitbewerbern zu sein. Deshalb unterstützt es das Dateiformat von &kgeo; und &kseg; und teilweise das Dateiformat von &drgeo; und &cabri;. Unterstützung für weitere Dateiformate ist in Arbeit. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Danksagungen und Lizenz</title>
+
+<para
+>Hauptentwickler: </para>
+<para
+>&kig; Copyright 2011-2015 David E. Narvaez <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>&kig; Copyright 2002-2013 Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>&kig; Copyright 2004-2010 Pino Toscano <email
+>pino@kde.org</email
+> </para>
+<para
+>&kig; Copyright 2002-2005 Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Copyright der Dokumentation 2002-2004 Dominique Devriese <email
+>devriese@kde.org</email
+>. </para>
+
+<para
+>Copyright der Dokumentation 2002-2005 Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>Korrektur gelesen von &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+<para
+>Übersetzung Sebastian Stein<email
+>s5228@informatik.htw-dresden.de</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Mithelfen</title>
+<sect1 id="kig-is-free">
+<title
+>Freie Software</title>
+<para
+>&kig; ist <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+> Freie Software</ulink
+>. Das bedeutet, der Quelltext ist frei verfügbar im Internet und jeder kann ihn nutzen, ändern und verteilen. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Mithelfen</title>
+<para
+>Das Ziel dieses Kapitels ist es, den Benutzer (Sie) auf die Rechte aufmerksam zu machen, die Ihnen die &kig;-Lizenz gewährt. Wie bei jeglicher freier Software dürfen und sollen Sie Probleme, die Sie während der Nutzung entdecken, beheben, neue Funktionen hinzufügen und das Programm weiter verteilen. Schicken Sie die Änderungen über die „Review“ der &kde;-Gemeinschaft, damit sie in der nächsten Version eingefügt werden können. </para>
+<para
+>Sollten Sie Zweifel über das eigene Recht an dieser Software oder dem Recht anderer an den eigenen Veränderungen an diesem Programm haben, dann lesen Sie die Lizenz. Sie finden die Lizenz in der <filename
+>COPYING</filename
+> Datei, im &kig; Quelltextbaum oder durch die Verknüpfung zur Lizenz im Dialog <guilabel
+>Über &kig;</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Wie kann ich Mithelfen?</title>
+<para
+>Jegliche Unterstützung ist willkommen! Finden Sie die Icons schlecht, braucht das Handbuch eine Überarbeitung oder haben Sie ein tolles Makro, das Sie mit der ganzen Welt teilen möchten, dann zögern Sie nicht, dies an mich zu schicken. Dabei ist zu beachten, dass der Beitrag ebenfalls unter der &GNU; <acronym
+>GPL</acronym
+>; veröffentlicht wird, deren Text Sie in der Datei <filename
+>COPYING</filename
+> im &kig; Quelltextbaum und unter <link linkend="credits"
+>Danksagungen und Lizenz</link
+> in diesem Handbuch finden. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

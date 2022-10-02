@@ -1,0 +1,1095 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Russian "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>Руководство пользователя &kig;</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Николай</firstname
+><surname
+>Шафоростов</surname
+><affiliation
+><address
+><email
+>shafff@ukr.net</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Олеся</firstname
+><surname
+>Герасименко</surname
+><affiliation
+><address
+><email
+>translation-team@basealt.ru</email
+></address
+></affiliation
+><contrib
+>Обновление перевода</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>23 декабря 2020 г.</date>
+<releaseinfo
+>Приложения KDE 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kig; &mdash; это программа интерактивной геометрии, разработанная &kde;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>интерактивная геометрия</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>&kig; &mdash; это программа интерактивной геометрии. Она создана для двух целей: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Дать учащимся возможность исследовать математические рисунки с помощью компьютера. </para
+></listitem>
+
+<listitem
+><para
+>Быть инструментом <acronym
+>WYSIWYG</acronym
+> (What You See Is What You Get &mdash; что видишь, то и получаешь) для построения математических рисунков и встраивания их в другие документы.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Сообщить об обнаруженных ошибках в &kig; можно с помощью стандартной утилиты (<menuchoice
+><guimenu
+>Справка</guimenu
+><guimenuitem
+>Сообщить об ошибке...</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>&kig; поддерживает макротипы и построение геометрических мест точек, что позволяет создавать довольно сложные объекты. Если вы создали интересный (и сложный) макротип, который может быть полезен и другим, создайте запрос на рецензирование изменений, чтобы разработчики смоглиоценить возможность включения изменений в официальный выпуск программы (под лицензией <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>, которая означает, что другие пользователи смогут изменять и адаптировать код). </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Основы</title>
+<sect1 id="constructing-objects">
+<title
+>Построение объектов</title>
+<sect2 id="constructing-points">
+<title
+>Построение точек</title>
+<para
+>Вы можете сделать это несколькими способами:</para>
+<itemizedlist>
+<listitem>
+<para
+>Через меню <menuchoice
+><guimenu
+>Объекты</guimenu
+> <guisubmenu
+>Точки</guisubmenu
+><guimenuitem
+>Точка</guimenuitem
+></menuchoice
+> или через соответствующую кнопку на панели инструментов. После этого щёлкните на необходимой позиции в окне.</para>
+
+<note
+><para
+>Нажмите клавишу &Shift;, чтобы активировать режим прилипания, в котором вы сможете перемещать любую из точек построения точно в точку координатной сетки.</para
+></note>
+<note
+><para
+>Таким способом можно построить и другие объекты: выбрать необходимый инструмент можно через пункт меню или нажать кнопку на панели инструментов.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Так как точки требуется строить чаще, есть также способ сделать это быстрей. Нажмите в области окна <mousebutton
+>средней</mousebutton
+> кнопкой мыши. </para>
+</listitem>
+<listitem>
+<para
+>Вы можете создавать точки при построении других объектов, Подробности указаны в разделе <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Точка построена</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Точка построена</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Построение других объектов</title>
+<para
+>Вы можете построить определённый объект, выбрав его из меню <guimenu
+>Объекты</guimenu
+> или нажав на одну из кнопок панели инструментов. </para>
+<screenshot>
+<screeninfo
+>Построение окружности</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Построение окружности</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Начнётся построение объекта выбранного типа. Все объекты требуют указания параметров. Например, если вы выбрали построение окружности по центру и точке, вы должны передать две точки &mdash; для центра и радиуса. </para>
+<para
+>Эти параметры также являются объектами. Для их выбора щёлкните на них. Если этот объект может быть использован для построения, то при наведении на него указателя мыши появится изображение с видом объекта. Для объектов, которым требуются точки как аргументы, вы можете построить новую точку в текущей позиции курсора и выбрать её нажатием <mousebutton
+>левой</mousebutton
+> кнопки мыши. </para>
+<para
+>Вы всегда можете отменить построение нового объекта нажатием клавиши &Esc; или нажатием кнопки &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Прервать построение</guibutton
+> на панели инструментов. </para>
+<screenshot>
+<screeninfo
+>Построение окружности.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Построение окружности</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Выбор объектов</title>
+<para
+>Есть два способа выбора объекта: </para>
+<itemizedlist>
+<listitem>
+<para
+>Вы можете просто щёлкнуть на объекте, при этом, чтобы предыдущее выделение не снималось, нажмите &Ctrl; при щелчке. </para>
+</listitem>
+<listitem>
+<para
+>Щёлкните по пустой области окна и, не отпуская кнопки мыши, переместите курсор, при этом появится "прямоугольник", а объекты, попадающие в него, будут выбраны. Клавиша &Ctrl; также предотвращает снятие предыдущего выделения. </para>
+</listitem>
+</itemizedlist>
+<para
+>Если под указателем мыши находится несколько объектов (на это указывает фраза <guilabel
+>Какой объект?</guilabel
+> в строке состояния и рядом с указателем мыши), вы легко сможете выбрать тот объект, который следует добавить к уже имеющемуся выделению. Щёлкните левой кнопкой мыши, удерживая нажатой клавишу &Shift;, или щёлкните правой кнопкой мыши — появится окно со списком всех объектов под указателем мыши. В этом списке вы сможете выбрать нужный вам объект. Как было указано выше, на процесс выбора влияет состояние клавиши &Ctrl;. </para>
+<screenshot>
+<screeninfo
+>Выбор объектов</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Выбор объектов</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Перемещение объектов</title>
+<para
+>Для перемещения объектов <link linkend="selecting-objects"
+>выберите</link
+> их. </para>
+<para
+>Затем щёлкните на одном из выделенных объектов и, нe отпуская <mousebutton
+>левую</mousebutton
+> кнопку мыши, перетащите их. </para>
+<note
+><para
+>Перемещение некоторых объектов (особенно сложных геометрических мест точек), может быть медленным, так как при этом делаются необходимые расчёты. </para
+></note
+> <note
+><para
+>Вы можете сделать это, щёлкнув <mousebutton
+>правой</mousebutton
+> кнопкой мыши на выбранном объекте, выбрать в контекстном меню <guimenuitem
+>Переместить</guimenuitem
+>. После этого любое перемещение мыши приведёт и к перемещению объекта. Чтобы прекратить перетаскивание, щёлкните <mousebutton
+>левой</mousebutton
+> кнопкой мыши.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Удаление объектов</title>
+<para
+><link linkend="selecting-objects"
+>Выберите</link
+> объекты и: <itemizedlist>
+<listitem>
+<para
+>Нажмите клавишу &Del;. </para>
+</listitem>
+<listitem>
+<para
+>Нажмите кнопку &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Удалить объекты</guibutton
+> на панели инструментов. </para>
+</listitem>
+<listitem>
+<para
+>либо выберите <guimenuitem
+>Удалить</guimenuitem
+> в <link linkend="objects-context-menus"
+>контекстном меню</link
+>. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Отображение и скрытие объектов</title>
+<para
+>В &kig; объекты можно скрывать. При выборе объектов выберите пункт меню <guimenuitem
+>Скрыть</guimenuitem
+> в <link linkend="objects-context-menus"
+>контекстном меню</link
+> объекта. </para>
+<para
+>Чтобы показать все скрытые объекты, выберите пункт меню <menuchoice
+><guimenu
+>Правка</guimenu
+><guimenuitem
+>Показать все</guimenuitem
+></menuchoice
+> </para>
+
+<sect2 id="night-vision">
+<title
+>Ночное видение</title>
+<para
+>Ночное видение — это один из способов работы со скрытыми объектами. Если вам нужно передвинуть или изменить что-то в одном или нескольких скрытых объектах, но вы не хотите делать все объекты временно видимыми, режим ночного видения предоставит вам эту возможность. </para>
+<para
+>Вообще говоря, этот режим предоставляет вам возможность видеть скрытые объекты так, будто они являются видимыми, так, что вы сможете выполнять с ними действия так же, как и с обычными объектами. В режиме ночного видения, невидимые объекты выделяются серым цветом. </para>
+<para
+>Чтобы включить или выключить режим ночного видения, воспользуйтесь пунктом меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Инфракрасные очки</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Отмена/Повтор</title>
+<para
+>Вы можете отменить почти любое сделанное вами изменение. Используйте кнопки на панели инструментов, меню <guimenu
+>Правка</guimenu
+> или комбинации клавиш. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Полноэкранный режим</title>
+<para
+>В &kig; имеется полноэкранный режим. Нажмите соответствующую кнопку на панели инструментов  или выберите пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Полный экран</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Для того чтобы выйти из полноэкранного режима, щёлкните <mousebutton
+>правой</mousebutton
+> кнопкой мыши на пустом месте документа и выберите в выпадающем контекстном меню <menuchoice
+><guimenuitem
+>Полноэкранный режим</guimenuitem
+></menuchoice
+> или нажмите <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>Типы объектов &kig;</title>
+<para
+>&kig; поддерживает много различных типов объектов. Вы можете опробовать их самостоятельно. Помните, что не все типы объектов есть на панели инструментов, отсутствующие можно найти в меню <guimenu
+>Объекты</guimenu
+>. Однако, как и любое приложение &kde;, &kig; поддерживает изменение набора кнопок на панелях инструментов. Это можно сделать через пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить панели инструментов...</guimenuitem
+></menuchoice
+>. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Дополнительные возможности</title>
+<sect1 id="objects-context-menus">
+<title
+>Контекстные меню</title>
+<para
+>В &kig; предусмотрены контекстные меню для объектов. Для их вызова щёлкните <mousebutton
+>правой</mousebutton
+> кнопкой мыши на объекте. Меню содержит команды построения, установки цветов, толщины линии, стиля, скрытия, перемещения и удаления объектов. Кроме того, некоторые объекты имеют дополнительные специфические пункты (например вы сможете изменять точки их построения). </para>
+
+<para
+>Для выполнения некоторых действий из контекстного меню объекта требуется определение дополнительного исходного объекта, например:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Поворот фигуры вокруг точки на указанный в градусах угол</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Выберите пункт меню <menuchoice
+><guimenu
+>Объекты</guimenu
+> <guisubmenu
+>Углы</guisubmenu
+><guimenuitem
+>Угол по трём точкам</guimenuitem
+> </menuchoice
+> и создайте требуемый угол поворота в окне &kig; (лучше сделать это там, где нет других объектов). При необходимости щёлкните по углу правой кнопкой мыши и выберите в контекстном меню пункт <menuchoice
+><guisubmenu
+>Добавить надпись</guisubmenu
+><guimenuitem
+>Угол в градусах</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Щёлкните по углу правой кнопкой мыши, выберите в контекстном меню пункт  <guimenuitem
+>Изменить величину</guimenuitem
+> и введите новую величину этого угла в диалоговом окне. </para
+></listitem>
+<listitem
+><para
+>Воспользуйтесь меню <guimenu
+>Объекты</guimenu
+> для построения нужного объекта. </para
+></listitem>
+<listitem
+><para
+>Щёлкните по фигуре правой кнопкой мыши и выберите в контекстном меню пункт <menuchoice
+><guisubmenu
+>Преобразование</guisubmenu
+> <guimenuitem
+>Повернуть</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Укажите требуемую точку поворота.</para
+></listitem>
+<listitem
+><para
+>Щёлкните по углу.</para
+></listitem>
+<listitem
+><para
+>Фигура повёрнута!</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Параллельный перенос объекта</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Выберите пункт меню <menuchoice
+><guimenu
+>Объекты</guimenu
+> <guisubmenu
+>Векторы и отрезки</guisubmenu
+><guimenuitem
+>Вектор</guimenuitem
+> </menuchoice
+> и постройте объект путём указания начальной и конечной точек вектора в окне &kig;.</para
+></listitem>
+<listitem
+><para
+>Чтобы изменить длину и направление вектора, необходимо изменить параметры его начальной и конечной точек. Отметьте эти точки и выберите в контекстном меню пункт <guimenuitem
+>Установить координату...</guimenuitem
+>. </para
+></listitem>
+<listitem
+><para
+>Воспользуйтесь меню <guimenu
+>Объекты</guimenu
+> для построения нужного объекта. </para
+></listitem>
+<listitem
+><para
+>Щёлкните по объекту правой кнопкой мыши и выберите в контекстном меню пункт <menuchoice
+><guisubmenu
+>Преобразование</guisubmenu
+> <guimenuitem
+>Перенести параллельно</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Выберите, на какой вектор выполнить параллельный перенос.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Контекстные меню документа</title>
+<para
+>Нажатием <mousebutton
+>правой</mousebutton
+> кнопки в документе (не на объекте) вы откроете контекстное меню, которое вы можете использовать для построения новых объектов, изменения координатной системы, отображения скрытых объектов, изменения масштаба документа и перехода в полноэкранный режим. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Запись макротипов</title>
+<para
+>С помощью макротипов вы можете ускорить процесс создания объектов, которые вы часто используете. </para>
+<para
+>Например, вам нужно сделать макротип, который бы создавал окружность по трём точкам на ней. Вам нужно построить три точки, и используя перпендикуляры к серединам отрезков, найти центр окружности, а затем построить <guimenuitem
+>окружность по её центру и точке.</guimenuitem
+> </para>
+<screenshot>
+<screeninfo
+>Работа с макротипом</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Работа с макротипом</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>После этих действий вам нужно определить макротип. Выберите пункт меню <menuchoice
+><guimenu
+>Типы</guimenu
+> <guimenuitem
+>Записать макротип...</guimenuitem
+></menuchoice
+> или нажмите кнопку &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Записать макротип...</guibutton
+> на панели инструментов. В появившемся мастере вам будет предложено выбрать входные объекты. В нашем случае это три точки (для выбора щёлкните по ним). Нажмите <guibutton
+>Далее</guibutton
+> и выберите выходной объект (окружность). </para>
+
+<screenshot>
+<screeninfo
+>Мастер записи макротипа</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Мастер записи макротипа</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Нажмите <guibutton
+>Далее</guibutton
+>. Введите имя и описание вновь созданного типа, затем нажмите <guibutton
+>Готово</guibutton
+>. </para>
+
+<para
+>Для использования макротипа, нажмите кнопку на панели инструментов, или выберите его из меню <guimenu
+>Объекты</guimenu
+>. Его значок будет выглядеть как выходной объект. Вы можете выполнять над макротипами такие же действия, как и с обычными объектами. </para>
+<screenshot>
+<screeninfo
+>Использование макротипа</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Использование макротипа</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Работа с макротипами</title>
+<para
+>Макротипы, записанные однажды, сохраняются автоматически, и при следующем запуске программы вы также сможете их использовать. При выборе команды <guimenuitem
+>Управление типами</guimenuitem
+> из меню <guimenu
+>Сервис</guimenu
+>, появится диалог, где вы сможете изменить ваши макротипы: удалить, экспортировать и импортировать из файла. </para>
+<screenshot>
+<screeninfo
+>Управление типами</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Управление типами</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Надписи</title>
+<para
+>Вы можете подписывать построения. В &kig; также есть возможность просматривать разную информацию об объектах (<quote
+>Свойства</quote
+>). </para>
+<para
+>Для создания надписи нажмите соответствующую кнопку &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Надпись</guibutton
+> на панели инструментов или выберите пункт меню <menuchoice
+><guimenu
+>Объекты</guimenu
+><guisubmenu
+>Другие</guisubmenu
+><guimenuitem
+>Надпись</guimenuitem
+> </menuchoice
+>. </para>
+<para
+>Затем вам нужно выбрать расположение новой надписи. Для этого щёлкните на области экрана, где должна находится надпись или выберите в контекстном меню какого-либо объекта действие добавления к нему надписи. </para>
+<screenshot>
+<screeninfo
+>Добавление надписи к окружности</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Добавление надписи к окружности</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Теперь мы перешли к диалогу надписи. Здесь введите текст, и нажмите "Готово". В документе появится новая надпись. </para>
+<screenshot>
+<screeninfo
+>Диалог 'Создать надпись'</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Диалог 'Создать надпись'</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>В надписях поддерживаются шаблоны. Например, вы можете ввести текст <quote
+>Сегмент имеет длину %1 см.</quote
+>, где <token
+>%1</token
+> будет динамически заменяться (в данном случае) на длину. </para>
+<para
+>Введите текст с символами подстановки (<token
+>%1</token
+>, <token
+>%2</token
+> и т.д.). Убедитесь, что они указаны в правильном порядке, и что вы не пропустили ни одного номера. Нажмите <guibutton
+>Далее</guibutton
+>. </para>
+<para
+>Мастер отображает введённый вами текст с подстановками. Чтобы выбрать, что отображать, как определённый аргумент, щёлкните на аргументе, затем на объекте, информацию о котором вам нужно отобразить, и выберите пункт в контекстном меню. Например, чтобы выводить информацию о текущей длине отрезка, щёлкните на <guilabel
+>аргумент 1</guilabel
+>, затем на отрезке в главном окне &kig; и выберите свойство <guilabel
+>Длина</guilabel
+>. Для построения надписи нажмите <guibutton
+>Готово</guibutton
+>. </para>
+<screenshot>
+<screeninfo
+>Выбор свойства для подстановки в шаблон</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Выбор свойства для подстановки в шаблон</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Геометрические места точек</title>
+<para
+>&kig; поддерживает построение геометрических мест точек. Геометрическим местом точек называется фигура, которая состоит из всех точек плоскости, обладающих определённым свойством. Если это звучит слишком сложно, рассмотрите пример: </para>
+<para
+>Рассмотрим следующее геометрическое построение: мы строим окружность и точку на ней (которая может перемещаться по его поверхности) расположением курсора мыши на окружности и нажатием <mousebutton
+>средней</mousebutton
+> кнопки мыши. При этом, если вы попытаетесь переместить эту точку, вы не сможете убрать её с окружности. Затем мы создаём отрезок из той точки к центру окружности и его серединную точку. </para>
+<screenshot>
+<screeninfo
+>Построение ГМТ</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Построение ГМТ</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Теперь, если вы будете перемещать точку, присоединённую к окружности, вторая точка будет перемещаться вместе с ней. Если вы переместите первую точку по окружности, будет нарисована новая окружность размером в два раза меньше существующей. Путь, по которому идёт вторая точка при перемещении первой по окружности, есть её ГМТ. </para>
+<para
+>Построение ГМТ очень просто. Нажмите кнопку &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>ГМТ</guibutton
+> на панели инструментов или выберите пункт меню <menuchoice
+><guimenu
+>Объекты</guimenu
+> <guisubmenu
+>Другие</guisubmenu
+><guimenuitem
+>ГМТ</guimenuitem
+></menuchoice
+>. Затем выберите бегущую точку (если вы поместите курсор мыши над ней, появится текст <guilabel
+>Бегущая точка</guilabel
+>), и <guilabel
+>Зависимую точку</guilabel
+>. После этого появится ГМТ.
+
+Вот некоторые ссылки по этой теме: <ulink url="http://www.mccme.ru/free-books/prasolov/planim/gl7.htm"
+>Основные сведения</ulink>
+<ulink url="http://homepages.irk.ru/mialo/models/geommest.htm"
+>Геометрическое место точек на плоскости</ulink
+>. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Сценарии</title>
+<para
+>Вы также можете создавать свои типы (макротипы, или просто макросы) на языке Python. Такую возможность, кроме &kig;, имеет только &drgeo;. </para>
+<para
+>Сценарии Python в &kig; позволяют создать ваш собственный метод построения объектов (используя всё же базовые). Например, если у вас есть свой метод вычисления определённой точки на конусе, то вместо сложных конструкций и макротипов, вы сможете написать его реализацию на Python, а &kig; отобразит её. </para>
+<para
+>Пример. Предположим, вам не нравится как строится серединная точка в &kig;, вы хотите построить её по-своему между двумя данными точками. Нажмите кнопку &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Сценарий Python</guibutton
+> на панели инструментов или через меню <menuchoice
+> <guimenu
+>Объекты</guimenu
+> <guisubmenu
+>Другие</guisubmenu
+> <guimenuitem
+>Сценарий Python</guimenuitem
+> </menuchoice
+>. Появится ассистент, который поможет осуществить задуманное. </para>
+<screenshot>
+<screeninfo
+>Ассистент создания объекта из сценария</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ассистент создания объекта из сценария</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Первое, что вам нужно будет сделать, &mdash; выбрать аргументы, требуемые для построения объекта. В нашем примере, это две точки. Выберите их в окне &kig; и нажмите <guibutton
+>Далее</guibutton
+>. </para>
+<para
+>Отобразится текстовое окно для ввода кода. Там уже будет шаблон с комментариями. Важно убедиться, что введённый вами код соответствует синтаксису Python. Знакомые с языком Python пользователи отметят, что на самом деле мы определяем функцию Python под названием <function
+>calc</function
+>. Поэтому необходимо соблюдать правила Python для определения функций. Например, каждая строка функции должна начинаться с табуляции. Первая же строка без неё сообщает об окончании определения функции. </para>
+<para
+>Главная функция, которая должна быть определена, называется <quote
+>calc</quote
+>, в нашем случае она принимает два аргумента. Это объекты, которые вы выбрали в предыдущем окне мастера. Они называются <parameter
+>arg1</parameter
+> и <parameter
+>arg2</parameter
+>, но вы можете изменить их имена на более понятные для вас. </para>
+<para
+>В функциях вы можете выполнять все нужные вам типы расчётов, используя, при надобности, аргументы. Функция должна возвращать объект. В нашем случае &mdash; это точка (типа <classname
+>Point</classname
+>, два наших аргумента также имеют этот тип). Мы можем использовать функцию <function
+>Point.coordinate()</function
+> для определения координат данных точек. </para>
+<para
+>В нашем примере расчёт очень прост. Нужно сложить две координаты и разделить сумму на два. Затем строится точка. Код на Python будет следующий:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Ввод кода</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ввод кода для серединной точки в мастере создания объекта из сценария...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>После нажатия кнопки <guibutton
+>Готово</guibutton
+>, новый объект появится в документе &kig;. Если вы переместите одну из точек, вновь построенная серединная точка также переместится. Таким способом, можно построить объекты много сложнее, чем в примере. Попробуйте сделать это самостоятельно. </para>
+<screenshot>
+<screeninfo
+>Объект из сценария построен</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Объект из сценария построен </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>В коде Python могут использоваться все объекты &kig;. Точки принадлежат к классу <classname
+>Point</classname
+>, и можно использовать, например, метод <function
+>Point.coordinate()</function
+>. Полный список классов и их методов, доступных в Python, находится <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+>здесь</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>Возможности &kig;</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; &mdash; программа с открытым исходным кодом. Это означает, что вы можете бесплатно использовать и изменять её. Распространение &kig; несёт свои ограничения, основное из них &mdash; все должны иметь одинаковое право на использование &kig; и его модификаций. </para>
+<para
+>Свободное программное обеспечение делается с открытой душой, и его разработчики открыты для обратной связи. Если у вас есть вопросы или предложения по &kig;, отправляйте их в почтовую рассылку kde-edu по адресу <email
+>kde-edu@kde.org</email
+> (на английском). А если вы плохо знаете английский, возможно вам помогут в социальных сетях русскоязычного сообщества, указанных на сайте kde.ru. </para>
+</listitem>
+<listitem>
+<para
+>Программа &kig; предоставляет компонент KPart. Это означает, что она может быть легко встроена в любое приложение &kde;. Например, если вы запустите просмотр файла <literal role="extension"
+>.kig</literal
+> в &konqueror;, он откроется в том же окне &konqueror; без необходимости запускать внешнее приложение (с соответствующими накладными расходами). </para>
+</listitem>
+<listitem>
+<para
+>Работа с &kig; очень проста. Создание объектов является лёгким и интерактивным (отображаются предварительные результаты). Действия по перемещению, выбору и построению работают ожидаемым образом. Также вам должна помочь возможность отмены выполненных действий. </para>
+</listitem>
+<listitem>
+<para
+>&kig; поддерживает запись макротипов. Они могут использоваться как обычные типы объектов, не сбрасываются при выходе. В разделе <xref linkend="working-with-types"/> вы можете управлять ими &mdash; изменять, удалять, экспортировать, импортировать. </para>
+</listitem>
+<listitem>
+<para
+>&kig; использует формат &XML; для хранения данных. </para>
+</listitem>
+<listitem>
+<para
+>&kig; поддерживает построение геометрических мест точек. </para>
+</listitem>
+<listitem>
+<para
+>Построенные объекты можно экспортировать в изображение, в формат <application
+>XFig</application
+>, <application
+>LaTeX</application
+> или &SVG;. Это может быть полезно, так как не все программы поддерживают формат файлов &kig;. </para>
+</listitem>
+<listitem>
+<para
+>В &kig; имеется хорошая система преобразования. </para>
+</listitem>
+<listitem>
+<para
+>Программа &kig; совместима со своими конкурентами. В частности, она поддерживает формат файлов &kgeo;, &kseg;, частично форматы &drgeo; и &cabri;, автор работает над поддержкой других. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Авторские права и лицензия</title>
+
+<para
+>Основные авторы: </para>
+<para
+>Авторские права на &kig; &copy; David E. Narvaez <email
+>david.narvaez@computer.org</email
+>, 2011-2015 </para>
+<para
+>Авторские права на &kig; &copy; Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+>, 2002-2013 </para>
+<para
+>Авторские права на &kig; &copy; Pino Toscano <email
+>pino@kde.org</email
+>, 2004-2010 </para>
+<para
+>Авторские права на &kig; &copy; Dominique Devriese <email
+>devriese@kde.org</email
+>, 2002-2005 </para>
+
+<para
+>Авторские права на документацию &copy; Dominique Devriese <email
+>devriese@kde.org</email
+>, 2002-2004 </para>
+
+<para
+>Авторские права на документацию &copy; Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>, 2004-2005 </para>
+
+<para
+>Редактирование — Филип Родригес (&Philip.Rodrigues;) &Philip.Rodrigues.mail;. </para>
+<para
+>Перевод на русский язык: Николай Шафоростов <email
+>shafff@ukr.net</email
+></para
+><para
+>Обновление перевода: Олеся Герасименко<email
+>translation-team@basealt.ru</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Содействие в разработке &kig;</title>
+<sect1 id="kig-is-free">
+<title
+>Открытое программное обеспечение</title>
+<para
+>&kig; является <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+>программой с открытым исходным кодом</ulink
+>. Это означает, что исходный код программы доступен через Интернет, каждый может бесплатно использовать их, изменять и выпускать собственные дистрибутивы на их основе. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Содействие в разработке &kig;</title>
+<para
+>Цель этой главы &mdash; рассказать пользователям о правах, предоставляемых лицензией, по которой распространяется &kig;. Вы можете помочь в разработке программы устранением найденных неполадок и добавлением новых возможностей. Всё, что касается этого, возможно прислать с помощью систем рецензирования сообщества &kde;. </para>
+<para
+>Лицензию вы можете найти в файле <filename
+>COPYING</filename
+> в SVN-репозитории &kig; или в диалоге <guilabel
+>О программе</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Как помочь?</title>
+<para
+>Отправляйте автору новые пиктограммы, код, макротипы и пр. Всё это будет распространятся по лицензии &GNU; GPL, которую можно найти в файле <filename
+>COPYING</filename
+> в CVS-репозитории &kig; или в главе <link linkend="credits"
+>Авторские права и лицензия</link
+>. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

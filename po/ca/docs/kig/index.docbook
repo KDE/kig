@@ -1,0 +1,1079 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Catalan  "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>El manual del &kig;</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Xavier</firstname
+> <surname
+>Batlle i Pèlach</surname
+> <affiliation
+><address
+><email
+>tevi@eltercer.cat</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+>&traductor.Antoni.Bella; 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>23 de desembre de 2020</date>
+<releaseinfo
+>Aplicacions 20.12</releaseinfo>
+
+<abstract>
+<para
+>El &kig; és un programa de geometria interactiva per al &kde;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Geometria interactiva</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Introducció</title>
+
+<para
+>El &kig; és una aplicació de geometria interactiva. El seu objectiu és servir per a dues finalitats: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Permetre als estudiants explorar de manera interactiva les figures i conceptes matemàtics utilitzant l'ordinador. </para
+></listitem>
+
+<listitem
+><para
+>Servir com una eina <acronym
+>WYSIWYG</acronym
+> per a dibuixar figures matemàtiques i incloure-les en altres documents.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Podeu informar dels problemes del &kig; utilitzant l'eina interna d'informes d'error (<menuchoice
+><guimenu
+>Ajuda</guimenu
+><guimenuitem
+>Informa d'un error...</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>Donat que el &kig; permet macros i la construcció de llocs geomètrics, és possible que alguns usuaris avançats creïn macros. Si heu creat una macro interessant, penseu que pot ser útil a altra gent, si us plau, obriu una sol·licitud de revisió per al canvi, de manera que el pugui avaluar i incloure'l a la distribució (si ho feu, tindrà els mateixos termes de llicència que el &kig;, la <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>, de manera que altra gent la podrà utilitzar i adaptar amb llibertat). </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Ús bàsic</title>
+<sect1 id="constructing-objects">
+<title
+>Construir objectes</title>
+<sect2 id="constructing-points">
+<title
+>Construir punts</title>
+<para
+>Podeu construir punts de diferents maneres:</para>
+<itemizedlist>
+<listitem>
+<para
+>Seleccioneu <menuchoice
+><guimenu
+>Objectes</guimenu
+><guisubmenu
+>Punts</guisubmenu
+> <guimenuitem
+>Punt</guimenuitem
+></menuchoice
+> des de la barra de menús o premeu el botó corresponent de la barra d'eines. Aleshores podreu construir un punt fent clic a la posició desitjada.</para>
+
+<note
+><para
+>Premeu la tecla &Maj; per a activar un mode de trama, el qual us permetrà establir qualsevol punt en una construcció exactament als punts de la quadrícula.</para
+></note>
+<note
+><para
+>De fet, això funciona de la mateixa manera per a construir altres objectes: fent clic a l'entrada desitjada de la barra de menús o el botó de la barra d'eines i seleccionant els elements necessaris per a construir l'objecte.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Com que necessitareu construir punts sovint, n'hi ha prou fent clic a la posició desitjada de la finestra amb el &BMR; sense necessitat d'anar a cercar cap entrada del menú o botó. </para>
+</listitem>
+<listitem>
+<para
+>Podeu construir punts mentre esteu construint altres objectes en segon pla, seleccionant-los de manera opcional per a l'objecte que esteu construint. Per a més informació sobre això, vegeu <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Un punt s'està construint</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Un punt s'està construint</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Construir altres objectes</title>
+<para
+>Per a construir altres objectes que no siguin punts, normalment es fa escollint l'entrada adequada en el menú <guimenu
+>Objectes</guimenu
+>, o fent clic en un botó de la barra d'eines. </para>
+<screenshot>
+<screeninfo
+>Construint un cercle</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Construint un cercle</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Així s'inicia la construcció del tipus d'objecte escollit. Tots aquests tipus requereixen arguments. Per exemple, si seleccioneu la construcció d'un cercle per centre i punt, necessitareu donar dos punts: un per al centre i l'altre com a punt per a on passa la circumferència. </para>
+<para
+>Aquests arguments també són objectes, els quals es poden seleccionar fent-hi clic. Quan passeu el cursor per sobre d'un objecte que podeu utilitzar per a construir un objecte, es mostrarà una imatge preliminar -d'aquesta manera podreu veure com quedarà-. Per a objectes que requereixin punts com a arguments, podeu posar-los a la posició actual del cursor fent clic amb el &BER;. </para>
+<para
+>Podeu cancel·lar la construcció del nou objecte prement el botó &Esc; o fent clic al botó &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Cancel·la la construcció</guibutton
+> de la barra d'eines. </para>
+<screenshot>
+<screeninfo
+>Construint un cercle.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Construint un cercle</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Seleccionar objectes</title>
+<para
+>Els objectes es poden seleccionar de dues maneres: </para>
+<itemizedlist>
+<listitem>
+<para
+>Senzillament fent clic en un objecte causa que se seleccioni, a la vegada que es neteja la selecció actual. Si voleu seleccionar més d'un objecte simultàniament, manteniu premuda la tecla &Ctrl; mentre feu clic sobre els objectes. </para>
+</listitem>
+<listitem>
+<para
+>Fent clic i arrossegant sobre un punt buit de la pantalla podreu seleccionar tots els objectes que es trobin dins el rectangle creat. Aquesta acció netejarà la selecció actual. Com en el cas anterior, prement la tecla &Ctrl; podreu mantenir la selecció actual. </para>
+</listitem>
+</itemizedlist>
+<para
+>Quan teniu més d'un objecte sota el ratolí (indicat per <guilabel
+>Quin objecte?</guilabel
+> a la barra d'estat i al cursor del ratolí), podreu escollir fàcilment quin objecte seleccionar o afegir a la selecció. Fent clic amb el &BER; mentre premeu la tecla &Maj; o fent clic amb el &BDR;, obtindreu un menú emergent amb tots els objectes que hi ha sota el ratolí. Aleshores podreu seleccionar el que necessiteu. Com s'ha dit abans, el comportament de la tecla &Ctrl; afectarà la selecció. </para>
+<screenshot>
+<screeninfo
+>Seleccionant objectes</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Seleccionant objectes</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Moure objectes</title>
+<para
+>Per a moure objectes primer cal que els <link linkend="selecting-objects"
+>seleccioneu</link
+>. </para>
+<para
+>Quan ja teniu els objectes seleccionats, podreu iniciar el moviment amb el &BER;, fent clic i arrossegant-ne un qualsevol. Quan acabeu, senzillament deixeu anar el botó. </para>
+<note
+><para
+>En el cas d'alguns tipus d'objecte (especialment els que estan definits per llocs geomètrics), el seu moviment pot resultar lent en màquines antigues. Això és una llàstima, però també inevitable per la gran quantitat de càlculs involucrats. </para
+></note
+> <note
+><para
+>Si feu clic amb el &BDR; en un dels objectes seleccionats, i escolliu <guimenuitem
+>Mou</guimenuitem
+>, aleshores en moure el ratolí moureu l'objecte. Quan l'objecte ja estigui a la posició desitjada, un altre clic amb el &BER; aturarà el moviment.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Suprimir objectes</title>
+<para
+>Per a suprimir objectes, primer cal <link linkend="selecting-objects"
+>seleccionar-los</link
+>, i després fer alguna d'aquestes coses: <itemizedlist>
+<listitem>
+<para
+>Prémer la tecla &Del;. </para>
+</listitem>
+<listitem>
+<para
+>Prémer el botó &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Suprimeix els objectes</guibutton
+> de la barra d'eines. </para>
+</listitem>
+<listitem>
+<para
+>Fer clic amb el &BDR; en un dels objectes, i seleccionar <guimenuitem
+>Suprimeix</guimenuitem
+> en el <link linkend="objects-context-menus"
+>menú contextual</link
+> que apareix. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Mostrar i ocultar objectes</title>
+<para
+>Al &kig; els objectes es poden ocultar. Això es fa seleccionant-los, fent clic amb el &BDR;, i escollint l'opció <guimenuitem
+>Oculta</guimenuitem
+> del <link linkend="objects-context-menus"
+>menú contextual</link
+> que apareix. </para>
+<para
+>Per a mostrar els objectes, utilitzeu l'opció <menuchoice
+><guimenu
+>Edita</guimenu
+><guimenuitem
+>Mostra-ho tot</guimenuitem
+></menuchoice
+>. Això mostrarà tots els objectes que estiguin ocults. </para>
+
+<sect2 id="night-vision">
+<title
+>Visió nocturna</title>
+<para
+>La visió nocturna és una manera particular de treballar amb els objectes ocults. Quan moveu o canvieu quelcom en algun dels objectes ocults sense mostrar tots els objectes ocults, el mode de visió nocturna us serà molt profitós. </para>
+<para
+>Bàsicament, permet veure els objectes ocults com si fossin visibles, de manera que els podreu manipular com ho faríeu normalment. En el mode de visió nocturna, els objectes ocults es fan visibles amb color gris. </para>
+<para
+>Per a passar al mode de visió nocturna, utilitzeu <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Posa les ulleres d'infrarojos</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Fer i desfer</title>
+<para
+>Al &kig; podeu desfer pràcticament tots els canvis que feu en el document. Només cal utilitzar els botons <guiicon
+>Desfés</guiicon
+>/<guiicon
+>Refés</guiicon
+> a la barra d'eines, el menú <guimenu
+>Edita</guimenu
+> o les dreceres de teclat apropiades. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Mode de pantalla completa</title>
+<para
+>El &kig; també té el mode de pantalla completa. Per a utilitzar-lo, cal fer clic al botó adequat a la barra d'eines, o bé seleccionar <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Mode de pantalla completa</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Per a sortir del mode de pantalla completa, feu clic amb el &BDR; en un lloc que no hi hagi cap objecte i seleccioneu <guimenuitem
+>Surt del mode de pantalla completa</guimenuitem
+>, o bé premeu la drecera <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>Els tipus d'objecte del &kig;</title>
+<para
+>El &kig; accepta un gran nombre de tipus d'objecte. Cal tenir en compte que no tots els tipus d'objecte disponibles es mostren a la barra d'eines: hi ha alguns objectes que només podreu construir des del menú <guimenu
+>Objectes</guimenu
+> de la barra de menús. Per descomptat que com a tots els programes del &kde;, els continguts de la barra d'eines són configurables. Escolliu <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura les barres d'eines...</guimenuitem
+></menuchoice
+> si ho voleu fer. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Ús avançat</title>
+<sect1 id="objects-context-menus">
+<title
+>Menús contextuals</title>
+<para
+>El &kig; té menús contextuals per als seus objectes. Feu clic amb el &BDR; en un objecte per tal de veure el menú contextual. Hi ha moltes opcions: construir altres objectes, establir colors, ocultar, moure o suprimir objectes. Alguns objectes tenen opcions pròpies (&pex;, podeu redefinir alguns punts per a restringir-los a una recta en cas que no ho estiguessin, &etc;). Aquestes opcions són fàcils d'entendre. </para>
+
+<para
+>Algunes de les operacions al menú contextual d'un objecte necessiten un altre objecte addicional definit com a referència, per exemple:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Girar una forma un nombre donat de graus al voltant d'un punt</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Feu clic a <menuchoice
+><guimenu
+>Objectes</guimenu
+> <guisubmenu
+>Angles</guisubmenu
+><guimenuitem
+>Angle per tres punts</guimenuitem
+> </menuchoice
+> i creeu el vostre angle de gir en algun lloc a la finestra del &kig;, generalment en un lloc no incòmode. Si ho desitgeu, feu clic dret a l'angle i a <menuchoice
+><guisubmenu
+>Afegeix una etiqueta de text</guisubmenu
+><guimenuitem
+>Angle en graus</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Feu clic amb el &BDR; sobre l'angle i seleccioneu <guimenuitem
+>Estableix la mida</guimenuitem
+> i introduïu en el diàleg la nova mida per a aquest angle. </para
+></listitem>
+<listitem
+><para
+>Feu clic sobre el menú <guimenu
+>Objectes</guimenu
+> i construïu l'objecte desitjat. </para
+></listitem>
+<listitem
+><para
+>Feu clic dret sobre la forma i seleccioneu <menuchoice
+><guisubmenu
+>Transforma</guisubmenu
+><guimenuitem
+>Gira</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Establiu el punt de gir desitjat.</para
+></listitem>
+<listitem
+><para
+>Feu clic sobre l'angle.</para
+></listitem>
+<listitem
+><para
+>La vostra forma girarà!</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Traduir un objecte</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Feu clic a <menuchoice
+><guimenu
+>Objectes</guimenu
+> <guisubmenu
+>Vectors i segments</guisubmenu
+><guimenuitem
+>Vector</guimenuitem
+></menuchoice
+> i construïu l'objecte seleccionant els punts d'inici i final en algun lloc a la finestra del &kig;.</para
+></listitem>
+<listitem
+><para
+>Per a ajustar la longitud i la direcció del vector haureu de modificar el seu punt d'inici i final. Seleccioneu i escolliu <guimenuitem
+>Estableix les coordenades...</guimenuitem
+> al menú contextual. </para
+></listitem>
+<listitem
+><para
+>Feu clic sobre el menú <guimenu
+>Objectes</guimenu
+> i construïu l'objecte desitjat. </para
+></listitem>
+<listitem
+><para
+>Feu clic dret sobre l'objecte i seleccioneu <menuchoice
+><guisubmenu
+>Transforma</guisubmenu
+> <guimenuitem
+>Translació</guimenuitem
+></menuchoice
+> al menú contextual.</para
+></listitem>
+<listitem
+><para
+>Seleccioneu el vector per on voleu traslladar.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Menús contextuals del document</title>
+<para
+>Fent clic <mousebutton
+>dret</mousebutton
+> sobre el document (&ead;, no a sobre de cap objecte) se us presentarà un menú emergent que podreu utilitzar per a construir un objecte nou, canviar el sistema de coordenades, mostrar els objectes ocults, ampliar o reduir el document i alternar al mode de pantalla completa. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Definir macros</title>
+<para
+>Una de les característiques més avançades del &kig; és la seva capacitat de treballar amb macros. Això permet definir nous tipus d'objectes a partir d'altres que ja estan definits. </para>
+<para
+>Per exemple: suposem que voleu crear una macro per a construir un cercle a partir de tres punts. Haureu d'introduir els tres punts i després construir algunes perpendiculars i punts mitjans fins a trobar el centre. Ara ja podeu utilitzar l'ordre existent de <guimenuitem
+>Cercle per centre i punt</guimenuitem
+> (utilitzant un dels tres punts com a punt per a aquesta ordre). La següent imatge ho deixarà una mica més clar: </para>
+<screenshot>
+<screeninfo
+>Tot fent macros</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tot fent macros</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Ara toca definir la macro. Seleccioneu l'element de menú <menuchoice
+><guimenu
+>Tipus</guimenu
+><guimenuitem
+>Macro nova...</guimenuitem
+></menuchoice
+>, o feu clic al botó&nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Macro nova...</guibutton
+> de la barra d'eines. Apareixerà un assistent que us demanarà els objectes donats. En el nostre exemple, aquests són els tres punts. Seleccioneu els tres punts (feu clic per a seleccionar i un altre clic per a desseleccionar) i feu clic al botó <guibutton
+>Següent</guibutton
+> per a continuar. Per a acabar, seleccioneu els objectes finals (en el nostre exemple, només el cercle). </para>
+
+<screenshot>
+<screeninfo
+>L'assistent de macros</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>L'assistent de macros</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>En completar els passos previs, feu clic al botó <guibutton
+>Següent</guibutton
+> per a continuar. Introduïu un nom i, de manera opcional, una descripció del vostre nou tipus, i feu clic al botó <guibutton
+>Acaba</guibutton
+>. Ja heu completat la macro. </para>
+
+<para
+>Per a utilitzar la nova macro, feu clic al seu botó a la barra d'eines o utilitzeu el menú <guimenu
+>Objectes</guimenu
+>. Construir un objecte de macro és exactament el mateix que construir qualsevol altre objecte. </para>
+<screenshot>
+<screeninfo
+>Fent servir el nou tipus</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Fent servir el nou tipus</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Treballar amb tipus</title>
+<para
+>Com heu vist en el capítol anterior, el &kig; permet que creeu els vostres propis tipus d'objectes. El &kig; també se'n preocupa de desar aquest nou tipus a la sortida i de llegir-lo en arrencar. No cal doncs, que deseu o carregueu manualment les definicions de macros. Així i tot, el &kig; us permet fer més coses amb les macros. Si escolliu l'opció <menuchoice
+><guimenu
+>Tipus</guimenu
+><guimenuitem
+>Gestiona els tipus...</guimenuitem
+></menuchoice
+> del menú, veureu un diàleg on podreu editar els vostres tipus. Això us permetrà modificar els existents, suprimir els que no s'hauran de fer servir més, exportar-los a un fitxer o fins i tot carregar-los des d'un fitxer. </para>
+<screenshot>
+<screeninfo
+>Diàleg d'edició de tipus</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>El diàleg d'edició de tipus</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Etiquetes de text</title>
+<para
+>El &kig; permet que afegiu etiquetes de text a una construcció. Això és molt útil per a afegir noms, explicacions o altre text a les construccions. El &kig;, a més, pot mostrar informació variable pertanyent als objectes (és a dir, <quote
+>propietats</quote
+>). </para>
+<para
+>Per a començar a construir una etiqueta de text n'hi ha prou amb prémer el botó &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Etiqueta de text</guibutton
+> de la barra d'eines del &kig;, o bé, seleccionar l'element de menú <menuchoice
+><guimenu
+>Objectes</guimenu
+><guisubmenu
+>Altres</guisubmenu
+><guimenuitem
+>Etiqueta de text</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Després, podreu escollir un lloc per a l'etiqueta. Podeu escollir una posició aleatòria a la pantalla o bé <quote
+>adjuntar</quote
+> l'etiqueta a un objecte. </para>
+<screenshot>
+<screeninfo
+>Adjuntant l'etiqueta a un cercle...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ajuntant l'etiqueta a un cercle...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Després de seleccionar on voleu posar l'etiqueta, apareix un diàleg. Aquí és on podreu escriure el text que voleu a la nova etiqueta, i fer clic al botó <guibutton
+>Acaba</guibutton
+>. Ara hauríeu de veure l'etiqueta en el document. </para>
+<screenshot>
+<screeninfo
+>El diàleg de l'etiqueta de text</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>El diàleg de l'etiqueta de text</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>L'exemple anterior ha estat senzill i només de text. Malgrat això, també és possible mostrar informació variable dels objectes (&pex;, podeu construir una etiqueta amb el text <quote
+>Aquest segment mesura %1 unitats de longitud.</quote
+> on <token
+>%1</token
+> serà substituït dinàmicament amb la longitud del segment especificat). </para>
+<para
+>Per a fer això, escriviu un text amb les variables de substitució (<token
+>%1</token
+>, <token
+>%2</token
+>, &etc;) corresponents. Aleshores, premeu el botó <guibutton
+>Següent</guibutton
+> per a continuar. Si voleu modificar el text o les variables, podeu tornar enrere amb el botó <guibutton
+>Enrere</guibutton
+>. </para>
+<para
+>Ara l'assistent us mostrarà el text que heu escrit amb les variables de substitució reemplaçades per alguna cosa com <guilabel
+>argument 1</guilabel
+>. Per a connectar una propietat amb l'argument, primer heu de fer clic sobre l'argument. Després, a l'objecte del qual en vulgueu la propietat, i finalment, seleccionar la propietat en el menú emergent que apareix. Per exemple, en el cas anterior, hauríeu de fer clic a <guilabel
+>argument 1</guilabel
+>, fer clic al segment corresponent a la finestra principal del &kig;, i seleccionar la propietat <guilabel
+>longitud</guilabel
+>. Després ja podreu omplir la resta de parts variables, o bé seleccionar una altra propietat que vulgueu modificar. Quan ho teniu a punt, feu clic al botó <guibutton
+>Acaba</guibutton
+> per a completar la construcció de l'etiqueta de text. </para>
+<screenshot>
+<screeninfo
+>Seleccionar una propietat per a una part variable</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Seleccionar una propietat per a una part variable</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Llocs geomètrics</title>
+<para
+>El &kig; permet l'ús de llocs geomètrics. Un lloc geomètric es defineix matemàticament com el conjunt de tots els punts o rectes que compleixen o venen determinats per condicions específiques, com en el cas d'un cercle que és el <quote
+>lloc geomètric dels punts que equidisten d'un punt donat</quote
+>. Veiem un exemple de com utilitzar els llocs geomètrics amb el &kig;: </para>
+<para
+>Considereu la següent construcció geomètrica. Dibuixem un cercle i un punt que només podeu moure al llarg de la seva circumferència (construïu aquest punt posicionant el cursor sobre un cercle, i fent clic amb el &BMR;. Si aleshores proveu de moure aquest punt veureu que només el podreu moure seguint el cercle). Després dibuixem un segment que vagi des d'aquest punt cap al centre del cercle i el seu punt mitjà. </para>
+<screenshot>
+<screeninfo
+>Una construcció senzilla fent servir llocs geomètrics</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Una construcció senzilla fent servir llocs geomètrics</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Ara, si moveu el punt restringit al cercle, veureu que el segon punt es mou amb ell. Si tinguéssiu un llapis en aquest segon punt, i moveu el primer al llarg de tot el cercle, quedaria dibuixat un nou cercle de radi la meitat que el primer. El camí que segueix el segon punt és el lloc geomètric. </para>
+<para
+>En realitat, construir el lloc geomètric d'un punt és molt senzill. Feu clic al botó &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>Lloc geomètric</guibutton
+> de la barra d'eines, o seleccioneu l'element de menú <menuchoice
+><guimenu
+>Objectes</guimenu
+><guisubmenu
+>Altres</guisubmenu
+> <guimenuitem
+>Lloc geomètric</guimenuitem
+></menuchoice
+>. Aleshores seleccioneu el punt restringit al cercle com el punt a moure (apareixerà el text <guilabel
+>Punt a moure</guilabel
+> quan passeu el cursor per sobre seu), i l'altre com a <guilabel
+>Punt depenent</guilabel
+>. Aleshores es mostrarà el lloc geomètric del punt depenent. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Crear scripts</title>
+<para
+>El &kig; permet crear tipus d'objectes personalitzats utilitzant el llenguatge Python per a crear scripts. Aquesta és una característica molt avançada, i només coneixem un altre programa de geometria interactiva que tingui una funció similar (el programa &drgeo; del <acronym
+>GNOME</acronym
+>). </para>
+<para
+>La creació de scripts en Python en el &kig; bàsicament us permetrà crear els vostres propis objectes a partir d'altres objectes pare. Per exemple, si sou un professor de matemàtiques, i disposeu d'un mètode atractiu de calcular algun punt interessant d'una cònica, en lloc d'embolicar-vos amb construccions complexes i macros, n'hi ha prou amb que escriviu una mica de codi en Python de com es calcula el punt i aleshores el &kig; ho farà. </para>
+<para
+>Suposem que no esteu al cas de l'existència en el &kig; del tipus <quote
+>Punt mitjà</quote
+>, i que voleu utilitzar el punt mitjà de dos punts donats. Aleshores cal que feu clic al botó &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Script en Python</guibutton
+> de la barra d'eines, o bé que seleccioneu l'element de menú <menuchoice
+><guimenu
+>Objectes</guimenu
+><guisubmenu
+>Altres</guisubmenu
+> <guimenuitem
+>Script en Python</guimenuitem
+></menuchoice
+> de la barra de menús. Se us presentarà un assistent que us permetrà procedir. </para>
+<screenshot>
+<screeninfo
+>L'assistent objecte de script</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>L'assistent objecte de script</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>El primer que heu de fer és seleccionar els arguments per a l'objecte de script. En el nostre exemple, això són els dos punts dels quals volem mostrar el punt mitjà. Seleccioneu-los a la finestra principal del &kig; i feu clic al botó <guibutton
+>Següent</guibutton
+> per a continuar. </para>
+<para
+>Ara teniu un quadre d'edició per a editar text on podeu introduir el codi del vostre objecte de script. Hi trobareu una mica de codi i alguns comentaris. És important que us assegureu que el vostre codi és codi en Python vàlid. Els qui estiguin familiaritzats amb el Python notaran que en aquest moment estem definint una funció de Python anomenada <function
+>calc</function
+>. Per tant, és necessari que recordem les normes de Python a l'hora de definir funcions. Per exemple, cada línia de la funció haurà de començar amb una tabulació. La primera línia que no comenci amb una tabulació determinarà el final de la definició de la funció. </para>
+<para
+>La funció de Python que volem definir s'anomena <function
+>calc</function
+>, i en el nostre cas accepta dos arguments. Aquests són els dos objectes que heu seleccionat a la pantalla anterior. Necessiteu tants arguments com objectes hàgiu seleccionat. S'anomenen <parameter
+>arg1</parameter
+> i <parameter
+>arg2</parameter
+>, però, si ho desitgeu, en podeu canviar els noms per altres més significatius. </para>
+<para
+>A la funció, podeu fer tota mena de càlculs que considereu necessaris, utilitzant els dos arguments sempre que calgui. Al final haureu de retornar l'objecte que voleu definir. En el nostre cas, això és un objecte <classname
+>Point</classname
+>. Els dos arguments també són objectes <classname
+>Point</classname
+> i podem utilitzar la funció <function
+>Point.coordinate()</function
+> per a definir les coordenades dels dos punts donats. </para>
+<para
+>Els càlculs necessaris en el nostre exemple són molt senzills. Només cal sumar els dos conjunts de coordenades i dividir-ho per dos. Després construïm un nou punt utilitzant el resultat. El codi en Python que es necessita és:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Escriure el codi</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Escriure el codi per al punt mitjà a l'assistent objecte de script.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Si ara feu clic al botó <guibutton
+>Acaba</guibutton
+>, el nou objecte apareixerà al document del &kig;. Si moveu un dels punts, el nou punt també es mourà. D'aquesta manera es poden construir objectes més potents, se us anima a intentar-ho. </para>
+<screenshot>
+<screeninfo
+>Un objecte de script construït</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>El nou objecte de script construït. </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Tots els objectes del &kig; es poden utilitzar en el codi en Python. Com hem vist anteriorment, els punts són de la classe <classname
+>Point</classname
+>, i podeu utilitzar, &pex;, el mètode <function
+>Point.coordinate()</function
+>. També podeu retornar tota mena d'objectes, no només objectes <classname
+>Point</classname
+>. Moltes altres classes i mètodes estan disponibles en el codi en Python del &kig;, i en teniu una referència més completa a la <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+>pàgina web del &kig;</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>Característiques del &kig;</title>
+
+<itemizedlist>
+<listitem>
+<para
+>El &kig; és una aplicació de codi lliure. Això vol dir que teniu llibertat per a utilitzar-lo i modificar-lo tant com vulgueu. La distribució del &kig; està subjecte a algunes restriccions, bàsicament que tothom ha de tenir els mateixos drets per a utilitzar-lo, incloent-hi les vostres modificacions, que vós i jo. </para>
+<para
+>Els programes de codi lliure es desenvolupen amb un esperit molt obert, i els seus desenvolupadors acostumen a ser molt receptius als comentaris que se'ls fa arribar. Per tant, si teniu preguntes, queixes o qualsevol altra cosa sobre el &kig;, si us plau, contacteu amb la llista de correu a <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; és una aplicació KPart, això vol dir que la podeu incloure en altres programes del &kde;. Si obriu un fitxer <literal role="extension"
+>.kig</literal
+> amb el &konqueror;, es pot obrir directament a la pantalla del &konqueror; sense la necessitat d'iniciar cap altre programa. </para>
+</listitem>
+<listitem>
+<para
+>Treballar amb el &kig; hauria de ser molt intuïtiu. Construir objectes és senzill i interactiu, mostrant resultats preliminars, &etc; Moure, seleccionar i construir es fa de la manera que un s'esperaria. La possibilitat de desfer, també és molt intuïtiva. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; accepta la definició de macros d'una manera molt intuïtiva. Aquests objectes es presenten com a objectes normals. Es desen en sortir i es carreguen en entrar, i per tant no es perden en tancar el programa. Podeu gestionar aquests objectes amb el diàleg <guilabel
+>Gestiona els tipus</guilabel
+> (vegeu <xref linkend="working-with-types"/>). També els podeu exportar, importar, editar o suprimir. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; desa tota les dades en un format &XML; ben clar. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; permet la construcció de llocs geomètrics. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; permet exportar el fitxer &kig; a alguns formats interessants, com ara imatges, fitxers <application
+>XFig</application
+>, <application
+>LaTeX</application
+>, i imatges vectorials &SVG;. Això és més útil en la mesura que no tots els altres programes accepten encara el format de fitxer del &kig;. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; té un sistema de transformació molt flexible. </para>
+</listitem>
+<listitem>
+<para
+>El &kig; procura ser compatible amb els seus competidors. És per això que accepta els formats de fitxer &kgeo;, &kseg; i parcialment &drgeo; i &cabri;. A més de tenir en projecte altres formats. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Crèdits i llicència</title>
+
+<para
+>Autors principals: </para>
+<para
+>&kig; copyright 2011-2015 David E. Narvaez <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>&kig; copyright 2002-2013 Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>&kig; copyright 2004-2010 Pino Toscano <email
+>pino@kde.org</email
+> </para>
+<para
+>&kig; copyright 2002-2005 Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Copyright de la documentació 2002-2004 Dominique Devriese <email
+>devriese@kde.org</email
+>. </para>
+
+<para
+>Copyright de la documentació 2004-2005 Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>Revisada per en &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+<para
+>Traductor de la documentació: Xavier Batlle i Pèlach i &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Col·laboracions</title>
+<sect1 id="kig-is-free">
+<title
+>Programari lliure</title>
+<para
+>El &kig; és <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+>Programari lliure</ulink
+>. Això vol dir que el seu codi font és de lliure accés i disponible des d'internet, tothom el pot fer servir, llegir, modificar i distribuir. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Col·laboracions</title>
+<para
+>En aquest capítol vull remarcar-vos (a l'usuari) els drets que us dona la llicència del &kig;. Com en tot el programari lliure, teniu permís (i us animem) per a arreglar els problemes que hi trobeu, afegir-hi característiques que hi trobeu a faltar, distribuir el programa modificat i envieu aquestes modificacions per a la seva inclusió a través de les eines de revisió disponibles per a la comunitat del &kde;. </para>
+<para
+>Si teniu algun dubte sobre els drets per a utilitzar aquest programari, o que d'altra gent empri les modificacions que hi feu, si us plau, llegiu la llicència. La trobareu al fitxer <filename
+>COPYING</filename
+> en el codi font del &kig; o a l'enllaç de la llicència en el diàleg <guilabel
+>Quant al &kig;</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Com col·laborar?</title>
+<para
+>Totes les col·laboracions són benvingudes. Si no us agraden les icones, o penseu que al manual li cal una actualització, o bé teniu aquella supermacro que voleu compartir amb el món, no dubteu en enviar-me-la. Si us plau, cal tenir en compte que les vostres col·laboracions seran distribuïdes sota els termes de llicència <acronym
+>GPL</acronym
+> de &GNU;, trobareu els termes d'aquesta llicència en el fitxer <filename
+>COPYING</filename
+> en el codi del &kig;, i en el capítol <link linkend="credits"
+>Crèdits i llicència</link
+> d'aquest manual. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

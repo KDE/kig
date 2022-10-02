@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Catalan  "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Manual d'usuari del KDE</title>
+<author
+><personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+></author>
+<date
+>23 de desembre de 2020</date>
+<releaseinfo
+>Aplicacions 20.12</releaseinfo>
+<productname
+>Aplicacions del KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Un programa de geometria interactiva per al &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>nom_fitxer</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>opcions</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Descripció</title>
+<para
+>El &kig; és una aplicació de geometria interactiva. El seu objectiu és servir per a dues finalitats:</para>
+<itemizedlist
+><listitem
+><para
+>Permetre als estudiants explorar de manera interactiva les figures i conceptes matemàtics utilitzant l'ordinador;</para
+></listitem>
+<listitem
+><para
+>Servir com una eina WYSIWYG per a dibuixar figures matemàtiques i incloure-les en altres documents.</para
+></listitem
+></itemizedlist>
+<para
+>Amb aquest programa podeu fer geometria en un ordinador com ho faríeu en una pissarra en una aula. No obstant això, el programa us permet moure i canviar parts d'un dibuix geomètric per a veure com canvien altres parts i el resultat.</para>
+<para
+>El &kig; dona suport a llocs geomètrics i macros definides per l'usuari. També les importacions i exportacions cap a i des dels formats aliens de fitxer, incloent-hi <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> i <application
+>XFig</application
+>.</para>
+<para
+>Aquesta aplicació forma part del mòdul oficial educatiu de &kde;.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Opcions</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>No mostra una &IGU;. Converteix el fitxer especificat al format nadiu del &kig;. S'escriurà el fitxer &kig; a la sortida estàndard llevat que s'especifiqui <option
+>--outfile</option
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>nom_fitxer</replaceable
+></option
+></term>
+<listitem
+><para
+>Utilitzat amb <option
+>--convert-to-native</option
+> per a especificar on voleu desar el fitxer del &kig; acabat de crear. Si no s'especifica aquesta opció, o proporcioneu un nom de fitxer <filename
+>-</filename
+>, el fitxer de sortida serà la sortida estàndard.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Veure també</title>
+<para
+>Hi ha disponible documentació d'usuari més detallada des de <ulink url="help:/kig"
+>help:/kig</ulink
+> (podeu emprar aquest &URL; al &konqueror; o bé executar <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>També hi ha més informació disponible al <ulink url="https://edu.kde.org/kig/"
+>Lloc web del &kde; Education</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Autors</title>
+<para
+>El &kig; ha estat escrit per en <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+>, i altres.</para>
+<para
+>Aquesta pàgina de manual està basada en una preparada per en <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+> per al projecte &Debian;.</para>
+</refsect1>
+
+</refentry>

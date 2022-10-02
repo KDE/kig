@@ -1,0 +1,7014 @@
+# translation of kig.po to
+# Ahmad M. Zawawi <azawawi@emirates.net.ae>, 2004.
+# Youssef Chahibi <chahibi@gmail.com>, 2007.
+# Abdalrahim G. Fakhouri <abdilra7eem@yahoo.com>, 2014.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2022-02-02 20:55+0400\n"
+"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 21.07.70\n"
+"X-POOTLE-MTIME: 1381853582.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "زايد السعيدي"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "zayed.alsaidi@gmail.com"
+
+#, fuzzy, kde-format
+msgid "Circle by Center && Line"
+msgstr "دائرة باستخدام مركز وخط"
+
+#, fuzzy, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "A أداء و إلى a سطر"
+
+#, fuzzy, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "التركيب a إلى سطر"
+
+#, fuzzy, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "انتقِ سطر جديد إلى."
+
+#, fuzzy, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "دائرة أداء نقطة القطعة القطر"
+
+#, fuzzy, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr "A أداء و الطول من a قطعة"
+
+#, fuzzy, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "التركيب a مع أداء الطول من قطعة"
+
+#, fuzzy, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr "انتقِ قطعة مَن الطول من جديد."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "مثلث متساوي الأضلاع"
+
+#, fuzzy, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "مثلث متاسوي الأضلاع برأسين معروفين"
+
+#, kde-format
+msgid "Evolute"
+msgstr "منشئ المنحنى"
+
+#, fuzzy, kde-format
+msgid "Evolute of a curve"
+msgstr "منشىء المنحنى من a منحنى"
+
+#, fuzzy, kde-format
+msgid "Evolute of this curve"
+msgstr "منشىء المنحنى من منحنى"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "دائرة تقبيل"
+
+#, fuzzy, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "التقبيل من a منحنى عند a نقطة"
+
+#, fuzzy, kde-format
+msgid "Osculating circle of this curve"
+msgstr "التقبيل من منحنى"
+
+#, fuzzy, kde-format
+msgid "Osculating circle at this point"
+msgstr "التقبيل عند نقطة"
+
+#, fuzzy, kde-format
+msgid "Select the point..."
+msgstr "انتقِ نقطة."
+
+#, kde-format
+msgid "Square"
+msgstr "مربع"
+
+#, fuzzy, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "مربع مع إثنان مجاور"
+
+#, fuzzy, kde-format
+msgid "Vector Difference"
+msgstr "الموجه إختلاف"
+
+#, fuzzy, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "التركيب متجه اختلاف من إثنان."
+
+#, fuzzy, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "التركيب متجه اختلاف من متجه و."
+
+#, fuzzy, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "التركيب متجه اختلاف من غير ذلك متجه و."
+
+#, fuzzy, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "التركيب متجه اختلاف بدء عند نقطة."
+
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr "انتقِ الأوّل من إثنان من إلى اختلاف."
+
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "انتقِ غير ذلك من إثنان من إلى اختلاف."
+
+#, fuzzy, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "انتقِ نقطة إلى اختلاف متجه بوصة."
+
+#: filters/asyexporter.cc:29
+#, fuzzy, kde-format
+msgid "Export to &Asymptote..."
+msgstr "صدِّر إلى &LaTeXكبيرمطّاط."
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr "&خط مقارب..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+msgid "Asymptote Documents (*.asy)"
+msgstr "LaTeXكبيرمطّاط مستندات"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr ""
+
+#: filters/asyexporter.cc:48
+#, fuzzy, kde-format
+msgid "Asymptote Options"
+msgstr "خيارات الصورة"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, fuzzy, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr "الـ ملفّ ليس رجاء تفقّد IF ملفّ الصلاحيات set."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "خيارات"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, fuzzy, kde-format
+msgid "Show Extra Frame"
+msgstr "أظهر الإطار الإضافيّ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "إظهر المحاور"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "اعرض الشبكة"
+
+#: filters/cabri-filter.cc:143
+#, fuzzy, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "هذا هو XFig ملفّ ليس a شكل."
+
+#: filters/cabri-filter.cc:181
+#, fuzzy, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr "هذا النسخة هو ليس مدعوم مراسَل واحد Kig إلى مساعدة النسخة."
+
+#: filters/cabri-filter.cc:568
+#, fuzzy, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr "هذا ملفّ يحتوي a كائن Kig ليس دعم."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, fuzzy, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "أداة تعريف خطأ عند سطر بوصة ملفّ."
+
+#: filters/drgeo-filter.cc:92
+#, fuzzy, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "الـ الدّكتور ملفّ هو a ماكرو ملفّ الإيطالية يحتوي لا."
+
+#: filters/drgeo-filter.cc:96
+#, fuzzy, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "هناك لا بوصة الدّكتور ملفّ."
+
+#: filters/drgeo-filter.cc:111
+#, fuzzy, kde-format
+msgid "Dr. Geo Filter"
+msgstr "الدّكتور تصفية"
+
+#: filters/drgeo-filter.cc:112
+#, fuzzy, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr "الـ الحالي الدّكتور ملفّ يحتوي المزيد شكل تحديد إلى استيراد:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, fuzzy, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr "هذا الدّكتور ملفّ يحتوي a كائن Kig ليس دعم."
+
+#: filters/drgeo-filter.cc:339
+#, fuzzy, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr "هذا الدّكتور ملفّ يحتوي تقاطع نوع Kig ليس دعم."
+
+#: filters/exporter.cc:58
+#, fuzzy, kde-format
+msgid "&Export to image"
+msgstr "صدِّر إلى صورة"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&صورة..."
+
+#: filters/exporter.cc:73
+#, fuzzy, kde-format
+msgid "Export as Image"
+msgstr "صدِّر كصورة"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "خيارات الصّورة"
+
+#: filters/exporter.cc:102
+#, fuzzy, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "عذراً ملفّ تنسيق هو ليس مدعوم."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "عذراً هناك خطأ حدث أثناء حفظ الصورة \"%1\""
+
+#: filters/exporter.cc:144
+#, fuzzy, kde-format
+msgid "&Export To"
+msgstr "صدِّر إلى"
+
+#: filters/filter.cc:66
+#, fuzzy, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr "الـ ملفّ ليس هذا الإيطالية ليس أو الإيطالية إلى الصلاحيات"
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "أداة تعريف خطأ بينما ملفّ itإيطالياهو."
+
+#: filters/filter.cc:78
+#, fuzzy, kde-format
+msgid "Parse Error"
+msgstr "خطأ إعراب"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "غير مدعوم"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+msgid "Kig cannot open this file."
+msgstr "Kig فتح ملفّ."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "الدقّة"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "أ&بقِ النّسبة الباعيّة"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "الارتفاع:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "العرض:"
+
+#: filters/kseg-filter.cc:157
+#, fuzzy, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr "هذا مستند a تحويل Kig استيراد."
+
+#: filters/kseg-filter.cc:505
+#, fuzzy, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr "هذا ملفّ يحتوي a Kig ليس دعم."
+
+#: filters/kseg-filter.cc:511
+#, fuzzy, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr "هذا ملفّ يحتوي قوس قطاع ، شعبة Kig ليس دعم."
+
+#: filters/kseg-filter.cc:517
+#, fuzzy, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr "هذا ملفّ يحتوي قوس قطعة Kig ليس دعم."
+
+#: filters/latexexporter.cc:63
+#, fuzzy, kde-format
+msgid "Export to &Latex..."
+msgstr "صدّر إلى لاتِخ"
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&لاتخ..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+msgid "Latex Documents (*.tex)"
+msgstr "LaTeXكبيرمطّاط مستندات"
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+msgid "Export as Latex"
+msgstr "صدِّر LaTeXكبيرمطّاط"
+
+#: filters/latexexporter.cc:512
+#, fuzzy, kde-format
+msgid "Latex Options"
+msgstr "خيارات لاتِخ"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "هيئة المخرجات"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "خط مقارب"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, fuzzy, kde-format
+msgid "Document options"
+msgstr "خيارات المستند"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, fuzzy, kde-format
+msgid "Standalone document"
+msgstr "تكبير بوصة يعمل مستند"
+
+#: filters/native-filter.cc:174
+#, fuzzy, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr "هذا ملفّ أداء Kig النسخة النسخة فتح."
+
+#: filters/native-filter.cc:180
+#, fuzzy, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"هذا ملفّ أداء Kig النسخة لـ أعتق من Kig من Kig إلى فتح ملفّ مع أعتق من Kig "
+"النسخة إلى حفظ الإيطالية حفظ الإيطالية بوصة جديد تنسيق."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, fuzzy, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr "هذا Kig ملفّ a تنسيق نظام Kig النسخة ليس دعم قياسي تنسيق نظام مُستخدَم."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, fuzzy, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"هذا Kig ملفّ كائن من نوع Kig النسخة ليس دعم ربما Kig دعم لـ كائن نوع أو أعتق "
+"من Kig النسخة."
+
+#: filters/native-filter.cc:356
+#, fuzzy, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr "هذا Kig ملفّ كائن من نوع هو حفظ مع a مختلف الاسم و تفقّد الإيطالية."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "ال&تصدير إلى SVG..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "قابل للتسلّق الموجه رسوم"
+
+#: filters/svgexporter.cc:47
+#, fuzzy, kde-format
+msgid "Export as SVG"
+msgstr "صدِّر"
+
+#: filters/svgexporter.cc:49
+#, fuzzy, kde-format
+msgid "SVG Options"
+msgstr "خيارات SVG"
+
+#: filters/svgexporter.cc:94
+#, fuzzy, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "عذراً شيء مّا خطأ بينما إلى ملفّ"
+
+#: filters/xfigexporter.cc:46
+#, fuzzy, kde-format
+msgid "Export to &XFig file"
+msgstr "صدِّر إلى &XFig ملفّ"
+
+#: filters/xfigexporter.cc:51
+#, fuzzy, kde-format
+msgid "&XFig File..."
+msgstr "&XFig ملف."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+msgid "XFig Documents (*.fig)"
+msgstr "XFig مستندات"
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+msgid "Export as XFig File"
+msgstr "صدِّر XFig ملف"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "كيج"
+
+#: kig/aboutdata.h:17
+#, fuzzy, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "كدي تفاعلي الهندسة"
+
+#: kig/aboutdata.h:19
+#, fuzzy, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "(C) 2002-2005, مطوّروا Kig"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr "المصين الحاليّ"
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+msgid "Dominique Devriese"
+msgstr "دومينيك"
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "الأصلي المؤلف وقت المشرف على الصيانة تصميم و من رمز."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr ""
+
+#: kig/aboutdata.h:28
+#, fuzzy, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr "عمل a من مهم الكل Kig ليس إلى و خاصية، ملكية دعم."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr "فعليّ المشرف على الصيانة الدّكتور استيراد المرشّح نقطة و سطر الإيطالية و."
+
+#: kig/aboutdata.h:39
+#, fuzzy, kde-format
+msgid "Franco Pasquarelli"
+msgstr "فرانكو"
+
+#: kig/aboutdata.h:40
+#, fuzzy, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr "سوعد a مع من المكان كائن s بعض بوصة الإيطالية يمين و فرانكو."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr ""
+
+#: kig/aboutdata.h:46
+#, fuzzy, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "المسؤول لـ ظريف تطبيق أيقونة."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, fuzzy, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "التركيب a مع"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr ""
+
+#: kig/aboutdata.h:52
+#, fuzzy, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "التركيب من"
+
+#: kig/aboutdata.h:54
+#, fuzzy, kde-format
+msgid "Eric Depagne"
+msgstr "Eric"
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr "الـ فرنسي بعض رد مثل ميزة الطّلبات و خلل."
+
+#: kig/aboutdata.h:59
+#, fuzzy, kde-format
+msgid "Marc Bartsch"
+msgstr "مارك"
+
+#: kig/aboutdata.h:60
+#, fuzzy, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr "المؤلف من I بعض مصدر و من من."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:65
+#, fuzzy, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr "s إلى كتابة الخوارزميات لـ حساب من مع ثلاثة نقطة."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr "أَرسِل a patch لـ بعض علل."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr "أعطى بعض رد يعمل Kig بعض ميزة الطّلبات و أسلوب و إلى محادثة مع يعمل"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, fuzzy, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "المسؤول لـ ظريف تطبيق أيقونة."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, fuzzy, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "المسؤول لـ جديد كائن الأفعال أيقونات."
+
+#: kig/kig.cpp:62
+#, fuzzy, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr "يمكن أن ليس ابحث Kig مكتبة تفقّد تثبيت."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr "افتح ملفاً"
+
+#: kig/kig_commands.cpp:91
+#, fuzzy, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "احذف كائنات"
+msgstr[1] "احذف كائنات"
+msgstr[2] "احذف كائنات"
+msgstr[3] "احذف كائنات"
+msgstr[4] "احذف كائنات"
+msgstr[5] "احذف كائنات"
+
+#: kig/kig_commands.cpp:103
+#, fuzzy, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "أضف عنصر:"
+msgstr[1] "إضافة كائنات"
+msgstr[2] "إضافة كائنات"
+msgstr[3] "إضافة كائنات"
+msgstr[4] "إضافة كائنات"
+msgstr[5] "إضافة كائنات"
+
+#: kig/kig_part.cpp:85
+#, fuzzy, kde-format
+msgid "&Set Coordinate System"
+msgstr "ضبط إحداثية النظام"
+
+#: kig/kig_part.cpp:125
+#, kde-format
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "خيارات كيج"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "اعرض الشّبكة"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "إظهر المحاور"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "اعكس التّحديد"
+
+#: kig/kig_part.cpp:224
+#, fuzzy, kde-format
+msgid "&Delete Objects"
+msgstr "احذف الكائنات"
+
+#: kig/kig_part.cpp:228
+#, fuzzy, kde-format
+msgid "Delete the selected objects"
+msgstr "احذف مُنتقى"
+
+#: kig/kig_part.cpp:230
+#, fuzzy, kde-format
+msgid "Cancel Construction"
+msgstr "إلغاء البناء"
+
+#: kig/kig_part.cpp:234
+#, fuzzy, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "إلغاء من كائن"
+
+#: kig/kig_part.cpp:237
+#, fuzzy, kde-format
+msgid "Repeat Construction"
+msgstr "تكرار البناء"
+
+#: kig/kig_part.cpp:241
+#, fuzzy, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "تكرار الأخير مع جديد البيانات"
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, fuzzy, kde-format
+msgid "U&nhide All"
+msgstr "غير جلد الكل"
+
+#: kig/kig_part.cpp:247
+#, fuzzy, kde-format
+msgid "Show all hidden objects"
+msgstr "اعرض الكل مخفي"
+
+#: kig/kig_part.cpp:250
+#, fuzzy, kde-format
+msgid "&New Macro..."
+msgstr "جديد ماكرو."
+
+#: kig/kig_part.cpp:253
+#, fuzzy, kde-format
+msgid "Define a new macro"
+msgstr "تعريف a جديد ماكرو"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "أدِر الأ&نواع..."
+
+#: kig/kig_part.cpp:258
+#, fuzzy, kde-format
+msgid "Manage macro types."
+msgstr "أدِر ماكرو."
+
+#: kig/kig_part.cpp:260
+#, fuzzy, kde-format
+msgid "&Browse History..."
+msgstr "تصفّح التاريخ."
+
+#: kig/kig_part.cpp:263
+#, fuzzy, kde-format
+msgid "Browse the history of the current construction."
+msgstr "تصفّح تاريخ من الحالي."
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, fuzzy, kde-format
+msgid "Zoom in on the document"
+msgstr "تكبير بوصة يعمل مستند"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, fuzzy, kde-format
+msgid "Zoom out of the document"
+msgstr "تكبير خارج من مستند"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, fuzzy, kde-format
+msgid "Recenter the screen on the document"
+msgstr "شاشة يعمل مستند"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, fuzzy, kde-format
+msgid "View this document full-screen."
+msgstr "عرض مستند شاشة."
+
+#: kig/kig_part.cpp:286
+#, fuzzy, kde-format
+msgid "&Select Shown Area"
+msgstr "انتقِ ظاهرة مساحة"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, fuzzy, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "انتقِ منطقة إلى بوصة نافذة."
+
+#: kig/kig_part.cpp:292
+#, fuzzy, kde-format
+msgid "S&elect Zoom Area"
+msgstr "انتقِ تكبير مساحة"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, fuzzy, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "ضبط إحداثية."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr ""
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "اعرض ال&شبكة"
+
+#: kig/kig_part.cpp:305
+#, fuzzy, kde-format
+msgid "Show or hide the grid."
+msgstr "اعرض أو إخفاء."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "أ&ظهر المحاور"
+
+#: kig/kig_part.cpp:311
+#, fuzzy, kde-format
+msgid "Show or hide the axes."
+msgstr "اعرض أو إخفاء."
+
+#: kig/kig_part.cpp:315
+#, fuzzy, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "الملابس تحت الحمراء الأقداح"
+
+#: kig/kig_part.cpp:317
+#, fuzzy, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "مكّن تعطيل مخفي."
+
+#: kig/kig_part.cpp:347
+#, fuzzy, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "تكرار البناء"
+
+#: kig/kig_part.cpp:348
+#, fuzzy, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "تكرار مع جديد البيانات"
+
+#: kig/kig_part.cpp:376
+#, fuzzy, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr "الـ ملفّ إلى فتح ليس رجاء تأكد من، فحص صح المسار."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "لم يوجد الملفّ"
+
+#: kig/kig_part.cpp:394
+#, fuzzy, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"أنت إلى فتح a مستند من نوع Kig ليس دعم تنسيق إذا تنسيق بوصة سؤال دعم لـ "
+"دائماً اسأل الأميركية يعملmailto:pino@kde.org أو و إرسال a patch."
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, fuzzy, kde-format
+msgid "Format Not Supported"
+msgstr "تنسيق لا مدعوم"
+
+#: kig/kig_part.cpp:439
+#, fuzzy, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr "Kig ليس دعم إلى أي منها غير ذلك ملفّ تنسيق احفظ إلى Kig s تنسيق?"
+
+#: kig/kig_part.cpp:442
+#, fuzzy, kde-format
+msgid "Save Kig Format"
+msgstr "احفظ Kig تنسيق"
+
+#: kig/kig_part.cpp:695
+#, fuzzy, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr "Kig مستندات n مضغوط Kig مستندات"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "الملفّ ”%1“ موجود بالفعل. أتريد الكتابة فوقه؟"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "أأكتب فوق الملفّ؟"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "اطبع الهندسة"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "لا تخفي أي كائن"
+msgstr[1] "أخفِ كائن واحد"
+msgstr[2] "أخفِ كائنان"
+msgstr[3] "أخفِ %1 كائنات"
+msgstr[4] "أخفِ %1 كائنًا"
+msgstr[5] "أخفِ %1 كائن"
+
+#: kig/kig_part.cpp:940
+#, fuzzy, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "اعرض كائن"
+msgstr[1] "اعرض اجسام"
+msgstr[2] "اعرض اجسام"
+msgstr[3] "اعرض اجسام"
+msgstr[4] "اعرض اجسام"
+msgstr[5] "اعرض اجسام"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "قرّب"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "بعّد"
+
+#: kig/kig_view.cpp:474
+#, fuzzy, kde-format
+msgid "Recenter View"
+msgstr "عرض"
+
+#: kig/kig_view.cpp:496
+#, fuzzy, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "انتقِ."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, fuzzy, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "غيّر ظاهرة جزءالجزء من شاشة"
+
+#: kig/kig_view.cpp:538
+#, fuzzy, kde-format
+msgid "Select Zoom Area"
+msgstr "انتقِ تكبير مساحة"
+
+#: kig/kig_view.cpp:539
+#, fuzzy, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr "انتقِ كبِّر :: تكبير منطقة أداء<br /> من يسار و يمين."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&ملف"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "ت&حرير"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&عرض"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&كائنات"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&نقاط"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&سطور"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, fuzzy, kde-format
+msgid "&Circles && Arcs"
+msgstr "دوائر وأقواس"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "&مضلعات"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, fuzzy, kde-format
+msgid "&Vectors && Segments"
+msgstr "المتجهات اجزاء"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, fuzzy, kde-format
+msgid "Co&nics && Cubics"
+msgstr "مخروطات كوبيس"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, fuzzy, kde-format
+msgid "More Conics"
+msgstr "المزيد من المخروطات"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "م&كعَبات"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, fuzzy, kde-format
+msgid "&Bézier curves"
+msgstr "إخفاء a منحنى"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&زوايا"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&تحويلات"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&هندسة تفاضلية"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "الا&ختبارات"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "أ&خرى"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "ال&فئات"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "أ&دوات"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "شريط الأدوات الرئيسي"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "نقاط"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "سطور"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, fuzzy, kde-format
+msgid "Vectors && Segments"
+msgstr "المتجهات اجزاء"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, fuzzy, kde-format
+msgid "Circles && Arcs"
+msgstr "دوائر وأقواس"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "مخروطات"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, fuzzy, kde-format
+msgid "Bézier Curves"
+msgstr "إخفاء a منحنى"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "زوايا"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "التحويلات"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "الاختبارات"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, fuzzy, kde-format
+msgid "Other Objects"
+msgstr "كائنات أخرى"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "اعرض"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "إ&عدادات"
+
+#: kig/main.cpp:78
+#, fuzzy, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"تنفيذ ليس إظهار a الواجهة الرسومية حوّل ملفّ إلى فطرى Kig تنسيق مخرجات إلى هو."
+
+#: kig/main.cpp:80
+#, fuzzy, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr "ملف إلى مخرجات فطرى ملفّ إلى مخرجات إلى افتراضي هو."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr "kde.org"
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "المستند لفتحه"
+
+#: misc/builtin_stuff.cc:43
+#, fuzzy, kde-format
+msgid "Point by Numeric Labels"
+msgstr "نقطة أداء رقمي تسميات"
+
+#: misc/builtin_stuff.cc:44
+#, fuzzy, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "A نقطة مَن أداء إثنان أبجدي عددي"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "قطعة"
+
+#: misc/builtin_stuff.cc:50
+#, fuzzy, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "A قطعة من تشغيل و end نقطة"
+
+#: misc/builtin_stuff.cc:56
+#, fuzzy, kde-format
+msgid "Segment Axis"
+msgstr "القطعة محاور"
+
+#: misc/builtin_stuff.cc:57
+#, fuzzy, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "الـ سطر a قطعة s نقطة."
+
+#: misc/builtin_stuff.cc:63
+#, fuzzy, kde-format
+msgid "Line by Two Points"
+msgstr "خط أداء اثنان نقاط"
+
+#: misc/builtin_stuff.cc:63
+#, fuzzy, kde-format
+msgid "A line constructed through two points"
+msgstr "A سطر إثنان نقطة"
+
+#: misc/builtin_stuff.cc:69
+#, fuzzy, kde-format
+msgid "Half-Line"
+msgstr "نصف خط"
+
+#: misc/builtin_stuff.cc:70
+#, fuzzy, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "A سطر أداء تشغيل نقطة و نقطة يعمل الإيطالية."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "تعامد"
+
+#: misc/builtin_stuff.cc:78
+#, fuzzy, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr "A سطر a نقطة إلى سطر أو قطعة."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "متوازٍ"
+
+#: misc/builtin_stuff.cc:86
+#, fuzzy, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr "A سطر a نقطة و متوازِ إلى سطر أو قطعة"
+
+#: misc/builtin_stuff.cc:93
+#, fuzzy, kde-format
+msgid "Circle by Center && Point"
+msgstr "دائرة أداء وسط نقطة"
+
+#: misc/builtin_stuff.cc:94
+#, fuzzy, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "A أداء و a نقطة إلى الإيطالية"
+
+#: misc/builtin_stuff.cc:100
+#, fuzzy, kde-format
+msgid "Circle by Three Points"
+msgstr "دائرة أداء ثلاثة نقاط"
+
+#: misc/builtin_stuff.cc:101
+#, fuzzy, kde-format
+msgid "A circle constructed through three points"
+msgstr "A ثلاثة نقطة"
+
+#: misc/builtin_stuff.cc:107
+#, fuzzy, kde-format
+msgid "Circle by Point && Radius"
+msgstr "دائرة أداء نقطة نصف القطر"
+
+#: misc/builtin_stuff.cc:108
+#, fuzzy, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "A أداء و الطول من"
+
+#: misc/builtin_stuff.cc:122
+#, fuzzy, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "التركيب المنصّف من هذا الزاوية"
+
+#: misc/builtin_stuff.cc:123
+#, fuzzy, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "انتقِ زاوية إلى من."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, fuzzy, kde-format
+msgid "Angle Bisector"
+msgstr "الزاوية المنصّف"
+
+#: misc/builtin_stuff.cc:125
+#, fuzzy, kde-format
+msgid "The bisector of an angle"
+msgstr "الـ من زاوية"
+
+#: misc/builtin_stuff.cc:132
+#, fuzzy, kde-format
+msgid "Conic by Five Points"
+msgstr "مخروطي أداء خمسة نقاط"
+
+#: misc/builtin_stuff.cc:133
+#, fuzzy, kde-format
+msgid "A conic constructed through five points"
+msgstr "A خمسة نقطة"
+
+#: misc/builtin_stuff.cc:139
+#, fuzzy, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "القطع الزائد أداء الخطوط المقاربة نقطة"
+
+#: misc/builtin_stuff.cc:140
+#, fuzzy, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "A مع a نقطة"
+
+#: misc/builtin_stuff.cc:146
+#, fuzzy, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "بيضوي أداء مراكز الإهتمام نقطة"
+
+#: misc/builtin_stuff.cc:147
+#, fuzzy, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "أداة تعريف أداء و a نقطة إلى الإيطالية"
+
+#: misc/builtin_stuff.cc:153
+#, fuzzy, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "القطع الزائد أداء مراكز الإهتمام نقطة"
+
+#: misc/builtin_stuff.cc:154
+#, fuzzy, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr "A أداء و a نقطة إلى الإيطالية"
+
+#: misc/builtin_stuff.cc:160
+#, fuzzy, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "مخروطي أداء المخرجة التركيز نقطة"
+
+#: misc/builtin_stuff.cc:161
+#, fuzzy, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr "A مع و a نقطة"
+
+#: misc/builtin_stuff.cc:167
+#, fuzzy, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "رأسي القطع المكافىء أداء ثلاثة نقاط"
+
+#: misc/builtin_stuff.cc:168
+#, fuzzy, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "A عمودي ثلاثة نقطة"
+
+#: misc/builtin_stuff.cc:174
+#, fuzzy, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/builtin_stuff.cc:175
+#, fuzzy, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "A تكعييبي منحنى تسعة نقطة"
+
+#: misc/builtin_stuff.cc:181
+#, fuzzy, kde-format
+msgid "Polar Point of a Line"
+msgstr "قطبي نقطة من a خط"
+
+#: misc/builtin_stuff.cc:182
+#, fuzzy, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "الـ نقطة من a سطر مع إلى a."
+
+#: misc/builtin_stuff.cc:188
+#, fuzzy, kde-format
+msgid "Polar Line of a Point"
+msgstr "قطبي خط من a نقطة"
+
+#: misc/builtin_stuff.cc:189
+#, fuzzy, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "الـ سطر من a نقطة مع إلى a."
+
+#: misc/builtin_stuff.cc:195
+#, fuzzy, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "مكعّب منحنى مع نقطة اتّصال أداء ستّة نقاط"
+
+#: misc/builtin_stuff.cc:196
+#, fuzzy, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "A تكعييبي منحنى مع a نقطة عند ستّة نقطة"
+
+#: misc/builtin_stuff.cc:202
+#, fuzzy, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "مكعّب منحنى مع القمة أداء أربعة نقاط"
+
+#: misc/builtin_stuff.cc:203
+#, fuzzy, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr "A تكعييبي منحنى مع a أفقي عند أربعة نقطة"
+
+#: misc/builtin_stuff.cc:209
+#, fuzzy, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "مكعّب الوظيفة أداء أربعة نقاط"
+
+#: misc/builtin_stuff.cc:210
+#, fuzzy, kde-format
+msgid "A cubic function through four points"
+msgstr "A تكعييبي الدالة أربعة نقطة"
+
+#: misc/builtin_stuff.cc:215
+#, fuzzy, kde-format
+msgid "Directrix of a Conic"
+msgstr "المخرجة من a مخروطي"
+
+#: misc/builtin_stuff.cc:215
+#, fuzzy, kde-format
+msgid "The directrix line of a conic."
+msgstr "الـ سطر من a."
+
+#: misc/builtin_stuff.cc:219
+#, fuzzy, kde-format
+msgid "Angle by Three Points"
+msgstr "الزاوية أداء ثلاثة نقاط"
+
+#: misc/builtin_stuff.cc:219
+#, fuzzy, kde-format
+msgid "An angle defined by three points"
+msgstr "أداة تعريف زاوية أداء ثلاثة نقطة"
+
+#: misc/builtin_stuff.cc:224
+#, fuzzy, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "متساوي الأضلاع القطع الزائد أداء أربعة نقاط"
+
+#: misc/builtin_stuff.cc:225
+#, fuzzy, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "أداة تعريف أربعة نقطة"
+
+#: misc/builtin_stuff.cc:242
+#, fuzzy, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "التركيب من قطعة"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, fuzzy, kde-format
+msgid "Mid Point"
+msgstr "وسط نقطة"
+
+#: misc/builtin_stuff.cc:246
+#, fuzzy, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "الـ من a قطعة أو إثنان غير ذلك نقطة"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr "التركيب من قطعة"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+msgid "Golden Ratio Point"
+msgstr "نقل a نقطة"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+msgid "The golden ratio point of a segment or two other points"
+msgstr "الـ من a قطعة أو إثنان غير ذلك نقطة"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "متجه"
+
+#: misc/builtin_stuff.cc:281
+#, fuzzy, kde-format
+msgid "Construct a vector from two given points."
+msgstr "التركيب a متجه من إثنان نقطة."
+
+#: misc/builtin_stuff.cc:285
+#, fuzzy, kde-format
+msgid "Vector Sum"
+msgstr "الموجه مجموع"
+
+#: misc/builtin_stuff.cc:285
+#, fuzzy, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "التركيب متجه جمع ، مجموع من إثنان."
+
+#: misc/builtin_stuff.cc:290
+#, fuzzy, kde-format
+msgid "Line by Vector"
+msgstr "خط أداء الموجه"
+
+#: misc/builtin_stuff.cc:291
+#, fuzzy, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "التركيب سطر أداء a متجه a نقطة."
+
+#: misc/builtin_stuff.cc:297
+#, fuzzy, kde-format
+msgid "Half-Line by Vector"
+msgstr "نصف خط أداء الموجه"
+
+#: misc/builtin_stuff.cc:298
+#, fuzzy, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "التركيب سطر أداء a متجه بدء عند نقطة."
+
+#: misc/builtin_stuff.cc:303
+#, fuzzy, kde-format
+msgid "Arc by Three Points"
+msgstr "قوس أداء ثلاثة نقاط"
+
+#: misc/builtin_stuff.cc:303
+#, fuzzy, kde-format
+msgid "Construct an arc through three points."
+msgstr "التركيب قوس ثلاثة نقطة."
+
+#: misc/builtin_stuff.cc:308
+#, fuzzy, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "مخروطي قوس أداء وسط و ثلاثة نقاط"
+
+#: misc/builtin_stuff.cc:309
+#, fuzzy, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "التركيب a قوس مع ثلاثة نقطة."
+
+#: misc/builtin_stuff.cc:315
+#, fuzzy, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "مخروطي قوس أداء خمسة نقاط"
+
+#: misc/builtin_stuff.cc:316
+#, fuzzy, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "التركيب a قوس خمسة نقطة."
+
+#: misc/builtin_stuff.cc:322
+#, fuzzy, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "قوس أداء وسط الزاوية نقطة"
+
+#: misc/builtin_stuff.cc:323
+#, fuzzy, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "التركيب قوس أداء و a زاوية بدء عند a نقطة"
+
+#: misc/builtin_stuff.cc:330
+#, fuzzy, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "القطع المكافىء أداء المخرجة التركيز"
+
+#: misc/builtin_stuff.cc:331
+#, fuzzy, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "A أداء و"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "ترجم"
+
+#: misc/builtin_stuff.cc:349
+#, fuzzy, kde-format
+msgid "The translation of an object by a vector"
+msgstr "الـ من كائن أداء a متجه"
+
+#: misc/builtin_stuff.cc:354
+#, fuzzy, kde-format
+msgid "Reflect in Point"
+msgstr "انعكاس بوصة نقطة"
+
+#: misc/builtin_stuff.cc:355
+#, fuzzy, kde-format
+msgid "An object reflected in a point"
+msgstr "أداة تعريف كائن بوصة a نقطة"
+
+#: misc/builtin_stuff.cc:360
+#, fuzzy, kde-format
+msgid "Reflect in Line"
+msgstr "انعكاس بوصة خط"
+
+#: misc/builtin_stuff.cc:360
+#, fuzzy, kde-format
+msgid "An object reflected in a line"
+msgstr "أداة تعريف كائن بوصة a سطر"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "دوّر"
+
+#: misc/builtin_stuff.cc:364
+#, fuzzy, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "أداة تعريف كائن أداء زاوية a نقطة"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "حجّم"
+
+#: misc/builtin_stuff.cc:370
+#, fuzzy, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr "المقياس كائن a نقطة أداء نسبة أداء الطول من a قطعة"
+
+#: misc/builtin_stuff.cc:376
+#, fuzzy, kde-format
+msgid "Scale over Line"
+msgstr "المقياس خط"
+
+#: misc/builtin_stuff.cc:377
+#, fuzzy, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr "أداة تعريف كائن a سطر أداء نسبة أداء الطول من a قطعة"
+
+#: misc/builtin_stuff.cc:383
+#, fuzzy, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "المقياس نسبة أداء إثنان"
+
+#: misc/builtin_stuff.cc:384
+#, fuzzy, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr "المقياس كائن a نقطة أداء نسبة أداء الطول من إثنان"
+
+#: misc/builtin_stuff.cc:390
+#, fuzzy, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "المقياس خط نسبة أداء إثنان"
+
+#: misc/builtin_stuff.cc:391
+#, fuzzy, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr "أداة تعريف كائن a سطر أداء نسبة أداء الطول من إثنان"
+
+#: misc/builtin_stuff.cc:397
+#, fuzzy, kde-format
+msgid "Apply Similitude"
+msgstr "تطبيق المشابهة"
+
+#: misc/builtin_stuff.cc:398
+#, fuzzy, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr "تطبيق a إلى كائن متتالية  من a و a"
+
+#: misc/builtin_stuff.cc:404
+#, fuzzy, kde-format
+msgid "Harmonic Homology"
+msgstr "النغمة التوافقية التّماثل"
+
+#: misc/builtin_stuff.cc:405
+#, fuzzy, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr "الـ مع a و a محور هو a تحويل"
+
+#: misc/builtin_stuff.cc:419
+#, fuzzy, kde-format
+msgid "Draw Projective Shadow"
+msgstr "رسم إسقاطي ظل"
+
+#: misc/builtin_stuff.cc:420
+#, fuzzy, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr "الـ ظل من كائن مع a ضوء مصدر و اسقاط السطح أداء a سطر"
+
+#: misc/builtin_stuff.cc:434
+#, fuzzy, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "الخطوط المقاربة من a القطع الزائد"
+
+#: misc/builtin_stuff.cc:435
+#, fuzzy, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "الـ إثنان من a."
+
+#: misc/builtin_stuff.cc:449
+#, fuzzy, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "مثلث أداء له القمم"
+
+#: misc/builtin_stuff.cc:450
+#, fuzzy, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "التركيب a مثلث ثلاثة."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "انغلاق محدب"
+
+#: misc/builtin_stuff.cc:477
+#, fuzzy, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "A إلى من"
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "التركيب a قوس مع ثلاثة نقطة."
+
+#: misc/builtin_stuff.cc:494
+#, fuzzy, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/builtin_stuff.cc:495
+#, fuzzy, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "التركيب a تكعييبي منحنى نقطة"
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "التركيب a مثلث ثلاثة."
+
+#: misc/builtin_stuff.cc:512
+#, fuzzy, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/builtin_stuff.cc:513
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "التركيب a قوس مع ثلاثة نقطة."
+
+#: misc/builtin_stuff.cc:529
+#, fuzzy, kde-format
+msgid "Parallel Test"
+msgstr "المتوازي اختبار"
+
+#: misc/builtin_stuff.cc:529
+#, fuzzy, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "اختبار إثنان سطور متوازِ"
+
+#: misc/builtin_stuff.cc:533
+#, fuzzy, kde-format
+msgid "Orthogonal Test"
+msgstr "متعامد اختبار"
+
+#: misc/builtin_stuff.cc:533
+#, fuzzy, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "اختبار إثنان سطور"
+
+#: misc/builtin_stuff.cc:537
+#, fuzzy, kde-format
+msgid "Collinear Test"
+msgstr "على خطّ واحد اختبار"
+
+#: misc/builtin_stuff.cc:537
+#, fuzzy, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "اختبار ثلاثة نقطة"
+
+#: misc/builtin_stuff.cc:541
+#, fuzzy, kde-format
+msgid "Contains Test"
+msgstr "يحتوي اختبار"
+
+#: misc/builtin_stuff.cc:541
+#, fuzzy, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "اختبار a منحنى يحتوي a نقطة"
+
+#: misc/builtin_stuff.cc:545
+#, fuzzy, kde-format
+msgid "In Polygon Test"
+msgstr "داخل مضلّع اختبار"
+
+#: misc/builtin_stuff.cc:545
+#, fuzzy, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "اختبار a يحتوي a نقطة"
+
+#: misc/builtin_stuff.cc:549
+#, fuzzy, kde-format
+msgid "Convex Polygon Test"
+msgstr "محدّب مضلّع اختبار"
+
+#: misc/builtin_stuff.cc:549
+#, fuzzy, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "اختبار a هو"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+msgid "Existence Test"
+msgstr "الوجود اختبار"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "اختبار a كائن هو"
+
+#: misc/builtin_stuff.cc:558
+#, fuzzy, kde-format
+msgid "Distance Test"
+msgstr "المسافة اختبار"
+
+#: misc/builtin_stuff.cc:559
+#, fuzzy, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr "اختبار a نقطة من a نقطة و من نقطة"
+
+#: misc/builtin_stuff.cc:565
+#, fuzzy, kde-format
+msgid "Vector Equality Test"
+msgstr "الموجه المساواة اختبار"
+
+#: misc/builtin_stuff.cc:565
+#, fuzzy, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "اختبار إثنان مساو"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+msgid "Project a point on a line"
+msgstr "مشروع نقطة"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "سكربت بايثون"
+
+#: misc/builtin_stuff.cc:612
+#, fuzzy, kde-format
+msgid "Construct a new Python script."
+msgstr "التركيب a جديد Python برنامج نصي."
+
+#: misc/coordinate_system.cpp:322
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr "إدخال بوصة متابعة تنسيق x ن x هو x تنسيق و ن هو ن تنسيق."
+
+#: misc/coordinate_system.cpp:329
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr "إدخال بوصة متابعة تنسيق<b> x ن</b><br /> x هو x تنسيق و ن هو ن تنسيق."
+
+#: misc/coordinate_system.cpp:371
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr "إدخال بوصة متابعة تنسيق r r و."
+
+#: misc/coordinate_system.cpp:379
+#, fuzzy, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr "إدخال بوصة متابعة تنسيق<b> r</b><br /> r و."
+
+#: misc/coordinate_system.cpp:530
+#, fuzzy, kde-format
+msgid "&Euclidean"
+msgstr "إقليدي"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&قطب"
+
+#: misc/coordinate_system.cpp:581
+#, fuzzy, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "ضبط إقليدي إحداثية النظام"
+
+#: misc/coordinate_system.cpp:583
+#, fuzzy, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "ضبط قطبي إحداثية النظام"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "درجات"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "راديان"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "غراد"
+
+#: misc/guiaction.cc:105
+#, fuzzy, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr "A عادي نقطة i e هو أو مرفق إلى a سطر قطعة."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "نقطة"
+
+#: misc/guiaction.cc:157
+#, fuzzy, kde-format
+msgid "Construct a text label."
+msgstr "التركيب a نص شارة."
+
+#: misc/guiaction.cc:167
+#, fuzzy, kde-format
+msgid "Text Label"
+msgstr "علامة نصية"
+
+#: misc/guiaction.cc:188
+#, fuzzy, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "التركيب a نقطة أداء الأسس"
+
+#: misc/guiaction.cc:198
+#, fuzzy, kde-format
+msgid "Point by Coordinates"
+msgstr "نقطة أداء الأسس"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "نقطة ثابتة"
+
+#: misc/guiaction.cc:211
+#, fuzzy, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "إدخال لـ جديد نقطة."
+
+#: misc/guiaction.cc:235
+#, fuzzy, kde-format
+msgid "Construct a Numeric Value"
+msgstr "التركيب a رقمي القيمة"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "قيمة عددية"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "ضبط الزاوية الحجم"
+
+#: misc/kiginputdialog.cc:140
+#, fuzzy, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "إدراج جديد حجم من زاوية:"
+
+#: misc/kiginputdialog.cc:148
+#, fuzzy, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "إستعمل حرّر حقل إلى تغيير حجم من زاوية."
+
+#: misc/kiginputdialog.cc:155
+#, fuzzy, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"اختر من قائمة وحدة إلى استخدام إلى تغيير حجم من زاوية<br /> تحول إلى وحدة "
+"قيمة بوصة حرّر حقل يعمل يسار إلى جديد مُنتقى وحدة."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, fuzzy, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "يمكن أن ليس فتح ماكرو ملفّ"
+
+#: misc/lists.cc:292
+#, fuzzy, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig فتح ماكرو ملفّ."
+
+#: misc/lists.cc:293
+#, fuzzy, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"هذا ملفّ أداء a Kig النسخة دعم لـ تنسيق من Kig أنت إلى استيراد ماكرو a السابق "
+"Kig النسخة إلى و تصدير الإيطالية بوصة جديد تنسيق."
+
+#: misc/lists.cc:347
+#, fuzzy, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "غير مسماة ماكرو 1"
+
+#: misc/object_hierarchy.cc:541
+#, fuzzy, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"هذا Kig ملفّ كائن من نوع Kig النسخة ليس دعم ربما Kig دعم لـ كائن نوع أو أعتق "
+"من Kig النسخة."
+
+#: misc/special_constructors.cc:274
+#, fuzzy, kde-format
+msgid "Radical Lines for Conics"
+msgstr "اساسى خطوط لـ مخروطات"
+
+#: misc/special_constructors.cc:275
+#, fuzzy, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr "الـ سطور من إثنان هذا هو لـ."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, fuzzy, kde-format
+msgid "Moving Point"
+msgstr "جاري النقل نقطة"
+
+#: misc/special_constructors.cc:327
+#, fuzzy, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr "انتقِ نقطة بينما."
+
+#: misc/special_constructors.cc:328
+#, fuzzy, kde-format
+msgid "Following Point"
+msgstr "المتابعة نقطة"
+
+#: misc/special_constructors.cc:328
+#, fuzzy, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr "انتقِ متابعة نقطة مَن."
+
+#: misc/special_constructors.cc:331
+#, fuzzy, kde-format
+msgid "Locus"
+msgstr "موقع كروموسومي"
+
+#: misc/special_constructors.cc:331
+#, fuzzy, kde-format
+msgid "A locus"
+msgstr "A"
+
+#: misc/special_constructors.cc:413
+#, fuzzy, kde-format
+msgid "Dependent Point"
+msgstr "مُعتمِد نقطة"
+
+#: misc/special_constructors.cc:520
+#, fuzzy, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "مضلّع أداء له القمم"
+
+#: misc/special_constructors.cc:520
+#, fuzzy, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "التركيب a أداء"
+
+#: misc/special_constructors.cc:553
+#, fuzzy, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr "مع انقر يعمل الأوّل إلى"
+
+#: misc/special_constructors.cc:555
+#, fuzzy, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "التركيب a مع"
+
+#: misc/special_constructors.cc:560
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "انتقِ a نقطة إلى a من جديد."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, fuzzy, kde-format
+msgid "Construct an open polygon"
+msgstr "التركيب من"
+
+#: misc/special_constructors.cc:622
+#, fuzzy, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr "مع انقر يعمل الأوّل إلى"
+
+#: misc/special_constructors.cc:624
+#, fuzzy, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "التركيب a مع"
+
+#: misc/special_constructors.cc:629
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "انتقِ a نقطة إلى a من جديد."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, fuzzy, kde-format
+msgid "Polygon"
+msgstr "مضلّع"
+
+#: misc/special_constructors.cc:658
+#, fuzzy, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "التركيب من."
+
+#: misc/special_constructors.cc:661
+#, fuzzy, kde-format
+msgid "Vertices of a Polygon"
+msgstr "القمم من a مضلّع"
+
+#: misc/special_constructors.cc:661
+#, fuzzy, kde-format
+msgid "The vertices of a polygon."
+msgstr "الـ من a."
+
+#: misc/special_constructors.cc:718
+#, fuzzy, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "التركيب من."
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "Sides of a Polygon"
+msgstr "الجوانب من a مضلّع"
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "The sides of a polygon."
+msgstr "الـ من a."
+
+#: misc/special_constructors.cc:789
+#, fuzzy, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "عادي مضلّع مع معطى وسط"
+
+#: misc/special_constructors.cc:794
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "التركيب a عادي مع a و"
+
+#: misc/special_constructors.cc:939
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "التركيب a عادي مع"
+
+#: misc/special_constructors.cc:943
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "التركيب a عادي مع"
+
+#: misc/special_constructors.cc:954
+#, fuzzy, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "تعديل رقم من"
+
+#: misc/special_constructors.cc:957
+#, fuzzy, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "تعديل رقم من"
+
+#: misc/special_constructors.cc:970
+#, fuzzy, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "انتقِ من جديد."
+
+#: misc/special_constructors.cc:974
+#, fuzzy, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "انتقِ a لـ جديد."
+
+#: misc/special_constructors.cc:978
+#, fuzzy, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "نقل مؤشر إلى get رقم من."
+
+#: misc/special_constructors.cc:1062
+#, fuzzy, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/special_constructors.cc:1063
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "التركيب a أداء"
+
+#: misc/special_constructors.cc:1098
+#, fuzzy, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr "مع انقر يعمل الأوّل إلى"
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "التركيب a مع"
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "مكعّب منحنى أداء تسعة نقاط"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "التركيب a أداء"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr ""
+
+#: misc/special_constructors.cc:1205
+#, fuzzy, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr "مع انقر يعمل الأوّل إلى"
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "التركيب a مع"
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "انتقِ a رقم الطول x تنسيق من نقطة."
+
+#: misc/special_constructors.cc:1380
+#, fuzzy, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "التركيب اساسى خطوط من هذا دائرة"
+
+#: misc/special_constructors.cc:1382
+#, fuzzy, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "التركيب اساسى خطوط من هذا مخروطي"
+
+#: misc/special_constructors.cc:1396
+#, fuzzy, kde-format
+msgid "Generic Affinity"
+msgstr "عام الانجذاب :: مصاهرة :: صلة :: نسب :: أُلفة :: شبه :: قراب"
+
+#: misc/special_constructors.cc:1397
+#, fuzzy, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr "الـ فريد ثلاثة نقطة أو a مثلث ثلاثة غير ذلك نقطة أو a مثلث"
+
+#: misc/special_constructors.cc:1419
+#, fuzzy, kde-format
+msgid "Generic Projective Transformation"
+msgstr "عام إسقاطي تحويلالتحويل"
+
+#: misc/special_constructors.cc:1420
+#, fuzzy, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr "الـ فريد تحويل أربعة نقطة أو a أربعة غير ذلك نقطة أو a"
+
+#: misc/special_constructors.cc:1447
+#, fuzzy, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "قلب من نقطة خط أو دائرة"
+
+#: misc/special_constructors.cc:1447
+#, fuzzy, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "الـ من a نقطة سطر أو مع إلى a"
+
+#: misc/special_constructors.cc:1505
+#, fuzzy, kde-format
+msgid "Measure Transport"
+msgstr "قياس نقل"
+
+#: misc/special_constructors.cc:1510
+#, fuzzy, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "نقل قياس من a قطعة أو قوس a سطر أو."
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, fuzzy, kde-format
+msgid "Segment to transport"
+msgstr "القطعة إلى نقل"
+
+#: misc/special_constructors.cc:1614
+#, fuzzy, kde-format
+msgid "Arc to transport"
+msgstr "قوس إلى نقل"
+
+#: misc/special_constructors.cc:1616
+#, fuzzy, kde-format
+msgid "Value to transport"
+msgstr "القيمة إلى نقل"
+
+#: misc/special_constructors.cc:1618
+#, fuzzy, kde-format
+msgid "Transport a measure on this line"
+msgstr "نقل a قياس يعمل سطر"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, fuzzy, kde-format
+msgid "Transport a measure on this circle"
+msgstr "نقل a قياس يعمل"
+
+#: misc/special_constructors.cc:1623
+#, fuzzy, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "ابدأ نقل من نقطة من"
+
+#: misc/special_constructors.cc:1625
+#, fuzzy, kde-format
+msgid "Start transport from this point of the line"
+msgstr "ابدأ نقل من نقطة من سطر"
+
+#: misc/special_constructors.cc:1627
+#, fuzzy, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "ابدأ نقل من نقطة من منحنى"
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "انتقِ a رقم الطول x تنسيق من نقطة."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+msgid "Select a destination line or circle..."
+msgstr "انتقِ a نقطة يعمل."
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "انتقِ a نقطة يعمل."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, fuzzy, kde-format
+msgid "Intersect with this conic"
+msgstr "تقاطع مع"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, fuzzy, kde-format
+msgid "Intersect with this line"
+msgstr "تقاطع مع سطر"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, fuzzy, kde-format
+msgid "Intersect with this cubic"
+msgstr "تقاطع مع"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, fuzzy, kde-format
+msgid "Intersect with this circle"
+msgstr "تقاطع مع"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "قاطع"
+
+#: misc/special_constructors.cc:1692
+#, fuzzy, kde-format
+msgid "The intersection of two objects"
+msgstr "الـ تقاطع من إثنان"
+
+#: misc/special_constructors.cc:1766
+#, fuzzy, kde-format
+msgid "Intersect this Circle"
+msgstr "تقاطع دائرة"
+
+#: misc/special_constructors.cc:1768
+#, fuzzy, kde-format
+msgid "Intersect this Conic"
+msgstr "تقاطع مخروطي"
+
+#: misc/special_constructors.cc:1770
+#, fuzzy, kde-format
+msgid "Intersect this Segment"
+msgstr "تقاطع خط"
+
+#: misc/special_constructors.cc:1772
+#, fuzzy, kde-format
+msgid "Intersect this Half-line"
+msgstr "تقاطع خط"
+
+#: misc/special_constructors.cc:1774
+#, fuzzy, kde-format
+msgid "Intersect this Line"
+msgstr "تقاطع خط"
+
+#: misc/special_constructors.cc:1776
+#, fuzzy, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "تقاطع مكعّب منحنى"
+
+#: misc/special_constructors.cc:1778
+#, fuzzy, kde-format
+msgid "Intersect this Arc"
+msgstr "تقاطع قوس"
+
+#: misc/special_constructors.cc:1780
+#, fuzzy, kde-format
+msgid "Intersect this Polygon"
+msgstr "تقاطع مضلّع"
+
+#: misc/special_constructors.cc:1782
+#, fuzzy, kde-format
+msgid "Intersect this Polygonal"
+msgstr "تقاطع مضلّع"
+
+#: misc/special_constructors.cc:1788
+#, fuzzy, kde-format
+msgid "with this Circle"
+msgstr "مع دائرة"
+
+#: misc/special_constructors.cc:1790
+#, fuzzy, kde-format
+msgid "with this Conic"
+msgstr "مع مخروطي"
+
+#: misc/special_constructors.cc:1792
+#, fuzzy, kde-format
+msgid "with this Segment"
+msgstr "انتقِ قطعة"
+
+#: misc/special_constructors.cc:1794
+#, fuzzy, kde-format
+msgid "with this Half-line"
+msgstr "مع خط"
+
+#: misc/special_constructors.cc:1796
+#, fuzzy, kde-format
+msgid "with this Line"
+msgstr "مع خط"
+
+#: misc/special_constructors.cc:1798
+#, fuzzy, kde-format
+msgid "with this Cubic Curve"
+msgstr "مع مكعّب منحنى"
+
+#: misc/special_constructors.cc:1800
+#, fuzzy, kde-format
+msgid "with this Arc"
+msgstr "مع قوس"
+
+#: misc/special_constructors.cc:1802
+#, fuzzy, kde-format
+msgid "with this Polygon"
+msgstr "مع مضلّع"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+msgid "with this Polygonal"
+msgstr "مع مضلّع"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+msgid "Construct midpoint of this point and another one"
+msgstr "التركيب من نقطة و"
+
+#: misc/special_constructors.cc:1815
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "انتقِ الأوّل من نقطة من إلى."
+
+#: misc/special_constructors.cc:1818
+#, fuzzy, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "التركيب من نقطة و"
+
+#: misc/special_constructors.cc:1819
+#, fuzzy, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "انتقِ غير ذلك من نقطة من إلى."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+msgid "Construct golden ratio point of this point and another one"
+msgstr "التركيب من نقطة و"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "انتقِ الأوّل من نقطة من إلى."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "التركيب من نقطة و"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "انتقِ غير ذلك من نقطة من إلى."
+
+#: misc/special_constructors.cc:1979
+#, fuzzy, kde-format
+msgid "Select the first object to intersect..."
+msgstr "انتقِ الأوّل كائن إلى."
+
+#: misc/special_constructors.cc:1981
+#, fuzzy, kde-format
+msgid "Select the second object to intersect..."
+msgstr "انتقِ ثانية كائن إلى."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "الظل"
+
+#: misc/special_constructors.cc:1985
+#, fuzzy, kde-format
+msgid "The line tangent to a curve"
+msgstr "الـ سطر إلى a منحنى"
+
+#: misc/special_constructors.cc:2008
+#, fuzzy, kde-format
+msgid "Tangent to This Circle"
+msgstr "ظل إلى هذا دائرة"
+
+#: misc/special_constructors.cc:2010
+#, fuzzy, kde-format
+msgid "Tangent to This Conic"
+msgstr "ظل إلى هذا مخروطي"
+
+#: misc/special_constructors.cc:2012
+#, fuzzy, kde-format
+msgid "Tangent to This Arc"
+msgstr "ظل إلى هذا قوس"
+
+#: misc/special_constructors.cc:2014
+#, fuzzy, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "ظل إلى هذا مكعّب منحنى"
+
+#: misc/special_constructors.cc:2016
+#, fuzzy, kde-format
+msgid "Tangent to This Curve"
+msgstr "ظل إلى هذا منحنى"
+
+#: misc/special_constructors.cc:2018
+#, fuzzy, kde-format
+msgid "Tangent at This Point"
+msgstr "ظل عند هذا نقطة"
+
+#: misc/special_constructors.cc:2038
+#, fuzzy, kde-format
+msgid "Center Of Curvature"
+msgstr "مركز الانحناء"
+
+#: misc/special_constructors.cc:2038
+#, fuzzy, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "الـ من إلى a منحنى"
+
+#: misc/special_constructors.cc:2058
+#, fuzzy, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "وسط من التقوس من هذا مخروطي"
+
+#: misc/special_constructors.cc:2060
+#, fuzzy, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "وسط من التقوس من هذا مكعّب منحنى"
+
+#: misc/special_constructors.cc:2062
+#, fuzzy, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "وسط من التقوس من هذا منحنى"
+
+#: misc/special_constructors.cc:2064
+#, fuzzy, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "وسط من التقوس عند هذا نقطة"
+
+#: misc/unit.cc:105
+#, fuzzy, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr " بكسل"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "سم"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "في"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, fuzzy, kde-format
+msgid "Which object?"
+msgstr "أيّ كائن؟"
+
+#: modes/construct_mode.cc:258
+#, fuzzy, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr "نقر موقع إلى جديد نقطة أو منحنى إلى ارفِق الإيطالية إلى."
+
+#: modes/construct_mode.cc:429
+#, fuzzy, kde-format
+msgid "Now select the location for the result label."
+msgstr "الآن تحديد موقع لـ نتيجو شارة."
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "حرّر النوع"
+
+#: modes/edittype.cc:42
+#, fuzzy, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "هنا حرّر الاسم من الحالي ماكرو نوع."
+
+#: modes/edittype.cc:45
+#, fuzzy, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"هنا حرّر الوصف من الحالي ماكرو نوع هذا حقل هو اختياري فارغ IF ماكرو نوع لا "
+"الوصف."
+
+#: modes/edittype.cc:49
+#, fuzzy, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "إستعمل زر إلى تغيير أيقونة من الحالي ماكرو نوع."
+
+#: modes/edittype.cc:70
+#, fuzzy, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "الـ الاسم من ماكرو ليس فارغ."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, fuzzy, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "هنا تغيير الاسم الوصف و أيقونة من ماكرو نوع."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "الاسم:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, fuzzy, kde-format
+msgid "Description:"
+msgstr "الوصف:"
+
+#: modes/historydialog.cc:24
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "عارِض التاريخ"
+
+#: modes/historydialog.cc:108
+#, fuzzy, kde-format
+msgid "Start of the construction"
+msgstr "ابدأ من"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, fuzzy, kde-format
+msgid "Description of the current step:"
+msgstr "الوصف من الحالي خطوة:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, fuzzy, kde-format
+msgid "First step"
+msgstr "الخطوة الأولى"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, fuzzy, kde-format
+msgid "One step back"
+msgstr "خطوة واحدة إلى الخلف"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, fuzzy, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, fuzzy, kde-format
+msgid "One step forward"
+msgstr "خطوة واحدة إلى الأمام"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, fuzzy, kde-format
+msgid "Last step"
+msgstr "الخطوة الأخيرة"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, fuzzy, kde-format
+msgid "Name"
+msgstr "الاسم"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, fuzzy, kde-format
+msgid "<unnamed object>"
+msgstr "<unnamed object>"
+
+#: modes/label.cc:299
+#, fuzzy, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr "هناك n بوصة نص ليس مُنتقى a قيمة لـ رجاء أزِل أو تحديد المعاملات."
+
+#: modes/label.cc:368
+#, fuzzy, kde-format
+msgid "argument %1"
+msgstr "عمدة عدد مركب"
+
+#: modes/label.cc:397
+#, fuzzy, kde-format
+msgid "Selecting argument %1"
+msgstr "الإختيار حجة 1"
+
+#: modes/label.cc:500
+#, fuzzy, kde-format
+msgid "Change Label"
+msgstr "غيّر تسمية"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Set Value"
+msgstr "اضبط القيمة"
+
+#: modes/label.cc:595
+#, fuzzy, kde-format
+msgid "Enter value:"
+msgstr "أدخل قيمة"
+
+#: modes/label.cc:624
+#, fuzzy, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "انتقِ الموضع لـ جديد أبجدي عددي قيمة."
+
+#: modes/macro.cc:70
+#, fuzzy, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"واحد من نتيجو مُنتقى من Kig حساب ماكرو من رجاء ضغط الخلف و بوصة صح ترتيب."
+
+#: modes/macro.cc:78
+#, fuzzy, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr "واحد من هو ليس مُستخدَم بوصة من هذا Kig إلى شيء مّا رجاء تفقّد ماكرو و."
+
+#: modes/macrowizard.cc:35
+#, fuzzy, kde-format
+msgid "Given Objects"
+msgstr "معطى كائنات"
+
+#: modes/macrowizard.cc:42
+#, fuzzy, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr "انتقِ لـ جديد ماكرو و ضغط التالي."
+
+#: modes/macrowizard.cc:74
+#, fuzzy, kde-format
+msgid "Final Object"
+msgstr "نهائي كائن"
+
+#: modes/macrowizard.cc:81
+#, fuzzy, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "انتقِ كائن s لـ جديد ماكرو."
+
+#: modes/macrowizard.cc:110
+#, fuzzy, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "إدخال a الاسم و الوصف لـ جديد نوع."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "الا&سم:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "الو&صف:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "الأي&قونة:"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "تعريف جديد ماكرو"
+
+#: modes/moving.cc:136
+#, fuzzy, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "نقل كائنات"
+msgstr[1] "نقل كائنات"
+msgstr[2] "نقل كائنات"
+msgstr[3] "نقل كائنات"
+msgstr[4] "نقل كائنات"
+msgstr[5] "نقل كائنات"
+
+#: modes/moving.cc:218
+#, fuzzy, kde-format
+msgid "Redefine Point"
+msgstr "أعد تعريف"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "أسود"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "الرّصاصيّ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "أحمر"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "أخضر"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "سماوي"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "أصفر"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "أحمر داكن"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "أ&خفِ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "ا&عرض"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "ا&نقل"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "ا&حذف"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "لون &مخصّص"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, fuzzy, kde-format
+msgid "Change Object Color"
+msgstr "غيّر كائن اللون"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, fuzzy, kde-format
+msgid "Change Object Width"
+msgstr "غيّر كائن العرض"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, fuzzy, kde-format
+msgid "Change Point Style"
+msgstr "غيّر نقطة الأسلوب"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, fuzzy, kde-format
+msgid "Change Object Style"
+msgstr "غيّر كائن الأسلوب"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "&ضع الاسم..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "الا&سم:"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, fuzzy, kde-format
+msgid "Set Object Name"
+msgstr "ضبط كائن الاسم"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, fuzzy, kde-format
+msgid "Set Name of this Object:"
+msgstr "ضبط الاسم من كائن:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "جرم"
+msgstr[1] "كائن واحد"
+msgstr[2] "كائنان"
+msgstr[3] "%1 كائنات"
+msgstr[4] "%1 كائنًا"
+msgstr[5] "%1 كائن"
+
+#: modes/popup/popup.cc:70
+#, fuzzy, kde-format
+msgid "Kig Document"
+msgstr "Kig مستند"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&تحويل"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "ا&ختبر"
+
+#: modes/popup/popup.cc:115
+#, fuzzy, kde-format
+msgid "Const&ruct"
+msgstr "الموجود الذهني"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "ا&بدأ"
+
+#: modes/popup/popup.cc:117
+#, fuzzy, kde-format
+msgid "Add Te&xt Label"
+msgstr "إضافة نص تسمية"
+
+#: modes/popup/popup.cc:118
+#, fuzzy, kde-format
+msgid "Set Co&lor"
+msgstr "اضبط اللون…"
+
+#: modes/popup/popup.cc:119
+#, fuzzy, kde-format
+msgid "Set &Pen Width"
+msgstr "ضبط القلم العرض"
+
+#: modes/popup/popup.cc:120
+#, fuzzy, kde-format
+msgid "Set St&yle"
+msgstr "ضبط الأسلوب"
+
+#: modes/popup/popup.cc:122
+#, fuzzy, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "ضبط إحداثية النظام"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, fuzzy, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "أكثر..."
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, kde-format
+msgid "Edit Script..."
+msgstr "حرّر السّكربت..."
+
+#: modes/textlabelwizard.cc:31
+#, fuzzy, kde-format
+msgid "Enter Label Text"
+msgstr "إدخال تسمية نص"
+
+#: modes/textlabelwizard.cc:40
+#, fuzzy, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr "إدخال نص لـ شارة و ضغط التالي إلى إظهار متغير put عند e g هذا قطعة هو."
+
+#: modes/textlabelwizard.cc:52
+#, fuzzy, kde-format
+msgid "Show text in a frame"
+msgstr "اعرض نص بوصة a إطار"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, fuzzy, kde-format
+msgid "Select Arguments"
+msgstr "انتقِ المتغيرات"
+
+#: modes/textlabelwizard.cc:85
+#, fuzzy, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"الآن تحديد حجة s لـ كل حجة انقر يعمل الإيطالية تحديد كائن و a خاصية، ملكية "
+"بوصة Kig نافذة و انقر إنهاء done."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "التركيب تسمية"
+
+#: modes/typesdialog.cpp:133
+#, fuzzy, kde-format
+msgid "Macro"
+msgstr "macro"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "النّوع"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "الوصف"
+
+#: modes/typesdialog.cpp:331
+#, kde-format
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "أدِر الأنواع"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&حرّر..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "ص&در..."
+
+#: modes/typesdialog.cpp:425
+#, fuzzy, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "هل إلى حذف نوع?"
+msgstr[1] "هل إلى حذف نوع?"
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "هل أنت متأكد؟"
+
+#: modes/typesdialog.cpp:453
+#, fuzzy, kde-format
+msgid "Export Types"
+msgstr "صدِّر أنواع"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr "Kig أنواع ملفات n الكل ملفات"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+msgid "Kig Types Files (*.kigt)"
+msgstr "Kig أنواع ملفات n الكل ملفات"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr "كلّ الملفّات (*)"
+
+#: modes/typesdialog.cpp:481
+#, fuzzy, kde-format
+msgid "Import Types"
+msgstr "استيراد أنواع"
+
+#: modes/typesdialog.cpp:514
+#, fuzzy, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"هناك هو المزيد نوع مُنتقى أنت حرّر نوع عند a وقت رجاء تحديد نوع إلى حرّر و."
+
+#: modes/typesdialog.cpp:517
+#, fuzzy, kde-format
+msgid "More Than One Type Selected"
+msgstr "المزيد من واحد النوع مختار"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, fuzzy, kde-format
+msgid "Select types here..."
+msgstr "انتقِ."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, fuzzy, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr "هذا هو a قائمة من الحالي ماكرو أنت تحديد حرّر حذف تصدير و استيراد."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, fuzzy, kde-format
+msgid "Edit the selected type."
+msgstr "تحرير مُنتقى نوع."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, fuzzy, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "احذف الكل مُنتقى بوصة قائمة."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, fuzzy, kde-format
+msgid "Export all the selected types to a file."
+msgstr "صدِّر الكل مُنتقى إلى a ملفّ."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, fuzzy, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "استيراد بوصة أو المزيد ملفات."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "ا&ستورد..."
+
+#: objects/angle_type.cc:26
+#, fuzzy, kde-format
+msgid "Construct an angle through this point"
+msgstr "التركيب زاوية نقطة"
+
+#: objects/angle_type.cc:29
+#, fuzzy, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "انتقِ a نقطة الأوّل سطر من زاوية اذهب."
+
+#: objects/angle_type.cc:30
+#, fuzzy, kde-format
+msgid "Construct an angle at this point"
+msgstr "التركيب زاوية عند نقطة"
+
+#: objects/angle_type.cc:30
+#, fuzzy, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "انتقِ نقطة إلى زاوية بوصة."
+
+#: objects/angle_type.cc:31
+#, fuzzy, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "انتقِ a نقطة ثانية سطر من زاوية اذهب."
+
+#: objects/angle_type.cc:90
+#, fuzzy, kde-format
+msgid "Set Si&ze"
+msgstr "ضبط الحجم"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, fuzzy, kde-format
+msgid "Resize Angle"
+msgstr "تحجيم الزاوية"
+
+#: objects/arc_type.cc:33
+#, fuzzy, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "التركيب قوس بدء عند نقطة"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, fuzzy, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "انتقِ تشغيل نقطة من جديد قوس."
+
+#: objects/arc_type.cc:37
+#, fuzzy, kde-format
+msgid "Construct an arc through this point"
+msgstr "التركيب قوس نقطة"
+
+#: objects/arc_type.cc:37
+#, fuzzy, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "انتقِ a نقطة لـ جديد قوس إلى اذهب."
+
+#: objects/arc_type.cc:38
+#, fuzzy, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "التركيب قوس عند نقطة"
+
+#: objects/arc_type.cc:38
+#, fuzzy, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "انتقِ end نقطة من جديد قوس."
+
+#: objects/arc_type.cc:148
+#, fuzzy, kde-format
+msgid "Construct an arc with this center"
+msgstr "التركيب قوس مع"
+
+#: objects/arc_type.cc:148
+#, fuzzy, kde-format
+msgid "Select the center of the new arc..."
+msgstr "انتقِ من جديد قوس."
+
+#: objects/arc_type.cc:150
+#, fuzzy, kde-format
+msgid "Construct an arc with this angle"
+msgstr "التركيب قوس مع زاوية"
+
+#: objects/arc_type.cc:150
+#, fuzzy, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "انتقِ زاوية من جديد قوس."
+
+#: objects/arc_type.cc:204
+#, fuzzy, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "التركيب a قوس بدء عند نقطة"
+
+#: objects/arc_type.cc:205
+#, fuzzy, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "انتقِ تشغيل نقطة من جديد قوس."
+
+#: objects/arc_type.cc:206
+#, fuzzy, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "التركيب a قوس نقطة"
+
+#: objects/arc_type.cc:207
+#, fuzzy, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "انتقِ a نقطة لـ جديد قوس إلى اذهب."
+
+#: objects/arc_type.cc:208
+#, fuzzy, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "التركيب a قوس عند نقطة"
+
+#: objects/arc_type.cc:209
+#, fuzzy, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "انتقِ end نقطة من جديد قوس."
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "التركيب قوس مع"
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "انتقِ من جديد قوس."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+#, fuzzy
+msgid "Number of control points"
+msgstr "الرقم من"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+msgid "Control polygon"
+msgstr "التركيب من"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+#, fuzzy
+msgid "Cartesian Equation"
+msgstr "ديكارتي المعادلة"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+msgid "Bézier Curve"
+msgstr "منحنى بيزيه"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+msgid "Select this Bézier Curve"
+msgstr "انتقِ منحنى"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "انتقِ منحنى 1"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+msgid "Remove a Bézier Curve"
+msgstr "احذف a منحنى"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+msgid "Add a Bézier Curve"
+msgstr "إضافة a منحنى"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+msgid "Move a Bézier Curve"
+msgstr "نقل a منحنى"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+msgid "Attach to this Bézier Curve"
+msgstr "إرفاق إلى منحنى"
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+msgid "Show a Bézier Curve"
+msgstr "اعرض a منحنى"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+msgid "Hide a Bézier Curve"
+msgstr "إخفاء a منحنى"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+msgid "Bézier Quadratic"
+msgstr "إضافة a الرباعي"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "انتقِ قوس"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "انتقِ قوس 1"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+msgid "Remove a Bézier Quadratic"
+msgstr "احذف a الرباعي"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+msgid "Add a Bézier Quadratic"
+msgstr "إضافة a الرباعي"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+msgid "Move a Bézier Quadratic"
+msgstr "نقل a الرباعي"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+msgid "Attach to this Bézier Quadratic"
+msgstr "إرفاق إلى قوس"
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+msgid "Show a Bézier Quadratic"
+msgstr "اعرض a الرباعي"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+msgid "Hide a Bézier Quadratic"
+msgstr "إخفاء a الرباعي"
+
+#: objects/bezier_imp.cc:235
+#, fuzzy
+msgid "Bézier Cubic"
+msgstr "إخفاء a منحنى"
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "انتقِ قوس"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "انتقِ 1"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+msgid "Remove a Bézier Cubic"
+msgstr "احذف a مخروطي"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+msgid "Add a Bézier Cubic"
+msgstr "إضافة a مكعّب منحنى"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+msgid "Move a Bézier Cubic"
+msgstr "نقل a مكعّب منحنى"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+msgid "Attach to this Bézier Cubic"
+msgstr "إرفاق إلى قوس"
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+msgid "Show a Bézier Cubic"
+msgstr "اعرض a مكعّب منحنى"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+msgid "Hide a Bézier Cubic"
+msgstr "إخفاء a مكعّب منحنى"
+
+#: objects/bezier_imp.cc:490
+#, fuzzy
+msgid "Rational Bézier Curve"
+msgstr "إضافة a مضلّع"
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "انتقِ"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "انتقِ 1"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+msgid "Remove a Rational Bézier Curve"
+msgstr "احذف a مضلّع"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+msgid "Add a Rational Bézier Curve"
+msgstr "إضافة a مضلّع"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+msgid "Move a Rational Bézier Curve"
+msgstr "نقل a مضلّع"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+msgid "Attach to this Rational Bézier Curve"
+msgstr "إرفاق إلى"
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+msgid "Show a Rational Bézier Curve"
+msgstr "اعرض a مضلّع"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+msgid "Hide a Rational Bézier Curve"
+msgstr "إخفاء a مضلّع"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+msgid "Rational Bézier Quadratic"
+msgstr "انتقِ قوس 1"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "انتقِ قوس"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "انتقِ قوس 1"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "احذف a مضلّع"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+msgid "Add a Rational Bézier Quadratic"
+msgstr "إضافة a مضلّع"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+msgid "Move a Rational Bézier Quadratic"
+msgstr "نقل a مضلّع"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "إرفاق إلى قوس"
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+msgid "Show a Rational Bézier Quadratic"
+msgstr "اعرض a مضلّع"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "إخفاء a مضلّع"
+
+#: objects/bezier_imp.cc:524
+#, fuzzy
+msgid "Rational Bézier Cubic"
+msgstr "انتقِ قوس 1"
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "انتقِ مثلث"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "انتقِ مثلث 1"
+
+#: objects/bezier_imp.cc:527
+#, fuzzy
+msgid "Remove a Rational Bézier Cubic"
+msgstr "احذف a مضلّع"
+
+#: objects/bezier_imp.cc:528
+#, fuzzy
+msgid "Add a Rational Bézier Cubic"
+msgstr "إضافة a مضلّع"
+
+#: objects/bezier_imp.cc:529
+#, fuzzy
+msgid "Move a Rational Bézier Cubic"
+msgstr "نقل a مضلّع"
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "إرفاق إلى"
+
+#: objects/bezier_imp.cc:531
+#, fuzzy
+msgid "Show a Rational Bézier Cubic"
+msgstr "اعرض a مضلّع"
+
+#: objects/bezier_imp.cc:532
+#, fuzzy
+msgid "Hide a Rational Bézier Cubic"
+msgstr "إخفاء a مضلّع"
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "التركيب a مع"
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "التركيب a مع"
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "التركيب a مع"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr "انتقِ الأوّل من إثنان من إلى سطر."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+msgid "Select this value as weight"
+msgstr "انتقِ قطعة"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "التركيب a مع"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "في"
+
+#: objects/bogus_imp.cc:387
+#, fuzzy
+msgid "Test Result"
+msgstr "نتيجة الاختبار"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, fuzzy, kde-format
+msgid "Select the curve..."
+msgstr "انتقِ منحنى."
+
+#: objects/centerofcurvature_type.cc:23
+#, fuzzy, kde-format
+msgid "Select a point on the curve..."
+msgstr "انتقِ a نقطة يعمل منحنى."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "سطح"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "محيط"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "نصف القطر"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "الوسط"
+
+#: objects/circle_imp.cc:137
+#, fuzzy
+msgid "Expanded Cartesian Equation"
+msgstr "موسع ديكارتي المعادلة"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+#, fuzzy
+msgid "Polar Equation"
+msgstr "قطبي المعادلة"
+
+#: objects/circle_imp.cc:233
+#, fuzzy, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho في الوسط عند"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "دائرة"
+
+#: objects/circle_imp.cc:338
+#, fuzzy, kde-format
+msgid "Select this circle"
+msgstr "انتقِ"
+
+#: objects/circle_imp.cc:339
+#, fuzzy, kde-format
+msgid "Select circle %1"
+msgstr "انتقِ 1"
+
+#: objects/circle_imp.cc:340
+#, fuzzy
+msgid "Remove a Circle"
+msgstr "احذف a دائرة"
+
+#: objects/circle_imp.cc:341
+#, fuzzy
+msgid "Add a Circle"
+msgstr "إضافة a دائرة"
+
+#: objects/circle_imp.cc:342
+#, fuzzy
+msgid "Move a Circle"
+msgstr "نقل a دائرة"
+
+#: objects/circle_imp.cc:343
+#, fuzzy
+msgid "Attach to this circle"
+msgstr "إرفاق إلى"
+
+#: objects/circle_imp.cc:344
+#, fuzzy
+msgid "Show a Circle"
+msgstr "اعرض a دائرة"
+
+#: objects/circle_imp.cc:345
+#, fuzzy
+msgid "Hide a Circle"
+msgstr "إخفاء a دائرة"
+
+#: objects/circle_type.cc:17
+#, fuzzy, kde-format
+msgid "Construct a circle through this point"
+msgstr "التركيب a نقطة"
+
+#: objects/circle_type.cc:19
+#, fuzzy, kde-format
+msgid "Construct a circle with this center"
+msgstr "التركيب a مع"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, fuzzy, kde-format
+msgid "Select the center of the new circle..."
+msgstr "انتقِ من جديد."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, fuzzy, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "انتقِ a نقطة لـ جديد إلى اذهب."
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "With this radius"
+msgstr "مع"
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "Select the length of the radius..."
+msgstr "انتقِ الطول من."
+
+#: objects/conic_imp.cc:73
+#, fuzzy
+msgid "Conic Type"
+msgstr "مخروطي النوع"
+
+#: objects/conic_imp.cc:75
+#, fuzzy
+msgid "First Focus"
+msgstr "الأول التركيز"
+
+#: objects/conic_imp.cc:76
+#, fuzzy
+msgid "Second Focus"
+msgstr "الثّانية التركيز"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "بيضاوي"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "قطع زائد"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "قطع مكافئ"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "رو"
+
+#: objects/conic_imp.cc:263
+#, fuzzy, kde-format
+msgid "cos theta"
+msgstr "COS ثيتا"
+
+#: objects/conic_imp.cc:264
+#, fuzzy, kde-format
+msgid "sin theta"
+msgstr "SIN ثيتا"
+
+#: objects/conic_imp.cc:266
+#, fuzzy, kde-format
+msgid "[centered at %1]"
+msgstr "في الوسط عند"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr ""
+
+#: objects/conic_imp.cc:379
+#, fuzzy, kde-format
+msgid "Select this conic"
+msgstr "انتقِ"
+
+#: objects/conic_imp.cc:380
+#, fuzzy, kde-format
+msgid "Select conic %1"
+msgstr "انتقِ 1"
+
+#: objects/conic_imp.cc:381
+#, fuzzy
+msgid "Remove a Conic"
+msgstr "احذف a مخروطي"
+
+#: objects/conic_imp.cc:382
+#, fuzzy
+msgid "Add a Conic"
+msgstr "إضافة a مخروطي"
+
+#: objects/conic_imp.cc:383
+#, fuzzy
+msgid "Move a Conic"
+msgstr "نقل a مخروطي"
+
+#: objects/conic_imp.cc:384
+#, fuzzy
+msgid "Attach to this conic"
+msgstr "إرفاق إلى"
+
+#: objects/conic_imp.cc:385
+#, fuzzy
+msgid "Show a Conic"
+msgstr "اعرض a مخروطي"
+
+#: objects/conic_imp.cc:386
+#, fuzzy
+msgid "Hide a Conic"
+msgstr "إخفاء a مخروطي"
+
+#: objects/conic_imp.cc:524
+#, fuzzy
+msgid "Supporting Conic"
+msgstr "الدعم مخروطي"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+#, fuzzy
+msgid "First End Point"
+msgstr "الأول نهاية نقطة"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+#, fuzzy
+msgid "Second End Point"
+msgstr "الثّانية نهاية نقطة"
+
+#: objects/conic_imp.cc:603
+#, fuzzy
+msgid "conic arc"
+msgstr "قوس"
+
+#: objects/conic_imp.cc:604
+#, fuzzy, kde-format
+msgid "Select this conic arc"
+msgstr "انتقِ قوس"
+
+#: objects/conic_imp.cc:605
+#, fuzzy, kde-format
+msgid "Select conic arc %1"
+msgstr "انتقِ قوس 1"
+
+#: objects/conic_imp.cc:606
+#, fuzzy
+msgid "Remove a Conic Arc"
+msgstr "احذف a مخروطي قوس"
+
+#: objects/conic_imp.cc:607
+#, fuzzy
+msgid "Add a Conic Arc"
+msgstr "إضافة a مخروطي قوس"
+
+#: objects/conic_imp.cc:608
+#, fuzzy
+msgid "Move a Conic Arc"
+msgstr "نقل a مخروطي قوس"
+
+#: objects/conic_imp.cc:609
+#, fuzzy
+msgid "Attach to this conic arc"
+msgstr "إرفاق إلى قوس"
+
+#: objects/conic_imp.cc:610
+#, fuzzy
+msgid "Show a Conic Arc"
+msgstr "اعرض a مخروطي قوس"
+
+#: objects/conic_imp.cc:611
+#, fuzzy
+msgid "Hide a Conic Arc"
+msgstr "إخفاء a مخروطي قوس"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, fuzzy, kde-format
+msgid "Construct a conic through this point"
+msgstr "التركيب a نقطة"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, fuzzy, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "انتقِ a نقطة لـ جديد إلى اذهب."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, fuzzy, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "التركيب a مع"
+
+#: objects/conic_types.cc:61
+#, fuzzy, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "انتقِ الأوّل من جديد."
+
+#: objects/conic_types.cc:62
+#, fuzzy, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "انتقِ ثانية من جديد."
+
+#: objects/conic_types.cc:114
+#, fuzzy, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "التركيب مع"
+
+#: objects/conic_types.cc:117
+#, fuzzy, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "انتقِ الأوّل من جديد."
+
+#: objects/conic_types.cc:118
+#, fuzzy, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "انتقِ ثانية من جديد."
+
+#: objects/conic_types.cc:119
+#, fuzzy, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "التركيب نقطة"
+
+#: objects/conic_types.cc:119
+#, fuzzy, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "انتقِ a نقطة لـ جديد إلى اذهب."
+
+#: objects/conic_types.cc:143
+#, fuzzy, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "التركيب a مع"
+
+#: objects/conic_types.cc:146
+#, fuzzy, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "انتقِ الأوّل من جديد."
+
+#: objects/conic_types.cc:147
+#, fuzzy, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "انتقِ ثانية من جديد."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, fuzzy, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "التركيب a نقطة"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, fuzzy, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "انتقِ a نقطة لـ جديد إلى اذهب."
+
+#: objects/conic_types.cc:179
+#, fuzzy, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "التركيب a مع سطر"
+
+#: objects/conic_types.cc:179
+#, fuzzy, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "انتقِ من جديد."
+
+#: objects/conic_types.cc:180
+#, fuzzy, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "التركيب a مع نقطة"
+
+#: objects/conic_types.cc:180
+#, fuzzy, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "انتقِ من جديد."
+
+#: objects/conic_types.cc:216
+#, fuzzy, kde-format
+msgid "Construct a parabola through this point"
+msgstr "التركيب a نقطة"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, fuzzy, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "انتقِ a نقطة لـ جديد إلى اذهب."
+
+#: objects/conic_types.cc:257
+#, fuzzy, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "التركيب a نقطة"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, fuzzy, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "انتقِ إلى a نقطة."
+
+#: objects/conic_types.cc:261
+#, fuzzy, kde-format
+msgid "Construct the polar point of this line"
+msgstr "التركيب نقطة من سطر"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, fuzzy, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "انتقِ سطر من إلى نقطة."
+
+#: objects/conic_types.cc:297
+#, fuzzy, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "التركيب a سطر"
+
+#: objects/conic_types.cc:301
+#, fuzzy, kde-format
+msgid "Construct the polar line of this point"
+msgstr "التركيب سطر من نقطة"
+
+#: objects/conic_types.cc:338
+#, fuzzy, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "التركيب من"
+
+#: objects/conic_types.cc:339
+#, fuzzy, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "انتقِ من إلى."
+
+#: objects/conic_types.cc:417
+#, fuzzy, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "التركيب a مع"
+
+#: objects/conic_types.cc:417
+#, fuzzy, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "انتقِ من جديد."
+
+#: objects/conic_types.cc:418
+#, fuzzy, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "التركيب a مع"
+
+#: objects/conic_types.cc:418
+#, fuzzy, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "انتقِ من جديد."
+
+#: objects/conic_types.cc:453
+#, fuzzy, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "التركيب من"
+
+#: objects/conic_types.cc:454
+#, fuzzy, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "انتقِ من إلى."
+
+#: objects/conic_types.cc:489
+#, fuzzy, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "التركيب سطور من"
+
+#: objects/conic_types.cc:492
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr "انتقِ الأوّل من إثنان من إلى سطر."
+
+#: objects/conic_types.cc:493
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr "انتقِ غير ذلك من إثنان من إلى سطر."
+
+#: objects/conic_types.cc:604
+#, fuzzy, kde-format
+msgid "Switch Radical Lines"
+msgstr "تحوّل اساسى خطوط"
+
+#: objects/conic_types.cc:619
+#, fuzzy, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "تحوّل اساسى خطوط"
+
+#: objects/cubic_imp.cc:347
+#, fuzzy
+msgid "cubic curve"
+msgstr "تكعييبي منحنى"
+
+#: objects/cubic_imp.cc:348
+#, fuzzy, kde-format
+msgid "Select this cubic curve"
+msgstr "انتقِ تكعييبي منحنى"
+
+#: objects/cubic_imp.cc:349
+#, fuzzy, kde-format
+msgid "Select cubic curve %1"
+msgstr "انتقِ تكعييبي منحنى 1"
+
+#: objects/cubic_imp.cc:350
+#, fuzzy
+msgid "Remove a Cubic Curve"
+msgstr "احذف a مكعّب منحنى"
+
+#: objects/cubic_imp.cc:351
+#, fuzzy
+msgid "Add a Cubic Curve"
+msgstr "إضافة a مكعّب منحنى"
+
+#: objects/cubic_imp.cc:352
+#, fuzzy
+msgid "Move a Cubic Curve"
+msgstr "نقل a مكعّب منحنى"
+
+#: objects/cubic_imp.cc:353
+#, fuzzy
+msgid "Attach to this cubic curve"
+msgstr "إرفاق إلى تكعييبي منحنى"
+
+#: objects/cubic_imp.cc:354
+#, fuzzy
+msgid "Show a Cubic Curve"
+msgstr "اعرض a مكعّب منحنى"
+
+#: objects/cubic_imp.cc:355
+#, fuzzy
+msgid "Hide a Cubic Curve"
+msgstr "إخفاء a مكعّب منحنى"
+
+#: objects/cubic_type.cc:11
+#, fuzzy, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "التركيب a تكعييبي منحنى نقطة"
+
+#: objects/cubic_type.cc:12
+#, fuzzy, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "انتقِ a نقطة لـ جديد تكعييبي إلى اذهب."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "منحنى"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "حدد هذا المنحنى"
+
+#: objects/curve_imp.cc:20
+#, fuzzy, kde-format
+msgid "Select curve %1"
+msgstr "انتقِ منحنى 1"
+
+#: objects/curve_imp.cc:21
+#, fuzzy
+msgid "Remove a Curve"
+msgstr "احذف a منحنى"
+
+#: objects/curve_imp.cc:22
+#, fuzzy
+msgid "Add a Curve"
+msgstr "إضافة a منحنى"
+
+#: objects/curve_imp.cc:23
+#, fuzzy
+msgid "Move a Curve"
+msgstr "نقل a منحنى"
+
+#: objects/curve_imp.cc:24
+#, fuzzy
+msgid "Attach to this curve"
+msgstr "إرفاق إلى منحنى"
+
+#: objects/curve_imp.cc:25
+#, fuzzy
+msgid "Show a Curve"
+msgstr "اعرض a منحنى"
+
+#: objects/curve_imp.cc:26
+#, fuzzy
+msgid "Hide a Curve"
+msgstr "إخفاء a منحنى"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr ""
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, fuzzy, kde-format
+msgid "Already computed intersection point"
+msgstr "احسب من نقطة"
+
+#: objects/intersection_types.cc:372
+#, fuzzy, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "تقاطع مع تكعييبي منحنى"
+
+#: objects/intersection_types.cc:526
+#, fuzzy, kde-format
+msgid "Intersect with this arc"
+msgstr "تقاطع مع قوس"
+
+#: objects/inversion_type.cc:19
+#, fuzzy, kde-format
+msgid "Invert with respect to this circle"
+msgstr "اعكس مع إلى"
+
+#: objects/inversion_type.cc:20
+#, fuzzy, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "انتقِ إلى عكس."
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Compute the inversion of this object"
+msgstr "احسب من كائن"
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the object to invert..."
+msgstr "انتقِ كائن إلى عكس."
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Compute the inversion of this point"
+msgstr "احسب من نقطة"
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Select the point to invert..."
+msgstr "انتقِ نقطة إلى عكس."
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Compute the inversion of this line"
+msgstr "احسب من سطر"
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Select the line to invert..."
+msgstr "انتقِ سطر إلى عكس."
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "احسب من قطعة"
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Select the segment to invert..."
+msgstr "انتقِ قطعة إلى عكس."
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "احسب من"
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Select the circle to invert..."
+msgstr "انتقِ إلى عكس."
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "احسب من قوس"
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Select the arc to invert..."
+msgstr "انتقِ قوس إلى عكس."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "ميل"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "معادلة رياضية"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "طول"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "خط دعم"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "نقطة نهاية"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "خطّ"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "حدد خطاً"
+
+#: objects/line_imp.cc:561
+#, fuzzy, kde-format
+msgid "Select this line"
+msgstr "انتقِ سطر"
+
+#: objects/line_imp.cc:562
+#, fuzzy, kde-format
+msgid "Select line %1"
+msgstr "انتقِ &خطًّا"
+
+#: objects/line_imp.cc:563
+#, fuzzy
+msgid "Remove a Line"
+msgstr "احذف a خط"
+
+#: objects/line_imp.cc:564
+#, fuzzy
+msgid "Add a Line"
+msgstr "إضافة a خط"
+
+#: objects/line_imp.cc:565
+#, fuzzy
+msgid "Move a Line"
+msgstr "نقل a خط"
+
+#: objects/line_imp.cc:566
+#, fuzzy
+msgid "Attach to this line"
+msgstr "إرفاق إلى سطر"
+
+#: objects/line_imp.cc:567
+#, fuzzy
+msgid "Show a Line"
+msgstr "اعرض a خط"
+
+#: objects/line_imp.cc:568
+#, fuzzy
+msgid "Hide a Line"
+msgstr "إخفاء a خط"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "قطعة"
+
+#: objects/line_imp.cc:577
+#, fuzzy, kde-format
+msgid "Select this segment"
+msgstr "انتقِ قطعة"
+
+#: objects/line_imp.cc:578
+#, fuzzy, kde-format
+msgid "Select segment %1"
+msgstr "انتقِ قطعة 1"
+
+#: objects/line_imp.cc:579
+#, fuzzy
+msgid "Remove a Segment"
+msgstr "احذف a القطعة"
+
+#: objects/line_imp.cc:580
+#, fuzzy
+msgid "Add a Segment"
+msgstr "إضافة a القطعة"
+
+#: objects/line_imp.cc:581
+#, fuzzy
+msgid "Move a Segment"
+msgstr "نقل a القطعة"
+
+#: objects/line_imp.cc:582
+#, fuzzy
+msgid "Attach to this segment"
+msgstr "إرفاق إلى قطعة"
+
+#: objects/line_imp.cc:583
+#, fuzzy
+msgid "Show a Segment"
+msgstr "اعرض a القطعة"
+
+#: objects/line_imp.cc:584
+#, fuzzy
+msgid "Hide a Segment"
+msgstr "إخفاء a القطعة"
+
+#: objects/line_imp.cc:592
+#, fuzzy
+msgid "half-line"
+msgstr "سطر"
+
+#: objects/line_imp.cc:593
+#, fuzzy, kde-format
+msgid "Select this half-line"
+msgstr "انتقِ سطر"
+
+#: objects/line_imp.cc:594
+#, fuzzy, kde-format
+msgid "Select half-line %1"
+msgstr "انتقِ سطر 1"
+
+#: objects/line_imp.cc:595
+#, fuzzy
+msgid "Remove a Half-Line"
+msgstr "احذف a نصف خط"
+
+#: objects/line_imp.cc:596
+#, fuzzy
+msgid "Add a Half-Line"
+msgstr "إضافة a نصف خط"
+
+#: objects/line_imp.cc:597
+#, fuzzy
+msgid "Move a Half-Line"
+msgstr "نقل a نصف خط"
+
+#: objects/line_imp.cc:598
+#, fuzzy
+msgid "Attach to this half-line"
+msgstr "إرفاق إلى سطر"
+
+#: objects/line_imp.cc:599
+#, fuzzy
+msgid "Show a Half-Line"
+msgstr "اعرض a نصف خط"
+
+#: objects/line_imp.cc:600
+#, fuzzy
+msgid "Hide a Half-Line"
+msgstr "إخفاء a نصف خط"
+
+#: objects/line_type.cc:22
+#, fuzzy, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "التركيب a قطعة بدء عند نقطة"
+
+#: objects/line_type.cc:22
+#, fuzzy, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "انتقِ تشغيل نقطة من جديد قطعة."
+
+#: objects/line_type.cc:23
+#, fuzzy, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "التركيب a قطعة عند نقطة"
+
+#: objects/line_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "انتقِ end نقطة من جديد قطعة."
+
+#: objects/line_type.cc:47
+#, fuzzy, kde-format
+msgid "Construct a line through this point"
+msgstr "التركيب a سطر نقطة"
+
+#: objects/line_type.cc:50
+#, fuzzy, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "انتقِ a نقطة لـ سطر إلى اذهب."
+
+#: objects/line_type.cc:51
+#, fuzzy, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "انتقِ نقطة لـ سطر إلى اذهب."
+
+#: objects/line_type.cc:75
+#, fuzzy, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "التركيب a سطر بدء عند نقطة"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, fuzzy, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "انتقِ تشغيل نقطة من جديد سطر."
+
+#: objects/line_type.cc:79
+#, fuzzy, kde-format
+msgid "Construct a half-line through this point"
+msgstr "التركيب a سطر نقطة"
+
+#: objects/line_type.cc:79
+#, fuzzy, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "انتقِ a نقطة لـ سطر إلى اذهب."
+
+#: objects/line_type.cc:104
+#, fuzzy, kde-format
+msgid "Construct the axis of this segment"
+msgstr "التركيب محور من قطعة"
+
+#: objects/line_type.cc:104
+#, fuzzy, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "انتقِ قطعة من إلى رسم محور."
+
+#: objects/line_type.cc:155
+#, fuzzy, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "التركيب a سطر متوازِ إلى سطر"
+
+#: objects/line_type.cc:155
+#, fuzzy, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "انتقِ a سطر متوازِ إلى جديد سطر."
+
+#: objects/line_type.cc:156
+#, fuzzy, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "التركيب متوازِ سطر نقطة"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, fuzzy, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "انتقِ a نقطة لـ جديد سطر إلى اذهب."
+
+#: objects/line_type.cc:182
+#, fuzzy, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "التركيب a سطر إلى سطر"
+
+#: objects/line_type.cc:182
+#, fuzzy, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "انتقِ a سطر إلى جديد سطر."
+
+#: objects/line_type.cc:183
+#, fuzzy, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "التركيب a سطر نقطة"
+
+#: objects/line_type.cc:224
+#, fuzzy, kde-format
+msgid "Set &Length..."
+msgstr "ضبط المدة."
+
+#: objects/line_type.cc:241
+#, fuzzy, kde-format
+msgid "Set Segment Length"
+msgstr "ضبط القطعة المدة"
+
+#: objects/line_type.cc:241
+#, fuzzy, kde-format
+msgid "Choose the new length: "
+msgstr "اختر جديد الطول "
+
+#: objects/line_type.cc:249
+#, fuzzy, kde-format
+msgid "Resize Segment"
+msgstr "تحجيم القطعة"
+
+#: objects/line_type.cc:255
+#, fuzzy, kde-format
+msgid "Construct a line by this vector"
+msgstr "التركيب a سطر أداء متجه"
+
+#: objects/line_type.cc:255
+#, fuzzy, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "انتقِ a متجه بوصة من جديد سطر."
+
+#: objects/line_type.cc:292
+#, fuzzy, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "التركيب a سطر أداء متجه"
+
+#: objects/line_type.cc:292
+#, fuzzy, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "انتقِ a متجه بوصة من جديد سطر."
+
+#: objects/locus_imp.cc:186
+#, fuzzy
+msgid "locus"
+msgstr "موقع كروموسومي"
+
+#: objects/locus_imp.cc:187
+#, fuzzy, kde-format
+msgid "Select this locus"
+msgstr "انتقِ"
+
+#: objects/locus_imp.cc:188
+#, fuzzy, kde-format
+msgid "Select locus %1"
+msgstr "انتقِ 1"
+
+#: objects/locus_imp.cc:189
+#, fuzzy
+msgid "Remove a Locus"
+msgstr "احذف a المكان"
+
+#: objects/locus_imp.cc:190
+#, fuzzy
+msgid "Add a Locus"
+msgstr "إضافة a المكان"
+
+#: objects/locus_imp.cc:191
+#, fuzzy
+msgid "Move a Locus"
+msgstr "نقل a المكان"
+
+#: objects/locus_imp.cc:192
+#, fuzzy
+msgid "Attach to this locus"
+msgstr "إرفاق إلى"
+
+#: objects/locus_imp.cc:193
+#, fuzzy
+msgid "Show a Locus"
+msgstr "اعرض a المكان"
+
+#: objects/locus_imp.cc:194
+#, fuzzy
+msgid "Hide a Locus"
+msgstr "إخفاء a المكان"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "نوع الكائن"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "الكائن"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "اختر هذا الجرم"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "اختر الكائن %1 ..."
+
+#: objects/object_imp.cc:282
+#, fuzzy
+msgid "Remove an object"
+msgstr "احذف كائن"
+
+#: objects/object_imp.cc:283
+#, fuzzy
+msgid "Add an object"
+msgstr "إضافة كائن"
+
+#: objects/object_imp.cc:284
+#, fuzzy
+msgid "Move an object"
+msgstr "تحريك كائن"
+
+#: objects/object_imp.cc:285
+#, fuzzy
+msgid "Attach to this object"
+msgstr "إرفاق إلى كائن"
+
+#: objects/object_imp.cc:286
+#, fuzzy
+msgid "Show an object"
+msgstr "اعرض كائن"
+
+#: objects/object_imp.cc:287
+#, fuzzy
+msgid "Hide an object"
+msgstr "إخفاء كائن"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+#, fuzzy
+msgid "Angle in Radians"
+msgstr "الزاوية بوصة راديان - وحدة قياس الزوايا"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+#, fuzzy
+msgid "Angle in Degrees"
+msgstr "الزاوية بوصة الدرجات"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "منتصف"
+
+#: objects/other_imp.cc:226
+#, fuzzy
+msgid "X length"
+msgstr "س الطول"
+
+#: objects/other_imp.cc:227
+#, fuzzy
+msgid "Y length"
+msgstr "ص الطول"
+
+#: objects/other_imp.cc:228
+#, fuzzy
+msgid "Opposite Vector"
+msgstr "النظير الموجه"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "الزاوية"
+
+#: objects/other_imp.cc:396
+#, fuzzy
+msgid "Sector Surface"
+msgstr "القطاع السطح"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "طول قوس"
+
+#: objects/other_imp.cc:398
+#, fuzzy
+msgid "Support Circle"
+msgstr "دعم دائرة"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "الزاوية"
+
+#: objects/other_imp.cc:599
+#, fuzzy, kde-format
+msgid "Select this angle"
+msgstr "انتقِ زاوية"
+
+#: objects/other_imp.cc:600
+#, fuzzy, kde-format
+msgid "Select angle %1"
+msgstr "انتقِ زاوية 1"
+
+#: objects/other_imp.cc:601
+#, fuzzy
+msgid "Remove an Angle"
+msgstr "احذف الزاوية"
+
+#: objects/other_imp.cc:602
+#, fuzzy
+msgid "Add an Angle"
+msgstr "إضافة الزاوية"
+
+#: objects/other_imp.cc:603
+#, fuzzy
+msgid "Move an Angle"
+msgstr "نقل الزاوية"
+
+#: objects/other_imp.cc:604
+#, fuzzy
+msgid "Attach to this angle"
+msgstr "إرفاق إلى زاوية"
+
+#: objects/other_imp.cc:605
+#, fuzzy
+msgid "Show an Angle"
+msgstr "اعرض الزاوية"
+
+#: objects/other_imp.cc:606
+#, fuzzy
+msgid "Hide an Angle"
+msgstr "إخفاء الزاوية"
+
+#: objects/other_imp.cc:613
+#, fuzzy
+msgid "vector"
+msgstr "ناقل"
+
+#: objects/other_imp.cc:614
+#, fuzzy, kde-format
+msgid "Select this vector"
+msgstr "انتقِ متجه"
+
+#: objects/other_imp.cc:615
+#, fuzzy, kde-format
+msgid "Select vector %1"
+msgstr "انتقِ متجه 1"
+
+#: objects/other_imp.cc:616
+#, fuzzy
+msgid "Remove a Vector"
+msgstr "احذف a الموجه"
+
+#: objects/other_imp.cc:617
+#, fuzzy
+msgid "Add a Vector"
+msgstr "إضافة a الموجه"
+
+#: objects/other_imp.cc:618
+#, fuzzy
+msgid "Move a Vector"
+msgstr "نقل a الموجه"
+
+#: objects/other_imp.cc:619
+#, fuzzy
+msgid "Attach to this vector"
+msgstr "إرفاق إلى متجه"
+
+#: objects/other_imp.cc:620
+#, fuzzy
+msgid "Show a Vector"
+msgstr "اعرض a الموجه"
+
+#: objects/other_imp.cc:621
+#, fuzzy
+msgid "Hide a Vector"
+msgstr "إخفاء a الموجه"
+
+#: objects/other_imp.cc:628
+#, fuzzy
+msgid "arc"
+msgstr "قوس"
+
+#: objects/other_imp.cc:629
+#, fuzzy, kde-format
+msgid "Select this arc"
+msgstr "انتقِ قوس"
+
+#: objects/other_imp.cc:630
+#, fuzzy, kde-format
+msgid "Select arc %1"
+msgstr "انتقِ قوس 1"
+
+#: objects/other_imp.cc:631
+#, fuzzy
+msgid "Remove an Arc"
+msgstr "احذف قوس"
+
+#: objects/other_imp.cc:632
+#, fuzzy
+msgid "Add an Arc"
+msgstr "إضافة قوس"
+
+#: objects/other_imp.cc:633
+#, fuzzy
+msgid "Move an Arc"
+msgstr "نقل قوس"
+
+#: objects/other_imp.cc:634
+#, fuzzy
+msgid "Attach to this arc"
+msgstr "إرفاق إلى قوس"
+
+#: objects/other_imp.cc:635
+#, fuzzy
+msgid "Show an Arc"
+msgstr "اعرض قوس"
+
+#: objects/other_imp.cc:636
+#, fuzzy
+msgid "Hide an Arc"
+msgstr "إخفاء قوس"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "إحداثيّات"
+
+#: objects/point_imp.cc:63
+#, fuzzy
+msgid "X coordinate"
+msgstr "س تنسيق"
+
+#: objects/point_imp.cc:64
+#, fuzzy
+msgid "Y coordinate"
+msgstr "ص تنسيق"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "نقطة"
+
+#: objects/point_imp.cc:154
+#, fuzzy, kde-format
+msgid "Select this point"
+msgstr "انتقِ نقطة"
+
+#: objects/point_imp.cc:155
+#, fuzzy, kde-format
+msgid "Select point %1"
+msgstr "انتقِ نقطة 1"
+
+#: objects/point_imp.cc:156
+#, fuzzy
+msgid "Remove a Point"
+msgstr "احذف a نقطة"
+
+#: objects/point_imp.cc:157
+#, fuzzy
+msgid "Add a Point"
+msgstr "إضافة a نقطة"
+
+#: objects/point_imp.cc:158
+#, fuzzy
+msgid "Move a Point"
+msgstr "نقل a نقطة"
+
+#: objects/point_imp.cc:159
+#, fuzzy
+msgid "Attach to this point"
+msgstr "إرفاق إلى نقطة"
+
+#: objects/point_imp.cc:160
+#, fuzzy
+msgid "Show a Point"
+msgstr "اعرض a نقطة"
+
+#: objects/point_imp.cc:161
+#, fuzzy
+msgid "Hide a Point"
+msgstr "إخفاء a نقطة"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, fuzzy, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "التركيب من نقطة و نقطة"
+
+#: objects/point_type.cc:243
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr "انتقِ الأوّل من إثنان نقطة من إلى."
+
+#: objects/point_type.cc:247
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr "انتقِ غير ذلك من إثنان نقطة من إلى."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "التركيب من نقطة و نقطة"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "انتقِ الأوّل من إثنان نقطة من إلى."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "انتقِ غير ذلك من إثنان نقطة من إلى."
+
+#: objects/point_type.cc:386
+#, fuzzy, kde-format
+msgid "Set &Coordinate..."
+msgstr "ضبط إحداثية."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, fuzzy, kde-format
+msgid "Redefine"
+msgstr "أعد تعريف"
+
+#: objects/point_type.cc:394
+#, fuzzy, kde-format
+msgid "Set &Parameter..."
+msgstr "ضبط ضابطة."
+
+#: objects/point_type.cc:412
+#, fuzzy, kde-format
+msgid "Set Coordinate"
+msgstr "ضبط إحداثية"
+
+#: objects/point_type.cc:413
+#, fuzzy, kde-format
+msgid "Enter the new coordinate."
+msgstr "إدخال جديد تنسيق."
+
+#: objects/point_type.cc:452
+#, fuzzy, kde-format
+msgid "Set Point Parameter"
+msgstr "ضبط نقطة ضابطة"
+
+#: objects/point_type.cc:452
+#, fuzzy, kde-format
+msgid "Choose the new parameter: "
+msgstr "اختر جديد معلمة "
+
+#: objects/point_type.cc:458
+#, fuzzy, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr ""
+"غيّر ضابطة من مُكرَه :: مُجبَر :: مقسور :: مُتكلّف :: مُصطَنَع :: مُقيَّد :: موثَق :: "
+"مكبوح نقطة"
+
+#: objects/point_type.cc:743
+#, fuzzy, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "انتقِ يعمل إلى نقل a قياس."
+
+#: objects/point_type.cc:744
+#, fuzzy, kde-format
+msgid "Select a point on the circle..."
+msgstr "انتقِ a نقطة يعمل."
+
+#: objects/point_type.cc:745
+#, fuzzy, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "انتقِ قطعة إلى نقل يعمل."
+
+#: objects/point_type.cc:794
+#, fuzzy, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "انتقِ a رقم الطول x تنسيق من نقطة."
+
+#: objects/point_type.cc:795
+#, fuzzy, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "انتقِ a رقم الطول ن تنسيق من نقطة."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "انتقِ نقطة إلى بوصة."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+#, fuzzy
+msgid "Number of sides"
+msgstr "الرقم من"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "محيط"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+msgid "Boundary Polygonal"
+msgstr "إضافة a مضلّع"
+
+#: objects/polygon_imp.cc:292
+#, fuzzy
+msgid "Open Boundary Polygonal"
+msgstr "إضافة a مضلّع"
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+#, fuzzy
+msgid "Center of Mass of the Vertices"
+msgstr "وسط من كتلة من القمم"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+#, fuzzy
+msgid "Winding Number"
+msgstr "اللفّ الرقم"
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+msgid "Inside Polygon"
+msgstr "إخفاء a مضلّع"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+msgid "Open Polygonal Curve"
+msgstr "مضلّع"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+msgid "Associated Polygon"
+msgstr "إضافة a مضلّع"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+msgid "Closed Polygonal Curve"
+msgstr "نقل a مضلّع"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+#, fuzzy
+msgid "polygon"
+msgstr "مضلّع"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, fuzzy, kde-format
+msgid "Select this polygon"
+msgstr "انتقِ"
+
+#: objects/polygon_imp.cc:630
+#, fuzzy, kde-format
+msgid "Select polygon %1"
+msgstr "تحديد المضلّع"
+
+#: objects/polygon_imp.cc:631
+#, fuzzy
+msgid "Remove a Polygon"
+msgstr "احذف a مضلّع"
+
+#: objects/polygon_imp.cc:632
+#, fuzzy
+msgid "Add a Polygon"
+msgstr "إضافة a مضلّع"
+
+#: objects/polygon_imp.cc:633
+#, fuzzy
+msgid "Move a Polygon"
+msgstr "نقل a مضلّع"
+
+#: objects/polygon_imp.cc:634
+#, fuzzy
+msgid "Attach to this polygon"
+msgstr "إرفاق إلى"
+
+#: objects/polygon_imp.cc:635
+#, fuzzy
+msgid "Show a Polygon"
+msgstr "اعرض a مضلّع"
+
+#: objects/polygon_imp.cc:636
+#, fuzzy
+msgid "Hide a Polygon"
+msgstr "إخفاء a مضلّع"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+msgid "closed polygonal curve"
+msgstr "انتقِ 1"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "انتقِ"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "انتقِ 1"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+msgid "Remove a closed polygonal curve"
+msgstr "احذف a مضلّع"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+msgid "Add a closed polygonal curve"
+msgstr "إضافة a مضلّع"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+msgid "Move a closed polygonal curve"
+msgstr "نقل a مضلّع"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+msgid "Attach to this closed polygonal curve"
+msgstr "إرفاق إلى"
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+msgid "Show a closed polygonal curve"
+msgstr "اعرض a مضلّع"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+msgid "Hide a closed polygonal curve"
+msgstr "إخفاء a مضلّع"
+
+#: objects/polygon_imp.cc:662
+#, fuzzy
+msgid "polygonal curve"
+msgstr "منشىء المنحنى من a منحنى"
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+msgid "Select this polygonal curve"
+msgstr "انتقِ"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+msgid "Select polygonal curve %1"
+msgstr "انتقِ 1"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+msgid "Remove a polygonal curve"
+msgstr "احذف a مضلّع"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+msgid "Add a polygonal curve"
+msgstr "إضافة a مضلّع"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+msgid "Move a polygonal curve"
+msgstr "نقل a مضلّع"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+msgid "Attach to this polygonal curve"
+msgstr "إرفاق إلى"
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+msgid "Show a polygonal curve"
+msgstr "اعرض a مضلّع"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+msgid "Hide a polygonal curve"
+msgstr "إخفاء a مضلّع"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "مثلّث"
+
+#: objects/polygon_imp.cc:680
+#, fuzzy, kde-format
+msgid "Select this triangle"
+msgstr "انتقِ مثلث"
+
+#: objects/polygon_imp.cc:681
+#, fuzzy, kde-format
+msgid "Select triangle %1"
+msgstr "انتقِ مثلث 1"
+
+#: objects/polygon_imp.cc:682
+#, fuzzy
+msgid "Remove a Triangle"
+msgstr "احذف a مثلث"
+
+#: objects/polygon_imp.cc:683
+#, fuzzy
+msgid "Add a Triangle"
+msgstr "إضافة a مثلث"
+
+#: objects/polygon_imp.cc:684
+#, fuzzy
+msgid "Move a Triangle"
+msgstr "نقل a مثلث"
+
+#: objects/polygon_imp.cc:685
+#, fuzzy
+msgid "Attach to this triangle"
+msgstr "إرفاق إلى مثلث"
+
+#: objects/polygon_imp.cc:686
+#, fuzzy
+msgid "Show a Triangle"
+msgstr "اعرض a مثلث"
+
+#: objects/polygon_imp.cc:687
+#, fuzzy
+msgid "Hide a Triangle"
+msgstr "إخفاء a مثلث"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "رباعي الأضلاع"
+
+#: objects/polygon_imp.cc:697
+#, fuzzy, kde-format
+msgid "Select this quadrilateral"
+msgstr "انتقِ"
+
+#: objects/polygon_imp.cc:698
+#, fuzzy, kde-format
+msgid "Select quadrilateral %1"
+msgstr "انتقِ 1"
+
+#: objects/polygon_imp.cc:699
+#, fuzzy
+msgid "Remove a Quadrilateral"
+msgstr "احذف a الرباعي"
+
+#: objects/polygon_imp.cc:700
+#, fuzzy
+msgid "Add a Quadrilateral"
+msgstr "إضافة a الرباعي"
+
+#: objects/polygon_imp.cc:701
+#, fuzzy
+msgid "Move a Quadrilateral"
+msgstr "نقل a الرباعي"
+
+#: objects/polygon_imp.cc:702
+#, fuzzy
+msgid "Attach to this quadrilateral"
+msgstr "إرفاق إلى"
+
+#: objects/polygon_imp.cc:703
+#, fuzzy
+msgid "Show a Quadrilateral"
+msgstr "اعرض a الرباعي"
+
+#: objects/polygon_imp.cc:704
+#, fuzzy
+msgid "Hide a Quadrilateral"
+msgstr "إخفاء a الرباعي"
+
+#: objects/polygon_type.cc:24
+#, fuzzy, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "التركيب a مثلث مع"
+
+#: objects/polygon_type.cc:25
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#: objects/polygon_type.cc:470
+#, fuzzy, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "تقاطع مع a سطر"
+
+#: objects/polygon_type.cc:471
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "انتقِ من تقاطع مع a سطر."
+
+#: objects/polygon_type.cc:474
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "تقاطع سطر مع a"
+
+#: objects/polygon_type.cc:475
+#, fuzzy, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "انتقِ سطر من تقاطع مع a."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "تقاطع مع a سطر"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "انتقِ من تقاطع مع a سطر."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "تقاطع سطر مع a"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "انتقِ سطر من تقاطع مع a."
+
+#: objects/polygon_type.cc:788
+#, fuzzy, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "تقاطع مع"
+
+#: objects/polygon_type.cc:789
+#, fuzzy, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "انتقِ من تقاطع مع."
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Intersect with this polygon"
+msgstr "تقاطع مع"
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "انتقِ ثانية لـ تقاطع."
+
+#: objects/polygon_type.cc:930
+#, fuzzy, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "التركيب من"
+
+#: objects/polygon_type.cc:931
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "انتقِ من إلى."
+
+#: objects/polygon_type.cc:974
+#, fuzzy, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "التركيب من"
+
+#: objects/polygon_type.cc:975
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "انتقِ من إلى."
+
+#: objects/polygon_type.cc:1022
+#, fuzzy, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "التركيب من"
+
+#: objects/polygon_type.cc:1023
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "انتقِ من إلى."
+
+#: objects/special_calcers.cc:8
+#, fuzzy, kde-format
+msgid "Project this point onto the circle"
+msgstr "مشروع نقطة"
+
+#: objects/tangent_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "انتقِ نقطة لـ إلى اذهب."
+
+#: objects/tests_type.cc:18
+#, fuzzy, kde-format
+msgid "Is this line parallel?"
+msgstr "هو سطر متوازِ?"
+
+#: objects/tests_type.cc:18
+#, fuzzy, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "انتقِ الأوّل من إثنان متوازِ سطور."
+
+#: objects/tests_type.cc:19
+#, fuzzy, kde-format
+msgid "Parallel to this line?"
+msgstr "المتوازي إلى سطر?"
+
+#: objects/tests_type.cc:19
+#, fuzzy, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "انتقِ غير ذلك من إثنان متوازِ سطور."
+
+#: objects/tests_type.cc:46
+#, fuzzy, kde-format
+msgid "These lines are parallel."
+msgstr "هذه سطور متوازِ."
+
+#: objects/tests_type.cc:48
+#, fuzzy, kde-format
+msgid "These lines are not parallel."
+msgstr "هذه سطور ليس متوازِ."
+
+#: objects/tests_type.cc:57
+#, fuzzy, kde-format
+msgid "Is this line orthogonal?"
+msgstr "هو سطر?"
+
+#: objects/tests_type.cc:57
+#, fuzzy, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "انتقِ الأوّل من إثنان سطور."
+
+#: objects/tests_type.cc:58
+#, fuzzy, kde-format
+msgid "Orthogonal to this line?"
+msgstr "متعامد إلى سطر?"
+
+#: objects/tests_type.cc:58
+#, fuzzy, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "انتقِ غير ذلك من إثنان سطور."
+
+#: objects/tests_type.cc:85
+#, fuzzy, kde-format
+msgid "These lines are orthogonal."
+msgstr "هذه سطور."
+
+#: objects/tests_type.cc:87
+#, fuzzy, kde-format
+msgid "These lines are not orthogonal."
+msgstr "هذه سطور ليس."
+
+#: objects/tests_type.cc:96
+#, fuzzy, kde-format
+msgid "Check collinearity of this point"
+msgstr "كِش من نقطة"
+
+#: objects/tests_type.cc:96
+#, fuzzy, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "انتقِ الأوّل من ثلاثة نقطة."
+
+#: objects/tests_type.cc:97
+#, fuzzy, kde-format
+msgid "and this second point"
+msgstr "و ثانية نقطة"
+
+#: objects/tests_type.cc:97
+#, fuzzy, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "انتقِ ثانية من ثلاثة نقطة."
+
+#: objects/tests_type.cc:98
+#, fuzzy, kde-format
+msgid "with this third point"
+msgstr "مع الثّالث نقطة"
+
+#: objects/tests_type.cc:98
+#, fuzzy, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "انتقِ الأخير من ثلاثة نقطة."
+
+#: objects/tests_type.cc:126
+#, fuzzy, kde-format
+msgid "These points are collinear."
+msgstr "هذه نقطة."
+
+#: objects/tests_type.cc:128
+#, fuzzy, kde-format
+msgid "These points are not collinear."
+msgstr "هذه نقطة ليس."
+
+#: objects/tests_type.cc:137
+#, fuzzy, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "كِش نقطة هو يعمل a منحنى"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, fuzzy, kde-format
+msgid "Select the point you want to test..."
+msgstr "انتقِ نقطة إلى إختبار."
+
+#: objects/tests_type.cc:138
+#, fuzzy, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "كِش نقطة هو يعمل منحنى"
+
+#: objects/tests_type.cc:138
+#, fuzzy, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "انتقِ منحنى نقطة يعمل."
+
+#: objects/tests_type.cc:165
+#, fuzzy, kde-format
+msgid "This curve contains the point."
+msgstr "هذا منحنى يحتوي نقطة."
+
+#: objects/tests_type.cc:167
+#, fuzzy, kde-format
+msgid "This curve does not contain the point."
+msgstr "هذا منحنى ليس تحوي على نقطة."
+
+#: objects/tests_type.cc:180
+#, fuzzy, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "كِش نقطة هو بوصة a"
+
+#: objects/tests_type.cc:181
+#, fuzzy, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "كِش نقطة هو بوصة"
+
+#: objects/tests_type.cc:181
+#, fuzzy, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "انتقِ نقطة بوصة."
+
+#: objects/tests_type.cc:208
+#, fuzzy, kde-format
+msgid "This polygon contains the point."
+msgstr "هذا يحتوي نقطة."
+
+#: objects/tests_type.cc:210
+#, fuzzy, kde-format
+msgid "This polygon does not contain the point."
+msgstr "هذا ليس تحوي على نقطة."
+
+#: objects/tests_type.cc:223
+#, fuzzy, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "كِش هو"
+
+#: objects/tests_type.cc:223
+#, fuzzy, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "انتقِ إلى إختبار لـ."
+
+#: objects/tests_type.cc:249
+#, fuzzy, kde-format
+msgid "This polygon is convex."
+msgstr "هذا هو."
+
+#: objects/tests_type.cc:251
+#, fuzzy, kde-format
+msgid "This polygon is not convex."
+msgstr "هذا هو ليس."
+
+#: objects/tests_type.cc:265
+#, fuzzy, kde-format
+msgid "Check if this point has the same distance"
+msgstr "كِش IF نقطة"
+
+#: objects/tests_type.cc:266
+#, fuzzy, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr "انتقِ نقطة من إثنان غير ذلك نقطة."
+
+#: objects/tests_type.cc:268
+#, fuzzy, kde-format
+msgid "from this point"
+msgstr "من نقطة"
+
+#: objects/tests_type.cc:268
+#, fuzzy, kde-format
+msgid "Select the first of the two other points..."
+msgstr "انتقِ الأوّل من إثنان غير ذلك نقطة."
+
+#: objects/tests_type.cc:269
+#, fuzzy, kde-format
+msgid "and from this second point"
+msgstr "و من ثانية نقطة"
+
+#: objects/tests_type.cc:269
+#, fuzzy, kde-format
+msgid "Select the other of the two other points..."
+msgstr "انتقِ غير ذلك من إثنان غير ذلك نقطة."
+
+#: objects/tests_type.cc:297
+#, fuzzy, kde-format
+msgid "The two distances are the same."
+msgstr "الـ إثنان."
+
+#: objects/tests_type.cc:299
+#, fuzzy, kde-format
+msgid "The two distances are not the same."
+msgstr "الـ إثنان ليس."
+
+#: objects/tests_type.cc:308
+#, fuzzy, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "كِش متجه هو مساو إلى متجه"
+
+#: objects/tests_type.cc:309
+#, fuzzy, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "انتقِ الأوّل من إثنان مساو."
+
+#: objects/tests_type.cc:312
+#, fuzzy, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "كِش متجه هو مساو إلى غير ذلك متجه"
+
+#: objects/tests_type.cc:313
+#, fuzzy, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "انتقِ غير ذلك من إثنان مساو."
+
+#: objects/tests_type.cc:341
+#, fuzzy, kde-format
+msgid "The two vectors are the same."
+msgstr "الـ إثنان."
+
+#: objects/tests_type.cc:343
+#, fuzzy, kde-format
+msgid "The two vectors are not the same."
+msgstr "الـ إثنان ليس."
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Check whether this object exists"
+msgstr "كِش كائن موجود"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Select the object for the existence check..."
+msgstr "انتقِ كائن لـ تفقّد."
+
+#: objects/tests_type.cc:375
+#, fuzzy, kde-format
+msgid "The object exists."
+msgstr "الـ كائن موجود."
+
+#: objects/tests_type.cc:377
+#, fuzzy, kde-format
+msgid "The object does not exist."
+msgstr "الـ كائن ليس."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "النص"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "اللصيقة"
+
+#: objects/text_imp.cc:138
+#, fuzzy, kde-format
+msgid "Select this label"
+msgstr "انتقِ شارة"
+
+#: objects/text_imp.cc:139
+#, fuzzy, kde-format
+msgid "Select label %1"
+msgstr "انتقِ شارة 1"
+
+#: objects/text_imp.cc:140
+#, fuzzy
+msgid "Remove a Label"
+msgstr "احذف a تسمية"
+
+#: objects/text_imp.cc:141
+#, fuzzy
+msgid "Add a Label"
+msgstr "إضافة a تسمية"
+
+#: objects/text_imp.cc:142
+#, fuzzy
+msgid "Move a Label"
+msgstr "نقل a تسمية"
+
+#: objects/text_imp.cc:143
+#, fuzzy
+msgid "Attach to this label"
+msgstr "إرفاق إلى شارة"
+
+#: objects/text_imp.cc:144
+#, fuzzy
+msgid "Show a Label"
+msgstr "اعرض a تسمية"
+
+#: objects/text_imp.cc:145
+#, fuzzy
+msgid "Hide a Label"
+msgstr "إخفاء a تسمية"
+
+#: objects/text_imp.cc:183
+#, fuzzy
+msgid "numeric label"
+msgstr "أبجدي عددي شارة"
+
+#: objects/text_imp.cc:184
+#, fuzzy, kde-format
+msgid "Select this numeric label"
+msgstr "انتقِ أبجدي عددي شارة"
+
+#: objects/text_imp.cc:185
+#, fuzzy, kde-format
+msgid "Select numeric label %1"
+msgstr "انتقِ أبجدي عددي شارة 1"
+
+#: objects/text_imp.cc:186
+#, fuzzy
+msgid "Remove a Numeric Label"
+msgstr "احذف a رقمي تسمية"
+
+#: objects/text_imp.cc:187
+#, fuzzy
+msgid "Add a Numeric Label"
+msgstr "إضافة a رقمي تسمية"
+
+#: objects/text_imp.cc:188
+#, fuzzy
+msgid "Move a Numeric Label"
+msgstr "نقل a رقمي تسمية"
+
+#: objects/text_imp.cc:189
+#, fuzzy
+msgid "Attach to this numeric label"
+msgstr "إرفاق إلى أبجدي عددي شارة"
+
+#: objects/text_imp.cc:190
+#, fuzzy
+msgid "Show a Numeric Label"
+msgstr "اعرض a رقمي تسمية"
+
+#: objects/text_imp.cc:191
+#, fuzzy
+msgid "Hide a Numeric Label"
+msgstr "إخفاء a رقمي تسمية"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "قيمة عددية"
+
+#: objects/text_imp.cc:277
+#, fuzzy
+msgid "boolean label"
+msgstr "منطقي شارة"
+
+#: objects/text_imp.cc:278
+#, fuzzy, kde-format
+msgid "Select this boolean label"
+msgstr "انتقِ منطقي شارة"
+
+#: objects/text_imp.cc:279
+#, fuzzy, kde-format
+msgid "Select boolean label %1"
+msgstr "انتقِ منطقي شارة 1"
+
+#: objects/text_imp.cc:280
+#, fuzzy
+msgid "Remove a Boolean Label"
+msgstr "احذف a منطقي تسمية"
+
+#: objects/text_imp.cc:281
+#, fuzzy
+msgid "Add a Boolean Label"
+msgstr "إضافة a منطقي تسمية"
+
+#: objects/text_imp.cc:282
+#, fuzzy
+msgid "Move a Boolean Label"
+msgstr "نقل a منطقي تسمية"
+
+#: objects/text_imp.cc:283
+#, fuzzy
+msgid "Attach to this boolean label"
+msgstr "إرفاق إلى منطقي شارة"
+
+#: objects/text_imp.cc:284
+#, fuzzy
+msgid "Show a Boolean Label"
+msgstr "اعرض a منطقي تسمية"
+
+#: objects/text_imp.cc:285
+#, fuzzy
+msgid "Hide a Boolean Label"
+msgstr "إخفاء a منطقي تسمية"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "ا&نسخ النص"
+
+#: objects/text_type.cc:157
+#, fuzzy, kde-format
+msgid "&Toggle Frame"
+msgstr "تبديل إطار"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "&عين خطاً..."
+
+#: objects/text_type.cc:182
+#, fuzzy, kde-format
+msgid "Toggle Label Frame"
+msgstr "تبديل تسمية إطار"
+
+#: objects/text_type.cc:192
+#, fuzzy, kde-format
+msgid "Change Label Font"
+msgstr "غيّر تسمية الخط"
+
+#: objects/text_type.cc:219
+#, fuzzy, kde-format
+msgid "&Redefine..."
+msgstr "أعد تعريف."
+
+#: objects/text_type.cc:266
+#, fuzzy, kde-format
+msgid "Change &Value..."
+msgstr "غيّر القيمة"
+
+#: objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Enter the new value:"
+msgstr "إدخال جديد قيمة:"
+
+#: objects/text_type.cc:295
+#, fuzzy, kde-format
+msgid "Change Displayed Value"
+msgstr "غيّر معروض القيمة"
+
+#: objects/transform_types.cc:21
+#, fuzzy, kde-format
+msgid "Translate this object"
+msgstr "ترجم كائن"
+
+#: objects/transform_types.cc:21
+#, fuzzy, kde-format
+msgid "Select the object to translate..."
+msgstr "انتقِ كائن إلى إزاحة."
+
+#: objects/transform_types.cc:22
+#, fuzzy, kde-format
+msgid "Translate by this vector"
+msgstr "ترجم أداء متجه"
+
+#: objects/transform_types.cc:22
+#, fuzzy, kde-format
+msgid "Select the vector to translate by..."
+msgstr "انتقِ متجه إلى إزاحة أداء."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, fuzzy, kde-format
+msgid "Reflect this object"
+msgstr "انعكاس كائن"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, fuzzy, kde-format
+msgid "Select the object to reflect..."
+msgstr "انتقِ كائن إلى."
+
+#: objects/transform_types.cc:54
+#, fuzzy, kde-format
+msgid "Reflect in this point"
+msgstr "انعكاس بوصة نقطة"
+
+#: objects/transform_types.cc:54
+#, fuzzy, kde-format
+msgid "Select the point to reflect in..."
+msgstr "انتقِ نقطة إلى بوصة."
+
+#: objects/transform_types.cc:86
+#, fuzzy, kde-format
+msgid "Reflect in this line"
+msgstr "انعكاس بوصة سطر"
+
+#: objects/transform_types.cc:86
+#, fuzzy, kde-format
+msgid "Select the line to reflect in..."
+msgstr "انتقِ سطر إلى بوصة."
+
+#: objects/transform_types.cc:117
+#, fuzzy, kde-format
+msgid "Rotate this object"
+msgstr "تدوير كائن"
+
+#: objects/transform_types.cc:117
+#, fuzzy, kde-format
+msgid "Select the object to rotate..."
+msgstr "انتقِ كائن إلى تدوير."
+
+#: objects/transform_types.cc:118
+#, fuzzy, kde-format
+msgid "Rotate around this point"
+msgstr "تدوير نقطة"
+
+#: objects/transform_types.cc:118
+#, fuzzy, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "انتقِ نقطة من."
+
+#: objects/transform_types.cc:121
+#, fuzzy, kde-format
+msgid "Rotate by this angle"
+msgstr "تدوير أداء زاوية"
+
+#: objects/transform_types.cc:121
+#, fuzzy, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "انتقِ زاوية من."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, fuzzy, kde-format
+msgid "Scale this object"
+msgstr "المقياس كائن"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, fuzzy, kde-format
+msgid "Select the object to scale..."
+msgstr "انتقِ كائن إلى مقياس."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, fuzzy, kde-format
+msgid "Scale with this center"
+msgstr "المقياس مع"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, fuzzy, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "انتقِ نقطة من."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid "Scale by this length"
+msgstr "المقياس أداء الطول"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "انتقِ a الطول أو a قطعة مَن الطول هو من."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, fuzzy, kde-format
+msgid "Scale this length..."
+msgstr "المقياس الطول."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, fuzzy, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr "انتقِ الأوّل من إثنان مَن نسبة هو من."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, fuzzy, kde-format
+msgid "...to this other length"
+msgstr "إلى غير ذلك الطول"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, fuzzy, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr "انتقِ ثانية من إثنان مَن نسبة هو من."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, fuzzy, kde-format
+msgid "Select the object to scale"
+msgstr "انتقِ كائن إلى مقياس"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, fuzzy, kde-format
+msgid "Scale over this line"
+msgstr "المقياس سطر"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, fuzzy, kde-format
+msgid "Select the line to scale over"
+msgstr "انتقِ سطر إلى مقياس"
+
+#: objects/transform_types.cc:335
+#, fuzzy, kde-format
+msgid "Projectively rotate this object"
+msgstr "بشكل إسقاطي تدوير كائن"
+
+#: objects/transform_types.cc:335
+#, fuzzy, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "انتقِ كائن إلى تدوير"
+
+#: objects/transform_types.cc:337
+#, fuzzy, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "بشكل إسقاطي تدوير مع سطر"
+
+#: objects/transform_types.cc:338
+#, fuzzy, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr "انتقِ سطر من إلى تطبيق إلى كائن"
+
+#: objects/transform_types.cc:341
+#, fuzzy, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "بشكل إسقاطي تدوير أداء زاوية"
+
+#: objects/transform_types.cc:342
+#, fuzzy, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr "انتقِ زاوية من إلى تطبيق إلى كائن"
+
+#: objects/transform_types.cc:376
+#, fuzzy, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "النغمة التوافقية التّماثل من كائن"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, fuzzy, kde-format
+msgid "Select the object to transform..."
+msgstr "انتقِ كائن إلى تحويل."
+
+#: objects/transform_types.cc:377
+#, fuzzy, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "النغمة التوافقية التّماثل مع"
+
+#: objects/transform_types.cc:377
+#, fuzzy, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "انتقِ نقطة من."
+
+#: objects/transform_types.cc:378
+#, fuzzy, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "النغمة التوافقية التّماثل مع محور"
+
+#: objects/transform_types.cc:378
+#, fuzzy, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "انتقِ محور من."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, fuzzy, kde-format
+msgid "Generic affinity of this object"
+msgstr "عام من كائن"
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Map this triangle"
+msgstr "الخريطة مثلث"
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "انتقِ مثلث إلى a مثلث."
+
+#: objects/transform_types.cc:411
+#, fuzzy, kde-format
+msgid "onto this other triangle"
+msgstr "غير ذلك مثلث"
+
+#: objects/transform_types.cc:412
+#, fuzzy, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "انتقِ مثلث هو صورة أداء من الأوّل مثلث."
+
+#: objects/transform_types.cc:450
+#, fuzzy, kde-format
+msgid "First of 3 starting points"
+msgstr "الأول من بدء نقطة"
+
+#: objects/transform_types.cc:450
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "انتقِ الأوّل من ثلاثة بدء نقطة من عام."
+
+#: objects/transform_types.cc:452
+#, fuzzy, kde-format
+msgid "Second of 3 starting points"
+msgstr "الثّانية من بدء نقطة"
+
+#: objects/transform_types.cc:453
+#, fuzzy, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "انتقِ ثانية من ثلاثة بدء نقطة من عام."
+
+#: objects/transform_types.cc:455
+#, fuzzy, kde-format
+msgid "Third of 3 starting points"
+msgstr "الثّالثالثلث من بدء نقطة"
+
+#: objects/transform_types.cc:455
+#, fuzzy, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "انتقِ الثّالث من ثلاثة بدء نقطة من عام."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, fuzzy, kde-format
+msgid "Transformed position of first point"
+msgstr "تحوّل الموضع من الأوّل نقطة"
+
+#: objects/transform_types.cc:458
+#, fuzzy, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "انتقِ الأوّل من ثلاثة end نقطة من عام."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, fuzzy, kde-format
+msgid "Transformed position of second point"
+msgstr "تحوّل الموضع من ثانية نقطة"
+
+#: objects/transform_types.cc:462
+#, fuzzy, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "انتقِ ثانية من ثلاثة end نقطة من عام."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, fuzzy, kde-format
+msgid "Transformed position of third point"
+msgstr "تحوّل الموضع من الثّالث نقطة"
+
+#: objects/transform_types.cc:466
+#, fuzzy, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "انتقِ الثّالث من ثلاثة end نقطة من عام."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, fuzzy, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "عام تحويل من كائن"
+
+#: objects/transform_types.cc:510
+#, fuzzy, kde-format
+msgid "Map this quadrilateral"
+msgstr "الخريطة"
+
+#: objects/transform_types.cc:511
+#, fuzzy, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "انتقِ إلى a."
+
+#: objects/transform_types.cc:514
+#, fuzzy, kde-format
+msgid "onto this other quadrilateral"
+msgstr "غير ذلك"
+
+#: objects/transform_types.cc:515
+#, fuzzy, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr "انتقِ هو صورة أداء تحويل من الأوّل."
+
+#: objects/transform_types.cc:554
+#, fuzzy, kde-format
+msgid "First of 4 starting points"
+msgstr "الأول من بدء نقطة"
+
+#: objects/transform_types.cc:555
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr "انتقِ الأوّل من أربعة بدء نقطة من عام."
+
+#: objects/transform_types.cc:558
+#, fuzzy, kde-format
+msgid "Second of 4 starting points"
+msgstr "الثّانية من بدء نقطة"
+
+#: objects/transform_types.cc:559
+#, fuzzy, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr "انتقِ ثانية من أربعة بدء نقطة من عام."
+
+#: objects/transform_types.cc:562
+#, fuzzy, kde-format
+msgid "Third of 4 starting points"
+msgstr "الثّالثالثلث من بدء نقطة"
+
+#: objects/transform_types.cc:563
+#, fuzzy, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr "انتقِ الثّالث من أربعة بدء نقطة من عام."
+
+#: objects/transform_types.cc:566
+#, fuzzy, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "الرّابعالربع من بدء نقطة"
+
+#: objects/transform_types.cc:567
+#, fuzzy, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr "انتقِ الرّابع من أربعة بدء نقطة من عام."
+
+#: objects/transform_types.cc:571
+#, fuzzy, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr "انتقِ الأوّل من أربعة end نقطة من عام."
+
+#: objects/transform_types.cc:575
+#, fuzzy, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr "انتقِ ثانية من أربعة end نقطة من عام."
+
+#: objects/transform_types.cc:579
+#, fuzzy, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr "انتقِ الثّالث من أربعة end نقطة من عام."
+
+#: objects/transform_types.cc:582
+#, fuzzy, kde-format
+msgid "Transformed position of fourth point"
+msgstr "تحوّل الموضع من الرّابع نقطة"
+
+#: objects/transform_types.cc:583
+#, fuzzy, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr "انتقِ الرّابع من أربعة end نقطة من عام."
+
+#: objects/transform_types.cc:624
+#, fuzzy, kde-format
+msgid "Cast the shadow of this object"
+msgstr "ممثلون ظل من كائن"
+
+#: objects/transform_types.cc:624
+#, fuzzy, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "انتقِ كائن من إلى ظل."
+
+#: objects/transform_types.cc:626
+#, fuzzy, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "ممثلون a ظل من ضوء مصدر"
+
+#: objects/transform_types.cc:627
+#, fuzzy, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "انتقِ ضوء مصدر من ظل."
+
+#: objects/transform_types.cc:629
+#, fuzzy, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "ممثلون a ظل يعمل أداء سطر"
+
+#: objects/transform_types.cc:629
+#, fuzzy, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "انتقِ لـ ظل."
+
+#: objects/transform_types.cc:809
+#, fuzzy, kde-format
+msgid "Transform this object"
+msgstr "الانتقال كائن"
+
+#: objects/transform_types.cc:810
+#, fuzzy, kde-format
+msgid "Transform using this transformation"
+msgstr "الانتقال تحويل"
+
+#: objects/transform_types.cc:883
+#, fuzzy, kde-format
+msgid "Apply a similitude to this object"
+msgstr "تطبيق a إلى كائن"
+
+#: objects/transform_types.cc:884
+#, fuzzy, kde-format
+msgid "Apply a similitude with this center"
+msgstr "تطبيق a مع"
+
+#: objects/transform_types.cc:884
+#, fuzzy, kde-format
+msgid "Select the center for the similitude..."
+msgstr "انتقِ لـ."
+
+#: objects/transform_types.cc:886
+#, fuzzy, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "تطبيق a تعيين نقطة نقطة"
+
+#: objects/transform_types.cc:887
+#, fuzzy, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr "انتقِ نقطة خريطة نقطة."
+
+#: objects/transform_types.cc:890
+#, fuzzy, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "تطبيق a تعيين a نقطة نقطة"
+
+#: objects/transform_types.cc:891
+#, fuzzy, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr "انتقِ نقطة خريطة الأوّل نقطة."
+
+#: objects/vector_type.cc:12
+#, fuzzy, kde-format
+msgid "Construct a vector from this point"
+msgstr "التركيب a متجه من نقطة"
+
+#: objects/vector_type.cc:12
+#, fuzzy, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "انتقِ تشغيل نقطة من جديد متجه."
+
+#: objects/vector_type.cc:13
+#, fuzzy, kde-format
+msgid "Construct a vector to this point"
+msgstr "التركيب a متجه إلى نقطة"
+
+#: objects/vector_type.cc:13
+#, fuzzy, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "انتقِ end نقطة من جديد متجه."
+
+#: objects/vector_type.cc:44
+#, fuzzy, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "التركيب متجه جمع ، مجموع من متجه و."
+
+#: objects/vector_type.cc:45
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "انتقِ الأوّل من إثنان من إلى جمع ، مجموع."
+
+#: objects/vector_type.cc:48
+#, fuzzy, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "التركيب متجه جمع ، مجموع من متجه و غير ذلك."
+
+#: objects/vector_type.cc:49
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "انتقِ غير ذلك من إثنان من إلى جمع ، مجموع."
+
+#: objects/vector_type.cc:51
+#, fuzzy, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "التركيب متجه جمع ، مجموع بدء عند نقطة."
+
+#: objects/vector_type.cc:51
+#, fuzzy, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "انتقِ نقطة إلى جمع ، مجموع متجه بوصة."
+
+#: scripting/newscriptwizard.cc:46
+#, kde-format
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "برنامج نصي جديد"
+
+#: scripting/newscriptwizard.cc:57
+#, fuzzy, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr "انتقِ حجة IF أي منها Kig نافذة و ضغط التالي."
+
+#: scripting/newscriptwizard.cc:63
+#, fuzzy, kde-format
+msgid "Enter Code"
+msgstr "إدخال الرّمز"
+
+#: scripting/script-common.cc:18
+#, fuzzy, kde-format
+msgid "Now fill in the code:"
+msgstr "الآن ملء بوصة رمز:"
+
+#: scripting/script-common.cc:19
+#, fuzzy, kde-format
+msgid "Now fill in the Python code:"
+msgstr "الآن ملء بوصة Python رمز:"
+
+#: scripting/script-common.cc:80
+#, fuzzy, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "1"
+
+#: scripting/script_mode.cc:181
+#, fuzzy, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr "الـ Python خطأ من برنامج نصي رجاء إصلاح برنامج نصي و انقر إنهاء زر."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, fuzzy, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr "الـ Python المترجم متابعة خطأ مخرجات n 1"
+
+#: scripting/script_mode.cc:186
+#, fuzzy, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"هناك إلى خطأ بوصة برنامج نصي الـ Python لا برنامج نصي ليس توليد a سليم كائن "
+"رجاء إصلاح برنامج نصي و انقر إنهاء زر."
+
+#: scripting/script_mode.cc:285
+#, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "حرّر السكربت"
+
+#: scripting/script_mode.cc:307
+#, fuzzy, kde-format
+msgid "Edit Python Script"
+msgstr "تحرير Python مخطوط"
+
+#: scripting/script_mode.cc:315
+#, fuzzy, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr "الـ Python خطأ من برنامج نصي رجاء إصلاح برنامج نصي."
+
+#: scripting/script_mode.cc:320
+#, fuzzy, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"هناك إلى خطأ بوصة برنامج نصي الـ Python لا برنامج نصي ليس توليد a سليم كائن "
+"رجاء إصلاح برنامج نصي."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, fuzzy, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p> أنت control a أداء من a برنامج نصي مع أمر\n"
+"<code></code> هنا هو a ظريف n<code></code>\n"
+"<code><pre> c v n\n"
+" مسدس c v\n"
+" IF n&lt;\n"
+" مسدس إظهار\n"
+" لـ i بوصة المدى\n"
+" مسدس i صح\n"
+" عودة\n"
+" c v\n"
+" v n\n"
+" لـ k بوصة\n"
+" مسدس k\n"
+" c\n"
+" n نقطة نقطة\n"
+"</pre></code> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, fuzzy, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr "<p> أنت تكرار أداء مفتاح n Z IF إلى a متتالية  مع IF هو مختصر لـ</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, fuzzy, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p> واحد من بوصة Kig القوائم أداء يمين يعمل كائن أو يعمل بعض فارغ فراغ بوصة "
+"أنت استخدام إلى إعطاءها تغيير ألوان سطر و من غير ذلك</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, fuzzy, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p> أنت جديد نقطة قائمة أو شريط الأدوات يعمل Kig مستند مع<em> الماوس</em></"
+"p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p> Kig فتح ملفّ ملفات<code></code> ملفات\n"
+"<em></em> ملفات<em></em> ملفات و<em> الدّكتور</em><em>&#8482;</em> ملفات</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p> Kig المزيد و مع المزيد استخدام بوصة مستندات فتح<em> كائنات</em> إلى "
+"الكل</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, fuzzy, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p> أنت استخدام مُنتقى إلى تشغيل من كائن مُنتقى المعاملات لـ IF إثنان مُنتقى "
+"اختيار<em> ابدأ دائرة أداء ثلاثة نقاط</em> من قائمة إلى تشغيل a أداء ثلاثة "
+"نقطة</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p> Kig كائن set خارجي أنت ابحث بعض ماكرو يعمل Kig موقع على الانترنت\n"
+"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a></p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, fuzzy, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p> إذا المزيد كائن الماوس و إلى تحديد أي منها انقر مع<em> يسار الماوس زر</"
+"em> بينما\n"
+"<em> Shift</em> مفتاح إلى get a قائمة من الماوس مؤشر تحديد من</p> n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "التركيب المنتصف من هذا نقطة و آخر واحد"
+
+#, fuzzy
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "التركيب من نقطة و نقطة"
+
+#, fuzzy
+#~ msgid "Select the first of the two points..."
+#~ msgstr "انتقِ الأوّل من إثنان غير ذلك نقطة."
+
+#, fuzzy
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "التركيب a قطعة بدء عند نقطة"
+
+#, fuzzy
+#~ msgid "Select the second of the two points..."
+#~ msgstr "انتقِ الأوّل من إثنان غير ذلك نقطة."
+
+#, fuzzy
+#~ msgid "Save changes to document %1?"
+#~ msgstr "احفظ إلى مستند?"
+
+#, fuzzy
+#~ msgid "Save Changes?"
+#~ msgstr "حفظ التغييرات؟"
+
+#, fuzzy
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "الكل مدعوم ملفات n Kig مستندات n مضغوط Kig مستندات n مستندات n مستندات n "
+#~ "الدّكتور مستندات n مستندات"
+
+#, fuzzy
+#~ msgid "Construct a cubic with this control point"
+#~ msgstr "التركيب a مع"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new cubic..."
+#~ msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#, fuzzy
+#~ msgid "Construct a rational cubic with this control point"
+#~ msgstr "التركيب a مع"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational cubic..."
+#~ msgstr "انتقِ الأوّل من إثنان من إلى سطر."
+
+#, fuzzy
+#~ msgid "Construct a quadric with this control point"
+#~ msgstr "التركيب قوس مع"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new quadric..."
+#~ msgstr "انتقِ a نقطة إلى a من جديد مثلث."
+
+#, fuzzy
+#~ msgid "Construct a rational quadric with this control point"
+#~ msgstr "التركيب قوس مع"
+
+#, fuzzy
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational quadric..."
+#~ msgstr "انتقِ الأوّل من إثنان من إلى سطر."
+
+#, fuzzy
+#~ msgid "Bezier Curve"
+#~ msgstr "إخفاء a منحنى"
+
+#, fuzzy
+#~ msgid "Construct a open polygon (polyline) with this vertex"
+#~ msgstr "التركيب a مع"
+
+#, fuzzy
+#~ msgid "Select a point to be a vertex of the new open polygon..."
+#~ msgstr "انتقِ a نقطة إلى a من جديد."
+
+#, fuzzy
+#~ msgid "Construct a polygon with this control point"
+#~ msgstr "التركيب a مع"
+
+#, fuzzy
+#~ msgid "%1 Objects"
+#~ msgstr "كائنات"
+
+#, fuzzy
+#~ msgid "&Help"
+#~ msgstr "&مساعدة"

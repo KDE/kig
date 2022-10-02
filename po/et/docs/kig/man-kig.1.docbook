@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Estonian  "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>KDE kasutaja käsiraamat</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>2010-10-06</date>
+<productname
+>KDE töökeskkond</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>&kde; interaktiivse geomeetria rakendus.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>failinimi</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>KDE üldised võtmed</arg
+> <arg choice="opt"
+>Qt üldised võtmed</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Kirjeldus</title>
+<para
+>&kig; on interaktiivse geomeetria rakendus. See on mõeldud kaheks otstarbeks:</para>
+<itemizedlist
+><listitem
+><para
+>Võimaldada õppuritel arvutis interaktiivselt matemaatilisi kujundeid ja kontseptsioone uurida;</para
+></listitem>
+<listitem
+><para
+>Täita matemaatiliste kujundite visuaalse loomise tööriista ülesannet ja võimaldada neid kaasata teistesse dokumentidesse.</para
+></listitem
+></itemizedlist>
+<para
+>Selle programmiga saab geomeetrilisi kujundeid joonistada täpselt nii nagu klassitahvlil. Kuid erinevalt tahvlist lubab programm sul ka kujundeid või nende osasid töö käigus liigutada ja muuta.</para>
+<para
+>&kig; toetab lookuste ja kasutaja määratletud makrode kasutamist. Samuti on võimalik importida ja eksprotida teisi failivorminguid kasutades, sealhulgas <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> ja <application
+>XFig</application
+>.</para>
+<para
+>See rakendus kuulub &kde; õppeprogrammide mooduli koosseisu.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Võtmed</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>&GUI;-d ei näidata, vaid lihtsalt teisendatakse määratud fail &kig;i vormingusse. Loodud &kig;i fail kirjutatakse standardväljundisse, kui võtmega <option
+>--outfile</option
+> ei ole teisiti määratud.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>failinimi</replaceable
+></option
+></term>
+<listitem
+><para
+>Koos võtmega <option
+>--convert-to-native</option
+> võimaldab määrata faili, millesse salvestatakse uus &kig;i fail. Seda võtit andmata või failinimeks <filename
+>-</filename
+> määrates saadetakse fail standardväljundisse.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Vaata ka</title>
+<para
+>Põhjalikumat kasutaja dokumentatsiooni pakub <ulink url="help:/kig"
+>help:/kig</ulink
+> (kirjuta see &URL; &konqueror;i või käivita käsuga <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Täiendavat infot leiab ka <ulink url="http://edu.kde.org/kig/"
+>&kde; Edu-projekti koduleheküljelt</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Autorid</title>
+<para
+>&kig;i autorid on <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+> ja teised.</para>
+<para
+>Käesoleva manuaalilehekülje eeskuju kirjutas Debiani jaoks <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>

@@ -1,0 +1,1065 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY package "kdeedu">
+<!ENTITY kappname "&kig;">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Estonian  "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>&kig;i käsiraamat</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+><surname
+>Laane</surname
+><affiliation
+><address
+><email
+>bald@starman.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2010-02-07</date
+> <releaseinfo
+>1.0 (&kde; 4.4)</releaseinfo>
+
+<abstract>
+<para
+>&kig; on &kde; interaktiivse geomeetria rakendus. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Interaktiivne geomeetria</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+
+<para
+>&kig; on interaktiivse geomeetria rakendus, millel on kaks peamist eesmärki: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Pakkuda õppuritele võimalust arvuti abil interaktiivselt uurida matemaatilisi kujundeid ja kontseptsioone. </para
+></listitem>
+
+<listitem
+><para
+>Olla matemaatiliste kujundite loomise ning nende teistesse rakendustesse kaasamise <acronym
+>WYSIWYG</acronym
+> töövahend.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Probleemidest &kig;i kasutamisel saab teada anda sisemise veateatevahendi abil (<menuchoice
+><guimenu
+>Abi</guimenu
+><guimenuitem
+>Saada vearaport...</guimenuitem
+></menuchoice
+>) või mulle otse kirjutades e-posti aadressile <email
+>toscano.pino@tiscali.it</email
+>. </para>
+<para
+>&kig; toetab ka makrosid ja lookuseid, võimaldades määrata üsna keerulisi makrosid. Kui oled loonud mõne huvitava makro ja arvad, et see võiks kasuks tulla ka teistele, võid selle mulle saata (aadressil <email
+>toscano.pino@tiscali.it</email
+>), et ma saaksin selle uue versiooniga kaasa panna. See tähendab ühtlasi, et sinu panus litsenseeritakse vastavalt &kig;i litsentsile ehk <ulink url="http://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>-ile, mis tähendab, et teised inimesed võivad seda vabalt kasutada ja oma vajadustele kohandada. </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Põhitõed</title>
+<sect1 id="constructing-objects">
+<title
+>Objektide loomine</title>
+<sect2 id="constructing-points">
+<title
+>Punktide loomine</title>
+<para
+>Punkti saab luua mitmel viisil:</para>
+<itemizedlist>
+<listitem>
+<para
+>Vali menüükäsk <menuchoice
+><guimenu
+>Objektid</guimenu
+><guisubmenu
+>Punktid</guisubmenu
+><guimenuitem
+>Tavaline punkt</guimenuitem
+></menuchoice
+> või klõpsa vastavat nuppu tööriistaribal. Seejärel saab punkti luua, kui klõpsata aknas soovitud kohale.</para>
+
+<note
+><para
+>Hoia all klahv &Shift;, et aktiveerida haaramisrežiim, mis võimaldab kinnistada iga loodava punkti täpselt alusvõrgustiku vajalikule punktile.</para
+></note>
+<note
+><para
+>Tegelikult käib ka teiste objektide loomine sama lihtsalt: klõpsa vajalikul elemendil menüüs või tööriistaribal ning vali aknas objekti loomiseks vajalikud elemendid.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Et punkte on väga tihti vaja luua, siis tekitab selle juba lihtsalt klõps &HKN;ga kuskil aknas, ilma et oleks vaja kasutada menüüd või tööriistariba. </para>
+</listitem>
+<listitem>
+<para
+>Punkte saab luua samal ajal, kui taustal luuakse teisi objekte, ning seejärel neid vajaduse korral muude objektide jaoks valida. Selle kohta vaata lähemalt <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Loodud punkt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Loodud punkt</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Muude objektide loomine</title>
+<para
+>Muude, punktist erinevate objektide loomine käib vastavat kirjet menüüs <guimenu
+>Objektid</guimenu
+> valides või klõpsates mõnele tööriistariba nupule. </para>
+<screenshot>
+<screeninfo
+>Ringjoone loomine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ringjoone loomine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>See käivitab vastavat tüüpi objekti loomise. Kõik sellised tüübid nõuavad teatud argumente. Kui näiteks valid ringi loomise keskpunkti ja punkti järgi, tuleb ka määrata kaks punkti: üks neist keskpunkt ja teine punkt ringjoonel. </para>
+<para
+>Argumentide valimiseks klõpsa objektil, mida soovid kasutada. Kui liigutad hiirekursorit üle objekti, mida on võimalik vajaliku objekti loomiseks kasutada, ilmub eelvaatlus, mis näitab, milline loodav objekt hakkab antud juhul välja nägema. Objektide korral, mille argumendiks on punktid, saab uue punkti luua kursori hetkeasukohas ning selle siis valida &HVN;ga. </para>
+<para
+>Uue objekti loomisest saab alati loobuda vajutusega klahvile &Esc; või klõpsuga tööriistariba nupul <guiicon
+>Peata loomine</guiicon
+> (punane kaheksanurk, mille keskel on <quote
+>X</quote
+>). </para>
+<screenshot>
+<screeninfo
+>Ringjoone loomine.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ringjoone loomine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Objektide valimine</title>
+<para
+>Objekti saab valida kahel viisil: </para>
+<itemizedlist>
+<listitem>
+<para
+>Klõps objektil valib selle, tühistades varasema valiku. Kui soovid ka varasemat valikut säilitada, hoia objektile klõpsamise ajal all klahvi &Ctrl;. </para>
+</listitem>
+<listitem>
+<para
+>Aknas tühjale kohale klõpsates ja hiirt lohistades saab valida kõik objektid, mis jäävad tekkiva ristküliku sisse. See tegevus tühistab varasema valiku. Ka siin tuleb varasema valiku säilitamiseks all hoida klahvi &Ctrl;. </para>
+</listitem>
+</itemizedlist>
+<para
+>Kui sul on hiire all rohkem kui üks objekt (seda näitab <guilabel
+>Milline objekt?</guilabel
+> olekuribal ja hiirekursori juures), saad hõlpsasti valida, millist objekti valida või lisada senisele valikule. Klõpsa &HVNga;, hoides samal ajal all klahvi &Shift;, või tee klõps &HPNga; ning näed kõiki hiire all asuvaid objekte. Seejärel vali nende seast vajalik objekt. Nagu juba öeldud, mõjutab klahvi &Ctrl; kasutamine valikut. </para>
+<screenshot>
+<screeninfo
+>Objektide valimine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Objektide valimine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Objektide liigutamine</title>
+<para
+>Objektide liigutamiseks tuleb need esmalt <link linkend="selecting-objects"
+>valida</link
+>. </para>
+<para
+>Kui oled valinud objektid, mida soovid liigutada, saad neid liigutada, kui klõpsad ükspuha millisel neist &HVN;ga ja lohistad hiirt. Kui oled jõudnud vajalikku asukohta, vabasta &HVN;. </para>
+<note
+><para
+>Mõningate objektide puhul (ennekõike keerulisemad lookused) on objektide liigutamine vanema riistvara korral üsna aeglane. See on muidugi kahetsusväärne, kuid arvestades liigutamiseks vajalike arvutuste mahtu paraku vältimatu. </para
+></note
+> <note
+><para
+>Kui klõpsata &HPN;ga mõnel valitud objektil ja valida käsk <guimenuitem
+>Liiguta</guimenuitem
+>, paneb objektid liikuma juba ainuüksi hiire liigutamine. Kui objekt on jõudnud soovitud asukohta, peatab liikumise klõps &HVN;ga.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Objektide kustutamine</title>
+<para
+>Objektide kustutamiseks tuleb need esmalt <link linkend="selecting-objects"
+>valida</link
+> ning seejärel teha üht kahest: <itemizedlist>
+<listitem>
+<para
+>Vajutada klahvi <keycap
+>Delete</keycap
+>. </para>
+</listitem>
+<listitem>
+<para
+>Vajutada tööriistaribal nuppu <guiicon
+>Kustuta objektid</guiicon
+>. </para>
+</listitem>
+<listitem>
+<para
+>Klõpsata mõnel valitud objektil &HPN;ga ning valida käsk <guimenuitem
+>Kustuta</guimenuitem
+> ilmuvast <link linkend="objects-context-menus"
+>kontekstimenüüst</link
+>. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Objektide näitamine ja peitmine</title>
+<para
+>&kig;is on võimalik objekte ka peita. Selleks tuleb objektid valida, teha neil klõps hiire <mousebutton
+>parema</mousebutton
+> nupuga ja valida käsk <guimenuitem
+>Peida</guimenuitem
+> ilmuvast <link linkend="objects-context-menus"
+>kontekstimenüüst</link
+>. </para>
+<para
+>Peidetud objektide taas nähtavale toomiseks saab kasutada menüükäsku <menuchoice
+><guimenu
+>Redigeerimine</guimenu
+><guimenuitem
+>Näita kõiki</guimenuitem
+></menuchoice
+>. See toob nähtavale kõik parajasti peidetud objektid. </para>
+
+<sect2 id="night-vision">
+<title
+>Öine nägemine</title>
+<para
+>Öine nägemine ehk infrapunarežiim on eriti kasulik peidetud objektide korral. Kui pead üht või enamat objekti liigutama või neis midagi muutma, aga ei soovi kõiki peidetud objekte nähtavaks muuta, siis on just sellest abi. </para>
+<para
+>Põhimõtteliselt lubab see peidetud objekte näha, nagu oleks need nähtaval, nii et sa saad neid töödelda nagu tavalisi objekte. Selles režiimi näidatakse peidetud objekte halli tooniga. </para>
+<para
+>Öise nägemise sisselülitamiseks kasuta menüükäsku <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Infrapunaprillid</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Tagasivõtmine/uuestitegemine</title>
+<para
+>&kig;is on võimalik tagasi võtta peaaegu igasugust dokumendis sooritatud muudatust. Selleks tuleb vaid kasutada tööriistaribal asuvaid nuppe <guiicon
+>Võta tagasi</guiicon
+>/<guiicon
+>Tee uuesti</guiicon
+> või vastavaid kiirklahve. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Täisekraanrežiim</title>
+<para
+>&kig; võimaldab kasutada ka täisekraanrežiimi. Selleks klõpsa vastaval nupul tööriistaribal või kasuta menüükäsku <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Täisekraan</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Täisekraanrežiimist lahkumiseks klõpsa &HPNga; akna tühjas osas, kus pole ühtegi objekti, ning vali käsk <guimenuitem
+>Välju täisekraanrežiimist</guimenuitem
+>, või vajuta kiirklahvi <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>&kig;i objektide tüübid</title>
+<para
+>&kig; toetab päris paljusid objektitüüpe. Sa võid kõiki neid ise proovida, sest ma arvan, et see on palju õpetlikum kui käsiraamatust teooria lugemine. Arvesta aga palun, et tööriistaribal ei ole näha mitte kõik võimalikud objektid - mõningaid saab luua vaid käsuga menüüst <guimenu
+>Objektid</guimenu
+>. Nagu &kde;s ikka, on tööriistaribadel näidatav mõistagi igati seadistatav. Kui soovid sinna objekte või midagi muud lisada, kasuta menüükäsku <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Tööriistaribade seadistamine...</guimenuitem
+></menuchoice
+>. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Edasijõudnutele</title>
+<sect1 id="objects-context-menus">
+<title
+>Kontekstimenüüd</title>
+<para
+>&kig; pakub võimalust kasutada objektide puhul kontekstimenüüd. Selleks tuleb mingil objektil klõpsata &HPNga;. Menüüs on mitmeid võimalusi: selle abil saab luua uusi objekte, määrata värve, pliiatsi laiust, stiili või ka objekte peita, liigutada või kustutada. Mõningatel objektidel on kontekstimenüüs ainult neile omaseid võimalusi, näiteks saab teatud punkte kinnistada sirgjoone külge, millega nad varem ei olnud seotud &etc; Katseta ja vaata, mida miski teeb. Midagi rasket ega üle mõistuse käivat siin kindlasti ei ole. </para>
+
+<para
+>Mõned objekti kontekstimenüü toimingud vajavad viiteks mõnda teist defineeritud objekti, näiteks:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Kujundi keeramine ümber punkti määratud arvu kraadide võrra</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Vali <menuchoice
+><guimenu
+>Objektid</guimenu
+> <guisubmenu
+>Nurgad</guisubmenu
+><guimenuitem
+>Nurk kolme punkti järgi</guimenuitem
+> </menuchoice
+> ning pane soovitud pööramisnurk kuskil &kig;i aknas paika, soovitatavalt kohas, kus see midagi muud ei sega. Soovi korral klõpsa nurgal ja vali <menuchoice
+><guimenu
+>Lisa tekstipealdis</guimenu
+><guimenuitem
+>Nurk kraadides</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Klõpsa &HPNga; nurgal, vali <guimenuitem
+>Määra suurus</guimenuitem
+> ja kirjuta dialoogis nurga uus suurus. </para
+></listitem>
+<listitem
+><para
+>Vali <guimenu
+>Objektid</guimenu
+> ja loo soovitud objekt. </para
+></listitem>
+<listitem
+><para
+>Tee kujundil paremklõps ja vali <menuchoice
+><guimenu
+>Teisendus</guimenu
+><guimenuitem
+>Pööramine</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Määra soovitud pööramispunkt.</para
+></listitem>
+<listitem
+><para
+>Klõpsa nurgal.</para
+></listitem>
+<listitem
+><para
+>Kujund pöörataksegi!</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Objekti projitseerimine</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Vali <menuchoice
+><guimenu
+>Objektid</guimenu
+><guisubmenu
+>Vektorid ja lõigud</guisubmenu
+><guimenuitem
+>Vektor</guimenuitem
+></menuchoice
+> ning loo objekt, valides kuskil &kig;i aknas algus- ja lõpp-punkti.</para
+></listitem>
+<listitem
+><para
+>Vektori pikkuse ja suuna kohandamiseks tuleb muuta selle algus- ja lõpp-punkti. Vali need ja seejärel vali kontekstimenüüst <guimenuitem
+>Määra koordinaat...</guimenuitem
+> </para
+></listitem>
+<listitem
+><para
+>Vali <guimenu
+>Objektid</guimenu
+> ja loo soovitud objekt. </para
+></listitem>
+<listitem
+><para
+>Tee objektil paremklõps ja vali <menuchoice
+><guimenu
+>Teisendus</guimenu
+><guimenuitem
+>Projektsioon</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Vali vektor, mille järgi projitseerida.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Dokumendi kontekstimenüüd</title>
+<para
+>Klõps &HPNga; dokumendil, &ie; akna osal, kus ei paikne objekt, avab hüpikmenüü. mis võimaldab luua uusi objekte, muuta kasutatavat koordinaatide süsteemi, näidata peidetud objekte või isegi dokumenti suurendada või vähendada ning lülituda täisekraanirežiimi. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Makrode defineerimine</title>
+<para
+>&kig;i üks suurepäraseid võimalusi on makrode kasutamine. See lubab määrata objekte omavahel kombineerides sootuks uut tüüpi objekte. </para>
+<para
+>Oletame näiteks, et soovid luua makro, mis tekitaks kolme punkti põhjal ringjoone. Siis tuleb sul luua kolm punkti, mõned ristsirged ja keskpunktid, kuni oled leidnud keskpunkti, ning seejärel luua <guimenuitem
+>ringjoon keskjoone ja ühe punkti järgi</guimenuitem
+>. Seda aitab selgitada all toodud joonis. </para>
+<screenshot>
+<screeninfo
+>Makrode testimine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Makrode testimine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Nüüd vaatame makro defineerimist. Vali käsk <guimenuitem
+>Uus makro...</guimenuitem
+> menüüst <guimenu
+>Tüübid</guimenu
+> või klõpsa tööriistariba vastaval nupul. Ilmub nõustaja, mis palub valida antud objektid. Meie näites on neiks kolm punkti. Vali kolm punkti (klõps neil valib, uus klõps tühistab valiku) ning klõpsa jätkamiseks nupule <guibutton
+>Järgmine</guibutton
+>. Seejärel tuleb valida lõppobjektid (meie näites on selleks ringjoon). </para>
+
+<screenshot>
+<screeninfo
+>Makronõustaja</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Makronõustaja</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Kui see on tehtud, klõpsa jätkamiseks nupule <guibutton
+>Järgmine</guibutton
+>. Sisesta uue tüübi nimi ja soovi korral ka kirjeldus ning klõpsa nupule <guibutton
+>Lõpeta</guibutton
+>. Makro ongi valmis. </para>
+
+<para
+>Uue makrotüübi kasutamiseks klõpsa selle nupule tööriistaribal või vali see menüüst <menuchoice
+><guimenu
+>Objektid</guimenu
+></menuchoice
+>. Makroobjekti loomine sarnaneb igati tavapärase objekti loomisega. </para>
+<screenshot>
+<screeninfo
+>Uue tüübi kasutamine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Uue tüübi kasutamine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Tüüpide kasutamine</title>
+<para
+>Nagu nägime eelmises peatükis, võimaldab &kig; luua omaenda objekte. &kig; tagab ka selle, et kui oled objekti loonud, salvestatakse see rakendusest väljumisel ning laaditakse rakenduse uuel käivitamisel. Makrosid ei pea käsitsi salvestama ega avama. Kuid &kig; võimaldab makrodega veel palju enam ette võtta. Kui valid menüükäsu <menuchoice
+><guimenu
+>Tüübid</guimenu
+><guimenuitem
+>Halda tüüpe...</guimenuitem
+></menuchoice
+>, ilmub dialoog, kus saad oma tüüpe redigeerida. See võimaldab kustutada tüübid, mida sa enam ei vaja, salvestada need faili või ka avada failist. </para>
+<screenshot>
+<screeninfo
+>Tüüpide redigeerimise dialoog</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tüüpide redigeerimise dialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Tekstipealdised</title>
+<para
+>&kig; võimaldab loodud objektidele lisada tekstipealdisi. See on väga tulus nimede, selgituste või mingi muu vajaliku teksti näitamiseks. &kig; võib näidata ka mitmesugust infot objektide kohta (seda nimetatakse sageli <quote
+>omadusteks</quote
+>). </para>
+<para
+>Tekstipealdise loomiseks klõpsa &kig;i tööriistaribal <guibutton
+>tekstipealdis</guibutton
+>e nuppu või kasuta menüükäsku <menuchoice
+><guimenu
+>Objektid</guimenu
+><guisubmenu
+>Muu </guisubmenu
+><guimenuitem
+>Tekstipealdised</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Seejärel tuleb valida koht, kuhu pealdis asetada. Valida võib suvalise koha aknas või siis <quote
+>siduda</quote
+> pealdise mõne objektiga. </para>
+<screenshot>
+<screeninfo
+>Pealdise sidumine ringjoonega...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Pealdise sidumine ringjoonega...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Nüüd ilmub tekstipealdise dialoog. Siin saab kirja panna teksti, mida pealdis peaks näitama, ning kui see on tehtud, tuleb klõpsata nupule <guibutton
+>Lõpeta</guibutton
+>. Ja ongi pealdis dokumendis olemas. </para>
+<screenshot>
+<screeninfo
+>Tekstipealdise dialoog</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tekstipealdise dialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Eelmine näide oli üsna lihtne ja piirdus ainult tekstiga. Kuid võimalik on pealdises näidata ka mitmesugust infot objektide kohta, &eg; võib luua pealdise tekstiga <quote
+>Selle lõigu pikkuseks on %1</quote
+>, kus <token
+>%1</token
+> asendatakse vastavalt muutustele konkreetse lõigu pikkusega. </para>
+<para
+>Selleks kirjuta tekst ja määra selles numbritega kohatäitjad (<token
+>%1</token
+>, <token
+>%2</token
+> &etc;). Kui oled lõpetanud, vajuta jätkamiseks nupule <guibutton
+>Järgmine</guibutton
+>. Kui soovid hiljem teksti või muutujaid täiendavalt redigeerida, saad seda teha nupu <guibutton
+>Tagasi</guibutton
+> abil. </para>
+<para
+>Nõustaja näitab nüüd sisestatud teksti, kus kõigi kohanäitajate asemel seisab <guilabel
+>argument 1</guilabel
+> või midagi sellist. Valimaks, mida teatud argumendina näidatakse, tuleb esmalt klõpsata vajalikul argumendil. Seejärel klõpsa objektil, mis peab infot näitama, ning vali ilmuvast hüpikmenüüst see infotüüp, mida soovid näha. Meie näite korral tuleks siis klõpsata kirjel <guilabel
+>argument 1</guilabel
+>, seejärel klõpsata &kig;i peaaknas vajalikul lõigul ja valida omadus <guilabel
+>Pikkus</guilabel
+>. Pärast seda saad sama operatsiooni sooritada muude muutujatega. Kui oled valmis, klõpsa tekstipealdise lõplikuks loomiseks nupule <guibutton
+>Lõpeta</guibutton
+>. </para>
+<screenshot>
+<screeninfo
+>Muutuja omaduse valimine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Muutuja omaduse valimine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Lookused</title>
+<para
+>&kig; toetab ka lookuste kasutamist. Lookus on lühidalt öeldes on see kujund, mis on määratud kõigi punktidega, millest punkt üle liigub, kui liigub mingi kinnispunkt... See võib kõlada üpris keerulisena, kuid tegelikult see nii hull ei olegi ja kindlasti saab asi järgneva näite varal üsna selgeks. </para>
+<para
+>Kujutame ette sellist geomeetrilist konstruktsiooni: me tõmbame ringjoone ning märgime sellel punkti, mis võib mööda ringjoont liikuda (selle saab luua, kui viia hiirekursor ringjoonele ja klõpsata &HKN;ga. Kui hiljem püüad tekkinud punkti liigutada, näed, et seda ei saa ringist välja liigutada). Nüüd tõmbame sellest punktist lõigu ringjoone keskpunkti ja märgime lõigu keskpunkti. </para>
+<screenshot>
+<screeninfo
+>Lihtsa lookuse loomine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Lihtsa lookuse loomine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Kui nüüd liigutada ringjoonele kinnitatud punkti, näed, et liigub ka teine punkt. Kui teha esimese punktiga ära terve ring, ilmub nähtavale uus, poole väiksem ring. See ongi lookus ehk siis teekond, mida läbib teine punkt, kui esimene teeb tiiru ringjoonel. </para>
+<para
+>Tegelikult ongi lookuse loomine päris lihtne. Selleks tuleb klõpsata tööriistariba vastaval nupul või valida menüükäsk <menuchoice
+><guimenu
+>Objektid</guimenu
+><guisubmenu
+>Muu</guisubmenu
+><guimenuitem
+>Lookus</guimenuitem
+></menuchoice
+>. Seejärel tuleb luua liikuv kinnispunkt (selle kohale hiirt viies ilmub nähtavale tekst <guilabel
+>Liikuv punkt</guilabel
+>) ning teine, sõltuv punkt. Nähtavale ilmubki lookus. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Skriptid</title>
+<para
+>&kig; võimaldab kasutajal luua oma tüüpe Pythoni skriptikeeles. See on väga kasulik võimalus ja ma tean veel ainult üht interaktiivse geomeetria rakendust, mis sellist võimalust pakub (<acronym
+>GNOME</acronym
+> rakendus &drgeo;). </para>
+<para
+>Pythoni skriptid võimaldavad &kig;is luua täiesti kasutaja meele järgi meetodi määrata objekt teatud emaobjektide põhjal. Kui oled näiteks matemaatikaõpetaja ja sul on oma lahe meetod arvutada välja koonuse vajalik punkt, siis selle asemel, et näha vaeva keeruka loomisprotsessi ja makrodega, võid lihtsalt kirjutada Pythoni skripti, mis määrab, kuidas punkti arvutada - ja &kig; näitab seda graafiliselt. </para>
+<para
+>Taas on seda ilmselt mõistlikum selgitada näite varal. Oletame, et sa oled kahe silma vahele jätnud &kig;i pakutava <quote
+>keskpunkti</quote
+> võimaluse, kuid tahad ometi näidata kahe määratud punkti keskpunkti. Selleks tuleb klõpsata tööriistariba nupule <guibutton
+>Pythoni skript</guibutton
+> või kasutada menüükäsku <menuchoice
+><guimenu
+>Objektid</guimenu
+><guisubmenu
+>Muu</guisubmenu
+><guimenuitem
+>Pythoni skript</guimenuitem
+></menuchoice
+>. Seejärel ilmub nõustaja. </para>
+<screenshot>
+<screeninfo
+>Skriptiobjekti nõustaja</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Skriptiobjekti nõustaja</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Esmalt tuleb valida skriptiobjekti argumendid. Meie näites tähendab see kaht punkti, mille keskpunkti me soovime näidata. Vali punktid &kig;i peaaknas ja klõpsa jätkamiseks nupule <guibutton
+>Järgmine</guibutton
+>. </para>
+<para
+>Nüüd ilmub tekstikast, kuhu saab sisestada skriptiobjekti koodi. Kohal on juba mallkood ja mõned kommentaarid. Oluline on kontrollida, et sisestatu oleks ikka korrektne Pythoni kood. Need, kellele Python on juba tuttav, saavad aru, et me tegelikult defineerime Pythoni funktsiooni <function
+>calc</function
+>. Seepärast on vajalik kindlasti järgida Pythoni funktsioonide defineerimise reegleid. Nii peab näiteks funktsiooni iga rida algama tabeldusmärgiga. Esimene rida, mis tabeldusmärgiga ei alga, tähistab funktsiooni definitsiooni lõppu. </para>
+<para
+>Defineeritav Pythoni funktsioon kannab nimetust <quote
+>calc</quote
+> ning arvestab meie juhul kaht argumenti. Nendeks on objektid, mille valisime argumentidena eelmisel ekraanil. Argumente on just nii palju, kui palju argumente varem on valitud. Need kannavad nimetust <parameter
+>arg1</parameter
+> ja <parameter
+>arg2</parameter
+>, kuid soovi korral võib nende nimetused muuta ka millekski arusaadavamaks. </para>
+<para
+>Selles funktsioonis saab lasta teha kõikvõimalikke arvutusi, mida pead vajalikuks, kasutades selleks ka mainitud kaht argumenti. Tulemuseks peaks olema objekt, mida soovid näha. Meie näites on selleks punktiobjekt. Kaks argumenti on samuti punktiobjektid ning me võime kasutada kahe antud punkti koordinaatide jaoks funktsiooni <function
+>Point.coordinate()</function
+>. </para>
+<para
+>Meie näites vajalik arvutus on äärmiselt lihtne: kaks koordinaati tuleb liita ja tulemus kahega jagada. Nii saame saadud tulemust kasutades luua uue punkti. Selleks vajalik Pythoni kood näeb välja selline:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Koodi sisestamine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Keskpunkti koodi sisestamine skriptiobjekti nõustajas.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Kui nüüd klõpsata nupule <guibutton
+>Lõpeta</guibutton
+>, ilmubki uus objekt &kig;i dokumenti. Kui liigutad üht selle punkti, liigub kaasa ka uus, loodud punkt. Sel moel on võimalik mõistagi luua ka palju mõjusamaid objekte, mida me soovitame sul soojalt endal järele proovida. </para>
+<screenshot>
+<screeninfo
+>Loodud skriptiobjekt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Loodud skriptiobjekt. </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Kõiki &kig;i objekte võib kasutada Pythoni koodis. Nagu eespool nägime, kuuluvad punktid klassi <classname
+>Point</classname
+> ja me võime kasutada &eg; meetodit <function
+>Point.coordinate()</function
+>. Tulemuseks võib aga olla mis tahes tüüpi objekt, mitte tingimata <classname
+>Point</classname
+>. &kig;i Pythoni kood pakub ohtralt klasse ja meetodeid, millest täpsema ülevaate leiab <ulink url="http://edu.kde.org/kig/manual/scripting-api/index.html"
+>siit</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>&kig;i omadused</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; on vaba tarkvara. See tähendab, et sul on õigus seda kasutada ja selle lähteteksti muuta oma soovide kohaselt. &kig;i levitamine on aga seotud teatud piirangutega, mis ennekõike puudutavad tõsiasja, et kõigil peavad olema ühesugused õigused kasutada &kig;i, sealhulgas sinu tehtud muudatusi. </para>
+<para
+>Vaba tarkvara arendavad tõeliselt vabadust ihkavad inimesed ning arendajad on tavaliselt väga tänulikud kasutajate tagasiside üle. Seepärast: kui sul on küsimusi, kaebusi või üldse midagi &kig;i kohta öelda, ütle seda mulle e-kirjas aadressile <email
+>toscano.pino@tiscali.it</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&kig; on KPart-rakendus, mis tähendab, et seda on võimalik põimida muu &kde; tarkvaraga. Kui avad näiteks &konqueror;is faili laiendiga <literal role="extension"
+>.kig</literal
+>, avatakse see otse &konqueror;i aknas ilma välist rakendust käivitamata. </para>
+</listitem>
+<listitem>
+<para
+>&kig;i kasutamine on väga hõlpus, objektide loomine lihtne ja interaktiivne, näha saab ka vahetulemusi &etc; Liigutamine, valimine ja loomine käib just nii, nagu seda võibki oodata. Ka toimingute tagasivõtmine on täiesti tasemel. </para>
+</listitem>
+<listitem>
+<para
+>&kig; võimaldab makrosid kasutada ilma mingite raskusteta. Sel moel loodud objektid alluvad samadele reeglitele nagu tavalised objektid. Need salvestatakse rakenduse sulgemisel ja laaditakse selle käivitamisel, nii et igal juhul ei lähe nad kaduma. Objekte saab hallata dialoogis <guilabel
+>Tüüpide haldamine</guilabel
+> (vaata <xref linkend="working-with-types"/>). Neid saab faili salvestada, failist avada, muuta ja kustutada. </para>
+</listitem>
+<listitem>
+<para
+>&kig; salvestab oma andmed puhtas &XML; vormingus. </para>
+</listitem>
+<listitem>
+<para
+>&kig; võimaldab luua lookuseid. </para>
+</listitem>
+<listitem>
+<para
+>&kig; võimaldab eksportida &kig;i faili ka mõnda muusse vormingusse, näiteks pildiks, <application
+>XFig</application
+>- või <application
+>LaTeX</application
+>-failiks või <acronym
+>SVG</acronym
+> vektorpildiks . See on üpris kasulik, sest paraku ei toeta veel mitte kõik rakendused &kig;i failivormingut. </para>
+</listitem>
+<listitem>
+<para
+>&kig; võimaldab äärmiselt paindlikult objekte projitseerida. </para>
+</listitem>
+<listitem>
+<para
+>&kig; püüab olla oma konkurentidega ühilduv, mistõttu on toetatud näiteks &kgeo; ja &kseg;i ning osaliselt &drgeo; ja &cabri; failivorming. Kavas on pakkuda toetust teistelegi vormingutele. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="faq">
+<title
+>Küsimused ja vastused</title>
+&reporting.bugs; &updating.documentation; </chapter>
+
+
+<chapter id="credits">
+<title
+>Autorid ja litsents</title>
+
+<para
+>&kig; </para>
+<para
+>&kig;i autoriõigus 2002-2004: Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Dokumentatsiooni autoriõigus 2002-2004: Dominique Devriese <email
+>devriese@kde.org</email
+>. </para>
+
+<para
+>Dokumentatsiooni autoriõigus 2004-2005: Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>Korrigeerinud: &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@starman.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Paigaldamine</title>
+
+<sect1 id="getting-kig">
+<title
+>Kuidas hankida &kig;?</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+&install.compile.documentation; </sect1>
+
+</appendix>
+
+<appendix id="contributing">
+<title
+>Kaasaaitamine</title>
+<sect1 id="kig-is-free">
+<title
+>Vaba tarkvara</title>
+<para
+>&kig; on <ulink url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+>vaba tarkvara</ulink
+>. See tähendab, et rakenduse lähtetekst on internetis kõigile vabalt kättesaadav ning kõik võivad seda kasutada, uurida, muuta ja levitada. Mina näen selle kallal vaeva hobi korras ning ma olen tänu sellele saanud päris palju teada programmeerimise, C++, &kde;/&Qt;, matemaatika, tarkvara ühilduvuse ning vaba tarkvara projektide kohta. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Kaasaaitamine</title>
+<para
+>Selle peatüki mõte on tutvustada sulle kui kasutajale õigusi, mida annab sulle &kig;i litsents. Nagu vaba tarkvara puhul ikka, on sul õigus parandada vigu, mis kasutamisel ette tulevad (ja ma väga soovin, et sa seda teeksid), lisada võimalusi, mis sinu arvates puuduvad, levitada muudetud rakendust ning saata need muudatused ka mulle aadressile <email
+>toscano.pino@tiscali.it</email
+>, et ma võiksin need lisada uude versiooni, mis võimaldab kõigil neist osa saada. Minul isiklikult ei ole selle projektiga seotud mingeid rahalisi huve, nii et see jutt ei ole kindlasti mõeldud turustamisnipina. </para>
+<para
+>Kui sa ei ole päris kindel, millised on sinu õigused selle tarkvara kasutamisel või millised on teiste inimeste õigused kasutada muudatusi, mida sa oled rakendusse teinud, tutvu palun litsentsiga. Selle leiab &kig;i paketist failis <filename
+>COPYING</filename
+> või dialoogi <guilabel
+>Kigi info</guilabel
+> litsentsikaardilt. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Kuidas kaasa aidata?</title>
+<para
+>Oodatud on igasugune kaasabi. Kui arvad, et ikoonid võiks olla palju etemad või et käsiraamat vajab kohendamist-täiendamist või kui sul on valmis saanud lahe makro, mida kõik peaksid naudinguga kasutama, ära kõhkle, vaid saada oma panus mulle. Arvesta, et sinu kaastööd levitatakse vastavalt &GNU; Üldise Avaliku Litsentsi tingimustele, millega saab tutvuda &kig;i lähtetekstipaketi failis <filename
+>COPYING</filename
+> või ka käesolevas käsiraamatus peatükis <link linkend="credits"
+>Autorid ja litsents</link
+>. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

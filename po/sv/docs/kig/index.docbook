@@ -1,0 +1,1101 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Swedish "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>Handbok &kig;</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Stefan</firstname
+><surname
+>Asserhäll</surname
+><affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+><contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-23</date>
+<releaseinfo
+>Program 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kig; är ett program för interaktiv geometri av &kde;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE utbildning</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Interaktiv geometri</keyword>
+<keyword
+>Kgeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr. Geo</keyword>
+<keyword
+>Kseg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Inledning</title>
+
+<para
+>&kig; är ett program för interaktiv geometri. Det är avsett att tjäna två syften: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Låta studenter utforska matematiska figurer och koncept med datorn. </para
+></listitem>
+
+<listitem
+><para
+>Fungera som ett verktyg för att rita matematiska figurer och infoga dem i andra dokument, med resultatet direkt synligt.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Du kan rapportera problem med &kig; med det interna felrapporteringsverktyget (<menuchoice
+><guimenu
+>Hjälp</guimenu
+><guimenuitem
+>Rapportera fel</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>Eftersom &kig; stöder makron och konstruktion av lokus, ger det möjlighet att definiera några ganska avancerade makron. Om du har skapat ett intressant makro, som du tror kan vara användbart för andra, skapa en granskningsbegäran för ändringen, så att den kan utvärderas för att läggas till i distributionen (om du gör det, licensieras det med &kig;s licens, <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>, så att andra kan använda och ändra det fritt). </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Grundläggande användning</title>
+<sect1 id="constructing-objects">
+<title
+>Konstruera objekt</title>
+<sect2 id="constructing-points">
+<title
+>Konstruera punkter</title>
+<para
+>Du kan skapa punkter på flera olika sätt:</para>
+<itemizedlist>
+<listitem>
+<para
+>Välj <menuchoice
+><guimenu
+>Objekt</guimenu
+> <guisubmenu
+>Punkter</guisubmenu
+> <guimenuitem
+>Punkter</guimenuitem
+></menuchoice
+> i menyraden eller tryck på lämplig knapp i verktygsraden. Därefter kan du konstruera en punkt genom att klicka på önskad position i fönstret.</para>
+
+<note
+><para
+>Tryck på skifttangenten för att aktivera låsning till rutnätet, vilket låter dig placera vilken punkt som helst i en konstruktion exakt på rutnätets punkter.</para
+></note>
+<note
+><para
+>I själva verket fungerar detta på samma sätt för att konstruera andra objekt: Klicka på önskat alternativ i menyer eller verktygsknapp och markera nödvändiga delar för att skapa objektet.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Eftersom du ofta behöver skapa punkter, skapas en punkt åt dig genom att du helt enkelt klickar någonstans på skärmen med musens <mousebutton
+>mitten</mousebutton
+>knapp, utan att behöva gå till en meny eller knapp. </para>
+</listitem>
+<listitem>
+<para
+>Du kan skapa punkter medan du bygger andra objekt i bakgrunden, och eventuellt markera dem för objektet du håller på att bygga. För mer om detta, se <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>En punkt har konstruerats</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>En punkt har konstruerats</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Konstruera andra objekt</title>
+<para
+>Att skapa andra objekt än punkter görs oftast genom att välja lämpligt alternativ i menyn <guimenu
+>Objekt</guimenu
+>, eller genom att klicka på en av knapparna i verktygsraden. </para>
+<screenshot>
+<screeninfo
+>Konstruera en cirkel</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konstruera en cirkel</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Då påbörjas konstruktionen av den valda objekttypen. Alla dessa typer kräver argument. Om du till exempel väljer att skapa en cirkel med centrum och punkt, måste du ange två punkter: en för centrum och en för punkten på cirkeln. </para>
+<para
+>Argumenten är också objekt som kan markeras genom att helt enkelt klicka på dem. När du flyttar markören över ett argument du vill använda för att skapa ett objekt, visas en preliminär bild av objektet, så att du vet hur det kommer att se ut. För objekt som kräver punkter som argument, kan du placera en ny punkt på markörens nuvarande position, och markera den genom att klicka med <mousebutton
+>vänster</mousebutton
+> musknapp. </para>
+<para
+>Du kan alltid avbryta konstruktionen av det nya objektet genom att trycka på knappen <keycap
+>Esc</keycap
+>, eller genom att klicka på knappen &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Avbryt konstruktion</guibutton
+> (den röda cirkeln med ett streck) i verktygsraden. </para>
+<screenshot>
+<screeninfo
+>Konstruera en cirkel</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konstruera en cirkel</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Markera objekt</title>
+<para
+>Att markera objekt kan göras på två sätt: </para>
+<itemizedlist>
+<listitem>
+<para
+>Genom att helt enkelt klicka på ett objekt gör att objektet du klickade på blir markerat, och nuvarande markering försvinner. Om du vill markera flera objekt samtidigt, håll nere &Ctrl;-tangenten medan du klickar på ett objekt. </para>
+</listitem>
+<listitem>
+<para
+>Genom att klicka och dra på ett tomt ställe på skärmen, kan du välja alla objekt inne i rektangeln som skapas. Den här åtgärden tar bort nuvarande markering. Som i föregående fall, är det möjligt att behålla nuvarande markering genom att hålla nere &Ctrl;-tangenten. </para>
+</listitem>
+</itemizedlist>
+<para
+>När du har mer än ett objekt under musen (indikerat av <guilabel
+>Vilket objekt?</guilabel
+> i statusraden och vid muspekaren), kan du enkelt välja vilket objekt som ska markeras eller läggas till i den nuvarande markeringen. Klicka med vänster musknapp medan du håller nere &Shift;-tangenten, för att få en sammanhangsberoende meny med alla objekt under musen. Därefter kan du välja objektet du vill ha. Som tidigare nämnts, påverkar beteendet hos &Ctrl;-tangenten markeringen. </para>
+<screenshot>
+<screeninfo
+>Markera objekt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Markera objekt</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Flytta objekt</title>
+<para
+>För att flytta objekt, måste du först <link linkend="selecting-objects"
+>markera</link
+> dem. </para>
+<para
+>När objekten som du vill flytta är markerade, kan du börja flytta dem genom att <mousebutton
+>vänster</mousebutton
+>klicka och dra vilket som helst av dem. När du är klar, släpp helt enkelt upp vänster musknappen. </para>
+<note
+><para
+>För vissa typer av objekt (särskilt när de definieras av komplicerade lokus), kan det gå långsamt att flytta dem på gamla datorer. Det är olyckligt, men oundvikligt, med de beräkningar som måste utföras. </para
+></note
+> <note
+><para
+>Om du <mousebutton
+>höger</mousebutton
+>klickar på ett av de markerade objekten, och väljer <menuchoice
+><guimenuitem
+>Flytta</guimenuitem
+></menuchoice
+>, flyttas objektet när musen rörs. När objektet har flyttats till önskad position, avslutas förflyttningen med ytterligare ett klick med <mousebutton
+>vänster</mousebutton
+> musknapp.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Ta bort objekt</title>
+<para
+>Att ta bort objekt görs genom att först <link linkend="selecting-objects"
+>markera</link
+> dem, och därefter göra något av det följande: <itemizedlist>
+<listitem>
+<para
+>Trycka på tangenten <keycap
+>Delete</keycap
+>. </para>
+</listitem>
+<listitem>
+<para
+>Klicka på knappen &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Ta bort objekt</guibutton
+> i verktygsraden. </para>
+</listitem>
+<listitem>
+<para
+><mousebutton
+>Höger</mousebutton
+>klicka på ett av objekten, och välja <guimenuitem
+>Ta bort</guimenuitem
+> i den <link linkend="objects-context-menus"
+>sammanhangsberoende menyn</link
+> som visas. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Visa och dölja objekt</title>
+<para
+>I &kig; kan objekt döljas. Det görs genom att markera objekten, <mousebutton
+>höger</mousebutton
+>klicka på ett av dem, och välja <guimenuitem
+>Dölj</guimenuitem
+> i den <link linkend="objects-context-menus"
+>sammanhangsberoende menyn</link
+> som visas. </para>
+<para
+>För att visa objekt igen, använd <menuchoice
+><guimenu
+>Redigera</guimenu
+> <guimenuitem
+>Visa allt</guimenuitem
+></menuchoice
+>. Det visar alla objekt som för närvarande är dolda. </para>
+
+<sect2 id="night-vision">
+<title
+>Nattsyn</title>
+<para
+>Nattsyn är ett särskilt sätt att arbeta med dolda objekt. När du vill flytta eller ändra något i ett eller flera objekt utan att visa alla dolda objekt du har, kan nattsynsläget vara till nytta för dig. </para>
+<para
+>Egentligen låter det dig se de dolda objekten som om de var synliga, så att du kan behandla dem som du skulle normalt. I nattsynsläge är de dolda objekten synliga med en grå färg. </para>
+<para
+>För att ändra nattsynsläget, använd <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Använd infraröda glasögon</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Ångra/gör om</title>
+<para
+>I &kig; kan du ångra nästan alla ändringar du gör i dokumentet. Använd bara knapparna <guiicon
+>Ångra</guiicon
+>/<guiicon
+>Gör om</guiicon
+> i verktygsraden, eller motsvarande snabbtangenter. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Fullskärmsläge</title>
+<para
+>&kig; har också ett fullskärmsläge. Klicka på motsvarande knapp i verktygsraden för att använda det, eller välj <menuchoice
+><guimenu
+>Inställningar</guimenu
+><guimenuitem
+>Fullskärmsläge</guimenuitem
+></menuchoice
+>. </para>
+<para
+>För att lämna fullskärmsläge, <mousebutton
+>höger</mousebutton
+>klicka på skärmen på en plats där det inte finns något objekt, och välj <menuchoice
+><guimenuitem
+>Avsluta fullskärmsläge</guimenuitem
+></menuchoice
+>, eller tryck på snabbtangenterna <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>Objekttyper i &kig;</title>
+<para
+>&kig; stöder ett relativt stort antal objekttyper. Observera att alla tillgängliga objekttyper visas inte i verktygsraderna, det finns några objekt som du bara kan skapa via menyn <guimenu
+>Objekt</guimenu
+> i menyraden. Som med alla &kde;-program, är förstås det som visas i verktygsraderna anpassningsbart. Prova alternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa verktygsrader...</guimenuitem
+></menuchoice
+> om du vill göra det. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Avancerad användning</title>
+<sect1 id="objects-context-menus">
+<title
+>Sammanhangsberoende menyer</title>
+<para
+>&kig; har sammanhangsberoende menyer för objekt. Försök att <mousebutton
+>höger</mousebutton
+>klicka på ett objekt för att se menyn visas. Det finns många alternativ för att skapa andra objekt, ställa in färger, penntjocklek, stil, och till och med för att dölja, flytta eller ta bort objekt. Vissa objekt har egna alternativ (du kan t.ex. omdefiniera vissa punkter som ska vara begränsade till en linje om de inte tidigare var det, etc.). De här alternativen bör vara mycket enkla att förstå. </para>
+
+<para
+>Vissa av åtgärderna i den sammanhangsberoende menyn för ett objekt behöver ett annat objekt definierat som referens, till exempel:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Rotera en form ett angivet antal grader omkring en punkt</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Klicka på <menuchoice
+><guimenu
+>Objekt</guimenu
+><guisubmenu
+>Vinklar</guisubmenu
+><guimenuitem
+>Vinkel med tre punkter</guimenuitem
+> </menuchoice
+> och skapa önskad rotationsvinkel någonstans i &kig;s fönster, vanligtvis på en plats som inte stör. Om så önskas, högerklicka på vinkeln och klicka på <menuchoice
+><guisubmenu
+>Lägg till textetikett</guisubmenu
+> <guimenuitem
+>Vinkel i grader</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Klicka med höger musknapp på vinkeln och välj <guimenuitem
+>Ange storlek</guimenuitem
+> och infoga vinkelns nya storlek i dialogrutan. </para
+></listitem>
+<listitem
+><para
+>Klicka på menyn <guimenu
+>Objekt</guimenu
+> och skapa önskat objekt. </para
+></listitem>
+<listitem
+><para
+>Högerklicka på formen och välj <menuchoice
+><guisubmenu
+>Transformera</guisubmenu
+><guimenuitem
+>Rotera</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Ange önskad rotationspunkt.</para
+></listitem>
+<listitem
+><para
+>Klicka på vinkeln.</para
+></listitem>
+<listitem
+><para
+>Formen har roterats.</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Förflytta ett objekt</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Klicka på <menuchoice
+><guimenu
+>Objekt</guimenu
+> <guisubmenu
+>Vektorer och segment</guisubmenu
+><guimenuitem
+>Vektor</guimenuitem
+> </menuchoice
+> och skapa objektet genom att välja start- och slutpunkt någonstans i &kig;s fönster.</para
+></listitem>
+<listitem
+><para
+>För att justera vektorns längd och riktning måste du redigera dess start- och slutpunkt. Markera dem och välj <guimenuitem
+>Ange koordinat...</guimenuitem
+> i den sammanhangsberoende menyn. </para
+></listitem>
+<listitem
+><para
+>Klicka på <guimenu
+>Objekt</guimenu
+> och skapa önskat objekt. </para
+></listitem>
+<listitem
+><para
+>Högerklicka på objektet och välj <menuchoice
+><guisubmenu
+>Transformera</guisubmenu
+><guimenuitem
+>Förflytta</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Välj vektorn att förflytta med.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Sammanhangsberoende dokumentmenyer</title>
+<para
+>Genom att <mousebutton
+>höger</mousebutton
+>klicka på dokumentet (dvs. inte på ett objekt) visas en meny som du kan använda för att börja skapa ett nytt objekt, ändra koordinatsystem som används, visa dolda objekt, zooma in och ut i dokumentet, och byta till fullskärmsläge. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Definiera makron</title>
+<para
+>En av de mest avancerade funktionerna i &kig; är stödet för makron. Det låter dig definiera nya typer av objekt från andra som redan är definierade. </para>
+<para
+>Antag till exempel att du vill göra ett makro för att skapa en cirkel från tre punkter på den. Du skulle mata in tre punkter, därefter skapa några vinkelräta linjer och mittpunkter till du hittar centrum. Nu kan du använda det befintliga kommandot <quote
+>Skapa en cirkel med centrum och punkt</quote
+> (genom att använda en av de tre punkterna för kommandot). Följande bild bör klargöra det hela. </para>
+<screenshot>
+<screeninfo
+>Prova att köra makron</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Prova att köra makron</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Därefter kommer definitionen av makrot. Välj menyalternativet <menuchoice
+><guimenu
+>Typer</guimenu
+> <guimenuitem
+>Nytt makro...</guimenuitem
+></menuchoice
+> i menyn , eller klicka på knappen &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Nytt makro...</guibutton
+> i verktygsraden. En guide visas, som ber dig markera de givna objekten. I vårt exempel är det de tre punkterna. Så du markerar de tre punkterna (klicka på dem för att markera, klicka igen för att avmarkera), och klickar på knappen <guibutton
+>Nästa</guibutton
+> för att fortsätta. Markera därefter till sist slutobjekten (bara cirkeln i vårt exempel). </para>
+
+<screenshot>
+<screeninfo
+>Makroguiden</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Makroguiden</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Efter föregående steg är färdiga, klicka på knappen <guibutton
+>Nästa</guibutton
+> för att fortsätta. Skriv in ett namn, och en valfri beskrivning för den nya typen, och klicka på knappen <guibutton
+>Slutför</guibutton
+>. Den nya makrotypen är nu klar. </para>
+
+<para
+>För att använda den nya makrotypen, klicka på dess knapp i verktygsraden eller använd menyn <guimenu
+>Objekt</guimenu
+>. Du kan skapa ett makroobjekt precis som vilket annat objekt som helst. </para>
+<screenshot>
+<screeninfo
+>Använda den nya typen</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Använda den nya typen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Arbeta med typer</title>
+<para
+>Som du såg i föregående kapitel, låter &kig; dig skapa dina egna objekt. &kig; försäkrar också att när du har skapat ett objekt, sparas det när programmet avslutas och laddas när det startas. Du behöver inte spara eller ladda makrodefinitioner för hand. Men &kig; låter dig göra mer med makron. Om du väljer <menuchoice
+><guimenu
+>Typer</guimenu
+> <guimenuitem
+>Hantera typer...</guimenuitem
+></menuchoice
+>, ser du en dialogruta där du kan redigera dina typer. Den låter dig ändra befintliga typer, ta bort typer du inte längre använder, exportera dem till en fil, eller till och med ladda dem från en annan fil. </para>
+<screenshot>
+<screeninfo
+>Dialogruta för att redigera typer</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Dialogrutan för att redigera typer</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Textetiketter</title>
+<para
+>&kig; låter dig lägga till textetiketter i en konstruktion. Det är mycket användbart för att lägga till namn, förklaringar, eller annan text i konstruktioner. &kig; kan också visa varierande information om objekt (också kallade <quote
+>egenskaper</quote
+>). </para>
+<para
+>För att börja skapa en textetikett, tryck helt enkelt på knappen &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Textetikett</guibutton
+> i &kig;s verktygsrad, eller välj menyalternativet <menuchoice
+><guimenu
+>Objekt</guimenu
+> <guisubmenu
+>Övrigt</guisubmenu
+> <guimenuitem
+>Textetikett</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Därefter måste du välja en plats för textetiketten. Du kan antingen bara välja en slumpmässig plats på skärmen, eller välja att <quote
+>ansluta</quote
+> etiketten till ett objekt. </para>
+<screenshot>
+<screeninfo
+>Ansluta en etikett till en cirkel...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ansluta en etikett till en cirkel...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Efter du har valt var textetiketten ska placeras, visas dialogrutan för textetiketter. Här kan du skriva in texten som du vill visa i den nya etiketten, och klicka på <guibutton
+>Slutför</guibutton
+>. Etiketten ska nu synas i dokumentet. </para>
+<screenshot>
+<screeninfo
+>Dialogruta för textetikett</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Dialogruta för textetikett</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Föregående exempel var enkelt, och begränsat till bara text. Men det finns också stöd för att visa varierande information om objekt i en etikett (du kan t.ex. konstruera en etikett med texten <quote
+>Det här segmentet är %1 enheter långt.</quote
+>, där <token
+>%1</token
+> skulle dynamiskt ersättas av längden av ett särskilt segment). </para>
+<para
+>För att göra det, skriv in en text med ett antal platsmarkörer (<token
+>%1</token
+>, <token
+>%2</token
+> etc.). Tryck därefter på knappen <guibutton
+>Nästa</guibutton
+> för att fortsätta. Om du vill ändra texten eller variablerna senare, kan du alltid gå tillbaka med knappen <guibutton
+>Tillbaka</guibutton
+>. </para>
+<para
+>Guiden visar nu texten som du skrev in med alla platsmarkörerna ersatta med något i stil med <guilabel
+>argument 1</guilabel
+>. Att välja egenskapen ansluten till ett visst argument, görs genom att först klicka på argumentet i fråga. Klicka därefter på objektet som du behöver och som har egenskapen, och välj därefter själva egenskapen i menyn som visas. I exemplet ovan skulle du t.ex. klicka på <guilabel
+>argument 1</guilabel
+>, klicka på rätt segment i &kig;s huvudfönster, och välja egenskapen <guilabel
+>Längd</guilabel
+>. Efteråt kan du fylla i resten av de variabla delarna, eller välja en annan egenskap för en av de variabla delarna om du vill ändra den. När du är klar, klicka på knappen <guibutton
+>Slutför</guibutton
+>, för att avsluta konstruktionen av textetiketten. </para>
+<screenshot>
+<screeninfo
+>Välja en egenskap för en varierbar del</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Välja en egenskap för en varierbar del</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Lokus</title>
+<para
+>&kig; har stöd för användning av lokus. Ett lokus definieras matematiskt som mängden av alla punkter eller linjer som uppfyller eller bestäms av specifika villkor, som i <quote
+>ett lokus av ekvidistanta punkter från en given punkt är en cirkel</quote
+>. Härefter visas ett exempel på hur man använder lokus i &kig;. </para>
+<para
+>Tänk dig följande geometriska konstruktion: Vi ritar en cirkel, och en punkt som bara kan röra sig längs omkretsen (skapa punkten genom att placera markören på en cirkel och klicka på musens <mousebutton
+>mitten</mousebutton
+>knapp. Om du därefter försöker flytta punkten som skapats, ser du att du inte kan flytta den från cirkeln.) Därefter ritar vi ett segment från punkten till cirkelns mittpunkt, och det segmentets mittpunkt. </para>
+<screenshot>
+<screeninfo
+>En enkel konstruktion som använder ett lokus</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>En enkel konstruktion som använder ett lokus</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Om du nu flyttar punkten som är begränsad till cirkeln, ser du att den andra punkten rör sig tillsammans med den. Om du skulle hålla en penna på den andra punkten, och flytta den första punkten runt hela cirkeln, skulle en ny cirkel ritas med halva den andras storlek. Vägen som den andra punkten förflyttas medan den första rör sig runt cirkeln, är dess lokus. </para>
+<para
+>I själva verket är det mycket enkelt att konstruera ett lokus för en punkt. Klicka på knappen &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>Lokus</guibutton
+> i verktygsraden, eller välj menyalternativet <menuchoice
+><guimenu
+>Objekt</guimenu
+> <guisubmenu
+>Övrigt</guisubmenu
+> <guimenuitem
+>Lokus</guimenuitem
+></menuchoice
+>. Välj därefter den begränsade punkten som flyttbar punkt (texten <guilabel
+>Flyttbar punkt</guilabel
+> visas när du flyttar musen över den), och den andra som <guilabel
+>Beroende punkt</guilabel
+>. Lokus för den beroende punkten ritas då upp. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Skript</title>
+<para
+>&kig; låter dig skapa egna typer med skriptspråket Python. Det är en mycket avancerad funktion, och jag känner bara till ett annat interaktivt geometriprogram som har en liknande funktion (<acronym
+>GNOME</acronym
+>-programmet &drgeo;). </para>
+<para
+>Grundfunktionen i &kig;s Python-skript är att låta dig skapa dina egna objekt från vissa ursprungsobjekt. Om du till exempel är matematiklärare, och har ett avancerat sätt att räkna ut en intressant punkt på en kon, kan du skriva ner hur punkten ska beräknas med Python-kod, istället för att bråka med komplexa konstruktioner och makron, så visar &kig; den åt dig. </para>
+<para
+>Antag att du inte var medveten om &kig;s inbyggda <quote
+>mittpunktstyp</quote
+>, och du ville visa mittpunkten för två givna punkter. Då skulle du klicka på knappen &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Pythonskript</guibutton
+> i verktygsraden, eller välja <menuchoice
+><guimenu
+>Objekt</guimenu
+> <guisubmenu
+>Övrigt</guisubmenu
+> <guimenuitem
+>Pythonskript</guimenuitem
+> </menuchoice
+> i menyraden. Då visas en guide för dig som låter dig gå vidare. </para>
+<screenshot>
+<screeninfo
+>Skriptobjektguiden</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Skriptobjektguiden</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Det första du måste göra är att välja argument för skriptobjektet. I vårt exempel, betyder det de två punkterna som vi vill visa mittpunkten för. Markera dem i &kig;s huvudfönster, och klicka på <guibutton
+>Nästa</guibutton
+> för att gå vidare. </para>
+<para
+>Nu visas en textredigeringsruta, där du kan skriva in koden för skriptobjektet. Mallkod och några kommentarer finns redan på plats. Det är viktigt att försäkra dig om att din kod är giltig Python-kod. Personer som är bekanta med Python observerar att vi definierar i själva verket en Python-funktion, som heter <function
+>calc</function
+>. Därför är det nödvändigt att följa Pythons regler för definition av funktioner. Varje rad i funktionen måste till exempel börja med ett tabulatortecken. Den första raden som inte börjar med ett tabulatortecken avslutar funktionens definition. </para>
+<para
+>Python-funktionen som vi vill definiera heter <quote
+>calc</quote
+>, och i vårt fall tar den två argument. De är objekten som du har markerat som argument på föregående skärm. Du behöver lika många argument som du markerade där. De kallas <parameter
+>arg1</parameter
+> och <parameter
+>arg2</parameter
+>, men du kan ändra namnen till något meningsfullare om du vill. </para>
+<para
+>Du kan göra alla sorters beräkningar i funktionen som du anser vara nödvändiga, med användning av de två argumenten om det behövs. Du ska returnera objektet som du vill definiera. I vårt fall är det ett punktobjekt. De två argumenten är också punktobjekt, och vi kan använda funktionen <function
+>Point.coordinate()</function
+> för att definiera de två givna punkternas koordinater. </para>
+<para
+>Beräkningen som krävs i vårt exempel är mycket enkel. Vi lägger helt enkelt ihop de två koordinatuppsättningarna, och dividerar resultatet med två. Därefter skapar vi en ny punkt med resultatet. Python-koden som behövs är:</para>
+
+<programlisting
+>def calc( a, b ):
+m = ( a.coordinate() + b.coordinate() ) / 2;
+return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Skriva in koden</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Skriva in koden för mittpunkten i Skriptobjektguiden.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Om du nu klickar på knappen <guibutton
+>Slutför</guibutton
+>, visas det nya objektet i &kig;s dokument. Om du flyttar en av punkterna, flyttas den nyskapade punkten med den. Mycket mer kraftfulla objekt kan byggas på detta sätt: Du uppmuntras att försöka dig på det. </para>
+<screenshot>
+<screeninfo
+>Konstruerade ett skriptobjekt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Det nykonstruerade skriptobjektet </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Alla objekt i Kig kan användas i Python-kod. Som vi såg ovan, har punkter klassen <classname
+>Point</classname
+>, och du kan till exempel använda metoden <function
+>Point.coordinate()</function
+>. Du kan också returnera alla sorters objekt, inte bara <classname
+>Point</classname
+>. Många fler klasser och metoder är tillgängliga i Kigs Python-kod, och en mer fullständig referens om dem tillhandahålls <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+>på &kig;s webbsida</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>Funktioner i &kig;</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; är ett program med öppen källkod. Det betyder att du kan använda och ändra den på vilket sätt du vill. Att distribuera &kig; är föremål för vissa begränsningar, i grunden att alla ska ha samma rättigheter att använda &kig;, inklusive dina ändringar, som du och jag. </para>
+<para
+>Fri programvara utvecklas med en mycket öppen attityd, och utvecklarna är ofta mycket lyhörda för återmatning från användare. Om du därför har några frågor, klagomål eller något annat som rör &kig;, kontakta gärna e-postlistan kde-edu på <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&kig; är ett Kpart-program, vilket betyder att du kan bädda in det i andra &kde;-program. Om du öppnar en <literal role="extension"
+>kig</literal
+>-fil i &konqueror;, kan den direkt visas i &konqueror;s fönster utan att behöva starta ett yttre program. </para>
+</listitem>
+<listitem>
+<para
+>Att arbeta med &kig; ska vara mycket rättframt. Det är lätt och interaktivt att skapa objekt, med visning av preliminära resultat, etc. Flytta, markera och bygga fungerar alla som man kan förvänta sig. Stöd för att ångra bör också vara mycket intuitivt. </para>
+</listitem>
+<listitem>
+<para
+>&kig; stöder makron som definieras på ett rättframt sätt. De här objekten visas för användaren som vanliga objekt. De sparas vid avslutning och laddas vid start, så de går inte förlorade när programmet avslutas. Du kan hantera objekten i dialogrutan <guilabel
+>Hantera typer</guilabel
+> (se <xref linkend="working-with-types"/>). Du kan exportera dem till filer, importera dem från filer, redigera och ta bort dem. </para>
+</listitem>
+<listitem>
+<para
+>&kig; sparar data med ett enkelt &XML;-format. </para>
+</listitem>
+<listitem>
+<para
+>&kig; stöder skapande av lokus. </para>
+</listitem>
+<listitem>
+<para
+>&kig; låter dig exportera en &kig;-fil till några intressanta format, som bilder, <application
+>Xfig</application
+>-filer och <application
+>Latex</application
+>-filer och &SVG;-vektorbilder. Det är ganska användbart, eftersom inte alla program ännu stöder &kig;s filformat. </para>
+</listitem>
+<listitem>
+<para
+>&kig; har ett mycket flexibelt transformeringssystem. </para>
+</listitem>
+<listitem>
+<para
+>&kig; har som mål att fungera tillsammans med konkurrerande program. Det är därför det stöder &kgeo;s filformat, &kseg;s filformat, samt delvis &drgeo;s och &cabri;s format. Dessutom planeras stöd för andra format. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Tack till och licens</title>
+
+<para
+>Huvudupphovsmän: </para>
+<para
+>&kig; copyright 2011-2015 David E. Narvaez <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>&kig; copyright 2002-2013 Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>&kig; copyright 2004-2010 Pino Toscano <email
+>pino@kde.org</email
+> </para>
+<para
+>&kig; copyright 2002-2005 Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Dokumentation copyright 2002-2004 Dominique Devriese <email
+>devriese@kde.org</email
+>. </para>
+
+<para
+>Dokumentation copyright 2004-2005 Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>Granskad av &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+<para
+>Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Bidrag</title>
+<sect1 id="kig-is-free">
+<title
+>Fri programvara</title>
+<para
+>&kig; är <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+>fri programvara</ulink
+>. Det betyder att källkoden är fritt tillgänglig på Internet, och att alla kan använda den, läsa den, ändra den och distribuera den. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Bidrag</title>
+<para
+>I det här kapitlet vill jag påpeka för dig (användaren) vilka rättigheter &kig;s licens ger dig. Som med all fri programvara, tillåts (och uppmuntras) du att lösa problem du stöter på medan du använder det, att lägga till funktioner du saknar, att distribuera ditt ändrade program, och skicka tillbaka ändringarna via granskningsverktygen tillgängliga i &kde;-gemenskapen. </para>
+<para
+>Om du är osäker på dina rättigheter att använda programvaran, eller andra personers rätt att använda eventuella ändringar som du gör i programmet, etc. läs då licensen. Du hittar den i filen <filename
+>COPYING</filename
+> i &kig;s källkod, eller med länken till licensen i dialogrutan <guilabel
+>Om &kig;</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Hur kan jag bidra?</title>
+<para
+>Alla bidrag är välkomna. Om du inte tycker om ikonerna, eller tycker att handboken behöver uppdateras, eller om du har ett riktigt häftigt makro som du vill dela med världen, tveka inte att skicka det till mig. Observera att ditt bidrag kommer att distribueras enligt villkoren i &GNU; <acronym
+>GPL</acronym
+>. Du hittar licensvillkoren i filen <filename
+>COPYING</filename
+> i &kig;s källkod, och i kapitlet <link linkend="credits"
+>Tack till och licens</link
+> i den här handboken. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

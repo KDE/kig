@@ -1,0 +1,7020 @@
+# translation of kig.po to Latvian
+# Copyright (C) 2003, 2008, 2010 Free Software Foundation, Inc.
+#
+# Gints Polis <gintam@inbox.lv>, 2003.
+# Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
+# Einars Sprugis <einars8@gmail.com>, 2010, 2011, 2012.
+# Maris Nartiss <maris.kde@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2012-06-24 18:40+0300\n"
+"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
+"Language-Team: Latvian <locale@laka.lv>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Einārs Sprūģis"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "einars8@gmail.com"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Riņķis pēc centra un līnijas"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "Riņķis, kas konstruēts pēc tā centra un dotās līnijas tangensa"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Konstruēt riņķa tangensu uz šīs līnijas"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr ""
+"Izvēlieties līniju, pret kuru jaunajam riņķim būtu jābūt kā tangensam..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Riņķis pēc punkta un segmenta (kā diametra)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr "Riņķis, kas definēts pēc tā centra un segmenta garuma kā diametra"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Konstruēt riņķi ar diametru šī segmenta garumā"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+"Izvēlieties segmentu, kura garums būs vienāds ar jaunā riņķa diametru..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Vienādsānu trīsstūris"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Vienādsānu trīsstūris ar divām dotām virsotnēm"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Evolūta"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Līknes evolūta"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Šīs līknes evolūta"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr ""
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Izvēlieties punktu..."
+
+#, kde-format
+msgid "Square"
+msgstr "Kvadrāts"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Kvadrāts ar dotām divām blakus esošām virsotnēm"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Vektoru starpība"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Konstruēt starpību starp diviem vektoriem."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Konstruēt starpību starp šo un otru vektoru."
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Konstruēt starpību starp otru un šo vektoru."
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Konstruēt vektoru starpību, sākot no šī punkta."
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Izvēlieties pirmo no diviem vektoriem, no kura vēlaties konstruēt starpību..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Izvēlieties otro no diviem vektoriem, no kura vēlaties konstruēt starpību..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Izvēlieties punktu, kurā konstruēt starpības vektoru..."
+
+#: filters/asyexporter.cc:29
+#, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Eksportēt uz &Asymptote..."
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr "&Asymptote..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+#| msgid "*.asy|Asymptote Documents (*.asy)"
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.asy|Asymptote dokumenti (*.asy)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr "Eksportēt kā Asymptote skriptu"
+
+#: filters/asyexporter.cc:48
+#, kde-format
+msgid "Asymptote Options"
+msgstr "Asymptote opcijas"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"Neizdevās atvērt failu \"%1\". Lūdzu, pārbaudiet, vai faila atļaujas ir "
+"iestatītas pareizi."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Opcijas"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Rādīt papildu rāmi"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Rādīt asis"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Rādīt tīklu"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Šis ir XFig fails, nevis Cabri figūra."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Šī Cabri versija (%1) vēl nav atbalstīta.\n"
+"Lūdzu, sazinieties ar Kig autoriem, lai palīdzētu atbalsta izveidošanā."
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr "Šis Cabri fails satur objektu \"%1\", kuru Kig pašreiz neatbalsta."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Kļūda %1. rindā, failā %2."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Dr. Geo fails \"%1\" ir makrosu fails, līdz ar to tas nesatur figūras."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Dr. Geo failā \"%1\" nav figūru."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo filtrs"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Pašreizējais Dr. Geo fails satur vairāk nekā vienu figūru.\n"
+"Lūdzu, izvēlieties, kuru importēt:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Šis Dr. Geo fails satur objektu \"%1 %2\", kuru Kig pašreiz neatbalsta."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr "Šis Dr. Geo fails satur šķēluma tipu, kuru Kig pašreiz neatbalsta."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Eksportēt uz attēlu"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Attēls..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Eksportēt kā attēlu"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Attēla opcijas"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Atvainojiet, šis faila formāts vēl nav atbalstīts."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Atvainojiet, kaut kas nogāja greizi, saglabājot attēlā \"%1\""
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Eksportēt uz"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Neizdevās atvērt failu \"%1\". Tas, iespējams, nozīmē, ka fails nepastāv, "
+"vai arī to nevarēja atvērt tā atļauju dēļ"
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+#| msgid ""
+#| "An error was encountered while parsing the file \"%1\".  It cannot be "
+#| "opened."
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "Kļūda parsējot failu \"%1\". Neizdevās to atvērt."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Parsēšanas kļūda"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Nav atbalstīts"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+#| msgid "Kig cannot open the file \"%1\"."
+msgid "Kig cannot open this file."
+msgstr "Neizdevās atvērt failu \"%1\"."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Izšķirtspēja"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "Saglabāt &attiecību"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Augstums:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Platums:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"Šis KSeg dokuments lieto mērogošanas pārveidošanu, kuru Kig pašreiz nevar "
+"importēt."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr "Šis KSeg fails satur aizpildīto riņķi, kuru Kig pašreiz neatbalsta."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr "Šis Cabri fails satur loka sektoru, kuru Kig pašreiz neatbalsta."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr "Šis Cabri fails satur loka segmentu, kuru Kig pašreiz neatbalsta."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Eksportēt uz &Latex..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Latex dokumenti (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Eksportēt kā Latex"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Latex opcijas"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "Izvada formāts"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr "PSTricks"
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr "Tikz/PGF"
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "Asymptote"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, kde-format
+msgid "Document options"
+msgstr "Dokumenta opcijas"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr "Tikai attēls"
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr "Atsevišķs dokuments"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Šis fails tika izveidots ar Kig versiju \"%1\", kuru ar šo versiju nevar "
+"atvērt."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Šis fails tika izveidots ar Kig versiju \"%1\".\n"
+"Vecāko Kig formātu (pirms 0.4) atbalsts no programmas ir izņemts.\n"
+"Jūs varat mēģināt atvērt šo failu ar vecāku Kig versiju (0.4 līdz 0.6)\n"
+"un tad saglabāt to vēlreiz. Fails tad tiks saglabāts jaunajā formātā."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Šajā Kig failā izmantota koordinātu sistēma, ko šī Kig versija neatbalsta.\n"
+"Tās vietā tiks izmantota standarta koordinātu sistēma."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Šis Kig fails izmanto objektu ar tipu \"%1\", ko šī Kig versija neatbalsta. "
+"Iespējams, jūs esat kompilējis Kig, neiekļaujot tajā šī objektu tipa "
+"atbalstu, vai arī lietojat vecāku Kig versiju."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Šis Kig fails izmanto objektu ar tipu \"%1\", kas ir novecojis. Jums "
+"vajadzētu konstrukciju saglabāt ar atšķirīgu nosaukumu un pārbaudīt, vai tā "
+"darbojas pareizi."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "&Eksportēt uz SVG..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "*.svg|Mērogojamo vektoru grafika (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Eksportēt kā SVG"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG opcijas"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Atvainojiet, kaut kas nogāja greizi, saglabājot SVG failā \"%1\""
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Eksportēt uz &XFig failu"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig fails..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+#| msgid "*.fig|XFig Documents (*.fig)"
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|XFig dokumenti (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Eksportēt kā XFig failu"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE interaktīvā ģeometrija"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "(C) 2002-2005, The Kig izstrādātāji"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+#| msgid "Original author, long time maintainer, design and lots of code."
+msgid "Original author, former maintainer, design and lots of code."
+msgstr ""
+"Sākotnējais autors, ilgstošs uzturētājs, dizaina un lielas daļas koda autors."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Veicis daudz svarīga darba ap Kig, ietverot, bet neierobežojoties ar, konusu "
+"šķēlumu, kubisko līkņu, transformāciju un īpašību testu atbalstu."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+#| msgid ""
+#| "Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
+#| "translation, miscellaneous stuff here and there."
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Faktiskais uzturētājs, Dr. Geo importēšanas filtrs, punktu un līniju stili, "
+"tulkojums itāļu valodā un vēl šis un tas."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Palīdzēja ar Lotus objekta implementāciju - lai to izdarītu pareizi, bija "
+"jāiesaista visai sarežģīta matemātika, un Franco uzrakstīja pašas "
+"sarežģītākās daļas."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr "Francesca Gatti"
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Atbildīgs par koordinātu punkta algebriskā vienādojuma izskaitļošanu."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr "Petr Gajdos"
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Ziedoja Bezjē līknes un ar tām saistītās ikonas."
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr "Raoul Bourquin"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Devis eksportēšanas filtru 'Asymptote'."
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "The French translator, who also sent me some useful feedback, like "
+#| "feature requests and bug reports."
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"Franču tulkotājs, kas iesūtījis arī tādu noderīgu informāciju, kā jaunu "
+"iespēju ierosinājumi un kļūdu ziņojumi."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"Izveidojis KGeo, no kurienes guvu iedvesmu, nedaudz izejas koda un lielāko "
+"daļu mākslinieciskā noformējuma."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Domi brālis, kuru viņš pierunāja uzrakstīt algoritmu riņķa centra "
+"aprēķināšanai, ja doti trīs punkti."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud'homme"
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+#| msgid "Sent me a patch for some bugs."
+msgid "Contributed a patch for some bugs."
+msgstr "Iesūtīja dažus kļūdu labojumus."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+#| msgid ""
+#| "Gave me some good feedback on Kig, some feature requests, cleanups and "
+#| "style fixes, and someone to chat with on irc :)"
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Deva labas atsauksmes par Kig, dažus jaunu iespēju ierosinājumus, "
+"'satīrīšanas' un stila labojumus, kā arī kādu, ar ko patērzēt irc kanālos :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Atbildīgs par jauko programmas SVG ikonu."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Atbildīgs par jaunajām objektu darbību ikonām."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr ""
+"Neizdevās atrast nepieciešamo Kig bibliotēku, pārbaudiet jūsu instalāciju."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Noņemt %1 objektu"
+msgstr[1] "Noņemt %1 objektus"
+msgstr[2] "Noņemt %1 objektus"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Pievienot %1 objektu"
+msgstr[1] "Pievienot %1 objektus"
+msgstr[2] "Pievienot %1 objektus"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "Ie&statīt koordinātu sistēmu"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Kig opcijas"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Rādīt tīklu"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Rādīt asis"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Invertēt iezīmējumu"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Dzēst objektus"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Dzēst iezīmētos objektus"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Atcelt konstruēšanu"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Atcelt pašreiz konstruējamā objekta konstruēšanu"
+
+#: kig/kig_part.cpp:237
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Atkārtot konstruēšanu"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Atkārtot pēdējo konstruēšanu (ar jaunajiem datiem)"
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "Parādīt &visus"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Rādīt visus slēptos objektus"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "Jau&ns makross..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Definēt jaunu makrosu"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "Pārvaldīt &tipus..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Pārvaldīt makrosu tipus."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr "Pār&lūkot vēsturi..."
+
+#: kig/kig_part.cpp:263
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Pārlūkot pašreizējās konstrukcijas vēsturi."
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Pietuvināt dokumentu"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Attālināt dokumentu"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Pārcentrēt ekrānu virs dokumenta"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Skatīt šo dokumentu pilnekrāna režīmā."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "Izvēlietie&s rādāmo apgabalu"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Izvēlieties apgabalu, kuru vēlaties redzēt logā."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "Izvēli&eties tālummaiņas apgabalu"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Iestatīt koordinātes &precizitāti..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr "Iestatīt daļskaitļu precizitāti koordinātēm dokumentā. "
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Rādīt &tīklu"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Rādīt vai slēpt tīklu."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "Rādīt &asis"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Rādīt vai slēpt asis."
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Valkāt infrasarkanās brilles"
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Ieslēgt/izslēgt slēpto objektu redzmību."
+
+#: kig/kig_part.cpp:347
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Atkārtot konstruēšanu (%1)"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "Atkārtot %1 (ar jaunajiem datiem)"
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Fails \"%1\", kuru mēģinājāt atvērt, nepastāv. Lūdzu, pārbaudiet, vai "
+"ievadījāt pareizu ceļu."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Fails nav atrasts"
+
+#: kig/kig_part.cpp:394
+#, fuzzy, kde-format
+#| msgid ""
+#| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+#| "support this format. If you think the format in question would be worth "
+#| "implementing support for, you can always ask us nicely on mailto:pino@kde."
+#| "org or do the work yourself and send me a patch."
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"Jūs mēģinājāt atvērt dokumentu ar tipu \"%1\"; diemžēl, Kig neatbalsta šo "
+"formātu. Ja uzskatāt, kā šī formāta atbalstu būtu vērts ieviest, vienmēr "
+"varat mīļi pavaicāt mailto:pino@kde.org vai arī izdarīt šo darbu pats un "
+"atsūtīt mums ielāpu."
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Formāts nav atbalstīts"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig neatbalsta saglabāšanu jebkādā citā faila formātā, izņemot savējo. "
+"Saglabāt Kig formātā?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Saglabāt Kig formātā"
+
+#: kig/kig_part.cpp:695
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kig|Kig Documents (*.kig)\n"
+#| "*.kigz|Compressed Kig Documents (*.kigz)"
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+"*.kig|Kig dokumenti (*.kig)\n"
+"*.kigz|Kompresēti Kig dokumenti (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Fails \"%1\" jau pastāv. Vai vēlaties to pārrakstīt?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Pārrakstīt failu?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Drukāt ģeometriju"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Paslēpt %1 objektu"
+msgstr[1] "Paslēpt %1 objektus"
+msgstr[2] "Paslēpt %1 objektus"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Rādīt %1 objektu"
+msgstr[1] "Rādīt %1 objektus"
+msgstr[2] "Rādīt %1 objektus"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Tuvināt"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Tālināt"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Pārcentrēt skatu"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Izvēlieties taisnstūri, kuru vajadzētu rādīt."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Mainīt ekrāna rādīto daļu"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Izvēlieties tālummaiņas apgabalu"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Izvēlieties tuvināšanas apgabalu, ievadot<br />augšējā kreisā un apakšējā "
+"labā stūra koordinātes."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Fails"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "R&ediģēt"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "S&kats"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Objekti"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Punkti"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Līnijas"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Riņķi un arkas"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "&Daudzstūri"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Vektori un segmenti"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "Ko&nusa šķēlumi un kubiskās līknes"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Vairāk konusa šķēlumu"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "Ku&biskās līknes"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr "&Bezjē līknes"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Leņķi"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Transformācijas"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Diferenciālā ģeometrija"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "Pārbaud&es"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Citi"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Tipi"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "&Rīki"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Galvenā rīkjosla"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Punkti"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Līnijas"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Vektori un segmenti"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Riņķi un arkas"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Konusa šķēlumi"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, kde-format
+msgid "Bézier Curves"
+msgstr "Bezjē līknes"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Leņķi"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Transformācijas"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Pārbaudes"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Citi objekti"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Skats"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "Ie&statījumi"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Nerādīt grafisko lietotāja saskarni. Pārveidot norādīto failu dzimtajā Kig "
+"formātā. Izvade tiks novirzīta uz standarta izvadi, ja vien nebūs norādīts --"
+"outfile."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Fails, kurā izvadīt izveidoto programmas dzimto failu. '-' nozīmē: izvadīt "
+"izvadi uz standarta izvadi. Noklusējums ir novadīšana uz standarta izvadi."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Atveramais dokuments"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Punkts pēc skaitliskām etiķetēm"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "Punkts, kura koordinātas tiek norādītas ar divām skaitliskām etiķetēm"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Segments"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Segments, kas konstruēts no tā sākuma un beigu punkta"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Segmenta ass"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Perpendikulāra līnija, kas novilkta caur dotā segmenta viduspunktu."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Līnija pēc diviem punktiem"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Līnija, kas konstruēta caur diviem punktiem"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Puslīnija"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "Līnija pēc sākumpunkta un cita punkta kaut kur uz tās."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Perpendikuls"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Līnija, kas konstruēta caur punktu, perpendikulāra citai līnijai vai "
+"segmentam."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Paralēle"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+"Līnija, kas konstruēta caur punktu, paralēla citai līnijai vai segmentam"
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Riņķis pēc centra un punkta"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Riņķis, kas konstruēts pēc tā centra un punkta, kurš pieder pie riņķa"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Riņķis pēc trim punktiem"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Riņķis, kas konstruēts caur trim punktiem"
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Riņķis pēc punkta un rādiusa"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Riņķis, kas definēts pēc tā centra un rādiusa garuma"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Konstruēt šī leņķa bisektrisi"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Izvēlieties leņķi, kuram vēlaties konstruēt bisektrisi..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Leņķa bisektrise"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Bisektrise leņķim"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Konusa šķēlums pēc pieciem punktiem"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Konusa šķēlums, kas konstruēts caur pieciem punktiem"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Hiperbola pēc asimptotām un punkta"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "Hiperbola ar dotām asimptotām caur punktu"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Elipse pēc fokusiem un punkta"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "Elipse, kas konstruēta pēc tās fokusiem un punkta, kurš pieder pie tās"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Hiperbola pēc fokusiem un punkta"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr ""
+"Hiperbola, kas konstruēta pēc tās fokusiem un punkta, kurš pieder pie tās"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Konusa šķēlums pēc direktrises, fokusa un punkta"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr "Konusa šķēlums ar doto direktrisi un fokusu, cauri punktam"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Vertikālā parabola pēc trim punktiem"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Vertikālā parabola, kas konstruēta caur trim punktiem"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Kubiskā līkne pēc deviņiem punktiem"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Kubiskā līkne, kas konstruēta caur deviņiem punktiem"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Līnijas polārais punkts"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Līnijas polārais punkts attiecībā pret konusa šķēlumu."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Punkta polārā līnija"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Punkta polārā līnija attiecībā pret konusa šķēlumu."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Kubiskā līkne ar mezglu pēc sešiem punktiem"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "Kubiskā līkne cauri sešiem punktiem, ar mezgla punktu sākumpunktā"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Kubiskā līkne pēc četriem punktiem, ar ragu"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+"Kubiskā līkne cauri četriem punktiem, ar horizontālu ragu koordinātu "
+"sākumpunktā"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Kubiskā funkcija pēc četriem punktiem"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr "Kubiskā funkcija caur četriem punktiem"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Konusa šķēluma direktrise"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Konusa šķēluma direktrises līnija."
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Leņķis pēc trim punktiem"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Leņķis, kas definēts pēc trim punktiem"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Vienādsānu hiperbola pēc četriem punktiem"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Vienādsānu hiperbola, kas konstruēta caur četriem punktiem"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Konstruēt šī segmenta viduspunktu"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Viduspunkts"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Segmenta vai divu citu punktu viduspunkts"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this segment"
+msgid "Construct the golden ratio point of this segment"
+msgstr "Konstruēt šī segmenta viduspunktu"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+#| msgid "Move a Point"
+msgid "Golden Ratio Point"
+msgstr "Pārvietot punktu"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "The midpoint of a segment or two other points"
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Segmenta vai divu citu punktu viduspunkts"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Vektors"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Konstruēt vektoru no diviem dotajiem punktiem."
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Vektoru summa"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Konstruēt vektoru summu diviem vektoriem."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Līnija pēc vektora"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Konstruēt līniju pēc dotā vektora caur doto punktu."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Puslīnija pēc vektora"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "Konstruēt puslīniju pēc dotā vektora no dotā punkta."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Loks pēc trim punktiem"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Konstruēt loku caur trim punktiem."
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Konusa šķēluma loks pēc centra un trim punktiem"
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "Konstruēt konusa šķēluma loku ar dotu centru cauri trim punktiem."
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Konusa šķēlums pēc pieciem punktiem"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Konstruēt konusa šķēluma loku cauri pieciem punktiem."
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Loks pēc centra, leņķa un punkta"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "Konstruēt loku pēc tā centra un dotā leņķa, sākot no dotā punkta"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Parabola pēc direktrises un fokusa"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Parabola, kas definēta pēc tās direktrises un fokusa"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Translēt"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Objekta translācija pēc tā vektora"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Atspoguļot punktā"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Objekts, kas atspoguļots punktā"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Atspoguļot līnijā"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Objekts, kas atspoguļots līnijā"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Pagriezt"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Objekts, kas pagriezts par leņķi ap punktu"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Mērogot"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr "Mērogot objektu pār punktu pēc attiecības, kas dota kā segmenta garums"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Mērogot pār līniju"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Objekts mērogots pār līniju pēc attiecības, kas dota kā segmenta garums"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Mērogot (attiecība norādīta ar diviem segmentiem)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Mērogot objektu pāri punktam pēc attiecības, kas dota kā divu segmentu garums"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Mērogot pāri līnijai (attiecība norādīta ar diviem segmentiem)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Objekts mērogots pāri līnijai pēc attiecības, kas dota kā divu segmentu "
+"garums"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Pielietot līdzināšanu"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Pielietot līdzināšanu objektam (secīga mērogošana un rotācija ap centru)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Harmoniskā homoloģija"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Harmoniskā homoloģija ar doto centru un asīm (šī ir projektīvā "
+"transformācija)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Zīmēt projektīvo ēnu"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Objekta ēna ar doto gaismas avotu un projekcijas plakni (kas norādīta ar "
+"līniju)"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Hiperbolas asimptotas"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Hiperbolas divas asimptotas."
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Trīsstūris pēc tā virsotnēm"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Konstruēt trīsstūri pēc tā trīs virsotnēm."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Konveksa čaula"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Daudzstūris, kas atbilst cita daudzstūra konveksajai čaulai"
+
+#: misc/builtin_stuff.cc:487
+#, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Bezjē kvadrātiskā līkne pēc tās kontrolpunktiem"
+
+#: misc/builtin_stuff.cc:488
+#, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr ""
+"Konstruēt Bezjē kvadrātisko līkni pēc tās trim dotajiem kontrolpunktiem."
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr "Bezjē kubiskā līkne pēc tās kontrolpunktiem"
+
+#: misc/builtin_stuff.cc:495
+#, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr ""
+"Konstruēt Bezjē kubisko līkni pēc tās četriem dotajiem kontrolpunktiem."
+
+#: misc/builtin_stuff.cc:505
+#, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Racionālā Bezjē kvadrātiskā līkne pēc tās kontrolpunktiem"
+
+#: misc/builtin_stuff.cc:506
+#, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr ""
+"Konstruēt racionālo Bezjē kvadrātisko līkni pēc tās trim dotajiem "
+"kontrolpunktiem."
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr "Racionālā Bezjē kubiskā līkne pēc tās kontrolpunktiem"
+
+#: misc/builtin_stuff.cc:513
+#, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr ""
+"Konstruēt racionālo Bezjē kubisko līkni pēc tās četriem dotajiem "
+"kontrolpunktiem."
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Paralēļu tests"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Pārbauda, vai divas dotās līnijas ir paralēlas"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Ortogonalitātes tests"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Pārbauda, vai divas dotās līnijas ir ortogonālas"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Kolineāritātes tests"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Pārbauda, vai trīs dotie punkti ir kolineāri"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Piederības tests"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Pārbauda, vai dotais punkts pieder dotajai līknei"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Daudzstūra tests"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Pārbauda, vai dotais punkts pieder dotajam daudzstūrim"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Konveksā daudzstūra tests"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Pārbauda, vai dotais daudzstūris ir konvekss"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Eksistences tests"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Pārbauda, vai dotais objekts ir konstruējams"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Attāluma tests"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Pārbaudīt, vai dotajam punktam ir vienāds attālums no dotā punkta un cita "
+"dotā punkta"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Vektoru vienādības tests"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Pārbauda, vai divi vektori ir vienādi"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+#| msgid "Project this point onto the circle"
+msgid "Project a point on a line"
+msgstr "Projicēt šo punktu uz riņķa"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python skripts"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Konstruēt jaunu Python skriptu."
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Ievadiet koordinātes šādā formātā: \"x,y\",\n"
+"kur x ir x koordināte un y ir y koordināte."
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Ievadiet koordinātes šādā formātā: <b>\"x,y\"</b>,<br />kur x ir x "
+"koordināte un y ir y koordināte."
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Ievadiet koordinātes šādā formātā: \"r; θ°\",\n"
+"kur r un θ ir polārās koordinātes."
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Ievadiet koordinātes šādā formātā: <b>\"r; θ°\"</b>,<br />kur r un θ ir "
+"polārās koordinātes."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Eiklīda"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Polārā"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Iestatīt Eiklīda koordinātu sistēmu"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Iestatīt polāro koordinātu sistēmu"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Grādi"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Radiāni"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Gradiāni"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+"Normāls punkts, t.i., tāds, kas ir vai nu neatkarīgs, vai arī saistīts ar "
+"līniju, riņķi, segmentu."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Punkts"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Konstruēt teksta etiķeti."
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Teksta etiķete"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Konstruēt punktu pēc tā koordinātām"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Punkts pēc koordinātām"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Fiksēts punkts"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Ievadīt jaunā punkta koordinātas."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Konstruēt skaitlisku vērtību"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Skaitliska vērtība"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr "Li&etot noklusēto koordināšu precizitāti"
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr "&Norādīt koordināšu precizitāti:"
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Iestatīt leņķa izmēru"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Ievietojiet šī leņķa jauno izmēru:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Izmantojiet šo rediģēšanas lauku, lai mainītu šī leņķa izmēru."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"No saraksta izvēlieties goniometrisko vienību, ko vēlaties izmantot, lai "
+"modificētu šī leņķa izmēru.<br />\n"
+"Ja pārslēgsieties uz citu vienību, vērtība rediģēšanas laukā pa kreisi tiks "
+"pārveidota uz jauno izvēlēto vienību."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Neizdevās atvērt makrosu failu '%1'"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig neizdevās atvērt makrosu failu \"%1\"."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Šis fails tika izveidots ar ļoti vecu Kig versiju (pirms 0.4). Šī formāta "
+"atbalsts nesenajās Kig versijās tika izņemts. Varat mēģināt importēt šo "
+"makrosu, izmantojot iepriekšējo Kig versiju (0.4 līdz 0.6) un tad to "
+"eksportēt jaunajā formātā."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Nenosaukts makross #%1"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Šis Kig fails izmanto objektu ar tipu \"%1\", ko šī Kig versija neatbalsta. "
+"Iespējams, jūs esat kompilējis Kig, neiekļaujot tajā šī objektu tipa "
+"atbalstu, vai arī lietojat vecāku Kig versiju."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Radikāllīnijas konusa šķēlumiem"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Līnijas, kas konstruētas caur divu konusa šķēlumu krustojumu vietām. Tās ir "
+"definētas arī konusu šķēlumiem, kas nekrustojas."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Kustīgais punkts"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+"Izvēlieties kustīgo punktu, kas koordinātu punkta zīmēšanas laikā tiks "
+"pārvietots apkārt..."
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Sekojošais punkts"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Koordinātu punkts"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Koordinātu punkts"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Atkarīgais punkts"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Daudzstūris pēc tā virsotnēm"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Konstruēt daudzstūri, norādot tā virsotnes"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+"... ar šo virsotni (noklikšķiniet uz pirmās virsotnes, lai pārtrauktu "
+"konstruēšanu)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Konstruēt daudzstūri ar šo virsotni"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Izvēlieties punktu, kurš būs jaunā daudzstūra virsotne..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr "Atvērtais daudzstūris (daudzstūru līnija)"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Construct an open polygon"
+msgstr "Konstruēt atvērto daudzstūri"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"... ar šo virsotni (noklikšķiniet vēlreiz uz pēdējās virsotnes, lai "
+"pārtrauktu konstruēšanu)"
+
+#: misc/special_constructors.cc:624
+#, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Konstruēt daudzstūru līniju ar šo virsotni"
+
+#: misc/special_constructors.cc:629
+#, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Izvēlieties punktu, kurš būs jaunās daudzstūra līnijas virsotne..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Daudzstūris"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Konstruēt šī daudzstūra virsotnes..."
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Daudzstūra virsotnes"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Daudzstūra virsotnes."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Konstruēt šī daudzstūra malas..."
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Daudzstūra malas"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Daudzstūra malas."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Regulārs daudzstūris ar doto centru"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Konstruēt regulāru daudzstūri ar doto centru un virsotni"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Konstruēt regulāru daudzstūri ar šo centru"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Konstruēt regulāru daudzstūri ar šo virsotni"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Koriģēt malu skaitu (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Koriģēt malu skaitu (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Izvēlieties jaunā daudzstūra centru..."
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Izvēlieties jaunā daudzstūra virsotni..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Pārvietojiet kursoru, lai iegūtu vēlamo malu skaitu..."
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Bezjē līkne pēc tās kontrolpunktiem"
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Konstruēt Bezjē līkni, norādot tās kontrolpunktus"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+"... ar šo kontrolpunktu (noklikšķiniet vēlreiz uz pēdējā kontrolpunkta, lai "
+"pārtrauktu konstruēšanu)"
+
+#: misc/special_constructors.cc:1100
+#, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Konstruēt Bezjē līkni ar šo kontrolpunktu"
+
+#: misc/special_constructors.cc:1105
+#, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Izvēlieties punktu, kurš būs jaunās Bezjē līknes kontrolpunkts..."
+
+#: misc/special_constructors.cc:1138
+#, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Racionālā Bezjē līkne pēc tās kontrolpunktiem"
+
+#: misc/special_constructors.cc:1143
+#, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "Konstruēt Bezjē līkni, norādot tās kontrolpunktus un pozitīvos svarus"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr "... piesaistīt šo svaru pēdējam izvēlētajam kontrolpunktam"
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"... ar šo kontrolpunktu (noklikšķiniet vēlreiz uz pēdējā kontrolpunkta vai "
+"svara, lai pārtrauktu konstruēšanu)"
+
+#: misc/special_constructors.cc:1207
+#, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Konstruēt racionālo Bezjē līkni ar šo kontrolpunktu"
+
+#: misc/special_constructors.cc:1213
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr ""
+"Izvēlieties punktu, kurš būs jaunās racionālās Bezjē līknes kontrolpunkts..."
+
+#: misc/special_constructors.cc:1215
+#, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr ""
+"Izvēlieties skaitlisko etiķeti, kura būs pēdējā izvēlētā punkta svars..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Konstruēt šī riņķa radikāllīnijas"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Konstruēt šī konusa šķēluma radikāllīnijas"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Vispārējā afinitāte"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Unikāla afinitāte, kas attēlo trīs punktus (vai trīsstūri) uz trim citiem "
+"punktiem (vai trīsstūra)"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Vispārējā projektīvā transformācija"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Unikāla projektīvā transformācija, kas attēlo četrus punktus (vai četrstūri) "
+"uz četriem citiem punktiem (vai četrstūra)"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Punkta, līnijas vai riņķa inversija"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Punkta, līnijas vai riņķa inversija attiecībā pret riņķi"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Mēra transports"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Transportēt segmenta vai loka mēru pār līniju vai riņķi."
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Transportējamais segments"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Transportējamais loks"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Transportējamā vērtība"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Transportēt mēru uz šo līniju"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Transportēt mēru uz šo riņķi"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Sākt tranportu no šī riņķa punkta"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Sākt tranportu no šī līnijas punkta"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Sākt tranportu no šī līknes punkta"
+
+#: misc/special_constructors.cc:1637
+#, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Izvēlieties segmentu, loku vai skaitlisku etiķeti, ko transportēt..."
+
+#: misc/special_constructors.cc:1641
+#, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Izvēlieties mērķa līniju vai riņķi..."
+
+#: misc/special_constructors.cc:1645
+#, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Izvēlieties sākuma punktu uz līnijas/riņķa..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Krustot ar šo konusa šķēlumu"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Krustot ar šo līniju"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Krustot ar šo kubisko līkni"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Krustot ar šo riņķi"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Krustot"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Divu objektu krustošanās"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Krustot šo riņķi"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Krustot šo konusa šķēlumu"
+
+#: misc/special_constructors.cc:1770
+#, kde-format
+msgid "Intersect this Segment"
+msgstr "Krustot šo segmentu"
+
+#: misc/special_constructors.cc:1772
+#, kde-format
+msgid "Intersect this Half-line"
+msgstr "Krustot šo puslīniju"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Krustot šo līniju"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Krustot šo kubisko līkni"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Krustot šo loku"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Krustot šo daudzstūri"
+
+#: misc/special_constructors.cc:1782
+#, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Krustot šo daudzstūri"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "ar šo riņķi"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "ar šo konusa šķēlumu"
+
+#: misc/special_constructors.cc:1792
+#, kde-format
+msgid "with this Segment"
+msgstr "ar šo segmentu"
+
+#: misc/special_constructors.cc:1794
+#, kde-format
+msgid "with this Half-line"
+msgstr "ar šo puslīniju"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "ar šo līniju"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "ar šo kubisko līkni"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "ar šo loku"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "ar šo daudzstūri"
+
+#: misc/special_constructors.cc:1804
+#, kde-format
+msgid "with this Polygonal"
+msgstr "ar šo daudzstūri"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct midpoint of this point and another one"
+msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr ""
+"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr ""
+"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+#| msgid "Select the other of the points of which to construct the midpoint..."
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr ""
+"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Izvēlieties pirmo krustojamo objektu..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Izvēlieties otro krustojamo objektu..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Tangenss"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Līnijas tangenss līknei"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Tangenss šim riņķim"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Tangenss šim konusa šķēlumam"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Tangenss šim lokam"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Tangenss šajai kubiskajai līknei"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Tangenss šajai līknei"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Tangenss šajā punktā"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Izliekuma centrs"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Šī konusa šķēluma izliekuma centrs"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Šīs kubiskās līknes izliekuma centrs"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Šīs līknes izliekuma centrs"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Izliekuma centrs šajā punktā"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "pikselis"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "cm"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "collas"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Kurš objekts?"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Noklikšķiniet uz vietas, kurā vēlaties novietot jauno punktu, vai arī uz "
+"līknes, kurai vēlaties to piesaistīt..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Tagad izvēlieties vietu rezultāta etiķetei."
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Rediģēt tipu"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Šeit varat rediģēt pašreizējā makrosa tipa nosaukumu."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Šeit varat rediģēt pašreizējā makrosa tipa aprakstu. Šis lauks nav obligāts, "
+"tādēļ varat to atstāt tukšu: šādi rīkojoties, jūsu makrosa tipam nebūs "
+"apraksta."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Lietojiet šo pogu, lai mainītu ikonu pašreizējam makrosa tipam."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Makrosa nosaukums nedrīkst būt tukšs."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Šeit varat mainīt nosaukumu, aprakstu un ikonu šim makrosa tipam."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Nosaukums:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Apraksts:"
+
+#: modes/historydialog.cc:24
+#, fuzzy, kde-format
+#| msgid "History Browser"
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "Vēstures pārlūks"
+
+#: modes/historydialog.cc:108
+#, kde-format
+msgid "Start of the construction"
+msgstr "Konstruēšanas sākums"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Pašreizējā soļa apraksts:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Pirmais solis"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Vienu soli atpakaļ"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Vienu soli uz priekšu"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Pēdējais solis"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Nosaukums"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<nenosaukts objekts>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Tekstā ir '%n' daļas, kurām jūs neesat izvēlējies vērtību. Lūdzu, izņemiet "
+"tās vai arī izvēlieties pietiekami daudz argumentu."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "arguments %1"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Izvēlas argumentu %1"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Mainīt etiķeti"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Iestatīt vērtību"
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "Ievadiet vērtību:"
+
+#: modes/label.cc:624
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Izvēlieties jaunās skaitliskās vērtības novietojumu..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Viens no jūsu izvēlētajiem rezultāta objektiem nevar tikt aprēķināts no "
+"dotajiem objektiem. Šī iemesla dēļ Kig nevar aprēķināt šo makrosu. Lūdzu, "
+"nospiediet 'Atpakaļ' un kontruējiet objektus pareizā kārtībā..."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Viens no dotajiem objektiem netiek izmantots rezultāta objektu aprēķināšanā. "
+"Tas, iespējams, nozīmē, ka gaidāt no Kig kaut ko neiespējamu. Lūdzu, "
+"pārbaudiet makrosu un mēģiniet vēlreiz."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Dotie objekti"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Izvēlieties \"dotos\" objektus jūsu jaunajam makrosam un nospiediet "
+"\"Nākamais\"."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Beigu objekts"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Izvēlieties jūsu makrosa beigu objektu(s)."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Ievadiet jūsu jaunā tipa nosaukumu un aprakstu."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "&Nosaukums:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "&Apraksts:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "&Ikona:"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Definēt jaunu makrosu"
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Pārvietot %1 objektu"
+msgstr[1] "Pārvietot %1 objektus"
+msgstr[2] "Pārvietot %1 objektu"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Pārdefinēt punktu"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "Melns"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "Pelēks"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "Sarkans"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "Zaļš"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "Ciāns"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "Dzeltens"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "Tumši sarkans"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "S&lēpt"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "Rā&dīt"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "&Pārvietot"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Dzēst"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "Pielā&gota krāsa"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Mainīt objekta krāsu"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Mainīt objekta platumu"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Mainīt punkta stilu"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Mainīt objekta stilu"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "Iestatīt &nosaukumu..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "&Nosaukums"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Iestatīt objekta nosaukumu"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Iestatiet šī objekta nosaukumu:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 objekts"
+msgstr[1] "%1 objekti"
+msgstr[2] "%1 objektu"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Kig dokuments"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Transformēt"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "Pār&baudīt"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "Konst&ruēt"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "Palai&st"
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Pievienot te&ksta etiķeti"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "I&estatīt krāsu"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "Iestatīt zīmuļa &platumu"
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Iestatīt st&ilu"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Iestatīt k&oordinātu sistēmu"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Vairāk..."
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgid "Edit Script..."
+msgstr "Rediģēt skriptu"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Ievadiet etiķetes tekstu"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Šeit ievadiet jūsu etiķetes tekstu un nospiediet \"Nākamais\".\n"
+"Ja vēlaties attēlot mainīgo daļas, tad liekat %1, %2, ... attiecīgajās "
+"vietās (piem., \"Šī segmenta garums ir %1 vienības.\")."
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Rādīt tekstu rāmī"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Izvēlēties argumentus"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Tagad izvēlieties nepieciešamos argumentus. Darbības katram argumentam - "
+"noklikšķiniet uz tā, atzīmējiet objektu un parametru Kig logā, tad "
+"noklikšķiniet uz 'Beigt', kad esat to izdarījis..."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Konstrukcijas etiķete"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr "Makross"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "Tips"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Apraksts"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Pārvaldīt tipus"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "R&ediģēt..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "&Eksportēt..."
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Vai tiešām vēlaties dzēst šo %1 tipu?"
+msgstr[1] "Vai tiešām vēlaties dzēst šos %1 tipus?"
+msgstr[2] "Vai tiešām vēlaties dzēst šos %1 tipus?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Vai esat pārliecināts?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Eksportēt tipus"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig tipu faili\n"
+"*|Visi faili"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig tipu faili\n"
+"*|Visi faili"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Importēt Tipus"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Ir izvēlēts vairāk nekā viens tips. Jūs varat vienlaikus rediģēt tikai vienu "
+"tipu. Lūdzu, izvēlieties tikai to tipu, ko vēlaties rediģēt, un mēģiniet "
+"vēlreiz."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Izvēlēts vairāk nekā viens tips"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Šeit atzīmējiet tipus..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Šis ir pieejamo makrosu tipu saraksts... Jūs varat tos atzīmēŧ, dzēst, "
+"eksportēt un importēt..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Rediģēt izvēlēto tipu."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Dzēst visus sarakstā izvēlētos tipus."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Eksportēt atzīmētos tipus uz failu."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Importēt makrosus, kuri ir ietverti vienā vai vairākos failos."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Importēt..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Konstruēt leņķi caur šo punktu"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "Izvēlieties punktu, caur kuru ies leņķa pirmā puslīnija..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Konstruēt leņķi šajā punktā"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Izvēlieties punktu, kurā konstruēt leņķi..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Izvēlieties punktu, caur kuru ies leņķa otrā puslīnija..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Iestatīt i&zmēru"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Mainīt leņķa izmēru"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Konstruēt loku, kas sākas šajā punktā"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Izvēlieties jaunā loka sākumpunktu..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Konstruēt loku caur šo punktu"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunais loks..."
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Konstruēt loku, kas beidzas šajā punktā"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Izvēlieties jaunā loka beigu punktu..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Konstruēt loku ar šo centru"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Izvēlieties jaunā loka centru..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Konstruēt loku ar šo leņķi"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Izvēlieties jaunā loka leņķi..."
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Konstruēt konusa šķēluma loku, kas sākas šajā punktā"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Izvēlieties jaunā konusa šķēluma loka sākumpunktu..."
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Konstruēt konusa šķēluma loku caur šo punktu"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunais konusa šķēluma loks..."
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Konstruēt konusa šķēluma loku, kas beidzas šajā punktā"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Izvēlieties jaunā konusa šķēluma loka beigu punktu..."
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Konstruēt konusa šķēluma loku ar šo centru"
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Izvēlieties jaunā konusa šķēluma loka centru..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr "Kontrolpunktu skaits"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+msgid "Control polygon"
+msgstr "Kontroldaudzstūris"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Kartēziskais vienādojums"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+msgid "Bézier Curve"
+msgstr "Bezjē līkne"
+
+#: objects/bezier_imp.cc:202
+#, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Izvēlēties šo Bezjē līkni"
+
+#: objects/bezier_imp.cc:203
+#, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Izvēlieties Bezjē līkni %1"
+
+#: objects/bezier_imp.cc:204
+msgid "Remove a Bézier Curve"
+msgstr "Noņemt Bezjē līkni"
+
+#: objects/bezier_imp.cc:205
+msgid "Add a Bézier Curve"
+msgstr "Pievienot Bezjē līkni"
+
+#: objects/bezier_imp.cc:206
+msgid "Move a Bézier Curve"
+msgstr "Pārvietot Bezjē līkni"
+
+#: objects/bezier_imp.cc:207
+msgid "Attach to this Bézier Curve"
+msgstr "Piesaistīt šajai Bezjē līknei"
+
+#: objects/bezier_imp.cc:208
+msgid "Show a Bézier Curve"
+msgstr "Rādīt Bezjē līkni"
+
+#: objects/bezier_imp.cc:209
+msgid "Hide a Bézier Curve"
+msgstr "Paslēpt Bezjē līkni"
+
+#: objects/bezier_imp.cc:218
+msgid "Bézier Quadratic"
+msgstr "Bezjē kvadrātiskā līkne"
+
+#: objects/bezier_imp.cc:219
+#, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Izvēlēties šo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:220
+#, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Izvēlēties Bezjē kvadrātisko līkni %1"
+
+#: objects/bezier_imp.cc:221
+msgid "Remove a Bézier Quadratic"
+msgstr "Noņemt Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:222
+msgid "Add a Bézier Quadratic"
+msgstr "Pievienot Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:223
+msgid "Move a Bézier Quadratic"
+msgstr "Pārvietot Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:224
+msgid "Attach to this Bézier Quadratic"
+msgstr "Piesaistīt šajai Bezjē kvadrātiskajai līknei"
+
+#: objects/bezier_imp.cc:225
+msgid "Show a Bézier Quadratic"
+msgstr "Rādīt Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:226
+msgid "Hide a Bézier Quadratic"
+msgstr "Paslēpt Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr "Bezjē kubiskā līkne"
+
+#: objects/bezier_imp.cc:236
+#, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Izvēlēties šo Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:237
+#, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Izvēlēties Bezjē kubisko līkni %1"
+
+#: objects/bezier_imp.cc:238
+msgid "Remove a Bézier Cubic"
+msgstr "Noņemt Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:239
+msgid "Add a Bézier Cubic"
+msgstr "Pievienot Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:240
+msgid "Move a Bézier Cubic"
+msgstr "Pārvietot Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:241
+msgid "Attach to this Bézier Cubic"
+msgstr "Piesaistīt šajai Bezjē kubiskajai līknei"
+
+#: objects/bezier_imp.cc:242
+msgid "Show a Bézier Cubic"
+msgstr "Rādīt Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:243
+msgid "Hide a Bézier Cubic"
+msgstr "Paslēpt Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr "Racionālā Bezjē līkne"
+
+#: objects/bezier_imp.cc:491
+#, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Izvēlēties šo racionālo Bezjē līkni"
+
+#: objects/bezier_imp.cc:492
+#, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Izvēlieties racionālo Bezjē līkni %1"
+
+#: objects/bezier_imp.cc:493
+msgid "Remove a Rational Bézier Curve"
+msgstr "Noņemt racionālo Bezjē līkni"
+
+#: objects/bezier_imp.cc:494
+msgid "Add a Rational Bézier Curve"
+msgstr "Pievienot racionālo Bezjē līkni"
+
+#: objects/bezier_imp.cc:495
+msgid "Move a Rational Bézier Curve"
+msgstr "Pārvietot racionālo Bezjē līkni"
+
+#: objects/bezier_imp.cc:496
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Piesaistīt šajai racionālajai Bezjē līknei"
+
+#: objects/bezier_imp.cc:497
+msgid "Show a Rational Bézier Curve"
+msgstr "Rādīt racionālo Bezjē līkni"
+
+#: objects/bezier_imp.cc:498
+msgid "Hide a Rational Bézier Curve"
+msgstr "Paslēpt racionālo Bezjē līkni"
+
+#: objects/bezier_imp.cc:507
+msgid "Rational Bézier Quadratic"
+msgstr "Racionālā Bezjē kvadrātiskā līkne"
+
+#: objects/bezier_imp.cc:508
+#, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Izvēlēties šo racionālo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:509
+#, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Izvēlēties racionālo Bezjē kvadrātisko līkni %1"
+
+#: objects/bezier_imp.cc:510
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Noņemt racionālo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:511
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Pievienot racionālo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:512
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Pārvietot racionālo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:513
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Piesaistīt šajai racionālajai Bezjē kvadrātiskajai līknei"
+
+#: objects/bezier_imp.cc:514
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Rādīt racionālo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:515
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Paslēpt racionālo Bezjē kvadrātisko līkni"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr "Racionālā Bezjē kubiskā līkne"
+
+#: objects/bezier_imp.cc:525
+#, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Izvēlēties šo racionālo Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:526
+#, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Izvēlēties racionālo Bezjē kubisko līkni %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr "Noņemt racionālo Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr "Pievienot racionālo Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr "Pārvietot racionālo Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:530
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Piesaistīt šajai racionālajai Bezjē kubiskajai līknei"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr "Rādīt racionālo Bezjē kubisko līkni"
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr "Paslēpt racionālo Bezjē kubisko līkni"
+
+#: objects/bezier_type.cc:26
+#, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Konstruēt Bezjē kvadrātisko līkni ar šo kontrolpunktu"
+
+#: objects/bezier_type.cc:27
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr ""
+"Izvēlieties punktu, kurš būs jaunās Bezjē kvadrātiskās līknes "
+"kontrolpunkts..."
+
+#: objects/bezier_type.cc:121
+#, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Konstruēt Bezjē kubisko līkni ar šo kontrolpunktu"
+
+#: objects/bezier_type.cc:122
+#, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr ""
+"Izvēlieties punktu, kurš būs jaunās Bezjē kubiskās līknes kontrolpunkts..."
+
+#: objects/bezier_type.cc:328
+#, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Konstruēt Bezjē kvadrātisko līkni ar šo kontrolpunktu"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Izvēlieties trīs punktus un trīs skaitliskās vērtības kā svarus, lai "
+"konstruētu racionālo Bezjē līkni..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, kde-format
+msgid "Select this value as weight"
+msgstr "Izvēlēties šo vērtību kā svaru"
+
+#: objects/bezier_type.cc:433
+#, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Konstruēt racionālo Bezjē kubisko līkni ar šo kontrolpunktu"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "collas"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Pārbaudīt rezultātu"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Izvēlieties līkni..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Izvēlieties punktu uz līknes..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Virsma"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Perimetrs"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Rādiuss"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Centrs"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Paplašinātais kartēziskais vienādojums"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Polārais vienādojums"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [centrēts %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "riņķis"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Izvēlēties šo riņķi"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Izvēlēties riņķi %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Noņemt riņķi"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Pievienot riņķi"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Pārvietot riņķi"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Piesaistīt šim riņķim"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Rādīt riņķi"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Paslēpt riņķi"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Konstruēt riņķi caur šo punktu"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Konstruēt riņķi ar šo centru"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Izvēlieties jaunā riņķa centru..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunais riņķis..."
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "Ar šo rādiusu"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Izvēlieties rādiusa garumu..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Konusa šķēluma tips"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Pirmais fokuss"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Otrais fokuss"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Elipse"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Hiperbola"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Parabola"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "rho"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "cos tēta"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "sin tēta"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[centrēts %1]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "konusa šķēlums"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Izvēlēties šo konusa šķēlumu"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Izvēlēties konusa šķēlumu %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Noņemt konusa šķēlumu"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Pievienot konusa šķēlumu"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Pārvietot konusa šķēlumu"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Piesaistīt šim konusa šķēlumam"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Rādīt konusa šķēlumu"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Paslēpt konusa šķēlumu"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Atbalstošais konusa šķēlums"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Pirmais beigu punkts"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Otrais beigu punkts"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "konusa šķēluma loks"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Izvēlēties šo konusa šķēluma loku"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "Izvēlēties konusa šķēluma loku %1"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Noņemt konusa šķēluma loku"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Pievienot konusa šķēluma loku"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Pārvietot konusa šķēluma loku"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Piesaistīt šim konusa šķēluma lokam"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Rādīt konusa šķēluma loku"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Paslēpt konusa šķēluma loku"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Konstruēt konusa šķēlumu caur šo punktu"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunais konusa šķēlums..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Konstruēt konusa šķēlumu ar šo asimptotu"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Izvēlieties jaunā konusa šķēluma pirmo asimptotu..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Izvēlieties jaunā konusa šķēluma otro asimptotu..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Konstruēt elipsi ar šo fokusu"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Izvēlieties jaunās elipses pirmo fokusu..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Izvēlieties jaunās elipses otro fokusu..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Konstruēt elipsi caur šo punktu"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunā elipse..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Konstruēt hiperbolu ar šo fokusu"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Izvēlieties jaunās hiperbolas pirmo fokusu..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Izvēlieties jaunās hiperbolas otro fokusu..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Konstruēt hiperbolu caur šo punktu"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunā hiperbola..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Konstruēt konusa šķēlumu ar šo līniju kā direktrisi"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Izvēlieties jaunā konusa šķēluma direktrisi..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Konstruēt konusa šķēlumu ar šo punktu kā fokusu"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Izvēlieties jaunā konusa šķēluma fokusu..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Konstruēt parabolu caur šo punktu"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunā parabola..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Konstruēt polāro punktu attiecībā pret šo konusa šķēlumu"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr ""
+"Izvēlieties konusa šķēlumu, attiecībā pret kuru vēlaties konstruēt polāro "
+"punktu..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Konstruēt šīs līnijas polāro punktu"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Izvēlieties līniju, kurai vēlaties konstruēt polāro punktu..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Konstruēt polāro līniju attiecībā pret šo konusa šķēlumu"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Konstruēt šī punkta polāro līniju"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Konstruēt šī konusa šķēluma direktrisi"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Izvēlieties konusa šķēlumu, kuram vēlaties konstruēt direktrisi..."
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Konstruēt parabolu ar šo direktrisi"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Izvēlieties jaunās parabolas direktrisi..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Konstruēt parabolu ar šo fokusu"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Izvēlieties jaunās parabolas fokusu..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Konstruēt šī konusa šķēluma asimptotas"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Izvēlieties konusa šķēlumu, kuram vēlaties konstruēt asimptotas..."
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Konstruēt šī konusa šķēluma radikāllīnijas"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Izvēlieties pirmo no diviem konusa šķēlumiem, no kuriem vēlaties konstruēt "
+"radikāllīniju..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Izvēlieties otro no diviem konusa šķēlumiem, no kuriem vēlaties konstruēt "
+"radikāllīniju..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Pārslēgt radikāllīnijas"
+
+#: objects/conic_types.cc:619
+#, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Pārslēgt konusa šķēluma radikāllīnijas"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "kubiskā līkne"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Izvēlēties šo kubisko līkni"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Izvēlēties kubisko līkni %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Noņemt kubisko līkni"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Pievienot kubisko līkni"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Pārvietot kubisko līkni"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Piesaistīt šajai kubiskajai līknei"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Rādīt kubisko līkni"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Paslēpt kubisko līkni"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Konstruēt kubisko līkni caur šo punktu"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunā kubiskā līkne..."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "līkne"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Izvēlēties šo līkni"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Izvēlēties līkni %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Noņemt līkni"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Pievienot līkni"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Pārvietot līkni"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Piesaistīt šajai līknei"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Rādīt līkni"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Paslēpt līkni"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Iespējmi transcendenta līkne"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Jau izskaitļots krustošanās punkts"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Krustot ar šo kubisko līkni"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Krustot šo loku"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Invertēt attiecībā pret šo riņķi"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Izvēlieties riņķi, pret kuru invertēt..."
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Izskaitļot šī objekta inversiju"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Izvēlieties objektu, kuru invertēt..."
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Izskaitļot šī punkta inversiju"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Izvēlieties punktu, kuru invertēt..."
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Izskaitļot šīs līnijas inversiju"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Izvēlieties līniju, kuru invertēt..."
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Izskaitļot šī segmenta inversiju"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Izvēlieties segmentu, kuru invertēt..."
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Izskaitļot šī riņķa inversiju"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Izvēlieties riņķi, kuru invertēt..."
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Izskaitļot šī loka inversiju"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Izvēlieties loku, kuru invertēt..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Slīpne"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Vienādojums"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Garums"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Atbalsta līnija"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Beigu punkts"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "līnija"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Izvēlieties līniju"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Izvēlēties šo līniju"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Izvēlēties līniju %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Noņemt līniju"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Pievienot līniju"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Pārvietot līniju"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Piesaistīt šajai līnijai"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Rādīt līniju"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Paslēpt līniju"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "segments"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Izvēlēties šo segmentu"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Izvēlēties segmentu %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Noņemt segmentu"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Pievienot segmentu"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Pārvietot segmentu"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Piesaistīt šim segmentam"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Rādīt segmentu"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Paslēpt segmentu"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "Puslīnija"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Izvēlēties šo puslīniju"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Izvēlēties puslīniju %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Noņemt puslīniju"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Pievienot puslīniju"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Pārvietot puslīniju"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Piesaistīt šajai puslīnijai"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Rādīt puslīniju"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Paslēpt puslīniju"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Konstruēt segmentu, kas sākas šajā punktā"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Izvēlieties jaunā segmenta sākumpunktu..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Konstruēt segmentu, kas beidzas šajā punktā"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Izvēlieties jaunā segmenta beigu punktu..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Konstruēt līniju caur šo punktu"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies līnija..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Izvēlieties vēl vienu punktu, caur kuru ies līnija..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Konstruēt puslīniju, kas sākas šajā punktā"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Izvēlieties jaunās puslīnijas sākumpunktu..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Konstruēt puslīniju caur šo punktu"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies puslīnija..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Konstruēt šī segmenta asis"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Izvēlieties segmentu, kuram vēlaties zīmēt asis..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Konstruēt līniju, kas ir paralēla šajai līnijai"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Izvēlieties līniju, kas ir paralēla jaunajai līnijai..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Konstruēt paralēlu līniju caur šo punktu"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies jaunā līnija..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Konstruēt līniju, kas ir perpendikulāra šajai līnijai"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Izvēlieties līniju, kas ir perpendikulāra jaunajai līnijai..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Konstruēt perpendikulāru līniju caur šo punktu"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Iestatīt ga&rumu..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Iestatīt segmenta garumu"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Izvēlieties jauno garumu: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Mainīt segmenta izmēru"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Konstruēt līniju pēc šī vektora"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Izvēlieties jaunās līnijas virzienā esošu vektoru..."
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Konstruēt puslīniju pēc šī vektora"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Izvēlieties jaunās puslīnijas virzienā esošu vektoru..."
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "koordinātu punkts"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Izvēlēties šo koordinātu punktu"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Izvēlēties koordinātu punktu %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Noņemt koordinātu punktu"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Pievienot koordinātu punktu"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Pārvietot koordinātu punktu"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Piesaistīt šim koordinātu punktam"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Rādīt koordinātu punktu"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Paslēpt koordinātu punktu"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Objekta tips"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Objekts"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Izvēlēties šo objektu"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Izvēlēties objektu %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Noņemt objektu"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Pievienot objektu"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Pārvietot objektu"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Piesaistīt šim objektam"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Rādīt objektu"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Paslēpt objektu"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Leņķis radiānos"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Leņķis grādos"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Viduspunkts"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X garums"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y garums"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Pretējais vektors"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Leņķis"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Sektora virsma"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Loka garums"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Atbalsta riņķis"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "leņķis"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Izvēlēties šo leņķi"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Izvēlēties leņķi %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Noņemt leņķi"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Pievienot leņķi"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Pārvietot leņķi"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Piesaistīt šim leņķim"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Rādīt leņķi"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Paslēpt leņķi"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "vektors"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Izvēlēties šo vektoru"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Izvēlēties vektoru %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Noņemt vektoru"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Pievienot vektoru"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Pārvietot vektoru"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Piesaistīt šim vektoram"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Rādīt vektoru"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Paslēpt vektoru"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "loks"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Izvēlēties šo loku"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Izvēlēties loku %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Noņemt loku"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Pievienot loku"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Pārvietot loku"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Piesaistīt šim lokam"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Rādīt loku"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Paslēpt loku"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Koordināte"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X koordināte"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y koordināte"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "punkts"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Izvēlēties šo punktu"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Izvēlēties punktu %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Noņemt punktu"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Pievienot punktu"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Pārvietot punktu"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Piesaistīt šim punktam"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Rādīt punktu"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Paslēpt punktu"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another point"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the other of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
+"viduspunktu..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Iestatīt &koordināti..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Pārdefinēt"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Iestatīt &parametru..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Iestatīt koordināti"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Ievadīt jauno koordināti."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Iestatīt punkta parametru"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Izvēlieties jauno parametru: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Mainīt piespiedu punkta parametru"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Izvēlieties riņķi, uz kura transportēt mēru..."
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Izvēlieties punktu uz riņķa..."
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Izvēlieties uz riņķa traansportējamo segmentu..."
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Izvēlieties skaitli/garumu kā punkta x koordināti..."
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Izvēlieties skaitli/garumu kā punkta y koordināti..."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+#| msgid "Select the point to reflect in..."
+msgid "Select a point to project onto a line..."
+msgstr "Izvēlieties punktu, kurā atspoguļot..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Malu skaits"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Perimetrs"
+
+#: objects/polygon_imp.cc:291
+msgid "Boundary Polygonal"
+msgstr "Robežas daudzstūris"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr "Atvērt robežas daudzstūri"
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Virsotņu masas centrs"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Aptinumu skaits"
+
+#: objects/polygon_imp.cc:305
+msgid "Inside Polygon"
+msgstr "Daudzstūra iekšpusē"
+
+#: objects/polygon_imp.cc:306
+msgid "Open Polygonal Curve"
+msgstr "Atvērta daudzstūru līkne"
+
+#: objects/polygon_imp.cc:319
+msgid "Associated Polygon"
+msgstr "Asociētais daudzstūris"
+
+#: objects/polygon_imp.cc:320
+msgid "Closed Polygonal Curve"
+msgstr "Slēgta daudzstūru līkne"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "daudzstūris"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Izvēlēties šo daudzstūri"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Izvēlēties daudzstūri %1"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Noņemt daudzstūri"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Pievienot daudzstūri"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Pārvietot daudzstūri"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Piesaistīt šim daudzstūrim"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Rādīt daudzstūri"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Paslēpt daudzstūri"
+
+#: objects/polygon_imp.cc:645
+msgid "closed polygonal curve"
+msgstr "slēgta daudzstūru līkne"
+
+#: objects/polygon_imp.cc:646
+#, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Izvēlēties šo slēgto daudzstūru līkni"
+
+#: objects/polygon_imp.cc:647
+#, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Izvēlēties slēgto daudzstūru līkni %1"
+
+#: objects/polygon_imp.cc:648
+msgid "Remove a closed polygonal curve"
+msgstr "Noņemt slēgto daudzstūru līkni"
+
+#: objects/polygon_imp.cc:649
+msgid "Add a closed polygonal curve"
+msgstr "Pievienot slēgto daudzstūru līkni"
+
+#: objects/polygon_imp.cc:650
+msgid "Move a closed polygonal curve"
+msgstr "Pārvietot slēgto daudzstūru līkni"
+
+#: objects/polygon_imp.cc:651
+msgid "Attach to this closed polygonal curve"
+msgstr "Piesaistīt šajai slēgtajai daudzstūru līknei"
+
+#: objects/polygon_imp.cc:652
+msgid "Show a closed polygonal curve"
+msgstr "Rādīt slēgto daudzstūru līkni"
+
+#: objects/polygon_imp.cc:653
+msgid "Hide a closed polygonal curve"
+msgstr "Paslēpt slēgto daudzstūru līkni"
+
+#: objects/polygon_imp.cc:662
+msgid "polygonal curve"
+msgstr "daudzstūru līkne"
+
+#: objects/polygon_imp.cc:663
+#, kde-format
+msgid "Select this polygonal curve"
+msgstr "Izvēlēties šo daudzstūru līkni"
+
+#: objects/polygon_imp.cc:664
+#, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Izvēlēties daudzstūru līkni %1"
+
+#: objects/polygon_imp.cc:665
+msgid "Remove a polygonal curve"
+msgstr "Noņemt daudzstūru līkni"
+
+#: objects/polygon_imp.cc:666
+msgid "Add a polygonal curve"
+msgstr "Pievienot daudzstūru līkni"
+
+#: objects/polygon_imp.cc:667
+msgid "Move a polygonal curve"
+msgstr "Pārvietot daudzstūru līkni"
+
+#: objects/polygon_imp.cc:668
+msgid "Attach to this polygonal curve"
+msgstr "Piesaistīt šajai daudzstūru līknei"
+
+#: objects/polygon_imp.cc:669
+msgid "Show a polygonal curve"
+msgstr "Rādīt daudzstūru līkni"
+
+#: objects/polygon_imp.cc:670
+msgid "Hide a polygonal curve"
+msgstr "Paslēpt daudzstūru līkni"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "trīsstūris"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Izvēlēties šo trīsstūri"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Izvēlēties trīsstūri %1"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Noņemt trīsstūri"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Pievienot trīsstūri"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Pārvietot trīsstūri"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Piesaistīt šim trīsstūrim"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Rādīt trīsstūri"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Paslēpt trīsstūri"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "četrstūris"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Izvēlēties šo četrstūri"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Izvēlēties četrstūri %1"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Noņemt četrstūri"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Pievienot četrstūri"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Pārvietot četrstūri"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Piesaistīt šim četrstūrim"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Rādīt četrstūri"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Paslēpt četrstūri"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Konstruēt trīsstūri ar šo virsotni"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Izvēlieties punktu, kurš būs jaunā trīsstūra virsotne..."
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Krustot šo daudzstūri ar līniju"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Izvēlieties daudzstūri, kuru vēlaties krustot ar līniju..."
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Krustot šo līniju ar daudzstūri"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Izvēlieties līniju, kuru vēlaties krustot ar daudzstūri..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Krustot šo daudzstūru līkni ar līniju"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Izvēlieties daudzstūru līkni, kuru vēlaties krustot ar līniju..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Krustot šo līniju ar daudzstūru līkni"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Izvēlieties līniju, kuru vēlaties krustot ar daudzstūru līkni..."
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Krustot šo daudzstūri ar citu daudzstūri"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Izvēlieties daudzstūri, kuru vēlaties krustot ar citu daudzstūri..."
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Krustot ar šo daudzstūri"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Izvēlieties otro daudzstūri krustošanai..."
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Konstruēt šī daudzstūra virsotnes"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Izvēlieties daudzstūri, kuram vēlaties konstruēt virsotnes..."
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Konstruēt šī daudzstūra malas"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Izvēlieties daudzstūri, kuram vēlaties konstruēt malas..."
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Konstruēt šī daudzstūra konveksa čaulu"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Izvēlieties daudzstūri, kuram vēlaties konveksa čaulu..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Projicēt šo punktu uz riņķa"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Izvēlieties punktu, caur kuru ies tangenss..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Vai šī līnija ir paralēla?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Izvēlieties pirmo no divām varbūtēji paralēlām līnijām..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Paralēla šajai līnijai?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Izvēlieties otro no divām varbūtēji paralēlām līnijām..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Šīs līnijas ir paralēlas."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Šīs līnijas nav paralēlas."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Vai šī līnija ir ortogonāla?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Izvēlieties pirmo no divām varbūtēji ortogonālām līnijām..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Ortogonāla šajai līnijai?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Izvēlieties otro no divām varbūtēji ortogonālām līnijām..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Šīs līnijas ir ortogonālas."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Šīs līnijas nav ortogonālas."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Pārbaudīt šī punkta kolinearitāti"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Izvēlieties pirmo no trim varbūtēji kolineāriem punktiem..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "un šo otro punktu"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Izvēlieties otro no trim varbūtēji kolineāriem punktiem..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "un šo trešo punktu"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Izvēlieties pēdējo no trim varbūtēji kolineāriem punktiem..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Šie punkti ir kolineāri."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Šie punkti nav kolineāri."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Pārbaudīt, vai šis punkts ir uz līknes"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Izvēlieties punktu, kuru vēlaties pārbaudīt..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Pārbaudīt, vai punkts ir uz šis līknes"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Izvēlieties līkni, uz kuras varētu atrasties punkts..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Šī līkne satur punktu."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Šī līkne nesatur punktu."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Pārbaudīt, vai šis punkts atrodas daudzstūrī"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Pārbaudīt, vai punkts atrodas šajā daudzstūrī"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Izvēlieties daudzstūri, kurā varētu atrasties punkts..."
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Šis daudzstūris satur punktu."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Šis daudzstūris nesatur punktu."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Pārbaudīt, vai šis daudzstūris ir konvekss"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Izvēlieties daudzstūri, kuram vēlaties veikt konveksitātes pārbaudi..."
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Šis daudzstūris ir konvekss."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Šis daudzstūris nav konvekss."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Pārbaudīt, vai šim punktam ir vienāds attālums"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Izvēlieties punktu, kuram varētu būt vienāds attālums no diviem citiem "
+"punktiem..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "no šī punkta"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Izvēlieties pirmo no diviem punktiem..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "un no šī otrā punkta"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Izvēlieties otro no diviem punktiem..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Abi attālumi ir vienādi."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Abi attālumi nav vienādi."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Pārbaudīt, vai šis vektors ir vienāds ar otru vektoru"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Izvēlieties pirmo no diviem varbūtēji vienādiem vektoriem..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Pārbaudīt, vai šis vektors ir vienāds ar citu vektoru"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Izvēlieties otru no diviem varbūtēji vienādiem vektoriem..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Abi vektori ir vienādi."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Abi vektori nav vienādi."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Pārbaudīt, vai šis objekts eksistē"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Izvēlieties objektu, kura eksistenci vēlaties pārbaudīt...."
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Objekts eksistē."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "Objekts neeksistē."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Teksts"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "etiķete"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Izvēlēties šo etiķeti"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Izvēlēties etiķeti %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Noņemt etiķeti"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Pievienot etiķeti"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Pārvietot etiķeti"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Piesaistīt šajai etiķetei"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Rādīt etiķeti"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Paslēpt etiķeti"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "skaitliska etiķete"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Izvēlēties šo skaitlisko etiķeti"
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "Izvēlēties skaitlisko etiķeti %1"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Noņemt skaitlisko etiķeti"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Pievienot skaitlisko etiķeti"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Pārvietot skaitlisko etiķeti"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Piesaistīt šajai skaitliskajai etiķetei"
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Rādīt skaitlisko etiķeti"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Paslēpt skaitlisko etiķeti"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Skaitliska vērtība"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "Būla etiķete"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Izvēlēties šo Būla etiķeti"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "Izvēlēties Būla etiķeti %1"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Noņemt Būla etiķeti"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Pievienot Būla etiķeti"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Pārvietot Būla etiķeti"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Piesaistīt šajai Būla etiķetei"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Rādīt Būla etiķeti"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Paslēpt Būla etiķeti"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Kopēt tekstu"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "Pārslēg&t rāmi"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "Iestatīt &fontu..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Pārslēgt etiķetes rāmi"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Mainīt etiķetes fontu"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "Pā&rdefinēt..."
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "Mainīt &vērtību..."
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Ievadiet jauno vērtību:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Mainīt attēloto vērtību"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Translēt šo objektu"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Izvēlieties objektu, kuru translēt..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Translēt pēc šī vektora"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Izvēlieties vektoru, pēc kura translēt..."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Atspoguļot šo objektu"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Izvēlieties objektu, kuru atspoguļot..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Atspoguļot šajā punktā"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Izvēlieties punktu, kurā atspoguļot..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Atspoguļot šajā līnijā"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Izvēlieties līniju, kurā atspoguļot..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Rotēt šo objektu"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Izvēlieties objektu, kuru rotēt..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Rotēt ap šo punktu"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Izvēlieties rotācijas centra punktu..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Rotēt par šādu leņķi"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Izvēlieties rotācijas leņķi..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Mērogot šo objektu"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Izvēlieties objektu, kuru mērogot..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Mērogot ar šo centru"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Izvēlieties mērogošanas centra punktu..."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Mērogot pēc šī garuma"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr ""
+"Izvēlieties garumu vai arī segmentu, kura garums ir mērogošanas "
+"koeficients..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Mērogot šo garumu..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Izvēlieties pirmo no diviem garumiem, kuru attiecība ir mērogošanas "
+"koeficients..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr "...pret šo otru garumu"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Izvēlieties otro no diviem garumiem, kuru attiecība ir mērogošanas "
+"koeficients..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Izvēlieties objektu, kuru mērogot"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Mērogot pār šo līniju"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Izvēlieties līniju, pār kuru mērogot"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Projektīvi rotēt šo objektu"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Izvēlieties objektu, kuru projektīvi rotēt"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Projektīvi rotēt ar šo puslīniju"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr ""
+"Izvēlieties projektīvās rotācijas puslīniju, ko vēlaties pielietot objektam"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Projektīvi rotēt par šādu leņķi"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr ""
+"Izvēlieties projektīvās rotācijas leņķi, ko vēlaties pielietot objektam"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Šī objekta harmoniskā homoloģija"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Izvēlieties objektu, kuru transformēt..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Harmoniskā homoloģija ar šo centru"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Izvēlieties harmoniskās homoloģijas centra punktu..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Harmoniskā homoloģija ar šo asi"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Izvēlieties harmoniskās homoloģijas asi..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Objekta vispārējā tieksme"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Attēlot šo trīsstūri"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Izvēlieties trīsstūri, kas jātransformē uz dotā trīsstūra..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "uz šī cita trīsstūra"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "Izvēlieties trīsstūri, kas pēc afinitātes ir pirmā trīsstūra attēls..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Pirmais no 3 sākuma punktiem"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "Izvēlieties pirmo no trim vispārējās tieksmes sākuma punktiem..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Otrais no 3 sākuma punktiem"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Izvēlieties otro no trim vispārējās tieksmes sākuma punktiem..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Trešais no 3 sākuma punktiem"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Izvēlieties trešo no trim vispārējās tieksmes sākuma punktiem..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Pirmā punkta transformētā pozīcija"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Izvēlieties pirmo no trim vispārējās tieksmes beigu punktiem..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Otrā punkta transformētā pozīcija"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Izvēlieties otro no trim vispārējās tieksmes beigu punktiem..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Trešā punkta transformētā pozīcija"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Izvēlieties trešo no trim vispārējās tieksmes beigu punktiem..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Objekta vispārējā projektīvā transformācija"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Attēlot šo četrstūri"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Izvēlieties četrstūri, kas jātransformē uz dotā četrstūra..."
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "uz šī cita četrstūra"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Izvēlieties četrstūri, kas pēc projektīvās transformācijas ir pirmā "
+"četrstūra attēls..."
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Pirmais no 4 sākuma punktiem"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr ""
+"Izvēlieties pirmo no četriem vispārējās projektivitātes sākuma punktiem..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Otrais no 4 sākuma punktiem"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr ""
+"Izvēlieties otro no četriem vispārējās projektivitātes sākuma punktiem..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Trešais no 4 sākuma punktiem"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr ""
+"Izvēlieties trešo no četriem vispārējās projektivitātes sākuma punktiem..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Ceturtais no 4 sākuma punktiem"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr ""
+"Izvēlieties ceturto no četriem vispārējās projektivitātes sākuma punktiem..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr ""
+"Izvēlieties pirmo no četriem vispārējās projektivitātes beigu punktiem..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr ""
+"Izvēlieties otro no četriem vispārējās projektivitātes beigu punktiem..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr ""
+"Izvēlieties trešo no četriem vispārējās projektivitātes beigu punktiem..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Ceturtā punkta transformētā pozīcija"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr ""
+"Izvēlieties ceturto no četriem vispārējās projektivitātes beigu punktiem..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Izveidot šī objekta ēnu"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Izvēlieties objektu, no kura vēlaties konstruēt ēnu..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Veidot ēnu no šī gaismas avota"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Izvēlieties gaismas avotu, no kura veidosies ēna..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Mest ēnu uz horizonta, kuru attēlo šī līnija"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Izvēlieties ēnas horizontu..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Transformēt šo objektu"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Transformēt izmantojot šo transformāciju"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Pielietot līdzināšanu šim objektam"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Pielietot līdzināšanu ar šo centru"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Izvēlieties centru līdzināšanai..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Pielietot līdzināšanu, attēlojot šo punktu uz citu punktu"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+"Izvēlieties punktu, kuru līdzināšanas operācijai vajadzētu attēlot uz otra "
+"punkta..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Pielietot līdzināšanu, attēlojot punktu uz šī punkta"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+"Izvēlieties punktu, uz kura līdzināšanas operācijai vajadzētu attēlot otru "
+"punktu..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Konstruēt vektoru no šī punkta"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Izvēlieties jaunā vektora sākumpunktu..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Konstruēt vektoru līdz šim punktam"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Izvēlieties jaunā vektora beigu punktu..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Konstruēt šī un vēl viena vektora summu."
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr ""
+"Izvēlieties pirmo no diviem vektoriem, no kura vēlaties konstruēt summu..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Konstruēt šī un otra vektora summu."
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr ""
+"Izvēlieties otro no diviem vektoriem, no kura vēlaties konstruēt summu..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Konstruēt vektoru summu, sākot no šī punkta."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Izvēlieties punktu, kurā konstruēt summas vektoru..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Jauns skripts"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Izvēlieties argumentu objektus\n"
+"Kig logā, un nospiediet \"Nākamais\"."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Ievadiet kodu"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Tagad ievadiet kodu:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Tagad ievadiet Python kodu:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Python interpretators jūsu skripta izpildes laikā atrada kļūdu. Lūdzu, "
+"izlabojiet skriptu, un noklikšķiniet pogu 'Pabeigt' vēlreiz."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python Interpretators ģenerēja šādu kļūdas izvadi:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Šķiet, ka jūsu skriptā ir kļūda. Python interpretators neziņoja par kļūdām, "
+"tomēr skripts neģenerē derīgu objektu. Lūdzu, izlabojiet skriptu, un "
+"noklikšķiniet pogu 'Pabeigt' vēlreiz."
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Rediģēt skriptu"
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Rediģēt Python skriptu"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Python interpretators jūsu skripta izpildes laikā atrada kļūdu. Lūdzu, "
+"izlabojiet skriptu."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Šķiet, ka jūsu skriptā ir kļūda. Python interpretators neziņoja par kļūdām, "
+"tomēr skripts neģenerē derīgu objektu. Lūdzu, izlabojiet skriptu."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>Jūs varat kontrolēt kig konstruēšanu, izmantojot \"pykig\" \n"
+"python skriptu, kas var tikt izpildīts ar komandu \n"
+"<code>pykig.py</code>.  Šeit būs jauks piemērs \n"
+"(<code>hexagons.kpy</code>), ko varat izmēģināt:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>Jūs varat atkārtot pēdējo konstrukciju, vienkārši nospiežot taustiņu\n"
+"'Z'; tas ļoti noder, ja rodas vajadzība konstruēt secību no objektiem ar "
+"vienu un to pašu konstrukciju, it īpaši, ja šajai konstrukcijai nav īsceļa.</"
+"p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Viens no Kig visspēcīgākajiem rīkiem ir izvēlnes, kurām varat\n"
+"piekļūt, izdarot labo klikšķi uz objekta vai tukšas vietas dokumentā.\n"
+"Varat tās izmantot, lai nosauktu objektus, mainītu to krāsas un līniju\n"
+"stilus, kā arī darīt citas interesantas lietas.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Jūs varat konstruēt jaunus punktus, neizmantojot izvēlni vai rīkjoslu.\n"
+"Vienkārši noklikšķiniet ar <em>vidējo peles pogu</em> kaut kur Kig\n"
+"dokumentā.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig spēj atvērt vairākus failu formātus: paša failus (<code>.kig</code>\n"
+"failus), <em>KGeo</em> failus, <em>KSeg</em> failus, un, daļēji,\n"
+"<em>Dr. Geo</em> un <em>Cabri&#8482;</em> failus.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>Kig sevī ietver vairāk nekā 20 objektu un 10 transformāciju ar vairāk\n"
+"nekā 80 konstrukcijām, ko varat izmantot savos dokumentos: atveriet\n"
+"izvēlni <em>Objekti</em>, lai redzētu tos visus.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Varat izmantot izvēlētos objektus, lai sāktu tāda objekta konstrukciju,\n"
+"kam nepieciešami izvēlētie objekti kā argumenti. Piemēram, ja jums ir\n"
+"izvēlēti divi punkti, varat izvēlēties <em>Sākt->Riņķis pēc trim punktiem</"
+"em> no\n"
+"uznirstošās izvēlnes, lai sāktu konstruēt riņķi pēc trim punktiem.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Kig can extends its object set using external macros. You can find "
+#| "some\n"
+#| "interesting macros on the Kig website:\n"
+#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>Kig spēj paplašināt savu objektu kopu, izmantojot ārējus makrosus. Dažus "
+"interesantus varat atrast Kig tīmekļa vietnē:\n"
+"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Ja zem peles kursora ir vairāk nekā viens objekts un jūs vēlaties "
+"atlasīt\n"
+"kādu no tiem, varat uzklikšķināt ar <em>kreiso peles pogu</em>, vienlaikus "
+"turot\n"
+"nospiestu taustiņu <em>Shift</em>, lai tiktu parādīts saraksts ar objektiem\n"
+"zem peles kursora, no kura savukārt varat izvēlēties vajadzīgo.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p>Kad vēlaties konstruēt koordinātu punktu, varat uzklikšķināt uz tā ar "
+"<em>labo</em>\n"
+"peles pogu un izvēlēties<em>kartēziskais vienādojums</em>, lai redzētu tā "
+"kartēzisko vienādojumu,\n"
+"kad vien tas ir zemas pakāpes algebriskā līkne.</p>\n"
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#, fuzzy
+#~| msgid "Construct the midpoint of this point and another point"
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "Konstruēt šī un cita punkta viduspunktu"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Izvēlieties pirmo no diviem punktiem..."
+
+#, fuzzy
+#~| msgid "Construct a segment starting at this point"
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Konstruēt segmentu, kas sākas šajā punktā"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the second of the two points..."
+#~ msgstr "Izvēlieties pirmo no diviem punktiem..."
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "Saglabāt izmaiņas dokumentā %1?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "Saglabāt izmaiņas?"
+
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|Visi atbalstītie faili (*.kig *."
+#~ "kigz *.seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig dokumenti (*.kig)\n"
+#~ "*.kigz|Kompresēti Kig dokumenti (*.kigz)\n"
+#~ "*.kgeo|KGeo dokuments (*.kgeo)\n"
+#~ "*.seg|KSeg documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo dokuments (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri dokuments (*.fig *.FIG)"

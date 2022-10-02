@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Dutch "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>KDE Gebruikershandleiding</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>2020-12-23</date>
+<releaseinfo
+>Applications 20.12</releaseinfo>
+<productname
+>KDE Applications</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Een interactief meetkunde-programma door &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>bestandsnaam</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>options</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Beschrijving</title>
+<para
+>&kig; is een programma voor interactieve Meetkunde. Het dient twee doeleinden:</para>
+<itemizedlist
+><listitem
+><para
+>Studenten in staat te stellen meetkundige figuren en ideeën interactief te onderzoeken met behulp van de computer; </para
+></listitem>
+<listitem
+><para
+>Te dienen als een WYSIWYG-gereedschap voor het tekenen van meetkundige figuren die in andere documenten kunnen worden gebruikt.</para
+></listitem
+></itemizedlist>
+<para
+>Met dit programma kunt u op dezelfde manier Meetkunde bedrijven op een computer als op een schoolbord in een schoollokaal. Echter, dit programma laat u delen van een meetkundige tekening verplaatsen en wijzigen zodat u kunt zien wat voor invloed dit heeft op andere delen van de tekening.</para>
+<para
+>In &kig; kan gebruik worden gemaakt van meetkundige plaatsen en zelfgemaakte macro's. Ook is het mogelijk om vreemde bestandsformaten te importeren en er naar te exporteren, met inbegrip van die van <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> en <application
+>XFig</application
+>.</para>
+<para
+>Deze toepassing maakt deel uit van de officiële "Edutainment module" van &kde;.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Opties</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>Toon geen &GUI; (grafisch venster). In plaats daarvan zet het opgegeven bestand om in een &kig;-bestand. Het &kig;-bestand zal naar de "standard output" (gewoonlijk het beeldscherm) worden geschreven tenzij de optie <option
+>--outfile</option
+> wordt gebruikt.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>bestandsnaam</replaceable
+></option
+></term>
+<listitem
+><para
+>Gebruikt samen met <option
+>--convert-to-native</option
+> om op te geven in welk bestand het zojuist gemaakte &kig;-bestand moet worden opgeslagen. Als deze optie niet wordt opgegeven, of als de bestandsnaam <filename
+>-</filename
+> wordt opgegeven wordt het bestand naar de "standard output" (gewoonlijk het beeldscherm) geschreven.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Zie ook</title>
+<para
+>Meer uitgebreide informatie vindt u in <ulink url="help:/kig"
+>help:/kig</ulink
+> (voer deze &URL; in in &konqueror;, of typ <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+> in op de opdrachtregel).</para>
+
+<para
+>Verdere informatie is beschikbaar op de <ulink url="https://edu.kde.org/ktouch/"
+>webpagina voor educatie van &kde;</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Auteurs</title>
+<para
+>&kig; werd geschreven door <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+> en anderen.</para>
+<para
+>Deze man-pagina is gebaseerd op de pagina voor &Debian; door <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>

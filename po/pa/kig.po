@@ -1,0 +1,6934 @@
+# translation of kig.po to Punjabi
+#
+# Amanpreet Singh Alam <aalam@redhat.com>, 2004, 2005.
+# A S Alam <aalam@users.sf.net>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2007-11-20 06:43+0530\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi <punjabi-l10n@users.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ਅਮਨਪ੍ਰੀਤ ਸਿੰਘ ਆਲਮ"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "aalam@users.sf.net"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "ਕੇਂਦਰ ਰਾਹੀਂ ਚੱਕਰ ਤੇ ਰੇਖਾ"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr ""
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr ""
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr ""
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "ਬਿੰਦੂ ਤੇ ਖੰਡ ਨਾਲ ਚੱਕਰ (ਵਿਆਸ ਰਾਹੀਂ)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr ""
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+
+#, fuzzy, kde-format
+msgid "Equilateral Triangle"
+msgstr "ਕੋਣ ਓਹਲੇ"
+
+#, fuzzy, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#, kde-format
+msgid "Evolute"
+msgstr ""
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr ""
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr ""
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr ""
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr ""
+
+#, kde-format
+msgid "Select the point..."
+msgstr "ਬਿੰਦੂ ਚੁਣੋ..."
+
+#, kde-format
+msgid "Square"
+msgstr "ਵਰਗ"
+
+#, fuzzy, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "ਦਿੱਤੇ ਕੇਂਦਰ ਨਾਲ ਵਰਗ"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "ਵੈਕਟਰ ਅੰਤਰ"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr ""
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr ""
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr ""
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr ""
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr ""
+
+#: filters/asyexporter.cc:29
+#, fuzzy, kde-format
+#| msgid "&Export to image"
+msgid "Export to &Asymptote..."
+msgstr "ਚਿੱਤਰ ਦੇ ਤੌਰ ਤੇ ਭੇਜੋ(&E)"
+
+#: filters/asyexporter.cc:34
+#, fuzzy, kde-format
+#| msgid "&Import..."
+msgid "&Asymptote..."
+msgstr "ਆਯਾਤ(&I)..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.tex|Latex ਦਸਤਾਵੇਜ਼ (*.tex)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr ""
+
+#: filters/asyexporter.cc:48
+#, fuzzy, kde-format
+#| msgid "Image Options"
+msgid "Asymptote Options"
+msgstr "ਚਿੱਤਰ ਚੋਣਾਂ"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "ਚੋਣਾਂ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "ਵਾਧੂ ਫਰੇਮ ਵੇਖਾਓ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "ਧੁਰੇ ਵੇਖਾਓ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "ਗਰਿੱਡ ਵੇਖਾਓ"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr ""
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr ""
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr ""
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Dr. Geo ਫਾਇਲ \"%1\" ਵਿੱਚ ਕੋਈ ਚਿੱਤਰ ਨਹੀਂ ਹੈ।"
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo ਫਿਲਟਰ"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "ਚਿੱਤਰ ਦੇ ਤੌਰ ਤੇ ਭੇਜੋ(&E)"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "ਚਿੱਤਰ(&I)..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "ਚਿੱਤਰ ਵਾਂਗ ਨਿਰਯਾਤ"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "ਚਿੱਤਰ ਚੋਣਾਂ"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "ਮੁਆਫੀ, ਪਰ ਇਸ ਫਾਇਲ ਫਾਰਮੈਟ ਲਈ ਸਹਾਇਤਾ ਨਹੀਂ ਹੈ।"
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr ""
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "ਨਿਰਯਾਤ(&E)"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+
+#: filters/filter.cc:76
+#, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr ""
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "ਪਾਰਸ ਗਲਤੀ"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "ਸਹਾਇਕ ਨਹੀਂ"
+
+#: filters/filter.cc:88
+#, kde-format
+msgid "Kig cannot open this file."
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "ਰੈਜ਼ੋਲੇਸ਼ਨ"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "ਉਚਾਈ:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "ਚੌੜਾਈ:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr ""
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Latex ਦਸਤਾਵੇਜ਼ (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr ""
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Latex ਚੋਣਾਂ"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, fuzzy, kde-format
+#| msgid "Document to open"
+msgid "Document options"
+msgstr "ਖੋਲਣ ਲਈ ਦਸਤਾਵੇਜ਼"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr ""
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr ""
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr ""
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr ""
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG ਚੋਣਾਂ"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr ""
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr ""
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig ਫਾਇਲ..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+#| msgid "*.fig|XFig Documents (*.fig)"
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|XFig ਦਸਤਾਵੇਜ਼ (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "XFig ਫਾਇਲ ਵਾਂਗ ਨਿਰਯਾਤ"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "ਕਿਗ"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "ਕੇਡੀਈ ਜੁਮੈਟਰੀ"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "(C) ੨੦੦੦੨-੨੦੦੫ ਕਿਗ ਡੀਵੈਲਪਰ"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+#| msgid "Original author, long time maintainer, design and lots of code."
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "ਅਸਲੀ ਲੇਖਕ, ਪ੍ਰਬੰਧਕ, ਡਿਜ਼ਾਈਨ ਤੇ ਬਹੁਤਾ ਕੋਡ"
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr ""
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr ""
+
+#: kig/aboutdata.h:34
+#, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr ""
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr ""
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr ""
+
+#: kig/aboutdata.h:50
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Contributed the Bézier curves and related icons."
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr ""
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr ""
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr ""
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "The French translator, who also sent me some useful feedback, like "
+#| "feature requests and bug reports."
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr "ਫਰੈਂਚ ਅਨੁਵਾਦਕ, ਜਿਸ ਨੇ ਵੱਡੀ ਸਹਾਇਤਾ ਭੇਜੀ ਹੈ, ਜਿਵੇਂ ਕਿ ਨਵੇਂ ਫੀਚਰ ਅਤੇ ਤਰੁੱਟੀ ਜਾਣਕਾਰੀ"
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr ""
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr ""
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr ""
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr ""
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr ""
+
+#: kig/aboutdata.h:73
+#, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr ""
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr ""
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr ""
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr ""
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, fuzzy, kde-format
+#| msgid "Remove %1 Objects"
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "ਇਕਾਈ %1 ਹਟਾਉ"
+msgstr[1] "ਇਕਾਈ %1 ਹਟਾਉ"
+
+#: kig/kig_commands.cpp:103
+#, fuzzy, kde-format
+#| msgid "Add %1 Objects"
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "%1 ਇਕਾਈ ਸ਼ਾਮਿਲ"
+msgstr[1] "%1 ਇਕਾਈ ਸ਼ਾਮਿਲ"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "ਧੁਰਾ ਸਿਸਟਮ ਨਿਰਧਾਰਨ(&S)"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "ਕਿਗ ਚੋਣ"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "ਗਰਿੱਡ ਵੇਖਾਓ"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "ਧੁਰਾ ਵੇਖਾਓ"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "ਉਲਟ ਚੋਣ"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "ਇਕਾਈ ਹਟਾਉ(&D)"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "ਚੁਣੀਆਂ ਇਕਾਈਆਂ ਹਟਾਉ"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "ਰਚਨਾ ਰੱਦ ਕਰੋ"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr ""
+
+#: kig/kig_part.cpp:237
+#, fuzzy, kde-format
+msgid "Repeat Construction"
+msgstr "ਰਚਨਾ ਰੱਦ ਕਰੋ"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr ""
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "ਸਭ ਲੁਕਵੀਆਂ ਇਕਾਈਆਂ ਵੇਖਾਓ"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "ਨਵਾਂ ਮਾਈਕਰੋ(&N)..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr ""
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "ਕਿਸਮ ਪ੍ਰਬੰਧਨ(&T)..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr ""
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr ""
+
+#: kig/kig_part.cpp:263
+#, fuzzy, kde-format
+msgid "Browse the history of the current construction."
+msgstr "ਰਚਨਾ ਰੱਦ ਕਰੋ"
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr ""
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr ""
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr ""
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr ""
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "ਵੇਖਣ ਲਈ ਖੇਤਰ ਚੁਣੋ(&S)"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr ""
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "ਚੁਣਿਆ ਖੇਤਰ ਵੱਡਾ(&e)"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, fuzzy, kde-format
+#| msgid "Set &Coordinate..."
+msgid "Set Coordinate &Precision..."
+msgstr "ਧੁਰਾ ਨਿਰਧਾਰਨ(&C)..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr ""
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "ਗਰਾਫ਼ ਵੇਖਾਉ(&G)"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "ਗਰਾਫ਼ ਓਹਲੇ ਜਾਂ ਵੇਖਾਓ"
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "ਧੁਰਾ ਵੇਖਾਓ(&A)"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "ਧੁਰਾ ਓਹਲੇ ਜਾਂ ਵੇਖਾਓ"
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr ""
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr ""
+
+#: kig/kig_part.cpp:347
+#, fuzzy, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "ਰਚਨਾ ਰੱਦ ਕਰੋ"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr ""
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "ਫਾਇਲ ਨਹੀਂ ਲੱਭੀ"
+
+#: kig/kig_part.cpp:394
+#, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, fuzzy, kde-format
+msgid "Format Not Supported"
+msgstr "ਫਾਰਮੈਟ ਸਹਾਇਕ ਨਹੀਂ"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr ""
+
+#: kig/kig_part.cpp:695
+#, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "ਫਾਇਲ \"%1\" ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਕੀ ਤੁਸੀਂ ਇਸ ਉੱਪਰ ਹੀ ਲਿਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "ਉੱਪਰ ਲਿਖੋ?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "ਰਚਨਾ ਛਾਪੋ"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "ਇਕਾਈ %1 ਲੁਕਵੀਂ"
+msgstr[1] "%1 ਇਕਾਈਆਂ ਲੁਕਵੀਆਂ"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "ਇਕਾਈ %1 ਵੇਖਾਓ"
+msgstr[1] "%1 ਇਕਾਈਆਂ ਵੇਖਾਓ"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "ਆਕਾਰ ਵੱਡਾ"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "ਆਕਾਰ ਛੋਟਾ"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "ਮੁੜ-ਕੇਂਦਰ ਦਰਿਸ਼"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr ""
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "ਪਰਦੇ ਦਾ ਚੁਣਿਆ ਖੇਤਰ ਤਬਦੀਲ"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "ਜੂਮ ਖੇਤਰ ਚੁਣੋ"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "ਫਾਇਲ(&F)"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "ਸੋਧ(&E)"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "ਵੇਖੋ(&V)"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "ਇਕਾਈ(&O)"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "ਬਿੰਦੂ(&P)"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "ਰੇਖਾ(&L)"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "ਚੱਕਰ ਤੇ ਚਾਪਾਂ(&C)"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "ਬਹੁਭੁਜ(&g)"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "ਵੈਕਟਰ ਤੇ ਖੰਡ(&V)"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr ""
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "ਹੋਰ ਕੋਨ"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "ਘਣ(&b)"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr ""
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "ਕੋਣ(&A)"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "ਤਬਦੀਲ(&T)"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "ਵੱਖਰੀ ਜੁਮੈਟਰੀ(&D)"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "ਜਾਂਚ(&e)"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "ਹੋਰ(&O)"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "ਕਿਸਮ(&T)"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr ""
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr ""
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "ਬਿੰਦੂ"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "ਰੇਖਾ"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "ਵੈਕਟਰ ਤੇ ਖੰਡ"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "ਚੱਕਰ ਤੇ ਚਾਪ"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "ਕੋਨ"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, fuzzy, kde-format
+#| msgid "Hide a Curve"
+msgid "Bézier Curves"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "ਕੋਣ"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "ਤਬਦੀਲੀ"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "ਜਾਂਚ"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "ਹੋਰ ਇਕਾਈਆਂ"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr ""
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr ""
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "ਖੋਲਣ ਲਈ ਦਸਤਾਵੇਜ਼"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr ""
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr ""
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "ਰੇਖਾ-ਖੰਡ ਧੁਰਾ"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr ""
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "ਦੋ ਬਿੰਦੂਆਂ ਨਾਲ ਰੇਖਾ"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "ਅਰਧ-ਰੇਖਾ"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr ""
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "ਲੰਬ"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "ਸਮਾਂਤਰ"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "ਕੇਂਦਰ ਤੇ ਬਿੰਦੂ ਨਾਲ ਚੱਕਰ"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr ""
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "ਤਿੰਨ ਬਿੰਦੂਆਂ ਨਾਲ ਚੱਕਰ"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:107
+#, fuzzy, kde-format
+msgid "Circle by Point && Radius"
+msgstr "ਬਿੰਦੂ ਤੇ ਖੰਡ ਰਾਹੀਂ ਚੱਕਰ (ਅਰਧ ਵਿਆਸ ਰਾਹੀਂ)"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr ""
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "ਇਸ ਕੋਣ ਦਾ ਦੋ-ਭਾਜਕ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr ""
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "ਕੋਣ ਦੋ-ਭਾਜਕ"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "ਕੋਣ ਦਾ  ਦੋ-ਭਾਜਕ"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "ਪੰਜ ਬਿੰਦੂਆਂ ਨਾਲ ਕੋਨ"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "ਕੇਂਦਰ ਤੇ ਬਿੰਦੂ ਨਾਲ ਅੰਡਾਕਾਰ"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr ""
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "ਕੇਂਦਰ ਤੇ ਬਿੰਦੂ ਨਾਲ ਹਾਈਪਰਬੋਲਾ"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr ""
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "ਤਿੰਨ ਬਿੰਦੂਆਂ ਨਾਲ ਲੰਬਵਰਤੀ ਹਾਈਪਰਬੋਲਾ"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "ਨੌਂ ਬਿੰਦੂਆਂ ਨਾਲ ਘਣ ਕੋਨ"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "ਰੇਖਾ ਨਾਲ ਧੁਰੀ ਬਿੰਦੂ"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr ""
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "ਬਿੰਦੂ ਨਾਲ ਧੁਰਾ ਰੇਖਾ"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr ""
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:209
+#, fuzzy, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "ਨੌਂ ਬਿੰਦੂਆਂ ਨਾਲ ਘਣ ਕੋਨ"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr ""
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr ""
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "ਤਿੰਨ ਬਿੰਦੂਆਂ ਨਾਲ ਕੋਣ"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "ਮੱਧ ਬਿੰਦੂ"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+#| msgid "Move a Point"
+msgid "Golden Ratio Point"
+msgstr "ਬਿੰਦੂ ਏਧਰ-ਓਧਰ"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "Select the first of the two other points..."
+msgid "The golden ratio point of a segment or two other points"
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "ਵੈਕਟਰ"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "ਦੋ ਦਿੱਤੇ ਬਿੰਦੂਆਂ ਨਾਲ ਵੈਕਟਰ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "ਵੈਕਟਰ ਜੋੜ"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr ""
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "ਵੈਕਟਰ ਨਾਲ ਰੇਖਾ"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr ""
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "ਵੈਕਟਰ ਨਾਲ ਅਰਧ ਰੇਖਾ"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr ""
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "ਤਿੰਨ ਬਿੰਦੂਆਂ ਨਾਲ ਚਾਪ"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr ""
+
+#: misc/builtin_stuff.cc:308
+#, fuzzy, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "ਤਿੰਨ ਬਿੰਦੂਆਂ ਨਾਲ ਚਾਪ"
+
+#: misc/builtin_stuff.cc:309
+#, fuzzy, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:315
+#, fuzzy, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "ਪੰਜ ਬਿੰਦੂਆਂ ਨਾਲ ਕੋਨ"
+
+#: misc/builtin_stuff.cc:316
+#, fuzzy, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "ਕੇਂਦਰ, ਕੋਣ ਤੇ ਬਿੰਦੂ ਨਾਲ ਚਾਪ"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr ""
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr ""
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "ਤਬਦੀਲ"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr ""
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "ਬਿੰਦੂ ਤੇ ਪ੍ਰਤੀਬਿੰਬ"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "ਰੇਖਾ ਵਿੱਚ ਪ੍ਰਤੀਬਿੰਬ"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr ""
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "ਘੁੰਮਾਉ"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "ਮਾਪ"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "ਰੇਖਾ ਅਨੁਸਾਰ ਮਾਪ"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "ਮਾਪ (ਦੋ ਰੇਖਾ-ਖੰਡਾਂ ਰਾਹੀਂ ਅਨੁਪਾਤ)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr ""
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr ""
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr ""
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr ""
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr ""
+
+#: misc/builtin_stuff.cc:449
+#, fuzzy, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "ਇਸ ਵੈਕਟਰ ਨਾਲ ਤਬਦੀਲ"
+
+#: misc/builtin_stuff.cc:450
+#, fuzzy, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr ""
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr ""
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Bézier Quadratic by its Control Points"
+msgstr "ਨੌਂ ਬਿੰਦੂਆਂ ਨਾਲ ਘਣ ਕੋਨ"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:495
+#, fuzzy, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "ਨੌਂ ਬਿੰਦੂਆਂ ਨਾਲ ਘਣ ਕੋਨ"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:513
+#, fuzzy, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "ਸਮਾਂਤਰ ਜਾਂਚ"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr ""
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr ""
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr ""
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "ਰੇਖਿਕ ਜਾਂਚ"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr ""
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "ਸ਼ਾਮਿਲ ਜਾਂਚ"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "ਬਹੁਭੁਜ ਜਾਂਚ ਵਿੱਚ"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:549
+#, fuzzy, kde-format
+msgid "Convex Polygon Test"
+msgstr "ਬਹੁਭੁਜ"
+
+#: misc/builtin_stuff.cc:549
+#, fuzzy, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਚਾਪ ਤੇ ਹੈ"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+#| msgid "Distance Test"
+msgid "Existence Test"
+msgstr "ਦੂਰੀ ਜਾਂਚ"
+
+#: misc/builtin_stuff.cc:553
+#, fuzzy, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਚਾਪ ਤੇ ਹੈ"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "ਦੂਰੀ ਜਾਂਚ"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "ਵੈਕਟਰ ਸਮਾਨਤਾ ਜਾਂਚ"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr ""
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr ""
+
+#: misc/builtin_stuff.cc:584
+#, fuzzy, kde-format
+#| msgid "Project this point onto the circle"
+msgid "Project a point on a line"
+msgstr "ਚੱਕਰ ਤੇ ਇਹ ਬਿੰਦੂ ਬਣਾਉ"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "ਪਾਈਥਨ ਸਕ੍ਰਿਪਟ"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr ""
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr ""
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr ""
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr ""
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr ""
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "ਡਿਗਰੀ"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "ਰੇਡੀਅਨ"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "ਗਰੇਡੀਅਨ"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "ਬਿੰਦੂ"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr ""
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "ਪਾਠ ਲੇਬਲ"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr ""
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr ""
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "ਸਥਿਰ ਬਿੰਦੂ"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr ""
+
+#: misc/guiaction.cc:235
+#, fuzzy, kde-format
+msgid "Construct a Numeric Value"
+msgstr "ਲੇਬਲ ਬਣਾਉ"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "ਕੋਣ ਆਕਾਰ"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr ""
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr ""
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr ""
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr ""
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr ""
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr ""
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "ਘੁੰਮਦਾ ਬਿੰਦੂ"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "ਦਿੱਤਾ ਬਿੰਦੂ"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr ""
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr ""
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr ""
+
+#: misc/special_constructors.cc:520
+#, fuzzy, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "ਇਸ ਵੈਕਟਰ ਨਾਲ ਤਬਦੀਲ"
+
+#: misc/special_constructors.cc:520
+#, fuzzy, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr ""
+
+#: misc/special_constructors.cc:560
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr ""
+
+#: misc/special_constructors.cc:589
+#, fuzzy, kde-format
+msgid "Construct an open polygon"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:624
+#, fuzzy, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:629
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "ਬਹੁਭੁਜ"
+
+#: misc/special_constructors.cc:658
+#, fuzzy, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:661
+#, fuzzy, kde-format
+msgid "Vertices of a Polygon"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr ""
+
+#: misc/special_constructors.cc:718
+#, fuzzy, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "ਬਹੁਭੁਜ ਦੀਆਂ ਭੁਜਾਵਾਂ"
+
+#: misc/special_constructors.cc:721
+#, fuzzy, kde-format
+msgid "The sides of a polygon."
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: misc/special_constructors.cc:789
+#, fuzzy, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "ਦਿੱਤੇ ਕੇਂਦਰ ਨਾਲ ਦਸ-ਭੁਜ"
+
+#: misc/special_constructors.cc:794
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:939
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:943
+#, fuzzy, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr ""
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr ""
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr ""
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr ""
+
+#: misc/special_constructors.cc:1062
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Bézier Curve by its Control Points"
+msgstr "ਨੌਂ ਬਿੰਦੂਆਂ ਨਾਲ ਘਣ ਕੋਨ"
+
+#: misc/special_constructors.cc:1063
+#, fuzzy, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a Bézier curve with this control point"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "ਨੌਂ ਬਿੰਦੂਆਂ ਨਾਲ ਘਣ ਕੋਨ"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr ""
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr ""
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr ""
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr ""
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "ਲੰਬਾਈ ਤਬਦੀਲੀ"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr ""
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "ਤਬਦੀਲ ਕਰਨ ਲਈ ਰੇਖਾ-ਖੰਡ"
+
+#: misc/special_constructors.cc:1614
+#, fuzzy, kde-format
+msgid "Arc to transport"
+msgstr "ਤਬਦੀਲ ਕਰਨ ਲਈ ਰੇਖਾ-ਖੰਡ"
+
+#: misc/special_constructors.cc:1616
+#, fuzzy, kde-format
+msgid "Value to transport"
+msgstr "ਤਬਦੀਲ ਕਰਨ ਲਈ ਰੇਖਾ-ਖੰਡ"
+
+#: misc/special_constructors.cc:1618
+#, fuzzy, kde-format
+msgid "Transport a measure on this line"
+msgstr "ਇਸ ਕੋਣ ਦਾ ਮਾਪ ਤਬਦੀਲ"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "ਇਸ ਕੋਣ ਦਾ ਮਾਪ ਤਬਦੀਲ"
+
+#: misc/special_constructors.cc:1623
+#, fuzzy, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "ਚੱਕਰ ਤੇ ਇਹ ਬਿੰਦੂ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1625
+#, fuzzy, kde-format
+msgid "Start transport from this point of the line"
+msgstr "ਇਸ ਰੇਖਾ ਰਾਹੀਂ ਧੁਰੀ ਰੇਖਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1627
+#, fuzzy, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "ਚੱਕਰ ਤੇ ਇਹ ਬਿੰਦੂ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+#| msgid "Select the center of the new circle..."
+msgid "Select a destination line or circle..."
+msgstr "ਨਵੇਂ ਚੱਕਰ ਦਾ ਕੇਂਦਰ ਚੁਣੋ..."
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਸ਼ੁਰੂ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr ""
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr ""
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, fuzzy, kde-format
+msgid "Intersect with this cubic"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr ""
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr ""
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr ""
+
+#: misc/special_constructors.cc:1766
+#, fuzzy, kde-format
+msgid "Intersect this Circle"
+msgstr "ਇਹ ਚੱਕਰ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1768
+#, fuzzy, kde-format
+msgid "Intersect this Conic"
+msgstr "ਇਹ ਕੋਨ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1770
+#, fuzzy, kde-format
+msgid "Intersect this Segment"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1772
+#, fuzzy, kde-format
+msgid "Intersect this Half-line"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1774
+#, fuzzy, kde-format
+msgid "Intersect this Line"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1776
+#, fuzzy, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "ਇਹ ਘਣ ਚਾਪ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1778
+#, fuzzy, kde-format
+msgid "Intersect this Arc"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1780
+#, fuzzy, kde-format
+msgid "Intersect this Polygon"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1782
+#, fuzzy, kde-format
+msgid "Intersect this Polygonal"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1788
+#, fuzzy, kde-format
+msgid "with this Circle"
+msgstr "ਚੱਕਰ ਓਹਲੇ"
+
+#: misc/special_constructors.cc:1790
+#, fuzzy, kde-format
+msgid "with this Conic"
+msgstr "ਇਸ ਕੋਨ ਦਾ ਲੰਬ"
+
+#: misc/special_constructors.cc:1792
+#, fuzzy, kde-format
+#| msgid "Select this segment"
+msgid "with this Segment"
+msgstr "ਇਹ ਰੇਖਾ-ਖੰਡ ਚੁਣੋ"
+
+#: misc/special_constructors.cc:1794
+#, fuzzy, kde-format
+msgid "with this Half-line"
+msgstr "ਰੇਖਾ ਓਹਲੇ"
+
+#: misc/special_constructors.cc:1796
+#, fuzzy, kde-format
+msgid "with this Line"
+msgstr "ਰੇਖਾ ਓਹਲੇ"
+
+#: misc/special_constructors.cc:1798
+#, fuzzy, kde-format
+msgid "with this Cubic Curve"
+msgstr "ਘਣ ਚਾਪ ਓਹਲੇ"
+
+#: misc/special_constructors.cc:1800
+#, fuzzy, kde-format
+msgid "with this Arc"
+msgstr "ਇਸ ਤੀਜੇ ਬਿੰਦੂ ਨਾਲ"
+
+#: misc/special_constructors.cc:1802
+#, fuzzy, kde-format
+msgid "with this Polygon"
+msgstr "ਬਹੁਭੁਜ"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+msgid "with this Polygonal"
+msgstr "ਬਹੁਭੁਜ"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the axis of this segment"
+msgid "Construct midpoint of this point and another one"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr ""
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr ""
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the axis of this segment"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the polar point of this line"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "ਇਸ ਰੇਖਾ ਰਾਹੀਂ ਧੁਰੀ ਰੇਖਾ ਬਣਾਉ"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr ""
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr ""
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "ਲੰਬ"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "ਇੱਕ ਚਾਪ ਤੇ ਰੇਖੀ ਲੰਬ"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "ਇਸ ਚੱਕਰ ਦਾ ਲੰਬ"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "ਇਸ ਕੋਨ ਦਾ ਲੰਬ"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "ਇਸ ਚਾਪ ਦਾ ਲੰਬ"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "ਇਸ ਘਣ ਚਾਪ ਦੇ ਲੰਬ"
+
+#: misc/special_constructors.cc:2016
+#, fuzzy, kde-format
+msgid "Tangent to This Curve"
+msgstr "ਇਸ ਚੱਕਰ ਦਾ ਲੰਬ"
+
+#: misc/special_constructors.cc:2018
+#, fuzzy, kde-format
+msgid "Tangent at This Point"
+msgstr "ਇਸ ਕੋਨ ਦਾ ਲੰਬ"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr ""
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr ""
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr ""
+
+#: misc/special_constructors.cc:2064
+#, fuzzy, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਵੈਕਟਰ ਬਣਾਉ"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "ਪਿਕਸਲ"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr ""
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "ਇੰਚ"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr ""
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr ""
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "ਕਿਸਮ ਸੋਧ"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr ""
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr ""
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "ਨਾਂ:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "ਵੇਰਵਾ:"
+
+#: modes/historydialog.cc:24
+#, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr ""
+
+#: modes/historydialog.cc:108
+#, fuzzy, kde-format
+msgid "Start of the construction"
+msgstr "ਰਚਨਾ ਰੱਦ ਕਰੋ"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "ਪਹਿਲਾਂ ਪਗ਼"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr ""
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "ਨਾਂ"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<ਬਿਨਾਂ ਨਾਂ ਇਕਾਈ>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "ਮੁੱਲ %1"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr ""
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "ਲੇਬਲ ਤਬਦੀਲ"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr ""
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "ਮੁੱਲ ਦਿਓ:"
+
+#: modes/label.cc:624
+#, fuzzy, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਅੰਤ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "ਦਿੱਤੀ ਇਕਾਈ"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "ਅੰਤਮ ਇਕਾਈ"
+
+#: modes/macrowizard.cc:81
+#, fuzzy, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਕੋਣ ਚੁਣੋ..."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr ""
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "ਨਾਂ(&N):"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "ਵੇਰਵਾ(&D):"
+
+#: modes/macrowizard.cc:132
+#, fuzzy, kde-format
+#| msgid "Icon"
+msgid "&Icon:"
+msgstr "ਆਈਕਾਨ"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "ਨਵਾਂ ਮਾਈਕਰੋ ਬਣਾਉ"
+
+#: modes/moving.cc:136
+#, fuzzy, kde-format
+#| msgid "Move %1 Objects"
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "%1 ਇਕਾਈ ਏਧਰ-ਓਧਰ"
+msgstr[1] "%1 ਇਕਾਈ ਏਧਰ-ਓਧਰ"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "ਬਿੰਦੂ ਮੁੜ-ਪ੍ਰਭਾਸ਼ਿਤ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "ਸਲੇਟੀ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "ਲਾਲ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "ਓਹਲੇ(&H)"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "ਵੇਖਾਓ(&S)"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "ਏਧਰ-ਓਧਰ(&M)"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "ਹਟਾਓ(&D)"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, fuzzy, kde-format
+#| msgid "Change Label"
+msgid "Change Object Color"
+msgstr "ਲੇਬਲ ਤਬਦੀਲ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, fuzzy, kde-format
+msgid "Change Object Width"
+msgstr "ਲੇਬਲ ਤਬਦੀਲ"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr ""
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, fuzzy, kde-format
+#| msgid "Change Label"
+msgid "Change Object Style"
+msgstr "ਲੇਬਲ ਤਬਦੀਲ"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, fuzzy, kde-format
+#| msgid "Set &Parameter..."
+msgid "Set &Name..."
+msgstr "ਮੁੱਲ ਨਿਰਧਾਰਨ(&P)..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "ਨਾਂ(&N)"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, fuzzy, kde-format
+#| msgid "Select object %1"
+msgid "Set Object Name"
+msgstr "%1 ਇਕਾਈ ਚੁਣੋ"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, fuzzy, kde-format
+#| msgid "Select this object"
+msgid "Set Name of this Object:"
+msgstr "ਇਹ ਇਕਾਈ ਚੁਣੋ"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 ਇਕਾਈ"
+msgstr[1] "%1 ਇਕਾਈਆਂ"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "ਕਿਗ ਦਸਤਾਵੇਜ਼"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "ਤਬਦੀਲ(&T)"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "ਜਾਂਚ(&e)"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "ਬਣਾਉ(&r)"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr ""
+
+#: modes/popup/popup.cc:117
+#, fuzzy, kde-format
+#| msgid "Text Label"
+msgid "Add Te&xt Label"
+msgstr "ਪਾਠ ਲੇਬਲ"
+
+#: modes/popup/popup.cc:118
+#, fuzzy, kde-format
+#| msgid "Set Coordinate"
+msgid "Set Co&lor"
+msgstr "ਧੁਰਾ ਨਿਰਧਾਰਨ"
+
+#: modes/popup/popup.cc:119
+#, fuzzy, kde-format
+msgid "Set &Pen Width"
+msgstr "ਲੰਬਾਈ ਦਿਉ(&L)..."
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr ""
+
+#: modes/popup/popup.cc:122
+#, fuzzy, kde-format
+#| msgid "&Set Coordinate System"
+msgid "Set Coordinate S&ystem"
+msgstr "ਧੁਰਾ ਸਿਸਟਮ ਨਿਰਧਾਰਨ(&S)"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr ""
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+msgid "Edit Script..."
+msgstr "ਪਾਈਥਨ ਸਕ੍ਰਿਪਟ"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "ਲੇਬਲ ਪਾਠ ਦਿਉ"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "ਫਰੇਮ ਵਿੱਚ ਪਾਠ ਦਿਉ"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "ਮੁੱਲ ਚੁਣੋ"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "ਲੇਬਲ ਬਣਾਉ"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr ""
+
+#: modes/typesdialog.cpp:301
+#, fuzzy, kde-format
+msgid "Type"
+msgstr "ਕਿਸਮ(&T)"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "ਵੇਰਵਾ"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "ਕਿਸਮ ਪ੍ਰਬੰਧ"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "ਸੋਧ(&E)..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "ਨਿਰਯਾਤ(&x)..."
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "ਕੀ ਤੁਸੀਂ ਪੁਸ਼ਟੀ ਕਰਦੇ ਹੋ?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "ਕਿਸਮ ਨਿਰਯਾਤ"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig ਕਿਸਮ ਫਾਇਲਾਂ\n"
+"*|ਸਭ ਫਾਇਲਾਂ"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig ਕਿਸਮ ਫਾਇਲਾਂ\n"
+"*|ਸਭ ਫਾਇਲਾਂ"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "ਕਿਸਮ ਆਯਾਤ"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr ""
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "ਕਿਸਮਾਂ ਇੱਥੇ ਚੁਣੋ..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "ਚੁਣੀ ਕਿਸਮ ਵਿੱਚ ਸੋਧ..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, fuzzy, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "ਚੁਣੀਆਂ ਇਕਾਈਆਂ ਹਟਾਉ"
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "ਆਯਾਤ(&I)..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr ""
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr ""
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr ""
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr ""
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr ""
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr ""
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "ਕੋਣ ਮੁੜ-ਤਬਦੀਲ"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਸ਼ੁਰੂ ਕਰਕੇ ਚਾਪ ਬਣਾਉ"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਸ਼ੁਰੂ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਚਾਪ ਬਣਾਉ"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr ""
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਨਾਲ ਚਾਪ ਬੰਦ ਕਰੋ"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਅੰਤ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚਾਪ ਬਣਾਉ"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਕੇਂਦਰ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "ਇਸ ਕੋਣ ਨਾਲ ਚਾਪ ਬਣਾਉ"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਕੋਣ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:204
+#, fuzzy, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਸ਼ੁਰੂ ਕਰਕੇ ਚਾਪ ਬਣਾਉ"
+
+#: objects/arc_type.cc:205
+#, fuzzy, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਸ਼ੁਰੂ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:206
+#, fuzzy, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: objects/arc_type.cc:207
+#, fuzzy, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਸ਼ੁਰੂ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:208
+#, fuzzy, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਨਾਲ ਚਾਪ ਬੰਦ ਕਰੋ"
+
+#: objects/arc_type.cc:209
+#, fuzzy, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਅੰਤ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚਾਪ ਬਣਾਉ"
+
+#: objects/arc_type.cc:212
+#, fuzzy, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਕੇਂਦਰ ਚੁਣੋ..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr ""
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+msgid "Control polygon"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr ""
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+#, fuzzy
+#| msgid "Hide a Curve"
+msgid "Bézier Curve"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+#| msgid "Select this curve"
+msgid "Select this Bézier Curve"
+msgstr "ਇਹ ਚਾਪ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+#| msgid "Select curve %1"
+msgid "Select Bézier Curve %1"
+msgstr "%1 ਚਾਪ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+#| msgid "Remove a Curve"
+msgid "Remove a Bézier Curve"
+msgstr "ਚਾਪ ਹਟਾਉ"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+#| msgid "Add a Curve"
+msgid "Add a Bézier Curve"
+msgstr "ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+#| msgid "Move a Curve"
+msgid "Move a Bézier Curve"
+msgstr "ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+#| msgid "Attach to this curve"
+msgid "Attach to this Bézier Curve"
+msgstr "ਇਹ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+#| msgid "Show a Curve"
+msgid "Show a Bézier Curve"
+msgstr "ਚਾਪ ਵੇਖਾਓ"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+#| msgid "Hide a Curve"
+msgid "Hide a Bézier Curve"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+msgid "Bézier Quadratic"
+msgstr "ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+#| msgid "Select this arc"
+msgid "Select this Bézier Quadratic"
+msgstr "ਇਹ ਚਾਪ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+#| msgid "Select arc %1"
+msgid "Select Bézier Quadratic %1"
+msgstr "%1 ਚਾਪ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+msgid "Remove a Bézier Quadratic"
+msgstr "ਲੇਬਲ ਹਟਾਉ"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+msgid "Add a Bézier Quadratic"
+msgstr "ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+msgid "Move a Bézier Quadratic"
+msgstr "ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+#| msgid "Attach to this arc"
+msgid "Attach to this Bézier Quadratic"
+msgstr "ਇਹ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+msgid "Show a Bézier Quadratic"
+msgstr "ਚਾਪ ਵੇਖਾਓ"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+msgid "Hide a Bézier Quadratic"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+#| msgid "Select this arc"
+msgid "Select this Bézier Cubic"
+msgstr "ਇਹ ਚਾਪ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+#| msgid "Select circle %1"
+msgid "Select Bézier Cubic %1"
+msgstr "%1 ਚੱਕਰ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+#| msgid "Remove a Conic"
+msgid "Remove a Bézier Cubic"
+msgstr "ਕੋਨ ਹਟਾਉ"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+#| msgid "Add a Cubic Curve"
+msgid "Add a Bézier Cubic"
+msgstr "ਇੱਕ ਘਣ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+#| msgid "Move a Cubic Curve"
+msgid "Move a Bézier Cubic"
+msgstr "ਘਣ ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+#| msgid "Attach to this arc"
+msgid "Attach to this Bézier Cubic"
+msgstr "ਇਹ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+#| msgid "Show a Cubic Curve"
+msgid "Show a Bézier Cubic"
+msgstr "ਘਣ ਚਾਪ ਵੇਖਾਉ"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+#| msgid "Hide a Cubic Curve"
+msgid "Hide a Bézier Cubic"
+msgstr "ਘਣ ਚਾਪ ਓਹਲੇ"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr ""
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+#| msgid "Select this polygon"
+msgid "Select this Rational Bézier Curve"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+#| msgid "Select polygon %1"
+msgid "Select Rational Bézier Curve %1"
+msgstr "ਬਹੁਭੁਜ %1 ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a Rational Bézier Curve"
+msgstr "ਬਹੁਭੁਜ ਹਟਾਉ"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a Rational Bézier Curve"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a Rational Bézier Curve"
+msgstr "ਬਹੁਭੁਜ ਏਧਰ-ਓਧਰ"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+#| msgid "Attach to this polygon"
+msgid "Attach to this Rational Bézier Curve"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a Rational Bézier Curve"
+msgstr "ਬਹੁਭੁਜ ਵੇਖਾਉ"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a Rational Bézier Curve"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+msgid "Rational Bézier Quadratic"
+msgstr "%1 ਕੋਨ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "ਇਹ ਕੋਨ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "%1 ਕੋਨ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "ਬਹੁਭੁਜ ਹਟਾਉ"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a Rational Bézier Quadratic"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a Rational Bézier Quadratic"
+msgstr "ਬਹੁਭੁਜ ਏਧਰ-ਓਧਰ"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "ਇਹ ਕੋਨ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a Rational Bézier Quadratic"
+msgstr "ਬਹੁਭੁਜ ਵੇਖਾਉ"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+#| msgid "Select this triangle"
+msgid "Select this Rational Bézier Cubic"
+msgstr "ਇਹ ਤਿਕੋਣ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "%1 ਕੋਣ ਚੁਣੋ"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+#| msgid "Attach to this conic"
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "ਇਹ ਕੋਨ ਸ਼ਾਮਿਲ"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+#| msgid "Select this segment"
+msgid "Select this value as weight"
+msgstr "ਇਹ ਰੇਖਾ-ਖੰਡ ਚੁਣੋ"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "ਇੰਚ"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "ਜਾਂਚ ਨਤੀਜਾ"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "ਚਾਪ ਚੁਣੋ..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr ""
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "ਤਲ"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr ""
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "ਅਰਧ-ਵਿਆਸ"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr ""
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr ""
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "ਪੋਲਰ ਸਮੀਕਰਨ"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [%2 ਤੇ ਕੇਂਦਰ]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "ਚੱਕਰ"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "ਇਹ ਚੱਕਰ ਚੁਣੋ"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "%1 ਚੱਕਰ ਚੁਣੋ"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "ਚੱਕਰ ਹਟਾਉ"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "ਚੱਕਰ ਸ਼ਾਮਿਲ"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "ਚੱਕਰ ਏਧਰ-ਓਧਰ"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "ਇਹ ਚੱਕਰ ਸ਼ਾਮਿਲ ਕਰੋ"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "ਨਵਾਂ ਚੱਕਰ ਵੇਖਾਉ"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "ਚੱਕਰ ਓਹਲੇ"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "ਨਵੇਂ ਚੱਕਰ ਦਾ ਕੇਂਦਰ ਚੁਣੋ..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr ""
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "With this radius"
+msgstr "ਇਸ ਤੀਜੇ ਬਿੰਦੂ ਨਾਲ"
+
+#: objects/circle_type.cc:177
+#, fuzzy, kde-format
+msgid "Select the length of the radius..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਕੇਂਦਰ ਚੁਣੋ..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "ਕੋਨ ਕਿਸਮ..."
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "ਪਹਿਲਾਂ ਕੇਂਦਰ"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "ਦੂਜਾ ਕੇਂਦਰ"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "ਅੰਡਾਕਾਰ"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "ਹਾਈਪਰਬੋਲਾ"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "ਪੈਰਾਬੋਲਾ"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr ""
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr ""
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr ""
+
+#: objects/conic_imp.cc:266
+#, fuzzy, kde-format
+msgid "[centered at %1]"
+msgstr "rho = %1   [%2 ਤੇ ਕੇਂਦਰ]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "cos"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "ਇਹ ਕੋਨ ਚੁਣੋ"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "%1 ਕੋਨ ਚੁਣੋ"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "ਕੋਨ ਹਟਾਉ"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "ਕੋਨ ਸ਼ਾਮਿਲ"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "ਕੋਨ ਏਧਰ-ਓਧਰ"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "ਇਹ ਕੋਨ ਸ਼ਾਮਿਲ"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "ਕੋਨ ਵੇਖਾਉ"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "ਕੋਨ ਓਹਲੇ"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr ""
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "ਪਹਿਲਾਂ ਸਮਾਪਤੀ ਬਿੰਦੂ"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "ਦੂਜਾ ਸਮਾਪਤੀ ਬਿੰਦੂ"
+
+#: objects/conic_imp.cc:603
+#, fuzzy
+msgid "conic arc"
+msgstr "cos"
+
+#: objects/conic_imp.cc:604
+#, fuzzy, kde-format
+msgid "Select this conic arc"
+msgstr "ਇਹ ਕੋਨ ਚੁਣੋ"
+
+#: objects/conic_imp.cc:605
+#, fuzzy, kde-format
+msgid "Select conic arc %1"
+msgstr "%1 ਕੋਨ ਚੁਣੋ"
+
+#: objects/conic_imp.cc:606
+#, fuzzy
+msgid "Remove a Conic Arc"
+msgstr "ਕੋਨ ਹਟਾਉ"
+
+#: objects/conic_imp.cc:607
+#, fuzzy
+msgid "Add a Conic Arc"
+msgstr "ਕੋਨ ਸ਼ਾਮਿਲ"
+
+#: objects/conic_imp.cc:608
+#, fuzzy
+msgid "Move a Conic Arc"
+msgstr "ਕੋਨ ਏਧਰ-ਓਧਰ"
+
+#: objects/conic_imp.cc:609
+#, fuzzy
+msgid "Attach to this conic arc"
+msgstr "ਇਹ ਕੋਨ ਸ਼ਾਮਿਲ"
+
+#: objects/conic_imp.cc:610
+#, fuzzy
+msgid "Show a Conic Arc"
+msgstr "ਕੋਨ ਵੇਖਾਉ"
+
+#: objects/conic_imp.cc:611
+#, fuzzy
+msgid "Hide a Conic Arc"
+msgstr "ਕੋਨ ਓਹਲੇ"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਕੋਨ ਬਣਾਉ"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr ""
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr ""
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr ""
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr ""
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr ""
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr ""
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr ""
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr ""
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr ""
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr ""
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr ""
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr ""
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr ""
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr ""
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr ""
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr ""
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "ਇਸ ਰੇਖਾ ਰਾਹੀਂ ਧੁਰੀ ਰੇਖਾ ਬਣਾਉ"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr ""
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr ""
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr ""
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr ""
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr ""
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr ""
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr ""
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr ""
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr ""
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr ""
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr ""
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr ""
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr ""
+
+#: objects/conic_types.cc:619
+#, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr ""
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "ਘਣ ਚਾਪ"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "ਇਹ ਘਣ ਚਾਪ ਚੁਣੋ"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "%1 ਘਣ ਚਾਪ ਚੁਣੋ"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "ਘਣ ਚਾਪ ਹਟਾਉ"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "ਇੱਕ ਘਣ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "ਘਣ ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "ਘਣ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "ਘਣ ਚਾਪ ਵੇਖਾਉ"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "ਘਣ ਚਾਪ ਓਹਲੇ"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr ""
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr ""
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "ਚਾਪ"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "ਇਹ ਚਾਪ ਚੁਣੋ"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "%1 ਚਾਪ ਚੁਣੋ"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "ਚਾਪ ਹਟਾਉ"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "ਇਹ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "ਚਾਪ ਵੇਖਾਓ"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr ""
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, fuzzy, kde-format
+msgid "Already computed intersection point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੇ ਲੰਬ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr ""
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr ""
+
+#: objects/inversion_type.cc:19
+#, fuzzy, kde-format
+msgid "Invert with respect to this circle"
+msgstr "ਇਹ ਚੱਕਰ ਚੁਣੋ"
+
+#: objects/inversion_type.cc:20
+#, fuzzy, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Compute the inversion of this object"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੇ ਲੰਬ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/inversion_type.cc:23
+#, fuzzy, kde-format
+msgid "Select the object to invert..."
+msgstr "ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Compute the inversion of this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੇ ਲੰਬ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/inversion_type.cc:270
+#, fuzzy, kde-format
+msgid "Select the point to invert..."
+msgstr "ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Compute the inversion of this line"
+msgstr "ਇਸ ਰੇਖਾ ਰਾਹੀਂ ਧੁਰੀ ਰੇਖਾ ਬਣਾਉ"
+
+#: objects/inversion_type.cc:329
+#, fuzzy, kde-format
+msgid "Select the line to invert..."
+msgstr "ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੇ ਲੰਬ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/inversion_type.cc:381
+#, fuzzy, kde-format
+msgid "Select the segment to invert..."
+msgstr "ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/inversion_type.cc:469
+#, fuzzy, kde-format
+msgid "Select the circle to invert..."
+msgstr "ਚਾਪ ਚੁਣੋ..."
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/inversion_type.cc:533
+#, fuzzy, kde-format
+msgid "Select the arc to invert..."
+msgstr "ਚਾਪ ਚੁਣੋ..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr ""
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "ਸਮੀਕਰਨ"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "ਲੰਬਾਈ"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+#, fuzzy
+msgid "Support Line"
+msgstr "ਸਹਾਇਕ ਨਹੀਂ"
+
+#: objects/line_imp.cc:194
+#, fuzzy
+msgid "End Point"
+msgstr "ਮੱਧ ਬਿੰਦੂ"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "ਰੇਖਾ"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "ਇੱਕ ਰੇਖਾ ਚੁਣੋ"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "ਇਹ ਰੇਖਾ ਚੁਣੋ"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "%1 ਰੇਖਾ ਚੁਣੋ"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "ਰੇਖਾ ਹਟਾਓ"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "ਰੇਖਾ ਸ਼ਾਮਿਲ"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "ਰੇਖਾ ਏਧਰ-ਓਧਰ"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "ਰੇਖਾ ਸ਼ਾਮਿਲ"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "ਰੇਖਾ ਵੇਖਾਓ"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "ਰੇਖਾ ਓਹਲੇ"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "ਰੇਖਾ-ਖੰਡ"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "ਇਹ ਰੇਖਾ-ਖੰਡ ਚੁਣੋ"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "%1 ਰੇਖਾ-ਖੰਡ ਚੁਣੋ"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ ਹਟਾਉ"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ ਸ਼ਾਮਿਲ"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ ਏਧਰ-ਓਧਰ"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "ਇਹ ਰੇਖਾ-ਖੰਡ ਸ਼ਾਮਿਲ"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ ਵੇਖਾਉ"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ ਓਹਲੇ"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "ਅਰਧ-ਰੇਖਾ"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "ਇਹ ਅਰਧ-ਰੇਖਾ ਚੁਣੋ"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "%1 ਅਰਧ-ਰੇਖਾ ਚੁਣੋ"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "ਅਰਧ-ਰੇਖਾ ਹਟਾਉ"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "ਅਰਧ-ਰੇਖਾ ਸ਼ਾਮਿਲ"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "ਅਰਧ-ਰੇਖਾ ਏਧਰ-ਓਧਰ"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "ਇਹ ਅਰਧ-ਰੇਖਾ ਚੁਣੋ"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "ਅਰਧ-ਰੇਖਾ ਵੇਖਾਓ"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "ਅਰਧ-ਰੇਖਾ ਓਹਲੇ"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਰੇਖਾ-ਖੰਡ ਬਣਾਉ"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr ""
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr ""
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr ""
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਰੇਖਾ ਬਣਾਉ"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr ""
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr ""
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr ""
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:104
+#, fuzzy, kde-format
+msgid "Construct the axis of this segment"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/line_type.cc:104
+#, fuzzy, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "ਇਸ ਸਤਰ ਦੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr ""
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "ਇਸ ਰੇਖਾ ਤੇ ਲੰਬਕਾਰੀ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr ""
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਰਾਹੀਂ ਲੰਬਕਾਰੀ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "ਲੰਬਾਈ ਦਿਉ(&L)..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "ਰੇਖਾ-ਖੰਡ ਦੀ ਲੰਬਾਈ ਦਿਓ"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "ਨਵੀਂ ਲੰਬਾਈ ਚੁਣੋ: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "ਰੇਖਾ-ਖੰਡ ਮੁੜ-ਆਕਾਰ"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "ਇਸ ਵੈਕਟਰ ਰਾਹੀਂ ਰੇਖਾ ਖਿੱਚੋ"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr ""
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr ""
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr ""
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr ""
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr ""
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr ""
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr ""
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr ""
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr ""
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr ""
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr ""
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr ""
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "ਇਕਾਈ ਕਿਸਮ"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "ਇਕਾਈ"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "ਇਹ ਇਕਾਈ ਚੁਣੋ"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "%1 ਇਕਾਈ ਚੁਣੋ"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "ਇਕਾਈ ਹਟਾਉ"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "ਇਕਾਈ ਸ਼ਾਮਿਲ"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "ਇਕਾਈ ਹਟਾਉ"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "ਇਹ ਇਕਾਈ ਸ਼ਾਮਿਲ"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "ਇਕਾਈ ਵੇਖਾਓ"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "ਇਕਾਈ ਓਹਲੇ"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "ਰੇਡੀਅਨ ਵਿੱਚ ਕੋਣ"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "ਡਿਗਰੀ ਵਿੱਚ ਕੋਣ"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "ਮੱਧ-ਬਿੰਦੂ"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X ਲੰਬਾਈ"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y ਲੰਬਾਈ"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "ਉਲਟ ਵੈਕਟਰ"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "ਕੋਣ"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "ਖੰਡ ਤਲ"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "ਚਾਪ ਲੰਬਾਈ"
+
+#: objects/other_imp.cc:398
+#, fuzzy
+msgid "Support Circle"
+msgstr "ਨਵਾਂ ਚੱਕਰ ਵੇਖਾਉ"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "ਕੋਣ"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "ਇਹ ਕੋਣ ਚੁਣੋ"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "%1 ਕੋਣ ਚੁਣੋ"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "ਕੋਣ ਹਟਾਉ"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "ਕੋਣ ਸ਼ਾਮਿਲ"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "ਕੋਣ ਏਧਰ-ਓਧਰ"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "ਇਹ ਕੋਣ ਸ਼ਾਮਿਲ"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "ਕੋਣ ਵੇਖਾਓ"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "ਕੋਣ ਓਹਲੇ"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "ਵੈਕਟਰ"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "ਇਹ ਵੈਕਟਰ ਚੁਣੋ"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "%1 ਵੈਕਟਰ ਚੁਣੋ"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "ਵੈਕਟਰ ਹਟਾਉ"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "ਵੈਕਟਰ ਸ਼ਾਮਿਲ"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "ਵੈਕਟਰ ਏਧਰ-ਓਧਰ"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "ਇਹ ਵੈਕਟਰ ਸ਼ਾਮਿਲ"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "ਵੈਕਟਰ ਵੇਖਾਓ"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "ਵੈਕਟਰ ਓਹਲੇ"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "ਚਾਪ"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "ਇਹ ਚਾਪ ਚੁਣੋ"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "%1 ਚਾਪ ਚੁਣੋ"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "ਚਾਪ ਹਟਾਓ"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "ਇਹ ਚਾਪ ਸ਼ਾਮਿਲ"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "ਚਾਪ ਵੇਖਾਓ"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "ਧੁਰਾ"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X ਧੁਰਾ"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y ਧੁਰਾ"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "ਬਿੰਦੂ"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "ਇਹ ਬਿੰਦੂ ਚੁਣੋ"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "%1 ਬਿੰਦੂ ਚੁਣੋ"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "ਬਿੰਦੂ ਹਟਾਉ"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "ਬਿੰਦੂ ਸ਼ਾਮਿਲ"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "ਬਿੰਦੂ ਏਧਰ-ਓਧਰ"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "ਇਹ ਬਿੰਦੂ ਸ਼ਾਮਿਲ"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "ਬਿੰਦੂ ਵੇਖਾਓ"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "ਬਿੰਦੂ ਓਹਲੇ"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr ""
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the axis of this segment"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "ਧੁਰਾ ਨਿਰਧਾਰਨ(&C)..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "ਮੁੜ-ਪ੍ਰਭਾਸ਼ਿਤ"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "ਮੁੱਲ ਨਿਰਧਾਰਨ(&P)..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "ਧੁਰਾ ਨਿਰਧਾਰਨ"
+
+#: objects/point_type.cc:413
+#, fuzzy, kde-format
+msgid "Enter the new coordinate."
+msgstr "ਨਵਾ ਧੁਰਾ ਦਿਓ: "
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "ਨਵਾਂ ਬਿੰਦੂ ਮੁੱਲ ਦਿਓ"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "ਨਵਾਂ ਮੁੱਲ ਚੁਣੋ: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr ""
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr ""
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr ""
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr ""
+
+#: objects/point_type.cc:794
+#, fuzzy, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/point_type.cc:795
+#, fuzzy, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr ""
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+#, fuzzy
+msgid "Perimeter"
+msgstr "ਰਚਨਾ ਛਾਪੋ"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Boundary Polygonal"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr ""
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr ""
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr ""
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Inside Polygon"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+#| msgid "Polygon"
+msgid "Open Polygonal Curve"
+msgstr "ਬਹੁਭੁਜ"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Associated Polygon"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Closed Polygonal Curve"
+msgstr "ਬਹੁਭੁਜ ਏਧਰ-ਓਧਰ"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "ਬਹੁਭੁਜ"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "ਬਹੁਭੁਜ %1 ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "ਬਹੁਭੁਜ ਹਟਾਉ"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "ਬਹੁਭੁਜ ਏਧਰ-ਓਧਰ"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "ਬਹੁਭੁਜ ਵੇਖਾਉ"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+#| msgid "polygon"
+msgid "closed polygonal curve"
+msgstr "ਬਹੁਭੁਜ"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+#| msgid "Select this polygon"
+msgid "Select this closed polygonal curve"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+#| msgid "Select polygon %1"
+msgid "Select closed polygonal curve %1"
+msgstr "ਬਹੁਭੁਜ %1 ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a closed polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਹਟਾਉ"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a closed polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a closed polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਏਧਰ-ਓਧਰ"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+#| msgid "Attach to this polygon"
+msgid "Attach to this closed polygonal curve"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a closed polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਵੇਖਾਉ"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a closed polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: objects/polygon_imp.cc:662
+#, fuzzy
+#| msgid "polygon"
+msgid "polygonal curve"
+msgstr "ਬਹੁਭੁਜ"
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+#| msgid "Select this polygon"
+msgid "Select this polygonal curve"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+#| msgid "Select polygon %1"
+msgid "Select polygonal curve %1"
+msgstr "ਬਹੁਭੁਜ %1 ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਹਟਾਉ"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਏਧਰ-ਓਧਰ"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+#| msgid "Attach to this polygon"
+msgid "Attach to this polygonal curve"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਵੇਖਾਉ"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a polygonal curve"
+msgstr "ਬਹੁਭੁਜ ਓਹਲੇ"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "ਤਿਕੋਣ"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "ਇਹ ਤਿਕੋਣ ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:681
+#, fuzzy, kde-format
+msgid "Select triangle %1"
+msgstr "%1 ਕੋਣ ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:682
+#, fuzzy
+msgid "Remove a Triangle"
+msgstr "ਕੋਣ ਹਟਾਉ"
+
+#: objects/polygon_imp.cc:683
+#, fuzzy
+msgid "Add a Triangle"
+msgstr "ਕੋਣ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:684
+#, fuzzy
+msgid "Move a Triangle"
+msgstr "ਕੋਣ ਏਧਰ-ਓਧਰ"
+
+#: objects/polygon_imp.cc:685
+#, fuzzy
+msgid "Attach to this triangle"
+msgstr "ਇਹ ਕੋਣ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:686
+#, fuzzy
+msgid "Show a Triangle"
+msgstr "ਕੋਣ ਵੇਖਾਓ"
+
+#: objects/polygon_imp.cc:687
+#, fuzzy
+msgid "Hide a Triangle"
+msgstr "ਕੋਣ ਓਹਲੇ"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr ""
+
+#: objects/polygon_imp.cc:697
+#, fuzzy, kde-format
+msgid "Select this quadrilateral"
+msgstr "ਇਹ ਲੇਬਲ ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:698
+#, fuzzy, kde-format
+msgid "Select quadrilateral %1"
+msgstr "ਲੇਬਲ %1 ਚੁਣੋ"
+
+#: objects/polygon_imp.cc:699
+#, fuzzy
+msgid "Remove a Quadrilateral"
+msgstr "ਲੇਬਲ ਹਟਾਉ"
+
+#: objects/polygon_imp.cc:700
+#, fuzzy
+msgid "Add a Quadrilateral"
+msgstr "ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:701
+#, fuzzy
+msgid "Move a Quadrilateral"
+msgstr "ਚਾਪ ਏਧਰ-ਓਧਰ"
+
+#: objects/polygon_imp.cc:702
+#, fuzzy
+msgid "Attach to this quadrilateral"
+msgstr "ਇਹ ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/polygon_imp.cc:703
+#, fuzzy
+msgid "Show a Quadrilateral"
+msgstr "ਚਾਪ ਵੇਖਾਓ"
+
+#: objects/polygon_imp.cc:704
+#, fuzzy
+msgid "Hide a Quadrilateral"
+msgstr "ਚਾਪ ਓਹਲੇ"
+
+#: objects/polygon_type.cc:24
+#, fuzzy, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:25
+#, fuzzy, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/polygon_type.cc:470
+#, fuzzy, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:471
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:474
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:475
+#, fuzzy, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:788
+#, fuzzy, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:789
+#, fuzzy, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Intersect with this polygon"
+msgstr "ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ"
+
+#: objects/polygon_type.cc:791
+#, fuzzy, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "ਨਵੀਂ ਚਾਪ ਦਾ ਅੰਤ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:930
+#, fuzzy, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr ""
+
+#: objects/polygon_type.cc:974
+#, fuzzy, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:975
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/polygon_type.cc:1022
+#, fuzzy, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "ਇਸ ਰੇਖਾ-ਖੰਡ ਦਾ ਧੁਰਾ ਬਣਾਉ"
+
+#: objects/polygon_type.cc:1023
+#, fuzzy, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "ਚੱਕਰ ਤੇ ਇਹ ਬਿੰਦੂ ਬਣਾਉ"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr ""
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "ਕੀ ਇਹ ਰੇਖਾ ਸਮਾਂਤਰ ਹੈ?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr ""
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "ਇਸ ਰੇਖਾ ਦੇ ਸਮਾਂਤਰ?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr ""
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "ਇਹ ਰੇਖਾਵਾਂ ਸਮਾਂਤਰ ਹਨ।"
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "ਇਹ ਰੇਖਾਵਾਂ ਸਮਾਂਤਰ ਨਹੀਂ ਹਨ।"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr ""
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr ""
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr ""
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr ""
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr ""
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr ""
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਦੇ ਸਮਰੇਖੀ ਹੋਣ ਦੀ ਜਾਂਚ"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "ਪਹਿਲਾਂ ਸੰਭਵ ਤਿੰਨ ਸਮਰੇਖੀ ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "ਅਤੇ ਇਹ ਦੂਜਾ ਬਿੰਦੂ"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr ""
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "ਇਸ ਤੀਜੇ ਬਿੰਦੂ ਨਾਲ"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr ""
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "ਇਹ ਬਿੰਦੂ ਸਮਰੇਖੀ ਹਨ।"
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "ਇਹ ਬਿੰਦੂ ਸਮਰੇਖੀ ਨਹੀਂ ਹਨ।"
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਚਾਪ ਤੇ ਹੈ"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr ""
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਬਿੰਦੂ ਇਸ ਚਾਪ ਤੇ ਹੈ"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr ""
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "ਇਹ ਚਾਪ ਤੇ ਇਹ ਬਿੰਦੂ ਹੈ।"
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "ਇਸ ਚਾਪ ਤੇ ਬਿੰਦੂ ਨਹੀਂ ਹੈ।"
+
+#: objects/tests_type.cc:180
+#, fuzzy, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਚਾਪ ਤੇ ਹੈ"
+
+#: objects/tests_type.cc:181
+#, fuzzy, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਬਿੰਦੂ ਇਸ ਚਾਪ ਤੇ ਹੈ"
+
+#: objects/tests_type.cc:181
+#, fuzzy, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/tests_type.cc:208
+#, fuzzy, kde-format
+msgid "This polygon contains the point."
+msgstr "ਇਹ ਚਾਪ ਤੇ ਇਹ ਬਿੰਦੂ ਹੈ।"
+
+#: objects/tests_type.cc:210
+#, fuzzy, kde-format
+msgid "This polygon does not contain the point."
+msgstr "ਇਸ ਚਾਪ ਤੇ ਬਿੰਦੂ ਨਹੀਂ ਹੈ।"
+
+#: objects/tests_type.cc:223
+#, fuzzy, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਚਾਪ ਤੇ ਹੈ"
+
+#: objects/tests_type.cc:223
+#, fuzzy, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/tests_type.cc:249
+#, fuzzy, kde-format
+msgid "This polygon is convex."
+msgstr "ਇਹ ਚਾਪ ਤੇ ਇਹ ਬਿੰਦੂ ਹੈ।"
+
+#: objects/tests_type.cc:251
+#, fuzzy, kde-format
+msgid "This polygon is not convex."
+msgstr "ਇਸ ਚਾਪ ਤੇ ਬਿੰਦੂ ਨਹੀਂ ਹੈ।"
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਇਕ ਸਮਾਨ ਦੂਰ ਹੈ"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "ਅਤੇ ਇਸ ਬਿੰਦੂ ਤੋਂ"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr ""
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "ਦੂਰੀ ਇਕ ਸਮਾਨ ਹੈ।"
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "ਦੂਰੀ ਇਕ ਸਮਾਨ ਨਹੀਂ ਹੈ।"
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਵੈਕਟਰ ਹੋਰ ਵੈਕਟਰ ਦੇ ਸਮਾਨ ਹੈ"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr ""
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਵੈਕਟਰ ਹੋਰ ਵੈਕਟਰ ਦੇ ਸਮਾਨ ਹੈ"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr ""
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "ਦੋਵੇਂ ਵੈਕਟਰ ਇਕ ਸਮਾਨ ਹਨ।"
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "ਦੋਵੇਂ ਵੈਕਟਰ ਇਕ ਸਮਾਨ ਨਹੀਂ ਹਨ।"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+#| msgid "Check whether this point is on a curve"
+msgid "Check whether this object exists"
+msgstr "ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਬਿੰਦੂ ਚਾਪ ਤੇ ਹੈ"
+
+#: objects/tests_type.cc:352
+#, fuzzy, kde-format
+msgid "Select the object for the existence check..."
+msgstr "ਬਿੰਦੂ ਚੁਣੋ..."
+
+#: objects/tests_type.cc:375
+#, fuzzy, kde-format
+#| msgid "Object Type"
+msgid "The object exists."
+msgstr "ਇਕਾਈ ਕਿਸਮ"
+
+#: objects/tests_type.cc:377
+#, fuzzy, kde-format
+#| msgid "The two vectors are not the same."
+msgid "The object does not exist."
+msgstr "ਦੋਵੇਂ ਵੈਕਟਰ ਇਕ ਸਮਾਨ ਨਹੀਂ ਹਨ।"
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "ਪਾਠ"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "ਲੇਬਲ"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "ਇਹ ਲੇਬਲ ਚੁਣੋ"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "ਲੇਬਲ %1 ਚੁਣੋ"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "ਲੇਬਲ ਹਟਾਉ"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "ਲੇਬਲ ਏਧਰ-ਓਧਰ"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "ਇਹ ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "ਲੇਬਲ ਵੇਖਾਉ"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "ਲੇਬਲ ਓਹਲੇ"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr ""
+
+#: objects/text_imp.cc:184
+#, fuzzy, kde-format
+msgid "Select this numeric label"
+msgstr "ਇਹ ਲੇਬਲ ਚੁਣੋ"
+
+#: objects/text_imp.cc:185
+#, fuzzy, kde-format
+msgid "Select numeric label %1"
+msgstr "ਲੇਬਲ %1 ਚੁਣੋ"
+
+#: objects/text_imp.cc:186
+#, fuzzy
+msgid "Remove a Numeric Label"
+msgstr "ਲੇਬਲ ਹਟਾਉ"
+
+#: objects/text_imp.cc:187
+#, fuzzy
+msgid "Add a Numeric Label"
+msgstr "ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/text_imp.cc:188
+#, fuzzy
+msgid "Move a Numeric Label"
+msgstr "ਲੇਬਲ ਏਧਰ-ਓਧਰ"
+
+#: objects/text_imp.cc:189
+#, fuzzy
+msgid "Attach to this numeric label"
+msgstr "ਇਹ ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/text_imp.cc:190
+#, fuzzy
+msgid "Show a Numeric Label"
+msgstr "ਲੇਬਲ ਵੇਖਾਉ"
+
+#: objects/text_imp.cc:191
+#, fuzzy
+msgid "Hide a Numeric Label"
+msgstr "ਲੇਬਲ ਓਹਲੇ"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr ""
+
+#: objects/text_imp.cc:277
+#, fuzzy
+msgid "boolean label"
+msgstr "ਲੇਬਲ ਏਧਰ-ਓਧਰ"
+
+#: objects/text_imp.cc:278
+#, fuzzy, kde-format
+msgid "Select this boolean label"
+msgstr "ਇਹ ਲੇਬਲ ਚੁਣੋ"
+
+#: objects/text_imp.cc:279
+#, fuzzy, kde-format
+msgid "Select boolean label %1"
+msgstr "ਲੇਬਲ %1 ਚੁਣੋ"
+
+#: objects/text_imp.cc:280
+#, fuzzy
+msgid "Remove a Boolean Label"
+msgstr "ਲੇਬਲ ਹਟਾਉ"
+
+#: objects/text_imp.cc:281
+#, fuzzy
+msgid "Add a Boolean Label"
+msgstr "ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/text_imp.cc:282
+#, fuzzy
+msgid "Move a Boolean Label"
+msgstr "ਲੇਬਲ ਏਧਰ-ਓਧਰ"
+
+#: objects/text_imp.cc:283
+#, fuzzy
+msgid "Attach to this boolean label"
+msgstr "ਇਹ ਲੇਬਲ ਸ਼ਾਮਿਲ"
+
+#: objects/text_imp.cc:284
+#, fuzzy
+msgid "Show a Boolean Label"
+msgstr "ਲੇਬਲ ਵੇਖਾਉ"
+
+#: objects/text_imp.cc:285
+#, fuzzy
+msgid "Hide a Boolean Label"
+msgstr "ਲੇਬਲ ਓਹਲੇ"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "ਪਾਠ ਨਕਲ(&C)"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "ਫਰੇਮ ਤਬਦੀਲ(&T)"
+
+#: objects/text_type.cc:158
+#, fuzzy, kde-format
+msgid "Set &Font..."
+msgstr "ਲੰਬਾਈ ਦਿਉ(&L)..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "ਲੇਬਲ ਫਰੇਮ ਤਬਦੀਲ"
+
+#: objects/text_type.cc:192
+#, fuzzy, kde-format
+msgid "Change Label Font"
+msgstr "ਲੇਬਲ ਤਬਦੀਲ"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "ਮੁੜ-ਪ੍ਰਭਾਸ਼ਿਤ(&R)..."
+
+#: objects/text_type.cc:266
+#, fuzzy, kde-format
+msgid "Change &Value..."
+msgstr "ਲੇਬਲ ਤਬਦੀਲ"
+
+#: objects/text_type.cc:290
+#, fuzzy, kde-format
+msgid "Enter the new value:"
+msgstr "ਨਵਾ ਧੁਰਾ ਦਿਓ: "
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr ""
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "ਇਹ ਇਕਾਈ ਤਬਦੀਲ"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr ""
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "ਇਸ ਵੈਕਟਰ ਨਾਲ ਤਬਦੀਲ"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr ""
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr ""
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr ""
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr ""
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr ""
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr ""
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr ""
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "ਇਹ ਇਕਾਈ ਘੁੰਮਾਉ"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr ""
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "ਇਹ ਬਿੰਦੂ ਦੁਆਲੇ ਘੁੰਮਾਉ"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr ""
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "ਇਸ ਕੋਣ ਨਾਲ ਘੁੰਮਾਉ"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr ""
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr ""
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr ""
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr ""
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, fuzzy, kde-format
+msgid "Scale by this length"
+msgstr "ਇਸ ਕੋਣ ਨਾਲ ਘੁੰਮਾਉ"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, fuzzy, kde-format
+msgid "Scale this length..."
+msgstr "ਲੰਬਾਈ ਦਿਉ(&L)..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, fuzzy, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr ""
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr ""
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr ""
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr ""
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr ""
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr ""
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr ""
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr ""
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr ""
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr ""
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr ""
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "ਤਬਦੀਲ ਕਰਨ ਲਈ ਇਕਾਈ ਚੁਣੋ..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr ""
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr ""
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr ""
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr ""
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr ""
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Map this triangle"
+msgstr "ਇਹ ਕੋਣ ਸ਼ਾਮਿਲ"
+
+#: objects/transform_types.cc:409
+#, fuzzy, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr ""
+
+#: objects/transform_types.cc:412
+#, fuzzy, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "ਪਹਿਲੇ ਬਿੰਦੂ ਦੀ ਤਬਦੀਲ ਸਥਿਤੀ"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "ਦੂਜੇ ਬਿੰਦੂ ਦੀ ਤਬਦੀਲ ਸਥਿਤੀ"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "ਤੀਜੇ ਬਿੰਦੂ ਦੀ ਤਬਦੀਲ ਸਥਿਤੀ"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr ""
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr ""
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr ""
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr ""
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr ""
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr ""
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "ਚੌਥੇ ਬਿੰਦੂ ਦੀ ਤਬਦੀਲ ਸਥਿਤੀ"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr ""
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr ""
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr ""
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr ""
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr ""
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr ""
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr ""
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "ਇਹ ਇਕਾਈ ਤਬਦੀਲ"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "ਇਸ ਤਬਦੀਲੀ ਰਾਹੀਂ ਤਬਦੀਲ"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr ""
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr ""
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr ""
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr ""
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr ""
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਵੈਕਟਰ ਬਣਾਉ"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr ""
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਵੈਕਟਰ ਬਣਾਉ"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr ""
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr ""
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr ""
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr ""
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr ""
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr ""
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr ""
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "ਨਵੀਂ ਸਕ੍ਰਿਪਟ"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "ਕੋਡ ਦਿਉ"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "ਨਵਾਂ ਕੋਡ ਭਰੋ:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "ਪਾਈਥਨ ਕੋਡ ਭਰੋ:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "ਪਾਈਥਨ ਸਕ੍ਰਿਪਟ"
+
+#: scripting/script_mode.cc:307
+#, fuzzy, kde-format
+msgid "Edit Python Script"
+msgstr "ਪਾਈਥਨ ਸਕ੍ਰਿਪਟ"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>ਕਿਗ ਵਿੱਚ ਸਭ ਤੋਂ ਸ਼ਕਤੀਸ਼ਾਲੀ ਸੰਦ ਹੈ ਮੇਨੂ, ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਇਕਾਈ ਤੇ ਸੱਜਾ ਬਟਨ\n"
+"ਦਬਾ ਕੇ ਜਾਂ ਦਸਤਾਵੇਜ਼ ਵਿੱਚ ਕੁਝ ਖਾਲੀ ਥਾਂ ਦਬਾ ਕੇ ਕਰ ਸਕਦੇ ਹੋ। ਤੁਸੀਂ ਉਸ ਨੂੰ ਇਕਾਈ\n"
+"ਦਾ ਨਾਂ ਦੇਣ ਲਈ, ਉਹਨਾਂ ਦੇ ਰੰਗ ਤੇ ਰੇਖਾਵਾਂ ਤਬਦੀਲ ਕਰਨ ਦੇ ਨਾਲ ਨਾਲ ਹੋਰ ਢੇਰ\n"
+"ਸਾਰੀਆਂ ਲਾਭਦਾਇਕ ਚੀਜ਼ਾਂ ਕਰਨ ਲਈ ਇਸਤੇਮਾਲ ਕਰ ਸਕਦੇ ਹੋ।</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>ਤੁਸੀਂ ਮੇਨੂ ਜਾਂ ਸੰਦ-ਪੱਟੀ ਨੂੰ ਵਰਤੇ ਤੋਂ ਬਿਨਾਂ ਵੀ ਨਵੇਂ ਬਿੰਦੂ ਬਣ ਸਕਦੇ ਹੋ, ਸਿਰਫ\n"
+"ਕਿਗ ਦਸਤਾਵੇਜ਼ ਦੇ ਵਿੱਚ ਕਿਤੇ ਵੀ ਮਾਊਸ ਦਾ <em>ਵਿਚਲਾ ਬਟਨ</em>\n"
+"ਨੂੰ ਦਬਾਉ।</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>ਕਿਗ ਕਈ ਫਾਇਲ ਫਾਰਮੈਟ ਖੋਲ ਸਕਦਾ ਹੈ: ਇਸ ਦੀਆਂ ਫਾਇਲਾਂ (<code>code>.kig</code> "
+"ਫਾਇਲਾਂ),\n"
+"<em>KGeo</em> ਫਾਇਲਾਂ, <em>KSeg</em> ਫਾਇਲਾਂ ਅਤੇ ਕੁਝ, <em>Dr. Geo</em>\n"
+"ਅਤੇ <em>Cabri&#8482;</em> ਫਾਇਲਾਂ ਨੂੰ</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, fuzzy, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>ਕਿਗ ਵਿੱਚ 40 ਇਕਾਈਆਂ ਤੇ 10 ਤਬਦੀਲੀਆਂ ਹਨ, ਜਿਸ ਨੂੰ ਤੁਸੀਂ ਆਪਣਾ ਦਸਤਾਵੇਜ਼\n"
+"ਬਣਾਉਣ ਲਈ ਇਸਤੇਮਾਲ ਕਰ ਸਕਦੇ ਹੋ: ਸਭ ਨੂੰ ਵੇਖਣ ਲਈ <em>ਇਕਾਈ</em> ਮੇਨੂ ਖੋਲੋ</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, kde-format
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the first of the two points..."
+#~ msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#, fuzzy
+#~| msgid "Construct a segment starting at this point"
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "ਇਸ ਬਿੰਦੂ ਤੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਰੇਖਾ-ਖੰਡ ਬਣਾਉ"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the second of the two points..."
+#~ msgstr "ਦੋ ਹੋਰ ਬਿੰਦੂਆਂ ਵਿੱਚੋਂ ਪਹਿਲਾਂ ਚੁਣੋ..."
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "ਦਸਤਾਵੇਜ਼ %1 ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲਣੀਆਂ ਹਨ?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "ਕੀ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲਣੀਆਂ ਹਨ?"
+
+#, fuzzy
+#~| msgid ""
+#~| "*.kig *.kigz *.kgeo *.seg|All Supported Files (*.kig *.kigz *.kgeo *."
+#~| "seg)\n"
+#~| "*.kig|Kig Documents (*.kig)\n"
+#~| "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~| "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~| "*.seg|KSeg Documents (*.seg)\n"
+#~| "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~| "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kgeo *.seg|ਸਭ ਸਹਿਯੋਗੀ ਫਾਇਲਾਂ (*.kig *.kgeo *.seg)\n"
+#~ "*.kig|Kig ਦਸਤਾਵੇਜ਼ (*.kig)\n"
+#~ "*.kigz|Compressed Kig ਦਸਤਾਵੇਜ਼ (*.kigz)\n"
+#~ "*.kgeo|KGeo ਦਸਤਾਵੇਜ਼ (*.kgeo)\n"
+#~ "*.seg|KSeg ਦਸਤਾਵੇਜ਼ (*.seg)\n"
+#~ "*.fgeo|Dr. Geo ਦਸਤਾਵੇਜ਼ (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri ਦਸਤਾਵੇਜ਼ (*.fig *.FIG)"
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a cubic with this control point"
+#~ msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a rational cubic with this control point"
+#~ msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚੱਕਰ ਬਣਾਉ"
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a quadric with this control point"
+#~ msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚਾਪ ਬਣਾਉ"
+
+#, fuzzy
+#~ msgid "Select a point to be a control point of the new quadric..."
+#~ msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a rational quadric with this control point"
+#~ msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਚਾਪ ਬਣਾਉ"
+
+#, fuzzy
+#~| msgid "Hide a Curve"
+#~ msgid "Bezier Curve"
+#~ msgstr "ਚਾਪ ਓਹਲੇ"
+
+#, fuzzy
+#~ msgid "Select a point to be a vertex of the new open polygon..."
+#~ msgstr "ਨਵੀਂ ਰੇਖਾ ਤੇ ਸਮਾਂਤਰ ਰੇਖਾ ਖਿੱਚੋ..."
+
+#, fuzzy
+#~ msgid "Construct a polygon with this control point"
+#~ msgstr "ਇਸ ਕੇਂਦਰ ਨਾਲ ਬਹੁਭੁਜ ਬਣਾਉ"
+
+#~ msgid "%1 Objects"
+#~ msgstr "%1 ਇਕਾਈ"
+
+#~ msgid "&Help"
+#~ msgstr "ਮੱਦਦ(&H)"

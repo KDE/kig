@@ -1,0 +1,6834 @@
+# Translation of kig to Norwegian Bokmål
+#
+# Knut Yrvin <knut.yrvin@gmail.com>, 2003.
+# Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2003, 2004, 2005, 2008, 2009, 2010, 2011, 2012, 2013.
+# Klaus Ade Johnstad <klaus@skolelinux.no>, 2004.
+# Bjørn Kvisli <bjorn.kvisli@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-08-21 00:41+0000\n"
+"PO-Revision-Date: 2013-04-08 21:55+0200\n"
+"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Bjørn Steensrud,Klaus Ade Johnstad"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "bjornst@skogkatt.homelinux.org,klaus@skolelinux.no"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Sirkel ved sentrum og linje"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "En sirkel konstruert ved sitt sentrum og en gitt linje som tangent"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Konstruer en sirkel som tangerer denne linja"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Velg linja som skal være tangent til den nye sirkelen …"
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Sirkel ved punkt og linjestykke (som diameter)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+"En sirkel definert ved sentrum og lengden av et linjestykke som diameter"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr ""
+"Konstruer en sirkel med diameter gitt ved lengden av dette linjestykket"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+"Velg linjestykket med den lengden som gir diameter i den nye sirkelen …"
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Likesidet trekant"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Likesidet trekant med to gitte hjørner"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Evolute"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Evolute til en kurve"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Evolute til denne kurven"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Oskulerende sirkel"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Oskulerende sirkel til en kurve i et punkt"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Oskulerende sirkel til denne kurven"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Oskulerende sirkel i dette punktet"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Velg punktet …"
+
+#, kde-format
+msgid "Square"
+msgstr "Kvadrat"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Kvadrat gitt to nærliggende hjørner"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Vektordifferanse"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Konstruer vektordifferansen mellom to gitte vektorer."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Konstruer differensen mellom denne vektoren og en annen."
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Konstruer differensen mellom den andre vektoren og denne."
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Konstruer vektordifferensen med start i dette punktet."
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Velg den første av de to vektorene som inngår i differensen …"
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Velg den andre av de to vektorene som inngår i differensen …"
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Velg startpunktet der differensvektoren skal konstrueres …"
+
+#: filters/asyexporter.cc:29
+#, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Eksporter til &Asymptote …"
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr "&Asymptote …"
+
+#: filters/asyexporter.cc:45
+#, kde-format
+msgid "Asymptote Documents (*.asy)"
+msgstr ""
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr "Eksporter som Asymptote-skript"
+
+#: filters/asyexporter.cc:48
+#, kde-format
+msgid "Asymptote Options"
+msgstr "Asymptote-valg"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"Fila «%1» kunne ikke åpnes. Se etter at filrettighetene er satt riktig."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Valg"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Vis ekstra ramme"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Vis &akser"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Vis rutenett"
+
+#: filters/cabri-filter.cc:144
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Dette er en XFig-fil, ikke en Cabri-figur."
+
+#: filters/cabri-filter.cc:182
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Denne Capri-versjonen  (%1) støttes ikke ennå.\n"
+"Du bes kontakte Kig-utviklerne for å gi hjelp til å få støtte for denne "
+"Capri-versjonen."
+
+#: filters/cabri-filter.cc:569
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Denne Cabri-fila inneholder et «%1»-objekt, som Kig for tiden ikke støtter."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Det oppsto en feil under tolking av linje %1 fila %2."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Dr. Geo-fila «%1» er en makro-fil, så den inneholder ingen figurer."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Det er ingen figurer i Dr. Geo-fila «%1»."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo-filter"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Gjeldende Dr.Geo-fil inneholder mer enn en figur.\n"
+"Velg hvilken som skal importeres:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Denne Dr. Geo-fila inneholder et «%1 %2»-objekt, som Kig for tiden ikke "
+"støtter."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+"Denne Dr. Geo-fila inneholder en skjæringstype, som Kig for tiden ikke "
+"støtter."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Eksporter til bilde"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "B&ilde …"
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Eksporter som bilde"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Bildeinnstillinger"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Dette filformatet er ikke støttet."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Noe gikk galt ved lagring til bildet «%1»"
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Eksporter til"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Klarte ikke åpne fila «%1». Dette betyr trolig at den ikke finnes, eller at "
+"den ikke kunne åpnes på grunn av rettighetene"
+
+#: filters/filter.cc:76
+#, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr ""
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Tolkingsfeil"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Ikke støttet"
+
+#: filters/filter.cc:88
+#, kde-format
+msgid "Kig cannot open this file."
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Oppløsning"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "Be&hold høyde/bredde-forhold"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Høyde:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Bredde:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"Dette KSeg-dokumentet bruker en skalerende transformasjon, som Kig ikke kan "
+"importere ennå."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+"Denne KSeg-fila inneholder en fylt sirkel, som Kig for tiden ikke støtter."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+"Denne KSeg-fila inneholder en buesektor, som Kig for tiden ikke støtter."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+"Denne KSeg-fila inneholder et sirkelsegment, som Kig for tiden ikke støtter."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Eksporter til &LaTeX …"
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&LaTeX …"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Latex Documents (*.tex)"
+msgstr ""
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Eksporter som LaTeX"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "LaTex-innstillinger"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "Utdataformat"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr "PSTricks"
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr "Tikz/PGF"
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "Asymptote"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, kde-format
+msgid "Document options"
+msgstr "Dokumentvalg"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr "Bare bilde"
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr "Frittstående dokument"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Denne fila ble laget med Kig versjon «%1», som denne versjonen ikke kan åpne."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Denne fila ble laget av Kig versjon «%1».\n"
+"Støtte for eldre Kig-formater (før 0.4) er tatt ut av Kig.\n"
+"Du kan forsøke å åpne denne fila med en eldre Kig-versjon\n"
+"(0.4 til 0.6), og så lagre den igjen, da blir den lagret i nytt format."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Denne Kig-fila har et koordinatsystem som denne Kig-versjonen ikke "
+"støtter. \n"
+"Det blir brukt et standard koordinatsystem i stedet."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Denne Kig-fila bruker et objekt av type «%1», som denne Kig-versjonen ikke "
+"støtter. Kanskje du har kompilert Kig uten støtte for denne objekttypen, "
+"eller kanskje du bruker en eldre Kig-versjon."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Denne Kig-fila bruker et objekt av den utdaterte typen «%1». Du bør lagre "
+"konstruksjonen med et nytt navn og kontrollere at den virker som ventet."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "&Eksporter til SVG …"
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG …"
+
+#: filters/svgexporter.cc:46
+#, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr ""
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Eksporter som SVG"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG-innstillinger"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Noe gikk galt ved lagring til SVG-fila «%1»"
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Eksporter til &XFig-fil"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig fil …"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "XFig Documents (*.fig)"
+msgstr ""
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Eksporter som XFig-fil"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE Interaktiv geometri"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "© 2002–2005 Kig-utviklerne"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Original author, former maintainer, design and lots of code."
+msgstr ""
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Gjorde mye viktig arbeid over hele Kig, blant annet støtte for kjeglesnitt, "
+"kubiske polynomer, transformasjoner og egenskapstester."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Hjalp mye med implementeringen av geometrisk sted, det er en del matematikk "
+"involvert i å gjøre dette riktig, og Franco skrev de vanskeligste delene."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr "Francesca Gatti"
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr ""
+"Ansvarlig for beregning av den algebraiske ligningen for et geometrisk sted."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr "Petr Gajdos"
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Bidro med Bézier-kurver og relaterte ikoner."
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr "Raoul Bourquin"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Bidro med exportfilter for  «asymptote»."
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, kde-format
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"Forfatter av KGeo, der jeg fikk inspirasjon, litt kildekode og det meste av "
+"grafikken."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Domis bror, som han fikk til å skrive algoritmen for å beregne sentrum av en "
+"sirkel med tre gitte punkter."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud'homme"
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr ""
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Ansvarlig for det fine SVG-ikonet."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Ansvarlig for de nye objekthandlingsikonene."
+
+#: kig/kig.cpp:64
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr "Fant ikke et nødvendig Kig-bibliotek, sjekk installasjonen."
+
+#: kig/kig.cpp:206
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Fjern %1 objekt"
+msgstr[1] "Fjern %1 objekter"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Legg til %1 objekt"
+msgstr[1] "Legg til %1 objekter"
+
+#: kig/kig_part.cpp:87
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "&Still inn koordinatsystem"
+
+#: kig/kig_part.cpp:127
+#, kde-format
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr ""
+
+#: kig/kig_part.cpp:131
+#, kde-format
+msgid "Show grid"
+msgstr "Vis rutelinjer"
+
+#: kig/kig_part.cpp:134
+#, kde-format
+msgid "Show axes"
+msgstr "Vis akser"
+
+#: kig/kig_part.cpp:219
+#, kde-format
+msgid "Invert Selection"
+msgstr "Snu om utvalget"
+
+#: kig/kig_part.cpp:226
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Slett objekter"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Slett de valgte objektene"
+
+#: kig/kig_part.cpp:232
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Avbryt konstruksjonen"
+
+#: kig/kig_part.cpp:236
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Avbryt oppbyggingen av det objektet som er under arbeid"
+
+#: kig/kig_part.cpp:239
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Gjenta konstruksjonen"
+
+#: kig/kig_part.cpp:243
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Gjenta siste konstruksjon (med nye data)"
+
+#: kig/kig_part.cpp:246 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "Vis &alle"
+
+#: kig/kig_part.cpp:249
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Vis alle skjulte objekter"
+
+#: kig/kig_part.cpp:252
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Ny makro …"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Define a new macro"
+msgstr "Definer en ny makro"
+
+#: kig/kig_part.cpp:257
+#, kde-format
+msgid "Manage &Types..."
+msgstr "&Typehåndtering …"
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "Manage macro types."
+msgstr "Håndtering av makro-typer."
+
+#: kig/kig_part.cpp:262
+#, kde-format
+msgid "&Browse History..."
+msgstr "&Vis historien …"
+
+#: kig/kig_part.cpp:265
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Vis historien til den gjeldende konstruksjonen."
+
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Forstørr dokumentet"
+
+#: kig/kig_part.cpp:274 kig/kig_part.cpp:275
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Forminsk dokumentet"
+
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Sentrer skjermen på dokumentet"
+
+#: kig/kig_part.cpp:284 kig/kig_part.cpp:285
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Vis dette dokumentet i full skjerm."
+
+#: kig/kig_part.cpp:288
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "&Velg vist område"
+
+#: kig/kig_part.cpp:291 kig/kig_part.cpp:292
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Velg det område du vil ha vist i vinduet."
+
+#: kig/kig_part.cpp:294
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "V&elg forstørret område"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Sett koordinat&presisjon …"
+
+#: kig/kig_part.cpp:302
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr "Oppgi flyttallspresisjon for koordinater i dokumentet."
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show &Grid"
+msgstr "Vis &rutelinjer"
+
+#: kig/kig_part.cpp:307
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Vis eller skjul rutenettet."
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show &Axes"
+msgstr "Vis &akser"
+
+#: kig/kig_part.cpp:313
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Vis eller skjul aksene."
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Ta på infrarøde briller"
+
+#: kig/kig_part.cpp:319
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Slå på/av visning av skjulte objekter."
+
+#: kig/kig_part.cpp:349
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Gjenta konstruksjon (%1)"
+
+#: kig/kig_part.cpp:350
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "Gjenta %1 (med nye data)"
+
+#: kig/kig_part.cpp:378
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Fila «%1» som du forsøkte å åpne, finnes ikke. Se etter at du oppga riktig "
+"sti."
+
+#: kig/kig_part.cpp:381
+#, kde-format
+msgid "File Not Found"
+msgstr "Fant ikke fil"
+
+#: kig/kig_part.cpp:396
+#, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+
+#: kig/kig_part.cpp:400 kig/kig_part.cpp:443
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Ikke støttet format"
+
+#: kig/kig_part.cpp:441
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig støtter ikke lagring til andre formater enn sitt eget. Lagre til Kig-"
+"format i stedet?"
+
+#: kig/kig_part.cpp:444
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Lagre Kig-format"
+
+#: kig/kig_part.cpp:697
+#, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+
+#: kig/kig_part.cpp:709 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:462
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Fila «%1» finnes fra før. Vil du skrive over den?"
+
+#: kig/kig_part.cpp:710 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:465
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Skrive over fil?"
+
+#: kig/kig_part.cpp:859
+#, kde-format
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr ""
+
+#: kig/kig_part.cpp:923
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Skjul %1 objekt"
+msgstr[1] "Skjul %1 objekter"
+
+#: kig/kig_part.cpp:942
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Vis %1 objekt"
+msgstr[1] "Vis %1 objekter"
+
+#: kig/kig_view.cpp:193
+#, kde-format
+msgid "Zoom In"
+msgstr "Vis større"
+
+#: kig/kig_view.cpp:211
+#, kde-format
+msgid "Zoom Out"
+msgstr "Vis mindre"
+
+#: kig/kig_view.cpp:478
+#, kde-format
+msgid "Recenter View"
+msgstr "Sentrer visningen"
+
+#: kig/kig_view.cpp:500
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Velg rektangelet som skal vises."
+
+#: kig/kig_view.cpp:505 kig/kig_view.cpp:555
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Endre vist del av skjermen"
+
+#: kig/kig_view.cpp:542
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Velg vist område"
+
+#: kig/kig_view.cpp:543
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Velg område ved å oppgi koordinatene til øvre venstre hjørne og nedre høyre "
+"hjørne."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Fil"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "&Rediger"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&Vis"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Objekter"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Punkter"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Linjer"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Sirkler && buer"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "Poly&goner"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Vektorer og linjestykker"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "Kjegles&nitt && tredjegradskurver"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Flere kjeglesnitt"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "Ku&biske polynomer"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr "&Bézier-kurver"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Vinkler"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Transformasjoner"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Differensialgeometri"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "T&ester"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Annet"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Typer"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "Verk&tøy"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hovedverktøylinje"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Punkter"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Linjer"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Vektorer og linjestykker"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Sirkler og buer"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Kjeglesnitt"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, kde-format
+msgid "Bézier Curves"
+msgstr "Bézier-kurver"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Vinkler"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Transformasjoner"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Tester"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Andre objekter"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Vis"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "&Innstillinger"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Ikke vis en grafisk brukerflate. Konverter en oppgitte fila til Kigs eger "
+"format. Utdata skrives til sthandard ut hvis ikke --outfile er oppgitt."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Fil der Kig-data skal skrives. «-» betyr standard utdata. Det er også "
+"standardvalget."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Dokument som skal åpnes"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Punkt ved merkelapp"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "Et punkt hvis koordinater gis av to merkelapper"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Linjestykke"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Et linjestykke konstruert ut fra start- og endepunkt"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Midtnormal"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Normalen på et linjestykke gjennom midtpunktet på linjestykket."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Linje gjennom to punkter"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "En linje konstruert gjennom to punkter"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Stråle"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "En stråle ved sitt startpunkt og et annet punkt et sted på den."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Normal"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"En linje konstruert gjennom et punkt, normalt på en annen linje eller "
+"linjestykke."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Parallell"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+"En linje konstruert gjennom et punkt, og parallell med en annen linje eller "
+"linjestykke"
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Sirkel ved sentrum og punkt"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "En sirkel konstruert ved sitt sentrum og et punkt på omkretsen"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Sirkel ved tre punkter"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "En sirkel konstruert gjennom tre punkter"
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Sirkel ved punkt og radius"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "En sirkel definert ved sentrum og lengden radien"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Konstruer halveringslinja for denne vinkelen"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Velg vinkelen du vil halvere …"
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Vinkelens halveringslinje"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Halveringslinja for en vinkel"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Kjeglesnitt ved fem punkter"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Et kjeglesnitt konstruert gjennom fem punkter"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Hyperbel ved asymptoter og punkt"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "En hyperbel med gitte asymptoter gjennom et punkt"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Ellipse ved brennpunkter og et punkt"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "En ellipse konstruert ved sine brennpunkter og et punkt på randen"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Hyperbel ved brennpunkter og punkt"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr "En hyperbel konstruert ved sine brennpunkter og et punkt på hyperbelen"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Kjeglesnitt ved styrelinje, brennpunkt og punkt"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr "Et kjeglesnitt med gitt styrelinje og brennpunkt, gjennom et punkt"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Loddrett parabel ved tre punkter"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "En loddrett parabel konstruert gjennom tre punkter"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Tredjegradskurve ved ni punkter"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "En tredjegradskurve konstruert gjennom ni punkter"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Pol"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Polen til en linje med hensyn på et kjeglesnitt."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Polaren til et punkt"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Polaren til et punkt med hensyn på et kjeglesnitt."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Tredjegradskurve med knutepunkt ved seks punkter"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "En tredjegradskurve med et knutepunkt i origo gjennom seks punkter"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Tredjegradskurve med spiss ved fire punkter"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr "En tredjegradskurve med vannrett spiss i origo, gjennom fire punkter"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Tredjegradskurve med spiss ved fire punkter"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr "En kubisk funksjon gjennom fire punkter"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Styrelinje til et kjeglesnitt"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Styrelinja (direktrisen) til et kjeglesnitt."
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Vinkel ved tre punkter"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "En vinkel definert ved tre punkter"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Likesidet hyperbel ved fire punkter"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "En likesidet hyperbel konstruert gjennom fire punkter"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Konstruer midtpunktet på dette linjestykket"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Midtpunkt"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Midtpunktet på et linjestykke eller mellom to punkter"
+
+#: misc/builtin_stuff.cc:264
+#, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr ""
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, kde-format
+msgid "Golden Ratio Point"
+msgstr ""
+
+#: misc/builtin_stuff.cc:274
+#, kde-format
+msgid "The golden ratio point of a segment or two other points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Vektor"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Konstruer en vektor av to gitte punkter."
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Vektorsum"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Konstruer vektorsum av to gitte vektorer."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Linje ved vektor"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Konstruer en linje av en gitt vektor gjennom et gitt punkt."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Stråle ved vektor"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "Konstruer strålen med start i et gitt punkt, ved en gitt vektor."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Bue ved tre punkter"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Konstruer en bue gjennom tre gitte punkter."
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Bue ved sentrum og tre punkter"
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "Konstruer en bue med gitt sentrum gjennom tre gitte punkter."
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Bue ved fem punkter"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Konstruer en bue gjennom fem punkter."
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Sirkel ved sentrum, vinkel og punkt"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "Konstruer en bue med gitt sentrum, vinkel og startpunkt"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Parabel ved styrelinje og brennpunkt"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "En parabel definert ved sin styrelinje og brennpunkt"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Forskyv"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Et objekts forskyvning ved en vektor"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Speil i punkt"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Et objekt speilet i et punkt"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Speil i linje"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Et objekt speilet i en linje"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Roter"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Et objekt rotert en vinkel om et punkt"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Skaler"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Skaler et objekt over et punkt, med forhold gitt ved lengden av et "
+"linjestykke"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Skaler over linje"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Et objekt skalert over en linje, med forhold gitt ved lengden av et "
+"linjestykke"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Skala (forhold gitt ved to linjestykker)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Skaler et objekt over et punkt, med forhold gitt ved lengden av to "
+"linjestykker"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Skaler over linje (med forhold gitt ved to linjestykker)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Et objekt skalert over en linje, med forhold gitt ved lengden av to "
+"linjestykker"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Legg på formlikhet"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Legg på en formlikhet til et objekt ( i rekkefølge en skalering og en "
+"rotasjon om et senter)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Harmonisk homologi"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Den harmoniske homologien med et gitt senter og en gitt akse (dette er en "
+"projektiv transformasjon)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Tegn projisert skygge"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Skyggen av et objekt med gitt lyskilde og projeksjonsplan (vist ved en linje)"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Asymptoter til en hyperbel"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "De to asymptotene til en hyperbel."
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Trekant ved dens spisser"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Konstruer en trekant gitt dens tre hjørner."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Konveks omskriving"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Et polygon som konvekst omskriver et annet polygon"
+
+#: misc/builtin_stuff.cc:487
+#, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Annengrads Bézier ved sine styrepunkter"
+
+#: misc/builtin_stuff.cc:488
+#, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Konstruer en annengrads Bézier-kurve gitt de tre styrepunktene."
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr "Tredjegrads Bézier ved sine styrepunkter"
+
+#: misc/builtin_stuff.cc:495
+#, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Konstruer en tredjegrads Bézier-kurve gitt de fire styrepunktene."
+
+#: misc/builtin_stuff.cc:505
+#, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Rasjonal annengrads Bézier-kurve ved styrepunktene"
+
+#: misc/builtin_stuff.cc:506
+#, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr ""
+"Konstruer en rasjonal annengrads Bézier-kurve gitt de tre styrepunktene."
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr "Rasjonal tredjegrads Bézier ved sine styrepunkter"
+
+#: misc/builtin_stuff.cc:513
+#, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr ""
+"Konstruer en rasjonal tredjegrads Bézier-kurve gitt de fire styrepunktene."
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Parallell-test"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Test om to gitte linjer er parallelle"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Ortogonal test"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Test om to gitte linjer er ortogonale"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Linjetest"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Test om tre gitte punkter ligger på en linje"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Inneholder-test"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Test om en gitt kurve inneholder et gitt punkt"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "I polygon-test"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Test om et gitt polygon inneholder et gitt punkt"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Konvekst polygon-test"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Test om et gitt polygon er konvekst"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Eksistenstest"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Test om et gitt objekt lar seg konstruere"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Avstandstest"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr "Test om et gitt punkt har samme avstand fra to andre gitte punkter"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Vektor likhetstest"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Test om to vektorer er like"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr "Punktprojeksjon"
+
+#: misc/builtin_stuff.cc:584
+#, kde-format
+msgid "Project a point on a line"
+msgstr "Projiser et punkt på en linje"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python-skript"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Bygg et nytt Python-skript."
+
+#: misc/coordinate_system.cpp:325
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Oppgi koordinater på denne formen: «x;y»,\n"
+"der x er x-koordinaten og y er y-koordinaten."
+
+#: misc/coordinate_system.cpp:332
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Oppgi koordinater på denne formen: <b>«x;y»</b>,  der x er x-koordinaten og "
+"y er y-koordinaten."
+
+#: misc/coordinate_system.cpp:374
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Oppgi koordinater på denne formen: «r; θ°», \n"
+"der r og θ er polarkoordinatene."
+
+#: misc/coordinate_system.cpp:382
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Oppgi koordinater på denne formen: <b>«r; θ°»</b>, der r og θ er "
+"polarkoordinatene."
+
+#: misc/coordinate_system.cpp:533
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Kartesisk"
+
+#: misc/coordinate_system.cpp:533
+#, kde-format
+msgid "&Polar"
+msgstr "&Polar"
+
+#: misc/coordinate_system.cpp:584
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Angi kartesisk koordinatsystem"
+
+#: misc/coordinate_system.cpp:586
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Angi polart koordinatsystem"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Grader"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Rad"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Grad"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+"Et normalt punkt, dvs. et som enten er uavhengig eller er koblet til en "
+"linje, linjestykke, sirkel."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Punkt"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Lag en tekst-merkelapp."
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Tekst-merkelapp"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Konstruer et punkt ved koordinater"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Punkt ved koordinater"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Fast punkt"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Oppgi koordinatene for det nye punktet."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Lag en tallverdi"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Tallverdi"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr "Br&uk standard koordinatpresisjon"
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr "Oppgi koordinatpre&sisjon:"
+
+#: misc/kiginputdialog.cc:127
+#, kde-format
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr ""
+
+#: misc/kiginputdialog.cc:142
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Sett inn ny størrelse for denne vinkelen:"
+
+#: misc/kiginputdialog.cc:150
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Bruk dette redigeringsfeltet til å endre størrelse på denne vinkelen."
+
+#: misc/kiginputdialog.cc:157
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Velg i denne lista den goniometriske enheten du vil bruke for å endre "
+"størrelse på denne vinkelen.<br />\n"
+"Hvis du bytter enhet, så vil verdien i redigeringsfeltet til venstre bli "
+"omregnet til den nye valgte enheten."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Klarte ikke åpne makro-fila «%1»"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig kan ikke åpne makro-fila «%1»."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Denne fila ble laget på en svært gammel versjon av Kig (før 0.4). Støtte for "
+"dette formatet er tatt ut av nyere Kig-versjoner. Du kan forsøke å importere "
+"denne makroen med en tidligere utgave av Kig (0.4 til 0.6) og så eksportere "
+"den igjen i det nye formatet."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Makro uten navn #%1"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Denne Kig-fila bruker et objekt av type «%1», som denne Kig-versjonen ikke "
+"støtter. Kanskje du har kompilert Kig uten støtte for denne objekttypen, "
+"eller kanskje du bruker en eldre Kig-versjon."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Radikallinjer for kjeglesnitt"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Linjene konstruert gjennom skjæringspunktene mellom to kjeglesnitt. Dette er "
+"også definert for kjeglesnitt som ikke skjærer hverandre."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Bevegelig punkt"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+"Velg det bevegelige punktet, som vil bli flyttet rundt mens det geometriske "
+"stedet tegnes …"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Følgepunkt"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr "Velg følgepunktet, som det geometriske stedet vil bli tegnet gjennom …"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Geometrisk sted"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "A-locus"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Avhengig punkt"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Polygon ved dets hjørner"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Konstruer et polygon ved å angi dets hjørner"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+"… med dette hjørnet (trykk på første hjørne for å avslutte konstruksjonen)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Konstruer et polygon med dette hjørnet"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Velg et punkt som er hjørne i det nye polygonet …"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr "Åpent polygon (polygonal linje)"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Construct an open polygon"
+msgstr "Konstruer et åpent polygon"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"… med dette hjørnet (trykk igjen på det siste hjørne for å avslutte "
+"konstruksjonen)"
+
+#: misc/special_constructors.cc:624
+#, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Konstruer en polygonlinje med dette hjørnet"
+
+#: misc/special_constructors.cc:629
+#, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Velg et punkt som er hjørne i den nye polygonlinja …"
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Polygon"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Konstruer hjørnene i dette polygonet …"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Hjørner i et polygon"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Hjørnene til et polygon."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Konstruer sidene til dette polygonet …"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Kanter til et polygon"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Kantene til et polygon."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Regulært polygon med gitt sentrum"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Konstruer et regulært polygon med et gitt senter og hjørne"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Konstruer et regulært polygon med dette senteret"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Konstruer et regulært polygon med dette hjørnet"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Juster antall kanter (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Juster antall kanter (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Velg sentrum for det nye polygonet …"
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Velg et hjørne på det nye polygonet …"
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Flytt pekeren for å få det antall sider du vil ha …"
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Bézier-kurve ved sine styrepunkter"
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Konstruer en Bézier-kurve ved å angi dens styrepunkter"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+"… med dette styrepunktet (trykk igjen på det siste styrepunktet for å "
+"avslutte konstruksjonen)"
+
+#: misc/special_constructors.cc:1100
+#, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Konstruer en Bézier-kurve med dette styrepunktet"
+
+#: misc/special_constructors.cc:1105
+#, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Velg et punkt som er et styrepunkt den nye Bézier-kurven …"
+
+#: misc/special_constructors.cc:1138
+#, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Rasjonal Bézier-kurve ved sine styrepunkter"
+
+#: misc/special_constructors.cc:1143
+#, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr ""
+"Konstruer en Bézier-kurve ved å angi dens styrepunkter og positive vekter"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr "… tilordne denne vekten til det sist valgte styrepunktet"
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"… med dette styrepunktet (trykk igjen på det siste styrepunktet eller vekta "
+"for å avslutte konstruksjonen)"
+
+#: misc/special_constructors.cc:1207
+#, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Konstruer en rasjonal Bézier-kurve med dette styrepunktet"
+
+#: misc/special_constructors.cc:1213
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Velg et punkt som er et styrepunkt den nye rasjonale Bézier-kurven …"
+
+#: misc/special_constructors.cc:1215
+#, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr ""
+"Velg en numerisk etikett som skal være vekt for det sist valgte punktet …"
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Konstruer radikallinjene for denne sirkelen"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Konstruer radikallinjene for dette kjeglesnittet"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Generisk affinitet"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Den enentydige affiniteten som avbilder 3 gitte punkter (eller en trekant) "
+"på 3 andre gitte punkter (eller en trekant)"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Generisk projektiv transformasjon"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Den enentydige projektive transformasjonen  som avbilder 4 gitte punkter "
+"(eller en firkant) på 4 andre gitte punkter (eller en firkant)"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Invertering av punkt, linje eller sirkel"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Den inverse av et punkt, linje eller en sirkel med hensyn på en sirkel"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Måltransport"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr ""
+"Transporter målet av et linjestykke eller bue over en linje eller sirkel."
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Linjestykke som skal transporteres"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Bue som skal transporteres"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Verdi som skal transporteres"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Transporter et mål på denne linja"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Transporter et mål på denne sirkelen"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Start transport fra dette punktet på sirkelen"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Start transport fra dette punktet på linja"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Start transport fra dette punktet på kurven"
+
+#: misc/special_constructors.cc:1637
+#, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Velg et segment, bue eller numerisk etiktt som skal transporteres …"
+
+#: misc/special_constructors.cc:1641
+#, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Velg et mål – en linje eller sirkel …"
+
+#: misc/special_constructors.cc:1645
+#, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Velg et startpunkt på linja/sirkelen …"
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Skjær med dette kjeglesnittet"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Skjær med denne linja"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Skjær med dette kjeglesnittet"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Skjær med denne sirkelen"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Skjær"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Skjæringen mellom to objekter"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Skjær denne sirkelen"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Skjær dette kjeglesnittet"
+
+#: misc/special_constructors.cc:1770
+#, kde-format
+msgid "Intersect this Segment"
+msgstr "Skjær dette linjestykket"
+
+#: misc/special_constructors.cc:1772
+#, kde-format
+msgid "Intersect this Half-line"
+msgstr "Skjær denne strålen"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Skjær denne linja"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Skjær denne tredjegradskurven"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Skjær denne buen"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Skjær dette polygonet"
+
+#: misc/special_constructors.cc:1782
+#, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Skjær denne polygonallinja"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "med denne sirkelen"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "med dette kjeglesnittet"
+
+#: misc/special_constructors.cc:1792
+#, kde-format
+msgid "with this Segment"
+msgstr "med dette linjestykket"
+
+#: misc/special_constructors.cc:1794
+#, kde-format
+msgid "with this Half-line"
+msgstr "med denne strålen"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "med denne linja"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "med denne tredjegradskurven"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "med denne buen"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "med dette polygonet"
+
+#: misc/special_constructors.cc:1804
+#, kde-format
+msgid "with this Polygonal"
+msgstr "med denne polygonallinja"
+
+#: misc/special_constructors.cc:1814
+#, kde-format
+msgid "Construct midpoint of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "Velg det første av de to punktene der du vil konstruere midtpunktet …"
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Konstruer midtpunktet mellom dette punktet og et annet"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "Velg det andre av de to punktene der du vil konstruere midtpunktet …"
+
+#: misc/special_constructors.cc:1869
+#, kde-format
+msgid "Construct golden ratio point of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1870
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+
+#: misc/special_constructors.cc:1873
+#, kde-format
+msgid "Construct the golden ratio point of this point and another one"
+msgstr ""
+
+#: misc/special_constructors.cc:1874
+#, kde-format
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr ""
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Velg det første objektet som skal skjære …"
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Velg det andre objektet som skal skjære …"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Tangent"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Linja som tangerer en kurve"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Tangent til denne sirkelen"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Tangent til dette kjeglesnittet"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Tangent til denne buen"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Tangent til denne tredjegradskurven"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Tangent til denne kurven"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Tangent i dette punktet"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Krumningssenter"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Senteret for oskulerende sirkel til en kurve"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Krumningssenter til dette kjeglesnittet"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Krumningssentter til denne tredjegradskurven"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Krumningssenter til denne kurven"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Krumningssenter ved dette punktet"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr " piksel"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "cm"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "tomme"
+
+#: modes/construct_mode.cc:226 modes/normal.cc:242
+#, kde-format
+msgid "Which object?"
+msgstr "Hvilket objekt?"
+
+#: modes/construct_mode.cc:261
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Trykk på stedet der du vil plassere det nye punktet, eller kurven du vil "
+"feste det til …"
+
+#: modes/construct_mode.cc:432
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Velg nå plassering for resultat-merkelappen."
+
+#: modes/edittype.cc:28
+#, kde-format
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr ""
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Her kan du endre navnet på denne makrotypen."
+
+#: modes/edittype.cc:48
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Her kan du endre beskrivelse for denne makrotypen. Dette feltet er "
+"valgfritt, så du kan la det stå tomt. Hvis du gjør det, så har makrotypen "
+"ingen beskrivelse."
+
+#: modes/edittype.cc:52
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Bruk denne knappen til å endre ikon for denne makrotypen."
+
+#: modes/edittype.cc:73
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Makronavnet kan ikke være tomt."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Her kan du endre navn, beskrivelse og ikon for denne makrotypen."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Navn:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+#: modes/historydialog.cc:26
+#, kde-format
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr ""
+
+#: modes/historydialog.cc:110
+#, kde-format
+msgid "Start of the construction"
+msgstr "Begynnelsen av konstruksjonen"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Beskrivelse av gjeldende steg:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Første steg"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Et steg bakover"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Et steg framover"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Siste steg"
+
+#: modes/label.cc:157 modes/macrowizard.cc:111 modes/typesdialog.cpp:305
+#, kde-format
+msgid "Name"
+msgstr "Navn"
+
+#: modes/label.cc:181 modes/popup/nameobjectactionsprovider.cc:70
+#: modes/popup/nameobjectactionsprovider.cc:99
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<navnløst objekt>"
+
+#: modes/label.cc:302
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Du har ennå ikke valgt verdier for '%n' deler i teksten. Ta bort disse eller "
+"velg nok argumenter."
+
+#: modes/label.cc:371
+#, kde-format
+msgid "argument %1"
+msgstr "argument %1"
+
+#: modes/label.cc:400
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Velger argument %1"
+
+#: modes/label.cc:503
+#, kde-format
+msgid "Change Label"
+msgstr "Endre merkelapp"
+
+#: modes/label.cc:598 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Sett verdi"
+
+#: modes/label.cc:598
+#, kde-format
+msgid "Enter value:"
+msgstr "Oppgi verdi:"
+
+#: modes/label.cc:627
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Velg posisjon for den nye tallverdien …"
+
+#: modes/macro.cc:72
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Et av resultatobjektene du valgte kan ikke beregnes ut fra de gitte "
+"objektene, derfor kan Kig ikke beregne denne makroen. Trykk Tilbake og "
+"konstruer objektene i riktig rekkefølge …"
+
+#: modes/macro.cc:80
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Et av de gitte objektene brukes ikke i beregningen av de objektene som er "
+"resultater. Dette betyr trolig at du prøver å få Kig til å gjøre noe som er "
+"umulig. Sjekk makroen og forsøk igjen."
+
+#: modes/macrowizard.cc:37
+#, kde-format
+msgid "Given Objects"
+msgstr "Gitte objekter"
+
+#: modes/macrowizard.cc:44
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr "Velg de «gitte» objektene for den nye makroen og trykk «Neste»."
+
+#: modes/macrowizard.cc:76
+#, kde-format
+msgid "Final Object"
+msgstr "Sluttobjekt"
+
+#: modes/macrowizard.cc:83
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Velg målobjektet/objektene for den nye makroen."
+
+#: modes/macrowizard.cc:112
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Oppgi et navn og en beskrivelse for den nye typen."
+
+#: modes/macrowizard.cc:121
+#, kde-format
+msgid "&Name:"
+msgstr "&Navn:"
+
+#: modes/macrowizard.cc:128
+#, kde-format
+msgid "&Description:"
+msgstr "&Beskrivelse:"
+
+#: modes/macrowizard.cc:134
+#, kde-format
+msgid "&Icon:"
+msgstr "&Ikon:"
+
+#: modes/macrowizard.cc:156
+#, kde-format
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr ""
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Flytt %1 objekt"
+msgstr[1] "Flytt %1 objekter"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Omdefiner punkt"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "Svart"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "Grå"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "Rød"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "Grønn"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "Cyanblå"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "Gul"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "Mørkerød"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "Sk&jul"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "&Vis"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "F&lytt"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:370
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Slett"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "&Selvvalgt farge"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Endre objektfarge"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Endre objektbredde"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Endre punktstil"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Endre objektstil"
+
+#: modes/popup/nameobjectactionsprovider.cc:42
+#, kde-format
+msgid "Set &Name..."
+msgstr "Sett &navn …"
+
+#: modes/popup/nameobjectactionsprovider.cc:44
+#, kde-format
+msgid "&Name"
+msgstr "&Navn"
+
+#: modes/popup/nameobjectactionsprovider.cc:64
+#: modes/popup/nameobjectactionsprovider.cc:78
+#, kde-format
+msgid "Set Object Name"
+msgstr "Sett objektnavn"
+
+#: modes/popup/nameobjectactionsprovider.cc:64
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Angi navn på dette objektet:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 objekt"
+msgstr[1] "%1 objekter"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Kig-dokument"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Transformer"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "T&est"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "Konst&ruer"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "&Start"
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Legg til te&kstmerkelapp"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "Sett &farge"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "Oppgi bredde på &pennen"
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Sett st&il"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Sett koordinats&ystem"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Mer …"
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, kde-format
+msgid "Edit Script..."
+msgstr ""
+
+#: modes/textlabelwizard.cc:33
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Oppgi tekst for merkelapp"
+
+#: modes/textlabelwizard.cc:42
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Oppgi tekst for merkelappen her og trykk «Neste».\n"
+"Hvis du vil vise variable deler, så sett inn %1, %2 osv. på passende steder "
+"(f.eks. «Dette linjestykket er %1 enheter langt.»)."
+
+#: modes/textlabelwizard.cc:54
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Vis tekst i en ramme"
+
+#: modes/textlabelwizard.cc:78 scripting/newscriptwizard.cc:53
+#, kde-format
+msgid "Select Arguments"
+msgstr "Velg argumenter"
+
+#: modes/textlabelwizard.cc:87
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Velg nå argumentet/argumentene du trenger. For hvert argument, trykk på "
+"argumentet, velg et objekt og en egenskap i Kig-vinduet, og trykk Ferdig når "
+"du er ferdig …"
+
+#: modes/textlabelwizard.cc:108
+#, kde-format
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr ""
+
+#: modes/typesdialog.cpp:134
+#, kde-format
+msgid "Macro"
+msgstr "Makro"
+
+#: modes/typesdialog.cpp:302
+#, kde-format
+msgid "Type"
+msgstr "Type"
+
+#: modes/typesdialog.cpp:308
+#, kde-format
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: modes/typesdialog.cpp:332
+#, kde-format
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:369 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Rediger …"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:372 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "E&ksporter …"
+
+#: modes/typesdialog.cpp:426
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Er du sikker på at du vil slette denne typen?"
+msgstr[1] "Er du sikker på at du vil slette disse %1 typene?"
+
+#: modes/typesdialog.cpp:428
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Er du sikker?"
+
+#: modes/typesdialog.cpp:454
+#, kde-format
+msgid "Export Types"
+msgstr "Eksporter typer"
+
+#: modes/typesdialog.cpp:456
+#, kde-format
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:476
+#, kde-format
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:478
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:480
+#, kde-format
+msgid "All Files (*)"
+msgstr "Alle filer (*)"
+
+#: modes/typesdialog.cpp:482
+#, kde-format
+msgid "Import Types"
+msgstr "Importer typer"
+
+#: modes/typesdialog.cpp:515
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Det er valgt mer enn én type. Bare én type kan redigeres av gangen. Velg "
+"bare den typen du vil redigere og forsøk igjen."
+
+#: modes/typesdialog.cpp:518
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Mer enn én type er valgt"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Velg typer her …"
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Dette er en liste over kjente makrotyper … du kan velge, redigere, slette, "
+"eksportere og importere dem …"
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Rediger den valgte typen."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Slett alle de valgte typene i lista."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Eksporter alle de valgte typene til en fil."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Importer makroer som inneholdes i en eller flere filer."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Importer …"
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Konstruer en vinkel gjennom dette punktet"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "Velg et punkt som vinkelens første ben skal gå gjennom …"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Konstruer en vinkel ved dette punktet"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Velg toppunkt for vinkelen …"
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Velg et punkt som vinkelens andre ben skal gå gjennom …"
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Sett &størrelse"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr "Slå %rettvinkel-merke av/på"
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Endre vinkelstørrelse"
+
+#: objects/arc_type.cc:34
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Konstruer en bue som begynner i dette punktet"
+
+#: objects/arc_type.cc:37 objects/arc_type.cc:150
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Velg startpunkt for den nye buen …"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Konstruer en bue gjennom dette punktet"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Velg et punkt på den nye buen …"
+
+#: objects/arc_type.cc:39
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Konstruer en bue som slutter i dette punktet"
+
+#: objects/arc_type.cc:39
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Velg endepunkt for den nye buen …"
+
+#: objects/arc_type.cc:149
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Konstruer en bue med dette senteret"
+
+#: objects/arc_type.cc:149
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Velg sentrum for den nye buen …"
+
+#: objects/arc_type.cc:151
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Konstruer en bue med denne vinkelen"
+
+#: objects/arc_type.cc:151
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Velg vinkel for den nye buen …"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Konstruer en bue som begynner i dette punktet"
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Velg startpunkt for den nye buen …"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Konstruer en bue gjennom dette punktet"
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Velg et punkt som den nye buen skal gå gjennom …"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Konstruer en bue som slutter i dette punktet"
+
+#: objects/arc_type.cc:210
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Velg endepunkt for den nye buen …"
+
+#: objects/arc_type.cc:213
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Konstruer en bue med dette senteret"
+
+#: objects/arc_type.cc:213
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Velg sentrum for den nye buen …"
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr "Antall styrepunkter"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+msgid "Control polygon"
+msgstr "Styrepolygon"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Kartesisk likning"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+msgid "Bézier Curve"
+msgstr "Bézier-kurve"
+
+#: objects/bezier_imp.cc:202
+#, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Velg denne Bézier-kurven"
+
+#: objects/bezier_imp.cc:203
+#, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Velg Bézier-kurven %1"
+
+#: objects/bezier_imp.cc:204
+msgid "Remove a Bézier Curve"
+msgstr "Fjern en Bézier-kurve"
+
+#: objects/bezier_imp.cc:205
+msgid "Add a Bézier Curve"
+msgstr "Legg til en Bézier-kurve"
+
+#: objects/bezier_imp.cc:206
+msgid "Move a Bézier Curve"
+msgstr "Flytt en Bézier-kurve"
+
+#: objects/bezier_imp.cc:207
+msgid "Attach to this Bézier Curve"
+msgstr "Fest til denne Bézier-kurven"
+
+#: objects/bezier_imp.cc:208
+msgid "Show a Bézier Curve"
+msgstr "Vis en Bézier-kurve"
+
+#: objects/bezier_imp.cc:209
+msgid "Hide a Bézier Curve"
+msgstr "Skjul en Bézier-kurve"
+
+#: objects/bezier_imp.cc:218
+msgid "Bézier Quadratic"
+msgstr "Annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:219
+#, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Velg denne annengrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:220
+#, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Velg annengrads Bézier-kurve %1"
+
+#: objects/bezier_imp.cc:221
+msgid "Remove a Bézier Quadratic"
+msgstr "Fjern en annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:222
+msgid "Add a Bézier Quadratic"
+msgstr "Legg til en annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:223
+msgid "Move a Bézier Quadratic"
+msgstr "Flytt en annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:224
+msgid "Attach to this Bézier Quadratic"
+msgstr "Fest til denne annengrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:225
+msgid "Show a Bézier Quadratic"
+msgstr "Vis en annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:226
+msgid "Hide a Bézier Quadratic"
+msgstr "Skjul en annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr "Tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:236
+#, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Velg denne tredjegrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:237
+#, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Velg tredjegrads Bézier-kurve %1"
+
+#: objects/bezier_imp.cc:238
+msgid "Remove a Bézier Cubic"
+msgstr "Fjern en tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:239
+msgid "Add a Bézier Cubic"
+msgstr "Legg til en tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:240
+msgid "Move a Bézier Cubic"
+msgstr "Flytt en tredjegrads Bezier-kurve"
+
+#: objects/bezier_imp.cc:241
+msgid "Attach to this Bézier Cubic"
+msgstr "Fest til denne tredjegrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:242
+msgid "Show a Bézier Cubic"
+msgstr "Vis en tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:243
+msgid "Hide a Bézier Cubic"
+msgstr "Skjul en tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr "Rasjonal Bézier-kurve"
+
+#: objects/bezier_imp.cc:491
+#, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Velg denne rasjonale Bézier-kurven"
+
+#: objects/bezier_imp.cc:492
+#, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Velg rasjonal Bézier-kurve %1"
+
+#: objects/bezier_imp.cc:493
+msgid "Remove a Rational Bézier Curve"
+msgstr "Fjern en rasjonal Bézier-kurve"
+
+#: objects/bezier_imp.cc:494
+msgid "Add a Rational Bézier Curve"
+msgstr "Legg til en rasjonal Bézier-kurve"
+
+#: objects/bezier_imp.cc:495
+msgid "Move a Rational Bézier Curve"
+msgstr "Flytt en rasjonal Bézier-kurve"
+
+#: objects/bezier_imp.cc:496
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Fest til denne rasjonale Bézier-kurven"
+
+#: objects/bezier_imp.cc:497
+msgid "Show a Rational Bézier Curve"
+msgstr "Vis en rasjonal Bézier-kurve"
+
+#: objects/bezier_imp.cc:498
+msgid "Hide a Rational Bézier Curve"
+msgstr "Skjul en rasjonal Bézier-kurve"
+
+#: objects/bezier_imp.cc:507
+msgid "Rational Bézier Quadratic"
+msgstr "Rasjonal annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:508
+#, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Velg denne rasjonale annengrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:509
+#, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Velg rasjonal annengrads Bézier-kurve %1"
+
+#: objects/bezier_imp.cc:510
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Fjern en rasjonal annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:511
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Legg til en rasjonal annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:512
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Flytt en rasjonal annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:513
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Fest til denne rasjonale annengrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:514
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Vis en rasjonal annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:515
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Skjul en rasjonal annengrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr "Rasjonal tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:525
+#, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Velg denne rasjonale tredjegrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:526
+#, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Velg rasjonal tredjegrads Bézier-kurve %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr "Fjern en rasjonal tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr "Legg til en rasjonal tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr "Flytt en rasjonal tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:530
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Fest til denne rasjonale tredjegrads Bézier-kurven"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr "Vis en rasjonal tredjegrads Bézier-kurve"
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr "Skjul en rasjonal tredjegrads Bézier-kurve"
+
+#: objects/bezier_type.cc:26
+#, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Konstruer en annengrads Bézier-kurve med dette styrepunktet"
+
+#: objects/bezier_type.cc:27
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Velg et punkt som er et styrepunkt den nye annengrads Bézier-kurven …"
+
+#: objects/bezier_type.cc:121
+#, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Konstruer en tredjegrads Bézier-kurve med dette styrepunktet"
+
+#: objects/bezier_type.cc:122
+#, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Velg et punkt som er et styrepunkt den nye tredjegrads Bézier-kurven …"
+
+#: objects/bezier_type.cc:328
+#, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Konstruer en annengrads rasjonal Bézier-kurve med dette styrepunktet"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Velg tre punkter og tre tallverdier som vekter for å konstruere en rasjonal "
+"tredjegradskurve …"
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, kde-format
+msgid "Select this value as weight"
+msgstr "Velg denne verdien som vekt"
+
+#: objects/bezier_type.cc:433
+#, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Konstruer en tredjegrads rasjonal Bézier-kurve med dette styrepunktet"
+
+#: objects/bogus_imp.cc:216
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:292
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:308
+msgid "int"
+msgstr ""
+
+#: objects/bogus_imp.cc:388
+msgid "Test Result"
+msgstr "Testresultat"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Velg kurven …"
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Velg et punkt på kurven …"
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Flate"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Omkrets"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Radius"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Sentrum"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Utvidet Kartesisk likning"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Polar-likning"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [sentrert ved %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "sirkel"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Velg denne sirkelen"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Velg sirkel %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Fjern en sirkel"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Legg til en sirkel"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Flytt en sirkel"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Fest til denne sirkelen"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Vis en sirkel"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Skjul en sirkel"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Konstruer en sirkel gjennom dette punktet"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Konstruer en sirkel med dette senteret"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Velg sentrum for den nye sirkelen …"
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Velg et punkt på den nye sirkelen …"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "med denne radien"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Velg radiens lengde …"
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Kjeglesnitt-type"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Første brennpunkt"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Andre brennpunkt"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Ellipse"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Hyperbel"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Parabel"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "rho"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "cos theta"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "sin theta"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[sentrert ved %1]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "kjeglesnitt"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Velg dette kjeglesnittet"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Velg kjeglesnitt %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Fjern et kjeglesnitt"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Legg til et kjeglesnitt"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Flytt et kjeglesnitt"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Fest til dette kjeglesnittet"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Vis et kjeglesnitt"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Skjul et kjeglesnitt"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Støtter kjeglesnitt"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Første endepunkt"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Andre endepunkt"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "bue"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Velg denne buen"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "Velg bue %1"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Fjern bue"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Legg til bue"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Flytt en bue"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Fest til denne bue"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Vis en bue"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Skjul en bue"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Konstruer et kjeglesnitt gjennom dette punktet"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Velg et punkt på det nye kjeglesnittet …"
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Konstruer et kjeglesnitt med denne asymptoten"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Velg den første asymptoten til det nye kjeglesnittet …"
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Velg den andre asymptoten til det nye kjeglesnittet …"
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Konstruer en ellipse med dette brennpunktet"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Velg første brennpunkt for den nye ellipsen …"
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Velg andre brennpunkt for den nye ellipsen …"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Konstruer en ellipse gjennom dette punktet"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Velg et punkt på den nye ellipsen …"
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Konstruer en hyperbel med dette brennpunktet"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Velg første brennpunkt i den nye hyperbelen …"
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Velg andre brennpunkt i den nye hyperbelen …"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Konstruer en hyperbel gjennom dette punktet"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Velg et punkt som den nye hyperbelen skal gå gjennom …"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Konstruer et kjeglesnitt med denne linja som styrelinje"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Konstruer styrelinja for det nye kjeglesnittet …"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Konstruer et kjeglesnitt med dette punktet som brennpunkt"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Velg brennpunkt for det nye kjeglesnittet …"
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Konstruer en parabel gjennom dette punktet"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Velg et punkt som den nye parabelen skal gå gjennom …"
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Konstruer en pol mhp. dette kjeglesnittet"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "Velg kjeglesnittet du skal konstruere en pol til …"
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Konstruer polen til denne linja"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Velg linja du skal konstruere polen til …"
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Konstruer polaren mhp. dette kjeglesnittet"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Konstruer polaren til dette punktet"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Konstruer styrelinja for dette kjeglesnittet"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Velg kjeglesnitt du skal konstruere styrelinje til …"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Konstruer en parabel med denne styrelinja"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Velg styrelinje for den nye parabelen …"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Konstruer en parabel med dette brennpunktet"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Velg brennpunkt for den nye parabelen …"
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Konstruer asymptotene til dette kjeglesnittet"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Velg kjeglesnittet du skal konstruere asymptotene til …"
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Konstruer radikallinjene til dette kjeglesnittet"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Velg det første av to kjeglesnitt du skal konstruere radikallinja til …"
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr "Velg det andre av to kjeglesnitt du skal konstruere radikallinja til …"
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Bytt radikallinjer"
+
+#: objects/conic_types.cc:619
+#, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Bytt kjeglesnitt-radikallinjer"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "tredjegradskurve"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Velg denne tredjegradskurven"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Velg tredjegradskurven %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Fjern en tredjegradskurve"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Legg til en tredjegradskurve"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Flytt en tredjegradskurve"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Fest til denne tredjegradskurven"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Vis en tredjegradskurve"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Skjul en tredjegradskurve"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Konstruer en tredjegradskurve gjennom dette punktet"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Velg et punkt den nye tredjegradskurven skal gå gjennom …"
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "kurve"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Velg denne kurven"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Velg kurven %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Fjern en kurve"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Legg til en kurve"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Flytt en kurve"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Fest til denne kurven"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Vis en kurve"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Skjul en kurve"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Muligens transcendental kurve"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Skjæringspunkt allerede beregnet"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Skjær med denne tredjegradskurven"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Skjær med denne buen"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Inverter med hensyn på denne sirkelen"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Velg sirkelen det skal inverteres mot …"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Beregn det inverse til dette objektet"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Velg objektet som skal inverteres …"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Beregn det inverse til dette punktet"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Velg punktet som skal inverteres …"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Beregn den inverse til denne linja"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Velg linja som skal inverteres …"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Beregn det inverse til dette linjestykket"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Velg linjestykket som skal inverteres …"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Beregn den inverse av denne sirkelen"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Velg sirkelen som skal inverteres …"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Beregn den inverse av denne sirkelbuen"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Velg sirkelbuen som skal inverteres …"
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Helling"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Likning"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Lengde"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Støttelinje"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Endepunkt"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "linje"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Velg en linje"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Velg denne linja"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Velg linja %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Fjerne en linje"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Legg til en linje"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Flytt en linje"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Fest til denne linja"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Vis en linje"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Skjul en linje"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "linjestykke"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Velg dette linjestykket"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Velg linjestykke %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Fjern et linjestykke"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Legg til et linjestykke"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Flytt et linjestykke"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Fest til dette linjestykket"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Vis et linjestykke"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Skjul et linjestykke"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "stråle"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Velg denne strålen"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Velg stråle %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Fjern en stråle"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Legg til en stråle"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Flytt en stråle"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Fest til denne strålen"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Vis en stråle"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Legg til en stråle"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Konstruer et linjestykke som begynner i dette punktet"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Velg startpunkt på det nye linjestykket …"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Konstruer et linjestykke til dette punktet"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Velg endepunktet på det nye linjestykket …"
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Konstruer en linje gjennom dette punktet"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Velg et punkt linja skaal gå gjennom …"
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Velg et annet punkt som linja skal gå gjennom …"
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Konstruer en stråle som begynner i dette punktet"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Velg startpunkt på den nye strålen …"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Konstruer en stråle gjennom dette punktet"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Velg et punkt som strålen skal gå gjennom …"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Konstruer midtnormalen på dette linjestykket"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Velg linjestykket du vil tegne midtnormalen på …"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Konstruer en parallell til denne linja"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Velg en linje parallell til den nye linja …"
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Konstruer parallellen gjennom dette punktet"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Velg et punkt den nye linja skal gå gjennom …"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Konstruer en normal til denne linja"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Velg en linje normal til den nye linja …"
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Konstruer en normal gjennom dette punktet"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Oppgi &lengde …"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Oppgi linjestykkets lengde"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Velg ny lengde: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Endre størrelse på linjestykke"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Konstruer en linje langs denne vektoren"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Velg en vektor i retningen til den nye linja …"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Konstruer en stråle langs denne vektoren"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Velg en vektor i retningen til den nye strålen …"
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "geometrisk sted"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Velg dette geom. sted"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Velg geom. sted %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Fjern et geometrisk sted"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Legg til et geometrisk sted"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Flytt et geometrisk sted"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Fest til dette geometriske stedet"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Vis et geometrisk sted"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Skjul et geometrisk sted"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Objekttype"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Objekt"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Velg dette objektet"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Velg objekt %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Fjern et objekt"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Legg til et objekt"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Flytt et objekt"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Fest til dette objektet"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Vis et objekt"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Skjul et objekt"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Vinkel i radianer"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Vinkel i grader"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Midtpunkt"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X-lengde"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y-lengde"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Motsatt vektor"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Vinkel"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Sektor-flate"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Buelengde"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Støttesirkel"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "vinkel"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Velg denne vinkelen"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Velg vinkel %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Fjern en vinkel"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Legg til en vinkel"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Flytt en vinkel"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Fest til denne vinkelen"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Vis en vinkel"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Skjul en vinkel"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "vektor"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Velg denne vektoren"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Velg vektor %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Fjern en vektor"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Legg til en vektor"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Flytt en vektor"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Fest til denne vektoren"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Vis en vektor"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Skjull en vektor"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "bue"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Velg denne buen"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Velg bue %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Fjern en bue"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Legg til en bue"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Flytt en bue"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Fest til denne buen"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Vis en bue"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Skjul en bue"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Koordinat"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X-koordinat"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y-koordinat"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "punkt"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Velg dette punktet"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Velg punkt %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Fjern et punkt"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Legg til et punkt"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Flytt et punkt"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Fest i dette punktet"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Vis et punkt"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Skjul et punkt"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Konstruer midtpunktet mellom dette punktet og et annet punkt"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Velg det første punktet av de to der du skal konstruere midtpunktet …"
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Velg det andre punktet av de to der du skal konstruere midtpunktet …"
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, kde-format
+msgid "Construct the golden ratio point of this point and another point"
+msgstr ""
+
+#: objects/point_type.cc:275
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+
+#: objects/point_type.cc:279
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Sett &koordinat …"
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Omdefiner"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Sett &parameter …"
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Sett koordinat"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Oppgi ny koordinat."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Sett punkt-parameter"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Velg ny parameter: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Endre parameter til punkt med føring"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Velg sirkelen som et mål skal transporteres på …"
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Velg et punkt på sirkelen …"
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Velg linjestykket som skal transporteres på sirkelen …"
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Velg et tall (en lengde) som x-koordinat for punktet.."
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Velg et tall (en lengde) som y-koordinat for punktet …"
+
+#: objects/point_type.cc:820
+#, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "Velg et punkt å projisere på en linje …"
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr "Linje der det projiserte punktet vil ligge …"
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Antall kanter"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Omkrets"
+
+#: objects/polygon_imp.cc:291
+msgid "Boundary Polygonal"
+msgstr "Omsluttende polygonallinje"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr "Åpen omsluttende polygonallinje"
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Tyngdepunkt for hjørnene"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Vindingstall"
+
+#: objects/polygon_imp.cc:305
+msgid "Inside Polygon"
+msgstr "Inne i polygon"
+
+#: objects/polygon_imp.cc:306
+msgid "Open Polygonal Curve"
+msgstr "Åpen polygonallinje"
+
+#: objects/polygon_imp.cc:319
+msgid "Associated Polygon"
+msgstr "Tilknyttet polygon"
+
+#: objects/polygon_imp.cc:320
+msgid "Closed Polygonal Curve"
+msgstr "Lukket polygonallinje"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "polygon"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Velg dette polygonet"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Velg polygon %1"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Fjern et polygon"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Legg til et polygon"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Flytt et polygon"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Fest til dette polygonet"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Vis et polygon"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Skjul et polygon"
+
+#: objects/polygon_imp.cc:645
+msgid "closed polygonal curve"
+msgstr "lukket polygonalkurve"
+
+#: objects/polygon_imp.cc:646
+#, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Velg denne lukkede polygonalkurven"
+
+#: objects/polygon_imp.cc:647
+#, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Velg lukket polygonalkurve %1"
+
+#: objects/polygon_imp.cc:648
+msgid "Remove a closed polygonal curve"
+msgstr "Fjern en lukket polygonalkurve"
+
+#: objects/polygon_imp.cc:649
+msgid "Add a closed polygonal curve"
+msgstr "Legg til en lukket polygonalkurve"
+
+#: objects/polygon_imp.cc:650
+msgid "Move a closed polygonal curve"
+msgstr "Flytt en lukket polygonalkurve"
+
+#: objects/polygon_imp.cc:651
+msgid "Attach to this closed polygonal curve"
+msgstr "Fest til denne lukkede polygonalkurven"
+
+#: objects/polygon_imp.cc:652
+msgid "Show a closed polygonal curve"
+msgstr "Vis en lukket polygonalkurve"
+
+#: objects/polygon_imp.cc:653
+msgid "Hide a closed polygonal curve"
+msgstr "Skjul en lukket polygonalkurve"
+
+#: objects/polygon_imp.cc:662
+msgid "polygonal curve"
+msgstr "polygonal kurve"
+
+#: objects/polygon_imp.cc:663
+#, kde-format
+msgid "Select this polygonal curve"
+msgstr "Velg denne polygonale kurven"
+
+#: objects/polygon_imp.cc:664
+#, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Velg polygonal kurve  %1"
+
+#: objects/polygon_imp.cc:665
+msgid "Remove a polygonal curve"
+msgstr "Fjern en polygonal kurve"
+
+#: objects/polygon_imp.cc:666
+msgid "Add a polygonal curve"
+msgstr "Lagg til en polygonal kurve"
+
+#: objects/polygon_imp.cc:667
+msgid "Move a polygonal curve"
+msgstr "Flytt en polygonal kurve"
+
+#: objects/polygon_imp.cc:668
+msgid "Attach to this polygonal curve"
+msgstr "Fest til denne polygonale kurven"
+
+#: objects/polygon_imp.cc:669
+msgid "Show a polygonal curve"
+msgstr "Vis en polygonal kurve"
+
+#: objects/polygon_imp.cc:670
+msgid "Hide a polygonal curve"
+msgstr "Skjul en polygonal kurve"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "trekant"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Velg denne trekanten"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Velg trekant %1"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Fjern en trekant"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Legg til en trekant"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Flytt en trekant"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Fest til denne trekanten"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Vis en trekant"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Skjul en trekant"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "firkant"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Velg denne firkanten"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Velg firkanten %1"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Fjern en firkant"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Legg til en firkant"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Flytt en firkant"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Fest til denne firkanten"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Vis en firkant"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Skjul en firkant"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Konstruer en trekant med dette hjørnet"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Velg et punkt som er et hjørne i den nye trekanten …"
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Skjær dette polygonet med en linje"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Velg polygonet som skal skjæres med en linje …"
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Skjær dette polygonet med en linje"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Velg linja som skal gjennomskjære polygonet …"
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Skjær denne polygonalkurven med en linje"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Velg den polygonalkurven som skal skjæres med en linje …"
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Skjær denne linja med en polygonalkurve"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Velg linja som skal skjæres med en polygonalkurve …"
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Skjær dette polygonet med et annet polygon"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Velg polygonet som skal gjennomskjæres av et annet polygon …"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Skjær med dette polygonet"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Velg det andre objektet som skal skjæres …"
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Konstruer hjørnene til dette polygonet"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Velg polygonet du skal konstruere hjørnene til …"
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Konstruer kantene til dette polygonet"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Velg polygonet du skal konstruere kantene til …"
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Konstruer konveks omskriving til dette polygonet"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Velg polygonet du skal konstruere omskrivingen til …"
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Projiser dette punktet på sirkelen"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Velg punktet tangenten skal gå gjennom …"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Er denne linja parallell?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Velg den ene av to muligens parallelle linjer …"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Parallell til denne linja?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Velg den andre av to muligens parallelle linjer …"
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Disse linjene er parallelle."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Disse linjene er ikke parallelle."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Er denne linja ortogonal?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Velg den ene av to muligens ortogonale linjer …"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Ortogonal til denne linja?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Velg den andre av to muligens ortogonale linjer …"
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Disse linjene er ortogonale."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Disse linjene er ikke ortogonale."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Se om dette punktet ligger på en linje"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Velg det første av tre punkter muligens på en linje …"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "gjennom dette andre punktet"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Velg det andre av tre punkter muligens på en linje …"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "og dette tredje punktet"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Velg det siste av tre punkter muligens på en linje …"
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Disse punktene ligger på en linje."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Disse punktene ligger ikke på en linje."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Se etter om dette punktet ligger på en kurve"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Velg det punktet du vil prøve …"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Se etter om punktet er på denne kurven"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Velg kurven som punktet kanskje ligger på …"
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Denne kurven inneholder punktet."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Denne kurven inneholder ikke punktet."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Se etter om dette punktet ligger i et polygon"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Se etter om punktet er i dette polygonet"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Velg polygonet som punktet kanskje ligger i …"
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Dette polygonet inneholder punktet."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Dette polygonet inneholder ikke punktet."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Se etter om dette polygonet er konvekst"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Velg det polygonet du vil prøve for konveksitet …"
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Dette polygonet er konvekst."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Dette polygonet er ikke konvekst."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Se om dette punktet har samme avstand"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr "Velg punktet som kanskje har samme avstand fra to andre punkter …"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "fra dette punktet"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Velg det første av de to andre punktene …"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "og fra dette andre punktet"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Velg det andre av de to andre punktene …"
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "De to avstandene et like."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "De to avstandene er ikke like."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Se om denne vektoren er lik en annen vektor"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Velg den ene av to muligens like vektorer …"
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Se etter om denne vektoren er lik den andre vektoren"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Velg den andre av to muligens like vektorer …"
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "De to vektorene er den samme."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "De to vektorene er ikke den samme."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Sjekk om objektet finnes"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Velg objektet for eksistenstest …"
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Objektet finnes."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "Objektet finnes ikke."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Tekst"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "merkelapp"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Velg denne merkelappen"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Velg merkelappen %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Fjern en merkelapp"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Legg til en merkelapp"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Flytt en merkelapp"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Fest til denne merkelappen"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Vis en merkelapp"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Skjul en merkelapp"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "merkelapp"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Velg denne merkelappen"
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "Velg merkelappen %1"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Fjern en merkelapp"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Legg til en merkelapp"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Flytt en merkelapp"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Fest til denne merkelappen"
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Vis en merkelapp"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Skjul en merkelapp"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Tallverdi"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "bolsk merkelapp"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Velg denne bolske  merkelappen"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "Velg den bolske merkelappen %1"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Fjern en bolsk merkelapp"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Legg til en bolsk merkelapp"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Flytt en bolsk merkelapp"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Fest til denne bolske merkelappen"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Vis en bolsk merkelapp"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Skjul en bolsk merkelapp"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Kopier tekst"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "S&lå ramme av/på"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "Oppgi skri&ft …"
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Slå merkelappramme av eller på"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Endre font for merkelappen"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Omdefiner …"
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "Endre &verdi …"
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Oppgi ny verdi:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Endre den viste verdien"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Forskyv dette objektet"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Velg objektet som skal forskyves …"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Forskyv med denne vektoren"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Velg forskyvningsvektoren …"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Speil dette objektet"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Velg objektet som skal speiles …"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Speil i dette punktet"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Velg punktet det skal speiles i …"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Speil i denne linja"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Velg linja det skal speiles i …"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Roter dette objektet"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Velg objektet som skal roteres …"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Roter om dette punktet"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Velg sentrum for rotasjonen …"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Roter denne vinkelen"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Velg vinkelen det skal roteres …"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Skaler dette objektet"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Velg objektet som skal skaleres …"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Skaler med dette senteret"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Velg sentrum for skaleringen …"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Skaler med denne lengden"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr ""
+"Velg en lengde eller et linjestykke som har lengde lik skaleringsfaktoren …"
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Skaler denne lengden …"
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Velg det første av to linjestykker hvis forhold er lik skaleringsfaktoren …"
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr ".. til dette andre linjestykket"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Velg det andre av to linjestykker hvis forhold er lik skaleringsfaktoren …"
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Velg objektet som skal skaleres"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Skaler over denne linja"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Velg linja det skal skal skaleres over"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Projektivt roter dette objektet"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Velg objektet som skal roteres projektivt"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Projektivt roter med denne strålen"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr "Velg strålen for den projektive rotasjonen du vil gi objektet"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Projektivt roter med denne vinkelen"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr "Velg vinkelen for den projektive rotasjonen du vil gi objektet"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Harmonisk homologi av dette objektet"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Velg objektet som skal transformeres …"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Harmonisk homologi med dette senteret"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Velg sentrum for den harmoniske homologien …"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Harmonisk homologi med denne aksen"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Velg aksen for den harmoniske homologien …"
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Generisk affinitet av dette objektet"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Avbild denne trekanten"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Velg trekanten som skal avbildes på en gitt trekant …"
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "på denne andre trekanten"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr ""
+"Velg trekanten som er avbildning ved formlikhet av den første trekanten …"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Det første av 3 startpunkter"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr ""
+"Velg det første av de tre startpunktene til den generiske affiniteten …"
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Det andre av 3 startpunkter"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Velg det andre av de tre startpunktene til den generiske affiniteten …"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Det tredje av 3 startpunkter"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr ""
+"Velg det tredje av de tre startpunktene til den generiske affiniteten …"
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Transformert posisjon for første punkt"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Velg det første av de tre endepunktene for den generiske affiniteten …"
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Transformert posisjon for andre punkt"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Velg det andre av de tre endepunktene for den generiske affiniteten …"
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Transformert posisjon for tredje punkt"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Velg det tredje av de tre endepunktene for den generiske affiniteten …"
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Generisk projektiv transformasjon av dette objektet"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Avbild denne firkanten"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Velg den firkanten som skal avbildes på en annen gitt firkant …"
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "på denne andre firkanten"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Velg den firkanten som er avbildningen av den første firkanten ved projektiv "
+"transformasjon …"
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Det første av 4 startpunkter"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr ""
+"Velg det første av fire startpunkter for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Det andre av 4 startpunkter"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr ""
+"Velg det andre av fire startpunkter for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Det tredje av 4 startpunkter"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr ""
+"Velg det tredje av fire startpunkter for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Det fjerde av 4 startpunkter"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr ""
+"Velg det fjerdee av fire startpunkter for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr ""
+"Velg det første av de fire sluttpunktene for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr ""
+"Velg det andre av de fire sluttpunktene for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr ""
+"Velg det tredje av de fire sluttpunktene for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Transformert posisjon for det fjerde punktet"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr ""
+"Velg det fjerde av de fire sluttpunktene for den generiske projektiviteten …"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Kast skyggen av dette objektet"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Velg objektet du vil konstruere skyggen av …"
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Kast skygge fra denne lyskilden"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Velg lyskilde som skal kaste skyggen …"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Kast skygge på planet definert ved denne linja"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Velg horisont for skyggen …"
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Transformer dette objektet"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Bruk denne transformasjonen"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Legg til en formlikhet til dette objektet"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Legg til formlikhet med dette senteret"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Velg sentrum for formlikheten …"
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Legg til en formlikhet som avbilder dette punktet på et annet"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr "Velg punktet som formlikheten skal avbilde på et annet punkt …"
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Legg til en formlikhet som avbilder et punkt på dette punktet"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr "Velg punktet som formlikheten skal avbilde det første punktet på …"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Konstruer en vektor fra dette punktet"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Velg startpunktet for den nye vektoren …"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Konstruer en vektor til dette punktet"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Velg endepunktet for den nye vektoren …"
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Kontstruer summen av denne vektoren og en annen vektor."
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "Velg den første av de to vektorene som inngår i summen …"
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Konstruer vektorsummen av denne vektoren og den andre."
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Velg den andre av de to vektorene som inngår i summen …"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Konstruer vektorsummen med start i dette punktet."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Velg startpunktet der vektorsummen skal konstrueres …"
+
+#: scripting/newscriptwizard.cc:49
+#, kde-format
+msgctxt "@title:window"
+msgid "New Script"
+msgstr ""
+
+#: scripting/newscriptwizard.cc:60
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Velg argumentobjektet (om det er noe)\n"
+"i Kig-vinduet og trykk «Neste»."
+
+#: scripting/newscriptwizard.cc:66
+#, kde-format
+msgid "Enter Code"
+msgstr "Oppgi kode"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Skriv inn koden nå:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Skriv inn Python-koden nå:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Python-tolkeren fanget opp en feil under kjøring av skriptet.Rett skriptet "
+"og trykk Ferdig igjen."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python-tolkeren ga følgende feilmelding:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Det ser ut til å være en feil i skriptet ditt. Python meldte ikke om noen "
+"feil, men skriptet lager ikke et gyldig objekt. Rett skriptet og trykk "
+"Ferdig igjen."
+
+#: scripting/script_mode.cc:285
+#, kde-format
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr ""
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Rediger Python-skript"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Python-tolkeren fanget opp en feil under kjøring av skriptet. Rett opp "
+"skriptet."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Det ser ut til å være en feil i skriptet ditt. Python meldte ikke om noen "
+"feil, men skriptet lager ikke et gyldig objekt. Rett opp skriptet."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>Du kan kontrollere en kig-konstruksjon ved hjelp av pythonskriptet "
+"«pykig» \n"
+"som kan kjøres med kommandoen\n"
+"<code>pykig.py</code>.  Her er et fint eksempel \n"
+"(<code>hexagons.kpy</code>) du kan prøve:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>Du kan gjenta den siste konstruksjonen ved ganske enkelt å trykke på "
+"tasten\n"
+"«Z». Dette er hendighvis du skal lage en rekke\n"
+" objekter med den samme konstruksjonen, særlig hvis det ikke finnes\n"
+" noen snarvei for den konstruksjonen.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Et av de kraftigste verktøyene i Kig er menyene, som du kan \n"
+"gå inn i ved å høyreklikke enten på et objekt eller et tomrom i \n"
+"dokumentet.  Du kan bruke dem til å sette navn på objektene, endre\n"
+"deres farger og linjestiler, og mange andre interessante ting.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Du kan konstruere nye punkter uten å bruke menyen eller verktøylinja, "
+"bare \n"
+"trykk <em>midtre museknapp</em> et sted i dokumentet.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig kan åpne flere filformater: sitt eget (<code>.kig</code>-filer),\n"
+"<em>KGeo</em>-filer, <em>KSeg</em>-filer, og delvis <em>Dr. Geo</em> og "
+"<em>Cabri&#8482;</em>-filer.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p> Kig har mer enn 40 objekter og 10 transformasjoner du kan konstruere og "
+"bruke\n"
+"i dokumentene dine: Åpne <em>Objekter</em>-menyen for å se alle.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Du kan bruke de valgte objektene til å begynne å konstruere et objekt \n"
+"som trenger de valgte objektene som argumenter. Hvis du for eksempel\n"
+"har to valgte punkter, kan du velge <em>Start->Sirkel ved tre punkter</em> "
+"fra\n"
+"sprettoppmenyen for å begynne å konstruere en sirkel gjennom tre punkter.</"
+"p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, kde-format
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Hvis du har mer enn ett objekt under musepekeren og du vil velge ett av "
+"dem,\n"
+"så kan du trykke <em>venstre museknapp</em> mens du holder nede \n"
+"<em>Shift</em>-tasten, for å få opp en liste over objekter under musepekeren "
+"som\n"
+"du så kan velge i.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p>Når du konstruerer et geometrisk sted, kan du trykke <em>høyre</em> "
+"museknapp på det\n"
+"og velge <em>kartesisk likning</em> for å få se stedets kartesiske likning,\n"
+"når det er en algebraisk kurve av lav grad.</p>\n"

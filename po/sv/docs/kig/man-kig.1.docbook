@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Swedish "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>KDE användarhandbok</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>2020-12-23</date>
+<releaseinfo
+>Program 20.12</releaseinfo>
+<productname
+>KDE-program</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Ett interaktivt geometriprogram av &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>filnamn</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>väljare</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Beskrivning</title>
+<para
+>&kig; är ett program för interaktiv geometri. Det är avsett att tjäna två syften:</para>
+<itemizedlist
+><listitem
+><para
+>Låta studenter utforska matematiska figurer och koncept med datorn.</para
+></listitem>
+<listitem
+><para
+>Fungera som ett verktyg för att rita matematiska figurer och infoga dem i andra dokument, med resultatet direkt synligt.</para
+></listitem
+></itemizedlist>
+<para
+>Du kan skapa geometri på en dator precis som du skulle göra på svarta tavlan i ett klassrum med det här programmet. Programmet låter dig dock flytta och ändra delar av geometriska figurer så att du kan se hur andra delar ändras som ett resultat.</para>
+<para
+>&kig; stöder lokus och användardefinierade makron. Det både importerar och exporterar också från främmande filformat, inklusive <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>Kseg</application
+> och <application
+>Xfig</application
+>.</para>
+<para
+>Programmet är en del av &kde;:s officiella utbildningsmodul.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Väljare</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>Visa inte det grafiska gränssnittet. Konvertera istället den angivna filen till &kig;s eget format. Den konverterade &kig;-filen skrivs på standardutmatningen om inte <option
+>-outfile</option
+> anges.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>filnamn</replaceable
+></option
+></term>
+<listitem
+><para
+>Används med <option
+>--convert-to-native</option
+> för att ange var den nyskapade &kig;-filen ska sparas. Om väljaren inte anges, eller filnamnet <filename
+>-</filename
+> anges, gör att filen matas ut på standardutmatningen.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Se också</title>
+<para
+>Mer detaljerad användardokumentation är tillgänglig med <ulink url="help:/kig"
+>help:/kig</ulink
+> (skriv antingen in webbadressen i &konqueror;, eller kör <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Det finns också ytterligare information tillgänglig på <ulink url="https://edu.kde.org/kig/"
+>webbsidan för KDE:s utbildningsprojekt</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Upphovsmän</title>
+<para
+>&kig; är skrivet av <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+>, med flera.</para>
+<para
+>Den här manualsidan är baserad på den som tagits fram för &Debian; av <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>

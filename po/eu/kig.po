@@ -1,0 +1,7191 @@
+# Translation for kig.po to Euskara/Basque (eu).
+# Copyright (C) 2005-2020, This file is copyright:
+# This file is distributed under the same license as the kig package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@euskalnet.net>.
+#
+# Translators:
+# Marcos  <marcos@euskalgnu.org>, 2005.
+# Ion Gaztañaga <ion_g_m@hotmail.com>, 2005.
+# Ion Gaztañaga <igaztanaga@gmail.com>, 2005.
+# marcos <marcos@euskalgnu.org>, 2006.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009.
+# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2010, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2020-08-06 13:56+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.04.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Ion Gaztañaga"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "igaztanaga@gmail.com"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Zirkulua zentrua eta zuzen batetik"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr ""
+"Emandako zentrua duen eta emandako zuzen batekiko tangentea den zirkulua."
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Eraiki zuzen honekiko tangentea den zirkulua"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Hautatu zirkulu berriarekiko tangentea izango den zuzena..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Zirkulua puntu bat eta segmentu batetik (diametroa)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+"Bere zentruaz eta diametro bezala segmentu baten luzeraz definitutako "
+"zirkulua."
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr ""
+"Eraiki zirkulu bat segmentu honen luzerak emandako diametrodun zirkulu bat."
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr ""
+"Hautatu bere luzera zirkulu berriaren diametroa izango den segmentua..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Triangelu ekilateroa"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Triangelu ekilateroa emandako bi erpinetatik"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Eboluta"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Kurba baten eboluta"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Kurba honen eboluta"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Zirkulu oskulatzailea"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Kurba baten puntu bateko zirkulu oskulatzailea"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Kurba honen zirkulu oskulatzailea"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Zirkulu oskulatzailea puntu honetan"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Hautatu puntua..."
+
+#, kde-format
+msgid "Square"
+msgstr "Karratua"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Karratua emandako aldameneko erpinetatik"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Bektoreen diferentzia"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Eraiki bi bektoreen arteko diferentzia den bektorea."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Eraiki bektore honen eta beste baten arteko diferentzia den bektorea."
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Eraiki beste baktore bateen eta honen arteko diferentzia den bektorea."
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Eraiki bektoreen diferentzia puntu honetatik hasita."
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Hautatu diferentzia kalkulatzeko bi bektoreetatik lehenengoa..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Hautatu diferentzia kalkulatzeko bi bektoreetatik bigarrena..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Hautatu bektoreen arteko diferentzia eraikitzeko puntua..."
+
+#: filters/asyexporter.cc:29
+#, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Esportatu &Asymptote-ra..."
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr "&Asymptote..."
+
+#: filters/asyexporter.cc:45
+#, kde-format
+msgid "Asymptote Documents (*.asy)"
+msgstr "Asymptote dokumentuak (*.asy)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr "Esportatu Asymptote script gisa"
+
+#: filters/asyexporter.cc:48
+#, kde-format
+msgid "Asymptote Options"
+msgstr "Asymptote aukerak"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"\"%1\" fitxategia ezin izan da ireki. Egiaztatu fitxategiaren baimenak ongi "
+"ezarri diren."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Aukerak"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Erakutsi marko gehigarria"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Erakutsi ardatzak"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Erakutsi sareta"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Hau XFig fitxategi bat da, ez Cabri irudi bat."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Cabri-ren bertsio (%1) hau ez dago oraindik onartuta.\n"
+"Mesedez, jar zaitez Kig-en egileekin harremanetan Cabri bertsio honen "
+"euskarrian laguntzeko."
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Cabri fitxategi honek \"%1\" objektu bat du, eta Kig-ez ez du momentuz hau "
+"onartzen."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Errore bat aurkitu da %2 fitxategiko %1 lerroan."
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr ""
+"\"%1\" Dr.Geo fitxategia makro fitxategi bat da, eta beraz ez du irudirik."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Ez dago irudirik \"%1\" Dr. Geo fitxategian."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo iragazkia"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Uneko Dr. Geo fitxategiak irudi bat baina gehiago du.\n"
+"Hautatu zein inportatu nahi duzun:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Dr. Geo fitxategi honek \"%1 %2\" objektu bat du eta momentuz Kig-ek ez du "
+"hau onartzen."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+"Dr.Geo fitxategi honek ebakidura mota bat du eta momentuz Kig-ek ez du hau "
+"onartzen."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Esportatu irudira"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Irudia..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Esportatu irudi bezala"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Irudiaren aukerak"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Fitxategi-formatu hau ez da onartzen."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Erroreren bat gertatu da \"%1\" irudira gordetzean"
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Esportatu hona"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Ezin izan da \"%1\" fitxategia ireki. Honek ziurrenik existitzen ez dela edo "
+"baimenengatik ireki ezin dela esan nahi du."
+
+#: filters/filter.cc:76
+#, kde-format
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr ""
+"Errore bat aurkitu da fitxategi honen sintaxi azterketa egitean. Ezin da "
+"ireki."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Errorea prozesatzean"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Ez da onartzen"
+
+#: filters/filter.cc:88
+#, kde-format
+msgid "Kig cannot open this file."
+msgstr "Kig-ek ezin du fitxategi hau ireki."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Erresoluzioa"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "&Mantendu itxuraren erlazioa"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Altuera:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Zabalera:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"KSeg dokumentu honek eskalatze-transformazioak erabiltzen ditu eta Kig-ek "
+"momentuz ezin ditu hauek inportatu."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+"KSeg dokumentuak zirkulu bete bat du eta Kig-ek momentuz ez du hau onartzen."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr ""
+"KSeg dokumentuak arku sektore bat du eta Kig-ek momentuz ez du hau onartzen."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+"KSeg dokumentuak arku segmentu bat du eta Kig-ek momentuz ez du hau onartzen."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Esportatu &Latex-era..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Latex Documents (*.tex)"
+msgstr "Latex dokumentuak (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Esportatu Latex bezala"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Latex aukerak"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "Irteerako formatua"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr "PSTricks"
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr "Tikz/PGF"
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "Asymptote"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, kde-format
+msgid "Document options"
+msgstr "Dokumentuen aukerak"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr "Irudia bakarrik"
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr "Dokumentu bereizia"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Fitxategi hau Kig-en \"%1\" bertsioak sortu zuen eta bertsio honek ezin du "
+"ireki."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Fitxategi hau Kig \"%1\" bertsioarekin sortu zen.\n"
+"Kig-en formatu zaharragoentzako euskarria (0.4 aurrekoa) Kig-etik ezabatu "
+"da.\n"
+"Fitxategi hau Kig-en bertsio zaharrago batekin (0.4 eta 0.6 bitartekoa) "
+"irekitzen\n"
+"saiatu zaitezke, eta gero berriro gorde, formatu berrian gordetzeko."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Kig fitxategi honek Kig bertsio honek onartzen ez duen koordenatu-sistema "
+"bat du.\n"
+"Koordenatu-sistema estandar bat erabiliko da horren ordez."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Kig fitxategi honek \"%1\" objektu mota bat du eta Kig bertsio honek ez du "
+"onartzen. Beharbada, Kig objektu mota honen euskarririk gabe konpilatu duzu, "
+"edo beharbada, Kig bertsio zahar bat ari zara erabiltzen."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Kig fitxategi honek \"%1\" motako objektu bat darabil, zaharkitua dagoena, "
+"eraikuntza beste izen batekin gorde eta uste bezala funtzionatzen duela "
+"ziurtatu beharko zenuke."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "&Esportatu SVG-ra..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, kde-format
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "Grafiko bektorial eskalagarriak (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Esportatu SVG bezala"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG aukerak"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Errore bat gertatu da \"%1\" SVG fitxategia gordetzean"
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Esportatu &XFig fitxategira"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig fitxategia..."
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "XFig Documents (*.fig)"
+msgstr "XFig dokumentuak (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Esportatu XFig fitxategi gisa"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE-ren Geometria Interaktiboa"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "(C) 2002-2005, Kig-en garatzaileak"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr "David E. Narvaez"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr "Egungo mantentzailea."
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "Jatorrizko egilea, mantentzaile ohia, diseinua eta kode asko."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Kig inguruan lan garrantzitsu asko egin ditu, adibidez, konikoak, kubikoak, "
+"transformazioak, eta propietate-proben euskarria."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, kde-format
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Mantentzaile ohia, Dr. Geo inportatze-iragazkia, puntu eta lerroen estiloak, "
+"italierazko itzulpena, eta beste hainbat gauza gehiago."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Locus objektuaren inplementazioan asko lagundu zuen, matematika asko baitago "
+"honen inguruan eta Francok zati zailenak idatzi zituen."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr "Francesca Gatti"
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Leku geometriko baten ekuazio aljebraikoa konputatzearen arduraduna."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr "Petr Gajdos"
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Bézier kurbak eta horiekin lotutako ikonoak ematen lagundu zuen."
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr "Raoul Bourquin"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "«asymptote»ra esportatzeko iragazkia eman eman."
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, kde-format
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"Frantseserako itzultzailea, gainera, iruzkin interesgarri batzuekin lagundu "
+"zuen, ezaugarri eskaerak eta akats jakinarazpenekin esaterako."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"KGeo-ren egilea, inspirazioa hemendik hartu nuen, baita kodea eta irudiak "
+"ere."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Domi-ren anaia, hiru puntutatik zirkulua eraikitzeko algoritmoa idatzi zuen."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud'homme"
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Contributed a patch for some bugs."
+msgstr "Akats batzuetarako adabakia eman zuen."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, kde-format
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Kig-i buruzko iruzkin on batzuekin lagundu zuen, ezaugarri eskaera "
+"batzuekin, garbiketak eta konponketekin, eta irc bidez berriketan arituz :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Aplikazioaren SVG ikono politaren egilea."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Objektu berrien ekintzen ikonoen arduraduna."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr ""
+"Ez da beharrezkoa den Kig liburutegia aurkitu, egiaztatu zure instalazioa."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr "Ireki fitxategia"
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Kendu objektu %1"
+msgstr[1] "Kendu %1 objektu"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Gehitu objektu %1"
+msgstr[1] "Gehitu %1 objektu"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "&Ezarri koordenatu sistema"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Kig aukerak"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Erakutsi sareta"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Erakutsi ardatzak"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Alderanztu hautapena"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Ezabatu objektuak"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Ezabatu hautatutako objektuak"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Ezeztatu eraikuntza"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Ezeztatu objektuaren uneko eraikuntza prozesua"
+
+#: kig/kig_part.cpp:237
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Errepikatu eraikuntza"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Errepikatu azken eraikuntza (datu berriekin)"
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "Erakutsi &guztiak"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Erakutsi ezkutuko objektu guztiak"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Makro berria..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Definitu makro berria"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "Kudeatu &motak..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Kudeatu makro motak."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr "&Arakatu historia..."
+
+#: kig/kig_part.cpp:263
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Arakatu uneko eraikuntzaren historia."
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Zooma handiagotu dokumentuan"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Zooma txikiagotu dokumentuan"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Pantaila dokumentuan zentratu"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Ikusi dokumentu hau pantaila osoan."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "&Hautatu erakutsiko den area"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Hautatu lehioan erakutsi nahi duzun area."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "H&autatu zoom area"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Ezarri koordenatuen &zehaztasuna..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr "Ezarri dokumentuko koordenatuen koma higikorraren zehaztasuna."
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Erakutsi &sareta"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Erakutsi edo ezkutatu sareta."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "Erakutsi &ardatzak"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Erakutsi edo ezkutatu ardatzak."
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Erabili infragorri-betaurrekoak"
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Gaitu/Desgaitu ezkutuko objektuen ikusgaitasuna."
+
+#: kig/kig_part.cpp:347
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Errepikatu eraikuntza (%1)"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "Errepikatu %1 (datu berriekin)"
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Irekitzen saiatu zaren \"%1\" fitxategia ez da existitzen. Egiaztatu bide-"
+"izen zuzena sartu duzula."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Fitxategia ez da aurkitu"
+
+#: kig/kig_part.cpp:394
+#, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"«%1» motako dokumentu bat irekitzen saiatu zara. Tamalez, Kig-ek ez du "
+"formatu hau onartzen. Formatuaren euskarria garatzea merezi duela uste "
+"baduzu, ezaugarri eskaera bat ireki dezakezu <a href= \"https://bugs.kde.org/"
+"enter_bug.cgi?product=kig&bug_severity=wishlist\">KDEren akatsen "
+"jarraipenerako sisteman</a>"
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Formatua ez da onartzen"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig-ek ez du beste fitxategi-formatuetan gordetzen. Kig-en formatura gorde "
+"nahi al duzu?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Gorde Kig formatuan"
+
+#: kig/kig_part.cpp:695
+#, kde-format
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr "Kig dokumentuak (*.kig);;Konprimatutako Kig dokumentuak (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "\"%1\" fitxategia dagoeneko existitzen da. Gainidatzi nahi al duzu?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Gainidatzi fitxategia?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Inprimatu geometria"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Ezkutatu objektu %1"
+msgstr[1] "Ezkutatu %1 objektu"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Erakutsi objektu %1"
+msgstr[1] "Erakutsi %1 objektu"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Zooma handiagotu"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Zooma txikiagotu"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Birzentratu ikuspegia"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Hautatu erakutsi beharreko errektangelua"
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Aldatu ikusgai dagoen pantailaren zatia"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Hautatu zoomaren area"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Hautatu zoomaren area goiko-ezkerreko eskinako <br />eta beheko-eskuineko "
+"koordenatuak sartuz."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Fitxategia"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "&Editatu"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&Ikusi"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Objektuak"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Puntuak"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Zuzenak"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Zirkuluak eta arkuak"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "Poli&gonoak"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Bektoreak eta segmentuak"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "Ko&nikoak eta kubikoak"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Koniko gehiago"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "Ku&bikoak"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr "&Bézier kurbak"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Angeluak"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Transformazioak"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "Geometria &diferentziala"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "&Probak"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Beste"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Motak"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "&Tresnak"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Tresna-barra nagusia"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Puntuak"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Zuzenak"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Bektoreak eta segmentuak"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Zirkuluak eta arkuak"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Konikoak"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, kde-format
+msgid "Bézier Curves"
+msgstr "Bézier kurbak"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Angeluak"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Transformazioak"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Probak"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Beste objektuak"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Ikusi"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "E&zarpenak"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Ez erakutsi interfaze grafikorik. Bihurtu zehaztutako fitxategia Kig-en "
+"berezko. Irteera stdout-era doa --outfile zehazten ez bada."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Sortutako berezko fitxategia idatziko den fitxategia. '-'-ek stdout irteera "
+"esan nahi du. Lehenetsia stdout da."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr "kde.org"
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Irekitzeko dokumentua"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Puntua etiketa numerikoekin"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "Puntu bat, bere koordenadak bi etiketa numerikoek emango dituztelarik"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Segmentua"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Bere hasieratik amaieraraino eraikitako segmentu bat"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Segmentuaren ardatza"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr ""
+"Emandako segmentu baten erdiko-puntutik mozten duen elkartzuta den zuzena."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Zuzena bi puntutatik"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Bi puntu bidez eraikitako zuzen bat"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Erdi-zuzena"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr ""
+"Bere hasierako puntuak eta bere barneko puntu batek definitzen duen erdi-"
+"zuzen bat."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Elkartzuta"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Puntu batetik eraikitako eta beste zuzen edo segmentu batekiko elkartzuta "
+"den zuzen bat."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Paraleloa"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+"Puntu batetik eraikitako eta beste zuzen edo segmentu batekiko paraleloa den "
+"zuzen bat."
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Zirkulua zentru eta puntu batetik"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Bere zentruak eta bere ertzeko puntu batekin eraikitako zirkulu bat"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Zirkulua hiru puntutatik"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Hiru puntutatik eraikitako zirkulu bat"
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Zirkulua puntu eta erradioarekin"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Zentrua eta erradioaren luzerarekin zehaztutako zirkulua"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Eraiki angelu honen erdikaria"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Hautatu bere erdikaria eraiki nahi duzun angelua..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Angeluaren erdikaria"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Angelu baten erdikaria"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Konikoa bost puntutatik"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Bost puntuz definitutako koniko baten eraikuntza."
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Hiperbola asintota eta puntutik"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr ""
+"Emandako asintota duen eta emandako puntutik pasatzen den hiperbola bat"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Elipsea foku eta puntutik"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "Bere fokuek eta bere barneko puntu batek definitzen duten elipse bat."
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Hiperbola foku eta puntutik"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr ""
+"Bere fokuek eta bere barneko puntu batek definitzen duten hiperbola bat."
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Konikoa zuzentzaile, foku eta puntutik"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+"Emandako zuzentzaileak, fokuak eta bere puntu batek definitzen duten koniko "
+"bat."
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Parabola bertikala hiru puntutatik"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Hiru puntutik pasatzen den parabola bertikal bat"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Kurba kubikoa bederatzi puntutatik"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Emandako bederatzi puntutatik sortzen den kurba kubiko bat"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Zuzen baten puntu polarra"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Koniko batekiko zuzen batek duen puntu polarra."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Puntu baten zuzen polarra"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Koniko batekiko puntu batek duen zuzen polarra."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Nododun kurba kubikoa sei puntutatik"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "Emandako sei puntutatik, jatorrian puntu nodala duen kurba kubiko bat"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Goierpindun kurba kubikoa lau puntutatik"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+"Emandako sei puntutatik, jatorrian goierpin horizontala duen kurba kubiko bat"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Funtzio kubikoa lau puntutatik"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr "Lau puntuz definitutako funtzio kubikoa"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Koniko baten zuzentzailea"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Koniko batean zuzentzailea"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Angelua hiru puntutatik"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Hiru puntuk definitzen duten angelu bat"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Hiperbola ekilateroa lau puntutatik"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Lau puntu bidez eraikitzen den hiperbola ekilatero bat"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Eraiki segmentu honen erdiko puntua"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Erdiko puntua"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Segmentu baten edo beste bi punturen erdiko puntua"
+
+#: misc/builtin_stuff.cc:264
+#, kde-format
+msgid "Construct the golden ratio point of this segment"
+msgstr "Eraiki segmentu honen urreko proportzioaren puntua"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, kde-format
+msgid "Golden Ratio Point"
+msgstr "Urrezko proportzioaren puntua"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "The midpoint of a segment or two other points"
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Segmentu baten edo beste bi punturen erdiko puntua"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Bektorea"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Eraiki bektore bat emandako bi puntuetatik."
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Bektore batuketa"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Eraiki bi bektoreren batuketa den bektorea."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Bektore batek zuzendutako zuzena"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Eraiki lerroa emandako puntu eta bektore batetik."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Erdi-zuzena"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr ""
+"Eraiki emandako puntuan hasi eta emandako bektore baten araberako erdi-"
+"zuzena."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Arkua hiru puntutatik"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Eraiki arku bat hiru puntutatik."
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Arku konikoa zentrua eta hiru puntutatik"
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "Eraiki arku koniko bat emandako zentrua eta hiru puntukin."
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Arku konikoa bost puntutatik"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Eraiki arku koniko bat bost puntutatik."
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Arkua zentru, angelu eta puntutik"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr "Eraiki arku bat emandako zentru, angelu eta hasierako puntutik"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Parabola zuzentzaile eta fokutik"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Bere zuzentzaileak eta fokuak definitzen duen parabola"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Translazioa"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Bektore baten bidezko objektu baten translazioa"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Isladatu puntu batean"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Puntu batean isladatzen den objektu bat"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Isladatu zuzen batean"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Zuzen batean isladatzen den objektu bat"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Biratu"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Puntu baten inguruan angelu batean biratzen den objektu bat"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Eskalatu"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Eskalatu objektu bat puntu batekiko, segmentu baten luzerak ematen duen "
+"eskalaren arabera."
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Eskalatu zuzen batekiko"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Zuzen batekiko eskalatutako objektu bat, segmentu baten luzerak emandako "
+"eskalaren arabera"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Eskalatu (emandako bi segmenturen arabera)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Eskalatu objektu bat puntu batekiko, bi segmenturen luzerak emandako "
+"eskalaren arabera"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Eskalatu zuzen batekiko (emandako bi segmentuen arabera)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Eskalatu objektu bat zuzen batekiko, bi segmenturen luzerak emandako "
+"eskalaren arabera"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Aplikatu antzekotasuna"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Aplikatu antzekotasuna objektu bati (zentru batekiko eskalatze eta biraketa "
+"sekuentzia)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Homologia harmonikoa"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Homologia harmonikoa emandako zentru eta ardatz batekin (hau transformazio "
+"proiektibo bat da)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Marraztu itzal proiektiboa"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Emandako argi iturburu eta proiekzio planodun (zuzen batek adierazita) "
+"objektu baten itzala"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Hiperbola baten asintota"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Hiperbola baten bi asintotak"
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Triangelua bere erpinetatik"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Eraiki triangelu bat bere hiru erpinetatik."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Kroska ganbila"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Beste poligono batean kroska ganbilari dagokion poligono bat"
+
+#: misc/builtin_stuff.cc:487
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Kurba kubikoa bederatzi puntutatik"
+
+#: misc/builtin_stuff.cc:488
+#, fuzzy, kde-format
+#| msgid "Construct a conic arc with given center through three points."
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Eraiki arku koniko bat emandako zentrua eta hiru puntukin."
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:495
+#, fuzzy, kde-format
+#| msgid "Construct a cubic curve through this point"
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Eraiki puntu honetatik pasako den kurba kubiko bat"
+
+#: misc/builtin_stuff.cc:505
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Kurba kubikoa bederatzi puntutatik"
+
+#: misc/builtin_stuff.cc:506
+#, fuzzy, kde-format
+#| msgid "Construct a triangle given its three vertices."
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Eraiki triangelu bat bere hiru erpinetatik."
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr ""
+
+#: misc/builtin_stuff.cc:513
+#, fuzzy, kde-format
+#| msgid "Construct a conic arc with given center through three points."
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "Eraiki arku koniko bat emandako zentrua eta hiru puntukin."
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Probatu paralelotasuna"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Probatu ea emandako bi lerroak paraleloak diren"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Probatu elkartzunatsuna"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Probatu ea emandako bi lerroak elkartzutak diren"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Probatu lerrokidetasuna"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Probatu emandako hiru puntuak lerrokideak diren"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Probatu edukiera"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Probatu ea emandako puntua emandako kurba barruan dagoen"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Probatu poligonoan dagoela"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Rpobatu ea emandako puntua emandako poligonoaren barruan dagoen"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Probatu poligono ganbila"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Probatu ez emandako poligonoa ganbila den"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Existentzia proba"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Probatu emandako poligonoa eraiki daitekeen edo ez"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Probatu distantzia"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Probatu ea emandako puntua bi emandako puntuetatik distantzia berdinera "
+"dagoen."
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Probatu bektoreen berdintasuna"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Probatu ea bi bektore berdinak diren"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr "Puntua proiektatzea"
+
+#: misc/builtin_stuff.cc:584
+#, kde-format
+msgid "Project a point on a line"
+msgstr "Lerro batean puntu bat proiektatu"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python script-a"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Eraiki Python script berri bat."
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Sartu koordenatuak ondorengo moduan: \"x;y\",\n"
+"non x x koordenatua den eta y berriz, y koordenatua."
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Sartu koordenatuak ondorengo moduan: <b>\"x;y\"</b>,<br />non x x "
+"koordenatua eta y, y koordenatua diren."
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Sartu koordenatuak ondorengo moduan: \"r; θ°\",\n"
+"non r eta θ koordenatu polarrak diren."
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Sartu koordenatuak ondorengo moduan: <b>\"r; θ°\"</b>,<br />non r eta θ "
+"koordenatu polarrak diren."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Euklidearra"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Polarra"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Ezarri koordenatu sistema euklidearra"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Ezarri koordenatu sistema polarra"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Gradu"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Radian"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Gradian"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+"Puntu arrunt bat, hau da, independientea edo zuzen, zirkulu edo segmentu "
+"bati lotuta dagoena."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Puntua"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Eraiki testu-etiketa bat."
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Testu-etiketa"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Eraiki puntu bat bere koordenatuetatik"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Puntua koordenatuetatik"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Puntu finkoa"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Sartu puntu berriaren koordenatuak."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Eraiki balio numeriko bat"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Balio numerikoa"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr "Era&bili koordenatu lehenetsien zehaztasuna"
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr "&Zehaztu koordenatuen zehaztasuna:"
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Ezarri angeluaren tamaina"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Sartu angelu honen tamaina berria:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Erabili edizio-eremu hau angelu honen tamaina aldatzeko."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Hautatu zerrenda honetatik angelu honen tamaina aldatzeko erabili nahi duzun "
+"unitate goniometrikoa.<br />\n"
+"Beste unitate batera aldatzen baduzu, ezkerreko edizio-eremuko balioa "
+"hautatutako unitate berrira bihurtuko da."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Ezin izan da '%1' makro fitxategia ireki"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig-ek ezin izan du \"%1\" fitxategia ireki."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Fitxategi hau Kig bertsio oso zahar batekin sortu zen (0.4 aurrekoa). "
+"Formatu honentzako euskarria kendu egin da Kig-en bertsio berrietan. Makro "
+"hau Kig-en aurreko bertsio bat erabiliz (0.4 eta 0.6 bitartekoa) inportatu "
+"dezakezu eta ondoren formatu berrian esportatu."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Makro izengabea #%1"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Kig fitxategi honek \"%1\" objektu mota bat du eta Kig bertsio honek ez du "
+"onartzen. Beharbada, Kig objektu mota honen euskarririk gabe konpilatu duzu, "
+"edo agian Kig bertsio zahar bat ari zara erabiltzen."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Lerro radialak bi konikoentzat"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Bi konikoen ebakiduratik sortutako zuzenak. Hau ere ebakidurarik ez duten "
+"konikoentzat definitzen da."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Puntu mugikorra"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+"Hautatu puntu mugikorra, leku geometrikoa marrazten den bitartean mugitu "
+"dena..."
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Hurrengo puntua"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+"Hautatu hurrengo puntua, leku geometrikoa puntu honetararte marraztuko da..."
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Leku geometrikoa"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Leku geometriko bat"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Menpeko puntua"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Poligonoa bere erpinetatik"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Eraiki poligono bat bere erpinetatik"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr "...  erpin honekin (klikatu lehenengo erpina eraikuntza amaitzeko)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Eraiki poligono bat erpin honekin"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Hautatu poligono berriaren erpin bat izango den puntu bat..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr "Poligono irekia (lerro poligonala)"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Construct an open polygon"
+msgstr "Eraiki poligono ireki bat"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"... erpin honekin (klik egin berriz ere azken erpinean eraikitzen amaitzeko)"
+
+#: misc/special_constructors.cc:624
+#, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Eraiki lerro poligonal bat erpin honekin"
+
+#: misc/special_constructors.cc:629
+#, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Hautatu lerro poligonal berriko erpin bat izateko puntu bat..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Poligonoa"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Eraiki poligono honen erpinak..."
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Poligono baten erpinak"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Poligono baten erpinak."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Eraiki poligono honen aldeak..."
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Poligono baten aldeak"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Poligono baten aldeak."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Poligono erregularra emandako zentrutik"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Eraiki poligono erregular bat emandako zentru eta erpinarekin"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Eraiki poligono erregular bat zentru honekin"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Eraiki poligono erregular bat erpin honekin"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Doitu alde kopurua (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Doitu alde kopurua (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Hautatu poligono berriaren zentrua..."
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Hautatu poligono berriaren erpin bat..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Mugitu kurtsorea nahi diren alde kopuruak eskuratzeko..."
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Bézier kurba bere kontrol-puntutatik"
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Bézier kurba bat eraikitzea bere kontrol-puntuak emanez"
+
+#: misc/special_constructors.cc:1098
+#, fuzzy, kde-format
+#| msgid ""
+#| "... with this vertex (click on the first vertex to terminate construction)"
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr "...  erpin honekin (klikatu lehenengo erpina eraikuntza amaitzeko)"
+
+#: misc/special_constructors.cc:1100
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a Bézier curve with this control point"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: misc/special_constructors.cc:1105
+#, fuzzy, kde-format
+#| msgid "Select a point to be a vertex of the new triangle..."
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#: misc/special_constructors.cc:1138
+#, fuzzy, kde-format
+#| msgid "Cubic Curve by Nine Points"
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Kurba kubikoa bederatzi puntutatik"
+
+#: misc/special_constructors.cc:1143
+#, fuzzy, kde-format
+#| msgid "Construct a polygon by giving its vertices"
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr "Eraiki poligono bat bere erpinetatik"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr "... esleitu pisu hau hautatutako azken kontrol-puntuari"
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"... kontrol-puntu honekin (klik egin berriz azken kontrol-puntuan edo pisuan "
+"eraikitzen amaitzeko)"
+
+#: misc/special_constructors.cc:1207
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: misc/special_constructors.cc:1213
+#, fuzzy, kde-format
+#| msgid "Select a point to be a vertex of the new triangle..."
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#: misc/special_constructors.cc:1215
+#, fuzzy, kde-format
+#| msgid "Select a number/length as x coordinate of the point..."
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Hautatu zenbaki/luzera bat puntuaren X koordenatu gisa..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Eraiki zirkulu honen zuzen erradialak"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Eraiki koniko honen zuzen erradialak"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Afinitate generikoa"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Hiru puntu (edo triangelu bat) beste hiru puntutan (edo beste triangelu "
+"batean) mapatzen duen afinitate geometrikoa"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Transformazio proiektibo generikoa"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Lau puntu (edo kuadrilatero) beste lau puntutan (edo beste kuadrilatero "
+"batean) mapatzen duen transformazio proiektibo bakarra"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Puntu, zuzen edo zirkulu baten inbertsioa"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Zirkulu batekiko, puntu, zuzen edo zirkulu baten inbertsioa"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Neurri lekualdaketa"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Lekualdatu segmentu edo arku baten neurria zuzen edo zirkulu batera."
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Lekualdatzeko segmentua"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Lekualdatzeko arkua"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Lekualdatzeko balioa"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Lekualdatu neurria zuzen honetara"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Lekualdatu neurria zirkulu honetara"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Hasi lekualdaketa zirkuluaren puntu honetatik"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Hasi lekualdaketa zuzenaren puntu honetatik"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Hasi lekualdaketa kurbaren puntu honetatik"
+
+#: misc/special_constructors.cc:1637
+#, fuzzy, kde-format
+#| msgid "Select a number/length as x coordinate of the point..."
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Hautatu zenbaki/luzera bat puntuaren X koordenatu gisa..."
+
+#: misc/special_constructors.cc:1641
+#, fuzzy, kde-format
+#| msgid "Select a point on the circle..."
+msgid "Select a destination line or circle..."
+msgstr "Hautatu zirkuluaren puntu bat..."
+
+#: misc/special_constructors.cc:1645
+#, fuzzy, kde-format
+#| msgid "Select a point on the circle..."
+msgid "Choose a starting point on the line/circle..."
+msgstr "Hautatu zirkuluaren puntu bat..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Ebakidura koniko honekin"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Erdi"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Ebakidura kubiko honekin"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Ebakidura zirkulu honekin"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Ebakidura"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Bi objektuen ebakidura"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Ebaki zirkulu hau"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Ebaki koniko hau"
+
+#: misc/special_constructors.cc:1770
+#, kde-format
+msgid "Intersect this Segment"
+msgstr "Ebaki segmentu hau"
+
+#: misc/special_constructors.cc:1772
+#, kde-format
+msgid "Intersect this Half-line"
+msgstr "Ebaki lerro-erdi hau"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Ebaki zuzen hau"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Ebaki kurba kubiko hau"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Ebaki arku hau"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Ebaki poligono hau"
+
+#: misc/special_constructors.cc:1782
+#, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Ebaki poligono hau"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "zirkulu honekin"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "koniko honekin"
+
+#: misc/special_constructors.cc:1792
+#, kde-format
+msgid "with this Segment"
+msgstr "segmentu honekin"
+
+#: misc/special_constructors.cc:1794
+#, kde-format
+msgid "with this Half-line"
+msgstr "lerro-erdi honekin"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "lerro honekin"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "kurba kubiko honekin"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "arku honekin"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "poligono honekin"
+
+#: misc/special_constructors.cc:1804
+#, fuzzy, kde-format
+#| msgid "with this Polygon"
+msgid "with this Polygonal"
+msgstr "poligono honekin"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct midpoint of this point and another one"
+msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "Hautatu erdiko puntua kalkulatzeko lehenengo puntua..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "Hautatu erdiko puntua kalkulatzeko bigarren puntua..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "Hautatu erdiko puntua kalkulatzeko lehenengo puntua..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+#| msgid "Select the other of the points of which to construct the midpoint..."
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "Hautatu erdiko puntua kalkulatzeko bigarren puntua..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Hautatu ebakitzeko lehen objektua..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Hautatu ebakitzeko bigarren objektua..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Ukitzailea"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Kurba batekiko ukitzailea den zuzena"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Zirkulu honekiko ukitzailea"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Koniko honekiko ukitzailea"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Arku honekiko ukitzailea"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Kurba kubiko honekiko ukitzailea"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Kurba honekiko ukitzailea"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Ukitzailea puntu honetan"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Kurbaduraren zentrua"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Kuba baten zirkulu oskulatzailearen zentrua"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Koniko honen kurbadura-zentrua"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Kurba kubiko honen kurbadura-zentroa"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Kurba honen kurbadura-zentrua"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Puntu honen kurbadura-zentrua"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "pixel"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "cm"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "in"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Zein objektu?"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Klikatu puntu berria kokatu nahi duzun lekuan edo atxiki nahi duzun kurban..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Hautatu emaitza-etiketaren kokalekua."
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Editatu mota"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Hemen uneko makro motaren izena alda dezakezu."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Hemen uneko makro motaren deskribapena alda dezakezu. Eremu hau hautazkoa "
+"da, eta beraz hutsik utz dezakezu: honela egiten baduzu, zure makro motak ez "
+"du deskribapenik izango."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Erabili botoi hau uneko makro motaren ikonoa aldatzeko."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Makroaren izena bete behar da."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Hemen makro mota honen izena, deskribapena ea ikonoa alda ditzakezu."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Izena:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Deskribapena:"
+
+#: modes/historydialog.cc:24
+#, fuzzy, kde-format
+#| msgid "History Browser"
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "Historiaren arakatzailea"
+
+#: modes/historydialog.cc:108
+#, kde-format
+msgid "Start of the construction"
+msgstr "Eraikuntzaren hasiera"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Uneko urratsaren deskripzioa:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Lehenengo urratsa"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Urrats bat atzera"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Urrats bat aurrera"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Azken urratsa"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Izena"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<objektu izengabea>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Testuan ez duzu '%n' zatiren baliorik hautatu. Kendu itzau edo hautatu "
+"beharrezko argumentu kopurua."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "%1 argumentua"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "%1 argumentua hautatzen"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Aldatu etiketa"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Ezarri balioa"
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "Sartu balioa:"
+
+#: modes/label.cc:624
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Hautatu balio numeriko berriaren posizioa..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Hautatu duzun emaitza-objektu bat ezin da emandako objektuetatik kalkulatu. "
+"Hau dela eta, Kig-ek ezin du makro hau kalkulatu. Sakatu \"Atzera\" eta "
+"eraiki objektuak orden egokian..."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Emandako objektu bat ez da beharrezkoa hautatu dituzun emaitza-objektuak "
+"kalkulatzeko. Honek Kig-ek ezinezkoa den zerbait egitea nahi duzula esan "
+"dezake. Egiaztatu makroa eta saiatu berriro."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Emandako objektuak"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Hautatu zure makro berrirako \"emandako\" objektuak eta sakatu \"Hurrengoa\"."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Azken objektua"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Hautatu zure makro berriaren azken objektua(k)."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Sartu zure mota berriaren izena eta deskribapena."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "&Izena:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "&Deskribapena:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "I&konoa:"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Definitu makro berria"
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Mugitu objektu %1"
+msgstr[1] "Mugitu %1 objektu"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Birdefinitu puntua"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "Beltza"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "Grisa"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "Gorria"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "Berdea"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "Cyana"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "Horia"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "Gorri iluna"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "&Ezkutatu"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "&Erakutsi"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "&Mugitu"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Ezabatu"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "Kolore &pertsonalizatua"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Aldatu objektuaren kolorea"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Aldatu objektuaren zabalera"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Aldatu puntuaren estiloa"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Aldatu objektuaren estiloa"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "Ezarri ize&na..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "Ize&na"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Ezarri objektuaren izena"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Ezarri objektu honen izena:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "Objektu %1"
+msgstr[1] "%1 objektu"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Kig dokumentua"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Transformatu"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "&Probatu"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "&Eraiki"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "&Hasi"
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Gehitu te&stu-etiketa"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "Ezarri ko&lorea"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "Ezarri &lapitzaren luzera"
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Ezarri est&iloa"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Ezarri koordenatu-s&istema"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr ""
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgid "Edit Script..."
+msgstr "Editatu script-a"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Sartu etiketaren testua"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Sartu zure etiketaren testua hemen eta sakatu \"Hurrengoa\".\n"
+"Zati aldagarriak erakutsi nahi baduzu, jarri %1, %2, ... leku egokietan "
+"(adi. \"Segmentu honek %1-(e)ko luzera du\"). "
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Erakutsi testua marko batean"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Hautatu argumentuak"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Orain hautatu beharrezko argumentuak. Argumentu bakoitzarentzat, klikatu "
+"bertan, hautatu objektu bat eta propietate bat Kig-en lehioan ea klikatu "
+"\"Amaitu\" bukatzen duzunean..."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Eraiki etiketa"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr "Makroa"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "Mota"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Deskribapena"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Kudeatu motak"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Editatu..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "E&sportatu..."
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Ziur zaude mota hau ezabatu nahi duzula?"
+msgstr[1] "Ziur zaude %1 mota hauek ezabatu nahi dituzula?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Ziur al zaude?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Esportatu motak"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig-en mota-fitxategiak\n"
+"*|Fitxategi guztiak"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig-en mota-fitxategiak\n"
+"*|Fitxategi guztiak"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Inportatu motak"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Mota bat baina gehiago hautatu duzu. Aldi berean mota bakarra edita "
+"dezakezu. Hautatu editatu nahi duzun mota eta saiatu berriro."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Mota bat baina gehiago hautatu da"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Hautatu motak hemen..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Hau uneko makro moten zerrenda bat da... Hautatu, editatu, ezabatu, "
+"esportatu eta inportatu egin ditzakezu..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Editatu hautatutako mota."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Ezabatu zerrendan hautatutako mota guztiak."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Esportatu hautatutako mota guztiak fitxategi batera."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Inportatu fitxategi bat edo gehiagotan dauden makroak."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Inportatu..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Eraiki puntu honetatik pasatzen den angelu bat"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr ""
+"Hautatu angeluaren lehen erdi-zuzenaren barruan egongo den puntu bat..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Eraiki angelu bat puntu honetan"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Eraiki angelua eraikitzeko puntua..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr ""
+"Eraki angeluaren bigarren erdi-zuzenaren barruan egongo den puntu bat..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Ezarri tamai&na"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr ""
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Tamaina aldatu angeluari"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Eraiki puntu honetan hasten den arku bat"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Hautatu arku berri honen hasierako puntua..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Eraiki puntu honetatik pasatzen den arku bat"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Hautatu arku berria pasa behar deneko puntu bat... "
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Eraiki puntu honetan amaitzen den arku bat"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Hautatu arku berriaren amaierako puntua..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Eraiki arku bat zentro honekin"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Hautatu arku berriaren zentroa..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Eraiki arku bat angelu honekin"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Hautatu arku berriaren angelua..."
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Eraiki puntu honetan hasten den arku koniko bat"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Hautatu arku koniko berri honen hasierako puntua..."
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Eraiki puntu honetatik pasatzen den arku koniko bat"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Hautatu arku konikoa pasa behar deneko puntu bat..."
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Eraiki puntu honetan amaitzen den arku koniko bat"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Hautatu arku koniko berriaren amaierako puntua..."
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Eraiki arku koniko bat zentro honekin"
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Hautatu arku koniko berriaren zentroa..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+#, fuzzy
+#| msgid "Number of sides"
+msgid "Number of control points"
+msgstr "Alde kopurua"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+#, fuzzy
+#| msgid "Construct the sides of this polygon"
+msgid "Control polygon"
+msgstr "Eraiki poligono honen aldeak"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Ekuazio kartesiarra"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+#, fuzzy
+#| msgid "Hide a Curve"
+msgid "Bézier Curve"
+msgstr "Ezkutatu kurba bat"
+
+#: objects/bezier_imp.cc:202
+#, fuzzy, kde-format
+#| msgid "Select this curve"
+msgid "Select this Bézier Curve"
+msgstr "Hautatu kurba hau"
+
+#: objects/bezier_imp.cc:203
+#, fuzzy, kde-format
+#| msgid "Select curve %1"
+msgid "Select Bézier Curve %1"
+msgstr "Hautatu %1 kurba"
+
+#: objects/bezier_imp.cc:204
+#, fuzzy
+#| msgid "Remove a Curve"
+msgid "Remove a Bézier Curve"
+msgstr "Kendu kurba bat"
+
+#: objects/bezier_imp.cc:205
+#, fuzzy
+#| msgid "Add a Curve"
+msgid "Add a Bézier Curve"
+msgstr "Gehitu kurba bat"
+
+#: objects/bezier_imp.cc:206
+#, fuzzy
+#| msgid "Move a Curve"
+msgid "Move a Bézier Curve"
+msgstr "Mugitu kurba bat"
+
+#: objects/bezier_imp.cc:207
+#, fuzzy
+#| msgid "Attach to this curve"
+msgid "Attach to this Bézier Curve"
+msgstr "Erantsi kurba honi"
+
+#: objects/bezier_imp.cc:208
+#, fuzzy
+#| msgid "Show a Curve"
+msgid "Show a Bézier Curve"
+msgstr "Erakutsi kurba bat"
+
+#: objects/bezier_imp.cc:209
+#, fuzzy
+#| msgid "Hide a Curve"
+msgid "Hide a Bézier Curve"
+msgstr "Ezkutatu kurba bat"
+
+#: objects/bezier_imp.cc:218
+#, fuzzy
+#| msgid "Add a Quadrilateral"
+msgid "Bézier Quadratic"
+msgstr "Gehitu laukizuzen bat"
+
+#: objects/bezier_imp.cc:219
+#, fuzzy, kde-format
+#| msgid "Select this arc"
+msgid "Select this Bézier Quadratic"
+msgstr "Hautatu arku hau"
+
+#: objects/bezier_imp.cc:220
+#, fuzzy, kde-format
+#| msgid "Select arc %1"
+msgid "Select Bézier Quadratic %1"
+msgstr "Hautatu %1 arkua"
+
+#: objects/bezier_imp.cc:221
+#, fuzzy
+#| msgid "Remove a Quadrilateral"
+msgid "Remove a Bézier Quadratic"
+msgstr "Kendu laukizuzen bat"
+
+#: objects/bezier_imp.cc:222
+#, fuzzy
+#| msgid "Add a Quadrilateral"
+msgid "Add a Bézier Quadratic"
+msgstr "Gehitu laukizuzen bat"
+
+#: objects/bezier_imp.cc:223
+#, fuzzy
+#| msgid "Move a Quadrilateral"
+msgid "Move a Bézier Quadratic"
+msgstr "Mugitu laukizuzen bat"
+
+#: objects/bezier_imp.cc:224
+#, fuzzy
+#| msgid "Attach to this arc"
+msgid "Attach to this Bézier Quadratic"
+msgstr "Erantsi arku honi"
+
+#: objects/bezier_imp.cc:225
+#, fuzzy
+#| msgid "Show a Quadrilateral"
+msgid "Show a Bézier Quadratic"
+msgstr "Erakutsi laukizuzen bat"
+
+#: objects/bezier_imp.cc:226
+#, fuzzy
+#| msgid "Hide a Quadrilateral"
+msgid "Hide a Bézier Quadratic"
+msgstr "Ezkutatu laukizuzen bat"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr "Bézier kubikoa"
+
+#: objects/bezier_imp.cc:236
+#, fuzzy, kde-format
+#| msgid "Select this arc"
+msgid "Select this Bézier Cubic"
+msgstr "Hautatu arku hau"
+
+#: objects/bezier_imp.cc:237
+#, fuzzy, kde-format
+#| msgid "Select circle %1"
+msgid "Select Bézier Cubic %1"
+msgstr "Hautatu %1 zirkulua"
+
+#: objects/bezier_imp.cc:238
+#, fuzzy
+#| msgid "Remove a Conic"
+msgid "Remove a Bézier Cubic"
+msgstr "Kendu koniko bat"
+
+#: objects/bezier_imp.cc:239
+#, fuzzy
+#| msgid "Add a Cubic Curve"
+msgid "Add a Bézier Cubic"
+msgstr "Gehitu kurba kubiko bat"
+
+#: objects/bezier_imp.cc:240
+#, fuzzy
+#| msgid "Move a Cubic Curve"
+msgid "Move a Bézier Cubic"
+msgstr "Mugitu kurba kubiko bat"
+
+#: objects/bezier_imp.cc:241
+#, fuzzy
+#| msgid "Attach to this arc"
+msgid "Attach to this Bézier Cubic"
+msgstr "Erantsi arku honi"
+
+#: objects/bezier_imp.cc:242
+#, fuzzy
+#| msgid "Show a Cubic Curve"
+msgid "Show a Bézier Cubic"
+msgstr "Erakutsi kurba kubiko bat"
+
+#: objects/bezier_imp.cc:243
+#, fuzzy
+#| msgid "Hide a Cubic Curve"
+msgid "Hide a Bézier Cubic"
+msgstr "Ezkutatu kurba kubiko bat"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr ""
+
+#: objects/bezier_imp.cc:491
+#, fuzzy, kde-format
+#| msgid "Select this polygon"
+msgid "Select this Rational Bézier Curve"
+msgstr "Hautatu poligono hau"
+
+#: objects/bezier_imp.cc:492
+#, fuzzy, kde-format
+#| msgid "Select polygon %1"
+msgid "Select Rational Bézier Curve %1"
+msgstr "Hautatu %1 poligonoa"
+
+#: objects/bezier_imp.cc:493
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a Rational Bézier Curve"
+msgstr "Kendu poligono bat"
+
+#: objects/bezier_imp.cc:494
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a Rational Bézier Curve"
+msgstr "Gehitu poligono bat"
+
+#: objects/bezier_imp.cc:495
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a Rational Bézier Curve"
+msgstr "Mugitu poligono bat"
+
+#: objects/bezier_imp.cc:496
+#, fuzzy
+#| msgid "Attach to this polygon"
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Erantsi poligono honi"
+
+#: objects/bezier_imp.cc:497
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a Rational Bézier Curve"
+msgstr "Erakutsi poligono bat"
+
+#: objects/bezier_imp.cc:498
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a Rational Bézier Curve"
+msgstr "Ezkutatu poligono bat"
+
+#: objects/bezier_imp.cc:507
+#, fuzzy
+#| msgid "Select conic arc %1"
+msgid "Rational Bézier Quadratic"
+msgstr "Hautatu %1 arku konikoa"
+
+#: objects/bezier_imp.cc:508
+#, fuzzy, kde-format
+#| msgid "Select this conic arc"
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Hautatu arku koniko hau"
+
+#: objects/bezier_imp.cc:509
+#, fuzzy, kde-format
+#| msgid "Select conic arc %1"
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Hautatu %1 arku konikoa"
+
+#: objects/bezier_imp.cc:510
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Kendu poligono bat"
+
+#: objects/bezier_imp.cc:511
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Gehitu poligono bat"
+
+#: objects/bezier_imp.cc:512
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Mugitu poligono bat"
+
+#: objects/bezier_imp.cc:513
+#, fuzzy
+#| msgid "Attach to this conic arc"
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Erantsi arku koniko honi"
+
+#: objects/bezier_imp.cc:514
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Erakutsi poligono bat"
+
+#: objects/bezier_imp.cc:515
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Ezkutatu poligono bat"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:525
+#, fuzzy, kde-format
+#| msgid "Select this triangle"
+msgid "Select this Rational Bézier Cubic"
+msgstr "Hautau triangelu hau"
+
+#: objects/bezier_imp.cc:526
+#, fuzzy, kde-format
+#| msgid "Select triangle %1"
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Hautatu %1 triangelua"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:530
+#, fuzzy
+#| msgid "Attach to this conic"
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Erantsi koniko honi"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr ""
+
+#: objects/bezier_type.cc:26
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: objects/bezier_type.cc:27
+#, fuzzy, kde-format
+#| msgid "Select a point to be a vertex of the new triangle..."
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#: objects/bezier_type.cc:121
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: objects/bezier_type.cc:122
+#, fuzzy, kde-format
+#| msgid "Select a point to be a vertex of the new triangle..."
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#: objects/bezier_type.cc:328
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two conics of which you want to construct the "
+#| "radical line..."
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Hautatu beren zuzen erradialak eraiki nahi dituzun bi konikoetatik "
+"lehenengoa..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, fuzzy, kde-format
+#| msgid "Select this segment"
+msgid "Select this value as weight"
+msgstr "Hautatu segmentu hau"
+
+#: objects/bezier_type.cc:433
+#, fuzzy, kde-format
+#| msgid "Construct a circle with this center"
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "in"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Probatu emaitza"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Hautatu kurba..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Hautatu kurbako puntu bat..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Gainazala"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Zirkunferentzia"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Erradioa"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Zentrua"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Hedatutako ekuazio kartesiarra"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Ekuazio polarra"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [%2 puntuan zentratuta]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "zirkulua"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Hautatu zirkulu hau"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Hautatu %1 zirkulua"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Kendu zirkulu bat"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Gehitu zirkulu bat"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Mugitu zirkulu bat"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Erantsi zirkulu honi"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Erakutsi zirkulu bat"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Ezkutatu zirkulu bat"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Eraiki puntu honetatik pasatzen den zirkulu bat"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Eraiki zentru hau duen zirkulua"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Hautatu zirkulu berriaren zentrua..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Hautatu zirkulu berria pasa behar deneko puntu bat..."
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "Erradio honekin"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Hautatu erradioaren luzera..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Koniko mota"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Lehenengo fokua"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Bigarren fokua"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Elipsea"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Hiperbola"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Parabola"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "rho"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "cos theta"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "sin theta"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[%1-(e)n zentratuta]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "konikoa"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Hautatu koniko hau"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Hautatu %1 konikoa"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Kendu koniko bat"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Gehitu koniko bat"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Mugitu koniko bat"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Erantsi koniko honi"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Erakutsi koniko bat"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Ezkutatu koniko bat"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Onartutako konikoa"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Lehenengo azken puntua"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Bigarren azken puntua"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "arku konikoa"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Hautatu arku koniko hau"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "Hautatu %1 arku konikoa"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Kendu arku koniko bat"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Gehitu arku koniko bat"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Mugitu arku koniko bat"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Erantsi arku koniko honi"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Erakutsi arku koniko bat"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Ezkutatu arku koniko bat"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Eraiki puntu honetatik pasatzen den koniko bat"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Hautatu konikoa pasa behar deneko puntu bat..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Eraiki asintota hau duen koniko bat"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Hautatu koniko berriaren lehenengo asintota..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Hautatu koniko berriaren bigarren asintota..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Eraiki elipse bat foku honekin"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Hautatu elipse berriaren lehenengo fokua..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Hautatu elipse berriaren bigarren fokua..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Eraiki puntu honetatik pasatzen den elipse bat"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Hautatu elipse berria pasa behar deneko puntu bat..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Eraiki foku hau duen hiperbola bat"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Hautatu hiperbola berriaren lehenengo fokua..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Hautatu hiperbola berriaren bigarren fokua..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Hautatu puntu honetatik pasatzen hiperbola bat..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Hautatu hiperbola berria pasa behar deneko puntu bat..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Eraiki zuzen hau zuzentzaile bezala duen koniko bat"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Hautatu koniko berriaren zuzentzailea..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Eraiki puntu hau foku bezala duen koniko bat "
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Hautatu koniko berriaren fokua..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Eraiki puntu honetatik pasako den parabola bat"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Hautatu parabola berria pasako deneko puntu bat..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Eraiki koniko honekiko puntu polar bat"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "Hautatu puntu polarraren konikoa..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Eraiki zuzen honen puntu polarra"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Hautatu puntu polarraren zuzena..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Eraiki koniko honekiko zuzen polarra"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Eraiki puntu honen zuzen polarra"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Eraiki koniko honen zuzentzailea"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Hautatu zuzentzailearen konikoa"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Eraiki zuzentzaile hau duen parabola"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Hautatu parabola berriaren zuzentzailea..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Eraiki foku hau duen parabola bat"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Hautatu parabolaren fokua..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Eraki koniko honen asintotak"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Hautatu bere asintotak eraiki nahi dituzun konikoa"
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Eraiki koniko honen zuzen erradialak"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Hautatu beren zuzen erradialak eraiki nahi dituzun bi konikoetatik "
+"lehenengoa..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Hautatu beren zuzen erradialak eraiki nahi dituzun bi konikoetatik "
+"bigarrena..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Aldatu zuzen erradialak"
+
+#: objects/conic_types.cc:619
+#, fuzzy, kde-format
+#| msgid "Switch Radical Lines"
+msgid "Switch Conic Radical Lines"
+msgstr "Aldatu zuzen erradialak"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "kurba kubikoa"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Hautatu kurba kubiko hau"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "%1 kurba kubikoa"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Kendu kurba kubiko bat"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Gehitu kurba kubiko bat"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Mugitu kurba kubiko bat"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Erantsi kurba kubiko honi"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Erakutsi kurba kubiko bat"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Ezkutatu kurba kubiko bat"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Eraiki puntu honetatik pasako den kurba kubiko bat"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Hautatu kubiko berria pasako deneko puntu bat..."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "kurba"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Hautatu kurba hau"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Hautatu %1 kurba"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Kendu kurba bat"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Gehitu kurba bat"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Mugitu kurba bat"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Erantsi kurba honi"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Erakutsi kurba bat"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Ezkutatu kurba bat"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Kurba transzendental posiblea"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Dagoeneko ebakidura puntua kalkulatu da"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Ebakidura kurba kubiko honekin"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Ebakidura arku honekin"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Inbertsioa kurba honekiko"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Hautatu inbertsiorako zirkulua..."
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Kalkulatu objektu honen inbertsioa"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Hautatu inbertsiorako objektua..."
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Kalkulatu puntu honen inbertsioa"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Hautatu inbertsiorako puntua..."
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Kalkulatu zuzen honen inbertsioa"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Hautatu inbertsiorako zuzena..."
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Kalkulatu segmentu honen inbertsioa"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Hautatu alderanzteko puntua..."
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Kalkulatu zuzen honen inbertsioa"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Hautatu inbertsiorako zirkulua..."
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Kalkulatu arku honen inbertsioa"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Hautatu alderanzteko arkua..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Malda"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Ekuazioa"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Luzera"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Onartu zuzena"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Amaierako puntua"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "zuzena"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Hautatu zuzen bat"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Hautatu zuzen hau"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Hautatu %1 zuzena"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Kendu zuzen bat"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Gehitu zuzen bat"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Mugitu zuzen bat"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Erantsi zuzen honi"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Erakutsi zuzen bat"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Ezkutatu zuzen bat"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "segmentua"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Hautatu segmentu hau"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Hautatu %1 segmentua"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Kendu segmentu bat"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Gehitu segmentu bat"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Mugitu segmentu bat"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Erantsi segmentu honi"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Erakutsi segmentu bat"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Ezkutatu segmentu bat"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "erdi-zuzena"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Hautatu erdi-zuzen hau"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Hautatu %1 erdi-zuzena"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Kendu erdi-zuzen bat"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Gehitu erdi-zuzen bat"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Mugitu erdi-zuzen bat"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Erantsi erdi-zuzen honi"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Erakutsi erdi-zuzen bat"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Ezkutatu erdi-zuzen bat"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Eraiki puntu honetan hasten den segmentu bat"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Hautatu segmentu berriaren hasierako puntua..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Eraiki puntu honetan amaitzen den segmentu bat"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Hautatu segmentu berriaren amaierako puntua..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Eraiki puntu honetatik pasatzen den zuzen bat"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Hautatu zuzen hau pasatzen deneko puntu bat..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Hautatu zuzen hau pasatzen deneko beste puntu bat..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Eraiki puntu honetan hasten den erdi-zuzen bat"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Hautatu erdi-zuzen berriaren hasierako puntua..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Eraiki puntu honetatik pasatzen den erdi-zuzen bat"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Hautatu erdi-zuzena pasako deneko puntu bat..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Eraiki segmentu honen ardatza"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Hautatu bere ardaza marraztu nahi duzun segmentua..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Eraiki zuzen honekiko paraleloa den zuzen bat"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Eraiki zuzen berriarekiko paraleloa den zuzen bat..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Eraiki puntu honetatik pasako den zuzen paraleloa"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Hautatu zuzen berria pasako deneko puntu bat..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Eraiki zuzen honekiko perpendikularra den lerro bat"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Hautatu zuzen berriarekiko perpendikularr den zuzen bat..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Eraiki puntu honetatik pasako den zuzen perpendikular bat"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Ezarri &luzera..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Ezarri segmentuaren luzera"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Hautatu luzera berria: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Tamaina aldatu segmentuari"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Eraiki bektore honek zuzentzen duen zuzen bat "
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Hautatu zuzen berria zuzenduko duen bektore bat..."
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Eraiki bektore honek zuzentzen duen erdi-zuzen bat"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Hautatu erdi-zuzen berria zuzenduko duen bektore bat..."
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "leku geometrikoa"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Hautatu leku geometriko hau"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Hautatu %1 leku geometrikoa"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Kendu leku geometriko bat"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Gehitu leku geometriko bat"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Mugitu leku geometriko bat"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Erantsi leku geometriko honi"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Erakutsi leku geometriko bat"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Ezkutatu leku geometriko bat"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Objektu mota"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Objektua"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Hautatu objektu hau"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Hautatu %1 objektua"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Kendu objektu bat"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Gehitu objektu bat"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Mugitu objektu bat"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Erantsi objektu honi"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Erakutsi objektu bat"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Ezkutatu objektu bat"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Angelua radianetan"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Angelua gradutan"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Erdiko puntua"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X luzera"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y luzera"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Aurkako bektorea"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Angelua"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Sektorearen gainazala"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Arkuaren luzera"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Onartu zirkulua"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "angelua"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Hautatu angelu hau"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Hautatu %1 angelua"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Kendu angelu bat"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Gehitu angelu bat"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Mugitu angelu bat"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Erantsi angelu honi"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Erakutsi angelu bat"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Ezkutatu angelu bat"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "bektorea"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Hautatu bektore hau"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Hautatu %1 bektorea"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Kendu bektore bat"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Gehitu bektore bat"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Mugitu bektore bat"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Erantsi bektore honi"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Erakutsi bektore bat"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Ezkutatu bektore bat"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "arkua"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Hautatu arku hau"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Hautatu %1 arkua"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Kendu arku bat"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Gehitu arku bat"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Mugitu arku bat"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Erantsi arku honi"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Erakutsi arku bat"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Ezkutatu arku bat"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Koordenatua"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X koordenatua"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y koordenatua"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "puntua"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Hautatu puntu hau"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Hautatu %1 puntua"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Kendu puntu bat"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Gehitu puntu bat"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Mugitu puntu bat"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Erantsi puntu honi"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Erakutsi puntu bat"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Ezkutatu puntu bat"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Eraiki puntu honen eta beste baten arteko erdiko puntua"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Hautatu erdiko puntua kalkulatzeko bi puntuetatik lehenengoa..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Hautatu erdiko puntua kalkulatzeko bi puntuetatik bigarrena..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another point"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Eraiki puntu honen eta beste baten arteko erdiko puntua"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Hautatu erdiko puntua kalkulatzeko bi puntuetatik lehenengoa..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the other of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Hautatu erdiko puntua kalkulatzeko bi puntuetatik bigarrena..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Ezarri &koordenatuak..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Birdefinitu"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Ezarri &parametroa"
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Ezarri koordenatua"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Sartu koordenatu berria."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Ezarri puntuaren parametroa"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Hautatu parametro berria: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Aldatu mugatutako puntuaren parametroa"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Hautatu neurri bat lekualdatzeko zirkulua..."
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Hautatu zirkuluaren puntu bat..."
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Hautatu zirkuluan lekualdatzeko segmentua..."
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Hautatu zenbaki/luzera bat puntuaren X koordenatu gisa..."
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Hautatu zenbaki/luzera bat puntuaren Y koordenatu gisa..."
+
+#: objects/point_type.cc:820
+#, fuzzy, kde-format
+#| msgid "Select the point to reflect in..."
+msgid "Select a point to project onto a line..."
+msgstr "Hautatu isladatzeko puntua..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr ""
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Alde kopurua"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Perimetroa"
+
+#: objects/polygon_imp.cc:291
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Boundary Polygonal"
+msgstr "Gehitu poligono bat"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr ""
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Erpinen masa-zentroa"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Bira kopurua"
+
+#: objects/polygon_imp.cc:305
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Inside Polygon"
+msgstr "Ezkutatu poligono bat"
+
+#: objects/polygon_imp.cc:306
+#, fuzzy
+#| msgid "Polygon"
+msgid "Open Polygonal Curve"
+msgstr "Poligonoa"
+
+#: objects/polygon_imp.cc:319
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Associated Polygon"
+msgstr "Gehitu poligono bat"
+
+#: objects/polygon_imp.cc:320
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Closed Polygonal Curve"
+msgstr "Mugitu poligono bat"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "poligonoa"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Hautatu poligono hau"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Hautatu %1 poligonoa"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Kendu poligono bat"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Gehitu poligono bat"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Mugitu poligono bat"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Erantsi poligono honi"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Erakutsi poligono bat"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Ezkutatu poligono bat"
+
+#: objects/polygon_imp.cc:645
+#, fuzzy
+#| msgid "polygon"
+msgid "closed polygonal curve"
+msgstr "poligonoa"
+
+#: objects/polygon_imp.cc:646
+#, fuzzy, kde-format
+#| msgid "Select this polygon"
+msgid "Select this closed polygonal curve"
+msgstr "Hautatu poligono hau"
+
+#: objects/polygon_imp.cc:647
+#, fuzzy, kde-format
+#| msgid "Select polygon %1"
+msgid "Select closed polygonal curve %1"
+msgstr "Hautatu %1 poligonoa"
+
+#: objects/polygon_imp.cc:648
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a closed polygonal curve"
+msgstr "Kendu poligono bat"
+
+#: objects/polygon_imp.cc:649
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a closed polygonal curve"
+msgstr "Gehitu poligono bat"
+
+#: objects/polygon_imp.cc:650
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a closed polygonal curve"
+msgstr "Mugitu poligono bat"
+
+#: objects/polygon_imp.cc:651
+#, fuzzy
+#| msgid "Attach to this polygon"
+msgid "Attach to this closed polygonal curve"
+msgstr "Erantsi poligono honi"
+
+#: objects/polygon_imp.cc:652
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a closed polygonal curve"
+msgstr "Erakutsi poligono bat"
+
+#: objects/polygon_imp.cc:653
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a closed polygonal curve"
+msgstr "Ezkutatu poligono bat"
+
+#: objects/polygon_imp.cc:662
+#, fuzzy
+#| msgid "polygon"
+msgid "polygonal curve"
+msgstr "poligonoa"
+
+#: objects/polygon_imp.cc:663
+#, fuzzy, kde-format
+#| msgid "Select this polygon"
+msgid "Select this polygonal curve"
+msgstr "Hautatu poligono hau"
+
+#: objects/polygon_imp.cc:664
+#, fuzzy, kde-format
+#| msgid "Select polygon %1"
+msgid "Select polygonal curve %1"
+msgstr "Hautatu %1 poligonoa"
+
+#: objects/polygon_imp.cc:665
+#, fuzzy
+#| msgid "Remove a Polygon"
+msgid "Remove a polygonal curve"
+msgstr "Kendu poligono bat"
+
+#: objects/polygon_imp.cc:666
+#, fuzzy
+#| msgid "Add a Polygon"
+msgid "Add a polygonal curve"
+msgstr "Gehitu poligono bat"
+
+#: objects/polygon_imp.cc:667
+#, fuzzy
+#| msgid "Move a Polygon"
+msgid "Move a polygonal curve"
+msgstr "Mugitu poligono bat"
+
+#: objects/polygon_imp.cc:668
+#, fuzzy
+#| msgid "Attach to this polygon"
+msgid "Attach to this polygonal curve"
+msgstr "Erantsi poligono honi"
+
+#: objects/polygon_imp.cc:669
+#, fuzzy
+#| msgid "Show a Polygon"
+msgid "Show a polygonal curve"
+msgstr "Erakutsi poligono bat"
+
+#: objects/polygon_imp.cc:670
+#, fuzzy
+#| msgid "Hide a Polygon"
+msgid "Hide a polygonal curve"
+msgstr "Ezkutatu poligono bat"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "triangelua"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Hautau triangelu hau"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Hautatu %1 triangelua"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Kendu triangelu bat"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Gehitu triangelu bat"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Mugitu triangelu bat"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Erantsi triangelu honi"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Erakutsi triangelu bat"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Ezkutatu triangelu bat"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "laukizuzena"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Hautatu laukizuzen hau"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Hautatu %1 laukizuzena"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Kendu laukizuzen bat"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Gehitu laukizuzen bat"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Mugitu laukizuzen bat"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Erantsi laukizuzen honi"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Erakutsi laukizuzen bat"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Ezkutatu laukizuzen bat"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Eraiki erpin hau duen trianglue bat"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Ebaki poligono hau zuzen batekin"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Hautatu zuzen batekin ebakiko duzun poligonoa..."
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Ebaki zuzen hau poligono batekin"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Hautatu poligono batekin ebakiko duzun zuzena..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, fuzzy, kde-format
+#| msgid "Intersect this polygon with a line"
+msgid "Intersect this polygonal curve with a line"
+msgstr "Ebaki poligono hau zuzen batekin"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, fuzzy, kde-format
+#| msgid "Select the polygon of which you want the intersection with a line..."
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Hautatu zuzen batekin ebakiko duzun poligonoa..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, fuzzy, kde-format
+#| msgid "Intersect this line with a polygon"
+msgid "Intersect this line with a polygonal curve"
+msgstr "Ebaki zuzen hau poligono batekin"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, fuzzy, kde-format
+#| msgid "Select the line of which you want the intersection with a polygon..."
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Hautatu poligono batekin ebakiko duzun zuzena..."
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Ebaki poligono hau beste poligono batekin"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Hautatu beste poligono batekin ebakiko duzun poligonoa..."
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Ebaki poligono honekin"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Hautatu bigarren poligonoa ebakitzeko..."
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Eraiki poligono honen erpinak"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Hautatu erpinak eraiki nahi dizkiozun poligonoa.."
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Eraiki poligono honen aldeak"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Hautatu aldeak eraiki nahi dizkiozun poligonoa..."
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Eraiki poligono honen kroska ganbila"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Hautatu kroska ganbila eraiki nahi diozun poligonoa"
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Proiektatu puntu hau zirkuluan"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Hautatu tangentea pasa behar deneko puntua..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Zuzen hau paraleloa al da?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Hautatu paraleloak izan daitezkeen zuzenetako lehenengoa..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Zuzen honekiko paraleloa al da?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Hautatu paraleloak izan daitezkeen zuzenetako bestea..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Zuzen Lerro hauek paraleloak dira."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Zuzen hauek ez dira paraleloak."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Zuzen hau ortogonala al dira?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Hautatu ortogonalak izan daitezkeen zuzenetako lehenengoa..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Zuzen honekiko ortogonala al da?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Hautatu ortogonalak izan daitezkeen zuzenetako bestea..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Zuzen hauek ortogonalak dira."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Zuzen hauek ez dira ortogonalak."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Egiaztatu puntu honen lerrokidetasuna"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Hautatu lerrokideak izan daitezkeen hiru puntuetatik lehenengoa..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "eta bigarren puntu hau"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Hautatu lerrokideak izan daitezkeen hiru puntuetatik bigarrena..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "hirugarren puntu honekin"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Hautatu lerrokideak izan daitezkeen hiru puntuetatik azkena..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Puntu hauek lerrokideak dira."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Puntu hauek ez dira lerrokideak."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Egiaztatu puntu hau kurba batean dagoen"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Hautatu probatu nahi duzun puntua..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Egiaztatu puntu bat kurba honetan dagoen"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Hautatu puntua egon daitekeen kurba..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Puntua kurba honetan dago."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Puntua ez dago kurba honetan."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Egiaztatu puntu  hau poligono batean dagoen"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Egiaztatu puntu bat poligono honetan dagoen"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Hautatu puntua egon daitekeen poligonoa..."
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Puntua poligono honetan dago."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Puntua ez dago poligono honetan."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Egiaztatu poligono hau ganbila den"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Hautatu ganbila izan daitekeen poligonoa..."
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Poligono hau ganbila da."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Poligono ez da hau ganbila."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Egiaztatu puntu honek distantzia berdina duen"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr "Hautatu beste bi puntuekiko distantzia berdina izan dezakeen puntua..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "puntu honetatik"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Hautatu beste bi puntuetatik lehenengoa..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "eta beste puntu honetatik"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Hautatu beste bi puntuetatik bestea..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Bi distantziak berdinak dira."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Bi distantziak ez dira berdinak."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Egiaztatu bektore hau beste bektore baten berdina den"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Hautatu berdinak izan daitezkeen bi bektoreetatik lehenengoa..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Egiaztatu bektore hau beste bektorearen berdina den"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Hautatu berdinak izan daitezkeen bi bektoreetatik bestea..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Bi bektoreak berdinak dira."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Bi bektoreak ez berdinak."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Egiaztatu objektu hau existitzen den edo ez"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Hautatu objektua existentzia egiaztatzeko..."
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Objektua existitzen da."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "Objektua ez da existitzen."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Testua"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "etiketa"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Hautatu etiketa hau"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Hautatu %1 etiketa"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Kendu etiketa bat"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Gehitu etiketa bat"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Mugitu etiketa bat"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Erantsi etiketa honi"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Erakutsi etiketa bat"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Ezkutatu etiketa bat"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "etiketa numerikoa"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Hautatu etiketa numeriko hau."
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "Hautatu %1 etiketa numerikoa"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Kendu etiketa numeriko bat"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Gehitu etiketa numeriko bat"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Mugitu etiketa numeriko bat"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Erantsi etiketa numeriko honi"
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Erakutsi etiketa numeriko bat"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Ezkutatu etiketa numeriko bat"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Balio numerikoa"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "etiketa boolearra"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Hautatu etiketa boolear hau"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "Hautatu %1 etiketa boolearra"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Kendu etiketa boolear bat"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Gehitu etiketa boolear bat"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Mugitu etiketa boolear bat"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Erantsi etiketa boolear honi"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Erakutsi etiketa boolear bat"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Ezkutatu etiketa boolear bat"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Kopiatu testua"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "&Aldatu markoa"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "Ezarri letra-&tipoa..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Aldatu etiketaren markoa"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Aldatu etiketaren letra-tipoa"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Birdefinitu..."
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "Aldatu &balioa..."
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Sartu balio berria:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Aldatu bistaratutako balioa"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Lekualdatu objektu hau"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Hautatu lekualdatzeko objektua..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Lekualdatu bektore honen bidez"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Hautatu lekualdatzeko bektorea..."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Isladatu objektu hau"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Hautatu isladatzeko objektua..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Isladatu puntu honetan"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Hautatu isladatzeko puntua..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Isladatu lerro honetan"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Hautatu isladatzeko lerroa..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Biratu objektu hau"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Hautatu biratzeo objektua..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Biratu puntu honen inguruan"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Hautatu biraketaren erdiko puntua..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Biratu angelu honen arabera"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Hautatu biraketa-angelua..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Eskalatu objektu hau"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Hautatu eskalatzeko objektu hau..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Eskalatu zentru honekin"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Hautatu eskalatzearen erdiko puntua..."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Eskalatu luzera honekin"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "Hautatu bere luzeraren arabera eskalatuko den luzera edo segmentua..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Eskalatu &luzera hau..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Hautatu beren ratioa eskalatzeko faktorea izango den bi luzeratatik "
+"lehenengoa..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr "...beste luzera honetan"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Hautatu beren ratioa eskalatzeko faktorea izango den bi luzeratatik "
+"bigarrena..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Hautatu eskalatuko den objektua"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Zuzen honek homotezia-zentrua izango du"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Hautatu homotezia zentrua izango duen zuzena"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Biratu objektu hau proiektiboki"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Hautatu proiektiboki biratuko den objektua"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Biratu proiektiboki erdi-zuzen honekin"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr ""
+"Hautatu objektuari aplikatu nahi diozun biraketa proiektiboaren erdi-zuzena"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Biratu proiektiboki angelu honen arabera"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr ""
+"Hautatu objektuari aplikatu nahi diozun biraketa proiektiboaren angelua"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Objektu honen homologia harmonikoa"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Hautatu transformatuko den objektua..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Homologia harmonikoa zentru honekin"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Hautatu homologia harmonikoaren zentrua..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Homologia harmonikoa ardatz honekin"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Hautatu homologia harmonikoaren ardatza..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Objektu honen afinitate generikoa"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Mapatu triangelu hau"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Hutatu emandako triangeluan transformatuko den triangelua..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "beste triangelu honetan"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "Hautatu lehenengo triangeluaren afinitatearen irudia den triangelua..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "3 hasierako puntuetatik lehenengoa"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "Hautatu afinitate generikoaren 3 hasierako puntuetatik lehenengoa..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "3 hasierako puntuetatik bigarrena"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Hautatu afinitate generikoaren 3 hasierako puntuetatik bigarrena..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "3 hasierako puntuetatik hirugarrena"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Hautatu afinitate generikoaren 3 hasierako puntuetatik hirugarrena..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Lehenengo puntuaren posizio transformatua"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Hautatu afinitate generikoaren 3 amaierako puntuetatik lehenengoa..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Bigarren puntuaren posizio transformatua"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Hautatu afinitate generikoaren 3 amaierako puntuetatik bigarrena..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Hirugarren puntuaren posizio transformatua"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Hautatu afinitate generikoaren 3 amaierako puntuetatik hirugarrena..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Objektu honen transformazio proiektibo generikoa"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Mapatu laukizuzen hau"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Hautatu emandako laukizuzenean transformatu beharreko laukizuzena..."
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "laukizuzen honetan"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Hautatu lehenengo laukizuzenaren transformazio proiektiboaren irudi izango "
+"den laukizuzena..."
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Hasierako 4 puntuetatik lehenengoa"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 hasierako puntuetatik lehenengoa..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Hasierako 4 puntuetatik bigarrena"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 hasierako puntuetatik bigarrena..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Hasierako 4 puntuetatik hirugarrena"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 hasierako puntuetatik hirugarrena..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Hasierako 4 puntuetatik laugarrena"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 hasierako puntuetatik laugarrena..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 amaierako puntuetatik lehenengoa..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 amaierako puntuetatik bigarrena..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 amaierako puntuetatik hirugarrena..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Laugarren puntuaren posizio transformatua"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr "Hautatu proiekzio generikoaren 4 amaierako puntuetatik laugarrena..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Eraiki objektu honen itzala"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Hautatu bere itzala eraiki nahi duzun objektua..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Eraiki itzala argi-iturburu honetatik"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Hautatu itzalaren sorrera izango den argi-iturburua..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Eraiki itzala lerro honek adierazten duen zeru-ertzean"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Hautatu itzalaren zeru-ertza..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Transformatu objektu hau"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Transformatu transformazio hau erabiliz"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Aplikatu antzekotasuna objektu honi"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Aplikatu zentro hau duen antzekotasuna"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Hautatu antzekotasunaren zentroa..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Aplikatu antzekotasuna puntu hau beste puntu batean mapatuz"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+"Hautatu antzekotasuna aplikatuz beste puntu batean mapatuko den puntua..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Aplikatu antzekotasuna puntu bat beste puntu honetan mapatuz"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+"Hautatu antzekotasuna aplikatuz lehenengo puntua mapatuko den puntua..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Eraiki bektore bat puntu honetatik"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Hautatu bektore berriaren hasierako puntua..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Eraiki besktore bat puntu honetaraino"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Hautatu bektore berriaren amaierako puntua..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Eraiki bektore honen eta beste baten batura den bektorea."
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "Hautatu bektore batura eraikitzeko lehenengo bektorea..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Eraiki bektore honen eta bestearen batura den bektorea."
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Hautatu bektore batura eraikitzeko beste bektorea..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Eraiki puntu honetan hasten den bektore-batura"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Hautatu bektoreen batura eraikiko den hasierako puntua..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Script berria"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Hautatu argumentu-objektuak (baldin badaude)\n"
+"Kig-en lehioan eta sakatu \"Hurrengoa\"."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Sartu kodea"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Orain bete kodea:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Orain bete Python kodea:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Python interpreteak errore bat atzitu du zure script-a exekutatzean. "
+"Konpondu script-a eta klikatu \"Amaitu\" botoia berriro."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python interpreteak honako errore-irteera sortu du:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Badirudi zure script-ak errore bat duela. Python interpreteak ez du "
+"errorerik adierazi, baina script-ak ez du baliozko objekturik sortzen. "
+"Konpondu script-a, eta klikatu \"Amaitu\" botoia berriro."
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Editatu script-a"
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Editatu Python script-a"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Python interpreteak errore bat atzitu du zure script-a exekutatzean. "
+"Konpondu script-a."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Badirudi zure script-ak errore bat duela. Python interpreteak ez du "
+"errorerik adierazi, baina script-ak ez du baliozko objekturik sortzen. "
+"Konpondu script-a."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>Kig eraikuntza kontrola dezakezu python-eko \"pykig\" script\n"
+"baten bidez, <code>pykig.py</code> komandoarekin exekuta daitekeena.\n"
+"Hoan hemen proba dezakezun adibide bat (<code>hexagons.kpy</code>):\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>Azken eraikuntza errepika dezakezu 'Z' tekla sakatuz.\n"
+"Oso erabilkorra da eraikin berdinean objektuen sekuentzi bat eraiki\n"
+"behar baduzu, batizpat ez badago lasterbiderik eraikin horrentzako.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Kig-en tresnarik ahaltsuenetako bat objektuetan edo testuko hutsunetan\n"
+"eskuin-klika eginez agertzen diren menuak dira. Objektuei izenak emateko "
+"eta\n"
+"hauen koloreak, lerro estiloak, etb... aldatzeko erabil ditzakezu.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Menua edo tresna-barra erabili gabe ere puntu berriak sor ditzakezu\n"
+"<em>saguaren erdiko botoiarekin</em> klikatzen baduzu.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig-ek hainbat fitxategi formatu ireki ditzake: bere fitxategiak (<code>."
+"kig</code> fitxategiak),\n"
+"<em>KGeo</em> fitxategiak, <em>KSeg</em> fitxategiak, eta and, partzialki, "
+"<em>Dr. Geo</em>\n"
+"eta <em>Cabri&#8482;</em> fitxategiak.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>Kig-ek zure dokumentuentan erabiltzeko 20 objektu eta 10 eraldaketa baino "
+"gehiago ditu 80 eraikuntzekin: ireki <em>Objektuak</em>\n"
+"menua guztiak ikusteko.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Hautatutako objektuak, objektu hauek argumentu bezala behar dituen "
+"objektu bat eraikitzeko erabil dezakezu. Adibidez, bi puntu hautatuta "
+"badituzu, laster-menutik <em>Hasi->Zirkulua hiru punturekin</em> hauta "
+"dezakezu hiru punturekin zirkulu bat eraikitzen hasteko.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Kig can extends its object set using external macros. You can find "
+#| "some\n"
+#| "interesting macros on the Kig website:\n"
+#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>Kanpoko makroak erabiliz, Kig-ek bere objektu sorta handitu dezake. Kig-"
+"en webgunean makro interesgarriak aurki ditzakezu:\n"
+"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Saguaren azpian objektu bat baina gehiago baduzu, eta hauetako bat "
+"hautatu\n"
+"nahi baduzu, <em>saguaren ezker botoiarekin</em> klika dezakezu <em>Shift</"
+"em>\n"
+"tekla mantentzen duzun bitartean, saguaren azpian dauden objektuen zerrenda "
+"bat eskuratu eta hauetako bat hautatzeko.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p>Leku geometriko bat eraikitzen duzunean, saguaren <em>eskuineko</em>\n"
+"botoiarekin egni klik bertan eta hautatu <em>ekuazio kartesiarra</em> bere\n"
+"ekuazio kartesiarra ikusteko, gradu baxuko kurba aljebraiko bat izan arren "
+"ere.</p>\n"
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+
+#, fuzzy
+#~| msgid "Construct the midpoint of this point and another point"
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "Eraiki puntu honen eta beste baten arteko erdiko puntua"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Hautatu beste bi puntuetatik lehenengoa..."
+
+#, fuzzy
+#~| msgid "Construct a segment starting at this point"
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Eraiki puntu honetan hasten den segmentu bat"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the second of the two points..."
+#~ msgstr "Hautatu beste bi puntuetatik lehenengoa..."
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "Gorde %1 dokumentuaren aldaketak?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "Gorde aldaketak?"
+
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|Onartutako fitxategi guztiak (*.kig "
+#~ "*.kigz *.seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig dokumentuak (*.kig)\n"
+#~ "*.kigz|Konprimatutako Kig dokumentuak (*.kigz)\n"
+#~ "*.kgeo|KGeo dokumentuak (*.kgeo)\n"
+#~ "*.seg|KSeg dokumentuak (*.seg)\n"
+#~ "*.fgeo|Dr. Geo dokumentuak (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri dokumentuak (*.fig *.FIG)"
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a cubic with this control point"
+#~ msgstr "Eraiki zentru hau duen zirkulua"
+
+#, fuzzy
+#~| msgid "Select a point to be a vertex of the new triangle..."
+#~ msgid "Select a point to be a control point of the new cubic..."
+#~ msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#, fuzzy
+#~| msgid "Construct a circle with this center"
+#~ msgid "Construct a rational cubic with this control point"
+#~ msgstr "Eraiki zentru hau duen zirkulua"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select the first of the two conics of which you want to construct the "
+#~| "radical line..."
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational cubic..."
+#~ msgstr ""
+#~ "Hautatu beren zuzen erradialak eraiki nahi dituzun bi konikoetatik "
+#~ "lehenengoa..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a quadric with this control point"
+#~ msgstr "Eraiki arku bat zentro honekin"
+
+#, fuzzy
+#~| msgid "Select a point to be a vertex of the new triangle..."
+#~ msgid "Select a point to be a control point of the new quadric..."
+#~ msgstr "Hautatu triangelu berriaren erpina izango den puntu bat..."
+
+#, fuzzy
+#~| msgid "Construct an arc with this center"
+#~ msgid "Construct a rational quadric with this control point"
+#~ msgstr "Eraiki arku bat zentro honekin"
+
+#, fuzzy
+#~| msgid ""
+#~| "Select the first of the two conics of which you want to construct the "
+#~| "radical line..."
+#~ msgid ""
+#~ "Select three points and three numeric values as weights to construct "
+#~ "rational quadric..."
+#~ msgstr ""
+#~ "Hautatu beren zuzen erradialak eraiki nahi dituzun bi konikoetatik "
+#~ "lehenengoa..."
+
+#, fuzzy
+#~| msgid "Hide a Curve"
+#~ msgid "Bezier Curve"
+#~ msgstr "Ezkutatu kurba bat"
+
+#, fuzzy
+#~| msgid "Construct a polygon with this vertex"
+#~ msgid "Construct a open polygon (polyline) with this vertex"
+#~ msgstr "Eraiki poligono bat erpin honekin"
+
+#, fuzzy
+#~| msgid "Select a point to be a vertex of the new polygon..."
+#~ msgid "Select a point to be a vertex of the new open polygon..."
+#~ msgstr "Hautatu poligono berriaren erpin bat izango den puntu bat..."
+
+#, fuzzy
+#~| msgid "Construct a polygon with this vertex"
+#~ msgid "Construct a polygon with this control point"
+#~ msgstr "Eraiki poligono bat erpin honekin"

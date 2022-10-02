@@ -1,0 +1,6981 @@
+# translation of kig.po to Bosnian
+# translation of kig.po to Bosanski
+# Copyright (C) 2003,2004 Free Software Foundation, Inc.
+# Vedran Ljubović <vljubovic@smartnet.ba>, 2003.
+# Vedran Ljubovic <vljubovic@smartnet.ba>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kig\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2014-02-09 16:21+0100\n"
+"Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
+"Language-Team: Bosnian <lokal@lugbih.org>\n"
+"Language: bs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Launchpad (build 16820)\n"
+"X-Launchpad-Export-Date: 2013-11-04 05:58+0000\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Melina Mlinaric,Samir Ribić"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "melina@etf.ba,samir.ribic@etf.unsa.ba"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Krug pomoću centra i prave"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "Krug konstruisan pomoću svog centra i tangentan sa datom pravom"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Konstruiši krug tangentan sa ovom pravom"
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Izaberite pravu koja će novom krugu biti tangenta..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Krug pomoću tačke i duži (kao prečnik)"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr "Krug definisan svojim centrom i dužinom duži kao prečnikom"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Konstruiši krug prečnika koji je dat dužinom ove duži"
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr "Izaberite duž čija dužina daje prečnik novog kruga..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Jednakostranični trougao"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Jednakostranični trougao dat sa dva verteksa"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Evoluta"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Evoluta krive"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Evoluta ove krive"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Oskulatorni krug"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Oskulatorni krug krive u tački"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Oskulatorni krug ove krive"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Oskulatorni krug u ovoj tački"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Izaberite tačku..."
+
+#, kde-format
+msgid "Square"
+msgstr "Kvadrat"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Kvadrat dat sa dva susjedna verteksa"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Razlika vektora"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Konstruiši razliku vektora od dva vektora."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Konstruiši razliku vektora od ovog vektora i nekog drugog."
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Konstruiši razliku vektora od nekog drugog i ovog vektora."
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Konstruiši razliku vektora koja počinje od ove tačke."
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Izaberite prvi od dva vektora kojima želite da konstruišete razliku..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr ""
+"Izaberite drugi od dva vektora kojima želite da konstruišete razliku..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Izaberite tačku u kojoj će se konstruisati razlika vektora..."
+
+#: filters/asyexporter.cc:29
+#, kde-format
+msgid "Export to &Asymptote..."
+msgstr "Izvezi u &Asymptote..."
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr "&Asimptota..."
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+#| msgid "*.asy|Asymptote Documents (*.asy)"
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.asy|Asymptote Documents (*.asy)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr "Izvezi kao Asymptote skriptu"
+
+#: filters/asyexporter.cc:48
+#, kde-format
+msgid "Asymptote Options"
+msgstr "Opcije programa Asymptote"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr ""
+"Nisam mogao otvoriti datoteku \"%1\". Molim provjerite da li su privilegije "
+"datoteke ispravno podešene."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Opcije"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Prikaži dodatni okvir"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Prikaži ose"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Prikaži mrežu"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Ovo je XFig datoteka, a ne Cabri slika."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Ova Cabri verzija  (%1) još nije podržana.\n"
+"Konsultirajte Kig autore da podrže ovu Cabri verziju."
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr "Ovu Cabri datoteku sadrži objekat „%1“, koji Kig trenutno ne podržava."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "Došlo je do pogreške na liniji %1 u datoteci %2"
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Dr. Geo datoteka „%1“ je makro datoteka tako da ne sadrži figure."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "Nema figura i Dr. Geo datoteci „%1“."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo filter"
+
+#: filters/drgeo-filter.cc:112
+#, kde-format
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Trenutni Dr. Geo datoteka sadrži više od jedne figure.\n"
+"Izaberite koju treba uvesti:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr ""
+"Ovaj Dr. Geo-ov datoteka sadrži „%1 %2“ objekat, koji Kig trenutno ne "
+"podržava."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr ""
+"Ovaj Dr. Geo-ov datoteka sadrži tip presjeka koji Kig trenutno ne podržava."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "&Izvezi u sliku"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Slika..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Izvezi kao sliku"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Opcije slike"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Žalim, ovaj format datoteke nije podržan."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "Žalim, nešto se zabrljalo prilikom snimanja u sliku \"%1\""
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "&Izvezi u"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"Nisam mogao otvoriti datoteku \"%1\".  Ovo vjerovatno znači da ona ne "
+"postoji ili da ne može biti otvorena zbog ograničenih privilegija"
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+#| msgid ""
+#| "An error was encountered while parsing the file \"%1\".  It cannot be "
+#| "opened."
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr ""
+"Došlo je do greške prilikom obrade datoteke \"%1\".  Ona neće biti otvorena."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Greška u obradi"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Nije podržan"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+#| msgid "Kig cannot open the file \"%1\"."
+msgid "Kig cannot open this file."
+msgstr "Kig ne može otvoriti datoteku \"%1\"."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Rezolucija"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "&Zadrzite očekivani omjer"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Visina:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Širina:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"Ovaj KSeg dokument koristi transformaciju skaliranja, koju Kig trenutno ne "
+"može uvesti."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr ""
+"Ovaj KSeg dokument sadži ispunjeni krug, koji Kig trenutno ne podržava."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr "Ovaj KSeg dokument sadži lučni sektor, koji Kig trenutno ne podržava."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr ""
+"Ovaj KSeg dokument sadži lučni odsječak, koji Kig trenutno ne podržava."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "Izvezi u &Latex..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Latex dokumenti (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Izvezi kao Latex"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Opcije Latex-a"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "Izlazni format"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr "PSTricks"
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr "Tikz/PGF"
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "Asimptota"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, kde-format
+msgid "Document options"
+msgstr "Opcije dokumenta"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr "Samo slika"
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr "Samostalni dokument"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr ""
+"Ova datoteka je napravljena Kig verzijom \"%1\", koju ova verzija ne može "
+"otvoriti."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Ovu datoteku je napravio Kig verzija „%1“.\n"
+"Podrška za starije Kig-ove formate (prije 0.4) je izbačena iz Kig-a.\n"
+"Možete pokušati otvoriti ovu datoteku sa starijom verzijom Kig-a (0.4 do "
+"0.6),\n"
+"i onda opet snimiti, što će snimiti datoteka u novom formatu."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Ova Kig-ova datoteka ima koordinatni sistem koji ova verzija Kig-a ne "
+"podržava.\n"
+"Umjesto njega biće korišten standardni koordinatni sistem."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Ova Kig-ova datoteka koristi objekat tipa „%1“, koji ova verzija Kig-a ne "
+"podržava.  Možda ste kompajlirali Kig bez podrške za ovaj tip objekta, ili "
+"možda koristite stariju verziju Kig-a."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Ova Kig datoteka koristi objekat tipa \"%1\", koji je zastario,trebao bi "
+"sacuvati rad s drugim imenom i provjerite da li radi kako očekujete."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "Izv&ezi u SVG..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "*.svg|Skalabilna vektorska grafika (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "Izvezi kao SVG"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG opcije"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "Izvinite, došlo je do greške prilikom snimanja u SVG datoteka „%1“"
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "Izvezi u &XFig datoteku"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig datoteka..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+#| msgid "*.fig|XFig Documents (*.fig)"
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|XFig dokumenti (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "Izvezi u XFig datoteku"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE interaktivna geometrija"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr "© 2002-2005, razvijači Kig-a"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+#| msgid "Original author, long time maintainer, design and lots of code."
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "Prvobitni autor, dugo održavalac, dizajn i mnogo kôda."
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Uradio mnogo važnog posla oko Kig-a, uključujući, ali ne samo to, podršku za "
+"konusne krive, kubne krive, transformacije i podršku za provjeru svojstava."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+#| msgid ""
+#| "Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
+#| "translation, miscellaneous stuff here and there."
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Trenutni održavalac, uvozni filter za Dr. Geo, stilovi tački i linija, "
+"italijanski prevod, raznorazne sitnice tu i tamo."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Puno pomogao pri implementaciji hodografskog objekta; treba dosta matematike "
+"da se to pravilno uradi, i Franko je u osnovi napisao najteže dijelove."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr "Francesca Gatti"
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Odgovorni za izračunavanje algebarske jednačine lokusa."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr "Petr Gajdos"
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Doprinjeo razvoju Bézier krivih i vezanih datoteka"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr "Raoul Bourquin"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "Doprinjeo za 'asymptote' izvozni filter."
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "The French translator, who also sent me some useful feedback, like "
+#| "feature requests and bug reports."
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"Prevodilac na francuski, koji mi je takođe dao dosta korisnih informacija, "
+"kao što su prijedlozi novih mogućnosti i prijave bugova."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"Autor KGeo-a, od koga sam dobio inspiraciju, nešto izvornog kôda i većinu "
+"dizajna."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Domijev brat, koga je nagovorio da napiše algoritam za izračunavanje centra "
+"kruga pomoću tri date tačke."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud'homme"
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+#| msgid "Sent me a patch for some bugs."
+msgid "Contributed a patch for some bugs."
+msgstr "Poslao patch za neke bugove."
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+#| msgid ""
+#| "Gave me some good feedback on Kig, some feature requests, cleanups and "
+#| "style fixes, and someone to chat with on irc :)"
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Dao mi je dobar feedback o Kig-u, neke zahtjeve za opcijama, stilske "
+"ispravke i priliku za chat na irc-u :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Odgovoran za lijepu SVG ikonu programa."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Odgovoran za nove ikone akcija objekta."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr ""
+"Nije pronađena neophodna Kig-ova biblioteka, provjerite vašu instalaciju."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "Odstranite %1 objekt"
+msgstr[1] "Odstranite %1 objekta"
+msgstr[2] "Odstranite %1 objekata"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "Dodajte %1 objekt"
+msgstr[1] "Dodajte %1 objekta"
+msgstr[2] "Dodajte %1 objekata"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "&Podesi koordinatni sistem"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Kig-ove opcije"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Prikaži mrežu"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Prikaži ose"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Obrni izbor"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Obriši objekte"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Obriši izabrane objekte"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Odustani od konstruisanja"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Odustani od konstruisanja objekta koji se trenutno konstruiše"
+
+#: kig/kig_part.cpp:237
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Ponovite konstrukciju"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Ponovite zadnju konstrukciju (sa novim podacima)"
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "Otkrij &sve"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Pokaži sve skrivene objekte"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Novi makro..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Definišite novi makro"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "Upravljanje &tipovima..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Upravljajte tipovima makroa."
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr "&Historija pretraživanja..."
+
+#: kig/kig_part.cpp:263
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Historija pretraživanja trenute konstrukcije"
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Približi dokument"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Udalji dokument"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Centriraj ekran na dokumentu"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Pogledaj ovaj dokument čitavim ekranom."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "&Izaberite prikazanu oblast"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Izaberi oblast koja je trenutno prikazana u prozoru."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "Izab&erite oblast uveličanja"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "Postavi koordinatnu &preciznost..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr "Postavi preciznost u pokretnom zarezu koordinata u dokumentu. "
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Prikaži &mrežu"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Prikaži ili sakrij mrežu."
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "Prikaži &ose"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Prikaži ili sakrij ose."
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Nosi infracrvene naočale"
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Omogućiti/onemogućiti sakrivene objekte vidljivim"
+
+#: kig/kig_part.cpp:347
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Ponovite konstrukciju (%1)"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "Ponovite %1 (sa novim podacima)"
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr ""
+"Datoteka „%1“, koju ste pokušali da otvorite, ne postoji. Uvjerite se da ste "
+"unijeli tačnu putanju."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Datoteka nije pronađena"
+
+#: kig/kig_part.cpp:394
+#, kde-format
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"Pokušali ste otvoriti dokument tipa \"%1\", na žalost, Kig ne podržava ovaj "
+"format. Ako mislite da će taj format  biti vrijedan podrške, uvijek možete "
+"to tražiti koristeći <a href=\"https://bugs.kde.org/enter_bug.cgi?"
+"product=kig&bug_severity=wishlist\">KDE sistem praćenja grešaka</a>"
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Format nije podržan"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig ne podržava snimanje u bilo koji format datoteke osim svog. Da li da "
+"snimim u Kig-ovom formatu?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Snimi u Kig-ovom formatu"
+
+#: kig/kig_part.cpp:695
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kig|Kig Documents (*.kig)\n"
+#| "*.kigz|Compressed Kig Documents (*.kigz)"
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+"*.kig|Kig-ovi dokumenti (*.kig)\n"
+"*.kigz|Kompresovani Kig-ovi dokumenti (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "Datoteka \"%1\" već postoji. Želite li pisati preko nje?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Prebrisati datoteka?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Geometrija štampe"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "Sakrijte %1 objekat"
+msgstr[1] "Sakrijte %1 objekta"
+msgstr[2] "Sakrijte %1 objekata"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "Prikažite %1 objekat"
+msgstr[1] "Prikažite %1 objekta"
+msgstr[2] "Prikažite %1 objekata"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Povećaj"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Smanji"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Re-centriraj pogled"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Izaberite pravougaonu oblast koju treba prikazati."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Promijeni prikazani dio ekrana"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Izaberite oblast uveličanja"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Izaberite područje zumiranja unosom koordinata <br /> u gornjem lijevom uglu "
+"i donjem desnom uglu."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Datoteka"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "&Izmijeni"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&Pogled"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Objekti"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "&Tačke"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Linije"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Krugovi i lukovi"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "Poli&goni"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Vektori i duži"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "Ko&nusne i kubne krive"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Još konusnih krivih"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "Ko&cke"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr "&Bézier kriva"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "&Uglovi"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Transformacije"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Diferencijalna geometrija"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "&Provjere"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Ostalo"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Vrste"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "&Alati"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Glavna alatna traka"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Tačke"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Linije"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Vektori i duži"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Krugovi i lukovi"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Kupe"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, kde-format
+msgid "Bézier Curves"
+msgstr "Kriva Bézier"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Uglovi"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Transformacije"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Provjere"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Ostali objekti"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Pogled"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "&Postavke"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Ne prikazuj grafički prozor. Konvertuj navedenu datoteku u Kig-ov format. "
+"Izlaz ide na std. izlaz osim ako nije označen izlaznu datoteku (--outfile)."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Datoteka u koju će se upisati napravljena datoteka.  „-“ znači izlaz na std. "
+"izlaz.  Std. izlaz je podrazumijevan."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Dokument za otvaranje"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Tačka od numeričkih oznaka"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "Tačka čije su koordinate date kao dvije numeričke oznake"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Duž"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Duž se konstruiše na osnovu svoje početne i krajnje tačke"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Osa duži"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Upravna prava kroz središnju tačku date duži."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Prava pomoću dvije tačke"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Prava povučena kroz dvije tačke"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Poluprava"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "Poluprava pomoću početne tačke i druge tačke bilo gdje na njoj."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Normala"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Prava konstruisana kroz tačku, pod pravim uglom u odnosu na drugu pravu ili "
+"duž."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Paralela"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr ""
+"Prava koja se konstruiše pomoću tačke, a paralelna je drugoj pravoj ili duži"
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Kružnica pomoću centra i tačke"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Krug konstruisan pomoću svog centra i tačke na obodu"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Kružnica pomoću tri tačke"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Kružnica povučena kroz tri tačke"
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Krug od tačke i radijusa"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Krug definiran centrom i dužinom radijusa"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Konstruiši simetralu ovog ugla"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Izaberite ugao za koji želite da konstruišete simetralu..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Simetrala ugla"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Simetrala ugla"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Kupa pomoću pet tačaka"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Kupa konstruisana pomoću pet tačaka"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Hiperbola pomoću asimptota i tačke"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "Hiperbola sa zadatim asimptotama, povučena kroz tačku"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Elipsa pomoću fokusâ i tačke"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "Elipsa konstruisana pomoću svojih fokusa i tačke na svojoj ivici"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Hiperbola pomoću fokusâ i tačke"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr "Hiperbola konstruisana pomoću svojih fokusa i tačke na svojoj ivici"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Kupa pomoću direktrise, fokusa i tačke"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr "Kupa zadana direktrisom i fokusom, kroz tačku"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Uspravna parabola pomoću tri tačke"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Uspravna parabola povučena kroz tri tačke"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Kubna kriva pomoću devet tačaka"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Kubna kriva konstruisana pomoću devet tačaka"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Polarna tačka prave"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Polarna tačka prave u odnosu na kupu."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Polarna prava tačke"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Polarna prava tačke u odnosu na kupu."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Kubna kriva sa stecištem pomoću šest tačaka"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr "Kubna kriva sa stecišnom tačkom u osnovi, kroz šest tačaka"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Kubna kriva sa vrhom pomoću četiri tačke"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr "Kubna kriva sa vodoravnim vrhom u osnovi, kroz četiri tačke"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Kubična funkcija od četiri tačke"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr "Kubična funkcija preko četiri tačke"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Direktrisa kupa"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Pravac direktrise kupe."
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Ugao pomoću tri tačke"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Ugao definisan sa tri tačke"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Ekvilateralna hiperbola pomoću četiri tačke"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Ekvilateralna hiperbola konstruisana kroz četiri tačke"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Konstruiši srednju tačku ove duži"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Srednja tačka"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Srednja tačka duži ili dvije druge tačke"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this segment"
+msgid "Construct the golden ratio point of this segment"
+msgstr "Konstruiši srednju tačku ove duži"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+#| msgid "Move a Point"
+msgid "Golden Ratio Point"
+msgstr "Pomjeri tačku"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "The midpoint of a segment or two other points"
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Srednja tačka duži ili dvije druge tačke"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Vektor"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Konstruiši vektor iz dvije zadate tačke."
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Suma vektora"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Konstruiši sumu vektora od dva vektora."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Prava pomoću vektora"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Konstruiši pravu pomoću datog vektora kroz datu tačku."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Poluprava pomoću vektora"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "Konstruiši polupravu pomoću datog vektora polazeći od date tačke."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Luk pomoću tri tačke"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Konstruiši luk kroz tri tačke."
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Luk po sredini i tri tačke"
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr "Konstruiši konični luk sa datim centrom preko tri tačke"
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Konični luk od pet tačaka"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Konstruiši konični luk preko pet tačaka"
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Luk pomoću centra, ugla i tačke"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr ""
+"Konstruiši luk pomoću njegovog centra i datog ugla, počinjajući od date tačke"
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Parabola pomoću direktrise i fokusa"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Parabola definisana svojom direktrisom i fokusom"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Izvrši translaciju"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Translacija objekta vektorom"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Preslikaj pomoću tačke"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Objekat preslikan pomoću tačke"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Preslikaj pomoću prave"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Objekat preslikan pomoću prave"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Rotiraj"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Objekat rotiran za ugao oko tačke"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Uvećanje/umanjenje"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr "Uvećanje/umanjenje objekta preko tačke, u omjeru zadanom dužinom duži"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Uvećanje/umanjenje preko prave"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr "Objekat skaliran pomoću prave, proporcionalno dužini duži"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Skaliraj (odnos dat pomoću dvije duži)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr "Skalira objekat preko tačke, koristeći odnos dat dužinama dvije duži"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Skaliraj preko prave (odnos dat pomoću dvije duži)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr "Skalira objekat preko prave, koristeći odnos dat dužinama dvije duži"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Primijeni similitudu"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr ""
+"Apliciraj slično na objekt (sekvenca od skaliranja i rotacije oko centra)"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Harmonijska homologija"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Harmonijska homologija sa datim centrom i datom osom (ovo je projektivna "
+"transformacija)"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Nacrtaj projektivnu sjenku"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Sjenka objekta sa zadatim izvorom svjetlosti i projekcionom ravni (zadatom "
+"pomoću prave)"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Asimptote hiperbole"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Dvije asimptote hiperbole."
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Trougao pomoću verteksa"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Konstruiši trougao pomoću tri data verteksa."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Konveksni trup"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Poligon koji odgovara konveksnom trupu drugog poligona"
+
+#: misc/builtin_stuff.cc:487
+#, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Kvadratni Bézier od kontrolnih tačaka"
+
+#: misc/builtin_stuff.cc:488
+#, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Konstruiši  kvadratni Bézier ako su date tri kontrolne tačke"
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr "Kubni Bézier od kontrolnih tačaka"
+
+#: misc/builtin_stuff.cc:495
+#, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Konstruiši  kubni Bézier ako su date pet kontrolnih tačaka"
+
+#: misc/builtin_stuff.cc:505
+#, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Racionalni kvadratni Bézier od kontrolnih tačaka"
+
+#: misc/builtin_stuff.cc:506
+#, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Konstruiši  racionalni kubni Bézier ako su date tri kontrolne tačke"
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr "Racionalni kubni Bézier od kontrolnih tačaka"
+
+#: misc/builtin_stuff.cc:513
+#, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "Konstruiši racionalni kubni  Bézier ako su date četiri kontrolne tačke"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Provjera paralelnosti"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Provjeri da li su dvije date prave paralelne"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Provjera upravnosti"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Provjeri da li su dvije date prave upravne"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Provjera kolinearnosti"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Provjeri da li su tri date tačke kolinearne"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Provjera sadržanosti"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Provjeri da li data kriva sadrži datu tačku"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Provjera u poligonu"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Provjerava da li dati poligon sadrži datu tačku"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Provjera konveksnog trupa"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Provjerava da li je dati poligon konveksan"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Postojanje teksta"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Vidite da li je dati objekat moguće konstruisati"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Provjera udaljenosti"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Provjerava da li data tačka ima istu udaljenost od date tačke i od druge "
+"date tačke"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Provjera jednakosti vektora"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Provjeri da li su dva vektora jednaka"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr "Projekcija tačke"
+
+#: misc/builtin_stuff.cc:584
+#, kde-format
+msgid "Project a point on a line"
+msgstr "Projekcij tačke na liniju"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python skripta"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Napravi novu Python skriptu."
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Unesite koordinate u sljedećem obliku: „x;y“,\n"
+"gdje x predstavlja x-koordinatu, a y predstavlja y-koordinatu."
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Unesite koordinate u sljedećem obliku: <b> \"x; y\" </b>, <br/> gdje je x "
+"koordinata,i y  je y  koordinata."
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Unesite koordinate u sljedećem obliku: „r; θ°“,\n"
+"gdje r i θ° predstavljaju polarne koordinate."
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Unesite koordinate u sljedećem obliku: <b> \"r; θ °\" </b>, <br/> gdje su r "
+"i θ su polarne koordinate."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Euklidska"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Polarna"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Podesite euklidski koordinatni sistem"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Podesite polarni koordinatni sistem"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "deg"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "rad"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "grad"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr ""
+"Normalna tačka tj. tačka koja je ili nezavisna ili pripada pravoj, kružnici "
+"ili duži."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Tačka"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Konstruiši tekstualnu oznaku."
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Tekstualna oznaka"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Konstruiši tačku pomoću njenih koordinata"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Tačka pomoću koordinata"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Fiksna tačka"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Unesite koordinate za novu tačku."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Konstruiši numeričku vrijednost"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Numerička vrijednost"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr "&Koristi podrazumijevanu preciznist koordinata"
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr "&Navedi preciznost koordinata:"
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Podesi veličinu ugla"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Unesite novu veličinu ovog ugla:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Upotrijebite ovo polje da izmijenite veličinu ovog ugla."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Odaberite iz ove liste geometrijsku  jedinicu koju želite koristiti za "
+"izmjenu veličine ovo ugla. <br />\n"
+"Ako se prebacite na drugu jedinicu, vrijednost za izmjenu lijevog polja će "
+"se pretvoriti u nove odabrane jedinice."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "Ne mogu otvoriti makro datoteku '%1'"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig ne može da otvori makro datoteka „%1“."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Ova datoteka je napravila veoma stara verzija Kig-a (prije 0.4). Podrška za "
+"ovaj format je izbačena iz Kig-a novijih verzija Kig-a.Možete pokušati "
+"uvesti ovaj makro sa starijom verzijom Kig-a (0.4 do 0.6),i onda opet "
+"izvesti u noviji format."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Neimenovani makro #%1"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Ova Kig datoteka koristi objekt tipa \"%1\", koji ova Kig verzija ne "
+"podržava. Možda ste sastavili Kig bez potpore za ovu vrstu objekta, ili "
+"možda koristite stariju verziju Kig."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Korijene prave za konusne krive"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Prava konstruisana presjekom dvije kupe. Ona je takođe definisana i za kupe "
+"koje se ne sijeku."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Tačka pomjeranja"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+"Izaberite tačku pokreta, koja će biti pokretana dok se crta hodograf..."
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Pomijerajuća tačka"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+"Izaberite pomjerajuću tačku, kroz čije će lokacije biti nacrtan hodograf..."
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Lokus"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Lokus objekat"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Zavisna tačka"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Poligon pomoću verteksa"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Konstruiši poligon pomoću datih verteksa"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr ""
+"...sa ovim verteksom (kliknite na prvi verteks da obustavite konstrukciju)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Konstruiši poligon sa ovim verteksom"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Izaberite tačku koja će biti verteks za novi poligon..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr "Otvoren poligon"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Construct an open polygon"
+msgstr "Konstuiši otvoren poligon"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"... s ovim tjemenom (kliknite ponovo na zadnje tjeme da prekinete izgradnju)"
+
+#: misc/special_constructors.cc:624
+#, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Konstruiši poligonsku liniju sa ovim tjemenom"
+
+#: misc/special_constructors.cc:629
+#, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Izaberi tačku da bude tjeme za novu poligonsku liniju"
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Poligon"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Konstruiši vertekse ovog poligona..."
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Verteksi poligona"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Verteksi poligona."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Konstruiši stranice ovog poligona..."
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Stranice poligona"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Stranice poligona."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Regularni poligon sa datim centrom"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Konstruiši regularni poligon sa datim centrom i verteksom"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Konstruiši regularni poligon sa ovim centrom"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Konstruiši regularni poligon sa ovim verteksom"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Podesi broj stranica (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Podesi broj stranica (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Izaberite centar novog poligona..."
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Izaberite verteks za novi poligon..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Pomijerajte pokazivač da biste dobili željeni broj stranica..."
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Bézier kriva od kontolnih tačaka"
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Konstruiši Bézier krivu od datih kontrolnih tačaka"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+"... sa ovom kontolnom tačkom (klikni ponovo na zadnju kontrolnu tačku da "
+"završiš izgradnju)"
+
+#: misc/special_constructors.cc:1100
+#, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Konstruiši Bézier krivu sa ovom kontrolnom tačkom"
+
+#: misc/special_constructors.cc:1105
+#, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Izaberi tačku koja ce biti kontrolna tačka za novu Bézier krivu..."
+
+#: misc/special_constructors.cc:1138
+#, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Racionalna Bézier kriva od kontrolnih tačaka"
+
+#: misc/special_constructors.cc:1143
+#, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr ""
+"Konstruiši Bézier krivu sa datim kontrolnim tačkama i pozitivnim težinama"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr "...dodjeliti ovu težinu na zadnje odabrane kontrolne tačke"
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"... sa ovom kontrolnim tačkom (kliknite na zadnju kontrolnu tačku ili težinu "
+"da završite izgradnju)"
+
+#: misc/special_constructors.cc:1207
+#, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Konstruiši racionalnu  Bézier krivu sa ovim kontrolnim tačkama"
+
+#: misc/special_constructors.cc:1213
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr ""
+"Izaberi tačku koja će biti kontrolna tačka nove racionalne Bézier krive..."
+
+#: misc/special_constructors.cc:1215
+#, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr "Selektuj numeričku oznaku da bude težina od zadnje selektirane tačke"
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Konstruiši korijenske pravih ove kružnice"
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Konstruiši korijenske prave ove kupe"
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Generička sličnost"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Jedinstvena sličnost koja mapira tri tačke (ili trougao) na druge tri tačke "
+"(ili trougao)"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Generička projektivna transformacija"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Jedinstvena projektivna transformacija koja mapira četiri tačke (ili "
+"četvorougao) na druge četiri tačke (ili četvorougao)"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Inverzija tačke, prave ili kruga"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Inverzija tačke, prave ili kruga prema krugu"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Prijenos mjere"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Prenesi mjeru duži ili luka preko prave ili kruga."
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Duž za prenošenje"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Luk za prenošenje"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Vrijednost za transport"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Prenesi mjeru na ovu pravu"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Prenesi mjeru na ovaj krug"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Počni prijenos iz ove tačke na krugu"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Počni prijenos iz ove tačke na pravoj"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Počni prijenos iz ove tačke na krivoj"
+
+#: misc/special_constructors.cc:1637
+#, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Odaberi segment, luk ili numeričku oznaku da se prenese..."
+
+#: misc/special_constructors.cc:1641
+#, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Odaberi odredišnu liniju ili krug..."
+
+#: misc/special_constructors.cc:1645
+#, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Odaberi početnu tačku na liniji/krugu..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Presjek sa ovom kupom"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Presjek sa ovom pravom"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Presijeci sa ovim kubom"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Presjeci sa ovim krugom"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Presjeci"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Presjek dva objekta"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Presjeci ovaj krug"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Presjeci ovu konusnu krivu"
+
+#: misc/special_constructors.cc:1770
+#, kde-format
+msgid "Intersect this Segment"
+msgstr "Presijeci ovaj segmenat"
+
+#: misc/special_constructors.cc:1772
+#, kde-format
+msgid "Intersect this Half-line"
+msgstr "Presijeci ove polovične linije"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Presjeci ovu pravu"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Presjeci ovu kubnu krivu"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Presjeci ovaj luk"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Presjeci ovaj poligon"
+
+#: misc/special_constructors.cc:1782
+#, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Presijeci ovaj poligon"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "ovim krugom"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "ovom konusnom krivom"
+
+#: misc/special_constructors.cc:1792
+#, kde-format
+msgid "with this Segment"
+msgstr "sa ovim segmentom"
+
+#: misc/special_constructors.cc:1794
+#, kde-format
+msgid "with this Half-line"
+msgstr "sa ovom polovičnom linijom"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "ovom pravom"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "ovom konusnom krivom"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "ovim lukom"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "ovim poligonom"
+
+#: misc/special_constructors.cc:1804
+#, kde-format
+msgid "with this Polygonal"
+msgstr "sa ovim poligonom"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct midpoint of this point and another one"
+msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr ""
+"Izaberite prvu od tački za koje želite da konstruišete srednju tačku..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr ""
+"Izaberite drugu od tačaka za koje želite da konstruišete srednju tačku..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Izaberite prvu od tački za koje želite da konstruišete srednju tačku..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+#| msgid "Select the other of the points of which to construct the midpoint..."
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr ""
+"Izaberite drugu od tačaka za koje želite da konstruišete srednju tačku..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Izaberite prvi objekat za presijecanje..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Izaberite drugi objekat za presijecanje..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Tangenta"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Prava tangentna na krivu"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Tangenta na ovaj krug"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Tangenta na ovu konusnu krivu"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Tangenta na ovaj luk"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Tangenta na ovu kubnu krivu"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Tangenta na ovu krivu"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Tangenta u ovoj tački"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Centar krivine"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Centar oskulatornog kruga krive"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Centar krivine ove konusne krive"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Centar krivine ove kubne krive"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Centar krivine ove krive"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Centar krivine u ovoj tački"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "piksel"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "cm"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "in"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Koji objekat?"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Kliknite lokaciju na koju želite da stavite novu tačku, ili krivu kojoj "
+"želite da je prikačite..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Sada izaberite lokaciju rezulujuće oznake."
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Izmijeni tip"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Ovdje možete urediti ime tekućeg tipa makroa."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Ovdje možete urediti opis tekućeg tipa makroa. Ovo polje je opciono, tako da "
+"ga možete ostaviti praznim; ako učinite tako, vaš makro neće imati opis."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Upotrijebite ovo dugme da promijenite ikonu tekućeg tipa makroa."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Ime makroa ne može biti prazno."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr "Ovdje možete izmijeniti ime, opis i ikonu ovog tipa makroa."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Ime:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Opis:"
+
+#: modes/historydialog.cc:24
+#, fuzzy, kde-format
+#| msgid "History Browser"
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "Historija pretraživanja"
+
+#: modes/historydialog.cc:108
+#, kde-format
+msgid "Start of the construction"
+msgstr "Započni konstrukciju"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Opis trenutnog koraka:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Prvi korak"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Korak unazad"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Korak unaprijed"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Zadnji korak"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Ime"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<neimenovani objekt>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"U tekstu se nalazi %n dijelova za koje nise odabrali vrijednost. Molim "
+"uklonite ih ili izaberite dovoljno argumenata."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "argument %1"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "Biram argument %1"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Promijeni oznaku"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Podesi vrijednost"
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "Unesite vrijednost"
+
+#: modes/label.cc:624
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Odaberite položaj za novu brojčanu vrijednost..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Jedan od rezultujućih objekata koji ste izabrali ne može biti izračunat "
+"pomoću datih objekata. Kig zbog toga ne može da izračuna ovaj makro. "
+"Pritisnite „Nazad“ i konstruišite objekte ispravnim redoslijedom..."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Jedan od datih objekata nije korišten za izračunavanje rezultujućih "
+"objekata.  Ovo verovatno znači da očekujete od Kig-a da uradi nešto "
+"nemoguće.  Provjerite makro i pokušajte opet."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Zadati objekti"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Izaberite \"zadate\" objekte za vaš novi makro i kliknite na \"Dalje\"."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Konačni objekat"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Izaberite konačne objekte za vaš novi makro."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Unesite ime i opis za vašu novu vrstu."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "&Ime:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "&Opis:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "&Ikona:"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Definiši novi makro"
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "Pomjeri %1 objekt"
+msgstr[1] "Pomjeri %1 objekta"
+msgstr[2] "Pomjeri %1 objekata"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Redefiniši tačku"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "Crna"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "Siva"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "Crvena"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "Zelena"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "Cijan"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "Žuta"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "Tamno crvena"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "&Sakrij"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "&Prikaži"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "&Pomjeri"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Obriši"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "P&osebna boja"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Promijeni boju objekta"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Promijeni širinu objekta"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Promijeni stil tačke"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Promijeni stil objekta"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "Postavi &ime..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "&Ime"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Postavi ime objekta"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Postavi ime ovog objekta:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 objekt"
+msgstr[1] "%1 objekta"
+msgstr[2] "%1 objekata"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Kig dokument"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Transformiši"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "&Provjeri"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "Konst&ruiši"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "&Počni"
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Dodaj te&kstualnu oznaku"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "Izaberi bo&ju"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "Postavi &debljinu pera..."
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Postavi st&il"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Podesi koordinatni s&istem"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Više..."
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgid "Edit Script..."
+msgstr "Izmijeni skriptu"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Unesite tekst oznake"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Ovdje unesite tekst za vašu oznaku i kliknite na \"Dalje\".\n"
+"Ako želite prikazati dijelove promjenljivih, upišite %1, %2, ... na "
+"odgovarajuća mjesta (npr. \"Ova duž je duga %1 jedinica.\")."
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Prikaži tekst u okviru"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Izaberite argumente"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Sada izaberite argumente koji su vam potrebni.  Za svaki argument, kliknite "
+"na njega, izaberite objekat i svojstvo u Kig-ovom prozoru, i kliknite na "
+"„Završi“ kada završite..."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Napravi oznaku"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr "Makro"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "Tip"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Opis"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Upravljanje vrstama"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Izmijeni..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "I&zvezi..."
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Da li ste sigurni da želite obrisati ovaj %1 tip?"
+msgstr[1] "Da li ste sigurni da želite obrisati ova %1 tipa?"
+msgstr[2] "Da li ste sigurni da želite obrisati ovih %1 tipova?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Da li ste sigurni?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Izvezi tipove"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig datoteke sa tipovima\n"
+"*|Sve datoteke"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig datoteke sa tipovima\n"
+"*|Sve datoteke"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Uvezi vrste"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Izabrano je više od jednog tipa. Možete uređivati samo jedan tip odjednom. "
+"Izaberite samo tip koji želite da uredite i pokušajte ponovo."
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Izabrano je više od jednog tipa"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Ovdje izaberite vrste..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Ovo je lista tekućih tipova makroa. Možete ih birati, brisati, izvoziti i "
+"uvoziti..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Uredi izabrani tip."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Obriši sve izabrane tipove u listi."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Izvezi sve izabrane tipove u datoteku."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Uvozi makroe koji su sadržani u jednom ili više datoteka."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Uvezi..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Konstruiši ugao kroz ovu tačku"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "Izaberite tačku kroz koju bi prva poluprava ugla trebalo da prođe..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Konstruiši ugao u ovoj tački"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Izaberite tačku u kojoj će se konstruisati ugao..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Izaberite tačku kroz koju bi druga poluprava ugla trebalo da prođe..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Podesi &veličinu"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr "Preklopi oznaku &Desnog ugla"
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Promijeni veličinu ugla"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Konstruiši luk koji počinje u ovoj tački"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Izaberite početnu tačku novog luka..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Konstruiši luk kroz ovu tačku"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti novi luk..."
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Konstruiši luk koji se završava u ovoj tački"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Izaberite krajnju tačku novog luka..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Konstruiši luk pomoću ovog centra"
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Izaberite centar novog luka..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Konstruiši luk pomoću ovog ugla"
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Izaberite ugao novog luka..."
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Konstruiši konični luk počevši od ove tačke"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Izaberite početnu tačku novog luka kupe..."
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Kontruišite  luk kupe preko ove tačke"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Izaberite tačku za novi luk kupe kroz koju će prolaziti..."
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Konstruišite luk kupe završen ovom tačkom"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Izaberite posljednju tačku novog luka kupe..."
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Konstuišite luk kupe sa ovim centrom"
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Izaberite centar za novi luk kupe..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr "Broj kontrolnih tačaka"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+msgid "Control polygon"
+msgstr "Kontrolni poligon"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Dekartova jednačina"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+msgid "Bézier Curve"
+msgstr "Kriva Bézier"
+
+#: objects/bezier_imp.cc:202
+#, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Izaberite krivu Bézier"
+
+#: objects/bezier_imp.cc:203
+#, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "Izaberite krivu Bézier %1"
+
+#: objects/bezier_imp.cc:204
+msgid "Remove a Bézier Curve"
+msgstr "Odstrani krivu Bézier"
+
+#: objects/bezier_imp.cc:205
+msgid "Add a Bézier Curve"
+msgstr "Dodaj krivu Bézier"
+
+#: objects/bezier_imp.cc:206
+msgid "Move a Bézier Curve"
+msgstr "Pomjeri krivu Bézier"
+
+#: objects/bezier_imp.cc:207
+msgid "Attach to this Bézier Curve"
+msgstr "Dodaj krivu Bézier"
+
+#: objects/bezier_imp.cc:208
+msgid "Show a Bézier Curve"
+msgstr "Prikažite krivu Bézier"
+
+#: objects/bezier_imp.cc:209
+msgid "Hide a Bézier Curve"
+msgstr "Sakrijte krivu Bézier"
+
+#: objects/bezier_imp.cc:218
+msgid "Bézier Quadratic"
+msgstr "Kvadratni Bézier"
+
+#: objects/bezier_imp.cc:219
+#, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Izaberite kvadratni Bézier"
+
+#: objects/bezier_imp.cc:220
+#, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "Izaberite kvadratni Bézier  %1"
+
+#: objects/bezier_imp.cc:221
+msgid "Remove a Bézier Quadratic"
+msgstr "Odstranite kvadratni Bézier"
+
+#: objects/bezier_imp.cc:222
+msgid "Add a Bézier Quadratic"
+msgstr "Dodajte kvadratni Bézier"
+
+#: objects/bezier_imp.cc:223
+msgid "Move a Bézier Quadratic"
+msgstr "Odstranite kvadratni Bézier"
+
+#: objects/bezier_imp.cc:224
+msgid "Attach to this Bézier Quadratic"
+msgstr "Dodajte kvadratni Bézier"
+
+#: objects/bezier_imp.cc:225
+msgid "Show a Bézier Quadratic"
+msgstr "Prikažite kvadratni Bézier"
+
+#: objects/bezier_imp.cc:226
+msgid "Hide a Bézier Quadratic"
+msgstr "Sakrijte kvadratni  Bézier"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr "Kubni  Bézier"
+
+#: objects/bezier_imp.cc:236
+#, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Izaberite kubni  Bézier"
+
+#: objects/bezier_imp.cc:237
+#, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "Izaberite kubni  Bézier %1"
+
+#: objects/bezier_imp.cc:238
+msgid "Remove a Bézier Cubic"
+msgstr "Odstranite kubni  Bézier"
+
+#: objects/bezier_imp.cc:239
+msgid "Add a Bézier Cubic"
+msgstr "Dodajte kubni  Bézier"
+
+#: objects/bezier_imp.cc:240
+msgid "Move a Bézier Cubic"
+msgstr "Odstranite kubni  Bézier"
+
+#: objects/bezier_imp.cc:241
+msgid "Attach to this Bézier Cubic"
+msgstr "Dodajte kubni  Bézier"
+
+#: objects/bezier_imp.cc:242
+msgid "Show a Bézier Cubic"
+msgstr "Prikažite kubni  Bézier"
+
+#: objects/bezier_imp.cc:243
+msgid "Hide a Bézier Cubic"
+msgstr "Sakrijte kubni  Bézier"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr "Racionalni  Bézier kriva"
+
+#: objects/bezier_imp.cc:491
+#, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Izaberite racionalnu  Bézier krivu"
+
+#: objects/bezier_imp.cc:492
+#, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "Izaberite racionalnu  Bézier krivu %1"
+
+#: objects/bezier_imp.cc:493
+msgid "Remove a Rational Bézier Curve"
+msgstr "Odstranite racionalnu  Bézier krivu"
+
+#: objects/bezier_imp.cc:494
+msgid "Add a Rational Bézier Curve"
+msgstr "Dodajte racionalnu  Bézier krivu"
+
+#: objects/bezier_imp.cc:495
+msgid "Move a Rational Bézier Curve"
+msgstr "Pomjerite racionalnu  Bézier krivu"
+
+#: objects/bezier_imp.cc:496
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Dodajte na racionalnu Bézier krivu"
+
+#: objects/bezier_imp.cc:497
+msgid "Show a Rational Bézier Curve"
+msgstr "Prikažite racionalnu Bézier krivu"
+
+#: objects/bezier_imp.cc:498
+msgid "Hide a Rational Bézier Curve"
+msgstr "Sakrijte racionalnu Bézier krivu"
+
+#: objects/bezier_imp.cc:507
+msgid "Rational Bézier Quadratic"
+msgstr "Racionalni kvadratni  Bézier"
+
+#: objects/bezier_imp.cc:508
+#, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Izaberite ovaj racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:509
+#, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "Izaberite racionalni kvadratni Bézier %1"
+
+#: objects/bezier_imp.cc:510
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Odstranite racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:511
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Dodajte racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:512
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Odstranite racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:513
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Ubacite racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:514
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Prikažite racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:515
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Sakrijte racionalni kvadratni Bézier"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr "Racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:525
+#, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Izaberite racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:526
+#, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "Izaberite racionalni kubni Bézier %1"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr "Odstranite racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr "Dodajte racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr "Pomjerite racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:530
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Ubacite racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr "Prikažite racionalni kubni Bézier"
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr "Sakrijte racionalni kubni Bézier"
+
+#: objects/bezier_type.cc:26
+#, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Konstruišite kvadratnu Bézier krivu sa kontrolnim tačkama"
+
+#: objects/bezier_type.cc:27
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr ""
+"Izaberite tačku koja će biti kontolna tačka nove kvadratne Bézier krive"
+
+#: objects/bezier_type.cc:121
+#, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Konstuišite kubnu Bézier krivu sa ovom kontrolnom tačkom"
+
+#: objects/bezier_type.cc:122
+#, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr ""
+"Izaberite tačku koja će biti kontrolna tačka nove kubne Bézier krive..."
+
+#: objects/bezier_type.cc:328
+#, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr ""
+"Konstruišite kvadratnu racionalnu Bézier krivu sa ovom kontrolnom tačkom"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr ""
+"Izaberite tri tačke i tri numeričke vrijednosti kao tegove za konstrukciju "
+"racionalne Bézier krive..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, kde-format
+msgid "Select this value as weight"
+msgstr "Izaberite ovu vrijednost kao težinu"
+
+#: objects/bezier_type.cc:433
+#, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Konstuišite kubnu racionalnu Bézier krivu sa ovom kontolnom tačkom"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "in"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Rezultat provjere"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Izaberite krivu..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Izaberite tačku na krivoj..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Površina"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Obim"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Poluprečnik"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Centralni"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Proširena kartezijanska jednačina"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Polarna jednačina"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "rho = %1   [centriran na %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "kružnica"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Izaberi ovu kružnicu"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "Izaberite krug %1"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Ukloni kružnicu"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Dodaj kružnicu"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Pomjeri kružnicu"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Dodaj ovoj kružnici"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Prikaži krug"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Sakrij krug"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Konstruiši kružnicu kroz ovu tačku"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Konstruiši kružnicu sa ovim centrom"
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Izaberite centar novog kruga..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti novi krug..."
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "Sa ovim radijusom"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Izaberite dužinu radijusa..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Tip konusne krive"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Prvi fokus"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Drugi fokus"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Elipsa"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Hiperbola"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Parabola"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "ro"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "cos theta"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "sin theta"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[centrirano na %1]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "kupa"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Izaberi ovu kupu"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "Izaberite konusnu krivu %1"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Ukloni kupu"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Dodaj kupu"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Pomjeri kupu"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Dodaj ovoj kupi"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Prikaži konusnu krivu"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Sakrij konusnu krivu"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Potpora kupom"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Prva krajnja tačka"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Druga krajnja tačka"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "luk kupe"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Izaberite luk kupe"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "Izaberite luk kupe %1"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Odstranite luk kupe"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Dodajte luk kupe"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Pomjerite luk kupe"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Ubacite ovaj luk kupe"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Prikažite luk kupe"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Sakrijte luk kupe"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Konstruiši kupu kroz ovu tačku"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti nova konusna kriva..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Konstruiši kupu sa ovom asimptotom"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Izaberite prvu asimptotu nove konusne krive..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Izaberite drugu asimptotu nove konusne krive..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Konstruiši elipsu sa ovim fokusom"
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Izaberite prvi fokus nove elipse..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Izaberite drugi fokus nove elipse..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Konstruiši elipsu kroz ovu tačku"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti nova elipsa..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Konstruiši hiperbolu sa ovim fokusom"
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Izaberite prvi fokus nove hiperbole..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Izaberite drugi fokus nove hiperbole..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Konstruiši hiperbolu kroz ovu tačku"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti nova hiperbola..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Konstruiši kupu sa ovom pravom kao direktrisom"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Izaberite direktrisu nove konusne krive..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Konstruiši kupu sa ovom tačkom kao fokusom"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Izaberite fokus nove konusne krive..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Konstruiši parabolu kroz ovu tačku"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti nova parabola..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Konstruiši polarnu tačku u odnosu na ovu kupu"
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "Izaberite konusnu krivu kojom želite da konstruišete polarnu tačku..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Konstruiši polarnu tačku ove prave"
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Izaberite pravu čiju polarnu tačku želite da konstruišete..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Konstruiši polarnu pravu u odnosu na ovu kupu"
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Konstruiši polarnu pravu ove tačke"
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Konstruiši direktrisu ove kupe"
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Izaberite konusnu krivu od koje želite da konstruišete direktrisu..."
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Konstruiši parabolu sa ovom direktrisom"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Izaberite direktrisu nove parabole..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Konstruiši parabolu pomoću ovog fokusa"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Izaberite fokus nove parabole..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Konstruiši asimptote ove kupe"
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Izaberite konusnu krivu od koje želite da konstruišete asimptote..."
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Konstruiši korijenske prave ove kupe"
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr ""
+"Izaberite prvu od dvije konusne krive od kojih želite da konstruišete "
+"korijenu pravu..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr ""
+"Izaberite drugu od dvije konusne krive od kojih želite da konstruišete "
+"korijenu pravu..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Zamijeni korijene prave"
+
+#: objects/conic_types.cc:619
+#, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Preklopi korijenske linije kupe"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "kubna kriva"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Izaberite ovu kubnu krivu"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "Izaberite kubnu krivu %1"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Ukloni kubnu krivu"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Dodaj kubnu krivu"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Pomjeri kubnu krivu"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Prikači ovoj kubnoj krivoj"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Prikaži kubnu krivu"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Sakrij kubnu krivu"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Konstruiši kubnu krivu kroz ovu tačku"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti nova kubna kriva..."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "kriva"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Izaberi ovu krivu"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "Izaberite krivu %1"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Ukloni krivu"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Dodaj krivu"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Pomjeri krivu"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Dodaj ovoj krivoj"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Prikaži krivu"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Sakrij krivu"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Moguća transcedentalna kriva"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Tačka presjeka već izračunata"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Presjeci sa ovom kubnom krivom"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Presjeci sa ovim lukom"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Invertuj prema ovom krugu"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Izaberite krug koji želite da invertujete prema..."
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Izračunajte inverziju ovog objekta"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Izaberite objekat za invertovanje..."
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Izračunaj inverziju ove tačke"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Izaberite tačku za invertovanje..."
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Izračunaj inverziju ove prave"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Izaberite pravu za invertovanje..."
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Izračunaj inverziju ove duži"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Izaberite duž za invertovanje..."
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Izračunaj inverziju ovog kruga"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Izaberite krug za invertovanje..."
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Izračunaj inverziju ovog luka"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Izaberite luk za invertovanje..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Nagib"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Jednačina"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Dužina"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Linija podrške"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Zadnja tačka"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "prava"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Izaberite pravu"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Izaberi ovu pravu"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "Izaberite pravu %1"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Ukloni pravu"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Dodaj pravu"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Pomjeri pravu"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Dodaj ovoj pravoj"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Prikaži pravu"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Sakrij pravu"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "duž"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Izaberi ovu duž"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "Izaberite duž %1"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Ukloni duž"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Dodaj duž"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Pomjeri duž"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Dodaj ovoj duži"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Prikaži duž"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Sakrij duž"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "poluprava"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Izaberite ovu polupravu"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "Izaberite polupravu %1"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Ukloni polupravu"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Dodaj polupravu"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Pomjeri polupravu"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Prikači ovoj polupravoj"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Prikaži polupravu"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Sakrij polupravu"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Konstruiši duž koja počinje od ove tačke"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Izaberite početnu tačku nove duži..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Konstruiši duž do ove tačke"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Izaberite krajnju tačku nove duži..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Konstruiši pravu kroz ovu tačku"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Izaberite tačku kroz koju će prava prolaziti..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Izaberite drugu tačku kroz koju će prava prolaziti..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Konstruiši polupravu koja počinje od ove tačke"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Izaberite početnu tačku nove poluprave..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Konstruiši polupravu kroz ovu tačku"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti poluprava..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Konstruiši osu ove duži"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Izaberite duž kojoj hoćete da nacrtate osu..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Konstruiši pravu paralelnu ovoj pravoj"
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Izaberite pravu paralelnu novoj pravoj..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Konstruiši paralelnu pravu kroz ovu tačku"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Izaberite tačku kroz koju će prolaziti nova prava..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Konstruiši pravu upravnu na ovu pravu"
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Izaberite pravu upravnu na novu pravu..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Konstruiši upravnu pravu kroz ovu tačku"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Podesi &dužinu..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Podesi dužinu duži"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Izaberite novu dužinu: "
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Promijeni veličinu duži"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Konstruiši pravu pomoću ovog vektora"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Izaberite vektor u smjeru nove prave..."
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Konstruiši polupravu pomoću ovog vektora"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Izaberite vektor u smjeru nove poluprave..."
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "lokus"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Izaberi ovaj lokus"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "Izaberite hodograf %1"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Ukloni lokus"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Dodaj lokus"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Pomjeri lokus"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Dodaj ovom lokusu"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Pomjeri hodograf"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Sakrij hodograf"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Tip objekta"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "&Objekat"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Izaberi ovaj objekat"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "Izaberite objekat %1"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Ukloni objekat"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Dodaj objekat"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Pomjeri objekat"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Dodaj ovom objektu"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Prikaži objekat"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Sakrij objekat"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Ugao u radijanima"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Ugao u stepenima"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Središnja tačka"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X dužina"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y dužina"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Suprotni vektor"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Ugao"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Površina sektora"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Dužina luka"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Krug podrške"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "ugao"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Izaberi ovaj ugao"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "Izaberite ugao %1"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Ukloni ugao"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Dodaj ugao"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Pomjeri ugao"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Dodaj ovom uglu"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Prikaži ugao"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Sakrij ugao"
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "vektor"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Izaberi ovaj vektor"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "Izaberite vektor %1"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Ukloni vektor"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Dodaj vektor"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Pomjeri vektor"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Dodaj ovom vektoru"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Prikaži vektor"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Sakrij vektor"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "luk"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Izaberi ovaj luk"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "Izaberite luk %1"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Ukloni luk"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Dodaj luk"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Pomjeri luk"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Dodaj ovom luku"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Prikaži luk"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Sakrij luk"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Koordinata"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X Koordinata"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y Koordinata"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "tačka"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Izaberi ovu tačku"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "Izaberite tačku %1"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Ukloni tačku"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Dodaj tačku"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Pomjeri tačku"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Dodaj ovoj tački"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Prikaži tačku"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Sakrij tačku"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Izaberite prvu od dvije tačke od kojih želite da konstruišete središnju "
+"tačku..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr ""
+"Izaberite drugu od dvije tačke od kojih želite da konstruišete središnju "
+"tačku..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another point"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Izaberite prvu od dvije tačke od kojih želite da konstruišete središnju "
+"tačku..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the other of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr ""
+"Izaberite drugu od dvije tačke od kojih želite da konstruišete središnju "
+"tačku..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "Podesi &koordinatu..."
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Redefiniši"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "Podesi &parametar..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Podesi koordinatu"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Unesite novu koordinatu."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Podesi parametar tačke"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Izaberite novi parametar: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Promijeni parametar ograničene tačke"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Izaberite krug na koji će se prenijeti mjera..."
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Izaberite tačku na krugu..."
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Izaberite duž koja će se prenijeti na krug..."
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Izaberite broj/dužinu kao x koordinate tačke"
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Izaberite broj/dužinu kao y koordinate tačke"
+
+#: objects/point_type.cc:820
+#, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "Odaberite tačku za projekciju na liniju"
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr "Gdje će ležati projektovana tačka"
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Broj stranica"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Obim"
+
+#: objects/polygon_imp.cc:291
+msgid "Boundary Polygonal"
+msgstr "Granični poligona"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr "Otvorite granični poligon"
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Centar mase verteksâ"
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Broj namotavanja"
+
+#: objects/polygon_imp.cc:305
+msgid "Inside Polygon"
+msgstr "Unutrašnji poligon"
+
+#: objects/polygon_imp.cc:306
+msgid "Open Polygonal Curve"
+msgstr "Otvorena poligona kriva"
+
+#: objects/polygon_imp.cc:319
+msgid "Associated Polygon"
+msgstr "Udruženi poligon"
+
+#: objects/polygon_imp.cc:320
+msgid "Closed Polygonal Curve"
+msgstr "Zatvorena poligona kriva"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "poligon"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Izaberite ovaj poligon"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "Izaberite poligon %1"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Ukloni poligon"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Dodaj poligon"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Pomjeri poligon"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Prikači ovom poligonu"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Prikaži poligon"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Sakrij poligon"
+
+#: objects/polygon_imp.cc:645
+msgid "closed polygonal curve"
+msgstr "zatvorena poligona kriva"
+
+#: objects/polygon_imp.cc:646
+#, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Izaberite ovu zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:647
+#, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "Izaberi zatvorenu poligonu krivu %1"
+
+#: objects/polygon_imp.cc:648
+msgid "Remove a closed polygonal curve"
+msgstr "Ukloni zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:649
+msgid "Add a closed polygonal curve"
+msgstr "Doadaj zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:650
+msgid "Move a closed polygonal curve"
+msgstr "Premjesti zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:651
+msgid "Attach to this closed polygonal curve"
+msgstr "Priloži na ovu zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:652
+msgid "Show a closed polygonal curve"
+msgstr "Prikaži zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:653
+msgid "Hide a closed polygonal curve"
+msgstr "Sakrij zatvorenu poligonu krivu"
+
+#: objects/polygon_imp.cc:662
+msgid "polygonal curve"
+msgstr "poligonalna kriva"
+
+#: objects/polygon_imp.cc:663
+#, kde-format
+msgid "Select this polygonal curve"
+msgstr "Izaberi poligonalnu krivu"
+
+#: objects/polygon_imp.cc:664
+#, kde-format
+msgid "Select polygonal curve %1"
+msgstr "Izaberite poligonalnu krivu %1"
+
+#: objects/polygon_imp.cc:665
+msgid "Remove a polygonal curve"
+msgstr "Uklonite poligonalnu krivu"
+
+#: objects/polygon_imp.cc:666
+msgid "Add a polygonal curve"
+msgstr "Dodajte poligonalnu krivu"
+
+#: objects/polygon_imp.cc:667
+msgid "Move a polygonal curve"
+msgstr "Pomjerite poligonalnu krivu"
+
+#: objects/polygon_imp.cc:668
+msgid "Attach to this polygonal curve"
+msgstr "Ubacite ovu poligonalnu krivu"
+
+#: objects/polygon_imp.cc:669
+msgid "Show a polygonal curve"
+msgstr "Prikažite poligonalnu krivu"
+
+#: objects/polygon_imp.cc:670
+msgid "Hide a polygonal curve"
+msgstr "Sakrijte poligonalnu krivu"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "trougao"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Izaberite ovaj trougao"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "Izaberite trougao %1"
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Ukloni trougao"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Dodaj trougao"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Pomjeri trougao"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Prikači ovom trouglu"
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Prikaži trougao"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Sakrij trougao"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "četvorougao"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Izaberite ovaj četvorougao"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "Izaberite četvorougao %1"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Ukloni četvorougao"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Dodaj četvorougao"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Pomjeri četvorougao"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Prikači ovom četvorouglu"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Prikaži četvorougao"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Sakrij četvorougao"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Konstruiši trougao pomoću ovog verteksa"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Izaberite tačku koja će biti verteks novog trougla..."
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Presjeci ovaj poligon pravom"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Izaberite poligon koji želite da presiječete pravom..."
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Presjecite ovu liniju sa poligonom"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Izaberite liniju koju želite presjeći sa poligonom..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Presjeci poligonu krivu s linijom"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Izaberi poligonu krivu za koju želite presjecanje s lnijom ..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Presjeci liniju s poligonom krivom"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Odaberite liniju za koju želite presjek s poligonom krivom..."
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Presjecite poligon sa drugim poligonom"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Izaberite poligon koji želite presjeći sa drugim poligonom..."
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Presjecite ovaj poligon"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Izaberite drugi poligon za presjeći..."
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Konstruiši vertekse ovog poligona"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Izaberite poligon za koji želite da konstruišete vertekse..."
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Konstruiši stranice ovog poligona"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Izaberite poligon za koji želite da konstruišete stranice..."
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Konstruiši konveksni trup ovog poligona"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Izaberite poligon za koji želite da konstruišete konveksni trup..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Preslikaj ovu tačku na krug"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Izaberite tačku kroz koju tangenta treba da prođe..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Da li je ova prava paralelna?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Izaberite prvu od dvije možda paralelne prave..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Paralelno ovoj pravoj?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Izaberite drugu od dvije možda paralelne prave..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Ove prave su paralelne."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Ove prave nisu paralelne."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Da li je ova prava upravna?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Izaberite prvu od dvije možda upravne prave..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Upravna na ovu pravu?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Izaberite drugu od dvije možda upravne prave..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Ove prave su upravne."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Ove prave nisu upravne."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Provjeri kolinearnost ove tačke"
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Izaberite prvu od tri vjerovatno kolinearne tačke..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "i drugu tačku"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Izaberite drugu od tri moguće kolinearne tačke..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "sa ovom trećom tačkom"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Izaberite posljednju od tri vjerovatno kolinearne tačke..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Ove tačke su kolinearne."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Ove tačke nisu kolinearne."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Provjeri da li je ova tačka na krivoj"
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Izaberite tačku koju želite da provjerite..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Provjeri da li je tačka na krivoj"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Izaberite krivu na kojoj bi tačka mogla biti..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Ova kriva sadrži tačku."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Ova kriva ne sadrži tačku."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Provjeri da li je ova tačka u poligonu"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Provjeri da li je tačka u ovom poligonu"
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Izaberite poligon u kojem bi tačka mogla biti..."
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Ovaj poligon sadrži tačku."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Ovaj poligon ne sadrži tačku."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Provjeri da li je ovaj poligon konveksan"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Izaberite poligon čiju konveksnost želite da provjerite..."
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Ovaj poligon je konveksan."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Ovaj poligon nije konveksan."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Provjeri da li ova tačka ima istu udaljenost"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Izaberite tačku koja bi mogla imati istu udaljenost od dvije druge tačke..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "od ove tačke"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Izaberite prvu od dvije druge tačke..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "i od ove druge tačke"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Izaberite drugu od dvije druge tačke..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Dvije udaljenosti su iste."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Dvije udaljenosti nisu iste."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Provjeri da li je ovaj vektor jednak drugom vektoru"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Izaberite prvi od dva moguća jednaka vektora..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Provjeri da li je ovaj vektor jednak drugom vektoru"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Izaberite drugi od dva moguće jednaka vektora..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Dva vektora su ista."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Dva vektora nisu ista."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Provjerite da li objekt postoji"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Izaberite objekt za provjeru postojanja..."
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Objekt postoji."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "Objekt ne postoji."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Tekst"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "oznaka"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Izaberi ovu oznaku"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "Izaberite oznaku %1"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Ukloni oznaku"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Dodaj oznaku"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Pomjeri oznaku"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Dodaj ovoj oznaci"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Prikaži oznaku"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Sakrij oznaku"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "numerička oznaka"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Izaberite numeričku oznaku"
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "Izaberite numeričku oznaku %1"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Uklonite numeričku oznaku"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Dodajte numeričku oznaku"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Pomjeri numeričku oznaku"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Poveži s ovom numeričku oznaku"
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Prikažite numeričku oznaku"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Sakrijte numeričku oznaku"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Numerička vrijednost"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "bulova oznaka"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Izaberite bulovu oznaku"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "Izaberite bulovu oznaku %1"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Odstranite bulovu oznaku"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Dodajte bulovu oznaku"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Pomjerite bulovu oznaku"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Ubacite ovu bulovu oznaku"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Prikažite bulovu oznaku"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Sakrijte bulovu oznaku"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "&Prenesi tekst"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "&Prekidač okvira"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "Postavi &font"
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Prekidač okvira oznake"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Promijeni oznaku fonta"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "&Redefiniši..."
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "Promijeni &vrijednost..."
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Unesi novu vrijednost:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Promijeni prikazane vrijednosti"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Transliraj ovaj objekat"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Izaberite objekat za transliranje..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Transliraj ovim vektorom"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Izaberite vektor kojim će se translirati..."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Preslikaj ovaj objekat"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Izaberite objekat za preslikavanje..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Preslikaj oko ove tačke"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Izaberite tačku za preslikavanje..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Preslikaj preko ove prave"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Izaberite pravu za preslikavanje..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Rotiraj ovaj objekat"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Izaberite objekat za rotiranje..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Rotiraj oko ove tačke"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Izaberite središnju tačku rotacije..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Rotiraj za ovaj ugao"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Izaberite ugao rotacije..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Skaliraj ovaj objekat"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Izaberite objekat za skaliranje..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Skaliraj sa ovim centrom"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Izaberite središnju tačku skaliranja..."
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Skala za ovu dužinu"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr "Izaberite dužinu ili segment ćija je dužina mjera skaliranja..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Skala ove dužine..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr "Odaberite prvu od dvije dužine ćiji je omjer faktor skaliranja..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr "...za ovu drugu dužinu"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr "Odaberite drugu od dvije dužine čiji je omjer faktor skaliranja..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Izaberite objekat za skaliranje"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Skaliraj preko ove prave"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Izaberite pravu preko koje će se skalirati"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Projektivno rotiraj ovaj objekat"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Izaberite objekat za projekcionu rotaciju"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Projektivno rotiraj sa ovom polupravom"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr ""
+"Izaberite polupravu projektivne rotacije koju želite da primijenite na "
+"objekat"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Projektivno rotiraj za ovaj ugao"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr ""
+"Izaberite ugao projektivne rotacije koji želite da primijenite na objekat"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Harmonijska homologija ovog objekta"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Izaberite objekat za transformaciju..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Harmonijska homologija sa ovim centrom"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Izaberite središnju tačku harmonijske homologije..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Harmonijska homologija sa ovom osom"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Izaberite osu harmonijske homologije..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Generička sličnost ovog objekta"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Mapiraj ovaj trougao"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Izaberite trougao koji treba transformisati na dati trougao..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "na ovaj drugi trougao"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "Izaberite trougao koji je slika po sličnosti prvog trougla..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "Prva od 3 početne tačke"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr "Izaberite prvu od tri početne tačke generičke sličnosti..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "Druga od 3 početne tačke"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr "Izaberite drugu od tri početne tačke generičke sličnosti..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "Treća od 3 početne tačke"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Izaberite treću od tri početne tačke generičke sličnosti..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Transformisana pozicija prve tačke"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Izaberite prvu od tri završne tačke generičke sličnosti..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Transformisana pozicija druge tačke"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Izaberite drugu od tri završne tačke generičke sličnosti..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Transformisana pozicija treće tačke"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Izaberite treću od tri završne tačke generičke sličnosti..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Generička projektivna transformacija ovog objekta"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Mapiraj ovaj četvorougao"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Izaberite četvorougao koji treba transformisati na dati četvorougao..."
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "na ovaj drugi četvorougao"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr ""
+"Izaberite četvorougao koji je slika po projektivnoj transformaciji prvog "
+"četvorougla..."
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "Prva od 4 početne tačke"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr "Izaberite prvu od četiri početne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "Druga od 4 početne tačke"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr "Izaberite drugu od četiri početne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "Treća od 4 početne tačke"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr "Izaberite treću od četiri početne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "Četvrta od 4 početne tačke"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr "Izaberite četvrtu od četiri početne generičke opšte projektivnosti..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr "Izaberite prvu od četiri završne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr "Izaberite drugu od četiri završne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr "Izaberite treću od četiri završne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Transformisana pozicija četvrte tačke"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr "Izaberite četvrtu od četiri završne tačke generičke projektivnosti..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Baci sijenku ovog objekta"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Izaberite objekat kome želite da konstruišete sjenku..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Baci sijenku iz ovog izvora svjetlosti"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Izaberite izvor svjetlosti od koga treba da dolazi sjenka..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Baci sjenku na horizont predstavljen ovom pravom"
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Izaberite horizont za sjenku..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Transformiši ovaj objekat"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Transformiši koristeći ovu transformaciju"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Primijeni similtudu na ovaj ovjekat"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Primijeni similtudu sa ovim centrom"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Izaberite centar similtude..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Primijeti similtudu mapirajući ovu tačku na drugu tačku"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr "Izaberite tačku koju bi similtuda trebalo da mapira na drugu tačku..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Primijenite similtudu mapirajući tačku na ovu tačku"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr "Izaberite tačku na koju bi similtuda trebalo da mapira prvu tačku..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Konstruiši vektor iz ove tačke"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Izaberite početnu tačku novog vektora..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Konstruiši vektor do ove tačke"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Izaberite završnu tačku novog vektora..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Konstruiši sumu vektora od ovog vektora i nekog drugog."
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "Izaberite prvi od dva vektora kojima želite da konstruišete sumu..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Konstruiši sumu vektora od ovog vektora i nekog drugog."
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Izaberite drugi od dva vektora kojima želite da konstruišete sumu..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Konstruiši sumu vektora koja počinje od ove tačke."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Izaberite tačku u kojoj će se konstruisati suma vektora..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Nova skripta"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Izaberite argument objekt (ako postoji)\n"
+"u Kig prozoru i pritisnite \"Dalje\"."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Unesite kôd"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Sada popunite kôd:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Sada popunite python kôd:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Python interpreter je našao grešku tokom izvršavanja vaše skripte. Popravite "
+"skriptu i pritisnite opet dugme „Završi“."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python interpreter je generisao sljedeću grešku:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Izgleda da postoji greška u vašoj skripti. Python interpreter nije prijavio "
+"greške, ali skripta ne pravi ispravan objekat. Popravite skriptu i "
+"pritisnite opet dugme „Završi“."
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Izmijeni skriptu"
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Izmijeni Python skriptu"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Python interpreter je uhvatio grešku tokom izvršavanja vaše skripte, stoga "
+"je ispravite."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Izgleda da postoji greška u vašoj skripti. Python interpreter nije prijavio "
+"greške, ali skripta ne pravi ispravan objekat. Morate je ispraviti."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>Možete kontrolirati kig izgradnju pomoću \"pykig\"\n"
+"python skripta, koja se može izvesti sa naredbom\n"
+"<code>pykig.py</code>.  Ovdje je fin primjer \n"
+"(<code>hexagons.kpy</code>) možete pokušati:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>Možete ponoviti najnoviju izgradnju jednostavnim pritiskom na tipku\n"
+"'Z', ovo je vrlo zgodno ako trebate kostruisati slijed\n"
+"objekata sa istom konstrukcijom, osobito ako ne postoji \n"
+"prećica za tu kostrukciju. </p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Jedan od najmoćnijih alata u Kig-u su meniji kojima možete\n"
+"pristupiti ako desno kliknete na objekat ili na prazno mjesto\n"
+"u dokumentu. Možete ih koristiti da dajete imena objektima, mijenjate boje\n"
+"i stilove linija, i mnogo drugih interesantnih stvari.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Možete napraviti nove tačke bez korištenja menija ili trake sa alatima,\n"
+"jednostavno kliknite negdje u Kig-ov dokument <em>srednjim dugmetom\n"
+"miša</em>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig može otvarati nekoliko tipova datoteka: svoje datoteke (<code>.kig</"
+"code> datoteke),\n"
+"<em>KGeo</em> datoteke, <em>KSeg</em> datoteke, i, djelimično, <em>Dr. Geo</"
+"em>\n"
+"i <em>Cabri&#8482;</em> datoteke.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p> Kig ima više od 20 objekata i 10 transformacija sa više od 80\n"
+"konstrukcija koje možete koristiti u svojim dokumentima: otvori  <em> "
+"Objekti </em>\n"
+"meni da biste vidjeli sve. </p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Možete koristiti izabrane objekte da započnete pravljenje objekta\n"
+"koji zahtjeva izabrane objekte kao argumente. Na primjer, ako imate dvije\n"
+"izabrane tačke, možete izabrati <em>Start->Krug pomoću tri tačke</em> iz\n"
+"iskačućeg menija da biste započeli pravljenje kruga pomoću tri tačke.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Kig can extends its object set using external macros. You can find "
+#| "some\n"
+#| "interesting macros on the Kig website:\n"
+#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p> Kig može proširiti svoj objekt postavljen pomoću vanjskih makronaredbi. "
+"Možete pronaći neke\n"
+"zanimljive makronaredbe na Kig web stranici:\n"
+"<a href=\"http://edu.kde.org/kig\"> http://edu.kde.org/kig </a>. </p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Ako se pod mišem nalazi više od jednog objekta, i želite da izaberete "
+"bilo koji od njih, možete kliknuti <em>lijevim dugmetom miša</em> dok držite "
+"taster <em>Shift</em>. Time ćete dobiti listu objekata pod pokazivačem miša, "
+"iz koje možete birati.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p> Kada kostruišete mjesto, možete kliknite na to sa <em> desnim </em> miš\n"
+"dugmetom i odaberite <em> Kartezijeva jednačina </em> da biste vidjeli  "
+"Kartezijevu jednačinu,\n"
+"kad god je algebarska kriva niskog stepena. </p>\n"
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#, fuzzy
+#~| msgid "Construct the midpoint of this point and another point"
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "Konstruiši središnju tačku ove tačke i druge tačke"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Izaberite prvu od dvije druge tačke..."
+
+#, fuzzy
+#~| msgid "Construct a segment starting at this point"
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Konstruiši duž koja počinje od ove tačke"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the second of the two points..."
+#~ msgstr "Izaberite prvu od dvije druge tačke..."
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "Da snimim izmjene u dokument %1?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "Snimanje izmjena?"
+
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|Sve podržane datoteke (*.kig *.kigz "
+#~ "*.seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Dokument (*.kig)\n"
+#~ "*.kigz|Kompresovani Kig Dokumenti (*.kigz)\n"
+#~ "*.kgeo|KGeo Dokumenti (*.kgeo)\n"
+#~ "*.seg|KSeg Dokumenti (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Dokumenti (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Dokumenti (*.fig *.FIG)"
+
+#~ msgid ""
+#~ "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+#~ "support this format. If you think the format in question would be worth "
+#~ "implementing support for, you can always ask us nicely on mailto:pino@kde."
+#~ "org or do the work yourself and send me a patch."
+#~ msgstr ""
+#~ "Pokušali ste otvoriti dokument tipa \"%1\", na žalost, Kig ne podržava "
+#~ "ovaj format. Ako mislite da je format u pitanju će biti vrijedan podrške, "
+#~ "uvijek možete nas pitati lijepo na mailto: pino@kde.org ili obaviti sami "
+#~ "posao i poslati nam"

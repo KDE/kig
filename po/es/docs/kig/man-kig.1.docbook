@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Spanish "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Manual de usuario de KDE</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>2020-12-23</date>
+<releaseinfo
+>Aplicaciones 20.12</releaseinfo>
+<productname
+>Aplicaciones de KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Un programa de geometría interactiva para &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>nombrearchivo</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>opciones</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Descripción</title>
+<para
+>&kig; es una aplicación de geometría interactiva. Pretende servir para dos propósitos:</para>
+<itemizedlist
+><listitem
+><para
+>Permitir que los estudiantes exploren figuras y conceptos matemáticos por medio de su equipo informático.</para
+></listitem>
+<listitem
+><para
+>Servir como una herramienta <acronym
+>WYSIWYG</acronym
+> (WYSIWYG es el acrónimo de «What You See Is What You Get», que quiere decir «lo que ves es lo que obtienes») para dibujar figuras matemáticas e incluirlas en otros documentos.</para
+></listitem
+></itemizedlist>
+<para
+>Con este programa puede crear figuras geométricas en su equipo igual que si estuviera en la pizarra de una clase. Además, el programa permite mover y cambiar partes de un dibujo geométrico, permitiéndole ver cómo otras partes cambian como resultado. </para>
+<para
+>&kig; admite el uso de lugares geométricos y de macros definidos por el usuario. Permite también la importación y exportación  de formatos de archivos externos, incluyendo <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> y <application
+>XFig</application
+>.</para>
+<para
+>Esta aplicación es parte del módulo educativo oficial de &kde;.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Opciones</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>No muestra una &GUI;. En su lugar, convierte el archivo especificado al formato nativo de &kig;. El archivo nativo de &kig; se escribirá en la salida estándar a menos que se indice lo contrario con <option
+>--outfile</option
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>nombrearchivo</replaceable
+></option
+></term>
+<listitem
+><para
+>Utilizado junto con<option
+>--convert-to-native</option
+>, especifica el lugar en el que se creará el nuevo archivo de &kig;. Si no se especifica esta opción o no se facilita el nombre de archivo, el archivo  resultante será creado en la salida estándar.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Vea también</title>
+<para
+>Existe información de usuario más detallada disponible en <ulink url="help:/kig"
+>help:/kig</ulink
+> (solo tiene que introducir esta &URL; en &konqueror;, o ejecutar <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Existe información más amplia disponible en el <ulink url="https://edu.kde.org/kig/"
+>sitio web de aplicaciones educativas de &kde;</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Autores</title>
+<para
+>&kig; fue escrito por <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+> y otros.</para>
+<para
+>Esta página de manual está basada en una preparada para &Debian; por <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>

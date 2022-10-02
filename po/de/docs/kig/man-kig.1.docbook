@@ -1,0 +1,206 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % German "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>KDE-Benutzerhandbuch</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>2020-12-23</date>
+<releaseinfo
+>Anwendungen 20.12</releaseinfo>
+<productname
+>KDE-Anwendungen</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Ein Programm für interaktive Geometrie von &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>filename</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>options</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Beschreibung</title>
+<para
+>&kig; ist eine Anwendung für interaktive Geometrie. Es soll hauptsächlich zwei Zwecken dienen:</para>
+<itemizedlist
+><listitem
+><para
+>Schüler sollen mit Hilfe des Computers mathematische Figuren und Konzepte interaktiv entdecken können.</para
+></listitem>
+<listitem
+><para
+>Es soll ein WYSIWYG-Werkzeug zum Zeichnen von mathematischen Figuren und deren Verwendung in anderen Dokumenten sein.</para
+></listitem
+></itemizedlist>
+<para
+>Mit diesem Programm können Sie Geometrie wie an der Tafel im Klassenraum betreiben. Zusätzlich können Sie Teile der Geometrie ändern oder verschieben und die Auswirkungen auf andere Teile beobachten.</para>
+<para
+>&kig; unterstützt geometrische Orte und benutzerdefinierte Makros. Sie können Daten in und aus anderen Dateiformate wie <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> und <application
+>XFig</application
+> importieren und exportieren.</para>
+<para
+>Dieses Programm ist im Modul &kde;-Edutainment enthalten.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Optionen</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>Startet nicht die Benutzeroberfläche, sondern wandelt die angegebene Datei in das &kig;-Format. Die &kig;-Datei wird auf die Standardausgabe geschrieben, wenn Sie nicht <option
+>--outfile</option
+> benutzen.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>Dateiname</replaceable
+></option
+></term>
+<listitem
+><para
+>Zusammen mit <option
+>--convert-to-native</option
+> wird der Speicherort der neuen &kig;-Datei angeben. Ohne diese Option oder ohne Angabe eines Dateinamens wird die Ausgabe auf die Standardausgabe geschrieben. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Siehe auch</title>
+<para
+>Weitere ausführliche Dokumentation finden Sie unter <ulink url="help:/kig"
+>help:/kig</ulink
+> (geben Sie diese &URL; entweder im &konqueror; ein oder starten Sie <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Weitere Informationen finden Sie auch auf der <ulink url="http://edu.kde.org/kig/"
+> &kde;-Education-Webseite</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Autoren</title>
+<para
+>&kig; wurde von <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+> und anderen geschrieben.</para>
+<para
+>Diese Handbuchseite wurde auf der Grundlage des von <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> für das &Debian;-Projekt geschriebenen Handbuchs erstellt.</para>
+</refsect1>
+
+</refentry>

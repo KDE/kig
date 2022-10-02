@@ -1,0 +1,6937 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Sairan Kikkarin <sairan@computer.org>, 2011, 2012, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"PO-Revision-Date: 2013-06-28 05:43+0600\n"
+"Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
+"Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Сайран Киккарин"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "sairan@sci.kz"
+
+#, kde-format
+msgid "Circle by Center && Line"
+msgstr "Центрі мен жанама сызықтан шеңбер"
+
+#, kde-format
+msgid "A circle constructed by its center and tangent to a given line"
+msgstr "Берілген центрі мен жанасатын сызығы бойынша құрылған шеңбер"
+
+#, kde-format
+msgid "Construct a circle tangent to this line"
+msgstr "Осы сызыққа жанама қылып шеңберді құру "
+
+#, kde-format
+msgid "Select the line that the new circle should be tangent to..."
+msgstr "Жаңа шеңберге жанама болатын сызықты таңдау..."
+
+#, kde-format
+msgid "Circle by Point && Segment (as the Diameter)"
+msgstr "Нүкте мен диаметрінен шеңбер"
+
+#, kde-format
+msgid ""
+"A circle defined by its center and the length of a segment as the diameter"
+msgstr ""
+"Центрі мен кесіндімен берілген диаметр ұзындығы бойынша құрылған шеңбер"
+
+#, kde-format
+msgid ""
+"Construct a circle with the diameter given by the length of this segment"
+msgstr "Осы кесіндіні диаметр ретінде алып шеңберді құру "
+
+#, kde-format
+msgid "Select the segment whose length gives the diameter of the new circle..."
+msgstr "Ұзыңдығы жаңа шеңбердің диаметрі болатын кесіндіні таңдау..."
+
+#, kde-format
+msgid "Equilateral Triangle"
+msgstr "Теңжақты үшбұрыш"
+
+#, kde-format
+msgid "Equilateral triangle with given two vertices"
+msgstr "Екі төбесімен берілген тең қабырғалы үшбұрыш"
+
+#, kde-format
+msgid "Evolute"
+msgstr "Эволюта"
+
+#, kde-format
+msgid "Evolute of a curve"
+msgstr "Қисықтың эволютасы"
+
+#, kde-format
+msgid "Evolute of this curve"
+msgstr "Осы қисықтың эволютасы"
+
+#, kde-format
+msgid "Osculating Circle"
+msgstr "Жанасқан шеңбер"
+
+#, kde-format
+msgid "Osculating circle of a curve at a point"
+msgstr "Қисыққа бір нүктеде жанасқан шеңбер"
+
+#, kde-format
+msgid "Osculating circle of this curve"
+msgstr "Осы қисыққа жанасқан шеңбер"
+
+#, kde-format
+msgid "Osculating circle at this point"
+msgstr "Осы нүктеде жанасқан шеңбер"
+
+#, kde-format
+msgid "Select the point..."
+msgstr "Нүктені таңдау..."
+
+#, kde-format
+msgid "Square"
+msgstr "Квадрат"
+
+#, kde-format
+msgid "Square with two given adjacent vertices"
+msgstr "Екі қатар төбесі бойынша квадрат"
+
+#, kde-format
+msgid "Vector Difference"
+msgstr "Векторлар айырылымы"
+
+#, kde-format
+msgid "Construct the vector difference of two vectors."
+msgstr "Екі вектордың айырылымын құру."
+
+#, kde-format
+msgid "Construct the vector difference of this vector and another one."
+msgstr "Осы және басқа вектордың айырылымын құру."
+
+#, kde-format
+msgid "Construct the vector difference of the other vector and this one."
+msgstr "Басқа және осы вектордың айырылымын құру."
+
+#, kde-format
+msgid "Construct the vector difference starting at this point."
+msgstr "Айырылым векторын осы нүктеден шығару"
+
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Айырылымы құрылатын екі вектордың біріншісін таңдау..."
+
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the "
+"difference..."
+msgstr "Айырылымы құрылатын екі вектордың екіншісін таңдау..."
+
+#, kde-format
+msgid "Select the point to construct the difference vector in..."
+msgstr "Құрылатын айырылым вектордың шығатын нүктесін таңдау..."
+
+#: filters/asyexporter.cc:29
+#, kde-format
+msgid "Export to &Asymptote..."
+msgstr "&Asymptote-ге экспорттау..."
+
+#: filters/asyexporter.cc:34
+#, kde-format
+msgid "&Asymptote..."
+msgstr " "
+
+#: filters/asyexporter.cc:45
+#, fuzzy, kde-format
+#| msgid "*.asy|Asymptote Documents (*.asy)"
+msgid "Asymptote Documents (*.asy)"
+msgstr "*.asy|Asymptote құжаттары (*.asy)"
+
+#: filters/asyexporter.cc:46
+#, kde-format
+msgid "Export as Asymptote script"
+msgstr "Asymptote скрипті қылып экспорттау"
+
+#: filters/asyexporter.cc:48
+#, kde-format
+msgid "Asymptote Options"
+msgstr "Asymptote параметрлері"
+
+#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/latexexporter.cc:547 filters/svgexporter.cc:67
+#: filters/xfigexporter.cc:568
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened. Please check if the file permissions "
+"are set correctly."
+msgstr "\"%1\" файлы ашылмады. Рұқсаттарын түгелдеңіз."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/asyexporteroptionswidget.ui:22
+#: filters/imageexporteroptionswidget.ui:120
+#: filters/latexexporteroptionswidget.ui:82
+#: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
+#, kde-format
+msgid "Options"
+msgstr "Параметрлері"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
+#: filters/asyexporteroptionswidget.ui:42
+#: filters/latexexporteroptionswidget.ui:95
+#, kde-format
+msgid "Show Extra Frame"
+msgstr "Қосымша қоршауы болсын"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
+#: filters/asyexporteroptionswidget.ui:49
+#: filters/imageexporteroptionswidget.ui:140
+#: filters/latexexporteroptionswidget.ui:102
+#: filters/svgexporteroptionswidget.ui:42
+#, kde-format
+msgid "Show Axes"
+msgstr "Осьтері көрсетілсін"
+
+#. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
+#: filters/asyexporteroptionswidget.ui:56
+#: filters/imageexporteroptionswidget.ui:147
+#: filters/latexexporteroptionswidget.ui:88
+#: filters/svgexporteroptionswidget.ui:49
+#, kde-format
+msgid "Show Grid"
+msgstr "Торы болсын"
+
+#: filters/cabri-filter.cc:143
+#, kde-format
+msgid "This is an XFig file, not a Cabri figure."
+msgstr "Бұл XFig файлы, Cabri фигурасы емес."
+
+#: filters/cabri-filter.cc:181
+#, kde-format
+msgid ""
+"This Cabri version (%1) is not supported yet.\n"
+"Please contact the Kig authors to help supporting this Cabri version."
+msgstr ""
+"Бұл Cabri (%1) нұсқасының қолдауы әлі жоқ.\n"
+"Бұны істеуге көмектесе алсаңыз Kig авторларымен байланысыңыз. "
+
+#: filters/cabri-filter.cc:568
+#, kde-format
+msgid ""
+"This Cabri file contains a \"%1\" object, which Kig does not currently "
+"support."
+msgstr "Бұл Cabri файлында, Kig әлі танымайтын \"%1\" нысаны кездесті."
+
+#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
+#, kde-format
+msgid "An error was encountered at line %1 in file %2."
+msgstr "%2 файлының %1 жолында қате кездесті.  "
+
+#: filters/drgeo-filter.cc:92
+#, kde-format
+msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
+msgstr "Бұл \"%1\" Dr. Geo макрос файлы, сондықтан бұнда ешбір фигура жоқ."
+
+#: filters/drgeo-filter.cc:96
+#, kde-format
+msgid "There are no figures in Dr. Geo file \"%1\"."
+msgstr "\"%1\" Dr. Geo файлында ешбір фигура жоқ."
+
+#: filters/drgeo-filter.cc:111
+#, kde-format
+msgid "Dr. Geo Filter"
+msgstr "Dr. Geo сүзгсі"
+
+#: filters/drgeo-filter.cc:112
+#, fuzzy, kde-format
+#| msgid ""
+#| "The current Dr. Geo file contains more than one figure.\n"
+#| "Please select which to import:"
+msgid ""
+"The current Dr. Geo file contains more than one figure.\n"
+"Please select which to import:"
+msgstr ""
+"Бұл \"%1\" Dr. Geo файлында бірнеше фигура бар.\n"
+"Қайсын импорттау керегін таңдаңыз:"
+
+#: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
+#: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
+#: filters/drgeo-filter.cc:417 filters/drgeo-filter.cc:431
+#: filters/drgeo-filter.cc:454 filters/drgeo-filter.cc:565
+#: filters/drgeo-filter.cc:581 filters/drgeo-filter.cc:621
+#: filters/drgeo-filter.cc:632 filters/drgeo-filter.cc:649
+#, kde-format
+msgid ""
+"This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
+"support."
+msgstr "Бұл Dr. Geo файлында, Kig әлі танымайтын \"%1 %2\" нысаны кездесті."
+
+#: filters/drgeo-filter.cc:339
+#, kde-format
+msgid ""
+"This Dr. Geo file contains an intersection type, which Kig does not "
+"currently support."
+msgstr "Бұл Dr. Geo файлында, Kig әлі танымайтын қиылыстың түрі кездесті."
+
+#: filters/exporter.cc:58
+#, kde-format
+msgid "&Export to image"
+msgstr "Кескінге эк&спорттау"
+
+#: filters/exporter.cc:63
+#, kde-format
+msgid "&Image..."
+msgstr "&Кескін..."
+
+#: filters/exporter.cc:73
+#, kde-format
+msgid "Export as Image"
+msgstr "Кескін қылып экспорттау"
+
+#: filters/exporter.cc:81
+#, kde-format
+msgid "Image Options"
+msgstr "Кескіннің параметрлері"
+
+#: filters/exporter.cc:102
+#, kde-format
+msgid "Sorry, this file format is not supported."
+msgstr "Ғафу етіңіз,. бұл файл пішімінің қолдауы жоқ."
+
+#: filters/exporter.cc:123
+#, kde-format
+msgid "Sorry, something went wrong while saving to image \"%1\""
+msgstr "\"%1\" кескінің сақтаған кезде бірдемесі дұрыс болмады. "
+
+#: filters/exporter.cc:144
+#, kde-format
+msgid "&Export To"
+msgstr "Мынаған эк&спорттау"
+
+#: filters/filter.cc:66
+#, kde-format
+msgid ""
+"The file \"%1\" could not be opened.  This probably means that it does not "
+"exist, or that it cannot be opened due to its permissions"
+msgstr ""
+"\"%1\" файлы ашылмады. Ол немесе файл жоқ, немесе оны ашуға құқығыңыз жоқ "
+"дегені."
+
+#: filters/filter.cc:76
+#, fuzzy, kde-format
+#| msgid ""
+#| "An error was encountered while parsing the file \"%1\".  It cannot be "
+#| "opened."
+msgid "An error was encountered while parsing this file.  It cannot be opened."
+msgstr "\"%1\" файлын талдау кезінде қате кездесті. Файл ашылмады."
+
+#: filters/filter.cc:78
+#, kde-format
+msgid "Parse Error"
+msgstr "Талдау қатесі"
+
+#: filters/filter.cc:88 misc/lists.cc:297
+#, kde-format
+msgid "Not Supported"
+msgstr "Танылмайды"
+
+#: filters/filter.cc:88
+#, fuzzy, kde-format
+#| msgid "Kig cannot open the file \"%1\"."
+msgid "Kig cannot open this file."
+msgstr "Kig \"%1\" файлы ашалмады."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: filters/imageexporteroptionswidget.ui:22
+#, kde-format
+msgid "Resolution"
+msgstr "Айырымдылығы"
+
+#. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
+#: filters/imageexporteroptionswidget.ui:37
+#, kde-format
+msgid "&Keep Aspect Ratio"
+msgstr "Ара қатынасы &сақталсын"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: filters/imageexporteroptionswidget.ui:54
+#, kde-format
+msgid "Height:"
+msgstr "Биіктігі:"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: filters/imageexporteroptionswidget.ui:110
+#, kde-format
+msgid "Width:"
+msgstr "Ені:"
+
+#: filters/kseg-filter.cc:157
+#, kde-format
+msgid ""
+"This KSeg document uses a scaling transformation, which Kig currently cannot "
+"import."
+msgstr ""
+"Бұл KSeg құжаты Kig импорттай алмайтын масштабтау түрлендіруін пайдаланады."
+
+#: filters/kseg-filter.cc:505
+#, kde-format
+msgid ""
+"This KSeg file contains a filled circle, which Kig does not currently "
+"support."
+msgstr "Бұл KSeq файлында, Kig әлі танымайтын толтырылған шеңбері кездесті."
+
+#: filters/kseg-filter.cc:511
+#, kde-format
+msgid ""
+"This KSeg file contains an arc sector, which Kig does not currently support."
+msgstr "Бұл KSeq файлында, Kig әлі танымайтын доға сегменті кездесті."
+
+#: filters/kseg-filter.cc:517
+#, kde-format
+msgid ""
+"This KSeg file contains an arc segment, which Kig does not currently support."
+msgstr "Бұл KSeq файлында, Kig әлі танымайтын доға кесіндісі кездесті."
+
+#: filters/latexexporter.cc:63
+#, kde-format
+msgid "Export to &Latex..."
+msgstr "&Latex-ке экспорттау..."
+
+#: filters/latexexporter.cc:68
+#, kde-format
+msgid "&Latex..."
+msgstr "&Latex..."
+
+#: filters/latexexporter.cc:511
+#, fuzzy, kde-format
+#| msgid "*.tex|Latex Documents (*.tex)"
+msgid "Latex Documents (*.tex)"
+msgstr "*.tex|Latex құжаттары (*.tex)"
+
+#: filters/latexexporter.cc:511
+#, kde-format
+msgid "Export as Latex"
+msgstr "Latex сияқты экспорттау"
+
+#: filters/latexexporter.cc:512
+#, kde-format
+msgid "Latex Options"
+msgstr "Latex параметрлері"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
+#: filters/latexexporteroptionswidget.ui:23
+#, kde-format
+msgid "Output format"
+msgstr "Шығыс пішімі"
+
+#. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
+#: filters/latexexporteroptionswidget.ui:29
+#, kde-format
+msgid "PSTricks"
+msgstr "PSTricks"
+
+#. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
+#: filters/latexexporteroptionswidget.ui:36
+#, kde-format
+msgid "Tikz/PGF"
+msgstr "Tikz/PGF"
+
+#. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
+#: filters/latexexporteroptionswidget.ui:46
+#, kde-format
+msgid "Asymptote"
+msgstr "Asymptote"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: filters/latexexporteroptionswidget.ui:56
+#, kde-format
+msgid "Document options"
+msgstr "Құжат парметрлері"
+
+#. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
+#: filters/latexexporteroptionswidget.ui:62
+#, kde-format
+msgid "Picture only"
+msgstr "Суреттер ғана"
+
+#. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
+#: filters/latexexporteroptionswidget.ui:72
+#, kde-format
+msgid "Standalone document"
+msgstr "Бөлек құжат"
+
+#: filters/native-filter.cc:174
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\", which this version cannot open."
+msgstr "Бұл файлды Kig \"%1\" нұсқасы жазған, ол бұл нұсқасында ашылмайды."
+
+#: filters/native-filter.cc:180
+#, kde-format
+msgid ""
+"This file was created by Kig version \"%1\".\n"
+"Support for older Kig formats (pre-0.4) has been removed from Kig.\n"
+"You can try to open this file with an older Kig version (0.4 to 0.6),\n"
+"and then save it again, which will save it in the new format."
+msgstr ""
+"Бұл файл Kig-тың \"%1\" нұсқасымен жазылған.\n"
+"Қазіргі Kig тым ескі (0.4 алдындағы) пішімін түсінбейді.\n"
+"Бұл файлды оңша ескірмеген Kig (0.4 - 0.6) нұсқасымен,\n"
+"ашып, жаңа пішіміге ауыстырып алуға болады."
+
+#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#, kde-format
+msgid ""
+"This Kig file has a coordinate system that this Kig version does not "
+"support.\n"
+"A standard coordinate system will be used instead."
+msgstr ""
+"Бұл Kig файлы осы Kig нұсқасы түсінбейтін координаттар жүйесін қолданады.\n"
+"Оның орнына стандартты координаттар жүйесі пайдаланады."
+
+#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: objects/object_imp_factory.cc:435
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support.Perhaps you have compiled Kig without support for this object type,"
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Бұл Kig файлда осы Kig түсінбейтін түрі \"%1\" нысан бар. Демек, Kig-іңіз "
+"бұл  нысан түрін қолдауысыз жинақталған немесе қолданып отырған Kig нұсқаңыз "
+"ескірген."
+
+#: filters/native-filter.cc:356
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which is obsolete, you should "
+"save the construction with a different name and check that it works as "
+"expected."
+msgstr ""
+"Бұл Kig файлда түрі \"%1\" ескірген нысан бар, сондықтан, құрылымды басқа "
+"атауымен сақтап, ол керегіндей істейтінің тексеріп көріңіз."
+
+#: filters/svgexporter.cc:30
+#, kde-format
+msgid "&Export to SVG..."
+msgstr "SVG-ға эк&спорттау..."
+
+#: filters/svgexporter.cc:35
+#, kde-format
+msgid "&SVG..."
+msgstr "&SVG..."
+
+#: filters/svgexporter.cc:46
+#, fuzzy, kde-format
+#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+msgid "Scalable Vector Graphics (*.svg)"
+msgstr "*.svg|Scalable Vector Graphics (*.svg)"
+
+#: filters/svgexporter.cc:47
+#, kde-format
+msgid "Export as SVG"
+msgstr "SVGs сияқты экспорттау"
+
+#: filters/svgexporter.cc:49
+#, kde-format
+msgid "SVG Options"
+msgstr "SVG параметрлері"
+
+#: filters/svgexporter.cc:94
+#, kde-format
+msgid "Sorry, something went wrong while saving to SVG file \"%1\""
+msgstr "SVG \"%1\" файлын сақтаған кезде бірдемесі дұрыс болмады. "
+
+#: filters/xfigexporter.cc:46
+#, kde-format
+msgid "Export to &XFig file"
+msgstr "&XFig файлына экспорттау"
+
+#: filters/xfigexporter.cc:51
+#, kde-format
+msgid "&XFig File..."
+msgstr "&XFig файлы..."
+
+#: filters/xfigexporter.cc:557
+#, fuzzy, kde-format
+#| msgid "*.fig|XFig Documents (*.fig)"
+msgid "XFig Documents (*.fig)"
+msgstr "*.fig|XFig құжаттары (*.fig)"
+
+#: filters/xfigexporter.cc:557
+#, kde-format
+msgid "Export as XFig File"
+msgstr "XFig сияқты экспорттау"
+
+#: kig/aboutdata.h:15
+#, kde-format
+msgid "Kig"
+msgstr "Kig"
+
+#: kig/aboutdata.h:17
+#, kde-format
+msgid "KDE Interactive Geometry"
+msgstr "KDE Интерактивті Геометриясы"
+
+#: kig/aboutdata.h:19
+#, kde-format
+msgid "(C) 2002-2005, The Kig developers"
+msgstr " (C) 2002-2005, Kig құрастыраушылары"
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "David E. Narvaez"
+msgstr ""
+
+#: kig/aboutdata.h:23
+#, kde-format
+msgid "Current maintainer."
+msgstr ""
+
+#: kig/aboutdata.h:25
+#, kde-format
+msgid "Dominique Devriese"
+msgstr "Dominique Devriese"
+
+#: kig/aboutdata.h:25
+#, fuzzy, kde-format
+#| msgid "Original author, long time maintainer, design and lots of code."
+msgid "Original author, former maintainer, design and lots of code."
+msgstr "Бастапқы авторы, ұзақ уақыт жетілдірушісі, көп кодын жазған. "
+
+#: kig/aboutdata.h:27
+#, kde-format
+msgid "Maurizio Paolini"
+msgstr "Maurizio Paolini"
+
+#: kig/aboutdata.h:28
+#, kde-format
+msgid ""
+"Did a lot of important work all around Kig, including, but not limited to "
+"conics, cubics, transformations and property tests support."
+msgstr ""
+"Kig-қа байланысты көп маңызды жұмыс атқарған, ол қатарда конустық қималар, "
+"кубтықтар. Түрлендірулерге және сынақтарға қатысты."
+
+#: kig/aboutdata.h:33
+#, kde-format
+msgid "Pino Toscano"
+msgstr "Pino Toscano"
+
+#: kig/aboutdata.h:34
+#, fuzzy, kde-format
+#| msgid ""
+#| "Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
+#| "translation, miscellaneous stuff here and there."
+msgid ""
+"Former maintainer, Dr. Geo import filter, point and line styles, Italian "
+"translation, miscellaneous stuff here and there."
+msgstr ""
+"Істегі жетілдірушісі, Dr. Geo импорт сүзгісін, нүкте мен сызықттар стилін "
+"жасаған, Италияшалаған және көп басқа нәрсе істеген."
+
+#: kig/aboutdata.h:39
+#, kde-format
+msgid "Franco Pasquarelli"
+msgstr "Franco Pasquarelli"
+
+#: kig/aboutdata.h:40
+#, kde-format
+msgid ""
+"Helped a lot with the implementation of the Locus object, there's quite some "
+"math involved in doing it right, and Franco wrote the most difficult parts."
+msgstr ""
+"Нүкте жиынның геометриялық орны нысанын іске асыруға үлес қосқан, "
+"математиканы жақсы білу керек жерлерін осы Франко жазған."
+
+#: kig/aboutdata.h:45
+#, kde-format
+msgid "Francesca Gatti"
+msgstr "Francesca Gatti"
+
+#: kig/aboutdata.h:46
+#, kde-format
+msgid "Responsible for the computation of the algebraic equation of a locus."
+msgstr "Нүкте жиынның геометриялық орнының алгебралық теңеуіне жауыпты."
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Petr Gajdos"
+msgstr "Petr Gajdos"
+
+#: kig/aboutdata.h:50
+#, kde-format
+msgid "Contributed the Bézier curves and related icons."
+msgstr "Безье кисықтарға оған қатысты таңбашаларды жасауға үлес қосқан"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Raoul Bourquin"
+msgstr "Raoul Bourquin"
+
+#: kig/aboutdata.h:52
+#, kde-format
+msgid "Contributed the 'asymptote' export filter."
+msgstr "'Asymptote' экспорттау сүзгіні жазуға үлеін қосқан."
+
+#: kig/aboutdata.h:54
+#, kde-format
+msgid "Eric Depagne"
+msgstr "Eric Depagne"
+
+#: kig/aboutdata.h:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "The French translator, who also sent me some useful feedback, like "
+#| "feature requests and bug reports."
+msgid ""
+"The French translator, who also contributed some useful feedback, like "
+"feature requests and bug reports."
+msgstr ""
+"Французшаға аударушысы, біраз пайдалы ұсыныстар мен қателер туралы "
+"хабарламалар жіберген."
+
+#: kig/aboutdata.h:59
+#, kde-format
+msgid "Marc Bartsch"
+msgstr "Marc Bartsch"
+
+#: kig/aboutdata.h:60
+#, kde-format
+msgid ""
+"Author of KGeo, where I got inspiration, some source, and most of the "
+"artwork from."
+msgstr ""
+"Іске шабыт берген KGeo бағдарламаның авторы, одан біз кейбір кодын және "
+"суреттерін алғанбыз."
+
+#: kig/aboutdata.h:64
+#, kde-format
+msgid "Christophe Devriese"
+msgstr "Christophe Devriese"
+
+#: kig/aboutdata.h:65
+#, kde-format
+msgid ""
+"Domi's brother, who he got to write the algorithm for calculating the center "
+"of the circle with three points given."
+msgstr ""
+"Ұш нүкте арқылы өтетін шеңберінің центрін табу алгоритмін жазып берген "
+"Dominique-тың бауыры."
+
+#: kig/aboutdata.h:70
+#, kde-format
+msgid "Christophe Prud'homme"
+msgstr "Christophe Prud'homme"
+
+#: kig/aboutdata.h:70
+#, fuzzy, kde-format
+#| msgid "Sent me a patch for some bugs."
+msgid "Contributed a patch for some bugs."
+msgstr "Бірнеше қателерді түзеп берген"
+
+#: kig/aboutdata.h:72
+#, kde-format
+msgid "Robert Gogolok"
+msgstr "Robert Gogolok"
+
+#: kig/aboutdata.h:73
+#, fuzzy, kde-format
+#| msgid ""
+#| "Gave me some good feedback on Kig, some feature requests, cleanups and "
+#| "style fixes, and someone to chat with on irc :)"
+msgid ""
+"Contributed some good feedback on Kig, some feature requests, cleanups and "
+"style fixes, and someone to chat with on irc :)"
+msgstr ""
+"Kig жайлы біргнеше жақсы кеңес берген, стильді түзеген, irc арқылы "
+"ақылдасамыз :)"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "David Vignoni"
+msgstr "David Vignoni"
+
+#: kig/aboutdata.h:78
+#, kde-format
+msgid "Responsible for the nice application SVG Icon."
+msgstr "Әсем SVG таңбашасының авторы."
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Danny Allen"
+msgstr "Danny Allen"
+
+#: kig/aboutdata.h:80
+#, kde-format
+msgid "Responsible for the new object action icons."
+msgstr "Жаңа нысан әрекет таңбашасының авторы."
+
+#: kig/kig.cpp:62
+#, kde-format
+msgid "Could not find the necessary Kig library, check your installation."
+msgstr "Қажетті Kid-тың жиын файлы жоқ. Орнатылымыңызды түгелдеңіз."
+
+#: kig/kig.cpp:204
+#, kde-format
+msgctxt "@title:window"
+msgid "Open File"
+msgstr ""
+
+#: kig/kig_commands.cpp:91
+#, kde-format
+msgid "Remove %1 Object"
+msgid_plural "Remove %1 Objects"
+msgstr[0] "%1 нысанды өшіру"
+
+#: kig/kig_commands.cpp:103
+#, kde-format
+msgid "Add %1 Object"
+msgid_plural "Add %1 Objects"
+msgstr[0] "%1 нысанды қосу"
+
+#: kig/kig_part.cpp:85
+#, kde-format
+msgid "&Set Coordinate System"
+msgstr "&Координаттар жүйесін құру"
+
+#: kig/kig_part.cpp:125
+#, fuzzy, kde-format
+#| msgid "Kig Options"
+msgctxt "@title:window"
+msgid "Kig Options"
+msgstr "Kig парметрлері"
+
+#: kig/kig_part.cpp:129
+#, kde-format
+msgid "Show grid"
+msgstr "Торын көрсету"
+
+#: kig/kig_part.cpp:132
+#, kde-format
+msgid "Show axes"
+msgstr "Осьтерді көрсету"
+
+#: kig/kig_part.cpp:217
+#, kde-format
+msgid "Invert Selection"
+msgstr "Таңдауын терістеу"
+
+#: kig/kig_part.cpp:224
+#, kde-format
+msgid "&Delete Objects"
+msgstr "&Нысандарды өшіру"
+
+#: kig/kig_part.cpp:228
+#, kde-format
+msgid "Delete the selected objects"
+msgstr "Таңдалған нысандарды өшіру"
+
+#: kig/kig_part.cpp:230
+#, kde-format
+msgid "Cancel Construction"
+msgstr "Құрылымынан айну"
+
+#: kig/kig_part.cpp:234
+#, kde-format
+msgid "Cancel the construction of the object being constructed"
+msgstr "Құрылып жатқаннан айну"
+
+#: kig/kig_part.cpp:237
+#, kde-format
+msgid "Repeat Construction"
+msgstr "Құрылымды қайталау"
+
+#: kig/kig_part.cpp:241
+#, kde-format
+msgid "Repeat the last construction (with new data)"
+msgstr "Соңғы құрылымын (жаңа деректерімен) қайталау "
+
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#, kde-format
+msgid "U&nhide All"
+msgstr "Бүкілін к&өрсету"
+
+#: kig/kig_part.cpp:247
+#, kde-format
+msgid "Show all hidden objects"
+msgstr "Бүкіл жасырын нысандарды көрсету"
+
+#: kig/kig_part.cpp:250
+#, kde-format
+msgid "&New Macro..."
+msgstr "&Жаңа макрос..."
+
+#: kig/kig_part.cpp:253
+#, kde-format
+msgid "Define a new macro"
+msgstr "Жаңа макростың анықтамасын келтіру"
+
+#: kig/kig_part.cpp:255
+#, kde-format
+msgid "Manage &Types..."
+msgstr "&Түрлерді басқару..."
+
+#: kig/kig_part.cpp:258
+#, kde-format
+msgid "Manage macro types."
+msgstr "Макрос түрлерін басқару"
+
+#: kig/kig_part.cpp:260
+#, kde-format
+msgid "&Browse History..."
+msgstr "Журналын ақтару..."
+
+#: kig/kig_part.cpp:263
+#, kde-format
+msgid "Browse the history of the current construction."
+msgstr "Осы құрылымның тарихын ақтару."
+
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#, kde-format
+msgid "Zoom in on the document"
+msgstr "Құжатты жақындату"
+
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#, kde-format
+msgid "Zoom out of the document"
+msgstr "Құжатты алыстату"
+
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#, kde-format
+msgid "Recenter the screen on the document"
+msgstr "Құжатты экранның ортасына келтіру"
+
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#, kde-format
+msgid "View this document full-screen."
+msgstr "Құжатты толық экранда қарау."
+
+#: kig/kig_part.cpp:286
+#, kde-format
+msgid "&Select Shown Area"
+msgstr "Көрсететін аумағын таңдау"
+
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#, kde-format
+msgid "Select the area that you want to be shown in the window."
+msgstr "Терезеде көрсететін аумағын таңдау."
+
+#: kig/kig_part.cpp:292
+#, kde-format
+msgid "S&elect Zoom Area"
+msgstr "Үлкейту аумағын таңдау"
+
+#. i18n( "Select the area that you want to be shown in the window." ) );
+#. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
+#: kig/kig_part.cpp:298
+#, kde-format
+msgid "Set Coordinate &Precision..."
+msgstr "&Координаттың дәлдігі..."
+
+#: kig/kig_part.cpp:300
+#, kde-format
+msgid "Set the floating point precision of coordinates in the document. "
+msgstr "Құжаттағы координаттың жылжымалы үтірлі дәлдігін келтіру.  "
+
+#: kig/kig_part.cpp:303
+#, kde-format
+msgid "Show &Grid"
+msgstr "Торын көрсету"
+
+#: kig/kig_part.cpp:305
+#, kde-format
+msgid "Show or hide the grid."
+msgstr "Торын көрсету не жасыру "
+
+#: kig/kig_part.cpp:309
+#, kde-format
+msgid "Show &Axes"
+msgstr "&Осьтерді көрсету"
+
+#: kig/kig_part.cpp:311
+#, kde-format
+msgid "Show or hide the axes."
+msgstr "Осьтерді көрсету не жасыру "
+
+#: kig/kig_part.cpp:315
+#, kde-format
+msgid "Wear Infrared Glasses"
+msgstr "Инфрақызыл көзілдірігі"
+
+#: kig/kig_part.cpp:317
+#, kde-format
+msgid "Enable/disable hidden objects' visibility."
+msgstr "Нысаның көрінуін ауыстыру (көрсету/жасыру)."
+
+#: kig/kig_part.cpp:347
+#, kde-format
+msgid "Repeat Construction (%1)"
+msgstr "Құрылымды қайталау (%1)"
+
+#: kig/kig_part.cpp:348
+#, kde-format
+msgid "Repeat %1 (with new data)"
+msgstr "%1 дегенді (жаңа деректерімен) қайталау "
+
+#: kig/kig_part.cpp:376
+#, kde-format
+msgid ""
+"The file \"%1\" you tried to open does not exist. Please verify that you "
+"entered the correct path."
+msgstr "Сұралған \"%1\" файл жоқ..Орының дұрыс келтірілгенін тексеіңіз."
+
+#: kig/kig_part.cpp:379
+#, kde-format
+msgid "File Not Found"
+msgstr "Файл табылған жоқ"
+
+#: kig/kig_part.cpp:394
+#, fuzzy, kde-format
+#| msgid ""
+#| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+#| "support this format. If you think the format in question would be worth "
+#| "implementing support for, you can always ask us nicely on mailto:pino@kde."
+#| "org or do the work yourself and send me a patch."
+msgid ""
+"You tried to open a document of type \"%1\"; unfortunately, Kig does not "
+"support this format. If you think the format in question would be worth "
+"implementing support for, you can open a feature request in <a href="
+"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
+"\">KDE's bug tracking system</a>"
+msgstr ""
+"\"%1\" түріндегі құжатты сақтау талпынысты жасадыңыз; алайда, Kig бұл "
+"пішімінде файлды сақтай алмайды. Бұл пішім міндетті түрде болуға тиіс деген "
+"пікіріңіз болса, оны mailto:pino@kde.org адресіне жазып жіберуге болады, "
+"немесе керек жамауын озіңіз құрастырып ысалып жіберіңіз."
+
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#, kde-format
+msgid "Format Not Supported"
+msgstr "Сақтай алмайтын пішімі"
+
+#: kig/kig_part.cpp:439
+#, kde-format
+msgid ""
+"Kig does not support saving to any other file format than its own. Save to "
+"Kig's format instead?"
+msgstr ""
+"Kig өзінің пішімінен басқа пішімде файлды сақтай алмайды. Kig пішімінде "
+"сақталсын ба?"
+
+#: kig/kig_part.cpp:442
+#, kde-format
+msgid "Save Kig Format"
+msgstr "Kig пішімінде сақтау"
+
+#: kig/kig_part.cpp:695
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kig|Kig Documents (*.kig)\n"
+#| "*.kigz|Compressed Kig Documents (*.kigz)"
+msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
+msgstr ""
+"*.kig|Kig құжаттары (*.kig)\n"
+"*.kigz|Сығылған Kig құжаттары (*.kigz)"
+
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#, kde-format
+msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
+msgstr "\"%1\" деген файл бар екен. Үстінен жаза бермексіз бе?"
+
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#, kde-format
+msgid "Overwrite File?"
+msgstr "Файл үстінен жазбақсыз ба?"
+
+#: kig/kig_part.cpp:857
+#, fuzzy, kde-format
+#| msgid "Print Geometry"
+msgctxt "@title:window"
+msgid "Print Geometry"
+msgstr "Басып шығару"
+
+#: kig/kig_part.cpp:921
+#, kde-format
+msgid "Hide %1 Object"
+msgid_plural "Hide %1 Objects"
+msgstr[0] "%1 нысанды жасыру"
+
+#: kig/kig_part.cpp:940
+#, kde-format
+msgid "Show %1 Object"
+msgid_plural "Show %1 Objects"
+msgstr[0] "%1 нысанды көрсету"
+
+#: kig/kig_view.cpp:189
+#, kde-format
+msgid "Zoom In"
+msgstr "Үлкейту"
+
+#: kig/kig_view.cpp:207
+#, kde-format
+msgid "Zoom Out"
+msgstr "Кішірейту"
+
+#: kig/kig_view.cpp:474
+#, kde-format
+msgid "Recenter View"
+msgstr "Ортасына келтіру"
+
+#: kig/kig_view.cpp:496
+#, kde-format
+msgid "Select the rectangle that should be shown."
+msgstr "Көрсетілетін тікбұрышын таңдау."
+
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
+#, kde-format
+msgid "Change Shown Part of Screen"
+msgstr "Экранда көрсетілетін бөлігін өзгерту"
+
+#: kig/kig_view.cpp:538
+#, kde-format
+msgid "Select Zoom Area"
+msgstr "Үлкейту аумағын таңдау"
+
+#: kig/kig_view.cpp:539
+#, kde-format
+msgid ""
+"Select the zoom area by entering the coordinates<br />of the upper left "
+"corner and the lower right corner."
+msgstr ""
+"Жоғарғы сол жақ пен төменгі оң жақ бұрыштарын келтіріп, үлкейтетін аумағын "
+"көрсетіңіз."
+
+#. i18n: ectx: Menu (file)
+#: kig/kigpartui.rc:6 kig/kigui.rc:5
+#, kde-format
+msgid "&File"
+msgstr "&Файл"
+
+#. i18n: ectx: Menu (edit)
+#: kig/kigpartui.rc:17
+#, kde-format
+msgid "&Edit"
+msgstr "&Өңдеу"
+
+#. i18n: ectx: Menu (view)
+#: kig/kigpartui.rc:28
+#, kde-format
+msgid "&View"
+msgstr "&Көрініс"
+
+#. i18n: ectx: Menu (objects)
+#: kig/kigpartui.rc:36
+#, kde-format
+msgid "&Objects"
+msgstr "&Нысандар"
+
+#. i18n: ectx: Menu (new_point)
+#: kig/kigpartui.rc:38
+#, kde-format
+msgid "&Points"
+msgstr "Н&үктелер"
+
+#. i18n: ectx: Menu (new_line)
+#: kig/kigpartui.rc:52
+#, kde-format
+msgid "&Lines"
+msgstr "&Сызықтар"
+
+#. i18n: ectx: Menu (new_circle)
+#: kig/kigpartui.rc:62
+#, kde-format
+msgid "&Circles && Arcs"
+msgstr "&Шеңбер && Доғалар"
+
+#. i18n: ectx: Menu (new_poligon)
+#: kig/kigpartui.rc:73
+#, kde-format
+msgid "Poly&gons"
+msgstr "Көп&бұрыштар"
+
+#. i18n: ectx: Menu (new_vector)
+#: kig/kigpartui.rc:85
+#, kde-format
+msgid "&Vectors && Segments"
+msgstr "&Вектор && Кесінділер"
+
+#. i18n: ectx: Menu (new_conic)
+#: kig/kigpartui.rc:94
+#, kde-format
+msgid "Co&nics && Cubics"
+msgstr "К&онустық қима мен Кубтықтыар"
+
+#. i18n: ectx: Menu (new_moreconics)
+#: kig/kigpartui.rc:101
+#, kde-format
+msgid "More Conics"
+msgstr "Қосымша конустық қималары"
+
+#. i18n: ectx: Menu (new_cubic)
+#: kig/kigpartui.rc:116
+#, kde-format
+msgid "Cu&bics"
+msgstr "Ку&биктер"
+
+#. i18n: ectx: Menu (new_bezier)
+#: kig/kigpartui.rc:124
+#, kde-format
+msgid "&Bézier curves"
+msgstr "&Безье қисықтары"
+
+#. i18n: ectx: Menu (new_angle)
+#: kig/kigpartui.rc:134
+#, kde-format
+msgid "&Angles"
+msgstr "Бұрышт&ар"
+
+#. i18n: ectx: Menu (new_transformation)
+#: kig/kigpartui.rc:139
+#, kde-format
+msgid "&Transformations"
+msgstr "&Түрлендіру"
+
+#. i18n: ectx: Menu (new_differentialgeometry)
+#: kig/kigpartui.rc:157
+#, kde-format
+msgid "&Differential geometry"
+msgstr "&Дифференциалдық геометрия"
+
+#. i18n: ectx: Menu (new_test)
+#: kig/kigpartui.rc:164
+#, kde-format
+msgid "T&ests"
+msgstr "С&ынақ"
+
+#. i18n: ectx: Menu (new_other)
+#: kig/kigpartui.rc:175
+#, kde-format
+msgid "&Other"
+msgstr "&Басқа"
+
+#. i18n: ectx: Menu (types)
+#: kig/kigpartui.rc:189
+#, kde-format
+msgid "&Types"
+msgstr "&Түрлер"
+
+#. i18n: ectx: Menu (tools)
+#: kig/kigpartui.rc:194
+#, kde-format
+msgid "&Tools"
+msgstr "&Құралдар"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kig/kigpartui.rc:207 kig/kigui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Негізгі құралдар"
+
+#. i18n: ectx: ToolBar (points_toolbar)
+#: kig/kigpartui.rc:221
+#, kde-format
+msgid "Points"
+msgstr "Нүктелер"
+
+#. i18n: ectx: ToolBar (line_toolbar)
+#: kig/kigpartui.rc:232
+#, kde-format
+msgid "Lines"
+msgstr "Сызықтар"
+
+#. i18n: ectx: ToolBar (vectseg_toolbar)
+#: kig/kigpartui.rc:242
+#, kde-format
+msgid "Vectors && Segments"
+msgstr "Вектор && Кесінділер"
+
+#. i18n: ectx: ToolBar (circle_toolbar)
+#: kig/kigpartui.rc:250
+#, kde-format
+msgid "Circles && Arcs"
+msgstr "Шеңбер && Доғалар"
+
+#. i18n: ectx: ToolBar (conic_toolbar)
+#: kig/kigpartui.rc:258
+#, kde-format
+msgid "Conics"
+msgstr "Конустық қималар"
+
+#. i18n: ectx: ToolBar (bezier_toolbar)
+#: kig/kigpartui.rc:267
+#, kde-format
+msgid "Bézier Curves"
+msgstr "Безье қисықтары"
+
+#. i18n: ectx: ToolBar (angles_toolbar)
+#: kig/kigpartui.rc:277
+#, kde-format
+msgid "Angles"
+msgstr "Бұрыштар"
+
+#. i18n: ectx: ToolBar (transformation_toolbar)
+#: kig/kigpartui.rc:282
+#, kde-format
+msgid "Transformations"
+msgstr "Түрлендіру"
+
+#. i18n: ectx: ToolBar (tests_toolbar)
+#: kig/kigpartui.rc:296
+#, kde-format
+msgid "Tests"
+msgstr "Сынақ"
+
+#. i18n: ectx: ToolBar (rest_toolbar)
+#: kig/kigpartui.rc:308
+#, kde-format
+msgid "Other Objects"
+msgstr "Басқа нысандар"
+
+#. i18n: ectx: ToolBar (view_toolbar)
+#: kig/kigpartui.rc:316
+#, kde-format
+msgid "View"
+msgstr "Көрініс"
+
+#. i18n: ectx: Menu (settings)
+#: kig/kigui.rc:14
+#, kde-format
+msgid "&Settings"
+msgstr "&Баптау"
+
+#: kig/main.cpp:78
+#, kde-format
+msgid ""
+"Do not show a GUI. Convert the specified file to the native Kig format. "
+"Output goes to stdout unless --outfile is specified."
+msgstr ""
+"Графикалық интерфейссыз. Келтірілген файлды Kig пішіміне аудару. --outfile "
+"деген келтірілмесе шығыс stdout-қа болады."
+
+#: kig/main.cpp:80
+#, kde-format
+msgid ""
+"File to output the created native file to. '-' means output to stdout. "
+"Default is stdout as well."
+msgstr ""
+"Шығыс ақпарат жазатын файлы. \"-\" дегені шығыс файлы стандартты (stdout) "
+"деген сөз.  Әдеттегісі де осы stdout."
+
+#: kig/main.cpp:85
+#, kde-format
+msgid "kde.org"
+msgstr ""
+
+#: kig/main.cpp:92
+#, kde-format
+msgid "Document to open"
+msgstr "Ашатын құжат"
+
+#: misc/builtin_stuff.cc:43
+#, kde-format
+msgid "Point by Numeric Labels"
+msgstr "Сан жарлықтары бойынша нүкте"
+
+#: misc/builtin_stuff.cc:44
+#, kde-format
+msgid "A point whose coordinates are given by two numeric labels"
+msgstr "Координаттары екі сан жарлықтарымен берілген нүкте"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "Segment"
+msgstr "Кесінді"
+
+#: misc/builtin_stuff.cc:50
+#, kde-format
+msgid "A segment constructed from its start and end point"
+msgstr "Бір нүктеден екіншіге дейін құрылған кесінді"
+
+#: misc/builtin_stuff.cc:56
+#, kde-format
+msgid "Segment Axis"
+msgstr "Кесіндінің орта перпендикуляры"
+
+#: misc/builtin_stuff.cc:57
+#, kde-format
+msgid "The perpendicular line through a given segment's mid point."
+msgstr "Кесіндіні ортасынан қақ бөлетін перпендикуляры."
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "Line by Two Points"
+msgstr "Екі нүкте арқылы түзу"
+
+#: misc/builtin_stuff.cc:63
+#, kde-format
+msgid "A line constructed through two points"
+msgstr "Екі нүктесі бойынша құрылған түзу"
+
+#: misc/builtin_stuff.cc:69
+#, kde-format
+msgid "Half-Line"
+msgstr "Сәуле"
+
+#: misc/builtin_stuff.cc:70
+#, kde-format
+msgid "A half-line by its start point, and another point somewhere on it."
+msgstr "Бастапқы мен жәй бір нүктесі бойынша құрылған сәуле."
+
+#: misc/builtin_stuff.cc:77
+#, kde-format
+msgid "Perpendicular"
+msgstr "Перпендикуляр"
+
+#: misc/builtin_stuff.cc:78
+#, kde-format
+msgid ""
+"A line constructed through a point, perpendicular to another line or segment."
+msgstr ""
+"Бір нүкте арқылы өтетін, басқа түзуге не кесіндіге перпендикуляр түзуі."
+
+#: misc/builtin_stuff.cc:85
+#, kde-format
+msgid "Parallel"
+msgstr "Параллель"
+
+#: misc/builtin_stuff.cc:86
+#, kde-format
+msgid ""
+"A line constructed through a point, and parallel to another line or segment"
+msgstr "Бір нүкте арқылы өтетін, басқа түзуге не кесіндіге параллелді түзуі"
+
+#: misc/builtin_stuff.cc:93
+#, kde-format
+msgid "Circle by Center && Point"
+msgstr "Центрі мен нүктесінен шеңбер"
+
+#: misc/builtin_stuff.cc:94
+#, kde-format
+msgid "A circle constructed by its center and a point that pertains to it"
+msgstr "Центірі мен сызығында жататын нүктесі бойынша шеңберді құру"
+
+#: misc/builtin_stuff.cc:100
+#, kde-format
+msgid "Circle by Three Points"
+msgstr "Үш нүкте арқылы шеңбер"
+
+#: misc/builtin_stuff.cc:101
+#, kde-format
+msgid "A circle constructed through three points"
+msgstr "Ұш нүктесі бойынша құрылған шеңбер"
+
+#: misc/builtin_stuff.cc:107
+#, kde-format
+msgid "Circle by Point && Radius"
+msgstr "Нүкте мен радиусынан шеңбер"
+
+#: misc/builtin_stuff.cc:108
+#, kde-format
+msgid "A circle defined by its center and the length of the radius"
+msgstr "Центрі мен берілген радиус ұзындығы бойынша құрылған шеңбер"
+
+#: misc/builtin_stuff.cc:122
+#, kde-format
+msgid "Construct Bisector of This Angle"
+msgstr "Бұрышты қақ бөлу"
+
+#: misc/builtin_stuff.cc:123
+#, kde-format
+msgid "Select the angle you want to construct the bisector of..."
+msgstr "Қақ бөлетін бұрышты таңдау..."
+
+#: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
+#, kde-format
+msgid "Angle Bisector"
+msgstr "Бұрыш бессектрисасы"
+
+#: misc/builtin_stuff.cc:125
+#, kde-format
+msgid "The bisector of an angle"
+msgstr "Бұрыштың бессектрисасы"
+
+#: misc/builtin_stuff.cc:132
+#, kde-format
+msgid "Conic by Five Points"
+msgstr "Бес нүкте арқылы конустық қимасы"
+
+#: misc/builtin_stuff.cc:133
+#, kde-format
+msgid "A conic constructed through five points"
+msgstr "Бес нүктесі бойынша құрылған конустық қимасы"
+
+#: misc/builtin_stuff.cc:139
+#, kde-format
+msgid "Hyperbola by Asymptotes && Point"
+msgstr "Асимптота мен нүктесінен гипербола"
+
+#: misc/builtin_stuff.cc:140
+#, kde-format
+msgid "A hyperbola with given asymptotes through a point"
+msgstr "Асимптотасы берілген, бір нүктеден өтетін гиперболаны құру"
+
+#: misc/builtin_stuff.cc:146
+#, kde-format
+msgid "Ellipse by Focuses && Point"
+msgstr "Нүкте мен фокустарынан эллипс"
+
+#: misc/builtin_stuff.cc:147
+#, kde-format
+msgid "An ellipse constructed by its focuses and a point that pertains to it"
+msgstr "Фокустары мен сызығында жататын нүктесі бойынша құрылған эллипс"
+
+#: misc/builtin_stuff.cc:153
+#, kde-format
+msgid "Hyperbola by Focuses && Point"
+msgstr "Фокустары мен нүктесінен гипербола"
+
+#: misc/builtin_stuff.cc:154
+#, kde-format
+msgid "A hyperbola constructed by its focuses and a point that pertains to it"
+msgstr "Фокустары мен сызығы өтетін нүктесі бойынша құрылған гипербола"
+
+#: misc/builtin_stuff.cc:160
+#, kde-format
+msgid "Conic by Directrix, Focus && Point"
+msgstr "Директриса, фокусы мен нүктесінен конустық қимасы"
+
+#: misc/builtin_stuff.cc:161
+#, kde-format
+msgid "A conic with given directrix and focus, through a point"
+msgstr ""
+"Директриса, фокусы және өтетін нүктесі бойынша құрылған конустық қимасы"
+
+#: misc/builtin_stuff.cc:167
+#, kde-format
+msgid "Vertical Parabola by Three Points"
+msgstr "Үш нүкте арқылы тік парабола"
+
+#: misc/builtin_stuff.cc:168
+#, kde-format
+msgid "A vertical parabola constructed through three points"
+msgstr "Ұш нүктесі бойынша құрылған тік парабола"
+
+#: misc/builtin_stuff.cc:174
+#, kde-format
+msgid "Cubic Curve by Nine Points"
+msgstr "Тоғыз нүктесінен кубтық қисығы"
+
+#: misc/builtin_stuff.cc:175
+#, kde-format
+msgid "A cubic curve constructed through nine points"
+msgstr "Тоғыз нүктесі бойынша құрылған кубтық қисығы"
+
+#: misc/builtin_stuff.cc:181
+#, kde-format
+msgid "Polar Point of a Line"
+msgstr "Түзудің поляр нүктесі"
+
+#: misc/builtin_stuff.cc:182
+#, kde-format
+msgid "The polar point of a line with respect to a conic."
+msgstr "Конустық кимасымен салыстырмалы түрдегі сызығының поляр нүктесі."
+
+#: misc/builtin_stuff.cc:188
+#, kde-format
+msgid "Polar Line of a Point"
+msgstr "Нүктенің поляр түзуі"
+
+#: misc/builtin_stuff.cc:189
+#, kde-format
+msgid "The polar line of a point with respect to a conic."
+msgstr "Конустық кимасымен салыстырмалы түрдегі нүктесінің поляр сызығы."
+
+#: misc/builtin_stuff.cc:195
+#, kde-format
+msgid "Cubic Curve with Node by Six Points"
+msgstr "Алты нүктесі бойынша төбесі бар қубтық қисығы"
+
+#: misc/builtin_stuff.cc:196
+#, kde-format
+msgid "A cubic curve with a nodal point at the origin through six points"
+msgstr ""
+"Алты нүктесі бойынша құрылған координаттар басталатын нүктеде төбесі бар "
+"кубтық қисығы"
+
+#: misc/builtin_stuff.cc:202
+#, kde-format
+msgid "Cubic Curve with Cusp by Four Points"
+msgstr "Төрт нүктесі бойынша ирең нүктелі кубтық қисығын"
+
+#: misc/builtin_stuff.cc:203
+#, kde-format
+msgid "A cubic curve with a horizontal cusp at the origin through four points"
+msgstr ""
+"Төрт нүктесі бойынша құрылған координаттар басталатын нүктеде иреңдейтін "
+"кубтық қисығы"
+
+#: misc/builtin_stuff.cc:209
+#, kde-format
+msgid "Cubic Function by Four Points"
+msgstr "Төрт нүктесінен кубтық қисығы"
+
+#: misc/builtin_stuff.cc:210
+#, kde-format
+msgid "A cubic function through four points"
+msgstr "Төрт нүктесі бойынша құрылған кубтық қисығы"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "Directrix of a Conic"
+msgstr "Конустық қиманың директрисасы"
+
+#: misc/builtin_stuff.cc:215
+#, kde-format
+msgid "The directrix line of a conic."
+msgstr "Конустық қиманың директриса түзу сызығы"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "Angle by Three Points"
+msgstr "Үш нүкте арқылы бұрыш"
+
+#: misc/builtin_stuff.cc:219
+#, kde-format
+msgid "An angle defined by three points"
+msgstr "Үш нүктемен берілген бұрыш"
+
+#: misc/builtin_stuff.cc:224
+#, kde-format
+msgid "Equilateral Hyperbola by Four Points"
+msgstr "Төрт нүктесінен теңжақты гипербола"
+
+#: misc/builtin_stuff.cc:225
+#, kde-format
+msgid "An equilateral hyperbola constructed through four points"
+msgstr "Төрт нүктесі бойынша құрылған теңжақты гипербола"
+
+#: misc/builtin_stuff.cc:242
+#, kde-format
+msgid "Construct the midpoint of this segment"
+msgstr "Кесіндінің ортасын табу"
+
+#: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
+#, kde-format
+msgid "Mid Point"
+msgstr "Орта нүктесі"
+
+#: misc/builtin_stuff.cc:246
+#, kde-format
+msgid "The midpoint of a segment or two other points"
+msgstr "Кесінді не өзге қос нүктенің орта нүктесі"
+
+#: misc/builtin_stuff.cc:264
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this segment"
+msgid "Construct the golden ratio point of this segment"
+msgstr "Кесіндінің ортасын табу"
+
+#: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
+#, fuzzy, kde-format
+#| msgid "Move a Point"
+msgid "Golden Ratio Point"
+msgstr "Нүктені жылжыту"
+
+#: misc/builtin_stuff.cc:274
+#, fuzzy, kde-format
+#| msgid "The midpoint of a segment or two other points"
+msgid "The golden ratio point of a segment or two other points"
+msgstr "Кесінді не өзге қос нүктенің орта нүктесі"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Vector"
+msgstr "Вектор"
+
+#: misc/builtin_stuff.cc:281
+#, kde-format
+msgid "Construct a vector from two given points."
+msgstr "Екі нүктесінен құрылылан векторы"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Vector Sum"
+msgstr "Қосылым векторы"
+
+#: misc/builtin_stuff.cc:285
+#, kde-format
+msgid "Construct the vector sum of two vectors."
+msgstr "Екі векторының қосылым векторын құру."
+
+#: misc/builtin_stuff.cc:290
+#, kde-format
+msgid "Line by Vector"
+msgstr "Векторінен түзу сызық"
+
+#: misc/builtin_stuff.cc:291
+#, kde-format
+msgid "Construct the line by a given vector though a given point."
+msgstr "Келтірілген нүкте арқылы берілген вектор бойынша түзуді құру."
+
+#: misc/builtin_stuff.cc:297
+#, kde-format
+msgid "Half-Line by Vector"
+msgstr "Вектор бойынша сәуле"
+
+#: misc/builtin_stuff.cc:298
+#, kde-format
+msgid "Construct the half-line by a given vector starting at given point."
+msgstr "Келтірілген нүктеден шығатын вектор бойынша сәулені құру."
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Arc by Three Points"
+msgstr "Үш нүктеден доға"
+
+#: misc/builtin_stuff.cc:303
+#, kde-format
+msgid "Construct an arc through three points."
+msgstr "Ұш нүктесі бойынша құрылған доға"
+
+#: misc/builtin_stuff.cc:308
+#, kde-format
+msgid "Conic Arc by Center and Three Points"
+msgstr "Центрі мен ұш нүктесінен конустық қима доғасы "
+
+#: misc/builtin_stuff.cc:309
+#, kde-format
+msgid "Construct a conic arc with given center through three points."
+msgstr ""
+"Келтірілген центрі мен ұш нүктесі бойынша құрылған конустық қима доғасы."
+
+#: misc/builtin_stuff.cc:315
+#, kde-format
+msgid "Conic Arc by Five Points"
+msgstr "Бес нүкте арқылы конустық қима доғасы"
+
+#: misc/builtin_stuff.cc:316
+#, kde-format
+msgid "Construct a conic arc through five points."
+msgstr "Бес нүктесі бойынша құрылған конустық қима доғасы"
+
+#: misc/builtin_stuff.cc:322
+#, kde-format
+msgid "Arc by Center, Angle && Point"
+msgstr "Центр, бұрышы мен нүктесінен доға"
+
+#: misc/builtin_stuff.cc:323
+#, kde-format
+msgid ""
+"Construct an arc by its center and a given angle, starting at a given point"
+msgstr ""
+"Центрі, келірілген бұрышы мен басталатын нүктесі бойынша құрылған доға "
+
+#: misc/builtin_stuff.cc:330
+#, kde-format
+msgid "Parabola by Directrix && Focus"
+msgstr "Директриса мен фокусынан парабола"
+
+#: misc/builtin_stuff.cc:331
+#, kde-format
+msgid "A parabola defined by its directrix and focus"
+msgstr "Директриса мен фокусын бойынша құрқлған парабола"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "Translate"
+msgstr "Параллель көшіру"
+
+#: misc/builtin_stuff.cc:349
+#, kde-format
+msgid "The translation of an object by a vector"
+msgstr "Вектор бойынша нысанды параллель көшіру"
+
+#: misc/builtin_stuff.cc:354
+#, kde-format
+msgid "Reflect in Point"
+msgstr "Нүктеде шағылу"
+
+#: misc/builtin_stuff.cc:355
+#, kde-format
+msgid "An object reflected in a point"
+msgstr "Нысанның нүктеде шағылуы"
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "Reflect in Line"
+msgstr "Сызықтан шағылу "
+
+#: misc/builtin_stuff.cc:360
+#, kde-format
+msgid "An object reflected in a line"
+msgstr "Нысанның сызықтан шағылуы"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "Rotate"
+msgstr "Бұрау"
+
+#: misc/builtin_stuff.cc:364
+#, kde-format
+msgid "An object rotated by an angle around a point"
+msgstr "Нысанды бір нүктені айнала бір бұрышқа бұрау"
+
+#: misc/builtin_stuff.cc:369
+#, kde-format
+msgid "Scale"
+msgstr "Масштабтау"
+
+#: misc/builtin_stuff.cc:370
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of a segment"
+msgstr ""
+"Нысанды берілген нүкте арқылы, келтірілген сызықтың ұзындығына сәйкесті "
+"масштабтау"
+
+#: misc/builtin_stuff.cc:376
+#, kde-format
+msgid "Scale over Line"
+msgstr "Сызық бойынша масштабтау"
+
+#: misc/builtin_stuff.cc:377
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of a segment"
+msgstr ""
+"Нысанды берілген сызық бойынша, келтірілген кесіндінің ұзындығына сәйкесті "
+"масштабтау"
+
+#: misc/builtin_stuff.cc:383
+#, kde-format
+msgid "Scale (ratio given by two segments)"
+msgstr "Масштабтау (кесінділер ара-қатынасы бойынша)"
+
+#: misc/builtin_stuff.cc:384
+#, kde-format
+msgid ""
+"Scale an object over a point, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Нысанды берілген нүкте арқылы, келтірілген екі кесіндінің ара-қатынасы "
+"бойынша масштабтау"
+
+#: misc/builtin_stuff.cc:390
+#, kde-format
+msgid "Scale over Line (ratio given by two segments)"
+msgstr "Сызық бойынша масштабтау (кесінділер ара-қатынасына сәйкесті)"
+
+#: misc/builtin_stuff.cc:391
+#, kde-format
+msgid ""
+"An object scaled over a line, by the ratio given by the length of two "
+"segments"
+msgstr ""
+"Нысанды берілген сызық бойынша, келтірілген екі кесіндінің ұзындығы ара-"
+"қатынасына сәйкесті масштабтау"
+
+#: misc/builtin_stuff.cc:397
+#, kde-format
+msgid "Apply Similitude"
+msgstr "Ұқсастық түрлендіруін жасау"
+
+#: misc/builtin_stuff.cc:398
+#, kde-format
+msgid ""
+"Apply a similitude to an object (the sequence of a scaling and rotation "
+"around a center)"
+msgstr "Нысанға ұқсастық (масштабтау мен бұрау) түрлендіруін қолдану"
+
+#: misc/builtin_stuff.cc:404
+#, kde-format
+msgid "Harmonic Homology"
+msgstr "Гармоникалық гомология"
+
+#: misc/builtin_stuff.cc:405
+#, kde-format
+msgid ""
+"The harmonic homology with a given center and a given axis (this is a "
+"projective transformation)"
+msgstr ""
+"Келтірілген центрі мен осі бойынша гармоникалық гомологияны (проекциялық "
+"түрлендірудің бір түрін) ету"
+
+#: misc/builtin_stuff.cc:419
+#, kde-format
+msgid "Draw Projective Shadow"
+msgstr "Проекциялық көлеңкені салу"
+
+#: misc/builtin_stuff.cc:420
+#, kde-format
+msgid ""
+"The shadow of an object with a given light source and projection plane "
+"(indicated by a line)"
+msgstr ""
+"Берілген жарық көзінен (сызықпен белгіленген) бетке бір нысаннан түсетін "
+"көлеңке проекциясы"
+
+#: misc/builtin_stuff.cc:434
+#, kde-format
+msgid "Asymptotes of a Hyperbola"
+msgstr "Гиперболаның асимптоталары"
+
+#: misc/builtin_stuff.cc:435
+#, kde-format
+msgid "The two asymptotes of a hyperbola."
+msgstr "Гиперболаның екі асимптотасы"
+
+#: misc/builtin_stuff.cc:449
+#, kde-format
+msgid "Triangle by Its Vertices"
+msgstr "Ұштары бойынша үшбұрыш"
+
+#: misc/builtin_stuff.cc:450
+#, kde-format
+msgid "Construct a triangle given its three vertices."
+msgstr "Үш ұшы бойынша құрылған үшбұрыш."
+
+#: misc/builtin_stuff.cc:476
+#, kde-format
+msgid "Convex Hull"
+msgstr "Дөңес орама"
+
+#: misc/builtin_stuff.cc:477
+#, kde-format
+msgid "A polygon that corresponds to the convex hull of another polygon"
+msgstr "Басқа көпбұрышқа дөңес орама болатын көпбұрыш"
+
+#: misc/builtin_stuff.cc:487
+#, kde-format
+msgid "Bézier Quadratic by its Control Points"
+msgstr "Басқару нүктелері бойынша квадраттық Безье кисығы"
+
+#: misc/builtin_stuff.cc:488
+#, kde-format
+msgid "Construct a Bézier quadratic given its three control points."
+msgstr "Үш басқару нүктесі бойынша квадраттық Безье кисығын құру."
+
+#: misc/builtin_stuff.cc:494
+#, kde-format
+msgid "Bézier Cubic by its Control Points"
+msgstr "Басқару нүктелері бойынша кубтық Безье кисығы"
+
+#: misc/builtin_stuff.cc:495
+#, kde-format
+msgid "Construct a Bézier cubic given its four control points."
+msgstr "Төрт басқару нүктесі бойынша кубтық Безье кисығын құру."
+
+#: misc/builtin_stuff.cc:505
+#, kde-format
+msgid "Rational Bézier Quadratic by its Control Points"
+msgstr "Басқару нүктелері бойынша рационал квадраттық Безье кисығы"
+
+#: misc/builtin_stuff.cc:506
+#, kde-format
+msgid "Construct a Rational Bézier quadratic given its three control points."
+msgstr "Үш басқару нүктесі бойынша рационал квадраттық Безье кисығын құру."
+
+#: misc/builtin_stuff.cc:512
+#, kde-format
+msgid "Rational Bézier Cubic by its Control Points"
+msgstr "Басқару нүктелері бойынша рационал кубтық Безье кисығы"
+
+#: misc/builtin_stuff.cc:513
+#, kde-format
+msgid "Construct a Rational Bézier cubic given its four control points."
+msgstr "Төрт басқару нүктесі бойынша рационал кубтық Безье кисығын құру."
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Parallel Test"
+msgstr "Параллелдігін тексеру"
+
+#: misc/builtin_stuff.cc:529
+#, kde-format
+msgid "Test whether two given lines are parallel"
+msgstr "Келтірілген екі сызықтың параллелдігін тексеру"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Orthogonal Test"
+msgstr "Перпендикулярлығын тексеру"
+
+#: misc/builtin_stuff.cc:533
+#, kde-format
+msgid "Test whether two given lines are orthogonal"
+msgstr "Келтірілген екі сызықтың перпендикулярлығын тексеру"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Collinear Test"
+msgstr "Бір түзуге жататынын тексеру"
+
+#: misc/builtin_stuff.cc:537
+#, kde-format
+msgid "Test whether three given points are collinear"
+msgstr "Үш нүктелер бір түзуде жататынын тексеру"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Contains Test"
+msgstr "Жататынын тексеру"
+
+#: misc/builtin_stuff.cc:541
+#, kde-format
+msgid "Test whether a given curve contains a given point"
+msgstr "Берілген нүкте берілген қисыққа жататынын тексеру"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "In Polygon Test"
+msgstr "Көпбұрышқа жататынын тексеру"
+
+#: misc/builtin_stuff.cc:545
+#, kde-format
+msgid "Test whether a given polygon contains a given point"
+msgstr "Берілген нүкте берілген көпбұрышқа жататынын тексеру"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Convex Polygon Test"
+msgstr "Көпбұрышың дөңестігін тексеру"
+
+#: misc/builtin_stuff.cc:549
+#, kde-format
+msgid "Test whether a given polygon is convex"
+msgstr "Берілген көпбұрыштың дөңестігін тексеру"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Existence Test"
+msgstr "Бар болуын тексеру"
+
+#: misc/builtin_stuff.cc:553
+#, kde-format
+msgid "Test whether a given object is constructible"
+msgstr "Нысан құруға келе ме екендігін тексеру"
+
+#: misc/builtin_stuff.cc:558
+#, kde-format
+msgid "Distance Test"
+msgstr "Қашықтығы бірдейін тексеру"
+
+#: misc/builtin_stuff.cc:559
+#, kde-format
+msgid ""
+"Test whether a given point have the same distance from a given point and "
+"from another given point"
+msgstr ""
+"Берілген нүкте басқа берілген нүктеден және үшінші берілген нүктеден бірдей "
+"қашықтықта екенін тексеру"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Vector Equality Test"
+msgstr "Векторлардың теңдігін тексеру"
+
+#: misc/builtin_stuff.cc:565
+#, kde-format
+msgid "Test whether two vectors are equal"
+msgstr "Екі вектор тең екенін тексеру"
+
+#: misc/builtin_stuff.cc:583
+#, kde-format
+msgid "Point Projection"
+msgstr "Нүкте проекциясы"
+
+#: misc/builtin_stuff.cc:584
+#, kde-format
+msgid "Project a point on a line"
+msgstr "Осы нүктені сызыққа проекциялау"
+
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#, kde-format
+msgid "Python Script"
+msgstr "Python скрипті"
+
+#: misc/builtin_stuff.cc:612
+#, kde-format
+msgid "Construct a new Python script."
+msgstr "Жаңа Python скриптін құру."
+
+#: misc/coordinate_system.cpp:322
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"x;y\",\n"
+"where x is the x coordinate, and y is the y coordinate."
+msgstr ""
+"Координаттарын мынадай түрде келтіріңіз: \"x;y\",\n"
+"мұнда x пен y - кәдімгі Декарт координаттары."
+
+#: misc/coordinate_system.cpp:329
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
+"the x coordinate, and y is the y coordinate."
+msgstr ""
+"Координаттарын мынадай түрде келтіріңіз: <b>\"x;,y\"</b>,<br />мұнда x пен y "
+"- кәдімгі абцисса мен ордината."
+
+#: misc/coordinate_system.cpp:371
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: \"r; θ°\",\n"
+"where r and θ are the polar coordinates."
+msgstr ""
+"Координаттарын мынадай түрде келтіріңіз: \"r; θ°\",\n"
+"мұнда r мен θ - поляр координаттары."
+
+#: misc/coordinate_system.cpp:379
+#, kde-format
+msgid ""
+"Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
+"and θ are the polar coordinates."
+msgstr ""
+"Координаттарын мынадай түрде келтіріңіз: <b>\"r; θ°\"</b>,<br />мұнда r мен "
+"θ - поляр координаттары."
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Euclidean"
+msgstr "&Эвклидтік"
+
+#: misc/coordinate_system.cpp:530
+#, kde-format
+msgid "&Polar"
+msgstr "&Полярлық"
+
+#: misc/coordinate_system.cpp:581
+#, kde-format
+msgid "Set Euclidean Coordinate System"
+msgstr "Эвклидтік координаттарды құру"
+
+#: misc/coordinate_system.cpp:583
+#, kde-format
+msgid "Set Polar Coordinate System"
+msgstr "Полярлық координаттарды құру"
+
+#: misc/goniometry.cc:95
+#, kde-format
+msgctxt "Translators: Degrees"
+msgid "Deg"
+msgstr "Градус"
+
+#: misc/goniometry.cc:96
+#, kde-format
+msgctxt "Translators: Radians"
+msgid "Rad"
+msgstr "Радиан"
+
+#: misc/goniometry.cc:97
+#, kde-format
+msgctxt "Translators: Gradians"
+msgid "Grad"
+msgstr "Градиан"
+
+#: misc/guiaction.cc:105
+#, kde-format
+msgid ""
+"A normal point, i.e. one that is either independent or attached to a line, "
+"circle, segment."
+msgstr "Кәдімгі нүкте, бөлек немесе сызықта, шеңберде не үзіндіде жататын."
+
+#: misc/guiaction.cc:116
+#, kde-format
+msgid "Point"
+msgstr "Нүкте"
+
+#: misc/guiaction.cc:157
+#, kde-format
+msgid "Construct a text label."
+msgstr "Жарлықты жазу"
+
+#: misc/guiaction.cc:167
+#, kde-format
+msgid "Text Label"
+msgstr "Жазу жарлығы"
+
+#: misc/guiaction.cc:188
+#, kde-format
+msgid "Construct a Point by its Coordinates"
+msgstr "Координаттары бойынша нүктені қою"
+
+#: misc/guiaction.cc:198
+#, kde-format
+msgid "Point by Coordinates"
+msgstr "Координаттар бойынша нүкте"
+
+#: misc/guiaction.cc:210
+#, kde-format
+msgid "Fixed Point"
+msgstr "Түрақты нүкте"
+
+#: misc/guiaction.cc:211
+#, kde-format
+msgid "Enter the coordinates for the new point."
+msgstr "Жаңа нүктенің координаттарын келтіріңіз."
+
+#: misc/guiaction.cc:235
+#, kde-format
+msgid "Construct a Numeric Value"
+msgstr "Санды құру"
+
+#: misc/guiaction.cc:245
+#, kde-format
+msgid "Numeric Value"
+msgstr "Сан"
+
+#. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
+#: misc/kigcoordinateprecisiondialog.ui:9
+#, kde-format
+msgid "&Use default coordinate precision"
+msgstr "Координат дәлдігі әдеттігідей &болсын"
+
+#. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
+#: misc/kigcoordinateprecisiondialog.ui:16
+#, kde-format
+msgid "&Specify coordinate precision:"
+msgstr "&Координат дәлдігі:"
+
+#: misc/kiginputdialog.cc:125
+#, fuzzy, kde-format
+#| msgid "Set Angle Size"
+msgctxt "@title:window"
+msgid "Set Angle Size"
+msgstr "Бұрышын келтіру"
+
+#: misc/kiginputdialog.cc:140
+#, kde-format
+msgid "Insert the new size of this angle:"
+msgstr "Бұрыштың жаңа өлшемі:"
+
+#: misc/kiginputdialog.cc:148
+#, kde-format
+msgid "Use this edit field to modify the size of this angle."
+msgstr "Бұл өрісі бұрыштың жаңа өлшемін келтіруге арналған."
+
+#: misc/kiginputdialog.cc:155
+#, kde-format
+msgid ""
+"Choose from this list the goniometric unit you want to use to modify the "
+"size of this angle.<br />\n"
+"If you switch to another unit, the value in the edit field on the left will "
+"be converted to the new selected unit."
+msgstr ""
+"Өзгертілген бұрыш өлшеміне тізімінен қалаған бірілігін таңдаңыз.<br />\n"
+"Басқа бірлігін таңдағанда, өрістегі мән жаңа бірлікке бейімделіп аударылады."
+
+#: misc/lists.cc:277 misc/lists.cc:282
+#, kde-format
+msgid "Could not open macro file '%1'"
+msgstr "'%1' макро файлы ашылмады"
+
+#: misc/lists.cc:292
+#, kde-format
+msgid "Kig cannot open the macro file \"%1\"."
+msgstr "Kig \"%1\" макрос файлын аша алмады."
+
+#: misc/lists.cc:293
+#, kde-format
+msgid ""
+"This file was created by a very old Kig version (pre-0.4). Support for this "
+"format has been removed from recent Kig versions. You can try to import this "
+"macro using a previous Kig version (0.4 to 0.6) and then export it again in "
+"the new format."
+msgstr ""
+"Бұл файл Kig-тың тым ескі (0.4 алдындағы) нұсқасымен жазылған. Қазіргі Kig "
+"бұл пішімін түсінбейді. Бұл макросты оңша ескірмеген Kig (0.4 - 0.6) "
+"нұсқасына импорттап, жаңа пішіміге қайта экспорттап алуға болады."
+
+#: misc/lists.cc:347
+#, kde-format
+msgid "Unnamed Macro #%1"
+msgstr "Аталмаған #%1 макро"
+
+#: misc/object_hierarchy.cc:541
+#, kde-format
+msgid ""
+"This Kig file uses an object of type \"%1\", which this Kig version does not "
+"support. Perhaps you have compiled Kig without support for this object type, "
+"or perhaps you are using an older Kig version."
+msgstr ""
+"Бұл Kig файлда осы Kig түсінбейтін түрі \"%1\" нысан бар. Демек, Kig-іңіз "
+"бұл  нысан түрін қолдауысыз жинақталған немесе қолданып отырған Kig нұсқаңыз "
+"ескірген."
+
+#: misc/special_constructors.cc:274
+#, kde-format
+msgid "Radical Lines for Conics"
+msgstr "Екі конустық қима қиылысудың радикал сызықтары"
+
+#: misc/special_constructors.cc:275
+#, kde-format
+msgid ""
+"The lines constructed through the intersections of two conics.  This is also "
+"defined for non-intersecting conics."
+msgstr ""
+"Екі конустық қиманың қиылысумен құрылған сызықтар. Қиылыспайтын конустық "
+"қималар үшін де анықталған."
+
+#: misc/special_constructors.cc:327 misc/special_constructors.cc:411
+#, kde-format
+msgid "Moving Point"
+msgstr "Жылжымалы нүкте"
+
+#: misc/special_constructors.cc:327
+#, kde-format
+msgid ""
+"Select the moving point, which will be moved around while drawing the "
+"locus..."
+msgstr ""
+"Жылжымалы, яғни салып жатқан нүктелер  жиынның геометриялық орны бойы "
+"жылжитың нүктесін таңдау... "
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid "Following Point"
+msgstr "Келесі нүкте"
+
+#: misc/special_constructors.cc:328
+#, kde-format
+msgid ""
+"Select the following point, whose locations the locus will be drawn "
+"through..."
+msgstr ""
+"Келесі, яғни орыны салып жатқан нүкте жиынның геометриялық орны өтетін "
+"нүктесін таңдау..."
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "Locus"
+msgstr "Нүктелердің геометриялық орны"
+
+#: misc/special_constructors.cc:331
+#, kde-format
+msgid "A locus"
+msgstr "Бір нүктелер жиынның геометриялық орны"
+
+#: misc/special_constructors.cc:413
+#, kde-format
+msgid "Dependent Point"
+msgstr "Тәуелді нүкте"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Polygon by Its Vertices"
+msgstr "Төбелері бойынша көпбұрыш"
+
+#: misc/special_constructors.cc:520
+#, kde-format
+msgid "Construct a polygon by giving its vertices"
+msgstr "Төбелері бойынша көпбұрышты құру"
+
+#: misc/special_constructors.cc:553
+#, kde-format
+msgid ""
+"... with this vertex (click on the first vertex to terminate construction)"
+msgstr "... мына төбесімен (құруды бітіру үшін бірінші төбесін түрту керек)"
+
+#: misc/special_constructors.cc:555
+#, kde-format
+msgid "Construct a polygon with this vertex"
+msgstr "Мына төбесімен көпбұрышты құру"
+
+#: misc/special_constructors.cc:560
+#, kde-format
+msgid "Select a point to be a vertex of the new polygon..."
+msgstr "Жаңа көпбұрыштың төбесі болатын нүктені таңдау..."
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Open Polygon (Polygonal Line)"
+msgstr "Ашық көпбұрыш (Сынық сызық)"
+
+#: misc/special_constructors.cc:589
+#, kde-format
+msgid "Construct an open polygon"
+msgstr "Ашық көпбұрышты құру"
+
+#: misc/special_constructors.cc:622
+#, kde-format
+msgid ""
+"... with this vertex (click again on the last vertex to terminate "
+"construction)"
+msgstr ""
+"... мына төбесімен (құруды бітіру үшін соңғы төбесін қайта түрту керек)"
+
+#: misc/special_constructors.cc:624
+#, kde-format
+msgid "Construct a polygonal line with this vertex"
+msgstr "Мына төбесімен сынық сызықты құру"
+
+#: misc/special_constructors.cc:629
+#, kde-format
+msgid "Select a point to be a vertex of the new polygonal line..."
+msgstr "Жаңа сынық сызықтың төбесі болатын нүктені таңдау..."
+
+#: misc/special_constructors.cc:658 misc/special_constructors.cc:718
+#, kde-format
+msgid "Polygon"
+msgstr "Көпбұрыш"
+
+#: misc/special_constructors.cc:658
+#, kde-format
+msgid "Construct the vertices of this polygon..."
+msgstr "Мына көпбұрыштың төбелерін құру..."
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "Vertices of a Polygon"
+msgstr "Көпбұрыштың төбелері"
+
+#: misc/special_constructors.cc:661
+#, kde-format
+msgid "The vertices of a polygon."
+msgstr "Көпбұрыштың төбелері."
+
+#: misc/special_constructors.cc:718
+#, kde-format
+msgid "Construct the sides of this polygon..."
+msgstr "Мына көпбұрыштың жақтарын құру..."
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "Sides of a Polygon"
+msgstr "Көпбұрыштың жақтары"
+
+#: misc/special_constructors.cc:721
+#, kde-format
+msgid "The sides of a polygon."
+msgstr "Көпбұрыштың жақтары."
+
+#: misc/special_constructors.cc:789
+#, kde-format
+msgid "Regular Polygon with Given Center"
+msgstr "Центрі бойынша дұрыс көпбұрыш"
+
+#: misc/special_constructors.cc:794
+#, kde-format
+msgid "Construct a regular polygon with a given center and vertex"
+msgstr "Келтірілген центрі мен төбесі бойынша дұрыс (қалыпты) көпбұрышты құру"
+
+#: misc/special_constructors.cc:939
+#, kde-format
+msgid "Construct a regular polygon with this center"
+msgstr "Мына центрімен дұрыс көпбұрышты құру"
+
+#: misc/special_constructors.cc:943
+#, kde-format
+msgid "Construct a regular polygon with this vertex"
+msgstr "Мына төбесімен дұрыс көпбұрышты құру"
+
+#: misc/special_constructors.cc:954
+#, kde-format
+msgid "Adjust the number of sides (%1/%2)"
+msgstr "Жақтар санын өзгерту (%1/%2)"
+
+#: misc/special_constructors.cc:957
+#, kde-format
+msgid "Adjust the number of sides (%1)"
+msgstr "Жақтар санын өзгерту (%1)"
+
+#: misc/special_constructors.cc:970
+#, kde-format
+msgid "Select the center of the new polygon..."
+msgstr "Жаңа көпбұрыштың центрін таңдау..."
+
+#: misc/special_constructors.cc:974
+#, kde-format
+msgid "Select a vertex for the new polygon..."
+msgstr "Жаңа көпбұрыштың төбесін таңдау..."
+
+#: misc/special_constructors.cc:978
+#, kde-format
+msgid "Move the cursor to get the desired number of sides..."
+msgstr "Жақтар санын өзгерту үшін меңзерді жылжыту..."
+
+#: misc/special_constructors.cc:1062
+#, kde-format
+msgid "Bézier Curve by its Control Points"
+msgstr "Басқару нүктелері бойынша Безье кисығы"
+
+#: misc/special_constructors.cc:1063
+#, kde-format
+msgid "Construct a Bézier curve by giving its control points"
+msgstr "Берілген басқару нүктелері бойынша Безье кисығын құру"
+
+#: misc/special_constructors.cc:1098
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point to "
+"terminate construction)"
+msgstr ""
+"... мына басқару нүктесімен (құруды бітіру үшін соңғы басқару нүктесін қайта "
+"түрту керек)"
+
+#: misc/special_constructors.cc:1100
+#, kde-format
+msgid "Construct a Bézier curve with this control point"
+msgstr "Мына басқару нүктесі бар Безье кисығын құру"
+
+#: misc/special_constructors.cc:1105
+#, kde-format
+msgid "Select a point to be a control point of the new Bézier curve..."
+msgstr "Жаңа Безье кисығының басқаратын нүктесі қылатын нүктені таңдау..."
+
+#: misc/special_constructors.cc:1138
+#, kde-format
+msgid "Rational Bézier Curve by its Control Points"
+msgstr "Басқару нүктелері бойынша рационал Безье кисығы"
+
+#: misc/special_constructors.cc:1143
+#, kde-format
+msgid ""
+"Construct a Bézier curve by giving its control points and positive weights"
+msgstr ""
+"Берілген басқару нүктелері мен оң салмақтары бойынша Безье кисығын құру"
+
+#: misc/special_constructors.cc:1202
+#, kde-format
+msgid "... assign this weight to last selected control point"
+msgstr "... соңғы таңдалған басқару нүктесіне мына салмақты беру"
+
+#: misc/special_constructors.cc:1205
+#, kde-format
+msgid ""
+"... with this control point (click again on the last control point or weight "
+"to terminate construction)"
+msgstr ""
+"... мына басқару нүктесімен (құруды бітіру үшін соңғы басқару нүктесін не "
+"салмағын қайта түрту керек)"
+
+#: misc/special_constructors.cc:1207
+#, kde-format
+msgid "Construct a rational Bézier curve with this control point"
+msgstr "Мына басқару нүктесі бар рационал Безье кисығын құру"
+
+#: misc/special_constructors.cc:1213
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new rational Bézier curve..."
+msgstr ""
+"Жаңа рационал Безье кисығының басқаратын нүктесі қылатын нүктені таңдау..."
+
+#: misc/special_constructors.cc:1215
+#, kde-format
+msgid "Select a numeric label to be a weight of last selected point..."
+msgstr ""
+"Соңғы таңдалған басқару нүктенің салмағы болатын сан жарлығын таңдау..."
+
+#: misc/special_constructors.cc:1380
+#, kde-format
+msgid "Construct the Radical Lines of This Circle"
+msgstr "Осы шеңбердің радикал сызықттарын құру "
+
+#: misc/special_constructors.cc:1382
+#, kde-format
+msgid "Construct the Radical Lines of This Conic"
+msgstr "Осы конустық қиманың радикал сызықттарын құру "
+
+#: misc/special_constructors.cc:1396
+#, kde-format
+msgid "Generic Affinity"
+msgstr "Жалпы ұқсатық түрлендіруі"
+
+#: misc/special_constructors.cc:1397
+#, kde-format
+msgid ""
+"The unique affinity that maps three points (or a triangle) onto three other "
+"points (or a triangle)"
+msgstr ""
+"Үш нүктені (не үшбұрышты) басқа үш нүктеге (не үшбұрышқа) проекциялайтын "
+"бірегей ұқсастық түрлендіру"
+
+#: misc/special_constructors.cc:1419
+#, kde-format
+msgid "Generic Projective Transformation"
+msgstr "Жалпы проекция"
+
+#: misc/special_constructors.cc:1420
+#, kde-format
+msgid ""
+"The unique projective transformation that maps four points (or a "
+"quadrilateral) onto four other points (or a quadrilateral)"
+msgstr ""
+"Төрт нүктені (не төртүшбұрышты) басқа төрт нүктеге (не төртбұрышқа) бірегей "
+"проекциясы"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "Inversion of Point, Line or Circle"
+msgstr "Нүкте, сызық және шеңбер арқылы инверсия"
+
+#: misc/special_constructors.cc:1447
+#, kde-format
+msgid "The inversion of a point, line or circle with respect to a circle"
+msgstr "Нүкте, сызық және шеңбердің  басқа шеңбер арқылы инверсиясы"
+
+#: misc/special_constructors.cc:1505
+#, kde-format
+msgid "Measure Transport"
+msgstr "Өлшемін салу"
+
+#: misc/special_constructors.cc:1510
+#, kde-format
+msgid "Transport the measure of a segment or arc over a line or circle."
+msgstr "Кесінді не доғаның өлшемін сызыққа не шеңберге салу"
+
+#: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
+#, kde-format
+msgid "Segment to transport"
+msgstr "Салатын кесінді"
+
+#: misc/special_constructors.cc:1614
+#, kde-format
+msgid "Arc to transport"
+msgstr "Салатын доға"
+
+#: misc/special_constructors.cc:1616
+#, kde-format
+msgid "Value to transport"
+msgstr "Салатын өлшемі"
+
+#: misc/special_constructors.cc:1618
+#, kde-format
+msgid "Transport a measure on this line"
+msgstr "Мына сызыққа өлшемді салу"
+
+#: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
+#, kde-format
+msgid "Transport a measure on this circle"
+msgstr "Мына шеңберге өлшемді салу"
+
+#: misc/special_constructors.cc:1623
+#, kde-format
+msgid "Start transport from this point of the circle"
+msgstr "Өлшемді шеңбердің мына нүктеден салу"
+
+#: misc/special_constructors.cc:1625
+#, kde-format
+msgid "Start transport from this point of the line"
+msgstr "Өлшемді сызықтың мына нүктеден салу"
+
+#: misc/special_constructors.cc:1627
+#, kde-format
+msgid "Start transport from this point of the curve"
+msgstr "Өлшемді кисықтың мына нүктеден салу"
+
+#: misc/special_constructors.cc:1637
+#, kde-format
+msgid "Select a segment, arc or numeric label to be transported..."
+msgstr "Салатын үзінді, доға не өлшемінің санды жарлығын таңдау..."
+
+#: misc/special_constructors.cc:1641
+#, kde-format
+msgid "Select a destination line or circle..."
+msgstr "Қай сызық не шеңберіне салу керек..."
+
+#: misc/special_constructors.cc:1645
+#, kde-format
+msgid "Choose a starting point on the line/circle..."
+msgstr "Сызық не шеңбердегі өлшемді салуды бастайтын нүктесі..."
+
+#: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
+#, kde-format
+msgid "Intersect with this conic"
+msgstr "Осы конустық қимасымен қиылысы"
+
+#: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
+#: objects/intersection_types.cc:17
+#, kde-format
+msgid "Intersect with this line"
+msgstr "Осы сызықпен қиылысы"
+
+#: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
+#: objects/intersection_types.cc:215
+#, kde-format
+msgid "Intersect with this cubic"
+msgstr "Осы кубтық қисықпен қиылысы"
+
+#: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
+#: objects/intersection_types.cc:443 objects/intersection_types.cc:444
+#, kde-format
+msgid "Intersect with this circle"
+msgstr "Осы шеңберімен қиылысы"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "Intersect"
+msgstr "Қиылыс"
+
+#: misc/special_constructors.cc:1692
+#, kde-format
+msgid "The intersection of two objects"
+msgstr "Екі нысанның қиылысуы"
+
+#: misc/special_constructors.cc:1766
+#, kde-format
+msgid "Intersect this Circle"
+msgstr "Мына шеңберді"
+
+#: misc/special_constructors.cc:1768
+#, kde-format
+msgid "Intersect this Conic"
+msgstr "Мына конустық қимасын"
+
+#: misc/special_constructors.cc:1770
+#, kde-format
+msgid "Intersect this Segment"
+msgstr "Мына кесіндіні"
+
+#: misc/special_constructors.cc:1772
+#, kde-format
+msgid "Intersect this Half-line"
+msgstr "Мына сәулені"
+
+#: misc/special_constructors.cc:1774
+#, kde-format
+msgid "Intersect this Line"
+msgstr "Мына сызықты"
+
+#: misc/special_constructors.cc:1776
+#, kde-format
+msgid "Intersect this Cubic Curve"
+msgstr "Мына кубтық қисықты"
+
+#: misc/special_constructors.cc:1778
+#, kde-format
+msgid "Intersect this Arc"
+msgstr "Мына доғаны"
+
+#: misc/special_constructors.cc:1780
+#, kde-format
+msgid "Intersect this Polygon"
+msgstr "Мына көпбұрышты"
+
+#: misc/special_constructors.cc:1782
+#, kde-format
+msgid "Intersect this Polygonal"
+msgstr "Мына сынық сызықты"
+
+#: misc/special_constructors.cc:1788
+#, kde-format
+msgid "with this Circle"
+msgstr "мынау шеңберімен қиылысы"
+
+#: misc/special_constructors.cc:1790
+#, kde-format
+msgid "with this Conic"
+msgstr "мынау конустық қимасымен қиылысы"
+
+#: misc/special_constructors.cc:1792
+#, kde-format
+msgid "with this Segment"
+msgstr "мынау кесіндімен қиылысы"
+
+#: misc/special_constructors.cc:1794
+#, kde-format
+msgid "with this Half-line"
+msgstr "мынау сәулемен қиылысы"
+
+#: misc/special_constructors.cc:1796
+#, kde-format
+msgid "with this Line"
+msgstr "мынау сызықпен қиылысы"
+
+#: misc/special_constructors.cc:1798
+#, kde-format
+msgid "with this Cubic Curve"
+msgstr "мынау кубтық қисықпен қиылысы"
+
+#: misc/special_constructors.cc:1800
+#, kde-format
+msgid "with this Arc"
+msgstr "мынау доғамен қиылысы"
+
+#: misc/special_constructors.cc:1802
+#, kde-format
+msgid "with this Polygon"
+msgstr "мынау көпбұрышпен қиылысы"
+
+#: misc/special_constructors.cc:1804
+#, kde-format
+msgid "with this Polygonal"
+msgstr "мынау сынық сызықпен қиылысы"
+
+#: misc/special_constructors.cc:1814
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct midpoint of this point and another one"
+msgstr "Мына нүктемен басқа нүктенің ортасын табу"
+
+#: misc/special_constructors.cc:1815
+#, kde-format
+msgid ""
+"Select the first of the points of which you want to construct the midpoint..."
+msgstr "Ортасын табатын нүктелерінің біріншісін таңдау..."
+
+#: misc/special_constructors.cc:1818
+#, kde-format
+msgid "Construct the midpoint of this point and another one"
+msgstr "Мына нүктемен басқа нүктенің ортасын табу"
+
+#: misc/special_constructors.cc:1819
+#, kde-format
+msgid "Select the other of the points of which to construct the midpoint..."
+msgstr "Ортасын табатын нүктелерінің басқасын таңдау..."
+
+#: misc/special_constructors.cc:1869
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct golden ratio point of this point and another one"
+msgstr "Мына нүктемен басқа нүктенің ортасын табу"
+
+#: misc/special_constructors.cc:1870
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the points of which you want to construct the golden "
+"ratio point..."
+msgstr "Ортасын табатын нүктелерінің біріншісін таңдау..."
+
+#: misc/special_constructors.cc:1873
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another one"
+msgid "Construct the golden ratio point of this point and another one"
+msgstr "Мына нүктемен басқа нүктенің ортасын табу"
+
+#: misc/special_constructors.cc:1874
+#, fuzzy, kde-format
+#| msgid "Select the other of the points of which to construct the midpoint..."
+msgid ""
+"Select the other of the points of which to construct the golden ratio "
+"point..."
+msgstr "Ортасын табатын нүктелерінің басқасын таңдау..."
+
+#: misc/special_constructors.cc:1979
+#, kde-format
+msgid "Select the first object to intersect..."
+msgstr "Қиылысатын бірінші нысанды таңдау..."
+
+#: misc/special_constructors.cc:1981
+#, kde-format
+msgid "Select the second object to intersect..."
+msgstr "Қиылысатын екінші нысанды таңдау..."
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "Tangent"
+msgstr "Еңіс"
+
+#: misc/special_constructors.cc:1985
+#, kde-format
+msgid "The line tangent to a curve"
+msgstr "Қисыққа жанасатын түзу"
+
+#: misc/special_constructors.cc:2008
+#, kde-format
+msgid "Tangent to This Circle"
+msgstr "Мына қисыққа жанасатын түзу"
+
+#: misc/special_constructors.cc:2010
+#, kde-format
+msgid "Tangent to This Conic"
+msgstr "Мына конустық қимаға жанасатын түзу"
+
+#: misc/special_constructors.cc:2012
+#, kde-format
+msgid "Tangent to This Arc"
+msgstr "Мына доғаға жанасатын түзу"
+
+#: misc/special_constructors.cc:2014
+#, kde-format
+msgid "Tangent to This Cubic Curve"
+msgstr "Мына кубтық қисығына жанасатын түзу"
+
+#: misc/special_constructors.cc:2016
+#, kde-format
+msgid "Tangent to This Curve"
+msgstr "Мына қисығына жанасатын түзу"
+
+#: misc/special_constructors.cc:2018
+#, kde-format
+msgid "Tangent at This Point"
+msgstr "Мына нүктеде жанасатын түзу"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "Center Of Curvature"
+msgstr "Бұрылыс центрі"
+
+#: misc/special_constructors.cc:2038
+#, kde-format
+msgid "The center of the osculating circle to a curve"
+msgstr "Қисыққа жанасатын шеңбердің центрі"
+
+#: misc/special_constructors.cc:2058
+#, kde-format
+msgid "Center of Curvature of This Conic"
+msgstr "Мына конустық қимасының бұрылыс центрі"
+
+#: misc/special_constructors.cc:2060
+#, kde-format
+msgid "Center of Curvature of This Cubic Curve"
+msgstr "Мына кубтық қисықтың бұрылыс центрі"
+
+#: misc/special_constructors.cc:2062
+#, kde-format
+msgid "Center of Curvature of This Curve"
+msgstr "Мына қисықтың бұрылыс центрі"
+
+#: misc/special_constructors.cc:2064
+#, kde-format
+msgid "Center of Curvature at This Point"
+msgstr "Мына нүктедегі бұрылыс центрі"
+
+#: misc/unit.cc:105
+#, kde-format
+msgctxt "Translators: Pixel"
+msgid "pixel"
+msgstr "пиксел"
+
+#: misc/unit.cc:106
+#, kde-format
+msgctxt "Translators: Centimeter"
+msgid "cm"
+msgstr "см"
+
+#: misc/unit.cc:107
+#, kde-format
+msgctxt "Translators: Inch"
+msgid "in"
+msgstr "дюйм"
+
+#: modes/construct_mode.cc:223 modes/normal.cc:239
+#, kde-format
+msgid "Which object?"
+msgstr "Қай нысан?"
+
+#: modes/construct_mode.cc:258
+#, kde-format
+msgid ""
+"Click the location where you want to place the new point, or the curve that "
+"you want to attach it to..."
+msgstr ""
+"Жаңа нүктені орналастырыңыз келген орнын не оны косқыңыз келген қисығын "
+"түрту..."
+
+#: modes/construct_mode.cc:429
+#, kde-format
+msgid "Now select the location for the result label."
+msgstr "Орналастыратын жарлықтың орнын көрсетіңіз."
+
+#: modes/edittype.cc:25
+#, fuzzy, kde-format
+#| msgid "Edit Type"
+msgctxt "@title:window"
+msgid "Edit Type"
+msgstr "Макро түрін өзгерту"
+
+#: modes/edittype.cc:42
+#, kde-format
+msgid "Here you can edit the name of the current macro type."
+msgstr "Мұнда назардағы макро түрінің атауын өзгерте аласыз."
+
+#: modes/edittype.cc:45
+#, kde-format
+msgid ""
+"Here you can edit the description of the current macro type. This field is "
+"optional, so you can also leave this empty: if you do so, then your macro "
+"type will have no description."
+msgstr ""
+"Мұнда назардағы макро түрінің сипаттамасын өзгерте аласыз. Бұл өрісті "
+"толтыру міндетті емес, бос қалдыруға да болады."
+
+#: modes/edittype.cc:49
+#, kde-format
+msgid "Use this button to change the icon of the current macro type."
+msgstr "Бұл батырма назардағы макро түрінің таңбашасын өзгерту үшін."
+
+#: modes/edittype.cc:70
+#, kde-format
+msgid "The name of the macro can not be empty."
+msgstr "Макро атауы бос болуға тиіс емес."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/edittypewidget.ui:36
+#, kde-format
+msgid ""
+"Here you can modify the name, the description and the icon of this macro "
+"type."
+msgstr ""
+"Мұнда бұл макрос түрінің атауын, түсініктемесін, таңбашасын өзгерте аласыз."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_3)
+#: modes/edittypewidget.ui:73
+#, kde-format
+msgid "Name:"
+msgstr "Атауы:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2_2_2)
+#: modes/edittypewidget.ui:93
+#, kde-format
+msgid "Description:"
+msgstr "Түсініктемесі:"
+
+#: modes/historydialog.cc:24
+#, fuzzy, kde-format
+#| msgid "History Browser"
+msgctxt "@title:window"
+msgid "History Browser"
+msgstr "Журнал-шолғышы"
+
+#: modes/historydialog.cc:108
+#, kde-format
+msgid "Start of the construction"
+msgstr "Құрылымдың бастауы"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: modes/historywidget.ui:22
+#, kde-format
+msgid "Description of the current step:"
+msgstr "Қадамының түсініктемесі:"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
+#: modes/historywidget.ui:53
+#, kde-format
+msgid "First step"
+msgstr "Алғашқы қадам"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
+#: modes/historywidget.ui:66
+#, kde-format
+msgid "One step back"
+msgstr "Бір қадамға шегіну"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: modes/historywidget.ui:82
+#, kde-format
+msgid "/"
+msgstr "/"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
+#: modes/historywidget.ui:96
+#, kde-format
+msgid "One step forward"
+msgstr "Бір қадамға ілгерлеу"
+
+#. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
+#: modes/historywidget.ui:109
+#, kde-format
+msgid "Last step"
+msgstr "Соңғы қадам"
+
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
+#, kde-format
+msgid "Name"
+msgstr "Атауы"
+
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
+#, kde-format
+msgid "<unnamed object>"
+msgstr "<атаусыз нысан>"
+
+#: modes/label.cc:299
+#, kde-format
+msgid ""
+"There are '%n' parts in the text that you have not selected a value for. "
+"Please remove them or select enough arguments."
+msgstr ""
+"Келтірілген мәтінде мәні тағайындалмаған '%n' бөлшек бар. Оларды өшіріңіз не "
+"жеткілікті аргументтерді таңдаңыз."
+
+#: modes/label.cc:368
+#, kde-format
+msgid "argument %1"
+msgstr "%1 аргументі"
+
+#: modes/label.cc:397
+#, kde-format
+msgid "Selecting argument %1"
+msgstr "%1 аргументін таңдау"
+
+#: modes/label.cc:500
+#, kde-format
+msgid "Change Label"
+msgstr "Жарлықты өзгерту"
+
+#: modes/label.cc:595 objects/text_type.cc:290
+#, kde-format
+msgid "Set Value"
+msgstr "Мәнін келтіру"
+
+#: modes/label.cc:595
+#, kde-format
+msgid "Enter value:"
+msgstr "Мәні:"
+
+#: modes/label.cc:624
+#, kde-format
+msgid "Select the position for the new numeric value..."
+msgstr "Жаңа санның орнын таңдап беру..."
+
+#: modes/macro.cc:70
+#, kde-format
+msgid ""
+"One of the result objects you selected cannot be calculated from the given "
+"objects. Kig cannot calculate this macro because of this. Please press Back, "
+"and construct the objects in the correct order..."
+msgstr ""
+"Керек нысанның бірі берілген нысандардан құрылмайды. Сол себептен Kig бұл "
+"макроны есептей алмады. \"Шегіну\" дегенді басып нысанды дұрыстап құрыңыз."
+
+#: modes/macro.cc:78
+#, kde-format
+msgid ""
+"One of the given objects is not used in the calculation of the resultant "
+"objects.  This probably means you are expecting Kig to do something "
+"impossible.  Please check the macro and try again."
+msgstr ""
+"Берілген нысандарының біреуі нәтиже нысандарды есептегенде қолданған жоқ. "
+"Мүмкін бірдемені дұрыс істемеген шығарсыз. Макросты тексеріп шығып қайталап "
+"көріңіз."
+
+#: modes/macrowizard.cc:35
+#, kde-format
+msgid "Given Objects"
+msgstr "Берілген нысандар"
+
+#: modes/macrowizard.cc:42
+#, kde-format
+msgid "Select the \"given\" objects for your new macro and press \"Next\"."
+msgstr ""
+"Жаңа макросыңызға \"берілген\" нысандарын таңдап \"Келесі\" дегенді басыңыз."
+
+#: modes/macrowizard.cc:74
+#, kde-format
+msgid "Final Object"
+msgstr "Нәтиже нысаны"
+
+#: modes/macrowizard.cc:81
+#, kde-format
+msgid "Select the final object(s) for your new macro."
+msgstr "Жаңа макросыңыдың нәтиже нысан(дар)ын таңдаңыз."
+
+#: modes/macrowizard.cc:110
+#, kde-format
+msgid "Enter a name and description for your new type."
+msgstr "Жаңа макрос түріңізінің атау мен сипаттамасын келтіріңіз."
+
+#: modes/macrowizard.cc:119
+#, kde-format
+msgid "&Name:"
+msgstr "&Атауы:"
+
+#: modes/macrowizard.cc:126
+#, kde-format
+msgid "&Description:"
+msgstr "&Сипаттамасы:"
+
+#: modes/macrowizard.cc:132
+#, kde-format
+msgid "&Icon:"
+msgstr "&Таңбашасы:"
+
+#: modes/macrowizard.cc:154
+#, fuzzy, kde-format
+#| msgid "Define New Macro"
+msgctxt "@title:window"
+msgid "Define New Macro"
+msgstr "Жаңа макросты анықтау"
+
+#: modes/moving.cc:136
+#, kde-format
+msgid "Move %1 Object"
+msgid_plural "Move %1 Objects"
+msgstr[0] "%1 нысанды жылжыту"
+
+#: modes/moving.cc:218
+#, kde-format
+msgid "Redefine Point"
+msgstr "Нүктені жаңадан анықтау"
+
+#: modes/popup/builtinobjectactionsprovider.cc:34
+#, kde-format
+msgid "Black"
+msgstr "Қара"
+
+#: modes/popup/builtinobjectactionsprovider.cc:35
+#, kde-format
+msgid "Gray"
+msgstr "Сұр"
+
+#: modes/popup/builtinobjectactionsprovider.cc:36
+#, kde-format
+msgid "Red"
+msgstr "Қызыл"
+
+#: modes/popup/builtinobjectactionsprovider.cc:37
+#, kde-format
+msgid "Green"
+msgstr "Жасыл"
+
+#: modes/popup/builtinobjectactionsprovider.cc:38
+#, kde-format
+msgid "Cyan"
+msgstr "Циан"
+
+#: modes/popup/builtinobjectactionsprovider.cc:39
+#, kde-format
+msgid "Yellow"
+msgstr "Сары"
+
+#: modes/popup/builtinobjectactionsprovider.cc:40
+#, kde-format
+msgid "Dark Red"
+msgstr "Қою қызыл"
+
+#: modes/popup/builtinobjectactionsprovider.cc:61
+#, kde-format
+msgid "&Hide"
+msgstr "&Жасыру"
+
+#: modes/popup/builtinobjectactionsprovider.cc:64
+#, kde-format
+msgid "&Show"
+msgstr "&Көрсету"
+
+#: modes/popup/builtinobjectactionsprovider.cc:67
+#, kde-format
+msgid "&Move"
+msgstr "Ж&ылжыту"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/typeswidget.ui:112
+#, kde-format
+msgid "&Delete"
+msgstr "&Өшіру"
+
+#: modes/popup/builtinobjectactionsprovider.cc:75
+#, kde-format
+msgid "&Custom Color"
+msgstr "&Өзгеше түстер"
+
+#: modes/popup/builtinobjectactionsprovider.cc:208
+#, kde-format
+msgid "Change Object Color"
+msgstr "Нысанның түсін өзгерту"
+
+#: modes/popup/builtinobjectactionsprovider.cc:220
+#, kde-format
+msgid "Change Object Width"
+msgstr "Нысанның енін өзгерту"
+
+#: modes/popup/builtinobjectactionsprovider.cc:240
+#, kde-format
+msgid "Change Point Style"
+msgstr "Нүктенің стилін өзгерту"
+
+#: modes/popup/builtinobjectactionsprovider.cc:250
+#, kde-format
+msgid "Change Object Style"
+msgstr "Нысанның стилін өзгерту"
+
+#: modes/popup/nameobjectactionsprovider.cc:41
+#, kde-format
+msgid "Set &Name..."
+msgstr "&Атауын беру..."
+
+#: modes/popup/nameobjectactionsprovider.cc:43
+#, kde-format
+msgid "&Name"
+msgstr "&Атауы"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
+#, kde-format
+msgid "Set Object Name"
+msgstr "Нысанды атау"
+
+#: modes/popup/nameobjectactionsprovider.cc:63
+#, kde-format
+msgid "Set Name of this Object:"
+msgstr "Мына нысанның атауы:"
+
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#, kde-format
+msgid "%1 Object"
+msgid_plural "%1 Objects"
+msgstr[0] "%1 нысан"
+
+#: modes/popup/popup.cc:70
+#, kde-format
+msgid "Kig Document"
+msgstr "Kig құжаты"
+
+#: modes/popup/popup.cc:113
+#, kde-format
+msgid "&Transform"
+msgstr "&Түрлендіру"
+
+#: modes/popup/popup.cc:114
+#, kde-format
+msgid "T&est"
+msgstr "С&ынау"
+
+#: modes/popup/popup.cc:115
+#, kde-format
+msgid "Const&ruct"
+msgstr "Құр&у"
+
+#: modes/popup/popup.cc:116
+#, kde-format
+msgid "&Start"
+msgstr "&Бастау"
+
+#: modes/popup/popup.cc:117
+#, kde-format
+msgid "Add Te&xt Label"
+msgstr "Ж&азуды қосу"
+
+#: modes/popup/popup.cc:118
+#, kde-format
+msgid "Set Co&lor"
+msgstr "Түсін &орнату"
+
+#: modes/popup/popup.cc:119
+#, kde-format
+msgid "Set &Pen Width"
+msgstr "Қа&ламының қалыңдығы"
+
+#: modes/popup/popup.cc:120
+#, kde-format
+msgid "Set St&yle"
+msgstr "Ст&илін орнату"
+
+#: modes/popup/popup.cc:122
+#, kde-format
+msgid "Set Coordinate S&ystem"
+msgstr "Координаттар &жүйесі"
+
+#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#, kde-format
+msgctxt "More menu items"
+msgid "More..."
+msgstr "Қосымша..."
+
+#: modes/popup/scriptactionsprovider.cc:57
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgid "Edit Script..."
+msgstr "Скриптті өңдеу"
+
+#: modes/textlabelwizard.cc:31
+#, kde-format
+msgid "Enter Label Text"
+msgstr "Жазуын келтіру"
+
+#: modes/textlabelwizard.cc:40
+#, kde-format
+msgid ""
+"Enter the text for your label here and press \"Next\".\n"
+"If you want to show variable parts, then put %1, %2, ... at the appropriate "
+"places (e.g. \"This segment is %1 units long.\")."
+msgstr ""
+"Мұнда жазуыңызды келтіріп \"Келесі\" дегенді басыңыз.\n"
+"Айнымалы бөлшектері болса, олардың орнына %1, %2, ... деп қойыңыз (мысалы: "
+"\"Бұл кесіндінің ұзындығы %1 бірлік\").  "
+
+#: modes/textlabelwizard.cc:52
+#, kde-format
+msgid "Show text in a frame"
+msgstr "Мәтіні қоршауда болсын"
+
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#, kde-format
+msgid "Select Arguments"
+msgstr "Аргументтері"
+
+#: modes/textlabelwizard.cc:85
+#, kde-format
+msgid ""
+"Now select the argument(s) you need.  For every argument, click on it, "
+"select an object and a property in the Kig window, and click finish when you "
+"are done..."
+msgstr ""
+"Керек аргумент(тер)ін таңдаңыз. Kig терезесінен әрбір аргументтің нысаны мен "
+"қасиетрін түртіп таңдп алыңыз да \"Аяқтау\" батырмасын басыңыз..."
+
+#: modes/textlabelwizard.cc:106
+#, fuzzy, kde-format
+#| msgid "Construct Label"
+msgctxt "@title:window"
+msgid "Construct Label"
+msgstr "Жарлығын құру"
+
+#: modes/typesdialog.cpp:133
+#, kde-format
+msgid "Macro"
+msgstr "Макрос"
+
+#: modes/typesdialog.cpp:301
+#, kde-format
+msgid "Type"
+msgstr "Түрі"
+
+#: modes/typesdialog.cpp:307
+#, kde-format
+msgid "Description"
+msgstr "Түсініктеме"
+
+#: modes/typesdialog.cpp:331
+#, fuzzy, kde-format
+#| msgid "Manage Types"
+msgctxt "@title:window"
+msgid "Manage Types"
+msgstr "Түрлерін басқару"
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
+#, kde-format
+msgid "&Edit..."
+msgstr "&Өңдеу..."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonExport)
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
+#, kde-format
+msgid "E&xport..."
+msgstr "Э&кспорттау..."
+
+#: modes/typesdialog.cpp:425
+#, kde-format
+msgid "Are you sure you want to delete this type?"
+msgid_plural "Are you sure you want to delete these %1 types?"
+msgstr[0] "Осы %1 түрлерін шын өшірмексіз бе?"
+
+#: modes/typesdialog.cpp:427
+#, kde-format
+msgid "Are You Sure?"
+msgstr "Рас па?"
+
+#: modes/typesdialog.cpp:453
+#, kde-format
+msgid "Export Types"
+msgstr "Түрлерін экспорттау"
+
+#: modes/typesdialog.cpp:455
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt);;All Files (*)"
+msgstr ""
+"*.kigt|Kig түрлер файлдары\n"
+"*|Бүкіл файлдар"
+
+#: modes/typesdialog.cpp:475
+#, fuzzy, kde-format
+#| msgid ""
+#| "*.kigt|Kig Types Files\n"
+#| "*|All Files"
+msgid "Kig Types Files (*.kigt)"
+msgstr ""
+"*.kigt|Kig түрлер файлдары\n"
+"*|Бүкіл файлдар"
+
+#: modes/typesdialog.cpp:477
+#, kde-format
+msgid "Geogebra Tool Files (*.ggt)"
+msgstr ""
+
+#: modes/typesdialog.cpp:479
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: modes/typesdialog.cpp:481
+#, kde-format
+msgid "Import Types"
+msgstr "Түрлерін импорттау"
+
+#: modes/typesdialog.cpp:514
+#, kde-format
+msgid ""
+"There is more than one type selected. You can only edit one type at a time. "
+"Please select only the type you want to edit and try again."
+msgstr ""
+"Көп түрі таңдалған. Бір кезде бір ғана түрін өңдеуге болады. Біреуін ғана "
+"таңдап, қайталал көріңіз. "
+
+#: modes/typesdialog.cpp:517
+#, kde-format
+msgid "More Than One Type Selected"
+msgstr "Көп түрі таңдалған"
+
+#. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:37
+#, kde-format
+msgid "Select types here..."
+msgstr "Түрін таңдау..."
+
+#. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
+#: modes/typeswidget.ui:40
+#, kde-format
+msgid ""
+"This is a list of the current macro types... You can select, edit, delete, "
+"export and import them..."
+msgstr ""
+"Бұл қолданыстағы макро түрлер тізімі... Оларды таңдап, өзгертуге, өшіруге, "
+"импорттауға, экспорттауға болады..."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
+#: modes/typeswidget.ui:99
+#, kde-format
+msgid "Edit the selected type."
+msgstr "Таңдалған түрін өзгерту."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
+#: modes/typeswidget.ui:109
+#, kde-format
+msgid "Delete all the selected types in the list."
+msgstr "Тізімдегі бүкіл таңдалған түрлерін өшіру."
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
+#: modes/typeswidget.ui:151
+#, kde-format
+msgid "Export all the selected types to a file."
+msgstr "Тізімдегі бүкіл таңдалған түрлерін экспорттау"
+
+#. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:161
+#, kde-format
+msgid "Import macros that are contained in one or more files."
+msgstr "Бір не бірнеше файлдағы макростарды импорттау."
+
+#. i18n: ectx: property (text), widget (QPushButton, buttonImport)
+#: modes/typeswidget.ui:164
+#, kde-format
+msgid "&Import..."
+msgstr "&Импорттау..."
+
+#: objects/angle_type.cc:26
+#, kde-format
+msgid "Construct an angle through this point"
+msgstr "Осы нүктеден өтетін бұрышты құру"
+
+#: objects/angle_type.cc:29
+#, kde-format
+msgid ""
+"Select a point that the first half-line of the angle should go through..."
+msgstr "Бұрыштың бір сәулесі өтетін нүктені таңдау..."
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Construct an angle at this point"
+msgstr "Осы нүктеде бұрышты құру"
+
+#: objects/angle_type.cc:30
+#, kde-format
+msgid "Select the point to construct the angle in..."
+msgstr "Бұрыштың ұшы болатын нүктені таңдау..."
+
+#: objects/angle_type.cc:31
+#, kde-format
+msgid ""
+"Select a point that the second half-line of the angle should go through..."
+msgstr "Бұрыштың екінші сәулесі өтетін нүктені таңдау..."
+
+#: objects/angle_type.cc:90
+#, kde-format
+msgid "Set Si&ze"
+msgstr "Өл&шемін орнату"
+
+#: objects/angle_type.cc:91
+#, kde-format
+msgid "Toggle &Right Angle Mark"
+msgstr "&Тікбұрыш белгісін ауыстыру"
+
+#: objects/angle_type.cc:133
+#, kde-format
+msgid "Resize Angle"
+msgstr "Бұрыш өлшемін өзгерту"
+
+#: objects/arc_type.cc:33
+#, kde-format
+msgid "Construct an arc starting at this point"
+msgstr "Осы нүктеден доғаны шығару"
+
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
+#, kde-format
+msgid "Select the start point of the new arc..."
+msgstr "Жаңа доғаның бастау нүктесін таңдау..."
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Construct an arc through this point"
+msgstr "Осы нүктеден өтетін доғаны құру"
+
+#: objects/arc_type.cc:37
+#, kde-format
+msgid "Select a point for the new arc to go through..."
+msgstr "Жаңа доға өтетін нүктені таңдау..."
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Construct an arc ending at this point"
+msgstr "Осы нүктеге дейін доғаны құру"
+
+#: objects/arc_type.cc:38
+#, kde-format
+msgid "Select the end point of the new arc..."
+msgstr "Жаңа доғаның аяқтау нүктесін таңдау..."
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Construct an arc with this center"
+msgstr "Осы центрімен доғаны құру "
+
+#: objects/arc_type.cc:148
+#, kde-format
+msgid "Select the center of the new arc..."
+msgstr "Жаңа доғаның центрін таңдау..."
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Construct an arc with this angle"
+msgstr "Осы бұрыш шектейтін доғаны құру "
+
+#: objects/arc_type.cc:150
+#, kde-format
+msgid "Select the angle of the new arc..."
+msgstr "Жаңа доғаның шектеу бұрышын таңдау..."
+
+#: objects/arc_type.cc:204
+#, kde-format
+msgid "Construct a conic arc starting at this point"
+msgstr "Осы нүктеден конустық кимасының доғасын шығару"
+
+#: objects/arc_type.cc:205
+#, kde-format
+msgid "Select the start point of the new conic arc..."
+msgstr "Жаңа конустық кима доғасының бастау нүктесін таңдау..."
+
+#: objects/arc_type.cc:206
+#, kde-format
+msgid "Construct a conic arc through this point"
+msgstr "Осы нүктеден өтетін конустық қиманың доғасын құру"
+
+#: objects/arc_type.cc:207
+#, kde-format
+msgid "Select a point for the new conic arc to go through..."
+msgstr "Жаңа конустық қима доғасы өтетін нүктені таңдау..."
+
+#: objects/arc_type.cc:208
+#, kde-format
+msgid "Construct a conic arc ending at this point"
+msgstr "Осы нүктеге дейін конустық кима доғасын құру"
+
+#: objects/arc_type.cc:209
+#, kde-format
+msgid "Select the end point of the new conic arc..."
+msgstr "Жаңа конустық кима доғасының аяқтау нүктесін таңдау..."
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Construct an conic arc with this center"
+msgstr "Осы центрімен конустық қима доғасын құру "
+
+#: objects/arc_type.cc:212
+#, kde-format
+msgid "Select the center of the new conic arc..."
+msgstr "Жаңа конустық қима доғасының центрін таңдау..."
+
+#: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
+msgid "Number of control points"
+msgstr "Басқару нүктелерінің саны"
+
+#: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
+msgid "Control polygon"
+msgstr "Басқару көпбұрышы"
+
+#: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/locus_imp.cc:93
+msgid "Cartesian Equation"
+msgstr "Декарт теңдігі"
+
+#: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
+msgid "Bézier Curve"
+msgstr "Безье кисығы"
+
+#: objects/bezier_imp.cc:202
+#, kde-format
+msgid "Select this Bézier Curve"
+msgstr "Осы Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:203
+#, kde-format
+msgid "Select Bézier Curve %1"
+msgstr "%1 Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:204
+msgid "Remove a Bézier Curve"
+msgstr "Безье кисығын өшіру"
+
+#: objects/bezier_imp.cc:205
+msgid "Add a Bézier Curve"
+msgstr "Безье кисығын қосу"
+
+#: objects/bezier_imp.cc:206
+msgid "Move a Bézier Curve"
+msgstr "Безье кисығын жылжыту"
+
+#: objects/bezier_imp.cc:207
+msgid "Attach to this Bézier Curve"
+msgstr "Осы Безье кисығына тіркеу"
+
+#: objects/bezier_imp.cc:208
+msgid "Show a Bézier Curve"
+msgstr "Безье кисығын көрсету"
+
+#: objects/bezier_imp.cc:209
+msgid "Hide a Bézier Curve"
+msgstr "Безье кисығын жасыру"
+
+#: objects/bezier_imp.cc:218
+msgid "Bézier Quadratic"
+msgstr "Квадраттық Безье кисығы"
+
+#: objects/bezier_imp.cc:219
+#, kde-format
+msgid "Select this Bézier Quadratic"
+msgstr "Осы квадраттық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:220
+#, kde-format
+msgid "Select Bézier Quadratic %1"
+msgstr "%1 квадраттық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:221
+msgid "Remove a Bézier Quadratic"
+msgstr "Квадраттық Безье кисығын өшіру"
+
+#: objects/bezier_imp.cc:222
+msgid "Add a Bézier Quadratic"
+msgstr "Квадраттық Безье кисығын қосу"
+
+#: objects/bezier_imp.cc:223
+msgid "Move a Bézier Quadratic"
+msgstr "Квадраттық Безье кисығын жылжыту"
+
+#: objects/bezier_imp.cc:224
+msgid "Attach to this Bézier Quadratic"
+msgstr "Осы квадраттық Безье кисығына тіркеу"
+
+#: objects/bezier_imp.cc:225
+msgid "Show a Bézier Quadratic"
+msgstr "Квадраттық Безье кисығын көрсету"
+
+#: objects/bezier_imp.cc:226
+msgid "Hide a Bézier Quadratic"
+msgstr "Квадраттық Безье кисығын жасыру"
+
+#: objects/bezier_imp.cc:235
+msgid "Bézier Cubic"
+msgstr "Кубтық Безье кисығы"
+
+#: objects/bezier_imp.cc:236
+#, kde-format
+msgid "Select this Bézier Cubic"
+msgstr "Осы кубтық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:237
+#, kde-format
+msgid "Select Bézier Cubic %1"
+msgstr "%1 кубтық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:238
+msgid "Remove a Bézier Cubic"
+msgstr "Кубтық Безье кисығын өшіру"
+
+#: objects/bezier_imp.cc:239
+msgid "Add a Bézier Cubic"
+msgstr "Кубтық Безье кисығын қосу"
+
+#: objects/bezier_imp.cc:240
+msgid "Move a Bézier Cubic"
+msgstr "Кубтық Безье кисығын жылжыту"
+
+#: objects/bezier_imp.cc:241
+msgid "Attach to this Bézier Cubic"
+msgstr "Осы кубтық Безье кисығына тіркеу"
+
+#: objects/bezier_imp.cc:242
+msgid "Show a Bézier Cubic"
+msgstr "Кубтық Безье кисығын көрсету"
+
+#: objects/bezier_imp.cc:243
+msgid "Hide a Bézier Cubic"
+msgstr "Рационал Безье кисығын жасыру"
+
+#: objects/bezier_imp.cc:490
+msgid "Rational Bézier Curve"
+msgstr "Рационал Безье кисығы"
+
+#: objects/bezier_imp.cc:491
+#, kde-format
+msgid "Select this Rational Bézier Curve"
+msgstr "Осы рационал Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:492
+#, kde-format
+msgid "Select Rational Bézier Curve %1"
+msgstr "%1 рационал Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:493
+msgid "Remove a Rational Bézier Curve"
+msgstr "Рационал Безье кисығын өшіру"
+
+#: objects/bezier_imp.cc:494
+msgid "Add a Rational Bézier Curve"
+msgstr "Рационал Безье кисығын қосу"
+
+#: objects/bezier_imp.cc:495
+msgid "Move a Rational Bézier Curve"
+msgstr "Рационал Безье кисығын жылжыту"
+
+#: objects/bezier_imp.cc:496
+msgid "Attach to this Rational Bézier Curve"
+msgstr "Осы рационал Безье кисығына тіркеу"
+
+#: objects/bezier_imp.cc:497
+msgid "Show a Rational Bézier Curve"
+msgstr "Рационал Безье кисығын көрсету"
+
+#: objects/bezier_imp.cc:498
+msgid "Hide a Rational Bézier Curve"
+msgstr "Рационал Безье кисығын жасыру"
+
+#: objects/bezier_imp.cc:507
+msgid "Rational Bézier Quadratic"
+msgstr "Рационал квадраттық Безье кисығы"
+
+#: objects/bezier_imp.cc:508
+#, kde-format
+msgid "Select this Rational Bézier Quadratic"
+msgstr "Осы рационал квадраттық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:509
+#, kde-format
+msgid "Select Rational Bézier Quadratic %1"
+msgstr "%1 рационал квадраттық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:510
+msgid "Remove a Rational Bézier Quadratic"
+msgstr "Рационал квадраттық Безье кисығын өшіру"
+
+#: objects/bezier_imp.cc:511
+msgid "Add a Rational Bézier Quadratic"
+msgstr "Рационал квадраттық Безье кисығын қосу"
+
+#: objects/bezier_imp.cc:512
+msgid "Move a Rational Bézier Quadratic"
+msgstr "Рационал квадраттық Безье кисығын жылжыту"
+
+#: objects/bezier_imp.cc:513
+msgid "Attach to this Rational Bézier Quadratic"
+msgstr "Осы рационал квадраттық Безье кисығына тіркеу"
+
+#: objects/bezier_imp.cc:514
+msgid "Show a Rational Bézier Quadratic"
+msgstr "Рационал квадраттық Безье кисығын көрсету"
+
+#: objects/bezier_imp.cc:515
+msgid "Hide a Rational Bézier Quadratic"
+msgstr "Рационал квадраттық Безье кисығын жасыру"
+
+#: objects/bezier_imp.cc:524
+msgid "Rational Bézier Cubic"
+msgstr "Рационал кубтық Безье кисығы"
+
+#: objects/bezier_imp.cc:525
+#, kde-format
+msgid "Select this Rational Bézier Cubic"
+msgstr "Осы рационал кубтық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:526
+#, kde-format
+msgid "Select Rational Bézier Cubic %1"
+msgstr "%1 рационал кубтық Безье кисығын таңдау"
+
+#: objects/bezier_imp.cc:527
+msgid "Remove a Rational Bézier Cubic"
+msgstr "Рационал кубтық Безье кисығын өшіру"
+
+#: objects/bezier_imp.cc:528
+msgid "Add a Rational Bézier Cubic"
+msgstr "Рационал кубтық Безье кисығын қосу"
+
+#: objects/bezier_imp.cc:529
+msgid "Move a Rational Bézier Cubic"
+msgstr "Рационал кубтық Безье кисығын жылжыту"
+
+#: objects/bezier_imp.cc:530
+msgid "Attach to this Rational Bézier Cubic"
+msgstr "Осы рационал кубтық Безье кисығына тіркеу"
+
+#: objects/bezier_imp.cc:531
+msgid "Show a Rational Bézier Cubic"
+msgstr "Рационал кубтық Безье кисығын көрсету"
+
+#: objects/bezier_imp.cc:532
+msgid "Hide a Rational Bézier Cubic"
+msgstr "Рационал кубтық Безье кисығын жасыру"
+
+#: objects/bezier_type.cc:26
+#, kde-format
+msgid "Construct a quadratic Bézier curve with this control point"
+msgstr "Мына басқару нүктесі бар квадраттық Безье кисығын құру"
+
+#: objects/bezier_type.cc:27
+#, kde-format
+msgid ""
+"Select a point to be a control point of the new quadratic Bézier curve..."
+msgstr ""
+"Жаңа квадраттық Безье кисығының басқаратын нүктесі қылатын нүктені таңдау..."
+
+#: objects/bezier_type.cc:121
+#, kde-format
+msgid "Construct a cubic Bézier curve with this control point"
+msgstr "Мына басқару нүктесі бар кубтық Безье кисығын құру"
+
+#: objects/bezier_type.cc:122
+#, kde-format
+msgid "Select a point to be a control point of the new cubic Bézier curve..."
+msgstr ""
+"Жаңа кубтық Безье кисығының басқаратын нүктесі қылатын нүктені таңдау..."
+
+#: objects/bezier_type.cc:328
+#, kde-format
+msgid "Construct a quadratic rational Bézier curve with this control point"
+msgstr "Мына басқару нүктесі бар квадраттық рационал Безье кисығын құру"
+
+#: objects/bezier_type.cc:329 objects/bezier_type.cc:434
+#, kde-format
+msgid ""
+"Select three points and three numeric values as weights to construct "
+"rational Bézier curve..."
+msgstr "Рационал Безье кисығын құру үшін үш нүктемен үш салмақ мәнін таңдау..."
+
+#: objects/bezier_type.cc:330 objects/bezier_type.cc:435
+#, kde-format
+msgid "Select this value as weight"
+msgstr "Осы мәнді салмақ ретінде таңдау"
+
+#: objects/bezier_type.cc:433
+#, kde-format
+msgid "Construct a cubic rational Bézier curve with this control point"
+msgstr "Мына басқару нүктесі бар кубтық рационал Безье кисығын құру"
+
+#: objects/bogus_imp.cc:215
+msgid "string"
+msgstr ""
+
+#: objects/bogus_imp.cc:291
+msgid "double"
+msgstr ""
+
+#: objects/bogus_imp.cc:307
+#, fuzzy
+#| msgctxt "Translators: Inch"
+#| msgid "in"
+msgid "int"
+msgstr "дюйм"
+
+#: objects/bogus_imp.cc:387
+msgid "Test Result"
+msgstr "Нәтижесін сынау"
+
+#: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
+#, kde-format
+msgid "Select the curve..."
+msgstr "Қисықты таңдау..."
+
+#: objects/centerofcurvature_type.cc:23
+#, kde-format
+msgid "Select a point on the curve..."
+msgstr "Қисықта нүктені таңдау..."
+
+#: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
+#: objects/polygon_imp.cc:304
+msgid "Surface"
+msgstr "Бет"
+
+#: objects/circle_imp.cc:134
+msgid "Circumference"
+msgstr "Айнала ұзындығы"
+
+#: objects/circle_imp.cc:135 objects/other_imp.cc:392
+msgid "Radius"
+msgstr "Радиусы"
+
+#: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
+msgid "Center"
+msgstr "Центріі"
+
+#: objects/circle_imp.cc:137
+msgid "Expanded Cartesian Equation"
+msgstr "Кеңейтілген Декарт теңдігі"
+
+#: objects/circle_imp.cc:139 objects/conic_imp.cc:78
+msgid "Polar Equation"
+msgstr "Полярлық теңеу"
+
+#: objects/circle_imp.cc:233
+#, kde-format
+msgid "rho = %1   [centered at %2]"
+msgstr "ρ = %1   [центрі %2]"
+
+#: objects/circle_imp.cc:337
+msgid "circle"
+msgstr "шеңбер"
+
+#: objects/circle_imp.cc:338
+#, kde-format
+msgid "Select this circle"
+msgstr "Осы шеңберді таңдау"
+
+#: objects/circle_imp.cc:339
+#, kde-format
+msgid "Select circle %1"
+msgstr "%1 шеңберді таңдау"
+
+#: objects/circle_imp.cc:340
+msgid "Remove a Circle"
+msgstr "Шеңберді өшіру"
+
+#: objects/circle_imp.cc:341
+msgid "Add a Circle"
+msgstr "Шеңберді қосу"
+
+#: objects/circle_imp.cc:342
+msgid "Move a Circle"
+msgstr "Шеңберді жылжыту"
+
+#: objects/circle_imp.cc:343
+msgid "Attach to this circle"
+msgstr "Осы шеңберге тіркеу"
+
+#: objects/circle_imp.cc:344
+msgid "Show a Circle"
+msgstr "Шеңберді көрсету"
+
+#: objects/circle_imp.cc:345
+msgid "Hide a Circle"
+msgstr "Шеңберді жасыру"
+
+#: objects/circle_type.cc:17
+#, kde-format
+msgid "Construct a circle through this point"
+msgstr "Осы нүктеден өтетін шеңберді құру"
+
+#: objects/circle_type.cc:19
+#, kde-format
+msgid "Construct a circle with this center"
+msgstr "Осы центрімен шеңберді құру "
+
+#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#, kde-format
+msgid "Select the center of the new circle..."
+msgstr "Жаңа шеңбердің центрін таңдау..."
+
+#: objects/circle_type.cc:23 objects/circle_type.cc:48
+#: objects/circle_type.cc:49 objects/circle_type.cc:50
+#, kde-format
+msgid "Select a point for the new circle to go through..."
+msgstr "Жаңа шеңбер өтетін нүктені таңдау..."
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "With this radius"
+msgstr "Мына радиуспен"
+
+#: objects/circle_type.cc:177
+#, kde-format
+msgid "Select the length of the radius..."
+msgstr "Радиусының ұзындығын таңдау..."
+
+#: objects/conic_imp.cc:73
+msgid "Conic Type"
+msgstr "Конустық қиманың түрі"
+
+#: objects/conic_imp.cc:75
+msgid "First Focus"
+msgstr "Бірінші фокусы"
+
+#: objects/conic_imp.cc:76
+msgid "Second Focus"
+msgstr "Екінші фокусы"
+
+#: objects/conic_imp.cc:202
+#, kde-format
+msgid "Ellipse"
+msgstr "Эллипс"
+
+#: objects/conic_imp.cc:204
+#, kde-format
+msgid "Hyperbola"
+msgstr "Гипербола"
+
+#: objects/conic_imp.cc:206
+#, kde-format
+msgid "Parabola"
+msgstr "Парабола"
+
+#: objects/conic_imp.cc:255
+#, kde-format
+msgid "rho"
+msgstr "ρ"
+
+#: objects/conic_imp.cc:263
+#, kde-format
+msgid "cos theta"
+msgstr "cos θ"
+
+#: objects/conic_imp.cc:264
+#, kde-format
+msgid "sin theta"
+msgstr "sin θ"
+
+#: objects/conic_imp.cc:266
+#, kde-format
+msgid "[centered at %1]"
+msgstr "[центрі %1]"
+
+#: objects/conic_imp.cc:378
+msgid "conic"
+msgstr "конустық қимасы"
+
+#: objects/conic_imp.cc:379
+#, kde-format
+msgid "Select this conic"
+msgstr "Осы конустық қимасын таңдау"
+
+#: objects/conic_imp.cc:380
+#, kde-format
+msgid "Select conic %1"
+msgstr "%1 конустық қимасын таңдау"
+
+#: objects/conic_imp.cc:381
+msgid "Remove a Conic"
+msgstr "Конустық қимасын өшіру"
+
+#: objects/conic_imp.cc:382
+msgid "Add a Conic"
+msgstr "Конустық қимасын қосу"
+
+#: objects/conic_imp.cc:383
+msgid "Move a Conic"
+msgstr "Конустық қимасын жылжыту"
+
+#: objects/conic_imp.cc:384
+msgid "Attach to this conic"
+msgstr "Осы конустық қимасына тіркеу"
+
+#: objects/conic_imp.cc:385
+msgid "Show a Conic"
+msgstr "Конустық қимасын көрсету"
+
+#: objects/conic_imp.cc:386
+msgid "Hide a Conic"
+msgstr "Конустық қимасын жасыру"
+
+#: objects/conic_imp.cc:524
+msgid "Supporting Conic"
+msgstr "Тірек конустық қимасыа"
+
+#: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
+msgid "First End Point"
+msgstr "Бір жақ соңғы нүктесі"
+
+#: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
+msgid "Second End Point"
+msgstr "Екінші жақ соңғы нүктесі"
+
+#: objects/conic_imp.cc:603
+msgid "conic arc"
+msgstr "Конустық қима доғасы"
+
+#: objects/conic_imp.cc:604
+#, kde-format
+msgid "Select this conic arc"
+msgstr "Конустық қима доғасын таңдау"
+
+#: objects/conic_imp.cc:605
+#, kde-format
+msgid "Select conic arc %1"
+msgstr "%1 конустық қима доғасын таңдау"
+
+#: objects/conic_imp.cc:606
+msgid "Remove a Conic Arc"
+msgstr "Конустық қима доғасын өшіру"
+
+#: objects/conic_imp.cc:607
+msgid "Add a Conic Arc"
+msgstr "Конустық қима доғасын қосу"
+
+#: objects/conic_imp.cc:608
+msgid "Move a Conic Arc"
+msgstr "Конустық қима доғасын жылжыту"
+
+#: objects/conic_imp.cc:609
+msgid "Attach to this conic arc"
+msgstr "Осы конустық қима доғасына тіркеу"
+
+#: objects/conic_imp.cc:610
+msgid "Show a Conic Arc"
+msgstr "Конустық қима доғасын көрсету"
+
+#: objects/conic_imp.cc:611
+msgid "Hide a Conic Arc"
+msgstr "Конустық қима доғасын жасыру"
+
+#: objects/conic_types.cc:18 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Construct a conic through this point"
+msgstr "Осы нүктеден өтетін конустық қиманы құру"
+
+#: objects/conic_types.cc:21 objects/conic_types.cc:22
+#: objects/conic_types.cc:23 objects/conic_types.cc:24
+#: objects/conic_types.cc:25 objects/conic_types.cc:63
+#: objects/conic_types.cc:181
+#, kde-format
+msgid "Select a point for the new conic to go through..."
+msgstr "Жаңа конустық қима өтетін нүктені таңдау..."
+
+#: objects/conic_types.cc:61 objects/conic_types.cc:62
+#, kde-format
+msgid "Construct a conic with this asymptote"
+msgstr "Асимптотасы осындай конустық қиманы құру"
+
+#: objects/conic_types.cc:61
+#, kde-format
+msgid "Select the first asymptote of the new conic..."
+msgstr "Жаңа конустық қиманың бір жақ асимптотасын таңдау..."
+
+#: objects/conic_types.cc:62
+#, kde-format
+msgid "Select the second asymptote of the new conic..."
+msgstr "Жаңа конустық қиманың екінші жақ асимптотасын таңдау..."
+
+#: objects/conic_types.cc:114
+#, kde-format
+msgid "Construct an ellipse with this focus"
+msgstr "Осы фокуспен эллипсті құру "
+
+#: objects/conic_types.cc:117
+#, kde-format
+msgid "Select the first focus of the new ellipse..."
+msgstr "Жаңа эллипстің бір жақ фокусын таңдау..."
+
+#: objects/conic_types.cc:118
+#, kde-format
+msgid "Select the second focus of the new ellipse..."
+msgstr "Жаңа эллипстің екінші жақ фокусын таңдау..."
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Construct an ellipse through this point"
+msgstr "Осы нүктеден өтетін эллипсті құру"
+
+#: objects/conic_types.cc:119
+#, kde-format
+msgid "Select a point for the new ellipse to go through..."
+msgstr "Жаңа эллипс өтетін нүктені таңдау..."
+
+#: objects/conic_types.cc:143
+#, kde-format
+msgid "Construct a hyperbola with this focus"
+msgstr "Осы фокуспен гиперболаны құру "
+
+#: objects/conic_types.cc:146
+#, kde-format
+msgid "Select the first focus of the new hyperbola..."
+msgstr "Жаңа гиперболаның бір жақ фокусын таңдау..."
+
+#: objects/conic_types.cc:147
+#, kde-format
+msgid "Select the second focus of the new hyperbola..."
+msgstr "Жаңа гиперболаның екінші жақ фокусын таңдау..."
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:375
+#, kde-format
+msgid "Construct a hyperbola through this point"
+msgstr "Осы нүктеден өтетін гиперболаны құру"
+
+#: objects/conic_types.cc:148 objects/conic_types.cc:378
+#: objects/conic_types.cc:379 objects/conic_types.cc:380
+#: objects/conic_types.cc:381
+#, kde-format
+msgid "Select a point for the new hyperbola to go through..."
+msgstr "Жаңа гипербола өтетін нүктені таңдау..."
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Construct a conic with this line as directrix"
+msgstr "Директрисасы осындай конустық қиманы құру"
+
+#: objects/conic_types.cc:179
+#, kde-format
+msgid "Select the directrix of the new conic..."
+msgstr "Жаңа конустық қиманың директриса түзуін таңдау..."
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Construct a conic with this point as focus"
+msgstr "Фокусы осы нүктеде конустық қиманы құру"
+
+#: objects/conic_types.cc:180
+#, kde-format
+msgid "Select the focus of the new conic..."
+msgstr "Жаңа конустық қиманың фокусын таңдау..."
+
+#: objects/conic_types.cc:216
+#, kde-format
+msgid "Construct a parabola through this point"
+msgstr "Осы нүктеден өтетін параболаны құру"
+
+#: objects/conic_types.cc:219 objects/conic_types.cc:220
+#: objects/conic_types.cc:221
+#, kde-format
+msgid "Select a point for the new parabola to go through..."
+msgstr "Жаңа парабола өтетін нүктені таңдау..."
+
+#: objects/conic_types.cc:257
+#, kde-format
+msgid "Construct a polar point wrt. this conic"
+msgstr "Осы конустық қиманың полярлық нүктесін құру "
+
+#: objects/conic_types.cc:258 objects/conic_types.cc:298
+#, kde-format
+msgid "Select the conic wrt. which you want to construct a polar point..."
+msgstr "Полярлық нүктесі құрылатын конустық қимасын таңдау..."
+
+#: objects/conic_types.cc:261
+#, kde-format
+msgid "Construct the polar point of this line"
+msgstr "Осы сызықтың полярлық нүктесін құру "
+
+#: objects/conic_types.cc:262 objects/conic_types.cc:302
+#, kde-format
+msgid "Select the line of which you want to construct the polar point..."
+msgstr "Полярлық нүктесі құрылатын сызығын таңдау..."
+
+#: objects/conic_types.cc:297
+#, kde-format
+msgid "Construct a polar line wrt. this conic"
+msgstr "Осы конустық қиманың полярлық сызығын құру "
+
+#: objects/conic_types.cc:301
+#, kde-format
+msgid "Construct the polar line of this point"
+msgstr "Осы сызықтың полярлық сызығын құру "
+
+#: objects/conic_types.cc:338
+#, kde-format
+msgid "Construct the directrix of this conic"
+msgstr "Осы конустық қиманың директрисасын құру "
+
+#: objects/conic_types.cc:339
+#, kde-format
+msgid "Select the conic of which you want to construct the directrix..."
+msgstr "Директрисасы құрылатын конустық қимасын таңдау.."
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Construct a parabola with this directrix"
+msgstr "Директрисасы осындай параболаны құру"
+
+#: objects/conic_types.cc:417
+#, kde-format
+msgid "Select the directrix of the new parabola..."
+msgstr "Жаңа параболаның директрисасын таңдау..."
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Construct a parabola with this focus"
+msgstr "Фокусы осы нүктеде параболаны құру"
+
+#: objects/conic_types.cc:418
+#, kde-format
+msgid "Select the focus of the new parabola..."
+msgstr "Жаңа параболаның фокусын таңдау..."
+
+#: objects/conic_types.cc:453
+#, kde-format
+msgid "Construct the asymptotes of this conic"
+msgstr "Осы конустық қиманың асимптоталарын құру "
+
+#: objects/conic_types.cc:454
+#, kde-format
+msgid "Select the conic of which you want to construct the asymptotes..."
+msgstr "Асимптоталары құрылатын конустық қимасын таңдау.."
+
+#: objects/conic_types.cc:489
+#, kde-format
+msgid "Construct the radical lines of this conic"
+msgstr "Осы конустық қиманың радикал сызықттарын құру "
+
+#: objects/conic_types.cc:492
+#, kde-format
+msgid ""
+"Select the first of the two conics of which you want to construct the "
+"radical line..."
+msgstr "Радикал сызығы құрылатын екі конустық қиманың біріншісін таңдау..."
+
+#: objects/conic_types.cc:493
+#, kde-format
+msgid ""
+"Select the other of the two conic of which you want to construct the radical "
+"line..."
+msgstr "Радикал сызығы құрылатын екі конустық қиманың екіншісін таңдау..."
+
+#: objects/conic_types.cc:604
+#, kde-format
+msgid "Switch Radical Lines"
+msgstr "Басқа радикал сызығына ауысу"
+
+#: objects/conic_types.cc:619
+#, kde-format
+msgid "Switch Conic Radical Lines"
+msgstr "Конустық қиманың басқа радикал сызығына ауысу"
+
+#: objects/cubic_imp.cc:347
+msgid "cubic curve"
+msgstr "қубтық қисығы"
+
+#: objects/cubic_imp.cc:348
+#, kde-format
+msgid "Select this cubic curve"
+msgstr "Мынау кубтық қисықты таңдау"
+
+#: objects/cubic_imp.cc:349
+#, kde-format
+msgid "Select cubic curve %1"
+msgstr "%1 кубтық қисығын таңдау"
+
+#: objects/cubic_imp.cc:350
+msgid "Remove a Cubic Curve"
+msgstr "Кубтық қисықты өшіру"
+
+#: objects/cubic_imp.cc:351
+msgid "Add a Cubic Curve"
+msgstr "Кубтық қисықты қосу"
+
+#: objects/cubic_imp.cc:352
+msgid "Move a Cubic Curve"
+msgstr "Кубтық қисықты жылжыту"
+
+#: objects/cubic_imp.cc:353
+msgid "Attach to this cubic curve"
+msgstr "Осы кубтық қисығына жалғау"
+
+#: objects/cubic_imp.cc:354
+msgid "Show a Cubic Curve"
+msgstr "Кубтық қисықты көрсету"
+
+#: objects/cubic_imp.cc:355
+msgid "Hide a Cubic Curve"
+msgstr "Кубтық қисықты жасыру"
+
+#: objects/cubic_type.cc:11
+#, kde-format
+msgid "Construct a cubic curve through this point"
+msgstr "Осы нүктеден өтетін кубтық қисықты құру"
+
+#: objects/cubic_type.cc:12
+#, kde-format
+msgid "Select a point for the new cubic to go through..."
+msgstr "Жаңа кубтық қисық өтетін нүктені таңдау..."
+
+#: objects/curve_imp.cc:18
+msgid "curve"
+msgstr "қисық"
+
+#: objects/curve_imp.cc:19
+#, kde-format
+msgid "Select this curve"
+msgstr "Мынау қисықты таңдау"
+
+#: objects/curve_imp.cc:20
+#, kde-format
+msgid "Select curve %1"
+msgstr "%1 қисығын таңдау"
+
+#: objects/curve_imp.cc:21
+msgid "Remove a Curve"
+msgstr "Қисықты өшіру"
+
+#: objects/curve_imp.cc:22
+msgid "Add a Curve"
+msgstr "Қисықты қосу"
+
+#: objects/curve_imp.cc:23
+msgid "Move a Curve"
+msgstr "Қисықты жылжыту"
+
+#: objects/curve_imp.cc:24
+msgid "Attach to this curve"
+msgstr "Осы қисығына жалғау"
+
+#: objects/curve_imp.cc:25
+msgid "Show a Curve"
+msgstr "Қисықты көрсету"
+
+#: objects/curve_imp.cc:26
+msgid "Hide a Curve"
+msgstr "Қисықты жасыру"
+
+#: objects/curve_imp.cc:344
+#, kde-format
+msgid "Possibly trascendental curve"
+msgstr "Бәлкім, трансцендент қисығы"
+
+#: objects/intersection_types.cc:152 objects/intersection_types.cc:153
+#: objects/intersection_types.cc:217
+#, kde-format
+msgid "Already computed intersection point"
+msgstr "Есептелген қиылысу нүктесі екен"
+
+#: objects/intersection_types.cc:372
+#, kde-format
+msgid "Intersect with this cubic curve"
+msgstr "Осы кубтық қисықпен қиылысы"
+
+#: objects/intersection_types.cc:526
+#, kde-format
+msgid "Intersect with this arc"
+msgstr "Осы доғамен қиылысы"
+
+#: objects/inversion_type.cc:19
+#, kde-format
+msgid "Invert with respect to this circle"
+msgstr "Осы шеңбер арқылы инверсияны жасау"
+
+#: objects/inversion_type.cc:20
+#, kde-format
+msgid "Select the circle we want to invert against..."
+msgstr "Қай шеңбер арқылы инверсияны жасау керектігін таңдау..."
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Compute the inversion of this object"
+msgstr "Мынау нысанның инверсиянсын есептеу"
+
+#: objects/inversion_type.cc:23
+#, kde-format
+msgid "Select the object to invert..."
+msgstr "Инверсиясын жасайтын нысанды таңдау..."
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Compute the inversion of this point"
+msgstr "Осы нүктенің инверсиянсын есептеу"
+
+#: objects/inversion_type.cc:270
+#, kde-format
+msgid "Select the point to invert..."
+msgstr "Инверсиясын жасайтын нүктені таңдау..."
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Compute the inversion of this line"
+msgstr "Осы сызықтың инверсиянсын есептеу"
+
+#: objects/inversion_type.cc:329
+#, kde-format
+msgid "Select the line to invert..."
+msgstr "Инверсиясын жасайтын сызықты таңдау..."
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Compute the inversion of this segment"
+msgstr "Осы кесіндінің инверсиянсын есептеу"
+
+#: objects/inversion_type.cc:381
+#, kde-format
+msgid "Select the segment to invert..."
+msgstr "Инверсиясын жасайтын кесіндіні таңдау..."
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Compute the inversion of this circle"
+msgstr "Осы шеңбердің инверсиянсын есептеу"
+
+#: objects/inversion_type.cc:469
+#, kde-format
+msgid "Select the circle to invert..."
+msgstr "Инверсиясын жасайтын шеңберді таңдау..."
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Compute the inversion of this arc"
+msgstr "Осы доғаның инверсиянсын есептеу"
+
+#: objects/inversion_type.cc:533
+#, kde-format
+msgid "Select the arc to invert..."
+msgstr "Инверсиясын жасайтын доғаны таңдау..."
+
+#: objects/line_imp.cc:86
+msgid "Slope"
+msgstr "Көлбеулік"
+
+#: objects/line_imp.cc:87
+msgid "Equation"
+msgstr "Теңеу"
+
+#: objects/line_imp.cc:113 objects/other_imp.cc:224 objects/polygon_imp.cc:317
+msgid "Length"
+msgstr "Ұзындық"
+
+#: objects/line_imp.cc:116 objects/line_imp.cc:193
+msgid "Support Line"
+msgstr "Тірек сызығы"
+
+#: objects/line_imp.cc:194
+msgid "End Point"
+msgstr "Аяқтау нүктесі"
+
+#: objects/line_imp.cc:544 objects/line_imp.cc:560
+msgid "line"
+msgstr "сызық"
+
+#: objects/line_imp.cc:545
+#, kde-format
+msgid "Select a Line"
+msgstr "Сызықты таңдау"
+
+#: objects/line_imp.cc:561
+#, kde-format
+msgid "Select this line"
+msgstr "Осы сызықты таңдау"
+
+#: objects/line_imp.cc:562
+#, kde-format
+msgid "Select line %1"
+msgstr "%1 сызығын таңдау"
+
+#: objects/line_imp.cc:563
+msgid "Remove a Line"
+msgstr "Сызықты өшіру"
+
+#: objects/line_imp.cc:564
+msgid "Add a Line"
+msgstr "Сызықты қосу"
+
+#: objects/line_imp.cc:565
+msgid "Move a Line"
+msgstr "Сызықты жылжыту"
+
+#: objects/line_imp.cc:566
+msgid "Attach to this line"
+msgstr "Осы сызыққа жалғау"
+
+#: objects/line_imp.cc:567
+msgid "Show a Line"
+msgstr "Сызықты көрсету"
+
+#: objects/line_imp.cc:568
+msgid "Hide a Line"
+msgstr "Сызықты жасыру"
+
+#: objects/line_imp.cc:576
+msgid "segment"
+msgstr "кесінді"
+
+#: objects/line_imp.cc:577
+#, kde-format
+msgid "Select this segment"
+msgstr "Осы кесіндіні таңдау"
+
+#: objects/line_imp.cc:578
+#, kde-format
+msgid "Select segment %1"
+msgstr "%1 кесіндісін таңдау"
+
+#: objects/line_imp.cc:579
+msgid "Remove a Segment"
+msgstr "Кесіндіні өшіру"
+
+#: objects/line_imp.cc:580
+msgid "Add a Segment"
+msgstr "Кесіндіні қосу"
+
+#: objects/line_imp.cc:581
+msgid "Move a Segment"
+msgstr "Кесіндіні жылжыту"
+
+#: objects/line_imp.cc:582
+msgid "Attach to this segment"
+msgstr "Осы кесіндіге жалғау"
+
+#: objects/line_imp.cc:583
+msgid "Show a Segment"
+msgstr "Кесіндіні көрсету"
+
+#: objects/line_imp.cc:584
+msgid "Hide a Segment"
+msgstr "Кесіндіні жасыру"
+
+#: objects/line_imp.cc:592
+msgid "half-line"
+msgstr "сәуле"
+
+#: objects/line_imp.cc:593
+#, kde-format
+msgid "Select this half-line"
+msgstr "Осы сәулені таңдау"
+
+#: objects/line_imp.cc:594
+#, kde-format
+msgid "Select half-line %1"
+msgstr "%1 сәулесін таңдау"
+
+#: objects/line_imp.cc:595
+msgid "Remove a Half-Line"
+msgstr "Сәулені өшіру"
+
+#: objects/line_imp.cc:596
+msgid "Add a Half-Line"
+msgstr "Сәулені қосу"
+
+#: objects/line_imp.cc:597
+msgid "Move a Half-Line"
+msgstr "Сәулені жылжыту"
+
+#: objects/line_imp.cc:598
+msgid "Attach to this half-line"
+msgstr "Осы сәулеге жалғау"
+
+#: objects/line_imp.cc:599
+msgid "Show a Half-Line"
+msgstr "Сәулені көрсету"
+
+#: objects/line_imp.cc:600
+msgid "Hide a Half-Line"
+msgstr "Сәулені жасыру"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Construct a segment starting at this point"
+msgstr "Осы нүктеден кесіндіні шығару"
+
+#: objects/line_type.cc:22
+#, kde-format
+msgid "Select the start point of the new segment..."
+msgstr "Жаңа кесіндінің бастау нүктесін таңдау..."
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Construct a segment ending at this point"
+msgstr "Осы нүктеге дейін кесіндіні құру"
+
+#: objects/line_type.cc:23
+#, kde-format
+msgid "Select the end point of the new segment..."
+msgstr "Жаңа кесіндінің аяқтау нүктесін таңдау..."
+
+#: objects/line_type.cc:47
+#, kde-format
+msgid "Construct a line through this point"
+msgstr "Осы нүктеден өтетін сызықты құру"
+
+#: objects/line_type.cc:50
+#, kde-format
+msgid "Select a point for the line to go through..."
+msgstr "Осы сызық өтетін нүктені таңдау..."
+
+#: objects/line_type.cc:51
+#, kde-format
+msgid "Select another point for the line to go through..."
+msgstr "Осы сызық өтетін басқа нүктесін таңдау..."
+
+#: objects/line_type.cc:75
+#, kde-format
+msgid "Construct a half-line starting at this point"
+msgstr "Осы нүктеден сәулені шығару"
+
+#: objects/line_type.cc:78 objects/line_type.cc:293
+#, kde-format
+msgid "Select the start point of the new half-line..."
+msgstr "Жаңа сәуленің бастау нүктесін таңдау..."
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Construct a half-line through this point"
+msgstr "Осы нүктеден өтетін сәулені құру"
+
+#: objects/line_type.cc:79
+#, kde-format
+msgid "Select a point for the half-line to go through..."
+msgstr "Осы сәуле өтетін нүктені таңдау..."
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Construct the axis of this segment"
+msgstr "Кесіндінің орта перпендикулярын құру"
+
+#: objects/line_type.cc:104
+#, kde-format
+msgid "Select the segment of which you want to draw the axis..."
+msgstr "Орта перпендикулярын салатын кесіндіні таңдау..."
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Construct a line parallel to this line"
+msgstr "Осы сызыққа параллель сызықты құру "
+
+#: objects/line_type.cc:155
+#, kde-format
+msgid "Select a line parallel to the new line..."
+msgstr "Осы сызыққа жаңа параллель сызықты таңдау..."
+
+#: objects/line_type.cc:156
+#, kde-format
+msgid "Construct the parallel line through this point"
+msgstr "Осы нүктеден өтетін параллель сызықты құру"
+
+#: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
+#, kde-format
+msgid "Select a point for the new line to go through..."
+msgstr "Жаңа сызық өтетін нүктені таңдау..."
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Construct a line perpendicular to this line"
+msgstr "Осы сызыққа перпендикуляр сызықты құру "
+
+#: objects/line_type.cc:182
+#, kde-format
+msgid "Select a line perpendicular to the new line..."
+msgstr "Жаңа сызыққа перпендикуляр сызықты таңдау ..."
+
+#: objects/line_type.cc:183
+#, kde-format
+msgid "Construct a perpendicular line through this point"
+msgstr "Осы нүктеден өтетін перпендикуляр сызықты құру"
+
+#: objects/line_type.cc:224
+#, kde-format
+msgid "Set &Length..."
+msgstr "Ұз&ындығын орнату..."
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Set Segment Length"
+msgstr "Кесіндінің ұзындығын орнату"
+
+#: objects/line_type.cc:241
+#, kde-format
+msgid "Choose the new length: "
+msgstr "Жаңа ұзындығы:"
+
+#: objects/line_type.cc:249
+#, kde-format
+msgid "Resize Segment"
+msgstr "Кесіндінің өлшемін өзгерту"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Construct a line by this vector"
+msgstr "Осы вектор бойынша сызықты құру"
+
+#: objects/line_type.cc:255
+#, kde-format
+msgid "Select a vector in the direction of the new line..."
+msgstr "Жаңа сызықпен бағытты векторды таңдау... "
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Construct a half-line by this vector"
+msgstr "Осы вектор бойынша сәулені құру"
+
+#: objects/line_type.cc:292
+#, kde-format
+msgid "Select a vector in the direction of the new half-line..."
+msgstr "Жаңа сәулемен бағытты векторды таңдау... "
+
+#: objects/locus_imp.cc:186
+msgid "locus"
+msgstr "нүктелер жиыны"
+
+#: objects/locus_imp.cc:187
+#, kde-format
+msgid "Select this locus"
+msgstr "Осы нүктелер жиының таңдау"
+
+#: objects/locus_imp.cc:188
+#, kde-format
+msgid "Select locus %1"
+msgstr "%1 нүктелер жиының таңдау"
+
+#: objects/locus_imp.cc:189
+msgid "Remove a Locus"
+msgstr "Нүктелер жиының өшіру"
+
+#: objects/locus_imp.cc:190
+msgid "Add a Locus"
+msgstr "Нүктелер жиының қосу"
+
+#: objects/locus_imp.cc:191
+msgid "Move a Locus"
+msgstr "Нүктелер жиының жылжыту"
+
+#: objects/locus_imp.cc:192
+msgid "Attach to this locus"
+msgstr "Нүктелер жиынына жалғау"
+
+#: objects/locus_imp.cc:193
+msgid "Show a Locus"
+msgstr "Нүктелер жиының көрсету"
+
+#: objects/locus_imp.cc:194
+msgid "Hide a Locus"
+msgstr "Нүктелер жиының жасыру"
+
+#: objects/object_imp.cc:41
+msgid "Object Type"
+msgstr "Нысанның түрі"
+
+#: objects/object_imp.cc:279
+msgid "Object"
+msgstr "Нысан"
+
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
+#, kde-format
+msgid "Select this object"
+msgstr "Осы нысанды таңдау"
+
+#: objects/object_imp.cc:281
+#, kde-format
+msgid "Select object %1"
+msgstr "%1 нысанын таңдау"
+
+#: objects/object_imp.cc:282
+msgid "Remove an object"
+msgstr "Нысанды өшіру"
+
+#: objects/object_imp.cc:283
+msgid "Add an object"
+msgstr "Нысанды қосу"
+
+#: objects/object_imp.cc:284
+msgid "Move an object"
+msgstr "Нысанды жылжыту"
+
+#: objects/object_imp.cc:285
+msgid "Attach to this object"
+msgstr "Осы нысанға жалғау"
+
+#: objects/object_imp.cc:286
+msgid "Show an object"
+msgstr "Нысанды көрсету"
+
+#: objects/object_imp.cc:287
+msgid "Hide an object"
+msgstr "Нысанды жасыру"
+
+#: objects/other_imp.cc:111 objects/other_imp.cc:395
+msgid "Angle in Radians"
+msgstr "Бұрыш (радиан)"
+
+#: objects/other_imp.cc:112 objects/other_imp.cc:394
+msgid "Angle in Degrees"
+msgstr "Бұрыш (градус)"
+
+#: objects/other_imp.cc:225
+msgid "Midpoint"
+msgstr "Орта нүктесі"
+
+#: objects/other_imp.cc:226
+msgid "X length"
+msgstr "X ұзындығы"
+
+#: objects/other_imp.cc:227
+msgid "Y length"
+msgstr "Y ұзындығы"
+
+#: objects/other_imp.cc:228
+msgid "Opposite Vector"
+msgstr "Қарсы векторы"
+
+#: objects/other_imp.cc:393
+msgid "Angle"
+msgstr "Бұрыш"
+
+#: objects/other_imp.cc:396
+msgid "Sector Surface"
+msgstr "Сектор ауданы"
+
+#: objects/other_imp.cc:397
+msgid "Arc Length"
+msgstr "Доғаның ұзындығы"
+
+#: objects/other_imp.cc:398
+msgid "Support Circle"
+msgstr "Тірек шеңбері"
+
+#: objects/other_imp.cc:598
+msgid "angle"
+msgstr "бұрыш"
+
+#: objects/other_imp.cc:599
+#, kde-format
+msgid "Select this angle"
+msgstr "Осы бұрышты таңдау"
+
+#: objects/other_imp.cc:600
+#, kde-format
+msgid "Select angle %1"
+msgstr "%1 бұрышын таңдау"
+
+#: objects/other_imp.cc:601
+msgid "Remove an Angle"
+msgstr "Бұрышты өшіру"
+
+#: objects/other_imp.cc:602
+msgid "Add an Angle"
+msgstr "Бұрышты қосу"
+
+#: objects/other_imp.cc:603
+msgid "Move an Angle"
+msgstr "Бұрышты жылжыту"
+
+#: objects/other_imp.cc:604
+msgid "Attach to this angle"
+msgstr "Осы бұрышқа жалғау"
+
+#: objects/other_imp.cc:605
+msgid "Show an Angle"
+msgstr "Бұрышты көрсету"
+
+#: objects/other_imp.cc:606
+msgid "Hide an Angle"
+msgstr "Бұрышты жасыру "
+
+#: objects/other_imp.cc:613
+msgid "vector"
+msgstr "вектор"
+
+#: objects/other_imp.cc:614
+#, kde-format
+msgid "Select this vector"
+msgstr "Осы сызықты таңдау"
+
+#: objects/other_imp.cc:615
+#, kde-format
+msgid "Select vector %1"
+msgstr "%1 векторын таңдау"
+
+#: objects/other_imp.cc:616
+msgid "Remove a Vector"
+msgstr "Векторды өшіру"
+
+#: objects/other_imp.cc:617
+msgid "Add a Vector"
+msgstr "Векторды қосу"
+
+#: objects/other_imp.cc:618
+msgid "Move a Vector"
+msgstr "Векторды жылжыту"
+
+#: objects/other_imp.cc:619
+msgid "Attach to this vector"
+msgstr "Осы векторға жалғау"
+
+#: objects/other_imp.cc:620
+msgid "Show a Vector"
+msgstr "Векторды көрсету"
+
+#: objects/other_imp.cc:621
+msgid "Hide a Vector"
+msgstr "Векторды жасыру"
+
+#: objects/other_imp.cc:628
+msgid "arc"
+msgstr "доға"
+
+#: objects/other_imp.cc:629
+#, kde-format
+msgid "Select this arc"
+msgstr "Осы доғаны таңдау"
+
+#: objects/other_imp.cc:630
+#, kde-format
+msgid "Select arc %1"
+msgstr "%1 доғасын таңдау"
+
+#: objects/other_imp.cc:631
+msgid "Remove an Arc"
+msgstr "Доғаны өшіру"
+
+#: objects/other_imp.cc:632
+msgid "Add an Arc"
+msgstr "Доғаны қосу"
+
+#: objects/other_imp.cc:633
+msgid "Move an Arc"
+msgstr "Доғаны жылжыту"
+
+#: objects/other_imp.cc:634
+msgid "Attach to this arc"
+msgstr "Осы доғаға жалғау"
+
+#: objects/other_imp.cc:635
+msgid "Show an Arc"
+msgstr "Доғаны көрсету"
+
+#: objects/other_imp.cc:636
+msgid "Hide an Arc"
+msgstr "Доғаны жасыру"
+
+#: objects/point_imp.cc:62
+msgid "Coordinate"
+msgstr "Координатасы"
+
+#: objects/point_imp.cc:63
+msgid "X coordinate"
+msgstr "X координатасы"
+
+#: objects/point_imp.cc:64
+msgid "Y coordinate"
+msgstr "Y координатасы"
+
+#: objects/point_imp.cc:153
+msgid "point"
+msgstr "нүкте"
+
+#: objects/point_imp.cc:154
+#, kde-format
+msgid "Select this point"
+msgstr "Осы нүктені таңдау"
+
+#: objects/point_imp.cc:155
+#, kde-format
+msgid "Select point %1"
+msgstr "%1 нүктесін таңдау"
+
+#: objects/point_imp.cc:156
+msgid "Remove a Point"
+msgstr "Нүктені өшіру"
+
+#: objects/point_imp.cc:157
+msgid "Add a Point"
+msgstr "Нүктені қосу"
+
+#: objects/point_imp.cc:158
+msgid "Move a Point"
+msgstr "Нүктені жылжыту"
+
+#: objects/point_imp.cc:159
+msgid "Attach to this point"
+msgstr "Осы нүктеге жалғау"
+
+#: objects/point_imp.cc:160
+msgid "Show a Point"
+msgstr "Нүктені көрсету"
+
+#: objects/point_imp.cc:161
+msgid "Hide a Point"
+msgstr "Нүктені жасыру"
+
+#: objects/point_type.cc:242 objects/point_type.cc:246
+#, kde-format
+msgid "Construct the midpoint of this point and another point"
+msgstr "Осы нүктемен басқа нүктенің ортасын табу"
+
+#: objects/point_type.cc:243
+#, kde-format
+msgid ""
+"Select the first of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Ортасын табатын екі нүктенің біріншісін таңдау..."
+
+#: objects/point_type.cc:247
+#, kde-format
+msgid ""
+"Select the other of the two points of which you want to construct the "
+"midpoint..."
+msgstr "Ортасын табатын екі нүктенің екіншісін таңдау..."
+
+#: objects/point_type.cc:274 objects/point_type.cc:278
+#, fuzzy, kde-format
+#| msgid "Construct the midpoint of this point and another point"
+msgid "Construct the golden ratio point of this point and another point"
+msgstr "Осы нүктемен басқа нүктенің ортасын табу"
+
+#: objects/point_type.cc:275
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the first of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the first of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Ортасын табатын екі нүктенің біріншісін таңдау..."
+
+#: objects/point_type.cc:279
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the other of the two points of which you want to construct the "
+#| "midpoint..."
+msgid ""
+"Select the other of the two points of which you want to construct the golden "
+"ratio point..."
+msgstr "Ортасын табатын екі нүктенің екіншісін таңдау..."
+
+#: objects/point_type.cc:386
+#, kde-format
+msgid "Set &Coordinate..."
+msgstr "&Координатасын орнату"
+
+#: objects/point_type.cc:387 objects/point_type.cc:395
+#, kde-format
+msgid "Redefine"
+msgstr "Қайта анықтау"
+
+#: objects/point_type.cc:394
+#, kde-format
+msgid "Set &Parameter..."
+msgstr "&Параметрін орнату..."
+
+#: objects/point_type.cc:412
+#, kde-format
+msgid "Set Coordinate"
+msgstr "Координатасын орнату"
+
+#: objects/point_type.cc:413
+#, kde-format
+msgid "Enter the new coordinate."
+msgstr "Жаңа координатаны келтіру."
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Set Point Parameter"
+msgstr "Нүктенің параметрін орнату"
+
+#: objects/point_type.cc:452
+#, kde-format
+msgid "Choose the new parameter: "
+msgstr "Жаңа параметрі: "
+
+#: objects/point_type.cc:458
+#, kde-format
+msgid "Change Parameter of Constrained Point"
+msgstr "Бекітілген нүктенің параметрін өзгерту"
+
+#: objects/point_type.cc:743
+#, kde-format
+msgid "Select the circle on which to transport a measure..."
+msgstr "Қай шеңберге өлшемді салу керегін таңдау..."
+
+#: objects/point_type.cc:744
+#, kde-format
+msgid "Select a point on the circle..."
+msgstr "Шеңберде нүктені таңдау"
+
+#: objects/point_type.cc:745
+#, kde-format
+msgid "Select the segment to transport on the circle..."
+msgstr "Өлшемін шеңберге салатын кесіндіні таңдау..."
+
+#: objects/point_type.cc:794
+#, kde-format
+msgid "Select a number/length as x coordinate of the point..."
+msgstr "Нүктенің X координатасы болатын санды/ұзындықты таңдау... "
+
+#: objects/point_type.cc:795
+#, kde-format
+msgid "Select a number/length as y coordinate of the point..."
+msgstr "Нүктенің Y координатасы болатын санды/ұзындықты таңдау... "
+
+#: objects/point_type.cc:820
+#, kde-format
+msgid "Select a point to project onto a line..."
+msgstr "Қай нүктені сызыққа проекциялау керегін таңдау..."
+
+#: objects/point_type.cc:821
+#, kde-format
+msgid "Line where the projected point will lie..."
+msgstr "Қай сызыққа нүктені проекциялау керегін таңдау..."
+
+#: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
+#: objects/polygon_imp.cc:316
+msgid "Number of sides"
+msgstr "Жақтар саны"
+
+#: objects/polygon_imp.cc:289 objects/polygon_imp.cc:303
+msgid "Perimeter"
+msgstr "Периметрі"
+
+#: objects/polygon_imp.cc:291
+msgid "Boundary Polygonal"
+msgstr "Көпбұрышты шектері"
+
+#: objects/polygon_imp.cc:292
+msgid "Open Boundary Polygonal"
+msgstr "Сыңық сызық"
+
+#: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
+msgid "Center of Mass of the Vertices"
+msgstr "Төбелерінің массалық ортасы "
+
+#: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
+msgid "Winding Number"
+msgstr "Бұрылыстар саны"
+
+#: objects/polygon_imp.cc:305
+msgid "Inside Polygon"
+msgstr "Іштей сызылған көпбұрыш"
+
+#: objects/polygon_imp.cc:306
+msgid "Open Polygonal Curve"
+msgstr "Тұйық емес сынық сызық"
+
+#: objects/polygon_imp.cc:319
+msgid "Associated Polygon"
+msgstr "Сәйкесті көпбұрыш"
+
+#: objects/polygon_imp.cc:320
+msgid "Closed Polygonal Curve"
+msgstr "Тұйық сынық сызық"
+
+#: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
+msgid "polygon"
+msgstr "көпбұрыш"
+
+#: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
+#, kde-format
+msgid "Select this polygon"
+msgstr "Осы көпбұрышты таңдау"
+
+#: objects/polygon_imp.cc:630
+#, kde-format
+msgid "Select polygon %1"
+msgstr "%1 көпбұрышын таңдау"
+
+#: objects/polygon_imp.cc:631
+msgid "Remove a Polygon"
+msgstr "Көпбұрышты өшіру"
+
+#: objects/polygon_imp.cc:632
+msgid "Add a Polygon"
+msgstr "Көпбұрышты қосу"
+
+#: objects/polygon_imp.cc:633
+msgid "Move a Polygon"
+msgstr "Көпбұрышты жылжыту"
+
+#: objects/polygon_imp.cc:634
+msgid "Attach to this polygon"
+msgstr "Осы көпбұрышқа жалғау"
+
+#: objects/polygon_imp.cc:635
+msgid "Show a Polygon"
+msgstr "Көпбұрышты көрсету"
+
+#: objects/polygon_imp.cc:636
+msgid "Hide a Polygon"
+msgstr "Көпбұрышты жасыру"
+
+#: objects/polygon_imp.cc:645
+msgid "closed polygonal curve"
+msgstr "тұйық сынық сызық"
+
+#: objects/polygon_imp.cc:646
+#, kde-format
+msgid "Select this closed polygonal curve"
+msgstr "Тұйық сынық сызықты таңдау"
+
+#: objects/polygon_imp.cc:647
+#, kde-format
+msgid "Select closed polygonal curve %1"
+msgstr "%1 тұйық сынық сызығын таңдау"
+
+#: objects/polygon_imp.cc:648
+msgid "Remove a closed polygonal curve"
+msgstr "Тұйық сынық сызықты өшіру"
+
+#: objects/polygon_imp.cc:649
+msgid "Add a closed polygonal curve"
+msgstr "Тұйық сынық сызықты қосу"
+
+#: objects/polygon_imp.cc:650
+msgid "Move a closed polygonal curve"
+msgstr "Тұйық сынық сызықты жылжыту"
+
+#: objects/polygon_imp.cc:651
+msgid "Attach to this closed polygonal curve"
+msgstr "Тұйық сынық сызыққа жалғау"
+
+#: objects/polygon_imp.cc:652
+msgid "Show a closed polygonal curve"
+msgstr "Тұйық сынық сызықты көрсету"
+
+#: objects/polygon_imp.cc:653
+msgid "Hide a closed polygonal curve"
+msgstr "Тұйық сынық сызықты жасыру"
+
+#: objects/polygon_imp.cc:662
+msgid "polygonal curve"
+msgstr "сынық сызық"
+
+#: objects/polygon_imp.cc:663
+#, kde-format
+msgid "Select this polygonal curve"
+msgstr "Сынық сызықты таңдау"
+
+#: objects/polygon_imp.cc:664
+#, kde-format
+msgid "Select polygonal curve %1"
+msgstr "%1 сынық сызығын таңдау"
+
+#: objects/polygon_imp.cc:665
+msgid "Remove a polygonal curve"
+msgstr "Сынық сызықты өшіру"
+
+#: objects/polygon_imp.cc:666
+msgid "Add a polygonal curve"
+msgstr "Сынық сызықты қосу"
+
+#: objects/polygon_imp.cc:667
+msgid "Move a polygonal curve"
+msgstr "Сынық сызықты жылжыту"
+
+#: objects/polygon_imp.cc:668
+msgid "Attach to this polygonal curve"
+msgstr "Сынық сызыққа жалғау"
+
+#: objects/polygon_imp.cc:669
+msgid "Show a polygonal curve"
+msgstr "Сынық сызықты көрсету"
+
+#: objects/polygon_imp.cc:670
+msgid "Hide a polygonal curve"
+msgstr "Сынық сызықты жасыру"
+
+#: objects/polygon_imp.cc:679
+msgid "triangle"
+msgstr "үшбұрыш"
+
+#: objects/polygon_imp.cc:680
+#, kde-format
+msgid "Select this triangle"
+msgstr "Үшбұрышты таңдау"
+
+#: objects/polygon_imp.cc:681
+#, kde-format
+msgid "Select triangle %1"
+msgstr "%1 үшбұрышын таңдау "
+
+#: objects/polygon_imp.cc:682
+msgid "Remove a Triangle"
+msgstr "Үшбұрышты өшіру"
+
+#: objects/polygon_imp.cc:683
+msgid "Add a Triangle"
+msgstr "Үшбұрышты қосу"
+
+#: objects/polygon_imp.cc:684
+msgid "Move a Triangle"
+msgstr "Үшбұрышты жылжыту"
+
+#: objects/polygon_imp.cc:685
+msgid "Attach to this triangle"
+msgstr "Үшбұрышқа жалғау "
+
+#: objects/polygon_imp.cc:686
+msgid "Show a Triangle"
+msgstr "Үшбұрышты көрсету"
+
+#: objects/polygon_imp.cc:687
+msgid "Hide a Triangle"
+msgstr "Үшбұрышты жасыру"
+
+#: objects/polygon_imp.cc:696
+msgid "quadrilateral"
+msgstr "төртбұрыш"
+
+#: objects/polygon_imp.cc:697
+#, kde-format
+msgid "Select this quadrilateral"
+msgstr "Осы төртбұрышты таңдау"
+
+#: objects/polygon_imp.cc:698
+#, kde-format
+msgid "Select quadrilateral %1"
+msgstr "%1 төртбұрышын таңдау"
+
+#: objects/polygon_imp.cc:699
+msgid "Remove a Quadrilateral"
+msgstr "Төртбұрышты өшіру"
+
+#: objects/polygon_imp.cc:700
+msgid "Add a Quadrilateral"
+msgstr "Төртбұрышты қосу"
+
+#: objects/polygon_imp.cc:701
+msgid "Move a Quadrilateral"
+msgstr "Төртбұрышты жылжыту"
+
+#: objects/polygon_imp.cc:702
+msgid "Attach to this quadrilateral"
+msgstr "Төртбұрышқа жалғау"
+
+#: objects/polygon_imp.cc:703
+msgid "Show a Quadrilateral"
+msgstr "Төртбұрышты көрсету"
+
+#: objects/polygon_imp.cc:704
+msgid "Hide a Quadrilateral"
+msgstr "Төртбұрышты жасыру"
+
+#: objects/polygon_type.cc:24
+#, kde-format
+msgid "Construct a triangle with this vertex"
+msgstr "Осы төбесімен үшбұрышты құру"
+
+#: objects/polygon_type.cc:25
+#, kde-format
+msgid "Select a point to be a vertex of the new triangle..."
+msgstr "Жаңа үшбұрыштың төбесі болатын нүктені таңдау..."
+
+#: objects/polygon_type.cc:470
+#, kde-format
+msgid "Intersect this polygon with a line"
+msgstr "Осы көпбұрышты сызықпен қиылыстыру"
+
+#: objects/polygon_type.cc:471
+#, kde-format
+msgid "Select the polygon of which you want the intersection with a line..."
+msgstr "Сызықпен қиылысатын көпбұрышты таңдау..."
+
+#: objects/polygon_type.cc:474
+#, kde-format
+msgid "Intersect this line with a polygon"
+msgstr "Осы сызықты көпбұрышпен қиылыстыру"
+
+#: objects/polygon_type.cc:475
+#, kde-format
+msgid "Select the line of which you want the intersection with a polygon..."
+msgstr "Көпбұрышпен қиылысатын сызықты таңдау..."
+
+#: objects/polygon_type.cc:590 objects/polygon_type.cc:623
+#, kde-format
+msgid "Intersect this polygonal curve with a line"
+msgstr "Осы сынық сызықты сызықпен қиылыстыру"
+
+#: objects/polygon_type.cc:591 objects/polygon_type.cc:624
+#, kde-format
+msgid ""
+"Select the polygonal curve of which you want the intersection with a line..."
+msgstr "Сызықпен қиылысатын сынық сызықты таңдау..."
+
+#: objects/polygon_type.cc:594 objects/polygon_type.cc:627
+#, kde-format
+msgid "Intersect this line with a polygonal curve"
+msgstr "Осы сызықты сынық сызықпен қиылыстыру"
+
+#: objects/polygon_type.cc:595 objects/polygon_type.cc:628
+#, kde-format
+msgid ""
+"Select the line of which you want the intersection with a polygonal curve..."
+msgstr "Сынық сызықпен қиылысатын сызықты таңдау..."
+
+#: objects/polygon_type.cc:788
+#, kde-format
+msgid "Intersect this polygon with another polygon"
+msgstr "Осы көпбұрышты басқа көпбұрышпен қиылыстыру"
+
+#: objects/polygon_type.cc:789
+#, kde-format
+msgid ""
+"Select the polygon of which you want the intersection with another polygon..."
+msgstr "Басқа көпбұрышпен қиылысатын көпбұрышты таңдау..."
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Intersect with this polygon"
+msgstr "Мына көпбұрышпен қиылысу"
+
+#: objects/polygon_type.cc:791
+#, kde-format
+msgid "Select the second polygon for the intersection..."
+msgstr "Қиылысатын екінші көпбұрышты таңдау..."
+
+#: objects/polygon_type.cc:930
+#, kde-format
+msgid "Construct the vertices of this polygon"
+msgstr "Осы көпбұрыштың төбелерін құру"
+
+#: objects/polygon_type.cc:931
+#, kde-format
+msgid "Select the polygon of which you want to construct the vertices..."
+msgstr "Төбелері құрылатын көпбұрышты таңдау..."
+
+#: objects/polygon_type.cc:974
+#, kde-format
+msgid "Construct the sides of this polygon"
+msgstr "Осы көпбұрыштың жақтарын құру"
+
+#: objects/polygon_type.cc:975
+#, kde-format
+msgid "Select the polygon of which you want to construct the sides..."
+msgstr "Жақтары құрылатын көпбұрышты таңдау..."
+
+#: objects/polygon_type.cc:1022
+#, kde-format
+msgid "Construct the convex hull of this polygon"
+msgstr "Осы көпбұрышқа дөңес орама көпбұрышын құру"
+
+#: objects/polygon_type.cc:1023
+#, kde-format
+msgid "Select the polygon of which you want to construct the convex hull..."
+msgstr "Дөнес орамасы құрылатын көпбұрышты таңдау..."
+
+#: objects/special_calcers.cc:8
+#, kde-format
+msgid "Project this point onto the circle"
+msgstr "Осы нүктені шеңберге проекциялау"
+
+#: objects/tangent_type.cc:23
+#, kde-format
+msgid "Select the point for the tangent to go through..."
+msgstr "Жанамасы өтетін нүктені таңдау..."
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Is this line parallel?"
+msgstr "Мына сызық параллель ме?"
+
+#: objects/tests_type.cc:18
+#, kde-format
+msgid "Select the first of the two possibly parallel lines..."
+msgstr "Параллель болуы мүмкін жұп сызықтың біріншісін таңдау..."
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Parallel to this line?"
+msgstr "Мынаған параллель бе?"
+
+#: objects/tests_type.cc:19
+#, kde-format
+msgid "Select the other of the two possibly parallel lines..."
+msgstr "Параллель болуы мүмкін жұп сызықтың басқасын таңдау..."
+
+#: objects/tests_type.cc:46
+#, kde-format
+msgid "These lines are parallel."
+msgstr "Бұл сызықтар параллельді."
+
+#: objects/tests_type.cc:48
+#, kde-format
+msgid "These lines are not parallel."
+msgstr "Бұл сызықтар параллельді емес."
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Is this line orthogonal?"
+msgstr "Мына сызық ортогональ ма?"
+
+#: objects/tests_type.cc:57
+#, kde-format
+msgid "Select the first of the two possibly orthogonal lines..."
+msgstr "Ортогональ болуы мүмкін жұп сызықтың біріншісін таңдау..."
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Orthogonal to this line?"
+msgstr "Мынаған ортогональ ба?"
+
+#: objects/tests_type.cc:58
+#, kde-format
+msgid "Select the other of the two possibly orthogonal lines..."
+msgstr "Ортогональ болуы мүмкін жұп сызықтың басқасын таңдау..."
+
+#: objects/tests_type.cc:85
+#, kde-format
+msgid "These lines are orthogonal."
+msgstr "Бұл сызықтар ортогональды."
+
+#: objects/tests_type.cc:87
+#, kde-format
+msgid "These lines are not orthogonal."
+msgstr "Бұл сызықтар ортогональды емес."
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Check collinearity of this point"
+msgstr "Мына нүкте басқаларымен бір түзуде жататынын тексеру "
+
+#: objects/tests_type.cc:96
+#, kde-format
+msgid "Select the first of the three possibly collinear points..."
+msgstr "Бір түзуге жататыны мүмкін үш нүктенің біріншісін таңдау..."
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "and this second point"
+msgstr "Нүктелердің екіншісі"
+
+#: objects/tests_type.cc:97
+#, kde-format
+msgid "Select the second of the three possibly collinear points..."
+msgstr "Бір түзуге жататыны мүмкін үш нүктенің екіншісін таңдау..."
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "with this third point"
+msgstr "және үшінші нүктесі"
+
+#: objects/tests_type.cc:98
+#, kde-format
+msgid "Select the last of the three possibly collinear points..."
+msgstr "Бір түзуге жататыны мүмкін үш нүктенің үшіншісін таңдау..."
+
+#: objects/tests_type.cc:126
+#, kde-format
+msgid "These points are collinear."
+msgstr "Бұл нүктелер бір түзуге жатады."
+
+#: objects/tests_type.cc:128
+#, kde-format
+msgid "These points are not collinear."
+msgstr "Бұл нүктелер бір түзуге жатпайды."
+
+#: objects/tests_type.cc:137
+#, kde-format
+msgid "Check whether this point is on a curve"
+msgstr "Мына нүкте қисыққа жататынын тексеру "
+
+#: objects/tests_type.cc:137 objects/tests_type.cc:180
+#, kde-format
+msgid "Select the point you want to test..."
+msgstr "Қисыққа жататындығын тексеретін нүкте..."
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Check whether the point is on this curve"
+msgstr "Нүкте қисыққа жататынын-жатайтынын тексеру"
+
+#: objects/tests_type.cc:138
+#, kde-format
+msgid "Select the curve that the point might be on..."
+msgstr "Нүкте қай қисыққа жататынын тесеру керегін таңдау..."
+
+#: objects/tests_type.cc:165
+#, kde-format
+msgid "This curve contains the point."
+msgstr "Нүкте қисыққа жатады."
+
+#: objects/tests_type.cc:167
+#, kde-format
+msgid "This curve does not contain the point."
+msgstr "Нүкте қисыққа жатпайды."
+
+#: objects/tests_type.cc:180
+#, kde-format
+msgid "Check whether this point is in a polygon"
+msgstr "Мына нүкте көпбурышқа жататынын тексеру "
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Check whether the point is in this polygon"
+msgstr "Нүкте көпбурышқа жататынын тексеру "
+
+#: objects/tests_type.cc:181
+#, kde-format
+msgid "Select the polygon that the point might be in..."
+msgstr "Нүкте қай көпбұрышқа жататынын тексеру керегін таңдау..."
+
+#: objects/tests_type.cc:208
+#, kde-format
+msgid "This polygon contains the point."
+msgstr "Нүкте көпбұрышқа жатады."
+
+#: objects/tests_type.cc:210
+#, kde-format
+msgid "This polygon does not contain the point."
+msgstr "Нүкте көпбұрышқа жатпайды."
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Check whether this polygon is convex"
+msgstr "Мына көпбұрыштың дөңестігін тексеру"
+
+#: objects/tests_type.cc:223
+#, kde-format
+msgid "Select the polygon you want to test for convexity..."
+msgstr "Дөңестігін тексеру керек көпбұрышты таңдау..."
+
+#: objects/tests_type.cc:249
+#, kde-format
+msgid "This polygon is convex."
+msgstr "Бұл көпбұрыш дөңес."
+
+#: objects/tests_type.cc:251
+#, kde-format
+msgid "This polygon is not convex."
+msgstr "Бұл көпбұрыш дөңес емес."
+
+#: objects/tests_type.cc:265
+#, kde-format
+msgid "Check if this point has the same distance"
+msgstr "Мына нүкте бірдей қашықтықта ма екендігін тексеру"
+
+#: objects/tests_type.cc:266
+#, kde-format
+msgid ""
+"Select the point which might have the same distance from two other points..."
+msgstr ""
+"Басқа екі нүктеден бірдей қашықтықта ма екендігін тексеретін нүктені "
+"таңдау..."
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "from this point"
+msgstr "мына нүктеден"
+
+#: objects/tests_type.cc:268
+#, kde-format
+msgid "Select the first of the two other points..."
+msgstr "Басқа екі нүктенің біріншісін таңдау..."
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "and from this second point"
+msgstr "және мынау нүктеден"
+
+#: objects/tests_type.cc:269
+#, kde-format
+msgid "Select the other of the two other points..."
+msgstr "Басқа екі нүктенің екіншісін таңдау..."
+
+#: objects/tests_type.cc:297
+#, kde-format
+msgid "The two distances are the same."
+msgstr "Екеунен бірдей қашықтықта."
+
+#: objects/tests_type.cc:299
+#, kde-format
+msgid "The two distances are not the same."
+msgstr "Қашықтықтары бірдей емес."
+
+#: objects/tests_type.cc:308
+#, kde-format
+msgid "Check whether this vector is equal to another vector"
+msgstr "Мына вектор басқаға тең екендігін тексеру"
+
+#: objects/tests_type.cc:309
+#, kde-format
+msgid "Select the first of the two possibly equal vectors..."
+msgstr "Тең болуы мүмкін жұп векторының біріншісін таңдау..."
+
+#: objects/tests_type.cc:312
+#, kde-format
+msgid "Check whether this vector is equal to the other vector"
+msgstr "Мына вектор біріншіге тең екендігін тексеру"
+
+#: objects/tests_type.cc:313
+#, kde-format
+msgid "Select the other of the two possibly equal vectors..."
+msgstr "Тең болуы мүмкін жұп векторының екіншісін таңдау..."
+
+#: objects/tests_type.cc:341
+#, kde-format
+msgid "The two vectors are the same."
+msgstr "Екі вектор тең екен."
+
+#: objects/tests_type.cc:343
+#, kde-format
+msgid "The two vectors are not the same."
+msgstr "Екі вектор тең емес екен."
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Check whether this object exists"
+msgstr "Нысанның бар болуын тексеру"
+
+#: objects/tests_type.cc:352
+#, kde-format
+msgid "Select the object for the existence check..."
+msgstr "Бар болуын тексеретін нысанды таңдау..."
+
+#: objects/tests_type.cc:375
+#, kde-format
+msgid "The object exists."
+msgstr "Нысан бар екен."
+
+#: objects/tests_type.cc:377
+#, kde-format
+msgid "The object does not exist."
+msgstr "жоқ нысан екен."
+
+#: objects/text_imp.cc:74
+msgid "Text"
+msgstr "Мәтін"
+
+#: objects/text_imp.cc:137
+msgid "label"
+msgstr "жарлық"
+
+#: objects/text_imp.cc:138
+#, kde-format
+msgid "Select this label"
+msgstr "Осы жарлықты таңдау"
+
+#: objects/text_imp.cc:139
+#, kde-format
+msgid "Select label %1"
+msgstr "%1 жарлығын таңдау"
+
+#: objects/text_imp.cc:140
+msgid "Remove a Label"
+msgstr "Жарлықты өшіру"
+
+#: objects/text_imp.cc:141
+msgid "Add a Label"
+msgstr "Жарлықты қосу"
+
+#: objects/text_imp.cc:142
+msgid "Move a Label"
+msgstr "Жарлықты жылжыту"
+
+#: objects/text_imp.cc:143
+msgid "Attach to this label"
+msgstr "Жарлыққа жалғау"
+
+#: objects/text_imp.cc:144
+msgid "Show a Label"
+msgstr "Жарлықты көрсету"
+
+#: objects/text_imp.cc:145
+msgid "Hide a Label"
+msgstr "Жарлықты жасыру"
+
+#: objects/text_imp.cc:183
+msgid "numeric label"
+msgstr "санды жарлық"
+
+#: objects/text_imp.cc:184
+#, kde-format
+msgid "Select this numeric label"
+msgstr "Осы санды жарлықты таңдау"
+
+#: objects/text_imp.cc:185
+#, kde-format
+msgid "Select numeric label %1"
+msgstr "%1 санды жарлығын таңдау"
+
+#: objects/text_imp.cc:186
+msgid "Remove a Numeric Label"
+msgstr "Санды жарлықты өшіру"
+
+#: objects/text_imp.cc:187
+msgid "Add a Numeric Label"
+msgstr "Санды жарлықты қосу"
+
+#: objects/text_imp.cc:188
+msgid "Move a Numeric Label"
+msgstr "Санды жарлықты жылжыту"
+
+#: objects/text_imp.cc:189
+msgid "Attach to this numeric label"
+msgstr "Санды жарлыққа жалғау "
+
+#: objects/text_imp.cc:190
+msgid "Show a Numeric Label"
+msgstr "Санды жарлықты көрсету"
+
+#: objects/text_imp.cc:191
+msgid "Hide a Numeric Label"
+msgstr "Санды жарлықты жасыру"
+
+#: objects/text_imp.cc:220 objects/text_imp.cc:314
+msgid "Numeric value"
+msgstr "Сан"
+
+#: objects/text_imp.cc:277
+msgid "boolean label"
+msgstr "логикалық жарлық"
+
+#: objects/text_imp.cc:278
+#, kde-format
+msgid "Select this boolean label"
+msgstr "Осы логикалық жарлықты таңдау"
+
+#: objects/text_imp.cc:279
+#, kde-format
+msgid "Select boolean label %1"
+msgstr "%1 логикалық жарлығын таңдау"
+
+#: objects/text_imp.cc:280
+msgid "Remove a Boolean Label"
+msgstr "Логикалық жарлықты өшіру"
+
+#: objects/text_imp.cc:281
+msgid "Add a Boolean Label"
+msgstr "Логикалық жарлықты қосу"
+
+#: objects/text_imp.cc:282
+msgid "Move a Boolean Label"
+msgstr "Логикалық жарлықты жылжыту"
+
+#: objects/text_imp.cc:283
+msgid "Attach to this boolean label"
+msgstr "Логикалық жарлыққа жалғау"
+
+#: objects/text_imp.cc:284
+msgid "Show a Boolean Label"
+msgstr "Логикалық жарлықты көрсету"
+
+#: objects/text_imp.cc:285
+msgid "Hide a Boolean Label"
+msgstr "Логикалық жарлықты жасыру"
+
+#: objects/text_type.cc:156
+#, kde-format
+msgid "&Copy Text"
+msgstr "Мәтінді &көшіріп алу"
+
+#: objects/text_type.cc:157
+#, kde-format
+msgid "&Toggle Frame"
+msgstr "Қоршаудың &болу/болмауы"
+
+#: objects/text_type.cc:158
+#, kde-format
+msgid "Set &Font..."
+msgstr "&Қаріпін орнату..."
+
+#: objects/text_type.cc:182
+#, kde-format
+msgid "Toggle Label Frame"
+msgstr "Жарлық қоршауының болу-болмауын ауыстыру"
+
+#: objects/text_type.cc:192
+#, kde-format
+msgid "Change Label Font"
+msgstr "Жарлықтың қаріпін өзгерту"
+
+#: objects/text_type.cc:219
+#, kde-format
+msgid "&Redefine..."
+msgstr "Қайта &анықтау..."
+
+#: objects/text_type.cc:266
+#, kde-format
+msgid "Change &Value..."
+msgstr "&Мәнің өзгерту..."
+
+#: objects/text_type.cc:290
+#, kde-format
+msgid "Enter the new value:"
+msgstr "Жаңа мәні:"
+
+#: objects/text_type.cc:295
+#, kde-format
+msgid "Change Displayed Value"
+msgstr "Көрсетілетін мәнің өзгерту"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Translate this object"
+msgstr "Мына нысанды параллель көшіру"
+
+#: objects/transform_types.cc:21
+#, kde-format
+msgid "Select the object to translate..."
+msgstr "Параллель көшірілетін нысанды таңдау..."
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Translate by this vector"
+msgstr "Мына векторға параллель көшіру"
+
+#: objects/transform_types.cc:22
+#, kde-format
+msgid "Select the vector to translate by..."
+msgstr "Қай векторға параллель көшіру керегін таңдау..."
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Reflect this object"
+msgstr "Мына нысанды шағылдыру"
+
+#: objects/transform_types.cc:53 objects/transform_types.cc:85
+#, kde-format
+msgid "Select the object to reflect..."
+msgstr "Шағылдыратын нысанды таңдау..."
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Reflect in this point"
+msgstr "Мынау нүктеге шағылдыру"
+
+#: objects/transform_types.cc:54
+#, kde-format
+msgid "Select the point to reflect in..."
+msgstr "Қай нүктеге шағылдыру керегін таңдау..."
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Reflect in this line"
+msgstr "Мынау сызыққа шағылдыру"
+
+#: objects/transform_types.cc:86
+#, kde-format
+msgid "Select the line to reflect in..."
+msgstr "Қай сызыққа шағылдыру керегін таңдау..."
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Rotate this object"
+msgstr "Мына нысанды бұрау"
+
+#: objects/transform_types.cc:117
+#, kde-format
+msgid "Select the object to rotate..."
+msgstr "Бұралатын нысанды таңдау..."
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Rotate around this point"
+msgstr "Мынау нүктені айнала бұрау"
+
+#: objects/transform_types.cc:118
+#, kde-format
+msgid "Select the center point of the rotation..."
+msgstr "Қай нүкткені айнала бұрау керегін таңдау..."
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Rotate by this angle"
+msgstr "Мынау бұрышқа бұрау"
+
+#: objects/transform_types.cc:121
+#, kde-format
+msgid "Select the angle of the rotation..."
+msgstr "Бұрайтын бұрышты таңдау..."
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Scale this object"
+msgstr "Мына нысанды масштабтау"
+
+#: objects/transform_types.cc:156 objects/transform_types.cc:194
+#, kde-format
+msgid "Select the object to scale..."
+msgstr "Масштабтайтын нысанды таңдау..."
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Scale with this center"
+msgstr "Мынау центрімен нысанды масштабтау"
+
+#: objects/transform_types.cc:157 objects/transform_types.cc:195
+#, kde-format
+msgid "Select the center point of the scaling..."
+msgstr "Масштабтаудың центрін таңдау"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid "Scale by this length"
+msgstr "Мынау шамаға масштабтау"
+
+#: objects/transform_types.cc:160 objects/transform_types.cc:250
+#, kde-format
+msgid ""
+"Select a length or a segment whose length is the factor of the scaling..."
+msgstr ""
+"Масштабтау шамасы қай ұзындығына не кесіндіге тең болу керегін таңдау..."
+
+#: objects/transform_types.cc:201 objects/transform_types.cc:290
+#, kde-format
+msgid "Scale this length..."
+msgstr "Мынау ұзындықты..."
+
+#: objects/transform_types.cc:202 objects/transform_types.cc:291
+#, kde-format
+msgid ""
+"Select the first of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Ара-қатынасы масштабтау шамасы болатын екі ұзындықтын біріншісін таңдау..."
+
+#: objects/transform_types.cc:205 objects/transform_types.cc:294
+#, kde-format
+msgid "...to this other length"
+msgstr "...мынау ұзындыққа келтіру"
+
+#: objects/transform_types.cc:206 objects/transform_types.cc:295
+#, kde-format
+msgid ""
+"Select the second of two lengths whose ratio is the factor of the scaling..."
+msgstr ""
+"Ара-қатынасы масштабтау шамасы болатын екі ұзындықтын екіншісін таңдау..."
+
+#: objects/transform_types.cc:246 objects/transform_types.cc:284
+#, kde-format
+msgid "Select the object to scale"
+msgstr "Масштабтайтын нысанды таңдау"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Scale over this line"
+msgstr "Мынау сызық бойынша масштабтау"
+
+#: objects/transform_types.cc:247 objects/transform_types.cc:285
+#, kde-format
+msgid "Select the line to scale over"
+msgstr "Қай сызық бойынша масштабтау керегін таңдау"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Projectively rotate this object"
+msgstr "Мына нысанды проекциялы бұрау"
+
+#: objects/transform_types.cc:335
+#, kde-format
+msgid "Select the object to rotate projectively"
+msgstr "Проекциялы бұралатын нысанды таңдау"
+
+#: objects/transform_types.cc:337
+#, kde-format
+msgid "Projectively rotate with this half-line"
+msgstr "Мынау сәулемен проекциялы бұрау"
+
+#: objects/transform_types.cc:338
+#, kde-format
+msgid ""
+"Select the half line of the projective rotation that you want to apply to "
+"the object"
+msgstr "Нысанға қолданатын проекциялы бұраудың сәулесін таңдау"
+
+#: objects/transform_types.cc:341
+#, kde-format
+msgid "Projectively rotate by this angle"
+msgstr "Мынау бұрышқа проекциялы бұрау"
+
+#: objects/transform_types.cc:342
+#, kde-format
+msgid ""
+"Select the angle of the projective rotation that you want to apply to the "
+"object"
+msgstr "Нысанға қолданатын проекциялы бұраудың бұрышын таңдау"
+
+#: objects/transform_types.cc:376
+#, kde-format
+msgid "Harmonic Homology of this object"
+msgstr "Мына нысанның гармоникалық гомологиясы"
+
+#: objects/transform_types.cc:376 objects/transform_types.cc:408
+#: objects/transform_types.cc:449 objects/transform_types.cc:508
+#: objects/transform_types.cc:552 objects/transform_types.cc:883
+#, kde-format
+msgid "Select the object to transform..."
+msgstr "Түрлендіретін нысанды таңдау..."
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Harmonic Homology with this center"
+msgstr "Гармоникалық гомологияның центірі"
+
+#: objects/transform_types.cc:377
+#, kde-format
+msgid "Select the center point of the harmonic homology..."
+msgstr "Гармоникалық гомологияның центрін таңдау..."
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Harmonic Homology with this axis"
+msgstr "Гармоникалық гомологияның осі"
+
+#: objects/transform_types.cc:378
+#, kde-format
+msgid "Select the axis of the harmonic homology..."
+msgstr "Гармоникалық гомологияның осін таңдау..."
+
+#: objects/transform_types.cc:408 objects/transform_types.cc:449
+#, kde-format
+msgid "Generic affinity of this object"
+msgstr "Мына нысанның жалпы ұқсатық түрлендіруі"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Map this triangle"
+msgstr "Түрлендіргенде мынау үшбұрыш"
+
+#: objects/transform_types.cc:409
+#, kde-format
+msgid "Select the triangle that has to be transformed onto a given triangle..."
+msgstr "Берілген үшбұрышқа қай үшбұрышты түрлендіру керегін таңдау..."
+
+#: objects/transform_types.cc:411
+#, kde-format
+msgid "onto this other triangle"
+msgstr "мынау үшбұрышқа сәйкестіріледі"
+
+#: objects/transform_types.cc:412
+#, kde-format
+msgid ""
+"Select the triangle that is the image by the affinity of the first "
+"triangle..."
+msgstr "Бірінші үшбұрышты қай үшбұрышқа түрлендіру керегін таңдау..."
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid "First of 3 starting points"
+msgstr "3 бастапқы нүктенің біріншісі"
+
+#: objects/transform_types.cc:450
+#, kde-format
+msgid ""
+"Select the first of the three starting points of the generic affinity..."
+msgstr ""
+"Жалпы ұқсасты түрлендірудің бастапқы үш нүктесінің біріншісін таңдау..."
+
+#: objects/transform_types.cc:452
+#, kde-format
+msgid "Second of 3 starting points"
+msgstr "3 бастапқы нүктенің екіншісі"
+
+#: objects/transform_types.cc:453
+#, kde-format
+msgid ""
+"Select the second of the three starting points of the generic affinity..."
+msgstr ""
+"Жалпы ұқсасты түрлендірудің бастапқы үш нүктесінің екіншіісін таңдау..."
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid "Third of 3 starting points"
+msgstr "3 бастапқы нүктенің үшіншісі"
+
+#: objects/transform_types.cc:455
+#, kde-format
+msgid ""
+"Select the third of the three starting points of the generic affinity..."
+msgstr "Жалпы ұқсасты түрлендірудің бастапқы үш нүктесінің үшіншісін таңдау..."
+
+#: objects/transform_types.cc:457 objects/transform_types.cc:570
+#, kde-format
+msgid "Transformed position of first point"
+msgstr "Бірінші нүктенің түрлендірілген орны"
+
+#: objects/transform_types.cc:458
+#, kde-format
+msgid "Select the first of the three end points of the generic affinity..."
+msgstr "Жалпы ұқсасты түрлендірілген үш нүктесінің біріншісін таңдау..."
+
+#: objects/transform_types.cc:461 objects/transform_types.cc:574
+#, kde-format
+msgid "Transformed position of second point"
+msgstr "Екінші нүктенің түрлендірілген орны"
+
+#: objects/transform_types.cc:462
+#, kde-format
+msgid "Select the second of the three end points of the generic affinity..."
+msgstr "Жалпы ұқсасты түрлендірілген үш нүктесінің екіншісін таңдау..."
+
+#: objects/transform_types.cc:465 objects/transform_types.cc:578
+#, kde-format
+msgid "Transformed position of third point"
+msgstr "Үшінші нүктенің түрлендірілген орны"
+
+#: objects/transform_types.cc:466
+#, kde-format
+msgid "Select the third of the three end points of the generic affinity..."
+msgstr "Жалпы ұқсасты түрлендірілген үш нүктесінің үшіншісін таңдау..."
+
+#: objects/transform_types.cc:508 objects/transform_types.cc:552
+#, kde-format
+msgid "Generic projective transformation of this object"
+msgstr "Осы нысанның жалпы проекциясы"
+
+#: objects/transform_types.cc:510
+#, kde-format
+msgid "Map this quadrilateral"
+msgstr "Осы төртбұрышты"
+
+#: objects/transform_types.cc:511
+#, kde-format
+msgid ""
+"Select the quadrilateral that has to be transformed onto a given "
+"quadrilateral..."
+msgstr "Берілген төртбұрышқа қай төртбұрышты түрлендіру керегін таңдау..."
+
+#: objects/transform_types.cc:514
+#, kde-format
+msgid "onto this other quadrilateral"
+msgstr "мынау төртбұрышқа проекциялау"
+
+#: objects/transform_types.cc:515
+#, kde-format
+msgid ""
+"Select the quadrilateral that is the image by the projective transformation "
+"of the first quadrilateral..."
+msgstr "Қай төртбұрыш бірінші төртбұрыштың проекциясы болатынын таңдау..."
+
+#: objects/transform_types.cc:554
+#, kde-format
+msgid "First of 4 starting points"
+msgstr "4 бастапқы нүктенің біріншісі"
+
+#: objects/transform_types.cc:555
+#, kde-format
+msgid ""
+"Select the first of the four starting points of the generic projectivity..."
+msgstr "Жалпы проекцияның бастапқы төрт нүктесінің біріншісін таңдау..."
+
+#: objects/transform_types.cc:558
+#, kde-format
+msgid "Second of 4 starting points"
+msgstr "4 бастапқы нүктенің екіншісі"
+
+#: objects/transform_types.cc:559
+#, kde-format
+msgid ""
+"Select the second of the four starting points of the generic projectivity..."
+msgstr "Жалпы проекцияның бастапқы төрт нүктесінің екіншісін таңдау..."
+
+#: objects/transform_types.cc:562
+#, kde-format
+msgid "Third of 4 starting points"
+msgstr "4 бастапқы нүктенің үшіншісі"
+
+#: objects/transform_types.cc:563
+#, kde-format
+msgid ""
+"Select the third of the four starting points of the generic projectivity..."
+msgstr "Жалпы проекцияның бастапқы төрт нүктесінің үшіншісін таңдау..."
+
+#: objects/transform_types.cc:566
+#, kde-format
+msgid "Fourth of 4 starting points"
+msgstr "4 бастапқы нүктенің төртіншісі"
+
+#: objects/transform_types.cc:567
+#, kde-format
+msgid ""
+"Select the fourth of the four starting points of the generic projectivity..."
+msgstr "Жалпы проекцияның бастапқы төрт нүктесінің төртіншісін таңдау..."
+
+#: objects/transform_types.cc:571
+#, kde-format
+msgid "Select the first of the four end points of the generic projectivity..."
+msgstr "Жалпы проекцияның нәтижелі төрт нүктесінің біріншісін таңдау..."
+
+#: objects/transform_types.cc:575
+#, kde-format
+msgid "Select the second of the four end points of the generic projectivity..."
+msgstr "Жалпы проекцияның нәтижелі төрт нүктесінің екіншісін таңдау..."
+
+#: objects/transform_types.cc:579
+#, kde-format
+msgid "Select the third of the four end points of the generic projectivity..."
+msgstr "Жалпы проекцияның нәтижелі төрт нүктесінің үшіншісін таңдау..."
+
+#: objects/transform_types.cc:582
+#, kde-format
+msgid "Transformed position of fourth point"
+msgstr "Төртінші нүктенің түрлендірілген орны"
+
+#: objects/transform_types.cc:583
+#, kde-format
+msgid "Select the fourth of the four end points of the generic projectivity..."
+msgstr "Жалпы проекцияның нәтижелі төрт нүктесінің төртіншісін таңдау..."
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Cast the shadow of this object"
+msgstr "Мына нысанның көлеңкесін түсіру"
+
+#: objects/transform_types.cc:624
+#, kde-format
+msgid "Select the object of which you want to construct the shadow..."
+msgstr "Көлеңкесін түсіретін нысанды таңдау..."
+
+#: objects/transform_types.cc:626
+#, kde-format
+msgid "Cast a shadow from this light source"
+msgstr "Көлеңкелейтін жарық көзі"
+
+#: objects/transform_types.cc:627
+#, kde-format
+msgid "Select the light source from which the shadow should originate..."
+msgstr "Қай жарық көзін көлеңкелейтінін таңдау..."
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Cast a shadow on the horizon represented by this line"
+msgstr "Мынау сызық көлеңке түсіргендегі көкжиекті белгілейді "
+
+#: objects/transform_types.cc:629
+#, kde-format
+msgid "Select the horizon for the shadow..."
+msgstr "Көлеңкенің көкжиегін таңдау..."
+
+#: objects/transform_types.cc:809
+#, kde-format
+msgid "Transform this object"
+msgstr "Мына нысанды түрлендіру"
+
+#: objects/transform_types.cc:810
+#, kde-format
+msgid "Transform using this transformation"
+msgstr "Осы түрлендіруді жасау"
+
+#: objects/transform_types.cc:883
+#, kde-format
+msgid "Apply a similitude to this object"
+msgstr "Осы нысанның ұқсастық түрлендіруін жасау"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Apply a similitude with this center"
+msgstr "Осы центрімен ұқсастық түрлендіруін жасау"
+
+#: objects/transform_types.cc:884
+#, kde-format
+msgid "Select the center for the similitude..."
+msgstr "Ұқсастықтың центрін таңдау..."
+
+#: objects/transform_types.cc:886
+#, kde-format
+msgid "Apply a similitude mapping this point onto another point"
+msgstr "Осы нүктені басқа бір нүктеге проекция ететін ұқсастықты жасау"
+
+#: objects/transform_types.cc:887
+#, kde-format
+msgid "Select the point which the similitude should map onto another point..."
+msgstr ""
+"Ұқсастық түрлендіру басқа бір нүктеге проекция ететін нүктені таңдау..."
+
+#: objects/transform_types.cc:890
+#, kde-format
+msgid "Apply a similitude mapping a point onto this point"
+msgstr "Осы нүктеге басқа бір нүктені проекция ететін ұқсастықты жасау"
+
+#: objects/transform_types.cc:891
+#, kde-format
+msgid ""
+"Select the point onto which the similitude should map the first point..."
+msgstr ""
+"Ұқсастық түрлендіру бастапқы бір нүктені проекция ететін нүктесін таңдау..."
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Construct a vector from this point"
+msgstr "Осы нүктегеден шығатын векторды құру"
+
+#: objects/vector_type.cc:12
+#, kde-format
+msgid "Select the start point of the new vector..."
+msgstr "Жаңа вектордың шығытын нүктесін таңдау..."
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Construct a vector to this point"
+msgstr "Осы нүктеге қадалатын векторды құру"
+
+#: objects/vector_type.cc:13
+#, kde-format
+msgid "Select the end point of the new vector..."
+msgstr "Жаңа векторының қадалатын нүктесін таңдау..."
+
+#: objects/vector_type.cc:44
+#, kde-format
+msgid "Construct the vector sum of this vector and another one."
+msgstr "Басқа векторымен осы векторының қосылым векторын құру."
+
+#: objects/vector_type.cc:45
+#, kde-format
+msgid ""
+"Select the first of the two vectors of which you want to construct the sum..."
+msgstr "Қосылымы құрылатын екі вектордың біріншісін таңдау..."
+
+#: objects/vector_type.cc:48
+#, kde-format
+msgid "Construct the vector sum of this vector and the other one."
+msgstr "Басқа векторымен осы векторының қосылым векторын құру."
+
+#: objects/vector_type.cc:49
+#, kde-format
+msgid ""
+"Select the other of the two vectors of which you want to construct the sum..."
+msgstr "Қосылымы құрылатын екі вектордың басқасын таңдау..."
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Construct the vector sum starting at this point."
+msgstr "Қосылым векторын осы нүктеден шығару"
+
+#: objects/vector_type.cc:51
+#, kde-format
+msgid "Select the point to construct the sum vector in..."
+msgstr "Құрылатын қосылым векторының шығатын нүктесін таңдау..."
+
+#: scripting/newscriptwizard.cc:46
+#, fuzzy, kde-format
+#| msgid "New Script"
+msgctxt "@title:window"
+msgid "New Script"
+msgstr "Жаңа скрипт"
+
+#: scripting/newscriptwizard.cc:57
+#, kde-format
+msgid ""
+"Select the argument objects (if any)\n"
+"in the Kig window and press \"Next\"."
+msgstr ""
+"Аргумент (бар болса) нысандарын Kig терезесінде таңдаңыз да, \"Келесі\" "
+"дегенді басыңыз."
+
+#: scripting/newscriptwizard.cc:63
+#, kde-format
+msgid "Enter Code"
+msgstr "Кодын келтіру"
+
+#: scripting/script-common.cc:18
+#, kde-format
+msgid "Now fill in the code:"
+msgstr "Енді скриптті келтіріңіз:"
+
+#: scripting/script-common.cc:19
+#, kde-format
+msgid "Now fill in the Python code:"
+msgstr "Енді Python кодын келтіріңіз:"
+
+#: scripting/script-common.cc:80
+#, kde-format
+msgctxt ""
+"Note to translators: this should be a default name for an argument in a "
+"Python function. The default is \"arg%1\" which would become arg1, arg2, "
+"etc. Give something which seems appropriate for your language."
+msgid "arg%1"
+msgstr "arg%1"
+
+#: scripting/script_mode.cc:181
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script and click the Finish button again."
+msgstr ""
+"Python интерпретаторы, скриптіңізді орындау кезінде қате тапты. Скриптті "
+"түзеңіз де, \"Аяқтау\" батырмасын қайта басыңыз."
+
+#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#, kde-format
+msgid ""
+"The Python Interpreter generated the following error output:\n"
+"%1"
+msgstr ""
+"Python интерпретаторы қате туралы былай хабарлады:\n"
+"%1"
+
+#: scripting/script_mode.cc:186
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script, and click the Finish button again."
+msgstr ""
+"Скриптіңізде қате бар сияқты. Python интерпретаторы қате тапқан жоқ, бірақ, "
+"скрипт дұрыс нысанды құрған да жоқ. Скриптті түзеңіз де, \"Аяқтау\" "
+"батырмасын қайта басыңыз."
+
+#: scripting/script_mode.cc:285
+#, fuzzy, kde-format
+#| msgctxt "'Edit' is a verb"
+#| msgid "Edit Script"
+msgctxt "@title:window 'Edit' is a verb"
+msgid "Edit Script"
+msgstr "Скриптті өңдеу"
+
+#: scripting/script_mode.cc:307
+#, kde-format
+msgid "Edit Python Script"
+msgstr "Python скриптің өңдеу"
+
+#: scripting/script_mode.cc:315
+#, kde-format
+msgid ""
+"The Python interpreter caught an error during the execution of your script. "
+"Please fix the script."
+msgstr ""
+"Python интерпретаторы, скриптіңізді орындау кезінде қате тапты. Скриптті "
+"түзеңіз."
+
+#: scripting/script_mode.cc:320
+#, kde-format
+msgid ""
+"There seems to be an error in your script. The Python interpreter reported "
+"no errors, but the script does not generate a valid object. Please fix the "
+"script."
+msgstr ""
+"Скриптіңізде қате бар сияқты. Python интерпретаторы қате тапқан жоқ, бірақ, "
+"скрипт дұрыс нысанды құрған да жоқ. Скриптті түзеңіз."
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:2
+#, kde-format
+msgid ""
+"<p>You can control a kig construction by means of a \"pykig\" \n"
+"python script, that can be executed with the command \n"
+"<code>pykig.py</code>.  Here is a nice example \n"
+"(<code>hexagons.kpy</code>) you can try:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+msgstr ""
+"<p>Kig құрылымын \"pykig\" деген python скриптімен\n"
+"басқаруға болады, ал ол <code>pykig.py</code> деген\n"
+"командамен орындалады.  Мұнда, орындап көру үшін, бір\n"
+"(<code>hexagons.kpy</code> деген) жақсы мысал келтірілген:\n"
+"<code><pre>\n"
+"kigdocument.hideobjects()\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
+"  if n &lt;= 0:\n"
+"    hexagon.show()\n"
+"    for i in range(6): \n"
+"      PolygonSide (hexagon, i, True)\n"
+"    return\n"
+"  cnew = MidPoints (c, v)\n"
+"  hexagons (cnew, v, n-1)\n"
+"  for k in [2,4]:\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
+"    cnew = MidPoints (c, v1)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
+"</pre></code>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:28
+#, kde-format
+msgid ""
+"<p>You can repeat the latest construction simply by pressing the key\n"
+"'Z'; this comes in very handy if you need to construct a sequence\n"
+"of objects with the same construction, especially if there is\n"
+"no shortcut for that construction.</p>\n"
+msgstr ""
+"<p>Ең соңғы құрылымын жәй ғана 'Z' пернесін басып қайталауға\n"
+"болады, бұл бірнеше құрылымы бірдей нысандардан тұратын\n"
+"құрылымды жасағанда ыңғайлы, әсіресе ол құрылым амалының\n"
+"перне тіркесімі болмаса.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:37
+#, kde-format
+msgid ""
+"<p>One of the most powerful tools in Kig are the menus that you can\n"
+"enter by right-clicking on an object, or on some empty space in the\n"
+"document.  You can use them to give objects names, change their colors\n"
+"and line styles, and lots of other interesting things.</p>\n"
+msgstr ""
+"<p>Kig баздарламасының қуатты құралдарының бірі - ол, құжаттағы\n"
+"нысанның не бір бос орынның үстінен тышқанның оң жақ батырмасымен\n"
+"түрткенде шыға келетін мәзірі. Оның көмегімен нысанды атауға, түсін,\n"
+"сызықтатының стилін өзгертуге, және тағы басқа да көп нәрсе істеуге\n"
+"болады.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:46
+#, kde-format
+msgid ""
+"<p>You can construct new points without using the menu or the toolbar, "
+"simply\n"
+"clicking somewhere on the Kig document with the <em>middle mouse\n"
+"button</em>.</p>\n"
+msgstr ""
+"<p>Жаңа нүктелерін мәзір не құрал панелінің пайдаланбай , жәй ғана,\n"
+"Kig құжатының бір жерінде <em>тышқанның ортаңғы батырмасын</em>\n"
+"түртіп құруға болады.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:54
+#, kde-format
+msgid ""
+"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
+"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
+"and <em>Cabri&#8482;</em> files.</p>\n"
+msgstr ""
+"<p>Kig бірнеше пішімдегі файлдарды аша алады: өзінің (<code>.kig</code>) "
+"файлдарын,\n"
+"<em>KGeo</em> файлдарын, <em>KSeg</em> файлдарын, және кейбір <em>Dr. Geo</"
+"em>\n"
+"мен <em>Cabri&#8482;</em> файлдарын.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:62
+#, kde-format
+msgid ""
+"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
+"constructions you can use in your documents: open the <em>Objects</em> \n"
+"menu to see them all.</p>\n"
+msgstr ""
+"<p>Kig құжаттарында пайдалану үшін 20-дан астам нысандар және 10\n"
+"түрлендірулер мен 80-нен астам құрылымдары бар. Бәрін көру үшін\n"
+"мәзірдегі <em>Нысандар</em> дегенді ашыңыз.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:70
+#, kde-format
+msgid ""
+"<p>You can use the selected objects to start the construction of an object\n"
+"which requires the selected objects as arguments. For example, if you have "
+"two\n"
+"points selected, you can choose <em>Start->Circle by Three Points</em> from "
+"the\n"
+"popup menu to start constructing a circle by three points.</p>\n"
+msgstr ""
+"<p>Таңдалған нысандарды, аргумент ретінде қолданатын нысанды\n"
+"құруды бастау үшін пайдалануға болады. Мысалы, егер екі нүкте таңдалып "
+"тұрса,\n"
+"қалқымалы мәзірінен <em>Бастау->Үш нүкте арқылы шеңбер</em> дегенді\n"
+"таңдап алып,\n"
+"үш нүкте арқылы шеңберді құруды бастауға болады.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:79
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Kig can extends its object set using external macros. You can find "
+#| "some\n"
+#| "interesting macros on the Kig website:\n"
+#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+msgid ""
+"<p>Kig can extends its object set using external macros. You can find some\n"
+"interesting macros on the Kig website:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
+msgstr ""
+"<p>Kig нысандар қатарын, сыртқы макростарының көмегімен, кеңейте алады.\n"
+"Kig вебсайтнда бірқатар кызық макростарды таба аласыз:\n"
+"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:87
+#, kde-format
+msgid ""
+"<p>If you have more than one object under the mouse, and you want to select "
+"any\n"
+"of them, you can click with the <em>left mouse button</em>, while holding "
+"the\n"
+"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
+"which\n"
+"you can then select from.</p>\n"
+msgstr ""
+"<p>Егерде тышқан меңзерінің астында бірнеше нысан болса, онда қалауыңыз\n"
+"бойынша, біреуін таңдай аласыз. Ол үшін, <em>Shift</em> пернені басып "
+"тұрып,\n"
+"<em>тышқанның сол жақ батырмасын</em> түртіңіз де, шыққан тізімінен керегін\n"
+"таңдап алыңыз.</p>\n"
+
+#. i18n: ectx: @info:tipoftheday
+#: tips:96
+#, kde-format
+msgid ""
+"<p>When you construct a locus, you can click on it with the <em>right</em> "
+"mouse\n"
+"button and select <em>cartesian equation</em> to see its cartesian "
+"equation, \n"
+"whenever it is an algebraic curve of low degree.</p>\n"
+msgstr ""
+"<p>Нүктелер жиынның геометриялық орнын сызганда, ол дәрежесі төмен\n"
+"қисығының бірі болса, оны тышқанның  <em>оң жақ</em> батырмасымен\n"
+"түртіп, <em>Декарт теңдігі</em> дегенді таңдап, оның Декарт\n"
+"теңдігін көруге болады.</p>\n"
+
+#~ msgid "KigPart"
+#~ msgstr "KigPart"
+
+#~ msgid "Construct Midpoint of This Point and Another One"
+#~ msgstr "Мына нүктемен басқа нүктенің ортасын табу"
+
+#, fuzzy
+#~| msgid "Construct the midpoint of this point and another point"
+#~ msgid "Construct the axis of the segment with this and another point"
+#~ msgstr "Осы нүктемен басқа нүктенің ортасын табу"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the first of the two points..."
+#~ msgstr "Басқа екі нүктенің біріншісін таңдау..."
+
+#, fuzzy
+#~| msgid "Construct a segment starting at this point"
+#~ msgid "Construct the axis of the segment with the previous and this point"
+#~ msgstr "Осы нүктеден кесіндіні шығару"
+
+#, fuzzy
+#~| msgid "Select the first of the two other points..."
+#~ msgid "Select the second of the two points..."
+#~ msgstr "Басқа екі нүктенің біріншісін таңдау..."
+
+#~ msgid "Save changes to document %1?"
+#~ msgstr "%1 құжатының өзгерістері сақталсын ба?"
+
+#~ msgid "Save Changes?"
+#~ msgstr "Өзгерістер сақталсын ба?"
+
+#~ msgid ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
+#~ "seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig Documents (*.kig)\n"
+#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
+#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
+#~ "*.seg|KSeg Documents (*.seg)\n"
+#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
+#~ msgstr ""
+#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|Бүкіл танитын файлдары (*.kig *."
+#~ "kigz *.seg *.fgeo *.fig)\n"
+#~ "*.kig|Kig құжаттары (*.kig)\n"
+#~ "*.kigz|Сығылған Kig құжаттары (*.kigz)\n"
+#~ "*.kgeo|KGeo құжаттары (*.kgeo)\n"
+#~ "*.seg|KSeg құжаттары (*.seg)\n"
+#~ "*.fgeo|Dr. Geo құжаттары (*.fgeo)\n"
+#~ "*.fig *.FIG|Cabri құжаттары (*.fig *.FIG)"

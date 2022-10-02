@@ -1,0 +1,212 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Ukrainian "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Інструкція користувача KDE</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>23 грудня 2020 року</date>
+<releaseinfo
+>Програми 20.12</releaseinfo>
+<productname
+>Програми KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Програма інтерактивної геометрії для &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>назва файла</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>параметри</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Опис</title>
+<para
+>&kig; є інтерактивною програмою з геометрії. Її призначено для двох цілей:</para>
+<itemizedlist
+><listitem
+><para
+>Надати можливість учням у інтерактивному режимі вивчати математичні фігури і концепції за допомогою комп’ютера;</para
+></listitem>
+<listitem
+><para
+>Слугувати інтерактивним інструментом для креслення математичних фігур з наступним включенням креслень до інших документів.</para
+></listitem
+></itemizedlist>
+<para
+>За допомогою цієї програми ви можете робити геометричні побудови так само, як ви це робите на дошці у класі. Але ця програма надасть вам змогу пересувати і змінювати частини геометричного креслення, отже, ви зможете бачити як у результаті ваших дій змінюються інші частини креслення.</para>
+<para
+>&kig; підтримує геометричні місця точок і визначені користувачем макротипи. Ця програма також може імпортувати та експортувати інформацію з та у сторонні формати файлів, а саме формати файлів <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> та <application
+>XFig</application
+>.</para>
+<para
+>Ця програма є частиною офіційного освітньо-розважального модуля &kde;.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Параметри</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>Не показувати графічного інтерфейсу. Замість цього перетворити вказаний файл у рідний формат &kig;. Файл у форматі &kig; буде записано у стандартний вивід, якщо команді не передано параметра <option
+>--outfile</option
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>назва_файла</replaceable
+></option
+></term>
+<listitem
+><para
+>Використовується з параметром <option
+>--convert-to-native</option
+>, що вказати куди слід зберегти створений файл &kig;. Якщо не вказувати цей параметр, або передати йому назву файла <filename
+>-</filename
+>, вивід буде здійснено у стандартний вивід.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Прочитайте також</title>
+<para
+>Докладніша документація для користувачів доступна у <ulink url="help:/kig"
+>help:/kig</ulink
+> (або введіть цю адресу <acronym
+>URL</acronym
+> у поле адреси &konqueror;, або виконайте команду <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Крім того, додаткову інформацію можна отримати на <ulink url="http://edu.kde.org/kig/"
+>Сторінці освітнього модуля &kde;</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Автори</title>
+<para
+>&kig; було створено <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+> та іншими розробниками.</para>
+<para
+>Ця сторінка документації засновано на сторінці, яку підготував для Debian <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>

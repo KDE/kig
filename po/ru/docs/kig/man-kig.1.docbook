@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Russian "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Руководство пользователя KDE</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>23 декабря 2020 г.</date>
+<releaseinfo
+>Приложения KDE 20.12</releaseinfo>
+<productname
+>Приложения KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Программа интерактивной геометрии, разработанная &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>filename</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>параметры</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Описание</title>
+<para
+>&kig; — программа интерактивной геометрии, предназначенная для двух целей:</para>
+<itemizedlist
+><listitem
+><para
+>позволить школьникам интерактивно изучать геометрические фигуры и понятия, используя компьютер;</para
+></listitem>
+<listitem
+><para
+>служить инструментом для рисования геометрических фигур и включения их в другие документы.</para
+></listitem
+></itemizedlist>
+<para
+>С помощью данной программы вы можете делать геометрические чертежи так же, как на школьной доске. В то же время, программа позволяет двигать и изменять объекты на чертеже и наблюдать, как изменяются другие объекты в результате этих действий.</para>
+<para
+>&kig; поддерживает геометрические места точек и макросы, определяемые пользователем. Также поддерживаются импорт и экспорт других форматов файлов, включая <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> и <application
+>XFig</application
+>.</para>
+<para
+>Данная программа — часть модуля KDE «Образование».</para>
+</refsect1>
+
+<refsect1>
+<title
+>Параметры</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>Без графического интерфейса. Преобразовать указанный файл к формату &kig;. Вывод идёт в stdout, если только не указан параметр <option
+>--outfile</option
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>file</replaceable
+></option
+></term>
+<listitem
+><para
+>Используется вместе с параметром <option
+>--convert-to-native</option
+> для указания файла результата преобразования. Если данный параметр не определён, или название файла — <filename
+>-</filename
+>, данные будут выводиться в стандартный поток вывода.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Смотрите также</title>
+<para
+>Более подробная документация доступна по адресу <ulink url="help:/kig"
+>help:/kig</ulink
+> (введите данный &URL;-адрес в адресную строку &konqueror; или выполните команду <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Дополнительная информация доступна на <ulink url="https://edu.kde.org/kig/"
+>сайте проекта &kde; «Образование»</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Авторы</title>
+<para
+>&kig; написана <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+> и другими.</para>
+<para
+>Это руководство основано на странице для &Debian;, написанной Беном Бартоном (<personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+>) <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>
