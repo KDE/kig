@@ -254,7 +254,7 @@ msgstr ""
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
-msgstr "S'ha trobat un error a la línia %1 del fitxer %2."
+msgstr "S'ha trobat un error en la línia %1 del fitxer %2."
 
 #: filters/drgeo-filter.cc:92
 #, kde-format
@@ -1777,7 +1777,7 @@ msgstr "Un objecte reflectit a un punt"
 #: misc/builtin_stuff.cc:360
 #, kde-format
 msgid "Reflect in Line"
-msgstr "Reflectix a la recta"
+msgstr "Reflectix en la recta"
 
 #: misc/builtin_stuff.cc:360
 #, kde-format
@@ -6908,7 +6908,7 @@ msgid ""
 msgstr ""
 "<p>Kig pot ampliar la seua col·lecció d'objectes mitjançant macros "
 "externes.\n"
-"Trobareu algunes macros interessants a la pàgina web de Kig:\n"
+"Trobareu algunes macros interessants en la pàgina web de Kig:\n"
 "<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
