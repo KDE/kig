@@ -20,6 +20,7 @@
   <name xml:lang="gl">Kig</name>
   <name xml:lang="id">Kig</name>
   <name xml:lang="it">Kig</name>
+  <name xml:lang="ka">Kig</name>
   <name xml:lang="ko">Kig</name>
   <name xml:lang="lt">Kig</name>
   <name xml:lang="nds">Kig</name>
@@ -54,6 +55,7 @@
   <summary xml:lang="gl">Xeometría interactiva</summary>
   <summary xml:lang="id">Geometri Interaktif</summary>
   <summary xml:lang="it">Geometria interattiva</summary>
+  <summary xml:lang="ka">ინტერაქტიური გეომეტრია</summary>
   <summary xml:lang="ko">인터랙티브 기하학</summary>
   <summary xml:lang="lt">Interaktyvi geometrija</summary>
   <summary xml:lang="nds">Wesselwarken Geometrie</summary>
@@ -126,6 +128,7 @@
       <caption xml:lang="gl">Xeometría interactiva con Kig</caption>
       <caption xml:lang="id">Geometri interaktif dengan Kgig</caption>
       <caption xml:lang="it">Geometria interattiva con Kig</caption>
+      <caption xml:lang="ka">ინტერაქტიური გეომეტრია Kig-თან ერთად</caption>
       <caption xml:lang="ko">Kig를 사용한 인터랙티브 기하학</caption>
       <caption xml:lang="nl">Interactieve meetkunde met Kig</caption>
       <caption xml:lang="nn">Interaktiv geometri med Kig</caption>
