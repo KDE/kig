@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-21 00:41+0000\n"
+"POT-Creation-Date: 2022-10-01 00:41+0000\n"
 "PO-Revision-Date: 2013-04-08 21:55+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -223,12 +223,12 @@ msgstr "Vis &akser"
 msgid "Show Grid"
 msgstr "Vis rutenett"
 
-#: filters/cabri-filter.cc:144
+#: filters/cabri-filter.cc:143
 #, kde-format
 msgid "This is an XFig file, not a Cabri figure."
 msgstr "Dette er en XFig-fil, ikke en Cabri-figur."
 
-#: filters/cabri-filter.cc:182
+#: filters/cabri-filter.cc:181
 #, kde-format
 msgid ""
 "This Cabri version (%1) is not supported yet.\n"
@@ -238,7 +238,7 @@ msgstr ""
 "Du bes kontakte Kig-utviklerne for å gi hjelp til å få støtte for denne "
 "Capri-versjonen."
 
-#: filters/cabri-filter.cc:569
+#: filters/cabri-filter.cc:568
 #, kde-format
 msgid ""
 "This Cabri file contains a \"%1\" object, which Kig does not currently "
@@ -776,12 +776,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Ansvarlig for de nye objekthandlingsikonene."
 
-#: kig/kig.cpp:64
+#: kig/kig.cpp:62
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Fant ikke et nødvendig Kig-bibliotek, sjekk installasjonen."
 
-#: kig/kig.cpp:206
+#: kig/kig.cpp:204
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -801,190 +801,190 @@ msgid_plural "Add %1 Objects"
 msgstr[0] "Legg til %1 objekt"
 msgstr[1] "Legg til %1 objekter"
 
-#: kig/kig_part.cpp:87
+#: kig/kig_part.cpp:85
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "&Still inn koordinatsystem"
 
-#: kig/kig_part.cpp:127
+#: kig/kig_part.cpp:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr ""
 
-#: kig/kig_part.cpp:131
+#: kig/kig_part.cpp:129
 #, kde-format
 msgid "Show grid"
 msgstr "Vis rutelinjer"
 
-#: kig/kig_part.cpp:134
+#: kig/kig_part.cpp:132
 #, kde-format
 msgid "Show axes"
 msgstr "Vis akser"
 
-#: kig/kig_part.cpp:219
+#: kig/kig_part.cpp:217
 #, kde-format
 msgid "Invert Selection"
 msgstr "Snu om utvalget"
 
-#: kig/kig_part.cpp:226
+#: kig/kig_part.cpp:224
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Slett objekter"
 
-#: kig/kig_part.cpp:230
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Slett de valgte objektene"
 
-#: kig/kig_part.cpp:232
+#: kig/kig_part.cpp:230
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Avbryt konstruksjonen"
 
-#: kig/kig_part.cpp:236
+#: kig/kig_part.cpp:234
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Avbryt oppbyggingen av det objektet som er under arbeid"
 
-#: kig/kig_part.cpp:239
+#: kig/kig_part.cpp:237
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Gjenta konstruksjonen"
 
-#: kig/kig_part.cpp:243
+#: kig/kig_part.cpp:241
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Gjenta siste konstruksjon (med nye data)"
 
-#: kig/kig_part.cpp:246 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Vis &alle"
 
-#: kig/kig_part.cpp:249
+#: kig/kig_part.cpp:247
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Vis alle skjulte objekter"
 
-#: kig/kig_part.cpp:252
+#: kig/kig_part.cpp:250
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Ny makro …"
 
-#: kig/kig_part.cpp:255
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Define a new macro"
 msgstr "Definer en ny makro"
 
-#: kig/kig_part.cpp:257
+#: kig/kig_part.cpp:255
 #, kde-format
 msgid "Manage &Types..."
 msgstr "&Typehåndtering …"
 
-#: kig/kig_part.cpp:260
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "Manage macro types."
 msgstr "Håndtering av makro-typer."
 
-#: kig/kig_part.cpp:262
+#: kig/kig_part.cpp:260
 #, kde-format
 msgid "&Browse History..."
 msgstr "&Vis historien …"
 
-#: kig/kig_part.cpp:265
+#: kig/kig_part.cpp:263
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Vis historien til den gjeldende konstruksjonen."
 
-#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Forstørr dokumentet"
 
-#: kig/kig_part.cpp:274 kig/kig_part.cpp:275
+#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Forminsk dokumentet"
 
-#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Sentrer skjermen på dokumentet"
 
-#: kig/kig_part.cpp:284 kig/kig_part.cpp:285
+#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Vis dette dokumentet i full skjerm."
 
-#: kig/kig_part.cpp:288
+#: kig/kig_part.cpp:286
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "&Velg vist område"
 
-#: kig/kig_part.cpp:291 kig/kig_part.cpp:292
+#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Velg det område du vil ha vist i vinduet."
 
-#: kig/kig_part.cpp:294
+#: kig/kig_part.cpp:292
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "V&elg forstørret område"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:300
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Sett koordinat&presisjon …"
 
-#: kig/kig_part.cpp:302
+#: kig/kig_part.cpp:300
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Oppgi flyttallspresisjon for koordinater i dokumentet."
 
-#: kig/kig_part.cpp:305
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show &Grid"
 msgstr "Vis &rutelinjer"
 
-#: kig/kig_part.cpp:307
+#: kig/kig_part.cpp:305
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Vis eller skjul rutenettet."
 
-#: kig/kig_part.cpp:311
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show &Axes"
 msgstr "Vis &akser"
 
-#: kig/kig_part.cpp:313
+#: kig/kig_part.cpp:311
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Vis eller skjul aksene."
 
-#: kig/kig_part.cpp:317
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Ta på infrarøde briller"
 
-#: kig/kig_part.cpp:319
+#: kig/kig_part.cpp:317
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Slå på/av visning av skjulte objekter."
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:347
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Gjenta konstruksjon (%1)"
 
-#: kig/kig_part.cpp:350
+#: kig/kig_part.cpp:348
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Gjenta %1 (med nye data)"
 
-#: kig/kig_part.cpp:378
+#: kig/kig_part.cpp:376
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -993,12 +993,12 @@ msgstr ""
 "Fila «%1» som du forsøkte å åpne, finnes ikke. Se etter at du oppga riktig "
 "sti."
 
-#: kig/kig_part.cpp:381
+#: kig/kig_part.cpp:379
 #, kde-format
 msgid "File Not Found"
 msgstr "Fant ikke fil"
 
-#: kig/kig_part.cpp:396
+#: kig/kig_part.cpp:394
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1008,12 +1008,12 @@ msgid ""
 "\">KDE's bug tracking system</a>"
 msgstr ""
 
-#: kig/kig_part.cpp:400 kig/kig_part.cpp:443
+#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Ikke støttet format"
 
-#: kig/kig_part.cpp:441
+#: kig/kig_part.cpp:439
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1022,77 +1022,77 @@ msgstr ""
 "Kig støtter ikke lagring til andre formater enn sitt eget. Lagre til Kig-"
 "format i stedet?"
 
-#: kig/kig_part.cpp:444
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Lagre Kig-format"
 
-#: kig/kig_part.cpp:697
+#: kig/kig_part.cpp:695
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr ""
 
-#: kig/kig_part.cpp:709 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:462
+#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Fila «%1» finnes fra før. Vil du skrive over den?"
 
-#: kig/kig_part.cpp:710 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:465
+#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Skrive over fil?"
 
-#: kig/kig_part.cpp:859
+#: kig/kig_part.cpp:857
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr ""
 
-#: kig/kig_part.cpp:923
+#: kig/kig_part.cpp:921
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "Skjul %1 objekt"
 msgstr[1] "Skjul %1 objekter"
 
-#: kig/kig_part.cpp:942
+#: kig/kig_part.cpp:940
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
 msgstr[0] "Vis %1 objekt"
 msgstr[1] "Vis %1 objekter"
 
-#: kig/kig_view.cpp:193
+#: kig/kig_view.cpp:189
 #, kde-format
 msgid "Zoom In"
 msgstr "Vis større"
 
-#: kig/kig_view.cpp:211
+#: kig/kig_view.cpp:207
 #, kde-format
 msgid "Zoom Out"
 msgstr "Vis mindre"
 
-#: kig/kig_view.cpp:478
+#: kig/kig_view.cpp:474
 #, kde-format
 msgid "Recenter View"
 msgstr "Sentrer visningen"
 
-#: kig/kig_view.cpp:500
+#: kig/kig_view.cpp:496
 #, kde-format
 msgid "Select the rectangle that should be shown."
 msgstr "Velg rektangelet som skal vises."
 
-#: kig/kig_view.cpp:505 kig/kig_view.cpp:555
+#: kig/kig_view.cpp:501 kig/kig_view.cpp:551
 #, kde-format
 msgid "Change Shown Part of Screen"
 msgstr "Endre vist del av skjermen"
 
-#: kig/kig_view.cpp:542
+#: kig/kig_view.cpp:538
 #, kde-format
 msgid "Select Zoom Area"
 msgstr "Velg vist område"
 
-#: kig/kig_view.cpp:543
+#: kig/kig_view.cpp:539
 #, kde-format
 msgid ""
 "Select the zoom area by entering the coordinates<br />of the upper left "
@@ -2043,7 +2043,7 @@ msgstr "Python-skript"
 msgid "Construct a new Python script."
 msgstr "Bygg et nytt Python-skript."
 
-#: misc/coordinate_system.cpp:325
+#: misc/coordinate_system.cpp:322
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2052,7 +2052,7 @@ msgstr ""
 "Oppgi koordinater på denne formen: «x;y»,\n"
 "der x er x-koordinaten og y er y-koordinaten."
 
-#: misc/coordinate_system.cpp:332
+#: misc/coordinate_system.cpp:329
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2061,7 +2061,7 @@ msgstr ""
 "Oppgi koordinater på denne formen: <b>«x;y»</b>,  der x er x-koordinaten og "
 "y er y-koordinaten."
 
-#: misc/coordinate_system.cpp:374
+#: misc/coordinate_system.cpp:371
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2070,7 +2070,7 @@ msgstr ""
 "Oppgi koordinater på denne formen: «r; θ°», \n"
 "der r og θ er polarkoordinatene."
 
-#: misc/coordinate_system.cpp:382
+#: misc/coordinate_system.cpp:379
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2079,22 +2079,22 @@ msgstr ""
 "Oppgi koordinater på denne formen: <b>«r; θ°»</b>, der r og θ er "
 "polarkoordinatene."
 
-#: misc/coordinate_system.cpp:533
+#: misc/coordinate_system.cpp:530
 #, kde-format
 msgid "&Euclidean"
 msgstr "&Kartesisk"
 
-#: misc/coordinate_system.cpp:533
+#: misc/coordinate_system.cpp:530
 #, kde-format
 msgid "&Polar"
 msgstr "&Polar"
 
-#: misc/coordinate_system.cpp:584
+#: misc/coordinate_system.cpp:581
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "Angi kartesisk koordinatsystem"
 
-#: misc/coordinate_system.cpp:586
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "Angi polart koordinatsystem"
@@ -2183,23 +2183,23 @@ msgstr "Br&uk standard koordinatpresisjon"
 msgid "&Specify coordinate precision:"
 msgstr "Oppgi koordinatpre&sisjon:"
 
-#: misc/kiginputdialog.cc:127
+#: misc/kiginputdialog.cc:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Set Angle Size"
 msgstr ""
 
-#: misc/kiginputdialog.cc:142
+#: misc/kiginputdialog.cc:140
 #, kde-format
 msgid "Insert the new size of this angle:"
 msgstr "Sett inn ny størrelse for denne vinkelen:"
 
-#: misc/kiginputdialog.cc:150
+#: misc/kiginputdialog.cc:148
 #, kde-format
 msgid "Use this edit field to modify the size of this angle."
 msgstr "Bruk dette redigeringsfeltet til å endre størrelse på denne vinkelen."
 
-#: misc/kiginputdialog.cc:157
+#: misc/kiginputdialog.cc:155
 #, kde-format
 msgid ""
 "Choose from this list the goniometric unit you want to use to modify the "
@@ -2894,12 +2894,12 @@ msgctxt "Translators: Inch"
 msgid "in"
 msgstr "tomme"
 
-#: modes/construct_mode.cc:226 modes/normal.cc:242
+#: modes/construct_mode.cc:223 modes/normal.cc:239
 #, kde-format
 msgid "Which object?"
 msgstr "Hvilket objekt?"
 
-#: modes/construct_mode.cc:261
+#: modes/construct_mode.cc:258
 #, kde-format
 msgid ""
 "Click the location where you want to place the new point, or the curve that "
@@ -2908,23 +2908,23 @@ msgstr ""
 "Trykk på stedet der du vil plassere det nye punktet, eller kurven du vil "
 "feste det til …"
 
-#: modes/construct_mode.cc:432
+#: modes/construct_mode.cc:429
 #, kde-format
 msgid "Now select the location for the result label."
 msgstr "Velg nå plassering for resultat-merkelappen."
 
-#: modes/edittype.cc:28
+#: modes/edittype.cc:25
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
 msgstr ""
 
-#: modes/edittype.cc:45
+#: modes/edittype.cc:42
 #, kde-format
 msgid "Here you can edit the name of the current macro type."
 msgstr "Her kan du endre navnet på denne makrotypen."
 
-#: modes/edittype.cc:48
+#: modes/edittype.cc:45
 #, kde-format
 msgid ""
 "Here you can edit the description of the current macro type. This field is "
@@ -2935,12 +2935,12 @@ msgstr ""
 "valgfritt, så du kan la det stå tomt. Hvis du gjør det, så har makrotypen "
 "ingen beskrivelse."
 
-#: modes/edittype.cc:52
+#: modes/edittype.cc:49
 #, kde-format
 msgid "Use this button to change the icon of the current macro type."
 msgstr "Bruk denne knappen til å endre ikon for denne makrotypen."
 
-#: modes/edittype.cc:73
+#: modes/edittype.cc:70
 #, kde-format
 msgid "The name of the macro can not be empty."
 msgstr "Makronavnet kan ikke være tomt."
@@ -2965,13 +2965,13 @@ msgstr "Navn:"
 msgid "Description:"
 msgstr "Beskrivelse:"
 
-#: modes/historydialog.cc:26
+#: modes/historydialog.cc:24
 #, kde-format
 msgctxt "@title:window"
 msgid "History Browser"
 msgstr ""
 
-#: modes/historydialog.cc:110
+#: modes/historydialog.cc:108
 #, kde-format
 msgid "Start of the construction"
 msgstr "Begynnelsen av konstruksjonen"
@@ -3012,18 +3012,18 @@ msgstr "Et steg framover"
 msgid "Last step"
 msgstr "Siste steg"
 
-#: modes/label.cc:157 modes/macrowizard.cc:111 modes/typesdialog.cpp:305
+#: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
 #, kde-format
 msgid "Name"
 msgstr "Navn"
 
-#: modes/label.cc:181 modes/popup/nameobjectactionsprovider.cc:70
-#: modes/popup/nameobjectactionsprovider.cc:99
+#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<navnløst objekt>"
 
-#: modes/label.cc:302
+#: modes/label.cc:299
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -3032,37 +3032,37 @@ msgstr ""
 "Du har ennå ikke valgt verdier for '%n' deler i teksten. Ta bort disse eller "
 "velg nok argumenter."
 
-#: modes/label.cc:371
+#: modes/label.cc:368
 #, kde-format
 msgid "argument %1"
 msgstr "argument %1"
 
-#: modes/label.cc:400
+#: modes/label.cc:397
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "Velger argument %1"
 
-#: modes/label.cc:503
+#: modes/label.cc:500
 #, kde-format
 msgid "Change Label"
 msgstr "Endre merkelapp"
 
-#: modes/label.cc:598 objects/text_type.cc:290
+#: modes/label.cc:595 objects/text_type.cc:290
 #, kde-format
 msgid "Set Value"
 msgstr "Sett verdi"
 
-#: modes/label.cc:598
+#: modes/label.cc:595
 #, kde-format
 msgid "Enter value:"
 msgstr "Oppgi verdi:"
 
-#: modes/label.cc:627
+#: modes/label.cc:624
 #, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "Velg posisjon for den nye tallverdien …"
 
-#: modes/macro.cc:72
+#: modes/macro.cc:70
 #, kde-format
 msgid ""
 "One of the result objects you selected cannot be calculated from the given "
@@ -3073,7 +3073,7 @@ msgstr ""
 "objektene, derfor kan Kig ikke beregne denne makroen. Trykk Tilbake og "
 "konstruer objektene i riktig rekkefølge …"
 
-#: modes/macro.cc:80
+#: modes/macro.cc:78
 #, kde-format
 msgid ""
 "One of the given objects is not used in the calculation of the resultant "
@@ -3084,47 +3084,47 @@ msgstr ""
 "resultater. Dette betyr trolig at du prøver å få Kig til å gjøre noe som er "
 "umulig. Sjekk makroen og forsøk igjen."
 
-#: modes/macrowizard.cc:37
+#: modes/macrowizard.cc:35
 #, kde-format
 msgid "Given Objects"
 msgstr "Gitte objekter"
 
-#: modes/macrowizard.cc:44
+#: modes/macrowizard.cc:42
 #, kde-format
 msgid "Select the \"given\" objects for your new macro and press \"Next\"."
 msgstr "Velg de «gitte» objektene for den nye makroen og trykk «Neste»."
 
-#: modes/macrowizard.cc:76
+#: modes/macrowizard.cc:74
 #, kde-format
 msgid "Final Object"
 msgstr "Sluttobjekt"
 
-#: modes/macrowizard.cc:83
+#: modes/macrowizard.cc:81
 #, kde-format
 msgid "Select the final object(s) for your new macro."
 msgstr "Velg målobjektet/objektene for den nye makroen."
 
-#: modes/macrowizard.cc:112
+#: modes/macrowizard.cc:110
 #, kde-format
 msgid "Enter a name and description for your new type."
 msgstr "Oppgi et navn og en beskrivelse for den nye typen."
 
-#: modes/macrowizard.cc:121
+#: modes/macrowizard.cc:119
 #, kde-format
 msgid "&Name:"
 msgstr "&Navn:"
 
-#: modes/macrowizard.cc:128
+#: modes/macrowizard.cc:126
 #, kde-format
 msgid "&Description:"
 msgstr "&Beskrivelse:"
 
-#: modes/macrowizard.cc:134
+#: modes/macrowizard.cc:132
 #, kde-format
 msgid "&Icon:"
 msgstr "&Ikon:"
 
-#: modes/macrowizard.cc:156
+#: modes/macrowizard.cc:154
 #, kde-format
 msgctxt "@title:window"
 msgid "Define New Macro"
@@ -3193,7 +3193,7 @@ msgid "&Move"
 msgstr "F&lytt"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:370
+#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
@@ -3224,23 +3224,23 @@ msgstr "Endre punktstil"
 msgid "Change Object Style"
 msgstr "Endre objektstil"
 
-#: modes/popup/nameobjectactionsprovider.cc:42
+#: modes/popup/nameobjectactionsprovider.cc:41
 #, kde-format
 msgid "Set &Name..."
 msgstr "Sett &navn …"
 
-#: modes/popup/nameobjectactionsprovider.cc:44
+#: modes/popup/nameobjectactionsprovider.cc:43
 #, kde-format
 msgid "&Name"
 msgstr "&Navn"
 
-#: modes/popup/nameobjectactionsprovider.cc:64
-#: modes/popup/nameobjectactionsprovider.cc:78
+#: modes/popup/nameobjectactionsprovider.cc:63
+#: modes/popup/nameobjectactionsprovider.cc:77
 #, kde-format
 msgid "Set Object Name"
 msgstr "Sett objektnavn"
 
-#: modes/popup/nameobjectactionsprovider.cc:64
+#: modes/popup/nameobjectactionsprovider.cc:63
 #, kde-format
 msgid "Set Name of this Object:"
 msgstr "Angi navn på dette objektet:"
@@ -3313,12 +3313,12 @@ msgstr "Mer …"
 msgid "Edit Script..."
 msgstr ""
 
-#: modes/textlabelwizard.cc:33
+#: modes/textlabelwizard.cc:31
 #, kde-format
 msgid "Enter Label Text"
 msgstr "Oppgi tekst for merkelapp"
 
-#: modes/textlabelwizard.cc:42
+#: modes/textlabelwizard.cc:40
 #, kde-format
 msgid ""
 "Enter the text for your label here and press \"Next\".\n"
@@ -3329,17 +3329,17 @@ msgstr ""
 "Hvis du vil vise variable deler, så sett inn %1, %2 osv. på passende steder "
 "(f.eks. «Dette linjestykket er %1 enheter langt.»)."
 
-#: modes/textlabelwizard.cc:54
+#: modes/textlabelwizard.cc:52
 #, kde-format
 msgid "Show text in a frame"
 msgstr "Vis tekst i en ramme"
 
-#: modes/textlabelwizard.cc:78 scripting/newscriptwizard.cc:53
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
 #, kde-format
 msgid "Select Arguments"
 msgstr "Velg argumenter"
 
-#: modes/textlabelwizard.cc:87
+#: modes/textlabelwizard.cc:85
 #, kde-format
 msgid ""
 "Now select the argument(s) you need.  For every argument, click on it, "
@@ -3350,88 +3350,88 @@ msgstr ""
 "argumentet, velg et objekt og en egenskap i Kig-vinduet, og trykk Ferdig når "
 "du er ferdig …"
 
-#: modes/textlabelwizard.cc:108
+#: modes/textlabelwizard.cc:106
 #, kde-format
 msgctxt "@title:window"
 msgid "Construct Label"
 msgstr ""
 
-#: modes/typesdialog.cpp:134
+#: modes/typesdialog.cpp:133
 #, kde-format
 msgid "Macro"
 msgstr "Makro"
 
-#: modes/typesdialog.cpp:302
+#: modes/typesdialog.cpp:301
 #, kde-format
 msgid "Type"
 msgstr "Type"
 
-#: modes/typesdialog.cpp:308
+#: modes/typesdialog.cpp:307
 #, kde-format
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: modes/typesdialog.cpp:332
+#: modes/typesdialog.cpp:331
 #, kde-format
 msgctxt "@title:window"
 msgid "Manage Types"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
-#: modes/typesdialog.cpp:369 modes/typeswidget.ui:102
+#: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
 #, kde-format
 msgid "&Edit..."
 msgstr "&Rediger …"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonExport)
-#: modes/typesdialog.cpp:372 modes/typeswidget.ui:154
+#: modes/typesdialog.cpp:371 modes/typeswidget.ui:154
 #, kde-format
 msgid "E&xport..."
 msgstr "E&ksporter …"
 
-#: modes/typesdialog.cpp:426
+#: modes/typesdialog.cpp:425
 #, kde-format
 msgid "Are you sure you want to delete this type?"
 msgid_plural "Are you sure you want to delete these %1 types?"
 msgstr[0] "Er du sikker på at du vil slette denne typen?"
 msgstr[1] "Er du sikker på at du vil slette disse %1 typene?"
 
-#: modes/typesdialog.cpp:428
+#: modes/typesdialog.cpp:427
 #, kde-format
 msgid "Are You Sure?"
 msgstr "Er du sikker?"
 
-#: modes/typesdialog.cpp:454
+#: modes/typesdialog.cpp:453
 #, kde-format
 msgid "Export Types"
 msgstr "Eksporter typer"
 
-#: modes/typesdialog.cpp:456
+#: modes/typesdialog.cpp:455
 #, kde-format
 msgid "Kig Types Files (*.kigt);;All Files (*)"
 msgstr ""
 
-#: modes/typesdialog.cpp:476
+#: modes/typesdialog.cpp:475
 #, kde-format
 msgid "Kig Types Files (*.kigt)"
 msgstr ""
 
-#: modes/typesdialog.cpp:478
+#: modes/typesdialog.cpp:477
 #, kde-format
 msgid "Geogebra Tool Files (*.ggt)"
 msgstr ""
 
-#: modes/typesdialog.cpp:480
+#: modes/typesdialog.cpp:479
 #, kde-format
 msgid "All Files (*)"
 msgstr "Alle filer (*)"
 
-#: modes/typesdialog.cpp:482
+#: modes/typesdialog.cpp:481
 #, kde-format
 msgid "Import Types"
 msgstr "Importer typer"
 
-#: modes/typesdialog.cpp:515
+#: modes/typesdialog.cpp:514
 #, kde-format
 msgid ""
 "There is more than one type selected. You can only edit one type at a time. "
@@ -3440,7 +3440,7 @@ msgstr ""
 "Det er valgt mer enn én type. Bare én type kan redigeres av gangen. Velg "
 "bare den typen du vil redigere og forsøk igjen."
 
-#: modes/typesdialog.cpp:518
+#: modes/typesdialog.cpp:517
 #, kde-format
 msgid "More Than One Type Selected"
 msgstr "Mer enn én type er valgt"
@@ -3533,92 +3533,92 @@ msgstr "Slå %rettvinkel-merke av/på"
 msgid "Resize Angle"
 msgstr "Endre vinkelstørrelse"
 
-#: objects/arc_type.cc:34
+#: objects/arc_type.cc:33
 #, kde-format
 msgid "Construct an arc starting at this point"
 msgstr "Konstruer en bue som begynner i dette punktet"
 
-#: objects/arc_type.cc:37 objects/arc_type.cc:150
+#: objects/arc_type.cc:36 objects/arc_type.cc:149
 #, kde-format
 msgid "Select the start point of the new arc..."
 msgstr "Velg startpunkt for den nye buen …"
 
-#: objects/arc_type.cc:38
+#: objects/arc_type.cc:37
 #, kde-format
 msgid "Construct an arc through this point"
 msgstr "Konstruer en bue gjennom dette punktet"
 
-#: objects/arc_type.cc:38
+#: objects/arc_type.cc:37
 #, kde-format
 msgid "Select a point for the new arc to go through..."
 msgstr "Velg et punkt på den nye buen …"
 
-#: objects/arc_type.cc:39
+#: objects/arc_type.cc:38
 #, kde-format
 msgid "Construct an arc ending at this point"
 msgstr "Konstruer en bue som slutter i dette punktet"
 
-#: objects/arc_type.cc:39
+#: objects/arc_type.cc:38
 #, kde-format
 msgid "Select the end point of the new arc..."
 msgstr "Velg endepunkt for den nye buen …"
 
-#: objects/arc_type.cc:149
+#: objects/arc_type.cc:148
 #, kde-format
 msgid "Construct an arc with this center"
 msgstr "Konstruer en bue med dette senteret"
 
-#: objects/arc_type.cc:149
+#: objects/arc_type.cc:148
 #, kde-format
 msgid "Select the center of the new arc..."
 msgstr "Velg sentrum for den nye buen …"
 
-#: objects/arc_type.cc:151
+#: objects/arc_type.cc:150
 #, kde-format
 msgid "Construct an arc with this angle"
 msgstr "Konstruer en bue med denne vinkelen"
 
-#: objects/arc_type.cc:151
+#: objects/arc_type.cc:150
 #, kde-format
 msgid "Select the angle of the new arc..."
 msgstr "Velg vinkel for den nye buen …"
 
-#: objects/arc_type.cc:205
+#: objects/arc_type.cc:204
 #, kde-format
 msgid "Construct a conic arc starting at this point"
 msgstr "Konstruer en bue som begynner i dette punktet"
 
-#: objects/arc_type.cc:206
+#: objects/arc_type.cc:205
 #, kde-format
 msgid "Select the start point of the new conic arc..."
 msgstr "Velg startpunkt for den nye buen …"
 
-#: objects/arc_type.cc:207
+#: objects/arc_type.cc:206
 #, kde-format
 msgid "Construct a conic arc through this point"
 msgstr "Konstruer en bue gjennom dette punktet"
 
-#: objects/arc_type.cc:208
+#: objects/arc_type.cc:207
 #, kde-format
 msgid "Select a point for the new conic arc to go through..."
 msgstr "Velg et punkt som den nye buen skal gå gjennom …"
 
-#: objects/arc_type.cc:209
+#: objects/arc_type.cc:208
 #, kde-format
 msgid "Construct a conic arc ending at this point"
 msgstr "Konstruer en bue som slutter i dette punktet"
 
-#: objects/arc_type.cc:210
+#: objects/arc_type.cc:209
 #, kde-format
 msgid "Select the end point of the new conic arc..."
 msgstr "Velg endepunkt for den nye buen …"
 
-#: objects/arc_type.cc:213
+#: objects/arc_type.cc:212
 #, kde-format
 msgid "Construct an conic arc with this center"
 msgstr "Konstruer en bue med dette senteret"
 
-#: objects/arc_type.cc:213
+#: objects/arc_type.cc:212
 #, kde-format
 msgid "Select the center of the new conic arc..."
 msgstr "Velg sentrum for den nye buen …"
@@ -3910,19 +3910,19 @@ msgstr "Velg denne verdien som vekt"
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "Konstruer en tredjegrads rasjonal Bézier-kurve med dette styrepunktet"
 
-#: objects/bogus_imp.cc:216
+#: objects/bogus_imp.cc:215
 msgid "string"
 msgstr ""
 
-#: objects/bogus_imp.cc:292
+#: objects/bogus_imp.cc:291
 msgid "double"
 msgstr ""
 
-#: objects/bogus_imp.cc:308
+#: objects/bogus_imp.cc:307
 msgid "int"
 msgstr ""
 
-#: objects/bogus_imp.cc:388
+#: objects/bogus_imp.cc:387
 msgid "Test Result"
 msgstr "Testresultat"
 
@@ -6559,13 +6559,13 @@ msgstr "Konstruer vektorsummen med start i dette punktet."
 msgid "Select the point to construct the sum vector in..."
 msgstr "Velg startpunktet der vektorsummen skal konstrueres …"
 
-#: scripting/newscriptwizard.cc:49
+#: scripting/newscriptwizard.cc:46
 #, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr ""
 
-#: scripting/newscriptwizard.cc:60
+#: scripting/newscriptwizard.cc:57
 #, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
@@ -6574,7 +6574,7 @@ msgstr ""
 "Velg argumentobjektet (om det er noe)\n"
 "i Kig-vinduet og trykk «Neste»."
 
-#: scripting/newscriptwizard.cc:66
+#: scripting/newscriptwizard.cc:63
 #, kde-format
 msgid "Enter Code"
 msgstr "Oppgi kode"
