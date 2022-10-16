@@ -53,6 +53,7 @@
 #include <KStandardAction>
 #include <KToggleAction>
 #include <KUndoActions>
+#include <kwidgetsaddons_version.h>
 
 using namespace std;
 
@@ -435,13 +436,22 @@ bool KigPart::saveFile()
     const QMimeType mimeType = mimeDb.mimeTypeForFile(localFilePath());
     if (mimeType.name() != QLatin1String("application/x-kig")) {
         // we don't support this mime type...
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+        if (KMessageBox::warningTwoActions(widget(),
+#else
         if (KMessageBox::warningYesNo(widget(),
-                                      i18n("Kig does not support saving to any other file format than "
-                                           "its own. Save to Kig's format instead?"),
-                                      i18n("Format Not Supported"),
-                                      KGuiItem(i18n("Save Kig Format")),
-                                      KStandardGuiItem::cancel())
+
+#endif
+                                           i18n("Kig does not support saving to any other file format than "
+                                                "its own. Save to Kig's format instead?"),
+                                           i18n("Format Not Supported"),
+                                           KGuiItem(i18n("Save Kig Format")),
+                                           KStandardGuiItem::cancel())
+#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 100, 0)
+            == KMessageBox::ButtonCode::SecondaryAction)
+#else
             == KMessageBox::No)
+#endif
             return false;
         else {
             QFileInfo save(url().toLocalFile());
