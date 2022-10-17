@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"POT-Creation-Date: 2022-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-07-23 08:19+0200\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -828,190 +828,190 @@ msgid_plural "Add %1 Objects"
 msgstr[0] "Aggiungi %1 oggetto"
 msgstr[1] "Aggiungi %1 oggetti"
 
-#: kig/kig_part.cpp:85
+#: kig/kig_part.cpp:86
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "Imposta il &sistema di coordinate"
 
-#: kig/kig_part.cpp:125
+#: kig/kig_part.cpp:126
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Opzioni di Kig"
 
-#: kig/kig_part.cpp:129
+#: kig/kig_part.cpp:130
 #, kde-format
 msgid "Show grid"
 msgstr "Mostra la griglia"
 
-#: kig/kig_part.cpp:132
+#: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
 msgstr "Mostra gli assi"
 
-#: kig/kig_part.cpp:217
+#: kig/kig_part.cpp:218
 #, kde-format
 msgid "Invert Selection"
 msgstr "Inverti la selezione"
 
-#: kig/kig_part.cpp:224
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Elimina oggetti"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:229
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Elimina gli oggetti selezionati"
 
-#: kig/kig_part.cpp:230
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Annulla costruzione"
 
-#: kig/kig_part.cpp:234
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Annulla la costruzione dell'oggetto in corso"
 
-#: kig/kig_part.cpp:237
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Ripeti costruzione"
 
-#: kig/kig_part.cpp:241
+#: kig/kig_part.cpp:242
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Ripeti l'ultima costruzione (con nuovi oggetti)"
 
-#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Mostra &tutti"
 
-#: kig/kig_part.cpp:247
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Mostra tutti gli oggetti nascosti"
 
-#: kig/kig_part.cpp:250
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Nuova macro..."
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:254
 #, kde-format
 msgid "Define a new macro"
 msgstr "Definisci una nuova macro"
 
-#: kig/kig_part.cpp:255
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage &Types..."
 msgstr "Gestisci &tipi..."
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:259
 #, kde-format
 msgid "Manage macro types."
 msgstr "Gestisci i tipi delle macro."
 
-#: kig/kig_part.cpp:260
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "&Browse History..."
 msgstr "&Naviga nella cronologia..."
 
-#: kig/kig_part.cpp:263
+#: kig/kig_part.cpp:264
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Naviga nella cronologia della costruzione corrente."
 
-#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Ingrandisci nel documento"
 
-#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Rimpicciolisci nel documento"
 
-#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Ricentra lo schermo nel documento"
 
-#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Visualizza questo documento a tutto schermo."
 
-#: kig/kig_part.cpp:286
+#: kig/kig_part.cpp:287
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "&Seleziona l'area mostrata"
 
-#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Seleziona l'area che vuoi mostrare nella finestra."
 
-#: kig/kig_part.cpp:292
+#: kig/kig_part.cpp:293
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "S&eleziona area d'ingrandimento"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:299
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Imposta la &precisione delle coordinate..."
 
-#: kig/kig_part.cpp:300
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Imposta la precisione a virgola mobile delle coordinate nel documento."
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:304
 #, kde-format
 msgid "Show &Grid"
 msgstr "Mostra la &griglia"
 
-#: kig/kig_part.cpp:305
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Mostra o nascondi la griglia."
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:310
 #, kde-format
 msgid "Show &Axes"
 msgstr "Mostra gli &assi"
 
-#: kig/kig_part.cpp:311
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Mostra o nascondi gli assi."
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:316
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Indossa gli occhiali a infrarossi"
 
-#: kig/kig_part.cpp:317
+#: kig/kig_part.cpp:318
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Abilita/disabilita la visibilità degli oggetti nascosti."
 
-#: kig/kig_part.cpp:347
+#: kig/kig_part.cpp:348
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Ripeti costruzione (%1)"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:349
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Ripeti %1 (con nuovi oggetti)"
 
-#: kig/kig_part.cpp:376
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1020,12 +1020,12 @@ msgstr ""
 "Il file da aprire \"%1\" non esiste. Verifica di aver inserito il percorso "
 "corretto."
 
-#: kig/kig_part.cpp:379
+#: kig/kig_part.cpp:380
 #, kde-format
 msgid "File Not Found"
 msgstr "File non trovato"
 
-#: kig/kig_part.cpp:394
+#: kig/kig_part.cpp:395
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1040,12 +1040,12 @@ msgstr ""
 "href=\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">sistema dei gestione dei bug di KDE</a>"
 
-#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Formato non supportato"
 
-#: kig/kig_part.cpp:439
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1054,40 +1054,40 @@ msgstr ""
 "Kig non supporta il salvataggio su un formato di file diverso dal proprio. "
 "Salvare invece nel formato di Kig?"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:448
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Salva in formato di Kig"
 
-#: kig/kig_part.cpp:695
+#: kig/kig_part.cpp:705
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Documenti Kig (*.kig);;Documenti Kig compressi (*.kigz)"
 
-#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Il file \"%1\" esiste già. Vuoi sovrascriverlo?"
 
-#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Sovrascrivere il file?"
 
-#: kig/kig_part.cpp:857
+#: kig/kig_part.cpp:867
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Stampa geometria"
 
-#: kig/kig_part.cpp:921
+#: kig/kig_part.cpp:931
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "Nascondi %1 oggetto"
 msgstr[1] "Nascondi %1 oggetti"
 
-#: kig/kig_part.cpp:940
+#: kig/kig_part.cpp:950
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig (KDE 3.5)\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"POT-Creation-Date: 2022-10-17 00:41+0000\n"
 "PO-Revision-Date: 2006-03-29 19:00+0600\n"
 "Last-Translator: Progga <progga@BengaLinux.Org>\n"
 "Language-Team: Bangla <kde-translation@BengaLinux.Org>\n"
@@ -835,12 +835,12 @@ msgid_plural "Add %1 Objects"
 msgstr[0] "%1 বস্তুকে যোগ করো"
 msgstr[1] "%1 বস্তুকে যোগ করো"
 
-#: kig/kig_part.cpp:85
+#: kig/kig_part.cpp:86
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "স্থানাংক পদ্ধতি নির্ধারণ করো (&ন)"
 
-#: kig/kig_part.cpp:125
+#: kig/kig_part.cpp:126
 #, fuzzy, kde-format
 #| msgid "Kig Options"
 msgctxt "@title:window"
@@ -848,181 +848,181 @@ msgid "Kig Options"
 msgstr "কিগ অপশন"
 
 # FIXME
-#: kig/kig_part.cpp:129
+#: kig/kig_part.cpp:130
 #, kde-format
 msgid "Show grid"
 msgstr "গ্রীড প্রদর্শন করো"
 
-#: kig/kig_part.cpp:132
+#: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
 msgstr "অক্ষ প্রদর্শন করো"
 
-#: kig/kig_part.cpp:217
+#: kig/kig_part.cpp:218
 #, kde-format
 msgid "Invert Selection"
 msgstr "নির্বাচন পাল্টাও"
 
-#: kig/kig_part.cpp:224
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "&Delete Objects"
 msgstr "বস্তু মোছো (&ম)"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:229
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "নির্বাচিত বস্তুগুলো মোছো"
 
-#: kig/kig_part.cpp:230
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel Construction"
 msgstr "অঙ্কন প্রক্রিয়া বাতিল করো"
 
-#: kig/kig_part.cpp:234
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "যে বস্তুটি তৈরি করা হচ্ছে তার অঙ্কন প্রক্রিয়া বাতিল করো"
 
-#: kig/kig_part.cpp:237
+#: kig/kig_part.cpp:238
 #, fuzzy, kde-format
 msgid "Repeat Construction"
 msgstr "অঙ্কন প্রক্রিয়া বাতিল করো"
 
-#: kig/kig_part.cpp:241
+#: kig/kig_part.cpp:242
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "&সব কিছু প্রদর্শন করো"
 
-#: kig/kig_part.cpp:247
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "সকল আড়ালকৃত বস্তু দেখাও"
 
-#: kig/kig_part.cpp:250
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "&New Macro..."
 msgstr "&নতুন ম্যাক্রো..."
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:254
 #, kde-format
 msgid "Define a new macro"
 msgstr "একটি নতুন ম্যাক্রো তৈরি করো"
 
-#: kig/kig_part.cpp:255
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage &Types..."
 msgstr "ধরন ব্যবস্থাপনা... (&ব)"
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:259
 #, kde-format
 msgid "Manage macro types."
 msgstr "ম্যাক্রো'র ধরন ব্যবস্থাপনা।"
 
-#: kig/kig_part.cpp:260
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "&Browse History..."
 msgstr ""
 
-#: kig/kig_part.cpp:263
+#: kig/kig_part.cpp:264
 #, fuzzy, kde-format
 msgid "Browse the history of the current construction."
 msgstr "অঙ্কন প্রক্রিয়া বাতিল করো"
 
-#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "ডকুমেন্টকে ছোট আকারে প্রদর্শন করো"
 
-#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "বিবর্ধিত ডকুমেন্ট"
 
-#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "পর্দাকে ডকুমেন্টের ওপর কেন্দ্রীভূত করো"
 
-#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
 #, kde-format
 msgid "View this document full-screen."
 msgstr "ডকুমেন্টটি পূর্ণ পর্দা জুড়ে প্রদর্শন করো।"
 
-#: kig/kig_part.cpp:286
+#: kig/kig_part.cpp:287
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "চিহ্নিত অংশ নির্বাচন করো (&চ)"
 
-#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "উইন্ডোতে যে অংশ প্রদর্শন করতে চান তা নির্বাচন করুন।"
 
-#: kig/kig_part.cpp:292
+#: kig/kig_part.cpp:293
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "যে অংশের আকার পরিবর্তন করা হবে তা নির্বাচন করো"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:299
 #, fuzzy, kde-format
 #| msgid "Set &Coordinate..."
 msgid "Set Coordinate &Precision..."
 msgstr "স্থানাংক নির্ধারণ করো... (&স)"
 
-#: kig/kig_part.cpp:300
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:304
 #, kde-format
 msgid "Show &Grid"
 msgstr "গ্রিড/ছক রেখা প্রদর্শন করো (&গ)"
 
-#: kig/kig_part.cpp:305
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "গ্রিড/ছক প্রদর্শন বা আড়াল করো।"
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:310
 #, kde-format
 msgid "Show &Axes"
 msgstr "&অক্ষ প্রদর্শন করো"
 
-#: kig/kig_part.cpp:311
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "অক্ষ প্রদর্শন বা আড়াল করো।"
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:316
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "অবলোহিত রশ্মিতে দেখতে সক্ষম চশমা পড়ুন"
 
-#: kig/kig_part.cpp:317
+#: kig/kig_part.cpp:318
 #, fuzzy, kde-format
 #| msgid "Enable/Disable hidden objects visibility."
 msgid "Enable/disable hidden objects' visibility."
 msgstr "লুকানো বস্তুর দৃশ্যমানতা সক্রিয়/নিষ্ক্রিয় করো।"
 
-#: kig/kig_part.cpp:347
+#: kig/kig_part.cpp:348
 #, fuzzy, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "অঙ্কন প্রক্রিয়া বাতিল করো"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:349
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:376
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1031,12 +1031,12 @@ msgstr ""
 "\"%1\" নামে যে ফাইলটি আপনি খোলার চেষ্টা করছিলেন, তার কোন অস্তিত্ব নেই।  "
 "অনুগ্রহপূর্বক ফাইলের পাথ (path) সঠিক ছিল কিনা তা যাচাই করুন।"
 
-#: kig/kig_part.cpp:379
+#: kig/kig_part.cpp:380
 #, kde-format
 msgid "File Not Found"
 msgstr "ফাইল পাওয়া যায় নি"
 
-#: kig/kig_part.cpp:394
+#: kig/kig_part.cpp:395
 #, fuzzy, kde-format
 #| msgid ""
 #| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1055,12 +1055,12 @@ msgstr ""
 "তবে আমাদেরকে mailto:toscano.pino@tiscali.it ঠিকানায় ই-মেইল করে জানাতে পারেন "
 "অথবা নিজেই প্রয়োজনীয় কোড লিখে একটি প্যাচ (patch) পাঠাতে পারেন।"
 
-#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
 #, kde-format
 msgid "Format Not Supported"
 msgstr "এ ধরনের ফাইল সমর্থিত নয়"
 
-#: kig/kig_part.cpp:439
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1069,12 +1069,12 @@ msgstr ""
 "কিগ তার নিজস্ব ফরম্যাট ব্যতীত অপর কোন ফরম্যাট-এ ফাইল সংরক্ষণ করতে পারে না।  এ "
 "অবস্থায় আপনি কি কিগ-এর ফরম্যাটে সংরক্ষণ করতে রাজি আছেন?"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:448
 #, kde-format
 msgid "Save Kig Format"
 msgstr "কিগ-এর ফরম্যাট-এ সংরক্ষণ করো"
 
-#: kig/kig_part.cpp:695
+#: kig/kig_part.cpp:705
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.kig|Kig Documents (*.kig)\n"
@@ -1084,32 +1084,32 @@ msgstr ""
 "*.kig|কিগ ডকুমেন্ট (*.kig)\n"
 "*.kigz|কম্প্রেসকৃত কিগ ডকুমেন্ট (*.kigz)"
 
-#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "\"%1\" ফাইলটি ইতিমধ্যেই বিদ্যমান।  আপনি কি এটির ওপর দিয়েই লিখতে চান?"
 
-#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "ফাইলের ওপর দিয়েই কি লেখা হবে?"
 
 # FIXME: ইংরেজিটা ঠিক বোঝা যাচ্ছে না ;-(
-#: kig/kig_part.cpp:857
+#: kig/kig_part.cpp:867
 #, fuzzy, kde-format
 #| msgid "Print Geometry"
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "মুদ্রণের বৈশিষ্ট্য"
 
-#: kig/kig_part.cpp:921
+#: kig/kig_part.cpp:931
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "%1-টি বস্তু লুকাও"
 msgstr[1] "%1-টি বস্তু লুকাও"
 
-#: kig/kig_part.cpp:940
+#: kig/kig_part.cpp:950
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

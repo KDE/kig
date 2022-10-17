@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"POT-Creation-Date: 2022-10-17 00:41+0000\n"
 "PO-Revision-Date: 2015-12-08 19:57+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -835,191 +835,191 @@ msgid_plural "Add %1 Objects"
 msgstr[0] "Tilføj %1 objekt"
 msgstr[1] "Tilføj %1 objekter"
 
-#: kig/kig_part.cpp:85
+#: kig/kig_part.cpp:86
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "Sæt koordinats&ystem"
 
-#: kig/kig_part.cpp:125
+#: kig/kig_part.cpp:126
 #, fuzzy, kde-format
 #| msgid "Kig Options"
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Kig's indstillinger"
 
-#: kig/kig_part.cpp:129
+#: kig/kig_part.cpp:130
 #, kde-format
 msgid "Show grid"
 msgstr "Vis gitter"
 
-#: kig/kig_part.cpp:132
+#: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
 msgstr "Vis akser"
 
-#: kig/kig_part.cpp:217
+#: kig/kig_part.cpp:218
 #, kde-format
 msgid "Invert Selection"
 msgstr "Invertér markering"
 
-#: kig/kig_part.cpp:224
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "&Delete Objects"
 msgstr "S&let objekter"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:229
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Slet valgte objekter"
 
-#: kig/kig_part.cpp:230
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Annullér konstruktion"
 
-#: kig/kig_part.cpp:234
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Annullér konstruktionen af objektet der er ved at blive konstrueret"
 
-#: kig/kig_part.cpp:237
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Gentag konstruktion"
 
-#: kig/kig_part.cpp:241
+#: kig/kig_part.cpp:242
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Gentag den seneste konstruktion (med ny data)"
 
-#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Skjul &intet"
 
-#: kig/kig_part.cpp:247
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Vis alle skjulte objekter"
 
-#: kig/kig_part.cpp:250
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Ny makro..."
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:254
 #, kde-format
 msgid "Define a new macro"
 msgstr "Definér en ny makro"
 
-#: kig/kig_part.cpp:255
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage &Types..."
 msgstr "Håndtér &typer..."
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:259
 #, kde-format
 msgid "Manage macro types."
 msgstr "Håndtér makrotyper."
 
-#: kig/kig_part.cpp:260
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "&Browse History..."
 msgstr "&Gennemse historik..."
 
-#: kig/kig_part.cpp:263
+#: kig/kig_part.cpp:264
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Gennemse den nuværende konstruktions historik."
 
-#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Zoom ind på dokumentet"
 
-#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Zoom ud fra dokumentet"
 
-#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Flyt dokumentet til centrum på skærmen"
 
-#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Vis dette dokument fuldskærm."
 
-#: kig/kig_part.cpp:286
+#: kig/kig_part.cpp:287
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "&Vælg vist område"
 
-#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Markér det område du ønsker skal vises i vinduet."
 
-#: kig/kig_part.cpp:292
+#: kig/kig_part.cpp:293
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "Vælg &forstørrelsesområde"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:299
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Sæt koordinat&præcision..."
 
-#: kig/kig_part.cpp:300
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Sæt præcisionen af koordinater i dokumentet som et kommatal. "
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:304
 #, kde-format
 msgid "Show &Grid"
 msgstr "Vis &gitter"
 
-#: kig/kig_part.cpp:305
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Vis eller skjul gitteret."
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:310
 #, kde-format
 msgid "Show &Axes"
 msgstr "Vis &akser"
 
-#: kig/kig_part.cpp:311
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Vis eller skjul akser."
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:316
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Bær infrarøde briller"
 
-#: kig/kig_part.cpp:317
+#: kig/kig_part.cpp:318
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Aktivér/deaktivér skjulte objekters synlighed."
 
-#: kig/kig_part.cpp:347
+#: kig/kig_part.cpp:348
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Gentag konstruktionen (%1)"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:349
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Gentag %1 (med ny data)"
 
-#: kig/kig_part.cpp:376
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1028,12 +1028,12 @@ msgstr ""
 "Filen \"%1\" du prøvede eksisterer ikke. Undersøg venligst om indskrev den "
 "rigtige sti."
 
-#: kig/kig_part.cpp:379
+#: kig/kig_part.cpp:380
 #, kde-format
 msgid "File Not Found"
 msgstr "Fil ikke fundet"
 
-#: kig/kig_part.cpp:394
+#: kig/kig_part.cpp:395
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1048,12 +1048,12 @@ msgstr ""
 "href=\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">KDE's fejlrapporteringssystem</a>"
 
-#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Format ikke understøttet"
 
-#: kig/kig_part.cpp:439
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1062,12 +1062,12 @@ msgstr ""
 "Kig understøtter ikke at gemme til andre filformater end sit eget. Gem til "
 "Kig's format i stedet?"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:448
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Gem med Kigs format"
 
-#: kig/kig_part.cpp:695
+#: kig/kig_part.cpp:705
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.kig|Kig Documents (*.kig)\n"
@@ -1077,31 +1077,31 @@ msgstr ""
 "*.kig|Kig-dokumenter (*.kig)\n"
 "*.kigz|Komprimerede Kig-dokumenter (*.kigz)"
 
-#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Filen \"%1\" findes allerede. Ønsker du at overskrive den?"
 
-#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Overskriv fil?"
 
-#: kig/kig_part.cpp:857
+#: kig/kig_part.cpp:867
 #, fuzzy, kde-format
 #| msgid "Print Geometry"
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Udskriv geometri"
 
-#: kig/kig_part.cpp:921
+#: kig/kig_part.cpp:931
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "Skjul %1 objekt"
 msgstr[1] "Skjul %1 objekter"
 
-#: kig/kig_part.cpp:940
+#: kig/kig_part.cpp:950
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

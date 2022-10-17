@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-01 00:41+0000\n"
+"POT-Creation-Date: 2022-10-17 00:41+0000\n"
 "PO-Revision-Date: 2022-02-02 20:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -768,202 +768,202 @@ msgstr[3] "إضافة كائنات"
 msgstr[4] "إضافة كائنات"
 msgstr[5] "إضافة كائنات"
 
-#: kig/kig_part.cpp:85
+#: kig/kig_part.cpp:86
 #, fuzzy, kde-format
 msgid "&Set Coordinate System"
 msgstr "ضبط إحداثية النظام"
 
-#: kig/kig_part.cpp:125
+#: kig/kig_part.cpp:126
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "خيارات كيج"
 
-#: kig/kig_part.cpp:129
+#: kig/kig_part.cpp:130
 #, kde-format
 msgid "Show grid"
 msgstr "اعرض الشّبكة"
 
-#: kig/kig_part.cpp:132
+#: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
 msgstr "إظهر المحاور"
 
-#: kig/kig_part.cpp:217
+#: kig/kig_part.cpp:218
 #, kde-format
 msgid "Invert Selection"
 msgstr "اعكس التّحديد"
 
-#: kig/kig_part.cpp:224
+#: kig/kig_part.cpp:225
 #, fuzzy, kde-format
 msgid "&Delete Objects"
 msgstr "احذف الكائنات"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:229
 #, fuzzy, kde-format
 msgid "Delete the selected objects"
 msgstr "احذف مُنتقى"
 
-#: kig/kig_part.cpp:230
+#: kig/kig_part.cpp:231
 #, fuzzy, kde-format
 msgid "Cancel Construction"
 msgstr "إلغاء البناء"
 
-#: kig/kig_part.cpp:234
+#: kig/kig_part.cpp:235
 #, fuzzy, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "إلغاء من كائن"
 
-#: kig/kig_part.cpp:237
+#: kig/kig_part.cpp:238
 #, fuzzy, kde-format
 msgid "Repeat Construction"
 msgstr "تكرار البناء"
 
-#: kig/kig_part.cpp:241
+#: kig/kig_part.cpp:242
 #, fuzzy, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "تكرار الأخير مع جديد البيانات"
 
-#: kig/kig_part.cpp:244 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
 #, fuzzy, kde-format
 msgid "U&nhide All"
 msgstr "غير جلد الكل"
 
-#: kig/kig_part.cpp:247
+#: kig/kig_part.cpp:248
 #, fuzzy, kde-format
 msgid "Show all hidden objects"
 msgstr "اعرض الكل مخفي"
 
-#: kig/kig_part.cpp:250
+#: kig/kig_part.cpp:251
 #, fuzzy, kde-format
 msgid "&New Macro..."
 msgstr "جديد ماكرو."
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:254
 #, fuzzy, kde-format
 msgid "Define a new macro"
 msgstr "تعريف a جديد ماكرو"
 
-#: kig/kig_part.cpp:255
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage &Types..."
 msgstr "أدِر الأ&نواع..."
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:259
 #, fuzzy, kde-format
 msgid "Manage macro types."
 msgstr "أدِر ماكرو."
 
-#: kig/kig_part.cpp:260
+#: kig/kig_part.cpp:261
 #, fuzzy, kde-format
 msgid "&Browse History..."
 msgstr "تصفّح التاريخ."
 
-#: kig/kig_part.cpp:263
+#: kig/kig_part.cpp:264
 #, fuzzy, kde-format
 msgid "Browse the history of the current construction."
 msgstr "تصفّح تاريخ من الحالي."
 
-#: kig/kig_part.cpp:268 kig/kig_part.cpp:269
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, fuzzy, kde-format
 msgid "Zoom in on the document"
 msgstr "تكبير بوصة يعمل مستند"
 
-#: kig/kig_part.cpp:272 kig/kig_part.cpp:273
+#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
 #, fuzzy, kde-format
 msgid "Zoom out of the document"
 msgstr "تكبير خارج من مستند"
 
-#: kig/kig_part.cpp:278 kig/kig_part.cpp:279
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, fuzzy, kde-format
 msgid "Recenter the screen on the document"
 msgstr "شاشة يعمل مستند"
 
-#: kig/kig_part.cpp:282 kig/kig_part.cpp:283
+#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
 #, fuzzy, kde-format
 msgid "View this document full-screen."
 msgstr "عرض مستند شاشة."
 
-#: kig/kig_part.cpp:286
+#: kig/kig_part.cpp:287
 #, fuzzy, kde-format
 msgid "&Select Shown Area"
 msgstr "انتقِ ظاهرة مساحة"
 
-#: kig/kig_part.cpp:289 kig/kig_part.cpp:290
+#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
 #, fuzzy, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "انتقِ منطقة إلى بوصة نافذة."
 
-#: kig/kig_part.cpp:292
+#: kig/kig_part.cpp:293
 #, fuzzy, kde-format
 msgid "S&elect Zoom Area"
 msgstr "انتقِ تكبير مساحة"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:299
 #, fuzzy, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "ضبط إحداثية."
 
-#: kig/kig_part.cpp:300
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:304
 #, kde-format
 msgid "Show &Grid"
 msgstr "اعرض ال&شبكة"
 
-#: kig/kig_part.cpp:305
+#: kig/kig_part.cpp:306
 #, fuzzy, kde-format
 msgid "Show or hide the grid."
 msgstr "اعرض أو إخفاء."
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:310
 #, kde-format
 msgid "Show &Axes"
 msgstr "أ&ظهر المحاور"
 
-#: kig/kig_part.cpp:311
+#: kig/kig_part.cpp:312
 #, fuzzy, kde-format
 msgid "Show or hide the axes."
 msgstr "اعرض أو إخفاء."
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:316
 #, fuzzy, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "الملابس تحت الحمراء الأقداح"
 
-#: kig/kig_part.cpp:317
+#: kig/kig_part.cpp:318
 #, fuzzy, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "مكّن تعطيل مخفي."
 
-#: kig/kig_part.cpp:347
+#: kig/kig_part.cpp:348
 #, fuzzy, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "تكرار البناء"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:349
 #, fuzzy, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "تكرار مع جديد البيانات"
 
-#: kig/kig_part.cpp:376
+#: kig/kig_part.cpp:377
 #, fuzzy, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr "الـ ملفّ إلى فتح ليس رجاء تأكد من، فحص صح المسار."
 
-#: kig/kig_part.cpp:379
+#: kig/kig_part.cpp:380
 #, kde-format
 msgid "File Not Found"
 msgstr "لم يوجد الملفّ"
 
-#: kig/kig_part.cpp:394
+#: kig/kig_part.cpp:395
 #, fuzzy, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -975,45 +975,45 @@ msgstr ""
 "أنت إلى فتح a مستند من نوع Kig ليس دعم تنسيق إذا تنسيق بوصة سؤال دعم لـ "
 "دائماً اسأل الأميركية يعملmailto:pino@kde.org أو و إرسال a patch."
 
-#: kig/kig_part.cpp:398 kig/kig_part.cpp:441
+#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
 #, fuzzy, kde-format
 msgid "Format Not Supported"
 msgstr "تنسيق لا مدعوم"
 
-#: kig/kig_part.cpp:439
+#: kig/kig_part.cpp:445
 #, fuzzy, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "Kig ليس دعم إلى أي منها غير ذلك ملفّ تنسيق احفظ إلى Kig s تنسيق?"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:448
 #, fuzzy, kde-format
 msgid "Save Kig Format"
 msgstr "احفظ Kig تنسيق"
 
-#: kig/kig_part.cpp:695
+#: kig/kig_part.cpp:705
 #, fuzzy, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Kig مستندات n مضغوط Kig مستندات"
 
-#: kig/kig_part.cpp:707 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "الملفّ ”%1“ موجود بالفعل. أتريد الكتابة فوقه؟"
 
-#: kig/kig_part.cpp:708 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "أأكتب فوق الملفّ؟"
 
-#: kig/kig_part.cpp:857
+#: kig/kig_part.cpp:867
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "اطبع الهندسة"
 
-#: kig/kig_part.cpp:921
+#: kig/kig_part.cpp:931
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
@@ -1024,7 +1024,7 @@ msgstr[3] "أخفِ %1 كائنات"
 msgstr[4] "أخفِ %1 كائنًا"
 msgstr[5] "أخفِ %1 كائن"
 
-#: kig/kig_part.cpp:940
+#: kig/kig_part.cpp:950
 #, fuzzy, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
