@@ -11,7 +11,7 @@
 #include "../misc/kigtransform.h"
 #include "bogus_imp.h"
 
-#include <klazylocalizedstring.h>
+#include <KLazyLocalizedString>
 
 PointImp::PointImp(const Coordinate &c)
     : mc(c)

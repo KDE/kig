@@ -3,9 +3,9 @@
 
 #include "linkslabel.h"
 
+#include <KUrlLabel>
 #include <QLabel>
 #include <QLayout>
-#include <kurllabel.h>
 
 #include <algorithm>
 #include <functional>
