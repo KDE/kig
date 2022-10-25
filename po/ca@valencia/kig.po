@@ -1108,7 +1108,7 @@ msgstr "Seleccioneu el rectangle que voleu que es mostre."
 #: kig/kig_view.cpp:501 kig/kig_view.cpp:551
 #, kde-format
 msgid "Change Shown Part of Screen"
-msgstr "Canvia la part mostrada a pantalla"
+msgstr "Canvia la part mostrada a la pantalla"
 
 #: kig/kig_view.cpp:538
 #, kde-format
@@ -1329,7 +1329,7 @@ msgid ""
 "Output goes to stdout unless --outfile is specified."
 msgstr ""
 "No mostres una IGU. Convertix el fitxer especificat al format nadiu de Kig. "
-"L'eixida va a stdout llevat que s'especifique --outfile."
+"L'eixida va cap a stdout llevat que s'especifique --outfile."
 
 #: kig/main.cpp:80
 #, kde-format
@@ -1337,7 +1337,7 @@ msgid ""
 "File to output the created native file to. '-' means output to stdout. "
 "Default is stdout as well."
 msgstr ""
-"Fitxer on escriure el fitxer nadiu creat. «-» significa eixida a stdout. "
+"Fitxer on escriure el fitxer nadiu creat. «-» significa eixida cap a stdout. "
 "L'opció predeterminada també és stdout."
 
 #: kig/main.cpp:85
@@ -2620,17 +2620,17 @@ msgstr "Transporta la mida d'un segment o un arc sobre una recta o cercle."
 #: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
 #, kde-format
 msgid "Segment to transport"
-msgstr "Segment a transportar"
+msgstr "Segment que s'ha de transportar"
 
 #: misc/special_constructors.cc:1614
 #, kde-format
 msgid "Arc to transport"
-msgstr "Arc a transportar"
+msgstr "Arc que s'ha de transportar"
 
 #: misc/special_constructors.cc:1616
 #, kde-format
 msgid "Value to transport"
-msgstr "Valor a transportar"
+msgstr "Valor que s'ha de transportar"
 
 #: misc/special_constructors.cc:1618
 #, kde-format
@@ -5300,7 +5300,7 @@ msgstr "Seleccioneu un nombre/llargària com a coordenada y del punt..."
 #: objects/point_type.cc:820
 #, kde-format
 msgid "Select a point to project onto a line..."
-msgstr "Seleccioneu el punt a projectar sobre una línia..."
+msgstr "Seleccioneu el punt que s'ha de projectar sobre una línia..."
 
 #: objects/point_type.cc:821
 #, kde-format
