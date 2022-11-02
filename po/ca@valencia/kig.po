@@ -1027,8 +1027,8 @@ msgid ""
 msgstr ""
 "Heu intentat obrir un document del tipus «%1»; malauradament, Kig no "
 "reconeix este format. Si creieu que valdria la pena implementar l'adaptació "
-"per al format en qüestió, podeu obrir una sol·licitud de funcionalitat en el "
-"<a href=\"https://bugs.kde.org/enter_bug.cgi?"
+"per al format en qüestió, podeu obrir una sol·licitud de característica en "
+"el <a href=\"https://bugs.kde.org/enter_bug.cgi?"
 "product=kig&bug_severity=wishlist\">sistema de seguiment d'errors de KDE</a>"
 
 #: kig/kig_part.cpp:399 kig/kig_part.cpp:447
@@ -2360,7 +2360,7 @@ msgstr "Construïx un polígon donant els seus vèrtexs"
 msgid ""
 "... with this vertex (click on the first vertex to terminate construction)"
 msgstr ""
-"... amb este vèrtex (feu clic sobre el primer vèrtex per a acabar la "
+"... amb este vèrtex (feu clic damunt del primer vèrtex per a acabar la "
 "construcció)"
 
 #: misc/special_constructors.cc:555
