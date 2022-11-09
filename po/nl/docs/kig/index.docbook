@@ -808,7 +808,7 @@ format="PNG"/>
 
 <chapter id="scripting">
 <title
->Scripts</title>
+>Scripts maken</title>
 <para
 >In &kig; kan de gebruiker eigen typen maken met behulp van de scripttaal Python. Dit is een zeer geavanceerde functie, en ik ken slechts één ander programma voor interactieve geometrie dat ook zulke functionaliteit heeft: het <acronym
 >GNOME</acronym
