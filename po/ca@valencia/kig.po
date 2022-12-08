@@ -2955,7 +2955,7 @@ msgid ""
 "Click the location where you want to place the new point, or the curve that "
 "you want to attach it to..."
 msgstr ""
-"Feu clic on voleu situar el punt nou o a la corba a la qual voleu adjuntar-"
+"Feu clic on voleu situar el punt nou o en la corba en la qual voleu adjuntar-"
 "lo..."
 
 #: modes/construct_mode.cc:429
