@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2022-10-01 07:00+0200\n"
+"PO-Revision-Date: 2022-12-13 03:30+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,11 +30,11 @@ msgstr "Temuri.doghonadze@gmail.com"
 
 #, kde-format
 msgid "Circle by Center && Line"
-msgstr ""
+msgstr "წრეწირი ცენტრითა და მხებით"
 
 #, kde-format
 msgid "A circle constructed by its center and tangent to a given line"
-msgstr ""
+msgstr "წრის ცენტრითა და მხებით აგება"
 
 #, kde-format
 msgid "Construct a circle tangent to this line"
@@ -72,23 +72,23 @@ msgstr ""
 
 #, kde-format
 msgid "Evolute"
-msgstr ""
+msgstr "ევოლუტა"
 
 #, kde-format
 msgid "Evolute of a curve"
-msgstr ""
+msgstr "მრუდის ევოლუტა"
 
 #, kde-format
 msgid "Evolute of this curve"
-msgstr ""
+msgstr "ამ მრუდის ევოლუტა"
 
 #, kde-format
 msgid "Osculating Circle"
-msgstr ""
+msgstr "მხები წრეწირი"
 
 #, kde-format
 msgid "Osculating circle of a curve at a point"
-msgstr ""
+msgstr "წრეწირის შეხება მრუდის წერტილზე"
 
 #, kde-format
 msgid "Osculating circle of this curve"
@@ -100,7 +100,7 @@ msgstr ""
 
 #, kde-format
 msgid "Select the point..."
-msgstr ""
+msgstr "წერტილის არჩევა..."
 
 #, kde-format
 msgid "Square"
@@ -112,7 +112,7 @@ msgstr ""
 
 #, kde-format
 msgid "Vector Difference"
-msgstr ""
+msgstr "ვექტორის სხვაობა"
 
 #, kde-format
 msgid "Construct the vector difference of two vectors."
@@ -159,7 +159,7 @@ msgstr "&ასიმპოტოტი..."
 #: filters/asyexporter.cc:45
 #, kde-format
 msgid "Asymptote Documents (*.asy)"
-msgstr ""
+msgstr "Asymptote -ის დოკუმენტები (*.asy)"
 
 #: filters/asyexporter.cc:46
 #, kde-format
@@ -195,7 +195,7 @@ msgstr "გამართვა"
 #: filters/latexexporteroptionswidget.ui:95
 #, kde-format
 msgid "Show Extra Frame"
-msgstr ""
+msgstr "ჩარჩოს ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
 #: filters/asyexporteroptionswidget.ui:49
@@ -204,7 +204,7 @@ msgstr ""
 #: filters/svgexporteroptionswidget.ui:42
 #, kde-format
 msgid "Show Axes"
-msgstr ""
+msgstr "ღერძების ჩვენება"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
 #: filters/asyexporteroptionswidget.ui:56
@@ -284,12 +284,12 @@ msgstr ""
 #: filters/exporter.cc:58
 #, kde-format
 msgid "&Export to image"
-msgstr ""
+msgstr "&გამოსახულებაში გატანა"
 
 #: filters/exporter.cc:63
 #, kde-format
 msgid "&Image..."
-msgstr ""
+msgstr "&გამოსახულება..."
 
 #: filters/exporter.cc:73
 #, kde-format
@@ -299,7 +299,7 @@ msgstr "გამოსახულების სახით გატან�
 #: filters/exporter.cc:81
 #, kde-format
 msgid "Image Options"
-msgstr ""
+msgstr "გამოსახულების მორგება"
 
 #: filters/exporter.cc:102
 #, kde-format
@@ -314,7 +314,7 @@ msgstr ""
 #: filters/exporter.cc:144
 #, kde-format
 msgid "&Export To"
-msgstr ""
+msgstr "&გატანა"
 
 #: filters/filter.cc:66
 #, kde-format
@@ -331,7 +331,7 @@ msgstr ""
 #: filters/filter.cc:78
 #, kde-format
 msgid "Parse Error"
-msgstr ""
+msgstr "დამუშავების შეცდომა"
 
 #: filters/filter.cc:88 misc/lists.cc:297
 #, kde-format
@@ -341,7 +341,7 @@ msgstr "მხარდაუჭერელია"
 #: filters/filter.cc:88
 #, kde-format
 msgid "Kig cannot open this file."
-msgstr ""
+msgstr "Kig -ის შეცდომა ფაილის გახსნისას."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: filters/imageexporteroptionswidget.ui:22
@@ -353,7 +353,7 @@ msgstr "გარჩევადობა"
 #: filters/imageexporteroptionswidget.ui:37
 #, kde-format
 msgid "&Keep Aspect Ratio"
-msgstr ""
+msgstr "საწყისი ფარდობის &შენარჩუნება"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: filters/imageexporteroptionswidget.ui:54
@@ -406,17 +406,17 @@ msgstr "&Latex..."
 #: filters/latexexporter.cc:511
 #, kde-format
 msgid "Latex Documents (*.tex)"
-msgstr ""
+msgstr "Latex -ის დოკუმენტები (*.tex)"
 
 #: filters/latexexporter.cc:511
 #, kde-format
 msgid "Export as Latex"
-msgstr ""
+msgstr "Latex-ად გატანა"
 
 #: filters/latexexporter.cc:512
 #, kde-format
 msgid "Latex Options"
-msgstr ""
+msgstr "Latex -ის მორგება"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: filters/latexexporteroptionswidget.ui:23
@@ -428,37 +428,37 @@ msgstr "გამოტანის ფორმატი"
 #: filters/latexexporteroptionswidget.ui:29
 #, kde-format
 msgid "PSTricks"
-msgstr ""
+msgstr "PSTricks"
 
 #. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
 #: filters/latexexporteroptionswidget.ui:36
 #, kde-format
 msgid "Tikz/PGF"
-msgstr ""
+msgstr "Tikz/PGF"
 
 #. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
 #: filters/latexexporteroptionswidget.ui:46
 #, kde-format
 msgid "Asymptote"
-msgstr ""
+msgstr "Asymptote"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: filters/latexexporteroptionswidget.ui:56
 #, kde-format
 msgid "Document options"
-msgstr ""
+msgstr "დოკუმენტის პარამეტრები"
 
 #. i18n: ectx: property (text), widget (QRadioButton, pictureRadioButton)
 #: filters/latexexporteroptionswidget.ui:62
 #, kde-format
 msgid "Picture only"
-msgstr ""
+msgstr "მხოლოდ სურათი"
 
 #. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
 #: filters/latexexporteroptionswidget.ui:72
 #, kde-format
 msgid "Standalone document"
-msgstr ""
+msgstr "დამოუკიდებელი დოკუმენტი"
 
 #: filters/native-filter.cc:174
 #, kde-format
@@ -518,12 +518,12 @@ msgstr ""
 #: filters/svgexporter.cc:47
 #, kde-format
 msgid "Export as SVG"
-msgstr ""
+msgstr "SVG ფაილად გატანა"
 
 #: filters/svgexporter.cc:49
 #, kde-format
 msgid "SVG Options"
-msgstr ""
+msgstr "SVG -ის მორგება"
 
 #: filters/svgexporter.cc:94
 #, kde-format
@@ -538,17 +538,17 @@ msgstr ""
 #: filters/xfigexporter.cc:51
 #, kde-format
 msgid "&XFig File..."
-msgstr ""
+msgstr "&XFig ფაილი..."
 
 #: filters/xfigexporter.cc:557
 #, kde-format
 msgid "XFig Documents (*.fig)"
-msgstr ""
+msgstr "XFig დოკუმენტი (*.fig)"
 
 #: filters/xfigexporter.cc:557
 #, kde-format
 msgid "Export as XFig File"
-msgstr ""
+msgstr "XFig ფაილად გატანა"
 
 #: kig/aboutdata.h:15
 #, kde-format
@@ -558,12 +558,12 @@ msgstr "Kig"
 #: kig/aboutdata.h:17
 #, kde-format
 msgid "KDE Interactive Geometry"
-msgstr ""
+msgstr "KDE ინტერაქტიური გეომეტრია"
 
 #: kig/aboutdata.h:19
 #, kde-format
 msgid "(C) 2002-2005, The Kig developers"
-msgstr ""
+msgstr "(C) 2002-2005, Kig -ის პროგრამისტები. ყველა უფლება დაცულია"
 
 #: kig/aboutdata.h:23
 #, kde-format
@@ -573,12 +573,12 @@ msgstr "David E. Narvaez"
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "Current maintainer."
-msgstr ""
+msgstr "პროექტის მიმდინარე ხელმძღვანელი."
 
 #: kig/aboutdata.h:25
 #, kde-format
 msgid "Dominique Devriese"
-msgstr ""
+msgstr "Dominique Devriese"
 
 #: kig/aboutdata.h:25
 #, kde-format
@@ -654,7 +654,7 @@ msgstr ""
 #: kig/aboutdata.h:54
 #, kde-format
 msgid "Eric Depagne"
-msgstr ""
+msgstr "Eric Depagne"
 
 #: kig/aboutdata.h:55
 #, kde-format
@@ -666,7 +666,7 @@ msgstr ""
 #: kig/aboutdata.h:59
 #, kde-format
 msgid "Marc Bartsch"
-msgstr ""
+msgstr "Marc Bartsch"
 
 #: kig/aboutdata.h:60
 #, kde-format
@@ -678,7 +678,7 @@ msgstr ""
 #: kig/aboutdata.h:64
 #, kde-format
 msgid "Christophe Devriese"
-msgstr ""
+msgstr "Christophe Devriese"
 
 #: kig/aboutdata.h:65
 #, kde-format
@@ -690,7 +690,7 @@ msgstr ""
 #: kig/aboutdata.h:70
 #, kde-format
 msgid "Christophe Prud'homme"
-msgstr ""
+msgstr "Christophe Prud'homme"
 
 #: kig/aboutdata.h:70
 #, kde-format
@@ -744,15 +744,15 @@ msgstr "ფაილის გახსნა"
 #, kde-format
 msgid "Remove %1 Object"
 msgid_plural "Remove %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 ობიექტის წაშლა"
+msgstr[1] "%1 ობიექტის წაშლა"
 
 #: kig/kig_commands.cpp:103
 #, kde-format
 msgid "Add %1 Object"
 msgid_plural "Add %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 ობიექტის დამატება"
+msgstr[1] "%1 ობიექტის დამატება"
 
 #: kig/kig_part.cpp:86
 #, kde-format
@@ -773,7 +773,7 @@ msgstr "ბადის ჩვენება"
 #: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
-msgstr ""
+msgstr "ღერძების ჩვენება"
 
 #: kig/kig_part.cpp:218
 #, kde-format
@@ -783,17 +783,17 @@ msgstr "მონიშვნის ინვერსია"
 #: kig/kig_part.cpp:225
 #, kde-format
 msgid "&Delete Objects"
-msgstr ""
+msgstr "&ობიექტების წაშლა"
 
 #: kig/kig_part.cpp:229
 #, kde-format
 msgid "Delete the selected objects"
-msgstr ""
+msgstr "მონიშნული ობიექტების წაშლა"
 
 #: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel Construction"
-msgstr ""
+msgstr "აგების გაუქმება"
 
 #: kig/kig_part.cpp:235
 #, kde-format
@@ -803,7 +803,7 @@ msgstr ""
 #: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat Construction"
-msgstr ""
+msgstr "აგების გამეორება"
 
 #: kig/kig_part.cpp:242
 #, kde-format
@@ -823,7 +823,7 @@ msgstr ""
 #: kig/kig_part.cpp:251
 #, kde-format
 msgid "&New Macro..."
-msgstr ""
+msgstr "&ახალი მაკრო..."
 
 #: kig/kig_part.cpp:254
 #, kde-format
@@ -995,26 +995,26 @@ msgstr "ჩავანაცვლო ფაილი?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
-msgstr ""
+msgstr "ბეჭდვა"
 
 #: kig/kig_part.cpp:931
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 ობიექტის დამალვა"
+msgstr[1] "%1 ობიექტის დამალვა"
 
 #: kig/kig_part.cpp:950
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 ობიექტის ჩვენება"
+msgstr[1] "%1 ობიექტის ჩვენება"
 
 #: kig/kig_view.cpp:189
 #, kde-format
 msgid "Zoom In"
-msgstr ""
+msgstr "გადიდება"
 
 #: kig/kig_view.cpp:207
 #, kde-format
@@ -1024,7 +1024,7 @@ msgstr "გადიდება"
 #: kig/kig_view.cpp:474
 #, kde-format
 msgid "Recenter View"
-msgstr ""
+msgstr "თავიდან დაცენტრება"
 
 #: kig/kig_view.cpp:496
 #, kde-format
@@ -1118,49 +1118,49 @@ msgstr ""
 #: kig/kigpartui.rc:116
 #, kde-format
 msgid "Cu&bics"
-msgstr ""
+msgstr "&კუბიკები"
 
 #. i18n: ectx: Menu (new_bezier)
 #: kig/kigpartui.rc:124
 #, kde-format
 msgid "&Bézier curves"
-msgstr ""
+msgstr "&ბეზიეს მრუდები"
 
 #. i18n: ectx: Menu (new_angle)
 #: kig/kigpartui.rc:134
 #, kde-format
 msgid "&Angles"
-msgstr ""
+msgstr "&კუთხეები"
 
 #. i18n: ectx: Menu (new_transformation)
 #: kig/kigpartui.rc:139
 #, kde-format
 msgid "&Transformations"
-msgstr ""
+msgstr "&გარდაქმნები"
 
 #. i18n: ectx: Menu (new_differentialgeometry)
 #: kig/kigpartui.rc:157
 #, kde-format
 msgid "&Differential geometry"
-msgstr ""
+msgstr "&დიფერენციული გეომეტრია"
 
 #. i18n: ectx: Menu (new_test)
 #: kig/kigpartui.rc:164
 #, kde-format
 msgid "T&ests"
-msgstr ""
+msgstr "&ტესტები"
 
 #. i18n: ectx: Menu (new_other)
 #: kig/kigpartui.rc:175
 #, kde-format
 msgid "&Other"
-msgstr ""
+msgstr "&სხვა"
 
 #. i18n: ectx: Menu (types)
 #: kig/kigpartui.rc:189
 #, kde-format
 msgid "&Types"
-msgstr ""
+msgstr "&ტიპები"
 
 #. i18n: ectx: Menu (tools)
 #: kig/kigpartui.rc:194
@@ -1190,31 +1190,31 @@ msgstr "ხაზები"
 #: kig/kigpartui.rc:242
 #, kde-format
 msgid "Vectors && Segments"
-msgstr ""
+msgstr "ვექტორები და სეგმენტები"
 
 #. i18n: ectx: ToolBar (circle_toolbar)
 #: kig/kigpartui.rc:250
 #, kde-format
 msgid "Circles && Arcs"
-msgstr ""
+msgstr "წრეწირები და მრუდები"
 
 #. i18n: ectx: ToolBar (conic_toolbar)
 #: kig/kigpartui.rc:258
 #, kde-format
 msgid "Conics"
-msgstr ""
+msgstr "კონუსები"
 
 #. i18n: ectx: ToolBar (bezier_toolbar)
 #: kig/kigpartui.rc:267
 #, kde-format
 msgid "Bézier Curves"
-msgstr ""
+msgstr "ბეზიეს მრუდები"
 
 #. i18n: ectx: ToolBar (angles_toolbar)
 #: kig/kigpartui.rc:277
 #, kde-format
 msgid "Angles"
-msgstr ""
+msgstr "კუთხეები"
 
 #. i18n: ectx: ToolBar (transformation_toolbar)
 #: kig/kigpartui.rc:282
@@ -1232,13 +1232,13 @@ msgstr "ტესტი"
 #: kig/kigpartui.rc:308
 #, kde-format
 msgid "Other Objects"
-msgstr ""
+msgstr "სხვა ობიექტები"
 
 #. i18n: ectx: ToolBar (view_toolbar)
 #: kig/kigpartui.rc:316
 #, kde-format
 msgid "View"
-msgstr ""
+msgstr "ხედი"
 
 #. i18n: ectx: Menu (settings)
 #: kig/kigui.rc:14
@@ -1263,7 +1263,7 @@ msgstr ""
 #: kig/main.cpp:85
 #, kde-format
 msgid "kde.org"
-msgstr ""
+msgstr "kde.org"
 
 #: kig/main.cpp:92
 #, kde-format
@@ -1283,7 +1283,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:50
 #, kde-format
 msgid "Segment"
-msgstr ""
+msgstr "სეგმენტი"
 
 #: misc/builtin_stuff.cc:50
 #, kde-format
@@ -1293,7 +1293,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:56
 #, kde-format
 msgid "Segment Axis"
-msgstr ""
+msgstr "სეგმენტის ღერძი"
 
 #: misc/builtin_stuff.cc:57
 #, kde-format
@@ -1303,7 +1303,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:63
 #, kde-format
 msgid "Line by Two Points"
-msgstr ""
+msgstr "მონაკვეთი ორი წერტილით"
 
 #: misc/builtin_stuff.cc:63
 #, kde-format
@@ -1323,7 +1323,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:77
 #, kde-format
 msgid "Perpendicular"
-msgstr ""
+msgstr "შვეული"
 
 #: misc/builtin_stuff.cc:78
 #, kde-format
@@ -2053,7 +2053,7 @@ msgstr ""
 #: misc/guiaction.cc:167
 #, kde-format
 msgid "Text Label"
-msgstr ""
+msgstr "ტექსტური ჭდე"
 
 #: misc/guiaction.cc:188
 #, kde-format
@@ -2984,7 +2984,7 @@ msgstr ""
 #: modes/macrowizard.cc:119
 #, kde-format
 msgid "&Name:"
-msgstr ""
+msgstr "&სახელი:"
 
 #: modes/macrowizard.cc:126
 #, kde-format
@@ -3104,7 +3104,7 @@ msgstr ""
 #: modes/popup/nameobjectactionsprovider.cc:43
 #, kde-format
 msgid "&Name"
-msgstr ""
+msgstr "სახ&ელი"
 
 #: modes/popup/nameobjectactionsprovider.cc:63
 #: modes/popup/nameobjectactionsprovider.cc:77
@@ -3132,7 +3132,7 @@ msgstr ""
 #: modes/popup/popup.cc:113
 #, kde-format
 msgid "&Transform"
-msgstr ""
+msgstr "&გარდაქმნა"
 
 #: modes/popup/popup.cc:114
 #, kde-format
@@ -3183,7 +3183,7 @@ msgstr "მეტი..."
 #: modes/popup/scriptactionsprovider.cc:57
 #, kde-format
 msgid "Edit Script..."
-msgstr ""
+msgstr "სკრიპტის ჩასწორება..."
 
 #: modes/textlabelwizard.cc:31
 #, kde-format
@@ -4440,7 +4440,7 @@ msgstr ""
 
 #: objects/line_imp.cc:544 objects/line_imp.cc:560
 msgid "line"
-msgstr ""
+msgstr "ხაზი"
 
 #: objects/line_imp.cc:545
 #, kde-format
@@ -4937,11 +4937,11 @@ msgstr "კოორდინატი"
 
 #: objects/point_imp.cc:63
 msgid "X coordinate"
-msgstr ""
+msgstr "X კოორდინატი"
 
 #: objects/point_imp.cc:64
 msgid "Y coordinate"
-msgstr ""
+msgstr "Y კოორდინატი"
 
 #: objects/point_imp.cc:153
 msgid "point"
@@ -6465,7 +6465,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
-msgstr ""
+msgstr "სკრიპტის ჩასწორება"
 
 #: scripting/script_mode.cc:307
 #, kde-format
