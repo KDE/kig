@@ -2212,7 +2212,7 @@ msgstr "Valor numèric"
 #: misc/kigcoordinateprecisiondialog.ui:9
 #, kde-format
 msgid "&Use default coordinate precision"
-msgstr "&Utilitzeu la precisió per defecte de les coordenades"
+msgstr "&Utilitzeu la precisió predeterminada de les coordenades"
 
 #. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
 #: misc/kigcoordinateprecisiondialog.ui:16
