@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2022-12-10 18:24+0300\n"
+"PO-Revision-Date: 2022-12-17 18:34+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -6000,7 +6000,7 @@ msgstr "Ç&erçeveyi Aç/Kapat"
 #: objects/text_type.cc:158
 #, kde-format
 msgid "Set &Font..."
-msgstr "&Yazı Tipini Ayarla..."
+msgstr "&Yazıtipini Ayarla..."
 
 #: objects/text_type.cc:182
 #, kde-format
@@ -6010,12 +6010,12 @@ msgstr "Etiket Çerçevesini Aç/Kapat"
 #: objects/text_type.cc:192
 #, kde-format
 msgid "Change Label Font"
-msgstr "Etiketin Yazı Tipini Değiştir"
+msgstr "Etiket Yazıtipini Değiştir"
 
 #: objects/text_type.cc:219
 #, kde-format
 msgid "&Redefine..."
-msgstr "&Yeniden tanımla..."
+msgstr "&Yeniden Tanımla..."
 
 #: objects/text_type.cc:266
 #, kde-format
