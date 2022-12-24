@@ -2,30 +2,31 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
+# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2007-04-21 19:02+0000\n"
-"Last-Translator: Zlatko Popov <zlatkopopov@fsa-bg.org>\n"
-"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"PO-Revision-Date: 2022-12-20 23:38+0100\n"
+"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
+"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 22.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Минчо Кондарев"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "mkondarev@yahoo.de"
 
 #, kde-format
 msgid "Circle by Center && Line"
@@ -188,9 +189,9 @@ msgstr ""
 #: filters/imageexporteroptionswidget.ui:120
 #: filters/latexexporteroptionswidget.ui:82
 #: filters/svgexporteroptionswidget.ui:22 misc/kigfiledialog.cc:21
-#, fuzzy, kde-format
+#, kde-format
 msgid "Options"
-msgstr "Настройки на SVG"
+msgstr "Настройки"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
 #: filters/asyexporteroptionswidget.ui:42
@@ -213,9 +214,9 @@ msgstr "Показване на &осите"
 #: filters/imageexporteroptionswidget.ui:147
 #: filters/latexexporteroptionswidget.ui:88
 #: filters/svgexporteroptionswidget.ui:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Grid"
-msgstr "Показване на &мрежа"
+msgstr "Показване на мрежа"
 
 #: filters/cabri-filter.cc:143
 #, kde-format
@@ -363,9 +364,9 @@ msgstr "Разделителна способност"
 
 #. i18n: ectx: property (text), widget (QCheckBox, keepAspectRatio)
 #: filters/imageexporteroptionswidget.ui:37
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Keep Aspect Ratio"
-msgstr "Запазване на &съотношението"
+msgstr "&Запазване на пропорциите"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: filters/imageexporteroptionswidget.ui:54
@@ -442,19 +443,19 @@ msgstr "Настройки на Latex"
 #: filters/latexexporteroptionswidget.ui:23
 #, kde-format
 msgid "Output format"
-msgstr ""
+msgstr "Изходен формат"
 
 #. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
 #: filters/latexexporteroptionswidget.ui:29
 #, kde-format
 msgid "PSTricks"
-msgstr ""
+msgstr "PSTricks"
 
 #. i18n: ectx: property (text), widget (QRadioButton, tikzRadioButton)
 #: filters/latexexporteroptionswidget.ui:36
 #, kde-format
 msgid "Tikz/PGF"
-msgstr ""
+msgstr "Tikz/PGF"
 
 #. i18n: ectx: property (text), widget (QRadioButton, asyRadioButton)
 #: filters/latexexporteroptionswidget.ui:46
@@ -598,17 +599,17 @@ msgstr "(C) 2002-2005, The Kig developers"
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "David E. Narvaez"
-msgstr ""
+msgstr "David E. Narvaez"
 
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "Current maintainer."
-msgstr ""
+msgstr "Текуща поддръжка."
 
 #: kig/aboutdata.h:25
 #, kde-format
 msgid "Dominique Devriese"
-msgstr ""
+msgstr "Dominique Devriese"
 
 #: kig/aboutdata.h:25
 #, fuzzy, kde-format
@@ -618,7 +619,7 @@ msgstr "Original author, long time maintainer, design and lots of code."
 #: kig/aboutdata.h:27
 #, kde-format
 msgid "Maurizio Paolini"
-msgstr ""
+msgstr "Maurizio Paolini"
 
 #: kig/aboutdata.h:28
 #, kde-format
@@ -632,7 +633,7 @@ msgstr ""
 #: kig/aboutdata.h:33
 #, kde-format
 msgid "Pino Toscano"
-msgstr ""
+msgstr "Pino Toscano"
 
 #: kig/aboutdata.h:34
 #, fuzzy, kde-format
@@ -742,7 +743,7 @@ msgstr "Sent me a patch for some bugs."
 #: kig/aboutdata.h:72
 #, kde-format
 msgid "Robert Gogolok"
-msgstr ""
+msgstr "Robert Gogolok"
 
 #: kig/aboutdata.h:73
 #, fuzzy, kde-format
@@ -756,7 +757,7 @@ msgstr ""
 #: kig/aboutdata.h:78
 #, kde-format
 msgid "David Vignoni"
-msgstr ""
+msgstr "David Vignoni"
 
 #: kig/aboutdata.h:78
 #, kde-format
@@ -766,7 +767,7 @@ msgstr "Responsible for the nice application SVG Icon."
 #: kig/aboutdata.h:80
 #, kde-format
 msgid "Danny Allen"
-msgstr ""
+msgstr "Danny Allen"
 
 #: kig/aboutdata.h:80
 #, kde-format
@@ -782,7 +783,7 @@ msgstr "Не е намерена необходимата библиотека �
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
-msgstr ""
+msgstr "Отваряне на файл"
 
 #: kig/kig_commands.cpp:91
 #, fuzzy, kde-format
@@ -1104,21 +1105,21 @@ msgstr ""
 
 #. i18n: ectx: Menu (file)
 #: kig/kigpartui.rc:6 kig/kigui.rc:5
-#, fuzzy, kde-format
+#, kde-format
 msgid "&File"
-msgstr "&Скриване"
+msgstr "&Файл"
 
 #. i18n: ectx: Menu (edit)
 #: kig/kigpartui.rc:17
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Edit"
-msgstr "&Редактиране..."
+msgstr "&Редактиране"
 
 #. i18n: ectx: Menu (view)
 #: kig/kigpartui.rc:28
-#, fuzzy, kde-format
+#, kde-format
 msgid "&View"
-msgstr "&Скриване"
+msgstr "&Изглед"
 
 #. i18n: ectx: Menu (objects)
 #: kig/kigpartui.rc:36
@@ -1220,13 +1221,13 @@ msgstr "&Типове"
 #: kig/kigpartui.rc:194
 #, kde-format
 msgid "&Tools"
-msgstr ""
+msgstr "&Инструменти"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kig/kigpartui.rc:207 kig/kigui.rc:24
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "Основна лента с инструменти"
 
 #. i18n: ectx: ToolBar (points_toolbar)
 #: kig/kigpartui.rc:221
@@ -1292,13 +1293,13 @@ msgstr "Други обекти"
 #: kig/kigpartui.rc:316
 #, kde-format
 msgid "View"
-msgstr ""
+msgstr "Изглед"
 
 #. i18n: ectx: Menu (settings)
 #: kig/kigui.rc:14
 #, kde-format
 msgid "&Settings"
-msgstr ""
+msgstr "&Настройки"
 
 #: kig/main.cpp:78
 #, kde-format
@@ -1319,7 +1320,7 @@ msgstr "Файл за изход \"-\" означава stdout, който е и
 #: kig/main.cpp:85
 #, kde-format
 msgid "kde.org"
-msgstr ""
+msgstr "kde.org"
 
 #: kig/main.cpp:92
 #, kde-format
@@ -2097,7 +2098,7 @@ msgstr "Полярна координатна система"
 #, kde-format
 msgctxt "Translators: Degrees"
 msgid "Deg"
-msgstr ""
+msgstr "Deg"
 
 #: misc/goniometry.cc:96
 #, fuzzy, kde-format
@@ -2109,7 +2110,7 @@ msgstr "Радиус"
 #, kde-format
 msgctxt "Translators: Gradians"
 msgid "Grad"
-msgstr ""
+msgstr "Grad"
 
 #: misc/guiaction.cc:105
 #, kde-format
@@ -2161,7 +2162,7 @@ msgstr "Създаване на надпис"
 #: misc/guiaction.cc:245
 #, kde-format
 msgid "Numeric Value"
-msgstr ""
+msgstr "Числова стойност"
 
 #. i18n: ectx: property (text), widget (QCheckBox, m_defaultCheckBox)
 #: misc/kigcoordinateprecisiondialog.ui:9
@@ -2858,22 +2859,22 @@ msgid "Center of Curvature at This Point"
 msgstr "Център на кривината в точката"
 
 #: misc/unit.cc:105
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Translators: Pixel"
 msgid "pixel"
-msgstr " пиксела"
+msgstr "пиксел"
 
 #: misc/unit.cc:106
 #, kde-format
 msgctxt "Translators: Centimeter"
 msgid "cm"
-msgstr ""
+msgstr "см"
 
 #: misc/unit.cc:107
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Translators: Inch"
 msgid "in"
-msgstr "права"
+msgstr "in"
 
 #: modes/construct_mode.cc:223 modes/normal.cc:239
 #, kde-format
@@ -2977,7 +2978,7 @@ msgstr ""
 #: modes/historywidget.ui:82
 #, kde-format
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
 #: modes/historywidget.ui:96
@@ -3090,19 +3091,19 @@ msgid "Enter a name and description for your new type."
 msgstr "Въведете име и описание на новия тип макрос."
 
 #: modes/macrowizard.cc:119
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Name:"
-msgstr "Име:"
+msgstr "&Име:"
 
 #: modes/macrowizard.cc:126
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Description:"
-msgstr "Описание:"
+msgstr "&Описание:"
 
 #: modes/macrowizard.cc:132
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Icon:"
-msgstr "Икона"
+msgstr "&Икона:"
 
 #: modes/macrowizard.cc:154
 #, fuzzy, kde-format
@@ -3125,37 +3126,37 @@ msgstr "Повторно определяне на точка"
 #: modes/popup/builtinobjectactionsprovider.cc:34
 #, kde-format
 msgid "Black"
-msgstr ""
+msgstr "Черен"
 
 #: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Gray"
-msgstr ""
+msgstr "Сиво"
 
 #: modes/popup/builtinobjectactionsprovider.cc:36
-#, fuzzy, kde-format
+#, kde-format
 msgid "Red"
-msgstr "Радиус"
+msgstr "Червен"
 
 #: modes/popup/builtinobjectactionsprovider.cc:37
 #, kde-format
 msgid "Green"
-msgstr ""
+msgstr "Зелен"
 
 #: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Cyan"
-msgstr ""
+msgstr "Циан"
 
 #: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Yellow"
-msgstr ""
+msgstr "Жълт"
 
 #: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Dark Red"
-msgstr ""
+msgstr "Тъмночервен"
 
 #: modes/popup/builtinobjectactionsprovider.cc:61
 #, kde-format
@@ -3175,9 +3176,9 @@ msgstr "Пре&местване"
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
 #: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Delete"
-msgstr "&Изтриване на обекти"
+msgstr "&Изтриване"
 
 #: modes/popup/builtinobjectactionsprovider.cc:75
 #, kde-format
@@ -3226,7 +3227,7 @@ msgid "Set Name of this Object:"
 msgstr "Задаване на име на обекта:"
 
 #: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 обекта"
@@ -3255,7 +3256,7 @@ msgstr "По&строяване"
 #: modes/popup/popup.cc:116
 #, kde-format
 msgid "&Start"
-msgstr ""
+msgstr "&Начало"
 
 #: modes/popup/popup.cc:117
 #, kde-format
@@ -3283,13 +3284,13 @@ msgid "Set Coordinate S&ystem"
 msgstr "Коор&динатна система"
 
 #: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "More menu items"
 msgid "More..."
-msgstr "Експортиране..."
+msgstr "Още..."
 
 #: modes/popup/scriptactionsprovider.cc:57
-#, fuzzy, kde-format
+#, kde-format
 msgid "Edit Script..."
 msgstr "Редактиране на скрипт..."
 
@@ -3339,12 +3340,12 @@ msgstr "Създаване на надпис"
 #: modes/typesdialog.cpp:133
 #, kde-format
 msgid "Macro"
-msgstr ""
+msgstr "Макрос"
 
 #: modes/typesdialog.cpp:301
-#, fuzzy, kde-format
+#, kde-format
 msgid "Type"
-msgstr "&Типове"
+msgstr "Тип"
 
 #: modes/typesdialog.cpp:307
 #, kde-format
@@ -3412,7 +3413,7 @@ msgstr ""
 #: modes/typesdialog.cpp:479
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Всички файлове (*)"
 
 #: modes/typesdialog.cpp:481
 #, kde-format
@@ -3475,9 +3476,9 @@ msgstr "Импортиране на макроси, съдържащи се в �
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonImport)
 #: modes/typeswidget.ui:164
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Import..."
-msgstr "Импортиране..."
+msgstr "И&мпортиране..."
 
 #: objects/angle_type.cc:26
 #, kde-format
@@ -3936,16 +3937,15 @@ msgstr "Построяване на окръжност със зададения
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr ""
+msgstr "низ"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
-msgstr ""
+msgstr "double"
 
 #: objects/bogus_imp.cc:307
-#, fuzzy
 msgid "int"
-msgstr "права"
+msgstr "int"
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
@@ -3976,7 +3976,7 @@ msgstr "Радиус"
 
 #: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
 msgid "Center"
-msgstr ""
+msgstr "Център"
 
 #: objects/circle_imp.cc:137
 msgid "Expanded Cartesian Equation"
@@ -4090,7 +4090,7 @@ msgstr "Парабола"
 #: objects/conic_imp.cc:255
 #, kde-format
 msgid "rho"
-msgstr ""
+msgstr "ро"
 
 #: objects/conic_imp.cc:263
 #, kde-format
@@ -6640,10 +6640,10 @@ msgid "Select the point to construct the sum vector in..."
 msgstr "Изберете точка, в която да построите сумата на векторите..."
 
 #: scripting/newscriptwizard.cc:46
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "New Script"
-msgstr "Нов скрипт"
+msgstr "Създаване на скрипт"
 
 #: scripting/newscriptwizard.cc:57
 #, fuzzy, kde-format
