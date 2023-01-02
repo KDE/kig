@@ -254,7 +254,7 @@ msgstr ""
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
-msgstr "S'ha trobat un error en la línia %1 del fitxer %2."
+msgstr "S'ha trobat un error en la línia %1 en el fitxer %2."
 
 #: filters/drgeo-filter.cc:92
 #, kde-format
