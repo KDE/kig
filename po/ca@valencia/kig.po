@@ -6689,7 +6689,7 @@ msgstr "Ara introduïu el codi:"
 #: scripting/script-common.cc:19
 #, kde-format
 msgid "Now fill in the Python code:"
-msgstr "Ara ompliu el codi Python:"
+msgstr "Ara empleneu el codi Python:"
 
 #: scripting/script-common.cc:80
 #, kde-format
