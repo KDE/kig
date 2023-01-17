@@ -2967,7 +2967,7 @@ msgstr "Ara seleccioneu el lloc per a l'etiqueta resultant."
 #, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
-msgstr "Edició del tipus"
+msgstr "Editeu el tipus"
 
 #: modes/edittype.cc:42
 #, kde-format
@@ -3428,7 +3428,7 @@ msgstr "Descripció"
 #, kde-format
 msgctxt "@title:window"
 msgid "Manage Types"
-msgstr "Gestió dels tipus"
+msgstr "Gestioneu els tipus"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
 #: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
@@ -6733,7 +6733,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
-msgstr "Edició d'un script"
+msgstr "Editeu un script"
 
 #: scripting/script_mode.cc:307
 #, kde-format
