@@ -14,13 +14,13 @@
 # Renan Cakirerk, 2010.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2017.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2022-12-17 18:34+0300\n"
+"PO-Revision-Date: 2023-01-18 22:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -482,7 +482,7 @@ msgstr "Belge seçenekleri"
 #: filters/latexexporteroptionswidget.ui:62
 #, kde-format
 msgid "Picture only"
-msgstr "Sadece resim"
+msgstr "Yalnızca resim"
 
 #. i18n: ectx: property (text), widget (QRadioButton, documentRadioButton)
 #: filters/latexexporteroptionswidget.ui:72
@@ -3456,8 +3456,8 @@ msgid ""
 "There is more than one type selected. You can only edit one type at a time. "
 "Please select only the type you want to edit and try again."
 msgstr ""
-"Birden fazla tür seçildi. Bir kerede sadece bir tür düzenleyebilirsiniz. "
-"Lütfen sadece düzenlemek istediğiniz türü seçin ve yeniden deneyin."
+"Birden fazla tür seçildi. Bir kerede yalnızca bir tür düzenleyebilirsiniz. "
+"Lütfen yalnızca düzenlemek istediğiniz türü seçin ve yeniden deneyin."
 
 #: modes/typesdialog.cpp:517
 #, kde-format
@@ -6691,7 +6691,7 @@ msgid ""
 "</pre></code>\n"
 msgstr ""
 "<p>Bir kig yapısını \"pykig\" \n"
-"python betiği şeklinde kontrol edemezsiniz, sadece \n"
+"python betiği şeklinde kontrol edemezsiniz, yalnızca \n"
 "<code>pykig.py</code> komutuyla çalıştırabilirsiniz \n"
 "(<code>hexagons.kpy</code>) örneğini çalıştırmayı deneyebilirsiniz:\n"
 "<code><pre>\n"
@@ -6749,7 +6749,7 @@ msgid ""
 "clicking somewhere on the Kig document with the <em>middle mouse\n"
 "button</em>.</p>\n"
 msgstr ""
-"<p>Yeni noktaları, menü veya araç çubuğu kullanmadan, sadece Kig "
+"<p>Yeni noktaları, menü veya araç çubuğu kullanmadan, yalnızca Kig "
 "belgesindeki\n"
 "herhangi bir alana <em>orta fare düğmesine</em>\n"
 "basarak oluşturuabilirsiniz.</p>\n"
