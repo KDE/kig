@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2023-01-14 18:45+0100\n"
+"PO-Revision-Date: 2023-01-23 08:55+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3069,7 +3069,7 @@ msgstr ""
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
-msgstr ""
+msgstr "&წაშლა"
 
 #: modes/popup/builtinobjectactionsprovider.cc:75
 #, kde-format
