@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2023-02-01 07:35+0100\n"
+"PO-Revision-Date: 2023-02-02 07:51+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -38,7 +38,7 @@ msgstr "წრის ცენტრითა და მხებით აგ�
 
 #, kde-format
 msgid "Construct a circle tangent to this line"
-msgstr ""
+msgstr "წრიდან ამ ხაზამდე მხების აგება"
 
 #, kde-format
 msgid "Select the line that the new circle should be tangent to..."
@@ -64,11 +64,11 @@ msgstr ""
 
 #, kde-format
 msgid "Equilateral Triangle"
-msgstr ""
+msgstr "ტოლგვერდა სამკუთხედი"
 
 #, kde-format
 msgid "Equilateral triangle with given two vertices"
-msgstr ""
+msgstr "ტოლგვერდა სამკუთხედი მოცემული ორი წვეროთი"
 
 #, kde-format
 msgid "Evolute"
@@ -149,7 +149,7 @@ msgstr ""
 #: filters/asyexporter.cc:29
 #, kde-format
 msgid "Export to &Asymptote..."
-msgstr ""
+msgstr "&ასიმპტოტაში გატანა..."
 
 #: filters/asyexporter.cc:34
 #, kde-format
@@ -164,7 +164,7 @@ msgstr "Asymptote -ის დოკუმენტები (*.asy)"
 #: filters/asyexporter.cc:46
 #, kde-format
 msgid "Export as Asymptote script"
-msgstr ""
+msgstr "ასიმპტოტის სკრიპტის სახიტ გატანა"
 
 #: filters/asyexporter.cc:48
 #, kde-format
@@ -253,7 +253,7 @@ msgstr ""
 #: filters/drgeo-filter.cc:111
 #, kde-format
 msgid "Dr. Geo Filter"
-msgstr ""
+msgstr "Dr. Geo-ის ფილტრი"
 
 #: filters/drgeo-filter.cc:112
 #, kde-format
@@ -757,7 +757,7 @@ msgstr[1] "%1 ობიექტის დამატება"
 #: kig/kig_part.cpp:86
 #, kde-format
 msgid "&Set Coordinate System"
-msgstr ""
+msgstr "&დააყენეთ კოორდინატების სისტემა"
 
 #: kig/kig_part.cpp:126
 #, kde-format
@@ -853,12 +853,12 @@ msgstr ""
 #: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom in on the document"
-msgstr ""
+msgstr "დოკუმენტის გადიდება"
 
 #: kig/kig_part.cpp:273 kig/kig_part.cpp:274
 #, kde-format
 msgid "Zoom out of the document"
-msgstr ""
+msgstr "დოკუმენტის დაპატარავება"
 
 #: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
@@ -868,12 +868,12 @@ msgstr ""
 #: kig/kig_part.cpp:283 kig/kig_part.cpp:284
 #, kde-format
 msgid "View this document full-screen."
-msgstr ""
+msgstr "დოკუმენტის მთელ ეკრანზე ნახვა."
 
 #: kig/kig_part.cpp:287
 #, kde-format
 msgid "&Select Shown Area"
-msgstr ""
+msgstr "&აირჩიეთ საჩვენებელი ადგილი"
 
 #: kig/kig_part.cpp:290 kig/kig_part.cpp:291
 #, kde-format
@@ -883,14 +883,14 @@ msgstr ""
 #: kig/kig_part.cpp:293
 #, kde-format
 msgid "S&elect Zoom Area"
-msgstr ""
+msgstr "აირჩიეთ &გასადიდებელი ადგილი"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
 #: kig/kig_part.cpp:299
 #, kde-format
 msgid "Set Coordinate &Precision..."
-msgstr ""
+msgstr "დააყენეთ კოორდინატების &სიზუსტე..."
 
 #: kig/kig_part.cpp:301
 #, kde-format
@@ -905,7 +905,7 @@ msgstr "&ბადის ჩვენება"
 #: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show or hide the grid."
-msgstr ""
+msgstr "ბადის ჩვენება/დამალვა."
 
 #: kig/kig_part.cpp:310
 #, kde-format
@@ -930,12 +930,12 @@ msgstr ""
 #: kig/kig_part.cpp:348
 #, kde-format
 msgid "Repeat Construction (%1)"
-msgstr ""
+msgstr "აგების გამეორება (%1)"
 
 #: kig/kig_part.cpp:349
 #, kde-format
 msgid "Repeat %1 (with new data)"
-msgstr ""
+msgstr "%1-ის გამეორება (ახალი მონაცემებით)"
 
 #: kig/kig_part.cpp:377
 #, kde-format
@@ -962,7 +962,7 @@ msgstr ""
 #: kig/kig_part.cpp:399 kig/kig_part.cpp:447
 #, kde-format
 msgid "Format Not Supported"
-msgstr ""
+msgstr "ფორმატი მხარდაჭერილი არაა"
 
 #: kig/kig_part.cpp:445
 #, kde-format
@@ -974,7 +974,7 @@ msgstr ""
 #: kig/kig_part.cpp:448
 #, kde-format
 msgid "Save Kig Format"
-msgstr ""
+msgstr "Kig ფორმატში შენახვა"
 
 #: kig/kig_part.cpp:705
 #, kde-format
@@ -1034,12 +1034,12 @@ msgstr ""
 #: kig/kig_view.cpp:501 kig/kig_view.cpp:551
 #, kde-format
 msgid "Change Shown Part of Screen"
-msgstr ""
+msgstr "ეკრანის ნაჩვენები ნაწილის შეცვლა"
 
 #: kig/kig_view.cpp:538
 #, kde-format
 msgid "Select Zoom Area"
-msgstr ""
+msgstr "აირჩიეთ გასადიდებელი ადგილი"
 
 #: kig/kig_view.cpp:539
 #, kde-format
@@ -1106,13 +1106,13 @@ msgstr "&ვექტორები და სეგმენტები"
 #: kig/kigpartui.rc:94
 #, kde-format
 msgid "Co&nics && Cubics"
-msgstr ""
+msgstr "&კონუსებ და კუბები"
 
 #. i18n: ectx: Menu (new_moreconics)
 #: kig/kigpartui.rc:101
 #, kde-format
 msgid "More Conics"
-msgstr ""
+msgstr "მეტი კონუსი"
 
 #. i18n: ectx: Menu (new_cubic)
 #: kig/kigpartui.rc:116
@@ -1355,7 +1355,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:100
 #, kde-format
 msgid "Circle by Three Points"
-msgstr ""
+msgstr "წრე სამი წერტილით"
 
 #: misc/builtin_stuff.cc:101
 #, kde-format
@@ -1365,7 +1365,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:107
 #, kde-format
 msgid "Circle by Point && Radius"
-msgstr ""
+msgstr "წრე წერტილითა და რადიუსით"
 
 #: misc/builtin_stuff.cc:108
 #, kde-format
@@ -1385,17 +1385,17 @@ msgstr ""
 #: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
 #, kde-format
 msgid "Angle Bisector"
-msgstr ""
+msgstr "კუთხის ბისექტრისა"
 
 #: misc/builtin_stuff.cc:125
 #, kde-format
 msgid "The bisector of an angle"
-msgstr ""
+msgstr "კუთხის ბისექტრისა"
 
 #: misc/builtin_stuff.cc:132
 #, kde-format
 msgid "Conic by Five Points"
-msgstr ""
+msgstr "კონუსი ხუთი წერტილით"
 
 #: misc/builtin_stuff.cc:133
 #, kde-format
@@ -1445,7 +1445,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:167
 #, kde-format
 msgid "Vertical Parabola by Three Points"
-msgstr ""
+msgstr "ვერტიკალური პარაბოლა სამი წერტილით"
 
 #: misc/builtin_stuff.cc:168
 #, kde-format
@@ -1465,7 +1465,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:181
 #, kde-format
 msgid "Polar Point of a Line"
-msgstr ""
+msgstr "ხაზის პოლარული წერტილი"
 
 #: misc/builtin_stuff.cc:182
 #, kde-format
@@ -1475,7 +1475,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:188
 #, kde-format
 msgid "Polar Line of a Point"
-msgstr ""
+msgstr "წერტილის პოლარული ხაზი"
 
 #: misc/builtin_stuff.cc:189
 #, kde-format
@@ -1515,22 +1515,22 @@ msgstr ""
 #: misc/builtin_stuff.cc:215
 #, kde-format
 msgid "Directrix of a Conic"
-msgstr ""
+msgstr "კონუსის დისექტრისა"
 
 #: misc/builtin_stuff.cc:215
 #, kde-format
 msgid "The directrix line of a conic."
-msgstr ""
+msgstr "კონუსის დისექტრისა."
 
 #: misc/builtin_stuff.cc:219
 #, kde-format
 msgid "Angle by Three Points"
-msgstr ""
+msgstr "კუთხე სამი წერტილით"
 
 #: misc/builtin_stuff.cc:219
 #, kde-format
 msgid "An angle defined by three points"
-msgstr ""
+msgstr "სამი წერტილით აღწერილი კუთხე"
 
 #: misc/builtin_stuff.cc:224
 #, kde-format
@@ -1550,7 +1550,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
 #, kde-format
 msgid "Mid Point"
-msgstr ""
+msgstr "შუა წერტილი"
 
 #: misc/builtin_stuff.cc:246
 #, kde-format
@@ -1565,7 +1565,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
 #, kde-format
 msgid "Golden Ratio Point"
-msgstr ""
+msgstr "ოქროს კვეთის წერტილი"
 
 #: misc/builtin_stuff.cc:274
 #, kde-format
@@ -1585,7 +1585,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:285
 #, kde-format
 msgid "Vector Sum"
-msgstr ""
+msgstr "ვექტორების ჯამი"
 
 #: misc/builtin_stuff.cc:285
 #, kde-format
@@ -1595,7 +1595,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:290
 #, kde-format
 msgid "Line by Vector"
-msgstr ""
+msgstr "ხაზი ვექტორით"
 
 #: misc/builtin_stuff.cc:291
 #, kde-format
@@ -1605,7 +1605,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:297
 #, kde-format
 msgid "Half-Line by Vector"
-msgstr ""
+msgstr "ნახევარი-ხაზი ვექტორით"
 
 #: misc/builtin_stuff.cc:298
 #, kde-format
@@ -1615,7 +1615,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:303
 #, kde-format
 msgid "Arc by Three Points"
-msgstr ""
+msgstr "რკალი სამი წერტილით"
 
 #: misc/builtin_stuff.cc:303
 #, kde-format
@@ -1676,7 +1676,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:354
 #, kde-format
 msgid "Reflect in Point"
-msgstr ""
+msgstr "წერტილში არეკვლა"
 
 #: misc/builtin_stuff.cc:355
 #, kde-format
@@ -1686,7 +1686,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:360
 #, kde-format
 msgid "Reflect in Line"
-msgstr ""
+msgstr "ხაზში არეკვლა"
 
 #: misc/builtin_stuff.cc:360
 #, kde-format
@@ -1764,7 +1764,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:404
 #, kde-format
 msgid "Harmonic Homology"
-msgstr ""
+msgstr "ჰარმონიული ჰომოლოგია"
 
 #: misc/builtin_stuff.cc:405
 #, kde-format
@@ -1788,7 +1788,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:434
 #, kde-format
 msgid "Asymptotes of a Hyperbola"
-msgstr ""
+msgstr "ჰიპერბოლის ასიმპტოტები"
 
 #: misc/builtin_stuff.cc:435
 #, kde-format
@@ -1798,7 +1798,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:449
 #, kde-format
 msgid "Triangle by Its Vertices"
-msgstr ""
+msgstr "სამკუთხედი თავსი წვეროებით"
 
 #: misc/builtin_stuff.cc:450
 #, kde-format
@@ -1858,7 +1858,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:529
 #, kde-format
 msgid "Parallel Test"
-msgstr ""
+msgstr "პარალელური ტექსტი"
 
 #: misc/builtin_stuff.cc:529
 #, kde-format
@@ -1868,7 +1868,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:533
 #, kde-format
 msgid "Orthogonal Test"
-msgstr ""
+msgstr "ორთოგონალური ტესტი"
 
 #: misc/builtin_stuff.cc:533
 #, kde-format
@@ -1878,7 +1878,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:537
 #, kde-format
 msgid "Collinear Test"
-msgstr ""
+msgstr "კოლინეარული ტესტი"
 
 #: misc/builtin_stuff.cc:537
 #, kde-format
@@ -1888,7 +1888,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:541
 #, kde-format
 msgid "Contains Test"
-msgstr ""
+msgstr "შეიცავს ტესტს"
 
 #: misc/builtin_stuff.cc:541
 #, kde-format
@@ -1898,7 +1898,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:545
 #, kde-format
 msgid "In Polygon Test"
-msgstr ""
+msgstr "პოლიგონის ტესტში"
 
 #: misc/builtin_stuff.cc:545
 #, kde-format
@@ -1918,7 +1918,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:553
 #, kde-format
 msgid "Existence Test"
-msgstr ""
+msgstr "არსებობის ტესტი"
 
 #: misc/builtin_stuff.cc:553
 #, kde-format
@@ -1928,7 +1928,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:558
 #, kde-format
 msgid "Distance Test"
-msgstr ""
+msgstr "მანძილის ტესტი"
 
 #: misc/builtin_stuff.cc:559
 #, kde-format
@@ -1940,7 +1940,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:565
 #, kde-format
 msgid "Vector Equality Test"
-msgstr ""
+msgstr "ვექტორის ტოლობის ტესტი"
 
 #: misc/builtin_stuff.cc:565
 #, kde-format
@@ -1950,7 +1950,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:583
 #, kde-format
 msgid "Point Projection"
-msgstr ""
+msgstr "წერტილის პროექცია"
 
 #: misc/builtin_stuff.cc:584
 #, kde-format
@@ -1960,7 +1960,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
 #, kde-format
 msgid "Python Script"
-msgstr ""
+msgstr "Python-ის სკრიპტი"
 
 #: misc/builtin_stuff.cc:612
 #, kde-format
@@ -2008,12 +2008,12 @@ msgstr "&პოლარული"
 #: misc/coordinate_system.cpp:581
 #, kde-format
 msgid "Set Euclidean Coordinate System"
-msgstr ""
+msgstr "ევკლიდური კოორდინატების სისტემის დაყენება"
 
 #: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Polar Coordinate System"
-msgstr ""
+msgstr "პოლარული კოორდინატების სისტემის დაყენება"
 
 #: misc/goniometry.cc:95
 #, kde-format
@@ -2058,7 +2058,7 @@ msgstr "ტექსტური ჭდე"
 #: misc/guiaction.cc:188
 #, kde-format
 msgid "Construct a Point by its Coordinates"
-msgstr ""
+msgstr "წერტილის აგება მისი კოორდინატებით"
 
 #: misc/guiaction.cc:198
 #, kde-format
@@ -2073,7 +2073,7 @@ msgstr "ფიქსირებული წერტილი"
 #: misc/guiaction.cc:211
 #, kde-format
 msgid "Enter the coordinates for the new point."
-msgstr ""
+msgstr "აირჩიეთ ახალი წერტილის კოორდინატები."
 
 #: misc/guiaction.cc:235
 #, kde-format
@@ -2089,24 +2089,24 @@ msgstr "რიცხვითი მნიშვნელობა"
 #: misc/kigcoordinateprecisiondialog.ui:9
 #, kde-format
 msgid "&Use default coordinate precision"
-msgstr ""
+msgstr "&კოორდინატების ნაგულისხმები სიზუსტის გამოყენება"
 
 #. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
 #: misc/kigcoordinateprecisiondialog.ui:16
 #, kde-format
 msgid "&Specify coordinate precision:"
-msgstr ""
+msgstr "&მიუთითეთ კოორდინატების სიზუსტე:"
 
 #: misc/kiginputdialog.cc:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Set Angle Size"
-msgstr ""
+msgstr "კუთხის ზომის დაყენება"
 
 #: misc/kiginputdialog.cc:140
 #, kde-format
 msgid "Insert the new size of this angle:"
-msgstr ""
+msgstr "შეიყვანეთ ამ კუთხის ახალი ზომა:"
 
 #: misc/kiginputdialog.cc:148
 #, kde-format
@@ -2125,7 +2125,7 @@ msgstr ""
 #: misc/lists.cc:277 misc/lists.cc:282
 #, kde-format
 msgid "Could not open macro file '%1'"
-msgstr ""
+msgstr "მაკროს ფაილი '%1' ვერ გავხსენი"
 
 #: misc/lists.cc:292
 #, kde-format
@@ -2144,7 +2144,7 @@ msgstr ""
 #: misc/lists.cc:347
 #, kde-format
 msgid "Unnamed Macro #%1"
-msgstr ""
+msgstr "უსახელო მაკრო #%1"
 
 #: misc/object_hierarchy.cc:541
 #, kde-format
@@ -2169,7 +2169,7 @@ msgstr ""
 #: misc/special_constructors.cc:327 misc/special_constructors.cc:411
 #, kde-format
 msgid "Moving Point"
-msgstr ""
+msgstr "გადაადგლებადი წერტილი"
 
 #: misc/special_constructors.cc:327
 #, kde-format
@@ -2181,7 +2181,7 @@ msgstr ""
 #: misc/special_constructors.cc:328
 #, kde-format
 msgid "Following Point"
-msgstr ""
+msgstr "გამყოლი წერტილი"
 
 #: misc/special_constructors.cc:328
 #, kde-format
@@ -2193,22 +2193,22 @@ msgstr ""
 #: misc/special_constructors.cc:331
 #, kde-format
 msgid "Locus"
-msgstr ""
+msgstr "ლოკუსი"
 
 #: misc/special_constructors.cc:331
 #, kde-format
 msgid "A locus"
-msgstr ""
+msgstr "ლოკუსი"
 
 #: misc/special_constructors.cc:413
 #, kde-format
 msgid "Dependent Point"
-msgstr ""
+msgstr "დამოკიდებული წერტილი"
 
 #: misc/special_constructors.cc:520
 #, kde-format
 msgid "Polygon by Its Vertices"
-msgstr ""
+msgstr "მრავალკუთხედი მისი წვეროებით"
 
 #: misc/special_constructors.cc:520
 #, kde-format
@@ -2239,7 +2239,7 @@ msgstr ""
 #: misc/special_constructors.cc:589
 #, kde-format
 msgid "Construct an open polygon"
-msgstr ""
+msgstr "ღია მრავალკუთხედის აგება"
 
 #: misc/special_constructors.cc:622
 #, kde-format
@@ -2271,12 +2271,12 @@ msgstr ""
 #: misc/special_constructors.cc:661
 #, kde-format
 msgid "Vertices of a Polygon"
-msgstr ""
+msgstr "მრავალკუთხედის წვეროები"
 
 #: misc/special_constructors.cc:661
 #, kde-format
 msgid "The vertices of a polygon."
-msgstr ""
+msgstr "მრავალკუთხედის წვეროები."
 
 #: misc/special_constructors.cc:718
 #, kde-format
@@ -2516,25 +2516,25 @@ msgstr ""
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 #, kde-format
 msgid "Intersect with this conic"
-msgstr ""
+msgstr "ამ კონუსთან კვეთა"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
 #, kde-format
 msgid "Intersect with this line"
-msgstr ""
+msgstr "ამ ხაზთან კვეთა"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
 #, kde-format
 msgid "Intersect with this cubic"
-msgstr ""
+msgstr "ამ კუბიკთან კვეთა"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
 #, kde-format
 msgid "Intersect with this circle"
-msgstr ""
+msgstr "ამ წრესთან კვეთა"
 
 #: misc/special_constructors.cc:1692
 #, kde-format
@@ -2544,97 +2544,97 @@ msgstr "გადაკვეთა"
 #: misc/special_constructors.cc:1692
 #, kde-format
 msgid "The intersection of two objects"
-msgstr ""
+msgstr "ორი ობიექტის კვეთა"
 
 #: misc/special_constructors.cc:1766
 #, kde-format
 msgid "Intersect this Circle"
-msgstr ""
+msgstr "ამ წრესთან კვეთა"
 
 #: misc/special_constructors.cc:1768
 #, kde-format
 msgid "Intersect this Conic"
-msgstr ""
+msgstr "ამ კონუსთან კვეთა"
 
 #: misc/special_constructors.cc:1770
 #, kde-format
 msgid "Intersect this Segment"
-msgstr ""
+msgstr "ამ სეგმენტთან კვეთა"
 
 #: misc/special_constructors.cc:1772
 #, kde-format
 msgid "Intersect this Half-line"
-msgstr ""
+msgstr "ამ ნახევარ-ხაზთან კვეთა"
 
 #: misc/special_constructors.cc:1774
 #, kde-format
 msgid "Intersect this Line"
-msgstr ""
+msgstr "ამ ხაზთან კვეთა"
 
 #: misc/special_constructors.cc:1776
 #, kde-format
 msgid "Intersect this Cubic Curve"
-msgstr ""
+msgstr "ამ კუბიკურ მრუდთან კვეთა"
 
 #: misc/special_constructors.cc:1778
 #, kde-format
 msgid "Intersect this Arc"
-msgstr ""
+msgstr "ამ რკალთან კვეთა"
 
 #: misc/special_constructors.cc:1780
 #, kde-format
 msgid "Intersect this Polygon"
-msgstr ""
+msgstr "ამ მრავალკუთხედთან კვეთა"
 
 #: misc/special_constructors.cc:1782
 #, kde-format
 msgid "Intersect this Polygonal"
-msgstr ""
+msgstr "ამ მრავალკუთხედთან კვეთა"
 
 #: misc/special_constructors.cc:1788
 #, kde-format
 msgid "with this Circle"
-msgstr ""
+msgstr "ამ წრესთან"
 
 #: misc/special_constructors.cc:1790
 #, kde-format
 msgid "with this Conic"
-msgstr ""
+msgstr "ამ კონუსთან"
 
 #: misc/special_constructors.cc:1792
 #, kde-format
 msgid "with this Segment"
-msgstr ""
+msgstr "ამ სეგმენტთან"
 
 #: misc/special_constructors.cc:1794
 #, kde-format
 msgid "with this Half-line"
-msgstr ""
+msgstr "ამ ნახევარ-ხაზთან"
 
 #: misc/special_constructors.cc:1796
 #, kde-format
 msgid "with this Line"
-msgstr ""
+msgstr "ამ ხაზთან"
 
 #: misc/special_constructors.cc:1798
 #, kde-format
 msgid "with this Cubic Curve"
-msgstr ""
+msgstr "ამ კუბურ მრუდთან"
 
 #: misc/special_constructors.cc:1800
 #, kde-format
 msgid "with this Arc"
-msgstr ""
+msgstr "ამ რკალთან"
 
 #: misc/special_constructors.cc:1802
 #, kde-format
 msgid "with this Polygon"
-msgstr ""
+msgstr "ამ მრავალკუთხედთან"
 
 #: misc/special_constructors.cc:1804
 #, kde-format
 msgid "with this Polygonal"
-msgstr ""
+msgstr "ამ მრავალკუთხედთან"
 
 #: misc/special_constructors.cc:1814
 #, kde-format
@@ -2704,7 +2704,7 @@ msgstr ""
 #: misc/special_constructors.cc:2008
 #, kde-format
 msgid "Tangent to This Circle"
-msgstr ""
+msgstr "ამ წრის მხები"
 
 #: misc/special_constructors.cc:2010
 #, kde-format
@@ -2714,22 +2714,22 @@ msgstr ""
 #: misc/special_constructors.cc:2012
 #, kde-format
 msgid "Tangent to This Arc"
-msgstr ""
+msgstr "ამ რკალის მხები"
 
 #: misc/special_constructors.cc:2014
 #, kde-format
 msgid "Tangent to This Cubic Curve"
-msgstr ""
+msgstr "ამ კუბური მრუდის მხები"
 
 #: misc/special_constructors.cc:2016
 #, kde-format
 msgid "Tangent to This Curve"
-msgstr ""
+msgstr "ამ მრუდის მხები"
 
 #: misc/special_constructors.cc:2018
 #, kde-format
 msgid "Tangent at This Point"
-msgstr ""
+msgstr "მხები ამ წერტილში"
 
 #: misc/special_constructors.cc:2038
 #, kde-format
@@ -3275,12 +3275,12 @@ msgstr "გატანის ტიპები"
 #: modes/typesdialog.cpp:455
 #, kde-format
 msgid "Kig Types Files (*.kigt);;All Files (*)"
-msgstr ""
+msgstr "Kig-ის ტიპის ფაილები (*.kigt);;ყველა ფაილი (*)"
 
 #: modes/typesdialog.cpp:475
 #, kde-format
 msgid "Kig Types Files (*.kigt)"
-msgstr ""
+msgstr "Kig-ის ტიპის ფაილები (*.kigt)"
 
 #: modes/typesdialog.cpp:477
 #, kde-format
@@ -3313,7 +3313,7 @@ msgstr ""
 #: modes/typeswidget.ui:37
 #, kde-format
 msgid "Select types here..."
-msgstr ""
+msgstr "ტიპები აქ აირჩიეთ..."
 
 #. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
 #: modes/typeswidget.ui:40
@@ -3327,19 +3327,19 @@ msgstr ""
 #: modes/typeswidget.ui:99
 #, kde-format
 msgid "Edit the selected type."
-msgstr ""
+msgstr "მონიშნული ტიპის ჩასწორება."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, buttonRemove)
 #: modes/typeswidget.ui:109
 #, kde-format
 msgid "Delete all the selected types in the list."
-msgstr ""
+msgstr "სიაში ყველა მონიშნული ტიპების წაშლა."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
 #: modes/typeswidget.ui:151
 #, kde-format
 msgid "Export all the selected types to a file."
-msgstr ""
+msgstr "ყველა მონიშნული ტიპის ფაილში გატანა."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
 #: modes/typeswidget.ui:161
@@ -3428,22 +3428,22 @@ msgstr ""
 #: objects/arc_type.cc:148
 #, kde-format
 msgid "Construct an arc with this center"
-msgstr ""
+msgstr "რკალის ამ ცენტრთ აწყობა"
 
 #: objects/arc_type.cc:148
 #, kde-format
 msgid "Select the center of the new arc..."
-msgstr ""
+msgstr "აირჩიეთ ახალი რკალის ცენტრი..."
 
 #: objects/arc_type.cc:150
 #, kde-format
 msgid "Construct an arc with this angle"
-msgstr ""
+msgstr "რკალის ამ კუთხით აწყობა"
 
 #: objects/arc_type.cc:150
 #, kde-format
 msgid "Select the angle of the new arc..."
-msgstr ""
+msgstr "აირჩიეთ კუთხე ახალი რკალისთვის..."
 
 #: objects/arc_type.cc:204
 #, kde-format
@@ -3487,11 +3487,11 @@ msgstr ""
 
 #: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
 msgid "Number of control points"
-msgstr ""
+msgstr "საკონტროლო წერტილების რაოდენობა"
 
 #: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
 msgid "Control polygon"
-msgstr ""
+msgstr "საკონტროლო პოლიგონი"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
 #: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
@@ -3511,7 +3511,7 @@ msgstr "ამ ბეზიეს მრუდის არჩევა"
 #: objects/bezier_imp.cc:203
 #, kde-format
 msgid "Select Bézier Curve %1"
-msgstr ""
+msgstr "აირჩიეთ ბეზიეს მრუდი %1"
 
 #: objects/bezier_imp.cc:204
 msgid "Remove a Bézier Curve"
@@ -3544,12 +3544,12 @@ msgstr "ბეზიეს კვატრატული"
 #: objects/bezier_imp.cc:219
 #, kde-format
 msgid "Select this Bézier Quadratic"
-msgstr ""
+msgstr "აირჩიეთ ეს ბეზიეს კვადრატული"
 
 #: objects/bezier_imp.cc:220
 #, kde-format
 msgid "Select Bézier Quadratic %1"
-msgstr ""
+msgstr "აირჩიეთ ბეზიეს კვადრატული %1"
 
 #: objects/bezier_imp.cc:221
 msgid "Remove a Bézier Quadratic"
@@ -3819,7 +3819,7 @@ msgstr ""
 
 #: objects/circle_imp.cc:139 objects/conic_imp.cc:78
 msgid "Polar Equation"
-msgstr ""
+msgstr "პოლარული ტოლობა"
 
 #: objects/circle_imp.cc:233
 #, kde-format
@@ -3838,7 +3838,7 @@ msgstr "ამ წრის მონიშვნა"
 #: objects/circle_imp.cc:339
 #, kde-format
 msgid "Select circle %1"
-msgstr ""
+msgstr "აირჩიეთ წრე %1"
 
 #: objects/circle_imp.cc:340
 msgid "Remove a Circle"
@@ -3867,12 +3867,12 @@ msgstr "წრის დამალვა"
 #: objects/circle_type.cc:17
 #, kde-format
 msgid "Construct a circle through this point"
-msgstr ""
+msgstr "წრის აგება ამ წერტილით"
 
 #: objects/circle_type.cc:19
 #, kde-format
 msgid "Construct a circle with this center"
-msgstr ""
+msgstr "წრის ამ ცენტრით აგება"
 
 #: objects/circle_type.cc:22 objects/circle_type.cc:176
 #, kde-format
@@ -3888,16 +3888,16 @@ msgstr ""
 #: objects/circle_type.cc:177
 #, kde-format
 msgid "With this radius"
-msgstr ""
+msgstr "ამ რადიუსით"
 
 #: objects/circle_type.cc:177
 #, kde-format
 msgid "Select the length of the radius..."
-msgstr ""
+msgstr "აირჩიეთ რადიუსის სიგრძე..."
 
 #: objects/conic_imp.cc:73
 msgid "Conic Type"
-msgstr ""
+msgstr "კონუსის ტიპი"
 
 #: objects/conic_imp.cc:75
 msgid "First Focus"
@@ -3930,105 +3930,105 @@ msgstr "რო"
 #: objects/conic_imp.cc:263
 #, kde-format
 msgid "cos theta"
-msgstr ""
+msgstr "cos theta"
 
 #: objects/conic_imp.cc:264
 #, kde-format
 msgid "sin theta"
-msgstr ""
+msgstr "sin theta"
 
 #: objects/conic_imp.cc:266
 #, kde-format
 msgid "[centered at %1]"
-msgstr ""
+msgstr "[ცენტრში მისამართზე %1]"
 
 #: objects/conic_imp.cc:378
 msgid "conic"
-msgstr ""
+msgstr "კონუსური"
 
 #: objects/conic_imp.cc:379
 #, kde-format
 msgid "Select this conic"
-msgstr ""
+msgstr "ამ კონუსის არჩევა"
 
 #: objects/conic_imp.cc:380
 #, kde-format
 msgid "Select conic %1"
-msgstr ""
+msgstr "აირჩიეთ კონუსი %1"
 
 #: objects/conic_imp.cc:381
 msgid "Remove a Conic"
-msgstr ""
+msgstr "კონუსის წაშლა"
 
 #: objects/conic_imp.cc:382
 msgid "Add a Conic"
-msgstr ""
+msgstr "კონუსის დამატება"
 
 #: objects/conic_imp.cc:383
 msgid "Move a Conic"
-msgstr ""
+msgstr "კონუსის გადატანა"
 
 #: objects/conic_imp.cc:384
 msgid "Attach to this conic"
-msgstr ""
+msgstr "ამ კონუსზე მიბმა"
 
 #: objects/conic_imp.cc:385
 msgid "Show a Conic"
-msgstr ""
+msgstr "კონუსის ჩვენება"
 
 #: objects/conic_imp.cc:386
 msgid "Hide a Conic"
-msgstr ""
+msgstr "კონუსის დამალვა"
 
 #: objects/conic_imp.cc:524
 msgid "Supporting Conic"
-msgstr ""
+msgstr "მხარდამჭერი კონუსი"
 
 #: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
 msgid "First End Point"
-msgstr ""
+msgstr "პირველი ბოლო წერტილი"
 
 #: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
 msgid "Second End Point"
-msgstr ""
+msgstr "მეორე ბოლო წერტილი"
 
 #: objects/conic_imp.cc:603
 msgid "conic arc"
-msgstr ""
+msgstr "კონუსური რკალი"
 
 #: objects/conic_imp.cc:604
 #, kde-format
 msgid "Select this conic arc"
-msgstr ""
+msgstr "აირჩიეთ ეს კონუსური რკალი"
 
 #: objects/conic_imp.cc:605
 #, kde-format
 msgid "Select conic arc %1"
-msgstr ""
+msgstr "აირჩიეთ კონუსური რკალი %1"
 
 #: objects/conic_imp.cc:606
 msgid "Remove a Conic Arc"
-msgstr ""
+msgstr "კონუსური რკალის წაშლა"
 
 #: objects/conic_imp.cc:607
 msgid "Add a Conic Arc"
-msgstr ""
+msgstr "კონუსური რკალის დამატება"
 
 #: objects/conic_imp.cc:608
 msgid "Move a Conic Arc"
-msgstr ""
+msgstr "კონუსური რკალის გადაადგილება"
 
 #: objects/conic_imp.cc:609
 msgid "Attach to this conic arc"
-msgstr ""
+msgstr "ამ კონუსურ რკალზე მიბმა"
 
 #: objects/conic_imp.cc:610
 msgid "Show a Conic Arc"
-msgstr ""
+msgstr "კონუსური რკალის ჩვენება"
 
 #: objects/conic_imp.cc:611
 msgid "Hide a Conic Arc"
-msgstr ""
+msgstr "კონუსური რკალის დამალვა"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
@@ -4296,16 +4296,16 @@ msgstr "მრუდი"
 #: objects/curve_imp.cc:19
 #, kde-format
 msgid "Select this curve"
-msgstr ""
+msgstr "აირჩიეთ ეს მრუდი"
 
 #: objects/curve_imp.cc:20
 #, kde-format
 msgid "Select curve %1"
-msgstr ""
+msgstr "აირჩიეთ მრუდი %1"
 
 #: objects/curve_imp.cc:21
 msgid "Remove a Curve"
-msgstr ""
+msgstr "მრუდის წაშლა"
 
 #: objects/curve_imp.cc:22
 msgid "Add a Curve"
@@ -4432,7 +4432,7 @@ msgstr "ხანგრძლივობა"
 
 #: objects/line_imp.cc:116 objects/line_imp.cc:193
 msgid "Support Line"
-msgstr ""
+msgstr "საყრდნობი ხაზი"
 
 #: objects/line_imp.cc:194
 msgid "End Point"
@@ -4699,41 +4699,41 @@ msgstr ""
 
 #: objects/locus_imp.cc:186
 msgid "locus"
-msgstr ""
+msgstr "ლოკუსი"
 
 #: objects/locus_imp.cc:187
 #, kde-format
 msgid "Select this locus"
-msgstr ""
+msgstr "ამ ლოკუსის არჩევა"
 
 #: objects/locus_imp.cc:188
 #, kde-format
 msgid "Select locus %1"
-msgstr ""
+msgstr "აირჩიეთ ლოკუსი %1"
 
 #: objects/locus_imp.cc:189
 msgid "Remove a Locus"
-msgstr ""
+msgstr "ლოკუსის წაშლა"
 
 #: objects/locus_imp.cc:190
 msgid "Add a Locus"
-msgstr ""
+msgstr "ლოკუსის დამატება"
 
 #: objects/locus_imp.cc:191
 msgid "Move a Locus"
-msgstr ""
+msgstr "ლოკუსის გადაადგილება"
 
 #: objects/locus_imp.cc:192
 msgid "Attach to this locus"
-msgstr ""
+msgstr "ამ ლოკუსზე მიბმა"
 
 #: objects/locus_imp.cc:193
 msgid "Show a Locus"
-msgstr ""
+msgstr "ლოკუსის ჩვენება"
 
 #: objects/locus_imp.cc:194
 msgid "Hide a Locus"
-msgstr ""
+msgstr "ლოკუსის დამალვა"
 
 #: objects/object_imp.cc:41
 msgid "Object Type"
@@ -4751,15 +4751,15 @@ msgstr "აირჩიეთ ობიექტი"
 #: objects/object_imp.cc:281
 #, kde-format
 msgid "Select object %1"
-msgstr ""
+msgstr "აირჩიეთ ობიექტი %1"
 
 #: objects/object_imp.cc:282
 msgid "Remove an object"
-msgstr ""
+msgstr "ობიექტის წაშლა"
 
 #: objects/object_imp.cc:283
 msgid "Add an object"
-msgstr ""
+msgstr "ობიექტის დამატება"
 
 #: objects/object_imp.cc:284
 msgid "Move an object"
@@ -4767,39 +4767,39 @@ msgstr "ობიექტის გადატანა"
 
 #: objects/object_imp.cc:285
 msgid "Attach to this object"
-msgstr ""
+msgstr "ამ ობიეტქზე მიბმა"
 
 #: objects/object_imp.cc:286
 msgid "Show an object"
-msgstr ""
+msgstr "ობიექტის ჩვენება"
 
 #: objects/object_imp.cc:287
 msgid "Hide an object"
-msgstr ""
+msgstr "ობიექტის დამალვა"
 
 #: objects/other_imp.cc:111 objects/other_imp.cc:395
 msgid "Angle in Radians"
-msgstr ""
+msgstr "კუთხე რადიანებში"
 
 #: objects/other_imp.cc:112 objects/other_imp.cc:394
 msgid "Angle in Degrees"
-msgstr ""
+msgstr "კუთხე გრადუსებში"
 
 #: objects/other_imp.cc:225
 msgid "Midpoint"
-msgstr ""
+msgstr "შუა წერტილი"
 
 #: objects/other_imp.cc:226
 msgid "X length"
-msgstr ""
+msgstr "X სიგრძე"
 
 #: objects/other_imp.cc:227
 msgid "Y length"
-msgstr ""
+msgstr "Y სიგრძე"
 
 #: objects/other_imp.cc:228
 msgid "Opposite Vector"
-msgstr ""
+msgstr "საწინააღმდეგო ვექტორი"
 
 #: objects/other_imp.cc:393
 msgid "Angle"
@@ -4807,15 +4807,15 @@ msgstr "კუთხე"
 
 #: objects/other_imp.cc:396
 msgid "Sector Surface"
-msgstr ""
+msgstr "სექტორის ზედაპირი"
 
 #: objects/other_imp.cc:397
 msgid "Arc Length"
-msgstr ""
+msgstr "რკალის სიგრძე"
 
 #: objects/other_imp.cc:398
 msgid "Support Circle"
-msgstr ""
+msgstr "მხარდაჭერის წრე"
 
 #: objects/other_imp.cc:598
 msgid "angle"
@@ -5022,42 +5022,42 @@ msgstr ""
 #: objects/point_type.cc:386
 #, kde-format
 msgid "Set &Coordinate..."
-msgstr ""
+msgstr "&დააყენეთ კოორდინატი..."
 
 #: objects/point_type.cc:387 objects/point_type.cc:395
 #, kde-format
 msgid "Redefine"
-msgstr ""
+msgstr "თავიდან აღწერა"
 
 #: objects/point_type.cc:394
 #, kde-format
 msgid "Set &Parameter..."
-msgstr ""
+msgstr "პარამეტრის &დაყენება..."
 
 #: objects/point_type.cc:412
 #, kde-format
 msgid "Set Coordinate"
-msgstr ""
+msgstr "კოორდინატის დაყენება"
 
 #: objects/point_type.cc:413
 #, kde-format
 msgid "Enter the new coordinate."
-msgstr ""
+msgstr "შეიყვანეთ ახალი კოორდინატი."
 
 #: objects/point_type.cc:452
 #, kde-format
 msgid "Set Point Parameter"
-msgstr ""
+msgstr "დააყენეთ წერტილის პარამეტრი"
 
 #: objects/point_type.cc:452
 #, kde-format
 msgid "Choose the new parameter: "
-msgstr ""
+msgstr "აირჩიეთ ახალი პარამეტრი: "
 
 #: objects/point_type.cc:458
 #, kde-format
 msgid "Change Parameter of Constrained Point"
-msgstr ""
+msgstr "შეზღუდული წერტილის პარამეტრის შეცვლა"
 
 #: objects/point_type.cc:743
 #, kde-format
@@ -5121,19 +5121,19 @@ msgstr ""
 
 #: objects/polygon_imp.cc:305
 msgid "Inside Polygon"
-msgstr ""
+msgstr "მრავალკუთხედის შიგნით"
 
 #: objects/polygon_imp.cc:306
 msgid "Open Polygonal Curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდის გახსნა"
 
 #: objects/polygon_imp.cc:319
 msgid "Associated Polygon"
-msgstr ""
+msgstr "ასოცირებული მრავალკუთხედი"
 
 #: objects/polygon_imp.cc:320
 msgid "Closed Polygonal Curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდი"
 
 #: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
 msgid "polygon"
@@ -5175,79 +5175,79 @@ msgstr "მრავალკუთხედის დამალვა"
 
 #: objects/polygon_imp.cc:645
 msgid "closed polygonal curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდი"
 
 #: objects/polygon_imp.cc:646
 #, kde-format
 msgid "Select this closed polygonal curve"
-msgstr ""
+msgstr "ამ დახურული მრავალკუთხა მრუდის არჩევა"
 
 #: objects/polygon_imp.cc:647
 #, kde-format
 msgid "Select closed polygonal curve %1"
-msgstr ""
+msgstr "აირჩიეთ დახურული მრავალკუთხა მრუდი %1"
 
 #: objects/polygon_imp.cc:648
 msgid "Remove a closed polygonal curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდის წაშა"
 
 #: objects/polygon_imp.cc:649
 msgid "Add a closed polygonal curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდის დამატება"
 
 #: objects/polygon_imp.cc:650
 msgid "Move a closed polygonal curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდის გადატანა"
 
 #: objects/polygon_imp.cc:651
 msgid "Attach to this closed polygonal curve"
-msgstr ""
+msgstr "ამ დახურული მრავალკუთხა მრუდზე მიმაგრება"
 
 #: objects/polygon_imp.cc:652
 msgid "Show a closed polygonal curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდის ჩვენება"
 
 #: objects/polygon_imp.cc:653
 msgid "Hide a closed polygonal curve"
-msgstr ""
+msgstr "დახურული მრავალკუთხა მრუდიდამალვა"
 
 #: objects/polygon_imp.cc:662
 msgid "polygonal curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდი"
 
 #: objects/polygon_imp.cc:663
 #, kde-format
 msgid "Select this polygonal curve"
-msgstr ""
+msgstr "აირჩიეთ ეს მრავალკუთხა მრუდი"
 
 #: objects/polygon_imp.cc:664
 #, kde-format
 msgid "Select polygonal curve %1"
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხა მრუდი %1"
 
 #: objects/polygon_imp.cc:665
 msgid "Remove a polygonal curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდის წაშლა"
 
 #: objects/polygon_imp.cc:666
 msgid "Add a polygonal curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდის დამატება"
 
 #: objects/polygon_imp.cc:667
 msgid "Move a polygonal curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდის გადატანა"
 
 #: objects/polygon_imp.cc:668
 msgid "Attach to this polygonal curve"
-msgstr ""
+msgstr "ამ მრავალკუთხა მრუდზე მიმაგრება"
 
 #: objects/polygon_imp.cc:669
 msgid "Show a polygonal curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდის ჩვენება"
 
 #: objects/polygon_imp.cc:670
 msgid "Hide a polygonal curve"
-msgstr ""
+msgstr "მრავალკუთხა მრუდის დამალვა"
 
 #: objects/polygon_imp.cc:679
 msgid "triangle"
@@ -5256,12 +5256,12 @@ msgstr "სამკუთხედი"
 #: objects/polygon_imp.cc:680
 #, kde-format
 msgid "Select this triangle"
-msgstr ""
+msgstr "აირჩიეთ ეს სამკუთხედი"
 
 #: objects/polygon_imp.cc:681
 #, kde-format
 msgid "Select triangle %1"
-msgstr ""
+msgstr "აირჩიეთ სამკუთხედი %1"
 
 #: objects/polygon_imp.cc:682
 msgid "Remove a Triangle"
@@ -5441,7 +5441,7 @@ msgstr ""
 #: objects/tests_type.cc:18
 #, kde-format
 msgid "Is this line parallel?"
-msgstr ""
+msgstr "არის ეს ხაზი პარალელური?"
 
 #: objects/tests_type.cc:18
 #, kde-format
@@ -5451,7 +5451,7 @@ msgstr ""
 #: objects/tests_type.cc:19
 #, kde-format
 msgid "Parallel to this line?"
-msgstr ""
+msgstr "ამ ხაზის პარალელურა?"
 
 #: objects/tests_type.cc:19
 #, kde-format
@@ -5461,17 +5461,17 @@ msgstr ""
 #: objects/tests_type.cc:46
 #, kde-format
 msgid "These lines are parallel."
-msgstr ""
+msgstr "ეს ხაზები პარალელურია."
 
 #: objects/tests_type.cc:48
 #, kde-format
 msgid "These lines are not parallel."
-msgstr ""
+msgstr "ეს ხაზები პარალელური არაა."
 
 #: objects/tests_type.cc:57
 #, kde-format
 msgid "Is this line orthogonal?"
-msgstr ""
+msgstr "ეს ხაზები ორთოგონალურია?"
 
 #: objects/tests_type.cc:57
 #, kde-format
@@ -5481,7 +5481,7 @@ msgstr ""
 #: objects/tests_type.cc:58
 #, kde-format
 msgid "Orthogonal to this line?"
-msgstr ""
+msgstr "ორთოგონალურია ამ ხაზთან?"
 
 #: objects/tests_type.cc:58
 #, kde-format
@@ -5491,12 +5491,12 @@ msgstr ""
 #: objects/tests_type.cc:85
 #, kde-format
 msgid "These lines are orthogonal."
-msgstr ""
+msgstr "ეს ხაზები ორთოგონალურია."
 
 #: objects/tests_type.cc:87
 #, kde-format
 msgid "These lines are not orthogonal."
-msgstr ""
+msgstr "ეს ხაზები ორთოგონალური არაა."
 
 #: objects/tests_type.cc:96
 #, kde-format
@@ -5606,12 +5606,12 @@ msgstr ""
 #: objects/tests_type.cc:249
 #, kde-format
 msgid "This polygon is convex."
-msgstr ""
+msgstr "ეს მრავალკუთხედი ამოზნექილია."
 
 #: objects/tests_type.cc:251
 #, kde-format
 msgid "This polygon is not convex."
-msgstr ""
+msgstr "ეს მრავალკუთხედი ამოზნექილი არაა."
 
 #: objects/tests_type.cc:265
 #, kde-format
@@ -5854,37 +5854,37 @@ msgstr "ჭდის ფონტის შეცვლა"
 #: objects/text_type.cc:219
 #, kde-format
 msgid "&Redefine..."
-msgstr ""
+msgstr "&თავიდან აღწერა..."
 
 #: objects/text_type.cc:266
 #, kde-format
 msgid "Change &Value..."
-msgstr ""
+msgstr "&მნიშვნელობის შეცვლა..."
 
 #: objects/text_type.cc:290
 #, kde-format
 msgid "Enter the new value:"
-msgstr ""
+msgstr "შეიყვანეთ ახალი მნიშვნელობა:"
 
 #: objects/text_type.cc:295
 #, kde-format
 msgid "Change Displayed Value"
-msgstr ""
+msgstr "ნაჩვენები მნიშვნელობის შეცვლა"
 
 #: objects/transform_types.cc:21
 #, kde-format
 msgid "Translate this object"
-msgstr ""
+msgstr "ამ ობიექტის თარგმნა"
 
 #: objects/transform_types.cc:21
 #, kde-format
 msgid "Select the object to translate..."
-msgstr ""
+msgstr "აირჩიეთ სათარგმნი ობიექტი..."
 
 #: objects/transform_types.cc:22
 #, kde-format
 msgid "Translate by this vector"
-msgstr ""
+msgstr "ამ ვექტორით თარგმნა"
 
 #: objects/transform_types.cc:22
 #, kde-format
@@ -5894,78 +5894,78 @@ msgstr ""
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
 #, kde-format
 msgid "Reflect this object"
-msgstr ""
+msgstr "ამ ობიექტის არეკვლა"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
 #, kde-format
 msgid "Select the object to reflect..."
-msgstr ""
+msgstr "აირჩიეთ ასარეკლი ობიექტი..."
 
 #: objects/transform_types.cc:54
 #, kde-format
 msgid "Reflect in this point"
-msgstr ""
+msgstr "ამ წერტილში არეკვლა"
 
 #: objects/transform_types.cc:54
 #, kde-format
 msgid "Select the point to reflect in..."
-msgstr ""
+msgstr "აირჩიეთ ასარეკლი წერტილი..."
 
 #: objects/transform_types.cc:86
 #, kde-format
 msgid "Reflect in this line"
-msgstr ""
+msgstr "ამ ხაზში არეკვლა"
 
 #: objects/transform_types.cc:86
 #, kde-format
 msgid "Select the line to reflect in..."
-msgstr ""
+msgstr "აირჩეთ ასარეკლი ხაზი..."
 
 #: objects/transform_types.cc:117
 #, kde-format
 msgid "Rotate this object"
-msgstr ""
+msgstr "ამ ობიეტქის შემობრუნება"
 
 #: objects/transform_types.cc:117
 #, kde-format
 msgid "Select the object to rotate..."
-msgstr ""
+msgstr "აირჩიეთ შემოსაბრუნებელი ობიეტქი..."
 
 #: objects/transform_types.cc:118
 #, kde-format
 msgid "Rotate around this point"
-msgstr ""
+msgstr "ამ წერტილის გარეშემო შემობრუნება"
 
 #: objects/transform_types.cc:118
 #, kde-format
 msgid "Select the center point of the rotation..."
-msgstr ""
+msgstr "აირჩიეთ შემოსაბრუნებელი წერტილი..."
 
 #: objects/transform_types.cc:121
 #, kde-format
 msgid "Rotate by this angle"
-msgstr ""
+msgstr "ამ კუთხით შემობრუნება"
 
 #: objects/transform_types.cc:121
 #, kde-format
 msgid "Select the angle of the rotation..."
-msgstr ""
+msgstr "აირჩიეთ შემოსაბრუნებელი კუთხე..."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
 #, kde-format
 msgid "Scale this object"
-msgstr ""
+msgstr "ამ ობიექტის მასშტაბირება"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #, kde-format
 msgid "Select the object to scale..."
-msgstr ""
+msgstr "აირჩიეთ გასადიდებელი ობიექტი..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 #, kde-format
 msgid "Scale with this center"
-msgstr ""
+msgstr "ამ ცენტრით მასშტაბირება"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 #, kde-format
@@ -5975,7 +5975,7 @@ msgstr ""
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
 #, kde-format
 msgid "Scale by this length"
-msgstr ""
+msgstr "ამ სიგრძით მასშტაბირება"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
 #, kde-format
@@ -5986,7 +5986,7 @@ msgstr ""
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
 #, kde-format
 msgid "Scale this length..."
-msgstr ""
+msgstr "ამ სიგრძის მასშტაბირება..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
 #, kde-format
