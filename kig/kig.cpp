@@ -90,11 +90,7 @@ void Kig::setupActions()
     m_recentFilesAction = KStandardAction::openRecent(this, SLOT(openUrl(QUrl)), actionCollection());
     m_recentFilesAction->loadEntries(config->group(QString()));
 
-#if KXMLGUI_VERSION >= QT_VERSION_CHECK(5, 84, 0)
     KStandardAction::keyBindings(guiFactory(), &KXMLGUIFactory::showConfigureShortcutsDialog, actionCollection());
-#else
-    KStandardAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), actionCollection());
-#endif
 
     KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
 
