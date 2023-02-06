@@ -17,8 +17,10 @@
 #include <KAboutData>
 #include <KCrash>
 #include <KPluginLoader>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
 #include <Kdelibs4Migration>
+#endif
 
 #include "aboutdata.h"
 #include <KLocalizedString>
@@ -35,7 +37,7 @@ static int convertToNative(const QUrl &file, const QByteArray &outfile)
     }
     return (*converterfunction)(file, outfile);
 }
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 static bool configMigration()
 {
     Kdelibs4ConfigMigrator migrator(QStringLiteral("kig"));
@@ -62,12 +64,16 @@ static void dataMigration()
         macros.copy(typesDir.absoluteFilePath(QStringLiteral("macros.kigt")));
     }
 }
+#endif
 
 int main(int argc, char **argv)
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     configMigration();
+
     // Fixes blurry icons with Fractional scaling
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("kig");
     KAboutData about = kigAboutData("kig");
