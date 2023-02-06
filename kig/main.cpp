@@ -122,7 +122,7 @@ int main(int argc, char **argv)
         Kig *widget = new Kig;
         widget->show();
 
-        if (urls.count() > 0) {
+        if (!urls.isEmpty()) {
             widget->load(QUrl::fromLocalFile(urls[0]));
         }
 
