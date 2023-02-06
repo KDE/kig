@@ -43,7 +43,7 @@ find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5CoreAddons ${KF5_MIN_VERSION} REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}Svg ${QT_REQUIRED_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_REQUIRED_VERSION}REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_REQUIRED_VERSION} REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}XmlPatterns ${QT_REQUIRED_VERSION})
 
 
