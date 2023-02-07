@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2010-09-25 18:32-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -814,7 +814,7 @@ msgstr ""
 "必要な Kig のライブラリが見つかりません。正しくインストールされているかを"
 "チェックしてください。"
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1349,7 +1349,7 @@ msgstr "表示"
 msgid "&Settings"
 msgstr "設定(&S)"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1358,7 +1358,7 @@ msgstr ""
 "GUI を表示しません。指定したファイルを Kig のネイティブフォーマットに変換しま"
 "す。--outfile を指定しない限り、標準出力に出力されます。"
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1367,12 +1367,12 @@ msgstr ""
 "作成したネイティブファイルを出力するファイル。“-” は標準出力への出力を意味し"
 "ます。デフォルトも標準出力です。"
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "開く文書"

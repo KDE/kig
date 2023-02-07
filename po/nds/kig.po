@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2014-06-20 16:55+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-doc@kde.org>\n"
@@ -814,7 +814,7 @@ msgstr ""
 "De nödige Kig-Bibliotheek lett sik nich finnen. Prööv bitte Dien "
 "Installatschoon."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1345,7 +1345,7 @@ msgstr "Ansicht"
 msgid "&Settings"
 msgstr "&Instellen"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1355,7 +1355,7 @@ msgstr ""
 "Utgaav warrt na stdout (Standardutgaav) schreven, wenn nich \"--outfile\" "
 "angeven is."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1364,12 +1364,12 @@ msgstr ""
 "Utgaavdatei för de opstellte Datei. \"-\" bedüüdt Utgaav na stdout "
 "(Standardutgaav), wat ok Standard is."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Dokment, dat Du opmaken wullt"

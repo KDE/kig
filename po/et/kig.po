@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2019-11-12 19:50+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -775,7 +775,7 @@ msgstr "Vastutab uute objektitoimingute ikoonide eest."
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Vajalikku Kigi teeki ei leitud, palun kontrolli paigaldust."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1299,7 +1299,7 @@ msgstr "Vaade"
 msgid "&Settings"
 msgstr "&Seadistused"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1309,7 +1309,7 @@ msgstr ""
 "vormingusse. Väljund edastatakse standardväljundisse, kui ei ole määratud --"
 "outfile."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1318,12 +1318,12 @@ msgstr ""
 "Fail, millesse salvestatakse loodud Kigi vormingus väljund. '-' tähendab "
 "standardväljundit. See on ka vaikeväärtus."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Avatav dokument"

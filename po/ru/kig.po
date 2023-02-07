@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2022-03-01 16:16+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -790,7 +790,7 @@ msgstr "Ответственный за значки для действий"
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Не найдена библиотека Kig. Проверьте правильность установки."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1317,7 +1317,7 @@ msgstr "Вид"
 msgid "&Settings"
 msgstr "&Настройка"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1326,7 +1326,7 @@ msgstr ""
 "Без графического интерфейса. Преобразовать указанный файл в формат Kig. "
 "Вывод идёт в stdout, если только не указан ключ --outfile."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1335,12 +1335,12 @@ msgstr ""
 "Файл для вывода создаваемого файла в формате Kig. «-» - стандартный вывод "
 "(по умолчанию)."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Открываемый документ"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2015-12-30 18:09+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -821,7 +821,7 @@ msgstr ""
 "Nepavyko rasti būtinos Kig bibliotekos, patikrinkite ar programa įdiegta "
 "gerai."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1364,7 +1364,7 @@ msgstr "Rodymas"
 msgid "&Settings"
 msgstr "&Nuostatos"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1373,7 +1373,7 @@ msgstr ""
 "Nerodyti grafinės sąsajos. Nurodytajį failą konvertuoti į gimtąjį Kig "
 "formatą. Nenurodžius „--outfile“, išvedama bus į „stdout“."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1382,12 +1382,12 @@ msgstr ""
 "Failas, į kurį išvesti sukurtą gimtąjį failą. „-“ reikš „stdout“ išvesį, "
 "kuri yra numatytoji."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Atidaryti dokumentą"

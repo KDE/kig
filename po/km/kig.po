@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2012-07-16 11:37+0700\n"
 "Last-Translator: Sok Sophea <sophea@khmeros.info>\n"
 "Language-Team: Khmer <>\n"
@@ -783,7 +783,7 @@ msgstr "ដែល​ទទួល​ខុស​ត្រូវ​ចំពោះ
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "មិន​អាច​រក​បណ្ណាល័យ​ចាំបាច់​របស់​ Kig បានឡើយ​ ពិនិត្យ​ការ​ដំឡើង​របស់​អ្នក ។"
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1312,7 +1312,7 @@ msgstr "ទិដ្ឋភាព"
 msgid "&Settings"
 msgstr "ការ​កំណត់"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1321,7 +1321,7 @@ msgstr ""
 "កុំ​បង្ហាញ​ GUI ។​ បម្លែង​ឯកសារ​ដែល​បាន​បញ្ជាក់​ទៅ​ជា​ទ្រង់ទ្រាយ​ដើម​របស់​Kig  ។  ការ​បញ្ចេញ​នឹង​ទៅ​កាន់ "
 "stdout បើ --outfile មិន​បាន​បញ្ជាក់ ។"
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1330,12 +1330,12 @@ msgstr ""
 "ឯកសារ​ដែល​ត្រូវ​បញ្ចេញ​ឯកសារ​ដើម​ដែល​បាន​បង្កើត​ទៅ ។ '-' មាន​ន័យ​ថា​បញ្ចេញ​ទៅ​ stdout ។ លំនាំ​ដើម​គឺ "
 "stdout ផង​ដែរ ។"
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "ឯកសារ​ត្រូវ​បើក"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2009-02-23 13:11+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -781,7 +781,7 @@ msgstr "नवा आब्जेक्ट काम चिनहा बर उ�
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "केआईजी लाइब्रेरी नइ मिलिस. किरपा करके, अपन इंस्टालेसन जांचव."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1306,26 +1306,26 @@ msgstr "दृस्य"
 msgid "&Settings"
 msgstr "सेटिंग (&S)"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
 "Output goes to stdout unless --outfile is specified."
 msgstr ""
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
 "Default is stdout as well."
 msgstr ""
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "कागद जऊन ल खोलना हे"

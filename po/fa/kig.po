@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2012-01-12 17:08+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -811,7 +811,7 @@ msgstr "مسئول شمایلهای کنش شیء جدید."
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "نتوانست کتابخانه ضروری Kig را پیدا کند، نصب خود را بررسی کنید."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1346,7 +1346,7 @@ msgstr "نما"
 msgid "&Settings"
 msgstr "&تنظیمات‌"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1355,7 +1355,7 @@ msgstr ""
 "نمایش ندادن یک ونک. تبدیل کردن پرونده مشخص‌شده در قالب محلی Kig. خروجی به "
 "خروجی استاندارد می‌رود، مگر این که پرونده خروجی مشخص شود."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1364,12 +1364,12 @@ msgstr ""
 "پرونده برای خارج کردن پرونده محلی ایجاد‌شده به. »-« یعنی خارج کردن به خروجی "
 "استاندارد. پیش‌‌‌فرض هم خروجی استاندارد است."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "سند برای باز کردن"

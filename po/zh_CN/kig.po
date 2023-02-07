@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2023-01-12 10:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -755,7 +755,7 @@ msgstr "负责新对象动态圆标的绘制。"
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "找不到必需的 Kig 库，请检查您的安装。"
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1266,7 +1266,7 @@ msgstr "查看"
 msgid "&Settings"
 msgstr "设置(&S)"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1275,7 +1275,7 @@ msgstr ""
 "不要显示图形用户界面。将指定文件转换成 Kig 格式。除非指定了 --outfile 后缀，"
 "否则都输出为标准输出(stdout)。"
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1284,12 +1284,12 @@ msgstr ""
 "输出所建立的自有格式为此文件。“-”表示输出为标准输出(stdout)，这也是默认的设"
 "置。"
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "要打开的文档"

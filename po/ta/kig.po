@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2021-01-18 19:15+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -806,7 +806,7 @@ msgstr "அழகான SVG சின்னத்திற்கு பொறு
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "தேவையான கிக் நூலகத்தை காணவில்லை, உங்கள் நிறுவலை பரிசோதி."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1337,7 +1337,7 @@ msgstr ""
 msgid "&Settings"
 msgstr ""
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1346,7 +1346,7 @@ msgstr ""
 "GUI காண்பிக்காதே. குறிப்பிட்ட கோப்புகளை சொந்தமான கிக் முறைக்கு மாற்றும். வெளிகோப்பு "
 "குறிப்பிடும் வரைக்கும் வெளியீடு stdout க்கு செல்லும்."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1355,12 +1355,12 @@ msgstr ""
 "வெளியீட்டுக்கான கோப்பு உருவாக்கின சொந்தமான கோப்பு. '-'என்றால் ஸ்டட்அவுட்க்கான வெளியீடு. "
 "ஸ்டட்அவுட் முன்னிருப்பாக உள்ளது."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "திறக்கப்பட வேண்டிய கோப்பு"

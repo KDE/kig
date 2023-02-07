@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2007-12-31 14:47+0545\n"
 "Last-Translator: Narayan Kumar Magar <narayan@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -793,7 +793,7 @@ msgstr "नयाँ वस्तु क्रिया प्रतिमाक
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "आवश्यक किग लाइब्रेरी फेला पार्न सकेन, तपाईँको स्थापना जाँच गर्नुहोस् ।"
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1331,7 +1331,7 @@ msgstr "दृश्य"
 msgid "&Settings"
 msgstr "सेटिङ"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1340,7 +1340,7 @@ msgstr ""
 "GUI नदेखाउनुहोस् । निर्दिष्ट गरेको फाइललाई किग ढाँचामा रूपान्तरण गर्नुहोस् । आउट फाइल "
 "निर्दिष्ट नगरेमा निर्गत stdout मा जान्छ ।"
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1349,12 +1349,12 @@ msgstr ""
 "मौलिक फाइललाई निर्गत फाइल '-' को अर्थ stdout मा निर्गत हो । पूर्वनिर्धारित पनि "
 "stdout हो ।"
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "खोल्ने कागजात"

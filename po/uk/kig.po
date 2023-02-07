@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2022-07-14 09:03+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -784,7 +784,7 @@ msgstr "Відповідальний за нові піктограми дій �
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Не знайдено необхідну бібліотеку для Kig, перевірте встановлене."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1315,7 +1315,7 @@ msgstr "Перегляд"
 msgid "&Settings"
 msgstr "П&араметри"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1324,7 +1324,7 @@ msgstr ""
 "Без графічного інтерфейсу. Перетворити зазначений файл у рідний формат Kig. "
 "Інформацію буде виведено у stdout, якщо не вказано параметр --outfile."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1333,12 +1333,12 @@ msgstr ""
 "Файл для виведення інформації. «-» означає стандартний файл виводу (stdout). "
 "Типовим файлом є також stdout."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Відкрити документ"

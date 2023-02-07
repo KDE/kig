@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2014-01-22 21:38+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -809,7 +809,7 @@ msgstr ""
 "Nem található a Kig programkönyvtár, ellenőrizze, megfelelően van-e "
 "telepítve a program."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1340,7 +1340,7 @@ msgstr "Nézet"
 msgid "&Settings"
 msgstr "&Beállítások"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1350,7 +1350,7 @@ msgstr ""
 "formátumára. A kimenet a standard kimenetre kerül, kivéve akkor, ha a --"
 "outfile opcióval ezt felülbírálta."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1359,12 +1359,12 @@ msgstr ""
 "A létrehozott saját formátumú fájl ide kerüljön ('-' esetén a standard "
 "kimenetre). Az alapértelmezés a standard kimenet."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "A megnyitandó dokumentum"

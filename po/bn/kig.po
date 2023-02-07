@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig (KDE 3.5)\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2006-03-29 19:00+0600\n"
 "Last-Translator: Progga <progga@BengaLinux.Org>\n"
 "Language-Team: Bangla <kde-translation@BengaLinux.Org>\n"
@@ -813,7 +813,7 @@ msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 "প্রয়োজনীয় কিগ লাইব্রেরি পাওয়া যায় নি বলে কিগ-এর ইনস্টলকৃত ফাইলসমূহ পরীক্ষা করুন।"
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1358,7 +1358,7 @@ msgstr ""
 msgid "&Settings"
 msgstr ""
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1367,7 +1367,7 @@ msgstr ""
 "গ্রাফিকাল ইন্টারফেস প্রদর্শন করবে না।  প্রদত্ত ফাইলটিকে কিগ-এর নিজস্ব ফরম্যাটে "
 "রূপান্তর করো।  --output উল্লেখ না করলে আউটপুট STDOUT-এ যাবে।"
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1376,12 +1376,12 @@ msgstr ""
 "যে ফাইলে কিগ-এর নিজস্ব ফরম্যাটে তৈরিকৃত আউটপুট সংরক্ষণ করা হবে।  '-' অর্থ আউটপুট "
 "যাবে STDOUT-এ।  স্বাভাবিক অবস্থায়ও অবশ্য আউটপুট STDOUT-এ পাঠানো হয়।"
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "যে ডকুমেন্টটি খোলা হবে।"

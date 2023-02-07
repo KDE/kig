@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2020-08-06 13:56+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -800,7 +800,7 @@ msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 "Ez da beharrezkoa den Kig liburutegia aurkitu, egiaztatu zure instalazioa."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1325,7 +1325,7 @@ msgstr "Ikusi"
 msgid "&Settings"
 msgstr "E&zarpenak"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1334,7 +1334,7 @@ msgstr ""
 "Ez erakutsi interfaze grafikorik. Bihurtu zehaztutako fitxategia Kig-en "
 "berezko. Irteera stdout-era doa --outfile zehazten ez bada."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1343,12 +1343,12 @@ msgstr ""
 "Sortutako berezko fitxategia idatziko den fitxategia. '-'-ek stdout irteera "
 "esan nahi du. Lehenetsia stdout da."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Irekitzeko dokumentua"

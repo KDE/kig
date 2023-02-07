@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2007-02-26 21:38+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -808,7 +808,7 @@ msgstr ""
 "Не можам да ја пронајдам Kig библиотеката која е потребна, проверете ја "
 "Вашата инсталација."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1355,7 +1355,7 @@ msgstr ""
 msgid "&Settings"
 msgstr ""
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1365,7 +1365,7 @@ msgstr ""
 "во Kig формат. Ако не излезот ќе оди во stdout освен ако не е назначена "
 "датотека."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1373,12 +1373,12 @@ msgid ""
 msgstr ""
 "Излезот на датотеката е иста таква датотека, - се мисли на stdout. излез."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Документ за отворање"
