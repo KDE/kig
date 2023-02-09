@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-17 00:41+0000\n"
-"PO-Revision-Date: 2023-02-07 22:41+0100\n"
+"PO-Revision-Date: 2023-02-08 21:54+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -2659,10 +2659,9 @@ msgid "Select a destination line or circle..."
 msgstr "Hautatu helmugako zuzen edo zirkulu bat..."
 
 #: misc/special_constructors.cc:1645
-#, fuzzy, kde-format
-#| msgid "Select a point on the circle..."
+#, kde-format
 msgid "Choose a starting point on the line/circle..."
-msgstr "Hautatu zirkuluaren puntu bat..."
+msgstr "Hautatu abiapuntu bat zuzenean/zirkuluan..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 #, kde-format
@@ -2809,34 +2808,31 @@ msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "Hautatu erdiko-puntua kalkulatzeko bigarren puntua..."
 
 #: misc/special_constructors.cc:1869
-#, fuzzy, kde-format
-#| msgid "Construct the midpoint of this point and another one"
+#, kde-format
 msgid "Construct golden ratio point of this point and another one"
-msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+msgstr "Eraiki puntu honen eta beste baten urrezko proportzioaren puntua"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the first of the points of which you want to construct the "
-#| "midpoint..."
+#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
-msgstr "Hautatu erdiko puntua kalkulatzeko lehenengo puntua..."
+msgstr ""
+"Hautatu, urrezko proportzioaren puntua kalkulatu nahi diozun puntuetako "
+"lehena..."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy, kde-format
-#| msgid "Construct the midpoint of this point and another one"
+#, kde-format
 msgid "Construct the golden ratio point of this point and another one"
-msgstr "Eraiki puntu hau eta beste baten arteko erdiko puntua"
+msgstr "Eraiki puntu honen eta beste baten urrezko proportzioaren puntua"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy, kde-format
-#| msgid "Select the other of the points of which to construct the midpoint..."
+#, kde-format
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
-msgstr "Hautatu erdiko puntua kalkulatzeko bigarren puntua..."
+msgstr ""
+"Hautatu, urrezko proportzioaren puntua kalkulatu nahi diozun beste puntua..."
 
 #: misc/special_constructors.cc:1979
 #, kde-format
@@ -3568,9 +3564,9 @@ msgid "Set Si&ze"
 msgstr "Ezarri tamai&na"
 
 #: objects/angle_type.cc:91
-#, fuzzy, kde-format
+#, kde-format
 msgid "Toggle &Right Angle Mark"
-msgstr "Txandakatu "
+msgstr "Txandakatu Angelu &Zuzenaren marka"
 
 #: objects/angle_type.cc:133
 #, kde-format
@@ -4427,10 +4423,9 @@ msgid "Switch Radical Lines"
 msgstr "Aldatu zuzen erradialak"
 
 #: objects/conic_types.cc:619
-#, fuzzy, kde-format
-#| msgid "Switch Radical Lines"
+#, kde-format
 msgid "Switch Conic Radical Lines"
-msgstr "Aldatu zuzen erradialak"
+msgstr "Aldatu zuzen erradial konikoak"
 
 #: objects/cubic_imp.cc:347
 msgid "cubic curve"
@@ -5182,7 +5177,7 @@ msgstr "Eraiki puntu honen eta beste baten arteko erdiko-puntua"
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
-msgstr "Hautatu erdiko-puntua kalkulatzeko bi puntuetatik lehenengoa..."
+msgstr "Hautatu erdiko-puntua kalkulatu nahi diozun bi puntuetako lehenena..."
 
 #: objects/point_type.cc:247
 #, kde-format
@@ -5192,30 +5187,27 @@ msgid ""
 msgstr "Hautatu erdiko-puntua kalkulatzeko bi puntuetatik bigarrena..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy, kde-format
-#| msgid "Construct the midpoint of this point and another point"
+#, kde-format
 msgid "Construct the golden ratio point of this point and another point"
-msgstr "Eraiki puntu honen eta beste baten arteko erdiko puntua"
+msgstr "Eraiki puntu honen eta beste baten urrezko proportzioaren puntua"
 
 #: objects/point_type.cc:275
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the first of the two points of which you want to construct the "
-#| "midpoint..."
+#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
-msgstr "Hautatu erdiko puntua kalkulatzeko bi puntuetatik lehenengoa..."
+msgstr ""
+"Hautatu, urrezko proportzioaren puntua kalkulatu nahi diozun bi puntuetako "
+"lehena..."
 
 #: objects/point_type.cc:279
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the other of the two points of which you want to construct the "
-#| "midpoint..."
+#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
-msgstr "Hautatu erdiko puntua kalkulatzeko bi puntuetatik bigarrena..."
+msgstr ""
+"Hautatu, urrezko proportzioaren puntua kalkulatu nahi diozun bi puntuetako "
+"bestea..."
 
 #: objects/point_type.cc:386
 #, kde-format
@@ -5283,10 +5275,9 @@ msgid "Select a number/length as y coordinate of the point..."
 msgstr "Hautatu zenbaki/luzera bat puntuaren Y koordenatu gisa..."
 
 #: objects/point_type.cc:820
-#, fuzzy, kde-format
-#| msgid "Select the point to reflect in..."
+#, kde-format
 msgid "Select a point to project onto a line..."
-msgstr "Hautatu isladatzeko puntua..."
+msgstr "Hautatu zuzen batean proiektatzeko puntu bat..."
 
 #: objects/point_type.cc:821
 #, kde-format
@@ -5303,10 +5294,8 @@ msgid "Perimeter"
 msgstr "Perimetroa"
 
 #: objects/polygon_imp.cc:291
-#, fuzzy
-#| msgid "Add a Polygon"
 msgid "Boundary Polygonal"
-msgstr "Gehitu poligono bat"
+msgstr "Muga poligonala"
 
 #: objects/polygon_imp.cc:292
 msgid "Open Boundary Polygonal"
@@ -5557,30 +5546,26 @@ msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "Hautatu poligono batekin ebakiko duzun zuzena..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, fuzzy, kde-format
-#| msgid "Intersect this polygon with a line"
+#, kde-format
 msgid "Intersect this polygonal curve with a line"
-msgstr "Ebaki poligono hau zuzen batekin"
+msgstr "Ebaki kurba poligonal hau zuzen batekin"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, fuzzy, kde-format
-#| msgid "Select the polygon of which you want the intersection with a line..."
+#, kde-format
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
-msgstr "Hautatu zuzen batekin ebakiko duzun poligonoa..."
+msgstr "Hautatu zuzen batekin ebakidura egin nahi duzun kurba poligonala..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, fuzzy, kde-format
-#| msgid "Intersect this line with a polygon"
+#, kde-format
 msgid "Intersect this line with a polygonal curve"
-msgstr "Ebaki zuzen hau poligono batekin"
+msgstr "Ebaki zuzen hau kurba poligonal batekin"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, fuzzy, kde-format
-#| msgid "Select the line of which you want the intersection with a polygon..."
+#, kde-format
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
-msgstr "Hautatu poligono batekin ebakiko duzun zuzena..."
+msgstr "Hautatu kurba poligonal batekin ebakidura egin nahi duzun zuzena..."
 
 #: objects/polygon_type.cc:788
 #, kde-format
@@ -6846,20 +6831,15 @@ msgstr ""
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:79
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Kig can extends its object set using external macros. You can find "
-#| "some\n"
-#| "interesting macros on the Kig website:\n"
-#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+#, kde-format
 msgid ""
 "<p>Kig can extends its object set using external macros. You can find some\n"
 "interesting macros on the Kig website:\n"
 "<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
 msgstr ""
-"<p>Kanpoko makroak erabiliz, Kig-ek bere objektu sorta handitu dezake. Kig-"
-"en webgunean makro interesgarriak aurki ditzakezu:\n"
-"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+"<p>«Kig»ek, kanpoko makroak erabiliz, bere objektu-sorta heda dezake.\n"
+"«Kig»en webgunean makro interesgarri batzuk aurkituko ditzakezu:\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:87
