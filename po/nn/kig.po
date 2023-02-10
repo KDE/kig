@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-17 00:41+0000\n"
+"POT-Creation-Date: 2023-02-07 00:54+0000\n"
 "PO-Revision-Date: 2021-02-21 16:25+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -781,7 +781,7 @@ msgstr "Ansvarleg for dei nye objekthandlingsikona."
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Fann ikkje eit nødvendig Kig-bibliotek, sjekk installasjonen."
 
-#: kig/kig.cpp:204
+#: kig/kig.cpp:200
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -1003,9 +1003,9 @@ msgstr "Fann ikkje fil"
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
 "support this format. If you think the format in question would be worth "
-"implementing support for, you can open a feature request in <a href="
-"\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
-"\">KDE's bug tracking system</a>"
+"implementing support for, you can open a feature request in <a "
+"href=\"https://bugs.kde.org/enter_bug.cgi?"
+"product=kig&bug_severity=wishlist\">KDE's bug tracking system</a>"
 msgstr ""
 
 #: kig/kig_part.cpp:399 kig/kig_part.cpp:447
@@ -1299,7 +1299,7 @@ msgstr "Vis"
 msgid "&Settings"
 msgstr "&Innstillingar"
 
-#: kig/main.cpp:78
+#: kig/main.cpp:84
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1309,7 +1309,7 @@ msgstr ""
 "Kig sitt eige format. Utdata vert skrive til standard ut dersom ikkje --"
 "oufile er oppgjeven."
 
-#: kig/main.cpp:80
+#: kig/main.cpp:86
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1318,12 +1318,12 @@ msgstr ""
 "Fil der Kig-data skal skrivast. «-» tyder standard utdata. Det er også "
 "standardvalet."
 
-#: kig/main.cpp:85
+#: kig/main.cpp:91
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:92
+#: kig/main.cpp:98
 #, kde-format
 msgid "Document to open"
 msgstr "Dokument som skal opnast"
