@@ -22,7 +22,6 @@ install(TARGETS kig ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 ########### install files ###############
 
 install( PROGRAMS org.kde.kig.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
-install( FILES kig_part.desktop  DESTINATION  ${KDE_INSTALL_KSERVICESDIR} )
 install( FILES kigui.rc kigpartui.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/kig )
 
 ecm_install_icons(ICONS

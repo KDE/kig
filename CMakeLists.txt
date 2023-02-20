@@ -363,8 +363,6 @@ endif(BoostPython_FOUND)
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
 generate_export_header(kigpart)
 
-kcoreaddons_desktop_to_json(kigpart kig/kig_part.desktop)
-
 target_link_libraries(kigpart
   Qt::Gui
   Qt::Svg
