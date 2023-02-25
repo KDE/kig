@@ -1,6 +1,6 @@
 # Translation of kig.po to Slovenian
 # Copyright (C) 2003,2004, 2006 Free Software Foundation, Inc.
-# $Id: kig.po 1645269 2023-02-24 01:49:57Z scripty $
+# $Id: kig.po 1645359 2023-02-25 01:51:09Z scripty $
 # $Source$
 #
 # Jure Repinc <jlp@holodeck1.com>, 2003, 2004, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-07 00:54+0000\n"
-"PO-Revision-Date: 2023-02-23 08:05+0100\n"
+"PO-Revision-Date: 2023-02-24 08:42+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
