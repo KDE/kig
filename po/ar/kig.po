@@ -564,7 +564,7 @@ msgstr "كيج"
 #: kig/aboutdata.h:17
 #, fuzzy, kde-format
 msgid "KDE Interactive Geometry"
-msgstr "كدي تفاعلي الهندسة"
+msgstr "كِيدِي تفاعلي الهندسة"
 
 #: kig/aboutdata.h:19
 #, fuzzy, kde-format
