@@ -160,7 +160,7 @@ msgstr "Seleccioneu el punt on construir el vector diferència..."
 #: filters/asyexporter.cc:29
 #, kde-format
 msgid "Export to &Asymptote..."
-msgstr "Exporta a &Asymptote..."
+msgstr "Exporta cap a &Asymptote..."
 
 #: filters/asyexporter.cc:34
 #, kde-format
@@ -307,7 +307,7 @@ msgstr ""
 #: filters/exporter.cc:58
 #, kde-format
 msgid "&Export to image"
-msgstr "&Exporta a imatge"
+msgstr "&Exporta cap a imatge"
 
 #: filters/exporter.cc:63
 #, kde-format
@@ -337,7 +337,7 @@ msgstr "Alguna cosa ha anat malament en guardar a la imatge «%1»"
 #: filters/exporter.cc:144
 #, kde-format
 msgid "&Export To"
-msgstr "&Exporta a"
+msgstr "&Exporta cap a"
 
 #: filters/filter.cc:66
 #, kde-format
@@ -426,7 +426,7 @@ msgstr ""
 #: filters/latexexporter.cc:63
 #, kde-format
 msgid "Export to &Latex..."
-msgstr "Exporta a &LaTeX..."
+msgstr "Exporta cap a &LaTeX..."
 
 #: filters/latexexporter.cc:68
 #, kde-format
@@ -550,7 +550,7 @@ msgstr ""
 #: filters/svgexporter.cc:30
 #, kde-format
 msgid "&Export to SVG..."
-msgstr "&Exporta a SVG..."
+msgstr "&Exporta cap a SVG..."
 
 #: filters/svgexporter.cc:35
 #, kde-format
@@ -580,7 +580,7 @@ msgstr "Alguna cosa ha anat malament en guardar en el fitxer SVG «%1»"
 #: filters/xfigexporter.cc:46
 #, kde-format
 msgid "Export to &XFig file"
-msgstr "Exporta a un fitxer &XFig"
+msgstr "Exporta cap a un fitxer &XFig"
 
 #: filters/xfigexporter.cc:51
 #, kde-format
