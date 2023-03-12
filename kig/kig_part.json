@@ -11,6 +11,22 @@
             "application/vnd.geogebra.file"
         ],
         "Name": "KigPart",
+        "Name[ca@valencia]": "KigPart",
+        "Name[ca]": "KigPart",
+        "Name[cs]": "KigPart",
+        "Name[en_GB]": "KigPart",
+        "Name[es]": "KigPart",
+        "Name[eu]": "KigPart",
+        "Name[fr]": "KigPart",
+        "Name[it]": "KigPart",
+        "Name[nl]": "KigPart",
+        "Name[pl]": "KigPart",
+        "Name[pt]": "KigPart",
+        "Name[pt_BR]": "Componente do Kig",
+        "Name[sl]": "KigPart",
+        "Name[tr]": "KigPart",
+        "Name[uk]": "KigPart",
+        "Name[x-test]": "xxKigPartxx",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
             "KParts/ReadWritePart"
