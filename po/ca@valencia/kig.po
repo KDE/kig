@@ -4875,7 +4875,7 @@ msgstr "Establix la llargària del segment"
 #: objects/line_type.cc:241
 #, kde-format
 msgid "Choose the new length: "
-msgstr "Escolliu la nova llargària: "
+msgstr "Escolliu la llargària nova: "
 
 #: objects/line_type.cc:249
 #, kde-format
@@ -6211,7 +6211,7 @@ msgstr "Escala esta llargària..."
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
-"Seleccioneu la primera de dues longituds la relació de les quals és el "
+"Seleccioneu la primera de dues llargàries la relació de les quals és el "
 "factor de l'escalat..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
@@ -6224,8 +6224,8 @@ msgstr "...a esta altra llargària"
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
-"Seleccioneu la segona de dues longituds la relació de les quals és el factor "
-"de l'escalat..."
+"Seleccioneu la segona de dues llargàries la relació de les quals és el "
+"factor de l'escalat..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
 #, kde-format
