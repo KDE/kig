@@ -6,13 +6,13 @@
 # Marce Villarino <mvillarino@gmail.com>, 2009.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013, 2014.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-07 00:54+0000\n"
-"PO-Revision-Date: 2019-11-17 09:29+0100\n"
+"PO-Revision-Date: 2023-04-30 16:16+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.03.70\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -91,19 +91,19 @@ msgstr "Evoluta desta curva"
 
 #, kde-format
 msgid "Osculating Circle"
-msgstr "Círculo osculante"
+msgstr "Círculo osculador"
 
 #, kde-format
 msgid "Osculating circle of a curve at a point"
-msgstr "Círculo osculante dunha curva nun punto"
+msgstr "Círculo osculador dunha curva nun punto"
 
 #, kde-format
 msgid "Osculating circle of this curve"
-msgstr "Círculo osculante desta curva"
+msgstr "Círculo osculador desta curva"
 
 #, kde-format
 msgid "Osculating circle at this point"
-msgstr "Círculo osculante neste punto"
+msgstr "Círculo osculador neste punto"
 
 #, kde-format
 msgid "Select the point..."
@@ -407,7 +407,7 @@ msgid ""
 "This KSeg file contains a filled circle, which Kig does not currently "
 "support."
 msgstr ""
-"Este ficheiro de KSeg contén un círculo preenchido, o cal Kig non admite na "
+"Este ficheiro de KSeg contén un círculo enchido, o cal Kig non admite na "
 "actualidade."
 
 #: filters/kseg-filter.cc:511
@@ -825,8 +825,7 @@ msgid "&Set Coordinate System"
 msgstr "Modificar o &sistema de coordenadas"
 
 #: kig/kig_part.cpp:126
-#, fuzzy, kde-format
-#| msgid "Kig Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Opcións de Kig"
@@ -1067,8 +1066,7 @@ msgid "Overwrite File?"
 msgstr "Desexa substituír o ficheiro?"
 
 #: kig/kig_part.cpp:867
-#, fuzzy, kde-format
-#| msgid "Print Geometry"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Imprimir a xeometría"
@@ -1396,12 +1394,12 @@ msgstr "Unha liña construída a través de dous puntos"
 #: misc/builtin_stuff.cc:69
 #, kde-format
 msgid "Half-Line"
-msgstr "Semi-recta"
+msgstr "Semirrecta"
 
 #: misc/builtin_stuff.cc:70
 #, kde-format
 msgid "A half-line by its start point, and another point somewhere on it."
-msgstr "Unha semi-recta con base no punto inicial e noutro sobre a mesma."
+msgstr "Unha semirrecta con base no punto inicial e noutro sobre a mesma."
 
 #: misc/builtin_stuff.cc:77
 #, kde-format
@@ -1694,13 +1692,13 @@ msgstr ""
 #: misc/builtin_stuff.cc:297
 #, kde-format
 msgid "Half-Line by Vector"
-msgstr "Semi-recta a partir dun vector"
+msgstr "Semirrecta a partir dun vector"
 
 #: misc/builtin_stuff.cc:298
 #, kde-format
 msgid "Construct the half-line by a given vector starting at given point."
 msgstr ""
-"Construír unha semi-recta por un vector dado que comece nun punto dado."
+"Construír unha semirrecta por un vector dado que comece nun punto dado."
 
 #: misc/builtin_stuff.cc:303
 #, kde-format
@@ -1980,7 +1978,7 @@ msgstr "Probar se dúas liñas dadas son paralelas"
 #: misc/builtin_stuff.cc:533
 #, kde-format
 msgid "Orthogonal Test"
-msgstr "Proba de ortogonalidade"
+msgstr "Proba ortogonal"
 
 #: misc/builtin_stuff.cc:533
 #, kde-format
@@ -1990,12 +1988,12 @@ msgstr "Probar se dúas liñas indicadas son ortogonais"
 #: misc/builtin_stuff.cc:537
 #, kde-format
 msgid "Collinear Test"
-msgstr "Proba de colinearidade"
+msgstr "Proba colineal"
 
 #: misc/builtin_stuff.cc:537
 #, kde-format
 msgid "Test whether three given points are collinear"
-msgstr "Probar se tres puntos indicados son colineares"
+msgstr "Probar se tres puntos indicados son colineais"
 
 #: misc/builtin_stuff.cc:541
 #, kde-format
@@ -2119,7 +2117,7 @@ msgstr ""
 #: misc/coordinate_system.cpp:530
 #, kde-format
 msgid "&Euclidean"
-msgstr "&Euclídeas"
+msgstr "&Euclidiana"
 
 #: misc/coordinate_system.cpp:530
 #, kde-format
@@ -2221,8 +2219,7 @@ msgid "&Specify coordinate precision:"
 msgstr "E&specificar a precisión das coordenadas:"
 
 #: misc/kiginputdialog.cc:125
-#, fuzzy, kde-format
-#| msgid "Set Angle Size"
+#, kde-format
 msgctxt "@title:window"
 msgid "Set Angle Size"
 msgstr "Definir o tamaño do ángulo"
@@ -2301,7 +2298,7 @@ msgid ""
 "defined for non-intersecting conics."
 msgstr ""
 "As liñas creadas a partir das interseccións de dúas cónicas. Tamén está "
-"definida para as cónicas que non se intersectan."
+"definida para as cónicas que non se cruzan."
 
 #: misc/special_constructors.cc:327 misc/special_constructors.cc:411
 #, kde-format
@@ -2724,7 +2721,7 @@ msgstr "Cruzar este segmento"
 #: misc/special_constructors.cc:1772
 #, kde-format
 msgid "Intersect this Half-line"
-msgstr "Cruzar esta semi-recta"
+msgstr "Cruzar esta semirrecta"
 
 #: misc/special_constructors.cc:1774
 #, kde-format
@@ -2769,7 +2766,7 @@ msgstr "con este segmento"
 #: misc/special_constructors.cc:1794
 #, kde-format
 msgid "with this Half-line"
-msgstr "con esta semi-recta"
+msgstr "con esta semirrecta"
 
 #: misc/special_constructors.cc:1796
 #, kde-format
@@ -2852,7 +2849,7 @@ msgstr "Seleccione o primeiro obxecto para cruzar…"
 #: misc/special_constructors.cc:1981
 #, kde-format
 msgid "Select the second object to intersect..."
-msgstr "Escolla o segundo obxecto a intersecar…"
+msgstr "Escolla o segundo obxecto a cruzar…"
 
 #: misc/special_constructors.cc:1985
 #, kde-format
@@ -2902,7 +2899,7 @@ msgstr "Centro da curvatura"
 #: misc/special_constructors.cc:2038
 #, kde-format
 msgid "The center of the osculating circle to a curve"
-msgstr "O centro do círculo osculante a unha curva"
+msgstr "O centro do círculo osculador a unha curva"
 
 #: misc/special_constructors.cc:2058
 #, kde-format
@@ -2936,6 +2933,7 @@ msgctxt "Translators: Centimeter"
 msgid "cm"
 msgstr "cm"
 
+# well-spelled: polg
 #: misc/unit.cc:107
 #, kde-format
 msgctxt "Translators: Inch"
@@ -2961,8 +2959,7 @@ msgid "Now select the location for the result label."
 msgstr "Agora escolla onde pór a etiqueta do resultado."
 
 #: modes/edittype.cc:25
-#, fuzzy, kde-format
-#| msgid "Edit Type"
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
 msgstr "Editar o tipo"
@@ -3015,8 +3012,7 @@ msgid "Description:"
 msgstr "Descrición:"
 
 #: modes/historydialog.cc:24
-#, fuzzy, kde-format
-#| msgid "History Browser"
+#, kde-format
 msgctxt "@title:window"
 msgid "History Browser"
 msgstr "Navegador do historial"
@@ -3175,8 +3171,7 @@ msgid "&Icon:"
 msgstr "I&cona:"
 
 #: modes/macrowizard.cc:154
-#, fuzzy, kde-format
-#| msgid "Define New Macro"
+#, kde-format
 msgctxt "@title:window"
 msgid "Define New Macro"
 msgstr "Definir unha macro nova"
@@ -3360,11 +3355,9 @@ msgid "More..."
 msgstr "Máis…"
 
 #: modes/popup/scriptactionsprovider.cc:57
-#, fuzzy, kde-format
-#| msgctxt "'Edit' is a verb"
-#| msgid "Edit Script"
+#, kde-format
 msgid "Edit Script..."
-msgstr "Editar o script"
+msgstr "Editar o script…"
 
 #: modes/textlabelwizard.cc:31
 #, kde-format
@@ -3404,8 +3397,7 @@ msgstr ""
 "para rematar…"
 
 #: modes/textlabelwizard.cc:106
-#, fuzzy, kde-format
-#| msgid "Construct Label"
+#, kde-format
 msgctxt "@title:window"
 msgid "Construct Label"
 msgstr "Construír a etiqueta"
@@ -3426,8 +3418,7 @@ msgid "Description"
 msgstr "Descrición"
 
 #: modes/typesdialog.cpp:331
-#, fuzzy, kde-format
-#| msgid "Manage Types"
+#, kde-format
 msgctxt "@title:window"
 msgid "Manage Types"
 msgstr "Xestionar os tipos"
@@ -3556,7 +3547,7 @@ msgstr "Construír un ángulo a través deste punto"
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr ""
-"Escolla un punto polo cal deberá pasar a primeira semi-recta do ángulo…"
+"Escolla un punto polo cal deberá pasar a primeira semirrecta do ángulo…"
 
 #: objects/angle_type.cc:30
 #, kde-format
@@ -3572,7 +3563,7 @@ msgstr "Escolla o punto co cal crear o ángulo…"
 #, kde-format
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
-msgstr "Escolla un punto polo cal deberá pasar a segunda semi-recta do ángulo…"
+msgstr "Escolla un punto polo cal deberá pasar a segunda semirrecta do ángulo…"
 
 #: objects/angle_type.cc:90
 #, kde-format
@@ -3971,18 +3962,15 @@ msgstr "Construír unha curva racional de Bézier con este punto de control"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr ""
+msgstr "cadea"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
-msgstr ""
+msgstr "duplo"
 
 #: objects/bogus_imp.cc:307
-#, fuzzy
-#| msgctxt "Translators: Inch"
-#| msgid "in"
 msgid "int"
-msgstr "polg"
+msgstr "enteiro"
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
@@ -4026,7 +4014,7 @@ msgstr "Ecuación polar"
 #: objects/circle_imp.cc:233
 #, kde-format
 msgid "rho = %1   [centered at %2]"
-msgstr "ro = %1 [centrado en %2]"
+msgstr "rho = %1 [centrado en %2]"
 
 #: objects/circle_imp.cc:337
 msgid "circle"
@@ -4127,7 +4115,7 @@ msgstr "Parábola"
 #: objects/conic_imp.cc:255
 #, kde-format
 msgid "rho"
-msgstr "ro"
+msgstr "rho"
 
 #: objects/conic_imp.cc:263
 #, kde-format
@@ -4727,41 +4715,41 @@ msgstr "Agochar un segmento"
 
 #: objects/line_imp.cc:592
 msgid "half-line"
-msgstr "semi-recta"
+msgstr "semirrecta"
 
 #: objects/line_imp.cc:593
 #, kde-format
 msgid "Select this half-line"
-msgstr "Escoller esta semi-recta"
+msgstr "Escoller esta semirrecta"
 
 #: objects/line_imp.cc:594
 #, kde-format
 msgid "Select half-line %1"
-msgstr "Escoller a semi-recta %1"
+msgstr "Escoller a semirrecta %1"
 
 #: objects/line_imp.cc:595
 msgid "Remove a Half-Line"
-msgstr "Retirar unha semi-recta"
+msgstr "Retirar unha semirrecta"
 
 #: objects/line_imp.cc:596
 msgid "Add a Half-Line"
-msgstr "Engadir unha semi-recta"
+msgstr "Engadir unha semirrecta"
 
 #: objects/line_imp.cc:597
 msgid "Move a Half-Line"
-msgstr "Mover unha semi-recta"
+msgstr "Mover unha semirrecta"
 
 #: objects/line_imp.cc:598
 msgid "Attach to this half-line"
-msgstr "Anexar a esta semi-recta"
+msgstr "Anexar a esta semirrecta"
 
 #: objects/line_imp.cc:599
 msgid "Show a Half-Line"
-msgstr "Mostrar unha semi-recta"
+msgstr "Mostrar unha semirrecta"
 
 #: objects/line_imp.cc:600
 msgid "Hide a Half-Line"
-msgstr "Agochar unha semi-recta"
+msgstr "Agochar unha semirrecta"
 
 #: objects/line_type.cc:22
 #, kde-format
@@ -4801,22 +4789,22 @@ msgstr "Escolla outro punto polo cal ha de pasar a liña…"
 #: objects/line_type.cc:75
 #, kde-format
 msgid "Construct a half-line starting at this point"
-msgstr "Construír unha semi-recta con inicio neste punto"
+msgstr "Construír unha semirrecta con inicio neste punto"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
 #, kde-format
 msgid "Select the start point of the new half-line..."
-msgstr "Escolla o punto inicial da nova semi-recta…"
+msgstr "Escolla o punto inicial da nova semirrecta…"
 
 #: objects/line_type.cc:79
 #, kde-format
 msgid "Construct a half-line through this point"
-msgstr "Construír unha semi-recta a través deste punto"
+msgstr "Construír unha semirrecta a través deste punto"
 
 #: objects/line_type.cc:79
 #, kde-format
 msgid "Select a point for the half-line to go through..."
-msgstr "Escolla un punto polo que pase a semi-recta…"
+msgstr "Escolla un punto polo que pase a semirrecta…"
 
 #: objects/line_type.cc:104
 #, kde-format
@@ -4896,12 +4884,12 @@ msgstr "Escolla un vector coa dirección da nova liña…"
 #: objects/line_type.cc:292
 #, kde-format
 msgid "Construct a half-line by this vector"
-msgstr "Construír unha semi-recta por este vector"
+msgstr "Construír unha semirrecta por este vector"
 
 #: objects/line_type.cc:292
 #, kde-format
 msgid "Select a vector in the direction of the new half-line..."
-msgstr "Escolla un vector coa dirección da nova semi-recta…"
+msgstr "Escolla un vector coa dirección da nova semirrecta…"
 
 #: objects/locus_imp.cc:186
 msgid "locus"
@@ -5268,7 +5256,7 @@ msgstr "Escolla o novo parámetro: "
 #: objects/point_type.cc:458
 #, kde-format
 msgid "Change Parameter of Constrained Point"
-msgstr "Cambiar o parámetro do punto restrito"
+msgstr "Cambiar o parámetro do punto restrinxido"
 
 #: objects/point_type.cc:743
 #, kde-format
@@ -5549,7 +5537,7 @@ msgstr "Escolla un punto para ser un vértice do novo triángulo…"
 #: objects/polygon_type.cc:470
 #, kde-format
 msgid "Intersect this polygon with a line"
-msgstr "Intersecar este polígono cunha liña"
+msgstr "Cruzar este polígono cunha liña"
 
 #: objects/polygon_type.cc:471
 #, kde-format
@@ -5559,7 +5547,7 @@ msgstr "Escolla o polígono do cal quere a intersección cunha liña…"
 #: objects/polygon_type.cc:474
 #, kde-format
 msgid "Intersect this line with a polygon"
-msgstr "Intersecar esta liña cun polígono"
+msgstr "Cruzar esta liña cun polígono"
 
 #: objects/polygon_type.cc:475
 #, kde-format
@@ -5569,7 +5557,7 @@ msgstr "Escolla a liña da cal queira a intersección cun polígono…"
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
 #, kde-format
 msgid "Intersect this polygonal curve with a line"
-msgstr "Intersecar esta curva poligonal cunha liña"
+msgstr "Cruzar esta curva poligonal cunha liña"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
 #, kde-format
@@ -5580,7 +5568,7 @@ msgstr "Escolle a curva poligonal da cal quere a intersección cunha liña…"
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
 #, kde-format
 msgid "Intersect this line with a polygonal curve"
-msgstr "Intersecar esta liña cunha curva poligonal"
+msgstr "Cruzar esta liña cunha curva poligonal"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
 #, kde-format
@@ -5591,7 +5579,7 @@ msgstr "Escolle a liña da cal queira a intersección cunha curva poligonal…"
 #: objects/polygon_type.cc:788
 #, kde-format
 msgid "Intersect this polygon with another polygon"
-msgstr "Intersecar este polígono con outro polígono"
+msgstr "Cruzar este polígono con outro polígono"
 
 #: objects/polygon_type.cc:789
 #, kde-format
@@ -5607,7 +5595,7 @@ msgstr "Intersección con este polígono"
 #: objects/polygon_type.cc:791
 #, kde-format
 msgid "Select the second polygon for the intersection..."
-msgstr "Escolla o segundo polígono a intersectar…"
+msgstr "Escolla o segundo polígono para a intersección…"
 
 #: objects/polygon_type.cc:930
 #, kde-format
@@ -5657,7 +5645,7 @@ msgstr "É paralela esta liña?"
 #: objects/tests_type.cc:18
 #, kde-format
 msgid "Select the first of the two possibly parallel lines..."
-msgstr "Escolla a primeira das dúas liñas supostamente paralelas…"
+msgstr "Escolla a primeira das dúas liñas posibelmente paralelas…"
 
 #: objects/tests_type.cc:19
 #, kde-format
@@ -5667,7 +5655,7 @@ msgstr "É paralela a esta liña?"
 #: objects/tests_type.cc:19
 #, kde-format
 msgid "Select the other of the two possibly parallel lines..."
-msgstr "Escolla a segunda das dúas liñas supostamente paralelas…"
+msgstr "Escolla a segunda das dúas liñas posibelmente paralelas…"
 
 #: objects/tests_type.cc:46
 #, kde-format
@@ -5687,7 +5675,7 @@ msgstr "Esta liña é ortogonal?"
 #: objects/tests_type.cc:57
 #, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
-msgstr "Escolla a primeira das dúas liñas supostamente ortogonais…"
+msgstr "Escolla a primeira das dúas liñas posibelmente ortogonais…"
 
 #: objects/tests_type.cc:58
 #, kde-format
@@ -5697,7 +5685,7 @@ msgstr "É ortogonal a esta liña?"
 #: objects/tests_type.cc:58
 #, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
-msgstr "Escolla a segunda das dúas liñas supostamente ortogonais…"
+msgstr "Escolla a segunda das dúas liñas posibelmente ortogonais…"
 
 #: objects/tests_type.cc:85
 #, kde-format
@@ -5717,7 +5705,7 @@ msgstr "Comprobar a colinearidade deste punto"
 #: objects/tests_type.cc:96
 #, kde-format
 msgid "Select the first of the three possibly collinear points..."
-msgstr "Escolla o primeiro dos tres puntos supostamente colineares…"
+msgstr "Escolla o primeiro dos tres puntos posibelmente colineais…"
 
 #: objects/tests_type.cc:97
 #, kde-format
@@ -5727,7 +5715,7 @@ msgstr "con este segundo punto"
 #: objects/tests_type.cc:97
 #, kde-format
 msgid "Select the second of the three possibly collinear points..."
-msgstr "Escolla o segundo dos tres puntos supostamente colineares…"
+msgstr "Escolla o segundo dos tres puntos posibelmente colineais…"
 
 #: objects/tests_type.cc:98
 #, kde-format
@@ -5737,17 +5725,17 @@ msgstr "con este terceiro punto"
 #: objects/tests_type.cc:98
 #, kde-format
 msgid "Select the last of the three possibly collinear points..."
-msgstr "Escolla o último dos tres puntos supostamente colineares…"
+msgstr "Escolla o último dos tres puntos posiblemente colineais…"
 
 #: objects/tests_type.cc:126
 #, kde-format
 msgid "These points are collinear."
-msgstr "Estes puntos son colineares."
+msgstr "Estes puntos son colineais."
 
 #: objects/tests_type.cc:128
 #, kde-format
 msgid "These points are not collinear."
-msgstr "Estes puntos non son colineares."
+msgstr "Estes puntos non son colineais."
 
 #: objects/tests_type.cc:137
 #, kde-format
@@ -5873,7 +5861,7 @@ msgstr "Comprobar se este vector é igual a outro vector"
 #: objects/tests_type.cc:309
 #, kde-format
 msgid "Select the first of the two possibly equal vectors..."
-msgstr "Escolla o primeiro dos dous vectores supostamente iguais…"
+msgstr "Escolla o primeiro dos dous vectores posiblemente iguais…"
 
 #: objects/tests_type.cc:312
 #, kde-format
@@ -5883,7 +5871,7 @@ msgstr "Comprobar se este vector é igual ao outro vector"
 #: objects/tests_type.cc:313
 #, kde-format
 msgid "Select the other of the two possibly equal vectors..."
-msgstr "Escolla o último dos dous vectores supostamente iguais…"
+msgstr "Escolla o último dos dous vectores posiblemente iguais…"
 
 #: objects/tests_type.cc:341
 #, kde-format
@@ -6249,7 +6237,7 @@ msgstr "Escolla o obxecto sobre o cal rotar en proxección"
 #: objects/transform_types.cc:337
 #, kde-format
 msgid "Projectively rotate with this half-line"
-msgstr "Rotar por proxección con esta semi-recta"
+msgstr "Rotar por proxección con esta semirrecta"
 
 #: objects/transform_types.cc:338
 #, kde-format
@@ -6257,7 +6245,7 @@ msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr ""
-"Escolla a semi-recta da rotación por proxección que quere aplicar ao obxecto"
+"Escolla a media liña da rotación por proxección que quere aplicar ao obxecto"
 
 #: objects/transform_types.cc:341
 #, kde-format
@@ -6625,8 +6613,7 @@ msgid "Select the point to construct the sum vector in..."
 msgstr "Escolla o punto no cal crear a suma dos dous vectores…"
 
 #: scripting/newscriptwizard.cc:46
-#, fuzzy, kde-format
-#| msgid "New Script"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "Novo script"
@@ -6694,9 +6681,7 @@ msgstr ""
 "de novo o botón Terminar."
 
 #: scripting/script_mode.cc:285
-#, fuzzy, kde-format
-#| msgctxt "'Edit' is a verb"
-#| msgid "Edit Script"
+#, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "Editar o script"
@@ -6753,24 +6738,24 @@ msgid ""
 msgstr ""
 "<p>Pódense controlar as construcións en kig mediante un script de python \n"
 "chamado «pykig», que se pode executar mediante a orde \n"
-"<code>pykig.py</code>. Velaquí un exemplo (<code>hexagonos.kpy</code>) \n"
+"<code>pykig.py</code>. Velaquí un exemplo (<code>hexagons.kpy</code>) \n"
 "que podes probar:\n"
 "<code><pre>\n"
 "kigdocument.hideobjects()\n"
-"def hexagonos (c, v, n):\n"
-"  hexagono = PolygonBCV (c, v, 6)\n"
+"def hexagons (c, v, n):\n"
+"  hexagon = PolygonBCV (c, v, 6)\n"
 "  if n &lt;= 0:\n"
-"    hexagono.show()\n"
+"    hexagon.show()\n"
 "    for i in range(6): \n"
-"      PolygonSide (hexagono, i, True)\n"
+"      PolygonSide (hexagon, i, True)\n"
 "    return\n"
 "  cnew = MidPoints (c, v)\n"
-"  hexagonos (cnew, v, n-1)\n"
+"  hexagons (cnew, v, n-1)\n"
 "  for k in [2,4]:\n"
-"    v1 = PolygonVertex (hexagono, k)\n"
+"    v1 = PolygonVertex (hexagon, k)\n"
 "    cnew = MidPoints (c, v1)\n"
-"    hexagonos (cnew, v1, n-1)\n"
-"hexagonos (Point(0,0), Point(1,0), 5)\n"
+"    hexagons (cnew, v1, n-1)\n"
+"hexagons (Point(0,0), Point(1,0), 5)\n"
 "</pre></code>\n"
 
 #. i18n: ectx: @info:tipoftheday
@@ -6859,12 +6844,7 @@ msgstr ""
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:79
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Kig can extends its object set using external macros. You can find "
-#| "some\n"
-#| "interesting macros on the Kig website:\n"
-#| "<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+#, kde-format
 msgid ""
 "<p>Kig can extends its object set using external macros. You can find some\n"
 "interesting macros on the Kig website:\n"
@@ -6872,7 +6852,7 @@ msgid ""
 msgstr ""
 "<p>Kig pode estender o conxunto de obxectos utilizando macros externas.\n"
 "Pódense atopar algunhas macros interesantes do sitio web de Kig:\n"
-"<a href=\"http://edu.kde.org/kig\">http://edu.kde.org/kig</a>.</p>\n"
+"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:87
