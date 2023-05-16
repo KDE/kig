@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-07 00:54+0000\n"
-"PO-Revision-Date: 2023-03-21 19:29+0300\n"
+"PO-Revision-Date: 2023-05-15 21:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2918,8 +2918,8 @@ msgid ""
 "Click the location where you want to place the new point, or the curve that "
 "you want to attach it to..."
 msgstr ""
-"Yeni noktayı yerleştirmek istediğiniz konuma veya eklemek istediğiniz eğriye "
-"tıklayın..."
+"Yeni noktayı yerleştirmek istediğiniz konuma veya iliştirmek istediğiniz "
+"eğriye tıklayın..."
 
 #: modes/construct_mode.cc:429
 #, kde-format
@@ -3679,7 +3679,7 @@ msgstr "Bir Bézier Eğrisini Taşı"
 
 #: objects/bezier_imp.cc:207
 msgid "Attach to this Bézier Curve"
-msgstr "Bu Bézier Eğrisini Ekle"
+msgstr "Bu Bézier Eğrisine İliştir"
 
 #: objects/bezier_imp.cc:208
 msgid "Show a Bézier Curve"
@@ -3717,7 +3717,7 @@ msgstr "Bir Bézier Dörtgenini Taşı"
 
 #: objects/bezier_imp.cc:224
 msgid "Attach to this Bézier Quadratic"
-msgstr "Bu Bézier Dörtgenine Ekle"
+msgstr "Bu Bézier Dörtgenine İliştir"
 
 #: objects/bezier_imp.cc:225
 msgid "Show a Bézier Quadratic"
@@ -3755,7 +3755,7 @@ msgstr "Bir Bézier Kubiğini Taşı"
 
 #: objects/bezier_imp.cc:241
 msgid "Attach to this Bézier Cubic"
-msgstr "Bu Bézier Kubiğine Ekle"
+msgstr "Bu Bézier Kubiğine İliştir"
 
 #: objects/bezier_imp.cc:242
 msgid "Show a Bézier Cubic"
@@ -3793,7 +3793,7 @@ msgstr "Bir Rasyonel Bézier Kubiğini Taşı"
 
 #: objects/bezier_imp.cc:496
 msgid "Attach to this Rational Bézier Curve"
-msgstr "Bu Rasyonel Bézier Kubiğine Ekle"
+msgstr "Bu Rasyonel Bézier Kubiğine İliştir"
 
 #: objects/bezier_imp.cc:497
 msgid "Show a Rational Bézier Curve"
@@ -3831,7 +3831,7 @@ msgstr "Bir Rasyonel Bézier Dörtgenini Taşı"
 
 #: objects/bezier_imp.cc:513
 msgid "Attach to this Rational Bézier Quadratic"
-msgstr "Bu Rasyonel Bézier Dörtgenine Ekle"
+msgstr "Bu Rasyonel Bézier Dörtgenine İliştir"
 
 #: objects/bezier_imp.cc:514
 msgid "Show a Rational Bézier Quadratic"
@@ -3869,7 +3869,7 @@ msgstr "Bir Rasyonal Bézier Kubiği Taşı"
 
 #: objects/bezier_imp.cc:530
 msgid "Attach to this Rational Bézier Cubic"
-msgstr "Bir Rasyonal Bézier Kubiğine Ekle"
+msgstr "Bir Rasyonal Bézier Kubiğine İliştir"
 
 #: objects/bezier_imp.cc:531
 msgid "Show a Rational Bézier Cubic"
@@ -4008,7 +4008,7 @@ msgstr "Bir Çemberi Taşı"
 
 #: objects/circle_imp.cc:343
 msgid "Attach to this circle"
-msgstr "Bu çembere ekle"
+msgstr "Bu çembere iliştir"
 
 #: objects/circle_imp.cc:344
 msgid "Show a Circle"
@@ -4124,7 +4124,7 @@ msgstr "Bir Koniği Taşı"
 
 #: objects/conic_imp.cc:384
 msgid "Attach to this conic"
-msgstr "Bu koniğe taşı"
+msgstr "Bu koniğe iliştir"
 
 #: objects/conic_imp.cc:385
 msgid "Show a Conic"
@@ -4174,7 +4174,7 @@ msgstr "Bir Koni Yayını Taşı"
 
 #: objects/conic_imp.cc:609
 msgid "Attach to this conic arc"
-msgstr "Bir koni yayına ekle"
+msgstr "Bu koni yayına iliştir"
 
 #: objects/conic_imp.cc:610
 msgid "Show a Conic Arc"
@@ -4471,7 +4471,7 @@ msgstr "Bir Eğriyi Taşı"
 
 #: objects/curve_imp.cc:24
 msgid "Attach to this curve"
-msgstr "Bu eğriye ekle"
+msgstr "Bu eğriye iliştir"
 
 #: objects/curve_imp.cc:25
 msgid "Show a Curve"
@@ -4625,7 +4625,7 @@ msgstr "Bir Doğruyu Taşı"
 
 #: objects/line_imp.cc:566
 msgid "Attach to this line"
-msgstr "Bu doğruya ekle"
+msgstr "Bu doğruya iliştir"
 
 #: objects/line_imp.cc:567
 msgid "Show a Line"
@@ -4879,7 +4879,7 @@ msgstr "Bir Konum Sil"
 
 #: objects/locus_imp.cc:192
 msgid "Attach to this locus"
-msgstr "Bu konuma ekle"
+msgstr "Bu konuma iliştir"
 
 #: objects/locus_imp.cc:193
 msgid "Show a Locus"
@@ -4921,7 +4921,7 @@ msgstr "Bir nesneyi taşı"
 
 #: objects/object_imp.cc:285
 msgid "Attach to this object"
-msgstr "Bu nesneye ekle"
+msgstr "Bu nesneye iliştir"
 
 #: objects/object_imp.cc:286
 msgid "Show an object"
@@ -5037,7 +5037,7 @@ msgstr "Bir Vektörü Taşı"
 
 #: objects/other_imp.cc:619
 msgid "Attach to this vector"
-msgstr "Bu vektöre ekle"
+msgstr "Bu vektöre iliştir"
 
 #: objects/other_imp.cc:620
 msgid "Show a Vector"
@@ -5075,7 +5075,7 @@ msgstr "Bir Yayı Taşı"
 
 #: objects/other_imp.cc:634
 msgid "Attach to this arc"
-msgstr "Bu yaya ekle"
+msgstr "Bu yaya iliştir"
 
 #: objects/other_imp.cc:635
 msgid "Show an Arc"
@@ -5125,7 +5125,7 @@ msgstr "Bir Noktayı Taşı"
 
 #: objects/point_imp.cc:159
 msgid "Attach to this point"
-msgstr "Bu noktaya ekle"
+msgstr "Bu noktaya iliştir"
 
 #: objects/point_imp.cc:160
 msgid "Show a Point"
@@ -5356,7 +5356,7 @@ msgstr "Bir kapalı poligonal eğri taşı"
 
 #: objects/polygon_imp.cc:651
 msgid "Attach to this closed polygonal curve"
-msgstr "Bu kapalı poligonal eğrisine ekle"
+msgstr "Bu kapalı poligonal eğrisine iliştir"
 
 #: objects/polygon_imp.cc:652
 msgid "Show a closed polygonal curve"
@@ -5394,7 +5394,7 @@ msgstr "Bir poligonal eğri taşı"
 
 #: objects/polygon_imp.cc:668
 msgid "Attach to this polygonal curve"
-msgstr "Bu poligonal eğrisine ekle"
+msgstr "Bu poligonal eğrisine iliştir"
 
 #: objects/polygon_imp.cc:669
 msgid "Show a polygonal curve"
@@ -5432,7 +5432,7 @@ msgstr "Bir Üçgeni taşı"
 
 #: objects/polygon_imp.cc:685
 msgid "Attach to this triangle"
-msgstr "Bu üçgene ekle"
+msgstr "Bu üçgene iliştir"
 
 #: objects/polygon_imp.cc:686
 msgid "Show a Triangle"
@@ -5891,7 +5891,7 @@ msgstr "Bir Etiketi Taşı"
 
 #: objects/text_imp.cc:143
 msgid "Attach to this label"
-msgstr "Bu etikete ekle"
+msgstr "Bu etikete iliştir"
 
 #: objects/text_imp.cc:144
 msgid "Show a Label"
@@ -5929,7 +5929,7 @@ msgstr "Bir Rakamsal Etiketi Taşı"
 
 #: objects/text_imp.cc:189
 msgid "Attach to this numeric label"
-msgstr "Bu rakamsal etikete ekle"
+msgstr "Bu rakamsal etikete iliştir"
 
 #: objects/text_imp.cc:190
 msgid "Show a Numeric Label"
@@ -5971,7 +5971,7 @@ msgstr "Bir Mantıksal Değer Etiketi Taşı"
 
 #: objects/text_imp.cc:283
 msgid "Attach to this boolean label"
-msgstr "Bir Mantıksal Değer Etiketine Ekle"
+msgstr "Bu Boole etiketine iliştir"
 
 #: objects/text_imp.cc:284
 msgid "Show a Boolean Label"
