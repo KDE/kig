@@ -21,8 +21,8 @@
 #include <KEditToolBar>
 #include <KLocalizedString>
 #include <KMessageBox>
+#include <KPluginFactory>
 #include <KRecentFilesAction>
-#include <KService>
 #include <KSharedConfig>
 #include <KStandardAction>
 #include <KTipDialog>
@@ -33,8 +33,6 @@ Kig::Kig()
     : KParts::MainWindow()
     , m_part(nullptr)
 {
-    KService::Ptr kigpartService = KService::serviceByDesktopName(QStringLiteral("kig_part"));
-
     setObjectName(QStringLiteral("Kig"));
     // setting the configuration file
     config = new KConfig(QStringLiteral("kigrc"));
@@ -43,9 +41,12 @@ Kig::Kig()
     // then, setup our actions
     setupActions();
 
-    if (kigpartService) {
-        m_part = kigpartService->createInstance<KParts::ReadWritePart>(this);
-        m_mimeTypes = kigpartService->mimeTypes();
+    const KPluginMetaData partMetaData(QLatin1String("kf") + QT_STRINGIFY(QT_VERSION_MAJOR) + QLatin1String("/parts/kigpart"));
+    const auto result = KPluginFactory::instantiatePlugin<KParts::ReadWritePart>(partMetaData, this);
+
+    if (result) {
+        m_part = result.plugin;
+        m_mimeTypes = partMetaData.mimeTypes();
         if (m_part) {
             // tell the KParts::MainWindow that this is indeed the main widget
             setCentralWidget(m_part->widget());
