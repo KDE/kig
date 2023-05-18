@@ -28,6 +28,7 @@ msgstr ""
 "X-POFile-IgnoreConsistency: Type\n"
 "X-POFile-IgnoreConsistency: Name\n"
 "X-POFile-IgnoreConsistency: string\n"
+"X-POFile-IgnoreConsistency: int\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
