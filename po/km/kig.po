@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-07 00:54+0000\n"
+"POT-Creation-Date: 2023-05-20 00:41+0000\n"
 "PO-Revision-Date: 2012-07-16 11:37+0700\n"
 "Last-Translator: Sok Sophea <sophea@khmeros.info>\n"
 "Language-Team: Khmer <>\n"
@@ -778,12 +778,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "ដែល​ទទួល​ខុស​ត្រូវ​ចំពោះ​រូប​តំណាង​សកម្មភាព​វត្ថុ​ថ្មី ។"
 
-#: kig/kig.cpp:62
+#: kig/kig.cpp:63
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "មិន​អាច​រក​បណ្ណាល័យ​ចាំបាច់​របស់​ Kig បានឡើយ​ ពិនិត្យ​ការ​ដំឡើង​របស់​អ្នក ។"
 
-#: kig/kig.cpp:200
+#: kig/kig.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
