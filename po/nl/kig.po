@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-07 00:54+0000\n"
+"POT-Creation-Date: 2023-05-20 02:30+0000\n"
 "PO-Revision-Date: 2022-07-14 14:27+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -815,14 +815,14 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Verantwoordelijk voor de nieuwe actiepictogrammen voor objecten."
 
-#: kig/kig.cpp:62
+#: kig/kig.cpp:63
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 "Kon de benodigde Kig-bibliotheek niet vinden, controleer of Kig goed is "
 "geïnstalleerd."
 
-#: kig/kig.cpp:200
+#: kig/kig.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"

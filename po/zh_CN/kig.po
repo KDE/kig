@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-07 00:54+0000\n"
+"POT-Creation-Date: 2023-05-20 02:30+0000\n"
 "PO-Revision-Date: 2023-04-29 08:36\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -750,12 +750,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "负责新对象动态圆标的绘制。"
 
-#: kig/kig.cpp:62
+#: kig/kig.cpp:63
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "找不到必需的 Kig 库，请检查您的安装。"
 
-#: kig/kig.cpp:200
+#: kig/kig.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"

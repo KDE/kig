@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig (KDE 3.5)\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-07 00:54+0000\n"
+"POT-Creation-Date: 2023-05-20 02:30+0000\n"
 "PO-Revision-Date: 2006-03-29 19:00+0600\n"
 "Last-Translator: Progga <progga@BengaLinux.Org>\n"
 "Language-Team: Bangla <kde-translation@BengaLinux.Org>\n"
@@ -807,13 +807,13 @@ msgstr ""
 msgid "Responsible for the new object action icons."
 msgstr "নতুন অবজেক্ট অ্যাকশন আইকনের জন্য দায়ী।"
 
-#: kig/kig.cpp:62
+#: kig/kig.cpp:63
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 "প্রয়োজনীয় কিগ লাইব্রেরি পাওয়া যায় নি বলে কিগ-এর ইনস্টলকৃত ফাইলসমূহ পরীক্ষা করুন।"
 
-#: kig/kig.cpp:200
+#: kig/kig.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"

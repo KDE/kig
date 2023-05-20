@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-07 00:54+0000\n"
+"POT-Creation-Date: 2023-05-20 02:30+0000\n"
 "PO-Revision-Date: 2023-05-15 21:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -785,12 +785,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Yeni nesne eylem simgelerinden sorumlu."
 
-#: kig/kig.cpp:62
+#: kig/kig.cpp:63
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Gerekli kig kitaplığı bulunamadı, lütfen kurulumunuzu kontrol edin."
 
-#: kig/kig.cpp:200
+#: kig/kig.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
