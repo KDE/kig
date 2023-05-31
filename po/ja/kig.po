@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
@@ -825,14 +825,12 @@ msgstr ""
 msgid "Remove %1 Object"
 msgid_plural "Remove %1 Objects"
 msgstr[0] "%1 個のオブジェクトを削除"
-msgstr[1] "%1 個のオブジェクトを削除"
 
 #: kig/kig_commands.cpp:103
 #, kde-format
 msgid "Add %1 Object"
 msgid_plural "Add %1 Objects"
 msgstr[0] "%1 個のオブジェクトを追加"
-msgstr[1] "%1 個のオブジェクトを追加"
 
 #: kig/kig_part.cpp:86
 #, kde-format
@@ -1104,14 +1102,12 @@ msgstr "図形を印刷"
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "%1 個のオブジェクトを隠す"
-msgstr[1] "%1 個のオブジェクトを隠す"
 
 #: kig/kig_part.cpp:950
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
 msgstr[0] "%1 個のオブジェクトを表示"
-msgstr[1] "%1 個のオブジェクトを表示"
 
 #: kig/kig_view.cpp:189
 #, kde-format
@@ -3196,7 +3192,6 @@ msgstr "新しいマクロを定義"
 msgid "Move %1 Object"
 msgid_plural "Move %1 Objects"
 msgstr[0] "%1 個のオブジェクトを移動"
-msgstr[1] "%1 個のオブジェクトを移動"
 
 #: modes/moving.cc:218
 #, kde-format
@@ -3311,7 +3306,6 @@ msgstr "このオブジェクトの名前を設定:"
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 個のオブジェクト"
-msgstr[1] "%1 個のオブジェクト"
 
 #: modes/popup/popup.cc:70
 #, kde-format
@@ -3458,8 +3452,7 @@ msgstr "エクスポート(&X)..."
 #, kde-format
 msgid "Are you sure you want to delete this type?"
 msgid_plural "Are you sure you want to delete these %1 types?"
-msgstr[0] "本当にこのタイプを削除しますか？"
-msgstr[1] "本当にこれら %1 個のタイプを削除しますか？"
+msgstr[0] "本当にこれら %1 個のタイプを削除しますか？"
 
 #: modes/typesdialog.cpp:427
 #, kde-format
