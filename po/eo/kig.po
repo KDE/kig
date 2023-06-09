@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-20 00:41+0000\n"
-"PO-Revision-Date: 2023-03-20 22:38+0100\n"
+"PO-Revision-Date: 2023-06-08 19:23+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -801,15 +801,15 @@ msgstr "Malfermu Dosieron"
 #, kde-format
 msgid "Remove %1 Object"
 msgid_plural "Remove %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Forigi %1 Objekton"
+msgstr[1] "Forigi %1 Objektojn"
 
 #: kig/kig_commands.cpp:103
 #, kde-format
 msgid "Add %1 Object"
 msgid_plural "Add %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aldoni %1 Objekton"
+msgstr[1] "Aldoni %1 Objektojn"
 
 #: kig/kig_part.cpp:86
 #, kde-format
@@ -1066,15 +1066,15 @@ msgstr "Presa Geometrio"
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kaŝi %1 Objekton"
+msgstr[1] "Kaŝi %1 Objektojn"
 
 #: kig/kig_part.cpp:950
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Montri %1 Objekton"
+msgstr[1] "Montri %1 Objektojn"
 
 #: kig/kig_view.cpp:189
 #, kde-format
@@ -3147,8 +3147,8 @@ msgstr "Difinu Novan Makroon"
 #, kde-format
 msgid "Move %1 Object"
 msgid_plural "Move %1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Movi %1 Objekton"
+msgstr[1] "Movi %1 Objektojn"
 
 #: modes/moving.cc:218
 #, kde-format
@@ -3262,8 +3262,8 @@ msgstr "Meti Nomon de ĉi tiu Objekto:"
 #, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 Objekto"
+msgstr[1] "%1 Objektoj"
 
 #: modes/popup/popup.cc:70
 #, kde-format
@@ -3406,8 +3406,8 @@ msgstr "E&ksporti..."
 #, kde-format
 msgid "Are you sure you want to delete this type?"
 msgid_plural "Are you sure you want to delete these %1 types?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ĉu vi certas ke vi volas forigi ĉi tiun tipon?"
+msgstr[1] "Ĉu vi certas ke vi volas forigi ĉi %1 tipojn?"
 
 #: modes/typesdialog.cpp:427
 #, kde-format
