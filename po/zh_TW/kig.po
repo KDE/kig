@@ -9,20 +9,20 @@
 # pan93412 <pan93412@gmail.com>, 2018, 2020.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2008, 2009.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-20 00:41+0000\n"
-"PO-Revision-Date: 2022-12-30 19:14+0900\n"
+"PO-Revision-Date: 2023-06-15 04:09+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 23.04.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -3827,18 +3827,15 @@ msgstr "用控制點來建立三次有理貝氏曲線"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr ""
+msgstr "string"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
-msgstr ""
+msgstr "double"
 
 #: objects/bogus_imp.cc:307
-#, fuzzy
-#| msgctxt "Translators: Inch"
-#| msgid "in"
 msgid "int"
-msgstr "英吋"
+msgstr "int"
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
