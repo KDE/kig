@@ -13,6 +13,7 @@
   <name xml:lang="de">Kig</name>
   <name xml:lang="el">Kig</name>
   <name xml:lang="en-GB">Kig</name>
+  <name xml:lang="eo">Kig</name>
   <name xml:lang="es">Kig</name>
   <name xml:lang="et">Kig</name>
   <name xml:lang="eu">Kig</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="de">Interaktive Geometrie</summary>
   <summary xml:lang="el">Διαδραστική γεωμετρία</summary>
   <summary xml:lang="en-GB">Interactive Geometry</summary>
+  <summary xml:lang="eo">Interaga Geometrio</summary>
   <summary xml:lang="es">Geometría interactiva</summary>
   <summary xml:lang="et">Interaktiivne geomeetria</summary>
   <summary xml:lang="eu">Geometria elkarreragilea</summary>
@@ -124,6 +126,7 @@
       <caption xml:lang="de">Interaktive Geometrie mit Kig</caption>
       <caption xml:lang="el">Διαδραστική γεωμετρία με το Kig</caption>
       <caption xml:lang="en-GB">Interactive geometry with Kig</caption>
+      <caption xml:lang="eo">Interaga geometrio per Kig</caption>
       <caption xml:lang="es">Geometría interactiva con Kig</caption>
       <caption xml:lang="et">Interaktiivne geomeetria Kigis</caption>
       <caption xml:lang="eu">Geometria elkarreragilea Kig-ekin</caption>
