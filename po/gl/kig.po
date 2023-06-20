@@ -206,7 +206,7 @@ msgstr "Opcións"
 #: filters/latexexporteroptionswidget.ui:95
 #, kde-format
 msgid "Show Extra Frame"
-msgstr "Mostrar un marco extra"
+msgstr "Amosar un marco extra"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showAxesCheckBox)
 #: filters/asyexporteroptionswidget.ui:49
@@ -215,7 +215,7 @@ msgstr "Mostrar un marco extra"
 #: filters/svgexporteroptionswidget.ui:42
 #, kde-format
 msgid "Show Axes"
-msgstr "Mostrar os eixos"
+msgstr "Amosar os eixos"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
 #: filters/asyexporteroptionswidget.ui:56
@@ -224,7 +224,7 @@ msgstr "Mostrar os eixos"
 #: filters/svgexporteroptionswidget.ui:49
 #, kde-format
 msgid "Show Grid"
-msgstr "Mostrar a grade"
+msgstr "Amosar a grade"
 
 #: filters/cabri-filter.cc:143
 #, kde-format
@@ -833,12 +833,12 @@ msgstr "Opcións de Kig"
 #: kig/kig_part.cpp:130
 #, kde-format
 msgid "Show grid"
-msgstr "Mostrar a grade"
+msgstr "Amosar a grade"
 
 #: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
-msgstr "Mostrar os eixos"
+msgstr "Amosar os eixos"
 
 #: kig/kig_part.cpp:218
 #, kde-format
@@ -878,12 +878,12 @@ msgstr "Repetir a última construción (con datos novos)"
 #: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
-msgstr "&Mostrar todo"
+msgstr "&Amosar todo"
 
 #: kig/kig_part.cpp:248
 #, kde-format
 msgid "Show all hidden objects"
-msgstr "Mostrar todos os obxectos agochados"
+msgstr "Amosar todos os obxectos agochados"
 
 #: kig/kig_part.cpp:251
 #, kde-format
@@ -943,7 +943,7 @@ msgstr "&Escoller a área visíbel"
 #: kig/kig_part.cpp:290 kig/kig_part.cpp:291
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
-msgstr "Escolla a área que queira mostrar na xanela."
+msgstr "Escolla a área que queira amosar na xanela."
 
 #: kig/kig_part.cpp:293
 #, kde-format
@@ -965,12 +965,12 @@ msgstr "Configurar a precisión de coma flotante das coordenadas do documento."
 #: kig/kig_part.cpp:304
 #, kde-format
 msgid "Show &Grid"
-msgstr "Mostrar a &grade"
+msgstr "Amosar a &grade"
 
 #: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show or hide the grid."
-msgstr "Mostrar ou agochar a grade."
+msgstr "Amosar ou agochar a grade."
 
 #: kig/kig_part.cpp:310
 #, kde-format
@@ -980,7 +980,7 @@ msgstr "Mostr&ar os eixos"
 #: kig/kig_part.cpp:312
 #, kde-format
 msgid "Show or hide the axes."
-msgstr "Mostrar ou agochar os eixos."
+msgstr "Amosar ou agochar os eixos."
 
 #: kig/kig_part.cpp:316
 #, kde-format
@@ -1082,8 +1082,8 @@ msgstr[1] "Agochar %1 obxectos"
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
-msgstr[0] "Mostrar %1 obxecto"
-msgstr[1] "Mostrar %1 obxectos"
+msgstr[0] "Amosar %1 obxecto"
+msgstr[1] "Amosar %1 obxectos"
 
 #: kig/kig_view.cpp:189
 #, kde-format
@@ -1103,7 +1103,7 @@ msgstr "Centrar de novo a vista"
 #: kig/kig_view.cpp:496
 #, kde-format
 msgid "Select the rectangle that should be shown."
-msgstr "Escolla a área que queira ver mostrada."
+msgstr "Escolla a área que queira ver amosada."
 
 #: kig/kig_view.cpp:501 kig/kig_view.cpp:551
 #, kde-format
@@ -1328,7 +1328,7 @@ msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
 "Output goes to stdout unless --outfile is specified."
 msgstr ""
-"Non mostrar unha interface gráfica. Converter o ficheiro indicado para o "
+"Non amosar unha interface gráfica. Converter o ficheiro indicado para o "
 "formato nativo de Kig. O resultado vai á saída normal a menos que se indique "
 "a opción «--outfile»."
 
@@ -2127,12 +2127,12 @@ msgstr "&Polares"
 #: misc/coordinate_system.cpp:581
 #, kde-format
 msgid "Set Euclidean Coordinate System"
-msgstr "Empregar o sistema de coordenadas euclidianas"
+msgstr "Usar o sistema de coordenadas euclidianas"
 
 #: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Polar Coordinate System"
-msgstr "Empregar o sistema de coordenadas polares"
+msgstr "Usar o sistema de coordenadas polares"
 
 #: misc/goniometry.cc:95
 #, kde-format
@@ -2210,7 +2210,7 @@ msgstr "Valor numérico"
 #: misc/kigcoordinateprecisiondialog.ui:9
 #, kde-format
 msgid "&Use default coordinate precision"
-msgstr "&Empregar a precisión predeterminada das coordenadas"
+msgstr "&Usar a precisión predeterminada das coordenadas"
 
 #. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
 #: misc/kigcoordinateprecisiondialog.ui:16
@@ -3372,13 +3372,13 @@ msgid ""
 "places (e.g. \"This segment is %1 units long.\")."
 msgstr ""
 "Insira aquí o texto para a etiqueta e prema «Seguinte».\n"
-"Se quere mostrar partes variábeis, poña entón %1, %2, … nos lugares "
-"axeitados (p.ex. «Este segmento ten %1 unidades de tamaño.»)."
+"Se quere amosar partes variábeis, poña entón %1, %2, … nos lugares axeitados "
+"(p.ex. «Este segmento ten %1 unidades de tamaño.»)."
 
 #: modes/textlabelwizard.cc:52
 #, kde-format
 msgid "Show text in a frame"
-msgstr "Mostrar o texto nun marco"
+msgstr "Amosar o texto nun marco"
 
 #: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
 #, kde-format
@@ -3716,7 +3716,7 @@ msgstr "Anexar a esta curva de Bézier"
 
 #: objects/bezier_imp.cc:208
 msgid "Show a Bézier Curve"
-msgstr "Mostrar unha curva de Bézier"
+msgstr "Amosar unha curva de Bézier"
 
 #: objects/bezier_imp.cc:209
 msgid "Hide a Bézier Curve"
@@ -3754,7 +3754,7 @@ msgstr "Anexar a esta cuadrática de Bézier"
 
 #: objects/bezier_imp.cc:225
 msgid "Show a Bézier Quadratic"
-msgstr "Mostrar unha cuadrática de Bézier"
+msgstr "Amosar unha cuadrática de Bézier"
 
 #: objects/bezier_imp.cc:226
 msgid "Hide a Bézier Quadratic"
@@ -3792,7 +3792,7 @@ msgstr "Anexar a esta cúbica de Bézier"
 
 #: objects/bezier_imp.cc:242
 msgid "Show a Bézier Cubic"
-msgstr "Mostrar unha curva de Bézier"
+msgstr "Amosar unha curva de Bézier"
 
 #: objects/bezier_imp.cc:243
 msgid "Hide a Bézier Cubic"
@@ -3830,7 +3830,7 @@ msgstr "Anexar a esta curva racional de Bézier"
 
 #: objects/bezier_imp.cc:497
 msgid "Show a Rational Bézier Curve"
-msgstr "Mostrar unha curva racional de Bézier"
+msgstr "Amosar unha curva racional de Bézier"
 
 #: objects/bezier_imp.cc:498
 msgid "Hide a Rational Bézier Curve"
@@ -3868,7 +3868,7 @@ msgstr "Anexar a esta cuadrática racional de Bézier"
 
 #: objects/bezier_imp.cc:514
 msgid "Show a Rational Bézier Quadratic"
-msgstr "Mostrar unha cuadrática racional de Bézier"
+msgstr "Amosar unha cuadrática racional de Bézier"
 
 #: objects/bezier_imp.cc:515
 msgid "Hide a Rational Bézier Quadratic"
@@ -3906,7 +3906,7 @@ msgstr "Anexar a esta cúbica racional de Bézier"
 
 #: objects/bezier_imp.cc:531
 msgid "Show a Rational Bézier Cubic"
-msgstr "Mostrar unha cúbica racional de Bézier"
+msgstr "Amosar unha cúbica racional de Bézier"
 
 #: objects/bezier_imp.cc:532
 msgid "Hide a Rational Bézier Cubic"
@@ -4048,7 +4048,7 @@ msgstr "Anexar a este círculo"
 
 #: objects/circle_imp.cc:344
 msgid "Show a Circle"
-msgstr "Mostrar un círculo"
+msgstr "Amosar un círculo"
 
 #: objects/circle_imp.cc:345
 msgid "Hide a Circle"
@@ -4164,7 +4164,7 @@ msgstr "Anexar a esta cónica"
 
 #: objects/conic_imp.cc:385
 msgid "Show a Conic"
-msgstr "Mostrar unha cónica"
+msgstr "Amosar unha cónica"
 
 #: objects/conic_imp.cc:386
 msgid "Hide a Conic"
@@ -4214,7 +4214,7 @@ msgstr "Anexar a este arco cónico"
 
 #: objects/conic_imp.cc:610
 msgid "Show a Conic Arc"
-msgstr "Mostrar un arco cónico"
+msgstr "Amosar un arco cónico"
 
 #: objects/conic_imp.cc:611
 msgid "Hide a Conic Arc"
@@ -4467,7 +4467,7 @@ msgstr "Anexar a esta curva cúbica"
 
 #: objects/cubic_imp.cc:354
 msgid "Show a Cubic Curve"
-msgstr "Mostrar unha curva cúbica"
+msgstr "Amosar unha curva cúbica"
 
 #: objects/cubic_imp.cc:355
 msgid "Hide a Cubic Curve"
@@ -4515,7 +4515,7 @@ msgstr "Anexar a esta curva"
 
 #: objects/curve_imp.cc:25
 msgid "Show a Curve"
-msgstr "Mostrar unha curva"
+msgstr "Amosar unha curva"
 
 #: objects/curve_imp.cc:26
 msgid "Hide a Curve"
@@ -4669,7 +4669,7 @@ msgstr "Anexar a esta liña"
 
 #: objects/line_imp.cc:567
 msgid "Show a Line"
-msgstr "Mostrar unha liña"
+msgstr "Amosar unha liña"
 
 #: objects/line_imp.cc:568
 msgid "Hide a Line"
@@ -4707,7 +4707,7 @@ msgstr "Anexar a este segmento"
 
 #: objects/line_imp.cc:583
 msgid "Show a Segment"
-msgstr "Mostrar un segmento"
+msgstr "Amosar un segmento"
 
 #: objects/line_imp.cc:584
 msgid "Hide a Segment"
@@ -4745,7 +4745,7 @@ msgstr "Anexar a esta semirrecta"
 
 #: objects/line_imp.cc:599
 msgid "Show a Half-Line"
-msgstr "Mostrar unha semirrecta"
+msgstr "Amosar unha semirrecta"
 
 #: objects/line_imp.cc:600
 msgid "Hide a Half-Line"
@@ -4923,7 +4923,7 @@ msgstr "Anexar a este lugar xeométrico"
 
 #: objects/locus_imp.cc:193
 msgid "Show a Locus"
-msgstr "Mostrar un lugar xeométrico"
+msgstr "Amosar un lugar xeométrico"
 
 #: objects/locus_imp.cc:194
 msgid "Hide a Locus"
@@ -4965,7 +4965,7 @@ msgstr "Anexar a este obxecto"
 
 #: objects/object_imp.cc:286
 msgid "Show an object"
-msgstr "Mostrar un obxecto"
+msgstr "Amosar un obxecto"
 
 #: objects/object_imp.cc:287
 msgid "Hide an object"
@@ -5043,7 +5043,7 @@ msgstr "Anexar a este ángulo"
 
 #: objects/other_imp.cc:605
 msgid "Show an Angle"
-msgstr "Mostrar un ángulo"
+msgstr "Amosar un ángulo"
 
 #: objects/other_imp.cc:606
 msgid "Hide an Angle"
@@ -5081,7 +5081,7 @@ msgstr "Anexar a este vector"
 
 #: objects/other_imp.cc:620
 msgid "Show a Vector"
-msgstr "Mostrar un vector"
+msgstr "Amosar un vector"
 
 #: objects/other_imp.cc:621
 msgid "Hide a Vector"
@@ -5119,7 +5119,7 @@ msgstr "Anexar a este arco"
 
 #: objects/other_imp.cc:635
 msgid "Show an Arc"
-msgstr "Mostrar un arco"
+msgstr "Amosar un arco"
 
 #: objects/other_imp.cc:636
 msgid "Hide an Arc"
@@ -5169,7 +5169,7 @@ msgstr "Anexar a este punto"
 
 #: objects/point_imp.cc:160
 msgid "Show a Point"
-msgstr "Mostrar un punto"
+msgstr "Amosar un punto"
 
 #: objects/point_imp.cc:161
 msgid "Hide a Point"
@@ -5366,7 +5366,7 @@ msgstr "Anexar a este polígono"
 
 #: objects/polygon_imp.cc:635
 msgid "Show a Polygon"
-msgstr "Mostrar un polígono"
+msgstr "Amosar un polígono"
 
 #: objects/polygon_imp.cc:636
 msgid "Hide a Polygon"
@@ -5404,7 +5404,7 @@ msgstr "Anexar a esta curva poligonal pechada"
 
 #: objects/polygon_imp.cc:652
 msgid "Show a closed polygonal curve"
-msgstr "Mostrar unha curva poligonal pechada"
+msgstr "Amosar unha curva poligonal pechada"
 
 #: objects/polygon_imp.cc:653
 msgid "Hide a closed polygonal curve"
@@ -5442,7 +5442,7 @@ msgstr "Anexar a esta curva poligonal"
 
 #: objects/polygon_imp.cc:669
 msgid "Show a polygonal curve"
-msgstr "Mostrar unha curva poligonal"
+msgstr "Amosar unha curva poligonal"
 
 #: objects/polygon_imp.cc:670
 msgid "Hide a polygonal curve"
@@ -5480,7 +5480,7 @@ msgstr "Anexar a este triángulo"
 
 #: objects/polygon_imp.cc:686
 msgid "Show a Triangle"
-msgstr "Mostrar un triángulo"
+msgstr "Amosar un triángulo"
 
 #: objects/polygon_imp.cc:687
 msgid "Hide a Triangle"
@@ -5518,7 +5518,7 @@ msgstr "Anexar a este cuadrilátero"
 
 #: objects/polygon_imp.cc:703
 msgid "Show a Quadrilateral"
-msgstr "Mostrar un cuadrilátero"
+msgstr "Amosar un cuadrilátero"
 
 #: objects/polygon_imp.cc:704
 msgid "Hide a Quadrilateral"
@@ -5939,7 +5939,7 @@ msgstr "Anexar a esta etiqueta"
 
 #: objects/text_imp.cc:144
 msgid "Show a Label"
-msgstr "Mostrar unha etiqueta"
+msgstr "Amosar unha etiqueta"
 
 #: objects/text_imp.cc:145
 msgid "Hide a Label"
@@ -5977,7 +5977,7 @@ msgstr "Anexar a esta etiqueta numérica"
 
 #: objects/text_imp.cc:190
 msgid "Show a Numeric Label"
-msgstr "Mostrar unha etiqueta numérica"
+msgstr "Amosar unha etiqueta numérica"
 
 #: objects/text_imp.cc:191
 msgid "Hide a Numeric Label"
@@ -6019,7 +6019,7 @@ msgstr "Anexar a esta etiqueta booleana"
 
 #: objects/text_imp.cc:284
 msgid "Show a Boolean Label"
-msgstr "Mostrar unha etiqueta booleana"
+msgstr "Amosar unha etiqueta booleana"
 
 #: objects/text_imp.cc:285
 msgid "Hide a Boolean Label"
@@ -6068,7 +6068,7 @@ msgstr "Insira o valor novo:"
 #: objects/text_type.cc:295
 #, kde-format
 msgid "Change Displayed Value"
-msgstr "Cambiar o valor mostrado"
+msgstr "Cambiar o valor amosado"
 
 #: objects/transform_types.cc:21
 #, kde-format
@@ -6822,8 +6822,8 @@ msgid ""
 msgstr ""
 "<p>Kig ten máis de 20 obxectos e 10 transformacións con máis de 80 "
 "construcións \n"
-"que se poden empregar nos documentos: abre o menú <em>Obxectos</em> para "
-"velos todos.</p>\n"
+"que se poden usar nos documentos: abre o menú <em>Obxectos</em> para velos "
+"todos.</p>\n"
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:70
