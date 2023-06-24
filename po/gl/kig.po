@@ -173,7 +173,7 @@ msgstr "Documentos do Asymptote (*.asy)"
 #: filters/asyexporter.cc:46
 #, kde-format
 msgid "Export as Asymptote script"
-msgstr "Exportar como script do Asymptote"
+msgstr "Exportar como guión do Asymptote"
 
 #: filters/asyexporter.cc:48
 #, kde-format
@@ -2076,7 +2076,7 @@ msgstr "Script en Python"
 #: misc/builtin_stuff.cc:612
 #, kde-format
 msgid "Construct a new Python script."
-msgstr "Construír un script de Python novo."
+msgstr "Construír un guión de Python novo."
 
 #: misc/coordinate_system.cpp:322
 #, kde-format
@@ -3357,7 +3357,7 @@ msgstr "Máis…"
 #: modes/popup/scriptactionsprovider.cc:57
 #, kde-format
 msgid "Edit Script..."
-msgstr "Editar o script…"
+msgstr "Editar o guión…"
 
 #: modes/textlabelwizard.cc:31
 #, kde-format
@@ -6616,7 +6616,7 @@ msgstr "Escolla o punto no cal crear a suma dos dous vectores…"
 #, kde-format
 msgctxt "@title:window"
 msgid "New Script"
-msgstr "Novo script"
+msgstr "Novo guión"
 
 #: scripting/newscriptwizard.cc:57
 #, kde-format
@@ -6657,8 +6657,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script and click the Finish button again."
 msgstr ""
-"O interprete de Python obtivo un erro durante a execución do script. Corrixa "
-"o script e prema de novo o botón Terminar."
+"O interprete de Python obtivo un erro durante a execución do guión. Corrixa "
+"o guión e prema de novo o botón Terminar."
 
 #: scripting/script_mode.cc:183 scripting/script_mode.cc:317
 #, kde-format
@@ -6676,20 +6676,20 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script, and click the Finish button again."
 msgstr ""
-"Parece haber algún erro no script. O intérprete de Python non indicou ningún "
-"erro pero o script non xerou un obxecto correcto. Corrixa o programa e prema "
+"Parece haber algún erro no guión. O intérprete de Python non indicou ningún "
+"erro pero o guión non xerou un obxecto correcto. Corrixa o programa e prema "
 "de novo o botón Terminar."
 
 #: scripting/script_mode.cc:285
 #, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
-msgstr "Editar o script"
+msgstr "Editar o guión"
 
 #: scripting/script_mode.cc:307
 #, kde-format
 msgid "Edit Python Script"
-msgstr "Editar o script de Python"
+msgstr "Editar o guión de Python"
 
 #: scripting/script_mode.cc:315
 #, kde-format
@@ -6697,8 +6697,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script."
 msgstr ""
-"O intérprete de Python obtivo un erro durante a execución do script. Corrixa "
-"o script."
+"O intérprete de Python obtivo un erro durante a execución do guión. Corrixa "
+"o guión."
 
 #: scripting/script_mode.cc:320
 #, kde-format
@@ -6707,8 +6707,8 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script."
 msgstr ""
-"Parece haber algún erro no script. O intérprete de Python non indicou ningún "
-"erro pero o script non xerou un obxecto correcto. Corrixa o script."
+"Parece haber algún erro no guión. O intérprete de Python non indicou ningún "
+"erro pero o guión non xerou un obxecto correcto. Corrixa o guión."
 
 #. i18n: ectx: @info:tipoftheday
 #: tips:2
@@ -6736,7 +6736,7 @@ msgid ""
 "hexagons (Point(0,0), Point(1,0), 5)\n"
 "</pre></code>\n"
 msgstr ""
-"<p>Pódense controlar as construcións en kig mediante un script de python \n"
+"<p>Pódense controlar as construcións en kig mediante un guión de python \n"
 "chamado «pykig», que se pode executar mediante a orde \n"
 "<code>pykig.py</code>. Velaquí un exemplo (<code>hexagons.kpy</code>) \n"
 "que podes probar:\n"
