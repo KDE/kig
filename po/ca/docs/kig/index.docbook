@@ -830,7 +830,7 @@ format="PNG"/>
 <para
 >La creació de scripts en Python en el &kig; bàsicament us permetrà crear els vostres propis objectes a partir d'altres objectes pare. Per exemple, si sou un professor de matemàtiques, i disposeu d'un mètode atractiu de calcular algun punt interessant d'una cònica, en lloc d'embolicar-vos amb construccions complexes i macros, n'hi ha prou amb que escriviu una mica de codi en Python de com es calcula el punt i aleshores el &kig; ho farà. </para>
 <para
->Suposem que no esteu al cas de l'existència en el &kig; del tipus <quote
+>Suposem que no esteu al cas de la integració en el &kig; del tipus <quote
 >Punt mitjà</quote
 >, i que voleu utilitzar el punt mitjà de dos punts donats. Aleshores cal que feu clic al botó &nbsp;<inlinemediaobject
 > <imageobject
@@ -909,7 +909,7 @@ format="PNG"/>
 <para
 >Si ara feu clic al botó <guibutton
 >Acaba</guibutton
->, el nou objecte apareixerà al document del &kig;. Si moveu un dels punts, el nou punt també es mourà. D'aquesta manera es poden construir objectes més potents, se us anima a intentar-ho. </para>
+>, el nou objecte apareixerà al document del &kig;. Si moveu un dels punts, el nou punt també es mourà. D'aquesta manera es poden integrar objectes més potents, se us anima a intentar-ho. </para>
 <screenshot>
 <screeninfo
 >Un objecte de script construït</screeninfo>
