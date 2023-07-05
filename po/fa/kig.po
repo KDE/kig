@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -823,6 +823,7 @@ msgstr ""
 msgid "Remove %1 Object"
 msgid_plural "Remove %1 Objects"
 msgstr[0] "حذف %1 شیء"
+msgstr[1] ""
 
 #: kig/kig_commands.cpp:103
 #, fuzzy, kde-format
@@ -830,6 +831,7 @@ msgstr[0] "حذف %1 شیء"
 msgid "Add %1 Object"
 msgid_plural "Add %1 Objects"
 msgstr[0] "افزودن %1 شیء"
+msgstr[1] ""
 
 #: kig/kig_part.cpp:86
 #, kde-format
@@ -1097,16 +1099,18 @@ msgid "Print Geometry"
 msgstr "چاپ هندسه"
 
 #: kig/kig_part.cpp:931
-#, kde-format
+#, fuzzy, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "مخفی کردن %1 شیء"
+msgstr[1] ""
 
 #: kig/kig_part.cpp:950
-#, kde-format
+#, fuzzy, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
 msgstr[0] "نمایش %1 شیء"
+msgstr[1] ""
 
 #: kig/kig_view.cpp:189
 #, kde-format
@@ -3208,6 +3212,7 @@ msgstr "تعریف کلان‌دستور جدید"
 msgid "Move %1 Object"
 msgid_plural "Move %1 Objects"
 msgstr[0] "حرکت %1 شیء"
+msgstr[1] ""
 
 #: modes/moving.cc:218
 #, kde-format
@@ -3318,10 +3323,11 @@ msgid "Set Name of this Object:"
 msgstr "تنظیم نام این شیء:"
 
 #: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
-#, kde-format
+#, fuzzy, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 شیء"
+msgstr[1] ""
 
 #: modes/popup/popup.cc:70
 #, kde-format
@@ -3465,10 +3471,11 @@ msgid "E&xport..."
 msgstr "&صادرات...‌"
 
 #: modes/typesdialog.cpp:425
-#, kde-format
+#, fuzzy, kde-format
 msgid "Are you sure you want to delete this type?"
 msgid_plural "Are you sure you want to delete these %1 types?"
 msgstr[0] "مطمئن هستید می‌خواهید این %1 نوع را حذف کنید؟"
+msgstr[1] ""
 
 #: modes/typesdialog.cpp:427
 #, kde-format
