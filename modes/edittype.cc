@@ -110,3 +110,5 @@ QString EditType::icon() const
 {
     return micon;
 }
+
+#include "moc_edittype.cpp"

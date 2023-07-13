@@ -174,3 +174,5 @@ void NewScriptWizard::setType(ScriptType::Type type)
         document->setMode(ScriptType::highlightStyle(type));
     }
 }
+
+#include "moc_newscriptwizard.cpp"

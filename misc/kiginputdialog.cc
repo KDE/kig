@@ -285,3 +285,5 @@ Goniometry KigInputDialog::getAngle(QWidget *parent, bool *ok, const Goniometry 
 
     return goniometry;
 }
+
+#include "moc_kiginputdialog.cpp"

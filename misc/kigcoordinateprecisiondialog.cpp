@@ -55,3 +55,5 @@ void KigCoordinatePrecisionDialog::toggleCoordinateControls(int state)
     ui->m_precisionLabel->setEnabled(controlsEnabled);
     ui->m_precisionSpinBox->setEnabled(controlsEnabled);
 }
+
+#include "moc_kigcoordinateprecisiondialog.cpp"

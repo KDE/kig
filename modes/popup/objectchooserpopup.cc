@@ -86,3 +86,5 @@ void ObjectChooserPopup::actionActivatedSlot(QAction *act)
 {
     mselected = act->data().toInt();
 }
+
+#include "moc_objectchooserpopup.cpp"

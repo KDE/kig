@@ -227,3 +227,5 @@ QAction *NormalModePopupObjects::addInternalAction(int menu, QAction *act)
     mmenuslast[menu]->addAction(act);
     return act;
 }
+
+#include "moc_popup.cpp"

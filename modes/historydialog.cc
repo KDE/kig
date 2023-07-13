@@ -115,3 +115,5 @@ void HistoryDialog::updateWidgets()
     mwidget->buttonNext->setEnabled(notlast);
     mwidget->buttonLast->setEnabled(notlast);
 }
+
+#include "moc_historydialog.cpp"

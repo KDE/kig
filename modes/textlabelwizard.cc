@@ -187,3 +187,5 @@ void TextLabelWizard::slotHelpClicked()
 {
     KHelpClient::invokeHelp(QStringLiteral("text-labels"), QStringLiteral("kig"));
 }
+
+#include "moc_textlabelwizard.cpp"

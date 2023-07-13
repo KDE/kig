@@ -95,3 +95,5 @@ bool LatexExporterOptions::showExtraFrame() const
 {
     return expwidget->showFrameCheckBox->isChecked();
 }
+
+#include "moc_latexexporteroptions.cpp"

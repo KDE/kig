@@ -209,3 +209,5 @@ void MacroWizard::finalArgsChanged()
 {
     mfinalArgsPage->setChanged();
 }
+
+#include "moc_macrowizard.cpp"

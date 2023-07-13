@@ -83,3 +83,5 @@ QString KigFileDialog::selectedFile()
 
     return files[0];
 }
+
+#include "moc_kigfiledialog.cpp"

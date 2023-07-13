@@ -562,3 +562,5 @@ void KigView::zoomArea()
 {
     mrealwidget->zoomArea();
 }
+
+#include "moc_kig_view.cpp"

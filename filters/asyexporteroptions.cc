@@ -52,3 +52,5 @@ bool AsyExporterOptions::showExtraFrame() const
 {
     return expwidget->showFrameCheckBox->isChecked();
 }
+
+#include "moc_asyexporteroptions.cpp"

@@ -1106,3 +1106,5 @@ void KigPart::deleteTypes()
 }
 
 #include "kig_part.moc"
+
+#include "moc_kig_part.cpp"

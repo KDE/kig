@@ -395,3 +395,5 @@ int NewScriptAction::shortcut() const
 }
 
 #endif // if KIG_ENABLE_PYTHON_SCRIPTING ( NewScriptAction )
+
+#include "moc_guiaction.cpp"

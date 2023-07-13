@@ -116,3 +116,5 @@ void ImageExporterOptions::slotUnitChanged(int index)
     expwidget->HeightInput->setValue(myunit.value());
     minternallysettingstuff = false;
 }
+
+#include "moc_imageexporteroptions.cpp"

@@ -42,3 +42,5 @@ bool SVGExporterOptions::showAxes() const
 {
     return expwidget->showAxesCheckBox->isChecked();
 }
+
+#include "moc_svgexporteroptions.cpp"

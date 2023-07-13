@@ -221,3 +221,5 @@ void Kig::startupTipOfDay()
 {
     KTipDialog::showTip(this, QStringLiteral("kig/tips"));
 }
+
+#include "moc_kig.cpp"

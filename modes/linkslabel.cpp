@@ -115,3 +115,5 @@ void LinksLabel::applyEdit(LinksLabelEditBuf &buf)
 
     Q_EMIT changed();
 }
+
+#include "moc_linkslabel.cpp"

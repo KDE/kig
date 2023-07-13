@@ -606,3 +606,5 @@ bool TypesDialog::loadGeogebraTools(const QString &sFrom, std::vector<Macro *> &
     return true;
 }
 #endif // WITH_GEOEBRA
+
+#include "moc_typesdialog.cpp"

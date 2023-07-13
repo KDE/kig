@@ -154,3 +154,5 @@ KigExportManager *KigExportManager::instance()
     static KigExportManager m;
     return &m;
 }
+
+#include "moc_exporter.cpp"
