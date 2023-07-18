@@ -13,7 +13,6 @@
   <name xml:lang="de">Kig</name>
   <name xml:lang="el">Kig</name>
   <name xml:lang="en-GB">Kig</name>
-  <name xml:lang="eo">Kig</name>
   <name xml:lang="es">Kig</name>
   <name xml:lang="et">Kig</name>
   <name xml:lang="eu">Kig</name>
@@ -50,7 +49,6 @@
   <summary xml:lang="de">Interaktive Geometrie</summary>
   <summary xml:lang="el">Διαδραστική γεωμετρία</summary>
   <summary xml:lang="en-GB">Interactive Geometry</summary>
-  <summary xml:lang="eo">Interaga Geometrio</summary>
   <summary xml:lang="es">Geometría interactiva</summary>
   <summary xml:lang="et">Interaktiivne geomeetria</summary>
   <summary xml:lang="eu">Geometria elkarreragilea</summary>
@@ -87,7 +85,6 @@
     <p xml:lang="de">Kig ist eine Anwendung für interaktive Mathematik zum Lernen und Lehren. Geometrie. Es ermöglicht die Erforschung mathematischer Elemente und Konzepte mit Hilfe des Rechners und kann auch als Zeichenprogramm für mathematische Abbildungen benutzt werden. Konstruktionen können mit Punkten, Vektoren, Linien und Polygonen und allen anderen Elementen durchgeführt werden. Elemente können direkt mit der Maus verändert werden. Kig hilft Lehrern und Studenten, um Vermutungen anzustellen und zu verstehen, wie man geometrische Beweise erbringen kann. Theoreme.</p>
     <p xml:lang="el">Το Kig είναι λογισμικό διαδραστικών μαθηματικών για την εκμάθηση και τη διδασκαλία της γεωμετρίας. Επιτρέπει τη διερεύνηση μαθηματικών σχημάτων και εννοιών με τη χρήση του υπολογιστή και επίσης είναι εργαλείο σχεδίασης μαθηματικών σχημάτων. Οι κατασκευές γίνονται με σημεία, διανύσματα, γραμμές και πολύγωνα και όλα τα αντικείμενα μεταβάλλονται με τη χρήση του ποντικιού. Το Kig βοηθάει τους καθηγητές και τους μαθητές να κάνουν υποθέσεις και να κατανοήσουν πώς να πραγματοποιούν τις αποδείξεις των γεωμετρικών θεωρημάτων.</p>
     <p xml:lang="en-GB">Kig is an interactive mathematics software for learning and teaching geometry. It allows to explore mathematical figures and concepts using the computer and also can serve as a drawing tool for mathematical figures. Constructions can be made with points, vectors, lines, and polygons and all elements can be modified directly by using the mouse. Kig helps teachers and students to make conjectures and to understand how to prove geometric theorems.</p>
-    <p xml:lang="eo">Kig estas interaga matematika programaro por lerni kaj instrui geometrion. Ĝi permesas esplori matematikajn figurojn kaj konceptojn uzante la komputilon kaj ankaŭ povas funkcii kiel desegna ilo por matematikaj figuroj. Konstruoj povas esti farataj per punktoj, vektoroj, linioj kaj pluranguloj kaj ĉiuj elementoj povas esti modifataj rekte per la muso. Kig helpas instruistojn kaj studentojn fari konjektojn kaj kompreni kiel pruvi geometriajn teoremojn.</p>
     <p xml:lang="es">Kig es un software matemático interactivo para el aprendizaje y la enseñanza de la geometría. Permite explorar figuras matemáticas y conceptos usando un equipo informático, además de servir como herramienta de dibujo de figuras matemáticas. Puede realizar construcciones con puntos, vectores, líneas y polígonos, y permite modificar todos estos elementos directamente usando el ratón. Kig ayuda a los profesores y a los estudiantes a hacer conjeturas y a entender cómo probar teoremas geométricos.</p>
     <p xml:lang="et">Kig on interaktiivne matemaatikatarkvara geomeetria õppimiseks ja õpetamiseks. See võimaldab arvuti vahendusel uurida matemaatilisi kujundeid ja põhimõtteid ning ühtlasi matemaatilisi kujundeid joonistada. Kujundeid võib luua punktide, vektorite, sirgete ja hulknurkade põhjal, kõiki elemente saab muuta otse hiirega. Kig aitab õpetajatele ja õpilastel püstitada hüpoteese ja mõista, kuidas tuleks teoreeme tõestada.</p>
     <p xml:lang="eu">Kig geometria ikasi eta irakasteko matematika software elkarreragile bat da. Irudi eta kontzeptu matematikoak aztertzeko aukera ematen du, ordenagailua erabiliz, eta irudi matematikoak marrazteko tresna gisa ere erabil daiteke. Puntu, bektore, lerro eta poligonoekin eraiki daiteke, eta elementu guztiak zuzenean alda daitezke sagua erabiliz. Kig-ek aieruak egiten eta geometria teoremak nola frogatu ulertzen laguntzen die irakasle eta ikasleei.</p>
@@ -127,7 +124,6 @@
       <caption xml:lang="de">Interaktive Geometrie mit Kig</caption>
       <caption xml:lang="el">Διαδραστική γεωμετρία με το Kig</caption>
       <caption xml:lang="en-GB">Interactive geometry with Kig</caption>
-      <caption xml:lang="eo">Interaga geometrio per Kig</caption>
       <caption xml:lang="es">Geometría interactiva con Kig</caption>
       <caption xml:lang="et">Interaktiivne geomeetria Kigis</caption>
       <caption xml:lang="eu">Geometria elkarreragilea Kig-ekin</caption>
