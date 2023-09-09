@@ -212,6 +212,8 @@ set(kigpart_PART_SRCS
    kig/kig_part.cpp
    kig/kig_view.cpp
 
+   kig/kig_part.qrc
+
 
    objects/angle_type.h
    objects/arc_type.h

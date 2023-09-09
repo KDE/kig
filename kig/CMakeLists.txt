@@ -8,6 +8,8 @@ set(kig_SRCS
   main.cpp
   kig.cpp
   kig.h
+
+  kig.qrc
 )
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-kig.png")
@@ -22,7 +24,6 @@ install(TARGETS kig ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 ########### install files ###############
 
 install( PROGRAMS org.kde.kig.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
-install( FILES kigui.rc kigpartui.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/kig )
 
 ecm_install_icons(ICONS
   22-apps-kig.png
