@@ -3380,7 +3380,7 @@ msgid ""
 msgstr ""
 "Introduïu el text per a l'etiqueta i premeu «Següent».\n"
 "Si voleu mostrar parts variables, llavors poseu %1, %2,... als llocs "
-"apropiats (p. ex. «Este segment té una llargària de %1 unitats»)."
+"apropiats (p. ex., «Este segment té una llargària de %1 unitats»)."
 
 #: modes/textlabelwizard.cc:52
 #, kde-format
