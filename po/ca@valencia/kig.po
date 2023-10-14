@@ -307,7 +307,7 @@ msgstr ""
 #: filters/exporter.cc:58
 #, kde-format
 msgid "&Export to image"
-msgstr "&Exporta cap a imatge"
+msgstr "&Exporta cap a una imatge"
 
 #: filters/exporter.cc:63
 #, kde-format
@@ -2528,7 +2528,7 @@ msgstr ""
 #: misc/special_constructors.cc:1202
 #, kde-format
 msgid "... assign this weight to last selected control point"
-msgstr "... assigna este pes al últim punt de control seleccionat"
+msgstr "... assigna este pes a l'últim punt de control seleccionat"
 
 #: misc/special_constructors.cc:1205
 #, kde-format
