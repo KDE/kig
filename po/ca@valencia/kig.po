@@ -643,8 +643,8 @@ msgid ""
 "Did a lot of important work all around Kig, including, but not limited to "
 "conics, cubics, transformations and property tests support."
 msgstr ""
-"Ha fet molta faena important a Kig, inclòs però no limitat a còniques, "
-"cúbiques, transformacions i ajuda de proves de propietats."
+"Ha fet molta faena important al voltant de Kig, inclòs però no limitat a "
+"còniques, cúbiques, transformacions i ajuda de proves de propietats."
 
 #: kig/aboutdata.h:33
 #, kde-format
@@ -3121,7 +3121,7 @@ msgid ""
 "and construct the objects in the correct order..."
 msgstr ""
 "Un dels objectes resultants que heu seleccionat no es pot calcular a partir "
-"dels objectes donats. Per açò, Kig no pot calcular esta macro. Per favor, "
+"dels objectes donats. Per a açò, Kig no pot calcular esta macro. Per favor, "
 "premeu Arrere i construïu els objectes en l'ordre correcte..."
 
 #: modes/macro.cc:78
