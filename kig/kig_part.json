@@ -34,7 +34,6 @@
         "Name[sv]": "Kig-delprogram",
         "Name[tr]": "KigPart",
         "Name[uk]": "KigPart",
-        "Name[x-test]": "xxKigPartxx",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
             "KParts/ReadWritePart"
