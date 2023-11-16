@@ -990,7 +990,7 @@ msgstr "Posa les ulleres d'infrarojos"
 #: kig/kig_part.cpp:318
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
-msgstr "Activa/desactiva la visibilitat d'objectes ocults."
+msgstr "Activa o desactiva la visibilitat d'objectes ocults."
 
 #: kig/kig_part.cpp:348
 #, kde-format
@@ -1025,7 +1025,7 @@ msgid ""
 "\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">KDE's bug tracking system</a>"
 msgstr ""
-"Heu intentat obrir un document del tipus «%1»; malauradament, Kig no "
+"Heu intentat obrir un document del tipus «%1»; desgraciadament, Kig no "
 "reconeix este format. Si creieu que valdria la pena implementar l'adaptació "
 "per al format en qüestió, podeu obrir una sol·licitud de característica en "
 "el <a href=\"https://bugs.kde.org/enter_bug.cgi?"
@@ -3121,7 +3121,7 @@ msgid ""
 "and construct the objects in the correct order..."
 msgstr ""
 "Un dels objectes resultants que heu seleccionat no es pot calcular a partir "
-"dels objectes donats. Per a açò, Kig no pot calcular esta macro. Per favor, "
+"dels objectes donats. Per açò, Kig no pot calcular esta macro. Per favor, "
 "premeu Arrere i construïu els objectes en l'ordre correcte..."
 
 #: modes/macro.cc:78
