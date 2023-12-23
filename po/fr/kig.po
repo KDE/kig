@@ -16,7 +16,7 @@
 # Guillaume Pujol <guill.p@gmail.com>, 2008.
 # Mickaël Sibelle <kimael@gmail.com>, 2009.
 # Raphaël JAKSE <raphael.jakse@gmail.com>, 2012, 2016.
-# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2020, 2021, 2022, 2023 xavier <xavier.besnard@neuf.fr>
+# SPDX-FileCopyrightText: 2012, 2013, 2014, 2015, 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@kde.org>
 # Simon Depiets <sdepiets@gmail.com>, 2019.
 #
 msgid ""
