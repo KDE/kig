@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop">
   <id>org.kde.kig.desktop</id>
+  <developer_name>KDE</developer_name>
   <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <name>Kig</name>
   <name xml:lang="ar">كيج</name>
   <name xml:lang="bg">Kig</name>
@@ -116,6 +118,8 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kig</url>
   <url type="help">https://docs.kde.org/?application=kig</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kig&amp;source=appdata</url>
+  <url type="vcs-browser">https://invent.kde.org/education/kig</url>
+  <url type="contribute">https://invent.kde.org/education/kig/-/blob/master/README.Developers?ref_type=heads</url>
   <screenshots>
     <screenshot type="default">
       <caption>Interactive geometry with Kig</caption>
@@ -152,7 +156,7 @@
       <caption xml:lang="x-test">xxInteractive geometry with Kigxx</caption>
       <caption xml:lang="zh-CN">Kig 的交互式几何学</caption>
       <caption xml:lang="zh-TW">使用 Kig 來交互式幾何作圖</caption>
-      <image>https://cdn.kde.org/screenshots/kig/kig.png</image>
+      <image type="source">https://cdn.kde.org/screenshots/kig/kig.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
