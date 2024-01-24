@@ -36,6 +36,7 @@
         "Name[uk]": "KigPart",
         "Name[x-test]": "xxKigPartxx",
         "Name[zh_CN]": "KigPart",
+        "Name[zh_TW]": "KigPart",
         "ServiceTypes": [
             "KParts/ReadOnlyPart",
             "KParts/ReadWritePart"
