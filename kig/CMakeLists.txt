@@ -20,6 +20,17 @@ target_link_libraries(kig KF5::Parts KF5::ConfigCore KF5::Crash)
 
 install(TARGETS kig ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
+if(APPLE)
+    set_target_properties(kig PROPERTIES
+        MACOSX_BUNDLE_DISPLAY_NAME "Kig"
+        MACOSX_BUNDLE_BUNDLE_NAME "Kig"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "Kig ${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.kig"
+        MACOSX_BUNDLE_COPYRIGHT "2002-2024 The Kig Developers")
+
+endif()
 
 ########### install files ###############
 
