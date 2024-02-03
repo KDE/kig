@@ -34,7 +34,7 @@
   filters/*-filter-status.txt ); add the possibility to ignore errors
   on loading
 
-- "export to *": add stuff like java applets, kmplot documents, etc...
+- "export to *": add stuff like java applets, kmplot documents, etc.
 
 * objects
 
@@ -71,7 +71,7 @@
   allow for importing from/exporting to other formula formats such as
   KFormula, OOFormula and MathML.
 
-- other types of fillable shapes, like arc sector, arc segment...
+- other types of fillable shapes, like arc sector, arc segment.
 
 - defined integrals, as a particular case of filled shapes.
 
@@ -108,7 +108,7 @@
   a vector to use to translate all the selected objects.
 
 - extend ObjectFactory::sensiblePointCalcer to also construct
-   intersection points of stuff... (pino: done for lines)
+   intersection points of stuff. (pino: done for lines)
 
 - when moving an object that wants to move its parents, try to check if
    it is itself not an indirect child of one of the parents it is
@@ -125,12 +125,12 @@
 
 - figure out a way to allow the user to enable and disable certain
   features.  E.g. I have been asked to allow the user to limit himself
-  to compass-ruler constructions..
+  to compass-ruler constructions.
 
 - add another viewmode ( which would be completely orthogonal to the
   KigMode concept ), where you can more clearly see the dependencies
   in a figure.  Something with colours, numberings, and/or a tree-like
-  text representation of the dependencies..
+  text representation of the dependencies.
 
 * scripting
 
@@ -147,8 +147,7 @@
 - document mathematical i18n strings, so that the translators have a
    clue about how to translate them !
 
-- add "Tools": easy tools designed for geometry, like Angle converter and
-  so on...
+- add "Tools": easy tools designed for geometry, like Angle converter etc.
 
 - save a "session", i.e.: record how a document is moved, and save it to
   e.g. a flash file or something like that.
@@ -160,4 +159,4 @@
 - there should be a way to link a figure to a (html?) file containing
    exercises.  Teachers would be able to create exercises for Kig.
    I'm thinking of doing this with HTML (& KHTML) + scripting ( but
-   this is _distant_ future.. )
+   this is _distant_ future. )

@@ -347,7 +347,7 @@ void LocusConstructor::drawprelim(const ObjectDrawer &drawer, KigPainter &p, con
     const ObjectTypeCalcer *constrained = dynamic_cast<ObjectTypeCalcer *>(parents.front());
     const ObjectCalcer *moving = parents.back();
     if (!constrained || !constrained->type()->inherits(ObjectType::ID_ConstrainedPointType)) {
-        // moving is in fact the constrained point.. swap them..
+        // moving is in fact the constrained point. swap them.
         moving = parents.front();
         constrained = dynamic_cast<const ObjectTypeCalcer *>(parents.back());
         assert(constrained);
@@ -392,7 +392,7 @@ std::vector<ObjectHolder *> LocusConstructor::build(const std::vector<ObjectCalc
     ObjectTypeCalcer *constrained = dynamic_cast<ObjectTypeCalcer *>(parents.front());
     ObjectCalcer *moving = parents.back();
     if (!constrained || !constrained->type()->inherits(ObjectType::ID_ConstrainedPointType)) {
-        // moving is in fact the constrained point.. swap them..
+        // moving is in fact the constrained point. swap them.
         moving = parents.front();
         constrained = dynamic_cast<ObjectTypeCalcer *>(parents.back());
         assert(constrained);
@@ -1693,7 +1693,7 @@ GenericIntersectionConstructor::GenericIntersectionConstructor()
 {
     // intersection type..
     // There is one "toplevel" object_constructor, that is composed
-    // of multiple subconstructors..  First we build the
+    // of multiple subconstructors.  First we build the
     // subconstructors:
     SimpleObjectTypeConstructor *lineline =
         new SimpleObjectTypeConstructor(LineLineIntersectionType::instance(), "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", "curvelineintersection");

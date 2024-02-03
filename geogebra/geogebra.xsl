@@ -43,7 +43,7 @@
 
   <xsl:template match="element" name="argsTemplate">
     <!-- The parameter - 'ObjectType' passed to this template *must* only be the 'fullTypeName' of some valid Kig
-    ObjectType. Passing self-chosen names as parameter will not recognise the Object (and it will not draw..) -->
+    ObjectType. Passing self-chosen names as parameter will not recognize the Object (and it will not draw.) -->
     <xsl:param name="objectType" as="xs:string"/>
     <xsl:variable name="label" as="xs:string" select="./output/@a0"/>
     <xsl:element name="{$objectType}">

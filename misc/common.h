@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -223,8 +223,8 @@ Coordinate calcCircleRadicalStartPoint(const Coordinate &ca, const Coordinate &c
 
 /**
  * Is the line, segment, ray or vector inside r ?  We need the imp to
- * distinguish between rays, lines, segments or whatever.. ( we use
- * their contains functions actually.. )
+ * distinguish between rays, lines, segments or whatever. ( we use
+ * their contains functions actually. )
  */
 bool lineInRect(const Rect &r, const Coordinate &a, const Coordinate &b, const int width, const ObjectImp *imp, const KigWidget &w);
 

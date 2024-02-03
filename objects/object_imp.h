@@ -287,10 +287,10 @@ public:
     bool inherits(const ObjectImpType *t) const;
 
     /**
-     * Returns a reference point where to attach labels; when this
+     * Returns a reference point where to attach labels. When this
      * returns an invalidCoord then the attachment is either not
      * done at all, or done in a specific way (like for curves,
-     * or for points) The treatment of points could also take
+     * or for points). The treatment of points could also take
      * advantage of this attachment mechanism.
      *
      * If this method returns a valid Coordinate, then this is
@@ -322,7 +322,7 @@ public:
     bool valid() const;
 
     virtual int numberOfProperties() const;
-    // the names of the properties as perceived by the user..  put
+    // the names of the properties as perceived by the user. put
     // I18N_NOOP's around them here..
     virtual const QList<KLazyLocalizedString> properties() const;
     // the names of the properties as known only by kig internally.  No

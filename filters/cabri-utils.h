@@ -1,4 +1,4 @@
-// This file is part of Kig, a KDE program for Interactive Geometry...
+// This file is part of Kig, a KDE program for Interactive Geometry.
 // SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 // SPDX-FileCopyrightText: 2006 Pino Toscano <toscano.pino@tiscali.it>
 

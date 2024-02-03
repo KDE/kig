@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -274,7 +274,7 @@ void KigPart::setupActions()
     a->setWhatsThis(i18n("Zoom out of the document"));
 
     a = KStandardAction::fitToPage(m_widget, SLOT(slotRecenterScreen()), actionCollection());
-    // grr.. why isn't there an icon for this..
+    // Why isn't there an icon for this?
     a->setIcon(QIcon(new KIconEngine("view_fit_to_page", l)));
     a->setToolTip(i18n("Recenter the screen on the document"));
     a->setWhatsThis(i18n("Recenter the screen on the document"));
@@ -283,7 +283,7 @@ void KigPart::setupActions()
     a->setToolTip(i18n("View this document full-screen."));
     a->setWhatsThis(i18n("View this document full-screen."));
 
-    // TODO: an icon for this..
+    // TODO: an icon for this.
     a = new QAction(QIcon::fromTheme(QStringLiteral("zoom-fit-best")), i18n("&Select Shown Area"), this);
     actionCollection()->addAction(QStringLiteral("view_select_shown_rect"), a);
     connect(a, &QAction::triggered, m_widget, &KigView::zoomRect);
@@ -807,7 +807,7 @@ void KigPart::setupMacroTypes()
         MacroList::instance()->add(macros);
     };
     // hack: we need to plug the action lists _after_ the gui is
-    // built.. i can't find a better solution than this...
+    // built. I can't find a better solution than this.
     QTimer::singleShot(0, this, &KigPart::plugActionLists);
 }
 

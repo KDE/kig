@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -146,9 +146,9 @@ EuclideanCoords::EuclideanCoords()
 
 QString EuclideanCoords::fromScreen(const Coordinate &p, const KigDocument &d) const
 {
-    // i used to use the widget size here, but that's no good idea,
+    // I used to use the widget size here, but that's no good idea,
     // since an object isn't asked to recalc every time the widget size
-    // changes..  might be a good idea to do that, but well, maybe some
+    // changes. might be a good idea to do that, but well, maybe some
     // other time :)
     const QLocale currentLocale;
     int l = d.getCoordinatePrecision();

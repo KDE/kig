@@ -75,10 +75,10 @@ public:
 
     /**
      * build a set of objects that interdepend according to this
-     * ObjectHierarchy..  Only the result objects are returned.  Helper
+     * ObjectHierarchy. Only the result objects are returned. Helper
      * objects that connect the given objects with the returned objects,
      * can only be found by following the returned objects' parents()
-     * methods..
+     * methods.
      */
     std::vector<ObjectCalcer *> buildObjects(const std::vector<ObjectCalcer *> &os, const KigDocument &) const;
 

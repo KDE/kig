@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
     SPDX-FileCopyrightText: 2006 Pino Toscano <toscano.pino@tiscali.it>
 
@@ -217,7 +217,7 @@ KigDocument *KigFilterCabri::load(const QString &file)
 #ifdef CABRI_DEBUG
         qDebug() << ">>>>>>>>> -------------------------------";
 #endif
-        // we do one object each iteration..
+        // we do one object each iteration.
         CabriObject *obj = reader->readObject(f);
         if (!obj)
             return nullptr;
@@ -372,7 +372,7 @@ KigDocument *KigFilterCabri::load(const QString &file)
                 args.push_back(c);
             }
             // midpoint -> this can be the midpoint of a segment, two
-            // points, or a vector...
+            // points, or a vector.
             if (args.size() != 1 || !obj->data.empty())
                 KIG_FILTER_PARSE_ERROR;
             ObjectCalcer *parent = args[0];
@@ -436,7 +436,7 @@ KigDocument *KigFilterCabri::load(const QString &file)
             //      if ( !args.empty() /* || obj->data.size() != 2 */ ) KIG_FILTER_PARSE_ERROR;
             if (!obj->textRect.valid())
                 KIG_FILTER_PARSE_ERROR;
-            // replacing "# with %1, %2, etc.. in the label text
+            // replacing "# with %1, %2, etc. in the label text
             QString txt = obj->text;
             int pos = -1;
             int index = 1;

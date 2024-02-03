@@ -10,7 +10,7 @@
 #include "../objects/object_calcer.h"
 
 /* This class serves the purpose of storing the information about Geogebra-Tool ( i.e name of the tool, description
- * about what the tool does etc.., what objects are to be taken by the tool as input, and what output objects are to be drawn )
+ * about what the tool does etc., what objects are to be taken by the tool as input, and what output objects are to be drawn )
  * or about the objects contained in the Geogebra-Worksheet ( while reading a worksheet ).
  */
 class GeogebraSection

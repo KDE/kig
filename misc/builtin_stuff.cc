@@ -112,12 +112,12 @@ void setupBuiltinStuff()
 
         // declare this object static to this function, so it gets deleted
         // at the end of the program, without us having to wonder about
-        // deleting it..  We don't want to register this
+        // deleting it.  We don't want to register this
         // object-constructor, because that way, "construct the bisector"
         // would appear twice in the angle popup menu: once as the generic
-        // construct a property stuff, and once because of this ctor..
+        // construct a property stuff, and once because of this ctor.
         // we only register the guiaction, cause it makes sense to have a
-        // toolbar icon for this..
+        // toolbar icon for this.
         static PropertyObjectConstructor anglebisectionctor(AngleImp::stype(),
                                                             I18N_NOOP("Construct Bisector of This Angle"),
                                                             I18N_NOOP("Select the angle you want to construct the bisector of..."),

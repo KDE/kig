@@ -1,4 +1,4 @@
-// This file is part of Kig, a KDE program for Interactive Geometry...
+// This file is part of Kig, a KDE program for Interactive Geometry.
 // SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
 // SPDX-License-Identifier: GPL-2.0-or-later
@@ -23,7 +23,7 @@ public:
 
     /**
      * saving is always done with the native filter.  We don't support
-     * output filters..
+     * output filters.
      */
     bool save(const KigDocument &data, const QString &outfile);
 
@@ -35,7 +35,7 @@ protected:
 };
 
 // KigFilter::load functions should use this macro to conveniently
-// return a very useful parse error in a filter's load function..
+// return a very useful parse error in a filter's load function.
 #define KIG_FILTER_PARSE_ERROR                                                                                                                                 \
     {                                                                                                                                                          \
         QString locs = i18n(                                                                                                                                   \
@@ -56,7 +56,7 @@ protected:
 class KigFilter
 {
 protected:
-    // shows errors to the user..
+    // shows errors to the user.
     void fileNotFound(const QString &file) const;
     void parseError(const QString &explanation = QString()) const;
     void notSupported(const QString &explanation) const;
@@ -72,7 +72,7 @@ public:
     virtual bool supportMime(const QString &mime);
 
     /**
-     * load file \p fromfile and build a KigDocument from it..  If this
+     * load file \p fromfile and build a KigDocument from it. If this
      * function returns 0, that means that an error occurred while
      * loading ( implementations of this function are responsible for
      * showing an error message themselves, using the above error

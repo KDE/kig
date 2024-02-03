@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -202,7 +202,7 @@ protected:
 
 public:
     // actions: this is an annoying case, didn't really fit into my
-    // model with KigModes.. This is how it works now:
+    // model with KigModes. This is how it works now:
     // the actions are owned by the Part, because we need them on
     // constructing the GUI ( actions appearing when you switch modes
     // would not be nice, imho ).  On setting the KigPart mode, we
@@ -236,7 +236,7 @@ public:
 
     /**
      * the "token" keeps some objects that should be deleted, we only
-     * delete them after we replug the actionLists..  calling these
+     * delete them after we replug the actionLists.  calling these
      * functions should be done like:
      * \code
      * GUIUpdateToken t = doc->startGUIActionUpdate();

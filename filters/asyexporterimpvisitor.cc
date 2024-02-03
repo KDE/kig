@@ -203,7 +203,7 @@ void AsyExporterImpVisitor::visit(const PointImp *imp)
 
 void AsyExporterImpVisitor::visit(const TextImp *imp)
 {
-    // FIXME: support multiline texts...
+    // FIXME: support multiline texts.
     mstream << "pair anchor = " << emitCoord(imp->coordinate()) << ";";
     newLine();
     mstream << "Label l = Label(\"" << imp->text() << "\", " << emitPenColor(mcurobj->drawer()->color()) << ");";

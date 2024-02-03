@@ -654,7 +654,7 @@ KigDocument *KigFilterKSeg::load(const QString &file)
     };
 
     // selection groups ( we ignore them, but we pretend to read them
-    // out anyway, so we can find what comes after them.. )
+    // out anyway, so we can find what comes after them. )
     int selgroupcount;
     stream >> selgroupcount;
     for (int i = 0; i < selgroupcount; ++i) {

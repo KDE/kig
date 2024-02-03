@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Maurizio Paolini <paolini@dmf.unicatt.it>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -588,7 +588,7 @@ const LineData calcConicRadical(const ConicCartesianData &cequation1, const Coni
     }
     if (p0a < 0) {
         // we have three roots..
-        // we select the one we want ( defined by mzeroindex.. )
+        // we select the one we want ( defined by mzeroindex. )
         lambda += (2 - zeroindex) * displace;
     } else {
         // we have just one root
@@ -703,7 +703,7 @@ const LineData calcConicRadical(const ConicCartesianData &cequation1, const Coni
     // hyperbola.  In this case, it should be positive, since we have a
     // degenerate conic, which is a degenerate case of a hyperbola..
     // note that it is negative if there is no valid conic to be
-    // found ( e.g. not enough intersections.. )
+    // found ( e.g. not enough intersections. )
     //  double discrim = c*c - 4*a*b;
 
     if (dis3 < 0) {

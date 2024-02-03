@@ -20,8 +20,8 @@ class ObjectCalcer;
 
 /**
  * this is the base class for TextLabelConstructionMode and
- * TextLabelRedefineMode..  most of the work is done in this class,
- * with some specific things delegated to the children..  Template
+ * TextLabelRedefineMode. most of the work is done in this class,
+ * with some specific things delegated to the children.  Template
  * method pattern, right ? :)
  */
 class TextLabelModeBase : public KigMode

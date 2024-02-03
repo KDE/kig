@@ -79,7 +79,7 @@ public:
     bool needClear() const;
 
     /**
-     * whether the user cancelled the rect mode..  If this returns true,
+     * whether the user cancelled the rect mode. If this returns true,
      * all the other return data above will be in undefined state, so
      * first check this function's result.
      */

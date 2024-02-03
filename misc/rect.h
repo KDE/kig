@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -101,9 +101,9 @@ public:
 
     /**
      * return a rect which is a copy of this rect, but has an aspect
-     * ratio equal to rhs's one..  if \p shrink is true, the rect will be
-     * shrunk, otherwise extended..  The center of the new rect is the
-     * same as this rect's center..
+     * ratio equal to rhs's one. If \p shrink is true, the rect will be
+     * shrunk, otherwise extended. The center of the new rect is the
+     * same as this rect's center.
      */
     Rect matchShape(const Rect &rhs, bool shrink = false) const;
 

@@ -1,4 +1,4 @@
-// This file is part of Kig, a KDE program for Interactive Geometry...
+// This file is part of Kig, a KDE program for Interactive Geometry.
 // SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 // SPDX-FileCopyrightText: 2006 Pino Toscano <toscano.pino@tiscali.it>
 
@@ -251,7 +251,7 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     tmp = firstlinere.cap(5);
-    // i have no idea what this number means..
+    // I have no idea what this number means.
 
     QString line2 = CabriNS::readLine(f);
     QRegExp secondlinere("^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$");
@@ -615,7 +615,7 @@ void CabriReader_v12::decodeStyle(CabriObject *obj, Qt::PenStyle &ps, Kig::Point
     CabriObject_v12 *myobj = (CabriObject_v12 *)obj;
 
     if ((myobj->type == "Pt") || (myobj->type == "Pt/")) {
-        // different sizes for points..
+        // different sizes for points.
         myobj->thick *= 2;
         switch (myobj->pointStyle) {
         case 0: {

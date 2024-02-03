@@ -347,7 +347,7 @@ double SegmentImp::getParam(const Coordinate &p, const KigDocument &) const
     Coordinate pt = calcPointOnPerpend(data(), p);
     pt = calcIntersectionPoint(data(), LineData(p, pt));
     // if pt is over the end of the segment ( i.e. it's on the line
-    // which the segment is a part of, but not of the segment itself..;
+    // which the segment is a part of, but not of the segment itself.;
     // ) we set it to one of the end points of the segment...
     if ((pt - mdata.a).length() > mdata.dir().length())
         pt = mdata.b;
@@ -375,7 +375,7 @@ double RayImp::getParam(const Coordinate &p, const KigDocument &) const
     Coordinate pt = calcPointOnPerpend(ld, p);
     pt = calcIntersectionPoint(ld, LineData(p, pt));
     // if pt is over the end of the ray ( i.e. it's on the line
-    // which the ray is a part of, but not of the ray itself..;
+    // which the ray is a part of, but not of the ray itself.;
     // ) we set it to the start point of the ray...
     Coordinate dir = ld.dir();
     pt -= ld.a;

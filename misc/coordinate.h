@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -13,18 +13,18 @@ class QDebug;
 /**
  * The Coordinate class is the basic class representing a 2D location
  * by its x and y components.  It has all relevant arithmetic
- * operators properly defined, and should be straightforward to use..
+ * operators properly defined, and should be straightforward to use.
  */
 class Coordinate
 {
 public:
     static Coordinate fromQPoint(const QPoint &p);
 
-    /** Constructor.  Construct a new Coordinate, with a given x and y
+    /** Constructor.  Constructs a new Coordinate, with the given x and y
      * value.
      */
     Coordinate(double x, double y);
-    /** Copy Constructor.  Construct a new Coordinate, and give it the
+    /** Copy Constructor.  Constructs a new Coordinate, and gives it the
      *  same value as p.
      */
     Coordinate(const Coordinate &p);
@@ -40,8 +40,8 @@ public:
     {
     }
 
-    /** Create an invalid Coordinate.  This is a special value of a
-     * Coordinate that signals that something went wrong..
+    /** Creates an invalid Coordinate.  This is a special value of a
+     * Coordinate that signals that something went wrong.
      *
      * \see Coordinate::valid
      *

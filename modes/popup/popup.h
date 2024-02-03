@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -20,13 +20,13 @@ class ObjectHolder;
 
 /**
  * This is the popup menu that appears when you click on selected
- * objects in NormalMode..  It's quite complex, since it has to fetch
+ * objects in NormalMode. It's quite complex, since it has to fetch
  * a lot of information from various places, and dispatch it again
  * when the user selects something.
  * Update: I'm also using it for when you clicked on an empty space in
  * the document, because the difference between the two cases is not
  * that important, and this class is generic enough to handle both
- * cases..  When this is the case, mobjs is empty, some
+ * cases. When this is the case, mobjs is empty, some
  * PopupActionProviders are disabled, and some others enabled..
  */
 class NormalModePopupObjects : public QMenu

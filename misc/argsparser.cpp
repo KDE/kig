@@ -143,14 +143,14 @@ ArgsParser::spec ArgsParser::findSpec(const ObjectImp *obj, const Args &parents)
                 found[i] = true;
                 if (*o == obj)
                     return margs[i];
-                // i know that "goto's are *evil*", but they're very useful
+                // I know that "goto's are *evil*", but they're very useful
                 // and completely harmless if you use them as better "break;"
-                // statements.. trust me ;)
+                // statements.
                 goto matched;
             };
         };
     matched:;
-    };
+    }
     qDebug() << "no proper spec found :(";
     return ret;
 }

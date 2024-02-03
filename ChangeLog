@@ -1550,12 +1550,12 @@
 	* Improve the errors given by the "New Script Wizard", by making
 	it get a proper error description from the python interpreter.
 	
-	* fix the ArgsParser parsing order, properly this time..
+	* fix the ArgsParser parsing order, properly this time.
 
 2003-10-20  Dominique Devriese  <devriese@kde.org>
 
 	* Work on the Cabri import filter, so that it actually becomes
-	usable for some easier files..
+	usable for some easier files.
 
 	* Improve the errors given by the "New Script Wizard", by making
 	it get a proper error description from the python interpreter.
@@ -1599,7 +1599,7 @@
 	that, there are the ObjectHolder's, which hold a link to an
 	ObjectCalcer from the hierarchy, and keep an ObjectDrawer
 	describing how to draw it.  The document only keeps a list of
-	ObjectHolder's, nothing else..
+	ObjectHolder's, nothing else.
 
 	* make the New Script Wizard give an error when the script does
 	not generate a valid ObjectImp.
@@ -1610,7 +1610,7 @@
 	* fix the generation of the pot translation template file
 
 	* fix a problem with the order of arguments in ScalingOverLineType
-	causing a test file to not be loaded correctly..
+	causing a test file to not be loaded correctly.
 
 	* update some test files to the new ( post-0.4 ) kig file format.
 
@@ -1621,14 +1621,14 @@
 
 	* Fix a bug that prevented Kig from opening its own files,
 	rejecting them because they were of the 0.6.0 version, which Kig
-	could not open..  I'm backporting this into Kig 0.6.0 and
-	informing the packager..
+	could not open.  I'm backporting this into Kig 0.6.0 and
+	informing the packager.
 
 	* clean up: Objects now store their parents in order, so that no
-	parsing has to be done in the calc() function..  Also some more
+	parsing has to be done in the calc() function.  Also some more
 	modifications making that function a bit simpler are included.
 	Specifically, ArgsParser now does the checking of the arguments,
-	instead of every single calc function doing it itself..
+	instead of every single calc function doing it itself.
 
 2003-09-02  Dominique Devriese  <devriese@kde.org>
 
@@ -1642,7 +1642,7 @@
 
 2003-09-01  Dominique Devriese  <devriese@kde.org>
 
-	* only move an object if its parents are not yet moving..  This
+	* only move an object if its parents are not yet moving.  This
 	fixes bug #63250.
 
 	* remove the defective operator| and operator& implementations for
@@ -1652,11 +1652,11 @@
 
 	* make the Kig Python Scripting API docs only available online.
 	It's too much trouble to generate them during the build process,
-	and I can't add a hard build-time dependency on doxygen anyway...
+	and I can't add a hard build-time dependency on doxygen anyway.
 
 	* keep the Kig version number in a central place, so that it can
 	easily be changed.  Use some autoconf magic to fill it in in the
-	other places..
+	other places.
 
 2003-08-25  Dominique Devriese  <devriese@kde.org>
 
@@ -1696,12 +1696,12 @@
 	facility in a clever way to do this.  In fact, I stole the idea
 	from something I saw Hilaire Fernandes do with the Dr.Genius guile
 	scripting on a presentation at FOSDEM.  Kig - of course ;) - does
-	it way cooler.. :)
+	it way cooler. :)
 
 	* add support for using the python math package in Kig python
 	scripts, by importing it from PythonScripter's ctor, and by making
 	Kig load its part library with RTLD_GLOBAL, to eliminate a problem
-	which caused python to not be able to load its math dll..
+	which caused python to not be able to load its math dll.
 
 2003-07-20  Dominique Devriese  <devriese@kde.org>
 
@@ -1711,7 +1711,7 @@
 
 	* fix the "conversion from const char* to char*" problem in
 	python_scripter.cc.  This introduces a small, harmless memory leak
-	because of how the python libs work..
+	because of how the python libs work.
 
 2003-07-16  Dominique Devriese  <devriese@kde.org>
 
@@ -1721,7 +1721,7 @@
 	* adapt some infrastructure regarding text labels to be able to
 	work with labels that get their location from an invisible Point
 	object.  This will ease the adding of support for attached text
-	labels..
+	labels.
 
 2003-07-12  Dominique Devriese  <devriese@kde.org>
 
@@ -1731,40 +1731,40 @@
 2003-07-03  Dominique Devriese  <devriese@kde.org>
 
 	* add Python scripting support.  Rather large addition, involving
-	a lot of autoconf and automake magic..
+	a lot of autoconf and automake magic.
 
 	* make snapToGrid work for PolarCoordinateSystem
 
 	* make shift -> snap to grid work in PointConstructionMode and
-	normal Construction Mode too..
+	normal Construction Mode too.
 
 	* add the concept of cache objects, which cannot be stored, in
-	order to support a python compiled script ObjectImp..
+	order to support a python compiled script ObjectImp.
 
 2003-07-02  Dominique Devriese  <devriese@kde.org>
 
 	* sanitize the ObjectImp inherits() system.  It now uses static
 	objects instead of enum values, this also eliminates some ugly
 	functions in ObjectImp, and allows for more flexible addition of
-	new ObjectImp types..
+	new ObjectImp types.
 
 	* fix a memory leak in KigDocument, which did not delete its
-	KCommandHistory..
+	KCommandHistory.
 
 	* fix some use of uninitialised value in dragrectmode, which
 	caused the dragrect to not work at random times
 
 	* fix the clearing of the selection when the user clicks on an
-	empty point..
+	empty point.
 
 2003-06-27  Dominique Devriese  <devriese@kde.org>
 
-	* implement helpSlot() in ManageTypesDialog..
+	* implement helpSlot() in ManageTypesDialog.
 
-	* add a "Set Coordinate System" menu to the Settings menu..
+	* add a "Set Coordinate System" menu to the Settings menu.
 
 	* make shift snap to grid in moving mode, and rework the moving
-	API to something a bit saner in the process..
+	API to something a bit saner in the process.
 
 2003-06-25  Dominique Devriese  <devriese@kde.org>
 
@@ -1778,7 +1778,7 @@
 
 	* fix a crash bug reported by Pino Toscano, that occurs because
 	TextLabelRedefineMode was not yet updated to the new
-	reference-counting Object's stuff..
+	reference-counting Object's stuff.
 
 2003-06-21  Dominique Devriese  <devriese@kde.org>
 
@@ -1795,11 +1795,11 @@
 	of a circle and (why not?) an arc?"
 
 	* fix: a text label constructed using "add text label" from an
-	object popup wasn't properly calced after construction..
+	object popup wasn't properly calced after construction.
 
 	* fix this bug: "2) Add the possibility to set shortcut for all
 	the actions & objects (For examples: Ctrl+P to construct a point,
-	Ctrl+R to start a reflection, and so on...).", and add some
+	Ctrl+R to start a reflection, etc.).", and add some
 	default accels too ( "p" for point, "s" for segment etc. ( note :
 	no control key ).
 
@@ -1821,10 +1821,10 @@
 2003-06-04  Dominique Devriese  <devriese@kde.org>
 
 	* show an appropriate error when trying to open an non-existing
-		file..
+		file.
 
 	* clean up the object parent-child relation mechanism.  Rather
-	large code cleanup, that simplifies a lot of code..  Needed a
+	large code cleanup, that simplifies a lot of code.  Needed a
 	backwards-compatible file format extension.  This commit now also
 	adds proper treatment of internal objects, because it no longer
 	relies on the inherently wrong isInternal() hack, but features The
@@ -1832,7 +1832,7 @@
 
 2003-06-03  Dominique Devriese  <devriese@kde.org>
 
-	* bugfix: show default icons for actions that don't have any.. (
+	* bugfix: show default icons for actions that don't have any. (
 		fixes bug #59283 )
 
 	* release Kig 0.5.1
@@ -1840,7 +1840,7 @@
 2003-05-30  Dominique Devriese  <devriese@kde.org>
 
 	* Add an option to select the part of the screen that should be
-		shown by dragging a rect..
+		shown by dragging a rect.
 
 2003-05-28  Dominique Devriese  <devriese@kde.org>
 
@@ -1854,22 +1854,22 @@
 
 	* implement another of Stephan Binner's suggestions: in the set
 		coordinate system popup, show a checked mark next to the 
-		current coordinate system..
+		current coordinate system.
 
 	* fix a bug that caused the "circle by center and point" type to
-		not be visible..
+		not be visible.
 
 2003-05-24  Dominique Devriese  <devriese@kde.org>
 
 	* when the user tries to construct a macro that constructs an
 		object from its children, warn him instead of
-		crashing... Thanks to Stephan Binner for the bug report
+		crashing. Thanks to Stephan Binner for the bug report
 
 	* improve the export to image dialog, as suggested by Stephan Binner
 
 2003-05-23  Dominique Devriese  <devriese@kde.org>
 
-	* remove some obsolete code and clean some older code up..
+	* remove some obsolete code and clean some older code up.
 
 2003-05-22  Dominique Devriese  <devriese@kde.org>
 
@@ -1886,7 +1886,7 @@
 2003-05-17  Dominique Devriese  <devriese@kde.org>
 
 	* add a toolbar icon ( i.e. GUIAction ) for constructing an angle
-		bisector..
+		bisector.
 
 2003-05-15  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
@@ -1902,7 +1902,7 @@
 	* fix a crash bug for macro's involving PropertyImp
 
 	* update the AboutData: upgrade some people to authors, and add
-		credit for some more people..  
+		credit for some more people.  
 
 	* add an angle bisector property
 
@@ -1910,9 +1910,9 @@
 
 	* fix the transformation types for cases where the object being
 		transformed is the same as one of the arguments that the
-		transformation needs..  E.g. right-click on a
+		transformation needs.  E.g. right-click on a
 		point->transform->reflect over a point works properly
-		point->transform->now.. 
+		point->transform->now. 
 
 2003-05-09  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
@@ -1946,7 +1946,7 @@
 2003-05-07  Dominique Devriese  <devriese@kde.org>
 
 	* more undo support: redefining text labels and points is undoable
-		  now..
+		  now.
 
 	* small undo stuff cleanup
 
@@ -1962,27 +1962,27 @@
 
 2003-05-03  Dominique Devriese  <devriese@kde.org>
 
-	* add support for multiline text labels..  still needs some
-		  further work.. 
+	* add support for multiline text labels.  still needs some
+		  further work. 
 
 	* add a set size action to the angle type
 
-	* change the angle size icon..
+	* change the angle size icon.
 
 2003-05-03  Maurizio Paolini  <paolini@dmf.unicatt.it>
 
-	* add transformation support for arcs..
+	* add transformation support for arcs.
 
 2003-05-02  Dominique Devriese  <devriese@kde.org>
 
 	* add undo support for changing the coordinate system
 
 	* generalize the undo support from the moving mode, and add undo
-		  support for many of the object specific actions.. 
+		  support for many of the object specific actions. 
 
 2003-05-01  Dominique Devriese  <devriese@kde.org>
 
-	* perfect the grid..
+	* perfect the grid.
 
 	* fix useless error output on startup
 
@@ -2003,7 +2003,7 @@
 	* some PolarCoords improvements
 
 	* show a popup menu when the user clicks on the document, and allow
-		  him to change the coordinate system..
+		  him to change the coordinate system.
 
 2003-04-26  Dominique Devriese  <devriese@kde.org>
 
@@ -2011,7 +2011,7 @@
 
 2003-04-22  Dominique Devriese  <devriese@kde.org>
 
-	* fix the move dependencies..
+	* fix the move dependencies.
 
 2003-04-19  Dominique Devriese  <devriese@kde.org>
 

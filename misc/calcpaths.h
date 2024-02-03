@@ -9,7 +9,7 @@
 /**
  * This function sorts \p os such that they're in the right order for
  * calc()-ing.  This means that child objects must appear after their
- * parents ( for you graph people, this is just a topological sort.. )
+ * parents ( for you graph people, this is just a topological sort. )
  */
 std::vector<ObjectCalcer *> calcPath(const std::vector<ObjectCalcer *> &os);
 

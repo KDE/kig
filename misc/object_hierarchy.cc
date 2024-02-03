@@ -301,8 +301,8 @@ int ObjectHierarchy::visit(const ObjectCalcer *o, std::map<const ObjectCalcer *,
         if (neededatend) {
             // neededatend means that this object is one of the resultant
             // objects.  Therefore, its node has to appear at the end,
-            // because that's where we expect it..  We therefore copy it
-            // there using CopyObjectType..
+            // because that's where we expect it.  We therefore copy it
+            // there using CopyObjectType.
             int ret = mnumberofargs + mnodes.size();
             std::vector<int> parents;
             parents.push_back(smi->second);
@@ -699,9 +699,9 @@ const ObjectImpType *lowermost(const ObjectImpType *a, const ObjectImpType *b, c
 // this function is part of the visit procedure really.  It is
 // factored out, because it recurses for cache ObjectImp's.  What this
 // does is, it makes sure that object o is calcable, by putting
-// appropriate Node's in mnodes..  po is o->parents() and pl contains
+// appropriate Node's in mnodes. po is o->parents() and pl contains
 // the location of objects that are already in mnodes and -1
-// otherwise..  -1 means we have to store their ObjectImp, unless
+// otherwise. -1 means we have to store their ObjectImp, unless
 // they're cache ObjectImp's etc.
 int ObjectHierarchy::storeObject(const ObjectCalcer *o,
                                  const std::vector<ObjectCalcer *> &po,

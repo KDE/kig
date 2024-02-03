@@ -66,7 +66,7 @@ public:
     /**
      * Do what you need to do.  It's up to the individual exporters to
      * ask the user for which file to export to etc., because they can
-     * do a much better job at that..
+     * do a much better job at that.
      */
     virtual void run(const KigPart &doc, KigWidget &w) = 0;
 };

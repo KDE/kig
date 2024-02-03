@@ -73,7 +73,7 @@ void ImageExporter::run(const KigPart &doc, KigWidget &w)
     KigFileDialog *kfd = new KigFileDialog(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation), QString(), i18n("Export as Image"), &w);
     const QList<QByteArray> mimeFilters = QImageWriter::supportedMimeTypes();
     QStringList mimeFiltersConverted;
-    // Since someone didn't get the memo about what's the type of a mime name...
+    // Since someone didn't get the memo about what's the type of a mime name.
     for (const auto &mimeFilter : mimeFilters) {
         mimeFiltersConverted.append(QString::fromUtf8(mimeFilter));
     }

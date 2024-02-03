@@ -139,7 +139,7 @@ ConstrainedPointType::~ConstrainedPointType()
 
 void FixedPointType::move(ObjectTypeCalcer &ourobj, const Coordinate &to, const KigDocument &) const
 {
-    // fetch the old coord..;
+    // fetch the old coord.
     std::vector<ObjectCalcer *> pa = ourobj.parents();
     assert(margsparser.checkArgs(pa));
     assert(dynamic_cast<ObjectConstCalcer *>(pa.front()));
@@ -154,7 +154,7 @@ void FixedPointType::move(ObjectTypeCalcer &ourobj, const Coordinate &to, const 
 
 void RelativePointType::move(ObjectTypeCalcer &ourobj, const Coordinate &to, const KigDocument &) const
 {
-    // fetch the attach point..;
+    // fetch the attach point.
     // this routine is tightly paired with what moveReferencePoint returns!
     // right now moveReferencePoint always returns the origin
     std::vector<ObjectCalcer *> pa = ourobj.parents();
@@ -173,7 +173,7 @@ void RelativePointType::move(ObjectTypeCalcer &ourobj, const Coordinate &to, con
 
 void CursorPointType::move(ObjectTypeCalcer &ourobj, const Coordinate &to, const KigDocument &) const
 {
-    // fetch the old coord..;
+    // fetch the old coord.
 
     std::vector<ObjectCalcer *> pa = ourobj.parents();
     assert(pa.size() == 2);

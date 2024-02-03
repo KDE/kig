@@ -53,7 +53,7 @@ either of them moves, this calculation is redone.  In this case, there
 would be an ObjectCalcer that keeps a reference to its two parents (
 the ObjectCalcer's representing the points ), and that will calculate
 its ObjectImp value every time it is asked to do so ( i.e. every time
-one of its parents moves.. ).
+one of its parents moves. ).
 
 Because of the complex relations that ObjectCalcer's hold to other
 ObjectCalcer's and to other classes, they have been made

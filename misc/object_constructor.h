@@ -50,8 +50,8 @@ public:
 
     /**
      * do something fun with \p os .. This func is only called if wantArgs
-     * returned Complete.. handleArgs should <i>not</i> do any
-     * drawing.. after somebody calls this function, he should
+     * returned Complete. handleArgs should <i>not</i> do any
+     * drawing. after somebody calls this function, he should
      * redrawScreen() himself.
      */
     virtual void handleArgs(const std::vector<ObjectCalcer *> &os, KigPart &d, KigWidget &v) const = 0;
@@ -70,9 +70,9 @@ public:
 
     /**
      * show a preliminary version of what you would do when \ref handleArgs
-     * would be called..  E.g. if this constructor normally constructs a
+     * would be called. E.g. if this constructor normally constructs a
      * locus through some 5 points, then it will try to draw a locus
-     * through whatever number of points it gets..
+     * through whatever number of points it gets.
      */
     virtual void handlePrelim(KigPainter &p, const std::vector<ObjectCalcer *> &sel, const KigDocument &d, const KigWidget &v) const = 0;
 

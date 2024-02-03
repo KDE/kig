@@ -40,7 +40,7 @@ void BaseMode::leftClicked(QMouseEvent *e, KigWidget *v)
         // selecting stuff...
         dragRect(mplc, *v);
     } else {
-        // the user clicked on some object.. --> this could either mean
+        // the user clicked on some object. --> this could either mean
         // that he/she wants to select the object or that he wants to
         // start moving it.  We assume nothing here, we wait till he
         // either moves some 4 pixels, or till he releases his mouse

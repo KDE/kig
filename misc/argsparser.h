@@ -148,7 +148,7 @@ public:
 
     /**
      * returns the minimal ObjectImp ID that \p o needs to inherit in order
-     * to be useful..  \p o should be part of \p parents .
+     * to be useful. \p o should be part of \p parents .
      */
     const ObjectImpType *impRequirement(const ObjectImp *o, const Args &parents) const;
 
@@ -166,7 +166,7 @@ public:
     // assert that the objects are of the right types, and in the right
     // order as what would be returned by parse( os )..  If minobjects
     // is provided, then not all objects are needed, and it is enough if
-    // at least minobjects are available..  Use this for object types
+    // at least minobjects are available. Use this for object types
     // that can calc a temporary example object using less than the
     // required args.  These args need to be at the end of argsspec +
     // anyobjsspec.  If minobjects is not provided, then it is assumed

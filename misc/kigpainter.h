@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002-2003 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -85,7 +85,7 @@ public:
     void setColor(const QColor &c);
     /**
      * setting this to -1 means to use the default width for the object
-     * being drawn..  a point -> 5, other objects -> 1
+     * being drawn. a point -> 5, other objects -> 1
      */
     void setWidth(int c);
     void setPointStyle(Kig::PointStyle p);
@@ -113,7 +113,7 @@ public:
     void setWholeWinOverlay();
 
     /**
-     * draw an object ( by calling its draw function.. )
+     * draw an object ( by calling its draw function. )
      */
     void drawObject(const ObjectHolder *o, bool sel);
     void drawObjects(const std::vector<ObjectHolder *> &os, bool sel);
@@ -180,9 +180,9 @@ public:
     void drawPoint(const Coordinate &p);
 
     /**
-     * draw a thick point..  This is what the user sees when he draws a
+     * draw a thick point. This is what the user sees when he draws a
      * point.  In fact it isn't a point, but a filled circle of a
-     * certain radius...
+     * certain radius.
      */
     void drawFatPoint(const Coordinate &p);
 
@@ -200,20 +200,20 @@ public:
 
     /**
      * draw the angle with center point, with size angle, starting
-     * at the angle startAngle..  Angles should be in radians.
+     * at the angle startAngle. Angles should be in radians.
      */
     void drawAngle(const Coordinate &point, double startangle, double angle, int radius);
 
     /**
      * draw the angle with center point, with size angle, starting
-     * at the angle startAngle..  Angles should be in radians.
+     * at the angle startAngle. Angles should be in radians.
      */
     void drawRightAngle(const Coordinate &point, double startangle, int diagonal);
 
     /**
      * draw the arc ( a part of a circle ), of the circle with center
      * center, radius radius, with size angle, starting at the angle
-     * startAngle..  Angles should be in radians..
+     * startAngle. Angles should be in radians.
      */
     void drawArc(const Coordinate &center, double radius, double startangle, double angle);
 

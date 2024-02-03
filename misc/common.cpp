@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -403,8 +403,8 @@ bool lineInRect(const Rect &r, const Coordinate &a, const Coordinate &b, const i
 
     // For each intersection, we now check if we contain the
     // intersection ( this might not be the case for a segment, when the
-    // intersection is not between the begin and end point.. ) and if
-    // the rect contains the intersection..  If it does, we have a winner..
+    // intersection is not between the begin and end point. ) and if
+    // the rect contains the intersection.  If it does, we have a winner.
     return (imp->contains(leftint, width, w) && r.contains(leftint, miss)) || (imp->contains(rightint, width, w) && r.contains(rightint, miss))
         || (imp->contains(bottomint, width, w) && r.contains(bottomint, miss)) || (imp->contains(topint, width, w) && r.contains(topint, miss));
 }

@@ -1,7 +1,7 @@
 Hi, here are some things that might not be immediately clear :
 
 - There are different source dirs ( kig, objects, misc, filters and
-  modes ) ( just in case this wasn't clear.. )
+  modes ) ( just in case this wasn't clear. )
 
 - for testing code, i don't really know how you're supposed to do this with
   kparts, so i just do a "make install" every time, and then simply run the

@@ -2,7 +2,7 @@ FEATURES
 here are some nice Kig features i'd like to show off :)
 - More than 40 various nice objects: from the easiest ones ( points ),
   up to lines, circles, conics, cubics, and more. See the Objects
-  menu...
+  menu.
 - Macros: the power of constructing new objects using the builtin
   ones. If you want to try, open macrotest.kig, then click the 
   button to the left of the fullscreen button, select the three
@@ -20,24 +20,24 @@ here are some nice Kig features i'd like to show off :)
   "KigPart" (if you installed Kig correctly (did you get the
   "--prefix" on your configure right?) , it should be there), and add
   it. then try opening macrotest.kig again
-- Kig supports various file formats...  See the filters directory.
+- Kig supports various file formats.  See the filters directory.
   Currently Kig has read-write support for native files ( which is an
   imho clean xml format ) and for the older version of the Kig file
   format; read support for KGeo, KSeg and, partially, for Dr. Geo
-  and Cabri files. This is an area where we plan working on...
+  and Cabri files. This is an area where we plan working on.
 - Kig can export a document in several formats: the most common are
   images, and you can choose among the types supported by Qt and KDE.
   Moreover, the other supported formats are: XFig files, and SVG and
   LaTeX documents. These are useful since not all other programs
-  support Kig files yet... ;)
+  support Kig files yet. ;)
 - Kig is very compatible with the program it was intended to replace,
   KGeo.  It supports all of its Object types and most of its file
-  format... 
+  format. 
 - There is a very flexible mechanism for supporting TextLabels with
-  variable parts..  Check out the text label wizard for more
-  explanation... 
+  variable parts.  Check out the text label wizard for more
+  explanation. 
 - nice support for Locuses, inspired by KSeg's version of this.  Check
-  the documentation and examples/locustest.kig for more info..
+  the documentation and examples/locustest.kig for more info.
 - flexible transformation facility
 
 PLANNED FEATURES

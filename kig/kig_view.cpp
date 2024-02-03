@@ -1,5 +1,5 @@
 /*
-    This file is part of Kig, a KDE program for Interactive Geometry...
+    This file is part of Kig, a KDE program for Interactive Geometry.
     SPDX-FileCopyrightText: 2002 Dominique Devriese <devriese@kde.org>
 
     SPDX-License-Identifier: GPL-2.0-or-later
@@ -198,7 +198,7 @@ void KigWidget::slotZoomOut()
     nr *= 2;
     nr.setCenter(c);
 
-    // zooming in is undoable..  I know this isn't really correct,
+    // zooming in is undoable.  I know this isn't really correct,
     // because the current view doesn't really belong to the document (
     // althought KGeo and KSeg both save them along, iirc ).  However,
     // undoing a zoom or another operation affecting the window seems a
@@ -323,7 +323,7 @@ void KigView::updateScrollBars()
 
     // we need ints, not doubles, so since "pixelwidth == widgetcoord /
     // internalcoord", we use "widgetcoord/pixelwidth", which would then
-    // equal "internalcoord", which has to be an int ( by definition.. )
+    // equal "internalcoord", which has to be an int ( by definition. )
     // I know, I'm a freak to think about these sorts of things... ;)
     double pw = mrealwidget->screenInfo().pixelWidth();
 
@@ -343,7 +343,7 @@ void KigView::updateScrollBars()
 
     // note that since Qt has a coordinate system with the lowest y
     // values at the top, and we have it the other way around ( i know I
-    // shouldn't have done this.. :( ), we invert the value that the
+    // shouldn't have done this. :( ), we invert the value that the
     // scrollbar shows.  This is inverted again in
     // slotRightScrollValueChanged()...
     mrightscroll->setValue((int)(rightmin + (rightmax - (sr.bottom() / pw))));
@@ -366,7 +366,7 @@ void KigView::slotRightScrollValueChanged(int v)
 {
     if (!mupdatingscrollbars) {
         // we invert the inversion that was done in updateScrollBars() (
-        // check the documentation there..; )
+        // check the documentation there.; )
         v = mrightscroll->minimum() + (mrightscroll->maximum() - v);
         double pw = mrealwidget->screenInfo().pixelWidth();
         double nb = double(v) * pw;

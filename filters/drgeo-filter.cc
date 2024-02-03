@@ -76,7 +76,7 @@ KigDocument *KigFilterDrgeo::load(const QString &file)
         KIG_FILTER_PARSE_ERROR;
     QDomElement main = doc.documentElement();
     int nmacros = 0;
-    // reading figures...
+    // reading figures.
     for (QDomNode n = main.firstChild(); !n.isNull(); n = n.nextSibling()) {
         QDomElement e = n.toElement();
         if (e.isNull())
@@ -98,14 +98,14 @@ KigDocument *KigFilterDrgeo::load(const QString &file)
     }
 
     int nfig = figures.count();
-    // no figures, no party...
+    // If no figures exist.
     if (nfig == 0)
         return nullptr;
 
     QString myfig = figures.at(0);
 
     if (nfig > 1) {
-        // Dr. Geo file has more than 1 figure, let the user choose one...
+        // Dr. Geo file has more than 1 figure, let the user choose one.
         bool ok = true;
         myfig = QInputDialog::getItem(nullptr,
                                       i18n("Dr. Geo Filter"),
@@ -218,7 +218,7 @@ KigDocument *KigFilterDrgeo::importFigure(const QDomNode &f, const bool grid)
     int nignored = 0;
 
     // there's no need to sort the objects because it seems that DrGeo objects
-    // appear in the right order... so let's go!
+    // appear in the right order.
     for (QDomNode a = f; !a.isNull(); a = a.nextSibling()) {
 #ifdef DRGEO_DEBUG
         qDebug() << "+++ id: " << curid;
@@ -639,7 +639,7 @@ KigDocument *KigFilterDrgeo::importFigure(const QDomNode &f, const bool grid)
             qDebug() << "+++++++++ oc:" << oc;
 #endif
         } else if ((domelem.tagName() == QLatin1String("boundingBox")) || (domelem.tagName() == QLatin1String("customUI"))) {
-            // ignoring these elements, since they are not useful to us...
+            // ignoring these elements, since they are not useful to us.
             nignored++;
         } else {
 #ifdef DRGEO_DEBUG

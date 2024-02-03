@@ -76,8 +76,8 @@ void MovingModeBase::mouseMoved(QMouseEvent *e, KigWidget *v)
         (*i)->calc(mdoc.document());
     KigPainter p(v->screenInfo(), &v->curPix, mdoc.document());
     // TODO: only draw the explicitly moving objects as selected, the
-    // other ones as deselected.. Needs some support from the
-    // subclasses..
+    // other ones as deselected. Needs some support from the
+    // subclasses.
     p.drawObjects(mdrawable, true);
     v->updateWidget(p.overlay());
     v->updateScrollBars();
