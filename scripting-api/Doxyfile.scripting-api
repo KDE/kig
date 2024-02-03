@@ -23,7 +23,7 @@ PROJECT_NAME           = "Kig Python Scripting API"
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = @KIGVERSION@
+PROJECT_NUMBER         =
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) 
 # base path where the generated documentation will be put. 
@@ -416,20 +416,20 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  =  @top_srcdir@/kig/misc/coordinate.h \
-                          @top_srcdir@/kig/misc/common.h \
-			  @top_srcdir@/kig/misc/conic-common.h \
-			  @top_srcdir@/kig/misc/kigtransform.h \
-			  @top_srcdir@/kig/objects/object_imp.h \
-			  @top_srcdir@/kig/objects/curve_imp.h \
-			  @top_srcdir@/kig/objects/point_imp.h \
-			  @top_srcdir@/kig/objects/line_imp.h \
-			  @top_srcdir@/kig/objects/conic_imp.h \
-			  @top_srcdir@/kig/objects/cubic_imp.h \
-			  @top_srcdir@/kig/objects/bogus_imp.h \ 
-			  @top_srcdir@/kig/objects/circle_imp.h \
-			  @top_srcdir@/kig/objects/other_imp.h \
-			  @top_srcdir@/kig/scripting/python-scripting-api-dox-mainpage.dox
+INPUT                  =  ../misc/coordinate.h \
+                          ../misc/common.h \
+			  ../misc/conic-common.h \
+			  ../misc/kigtransform.h \
+			  ../objects/object_imp.h \
+			  ../objects/curve_imp.h \
+			  ../objects/point_imp.h \
+			  ../objects/line_imp.h \
+			  ../objects/conic_imp.h \
+			  ../objects/cubic_imp.h \
+			  ../objects/bogus_imp.h \
+			  ../objects/circle_imp.h \
+			  ../objects/other_imp.h \
+			  ../scripting/python-scripting-api-dox-mainpage.dox
 
 # If the value of the INPUT tag contains directories, you can use the 
 # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 
@@ -592,13 +592,13 @@ HTML_FILE_EXTENSION    = .html
 # each generated HTML page. If it is left blank doxygen will generate a 
 # standard header.
 
-HTML_HEADER            = @srcdir@/header.html
+HTML_HEADER            =
 
 # The HTML_FOOTER tag can be used to specify a personal HTML footer for 
 # each generated HTML page. If it is left blank doxygen will generate a 
 # standard footer.
 
-HTML_FOOTER            = @srcdir@/footer.html
+HTML_FOOTER            =
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading 
 # style sheet that is used by each HTML page. It can be used to 
@@ -607,7 +607,7 @@ HTML_FOOTER            = @srcdir@/footer.html
 # the style sheet file to the HTML output directory, so don't put your own 
 # stylesheet in the HTML output directory as well, or it will be erased!
 
-HTML_STYLESHEET        = @srcdir@/doxygen.css
+HTML_STYLESHEET        =
 
 # If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes, 
 # files or namespaces will be aligned in HTML using tables. If set to 
@@ -671,7 +671,7 @@ ENUM_VALUES_PER_LINE   = 4
 # Netscape 6.0+, Internet explorer 5.0+, or Konqueror). Windows users are 
 # probably better off using the HTML help feature.
 
-GENERATE_TREEVIEW      = NO
+GENERATE_TREEVIEW      = YES
 
 # If the treeview is enabled (see GENERATE_TREEVIEW) then this tag can be 
 # used to set the initial width (in pixels) of the frame in which the tree 
@@ -1049,7 +1049,7 @@ CLASS_GRAPH            = YES
 # indirect implementation dependencies (inheritance, containment, and 
 # class references variables) of the class with other documented classes.
 
-COLLABORATION_GRAPH    = YES
+COLLABORATION_GRAPH    = NO
 
 # If the UML_LOOK tag is set to YES doxygen will generate inheritance and 
 # collaboration diagrams in a style similar to the OMG's Unified Modeling 
@@ -1152,4 +1152,4 @@ DOT_CLEANUP            = YES
 # The SEARCHENGINE tag specifies whether or not a search engine should be 
 # used. If set to NO the values of all tags below this one will be ignored.
 
-SEARCHENGINE           = NO
+SEARCHENGINE           = YES
