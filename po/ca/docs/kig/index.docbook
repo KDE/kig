@@ -828,7 +828,7 @@ format="PNG"/>
 >GNOME</acronym
 >). </para>
 <para
->La creació de scripts en Python en el &kig; bàsicament us permetrà crear els vostres propis objectes a partir d'altres objectes pare. Per exemple, si sou un professor de matemàtiques, i disposeu d'un mètode atractiu de calcular algun punt interessant d'una cònica, en lloc d'embolicar-vos amb construccions complexes i macros, n'hi ha prou amb que escriviu una mica de codi en Python de com es calcula el punt i aleshores el &kig; ho farà. </para>
+>La creació de scripts en Python en el &kig; bàsicament us permetrà crear els vostres propis objectes a partir d'altres objectes pare. Per exemple, si sou un professor de matemàtiques, i disposeu d'un mètode atractiu de calcular algun punt interessant d'una cònica, en lloc d'embolicar-vos amb construccions complexes i macros, podríeu escriure en el codi Python com s'ha de calcular el punt i llavors el &kig; el mostrarà. </para>
 <para
 >Suposem que no esteu al cas de la integració en el &kig; del tipus <quote
 >Punt mitjà</quote
@@ -1060,7 +1060,7 @@ format="PNG"/>
 <title
 >Com col·laborar?</title>
 <para
->Totes les col·laboracions són benvingudes. Si no us agraden les icones, o penseu que al manual li cal una actualització, o bé teniu aquella supermacro que voleu compartir amb el món, no dubteu en enviar-me-la. Si us plau, cal tenir en compte que les vostres col·laboracions seran distribuïdes sota els termes de llicència <acronym
+>Totes les col·laboracions són benvingudes. Si no us agraden les icones, o penseu que al manual li cal una actualització, o bé teniu aquella supermacro que voleu compartir amb el món, no dubteu a enviar-me-la. Si us plau, cal tenir en compte que les vostres col·laboracions seran distribuïdes sota els termes de llicència <acronym
 >GPL</acronym
 > de &GNU;, trobareu els termes d'aquesta llicència en el fitxer <filename
 >COPYING</filename
