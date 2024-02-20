@@ -103,7 +103,7 @@ parts:
         stage-packages:
         - libboost-python1.74.0
         - libpython3.10
-        stag-snaps:
+        stage-snaps:
         - khelpcenter
         cmake-parameters:
         - "-DKDE_INSTALL_USE_QT_SYS_PATHS=FALSE"
