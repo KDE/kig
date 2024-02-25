@@ -23,6 +23,7 @@
   <developer_name xml:lang="zh-TW">KDE</developer_name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
+  <launchable type="desktop-id">org.kde.kig.desktop</launchable>
   <name>Kig</name>
   <name xml:lang="ar">كيج</name>
   <name xml:lang="bg">Kig</name>
