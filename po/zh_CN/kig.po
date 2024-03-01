@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:23+0000\n"
-"PO-Revision-Date: 2024-02-05 11:40\n"
+"PO-Revision-Date: 2024-02-29 12:56\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -3817,15 +3817,15 @@ msgstr "根据此控制点建立一条贝塞尔三次曲线"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr ""
+msgstr "字符串"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
-msgstr ""
+msgstr "双精度"
 
 #: objects/bogus_imp.cc:307
 msgid "int"
-msgstr ""
+msgstr "整数"
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
