@@ -18,6 +18,7 @@
   <developer_name xml:lang="tr">KDE</developer_name>
   <developer_name xml:lang="uk">KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDExx</developer_name>
+  <developer_name xml:lang="zh-CN">KDE</developer_name>
   <developer_name xml:lang="zh-TW">KDE</developer_name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
