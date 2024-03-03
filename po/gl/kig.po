@@ -1,26 +1,26 @@
 # translation of kig.po to galician
 #
+# SPDX-FileCopyrightText: 2024 Adrián Chaves (Gallaecio)
 # mvillarino <mvillarino@users.sourceforge.net>, 2006, 2008, 2009.
 # Xabi G. Feal <xabigf@gmx.net>, 2006.
 # Xosé <xosecalvo@gmail.com>, 2009, 2010, 2011, 2012, 2013.
 # Marce Villarino <mvillarino@gmail.com>, 2009.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013, 2014.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:23+0000\n"
-"PO-Revision-Date: 2023-06-05 14:33+0200\n"
+"PO-Revision-Date: 2024-03-02 21:05+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -215,7 +215,7 @@ msgstr "Amosar un marco extra"
 #: filters/svgexporteroptionswidget.ui:42
 #, kde-format
 msgid "Show Axes"
-msgstr "Amosar os eixos"
+msgstr "Amosar os eixes"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
 #: filters/asyexporteroptionswidget.ui:56
@@ -838,7 +838,7 @@ msgstr "Amosar a grade"
 #: kig/kig_part.cpp:133
 #, kde-format
 msgid "Show axes"
-msgstr "Amosar os eixos"
+msgstr "Amosar os eixes"
 
 #: kig/kig_part.cpp:218
 #, kde-format
@@ -975,12 +975,12 @@ msgstr "Amosar ou agochar a grade."
 #: kig/kig_part.cpp:310
 #, kde-format
 msgid "Show &Axes"
-msgstr "Mostr&ar os eixos"
+msgstr "&Amosar os eixes"
 
 #: kig/kig_part.cpp:312
 #, kde-format
 msgid "Show or hide the axes."
-msgstr "Amosar ou agochar os eixos."
+msgstr "Amosar ou agochar os eixes."
 
 #: kig/kig_part.cpp:316
 #, kde-format
