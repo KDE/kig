@@ -14,13 +14,13 @@
 # Renan Cakirerk, 2010.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014, 2017.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:23+0000\n"
-"PO-Revision-Date: 2023-08-02 01:09+0300\n"
+"PO-Revision-Date: 2024-03-18 19:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -654,7 +654,7 @@ msgid ""
 "translation, miscellaneous stuff here and there."
 msgstr ""
 "Eski sorumlu, Dr. Geo içe aktarma süzgeci, nokta ve çizgi biçemleri, "
-"italyanca çeviri ve bir çok diğer şey."
+"italyanca çeviri ve birçok diğer şey."
 
 #: kig/aboutdata.h:39
 #, kde-format
@@ -2424,12 +2424,12 @@ msgstr "Verilen merkez noktası ve köşe ile bir düzgün çokgen oluştur"
 #: misc/special_constructors.cc:939
 #, kde-format
 msgid "Construct a regular polygon with this center"
-msgstr "Bu merkezle düzgün bir çokgen oluştur"
+msgstr "Bu merkezle düzgün birçokgen oluştur"
 
 #: misc/special_constructors.cc:943
 #, kde-format
 msgid "Construct a regular polygon with this vertex"
-msgstr "Bu köşeyle düzgün bir çokgen oluştur"
+msgstr "Bu köşeyle düzgün birçokgen oluştur"
 
 #: misc/special_constructors.cc:954
 #, kde-format
@@ -5503,7 +5503,7 @@ msgstr "Bir doğruyla kesişimini istediğiniz çokgeni seç..."
 #: objects/polygon_type.cc:474
 #, kde-format
 msgid "Intersect this line with a polygon"
-msgstr "Bu doğruyu bir çokgen ile kesiştir"
+msgstr "Bu doğruyu birçokgen ile kesiştir"
 
 #: objects/polygon_type.cc:475
 #, kde-format
@@ -6753,7 +6753,7 @@ msgid ""
 "<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
 "and <em>Cabri&#8482;</em> files.</p>\n"
 msgstr ""
-"<p>Kig bir çok dosya biçimini açabilir: kendi dosya (<code>.kig</code>\n"
+"<p>Kig birçok dosya biçimini açabilir: kendi dosya (<code>.kig</code>\n"
 "biçimini), <em>KGeo</em> dosyalarını, <em>KSeg</em> dosyalarını\n"
 "ve kısmen <em>Dr. Geo</em> ve <em>Cabri&#8482;</em> dosyalarını.</p>\n"
 
