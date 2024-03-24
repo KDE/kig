@@ -341,6 +341,6 @@ QString CurveImp::cartesianEquationString(const KigDocument &doc) const
             return ret;
         }
     }
-    ret = i18n("Possibly trascendental curve");
+    ret = i18n("Possibly transcendental curve");
     return ret;
 }
