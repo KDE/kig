@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2024-03-02 21:05+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -4522,8 +4522,9 @@ msgid "Hide a Curve"
 msgstr "Agochar unha curva"
 
 #: objects/curve_imp.cc:344
-#, kde-format
-msgid "Possibly trascendental curve"
+#, fuzzy, kde-format
+#| msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr "Posibelmente a curva sexa transcendental"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

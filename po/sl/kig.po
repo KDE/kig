@@ -1,6 +1,6 @@
 # Translation of kig.po to Slovenian
 # Copyright (C) 2003,2004, 2006 Free Software Foundation, Inc.
-# $Id: kig.po 1664120 2023-11-05 13:15:21Z scripty $
+# $Id: kig.po 1676406 2024-03-25 02:25:54Z scripty $
 # $Source$
 #
 # Jure Repinc <jlp@holodeck1.com>, 2003, 2004, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2023-02-24 08:42+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -4497,8 +4497,9 @@ msgid "Hide a Curve"
 msgstr "Skrij krivuljo"
 
 #: objects/curve_imp.cc:344
-#, kde-format
-msgid "Possibly trascendental curve"
+#, fuzzy, kde-format
+#| msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr "Morebitna transcendentna krivulja"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

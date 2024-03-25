@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2024-01-12 12:14+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -4554,8 +4554,9 @@ msgid "Hide a Curve"
 msgstr "Verberg een kromme"
 
 #: objects/curve_imp.cc:344
-#, kde-format
-msgid "Possibly trascendental curve"
+#, fuzzy, kde-format
+#| msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr "Mogelijk kromme van een transcendente functie"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

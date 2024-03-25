@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2023-06-08 19:23+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -4486,8 +4486,9 @@ msgid "Hide a Curve"
 msgstr "Kaŝi Kurbon"
 
 #: objects/curve_imp.cc:344
-#, kde-format
-msgid "Possibly trascendental curve"
+#, fuzzy, kde-format
+#| msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr "Eble transcenda kurbo"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

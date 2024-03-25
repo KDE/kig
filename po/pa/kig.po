@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2007-11-20 06:43+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <punjabi-l10n@users.sf.net>\n"
@@ -4471,7 +4471,7 @@ msgstr "ਚਾਪ ਓਹਲੇ"
 
 #: objects/curve_imp.cc:344
 #, kde-format
-msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

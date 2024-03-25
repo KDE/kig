@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2014-01-22 21:38+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -4577,8 +4577,9 @@ msgid "Hide a Curve"
 msgstr "Görbe elrejtése"
 
 #: objects/curve_imp.cc:344
-#, kde-format
-msgid "Possibly trascendental curve"
+#, fuzzy, kde-format
+#| msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr "Esetleges határozatlan görbe"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
