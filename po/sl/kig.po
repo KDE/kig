@@ -1,6 +1,6 @@
 # Translation of kig.po to Slovenian
 # Copyright (C) 2003,2004, 2006 Free Software Foundation, Inc.
-# $Id: kig.po 1676406 2024-03-25 02:25:54Z scripty $
+# $Id: kig.po 1676475 2024-03-26 02:25:38Z scripty $
 # $Source$
 #
 # Jure Repinc <jlp@holodeck1.com>, 2003, 2004, 2006.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:58+0000\n"
-"PO-Revision-Date: 2023-02-24 08:42+0100\n"
+"PO-Revision-Date: 2024-03-25 06:35+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4497,10 +4497,9 @@ msgid "Hide a Curve"
 msgstr "Skrij krivuljo"
 
 #: objects/curve_imp.cc:344
-#, fuzzy, kde-format
-#| msgid "Possibly trascendental curve"
+#, kde-format
 msgid "Possibly transcendental curve"
-msgstr "Morebitna transcendentna krivulja"
+msgstr "Morda transcendentna krivulja"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
