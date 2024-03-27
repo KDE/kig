@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Slovenian "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Uporabniški priročnik KDE</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>23.12.2020</date>
+<releaseinfo
+>Applications 20.12</releaseinfo>
+<productname
+>Aplikacije KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>Interaktivni geometrijski program &kde;</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>ime datoteke</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>možnosti</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>Opis</title>
+<para
+>&kig; je aplikacija za interaktivno geometrijo. Služi dvema namenoma:</para>
+<itemizedlist
+><listitem
+><para
+>Študentom omogočiti interaktivno raziskovanje matematičnih oblik in konceptov z uporabo računalnika;</para
+></listitem>
+<listitem
+><para
+>Služiti kot orodje WYSIWYG za risanje matematičnih oblik in njihovo vključitev v druge dokumente.</para
+></listitem
+></itemizedlist>
+<para
+>S tem programom lahko izvajate geometrijo na računalniku tako kot na tabli v učilnici. Vendar vam program omogoča premikanje in spreminjanje delov geometrijske risbe, tako da lahko vidite, kako se posledično spreminjajo drugi deli.</para>
+<para
+>&kig; podpira lokuse in uporabniško definirane makre. Prav tako uvaža in izvaža v in iz tujih formatov datotek, vključno z <application
+>Cabri</application
+>, <application
+>Dr. Geo</application
+>, &kgeo;, <application
+>KSeg</application
+> in <application
+>XFig</application
+>.</para>
+<para
+>Ta aplikacija je del uradne aplikacije &kde; izobraževalni modul.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Možnosti</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>Ne prikaži &GUI;. Namesto tega pretvori podano datoteko v izvorni &kig; format. Izvorni &kig; datoteka bo zapisana v standardni izhod, razen če je podana <option
+>--outfile</option
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>filename</replaceable
+></option
+></term>
+<listitem
+><para
+>Uporablja se z <option
+>--convert-to-native</option
+> za določitev, kam naj se shrani novo ustvarjena mapa &kig;. Če te možnosti ne določite ali podate ime datoteke <filename
+>-</filename
+>, bo datoteka prikazana v standardnem izhodu.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>Poglejte tudi</title>
+<para
+>Podrobnejša uporabniška dokumentacija je na voljo na <ulink url="help:/kig"
+>help:/kig</ulink
+> (vnesite ta &URL; v &konqueror; ali zaženite <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>Dodatne informacije so na voljo tudi na <ulink url="https://edu.kde.org/kig/"
+>&kde; Izobraževalnem spletnem mestu</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>Avtorji</title>
+<para
+>&kig; je napisal <personname
+><firstname
+>Dominique</firstname
+><surname
+>Devriese</surname
+></personname
+> <email
+>devriese@kde.org</email
+>, <personname
+><firstname
+>Maurizio</firstname
+><surname
+>Paolini</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Franco</firstname
+><surname
+>Pasquarelli</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>, <personname
+><firstname
+>Pino</firstname
+><surname
+>Toscano</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>, <personname
+><firstname
+>David E.</firstname
+><surname
+>Narvaez</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+> in drugi.</para>
+<para
+>Ta priročnik man temelji dokumentu, ki je bil pripravljen za &Debian; avtor <personname
+><firstname
+>Ben</firstname
+><surname
+>Burton</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>
