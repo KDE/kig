@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-25 01:58+0000\n"
-"PO-Revision-Date: 2024-03-17 20:45\n"
+"PO-Revision-Date: 2024-04-03 19:20\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -4373,10 +4373,9 @@ msgid "Hide a Curve"
 msgstr "隐藏曲线"
 
 #: objects/curve_imp.cc:344
-#, fuzzy, kde-format
-#| msgid "Possibly trascendental curve"
+#, kde-format
 msgid "Possibly transcendental curve"
-msgstr "可能是超越曲线"
+msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
