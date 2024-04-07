@@ -18,9 +18,9 @@
 >bab@debian.org</email
 ></author>
 <date
->27-08-2015</date>
+>23-12-2020</date>
 <releaseinfo
->&kig; 1.0 (Applications 15.12)</releaseinfo>
+>Applications 20.12</releaseinfo>
 <productname
 >Applications KDE</productname>
 </refentryinfo>
@@ -40,7 +40,7 @@
 >kig</command
 ></refname>
 <refpurpose
->un logiciel de géométrie interactive pour &kde;</refpurpose>
+>Un logiciel de géométrie interactive pour &kde;</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -80,8 +80,8 @@
 <para
 >Avec ce logiciel, vous pouvez faire de la géométrie sur un ordinateur comme vous le feriez sur un tableau noir en classe. Toutefois, le logiciel vous permet de déplacer et modifier des parties d'un dessin géométrique de sorte que vous puissiez vois comment les autres parties changent en conséquence.</para>
 <para
->&kig; prend en charge loci et les macros définies par l'utilisateur. Il importe et exporte également des formats de fichiers étrangers comme <application
-> Cabri</application
+>&kig; prend en charge le format « loci » et les macros définies par l'utilisateur. Il importe et exporte également des formats de fichiers étrangers comme <application
+>Cabri</application
 >, <application
 >Dr. Geo</application
 >, &kgeo;, <application
@@ -114,7 +114,7 @@
 <term
 ><option
 >-o, --outfile <replaceable
->nomdufichier</replaceable
+>nom-du-fichier</replaceable
 ></option
 ></term>
 <listitem
@@ -134,11 +134,9 @@
 <title
 >Voir aussi</title>
 <para
->Une documentation utilisateur détaillée est disponible à partir de <ulink url="help:/kig"
+>Une documentation utilisateur plus détaillée est disponible à la page <ulink url="help:/kig"
 >help:/kig</ulink
-> (vous pouvez soit saisir cette <acronym
->URL</acronym
-> dans &konqueror;, soit lancer <userinput
+> (vous pouvez soit saisir cette &URL; dans &konqueror;,  soit lancer <userinput
 ><command
 >khelpcenter</command
 > <parameter
@@ -147,8 +145,8 @@
 >).</para>
 
 <para
->Des informations complémentaires sont disponibles sur <ulink url="http://edu.kde.org/kig/"
->le site web de &kde;-edu</ulink
+>Des informations complémentaires sont aussi disponibles sur le <ulink url="http://edu.kde.org/kig/"
+>site Internet de &kde; Education</ulink
 >.</para>
 </refsect1>
 
@@ -198,8 +196,8 @@
 >david.narvaez@computer.org</email
 > et d'autres.</para>
 <para
->Cette page de manuel s'est inspirée d'une page conçue pour Debian par <personname
-> <firstname
+>Cette page de manuel s'est conçue à partir d'une page produite pour &Debian; par <personname
+><firstname
 >Ben</firstname
 ><surname
 >Burton</surname
