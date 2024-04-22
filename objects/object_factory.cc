@@ -436,7 +436,7 @@ void ObjectFactory::redefinePoint(ObjectTypeCalcer *point, const Coordinate &c, 
     std::vector<ObjectHolder *> hos = doc.whatAmIOn(c, w);
     std::vector<ObjectCalcer *> os;
     ObjectCalcer *(ObjectHolder::*calcmeth)() = &ObjectHolder::calcer;
-    std::transform(hos.begin(), hos.end(), std::back_inserter(os), std::mem_fun(calcmeth));
+    std::transform(hos.begin(), hos.end(), std::back_inserter(os), std::mem_fn(calcmeth));
     ObjectCalcer *v = nullptr;
 
     // we don't want one of our children as a parent...

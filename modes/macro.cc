@@ -61,9 +61,9 @@ bool DefineMacroMode::validateObjects()
 {
     ObjectCalcer *(ObjectHolder::*memfun)() = &ObjectHolder::calcer;
     std::vector<ObjectCalcer *> given;
-    std::transform(mgiven.begin(), mgiven.end(), std::back_inserter(given), std::mem_fun(memfun));
+    std::transform(mgiven.begin(), mgiven.end(), std::back_inserter(given), std::mem_fn(memfun));
     std::vector<ObjectCalcer *> final;
-    std::transform(mfinal.begin(), mfinal.end(), std::back_inserter(final), std::mem_fun(memfun));
+    std::transform(mfinal.begin(), mfinal.end(), std::back_inserter(final), std::mem_fn(memfun));
     ObjectHierarchy hier(given, final);
     if (!mgiven.empty() && !hier.resultDependsOnGiven()) {
         KMessageBox::error(mwizard,
@@ -92,9 +92,9 @@ void DefineMacroMode::finishPressed()
 {
     ObjectCalcer *(ObjectHolder::*memfun)() = &ObjectHolder::calcer;
     std::vector<ObjectCalcer *> given;
-    std::transform(mgiven.begin(), mgiven.end(), std::back_inserter(given), std::mem_fun(memfun));
+    std::transform(mgiven.begin(), mgiven.end(), std::back_inserter(given), std::mem_fn(memfun));
     std::vector<ObjectCalcer *> final;
-    std::transform(mfinal.begin(), mfinal.end(), std::back_inserter(final), std::mem_fun(memfun));
+    std::transform(mfinal.begin(), mfinal.end(), std::back_inserter(final), std::mem_fn(memfun));
     ObjectHierarchy hier(given, final);
     MacroConstructor *ctor = new MacroConstructor(hier,
                                                   mwizard->field(QStringLiteral("name")).toString(),

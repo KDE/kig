@@ -110,8 +110,8 @@ void LinksLabel::applyEdit(LinksLabelEditBuf &buf)
 
     p->layout->activate();
 
-    std::for_each(p->urllabels.begin(), p->urllabels.end(), mem_fun(&QWidget::show));
-    std::for_each(p->labels.begin(), p->labels.end(), mem_fun(&QWidget::show));
+    std::for_each(p->urllabels.begin(), p->urllabels.end(), std::mem_fn(&QWidget::show));
+    std::for_each(p->labels.begin(), p->labels.end(), std::mem_fn(&QWidget::show));
 
     Q_EMIT changed();
 }

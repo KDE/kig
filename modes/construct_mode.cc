@@ -376,7 +376,7 @@ static const bool test_has_frame_dflt = true;
 void TestConstructMode::handlePrelim(const std::vector<ObjectCalcer *> &os, const QPoint &p, KigPainter &pter, KigWidget &w)
 {
     Args args;
-    std::transform(os.begin(), os.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    std::transform(os.begin(), os.end(), std::back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     // usetext
     QString usetext = i18n(mtype->argsParser().usetext(args.back(), args).c_str());
@@ -510,7 +510,7 @@ QString TestConstructMode::selectStatement(const std::vector<ObjectCalcer *> &se
 {
     using namespace std;
     Args args;
-    transform(sel.begin(), sel.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(sel.begin(), sel.end(), back_inserter(args), mem_fn(&ObjectCalcer::imp));
 
     std::string ret = mtype->argsParser().selectStatement(args);
     if (ret.empty())

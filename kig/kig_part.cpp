@@ -659,7 +659,7 @@ void KigPart::delObjects(const std::vector<ObjectHolder *> &os)
 
 void KigPart::enableConstructActions(bool enabled)
 {
-    for_each(aActions.begin(), aActions.end(), bind2nd(mem_fun(&QAction::setEnabled), enabled));
+    for_each(aActions.begin(), aActions.end(), [enabled](QAction* action) { action->setEnabled(enabled); });
 }
 
 void KigPart::unplugActionLists()

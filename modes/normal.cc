@@ -57,8 +57,7 @@ void NormalMode::selectObject(ObjectHolder *o)
 
 void NormalMode::selectObjects(const std::vector<ObjectHolder *> &os)
 {
-    // hehe, don't you love this c++ stuff ;)
-    std::for_each(os.begin(), os.end(), std::bind1st(std::mem_fun(&NormalMode::selectObject), this));
+    std::for_each(os.begin(), os.end(), [this](ObjectHolder* o) { selectObject(o); });
 }
 
 void NormalMode::unselectObject(ObjectHolder *o)

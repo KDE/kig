@@ -20,7 +20,7 @@ void ObjectTypeCalcer::calc(const KigDocument &doc)
 {
     Args a;
     a.reserve(mparents.size());
-    std::transform(mparents.begin(), mparents.end(), std::back_inserter(a), std::mem_fun(&ObjectCalcer::imp));
+    std::transform(mparents.begin(), mparents.end(), std::back_inserter(a), std::mem_fn(&ObjectCalcer::imp));
     ObjectImp *n = mtype->calc(a, doc);
     delete mimp;
     mimp = n;
@@ -31,7 +31,9 @@ ObjectTypeCalcer::ObjectTypeCalcer(const ObjectType *type, const std::vector<Obj
     , mtype(type)
     , mimp(nullptr)
 {
-    std::for_each(mparents.begin(), mparents.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::addChild), this));
+    std::for_each(mparents.begin(), mparents.end(), [this](ObjectCalcer* parent) {
+        parent->addChild(this);
+    });
 }
 
 ObjectCalcer::~ObjectCalcer()
@@ -111,7 +113,9 @@ void ObjectCalcer::delChild(ObjectCalcer *c)
 
 ObjectTypeCalcer::~ObjectTypeCalcer()
 {
-    std::for_each(mparents.begin(), mparents.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::delChild), this));
+    std::for_each(mparents.begin(), mparents.end(), [this](ObjectCalcer* parent) {
+        parent->delChild(this);
+    });
     delete mimp;
 }
 
@@ -206,7 +210,7 @@ const ObjectImpType *ObjectTypeCalcer::impRequirement(ObjectCalcer *o, const std
 {
     Args args;
     args.reserve(mparents.size());
-    std::transform(os.begin(), os.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    std::transform(os.begin(), os.end(), std::back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     assert(std::find(args.begin(), args.end(), o->imp()) != args.end());
     return mtype->impRequirement(o->imp(), args);
 }
@@ -218,8 +222,12 @@ void ObjectConstCalcer::setImp(ObjectImp *newimp)
 
 void ObjectTypeCalcer::setParents(const std::vector<ObjectCalcer *> &np)
 {
-    std::for_each(np.begin(), np.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::addChild), this));
-    std::for_each(mparents.begin(), mparents.end(), std::bind2nd(std::mem_fun(&ObjectCalcer::delChild), this));
+    std::for_each(np.begin(), np.end(), [this](ObjectCalcer* obj) {
+        obj->addChild(this);
+    });
+    std::for_each(mparents.begin(), mparents.end(), [this](ObjectCalcer* obj) {
+        obj->delChild(this);
+    });
     mparents = np;
 }
 
@@ -308,7 +316,7 @@ bool ObjectTypeCalcer::isDefinedOnOrThrough(const ObjectCalcer *o) const
 {
     Args args;
     args.reserve(mparents.size());
-    std::transform(mparents.begin(), mparents.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    std::transform(mparents.begin(), mparents.end(), std::back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     if (std::find(args.begin(), args.end(), o->imp()) == args.end())
         return false;
 
