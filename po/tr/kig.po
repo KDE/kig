@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2024-03-25 13:55+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -653,7 +653,7 @@ msgid ""
 "translation, miscellaneous stuff here and there."
 msgstr ""
 "Eski sorumlu, Dr. Geo içe aktarma süzgeci, nokta ve çizgi biçemleri, "
-"italyanca çeviri ve bir çok diğer şey."
+"italyanca çeviri ve birçok diğer şey."
 
 #: kig/aboutdata.h:39
 #, kde-format
@@ -2421,12 +2421,12 @@ msgstr "Verilen merkez noktası ve köşe ile bir düzgün çokgen oluştur"
 #: misc/special_constructors.cc:939
 #, kde-format
 msgid "Construct a regular polygon with this center"
-msgstr "Bu merkezle düzgün bir çokgen oluştur"
+msgstr "Bu merkezle düzgün birçokgen oluştur"
 
 #: misc/special_constructors.cc:943
 #, kde-format
 msgid "Construct a regular polygon with this vertex"
-msgstr "Bu köşeyle düzgün bir çokgen oluştur"
+msgstr "Bu köşeyle düzgün birçokgen oluştur"
 
 #: misc/special_constructors.cc:954
 #, kde-format
@@ -4480,8 +4480,8 @@ msgstr "Bir Eğri Gizle"
 
 #: objects/curve_imp.cc:344
 #, kde-format
-msgid "Possibly trascendental curve"
-msgstr "Muhtemel transandantal eğri"
+msgid "Possibly transcendental curve"
+msgstr "Olası doğaüstü eğri"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
@@ -5499,7 +5499,7 @@ msgstr "Bir doğruyla kesişimini istediğiniz çokgeni seç…"
 #: objects/polygon_type.cc:474
 #, kde-format
 msgid "Intersect this line with a polygon"
-msgstr "Bu doğruyu bir çokgen ile kesiştir"
+msgstr "Bu doğruyu birçokgen ile kesiştir"
 
 #: objects/polygon_type.cc:475
 #, kde-format
@@ -6748,7 +6748,7 @@ msgid ""
 "<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
 "and <em>Cabri&#8482;</em> files.</p>\n"
 msgstr ""
-"<p>Kig bir çok dosya biçimini açabilir: kendi dosya (<code>.kig</code>\n"
+"<p>Kig birçok dosya biçimini açabilir: kendi dosya (<code>.kig</code>\n"
 "biçimini), <em>KGeo</em> dosyalarını, <em>KSeg</em> dosyalarını\n"
 "ve kısmen <em>Dr. Geo</em> ve <em>Cabri&#8482;</em> dosyalarını.</p>\n"
 

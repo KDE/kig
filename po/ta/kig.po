@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
 "PO-Revision-Date: 2021-01-18 19:15+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -4624,7 +4624,7 @@ msgstr "வளைவை மறை"
 
 #: objects/curve_imp.cc:344
 #, kde-format
-msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

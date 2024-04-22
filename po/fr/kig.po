@@ -23,9 +23,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
-"PO-Revision-Date: 2023-10-13 16:14+0200\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"PO-Revision-Date: 2024-03-26 09:00+0100\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -4599,7 +4599,7 @@ msgstr "Cacher une courbe"
 
 #: objects/curve_imp.cc:344
 #, kde-format
-msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr "Courbe potentiellement transcendante"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153

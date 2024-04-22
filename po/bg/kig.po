@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:23+0000\n"
-"PO-Revision-Date: 2023-05-03 00:04+0200\n"
+"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"PO-Revision-Date: 2024-03-20 10:30+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 24.02.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -425,9 +425,9 @@ msgid "&Latex..."
 msgstr "&Файл Latex..."
 
 #: filters/latexexporter.cc:511
-#, fuzzy, kde-format
+#, kde-format
 msgid "Latex Documents (*.tex)"
-msgstr "*.tex|Документи Latex (*.tex)"
+msgstr "Документи Latex (*.tex)"
 
 #: filters/latexexporter.cc:511
 #, kde-format
@@ -4505,7 +4505,7 @@ msgstr "Скриване на крива"
 
 #: objects/curve_imp.cc:344
 #, kde-format
-msgid "Possibly trascendental curve"
+msgid "Possibly transcendental curve"
 msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
