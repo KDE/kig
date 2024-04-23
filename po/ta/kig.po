@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"POT-Creation-Date: 2024-04-23 01:52+0000\n"
 "PO-Revision-Date: 2021-01-18 19:15+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -2939,7 +2939,7 @@ msgctxt "Translators: Inch"
 msgid "in"
 msgstr "கோடு"
 
-#: modes/construct_mode.cc:223 modes/normal.cc:239
+#: modes/construct_mode.cc:223 modes/normal.cc:238
 #, fuzzy, kde-format
 msgid "Which object?"
 msgstr "இந்தப் பொருளை அளவிடு"

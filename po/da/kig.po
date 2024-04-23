@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"POT-Creation-Date: 2024-04-23 01:52+0000\n"
 "PO-Revision-Date: 2015-12-08 19:57+0100\n"
 "Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -2964,7 +2964,7 @@ msgctxt "Translators: Inch"
 msgid "in"
 msgstr "tom."
 
-#: modes/construct_mode.cc:223 modes/normal.cc:239
+#: modes/construct_mode.cc:223 modes/normal.cc:238
 #, kde-format
 msgid "Which object?"
 msgstr "Hvilket objekt?"

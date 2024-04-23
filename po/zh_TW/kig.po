@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"POT-Creation-Date: 2024-04-23 01:52+0000\n"
 "PO-Revision-Date: 2024-04-16 18:46+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -2825,7 +2825,7 @@ msgctxt "Translators: Inch"
 msgid "in"
 msgstr "英吋"
 
-#: modes/construct_mode.cc:223 modes/normal.cc:239
+#: modes/construct_mode.cc:223 modes/normal.cc:238
 #, kde-format
 msgid "Which object?"
 msgstr "哪個物件？"

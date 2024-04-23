@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"POT-Creation-Date: 2024-04-23 01:52+0000\n"
 "PO-Revision-Date: 2024-03-26 09:00+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -2996,7 +2996,7 @@ msgctxt "Translators: Inch"
 msgid "in"
 msgstr "pouces"
 
-#: modes/construct_mode.cc:223 modes/normal.cc:239
+#: modes/construct_mode.cc:223 modes/normal.cc:238
 #, kde-format
 msgid "Which object?"
 msgstr "Quel objet ?"

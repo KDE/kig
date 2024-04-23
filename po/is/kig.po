@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-25 01:58+0000\n"
+"POT-Creation-Date: 2024-04-23 01:52+0000\n"
 "PO-Revision-Date: 2010-05-31 11:56+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -2862,7 +2862,7 @@ msgctxt "Translators: Inch"
 msgid "in"
 msgstr "lína"
 
-#: modes/construct_mode.cc:223 modes/normal.cc:239
+#: modes/construct_mode.cc:223 modes/normal.cc:238
 #, fuzzy, kde-format
 msgid "Which object?"
 msgstr "Skala þennan hlut"
