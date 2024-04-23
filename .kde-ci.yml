@@ -15,3 +15,6 @@ Dependencies:
     'frameworks/kxmlgui': '@stable'
     'frameworks/kcrash': '@stable'
     'frameworks/kcoreaddons': '@stable'
+
+Options:
+  require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
