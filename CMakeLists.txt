@@ -65,7 +65,6 @@ add_subdirectory( icons )
 add_subdirectory( kig )
 add_subdirectory( mimetypes )
 add_subdirectory( macros )
-add_subdirectory( data )
 add_subdirectory( pykig )
 
 if(BoostPython_FOUND)

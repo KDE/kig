@@ -25,7 +25,6 @@
 #include <KRecentFilesAction>
 #include <KSharedConfig>
 #include <KStandardAction>
-#include <KTipDialog>
 #include <KXMLGUIFactory>
 #include <kxmlgui_version.h>
 
@@ -53,9 +52,6 @@ Kig::Kig()
 
             // and integrate the part's GUI with the shell's
             createGUI(m_part);
-
-            // finally show tip-of-day ( if the user wants it :) )
-            QTimer::singleShot(0, this, &Kig::startupTipOfDay);
         }
     } else {
         // if we couldn't find our Part, we exit since the Shell by
@@ -94,8 +90,6 @@ void Kig::setupActions()
     KStandardAction::keyBindings(guiFactory(), &KXMLGUIFactory::showConfigureShortcutsDialog, actionCollection());
 
     KStandardAction::configureToolbars(this, SLOT(optionsConfigureToolbars()), actionCollection());
-
-    KStandardAction::tipOfDay(this, SLOT(tipOfDay()), actionCollection());
 }
 
 void Kig::saveProperties(KConfigGroup &config)
@@ -210,16 +204,6 @@ void Kig::fileOpen()
         }
     }
     delete fileOpenDialog;
-}
-
-void Kig::tipOfDay()
-{
-    KTipDialog::showTip(this, QStringLiteral("kig/tips"), true);
-}
-
-void Kig::startupTipOfDay()
-{
-    KTipDialog::showTip(this, QStringLiteral("kig/tips"));
 }
 
 #include "moc_kig.cpp"

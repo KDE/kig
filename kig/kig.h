@@ -84,9 +84,6 @@ private Q_SLOTS:
 
     void applyNewToolbarConfig();
 
-    void tipOfDay();
-    void startupTipOfDay();
-
 private:
     void setupActions();
 
