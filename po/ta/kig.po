@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 01:52+0000\n"
+"POT-Creation-Date: 2024-04-29 01:41+0000\n"
 "PO-Revision-Date: 2021-01-18 19:15+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -801,12 +801,12 @@ msgstr ""
 msgid "Responsible for the new object action icons."
 msgstr "அழகான SVG சின்னத்திற்கு பொறுப்பு"
 
-#: kig/kig.cpp:63
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "தேவையான கிக் நூலகத்தை காணவில்லை, உங்கள் நிறுவலை பரிசோதி."
 
-#: kig/kig.cpp:201
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -6877,148 +6877,70 @@ msgstr ""
 "உங்கள் உரையில் பிழை இருப்பது போல் உள்ளது. ஆகையால் இது தகுந்த பொருளை உருவாக்காது. உரை "
 "சரி பார்த்த பின் முடிந்தது எனற பொத்தானை அழுத்தவும்."
 
-#. i18n: ectx: @info:tipoftheday
-#: tips:2
-#, kde-format
-msgid ""
-"<p>You can control a kig construction by means of a \"pykig\" \n"
-"python script, that can be executed with the command \n"
-"<code>pykig.py</code>.  Here is a nice example \n"
-"(<code>hexagons.kpy</code>) you can try:\n"
-"<code><pre>\n"
-"kigdocument.hideobjects()\n"
-"def hexagons (c, v, n):\n"
-"  hexagon = PolygonBCV (c, v, 6)\n"
-"  if n &lt;= 0:\n"
-"    hexagon.show()\n"
-"    for i in range(6): \n"
-"      PolygonSide (hexagon, i, True)\n"
-"    return\n"
-"  cnew = MidPoints (c, v)\n"
-"  hexagons (cnew, v, n-1)\n"
-"  for k in [2,4]:\n"
-"    v1 = PolygonVertex (hexagon, k)\n"
-"    cnew = MidPoints (c, v1)\n"
-"    hexagons (cnew, v1, n-1)\n"
-"hexagons (Point(0,0), Point(1,0), 5)\n"
-"</pre></code>\n"
-msgstr ""
+#~ msgid ""
+#~ "<p>One of the most powerful tools in Kig are the menus that you can\n"
+#~ "enter by right-clicking on an object, or on some empty space in the\n"
+#~ "document.  You can use them to give objects names, change their colors\n"
+#~ "and line styles, and lots of other interesting things.</p>\n"
+#~ msgstr ""
+#~ "<p>இது ஒரு கிக்கின் மிக சக்தி வாய்ந்த கருவிகள் அந்த பட்டியல்களை நீங்கள்\n"
+#~ "பொருளின் மீது வலது சொடுக்கி உள்ளிட முடியும், அல்லது சில காலி இடத்தை ஆவணத்தில்\n"
+#~ "விட வேண்டும்.  நீங்கள் கொடுத்த பொருள் பெயர்களை பயன்படுத்த முடியும், வண்ணங்களை "
+#~ "மாற்றுகிறது\n"
+#~ "மற்றும் வடி முறை, மற்றும் மற்ற விருப்பமான பொருள்கள்.</p>\n"
 
-#. i18n: ectx: @info:tipoftheday
-#: tips:28
-#, kde-format
-msgid ""
-"<p>You can repeat the latest construction simply by pressing the key\n"
-"'Z'; this comes in very handy if you need to construct a sequence\n"
-"of objects with the same construction, especially if there is\n"
-"no shortcut for that construction.</p>\n"
-msgstr ""
+#~ msgid ""
+#~ "<p>You can construct new points without using the menu or the toolbar, "
+#~ "simply\n"
+#~ "clicking somewhere on the Kig document with the <em>middle mouse\n"
+#~ "button</em>.</p>\n"
+#~ msgstr ""
+#~ "<p>நீங்கள் புதிய புள்ளிகளை பட்டியல் அல்லது கருவிப்பட்டிகள் பயனபடுத்தாமல் உருவாக்க "
+#~ "முடியும், எளிதாக\n"
+#~ "கிக் ஆவணத்தில் எங்காவது <em>சுட்டி பொத்தானின் நடு பொத்தானை\n"
+#~ "அழுத்தி பெற முடியும்</em>.</p>\n"
 
-#. i18n: ectx: @info:tipoftheday
-#: tips:37
-#, kde-format
-msgid ""
-"<p>One of the most powerful tools in Kig are the menus that you can\n"
-"enter by right-clicking on an object, or on some empty space in the\n"
-"document.  You can use them to give objects names, change their colors\n"
-"and line styles, and lots of other interesting things.</p>\n"
-msgstr ""
-"<p>இது ஒரு கிக்கின் மிக சக்தி வாய்ந்த கருவிகள் அந்த பட்டியல்களை நீங்கள்\n"
-"பொருளின் மீது வலது சொடுக்கி உள்ளிட முடியும், அல்லது சில காலி இடத்தை ஆவணத்தில்\n"
-"விட வேண்டும்.  நீங்கள் கொடுத்த பொருள் பெயர்களை பயன்படுத்த முடியும், வண்ணங்களை மாற்றுகிறது\n"
-"மற்றும் வடி முறை, மற்றும் மற்ற விருப்பமான பொருள்கள்.</p>\n"
+#~ msgid ""
+#~ "<p>Kig can open several file formats: its files (<code>.kig</code> "
+#~ "files),\n"
+#~ "<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</"
+#~ "em>\n"
+#~ "and <em>Cabri&#8482;</em> files.</p>\n"
+#~ msgstr ""
+#~ "<p>கிக் மூலம் வெவ்வேறு கோப்பு வடிவத்தை திறக்க முடியும்: இதன் கோப்புகள் (<code>.kig</"
+#~ "code> files),\n"
+#~ "<em>KGeo</em> கோப்புகள், <em>KSeg</em> கோப்புகள், மற்றும், பகுதியாக, <em>Dr. "
+#~ "ஜியோ</em>\n"
+#~ "கோப்புகள்.</p>\n"
 
-#. i18n: ectx: @info:tipoftheday
-#: tips:46
-#, kde-format
-msgid ""
-"<p>You can construct new points without using the menu or the toolbar, "
-"simply\n"
-"clicking somewhere on the Kig document with the <em>middle mouse\n"
-"button</em>.</p>\n"
-msgstr ""
-"<p>நீங்கள் புதிய புள்ளிகளை பட்டியல் அல்லது கருவிப்பட்டிகள் பயனபடுத்தாமல் உருவாக்க "
-"முடியும், எளிதாக\n"
-"கிக் ஆவணத்தில் எங்காவது <em>சுட்டி பொத்தானின் நடு பொத்தானை\n"
-"அழுத்தி பெற முடியும்</em>.</p>\n"
+#, fuzzy
+#~ msgid ""
+#~ "<p>Kig has more than 20 objects and 10 transformations with more than "
+#~ "80 \n"
+#~ "constructions you can use in your documents: open the <em>Objects</em> \n"
+#~ "menu to see them all.</p>\n"
+#~ msgstr ""
+#~ "<p>கிக்கிடம் 40 பொருள்கள் மற்றும் 10 மாற்றத்துக்கு மேலும் உங்களால் உருவாக்க முடியும் "
+#~ "மற்றும் உங்கள்\n"
+#~ "ஆவணத்தில் பயன்படுத்த முடியும்: <em>பொருள்கள்</em> பட்டியலை திறந்த அனைத்தையும் பார்க்க "
+#~ "முடியும்.</p>\n"
 
-#. i18n: ectx: @info:tipoftheday
-#: tips:54
-#, kde-format
-msgid ""
-"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
-"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
-"and <em>Cabri&#8482;</em> files.</p>\n"
-msgstr ""
-"<p>கிக் மூலம் வெவ்வேறு கோப்பு வடிவத்தை திறக்க முடியும்: இதன் கோப்புகள் (<code>.kig</"
-"code> files),\n"
-"<em>KGeo</em> கோப்புகள், <em>KSeg</em> கோப்புகள், மற்றும், பகுதியாக, <em>Dr. ஜியோ</"
-"em>\n"
-"கோப்புகள்.</p>\n"
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:62
-#, fuzzy, kde-format
-msgid ""
-"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
-"constructions you can use in your documents: open the <em>Objects</em> \n"
-"menu to see them all.</p>\n"
-msgstr ""
-"<p>கிக்கிடம் 40 பொருள்கள் மற்றும் 10 மாற்றத்துக்கு மேலும் உங்களால் உருவாக்க முடியும் மற்றும் "
-"உங்கள்\n"
-"ஆவணத்தில் பயன்படுத்த முடியும்: <em>பொருள்கள்</em> பட்டியலை திறந்த அனைத்தையும் பார்க்க "
-"முடியும்.</p>\n"
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:70
-#, kde-format
-msgid ""
-"<p>You can use the selected objects to start the construction of an object\n"
-"which requires the selected objects as arguments. For example, if you have "
-"two\n"
-"points selected, you can choose <em>Start->Circle by Three Points</em> from "
-"the\n"
-"popup menu to start constructing a circle by three points.</p>\n"
-msgstr ""
-"<p>You can use the selected objects to start the construction of an object\n"
-"which requires the selected objects as arguments. For example, if you have "
-"two\n"
-"points selected, you can choose <em>Start->Circle by Three Points</em> from "
-"the\n"
-"popup menu to start constructing a circle by three points.</p>\n"
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:79
-#, kde-format
-msgid ""
-"<p>Kig can extends its object set using external macros. You can find some\n"
-"interesting macros on the Kig website:\n"
-"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:87
-#, kde-format
-msgid ""
-"<p>If you have more than one object under the mouse, and you want to select "
-"any\n"
-"of them, you can click with the <em>left mouse button</em>, while holding "
-"the\n"
-"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
-"which\n"
-"you can then select from.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:96
-#, kde-format
-msgid ""
-"<p>When you construct a locus, you can click on it with the <em>right</em> "
-"mouse\n"
-"button and select <em>cartesian equation</em> to see its cartesian "
-"equation, \n"
-"whenever it is an algebraic curve of low degree.</p>\n"
-msgstr ""
+#~ msgid ""
+#~ "<p>You can use the selected objects to start the construction of an "
+#~ "object\n"
+#~ "which requires the selected objects as arguments. For example, if you "
+#~ "have two\n"
+#~ "points selected, you can choose <em>Start->Circle by Three Points</em> "
+#~ "from the\n"
+#~ "popup menu to start constructing a circle by three points.</p>\n"
+#~ msgstr ""
+#~ "<p>You can use the selected objects to start the construction of an "
+#~ "object\n"
+#~ "which requires the selected objects as arguments. For example, if you "
+#~ "have two\n"
+#~ "points selected, you can choose <em>Start->Circle by Three Points</em> "
+#~ "from the\n"
+#~ "popup menu to start constructing a circle by three points.</p>\n"
 
 #~ msgid "KigPart"
 #~ msgstr "கிக் பகுதி"

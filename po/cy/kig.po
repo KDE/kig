@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ../cy/messages//kdeedu/kig.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-23 01:52+0000\n"
+"POT-Creation-Date: 2024-04-29 01:41+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandrakesoft.com>\n"
 "Language-Team: cy <LL@li.org>\n"
@@ -724,12 +724,12 @@ msgstr ""
 msgid "Responsible for the new object action icons."
 msgstr ""
 
-#: kig/kig.cpp:63
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 
-#: kig/kig.cpp:201
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -6537,126 +6537,6 @@ msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
 "no errors, but the script does not generate a valid object. Please fix the "
 "script."
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:2
-#, kde-format
-msgid ""
-"<p>You can control a kig construction by means of a \"pykig\" \n"
-"python script, that can be executed with the command \n"
-"<code>pykig.py</code>.  Here is a nice example \n"
-"(<code>hexagons.kpy</code>) you can try:\n"
-"<code><pre>\n"
-"kigdocument.hideobjects()\n"
-"def hexagons (c, v, n):\n"
-"  hexagon = PolygonBCV (c, v, 6)\n"
-"  if n &lt;= 0:\n"
-"    hexagon.show()\n"
-"    for i in range(6): \n"
-"      PolygonSide (hexagon, i, True)\n"
-"    return\n"
-"  cnew = MidPoints (c, v)\n"
-"  hexagons (cnew, v, n-1)\n"
-"  for k in [2,4]:\n"
-"    v1 = PolygonVertex (hexagon, k)\n"
-"    cnew = MidPoints (c, v1)\n"
-"    hexagons (cnew, v1, n-1)\n"
-"hexagons (Point(0,0), Point(1,0), 5)\n"
-"</pre></code>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:28
-#, kde-format
-msgid ""
-"<p>You can repeat the latest construction simply by pressing the key\n"
-"'Z'; this comes in very handy if you need to construct a sequence\n"
-"of objects with the same construction, especially if there is\n"
-"no shortcut for that construction.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:37
-#, kde-format
-msgid ""
-"<p>One of the most powerful tools in Kig are the menus that you can\n"
-"enter by right-clicking on an object, or on some empty space in the\n"
-"document.  You can use them to give objects names, change their colors\n"
-"and line styles, and lots of other interesting things.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:46
-#, kde-format
-msgid ""
-"<p>You can construct new points without using the menu or the toolbar, "
-"simply\n"
-"clicking somewhere on the Kig document with the <em>middle mouse\n"
-"button</em>.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:54
-#, kde-format
-msgid ""
-"<p>Kig can open several file formats: its files (<code>.kig</code> files),\n"
-"<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</em>\n"
-"and <em>Cabri&#8482;</em> files.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:62
-#, kde-format
-msgid ""
-"<p>Kig has more than 20 objects and 10 transformations with more than 80 \n"
-"constructions you can use in your documents: open the <em>Objects</em> \n"
-"menu to see them all.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:70
-#, kde-format
-msgid ""
-"<p>You can use the selected objects to start the construction of an object\n"
-"which requires the selected objects as arguments. For example, if you have "
-"two\n"
-"points selected, you can choose <em>Start->Circle by Three Points</em> from "
-"the\n"
-"popup menu to start constructing a circle by three points.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:79
-#, kde-format
-msgid ""
-"<p>Kig can extends its object set using external macros. You can find some\n"
-"interesting macros on the Kig website:\n"
-"<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:87
-#, kde-format
-msgid ""
-"<p>If you have more than one object under the mouse, and you want to select "
-"any\n"
-"of them, you can click with the <em>left mouse button</em>, while holding "
-"the\n"
-"<em>Shift</em> key, to get a list of the objects under the mouse cursor "
-"which\n"
-"you can then select from.</p>\n"
-msgstr ""
-
-#. i18n: ectx: @info:tipoftheday
-#: tips:96
-#, kde-format
-msgid ""
-"<p>When you construct a locus, you can click on it with the <em>right</em> "
-"mouse\n"
-"button and select <em>cartesian equation</em> to see its cartesian "
-"equation, \n"
-"whenever it is an algebraic curve of low degree.</p>\n"
 msgstr ""
 
 #~ msgid "KigPart"
