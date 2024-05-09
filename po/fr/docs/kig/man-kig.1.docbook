@@ -136,7 +136,7 @@
 <para
 >Une documentation utilisateur plus détaillée est disponible à la page <ulink url="help:/kig"
 >help:/kig</ulink
-> (vous pouvez soit saisir cette &URL; dans &konqueror;,  soit lancer <userinput
+> (vous pouvez soit saisir cette &URL; dans &konqueror;, soit lancer <userinput
 ><command
 >khelpcenter</command
 > <parameter
