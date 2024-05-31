@@ -1,15 +1,15 @@
 # Translation of kig into esperanto.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 01:41+0000\n"
-"PO-Revision-Date: 2024-03-27 19:34+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-30 22:41+0200\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Axel Rousseau,Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "axel@esperanto-jeunes.org,okellogg@users.sourceforge.net"
+msgstr "axel@esperanto-jeunes.org,olivermkellogg@gmail.com"
 
 #, kde-format
 msgid "Circle by Center && Line"
@@ -688,7 +688,7 @@ msgstr "Petr Gajdos"
 #: kig/aboutdata.h:50
 #, kde-format
 msgid "Contributed the Bézier curves and related icons."
-msgstr "Kontribuis la Bézier-kurbojn kaj rilatajn ikonojn."
+msgstr "Kontribuis la Bézier-kurbojn kaj rilatajn piktogramojn."
 
 #: kig/aboutdata.h:52
 #, kde-format
@@ -774,7 +774,7 @@ msgstr "David Vignoni"
 #: kig/aboutdata.h:78
 #, kde-format
 msgid "Responsible for the nice application SVG Icon."
-msgstr "Respondeca pri la bela aplikaĵo SVG-Ikono."
+msgstr "Respondeca pri la bela aplikaĵo SVG-Piktogramo."
 
 #: kig/aboutdata.h:80
 #, kde-format
@@ -784,7 +784,7 @@ msgstr "Danny Allen"
 #: kig/aboutdata.h:80
 #, kde-format
 msgid "Responsible for the new object action icons."
-msgstr "Respondeca pri la novaj objektaj ago-ikonoj."
+msgstr "Respondeca pri la novaj objektaj ago-piktogramoj."
 
 #: kig/kig.cpp:59
 #, kde-format
@@ -2890,7 +2890,7 @@ msgstr "Centro de Kurbiĝo ĉe Ĉi tiu Punkto"
 #, kde-format
 msgctxt "Translators: Pixel"
 msgid "pixel"
-msgstr "pikselo"
+msgstr "rastrumero"
 
 #: misc/unit.cc:106
 #, kde-format
@@ -2962,7 +2962,7 @@ msgid ""
 "Here you can modify the name, the description and the icon of this macro "
 "type."
 msgstr ""
-"Ĉi tie vi povas modifi la nomon, la priskribon kaj la ikonon de ĉi tiu "
+"Ĉi tie vi povas modifi la nomon, la priskribon kaj la piktogramon de ĉi tiu "
 "makrotipo."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2_3)
@@ -3313,7 +3313,7 @@ msgstr "Agordi St&ilon"
 #: modes/popup/popup.cc:122
 #, kde-format
 msgid "Set Coordinate S&ystem"
-msgstr "Agordi Koordinatan Sistemon"
+msgstr "Agordi Koordinatan S&istemon"
 
 #: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
 #, kde-format
@@ -6028,7 +6028,7 @@ msgstr "&Redifini..."
 #: objects/text_type.cc:266
 #, kde-format
 msgid "Change &Value..."
-msgstr "Ŝanĝi valoron..."
+msgstr "Ŝanĝi &Valoron..."
 
 #: objects/text_type.cc:290
 #, kde-format
@@ -6682,161 +6682,3 @@ msgstr ""
 "Ŝajnas esti eraro en via skripto. La Python-interpretisto raportis neniujn "
 "erarojn, sed la skripto ne generas validan objekton. Bonvolu ripari la "
 "skripton."
-
-#~ msgid ""
-#~ "<p>You can control a kig construction by means of a \"pykig\" \n"
-#~ "python script, that can be executed with the command \n"
-#~ "<code>pykig.py</code>.  Here is a nice example \n"
-#~ "(<code>hexagons.kpy</code>) you can try:\n"
-#~ "<code><pre>\n"
-#~ "kigdocument.hideobjects()\n"
-#~ "def hexagons (c, v, n):\n"
-#~ "  hexagon = PolygonBCV (c, v, 6)\n"
-#~ "  if n &lt;= 0:\n"
-#~ "    hexagon.show()\n"
-#~ "    for i in range(6): \n"
-#~ "      PolygonSide (hexagon, i, True)\n"
-#~ "    return\n"
-#~ "  cnew = MidPoints (c, v)\n"
-#~ "  hexagons (cnew, v, n-1)\n"
-#~ "  for k in [2,4]:\n"
-#~ "    v1 = PolygonVertex (hexagon, k)\n"
-#~ "    cnew = MidPoints (c, v1)\n"
-#~ "    hexagons (cnew, v1, n-1)\n"
-#~ "hexagons (Point(0,0), Point(1,0), 5)\n"
-#~ "</pre></code>\n"
-#~ msgstr ""
-#~ "<p>Vi povas kontroli kig-konstruon per \"pykig\" \n"
-#~ "python-skripto, kiu povas esti efektivigita per la komando \n"
-#~ "<code>pykig.py</code>. Jen bela ekzemplo \n"
-#~ "(<code>hexagons.kpy</code>) vi povas provi:\n"
-#~ "<code><pre>\n"
-#~ "kigdocument.hideobjects()\n"
-#~ "def seslateroj (c, v, n):\n"
-#~ "  heksagono = PolygonBCV (c, v, 6)\n"
-#~ "  if n &lt;= 0:\n"
-#~ "    heksagono.show()\n"
-#~ "    for i in range(6): \n"
-#~ "      PolygonSide (heksagono, i, True)\n"
-#~ "    return\n"
-#~ "  cnew = MidPoints (c, v)\n"
-#~ "  seslateroj (cnew, v, n-1)\n"
-#~ "  for k in [2,4]:\n"
-#~ "    v1 = PolygonVertex (heksagono, k)\n"
-#~ "    cnew = MidPoints (c, v1)\n"
-#~ "    seslateroj (cnew, v1, n-1)\n"
-#~ "seslateroj (Point(0,0), Point(1,0), 5)\n"
-#~ "</pre></code>\n"
-
-#~ msgid ""
-#~ "<p>You can repeat the latest construction simply by pressing the key\n"
-#~ "'Z'; this comes in very handy if you need to construct a sequence\n"
-#~ "of objects with the same construction, especially if there is\n"
-#~ "no shortcut for that construction.</p>\n"
-#~ msgstr ""
-#~ "<p>Vi povas ripeti la lastan konstruon simple premante la klavon\n"
-#~ "'Z'; ĉi tio estas tre oportuna se vi bezonas konstrui sinsekvon\n"
-#~ "objektoj kun la sama konstruo, precipe se ne ekzistas\n"
-#~ "mallongigo por tiu konstruo.</p>\n"
-
-#~ msgid ""
-#~ "<p>One of the most powerful tools in Kig are the menus that you can\n"
-#~ "enter by right-clicking on an object, or on some empty space in the\n"
-#~ "document.  You can use them to give objects names, change their colors\n"
-#~ "and line styles, and lots of other interesting things.</p>\n"
-#~ msgstr ""
-#~ "<p>Unu el la plej potencaj iloj en Kig estas la menuoj, kiujn vi povas\n"
-#~ "enigi per dekstra klako sur objekto, aŭ sur iu malplena spaco en la\n"
-#~ "dokumento. Vi povas uzi ilin por doni nomojn al objektoj, ŝanĝi iliajn "
-#~ "kolorojn\n"
-#~ "kaj liniostilojn, kaj multajn aliajn interesajn aferojn.</p>\n"
-
-#~ msgid ""
-#~ "<p>You can construct new points without using the menu or the toolbar, "
-#~ "simply\n"
-#~ "clicking somewhere on the Kig document with the <em>middle mouse\n"
-#~ "button</em>.</p>\n"
-#~ msgstr ""
-#~ "<p>Vi povas konstrui novajn punktojn sen uzi la menuon aŭ la ilobreton, "
-#~ "simple\n"
-#~ "klakante ie sur la Kig-dokumento per la <em>meza muso\n"
-#~ "butono</em>.</p>\n"
-
-#~ msgid ""
-#~ "<p>Kig can open several file formats: its files (<code>.kig</code> "
-#~ "files),\n"
-#~ "<em>KGeo</em> files, <em>KSeg</em> files, and, partially, <em>Dr. Geo</"
-#~ "em>\n"
-#~ "and <em>Cabri&#8482;</em> files.</p>\n"
-#~ msgstr ""
-#~ "<p>Kig povas malfermi plurajn dosierformatojn: ĝiajn dosierojn (<code>."
-#~ "kig</code> dosierojn),\n"
-#~ "<em>KGeo</em> dosierojn, <em>KSeg</em> dosierojn, kaj, parte , <em>D-ro. "
-#~ "Geo</em>\n"
-#~ "kaj <em>Cabri&#8482;</em> dosierojn.</p>\n"
-
-#~ msgid ""
-#~ "<p>Kig has more than 20 objects and 10 transformations with more than "
-#~ "80 \n"
-#~ "constructions you can use in your documents: open the <em>Objects</em> \n"
-#~ "menu to see them all.</p>\n"
-#~ msgstr ""
-#~ "<p>Kig havas pli ol 20 objektojn kaj 10 transformojn kun pli ol 80 \n"
-#~ "konstruoj, kiujn vi povas uzi en viaj dokumentoj: malfermu la "
-#~ "<em>Objektojn</em> \n"
-#~ "menuon por vidi ilin ĉiujn.</p>\n"
-
-#~ msgid ""
-#~ "<p>You can use the selected objects to start the construction of an "
-#~ "object\n"
-#~ "which requires the selected objects as arguments. For example, if you "
-#~ "have two\n"
-#~ "points selected, you can choose <em>Start->Circle by Three Points</em> "
-#~ "from the\n"
-#~ "popup menu to start constructing a circle by three points.</p>\n"
-#~ msgstr ""
-#~ "<p>Vi povas uzi la elektitajn objektojn por komenci la konstruadon de "
-#~ "objekto\n"
-#~ "kiu postulas la elektitajn objektojn kiel argumentojn. Ekzemple, se vi "
-#~ "havas du\n"
-#~ "punktojn elektitajn, vi povas elekti <em>Komenco->Rondo je Tri punktoj</"
-#~ "em> el la\n"
-#~ "ŝprucmenuo por komenci konstrui cirklon je tri poentoj.</p>\n"
-
-#~ msgid ""
-#~ "<p>Kig can extends its object set using external macros. You can find "
-#~ "some\n"
-#~ "interesting macros on the Kig website:\n"
-#~ "<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>.</p>\n"
-#~ msgstr ""
-#~ "<p>Kig povas etendas sian objektoron uzante eksterajn makroojn. Vi povas "
-#~ "trovi kelkajn\n"
-#~ "interesajn makroojn en la retejo de Kig:\n"
-#~ "<a href=\"https://edu.kde.org/kig\">https://edu.kde.org/kig</a>. </p>\n"
-
-#~ msgid ""
-#~ "<p>If you have more than one object under the mouse, and you want to "
-#~ "select any\n"
-#~ "of them, you can click with the <em>left mouse button</em>, while holding "
-#~ "the\n"
-#~ "<em>Shift</em> key, to get a list of the objects under the mouse cursor "
-#~ "which\n"
-#~ "you can then select from.</p>\n"
-#~ msgstr ""
-#~ "<p>Se vi havas pli ol unu objekton sub la muso, kaj vi volas elekti iun\n"
-#~ "el ili, vi povas klaki per la <em>maldekstra musbutono</em>, tenante la\n"
-#~ "<em>Shift</em> klavo, por ricevi liston de la objektoj sub la muskursoro, "
-#~ "el kiu\n"
-#~ "vi tiam povas elekti.</p>\n"
-
-#~ msgid ""
-#~ "<p>When you construct a locus, you can click on it with the <em>right</"
-#~ "em> mouse\n"
-#~ "button and select <em>cartesian equation</em> to see its cartesian "
-#~ "equation, \n"
-#~ "whenever it is an algebraic curve of low degree.</p>\n"
-#~ msgstr ""
-#~ "<p>Kiam vi konstruas lokuson, vi povas alklaki ĝin per la <em>dekstra</"
-#~ "em> musbutono\n"
-#~ "kaj elekti <em>kartezan ekvacion</em> por vidi ĝian kartezan ekvacion, \n"
-#~ "ĉiam ĝi estas algebra. kurbo de malalta grado.</p>\n"
