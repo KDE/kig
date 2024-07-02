@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 01:41+0000\n"
-"PO-Revision-Date: 2024-04-16 18:46+0900\n"
+"PO-Revision-Date: 2024-07-01 13:19+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -3858,7 +3858,7 @@ msgstr "表面"
 
 #: objects/circle_imp.cc:134
 msgid "Circumference"
-msgstr "圓週長"
+msgstr "圓周長"
 
 #: objects/circle_imp.cc:135 objects/other_imp.cc:392
 msgid "Radius"
