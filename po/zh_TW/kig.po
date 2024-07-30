@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 01:41+0000\n"
-"PO-Revision-Date: 2024-07-01 13:19+0900\n"
+"PO-Revision-Date: 2024-07-23 21:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -831,12 +831,12 @@ msgstr "取消即將建構物件的建構動作"
 #: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat Construction"
-msgstr "重覆建構"
+msgstr "重複建構"
 
 #: kig/kig_part.cpp:242
 #, kde-format
 msgid "Repeat the last construction (with new data)"
-msgstr "重覆上次的建構動作（產生新資料）"
+msgstr "重複上次的建構動作（產生新資料）"
 
 #: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
@@ -958,12 +958,12 @@ msgstr "開啟/關閉隱藏物件的可見性。"
 #: kig/kig_part.cpp:348
 #, kde-format
 msgid "Repeat Construction (%1)"
-msgstr "重覆建構（%1）"
+msgstr "重複建構（%1）"
 
 #: kig/kig_part.cpp:349
 #, kde-format
 msgid "Repeat %1 (with new data)"
-msgstr "重覆 %1（產生新資料）"
+msgstr "重複 %1（產生新資料）"
 
 #: kig/kig_part.cpp:377
 #, kde-format
