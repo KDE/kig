@@ -1,21 +1,20 @@
 # Translation of kig to Norwegian Nynorsk
 #
 # Knut Nordanger <knut.nordanger@gmail.com>, 2005.
-# Karl Ove Hufthammer <karl@huftis.org>, 2007, 2008, 2009, 2010, 2011, 2015, 2019, 2020, 2021.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 01:41+0000\n"
-"PO-Revision-Date: 2021-02-21 16:25+0100\n"
+"PO-Revision-Date: 2024-08-27 20:25+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.12.2\n"
+"X-Generator: Lokalize 24.11.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -414,7 +413,7 @@ msgstr ""
 msgid ""
 "This KSeg file contains an arc segment, which Kig does not currently support."
 msgstr ""
-"Denne KSeg-fila innheld eit bogestykke, som Kig for tida ikkje støttar."
+"Denne KSeg-fila inneheld eit bogestykke, som Kig for tida ikkje støttar."
 
 #: filters/latexexporter.cc:63
 #, kde-format
