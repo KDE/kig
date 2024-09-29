@@ -1,0 +1,1083 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Slovenian "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>&kig; Priročnik</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>23.12.2020</date>
+<releaseinfo
+>Applications 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kig; je aplikacija za interaktivno geometrijo &kde;. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Interaktivna geometrija</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Uvod</title>
+
+<para
+>&kig; je aplikacija za interaktivno geometrijo. Služi dvema namenoma: </para>
+
+<itemizedlist>
+<listitem
+><para
+>Študentom omogoči interaktivno raziskovanje matematičnih številk in konceptov z uporabo računalnika. </para
+></listitem>
+
+<listitem
+><para
+>Služi kot <acronym
+>WYSIWYG</acronym
+> orodje za risanje matematičnih številk in njihovo vključitev v druge dokumente.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Težave lahko prijavite v &kig; z uporabo internega orodja za poročanje o napakah (<menuchoice
+><guimenu
+>Pomoč</guimenu
+><guimenuitem
+>Prijavi napako...</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>Ker &kig; podpira makre in konstrukcijo lokusov, omogoča definiranje nekaterih precej naprednih makrov. Če ste ustvarili zanimiv makro, za katerega menite, da bi lahko bil uporaben za druge ljudi, odprite zahtevo za pregled spremembe, da bo lahko ocenjen za vključitev v distribucijo (če to storite, bo licenciran pod pogoje licence &kig;, <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>, tako da jo lahko drugi ljudje prosto uporabljajo in prilagajajo). </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Osnovna uporaba</title>
+<sect1 id="constructing-objects">
+<title
+>Konstruiranje predmetov</title>
+<sect2 id="constructing-points">
+<title
+>Gradnja točk</title>
+<para
+>Točke lahko zgradite na več načinov:</para>
+<itemizedlist>
+<listitem>
+<para
+>Izberite <menuchoice
+><guimenu
+>Predmeti</guimenu
+> <guisubmenu
+>Točke</guisubmenu
+> <guimenuitem
+>Točka</guimenuitem
+></menuchoice
+> v menijski vrstici ali pritisnite ustrezen gumb v orodni vrstici. Nato lahko sestavite točko s klikom na želeno mesto v oknu.</para>
+
+<note
+><para
+>Pritisnite tipko &Shift; za aktiviranje rastrskega načina pripenjanja, ki vam omogoča, da katero koli točko v konstrukciji nastavite natančno na točke mreže.</para
+></note>
+<note
+><para
+>Pravzaprav to deluje na enak način tudi za konstruiranje drugih objektov: kliknite želeni vnos v menijski vrstici ali gumb orodne vrstice in izberite potrebne elemente za konstruiranje predmeta.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Ker morate pogosto konstruirati točke, preprosto kliknite nekje na zaslonu z &MMB; bo za vas sestavil točko, ne da bi šel v meni ali gumb. </para>
+</listitem>
+<listitem>
+<para
+>Točke lahko gradite, medtem ko gradite druge objekte v ozadju, po želji pa jih izberete za objekt, ki ga gradite. Za več o tem glejte <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Točka je bila zgrajena</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Točka je bila zgrajena</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Gradnja drugih predmetov</title>
+<para
+>Konstruiranje predmetov, ki niso točke, običajno poteka z izbiro ustreznega vnosa v meniju <guimenu
+>Predmeti</guimenu
+> ali s klikom na enega od gumbov v orodni vrstici. </para>
+<screenshot>
+<screeninfo
+>Konstruiranje kroga</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konstruiranje kroga</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>S tem se začne gradnja izbrane vrste predmeta. Vse te vrste zahtevajo argumente. Na primer, če ste izbrali sestavo kroga s središčem in točko, boste morali podati dve točki: eno za središče in eno za točko na krogu. </para>
+<para
+>Tudi ti argumenti so predmeti, ki jih je mogoče tudi izbrati s preprostim klikom nanje. Ko premaknete kazalec nad argument, ki ga želite uporabiti za sestavo predmeta, se bo prikazala predhodna slika predmeta, tako da boste vedeli, kako bo videti. Za predmete, ki zahtevajo točke kot argumente, lahko postavite novo točko na trenutni položaj kazalke in jo izberete s klikom &LMB;. </para>
+<para
+>Konstrukcijo novega predmeta lahko kadar koli prekličete s pritiskom na &Esc; ali s klikom na gumb &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Prekliči gradnjo</guibutton
+> na orodni vrstici. </para>
+<screenshot>
+<screeninfo
+>Konstruiranje kroga.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konstruiranje kroga</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Izbiranje predmetov</title>
+<para
+>Izbira predmetov je možna na dva načina: </para>
+<itemizedlist>
+<listitem>
+<para
+>Preprost klik na predmet povzroči, da je predmet izbran in počiščen trenutni izbor. Če želite izbrati več predmetov hkrati, držite tipko &Ctrl; med klikom na predmet. </para>
+</listitem>
+<listitem>
+<para
+>S klikom in vlečenjem na prazno mesto na zaslonu lahko izberete vse predmete v pravokotniku, ki je ustvarjen. To dejanje bo počistilo trenutno izbiro. Kot v prejšnjem primeru, držite &Ctrl; tipka vam omogoča, da obdržite trenutno izbiro. </para>
+</listitem>
+</itemizedlist>
+<para
+>Ko imate pod miško več kot en predmet (označen z <guilabel
+>Kateri predmet?</guilabel
+> v statusni vrstici in na miškinem kazalcu), lahko preprosto izberete, kateri predmet želite izbrati ali dodati trenutnemu izboru. Kliknite z &LMB;, medtem ko držite &Shift; tipko ali kliknite &RMB;, da se prikaže pojavno okno z vsemi predmeti pod miško. Nato lahko izberete predmet, ki ga potrebujete. Kot je bilo že omenjeno, vedenje tipke &Ctrl; vpliva na izbiro. </para>
+<screenshot>
+<screeninfo
+>Izbiranje predmetov</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Izbiranje predmetov</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Premikanje predmetov</title>
+<para
+>Če želite premakniti predmete, jih morate najprej <link linkend="selecting-objects"
+>izbrati</link
+>. </para>
+<para
+>Ko so predmeti izbrani, ki jih želite premakniti, jih lahko začnete premikati z &LMB; klikanje in vlečenje katerega koli od njih. Ko končate, preprosto spustite &LMB;. </para>
+<note
+><para
+>Pri nekaterih vrstah predmetov (zlasti če so definirani z zapletenimi lokusi) je lahko premikanje na stari strojni opremi počasno. To je obžalovanja vredno, vendar neizogibno glede na vključene izračune. </para
+></note
+> <note
+><para
+>Če &RMB; kliknite enega od izbranih predmetov in izberite <guimenuitem
+>Premakni</guimenuitem
+>, premikanje miške bo premaknilo predmet. Ko je predmet premaknjen na želeni položaj, bo drugi klik &LMB; ustavil premikanje predmeta.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Brisanje predmetov</title>
+<para
+>Predmete izbrišete tako, da jih najprej <link linkend="selecting-objects"
+>izberete</link
+> in nato naredite kar koli od tega: <itemizedlist>
+<listitem>
+<para
+>Pritisnite tipko &Del;. </para>
+</listitem>
+<listitem>
+<para
+>V orodni vrstici pritisnite &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Izbriši predmete</guibutton
+>. </para>
+</listitem>
+<listitem>
+<para
+><mousebutton
+>Z desnim gumbom miške</mousebutton
+>-kliknite na enega od predmetov in izberite <guimenuitem
+>Izbriši</guimenuitem
+> v <link linkend="objects-context-menus"
+>kontekstnem meniju</link
+>, ki se prikaže. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Prikazovanje in skrivanje predmetov</title>
+<para
+>V &kig; lahko predmete skrijete. To storite tako, da izberete predmete, &RMB; kliknite enega od njih in izberite <guimenuitem
+>Skrij</guimenuitem
+> v <link linkend="objects-context-menus"
+>kontekstnem meniju</link
+>, ki se prikaže. </para>
+<para
+>Če želite razkriti predmete, uporabite <menuchoice
+><guimenu
+>Uredi</guimenu
+><guimenuitem
+>Razkrij vse</guimenuitem
+></menuchoice
+>. S tem boste razkrili vse trenutno skrite predmete. </para>
+
+<sect2 id="night-vision">
+<title
+>Nočni vid</title>
+<para
+>Nočni vid je poseben način dela s skritimi predmeti. Ko morate nekaj premakniti ali spremeniti v enem ali več predmetih, vendar ne da bi razkrili vse skrite predmete, ki jih imate, vam bo način nočnega vida koristil. </para>
+<para
+>V bistvu vam omogoča, da vidite skrite predmete, kot da bi bili vidni, tako da lahko z njimi manipulirate kot običajno. V načinu nočnega vida bodo skriti predmeti vidni v sivi barvi. </para>
+<para
+>Za preklop načina nočnega vida uporabite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Nosim infrardeča očala</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Razveljavi/Uveljavi</title>
+<para
+>V &kig; lahko razveljavite skoraj vse spremembe, ki jih naredite v dokumentu. Preprosto uporabite gumba <guiicon
+>Razveljavi</guiicon
+>/<guiicon
+>Uveljavi</guiicon
+> v orodni vrstici, meni <guimenu
+>Uredi</guimenu
+> ali ustrezne bližnjice na tipkovnici. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Celozaslonski način</title>
+<para
+>&kig; ima tudi celozaslonski način. Če ga želite uporabiti, kliknite ustrezni gumb v orodni vrstici ali izberite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Celozaslonski način</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Če želite zapustiti celozaslonski način, &RMB; kliknite zaslon na mestu, kjer ni nobenega predmeta, in izberite <guimenuitem
+>Izhod iz celozaslonskega načina</guimenuitem
+> ali pritisnite bližnjico <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap 
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>&kig; vrste predmetov</title>
+<para
+>&kig; podpira precej veliko število vrst objektov. Upoštevajte, da v orodnih vrsticah niso prikazane vse razpoložljive vrste predmetov: nekatere predmete lahko sestavite samo prek menija <guimenu
+>Predmeti</guimenu
+> v menijski vrstici. Seveda, kot pri vseh &kde; aplikacij, je vsebina orodnih vrstic nastavljiva. Preizkusite možnost <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj orodne vrstice ...</guimenuitem
+></menuchoice
+>, če želite to narediti. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Napredna uporaba</title>
+<sect1 id="objects-context-menus">
+<title
+>Kontekstni meniji</title>
+<para
+>&kig; ima kontekstne menije za svoje predmete. Poskusite &RMB; klik na predmet, da se prikaže kontekstni meni. Obstaja veliko možnosti: za sestavo drugih predmetov, nastavitev barv, širine pisala, sloga in celo skrivanje, premikanje ali brisanje predmetov. Nekateri predmeti imajo lastne možnosti (&eg; določene točke lahko na novo definirate tako, da bodo omejene na črto, če prej niso bile &etc;). Te možnosti bi morale biti zelo enostavne za razumevanje. </para>
+
+<para
+>Nekatera dejanja v kontekstnem meniju predmeta potrebujejo drug definiran predmet kot referenco, na primer:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Zasukajte obliko za določeno število stopinj okoli točke</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Kliknite na <menuchoice
+><guimenu
+>Predmeti</guimenu
+> <guisubmenu
+>Koti</guisubmenu
+><guimenuitem
+>Kot za tri točke</guimenuitem
+> </menuchoice
+> in nastavite želeni kot sukanja nekje v &kig; okno, običajno na neopaznem mestu. Če želite, z desno miškino tipko kliknite kot in kliknite <menuchoice
+><guisubmenu
+>Dodaj besedilno oznako</guisubmenu
+><guimenuitem
+>Kot v stopinjah</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Kliknite z &RMB; na kot in izberite <guimenuitem
+>Nastavi velikost</guimenuitem
+> ter v pogovorno okno vstavite novo velikost za ta kot. </para
+></listitem>
+<listitem
+><para
+>Kliknite na meni <guimenu
+>Predmeti</guimenu
+> in sestavite želeni predmet. </para
+></listitem>
+<listitem
+><para
+>Desni klik na vašo obliko in izberite <menuchoice
+><guisubmenu
+>Preoblikuj</guisubmenu
+> <guimenuitem
+>Zavrti</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Nastavite želeno točko vrtenja.</para
+></listitem>
+<listitem
+><para
+>Kliknite na svoj kot.</para
+></listitem>
+<listitem
+><para
+>Vaša oblika je zavrtena!</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Premakni predmet</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Kliknite <menuchoice
+><guimenu
+>Predmeti</guimenu
+> <guisubmenu
+>Vektorji &amp; Segmenti</guisubmenu
+><guimenuitem
+>Vektor</guimenuitem
+> </menuchoice
+> in sestavite objekt tako, da izberete začetno in končno točko nekje v &kig; oknu.</para
+></listitem>
+<listitem
+><para
+>Če želite prilagoditi dolžino in smer vektorja, morate urediti njegovo začetno in končno točko. Izberite jih in v kontekstnem meniju izberite <guimenuitem
+>Nastavi koordinate...</guimenuitem
+>. </para
+></listitem>
+<listitem
+><para
+>Kliknite <guimenu
+>Predmeti</guimenu
+> in konstruirajte želeni predmet. </para
+></listitem>
+<listitem
+><para
+>Desni klik na vaš predmet in izberite <menuchoice
+><guisubmenu
+>Pretvori</guisubmenu
+> <guimenuitem
+>Premakni</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Izberite vektor po katerem želite premakniti.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Kontekstni meniji dokumenta</title>
+<para
+><mousebutton
+>Desni</mousebutton
+>-klik na dokument (&ie; ne na predmet) bo prikazal pojavno okno, ki ga lahko uporabite za začetek izdelave novega predmeta, spremembo uporabljenega koordinatnega sistema, prikaz skritih predmetov, približevanje in povečevanje iz dokumenta in preklopite na celozaslonski način. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Definiranje makrov</title>
+<para
+>Ena izmed bolj naprednih funkcij v &kig; je njegova podpora za makre. To vam omogoča, da definirate nove tipe predmetov iz drugih, ki so že definirani. </para>
+<para
+>Na primer: Recimo, da želite narediti makro za sestavo kroga iz treh točk na njem. Vnesli bi tri točke, nato pa zgradili nekaj navpičnic in središč, dokler ne najdete središča. Zdaj lahko uporabite obstoječi <guimenuitem
+>Krog iz središča &amp; Ukaz Točka</guimenuitem
+> (z uporabo ene od treh točk kot točke za ta ukaz). Naslednja slika naj bo to nekoliko bolj razjasnila: </para>
+<screenshot>
+<screeninfo
+>Preizkus izvajanja makrov</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Preizkus izvajanja makrov</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Sledi definiranje makra. Izberite menijski element <menuchoice
+><guimenu
+>Vrste</guimenu
+> <guimenuitem
+>Nov makro...</guimenuitem
+></menuchoice
+> ali kliknite gumb &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="system -run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Nov makro...</guibutton
+> v orodni vrstici. Prikaže se čarovnik, ki vas bo pozval, da izberete dane predmete. V našem primeru so to tri točke. Izberite tri točke (kliknite nanje za izbiro, znova kliknite za preklic) in kliknite gumb <guibutton
+>Naprej</guibutton
+> za nadaljevanje. Na koncu izberite še zadnje predmete (v našem primeru samo krog). </para>
+
+<screenshot>
+<screeninfo
+>Čarovnik za makro</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Čarovnik za makro</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Ko so prejšnji koraki končani, za nadaljevanje kliknite gumb <guibutton
+>Naprej</guibutton
+>. Vnesite ime in po želji opis za svojo novo vrsto in kliknite gumb <guibutton
+>Dokončaj</guibutton
+>. Vaša vrsta makra je zdaj končana. </para>
+
+<para
+>Če želite uporabiti novo vrsto makra, kliknite njegov gumb v orodni vrstici ali uporabite meni <guimenu
+>Predmeti</guimenu
+>. Konstruiranje makro objekta je tako kot konstruiranje katerega koli drugega objekta. </para>
+<screenshot>
+<screeninfo
+>Uporaba vaše nove vrste</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Uporaba vaše nove vrste</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Delo z vrstami</title>
+<para
+>Kot ste videli v prejšnjem poglavju, &kig; omogoča ustvarjanje lastnih predmetov. &kig; prav tako poskrbi, da se objekt, ko ste ga ustvarili, shrani ob izhodu in naloži ob zagonu. Ni vam treba ročno shraniti ali naložiti definicij makrov. Vendar vam &kig; omogoča, da naredite več z makri. Če v meniju izberete <menuchoice
+><guimenu
+>Vrste</guimenu
+><guimenuitem
+>Upravljanje vrst...</guimenuitem
+></menuchoice
+>, boste videli pogovorno okno, kjer lahko uredite svoje vrste. Omogoča vam spreminjanje obstoječih vrst, brisanje vrst, ki se ne uporabljajo več, izvoz v datoteko ali celo nalaganje iz druge datoteke. </para>
+<screenshot>
+<screeninfo
+>Pogovorno okno za urejanje vrst</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Pogovorno okno za urejanje vrst</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Besedilne oznake</title>
+<para
+>&kig; omogoča dodajanje besedilnih oznak konstrukciji. To je zelo uporabno za dodajanje imen, razlag ali drugega besedila konstrukcijam. &kig; lahko prikaže tudi spremenljive informacije o objektih (znane tudi kot <quote
+>lastnosti</quote
+>). </para>
+<para
+>Če želite začeti sestavljati besedilno oznako, preprosto pritisnite &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Besedilna oznaka</guibutton 
+> v meniju &kig; orodni vrstici ali izberite menijsko postavko <menuchoice
+><guimenu
+>Predmeti</guimenu
+> <guisubmenu
+>Drugo</guisubmenu
+><guimenuitem
+>Besedilna oznaka</guimenuitem
+> </menuchoice
+>. </para>
+<para
+>Nato morate izbrati lokacijo za besedilno oznako. Lahko samo izberete naključno mesto na zaslonu ali izberete, da <quote
+>pripnete</quote
+> oznako na predmet. </para>
+<screenshot>
+<screeninfo
+>Pripenjanje oznake krogu...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Pripenjanje oznake krogu...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Ko izberete mesto za oznako, se prikaže pogovorno okno z besedilno oznako. Tukaj lahko vnesete besedilo, ki ga želite v novo oznako, in kliknete <guibutton
+>Dokončaj</guibutton
+>. Zdaj bi morali videti oznako v dokumentu. </para>
+<screenshot>
+<screeninfo
+>Pogovorno okno besedilne oznake</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Pogovorno okno besedilne oznake</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Prejšnji primer je bil preprost in omejen samo na besedilo. Obstaja pa tudi podpora za prikaz spremenljivih informacij o predmetih v oznaki (&eg; lahko sestavite oznako z besedilom <quote
+>Ta segment je dolg %1 enot.</quote
+> kjer je <token
+>%1</token 
+> bi bila dinamično nadomeščena z dolžino določenega segmenta). </para>
+<para
+>Če želite to narediti, vnesite besedilo s številnimi ogradami ( <token
+>%1</token
+>, <token
+>%2</token
+> &etc;.) v njem. Nato za nadaljevanje pritisnite gumb <guibutton
+>Naprej</guibutton
+>. Če želite pozneje spremeniti besedilo ali spremenljivke, se lahko vrnete nazaj z gumbom <guibutton
+>Nazaj</guibutton
+>. </para>
+<para
+>Čarovnik zdaj prikaže besedilo, ki ste ga vnesli, z vsemi ogradami, zamenjanimi z nečim, kot je <guilabel
+>argument 1</guilabel
+>. Izbira lastnosti, povezane z določenim argumentom, se izvede tako, da najprej kliknete na zadevni argument. Nato kliknite predmet, ki ga potrebujete in ima to lastnost, nato pa v pojavnem meniju, ki se prikaže, izberite samo lastnost. Na primer, v zgornjem primeru bi kliknili <guilabel
+>argument 1</guilabel
+>, kliknite pravilen segment v glavnem &kig; in izberite lastnost <guilabel 
+>Dolžina</guilabel 
+>. Nato lahko izpolnite preostale variabilne dele ali izberete drugo lastnost za enega od variabilnih delov, če jo želite spremeniti. Ko ste pripravljeni, kliknite gumb <guibutton
+>Dokončaj</guibutton
+>, da dokončate izdelavo besedilne oznake. </para>
+<screenshot>
+<screeninfo
+>Izbira lastnosti za variabilni del</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Izbira lastnosti za variabilni del</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Loci</title>
+<para
+>&kig; podpira uporabo lokusov. Geografsko mesto je matematično opredeljeno kot niz vseh točk ali črt, ki zadovoljujejo ali so določene s posebnimi pogoji; kot v <quote
+>mesto točk, ki so enako oddaljene od dane točke, je krog</quote
+>. Oglejmo si primer, kako uporabiti lokus v &kig;: </para>
+<para
+>Razmislite o naslednji geometrijski konstrukciji: Narišemo krog in točko, ki se lahko premika samo vzdolž njegovega oboda (konstruirajte to točko tako, da postavite kazalec na krog in kliknete &MMB;. Če nato poskušate premakniti nastalo točko, boste videli, da ga ne morete premakniti iz kroga). Nato narišemo odsek od te točke do središča kroga in središče tega odseka. </para>
+<screenshot>
+<screeninfo
+>Preprosta konstrukcija z uporabo lokusa</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Preprosta konstrukcija z uporabo lokusa</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Če zdaj premaknete točko, ki je omejena na krog, boste videli, da se druga točka premika skupaj z njo. Če bi držali pisalo na drugi točki in prvo točko premikali po celotnem krogu, bi bil narisan nov krog, ki bi bil za polovico manjši od drugega. Pot, ki jo prepotuje druga točka, medtem ko se prva premika po krogu, je njen geometrijski lokus. </para>
+<para
+>Konstruiranje geometrijskega lokusa točke je pravzaprav zelo enostavno. V orodni vrstici kliknite &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>Lokus</guibutton
+> ali izberite <menuchoice
+><guimenu
+>Predmeti</guimenu
+> <guisubmenu
+>Drugo</guisubmenu
+><guimenuitem
+>Menijski element</guimenuitem
+></menuchoice
+>. Nato izberite omejeno točko kot premikajočo se točko (besedilo <guilabel
+>Premikajoča se točka</guilabel
+> se prikaže, ko premaknete miško nad njo), drugo pa kot <guilabel
+>Odvisno točko</guilabel
+>. Nato bo narisano geometrijsko mesto odvisne točke. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Skriptiranje</title>
+<para
+>&kig; omogoča ustvarjanje vrst po meri v skriptnem jeziku Python. To je zelo napredna funkcija in poznam le še en program za interaktivno geometrijo, ki ima podobno funkcionalnost (program <acronym
+>GNOME</acronym
+> &drgeo;). </para>
+<para
+>Python skriptiranje v &kig; vam v bistvu omogoča ustvarjanje lastnih predmetov iz določenih nadrejenih predmetov. Na primer, če ste učitelj matematike in imate kakšen domiseln način za izračun zanimive točke na stožnici, potem namesto da se ubadate z zapletenimi konstrukcijami in makri, lahko preprosto zapišete v kodo Python, kako naj se točka izračuna in nato vam ga bo  &kig; pokazal. </para>
+<para
+>Recimo, da niste vedeli za &kig; vgrajen tip <quote
+>Srednja točka</quote
+> in želeli ste prikazati sredino dveh danih točk. Nato bi kliknili &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Skript Python</guibutton 
+> v orodni vrstici ali izberite <menuchoice
+><guimenu
+>Predmeti</guimenu
+><guisubmenu
+>Drugo</guisubmenu
+> <guimenuitem
+>Python skript</guimenuitem
+></menuchoice
+> v menijski vrstici. Nato se vam prikaže čarovnik, ki vam omogoča nadaljevanje. </para>
+<screenshot>
+<screeninfo
+>Čarovnik za predmet skripta</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Čarovnik za predmet skripta</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Prva stvar, ki jo morate storiti, je, da izberete argumente za predmet skripta. V našem primeru to pomeni dve točki, katerih središče želimo prikazati. Izberite jih v glavnem oknu &kig; in za nadaljevanje kliknite <guibutton
+>Naprej</guibutton
+>. </para>
+<para
+>Zdaj se vam prikaže polje za urejanje besedila, v katerega lahko vnesete kodo za svoj predmet skripta. Koda predloge in nekateri komentarji so že pripravljeni. Pomembno je zagotoviti, da je vaša koda veljavna koda Python. Ljudje, ki poznajo Python, bodo opazili, da dejansko definiramo funkcijo Python, imenovano <function
+>calc</function
+>. Zato je potrebno upoštevati pravila Pythona za definiranje funkcij. Na primer, vsaka vrstica funkcije se mora začeti z tabulatorjem. Prva vrstica, ki se ne začne s tabulatorjem, konča definicijo funkcije. </para>
+<para
+>Funkcija Python, ki jo želimo definirati, se imenuje <function
+>calc</function
+> in v našem primeru sprejme dva argumenta. To so predmeti, ki ste jih izbrali kot argumente na prejšnjem zaslonu. Potrebujete toliko argumentov, kot ste jih tam izbrali. Imenujejo se <parameter
+>arg1</parameter
+> in <parameter
+>arg2</parameter
+>, a lahko spremenite njihova imena v bolj smiselna, če želite. </para>
+<para
+>V funkciji lahko izvedete vse vrste izračunov, ki se vam zdijo potrebni, z uporabo dveh argumentov, če je potrebno. Vrniti bi morali predmet, ki ga želite definirati. V našem primeru je to objekt <classname
+>Point</classname
+>. Oba argumenta sta tudi objekta <classname
+>Point</classname
+> in lahko uporabimo funkcijo <function
+>Point.coordinate()</function
+> za definiranje koordinat dveh danih točk. </para>
+<para
+>Izračun, potreben v našem primeru, je zelo preprost, preprosto seštejemo dva niza koordinat in novi niz delimo z dva. Nato z rezultatom zgradimo novo točko. Potrebna koda Python je:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Vnos kode</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Vnos kode za srednjo točko v čarovniku Script Object.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Če zdaj kliknete gumb <guibutton
+>Dokončaj</guibutton
+>, se bo nov predmet pojavil v datoteki &kig; dokument. Če premaknete eno od točk, se bo novo ustvarjena točka premaknila skupaj z njo. Na ta način je mogoče zgraditi veliko močnejše predmete: spodbujamo vas, da to preizkusite. </para>
+<screenshot>
+<screeninfo
+>Konstruirani skriptni predmet</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Novo zgrajeni skriptni predmet. </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Vsi predmeti v &kig; se lahko uporablja v kodi Python. Kot smo videli zgoraj, so točke razreda <classname
+>Point</classname
+> in lahko uporabite &eg; metoda <function
+>Point.coordinate()</function
+>. Prav tako lahko vrnete vse vrste objektov, ne le <classname
+>Point</classname
+>. Veliko več razredov in metod je na voljo v &kig; kodo Python, popolnejši sklic pa je na voljo <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+>na spletno mesto &kig;</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>&kig; Zmožnosti</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; je odprtokodna aplikacija. To pomeni, da jo lahko prosto uporabljate in spreminjate, kakor želite. Distribucija &kig; je podvržena nekaterim omejitvam, v bistvu, da bi morali imeti vsi enake pravice do uporabe &kig;, vključno z vašimi spremembami, kot vi in jaz. </para>
+<para
+>Programi proste programske opreme so razviti v zelo odprtem duhu in njihovi razvijalci so običajno zelo odzivni na povratne informacije uporabnikov. Zato, če imate kakršna koli vprašanja, pritožbe ali karkoli o &kig;, se obrnite na poštni seznam kde-edu na <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&kig; je aplikacija KPart, kar pomeni, da jo lahko vdelate v drugo &kde; programsko opremo. Če datoteko <literal role="extension"
+>.kig</literal
+> odprete v &konqueror;, jo lahko odprete neposredno v &konqueror; zaslonu, ne da bi bilo treba zagnati zunanjo aplikacijo. </para>
+</listitem>
+<listitem>
+<para
+>Delo z &kig; mora biti zelo preprosto. Konstruiranje predmetov je enostavno in interaktivno, s prikazanimi predhodnimi rezultati &etc;. Premikanje, izbiranje in gradnja delujejo tako, kot bi pričakovali. Podpora za razveljavitev mora biti tudi zelo intuitivna. </para>
+</listitem>
+<listitem>
+<para
+>&kig; podpira makre, ki jih je treba definirati na enostaven način. Ti predmeti so uporabniku predstavljeni kot običajni predmeti. Shranijo se ob izhodu in naložijo ob zagonu, tako da se ob izhodu ne izgubijo. Te objekte lahko upravljate v pogovornem oknu <guilabel
+>Upravljanje vrst</guilabel
+> (glejte <xref linkend="working-with-types"/>). Lahko jih izvozite v datoteke, uvozite iz datotek, urejate in brišete. </para>
+</listitem>
+<listitem>
+<para
+>&kig; shranjuje svoje podatke v jasnem &XML; formatu. </para>
+</listitem>
+<listitem>
+<para
+>&kig; podpira gradnjo lokusov. </para>
+</listitem>
+<listitem>
+<para
+>&kig; omogoča izvoz &kig; datoteke v nekaj zanimivih formatov, kot so slike, datoteke <application
+>XFig</application
+> in <application
+>LaTeX</application
+> ter &SVG; vektorske slike. To je precej koristno, ker vsi programi še ne podpirajo formata datotek &kig;. </para>
+</listitem>
+<listitem>
+<para
+>&kig; ima zelo prilagodljiv sistem transformacije. </para>
+</listitem>
+<listitem>
+<para
+>&kig; želi biti združljiv s svojimi konkurenti. Zato podpira &kgeo; format datoteke, &kseg; in delno &drgeo; in &cabri; formate; poleg tega je predvidena podpora za druge formate. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Zasluge in licenca</title>
+
+<para
+>Glavni avtorji: </para>
+<para
+>&kig; copyright 2011-2015 David E. Narvaez <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>&kig; copyright 2002-2013 Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>&kig; copyright 2004-2010 Pino Toscano <email
+>pino@kde.org</email
+> </para>
+<para
+>&kig; copyright 2002-2005 Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Avtorske pravice za dokumentacijo 2002-2004 Dominique Devriese <email
+>devriese@kde.org</email
+>. </para>
+
+<para
+>Avtorske pravice za dokumentacijo 2004-2005 Pino Toscano <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>Pregledal &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+<para
+>Prevod: Matjaž Jeran <email
+>matjaz.jeran@amis.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Prispevajte</title>
+<sect1 id="kig-is-free">
+<title
+>Prosta programska oprema</title>
+<para
+>&kig; je <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+> prosta programska oprema</ulink
+>. To pomeni, da je njegova izvorna koda prosto dostopna na internetu in jo lahko vsakdo uporablja, bere, spreminja in distribuira. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Prispevajte</title>
+<para
+>V tem poglavju vas (uporabnika) želim opozoriti na pravice, ki vam jih daje licenca &kig;. Kot pri vsej prosti programski opremi vam je dovoljeno (in spodbujano), da odpravite težave, na katere naletite med uporabo, dodate funkcije, ki jih pogrešate, distribuirate spremenjeni program in pošljete te spremembe nazaj za vključitev prek orodij za pregledovanje, ki so na voljo za &kde; skupnosti. </para>
+<para
+>Če niste prepričani o svojih pravicah za uporabo te programske opreme ali o pravici drugih ljudi za uporabo kakršnih koli sprememb, ki jih naredite v tem programu itd., preberite licenco. Najdete ga v datoteki <filename
+>COPYING</filename
+> v datoteki &kig; izvorno drevo ali povezavo do licence v pogovornem oknu <guilabel
+>O &kig;</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Kako prispevati?</title>
+<para
+>Vsi prispevki so dobrodošli. Če vam ikone niso všeč ali menite, da je priročnik treba posodobiti, ali če imate ta res kul makro, ki ga želite deliti s svetom, mi ga ne oklevajte in mi ga pošljite. Upoštevajte, da bodo vaši prispevki razdeljeni pod pogoji &GNU; <acronym
+>GPL</acronym
+>; pogoje te licence najdete v datoteki <filename
+>COPYING</filename
+> v datoteki &kig; izvornem drevesu in v poglavju <link linkend="credits"
+>Zasluge in licenca</link
+> v tem priročniku. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->
