@@ -1,17 +1,17 @@
 # translation of kig.po to Finnish
 # KDE Finnish translation sprint participants:
 # Author: Lliehu
+# SPDX-FileCopyrightText: 2018, 2022, 2024 Tommi Nieminen <translator@legisign.org>
 # Marko Gronroos <magi@iki.fi>, 2004.
 # Ilpo Kantonen <ilpo@iki.fi>, 2005, 2006.
 # Kim Enkovaara <kim.enkovaara@iki.fi>, 2006.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015.
-# Tommi Nieminen <translator@legisign.org>, 2018, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-04-29 01:41+0000\n"
-"PO-Revision-Date: 2022-07-20 22:01+0300\n"
+"PO-Revision-Date: 2024-10-27 10:42+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -19,8 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-POT-Import-Date: 2012-12-01 22:23:16+0000\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4515,8 +4514,7 @@ msgid "Hide a Curve"
 msgstr "Piilota käyrä"
 
 #: objects/curve_imp.cc:344
-#, fuzzy, kde-format
-#| msgid "Possibly trascendental curve"
+#, kde-format
 msgid "Possibly transcendental curve"
 msgstr "Mahdollisesti transkendenttikäyrä"
 
