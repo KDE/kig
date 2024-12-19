@@ -1,0 +1,1069 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % French "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>Manuel utilisateur de &kig;</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+&traducteurYvesGuillou; &traducteurCedricPasteur; &traducteurYohannHamon; &traducteurOlivierDelaune; 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>Dominique Devriese</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>23-12-2020</date>
+<releaseinfo
+>Applications 20.12</releaseinfo>
+
+<abstract>
+<para
+>&kig; est un programme de &kde; de géométrie interactive. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>Kig</keyword>
+<keyword
+>Géométrie interactive</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr. Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>Introduction</title>
+
+<para
+>&kig; est un programme de géométrie interactive. Il a deux objectifs : </para>
+
+<itemizedlist>
+<listitem
+><para
+>Permettre aux étudiants d'explorer de façon interactive des concepts et figures mathématiques en utilisant l'ordinateur. </para
+></listitem>
+
+<listitem
+><para
+>Servir d'outil <acronym
+>WYSIWYG</acronym
+> pour dessiner des figures, et les inclure dans d'autres documents.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Vous pouvez rapporter les problèmes de &kig; en utilisant l'outil de rapport de bogue interne. (<menuchoice
+><guimenu
+>Aide</guimenu
+><guimenuitem
+>Rapporter un bogue...</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>Puisque &kig; prend en charge les macros et les lieux géométriques, il permet à des macros relativement plus complexes d'être définies. Si vous avez créé une macro intéressante, que vous pensez pouvoir être utile pour d'autres, veuillez alors ouvrir une demande de relecture pour une modification. Ainsi, elle pourrait être évaluée pour être ultérieurement incluse dans la distribution (Dans ce cas, elle suivra les termes de la licence <ulink url="http://www.gnu.org/licenses/licenses.html#GPL"
+>GPL </ulink
+> de &kig;. Cela permettra à d'autres personnes de l'utiliser et de l'adapter librement. </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>Utilisation de base</title>
+<sect1 id="constructing-objects">
+<title
+>Construction d'objets</title>
+<sect2 id="constructing-points">
+<title
+>Construction de points</title>
+<para
+>Vous pouvez créer des points de plusieurs façons :</para>
+<itemizedlist>
+<listitem>
+<para
+>Choisissez <menuchoice
+><guimenu
+>Objets</guimenu
+> <guisubmenu
+>Points</guisubmenu
+><guimenuitem
+>Point</guimenuitem
+></menuchoice
+> dans la barre de menu, ou appuyez sur le bouton approprié dans la barre d'outils. Vous pourrez alors créer un point en cliquant à la position voulue dans la fenêtre.</para>
+
+<note
+><para
+>Appuyez sur le bouton &Maj; pour activer le mode « snap raster » qui vous permet de fixer n'importe quel point dans la construction exactement sur un point de la grille.</para
+></note>
+<note
+><para
+>La méthode est la même pour construire d'autres objets : cliquez sur l'entrée désirée de la barre de menu, ou sur le bouton de la barre d'outils, et sélectionnez les éléments nécessaires pour construire l'objet.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>Comme vous avez souvent besoin de construire des points, le simple fait de cliquer avec le &BCS; créera un point pour vous, sans avoir à passer par le menu ou par un bouton. </para>
+</listitem>
+<listitem>
+<para
+>Vous pouvez créer des points pendant que vous créez d'autres objets, puis éventuellement les sélectionner pour les objets en cours de création. Pour plus de détails, voir <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>Un point a été créé</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Un point a été créé</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>Construction d'autres objets</title>
+<para
+>La construction des objets autres que les points est normalement réalisé en sélectionnant l'entrée appropriée dans le menu <guimenu
+>Objets</guimenu
+>, ou en cliquant sur l'un des boutons de la barre d'outils. </para>
+<screenshot>
+<screeninfo
+>Construction d'un cercle</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Construction d'un cercle</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Ceci commencera la création du type d'objet choisi. Tous ces types d'objets nécessitent des arguments. Par exemple, si vous choisissez de construire un cercle par centre et point, vous aurez besoin de donner deux points : un point pour le centre, et un point sur le cercle. </para>
+<para
+>Ces arguments sont également des objets qui peuvent être sélectionnés en cliquant sur eux. Lorsque vous survolez un argument qui vous voulez utiliser pour construire un objet, un image préliminaire de l'objet sera montrée, ainsi vous saurez à quoi il ressemblera. Pour des objets nécessitant des points comme arguments, vous pouvez créer un nouveau point à la position courante de la souris et le sélectionner en cliquant sur le &BGS;. </para>
+<para
+>Vous pouvez toujours annuler la construction du nouvel objet par un appui sur la touche &Esc;, ou par un clic sur le bouton <inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Annuler la construction</guibutton
+> de la barre d'outils. </para>
+<screenshot>
+<screeninfo
+>Construction d'un cercle.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Construction d'un cercle</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>Sélection d'objets</title>
+<para
+>La sélection d'objets peut être réalisée de deux façons : </para>
+<itemizedlist>
+<listitem>
+<para
+>Le fait de cliquer sur un objet provoque sa sélection, et annule la sélection actuelle. Si vous voulez sélectionner plusieurs objets simultanément, maintenez la touche &Ctrl; appuyée tandis que vous cliquez sur un objet. </para>
+</listitem>
+<listitem>
+<para
+>En cliquant et en déplaçant la souris (bouton appuyé), vous pouvez sélectionner tous les objets se trouvant dans le rectangle ainsi créé. Cette action annulera la sélection courante. Comme dans le cas précédent, maintenir la touche &Ctrl; enfoncée vous permettra de conserver en plus la sélection courante. </para>
+</listitem>
+</itemizedlist>
+<para
+>Lorsque vous avez plus d'un objet sous la souris (indiqué par <guilabel
+>Quel objet ?</guilabel
+> dans la barre d'état et au niveau du pointeur de la souris), vous pouvez d'une manière simple choisir quel objet sera sélectionné ou ajouté à la sélection courante. Cliquez à l'aide du &BGS; tandis que vous maintenez la touche &Maj; pressée pour avoir un menu contextuel contenant tous les objets sous la souris. Alors, vous pourrez sélectionner l'objet dont vous avez besoin. Comme dit plus tôt, le comportement de la touche &Ctrl; modifiera la sélection. </para>
+<screenshot>
+<screeninfo
+>Sélection d'objets</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Sélection d'objets</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>Déplacement d'objets</title>
+<para
+>Pour déplacer des objets, vous devez d'abord les <link linkend="selecting-objects"
+>sélectionner</link
+>  </para>
+<para
+>Lorsque les objets que vous voulez déplacer sont sélectionnés, vous pouvez les déplacer en pressant le &BGS;, en le maintenant enfoncé et en déplaçant la souris. Lorsque vous avez fini, relâchez simplement le &BGS;. </para>
+<note
+><para
+>Pour certains types d'objets (notamment lorsqu'ils sont définis par des lieux compliqués), le déplacement peut être lent sur des machines anciennes. C'est malheureux mais inévitable du fait des calculs à réaliser. </para
+></note
+> <note
+><para
+>Si vous cliquez du &BDS; sur l'un des objets sélectionnés, et choisissez <guimenuitem
+>Déplacer</guimenuitem
+>, déplacer la souris déplacera l'objet. Quand l'objet se trouve à la position voulue, un nouveau clic du &BGS; arrêtera le déplacement.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>Effacement d'objets</title>
+<para
+>L'effacement d'objets se fait, tout d'abord en les <link linkend="selecting-objects"
+>sélectionnant</link
+>, puis en réalisant l'une des actions suivantes : <itemizedlist>
+<listitem>
+<para
+>Appuyer sur la touche &Del;. </para>
+</listitem>
+<listitem>
+<para
+>Appuyez sur le bouton <inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Supprimer des objets</guibutton
+>  dans la barre d'outils. </para>
+</listitem>
+<listitem>
+<para
+>Cliquez du &BDS; sur l'un des objets et choisissez l'option <guimenuitem
+>Effacer</guimenuitem
+> dans le <link linkend="objects-context-menus"
+>menu contextuel</link
+> qui apparaît. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>Afficher et cacher des objets</title>
+<para
+>Dans &kig;, les objets peuvent être cachés. Ceci est réalisé en sélectionnant les objets, en cliquant avec le &BDS; sur l'un d'entre eux, et en choisissant <guimenuitem
+>Cacher</guimenuitem
+> dans le <link linkend="objects-context-menus"
+>menu contextuel</link
+> qui apparaît. </para>
+<para
+>Pour rendre les objets à nouveau visibles, utilisez le menu <menuchoice
+><guimenu
+>Édition</guimenu
+><guimenuitem
+>Tout rendre visible</guimenuitem
+></menuchoice
+>. Ceci rendra visibles les objets actuellement cachés. </para>
+
+<sect2 id="night-vision">
+<title
+>Vision nocturne</title>
+<para
+>La vision nocturne est une façon spéciale de travailler avec des objets cachés. Lorsque vous avez à déplacer ou changer quelque chose sur un ou plusieurs de vos objets sans faire réapparaître tous les objets cachés que vous avez, alors le mode de vision nocturne sera intéressant pour vous. </para>
+<para
+>À la base, vous pouvez voir les objets cachés comme s'ils étaient visibles, donc vous pouvez les manipuler comme vous le faites normalement. Dans le mode de vision nocturne, les objets cachés seront visibles avec une couleur grise. </para>
+<para
+>Pour activer ou désactiver le mode de vision nocturne, utilisez <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+> Porter des lunettes infrarouge</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>Défaire / Refaire</title>
+<para
+>Dans &kig;, vous pouvez annuler presque toutes les modifications apportées à votre document. Veuillez  simplement utiliser les boutons <guiicon
+>Annuler</guiicon
+> / <guiicon
+>Refaire</guiicon
+> de la barre d'outils, le menu <guimenu
+>Éditer</guimenu
+> ou les raccourcis de clavier appropriés. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>Mode plein écran</title>
+<para
+>&kig; a aussi un mode plein écran. Pour s'en servir, cliquez sur le bouton approprié dans la barre d'outils, ou sélectionnez <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Mode plein écran</guimenuitem
+></menuchoice
+>. </para>
+<para
+>Pour quitter le mode plein écran, cliquez avec le &BDS; dans une zone où il n'y a pas d'objets, et sélectionnez <guimenuitem
+>Sortir du mode plein écran</guimenuitem
+>, ou utilisez le raccourci clavier <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>Les types d'objets de &kig;</title>
+<para
+>&kig;accepte un grand nombre de types d'objets. Notez que tous les types d'objets disponibles ne se trouvent pas dans la barre d'outils, et qu'il existe quelques objets que vous ne pouvez construire qu'à partir du menu <guimenu
+>Objets</guimenu
+> de la barre de menu. Bien sûr, comme avec toutes les applications &kde;, le contenu de la barre d'outils est configurable. Essayez l'option <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer les barres d'outils...</guimenuitem
+></menuchoice
+> si vous voulez le faire. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>Utilisation avancée</title>
+<sect1 id="objects-context-menus">
+<title
+>Menus contextuels</title>
+<para
+>&kig; dispose de menus contextuels pour ses objets. Essayez de cliquer avec le &BDS; sur un objet pour voir un menu contextuel apparaître. Il comporte de nombreuses options : pour construire d'autres objets, définir les couleurs, la largeur du crayon, le style et aussi cacher, déplacer ou effacer des objets. Certains objets ont leurs propres options (&pex; vous pouvez contraindre certains points à être sur une droite, alors que précédemment ils ne l'étaient pas, &etc;). Ces options devraient être facile à comprendre. </para>
+
+<para
+>Certaines actions du menu contextuel d'un objet nécessitent un autre objet défini comme référence, par exemple :</para>
+
+<variablelist>
+<varlistentry>
+<term
+>Effectuer une rotation d'une forme d'un nombre de degrés bien défini autour d'un point</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Cliquez sur <menuchoice
+><guimenu
+>Objets</guimenu
+> <guisubmenu
+>Angles</guisubmenu
+><guimenuitem
+>Angle par trois points</guimenuitem
+> </menuchoice
+> et définissez votre angle de rotation quelque part dans la fenêtre de &kig;, généralement dans un endroit libre. Si vous le souhaitez, effectuez un clic droit sur l'angle et cliquez sur <menuchoice
+><guimenu
+>Ajouter une étiquette de texte</guimenu
+> <guimenuitem
+>Angle en degrés</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Cliquez avec le &BDS; sur l'angle et choisissez <guimenuitem
+>Définir la taille</guimenuitem
+> et indiquez la nouvelle taille pour cet angle dans la boîte de dialogue. </para
+></listitem>
+<listitem
+><para
+>Cliquez sur le menu <guimenu
+>Objets</guimenu
+> et construisez l'objet que vous voulez. </para
+></listitem>
+<listitem
+><para
+>Effectuez un clic droit sur votre forme et sélectionnez <menuchoice
+><guisubmenu
+>Transformation </guisubmenu
+><guimenuitem
+>Faire tourner</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Indiquez le point de rotation que vous souhaitez utiliser.</para
+></listitem>
+<listitem
+><para
+>Cliquez sur votre angle.</para
+></listitem>
+<listitem
+><para
+>Votre forme a été tournée !</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>Translater un objet</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>Choisissez <menuchoice
+><guimenu
+>Objets</guimenu
+> <guisubmenu
+>Vecteurs et segments</guisubmenu
+><guimenuitem
+>Vecteur</guimenuitem
+></menuchoice
+> et construisez votre objet en choisissant les points de départ et de fin dans la fenêtre de &kig;.</para
+></listitem>
+<listitem
+><para
+>Pour ajuster la longueur et la direction du vecteur, vous devez modifier ses points de départ et de fin. Veuillez les sélectionner et choisir <guimenuitem
+>Définir les coordonnées...</guimenuitem
+> dans le menu contextuel. </para
+></listitem>
+<listitem
+><para
+>Cliquez sur <guimenu
+>Objets</guimenu
+> et créez l'objet que vous voulez. </para
+></listitem>
+<listitem
+><para
+>Effectuez un clic droit sur votre objet et sélectionnez <menuchoice
+><guisubmenu
+>Transformation</guisubmenu
+><guimenuitem
+>Traduire</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>Sélectionnez le vecteur qui applique la translation.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>Les menus contextuels du document</title>
+<para
+>Cliquer avec le &BDS; dans le document (&cad; pas sur un objet) fera apparaître un menu vous permettant de créer un nouvel objet, de changer le système de coordonnées utilisé, d'afficher les objets cachés, de zoomer en avant ou en arrière dans le document et même de basculer en mode plein écran. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>Création de macros</title>
+<para
+>Une des fonctionnalités les plus avancées de &kig; est l'utilisation des macros. Ceci vous permet de définir de nouveaux types d'objets à partir d'autres déjà définis. </para>
+<para
+>Par exemple, supposez que vous vouliez réaliser une macro pour construire un cercle passant par trois points. Vous placeriez trois points et devriez construire quelques perpendiculaires et points médians jusqu'à ce que vous trouviez le centre. Ensuite vous pourriez utiliser la commande existante <guimenuitem
+>Cercle par centre et point</guimenuitem
+> (Utilisez un des trois points comme point pour cette commande). L'image suivante devrait rendre cela un peu plus claire. </para>
+<screenshot>
+<screeninfo
+>Un essai de réalisation de macros</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Un essai de réalisation de macros</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Puis, il faut définir la macro. Veuillez sélectionner l'élément de menu <menuchoice
+><guimenu
+>Types</guimenu
+> <guimenuitem
+>Nouvelle Macro...</guimenuitem
+></menuchoice
+> ou cliquer sur le bouton <inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Nouvelle Macro...</guibutton
+> de la barre d'outils. Un assistant apparaîtra et vous demandera de sélectionner les objets donnés. Dans notre exemple, ce sont les trois points. Veuillez sélectionner les trois points (Cliquez dessus pour les sélectionner et cliquez à nouveau pour les dé-sélectionner) puis appuyer sur le bouton <guibutton
+>Suivant</guibutton
+> pour continuer. Enfin, sélectionnez les derniers objets (Dans notre exemple, seulement le cercle). </para>
+
+<screenshot>
+<screeninfo
+>L'assistant macro</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>L'assistant macro</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Une fois les étapes précédentes effectuées, appuyez sur le bouton <guibutton
+>Suivant</guibutton
+> pour poursuivre. Saisissez un nom et éventuellement une description pour votre nouveau type d'objet, et cliquez sur le bouton <guibutton
+>Terminer</guibutton
+>. Votre macro est maintenant terminée. </para>
+
+<para
+>Pour utiliser votre nouvelle macro, cliquez sur son bouton dans la barre d'outils ou utilisez le menu <guimenu
+>Objets</guimenu
+>. Construire un objet macro revient alors à construire n'importe quel autre objet. </para>
+<screenshot>
+<screeninfo
+>Utilisation de votre nouveau type d'objet</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Utilisation de votre nouveau type d'objet</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>Travailler avec les types d'objet</title>
+<para
+>Comme vous l'avez vu dans le chapitre précédent, &kig; vous permet de créer vos propres objets. &kig; s'assure également qu'une fois que vous avez créé un objet, il sera enregistré lorsque vous quitterez le programme et sera chargé aux prochains démarrages. Vous n'avez pas à enregistrer ou charger manuellement les définitions de macro. En fait, &kig; vous permet d'en faire encore plus avec les macros. Si vous sélectionnez <menuchoice
+><guimenu
+>Types</guimenu
+> <guimenuitem
+>Gérer les types...</guimenuitem
+> </menuchoice
+> à partir du menu, vous verrez une boîte de dialogue dans laquelle vous pourrez éditer vos types. Cette boîte de dialogue vous permet de modifier les types existant, de supprimer les types qui ne sont plus utilisés, de les exporter dans un fichier, ou même d'en charger à partir d'un autre fichier. </para>
+<screenshot>
+<screeninfo
+>Boîte de dialogue d'édition de types</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>La boîte de dialogue d'édition de types</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>Étiquettes</title>
+<para
+>&kig; vous permet d'ajouter des étiquettes à une construction. C'est très utile pour ajouter des noms, des explications ou d'autres textes dans des constructions. &kig; peut aussi afficher divers informations à propos des objets (aussi appelées <quote
+>propriétés</quote
+>). </para>
+<para
+>Pour commencer à construire une étiquette de texte, veuillez simplement appuyer sur le bouton <inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Étiquette de texte</guibutton
+> dans la barre de commandes de &kig; ou sélectionner l'élément de menu <menuchoice
+><guimenu
+>Objets</guimenu
+> <guisubmenu
+>Autre</guisubmenu
+><guimenuitem
+>Étiquette de texte</guimenuitem
+> </menuchoice
+>. </para>
+<para
+>Ensuite, vous devez choisir un emplacement pour l'étiquette. Vous pouvez soit choisir un emplacement quelconque sur l'écran, ou bien choisir de le <quote
+>lier</quote
+> à un objet. </para>
+<screenshot>
+<screeninfo
+>Lier une étiquette à un cercle...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Lier une étiquette à un cercle...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Après que vous ayez sélectionné où mettre l'étiquette, la boîte de dialogue d'étiquette apparaît. Ici, vous pouvez saisir le texte que vous voulez dans la nouvelle étiquette et cliquer sur le bouton <guibutton
+>Terminer</guibutton
+>. Vous devriez maintenant voir l'étiquette dans votre document. </para>
+<screenshot>
+<screeninfo
+>La boîte de dialogue d'étiquettes</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>La boîte de dialogue d'étiquettes</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>L'exemple précédent était simple, et limité à du texte uniquement. Cependant, il est aussi possible d'afficher diverses informations sur les objets dans une étiquette (&pex; vous pouvez créer une étiquette avec le texte <quote
+>Ce segment a pour longueur %1 unités.</quote
+> où <token
+>%1</token
+> serait dynamiquement remplacé par la longueur d'un segment spécifique). </para>
+<para
+>Pour faire cela, saisissez le texte en incluant un certain nombre de masques (<token
+>%1</token
+>, <token
+>%2</token
+> &etc;). Ensuite, cliquez sur le bouton <guibutton
+>Suivant</guibutton
+> pour continuer. Si vous voulez changer le texte ou les variables plus tard, vous pouvez revenir en arrière en utilisant le bouton <guibutton
+>Précédent</guibutton
+>. </para>
+<para
+>L'assistant affiche maintenant le texte saisi, avec les masques remplacés par quelque chose du type <guilabel
+>argument 1</guilabel
+>. La sélection de la propriété associé à un argument est faite par un premier clic sur l'argument en question. Puis cliquer sur l'objet ayant une propriété dont vous avez besoin et sélectionnez la propriété elle-même dans le menu contextuel qui apparaît. Par exemple, dans l'exemple précédent, vous cliqueriez sur <guilabel
+>argument 1</guilabel
+>, puis sur le segment choisi dans la fenêtre principale de &kig; et sélectionneriez la propriété <guilabel
+>Longueur</guilabel
+>. Après quoi, vous pouvez compléter les autres parties variables, ou choisir une autre propriété pour l'une des parties variables si vous désirez la modifier. Lorsque vous êtes prêt, cliquez sur le bouton <guibutton
+>Terminer</guibutton
+> pour achever la construction de l'étiquette. </para>
+<screenshot>
+<screeninfo
+>Choix d'une propriété pour un masque variable</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Choix d'une propriété pour un masque variable</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Lieux géométriques</title>
+<para
+>&kig; prend en charge l'utilisation des lieux géométriques. Un lieu est mathématiquement défini comme l'ensemble des points ou des lignes qui satisfont ou sont déterminé par des conditions spécifiques ; comme dans <quote
+>le lieu des points équidistants d'un point donné est un cercle</quote
+>. Regardons un exemple d'utilisation des lieux dans &kig; : </para>
+<para
+>Considérez la construction géométrique suivante. Nous dessinons un cercle, et un point qui peut ce déplacer uniquement ce cercle (construisez ce point en positionnant le curseur sur un cercle, et en cliquant avec le &BCS;. Si vous essayez de déplacer ce point, vous verrez que vous ne pourrez pas le faire quitter le cercle). Ensuite, nous dessinons un segment reliant ce point et le centre du cercle, puis le point médian de ce segment. </para>
+<screenshot>
+<screeninfo
+>Une construction simple utilisant un lieu</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Une construction simple utilisant un lieu</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Si maintenant vous déplacez le point contraint sur le cercle, vous verrez que le second point bouge avec lui. Si vous teniez un crayon sur le second point, et que vous bougiez le premier point tout autour du cercle, un nouveau cercle deux fois plus petit que le premier serait dessiné. La trajectoire que suit le second point lorsque le premier fait le tour du cercle est sont lieu. </para>
+<para
+>Actuellement, la construction d'emplacement d'un point est très facile. Veuillez cliquer sur le bouton <inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>Lieu</guibutton
+> dans la barre d'outils ou sélectionnez l'élément de menu <menuchoice
+><guimenu
+>Objets</guimenu
+> <guisubmenu
+>Autres</guisubmenu
+> <guimenuitem
+>Lieux</guimenuitem
+></menuchoice
+>. Ensuite, veuillez sélectionner le point contraint comme point mobile (Le texte <guilabel
+>Point mobile</guilabel
+> apparaîtra lorsque vous le survolerez avec la souris) et l'autre comme <guilabel
+>Point dépendant</guilabel
+>. Le lieu du point dépendant sera alors dessiné. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>Utilisation de script</title>
+<para
+>&kig; permet à l'utilisateur de créer des types personnalisés dans le langage de script Python. Ceci est une fonctionnalité très avancée, et je ne connais qu'un seul autre programme de géométrie interactive ayant une fonctionnalité similaire (le programme &drgeo; de <acronym
+>GNOME</acronym
+>). </para>
+<para
+>Les scripts en Python vous permettent typiquement de créer vos propres objets à partir de certains objets parents. Par exemple, si vous êtes un professeur de mathématiques, et que vous avez une manière originale de calculer un point intéressant d'une conique, alors au lieu de vous embêter avec des constructions complexes et des macros, vous pourriez simplement écrire en code Python la manière dont le point est calculé et &kig; vous l'affichera. </para>
+<para
+>Supposez que vous n'étiez pas au courant du type intégré à &kig;, <quote
+>Mid Point</quote
+> et que vous vouliez afficher le milieu de deux points donnés. Vous cliqueriez alors sur le bouton <inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Python Script</guibutton
+> dans la barre d'outils, ou vous sélectionneriez <menuchoice
+> <guimenu
+>Objets</guimenu
+> <guisubmenu
+>Autres</guisubmenu
+> <guimenuitem
+>Script en Python</guimenuitem
+></menuchoice
+> dans la barre de menus. Un assistant vous sera alors présenté vous permettant de continuer. </para>
+<screenshot>
+<screeninfo
+>L'assistant de script</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>L'assistant de script</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>La première chose que vous devez faire est choisir les arguments de votre script. Dans notre exemple, il s'agit des deux points dont nous voulons afficher le milieu. Choisissez les dans la fenêtre principale de &kig;, et cliquez sur <guibutton
+>Suivant</guibutton
+> pour continuer. </para>
+<para
+>Un petite boîte d'édition vous est alors présentée dans laquelle vous pouvez saisir le code pour votre objet de script. Un modèle de code et quelques commentaires y sont déjà présents. Il est important de s'assurer que votre code est bien du code valable en Python. Les personnes familières avec Python remarqueront que nous définissons actuellement une fonction en Python appelée <function
+>calc</function
+>. Il est en conséquence nécessaire d'utiliser les règles de définition d'une fonction en Python. Par exemple, chaque ligne de la fonction devra commencer par un caractère de <keysym
+>Tabulation</keysym
+>. La première ligne ne commençant pas par une <keysym
+>Tabulation</keysym
+> indique la fin de la définition de la fonction. </para>
+<para
+>La fonction Python que nous voulons définir est appelée <function
+>calc</function
+>, et dans notre cas elle accepte deux arguments. Ce sont les objets que vous avez sélectionné comme arguments dans l'écran précédent. Vous avez besoin d'autant d'arguments que vous en avez ici. Ils sont appelés <parameter
+>arg1</parameter
+> et <parameter
+>arg2</parameter
+>, mais vous pouvez modifier leurs noms en quelque chose ayant plus de sens si vous le voulez. </para>
+<para
+>Dans la fonction, vous pouvez faire toutes sortes de calculs que vous jugez nécessaire, en utilisant les deux arguments si besoin. Vous devez retourner l'objet que vous voulez définir. Dans notre cas, c'est un objet <classname
+>Point</classname
+>. Les deux arguments sont aussi des objets <classname
+>Point</classname
+>, et nous pouvons utiliser la fonction <function
+>Point.coordinate()</function
+> pour obtenir les coordonnées des deux points. </para>
+<para
+>Le calcul nécessaire dans notre exemple est très simple, nous additionnons simplement les deux ensembles de coordonnées, puis divisons par deux le résultat. Nous construisons alors un nouveau point utilisant ces coordonnées. Le code Python nécessaire est :</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>Saisie du code</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Saisie du code pour le milieu dans l'assistant de script.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Si vous cliquez maintenant sur le bouton <guibutton
+>Terminer</guibutton
+>, le nouvel objet apparaîtra dans le document &kig;. Si vous déplacez un des points, alors le point nouvellement créé l'accompagnera. Des objets bien plus puissant peuvent être construits de cette manière, vous êtes encouragés à essayer. </para>
+<screenshot>
+<screeninfo
+>Un script a été créé</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Le script nouvellement créé. </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>La totalité des objets de &kig; peuvent être utilisés dans du code Python. Comme nous l'avons vu précédemment, les points sont de la classe <classname
+>Point</classname
+>. Vous pouvez utiliser &pex; la méthode <function
+>Point.coordinate()</function
+>. Vous pouvez aussi retourner toutes sortes d'objets, pas seulement un objet de type <classname
+>Point</classname
+>. Beaucoup d'autres classes et de méthodes sont disponibles dans le code en Python pour &kig;. Une référence plus complète est fournie sur le <ulink url="http://edu.kde.org/kig/manual/scripting-api/index.html"
+>site Internet de &kig;</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>Fonctionnalités de &kig;</title>
+
+<itemizedlist>
+<listitem>
+<para
+>&kig; est un programme open source. Cela signifie que vous êtes libre de l'utiliser et de le modifier comme bon vous semble. Redistribuer &kig; est sujet à quelques restrictions, entre autres que tout le monde dispose des mêmes droits d'utiliser une version de &kig; incluant vos modifications, comme vous et moi. </para>
+<para
+>Les logiciels libres sont développés dans un esprit très ouvert et leurs développeurs sont habituellement très à l'écoute des suggestions des utilisateurs. Ainsi, si vous avez des questions, des critiques ou quoi que ce soit d'autre à propos de &kig;, veuillez contacter la liste de diffusion « kde-edu » à à l'adresse <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>&kig; est un programme KPart, ce qui signifie que vous pouvez l'inclure dans d'autres logiciels &kde;. Si vous ouvrez un fichier <literal role="extension"
+>.kig</literal
+> dans &konqueror;, il pourra être ouvert directement dans la fenêtre de &konqueror; sans avoir besoin d'ouvrir une autre application. </para>
+</listitem>
+<listitem>
+<para
+>Travailler avec &kig; devrait être très aisé. La construction d'objets est facile et interactive, avec aperçu des résultats, &etc; Déplacer, sélectionner et construire, tout est accessible de la façon attendue. La fonction Annuler devrait, elle aussi, être intuitive. </para>
+</listitem>
+<listitem>
+<para
+>&kig; permet que les macros soit définies simplement. Ces objets sont présentés à l'utilisateur comme des objets classiques. Ils sont enregistrés en fin de session et chargés au démarrage de l'application, ainsi ils ne sont pas perdus d'une session à l'autre. Vous pouvez gérer ces objets dans la boîte de dialogue <guilabel
+>Gérer les types de macro</guilabel
+> (voir <xref linkend="working-with-types"/>). Vous pouvez les exporter vers un fichier, les importer depuis un fichier, les éditer et les effacer. </para>
+</listitem>
+<listitem>
+<para
+>&kig; enregistre ses données dans un format &XML; lisible. </para>
+</listitem>
+<listitem>
+<para
+>&kig; gère la construction de lieux. </para>
+</listitem>
+<listitem>
+<para
+>&kig; vous permet d'exporter un fichier &kig; vers quelques formats intéressants, comme des fichiers d'images, <application
+>XFig</application
+> et <application
+>LaTeX</application
+> ainsi que des images vectorielles <acronym
+>SVG</acronym
+>. Ceci est plutôt utile, car tous les programmes ne gèrent pas encore le format de fichier de &kig;. </para>
+</listitem>
+<listitem>
+<para
+>&kig; a un système de transformation très flexible. </para>
+</listitem>
+<listitem>
+<para
+>&kig; veut être compatible avec ses concurrents. C'est pourquoi il gère le format de fichier de &kgeo;, le format de fichier de &kseg; et partiellement les formats &drgeo; et &cabri; ; de plus, la prise en charge d'autres formats de fichier est prévue. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>Remerciements et licence</title>
+
+<para
+>Auteurs principaux : </para>
+<para
+>&kig; copyright 2011 - 2015 David E. Narvaez <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>&kig; copyright 2002 - 2013 Maurizio Paolini <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>&kig; copyright 2004 - 2010 Pino Toscano <email
+>pino@kde.org</email
+> </para>
+<para
+>&kig; copyright 2002 - 2005 Dominique Devriese <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Documentation copyright 2002-2004 Dominique Devriese. <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>Documentation copyright 2002-2005 Pino Toscano <email
+>toscano.pino@tiscali.fr</email
+> </para>
+
+<para
+>Relecture par &Philip.Rodrigues; &Philip.Rodrigues.mail; </para>
+<para
+>Traduction française par &YvesGuillou;, &CedricPasteur;, &YohannHamon; et &traducteurXavierBesnard;</para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>Participez</title>
+<sect1 id="kig-is-free">
+<title
+>Programme libre</title>
+<para
+>&kig; est un<ulink url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+> Logiciel libre</ulink
+>. Cela signifie que son code source est disponible librement sur Internet et que tout le monde peut l'utiliser, le lire, le modifier et le distribuer. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>Participez</title>
+<para
+>Dans ce chapitre, je souhaite montrer, à vous (Les utilisateurs), les droits que la licence de &kig; vous donnent. Comme avec tous les logiciels libres, vous êtes autorisés (Et encouragés) à résoudre les problèmes que vous rencontrez lors de son utilisation, à ajouter des fonctionnalités vous faisant défaut, à distribuer votre programme modifié et à envoyer ces modifications pour être intégrées grâce aux outils disponibles de relecture de la communauté de &kde;. </para>
+<para
+>Si vous doutez de vos droits concernant l'utilisation de ce logiciel, ou de l'utilisation par des tierces personnes des modifications que vous avez faites au programme, &etc;, veuillez lire la licence. Vous pouvez la trouver dans le fichier <filename
+>COPYING</filename
+> situé dans l'arborescence des fichiers sources de &kig; ou en cliquant sur le lien de licence se trouvant dans la boîte de dialogue <guilabel
+>À propos de Kig</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>Comment contribuer ?</title>
+<para
+>Toutes les contributions sont les bienvenues. Si vous n'aimez pas les icônes, ou que vous pensez que ce manuel a besoin d'une mise à jour, ou bien si vous avez une macro vraiment super que vous voudriez partager avec le monde entier, n'hésitez pas à me les envoyer. Notez simplement que vos contributions seront distribuées selon les termes de la licence &GNU; <acronym
+>GPL </acronym
+> ; vous pouvez trouver les termes de cette licence dans le fichier <filename
+>COPYING</filename
+> situé dans l'arborescence des fichiers sources de &kig;, et dans le chapitre <link linkend="credits"
+>Remerciements et licences</link
+> de ce manuel. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->
