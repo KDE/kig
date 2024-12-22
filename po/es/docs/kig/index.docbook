@@ -19,7 +19,7 @@
 
 <bookinfo>
 <title
->El manual de &kig;</title>
+>Manual de &kig;</title>
 
 <authorgroup>
 <author
@@ -95,9 +95,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2020-12-23</date>
+>2020-10-08</date>
 <releaseinfo
->Aplicaciones 20.12</releaseinfo>
+>&kig; 1.0 (Applications 20.12)</releaseinfo>
 
 <abstract>
 <para
@@ -156,9 +156,9 @@
 >). </para>
 
 <para
->Como &kig; admite macros y la construcción de lugares geométricos, es posible definir macros relativamente avanzadas. Si ha creado una macro interesante que podría resultar útil para otras personas, puede abrir una petición de revisión para que se incluya en la distribución (si lo hace, estará bajo los términos de la licencia de &kig;, es decir, <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>Since &kig; supports macros and the construction of loci, it allows for some rather advanced macros to be defined. If you have created an interesting macro, which you think might be useful for other people, please open a review request for the change, so that it can be evaluated for the inclusion in the distribution (if you do this, it will be licensed under the terms of &kig;'s license, the <ulink url="http://www.gnu.org/licenses/licenses.html#GPL"
 >GPL</ulink
->, por lo que otros usuarios podrán utilizarla y adaptarla libremente). </para>
+>, so that other people can freely use and adapt it). </para>
 </chapter>
 
 
@@ -248,13 +248,9 @@ format="PNG"/>
 <para
 >Estos argumentos también son objetos que pueden ser seleccionacionados, para lo que solo tiene que hacer clic sobre ellos. Cuando mueva el cursor sobre un argumento que desee utilizar para construir un objeto, se mostrará una imagen preliminar del objeto, de forma que sabrá qué apariencia va a tener. En el caso de objetos que requieran de puntos como argumentos, puede construir un nuevo punto en la posición actual del cursor pulsando el &LMB;. </para>
 <para
->Siempre es posible cancelar la construcción de un nuevo objeto pulsando la tecla &Esc; o el botón &nbsp;<inlinemediaobject
-> <imageobject
-> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
-> </inlinemediaobject
-> <guibutton
->Cancelar construcción</guibutton
-> de la barra de herramientas. </para>
+>You can always cancel the construction of the new object by pressing the &Esc; button or by clicking on the <guiicon
+>Cancel Construction</guiicon
+> button (red circle with an inside bar) on the toolbar. </para>
 <screenshot>
 <screeninfo
 >Construcción de un círculo.</screeninfo>
@@ -341,13 +337,9 @@ format="PNG"/>
 </listitem>
 <listitem>
 <para
->Pulse el botón &nbsp;<inlinemediaobject
-> <imageobject
-> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
-> </inlinemediaobject
-> <guibutton
->Borrar objetos</guibutton
-> de la barra de herramientas. </para>
+>Press the <guiicon
+>Delete Objects</guiicon
+> button on the toolbar. </para>
 </listitem>
 <listitem>
 <para
@@ -403,13 +395,13 @@ format="PNG"/>
 <title
 >Deshacer y rehacer</title>
 <para
->En &kig;, puede deshacer casi cualquier cambio que haga en el documento. Solo necesita usar los botones <guiicon
->Deshacer</guiicon
-> y <guiicon
->Rehacer</guiicon
-> de la barra de herramientas o del menú <guimenu
->Editar</guimenu
->, o utilizar los accesos rápidos de teclado adecuados. </para>
+>In &kig;, you can undo almost any change you make in the document. Just use the <guiicon
+>Undo</guiicon
+>/<guiicon
+>Redo</guiicon
+> buttons on the toolbar, the <guimenu
+>Edit</guimenu
+> menu or the appropriate shortcuts. </para>
 </sect1>
 
 <sect1 id="full-screen-mode">
@@ -471,19 +463,19 @@ format="PNG"/>
 <orderedlist>
 <listitem
 ><para
->Pulse sobre <menuchoice
+>Click on <menuchoice
 ><guimenu
->Objetos</guimenu
+>Objects</guimenu
 > <guisubmenu
->Ángulos</guisubmenu
+>Angles</guisubmenu
 ><guimenuitem
->Ángulo por tres puntos</guimenuitem
+>Angle by Three Points</guimenuitem
 > </menuchoice
-> y construya el ángulo de rotación deseado en algún lugar de la ventana de &kig;, normalmente en un lugar libre de obstrucciones. Si lo desea, haga clic con el botón derecho sobre el ángulo y pulse en <menuchoice
-><guisubmenu
->Añadir etiqueta de texto</guisubmenu
+> and make your desired angle of rotation somewhere in the &kig; window, generally in an unobtrusive place. If desired, right click on the angle and click on <menuchoice
+><guimenu
+>Add Text Label</guimenu
 ><guimenuitem
->Ángulo en grados</guimenuitem
+>Angle in Degrees</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -495,17 +487,17 @@ format="PNG"/>
 ></listitem>
 <listitem
 ><para
->Pulse en el menú <guimenu
+>Pulse en <guimenu
 >Objetos</guimenu
 > y construya el objeto que desee. </para
 ></listitem>
 <listitem
 ><para
->Pulse con el botón derecho del ratón sobre la forma y seleccione <menuchoice
-><guisubmenu
->Transformar</guisubmenu
+>Right click on your shape, and select on <menuchoice
+><guimenu
+> Transform</guimenu
 ><guimenuitem
->Rotar</guimenuitem
+>Rotate</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -558,9 +550,9 @@ rotation.</para>
 ></listitem>
 <listitem
 ><para
->Para ajustar la longitud y la dirección del vector tendrá que editar sus puntos de inicio y fin. Selecciónelos y elija <guimenuitem
->Establecer coordenada...</guimenuitem
-> en el menú de contexto. </para
+>To adjust length and direction of the vector you have to edit its start and end point. Select them and choose in the context menu <guimenuitem
+>Set Coordinate...</guimenuitem
+> </para
 ></listitem>
 <listitem
 ><para
@@ -570,11 +562,11 @@ rotation.</para>
 ></listitem>
 <listitem
 ><para
->Haga clic con el botón derecho sobre el objeto y seleccione <menuchoice
-><guisubmenu
->Transformar</guisubmenu
+>Right click on your object, and select on <menuchoice
+><guimenu
+>Transform</guimenu
 > <guimenuitem
->Trasladar</guimenuitem
+>Translate</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -621,19 +613,13 @@ rotation.</para>
 </screenshot>
 
 <para
->A continuación deberá definir la macro. Seleccione la opción del menú <menuchoice
-><guimenu
->Tipos</guimenu
-> <guimenuitem
->Nueva macro...</guimenuitem
-></menuchoice
-> o haga clic en el botón &nbsp;<inlinemediaobject
-> <imageobject
-> <imagedata fileref="system-run.png" format="PNG"/></imageobject
-> </inlinemediaobject
-> de la barra de herramientas. Aparecerá un asistente indicándole que seleccione los objetos dados. En nuestro ejemplo, estos serán los tres puntos. Seleccione los tres puntos (haciendo clic sobre ellos para seleccionarlos, y lo mismo para eliminar la selección) y pulse el botón <guibutton
->Siguiente</guibutton
-> para continuar. Finalmente, seleccione los últimos objetos (en nuestro ejemplo, la circunferencia). </para>
+>Next comes defining the macro. Select <guimenuitem
+>New Macro...</guimenuitem
+> from the <guimenu
+>Types</guimenu
+> menu, or click on the button on the toolbar. A wizard will appear and ask you to select the given objects. In our example, these are the three points. Select the three points (click on them to select, click again to unselect) and click the <guibutton
+>Next</guibutton
+> button to continue. Finally, select the last objects (only the circle in our example). </para>
 
 <screenshot>
 <screeninfo
@@ -707,21 +693,17 @@ rotation.</para>
 <para
 >&kig; le permite añadir etiquetas de texto a una construcción. Son muy útiles para mostrar nombres, explicaciones u otro texto en las construcciones. &kig; también puede mostrar diferente información sobre los objetos (es decir, sus «propiedades»). </para>
 <para
->Para construir una etiqueta de texto, basta con que haga clic en el botón &nbsp;<inlinemediaobject
-> <imageobject
-> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
-> </inlinemediaobject
-> <guibutton
->Etiqueta de texto</guibutton
-> en la barra de herramientas de &kig; o que seleccione la opción del menú <menuchoice
+>To start constructing a text label, simply press the <guibutton
+>Text Label</guibutton
+> button in the &kig; toolbar or select <menuchoice
 ><guimenu
->Objetos</guimenu
-> <guisubmenu
->Otros</guisubmenu
+>Objects</guimenu
+><guisubmenu
+>Other </guisubmenu
 ><guimenuitem
->Etiqueta de texto</guimenuitem
+>Text Label</guimenuitem
 > </menuchoice
->. </para>
+> in the menubar. </para>
 <para
 >Lo siguiente que debe hacer es seleccionar una ubicación para la etiqueta de texto. También puede seleccionar una ubicación aleatoria en la pantalla o decidir «asociar» la etiqueta a un objeto. </para>
 <screenshot>
@@ -820,25 +802,19 @@ format="PNG"/>
 <para
 >Ahora, si mueve el punto que está contenido en la circunferencia, verá que el segundo punto se moverá con él. Si mantuviera un lápiz en el segundo punto y moviera el primero a lo largo de la circunferencia, se dibujaría una nueva circunferencia con un radio la mitad que el de la anterior. La ruta que el segundo punto sigue mientras el primero se mueve alrededor de la circunferencia es su lugar geométrico. </para>
 <para
->En realidad, construir el lugar geométrico de un punto es muy sencillo. Haga clic en el botón &nbsp;<inlinemediaobject
-><imageobject
-> <imagedata fileref="locus.png" format="PNG"/> </imageobject
-></inlinemediaobject
-> <guiicon
->Lugar geométrico</guiicon
-> de la barra de herramientas o seleccione la opción del menú <menuchoice
+>Actually constructing the locus of a point is very easy. Click the <guiicon
+>locus</guiicon
+> button in the toolbar, or select <menuchoice
 ><guimenu
->Objetos</guimenu
+>Objects</guimenu
 > <guisubmenu
->Otros</guisubmenu
-><guimenuitem
->Lugar geométrico</guimenuitem
-></menuchoice
->. A continuación, seleccione el punto de movimiento el punto restringido (aparecerá el texto <guilabel
->Punto de movimiento</guilabel
-> cuando sitúe el ratón sobre él), y el otro como <guilabel
->punto dependiente</guilabel
->. Se dibujará el lugar geométrico del punto dependiente. </para>
+>Other</guisubmenu
+> <guimenuitem
+>Locus</guimenuitem
+> </menuchoice
+> from the menubar. Then select the constrained point as the moving point (the text <guilabel
+>Moving Point</guilabel
+> will appear as you move the mouse over it), and the other as the dependent point. The locus of the dependent point will then be drawn. </para>
 </sect1>
 </chapter>
 
@@ -852,21 +828,19 @@ format="PNG"/>
 <para
 >En &kig;, la creación de scripts con Python le permite básicamente crear sus propios objetos a partir de objetos primarios. Por ejemplo, si usted es un profesor de matemáticas y conoce una forma imaginativa de calcular un punto interesante sobre una cónica, en lugar de liarse con complejas construcciones y macros, puede escribir un código en Python para calcular el punto y &kig; se lo mostrará. </para>
 <para
->Suponga que no sabe que &kig; tiene construido el tipo «Punto medio» y desea mostrar el punto medio de dos puntos dados. Puede hacer clic en el botón &nbsp;<inlinemediaobject
-> <imageobject
-> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
-> </inlinemediaobject
-> <guibutton
->Script en Python</guibutton
-> en la barra de herramientas o seleccionar <menuchoice
+>Suppose you were not aware of the &kig; built-in type <quote
+>Mid Point</quote
+>, and you wanted to show the midpoint of two given points. You would then click on the <guibutton
+>Python Script</guibutton
+> button in the toolbar, or select <menuchoice
 ><guimenu
->Objetos</guimenu
+>Objects</guimenu
 ><guisubmenu
->Otros</guisubmenu
-><guimenuitem
->Script en Python</guimenuitem
+>Other</guisubmenu
+> <guimenuitem
+>Python Script</guimenuitem
 ></menuchoice
-> en la barra de menú. Aparecerá un asistente con el que podrá comenzar a crear el script: </para>
+> from the menubar. You are then presented with a wizard that allows you to proceed. </para>
 <screenshot>
 <screeninfo
 >El asistente para la creación de scripts</screeninfo>
@@ -885,9 +859,9 @@ format="PNG"/>
 >Siguiente</guibutton
 > para continuar. </para>
 <para
->Ahora se mostrará un cuadro de edición de texto en el que podrá introducir el código de su guion. Aquí encontrará ya el código de la plantilla y algunos comentarios. Es importante que se asegure de que su código es un código Python válido. Aquellos familiarizados con Python sabrán que en realidad estamos definiendo una función de Python llamada <function
+>Now you are presented with a text edit box where you can enter the code for you script object. Template code and some comments are already in place. It is important to make sure that your code is valid Python code. People familiar with Python will notice that we are actually defining a Python function called <function
 >calc</function
->. Por lo tanto, es necesario seguir las reglas de Python para la definición de funciones. Por ejemplo, cada línea de la función deberá comenzar con un tabulador. La primera línea que no comience con un tabulador indicará que finaliza la definición de la función. </para>
+>. It is therefore necessary to adhere to the Python rules for defining functions. For example, every line of the function should start with a &Tab;. The first line not starting with a &Tab; ends the definition of the function. </para>
 <para
 >La función de Python que queremos definir se llama <function
 >calc</function
@@ -944,14 +918,14 @@ format="PNG"/>
 </mediaobject>
 </screenshot>
 <para
->Todos los objetos en &kig; pueden utilizarse en un código Python. Como hemos visto anteriormente, los puntos son de la clase <classname
+>All objects in &kig; can be used in the Python code. As we have seen above, points are of the <classname
 >Point</classname
-> y puede utilizarse, &eg;, el método <function
+> class, and you can use &eg; the <function
 >Point.coordinate()</function
->. También puede devolver cualquier tipo de objeto, no solo uno de la clase <classname
+> method. You can also return all kinds of objects, not just a <classname
 >Point</classname
->. Existen muchos más métodos y clases disponibles en el código Python de &kig;, y puede obtener una guía más completa <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
-> en el sitio web de &kig;</ulink
+>. Many more classes and methods are available in the &kig; Python code, and a more complete reference is provided <ulink url="http://edu.kde.org/kig/manual/scripting-api/index.html"
+>on the &kig; website</ulink
 >. </para>
 </chapter>
 
@@ -994,11 +968,13 @@ format="PNG"/>
 </listitem>
 <listitem>
 <para
->&kig; le permite exportar un archivo &kig; a diferentes formatos interesantes como imágenes, archivos <application
+>&kig; allows you to export a &kig; file to some interesting formats, like images, <application
 >XFig</application
-> y <application
+> and <application
 >LaTeX</application
->, e imágenes vectoriales &SVG;. Esto resulta bastante útil, ya que no todos los programas reconocen, de momento, el formato propio de &kig;. </para>
+> files, and <acronym
+>SVG</acronym
+> vectorial images. This is rather useful, because not all programs support the &kig; file format yet. </para>
 </listitem>
 <listitem>
 <para
@@ -1064,22 +1040,22 @@ format="PNG"/>
 <title
 >Software libre</title>
 <para
->&kig; es <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
->software libre</ulink
->. Eso significa que su código fuente está disponible libremente en Internet, de forma que cualquiera pueda usarlo, leerlo, modificarlo y distribuirlo. </para>
+>&kig; is <ulink url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+> Free Software</ulink
+>. This means that its source code is freely available on the Internet, and everyone can use it, read it, modify it, and distribute it. </para>
 </sect1>
 
 <sect1 id="contribute-to-kig">
 <title
 >Cómo contribuir</title>
 <para
->El motivo de este capítulo es aclararle a usted (el usuario) los derechos que la licencia de &kig; le proporciona. Como ocurre con todo software libre, puede (y lo invitamos a ello) solucionar los problemas que encuentre mientras lo usa, añadir aquellas opciones que eche en falta, distribuir su programa modificado y remitir de vuelta dichas modificaciones para su inclusión en futuras versiones del programa usando las herramientas de revisión de las que dispone la comunidad de &kde;. </para>
+>In this chapter I want to point out to you (the user) the rights that &kig;'s license gives you. As with all free software, you are allowed (and encouraged) to fix problems you encounter while using it, to add features you miss, to distribute your modified program, and to send these modifications back for inclusion through the review tools available for the KDE community. </para>
 <para
->Si tiene dudas sobre sus derechos de utilización de este programa, sobre los derechos de otras personas a utilizar las modificaciones que usted haga sobre el mismo, &etc;, puede leer la licencia. La encontrará en el archivo <filename
+>If you are uncertain of your rights to use this software, or other people's right to use any modifications you make to this program &etc;, please read the license. You can find it in the <filename
 >COPYING</filename
-> que se encuentra en el árbol de archivos del código fuente de &kig; o pulsando en el enlace correspondiente del diálogo <guilabel
->Acerca de &kig;</guilabel
->. </para>
+> file in the &kig; source tree or the license link in the <guilabel
+>About Kig</guilabel
+> dialog. </para>
 </sect1>
 
 <sect1 id="howto-contribute">
