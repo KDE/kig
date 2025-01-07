@@ -90,6 +90,7 @@ int main(int argc, char **argv)
     QCoreApplication::setApplicationVersion(KIG_VERSION_STRING);
     QCoreApplication::setOrganizationDomain(i18n("kde.org"));
     KAboutData::setApplicationData(about);
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kig")));
 
     dataMigration(); // This needs the about AboutData to be set up
     about.setupCommandLine(&parser);
