@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 01:41+0000\n"
+"POT-Creation-Date: 2025-01-08 01:54+0000\n"
 "PO-Revision-Date: 2021-01-18 19:15+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1360,7 +1360,7 @@ msgstr ""
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:98
+#: kig/main.cpp:99
 #, kde-format
 msgid "Document to open"
 msgstr "திறக்கப்பட வேண்டிய கோப்பு"

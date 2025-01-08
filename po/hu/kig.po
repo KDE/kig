@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 01:41+0000\n"
+"POT-Creation-Date: 2025-01-08 01:54+0000\n"
 "PO-Revision-Date: 2014-01-22 21:38+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1364,7 +1364,7 @@ msgstr ""
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:98
+#: kig/main.cpp:99
 #, kde-format
 msgid "Document to open"
 msgstr "A megnyitandó dokumentum"

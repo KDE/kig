@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 01:41+0000\n"
+"POT-Creation-Date: 2025-01-08 01:54+0000\n"
 "PO-Revision-Date: 2022-02-02 20:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1288,7 +1288,7 @@ msgstr "ملف إلى مخرجات فطرى ملفّ إلى مخرجات إلى 
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:98
+#: kig/main.cpp:99
 #, kde-format
 msgid "Document to open"
 msgstr "المستند لفتحه"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig (KDE 3.5)\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 01:41+0000\n"
+"POT-Creation-Date: 2025-01-08 01:54+0000\n"
 "PO-Revision-Date: 2006-03-29 19:00+0600\n"
 "Last-Translator: Progga <progga@BengaLinux.Org>\n"
 "Language-Team: Bangla <kde-translation@BengaLinux.Org>\n"
@@ -1381,7 +1381,7 @@ msgstr ""
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:98
+#: kig/main.cpp:99
 #, kde-format
 msgid "Document to open"
 msgstr "যে ডকুমেন্টটি খোলা হবে।"

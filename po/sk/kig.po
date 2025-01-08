@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-29 01:41+0000\n"
+"POT-Creation-Date: 2025-01-08 01:54+0000\n"
 "PO-Revision-Date: 2023-03-12 09:30+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1327,7 +1327,7 @@ msgstr ""
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:98
+#: kig/main.cpp:99
 #, kde-format
 msgid "Document to open"
 msgstr "Dokument na otvorenie"
