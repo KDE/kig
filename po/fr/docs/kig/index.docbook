@@ -206,7 +206,7 @@ format="PNG"/>
 <para
 >Ces arguments sont également des objets qui peuvent être sélectionnés en cliquant sur eux. Lorsque vous survolez un argument qui vous voulez utiliser pour construire un objet, un image préliminaire de l'objet sera montrée, ainsi vous saurez à quoi il ressemblera. Pour des objets nécessitant des points comme arguments, vous pouvez créer un nouveau point à la position courante de la souris et le sélectionner en cliquant sur le &BGS;. </para>
 <para
->Vous pouvez toujours annuler la construction du nouvel objet par un appui sur la touche &Esc;, ou par un clic sur le bouton <inlinemediaobject
+>Vous pouvez toujours annuler la construction du nouvel objet par un appui sur la touche &Echap;, ou par un clic sur le bouton <inlinemediaobject
 > <imageobject
 > <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
 > </inlinemediaobject
@@ -303,7 +303,7 @@ format="PNG"/>
 > </inlinemediaobject
 > <guibutton
 >Supprimer des objets</guibutton
->  dans la barre d'outils. </para>
+> dans la barre d'outils. </para>
 </listitem>
 <listitem>
 <para
@@ -357,7 +357,7 @@ format="PNG"/>
 <title
 >Défaire / Refaire</title>
 <para
->Dans &kig;, vous pouvez annuler presque toutes les modifications apportées à votre document. Veuillez  simplement utiliser les boutons <guiicon
+>Dans &kig;, vous pouvez annuler presque toutes les modifications apportées à votre document. Veuillez simplement utiliser les boutons <guiicon
 >Annuler</guiicon
 > / <guiicon
 >Refaire</guiicon
@@ -877,8 +877,8 @@ format="PNG"/>
 
 <programlisting
 >def calc( a, b ):
-    m = ( a.coordinate() + b.coordinate() ) / 2;
-    return Point( m )
+  m = ( a.coordinate() + b.coordinate() ) / 2;
+  return Point( m )
 </programlisting>
 
 <screenshot>
@@ -1037,7 +1037,7 @@ format="PNG"/>
 <title
 >Participez</title>
 <para
->Dans ce chapitre, je souhaite montrer, à vous (Les utilisateurs), les droits que la licence de &kig; vous donnent. Comme avec tous les logiciels libres, vous êtes autorisés (Et encouragés) à résoudre les problèmes que vous rencontrez lors de son utilisation, à ajouter des fonctionnalités vous faisant défaut, à distribuer votre programme modifié et à envoyer ces modifications pour être intégrées grâce aux outils disponibles de relecture de la communauté de &kde;. </para>
+>Dans ce chapitre, je souhaite présenter, à vous (Les utilisateurs), les droits que la licence de &kig; vous donnent. Comme avec tous les logiciels libres, vous êtes autorisés (Et encouragés) à résoudre les problèmes que vous rencontrez lors de son utilisation, à ajouter des fonctionnalités vous faisant défaut, à distribuer votre programme modifié et à envoyer ces modifications pour être intégrées grâce aux outils disponibles de relecture de la communauté de &kde;. </para>
 <para
 >Si vous doutez de vos droits concernant l'utilisation de ce logiciel, ou de l'utilisation par des tierces personnes des modifications que vous avez faites au programme, &etc;, veuillez lire la licence. Vous pouvez la trouver dans le fichier <filename
 >COPYING</filename
