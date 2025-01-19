@@ -2,6 +2,7 @@
 <component type="desktop">
   <id>org.kde.kig.desktop</id>
   <developer_name>KDE</developer_name>
+  <developer_name xml:lang="ar">كِيدِي</developer_name>
   <developer_name xml:lang="bg">KDE</developer_name>
   <developer_name xml:lang="ca">KDE</developer_name>
   <developer_name xml:lang="ca-valencia">KDE</developer_name>
