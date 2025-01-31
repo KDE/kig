@@ -1374,7 +1374,7 @@ msgstr "Un segmento construído a partir dos seus puntos inicial e final"
 #: misc/builtin_stuff.cc:56
 #, kde-format
 msgid "Segment Axis"
-msgstr "Eixo de segmento"
+msgstr "Eixe de segmento"
 
 #: misc/builtin_stuff.cc:57
 #, kde-format
@@ -1873,7 +1873,7 @@ msgid ""
 "The harmonic homology with a given center and a given axis (this is a "
 "projective transformation)"
 msgstr ""
-"A homoloxía harmónica cun centro e un eixo dados (esta é unha transformación "
+"A homoloxía harmónica cun centro e un eixe dados (esta é unha transformación "
 "con proxección)"
 
 #: misc/builtin_stuff.cc:419
@@ -4809,12 +4809,12 @@ msgstr "Escolla un punto polo que pase a semirrecta…"
 #: objects/line_type.cc:104
 #, kde-format
 msgid "Construct the axis of this segment"
-msgstr "Construír o eixo deste segmento"
+msgstr "Construír o eixe deste segmento"
 
 #: objects/line_type.cc:104
 #, kde-format
 msgid "Select the segment of which you want to draw the axis..."
-msgstr "Escolla a segmento para o cal quere debuxar o eixo…"
+msgstr "Escolla a segmento para o cal quere debuxar o eixe…"
 
 #: objects/line_type.cc:155
 #, kde-format
@@ -6285,12 +6285,12 @@ msgstr "Escolla o punto central da homoloxía harmónica…"
 #: objects/transform_types.cc:378
 #, kde-format
 msgid "Harmonic Homology with this axis"
-msgstr "Homoloxía harmónica con este eixo"
+msgstr "Homoloxía harmónica con este eixe"
 
 #: objects/transform_types.cc:378
 #, kde-format
 msgid "Select the axis of the harmonic homology..."
-msgstr "Escolla o eixo da homoloxía harmónica…"
+msgstr "Escolla o eixe da homoloxía harmónica…"
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
 #, kde-format
