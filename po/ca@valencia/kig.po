@@ -3080,8 +3080,8 @@ msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
 "Please remove them or select enough arguments."
 msgstr ""
-"Hi ha «%n» parts al text per a les quals no heu seleccionat cap valor. Per "
-"favor, elimineu-les o seleccioneu arguments suficients."
+"Hi ha «%n» parts en el text per a les quals no heu seleccionat cap valor. "
+"Per favor, elimineu-les o seleccioneu arguments suficients."
 
 #: modes/label.cc:368
 #, kde-format
