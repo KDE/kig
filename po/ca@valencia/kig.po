@@ -2244,7 +2244,7 @@ msgid ""
 "If you switch to another unit, the value in the edit field on the left will "
 "be converted to the new selected unit."
 msgstr ""
-"Escolliu d'esta llista la unitat goniomètrica que voleu utilitzar per a "
+"Trieu d'esta llista la unitat goniomètrica que voleu utilitzar per a "
 "modificar la mida d'este angle.<br />\n"
 "Si canvieu a una altra unitat, el valor que hi haja al camp d'edició de "
 "l'esquerra es convertirà a la nova unitat seleccionada."
@@ -2313,8 +2313,8 @@ msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr ""
-"Escolliu el punt que s'ha de moure que es canviarà de lloc mentre es traça "
-"el lloc geomètric…"
+"Trieu el punt que s'ha de moure que es canviarà de lloc mentre es traça el "
+"lloc geomètric…"
 
 #: misc/special_constructors.cc:328
 #, kde-format
@@ -2360,7 +2360,7 @@ msgstr "Construïx un polígon donant els seus vèrtexs"
 msgid ""
 "... with this vertex (click on the first vertex to terminate construction)"
 msgstr ""
-"… amb este vèrtex (feu clic damunt del primer vèrtex per a acabar la "
+"… amb este vèrtex (cliqueu damunt del primer vèrtex per a acabar la "
 "construcció)"
 
 #: misc/special_constructors.cc:555
@@ -2389,7 +2389,7 @@ msgid ""
 "... with this vertex (click again on the last vertex to terminate "
 "construction)"
 msgstr ""
-"… amb este vèrtex (torneu a clicar sobre l'últim vèrtex per a acabar la "
+"… amb este vèrtex (torneu a clicar damunt de l'últim vèrtex per a acabar la "
 "construcció)"
 
 #: misc/special_constructors.cc:624
@@ -2498,8 +2498,8 @@ msgid ""
 "... with this control point (click again on the last control point to "
 "terminate construction)"
 msgstr ""
-"… amb este punt de control (torneu a clicar sobre l'últim punt de control "
-"per a acabar la construcció)"
+"… amb este punt de control (torneu a clicar damunt de l'últim punt de "
+"control per a acabar la construcció)"
 
 #: misc/special_constructors.cc:1100
 #, kde-format
@@ -2536,8 +2536,8 @@ msgid ""
 "... with this control point (click again on the last control point or weight "
 "to terminate construction)"
 msgstr ""
-"… amb este punt de control (torneu a clicar sobre l'últim punt de control o "
-"pes per a acabar la construcció)"
+"… amb este punt de control (torneu a clicar damunt de l'últim punt de "
+"control o pes per a acabar la construcció)"
 
 #: misc/special_constructors.cc:1207
 #, kde-format
@@ -2955,7 +2955,7 @@ msgid ""
 "Click the location where you want to place the new point, or the curve that "
 "you want to attach it to..."
 msgstr ""
-"Feu clic on voleu situar el punt nou o en la corba en la qual voleu adjuntar-"
+"Cliqueu on voleu situar el punt nou o en la corba en la qual voleu adjuntar-"
 "lo…"
 
 #: modes/construct_mode.cc:429
@@ -4875,7 +4875,7 @@ msgstr "Establix la llargària del segment"
 #: objects/line_type.cc:241
 #, kde-format
 msgid "Choose the new length: "
-msgstr "Escolliu la llargària nova: "
+msgstr "Trieu la llargària nova: "
 
 #: objects/line_type.cc:249
 #, kde-format
@@ -5264,7 +5264,7 @@ msgstr "Establix el paràmetre punt"
 #: objects/point_type.cc:452
 #, kde-format
 msgid "Choose the new parameter: "
-msgstr "Escolliu el nou paràmetre: "
+msgstr "Trieu el nou paràmetre: "
 
 #: objects/point_type.cc:458
 #, kde-format
