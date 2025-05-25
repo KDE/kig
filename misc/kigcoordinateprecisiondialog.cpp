@@ -27,7 +27,7 @@ KigCoordinatePrecisionDialog::KigCoordinatePrecisionDialog(bool isUserSpecified,
     ui->m_precisionSpinBox->setEnabled(isUserSpecified);
     ui->m_precisionSpinBox->setValue(currentPrecision);
 
-    connect(ui->m_defaultCheckBox, &QCheckBox::stateChanged, this, &KigCoordinatePrecisionDialog::toggleCoordinateControls);
+    connect(ui->m_defaultCheckBox, &QCheckBox::checkStateChanged, this, &KigCoordinatePrecisionDialog::toggleCoordinateControls);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 

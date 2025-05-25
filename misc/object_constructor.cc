@@ -103,7 +103,7 @@ void SimpleObjectTypeConstructor::drawprelim(const ObjectDrawer &drawer,
 {
     Args args;
     using namespace std;
-    transform(parents.begin(), parents.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     ObjectImp *data = mtype->calc(args, doc);
     drawer.draw(*data, p, true);
     delete data;
@@ -163,7 +163,7 @@ void MultiObjectTypeConstructor::drawprelim(const ObjectDrawer &drawer, KigPaint
 {
     Args args;
     using namespace std;
-    transform(parents.begin(), parents.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     for (vector<int>::const_iterator i = mparams.begin(); i != mparams.end(); ++i) {
         IntImp param(*i);
@@ -270,7 +270,7 @@ QString StandardConstructorBase::useText(const ObjectCalcer &o, const std::vecto
 {
     using namespace std;
     Args args;
-    transform(sel.begin(), sel.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(sel.begin(), sel.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     std::string ret = margsparser.usetext(o.imp(), args);
     if (ret.empty())
@@ -282,7 +282,7 @@ QString StandardConstructorBase::selectStatement(const std::vector<ObjectCalcer 
 {
     using namespace std;
     Args args;
-    transform(sel.begin(), sel.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(sel.begin(), sel.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     std::string ret = margsparser.selectStatement(args);
     if (ret.empty())
@@ -384,7 +384,7 @@ QString MacroConstructor::selectStatement(const std::vector<ObjectCalcer *> &sel
 {
     using namespace std;
     Args args;
-    transform(sel.begin(), sel.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(sel.begin(), sel.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     std::string ret = mparser.selectStatement(args);
     if (ret.empty())
         return QString();
@@ -396,7 +396,7 @@ QString MacroConstructor::useText(const ObjectCalcer &o, const std::vector<Objec
 {
     using namespace std;
     Args args;
-    transform(sel.begin(), sel.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(sel.begin(), sel.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     std::string ret = mparser.usetext(o.imp(), args);
     if (ret.empty())
         return QString();
@@ -411,7 +411,7 @@ void MacroConstructor::handlePrelim(KigPainter &p, const std::vector<ObjectCalce
 
     using namespace std;
     Args args;
-    transform(sel.begin(), sel.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(sel.begin(), sel.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     args = mparser.parse(args);
     std::vector<ObjectImp *> ret = mhier.calc(args, doc);
     for (uint i = 0; i < ret.size(); ++i) {

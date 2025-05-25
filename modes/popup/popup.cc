@@ -38,6 +38,7 @@
 #include "propertiesactionsprovider.h"
 
 #include <KIconEngine>
+#include <KIconLoader>
 
 #include <config-kig.h>
 
@@ -133,7 +134,7 @@ NormalModePopupObjects::NormalModePopupObjects(KigPart &part, KigWidget &view, N
                                                      QString()};
 
     // creating the menus and setting their title and icon
-    KIconLoader *l = part.iconLoader();
+    auto l = KIconLoader::global();
     for (uint i = 0; i < NumberOfMenus; ++i) {
         if (i == ToplevelMenu)
             continue;

@@ -5,6 +5,7 @@
 #include "polygon_type.h"
 
 #include <math.h>
+#include <libintl.h>
 
 #include "bogus_imp.h"
 #include "line_imp.h"
@@ -21,8 +22,8 @@
  * triangle by its vertices
  */
 
-static const char triangle_constructstatement[] = I18N_NOOP("Construct a triangle with this vertex");
-static const char triangle_constructstatement2[] = I18N_NOOP("Select a point to be a vertex of the new triangle...");
+static const char *triangle_constructstatement = gettext("Construct a triangle with this vertex");
+static const char *triangle_constructstatement2 = gettext("Select a point to be a vertex of the new triangle...");
 
 static const struct ArgsParser::spec argsspecTriangleB3P[] = {{PointImp::stype(), triangle_constructstatement, triangle_constructstatement2, true},
                                                               {PointImp::stype(), triangle_constructstatement, triangle_constructstatement2, true},
@@ -467,12 +468,12 @@ std::vector<ObjectCalcer *> PolygonBCVType::movableParents(const ObjectTypeCalce
 /* polygon-line intersection */
 
 static const ArgsParser::spec argsspecPolygonLineIntersection[] = {{FilledPolygonImp::stype(),
-                                                                    I18N_NOOP("Intersect this polygon with a line"),
-                                                                    I18N_NOOP("Select the polygon of which you want the intersection with a line..."),
+                                                                    gettext("Intersect this polygon with a line"),
+                                                                    gettext("Select the polygon of which you want the intersection with a line..."),
                                                                     false},
                                                                    {AbstractLineImp::stype(),
-                                                                    I18N_NOOP("Intersect this line with a polygon"),
-                                                                    I18N_NOOP("Select the line of which you want the intersection with a polygon..."),
+                                                                    gettext("Intersect this line with a polygon"),
+                                                                    gettext("Select the line of which you want the intersection with a polygon..."),
                                                                     false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(PolygonLineIntersectionType)
@@ -587,12 +588,12 @@ ObjectImp *PolygonLineIntersectionType::calc(const Args &parents, const KigDocum
 
 static const ArgsParser::spec argsspecOPolygonalLineIntersection[] = {
     {OpenPolygonalImp::stype(),
-     I18N_NOOP("Intersect this polygonal curve with a line"),
-     I18N_NOOP("Select the polygonal curve of which you want the intersection with a line..."),
+     gettext("Intersect this polygonal curve with a line"),
+     gettext("Select the polygonal curve of which you want the intersection with a line..."),
      false},
     {AbstractLineImp::stype(),
-     I18N_NOOP("Intersect this line with a polygonal curve"),
-     I18N_NOOP("Select the line of which you want the intersection with a polygonal curve..."),
+     gettext("Intersect this line with a polygonal curve"),
+     gettext("Select the line of which you want the intersection with a polygonal curve..."),
      false},
     {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -620,12 +621,12 @@ const ObjectImpType *OPolygonalLineIntersectionType::resultId() const
 
 static const ArgsParser::spec argsspecCPolygonalLineIntersection[] = {
     {ClosedPolygonalImp::stype(),
-     I18N_NOOP("Intersect this polygonal curve with a line"),
-     I18N_NOOP("Select the polygonal curve of which you want the intersection with a line..."),
+     gettext("Intersect this polygonal curve with a line"),
+     gettext("Select the polygonal curve of which you want the intersection with a line..."),
      false},
     {AbstractLineImp::stype(),
-     I18N_NOOP("Intersect this line with a polygonal curve"),
-     I18N_NOOP("Select the line of which you want the intersection with a polygonal curve..."),
+     gettext("Intersect this line with a polygonal curve"),
+     gettext("Select the line of which you want the intersection with a polygonal curve..."),
      false},
     {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -785,10 +786,10 @@ int polygonlineintersection(const std::vector<Coordinate> &ppoints,
 
 static const ArgsParser::spec argsspecPolygonPolygonIntersection[] = {
     {FilledPolygonImp::stype(),
-     I18N_NOOP("Intersect this polygon with another polygon"),
-     I18N_NOOP("Select the polygon of which you want the intersection with another polygon..."),
+     gettext("Intersect this polygon with another polygon"),
+     gettext("Select the polygon of which you want the intersection with another polygon..."),
      false},
-    {FilledPolygonImp::stype(), I18N_NOOP("Intersect with this polygon"), I18N_NOOP("Select the second polygon for the intersection..."), false}};
+    {FilledPolygonImp::stype(), gettext("Intersect with this polygon"), gettext("Select the second polygon for the intersection..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(PolygonPolygonIntersectionType)
 
@@ -927,8 +928,8 @@ const ObjectImpType *PolygonPolygonIntersectionType::resultId() const
 /* polygon vertices  */
 
 static const ArgsParser::spec argsspecPolygonVertex[] = {{FilledPolygonImp::stype(),
-                                                          I18N_NOOP("Construct the vertices of this polygon"),
-                                                          I18N_NOOP("Select the polygon of which you want to construct the vertices..."),
+                                                          gettext("Construct the vertices of this polygon"),
+                                                          gettext("Select the polygon of which you want to construct the vertices..."),
                                                           true},
                                                          {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -971,8 +972,8 @@ const ObjectImpType *PolygonVertexType::resultId() const
 /* polygon sides  */
 
 static const ArgsParser::spec argsspecPolygonSide[] = {{FilledPolygonImp::stype(),
-                                                        I18N_NOOP("Construct the sides of this polygon"),
-                                                        I18N_NOOP("Select the polygon of which you want to construct the sides..."),
+                                                        gettext("Construct the sides of this polygon"),
+                                                        gettext("Select the polygon of which you want to construct the sides..."),
                                                         false},
                                                        {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -1019,8 +1020,8 @@ const ObjectImpType *PolygonSideType::resultId() const
 /* convex hull of a polygon  */
 
 static const ArgsParser::spec argsspecConvexHull[] = {{AbstractPolygonImp::stype(),
-                                                       I18N_NOOP("Construct the convex hull of this polygon"),
-                                                       I18N_NOOP("Select the polygon of which you want to construct the convex hull..."),
+                                                       gettext("Construct the convex hull of this polygon"),
+                                                       gettext("Select the polygon of which you want to construct the convex hull..."),
                                                        false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConvexHullType)

@@ -108,7 +108,7 @@ KigDocument *KigFilterKGeo::loadObjects(KConfig *c)
         group.prepend("Object ");
 
         KConfigGroup grp = c->group(group);
-        QStringList parents = grp.readEntry("Parents", QVariant(QVariant::StringList)).toStringList();
+        QStringList parents = grp.readEntry("Parents", QStringList());
         elems.push_back(elem);
         for (QStringList::ConstIterator parent = parents.constBegin(); parent != parents.constEnd(); ++parent) {
             int parentIndex = (*parent).toInt(&ok);

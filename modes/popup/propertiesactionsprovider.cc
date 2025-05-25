@@ -19,6 +19,7 @@
 #include <QIcon>
 
 #include <KIconEngine>
+#include <KIconLoader>
 
 void PropertiesActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree)
 {
@@ -44,7 +45,7 @@ void PropertiesActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int me
             add &= prop->canFillInNextEscape();
         if (add) {
             if (iconfile && *iconfile) {
-                popup.addInternalAction(menu, QIcon(new KIconEngine(iconfile, popup.part().iconLoader())), o->imp()->properties()[i].toString(), nextfree++);
+                popup.addInternalAction(menu, QIcon(new KIconEngine(iconfile, KIconLoader::global())), o->imp()->properties()[i].toString(), nextfree++);
             } else {
                 popup.addInternalAction(menu, o->imp()->properties()[i].toString(), nextfree++);
             };

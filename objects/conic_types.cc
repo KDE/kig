@@ -15,14 +15,16 @@
 #include "object_calcer.h"
 #include "point_imp.h"
 
-static const char conic_constructstatement[] = I18N_NOOP("Construct a conic through this point");
+#include <libintl.h>
+
+static const char *conic_constructstatement = gettext("Construct a conic through this point");
 
 static const struct ArgsParser::spec argsspecConicB5P[] = {
-    {PointImp::stype(), conic_constructstatement, I18N_NOOP("Select a point for the new conic to go through..."), true},
-    {PointImp::stype(), conic_constructstatement, I18N_NOOP("Select a point for the new conic to go through..."), true},
-    {PointImp::stype(), conic_constructstatement, I18N_NOOP("Select a point for the new conic to go through..."), true},
-    {PointImp::stype(), conic_constructstatement, I18N_NOOP("Select a point for the new conic to go through..."), true},
-    {PointImp::stype(), conic_constructstatement, I18N_NOOP("Select a point for the new conic to go through..."), true}};
+    {PointImp::stype(), conic_constructstatement, gettext("Select a point for the new conic to go through..."), true},
+    {PointImp::stype(), conic_constructstatement, gettext("Select a point for the new conic to go through..."), true},
+    {PointImp::stype(), conic_constructstatement, gettext("Select a point for the new conic to go through..."), true},
+    {PointImp::stype(), conic_constructstatement, gettext("Select a point for the new conic to go through..."), true},
+    {PointImp::stype(), conic_constructstatement, gettext("Select a point for the new conic to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConicB5PType)
 
@@ -58,9 +60,9 @@ const ConicB5PType *ConicB5PType::instance()
 }
 
 static const ArgsParser::spec argsspecConicBAAP[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Construct a conic with this asymptote"), I18N_NOOP("Select the first asymptote of the new conic..."), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Construct a conic with this asymptote"), I18N_NOOP("Select the second asymptote of the new conic..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct a conic through this point"), I18N_NOOP("Select a point for the new conic to go through..."), true}};
+    {AbstractLineImp::stype(), gettext("Construct a conic with this asymptote"), gettext("Select the first asymptote of the new conic..."), false},
+    {AbstractLineImp::stype(), gettext("Construct a conic with this asymptote"), gettext("Select the second asymptote of the new conic..."), false},
+    {PointImp::stype(), gettext("Construct a conic through this point"), gettext("Select a point for the new conic to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConicBAAPType)
 
@@ -111,12 +113,12 @@ ConicBFFPType::~ConicBFFPType()
 {
 }
 
-static const char constructellipsewithfocusstat[] = I18N_NOOP("Construct an ellipse with this focus");
+static const char *constructellipsewithfocusstat = gettext("Construct an ellipse with this focus");
 
 static const ArgsParser::spec argsspecEllipseBFFP[] = {
-    {PointImp::stype(), constructellipsewithfocusstat, I18N_NOOP("Select the first focus of the new ellipse..."), false},
-    {PointImp::stype(), constructellipsewithfocusstat, I18N_NOOP("Select the second focus of the new ellipse..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct an ellipse through this point"), I18N_NOOP("Select a point for the new ellipse to go through..."), true}};
+    {PointImp::stype(), constructellipsewithfocusstat, gettext("Select the first focus of the new ellipse..."), false},
+    {PointImp::stype(), constructellipsewithfocusstat, gettext("Select the second focus of the new ellipse..."), false},
+    {PointImp::stype(), gettext("Construct an ellipse through this point"), gettext("Select a point for the new ellipse to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(EllipseBFFPType)
 
@@ -140,12 +142,12 @@ const EllipseBFFPType *EllipseBFFPType::instance()
     return &t;
 }
 
-static const char constructhyperbolawithfocusstat[] = I18N_NOOP("Construct a hyperbola with this focus");
+static const char *constructhyperbolawithfocusstat = gettext("Construct a hyperbola with this focus");
 
 static const ArgsParser::spec argsspecHyperbolaBFFP[] = {
-    {PointImp::stype(), constructhyperbolawithfocusstat, I18N_NOOP("Select the first focus of the new hyperbola..."), false},
-    {PointImp::stype(), constructhyperbolawithfocusstat, I18N_NOOP("Select the second focus of the new hyperbola..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct a hyperbola through this point"), I18N_NOOP("Select a point for the new hyperbola to go through..."), true}};
+    {PointImp::stype(), constructhyperbolawithfocusstat, gettext("Select the first focus of the new hyperbola..."), false},
+    {PointImp::stype(), constructhyperbolawithfocusstat, gettext("Select the second focus of the new hyperbola..."), false},
+    {PointImp::stype(), gettext("Construct a hyperbola through this point"), gettext("Select a point for the new hyperbola to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(HyperbolaBFFPType)
 
@@ -176,9 +178,9 @@ const ConicBDFPType *ConicBDFPType::instance()
 }
 
 static const struct ArgsParser::spec argsspecConicBDFP[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Construct a conic with this line as directrix"), I18N_NOOP("Select the directrix of the new conic..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct a conic with this point as focus"), I18N_NOOP("Select the focus of the new conic..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct a conic through this point"), I18N_NOOP("Select a point for the new conic to go through..."), true}};
+    {AbstractLineImp::stype(), gettext("Construct a conic with this line as directrix"), gettext("Select the directrix of the new conic..."), false},
+    {PointImp::stype(), gettext("Construct a conic with this point as focus"), gettext("Select the focus of the new conic..."), false},
+    {PointImp::stype(), gettext("Construct a conic through this point"), gettext("Select a point for the new conic to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConicBDFPType)
 
@@ -213,12 +215,12 @@ ObjectImp *ConicBDFPType::calc(const Args &parents, const KigDocument &) const
     return new ConicImpPolar(calcConicBDFP(line, focus, point));
 }
 
-static const char constructparabolathroughpointstat[] = I18N_NOOP("Construct a parabola through this point");
+static const char *constructparabolathroughpointstat = gettext("Construct a parabola through this point");
 
 static const ArgsParser::spec argsspecParabolaBTP[] = {
-    {PointImp::stype(), constructparabolathroughpointstat, I18N_NOOP("Select a point for the new parabola to go through..."), true},
-    {PointImp::stype(), constructparabolathroughpointstat, I18N_NOOP("Select a point for the new parabola to go through..."), true},
-    {PointImp::stype(), constructparabolathroughpointstat, I18N_NOOP("Select a point for the new parabola to go through..."), true}};
+    {PointImp::stype(), constructparabolathroughpointstat, gettext("Select a point for the new parabola to go through..."), true},
+    {PointImp::stype(), constructparabolathroughpointstat, gettext("Select a point for the new parabola to go through..."), true},
+    {PointImp::stype(), constructparabolathroughpointstat, gettext("Select a point for the new parabola to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ParabolaBTPType)
 
@@ -254,12 +256,12 @@ ObjectImp *ParabolaBTPType::calc(const Args &parents, const KigDocument &) const
 }
 
 static const ArgsParser::spec argsspecConicPolarPoint[] = {{ConicImp::stype(),
-                                                            I18N_NOOP("Construct a polar point wrt. this conic"),
-                                                            I18N_NOOP("Select the conic wrt. which you want to construct a polar point..."),
+                                                            gettext("Construct a polar point wrt. this conic"),
+                                                            gettext("Select the conic wrt. which you want to construct a polar point..."),
                                                             false},
                                                            {AbstractLineImp::stype(),
-                                                            I18N_NOOP("Construct the polar point of this line"),
-                                                            I18N_NOOP("Select the line of which you want to construct the polar point..."),
+                                                            gettext("Construct the polar point of this line"),
+                                                            gettext("Select the line of which you want to construct the polar point..."),
                                                             false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConicPolarPointType)
@@ -294,12 +296,12 @@ ObjectImp *ConicPolarPointType::calc(const Args &parents, const KigDocument &) c
 }
 
 static const ArgsParser::spec argsspecConicPolarLine[] = {{ConicImp::stype(),
-                                                           I18N_NOOP("Construct a polar line wrt. this conic"),
-                                                           I18N_NOOP("Select the conic wrt. which you want to construct a polar point..."),
+                                                           gettext("Construct a polar line wrt. this conic"),
+                                                           gettext("Select the conic wrt. which you want to construct a polar point..."),
                                                            false},
                                                           {PointImp::stype(),
-                                                           I18N_NOOP("Construct the polar line of this point"),
-                                                           I18N_NOOP("Select the line of which you want to construct the polar point..."),
+                                                           gettext("Construct the polar line of this point"),
+                                                           gettext("Select the line of which you want to construct the polar point..."),
                                                            false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConicPolarLineType)
@@ -335,8 +337,8 @@ ObjectImp *ConicPolarLineType::calc(const Args &parents, const KigDocument &) co
 }
 
 static const ArgsParser::spec argsspecConicDirectrix[] = {{ConicImp::stype(),
-                                                           I18N_NOOP("Construct the directrix of this conic"),
-                                                           I18N_NOOP("Select the conic of which you want to construct the directrix..."),
+                                                           gettext("Construct the directrix of this conic"),
+                                                           gettext("Select the conic of which you want to construct the directrix..."),
                                                            false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConicDirectrixType)
@@ -372,13 +374,13 @@ ObjectImp *ConicDirectrixType::calc(const Args &parents, const KigDocument &) co
     return new LineImp(a, b);
 }
 
-static const char hyperbolatpstatement[] = I18N_NOOP("Construct a hyperbola through this point");
+static const char *hyperbolatpstatement = gettext("Construct a hyperbola through this point");
 
 static const ArgsParser::spec argsspecHyperbolaB4P[] = {
-    {PointImp::stype(), hyperbolatpstatement, I18N_NOOP("Select a point for the new hyperbola to go through..."), true},
-    {PointImp::stype(), hyperbolatpstatement, I18N_NOOP("Select a point for the new hyperbola to go through..."), true},
-    {PointImp::stype(), hyperbolatpstatement, I18N_NOOP("Select a point for the new hyperbola to go through..."), true},
-    {PointImp::stype(), hyperbolatpstatement, I18N_NOOP("Select a point for the new hyperbola to go through..."), true}};
+    {PointImp::stype(), hyperbolatpstatement, gettext("Select a point for the new hyperbola to go through..."), true},
+    {PointImp::stype(), hyperbolatpstatement, gettext("Select a point for the new hyperbola to go through..."), true},
+    {PointImp::stype(), hyperbolatpstatement, gettext("Select a point for the new hyperbola to go through..."), true},
+    {PointImp::stype(), hyperbolatpstatement, gettext("Select a point for the new hyperbola to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(EquilateralHyperbolaB4PType)
 
@@ -414,8 +416,8 @@ ObjectImp *EquilateralHyperbolaB4PType::calc(const Args &parents, const KigDocum
 }
 
 static const ArgsParser::spec argsspecParabolaBDP[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Construct a parabola with this directrix"), I18N_NOOP("Select the directrix of the new parabola..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct a parabola with this focus"), I18N_NOOP("Select the focus of the new parabola..."), false}};
+    {AbstractLineImp::stype(), gettext("Construct a parabola with this directrix"), gettext("Select the directrix of the new parabola..."), false},
+    {PointImp::stype(), gettext("Construct a parabola with this focus"), gettext("Select the focus of the new parabola..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ParabolaBDPType)
 
@@ -450,8 +452,8 @@ ObjectImp *ParabolaBDPType::calc(const LineData &l, const Coordinate &c) const
 }
 
 static const ArgsParser::spec argsspecConicAsymptote[] = {{ConicImp::stype(),
-                                                           I18N_NOOP("Construct the asymptotes of this conic"),
-                                                           I18N_NOOP("Select the conic of which you want to construct the asymptotes..."),
+                                                           gettext("Construct the asymptotes of this conic"),
+                                                           gettext("Select the conic of which you want to construct the asymptotes..."),
                                                            false},
                                                           {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -486,11 +488,11 @@ ObjectImp *ConicAsymptoteType::calc(const Args &parents, const KigDocument &) co
         return new InvalidImp;
 }
 
-static const char radicallinesstatement[] = I18N_NOOP("Construct the radical lines of this conic");
+static const char *radicallinesstatement = gettext("Construct the radical lines of this conic");
 
 static const ArgsParser::spec argsspecConicRadical[] = {
-    {ConicImp::stype(), radicallinesstatement, I18N_NOOP("Select the first of the two conics of which you want to construct the radical line..."), false},
-    {ConicImp::stype(), radicallinesstatement, I18N_NOOP("Select the other of the two conic of which you want to construct the radical line..."), false},
+    {ConicImp::stype(), radicallinesstatement, gettext("Select the first of the two conics of which you want to construct the radical line..."), false},
+    {ConicImp::stype(), radicallinesstatement, gettext("Select the other of the two conic of which you want to construct the radical line..."), false},
     {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false},
     {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 

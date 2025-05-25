@@ -16,7 +16,9 @@ class CoordinateSystem;
 class QValidator;
 class Coordinate;
 class QString;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 class QStringList;
+#endif
 
 /**
  * a factory to build a CoordinateSystem and a small handle to the

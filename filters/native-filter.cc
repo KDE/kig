@@ -104,7 +104,7 @@ KigDocument *KigFilterNative::load(const QString &file)
 
         QString tempname = file.section('/', -1);
         if (file.endsWith(QLatin1String(".kigz"), Qt::CaseInsensitive)) {
-            tempname.remove(QRegExp("\\.[Kk][Ii][Gg][Zz]$"));
+            tempname.remove(QRegularExpression("\\.[Kk][Ii][Gg][Zz]$"));
         } else
             KIG_FILTER_PARSE_ERROR;
         // reading compressed file
@@ -113,7 +113,7 @@ KigDocument *KigFilterNative::load(const QString &file)
         const KArchiveDirectory *dir = ark.directory();
         //    assert( dir );
         QStringList entries = dir->entries();
-        QStringList kigfiles = entries.filter(QRegExp("\\.kig$"));
+        QStringList kigfiles = entries.filter(QRegularExpression("\\.kig$"));
         if (kigfiles.count() != 1)
             // I throw a generic parse error here, but I should warn the user that
             // this kig archive file doesn't contain one kig file (it contains no
@@ -156,17 +156,18 @@ KigDocument *KigFilterNative::load(const QDomDocument &doc)
         KIG_FILTER_PARSE_ERROR;
 
     // matches 0.1, 0.2.0, 153.128.99 etc.
-    QRegExp versionre("(\\d+)\\.(\\d+)(\\.(\\d+))?");
-    if (!versionre.exactMatch(version))
+    const QRegularExpression versionre("(\\d+)\\.(\\d+)(\\.(\\d+))?");
+    const QRegularExpressionMatch versionma(versionre.match(version));
+    if (!versionma.hasMatch())
         KIG_FILTER_PARSE_ERROR;
     bool ok = true;
-    int major = versionre.cap(1).toInt(&ok);
+    int major = versionma.captured(1).toInt(&ok);
     bool ok2 = true;
-    int minor = versionre.cap(2).toInt(&ok2);
+    int minor = versionma.captured(2).toInt(&ok2);
     if (!ok || !ok2)
         KIG_FILTER_PARSE_ERROR;
 
-    //   int minorminor = versionre.cap( 4 ).toInt( &ok );
+    //   int minorminor = versionma.captured( 4 ).toInt( &ok );
 
     // we only support 0.[0-7] and 1.0.*
     if (major > 0 || minor > 9) {
@@ -352,7 +353,7 @@ KigFilterNative *KigFilterNative::instance()
     return &f;
 }
 
-static const char *obsoletemessage = I18N_NOOP(
+static const char *obsoletemessage = gettext(
     "This Kig file uses an object of type \"%1\", "
     "which is obsolete, you should save the construction with "
     "a different name and check that it works as expected.");
@@ -677,7 +678,7 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
     // we have an empty outfile, so we have to print all to stdout
     if (outfile.isEmpty()) {
         QTextStream stdoutstream(stdout, QIODevice::WriteOnly);
-        stdoutstream.setCodec("UTF-8");
+        stdoutstream.setEncoding(QStringConverter::Utf8);
         return save07(data, stdoutstream);
     }
     if (!outfile.endsWith(QLatin1String(".kig"), Qt::CaseInsensitive)) {
@@ -690,7 +691,7 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
 
         QString tempname = outfile.section('/', -1);
         if (outfile.endsWith(QLatin1String(".kigz"), Qt::CaseInsensitive))
-            tempname.remove(QRegExp("\\.[Kk][Ii][Gg][Zz]$"));
+            tempname.remove(QRegularExpression("\\.[Kk][Ii][Gg][Zz]$"));
         else
             return false;
 
@@ -699,7 +700,7 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
         if (!ftmpfile.open(QIODevice::WriteOnly))
             return false;
         QTextStream stream(&ftmpfile);
-        stream.setCodec("UTF-8");
+        stream.setEncoding(QStringConverter::Utf8);
         if (!save07(data, stream))
             return false;
         ftmpfile.close();
@@ -723,7 +724,7 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
             return false;
         }
         QTextStream stream(&file);
-        stream.setCodec("UTF-8");
+        stream.setEncoding(QStringConverter::Utf8);
         return save07(data, stream);
     }
 

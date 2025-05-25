@@ -19,9 +19,9 @@
 
 #include <KActionCollection>
 #include <KIconEngine>
+#include <KIconLoader>
 
 #include <QIcon>
-#include <QRegExp>
 
 int GUIAction::shortcut() const
 {
@@ -74,10 +74,10 @@ KigGUIAction::KigGUIAction(GUIAction *act, KigPart &doc)
 {
     QString icon = act->iconFileName(true);
     if (!icon.isEmpty())
-        setIcon(QIcon(new KIconEngine(icon, doc.iconLoader())));
+        setIcon(QIcon(new KIconEngine(icon, KIconLoader::global())));
     setWhatsThis(act->description());
     QString tooltip = act->descriptiveName();
-    tooltip.replace(QRegExp("&&"), QStringLiteral("&"));
+    tooltip.replace(QStringLiteral("&&"), QStringLiteral("&"));
     setToolTip(tooltip);
     connect(this, &QAction::triggered, this, &KigGUIAction::slotActivated);
 

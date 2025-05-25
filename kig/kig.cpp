@@ -12,6 +12,7 @@
 #include <QFileDialog>
 #include <QMimeData>
 #include <QProcess>
+#include <QPointer>
 #include <QStandardPaths>
 #include <QTimer>
 #include <QUrl>

@@ -5,6 +5,7 @@
 #include "tests_type.h"
 
 #include <math.h>
+#include <libintl.h>
 
 #include "bogus_imp.h"
 #include "line_imp.h"
@@ -15,8 +16,8 @@
 #include <cmath>
 
 static const ArgsParser::spec argsspecAreParallel[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Is this line parallel?"), I18N_NOOP("Select the first of the two possibly parallel lines..."), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Parallel to this line?"), I18N_NOOP("Select the other of the two possibly parallel lines..."), false}};
+    {AbstractLineImp::stype(), gettext("Is this line parallel?"), gettext("Select the first of the two possibly parallel lines..."), false},
+    {AbstractLineImp::stype(), gettext("Parallel to this line?"), gettext("Select the other of the two possibly parallel lines..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(AreParallelType)
 
@@ -54,8 +55,8 @@ const ObjectImpType *AreParallelType::resultId() const
 }
 
 static const ArgsParser::spec argsspecAreOrthogonal[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Is this line orthogonal?"), I18N_NOOP("Select the first of the two possibly orthogonal lines..."), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Orthogonal to this line?"), I18N_NOOP("Select the other of the two possibly orthogonal lines..."), false}};
+    {AbstractLineImp::stype(), gettext("Is this line orthogonal?"), gettext("Select the first of the two possibly orthogonal lines..."), false},
+    {AbstractLineImp::stype(), gettext("Orthogonal to this line?"), gettext("Select the other of the two possibly orthogonal lines..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(AreOrthogonalType)
 
@@ -93,9 +94,9 @@ const ObjectImpType *AreOrthogonalType::resultId() const
 }
 
 static const ArgsParser::spec argsspecAreCollinear[] = {
-    {PointImp::stype(), I18N_NOOP("Check collinearity of this point"), I18N_NOOP("Select the first of the three possibly collinear points..."), false},
-    {PointImp::stype(), I18N_NOOP("and this second point"), I18N_NOOP("Select the second of the three possibly collinear points..."), false},
-    {PointImp::stype(), I18N_NOOP("with this third point"), I18N_NOOP("Select the last of the three possibly collinear points..."), false}};
+    {PointImp::stype(), gettext("Check collinearity of this point"), gettext("Select the first of the three possibly collinear points..."), false},
+    {PointImp::stype(), gettext("and this second point"), gettext("Select the second of the three possibly collinear points..."), false},
+    {PointImp::stype(), gettext("with this third point"), gettext("Select the last of the three possibly collinear points..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(AreCollinearType)
 
@@ -134,8 +135,8 @@ const ObjectImpType *AreCollinearType::resultId() const
 }
 
 static const ArgsParser::spec containsTestArgsSpec[] = {
-    {PointImp::stype(), I18N_NOOP("Check whether this point is on a curve"), I18N_NOOP("Select the point you want to test..."), false},
-    {CurveImp::stype(), I18N_NOOP("Check whether the point is on this curve"), I18N_NOOP("Select the curve that the point might be on..."), false}};
+    {PointImp::stype(), gettext("Check whether this point is on a curve"), gettext("Select the point you want to test..."), false},
+    {CurveImp::stype(), gettext("Check whether the point is on this curve"), gettext("Select the curve that the point might be on..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ContainsTestType)
 
@@ -177,8 +178,8 @@ const ObjectImpType *ContainsTestType::resultId() const
  */
 
 static const ArgsParser::spec InPolygonTestArgsSpec[] = {
-    {PointImp::stype(), I18N_NOOP("Check whether this point is in a polygon"), I18N_NOOP("Select the point you want to test..."), false},
-    {FilledPolygonImp::stype(), I18N_NOOP("Check whether the point is in this polygon"), I18N_NOOP("Select the polygon that the point might be in..."), false}};
+    {PointImp::stype(), gettext("Check whether this point is in a polygon"), gettext("Select the point you want to test..."), false},
+    {FilledPolygonImp::stype(), gettext("Check whether the point is in this polygon"), gettext("Select the polygon that the point might be in..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(InPolygonTestType)
 
@@ -220,7 +221,7 @@ const ObjectImpType *InPolygonTestType::resultId() const
  */
 
 static const ArgsParser::spec ConvexPolygonTestArgsSpec[] = {
-    {FilledPolygonImp::stype(), I18N_NOOP("Check whether this polygon is convex"), I18N_NOOP("Select the polygon you want to test for convexity..."), false}};
+    {FilledPolygonImp::stype(), gettext("Check whether this polygon is convex"), gettext("Select the polygon you want to test for convexity..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ConvexPolygonTestType)
 
@@ -262,11 +263,11 @@ const ObjectImpType *ConvexPolygonTestType::resultId() const
 
 static const ArgsParser::spec argsspecSameDistanceType[] = {
     {PointImp::stype(),
-     I18N_NOOP("Check if this point has the same distance"),
-     I18N_NOOP("Select the point which might have the same distance from two other points..."),
+     gettext("Check if this point has the same distance"),
+     gettext("Select the point which might have the same distance from two other points..."),
      false},
-    {PointImp::stype(), I18N_NOOP("from this point"), I18N_NOOP("Select the first of the two other points..."), false},
-    {PointImp::stype(), I18N_NOOP("and from this second point"), I18N_NOOP("Select the other of the two other points..."), false}};
+    {PointImp::stype(), gettext("from this point"), gettext("Select the first of the two other points..."), false},
+    {PointImp::stype(), gettext("and from this second point"), gettext("Select the other of the two other points..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(SameDistanceType)
 
@@ -305,12 +306,12 @@ const ObjectImpType *SameDistanceType::resultId() const
 }
 
 static const ArgsParser::spec vectorEqualityArgsSpec[] = {{VectorImp::stype(),
-                                                           I18N_NOOP("Check whether this vector is equal to another vector"),
-                                                           I18N_NOOP("Select the first of the two possibly equal vectors..."),
+                                                           gettext("Check whether this vector is equal to another vector"),
+                                                           gettext("Select the first of the two possibly equal vectors..."),
                                                            false},
                                                           {VectorImp::stype(),
-                                                           I18N_NOOP("Check whether this vector is equal to the other vector"),
-                                                           I18N_NOOP("Select the other of the two possibly equal vectors..."),
+                                                           gettext("Check whether this vector is equal to the other vector"),
+                                                           gettext("Select the other of the two possibly equal vectors..."),
                                                            false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(VectorEqualityTestType)
@@ -338,9 +339,9 @@ ObjectImp *VectorEqualityTestType::calc(const Args &parents, const KigDocument &
     const Coordinate &v2 = static_cast<const VectorImp *>(parents[1])->dir();
 
     if ((v1 - v2).length() < 10e-5)
-        return new TestResultImp(true, i18n("The two vectors are the same."));
+        return new TestResultImp(true, gettext("The two vectors are the same."));
     else
-        return new TestResultImp(false, i18n("The two vectors are not the same."));
+        return new TestResultImp(false, gettext("The two vectors are not the same."));
 }
 
 const ObjectImpType *VectorEqualityTestType::resultId() const
@@ -349,7 +350,7 @@ const ObjectImpType *VectorEqualityTestType::resultId() const
 }
 
 static const ArgsParser::spec existenceArgsSpec[] = {
-    {ObjectImp::stype(), I18N_NOOP("Check whether this object exists"), I18N_NOOP("Select the object for the existence check..."), false}};
+    {ObjectImp::stype(), gettext("Check whether this object exists"), gettext("Select the object for the existence check..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ExistenceTestType)
 

@@ -16,6 +16,7 @@
 #include "../../modes/normal.h"
 
 #include <KIconEngine>
+#include <KIconLoader>
 
 void ObjectConstructorActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree)
 {
@@ -47,7 +48,7 @@ void ObjectConstructorActionsProvider::fillUpMenu(NormalModePopupObjects &popup,
         if (add) {
             QString iconfile = (*i)->iconFileName();
             if (!iconfile.isEmpty() && !iconfile.isNull()) {
-                popup.addInternalAction(menu, QIcon(new KIconEngine(iconfile, popup.part().iconLoader())), (*i)->descriptiveName(), nextfree++);
+                popup.addInternalAction(menu, QIcon(new KIconEngine(iconfile, KIconLoader::global())), (*i)->descriptiveName(), nextfree++);
             } else
                 popup.addInternalAction(menu, (*i)->descriptiveName(), nextfree++);
             mctors[menu].push_back(*i);

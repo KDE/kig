@@ -9,7 +9,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(kig VERSION ${RELEASE_SERVICE_VERSION})
 
 
-set (KDE5_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
+set (KDE_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
 find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
@@ -28,19 +28,19 @@ include(KDEClangFormat)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
-set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.90.0")
+set(QT_MIN_VERSION "6.4.2")
+set(KF_MIN_VERSION "6.13.0")
 
-find_package(KF5Parts ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5DocTools ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5TextEditor ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5IconThemes ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5ConfigWidgets ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Archive ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5CoreAddons ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF6Parts ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6DocTools ${KF_MIN_VERSION})
+find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6TextEditor ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6IconThemes ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6ConfigWidgets ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6Archive ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6XmlGui ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6Crash ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}Svg ${QT_REQUIRED_VERSION} REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_REQUIRED_VERSION} REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}XmlPatterns ${QT_REQUIRED_VERSION})
@@ -60,7 +60,10 @@ include(KigConfigureChecks.cmake)
 
 find_package(BoostPython)
 
-add_subdirectory( doc )
+if(KF6DocTools_FOUND)
+  add_subdirectory( doc )
+endif(KF6DocTools_FOUND)
+
 add_subdirectory( icons )
 add_subdirectory( kig )
 add_subdirectory( mimetypes )
@@ -209,10 +212,7 @@ set(kigpart_PART_SRCS
    kig/kig_document.cc
    kig/kig_part.cpp
    kig/kig_view.cpp
-
    kig/kig_part.qrc
-
-
    objects/angle_type.h
    objects/arc_type.h
    objects/base_type.h
@@ -367,17 +367,18 @@ target_link_libraries(kigpart
   Qt::Gui
   Qt::Svg
   Qt::PrintSupport
-  KF5::Crash
-  KF5::Parts
-  KF5::I18n
-  KF5::TextEditor
-  KF5::IconThemes
-  KF5::ConfigWidgets
-  KF5::Archive
+  KF6::Crash
+  KF6::Parts
+  KF6::I18n
+  KF6::TextEditor
+  KF6::IconThemes
+  KF6::IconWidgets
+  KF6::ConfigWidgets
+  KF6::Archive
 )
 
 if(BoostPython_FOUND)
-  target_link_libraries(kigpart ${BoostPython_LIBRARIES} ${KDE5_KTEXTEDITOR_LIBS})
+  target_link_libraries(kigpart ${BoostPython_LIBRARIES} KF6::TextEditor)
 endif(BoostPython_FOUND)
 
 if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
@@ -385,7 +386,7 @@ if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
 endif(Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
 
 ki18n_install(po)
-if (KF5DocTools_FOUND)
+if (KF6DocTools_FOUND)
     kdoctools_install(po)
 endif()
 install(TARGETS kigpart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/parts)

@@ -5,6 +5,7 @@
 #include "special_constructors.h"
 
 #include <math.h>
+#include <libintl.h>
 
 #include "calcpaths.h"
 #include "common.h"
@@ -81,7 +82,7 @@ void TwoOrOneIntersectionConstructor::drawprelim(const ObjectDrawer &drawer,
     Args args;
     if (parents.size() != 2)
         return;
-    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     for (int i = -1; i <= 1; i += 2) {
         IntImp param(i);
@@ -178,7 +179,7 @@ void ThreeTwoOneIntersectionConstructor::drawprelim(const ObjectDrawer &drawer,
     Args args;
     if (parents.size() != 2)
         return;
-    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     for (int i = 1; i <= 3; i += 1) {
         IntImp param(i);
@@ -290,7 +291,7 @@ void ConicRadicalConstructor::drawprelim(const ObjectDrawer &drawer, KigPainter 
 {
     if (parents.size() == 2 && parents[0]->imp()->inherits(ConicImp::stype()) && parents[1]->imp()->inherits(ConicImp::stype())) {
         Args args;
-        std::transform(parents.begin(), parents.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+        std::transform(parents.begin(), parents.end(), std::back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
         for (int i = -1; i < 2; i += 2) {
             IntImp root(i);
             IntImp zeroindex(1);
@@ -324,8 +325,8 @@ std::vector<ObjectHolder *> ConicRadicalConstructor::build(const std::vector<Obj
 }
 
 static const struct ArgsParser::spec argsspecpp[] = {
-    {PointImp::stype(), I18N_NOOP("Moving Point"), I18N_NOOP("Select the moving point, which will be moved around while drawing the locus..."), false},
-    {PointImp::stype(), I18N_NOOP("Following Point"), I18N_NOOP("Select the following point, whose locations the locus will be drawn through..."), true}};
+    {PointImp::stype(), gettext("Moving Point"), gettext("Select the moving point, which will be moved around while drawing the locus..."), false},
+    {PointImp::stype(), gettext("Following Point"), gettext("Select the following point, whose locations the locus will be drawn through..."), true}};
 
 LocusConstructor::LocusConstructor()
     : StandardConstructorBase(i18n("Locus"), i18n("A locus"), "locus", margsparser)
@@ -655,7 +656,7 @@ void OpenPolygonTypeConstructor::drawprelim(const ObjectDrawer &drawer, KigPaint
  */
 
 static const struct ArgsParser::spec argsspecpv[] = {
-    {FilledPolygonImp::stype(), I18N_NOOP("Polygon"), I18N_NOOP("Construct the vertices of this polygon..."), true}};
+    {FilledPolygonImp::stype(), gettext("Polygon"), gettext("Construct the vertices of this polygon..."), true}};
 
 PolygonVertexTypeConstructor::PolygonVertexTypeConstructor()
     : StandardConstructorBase(i18n("Vertices of a Polygon"), i18n("The vertices of a polygon."), "polygonvertices", margsparser)
@@ -715,7 +716,7 @@ bool PolygonVertexTypeConstructor::isTransform() const
  */
 
 static const struct ArgsParser::spec argsspecps[] = {
-    {FilledPolygonImp::stype(), I18N_NOOP("Polygon"), I18N_NOOP("Construct the sides of this polygon..."), false}};
+    {FilledPolygonImp::stype(), gettext("Polygon"), gettext("Construct the sides of this polygon..."), false}};
 
 PolygonSideTypeConstructor::PolygonSideTypeConstructor()
     : StandardConstructorBase(i18n("Sides of a Polygon"), i18n("The sides of a polygon."), "polygonsides", margsparser)
@@ -993,7 +994,7 @@ void PolygonBCVConstructor::drawprelim(const ObjectDrawer &drawer, KigPainter &p
         assert(parents[3]->imp()->inherits(IntImp::stype()));
 
     Args args;
-    std::transform(parents.begin(), parents.end(), std::back_inserter(args), std::mem_fun(&ObjectCalcer::imp));
+    std::transform(parents.begin(), parents.end(), std::back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
 
     ObjectImp *data = mtype->calc(args, doc);
     drawer.draw(*data, p, true);
@@ -1059,8 +1060,8 @@ int PolygonBCVConstructor::computeNsides(const Coordinate &c, const Coordinate &
  */
 
 BezierCurveTypeConstructor::BezierCurveTypeConstructor()
-    : PointSequenceConstructor(I18N_NOOP("Bézier Curve by its Control Points"),
-                               I18N_NOOP("Construct a Bézier curve by giving its control points"),
+    : PointSequenceConstructor(gettext("Bézier Curve by its Control Points"),
+                               gettext("Construct a Bézier curve by giving its control points"),
                                "bezierN",
                                BezierCurveType::instance())
 {
@@ -1393,8 +1394,8 @@ QString ConicRadicalConstructor::useText(const ObjectCalcer &o, const std::vecto
  */
 
 GenericAffinityConstructor::GenericAffinityConstructor()
-    : MergeObjectConstructor(I18N_NOOP("Generic Affinity"),
-                             I18N_NOOP("The unique affinity that maps three points (or a triangle) onto three other points (or a triangle)"),
+    : MergeObjectConstructor(gettext("Generic Affinity"),
+                             gettext("The unique affinity that maps three points (or a triangle) onto three other points (or a triangle)"),
                              "genericaffinity")
 {
     SimpleObjectTypeConstructor *b2tr = new SimpleObjectTypeConstructor(AffinityB2TrType::instance(), "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", "genericaffinity");
@@ -1600,7 +1601,7 @@ void MeasureTransportConstructor::drawprelim(const ObjectDrawer &drawer,
 {
     Args args;
     using namespace std;
-    transform(parents.begin(), parents.end(), back_inserter(args), mem_fun(&ObjectCalcer::imp));
+    transform(parents.begin(), parents.end(), back_inserter(args), std::mem_fn(&ObjectCalcer::imp));
     ObjectImp *data = mtype->calc(args, doc);
     drawer.draw(*data, p, true);
     delete data;
@@ -1679,17 +1680,17 @@ bool MeasureTransportConstructor::isTransform() const
  * construction of conic-line and circle-circle constructions
  */
 
-static const struct ArgsParser::spec argsspeccli[] = {{ConicImp::stype(), I18N_NOOP("Intersect with this conic"), "SHOULD NOT BE SEEN", true},
-                                                      {AbstractLineImp::stype(), I18N_NOOP("Intersect with this line"), "SHOULD NOT BE SEEN", true}};
+static const struct ArgsParser::spec argsspeccli[] = {{ConicImp::stype(), gettext("Intersect with this conic"), "SHOULD NOT BE SEEN", true},
+                                                      {AbstractLineImp::stype(), gettext("Intersect with this line"), "SHOULD NOT BE SEEN", true}};
 
-static const struct ArgsParser::spec argsspeccbli[] = {{CubicImp::stype(), I18N_NOOP("Intersect with this cubic"), "SHOULD NOT BE SEEN", true},
-                                                       {AbstractLineImp::stype(), I18N_NOOP("Intersect with this line"), "SHOULD NOT BE SEEN", true}};
+static const struct ArgsParser::spec argsspeccbli[] = {{CubicImp::stype(), gettext("Intersect with this cubic"), "SHOULD NOT BE SEEN", true},
+                                                       {AbstractLineImp::stype(), gettext("Intersect with this line"), "SHOULD NOT BE SEEN", true}};
 
-static const struct ArgsParser::spec argsspeccci[] = {{CircleImp::stype(), I18N_NOOP("Intersect with this circle"), "SHOULD NOT BE SEEN", true},
-                                                      {CircleImp::stype(), I18N_NOOP("Intersect with this circle"), "SHOULD NOT BE SEEN", true}};
+static const struct ArgsParser::spec argsspeccci[] = {{CircleImp::stype(), gettext("Intersect with this circle"), "SHOULD NOT BE SEEN", true},
+                                                      {CircleImp::stype(), gettext("Intersect with this circle"), "SHOULD NOT BE SEEN", true}};
 
 GenericIntersectionConstructor::GenericIntersectionConstructor()
-    : MergeObjectConstructor(I18N_NOOP("Intersect"), I18N_NOOP("The intersection of two objects"), "curvelineintersection")
+    : MergeObjectConstructor(gettext("Intersect"), gettext("The intersection of two objects"), "curvelineintersection")
 {
     // intersection type..
     // There is one "toplevel" object_constructor, that is composed
@@ -1811,12 +1812,12 @@ QString GenericIntersectionConstructor::useText(const ObjectCalcer &o, const std
 }
 
 static const ArgsParser::spec argsspecMidPointOfTwoPoints[] = {{PointImp::stype(),
-                                                                I18N_NOOP("Construct midpoint of this point and another one"),
-                                                                I18N_NOOP("Select the first of the points of which you want to construct the midpoint..."),
+                                                                gettext("Construct midpoint of this point and another one"),
+                                                                gettext("Select the first of the points of which you want to construct the midpoint..."),
                                                                 false},
                                                                {PointImp::stype(),
-                                                                I18N_NOOP("Construct the midpoint of this point and another one"),
-                                                                I18N_NOOP("Select the other of the points of which to construct the midpoint..."),
+                                                                gettext("Construct the midpoint of this point and another one"),
+                                                                gettext("Select the other of the points of which to construct the midpoint..."),
                                                                 false}};
 
 MidPointOfTwoPointsConstructor::MidPointOfTwoPointsConstructor()
@@ -1866,12 +1867,12 @@ bool MidPointOfTwoPointsConstructor::isTransform() const
 
 static const ArgsParser::spec argsspecGoldenPointOfTwoPoints[] = {
     {PointImp::stype(),
-     I18N_NOOP("Construct golden ratio point of this point and another one"),
-     I18N_NOOP("Select the first of the points of which you want to construct the golden ratio point..."),
+     gettext("Construct golden ratio point of this point and another one"),
+     gettext("Select the first of the points of which you want to construct the golden ratio point..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Construct the golden ratio point of this point and another one"),
-     I18N_NOOP("Select the other of the points of which to construct the golden ratio point..."),
+     gettext("Construct the golden ratio point of this point and another one"),
+     gettext("Select the other of the points of which to construct the golden ratio point..."),
      false}};
 
 GoldenPointOfTwoPointsConstructor::GoldenPointOfTwoPointsConstructor()
@@ -1982,7 +1983,7 @@ QString GenericIntersectionConstructor::selectStatement(const std::vector<Object
 }
 
 TangentConstructor::TangentConstructor()
-    : MergeObjectConstructor(I18N_NOOP("Tangent"), I18N_NOOP("The line tangent to a curve"), "tangent")
+    : MergeObjectConstructor(gettext("Tangent"), gettext("The line tangent to a curve"), "tangent")
 {
     SimpleObjectTypeConstructor *conic = new SimpleObjectTypeConstructor(TangentConicType::instance(), "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", "tangentconic");
 
@@ -2035,7 +2036,7 @@ QString TangentConstructor::useText(const ObjectCalcer &o, const std::vector<Obj
  */
 
 CocConstructor::CocConstructor()
-    : MergeObjectConstructor(I18N_NOOP("Center Of Curvature"), I18N_NOOP("The center of the osculating circle to a curve"), "centerofcurvature")
+    : MergeObjectConstructor(gettext("Center Of Curvature"), gettext("The center of the osculating circle to a curve"), "centerofcurvature")
 {
     SimpleObjectTypeConstructor *conic = new SimpleObjectTypeConstructor(CocConicType::instance(), "SHOULDNOTBESEEN", "SHOULDNOTBESEEN", "cocconic");
 

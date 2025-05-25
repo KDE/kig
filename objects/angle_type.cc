@@ -19,16 +19,17 @@
 #include <algorithm>
 #include <cmath>
 #include <functional>
+#include <libintl.h>
 #include <math.h>
 
 #include <QStringList>
 
-static const char *constructanglethroughpoint = I18N_NOOP("Construct an angle through this point");
+static const char *constructanglethroughpoint = gettext("Construct an angle through this point");
 
 static const ArgsParser::spec argsspecAngle[] = {
-    {PointImp::stype(), constructanglethroughpoint, I18N_NOOP("Select a point that the first half-line of the angle should go through..."), true},
-    {PointImp::stype(), I18N_NOOP("Construct an angle at this point"), I18N_NOOP("Select the point to construct the angle in..."), true},
-    {PointImp::stype(), constructanglethroughpoint, I18N_NOOP("Select a point that the second half-line of the angle should go through..."), true}};
+    {PointImp::stype(), constructanglethroughpoint, gettext("Select a point that the first half-line of the angle should go through..."), true},
+    {PointImp::stype(), gettext("Construct an angle at this point"), gettext("Select the point to construct the angle in..."), true},
+    {PointImp::stype(), constructanglethroughpoint, gettext("Select a point that the second half-line of the angle should go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(AngleType)
 

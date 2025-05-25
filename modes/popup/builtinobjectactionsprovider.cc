@@ -25,25 +25,28 @@
 #include <QRect>
 
 #include <KIconEngine>
+#include <KIconLoader>
+
+#include <libintl.h>
 
 struct color_struct {
     const Qt::GlobalColor color;
     const char *name;
 };
 
-static const color_struct colors[] = {{Qt::black, I18N_NOOP("Black")},
-                                      {Qt::gray, I18N_NOOP("Gray")},
-                                      {Qt::red, I18N_NOOP("Red")},
-                                      {Qt::green, I18N_NOOP("Green")},
-                                      {Qt::cyan, I18N_NOOP("Cyan")},
-                                      {Qt::yellow, I18N_NOOP("Yellow")},
-                                      {Qt::darkRed, I18N_NOOP("Dark Red")}};
+static const color_struct colors[] = {{Qt::black, gettext("Black")},
+                                      {Qt::gray, gettext("Gray")},
+                                      {Qt::red, gettext("Red")},
+                                      {Qt::green, gettext("Green")},
+                                      {Qt::cyan, gettext("Cyan")},
+                                      {Qt::yellow, gettext("Yellow")},
+                                      {Qt::darkRed, gettext("Dark Red")}};
 
 const int numberofcolors = 7; // is there a better way to calc that?
 
 void BuiltinObjectActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree)
 {
-    KIconLoader *l = popup.part().iconLoader();
+    auto l = KIconLoader::global();
     if (menu == NormalModePopupObjects::ToplevelMenu) {
         std::vector<ObjectHolder *> os = popup.objects();
 

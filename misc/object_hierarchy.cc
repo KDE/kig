@@ -506,7 +506,7 @@ ObjectHierarchy *ObjectHierarchy::buildSafeObjectHierarchy(const QDomElement &pa
         obhi->musetexts.resize(obhi->mnumberofargs, "");
         obhi->mselectstatements.resize(obhi->mnumberofargs, "");
         obhi->margrequirements[id - 1] = req;
-        obhi->musetexts[id - 1] = req->selectStatement();
+        obhi->musetexts[id - 1] = req->selectStatement().toLatin1().constData();
         QDomElement esub = e.firstChild().toElement();
         for (; !esub.isNull(); esub = esub.nextSibling().toElement()) {
             if (esub.tagName() == QLatin1String("UseText")) {
@@ -725,7 +725,7 @@ int ObjectHierarchy::storeObject(const ObjectCalcer *o,
             std::vector<ObjectCalcer *> opl = o->parents();
 
             margrequirements[pl[i]] = lowermost(margrequirements[pl[i]], o->impRequirement(parent, opl), parent->imp()->type());
-            musetexts[pl[i]] = margrequirements[pl[i]]->selectStatement();
+            musetexts[pl[i]] = margrequirements[pl[i]]->selectStatement().toLatin1().constData();
         };
     };
     if (dynamic_cast<const ObjectTypeCalcer *>(o))
