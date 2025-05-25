@@ -83,13 +83,15 @@ set_package_properties(
    PURPOSE "Kig can optionally use Boost.Python for Python scripting"
 )
 
-set_package_properties(
-   Qt${QT_MAJOR_VERSION}XmlPatterns PROPERTIES
-   DESCRIPTION "Qt${QT_MAJOR_VERSION} XmlPatterns Module"
-   URL "https://qt.io/"
-   TYPE OPTIONAL
-   PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
-)
+if(QT_VERSION_MAJOR LESS 6)
+   set_package_properties(
+      Qt${QT_MAJOR_VERSION}XmlPatterns PROPERTIES
+      DESCRIPTION "Qt${QT_MAJOR_VERSION} XmlPatterns Module"
+      URL "https://qt.io/"
+      TYPE OPTIONAL
+      PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
+   )
+endif(QT_VERSION_MAJOR LESS 6)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
