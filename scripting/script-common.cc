@@ -9,14 +9,16 @@
 
 #include <QDebug>
 
+#include <libintl.h>
+
 struct script_prop {
     const char *fillCodeStatement;
     const char *icon;
     const char *highlightStyle;
 };
 
-static const script_prop scripts_properties[] = {{I18N_NOOP("Now fill in the code:"), "application-x-thoshellscript", 0},
-                                                 {I18N_NOOP("Now fill in the Python code:"), "text-x-python", "Python-Kig"}};
+static const script_prop scripts_properties[] = {{gettext("Now fill in the code:"), "application-x-thoshellscript", 0},
+                                                 {gettext("Now fill in the Python code:"), "text-x-python", "Python-Kig"}};
 
 QString ScriptType::fillCodeStatement(ScriptType::Type type)
 {

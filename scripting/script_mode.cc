@@ -19,6 +19,7 @@
 #include "../objects/object_imp.h"
 
 #include <KMessageBox>
+#include <KIconLoader>
 
 void ScriptModeBase::dragRect(const QPoint &p, KigWidget &w)
 {
@@ -99,7 +100,7 @@ ScriptModeBase::ScriptModeBase(KigPart &doc)
     , mpart(doc)
     , mwawd(SelectingArgs)
 {
-    mwizard = new NewScriptWizard(doc.widget(), this, doc.iconLoader());
+    mwizard = new NewScriptWizard(doc.widget(), this, KIconLoader::global());
 
     doc.redrawScreen();
 }
@@ -177,7 +178,7 @@ bool ScriptCreationMode::queryFinish()
         PythonScripter *inst = PythonScripter::instance();
         QByteArray errtrace = inst->lastErrorExceptionTraceback().c_str();
         if (inst->errorOccurred()) {
-            KMessageBox::detailedSorry(mwizard,
+            KMessageBox::detailedError(mwizard,
                                        i18n("The Python interpreter caught an error during the execution of your "
                                             "script. Please fix the script and click the Finish button again."),
                                        i18n("The Python Interpreter generated the following error output:\n%1", QString(errtrace)));
@@ -311,7 +312,7 @@ bool ScriptEditMode::queryFinish()
         PythonScripter *inst = PythonScripter::instance();
         QByteArray errtrace = inst->lastErrorExceptionTraceback().c_str();
         if (inst->errorOccurred()) {
-            KMessageBox::detailedSorry(mwizard,
+            KMessageBox::detailedError(mwizard,
                                        i18n("The Python interpreter caught an error during the execution of your "
                                             "script. Please fix the script."),
                                        i18n("The Python Interpreter generated the following error output:\n%1", QString(errtrace)));

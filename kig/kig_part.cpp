@@ -88,7 +88,7 @@ SetCoordinateSystemAction::SetCoordinateSystemAction(KigPart &d, KActionCollecti
 {
     setItems(CoordinateSystemFactory::names());
     setCurrentItem(md.document().coordinateSystem().id());
-    connect(this, SIGNAL(triggered(int)), this, SLOT(slotActivated(int)));
+    connect(this, SIGNAL(indexTriggered(int)), this, SLOT(slotActivated(int)));
     if (parent)
         parent->addAction(QStringLiteral("settings_set_coordinate_system"), this);
 }

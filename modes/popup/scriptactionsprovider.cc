@@ -16,6 +16,7 @@
 #include "../../objects/text_type.h"
 
 #include <KIconEngine>
+#include <KIconLoader>
 
 /**
  * this is a local function that looks for a python script associated
@@ -49,7 +50,7 @@ static ObjectTypeCalcer *getPythonExecuteTypeFromCalcer(ObjectCalcer *o)
 void ScriptActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int menu, int &nextfree)
 {
     if (menu == NormalModePopupObjects::StartMenu) {
-        KIconLoader *l = popup.part().iconLoader();
+        KIconLoader *l = KIconLoader::global();
         popup.addInternalAction(menu, QIcon(new KIconEngine(ScriptType::icon(ScriptType::Python), l)), i18n("Python Script"), nextfree++);
         mns++;
     } else if (menu == NormalModePopupObjects::ToplevelMenu) {
