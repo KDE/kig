@@ -610,7 +610,7 @@ void setupBuiltinStuff()
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
 #include "../scripting/script-common.h"
         actions->add(
-            new NewScriptAction(i18n("Python Script"), i18n("Construct a new Python script."), "objects_new_script_python", ScriptType::Python));
+            new NewScriptAction(gettext("Python Script"), gettext("Construct a new Python script."), "objects_new_script_python", ScriptType::Python));
 #endif
 
 #if 0

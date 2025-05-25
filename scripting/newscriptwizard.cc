@@ -15,7 +15,6 @@
 #include <KHelpClient>
 #include <KIconEngine>
 
-#include <KTextEditor/ConfigInterface>
 #include <KTextEditor/Document>
 #include <KTextEditor/Editor>
 #include <KTextEditor/View>
@@ -88,10 +87,7 @@ NewScriptWizard::NewScriptWizard(QWidget *parent, ScriptModeBase *mode, KIconLoa
         lay2->addWidget(docview);
 
         // displaying the left border with line numbers
-        KTextEditor::ConfigInterface *cfgiface = qobject_cast<KTextEditor::ConfigInterface *>(docview);
-        if (cfgiface) {
-            cfgiface->setConfigValue(QStringLiteral("line-numbers"), true);
-        }
+        docview->setConfigValue(QStringLiteral("line-numbers"), true);
 
         // creating the popup menu
         QMenu *menu = docview->defaultContextMenu();

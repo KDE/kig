@@ -1,6 +1,6 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
-    <qresource prefix="/kxmlgui5/kig">
+    <qresource prefix="/kxmlgui5/kigpart">
         <file>kigpartui.rc</file>
     </qresource>
 </RCC>
