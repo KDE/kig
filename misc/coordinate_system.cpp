@@ -19,7 +19,7 @@
 #include <string>
 
 #include <QDoubleValidator>
-#include <QRegExp>
+#include <QRegularExpression>
 
 static QString withoutSpaces(const QString &str)
 {
@@ -47,7 +47,7 @@ public:
 private:
     CoordinateType mtype;
     QDoubleValidator mdv;
-    mutable QRegExp mre;
+    mutable QRegularExpression mre;
 };
 
 const char CoordinateValidator::reEuclidean[] = "\\s*\\(?\\s*([0-9.,+-]+)\\s*;\\s*([0-9.,+-]+)\\s*\\)?\\s*";
@@ -60,10 +60,10 @@ CoordinateValidator::CoordinateValidator(CoordinateType type)
 {
     switch (mtype) {
     case Euclidean:
-        mre.setPattern(QString::fromUtf8(reEuclidean));
+        mre.setPattern(QRegularExpression::anchoredPattern(QString::fromUtf8(reEuclidean)));
         break;
     case Polar:
-        mre.setPattern(QString::fromUtf8(rePolar));
+        mre.setPattern(QRegularExpression::anchoredPattern(QString::fromUtf8(rePolar)));
         break;
     default:
         break;
@@ -132,10 +132,10 @@ void CoordinateValidator::fixup(QString &input) const
             break;
         }
     };
-    mre.exactMatch(input);
-    QString ds1 = mre.cap(1);
+    const QRegularExpressionMatch match(mre.match(input));
+    QString ds1 = match.captured(1);
     mdv.fixup(ds1);
-    QString ds2 = mre.cap(2);
+    QString ds2 = match.captured(2);
     mdv.fixup(ds2);
     input = ds1 + QLatin1String("; ") + ds2;
 }
@@ -159,11 +159,12 @@ QString EuclideanCoords::fromScreen(const Coordinate &p, const KigDocument &d) c
 
 Coordinate EuclideanCoords::toScreen(const QString &s, bool &ok) const
 {
-    QRegExp r(QString::fromUtf8(CoordinateValidator::reEuclidean));
-    ok = (r.indexIn(s) == 0);
+    const QRegularExpression r(QString::fromUtf8(CoordinateValidator::reEuclidean));
+    const QRegularExpressionMatch m(r.match(s));
+    ok = m.hasMatch();
     if (ok) {
-        QString xs = r.cap(1);
-        QString ys = r.cap(2);
+        QString xs = m.captured(1);
+        QString ys = m.captured(2);
         const QLocale currentLocale;
         double x = currentLocale.toDouble(xs, &ok);
         if (!ok)
@@ -382,17 +383,18 @@ QString PolarCoords::coordinateFormatNoticeMarkup() const
 
 Coordinate PolarCoords::toScreen(const QString &s, bool &ok) const
 {
-    QRegExp regexp(QString::fromUtf8(CoordinateValidator::rePolar));
-    ok = (regexp.indexIn(s) == 0);
+    const QRegularExpression regexp(QString::fromUtf8(CoordinateValidator::rePolar));
+    const QRegularExpressionMatch match(regexp.match(s));
+    ok = match.hasMatch();
     if (ok) {
         const QLocale currentLocale;
-        QString rs = regexp.cap(1);
+        QString rs = match.captured(1);
         double r = currentLocale.toDouble(rs, &ok);
         if (!ok)
             r = rs.toDouble(&ok);
         if (!ok)
             return Coordinate();
-        QString ts = regexp.cap(2);
+        QString ts = match.captured(2);
         double theta = currentLocale.toDouble(ts, &ok);
         if (!ok)
             theta = ts.toDouble(&ok);

@@ -5,6 +5,7 @@
 #include "intersection_types.h"
 
 #include <math.h>
+#include <libintl.h>
 
 #include "bogus_imp.h"
 #include "circle_imp.h"
@@ -14,9 +15,9 @@
 #include "other_imp.h"
 #include "point_imp.h"
 
-static const char intersectlinestat[] = I18N_NOOP("Intersect with this line");
+static const char *intersectlinestat = gettext("Intersect with this line");
 
-static const ArgsParser::spec argsspecConicLineIntersection[] = {{ConicImp::stype(), I18N_NOOP("Intersect with this conic"), "SHOULD NOT BE SEEN", true},
+static const ArgsParser::spec argsspecConicLineIntersection[] = {{ConicImp::stype(), gettext("Intersect with this conic"), "SHOULD NOT BE SEEN", true},
                                                                  {AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true},
                                                                  {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -147,10 +148,10 @@ ObjectImp *ConicLineOtherIntersectionType::calc(const Args &parents, const KigDo
 // cubic line other intersection
 
 static const ArgsParser::spec argsspecCubicLineOtherIntersection[] = {
-    {CubicImp::stype(), I18N_NOOP("Intersect with this cubic"), "SHOULD NOT BE SEEN", true},
+    {CubicImp::stype(), gettext("Intersect with this cubic"), "SHOULD NOT BE SEEN", true},
     {AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true},
-    {PointImp::stype(), I18N_NOOP("Already computed intersection point"), "SHOULD NOT BE SEEN", true},
-    {PointImp::stype(), I18N_NOOP("Already computed intersection point"), "SHOULD NOT BE SEEN", true}};
+    {PointImp::stype(), gettext("Already computed intersection point"), "SHOULD NOT BE SEEN", true},
+    {PointImp::stype(), gettext("Already computed intersection point"), "SHOULD NOT BE SEEN", true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CubicLineOtherIntersectionType)
 
@@ -212,9 +213,9 @@ ObjectImp *CubicLineOtherIntersectionType::calc(const Args &parents, const KigDo
 // cubic line two intersection
 
 static const ArgsParser::spec argsspecCubicLineTwoIntersection[] = {
-    {CubicImp::stype(), I18N_NOOP("Intersect with this cubic"), "SHOULD NOT BE SEEN", true},
+    {CubicImp::stype(), gettext("Intersect with this cubic"), "SHOULD NOT BE SEEN", true},
     {AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true},
-    {PointImp::stype(), I18N_NOOP("Already computed intersection point"), "Already computed intersection point", true},
+    {PointImp::stype(), gettext("Already computed intersection point"), "Already computed intersection point", true},
     {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CubicLineTwoIntersectionType)
@@ -369,7 +370,7 @@ ObjectImp *LineLineIntersectionType::calc(const Args &parents, const KigDocument
         return new InvalidImp();
 }
 
-static const ArgsParser::spec argsspecCubicLineIntersection[] = {{CubicImp::stype(), I18N_NOOP("Intersect with this cubic curve"), "SHOULD NOT BE SEEN", true},
+static const ArgsParser::spec argsspecCubicLineIntersection[] = {{CubicImp::stype(), gettext("Intersect with this cubic curve"), "SHOULD NOT BE SEEN", true},
                                                                  {AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true},
                                                                  {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
@@ -440,8 +441,8 @@ const ObjectImpType *CubicLineTwoIntersectionType::resultId() const
     return PointImp::stype();
 }
 
-static const ArgsParser::spec argsspecCircleCircleIntersection[] = {{CircleImp::stype(), I18N_NOOP("Intersect with this circle"), "SHOULD NOT BE SEEN", true},
-                                                                    {CircleImp::stype(), I18N_NOOP("Intersect with this circle"), "SHOULD NOT BE SEEN", true},
+static const ArgsParser::spec argsspecCircleCircleIntersection[] = {{CircleImp::stype(), gettext("Intersect with this circle"), "SHOULD NOT BE SEEN", true},
+                                                                    {CircleImp::stype(), gettext("Intersect with this circle"), "SHOULD NOT BE SEEN", true},
                                                                     {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CircleCircleIntersectionType)
@@ -523,7 +524,7 @@ const ObjectImpType *CircleCircleIntersectionType::resultId() const
     return PointImp::stype();
 }
 
-static const ArgsParser::spec argsspecArcLineIntersection[] = {{ArcImp::stype(), I18N_NOOP("Intersect with this arc"), "SHOULD NOT BE SEEN", true},
+static const ArgsParser::spec argsspecArcLineIntersection[] = {{ArcImp::stype(), gettext("Intersect with this arc"), "SHOULD NOT BE SEEN", true},
                                                                {AbstractLineImp::stype(), intersectlinestat, "SHOULD NOT BE SEEN", true},
                                                                {IntImp::stype(), "param", "SHOULD NOT BE SEEN", false}};
 

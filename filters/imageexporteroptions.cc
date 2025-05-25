@@ -8,8 +8,8 @@
 
 #include <QApplication>
 #include <QCheckBox>
-#include <QDesktopWidget>
 #include <QLayout>
+#include <QScreen>
 #include <QSize>
 
 ImageExporterOptions::ImageExporterOptions(QWidget *parent)
@@ -22,10 +22,10 @@ ImageExporterOptions::ImageExporterOptions(QWidget *parent)
     msize = QSize(1, 1);
 
     // detecting the dpi resolutions
-    QDesktopWidget *dw = QApplication::desktop();
+    const QScreen *dw = QGuiApplication::primaryScreen();
     // and creating the Unit objects
-    mxunit = Unit(msize.width(), Unit::pixel, dw->logicalDpiX());
-    myunit = Unit(msize.height(), Unit::pixel, dw->logicalDpiY());
+    mxunit = Unit(msize.width(), Unit::pixel, dw->logicalDotsPerInchX());
+    myunit = Unit(msize.height(), Unit::pixel, dw->logicalDotsPerInchY());
 
     maspectratio = (double)msize.height() / (double)msize.width();
 

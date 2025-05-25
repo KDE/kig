@@ -9,8 +9,6 @@
 #include "other_imp.h"
 #include "text_imp.h"
 
-static char snbs[] = "SHOULD NOT BE SEEN";
-
 double getDoubleFromImp(const ObjectImp *obj, bool &valid)
 {
     valid = true;
@@ -40,8 +38,8 @@ LengthImpType::LengthImpType(const ObjectImpType *parent, const char *internalna
     : ObjectImpType(parent,
                     internalname,
                     KLazyLocalizedString(),
-                    snbs,
-                    snbs,
+                    KLazyLocalizedString(),
+                    KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
@@ -66,8 +64,8 @@ AngleImpType::AngleImpType(const ObjectImpType *parent, const char *internalname
     : ObjectImpType(parent,
                     internalname,
                     KLazyLocalizedString(),
-                    snbs,
-                    snbs,
+                    KLazyLocalizedString(),
+                    KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
@@ -92,8 +90,8 @@ WeightImpType::WeightImpType(const ObjectImpType *parent, const char *internalna
     : ObjectImpType(parent,
                     internalname,
                     KLazyLocalizedString(),
-                    snbs,
-                    snbs,
+                    KLazyLocalizedString(),
+                    KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
@@ -118,8 +116,8 @@ InvertibleImpType::InvertibleImpType(const ObjectImpType *parent, const char *in
     : ObjectImpType(parent,
                     internalname,
                     KLazyLocalizedString(),
-                    I18N_NOOP("Select this object"),
-                    snbs,
+                    kli18n("Select this object"),
+                    KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),
                     KLazyLocalizedString(),

@@ -17,10 +17,12 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
+#include <libintl.h>
+
 static const char constructcenterofcurvaturepoint[] = "SHOULDNOTBESEEN";
 //  I18N_NOOP( "Construct the center of curvature corresponding to this point" );
-static const char selectcoc1[] = I18N_NOOP("Select the curve...");
-static const char selectcoc2[] = I18N_NOOP("Select a point on the curve...");
+static const char *selectcoc1 = gettext("Select the curve...");
+static const char *selectcoc2 = gettext("Select a point on the curve...");
 
 static const ArgsParser::spec argsspecCocConic[] = {{ConicImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false},
                                                     {PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false}};

@@ -21,6 +21,7 @@
 
 #include <QPen>
 #include <QPolygon>
+#include <QTransform>
 
 #include <algorithm>
 #include <cmath>
@@ -673,7 +674,7 @@ void KigPainter::drawRightAngle(const Coordinate &point, double startangle, int 
 {
     const int startangleDegrees = static_cast<int>(Goniometry::convert(startangle, Goniometry::Rad, Goniometry::Deg));
     QPolygon rightAnglePolygon;
-    QMatrix rotationMatrix;
+    QTransform rotationMatrix;
     int halfSide = diagonal * sin(M_PI / 4);
     const QPoint screenPoint = toScreen(point);
 

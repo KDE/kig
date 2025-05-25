@@ -17,10 +17,11 @@
 #include "../misc/common.h"
 
 #include <QStringList>
+#include <libintl.h>
 
 static const ArgsParser::spec argsspecSegmentAB[] = {
-    {PointImp::stype(), I18N_NOOP("Construct a segment starting at this point"), I18N_NOOP("Select the start point of the new segment..."), true},
-    {PointImp::stype(), I18N_NOOP("Construct a segment ending at this point"), I18N_NOOP("Select the end point of the new segment..."), true}};
+    {PointImp::stype(), gettext("Construct a segment starting at this point"), gettext("Select the start point of the new segment..."), true},
+    {PointImp::stype(), gettext("Construct a segment ending at this point"), gettext("Select the end point of the new segment..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(SegmentABType)
 
@@ -44,11 +45,11 @@ ObjectImp *SegmentABType::calcx(const Coordinate &a, const Coordinate &b) const
     return new SegmentImp(a, b);
 }
 
-static const char constructlineabstat[] = I18N_NOOP("Construct a line through this point");
+static const char *constructlineabstat = gettext("Construct a line through this point");
 
 static const ArgsParser::spec argsspecLineAB[] = {
-    {PointImp::stype(), constructlineabstat, I18N_NOOP("Select a point for the line to go through..."), true},
-    {PointImp::stype(), constructlineabstat, I18N_NOOP("Select another point for the line to go through..."), true}};
+    {PointImp::stype(), constructlineabstat, gettext("Select a point for the line to go through..."), true},
+    {PointImp::stype(), constructlineabstat, gettext("Select another point for the line to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(LineABType)
 
@@ -72,11 +73,11 @@ ObjectImp *LineABType::calcx(const Coordinate &a, const Coordinate &b) const
     return new LineImp(a, b);
 }
 
-static const char constructhalflinestartingstat[] = I18N_NOOP("Construct a half-line starting at this point");
+static const char *constructhalflinestartingstat = gettext("Construct a half-line starting at this point");
 
 static const ArgsParser::spec argsspecRayAB[] = {
-    {PointImp::stype(), constructhalflinestartingstat, I18N_NOOP("Select the start point of the new half-line..."), true},
-    {PointImp::stype(), I18N_NOOP("Construct a half-line through this point"), I18N_NOOP("Select a point for the half-line to go through..."), true}};
+    {PointImp::stype(), constructhalflinestartingstat, gettext("Select the start point of the new half-line..."), true},
+    {PointImp::stype(), gettext("Construct a half-line through this point"), gettext("Select a point for the half-line to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(RayABType)
 
@@ -101,7 +102,7 @@ ObjectImp *RayABType::calcx(const Coordinate &a, const Coordinate &b) const
 }
 
 static const ArgsParser::spec argspecSegmentAxisABType[] = {
-    {SegmentImp::stype(), I18N_NOOP("Construct the axis of this segment"), I18N_NOOP("Select the segment of which you want to draw the axis..."), true}};
+    {SegmentImp::stype(), gettext("Construct the axis of this segment"), gettext("Select the segment of which you want to draw the axis..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(SegmentAxisType);
 
@@ -152,8 +153,8 @@ ObjectImp *LinePerpendLPType::calc(const LineData &a, const Coordinate &b) const
 }
 
 static const ArgsParser::spec argsspecLineParallel[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Construct a line parallel to this line"), I18N_NOOP("Select a line parallel to the new line..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct the parallel line through this point"), I18N_NOOP("Select a point for the new line to go through..."), true}};
+    {AbstractLineImp::stype(), gettext("Construct a line parallel to this line"), gettext("Select a line parallel to the new line..."), false},
+    {PointImp::stype(), gettext("Construct the parallel line through this point"), gettext("Select a point for the new line to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(LineParallelLPType)
 
@@ -179,8 +180,8 @@ ObjectImp *LineParallelLPType::calc(const LineData &a, const Coordinate &b) cons
 }
 
 static const ArgsParser::spec argsspecLinePerpend[] = {
-    {AbstractLineImp::stype(), I18N_NOOP("Construct a line perpendicular to this line"), I18N_NOOP("Select a line perpendicular to the new line..."), false},
-    {PointImp::stype(), I18N_NOOP("Construct a perpendicular line through this point"), I18N_NOOP("Select a point for the new line to go through..."), true}};
+    {AbstractLineImp::stype(), gettext("Construct a line perpendicular to this line"), gettext("Select a line perpendicular to the new line..."), false},
+    {PointImp::stype(), gettext("Construct a perpendicular line through this point"), gettext("Select a point for the new line to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(LinePerpendLPType)
 
@@ -252,8 +253,8 @@ void SegmentABType::executeAction(int i, ObjectHolder &, ObjectTypeCalcer &c, Ki
 }
 
 static const ArgsParser::spec argsspecLineByVector[] = {
-    {VectorImp::stype(), I18N_NOOP("Construct a line by this vector"), I18N_NOOP("Select a vector in the direction of the new line..."), true},
-    {PointImp::stype(), constructlineabstat, I18N_NOOP("Select a point for the new line to go through..."), true}};
+    {VectorImp::stype(), gettext("Construct a line by this vector"), gettext("Select a vector in the direction of the new line..."), true},
+    {PointImp::stype(), constructlineabstat, gettext("Select a point for the new line to go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(LineByVectorType)
 
@@ -289,8 +290,8 @@ const ObjectImpType *LineByVectorType::resultId() const
 }
 
 static const ArgsParser::spec argsspecHalflineByVector[] = {
-    {VectorImp::stype(), I18N_NOOP("Construct a half-line by this vector"), I18N_NOOP("Select a vector in the direction of the new half-line..."), true},
-    {PointImp::stype(), constructhalflinestartingstat, I18N_NOOP("Select the start point of the new half-line..."), true}};
+    {VectorImp::stype(), gettext("Construct a half-line by this vector"), gettext("Select a vector in the direction of the new half-line..."), true},
+    {PointImp::stype(), constructhalflinestartingstat, gettext("Select the start point of the new half-line..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(HalflineByVectorType)
 

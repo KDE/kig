@@ -72,7 +72,7 @@ void KigWidget::mouseMoveEvent(QMouseEvent *e)
 {
     if ((e->buttons() & Qt::LeftButton) == Qt::LeftButton)
         return mpart->mode()->leftMouseMoved(e, this);
-    if ((e->buttons() & Qt::MiddleButton) == Qt::MidButton)
+    if ((e->buttons() & Qt::MiddleButton) == Qt::MiddleButton)
         return mpart->mode()->midMouseMoved(e, this);
     if ((e->buttons() & Qt::RightButton) == Qt::RightButton)
         return mpart->mode()->rightMouseMoved(e, this);

@@ -24,6 +24,7 @@
 #include <KActionCollection>
 #include <KActionMenu>
 #include <KIconEngine>
+#include <KIconLoader>
 #include <KMessageBox>
 
 ExporterAction::ExporterAction(const KigPart *doc, KigWidget *w, KActionCollection *parent, KigExporter *exp)
@@ -34,7 +35,7 @@ ExporterAction::ExporterAction(const KigPart *doc, KigWidget *w, KActionCollecti
 {
     QString iconstr = exp->menuIcon();
     if (!iconstr.isEmpty())
-        setIcon(QIcon(new KIconEngine(iconstr, const_cast<KigPart *>(doc)->iconLoader())));
+        setIcon(QIcon::fromTheme(iconstr));
     connect(this, &QAction::triggered, this, &ExporterAction::slotActivated);
     if (parent)
         parent->addAction(QStringLiteral("action"), this);
@@ -142,7 +143,7 @@ KigExportManager::~KigExportManager()
 void KigExportManager::addMenuAction(const KigPart *doc, KigWidget *w, KActionCollection *coll)
 {
     KActionMenu *m = new KActionMenu(i18n("&Export To"), w);
-    m->setIcon(QIcon(new KIconEngine("document-export", const_cast<KigPart *>(doc)->iconLoader())));
+    m->setIcon(QIcon::fromTheme("document-export"));
     for (uint i = 0; i < mexporters.size(); ++i)
         m->addAction(new ExporterAction(doc, w, coll, mexporters[i]));
     if (coll)

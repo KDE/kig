@@ -165,8 +165,8 @@ bool KigPrintDialogPage::isValid(QString &)
     return true;
 }
 
-KigPart::KigPart(QWidget *parentWidget, QObject *parent, const QVariantList &)
-    : KParts::ReadWritePart(parent)
+KigPart::KigPart(QWidget *parentWidget, QObject *parent, const KPluginMetaData &data, const QVariantList &)
+    : KParts::ReadWritePart(parent, data)
     , mMode(nullptr)
     , mRememberConstruction(nullptr)
     , mdocument(new KigDocument())
@@ -218,9 +218,6 @@ void KigPart::setupActions()
     aInvertSelection = new QAction(i18n("Invert Selection"), this);
     actionCollection()->addAction(QStringLiteral("edit_invert_selection"), aInvertSelection);
     connect(aInvertSelection, &QAction::triggered, this, &KigPart::slotInvertSelection);
-
-    // we need icons...
-    KIconLoader *l = iconLoader();
 
     aDeleteObjects = new QAction(QIcon::fromTheme(QStringLiteral("edit-delete")), i18n("&Delete Objects"), this);
     actionCollection()->addAction(QStringLiteral("delete_objects"), aDeleteObjects);
@@ -275,7 +272,7 @@ void KigPart::setupActions()
 
     a = KStandardAction::fitToPage(m_widget, SLOT(slotRecenterScreen()), actionCollection());
     // Why isn't there an icon for this?
-    a->setIcon(QIcon(new KIconEngine("view_fit_to_page", l)));
+    a->setIcon(QIcon::fromTheme("view_fit_to_page"));
     a->setToolTip(i18n("Recenter the screen on the document"));
     a->setWhatsThis(i18n("Recenter the screen on the document"));
 

@@ -18,11 +18,13 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-static const char constructlinetangentpoint[] = "SHOULDNOTBESEEN";
-static const char selecttangent1[] = I18N_NOOP("Select the curve...");
-static const char selecttangent2[] = I18N_NOOP("Select the point for the tangent to go through...");
+#include <libintl.h>
 
-static const ArgsParser::spec argsspecTangentConic[] = {{ConicImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false},
+static const char *constructlinetangentpoint = "SHOULDNOTBESEEN";
+static const char *selecttangent1 = gettext("Select the curve...");
+static const char *selecttangent2 = gettext("Select the point for the tangent to go through...");
+
+static const ArgsParser::spec argsspecTangentConic[] = {{ConicImp::stype(), constructlinetangentpoint, selecttangent1, false},
                                                         {PointImp::stype(), constructlinetangentpoint, selecttangent2, true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(TangentConicType)

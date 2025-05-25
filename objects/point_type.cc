@@ -5,6 +5,7 @@
 #include "point_type.h"
 
 #include <math.h>
+#include <libintl.h>
 
 #include "bogus_imp.h"
 #include "curve_imp.h"
@@ -239,12 +240,12 @@ bool CursorPointType::canMove(const ObjectTypeCalcer &) const
 }
 
 static const ArgsParser::spec argsspecMidPoint[] = {{PointImp::stype(),
-                                                     I18N_NOOP("Construct the midpoint of this point and another point"),
-                                                     I18N_NOOP("Select the first of the two points of which you want to construct the midpoint..."),
+                                                     gettext("Construct the midpoint of this point and another point"),
+                                                     gettext("Select the first of the two points of which you want to construct the midpoint..."),
                                                      false},
                                                     {PointImp::stype(),
-                                                     I18N_NOOP("Construct the midpoint of this point and another point"),
-                                                     I18N_NOOP("Select the other of the two points of which you want to construct the midpoint..."),
+                                                     gettext("Construct the midpoint of this point and another point"),
+                                                     gettext("Select the other of the two points of which you want to construct the midpoint..."),
                                                      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(MidPointType)
@@ -271,12 +272,12 @@ ObjectImp *MidPointType::calcx(const Coordinate &a, const Coordinate &b) const
 
 static const ArgsParser::spec argsspecGoldenPoint[] = {
     {PointImp::stype(),
-     I18N_NOOP("Construct the golden ratio point of this point and another point"),
-     I18N_NOOP("Select the first of the two points of which you want to construct the golden ratio point..."),
+     gettext("Construct the golden ratio point of this point and another point"),
+     gettext("Select the first of the two points of which you want to construct the golden ratio point..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Construct the golden ratio point of this point and another point"),
-     I18N_NOOP("Select the other of the two points of which you want to construct the golden ratio point..."),
+     gettext("Construct the golden ratio point of this point and another point"),
+     gettext("Select the other of the two points of which you want to construct the golden ratio point..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(GoldenPointType)
@@ -740,9 +741,9 @@ ObjectImp *MeasureTransportTypeOld::calc(const Args &parents, const KigDocument 
 }
 
 static const ArgsParser::spec argsspecMeasureTransportOld[] = {
-    {CircleImp::stype(), "Transport a measure on this circle", I18N_NOOP("Select the circle on which to transport a measure..."), true},
-    {PointImp::stype(), "Start transport from this point of the circle", I18N_NOOP("Select a point on the circle..."), false},
-    {SegmentImp::stype(), "Segment to transport", I18N_NOOP("Select the segment to transport on the circle..."), false}};
+    {CircleImp::stype(), "Transport a measure on this circle", gettext("Select the circle on which to transport a measure..."), true},
+    {PointImp::stype(), "Start transport from this point of the circle", gettext("Select a point on the circle..."), false},
+    {SegmentImp::stype(), "Segment to transport", gettext("Select the segment to transport on the circle..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(MeasureTransportTypeOld)
 
@@ -791,8 +792,8 @@ ObjectImp *PointByCoordsType::calc(const Args &parents, const KigDocument &) con
 }
 
 static const ArgsParser::spec argsspecPointByCoords[] = {
-    {&lengthimptypeinstance, "X coordinate given by this number/length", I18N_NOOP("Select a number/length as x coordinate of the point..."), false},
-    {&lengthimptypeinstance, "Y coordinate given by this number/length", I18N_NOOP("Select a number/length as y coordinate of the point..."), false}};
+    {&lengthimptypeinstance, "X coordinate given by this number/length", gettext("Select a number/length as x coordinate of the point..."), false},
+    {&lengthimptypeinstance, "Y coordinate given by this number/length", gettext("Select a number/length as y coordinate of the point..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(PointByCoordsType)
 
@@ -817,8 +818,8 @@ const ObjectImpType *PointByCoordsType::resultId() const
 }
 
 static const ArgsParser::spec argsspecProjectedPoint[] = {
-    {PointImp::stype(), "Point to project", I18N_NOOP("Select a point to project onto a line..."), false},
-    {AbstractLineImp::stype(), "Line where to project", I18N_NOOP("Line where the projected point will lie..."), true}};
+    {PointImp::stype(), "Point to project", gettext("Select a point to project onto a line..."), false},
+    {AbstractLineImp::stype(), "Line where to project", gettext("Line where the projected point will lie..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ProjectedPointType)
 

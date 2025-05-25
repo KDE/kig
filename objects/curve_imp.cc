@@ -16,8 +16,8 @@ const ObjectImpType *CurveImp::stype()
     static const ObjectImpType t(Parent::stype(),
                                  "curve",
                                  kli18n("curve"),
-                                 I18N_NOOP("Select this curve"),
-                                 I18N_NOOP("Select curve %1"),
+                                 kli18n("Select this curve"),
+                                 kli18n("Select curve %1"),
                                  kli18n("Remove a Curve"),
                                  kli18n("Add a Curve"),
                                  kli18n("Move a Curve"),
@@ -221,7 +221,7 @@ double CurveImp::revert(int n) const
             t += b;
         nl >>= 1;
     }
-    t += b / 2 - b * (qrand() / (RAND_MAX + 1.0));
+    t += b / 2 - b * (rand() / (RAND_MAX + 1.0));
     assert(t < 1 && t > 0);
     return (t);
 }

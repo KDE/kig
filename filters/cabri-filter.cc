@@ -38,7 +38,7 @@
 #include "../objects/vector_type.h"
 
 #include <QFile>
-#include <QRegExp>
+#include <QRegularExpression>
 
 #include <QDebug>
 
@@ -134,11 +134,11 @@ KigDocument *KigFilterCabri::load(const QString &file)
     }
 
     QString s = CabriNS::readLine(f);
-    QRegExp header(
+    const QRegularExpression header(QRegularExpression::anchoredPattern(
         "Figure Cabri\\s?II (Plus )?vers\\. (MS-Windows|DOS) ((\\d+)\\.(\\d+)(\\.(\\d+))?(\\.(\\d+))?|(\\d+)\\.x \\((\\d+)\\.(\\d+)\\))(, ([^,]+), "
-        "t=(\\d+)s)?");
-    header.setCaseSensitivity(Qt::CaseInsensitive);
-    if (!header.exactMatch(s)) {
+        "t=(\\d+)s)?"), QRegularExpression::CaseInsensitiveOption);
+    const QRegularExpressionMatch match(header.match(s));
+    if (!match.hasMatch()) {
         if (s.startsWith(QLatin1String("#FIG "))) {
             notSupported(i18n("This is an XFig file, not a Cabri figure."));
             return nullptr;
@@ -147,14 +147,14 @@ KigDocument *KigFilterCabri::load(const QString &file)
     }
 
     bool ok = true;
-    QString majorstr = header.cap(4);
+    QString majorstr = match.captured(4);
     if (majorstr.isEmpty())
-        majorstr = header.cap(11);
+        majorstr = match.captured(11);
     int major = majorstr.toInt(&ok);
     bool ok2 = true;
-    QString minorstr = header.cap(5);
+    QString minorstr = match.captured(5);
     if (minorstr.isEmpty())
-        minorstr = header.cap(12);
+        minorstr = match.captured(12);
     int minor = minorstr.toInt(&ok2);
     if (!ok || !ok2)
         KIG_FILTER_PARSE_ERROR;
@@ -163,11 +163,11 @@ KigDocument *KigFilterCabri::load(const QString &file)
     CabriReader *reader = nullptr;
 
 #ifdef CABRI_DEBUG
-    qDebug() << ">>>>>>>>> version: " << header.cap(3);
-    if (!header.cap(13).isEmpty()) {
+    qDebug() << ">>>>>>>>> version: " << match.captured(3);
+    if (!match.captured(13).isEmpty()) {
         qDebug() << ">>>>>>>>> session file:";
-        qDebug() << ">>>>>>>>>  -> time = " << header.cap(15) << " sec";
-        qDebug() << ">>>>>>>>>  -> action = \"" << header.cap(14) << "\"";
+        qDebug() << ">>>>>>>>>  -> time = " << match.captured(15) << " sec";
+        qDebug() << ">>>>>>>>>  -> action = \"" << match.captured(14) << "\"";
     }
 #endif
     if ((major == 1) && (minor == 0)) {
@@ -181,7 +181,7 @@ KigDocument *KigFilterCabri::load(const QString &file)
             i18n("This Cabri version (%1) is not supported yet.\n"
                  "Please contact the Kig authors to help supporting this Cabri "
                  "version.",
-                 header.cap(3)));
+                 match.captured(3)));
         return nullptr;
     }
 

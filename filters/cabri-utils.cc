@@ -10,6 +10,7 @@
 
 #include <QDebug>
 #include <QFile>
+#include <QRegularExpressionMatch>
 
 #include <KLocalizedString>
 
@@ -61,13 +62,14 @@ static bool extractValuesFromString(const QString &str, std::vector<int> &vec)
         QString tmp = str;
         bool ok = true;
         // extracting the digits
-        QRegExp ids("\\d+");
-        int pos = -1;
-        while ((pos = ids.indexIn(tmp)) > -1) {
-            vec.push_back(ids.cap(0).toInt(&ok));
+        const QRegularExpression ids("\\d+");
+        QRegularExpressionMatch ma(ids.match(tmp));
+        while (ma.hasMatch()) {
+            vec.push_back(ma.captured(0).toInt(&ok));
             if (!ok)
                 return false;
-            tmp.remove(pos, ids.matchedLength());
+            tmp.remove(ma.capturedStart(), ma.capturedLength());
+            ma = ids.match(tmp);
         }
     }
     return true;
@@ -195,11 +197,10 @@ CabriReader_v10::~CabriReader_v10()
 
 bool CabriReader_v10::readWindowMetrics(QFile &f)
 {
-    QString file = f.fileName();
 
     QString line = CabriNS::readLine(f);
-    QRegExp first("^Window center x: (.+) y: (.+) Window size x: (.+) y: (.+)$");
-    if (!first.exactMatch(line))
+    const QRegularExpression first("^Window center x: (.+) y: (.+) Window size x: (.+) y: (.+)$");
+    if (!first.match(line).hasMatch())
         KIG_CABRI_FILTER_PARSE_ERROR;
 
     line = CabriNS::readLine(f);
@@ -211,33 +212,34 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
 {
     CabriObject_v10 *myobj = new CabriObject_v10();
 
-    QString file = f.fileName();
 
     bool ok;
     QString tmp;
 
     QString line1 = CabriNS::readLine(f);
-    QRegExp namelinere("^\"([^\"]+)\", NP: ([\\d-]+), ([\\d-]+), NS: (\\d+), (\\d+)$");
-    if (namelinere.exactMatch(line1)) {
-        tmp = namelinere.cap(1);
+    const QRegularExpression namelinere("^\"([^\"]+)\", NP: ([\\d-]+), ([\\d-]+), NS: (\\d+), (\\d+)$");
+    const QRegularExpressionMatch namelinema(namelinere.match(line1));
+    if (namelinema.hasMatch()) {
+        tmp = namelinema.captured(1);
         myobj->name = tmp;
 
         line1 = CabriNS::readLine(f);
     }
 
-    QRegExp firstlinere("^([^:]+): ([^,]+), ([^,]+), CN:([^,]*), VN:(.*)$");
-    if (!firstlinere.exactMatch(line1))
+    const QRegularExpression firstlinere("^([^:]+): ([^,]+), ([^,]+), CN:([^,]*), VN:(.*)$");
+    const QRegularExpressionMatch firstlinema(firstlinere.match(line1));
+    if (!firstlinema.hasMatch())
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-    tmp = firstlinere.cap(1);
+    tmp = firstlinema.captured(1);
     myobj->id = tmp.toUInt(&ok);
     if (!ok)
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-    tmp = firstlinere.cap(2);
+    tmp = firstlinema.captured(2);
     myobj->type = tmp.toLatin1();
 
-    tmp = firstlinere.cap(3);
+    tmp = firstlinema.captured(3);
     myobj->specification = tmp.toInt(&ok);
     if (!ok)
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
@@ -245,82 +247,85 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
     //  0: x coordinate (of point)
     //  1: y coordinate (of point)
 
-    tmp = firstlinere.cap(4);
+    tmp = firstlinema.captured(4);
     uint numberOfParents = tmp.toUInt(&ok);
     if (!ok)
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-    tmp = firstlinere.cap(5);
+    tmp = firstlinema.captured(5);
     // I have no idea what this number means.
 
     QString line2 = CabriNS::readLine(f);
-    QRegExp secondlinere("^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$");
-    QRegExp secondlinere2("^([^,]+), ([^,]+), NbD:([^,]+), ([^,]+), ([^,]+), GT:([^,]+), ([^,]+), (.*)$");
-    if (secondlinere.exactMatch(line2)) {
-        tmp = secondlinere.cap(1);
+    const QRegularExpression secondlinere("^([^,]+), ([^,]+), ([^,]+), DS:([^ ]+) ([^,]+), GT:([^,]+), ([^,]+), (.*)$");
+    const QRegularExpression secondlinere2("^([^,]+), ([^,]+), NbD:([^,]+), ([^,]+), ([^,]+), GT:([^,]+), ([^,]+), (.*)$");
+    const QRegularExpressionMatch secondlinema(secondlinere.match(line2));
+    const QRegularExpressionMatch secondlinema2(secondlinere2.match(line2)); // e.g. for AngVal
+    if (secondlinema.hasMatch()) {
+        tmp = secondlinema.captured(1);
         myobj->color = translateColor(tmp);
 
-        tmp = secondlinere.cap(2);
+        tmp = secondlinema.captured(2);
         myobj->fillColor = translateColor(tmp);
 
-        tmp = secondlinere.cap(3);
+        tmp = secondlinema.captured(3);
         myobj->thick = tmp == QLatin1String("t") ? 1 : tmp == QLatin1String("tT") ? 2 : 3;
 
-        tmp = secondlinere.cap(4);
+        tmp = secondlinema.captured(4);
         myobj->lineSegLength = tmp.toInt(&ok);
         if (!ok)
             KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-        tmp = secondlinere.cap(5);
+        tmp = secondlinema.captured(5);
         myobj->lineSegSplit = tmp.toInt(&ok);
         if (!ok)
             KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-        tmp = secondlinere.cap(6);
+        tmp = secondlinema.captured(6);
         myobj->specialAppearanceSwitch = tmp.toInt(&ok);
         if (!ok)
             KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-        tmp = secondlinere.cap(7);
+        tmp = secondlinema.captured(7);
         myobj->visible = tmp == QLatin1String("V");
 
-        tmp = secondlinere.cap(8);
+        tmp = secondlinema.captured(8);
         myobj->fixed = tmp == QLatin1String("St");
-    } else if (secondlinere2.exactMatch(line2)) // e.g. for AngVal
+    } else if (secondlinema2.hasMatch())
     {
-        tmp = secondlinere2.cap(1);
+        tmp = secondlinema2.captured(1);
         myobj->color = translateColor(tmp);
 
-        tmp = secondlinere2.cap(2);
+        tmp = secondlinema2.captured(2);
         myobj->fillColor = translateColor(tmp);
 
         // 3: e.g. "NbD:129" what is the meaning?
         // 4: e.g. "FD"
 
-        tmp = secondlinere2.cap(5);
+        tmp = secondlinema2.captured(5);
         if (tmp == QLatin1String("deg"))
             myobj->gonio = CabriNS::CG_Deg;
 
-        tmp = secondlinere2.cap(6);
+        tmp = secondlinema2.captured(6);
         myobj->specialAppearanceSwitch = tmp.toInt(&ok);
         if (!ok)
             KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-        tmp = secondlinere2.cap(7);
+        tmp = secondlinema2.captured(7);
         myobj->visible = tmp == QLatin1String("V");
 
-        tmp = secondlinere2.cap(8);
+        tmp = secondlinema2.captured(8);
         myobj->fixed = tmp == QLatin1String("St");
 
     } else
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     QString line3 = CabriNS::readLine(f);
-    QRegExp thirdlinere("^(Const: ([^,]*),? ?)?(Val: ([^,]*)(,(.*))?)?$");
-    if (!thirdlinere.exactMatch(line3))
+    const QRegularExpression thirdlinere("^(Const: ([^,]*),? ?)?(Val: ([^,]*)(,(.*))?)?$");
+    const QRegularExpressionMatch thirdlinema(thirdlinere.match(line3));
+    if (!thirdlinema.hasMatch())
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-    tmp = thirdlinere.cap(2);
+    tmp = thirdlinema.captured(2);
     const QStringList parentsids = tmp.split(' ', Qt::SkipEmptyParts);
     for (QStringList::const_iterator i = parentsids.begin(); i != parentsids.end(); ++i) {
         myobj->parents.push_back((*i).toInt(&ok));
@@ -330,7 +335,7 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
     if (myobj->parents.size() != numberOfParents)
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
-    tmp = thirdlinere.cap(4);
+    tmp = thirdlinema.captured(4);
     const QStringList valIds = tmp.split(' ', Qt::SkipEmptyParts);
     for (QStringList::const_iterator i = valIds.begin(); i != valIds.end(); ++i) {
         myobj->data.push_back((*i).toDouble(&ok));
@@ -338,20 +343,21 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
             KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
     }
 
-    QString thirdlineextra = thirdlinere.cap(6);
+    const QString thirdlineextra = thirdlinema.captured(6);
     if (myobj->type == "Text" || myobj->type == "Formula") {
-        QRegExp textMetrics("TP: *[\\s]*([^,]+), *[\\s]*([^,]+), *TS:[\\s]*([^,]+), *[\\s]*([^,]+)");
-        if (textMetrics.indexIn(thirdlineextra) != -1) {
-            double xa = textMetrics.cap(1).toDouble(&ok);
+        const QRegularExpression textMetrics("TP: *[\\s]*([^,]+), *[\\s]*([^,]+), *TS:[\\s]*([^,]+), *[\\s]*([^,]+)");
+        const QRegularExpressionMatch textMetricsMa(textMetrics.match(thirdlineextra));
+        if (textMetricsMa.hasMatch()) {
+            double xa = textMetricsMa.captured(1).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
-            double ya = textMetrics.cap(2).toDouble(&ok);
+            double ya = textMetricsMa.captured(2).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
-            double tw = textMetrics.cap(3).toDouble(&ok);
+            double tw = textMetricsMa.captured(3).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
-            double th = textMetrics.cap(4).toDouble(&ok);
+            double th = textMetricsMa.captured(4).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
             myobj->textRect = Rect(xa, ya, tw, th);
@@ -379,8 +385,9 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
 
     QString line4 = CabriNS::readLine(f);
     if (!line4.isEmpty()) {
-        QRegExp fontlinere("^p: (\\d+), ([^,]+), S: (\\d+) C: (\\d+) Fa: (\\d+)$");
-        if (!fontlinere.exactMatch(line4))
+        const QRegularExpression fontlinere("^p: (\\d+), ([^,]+), S: (\\d+) C: (\\d+) Fa: (\\d+)$");
+        const QRegularExpressionMatch fontlinema(fontlinere.match(line4));
+        if (!fontlinema.hasMatch())
             KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
         line4 = CabriNS::readLine(f);
@@ -475,16 +482,15 @@ void CabriReader_v12::initColorMap()
 
 bool CabriReader_v12::readWindowMetrics(QFile &f)
 {
-    QString file = f.fileName();
 
     QString line = CabriNS::readLine(f);
-    QRegExp first("^Window center x: (.+) y: (.+) Window size x: (.+) y: (.+)$");
-    if (!first.exactMatch(line))
+    const QRegularExpression first("^Window center x: (.+) y: (.+) Window size x: (.+) y: (.+)$");
+    if (!first.match(line).hasMatch())
         KIG_CABRI_FILTER_PARSE_ERROR;
 
     QString line2 = CabriNS::readLine(f);
-    QRegExp second("^Resolution: (\\d+) ppc$");
-    if (!second.exactMatch(line2))
+    const QRegularExpression second("^Resolution: (\\d+) ppc$");
+    if (!second.match(line2).hasMatch())
         KIG_CABRI_FILTER_PARSE_ERROR;
 
     line = CabriNS::readLine(f);
@@ -496,38 +502,38 @@ CabriObject *CabriReader_v12::readObject(QFile &f)
 {
     CabriObject_v12 *myobj = new CabriObject_v12();
 
-    QString file = f.fileName();
     QString line = CabriNS::readLine(f);
 
 #ifdef CABRI_DEBUG
     qDebug() << "+++++++++ line: \"" << line << "\"";
 #endif
-    QRegExp firstlinere(
+    const QRegularExpression firstlinere(
         "^([^:]+): ([^,]+), (Const: [,0-9\\s]+)?(int ind:([^,]+),\\s)?(cart, )?(side:(\\d+), )?(inc\\.elmts: ([,0-9\\s]+))?(axis:(x|y), )?(on mark, )?(Val: "
         "([^,]+))?(.*)$");
-    if (!firstlinere.exactMatch(line))
+    const QRegularExpressionMatch firstlinema(firstlinere.match(line));
+    if (!firstlinema.hasMatch())
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     bool ok = true;
     QString tmp;
 
     // id
-    tmp = firstlinere.cap(1);
+    tmp = firstlinema.captured(1);
     myobj->id = tmp.toUInt(&ok);
     if (!ok)
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     // type
-    tmp = firstlinere.cap(2);
+    tmp = firstlinema.captured(2);
     myobj->type = tmp.toLatin1();
 
     // parents
-    tmp = firstlinere.cap(3);
+    tmp = firstlinema.captured(3);
     if (!extractValuesFromString(tmp, myobj->parents))
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     // data
-    tmp = firstlinere.cap(15);
+    tmp = firstlinema.captured(15);
     const QStringList valIds = tmp.split(' ', Qt::SkipEmptyParts);
     for (QStringList::const_iterator i = valIds.begin(); i != valIds.end(); ++i) {
         myobj->data.push_back((*i).toDouble(&ok));
@@ -536,7 +542,7 @@ CabriObject *CabriReader_v12::readObject(QFile &f)
     }
 
     // intersection id (if present)
-    tmp = firstlinere.cap(5);
+    tmp = firstlinema.captured(5);
     if (!tmp.isEmpty()) {
         long intId = tmp.toLong(&ok, 16);
         if (!ok)
@@ -553,7 +559,7 @@ CabriObject *CabriReader_v12::readObject(QFile &f)
     }
 
     // side of a polygon (if present)
-    tmp = firstlinere.cap(8);
+    tmp = firstlinema.captured(8);
     if (!tmp.isEmpty()) {
         myobj->side = tmp.toInt(&ok);
         if (!ok)
@@ -561,13 +567,14 @@ CabriObject *CabriReader_v12::readObject(QFile &f)
     }
 
     // inc.elements (if present)
-    tmp = firstlinere.cap(10);
+    tmp = firstlinema.captured(10);
     if (!extractValuesFromString(tmp, myobj->incs))
         KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
 
     line = CabriNS::readLine(f);
 
-    QRegExp textMetrics("^TP:[\\s]*([^,]+),[\\s]*([^,]+), TS:[\\s]*([^,]+),[\\s]*([^,]+)$");
+    const QRegularExpression textMetrics("^TP:[\\s]*([^,]+),[\\s]*([^,]+), TS:[\\s]*([^,]+),[\\s]*([^,]+)$");
+    const QRegularExpressionMatch textMetricsMa(textMetrics.match(line));
     bool freeText = false;
     while (!line.isEmpty()) {
         if (line.startsWith('\"')) {
@@ -578,17 +585,17 @@ CabriObject *CabriReader_v12::readObject(QFile &f)
                 myobj->text = txt;
         } else if (line.startsWith(QLatin1String("NbD:"))) {
             // TODO
-        } else if (textMetrics.exactMatch(line)) {
-            double xa = textMetrics.cap(1).toDouble(&ok);
+        } else if (textMetricsMa.hasMatch()) {
+            double xa = textMetricsMa.captured(1).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
-            double ya = textMetrics.cap(2).toDouble(&ok);
+            double ya = textMetricsMa.captured(2).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
-            double tw = textMetrics.cap(3).toDouble(&ok);
+            double tw = textMetricsMa.captured(3).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
-            double th = textMetrics.cap(4).toDouble(&ok);
+            double th = textMetricsMa.captured(4).toDouble(&ok);
             if (!ok)
                 KIG_CABRI_FILTER_PARSE_ERROR_RETURN_NULLPTR;
             myobj->textRect = Rect(xa, ya, tw, th);
@@ -668,12 +675,13 @@ bool CabriReader_v12::readStyles(const QString &line, CabriObject_v12 *myobj)
         if ((*it) == QLatin1String("invisible")) {
             myobj->visible = false;
         } else if ((*it).startsWith(QLatin1String("DS:"))) {
-            QRegExp ticks("DS:(\\d+)\\s(\\d+)");
-            if (ticks.exactMatch((*it))) {
-                myobj->lineSegLength = ticks.cap(1).toInt(&ok);
+            const QRegularExpression ticks(QRegularExpression::anchoredPattern("DS:(\\d+)\\s(\\d+)"));
+            const QRegularExpressionMatch ticksma(ticks.match((*it)));
+            if (ticksma.hasMatch()) {
+                myobj->lineSegLength = ticksma.captured(1).toInt(&ok);
                 if (!ok)
                     KIG_CABRI_FILTER_PARSE_ERROR;
-                myobj->lineSegSplit = ticks.cap(2).toInt(&ok);
+                myobj->lineSegSplit = ticksma.captured(2).toInt(&ok);
                 if (!ok)
                     KIG_CABRI_FILTER_PARSE_ERROR;
             }

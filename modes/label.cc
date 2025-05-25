@@ -26,10 +26,11 @@
 #include <QIcon>
 #include <QMenu>
 #include <QMouseEvent>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QVariant>
 
 #include <KIconEngine>
+#include <KIconLoader>
 #include <KLazyLocalizedString>
 #include <KMessageBox>
 
@@ -159,7 +160,7 @@ void TextLabelModeBase::leftReleased(QMouseEvent *e, KigWidget *v, ObjectTypeCal
             QString s = l[i].toString();
             const char *iconfile = o->imp()->iconForProperty(i);
             if (iconfile && *iconfile) {
-                act = p.addAction(QIcon(new KIconEngine(QLatin1String(iconfile), mdoc.iconLoader())), s);
+                act = p.addAction(QIcon(new KIconEngine(QLatin1String(iconfile), KIconLoader::global())), s);
             } else {
                 act = p.addAction(s);
             };
@@ -271,13 +272,15 @@ void TextLabelModeBase::cancelPressed()
 // also used in textlabelwizard.cc
 uint percentCount(const QString &s)
 {
-    //  QRegExp re( QString::fromUtf8( "%[0-9]" ) );
-    QRegExp re(QLatin1String("%[\\d]+"));
+    //  const QRegularExpression re( QString::fromUtf8( "%[0-9]" ) );
+    const QRegularExpression re(QLatin1String("%[\\d]+"));
     int offset = 0;
     uint percentcount = 0;
-    while ((offset = re.indexIn(s, offset)) != -1) {
+    QRegularExpressionMatch ma(re.match(s, offset));
+    while (ma.hasMatch()) {
         ++percentcount;
-        offset += re.matchedLength();
+        offset += ma.capturedLength();
+        ma = re.match(s, offset);
     };
     return percentcount;
 }
@@ -338,15 +341,17 @@ void TextLabelModeBase::updateLinksLabel()
 {
     LinksLabel::LinksLabelEditBuf buf = d->wiz->linksLabel()->startEdit();
     QString s = d->wiz->text();
-    //  QRegExp re( "%[0-9]" );
-    QRegExp re("%[\\d]+");
+    //  const QRegularExpression re( "%[0-9]" );
+    const QRegularExpression re("%[\\d]+");
     int prevpos = 0;
     int pos = 0;
     uint count = 0;
+    QRegularExpressionMatch ma(re.match(s, pos));
     // we split up the string into text and "links"
-    while ((pos = re.indexIn(s, pos)) != -1) {
+    while (ma.hasMatch()) {
         // prevpos is the first character after the last match, pos is the
         // first char of the current match..
+        pos = ma.capturedStart();
         if (prevpos != pos) {
             // there is a text part between the previous and the current
             // "link"...
@@ -371,8 +376,9 @@ void TextLabelModeBase::updateLinksLabel()
         // set pos and prevpos to the next char after the last match, so
         // we don't enter infinite loops...
         //    pos += 2;
-        pos += re.matchedLength();
+        pos += ma.capturedLength();
         prevpos = pos;
+        ma = re.match(s, pos);
         ++count;
     };
 

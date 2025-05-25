@@ -5,6 +5,7 @@
 #include "transform_types.h"
 
 #include <math.h>
+#include <libintl.h>
 
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"
@@ -18,8 +19,8 @@
 #include <cmath>
 
 static const ArgsParser::spec argsspecTranslation[] = {
-    {ObjectImp::stype(), I18N_NOOP("Translate this object"), I18N_NOOP("Select the object to translate..."), false},
-    {VectorImp::stype(), I18N_NOOP("Translate by this vector"), I18N_NOOP("Select the vector to translate by..."), false}};
+    {ObjectImp::stype(), gettext("Translate this object"), gettext("Select the object to translate..."), false},
+    {VectorImp::stype(), gettext("Translate by this vector"), gettext("Select the vector to translate by..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(TranslatedType)
 
@@ -50,8 +51,8 @@ ObjectImp *TranslatedType::calc(const Args &args, const KigDocument &) const
 }
 
 static const ArgsParser::spec argsspecPointReflection[] = {
-    {ObjectImp::stype(), I18N_NOOP("Reflect this object"), I18N_NOOP("Select the object to reflect..."), false},
-    {PointImp::stype(), I18N_NOOP("Reflect in this point"), I18N_NOOP("Select the point to reflect in..."), false}};
+    {ObjectImp::stype(), gettext("Reflect this object"), gettext("Select the object to reflect..."), false},
+    {PointImp::stype(), gettext("Reflect in this point"), gettext("Select the point to reflect in..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(PointReflectionType)
 
@@ -82,8 +83,8 @@ ObjectImp *PointReflectionType::calc(const Args &args, const KigDocument &) cons
 }
 
 static const ArgsParser::spec argsspecLineReflection[] = {
-    {ObjectImp::stype(), I18N_NOOP("Reflect this object"), I18N_NOOP("Select the object to reflect..."), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Reflect in this line"), I18N_NOOP("Select the line to reflect in..."), false}};
+    {ObjectImp::stype(), gettext("Reflect this object"), gettext("Select the object to reflect..."), false},
+    {AbstractLineImp::stype(), gettext("Reflect in this line"), gettext("Select the line to reflect in..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(LineReflectionType)
 
@@ -114,11 +115,11 @@ ObjectImp *LineReflectionType::calc(const Args &args, const KigDocument &) const
 }
 
 static const ArgsParser::spec argsspecRotation[] = {
-    {ObjectImp::stype(), I18N_NOOP("Rotate this object"), I18N_NOOP("Select the object to rotate..."), false},
-    {PointImp::stype(), I18N_NOOP("Rotate around this point"), I18N_NOOP("Select the center point of the rotation..."), false},
-    //  { AngleImp::stype(), I18N_NOOP( "Rotate by this angle" ),
-    //    I18N_NOOP( "Select the angle of the rotation..." ), false }
-    {&angleimptypeinstance, I18N_NOOP("Rotate by this angle"), I18N_NOOP("Select the angle of the rotation..."), false}};
+    {ObjectImp::stype(), gettext("Rotate this object"), gettext("Select the object to rotate..."), false},
+    {PointImp::stype(), gettext("Rotate around this point"), gettext("Select the center point of the rotation..."), false},
+    //  { AngleImp::stype(), gettext( "Rotate by this angle" ),
+    //    gettext( "Select the angle of the rotation..." ), false }
+    {&angleimptypeinstance, gettext("Rotate by this angle"), gettext("Select the angle of the rotation..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(RotationType)
 
@@ -153,11 +154,11 @@ ObjectImp *RotationType::calc(const Args &args, const KigDocument &) const
 }
 
 static const ArgsParser::spec argsspecScalingOverCenter[] = {
-    {ObjectImp::stype(), I18N_NOOP("Scale this object"), I18N_NOOP("Select the object to scale..."), false},
-    {PointImp::stype(), I18N_NOOP("Scale with this center"), I18N_NOOP("Select the center point of the scaling..."), false},
-    //  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ),
-    //    I18N_NOOP( "Select a segment whose length is the factor of the scaling..." ), false }
-    {&lengthimptypeinstance, I18N_NOOP("Scale by this length"), I18N_NOOP("Select a length or a segment whose length is the factor of the scaling..."), false}};
+    {ObjectImp::stype(), gettext("Scale this object"), gettext("Select the object to scale..."), false},
+    {PointImp::stype(), gettext("Scale with this center"), gettext("Select the center point of the scaling..."), false},
+    //  { SegmentImp::stype(), gettext( "Scale by the length of this segment" ),
+    //    gettext( "Select a segment whose length is the factor of the scaling..." ), false }
+    {&lengthimptypeinstance, gettext("Scale by this length"), gettext("Select a length or a segment whose length is the factor of the scaling..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ScalingOverCenterType)
 
@@ -191,19 +192,19 @@ ObjectImp *ScalingOverCenterType::calc(const Args &args, const KigDocument &) co
 }
 
 static const ArgsParser::spec argsspecScalingOverCenter2[] = {
-    {ObjectImp::stype(), I18N_NOOP("Scale this object"), I18N_NOOP("Select the object to scale..."), false},
-    {PointImp::stype(), I18N_NOOP("Scale with this center"), I18N_NOOP("Select the center point of the scaling..."), false},
-    //  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ),
-    //    I18N_NOOP( "Select the first of two segments whose ratio is the factor of the scaling..." ), false },
-    //  { SegmentImp::stype(), I18N_NOOP( "...to the length of this other segment" ),
-    //    I18N_NOOP( "Select the second of two segments whose ratio is the factor of the scaling..." ), false }
+    {ObjectImp::stype(), gettext("Scale this object"), gettext("Select the object to scale..."), false},
+    {PointImp::stype(), gettext("Scale with this center"), gettext("Select the center point of the scaling..."), false},
+    //  { SegmentImp::stype(), gettext( "Scale the length of this segment..." ),
+    //    gettext( "Select the first of two segments whose ratio is the factor of the scaling..." ), false },
+    //  { SegmentImp::stype(), gettext( "...to the length of this other segment" ),
+    //    gettext( "Select the second of two segments whose ratio is the factor of the scaling..." ), false }
     {&lengthimptypeinstance,
-     I18N_NOOP("Scale this length..."),
-     I18N_NOOP("Select the first of two lengths whose ratio is the factor of the scaling..."),
+     gettext("Scale this length..."),
+     gettext("Select the first of two lengths whose ratio is the factor of the scaling..."),
      false},
     {&lengthimptypeinstance,
-     I18N_NOOP("...to this other length"),
-     I18N_NOOP("Select the second of two lengths whose ratio is the factor of the scaling..."),
+     gettext("...to this other length"),
+     gettext("Select the second of two lengths whose ratio is the factor of the scaling..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ScalingOverCenter2Type)
@@ -243,11 +244,11 @@ ObjectImp *ScalingOverCenter2Type::calc(const Args &args, const KigDocument &) c
 }
 
 static const ArgsParser::spec argsspecScalingOverLine[] = {
-    {ObjectImp::stype(), I18N_NOOP("Scale this object"), I18N_NOOP("Select the object to scale"), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Scale over this line"), I18N_NOOP("Select the line to scale over"), false},
-    //  { SegmentImp::stype(), I18N_NOOP( "Scale by the length of this segment" ), I18N_NOOP( "Select a segment whose length is the factor for the scaling" ),
+    {ObjectImp::stype(), gettext("Scale this object"), gettext("Select the object to scale"), false},
+    {AbstractLineImp::stype(), gettext("Scale over this line"), gettext("Select the line to scale over"), false},
+    //  { SegmentImp::stype(), gettext( "Scale by the length of this segment" ), gettext( "Select a segment whose length is the factor for the scaling" ),
     //  false }
-    {&lengthimptypeinstance, I18N_NOOP("Scale by this length"), I18N_NOOP("Select a length or a segment whose length is the factor of the scaling..."), false}};
+    {&lengthimptypeinstance, gettext("Scale by this length"), gettext("Select a length or a segment whose length is the factor of the scaling..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ScalingOverLineType)
 
@@ -281,18 +282,18 @@ ObjectImp *ScalingOverLineType::calc(const Args &args, const KigDocument &) cons
 }
 
 static const ArgsParser::spec argsspecScalingOverLine2[] = {
-    {ObjectImp::stype(), I18N_NOOP("Scale this object"), I18N_NOOP("Select the object to scale"), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Scale over this line"), I18N_NOOP("Select the line to scale over"), false},
-    //  { SegmentImp::stype(), I18N_NOOP( "Scale the length of this segment..." ), I18N_NOOP( "Select the first of two segments whose ratio is the factor for
-    //  the scaling" ), false }, { SegmentImp::stype(), I18N_NOOP( "...to the length of this segment" ), I18N_NOOP( "Select the second of two segments whose
+    {ObjectImp::stype(), gettext("Scale this object"), gettext("Select the object to scale"), false},
+    {AbstractLineImp::stype(), gettext("Scale over this line"), gettext("Select the line to scale over"), false},
+    //  { SegmentImp::stype(), gettext( "Scale the length of this segment..." ), gettext( "Select the first of two segments whose ratio is the factor for
+    //  the scaling" ), false }, { SegmentImp::stype(), gettext( "...to the length of this segment" ), gettext( "Select the second of two segments whose
     //  ratio is the factor for the scaling" ), false }
     {&lengthimptypeinstance,
-     I18N_NOOP("Scale this length..."),
-     I18N_NOOP("Select the first of two lengths whose ratio is the factor of the scaling..."),
+     gettext("Scale this length..."),
+     gettext("Select the first of two lengths whose ratio is the factor of the scaling..."),
      false},
     {&lengthimptypeinstance,
-     I18N_NOOP("...to this other length"),
-     I18N_NOOP("Select the second of two lengths whose ratio is the factor of the scaling..."),
+     gettext("...to this other length"),
+     gettext("Select the second of two lengths whose ratio is the factor of the scaling..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ScalingOverLine2Type)
@@ -332,14 +333,14 @@ ObjectImp *ScalingOverLine2Type::calc(const Args &args, const KigDocument &) con
 }
 
 static const ArgsParser::spec argsspecProjectiveRotation[] = {
-    {ObjectImp::stype(), I18N_NOOP("Projectively rotate this object"), I18N_NOOP("Select the object to rotate projectively"), false},
+    {ObjectImp::stype(), gettext("Projectively rotate this object"), gettext("Select the object to rotate projectively"), false},
     {RayImp::stype(),
-     I18N_NOOP("Projectively rotate with this half-line"),
-     I18N_NOOP("Select the half line of the projective rotation that you want to apply to the object"),
+     gettext("Projectively rotate with this half-line"),
+     gettext("Select the half line of the projective rotation that you want to apply to the object"),
      false},
     {AngleImp::stype(),
-     I18N_NOOP("Projectively rotate by this angle"),
-     I18N_NOOP("Select the angle of the projective rotation that you want to apply to the object"),
+     gettext("Projectively rotate by this angle"),
+     gettext("Select the angle of the projective rotation that you want to apply to the object"),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ProjectiveRotationType)
@@ -373,9 +374,9 @@ ObjectImp *ProjectiveRotationType::calc(const Args &args, const KigDocument &) c
 }
 
 static const ArgsParser::spec argsspecHarmonicHomology[] = {
-    {ObjectImp::stype(), I18N_NOOP("Harmonic Homology of this object"), I18N_NOOP("Select the object to transform..."), false},
-    {PointImp::stype(), I18N_NOOP("Harmonic Homology with this center"), I18N_NOOP("Select the center point of the harmonic homology..."), false},
-    {AbstractLineImp::stype(), I18N_NOOP("Harmonic Homology with this axis"), I18N_NOOP("Select the axis of the harmonic homology..."), false}};
+    {ObjectImp::stype(), gettext("Harmonic Homology of this object"), gettext("Select the object to transform..."), false},
+    {PointImp::stype(), gettext("Harmonic Homology with this center"), gettext("Select the center point of the harmonic homology..."), false},
+    {AbstractLineImp::stype(), gettext("Harmonic Homology with this axis"), gettext("Select the axis of the harmonic homology..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(HarmonicHomologyType)
 
@@ -405,11 +406,11 @@ ObjectImp *HarmonicHomologyType::calc(const Args &args, const KigDocument &) con
 }
 
 static const ArgsParser::spec argsspecAffinityB2Tr[] = {
-    {ObjectImp::stype(), I18N_NOOP("Generic affinity of this object"), I18N_NOOP("Select the object to transform..."), false},
-    {FilledPolygonImp::stype3(), I18N_NOOP("Map this triangle"), I18N_NOOP("Select the triangle that has to be transformed onto a given triangle..."), false},
+    {ObjectImp::stype(), gettext("Generic affinity of this object"), gettext("Select the object to transform..."), false},
+    {FilledPolygonImp::stype3(), gettext("Map this triangle"), gettext("Select the triangle that has to be transformed onto a given triangle..."), false},
     {FilledPolygonImp::stype3(),
-     I18N_NOOP("onto this other triangle"),
-     I18N_NOOP("Select the triangle that is the image by the affinity of the first triangle..."),
+     gettext("onto this other triangle"),
+     gettext("Select the triangle that is the image by the affinity of the first triangle..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(AffinityB2TrType)
@@ -446,24 +447,24 @@ ObjectImp *AffinityB2TrType::calc(const Args &args, const KigDocument &) const
 }
 
 static const ArgsParser::spec argsspecAffinityGI3P[] = {
-    {ObjectImp::stype(), I18N_NOOP("Generic affinity of this object"), I18N_NOOP("Select the object to transform..."), false},
-    {PointImp::stype(), I18N_NOOP("First of 3 starting points"), I18N_NOOP("Select the first of the three starting points of the generic affinity..."), false},
+    {ObjectImp::stype(), gettext("Generic affinity of this object"), gettext("Select the object to transform..."), false},
+    {PointImp::stype(), gettext("First of 3 starting points"), gettext("Select the first of the three starting points of the generic affinity..."), false},
     {PointImp::stype(),
-     I18N_NOOP("Second of 3 starting points"),
-     I18N_NOOP("Select the second of the three starting points of the generic affinity..."),
+     gettext("Second of 3 starting points"),
+     gettext("Select the second of the three starting points of the generic affinity..."),
      false},
-    {PointImp::stype(), I18N_NOOP("Third of 3 starting points"), I18N_NOOP("Select the third of the three starting points of the generic affinity..."), false},
+    {PointImp::stype(), gettext("Third of 3 starting points"), gettext("Select the third of the three starting points of the generic affinity..."), false},
     {PointImp::stype(),
-     I18N_NOOP("Transformed position of first point"),
-     I18N_NOOP("Select the first of the three end points of the generic affinity..."),
-     false},
-    {PointImp::stype(),
-     I18N_NOOP("Transformed position of second point"),
-     I18N_NOOP("Select the second of the three end points of the generic affinity..."),
+     gettext("Transformed position of first point"),
+     gettext("Select the first of the three end points of the generic affinity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Transformed position of third point"),
-     I18N_NOOP("Select the third of the three end points of the generic affinity..."),
+     gettext("Transformed position of second point"),
+     gettext("Select the second of the three end points of the generic affinity..."),
+     false},
+    {PointImp::stype(),
+     gettext("Transformed position of third point"),
+     gettext("Select the third of the three end points of the generic affinity..."),
      false},
 };
 
@@ -505,14 +506,14 @@ ObjectImp *AffinityGI3PType::calc(const Args &args, const KigDocument &) const
 }
 
 static const ArgsParser::spec argsspecProjectivityB2Qu[] = {
-    {ObjectImp::stype(), I18N_NOOP("Generic projective transformation of this object"), I18N_NOOP("Select the object to transform..."), false},
+    {ObjectImp::stype(), gettext("Generic projective transformation of this object"), gettext("Select the object to transform..."), false},
     {FilledPolygonImp::stype4(),
-     I18N_NOOP("Map this quadrilateral"),
-     I18N_NOOP("Select the quadrilateral that has to be transformed onto a given quadrilateral..."),
+     gettext("Map this quadrilateral"),
+     gettext("Select the quadrilateral that has to be transformed onto a given quadrilateral..."),
      false},
     {FilledPolygonImp::stype4(),
-     I18N_NOOP("onto this other quadrilateral"),
-     I18N_NOOP("Select the quadrilateral that is the image by the projective transformation of the first quadrilateral..."),
+     gettext("onto this other quadrilateral"),
+     gettext("Select the quadrilateral that is the image by the projective transformation of the first quadrilateral..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ProjectivityB2QuType)
@@ -549,38 +550,38 @@ ObjectImp *ProjectivityB2QuType::calc(const Args &args, const KigDocument &) con
 }
 
 static const ArgsParser::spec argsspecProjectivityGI4P[] = {
-    {ObjectImp::stype(), I18N_NOOP("Generic projective transformation of this object"), I18N_NOOP("Select the object to transform..."), false},
+    {ObjectImp::stype(), gettext("Generic projective transformation of this object"), gettext("Select the object to transform..."), false},
     {PointImp::stype(),
-     I18N_NOOP("First of 4 starting points"),
-     I18N_NOOP("Select the first of the four starting points of the generic projectivity..."),
+     gettext("First of 4 starting points"),
+     gettext("Select the first of the four starting points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Second of 4 starting points"),
-     I18N_NOOP("Select the second of the four starting points of the generic projectivity..."),
+     gettext("Second of 4 starting points"),
+     gettext("Select the second of the four starting points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Third of 4 starting points"),
-     I18N_NOOP("Select the third of the four starting points of the generic projectivity..."),
+     gettext("Third of 4 starting points"),
+     gettext("Select the third of the four starting points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Fourth of 4 starting points"),
-     I18N_NOOP("Select the fourth of the four starting points of the generic projectivity..."),
+     gettext("Fourth of 4 starting points"),
+     gettext("Select the fourth of the four starting points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Transformed position of first point"),
-     I18N_NOOP("Select the first of the four end points of the generic projectivity..."),
+     gettext("Transformed position of first point"),
+     gettext("Select the first of the four end points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Transformed position of second point"),
-     I18N_NOOP("Select the second of the four end points of the generic projectivity..."),
+     gettext("Transformed position of second point"),
+     gettext("Select the second of the four end points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Transformed position of third point"),
-     I18N_NOOP("Select the third of the four end points of the generic projectivity..."),
+     gettext("Transformed position of third point"),
+     gettext("Select the third of the four end points of the generic projectivity..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Transformed position of fourth point"),
-     I18N_NOOP("Select the fourth of the four end points of the generic projectivity..."),
+     gettext("Transformed position of fourth point"),
+     gettext("Select the fourth of the four end points of the generic projectivity..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ProjectivityGI4PType)
@@ -621,12 +622,12 @@ ObjectImp *ProjectivityGI4PType::calc(const Args &args, const KigDocument &) con
 }
 
 static const ArgsParser::spec argsspecCastShadow[] = {
-    {ObjectImp::stype(), I18N_NOOP("Cast the shadow of this object"), I18N_NOOP("Select the object of which you want to construct the shadow..."), false},
+    {ObjectImp::stype(), gettext("Cast the shadow of this object"), gettext("Select the object of which you want to construct the shadow..."), false},
     {PointImp::stype(),
-     I18N_NOOP("Cast a shadow from this light source"),
-     I18N_NOOP("Select the light source from which the shadow should originate..."),
+     gettext("Cast a shadow from this light source"),
+     gettext("Select the light source from which the shadow should originate..."),
      false},
-    {AbstractLineImp::stype(), I18N_NOOP("Cast a shadow on the horizon represented by this line"), I18N_NOOP("Select the horizon for the shadow..."), false}};
+    {AbstractLineImp::stype(), gettext("Cast a shadow on the horizon represented by this line"), gettext("Select the horizon for the shadow..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CastShadowType)
 
@@ -806,8 +807,8 @@ bool CastShadowType::isTransform() const
 }
 
 static const ArgsParser::spec argsspecApplyTransformation[] = {
-    {ObjectImp::stype(), I18N_NOOP("Transform this object"), "SHOULD NOT BE SEEN", false},
-    {TransformationImp::stype(), I18N_NOOP("Transform using this transformation"), "SHOULD NOT BE SEEN", false}};
+    {ObjectImp::stype(), gettext("Transform this object"), "SHOULD NOT BE SEEN", false},
+    {TransformationImp::stype(), gettext("Transform using this transformation"), "SHOULD NOT BE SEEN", false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ApplyTransformationObjectType)
 
@@ -880,15 +881,15 @@ SimilitudeType::~SimilitudeType()
 }
 
 static const ArgsParser::spec argsspecSimilitude[] = {
-    {ObjectImp::stype(), I18N_NOOP("Apply a similitude to this object"), I18N_NOOP("Select the object to transform..."), false},
-    {PointImp::stype(), I18N_NOOP("Apply a similitude with this center"), I18N_NOOP("Select the center for the similitude..."), false},
+    {ObjectImp::stype(), gettext("Apply a similitude to this object"), gettext("Select the object to transform..."), false},
+    {PointImp::stype(), gettext("Apply a similitude with this center"), gettext("Select the center for the similitude..."), false},
     {PointImp::stype(),
-     I18N_NOOP("Apply a similitude mapping this point onto another point"),
-     I18N_NOOP("Select the point which the similitude should map onto another point..."),
+     gettext("Apply a similitude mapping this point onto another point"),
+     gettext("Select the point which the similitude should map onto another point..."),
      false},
     {PointImp::stype(),
-     I18N_NOOP("Apply a similitude mapping a point onto this point"),
-     I18N_NOOP("Select the point onto which the similitude should map the first point..."),
+     gettext("Apply a similitude mapping a point onto this point"),
+     gettext("Select the point onto which the similitude should map the first point..."),
      false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(SimilitudeType)

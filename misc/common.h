@@ -13,6 +13,7 @@
 #include <assert.h>
 #include <vector>
 
+class QWidget;
 class ObjectImp;
 class KigWidget;
 

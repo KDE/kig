@@ -13,21 +13,21 @@
 #include <QDir>
 #include <QFile>
 #include <QStandardPaths>
+#include <QLibrary>
 
 #include <KAboutData>
 #include <KCrash>
-#include <KPluginLoader>
+#include <KPluginMetaData>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
 #include <Kdelibs4Migration>
 #endif
 
 #include "aboutdata.h"
-#include <KLocalizedString>
 
 static int convertToNative(const QUrl &file, const QByteArray &outfile)
 {
-    KPluginLoader libraryLoader(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR)) + QStringLiteral("/parts/kigpart"));
+    KPluginMetaData libraryLoader(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR)) + QStringLiteral("/parts/kigpart"));
     QLibrary library(libraryLoader.fileName());
     int (*converterfunction)(const QUrl &, const QByteArray &);
     converterfunction = (int (*)(const QUrl &, const QByteArray &))library.resolve("convertToNative");
@@ -92,7 +92,9 @@ int main(int argc, char **argv)
     KAboutData::setApplicationData(about);
     QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kig")));
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     dataMigration(); // This needs the about AboutData to be set up
+#endif
     about.setupCommandLine(&parser);
     parser.addOption(convertToNativeOption);
     parser.addOption(outfileOption);

@@ -184,8 +184,8 @@ bool ObjectImp::canFillInNextEscape() const
 ObjectImpType::ObjectImpType(const ObjectImpType *parent,
                              const char *internalname,
                              const KLazyLocalizedString &translatedname,
-                             const char *selectstatement,
-                             const char *selectnamestatement,
+                             const KLazyLocalizedString &selectstatement,
+                             const KLazyLocalizedString &selectnamestatement,
                              const KLazyLocalizedString &removeastatement,
                              const KLazyLocalizedString &addastatement,
                              const KLazyLocalizedString &moveastatement,
@@ -232,14 +232,14 @@ QString ObjectImpType::translatedName() const
     return mtranslatedname.toString();
 }
 
-const char *ObjectImpType::selectStatement() const
+QString ObjectImpType::selectStatement() const
 {
-    return mselectstatement;
+    return mselectstatement.toString();
 }
 
-const char *ObjectImpType::selectNameStatement() const
+QString ObjectImpType::selectNameStatement() const
 {
-    return mselectnamestatement;
+    return mselectnamestatement.toString();
 }
 
 QString ObjectImpType::removeAStatement() const
@@ -277,8 +277,8 @@ const ObjectImpType *ObjectImp::stype()
     static const ObjectImpType t(nullptr,
                                  "any",
                                  kli18n("Object"),
-                                 I18N_NOOP("Select this object"),
-                                 I18N_NOOP("Select object %1"),
+                                 kli18n("Select this object"),
+                                 kli18n("Select object %1"),
                                  kli18n("Remove an object"),
                                  kli18n("Add an object"),
                                  kli18n("Move an object"),
