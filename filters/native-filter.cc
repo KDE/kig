@@ -353,10 +353,10 @@ KigFilterNative *KigFilterNative::instance()
     return &f;
 }
 
-static const char *obsoletemessage = gettext(
+static const char *obsoletemessage =
     "This Kig file uses an object of type \"%1\", "
     "which is obsolete, you should save the construction with "
-    "a different name and check that it works as expected.");
+    "a different name and check that it works as expected.";
 
 KigDocument *KigFilterNative::load07(const QDomElement &docelem)
 {
