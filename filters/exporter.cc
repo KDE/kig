@@ -35,7 +35,7 @@ ExporterAction::ExporterAction(const KigPart *doc, KigWidget *w, KActionCollecti
 {
     QString iconstr = exp->menuIcon();
     if (!iconstr.isEmpty())
-        setIcon(QIcon(new KIconEngine(iconstr, KIconLoader::global())));
+        setIcon(QIcon::fromTheme(iconstr));
     connect(this, &QAction::triggered, this, &ExporterAction::slotActivated);
     if (parent)
         parent->addAction(QStringLiteral("action"), this);
