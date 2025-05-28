@@ -502,7 +502,6 @@ CabriObject *CabriReader_v12::readObject(QFile &f)
 {
     CabriObject_v12 *myobj = new CabriObject_v12();
 
-    // QString file = f.fileName();
     QString line = CabriNS::readLine(f);
 
 #ifdef CABRI_DEBUG
