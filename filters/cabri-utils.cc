@@ -212,7 +212,6 @@ CabriObject *CabriReader_v10::readObject(QFile &f)
 {
     CabriObject_v10 *myobj = new CabriObject_v10();
 
-    // QString file = f.fileName();
 
     bool ok;
     QString tmp;
