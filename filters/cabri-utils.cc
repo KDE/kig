@@ -197,7 +197,6 @@ CabriReader_v10::~CabriReader_v10()
 
 bool CabriReader_v10::readWindowMetrics(QFile &f)
 {
-    // QString file = f.fileName();
 
     QString line = CabriNS::readLine(f);
     const QRegularExpression first("^Window center x: (.+) y: (.+) Window size x: (.+) y: (.+)$");
