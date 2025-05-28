@@ -143,7 +143,7 @@ KigExportManager::~KigExportManager()
 void KigExportManager::addMenuAction(const KigPart *doc, KigWidget *w, KActionCollection *coll)
 {
     KActionMenu *m = new KActionMenu(i18n("&Export To"), w);
-    m->setIcon(QIcon(new KIconEngine("document-export", KIconLoader::global())));
+    m->setIcon(QIcon::fromTheme("document-export"));
     for (uint i = 0; i < mexporters.size(); ++i)
         m->addAction(new ExporterAction(doc, w, coll, mexporters[i]));
     if (coll)
