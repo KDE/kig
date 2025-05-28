@@ -482,7 +482,6 @@ void CabriReader_v12::initColorMap()
 
 bool CabriReader_v12::readWindowMetrics(QFile &f)
 {
-    // QString file = f.fileName();
 
     QString line = CabriNS::readLine(f);
     const QRegularExpression first("^Window center x: (.+) y: (.+) Window size x: (.+) y: (.+)$");
