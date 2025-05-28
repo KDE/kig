@@ -272,7 +272,7 @@ void KigPart::setupActions()
 
     a = KStandardAction::fitToPage(m_widget, SLOT(slotRecenterScreen()), actionCollection());
     // Why isn't there an icon for this?
-    a->setIcon(QIcon(new KIconEngine("view_fit_to_page", KIconLoader::global())));
+    a->setIcon(QIcon::fromTheme("view_fit_to_page"));
     a->setToolTip(i18n("Recenter the screen on the document"));
     a->setWhatsThis(i18n("Recenter the screen on the document"));
 
