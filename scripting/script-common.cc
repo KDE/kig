@@ -9,20 +9,18 @@
 
 #include <QDebug>
 
-#include <libintl.h>
-
 struct script_prop {
-    const char *fillCodeStatement;
-    const char *icon;
-    const char *highlightStyle;
+    const KLazyLocalizedString fillCodeStatement;
+    const QString icon;
+    const QString highlightStyle;
 };
 
-static const script_prop scripts_properties[] = {{gettext("Now fill in the code:"), "application-x-thoshellscript", 0},
-                                                 {gettext("Now fill in the Python code:"), "text-x-python", "Python-Kig"}};
+static const script_prop scripts_properties[] = {{kli18n("Now fill in the code:"), "application-x-thoshellscript", {}},
+                                                 {kli18n("Now fill in the Python code:"), "text-x-python", "Python-Kig"}};
 
 QString ScriptType::fillCodeStatement(ScriptType::Type type)
 {
-    return i18n(scripts_properties[type].fillCodeStatement);
+    return scripts_properties[type].fillCodeStatement.toString();
 }
 
 QString ScriptType::templateCode(ScriptType::Type type, std::list<ObjectHolder *> args)
@@ -111,14 +109,14 @@ void ScriptType::updateCodeFunction(ScriptType::Type type, std::list<ObjectHolde
     }
 }
 
-const char *ScriptType::icon(ScriptType::Type type)
+QString ScriptType::icon(ScriptType::Type type)
 {
     return scripts_properties[type].icon;
 }
 
 QString ScriptType::highlightStyle(ScriptType::Type type)
 {
-    return scripts_properties[type].highlightStyle ? QString::fromLatin1(scripts_properties[type].highlightStyle) : QString();
+    return scripts_properties[type].highlightStyle;
 }
 
 ScriptType::Type ScriptType::intToType(int type)

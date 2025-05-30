@@ -120,8 +120,8 @@ void setupBuiltinStuff()
         // we only register the guiaction, cause it makes sense to have a
         // toolbar icon for this.
         static PropertyObjectConstructor anglebisectionctor(AngleImp::stype(),
-                                                            gettext("Construct Bisector of This Angle"),
-                                                            gettext("Select the angle you want to construct the bisector of..."),
+                                                            kli18n("Construct Bisector of This Angle"),
+                                                            kli18n("Select the angle you want to construct the bisector of..."),
                                                             i18n("Angle Bisector"),
                                                             i18n("The bisector of an angle"),
                                                             "angle_bisector",
@@ -240,7 +240,7 @@ void setupBuiltinStuff()
 
             ObjectConstructor *mpotp = new MidPointOfTwoPointsConstructor();
             ObjectConstructor *mpos =
-                new PropertyObjectConstructor(SegmentImp::stype(), gettext("Construct the midpoint of this segment"), "", "", "", "", "mid-point");
+                new PropertyObjectConstructor(SegmentImp::stype(), kli18n("Construct the midpoint of this segment"), {}, "", "", "", "mid-point");
 
             // make this a static object, so it gets deleted at the end of
             // the program.
@@ -262,8 +262,8 @@ void setupBuiltinStuff()
 
             ObjectConstructor *mpotp = new GoldenPointOfTwoPointsConstructor();
             ObjectConstructor *mpos = new PropertyObjectConstructor(SegmentImp::stype(),
-                                                                    gettext("Construct the golden ratio point of this segment"),
-                                                                    "",
+                                                                    kli18n("Construct the golden ratio point of this segment"),
+                                                                    {},
                                                                     "",
                                                                     "",
                                                                     "",
@@ -610,7 +610,7 @@ void setupBuiltinStuff()
 #ifdef KIG_ENABLE_PYTHON_SCRIPTING
 #include "../scripting/script-common.h"
         actions->add(
-            new NewScriptAction(gettext("Python Script"), gettext("Construct a new Python script."), "objects_new_script_python", ScriptType::Python));
+            new NewScriptAction(kli18n("Python Script"), kli18n("Construct a new Python script."), "objects_new_script_python", ScriptType::Python));
 #endif
 
 #if 0

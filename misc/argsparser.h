@@ -5,6 +5,7 @@
 #pragma once
 
 #include "../objects/common.h"
+#include <KLazyLocalizedString>
 
 #include <string>
 
@@ -96,10 +97,12 @@ public:
      * this are some enum values that we return from some functions.
      */
     enum { Invalid = 0, Valid = 1, Complete = 2 };
+
+    using MaybeTranslated = std::variant<KLazyLocalizedString, std::string>;
     struct spec {
         const ObjectImpType *type;
-        std::string usetext;
-        std::string selectstat;
+        MaybeTranslated usetext;
+        MaybeTranslated selectstat;
         bool onOrThrough;
     };
 

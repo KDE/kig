@@ -19,12 +19,12 @@
 
 #include <libintl.h>
 
-static const char constructcenterofcurvaturepoint[] = "SHOULDNOTBESEEN";
+static const KLazyLocalizedString constructcenterofcurvaturepoint = {};
 //  I18N_NOOP( "Construct the center of curvature corresponding to this point" );
-static const char *selectcoc1 = gettext("Select the curve...");
-static const char *selectcoc2 = gettext("Select a point on the curve...");
+static const KLazyLocalizedString selectcoc1 = kli18n("Select the curve...");
+static const KLazyLocalizedString selectcoc2 = kli18n("Select a point on the curve...");
 
-static const ArgsParser::spec argsspecCocConic[] = {{ConicImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false},
+static const ArgsParser::spec argsspecCocConic[] = {{ConicImp::stype(), {}, selectcoc1, false},
                                                     {PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CocConicType)
@@ -105,7 +105,7 @@ const ObjectImpType *CocConicType::resultId() const
 
 /**** Cubic starts here ****/
 
-static const ArgsParser::spec argsspecCocCubic[] = {{CubicImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false},
+static const ArgsParser::spec argsspecCocCubic[] = {{CubicImp::stype(), {}, selectcoc1, false},
                                                     {PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CocCubicType)
@@ -182,7 +182,7 @@ const ObjectImpType *CocCubicType::resultId() const
 
 /**** Curve starts here ****/
 
-static const ArgsParser::spec argsspecCocCurve[] = {{CurveImp::stype(), "SHOULDNOTBESEEN", selectcoc1, false},
+static const ArgsParser::spec argsspecCocCurve[] = {{CurveImp::stype(), {}, selectcoc1, false},
                                                     {PointImp::stype(), constructcenterofcurvaturepoint, selectcoc2, false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(CocCurveType)

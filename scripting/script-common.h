@@ -40,7 +40,7 @@ public:
     /**
      * Returns the icon's name for a script language.
      */
-    static const char *icon(ScriptType::Type type);
+    static QString icon(ScriptType::Type type);
     /**
      * Returns the Kate highlight stytle name for a script language.
      */

@@ -164,7 +164,11 @@ const ObjectImpType *ArgsParser::impRequirement(const ObjectImp *o, const Args &
 std::string ArgsParser::usetext(const ObjectImp *obj, const Args &sel) const
 {
     spec s = findSpec(obj, sel);
-    return s.usetext;
+    if (std::holds_alternative<KLazyLocalizedString>(s.usetext)) {
+        return std::get<KLazyLocalizedString>(s.usetext).toString().toStdString();
+    } else {
+        return std::get<std::string>(s.usetext);
+    }
 }
 
 template<typename Collection>
@@ -227,8 +231,13 @@ std::string ArgsParser::selectStatement(const Args &selection) const
         }
     }
     for (uint i = 0; i < margs.size(); ++i) {
-        if (!found[i])
-            return margs[i].selectstat;
+        if (!found[i]) {
+            if (std::holds_alternative<KLazyLocalizedString>(margs[i].selectstat)) {
+                return std::get<KLazyLocalizedString>(margs[i].selectstat).toString().toStdString();
+            } else {
+                return std::get<std::string>(margs[i].selectstat);
+            }
+        }
     }
     qDebug() << "no proper select statement found :(";
     return "";

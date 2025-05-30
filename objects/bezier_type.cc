@@ -24,8 +24,8 @@
  * Bézier curve of degree 2
  */
 
-static const char *bezier2_constructstatement = gettext("Construct a quadratic Bézier curve with this control point");
-static const char *bezier2_constructstatement2 = gettext("Select a point to be a control point of the new quadratic Bézier curve...");
+static const KLazyLocalizedString bezier2_constructstatement = kli18n("Construct a quadratic Bézier curve with this control point");
+static const KLazyLocalizedString bezier2_constructstatement2 = kli18n("Select a point to be a control point of the new quadratic Bézier curve...");
 
 static const struct ArgsParser::spec argsspecBezier2[] = {
     // mp: the central control point is not on the curve
@@ -119,8 +119,8 @@ std::vector<ObjectCalcer *> BezierQuadricType::movableParents(const ObjectTypeCa
  * Bézier curve of degree 3
  */
 
-static const char *bezier3_constructstatement = gettext("Construct a cubic Bézier curve with this control point");
-static const char *bezier3_constructstatement2 = gettext("Select a point to be a control point of the new cubic Bézier curve...");
+static const KLazyLocalizedString bezier3_constructstatement = kli18n("Construct a cubic Bézier curve with this control point");
+static const KLazyLocalizedString bezier3_constructstatement2 = kli18n("Select a point to be a control point of the new cubic Bézier curve...");
 
 static const struct ArgsParser::spec argsspecBezier3[] = {{PointImp::stype(), bezier3_constructstatement, bezier3_constructstatement2, true},
                                                           {PointImp::stype(), bezier3_constructstatement, bezier3_constructstatement2, false},
@@ -326,9 +326,9 @@ std::vector<ObjectCalcer *> BezierCurveType::movableParents(const ObjectTypeCalc
  * Rational Bézier curve of degree 2
  */
 
-static const char *rbezier2_constructstatement = gettext("Construct a quadratic rational Bézier curve with this control point");
-static const char *rbezier2_constructstatement2 = gettext("Select three points and three numeric values as weights to construct rational Bézier curve...");
-static const char *rbezier2_constructstatement3 = gettext("Select this value as weight");
+static const KLazyLocalizedString rbezier2_constructstatement = kli18n("Construct a quadratic rational Bézier curve with this control point");
+static const KLazyLocalizedString rbezier2_constructstatement2 = kli18n("Select three points and three numeric values as weights to construct rational Bézier curve...");
+static const KLazyLocalizedString rbezier2_constructstatement3 = kli18n("Select this value as weight");
 
 static const struct ArgsParser::spec argsspecRationalBezier2[] = {{PointImp::stype(), rbezier2_constructstatement, rbezier2_constructstatement2, true},
                                                                   {&weightimptypeinstance, rbezier2_constructstatement3, rbezier2_constructstatement2, false},
@@ -431,9 +431,9 @@ std::vector<ObjectCalcer *> RationalBezierQuadricType::movableParents(const Obje
  * Rational Bézier curve of degree 3
  */
 
-static const char *rbezier3_constructstatement = gettext("Construct a cubic rational Bézier curve with this control point");
-static const char *rbezier3_constructstatement2 = gettext("Select three points and three numeric values as weights to construct rational Bézier curve...");
-static const char *rbezier3_constructstatement3 = gettext("Select this value as weight");
+static const KLazyLocalizedString rbezier3_constructstatement = kli18n("Construct a cubic rational Bézier curve with this control point");
+static const KLazyLocalizedString rbezier3_constructstatement2 = kli18n("Select three points and three numeric values as weights to construct rational Bézier curve...");
+static const KLazyLocalizedString rbezier3_constructstatement3 = kli18n("Select this value as weight");
 
 static const struct ArgsParser::spec argsspecRationalBezier3[] = {{PointImp::stype(), rbezier3_constructstatement, rbezier3_constructstatement2, true},
                                                                   {&weightimptypeinstance, rbezier3_constructstatement3, rbezier3_constructstatement2, false},
