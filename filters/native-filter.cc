@@ -32,6 +32,7 @@
 #include <QTextStream>
 
 #include <KTar>
+#include <KLazyLocalizedString>
 
 struct HierElem {
     int id;
@@ -353,7 +354,7 @@ KigFilterNative *KigFilterNative::instance()
     return &f;
 }
 
-static const KLazyLocalizedString obsoletemessage = kli18n(
+static constexpr auto obsoletemessage = kli18n(
     "This Kig file uses an object of type \"%1\", "
     "which is obsolete, you should save the construction with "
     "a different name and check that it works as expected.");
@@ -678,7 +679,6 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
     // we have an empty outfile, so we have to print all to stdout
     if (outfile.isEmpty()) {
         QTextStream stdoutstream(stdout, QIODevice::WriteOnly);
-        stdoutstream.setEncoding(QStringConverter::Utf8);
         return save07(data, stdoutstream);
     }
     if (!outfile.endsWith(QLatin1String(".kig"), Qt::CaseInsensitive)) {
@@ -700,7 +700,6 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
         if (!ftmpfile.open(QIODevice::WriteOnly))
             return false;
         QTextStream stream(&ftmpfile);
-        stream.setEncoding(QStringConverter::Utf8);
         if (!save07(data, stream))
             return false;
         ftmpfile.close();
@@ -724,7 +723,6 @@ bool KigFilterNative::save07(const KigDocument &data, const QString &outfile)
             return false;
         }
         QTextStream stream(&file);
-        stream.setEncoding(QStringConverter::Utf8);
         return save07(data, stream);
     }
 

@@ -20,8 +20,6 @@
 #include <KActionCollection>
 #include <KIconEngine>
 #include <KIconLoader>
-#include <KLocalizedString>
-#include <KLazyLocalizedString>
 
 #include <QIcon>
 
@@ -347,7 +345,7 @@ void TestAction::act( KigPart& doc )
 #include "../scripting/python_type.h"
 #include "../scripting/script_mode.h"
 
-NewScriptAction::NewScriptAction(const KLazyLocalizedString &descname, const KLazyLocalizedString &description, const QString &actionname, const ScriptType::Type type, const QString &icon)
+NewScriptAction::NewScriptAction(const QString &descname, const QString &description, const QString &actionname, const ScriptType::Type type, const QString &icon)
     : GUIAction()
     , mactionname(actionname)
     , mdescname(descname)
@@ -366,7 +364,7 @@ NewScriptAction::~NewScriptAction()
 
 QString NewScriptAction::description() const
 {
-    return mdescription.toString();
+    return mdescription;
 }
 
 QString NewScriptAction::iconFileName(const bool) const
@@ -376,7 +374,7 @@ QString NewScriptAction::iconFileName(const bool) const
 
 QString NewScriptAction::descriptiveName() const
 {
-    return mdescname.toString();
+    return mdescname;
 }
 
 QString NewScriptAction::actionName() const

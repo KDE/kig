@@ -10,17 +10,17 @@
 #include <QDebug>
 
 struct script_prop {
-    const KLazyLocalizedString fillCodeStatement;
+    const QString fillCodeStatement;
     const QString icon;
     const QString highlightStyle;
 };
 
-static const script_prop scripts_properties[] = {{kli18n("Now fill in the code:"), "application-x-thoshellscript", {}},
-                                                 {kli18n("Now fill in the Python code:"), "text-x-python", "Python-Kig"}};
+static const script_prop scripts_properties[] = {{i18n("Now fill in the code:"), "application-x-thoshellscript", {}},
+                                                 {i18n("Now fill in the Python code:"), "text-x-python", "Python-Kig"}};
 
 QString ScriptType::fillCodeStatement(ScriptType::Type type)
 {
-    return scripts_properties[type].fillCodeStatement.toString();
+    return scripts_properties[type].fillCodeStatement;
 }
 
 QString ScriptType::templateCode(ScriptType::Type type, std::list<ObjectHolder *> args)

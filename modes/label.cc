@@ -31,7 +31,6 @@
 
 #include <KIconEngine>
 #include <KIconLoader>
-#include <KLazyLocalizedString>
 #include <KMessageBox>
 
 #include <algorithm>
@@ -154,17 +153,18 @@ void TextLabelModeBase::leftReleased(QMouseEvent *e, KigWidget *v, ObjectTypeCal
         p.setObjectName(QStringLiteral("text_label_select_arg_popup"));
         QAction *act = p.addAction(i18n("Name"));
         act->setData(QVariant::fromValue(0));
-        QList<KLazyLocalizedString> l = o->imp()->properties();
-        assert(l.size() == o->imp()->numberOfProperties());
-        for (int i = 0; i < l.size(); ++i) {
-            QString s = l[i].toString();
+        const auto properties = o->imp()->properties();
+        assert(properties.size() == o->imp()->numberOfProperties());
+        int i = 0;
+        for (const auto &property : properties) {
             const char *iconfile = o->imp()->iconForProperty(i);
             if (iconfile && *iconfile) {
-                act = p.addAction(QIcon(new KIconEngine(QLatin1String(iconfile), KIconLoader::global())), s);
+                act = p.addAction(QIcon(new KIconEngine(QLatin1String(iconfile), KIconLoader::global())), property.toString());
             } else {
-                act = p.addAction(s);
+                act = p.addAction(property.toString());
             };
             act->setData(QVariant::fromValue(i + 1));
+            i++;
         };
         act = p.exec(v->mapToGlobal(d->plc));
         if (!act)
@@ -181,7 +181,7 @@ void TextLabelModeBase::leftReleased(QMouseEvent *e, KigWidget *v, ObjectTypeCal
                 argcalcer = c;
             }
         } else {
-            assert(result < l.size() + 1);
+            assert(result < properties.size() + 1);
             //      argcalcer = new ObjectPropertyCalcer( o->calcer(), result - 1 );
             argcalcer = new ObjectPropertyCalcer(o->calcer(), result - 1, true);
         }

@@ -30,6 +30,9 @@ int main() { return 0; }
 " ${varname} )
 endmacro(BoostPython_TRY_COMPILE)
 
+cmake_policy(SET CMP0167 OLD)
+cmake_policy(SET CMP0148 OLD)
+
 find_package(Boost QUIET COMPONENTS python3)
 if(NOT Boost_PYTHON3_FOUND)
   find_package(Boost QUIET COMPONENTS python)

@@ -18,10 +18,6 @@
 #include <KAboutData>
 #include <KCrash>
 #include <KPluginMetaData>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#include <Kdelibs4Migration>
-#endif
 
 #include "aboutdata.h"
 
@@ -37,43 +33,9 @@ static int convertToNative(const QUrl &file, const QByteArray &outfile)
     }
     return (*converterfunction)(file, outfile);
 }
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-static bool configMigration()
-{
-    Kdelibs4ConfigMigrator migrator(QStringLiteral("kig"));
-
-    migrator.setConfigFiles(QStringList() << QStringLiteral("test.txt"));
-
-    return migrator.migrate();
-}
-
-static void dataMigration()
-{
-    Kdelibs4Migration datamigrator;
-    QString file = datamigrator.locateLocal("data", QStringLiteral("kig/kig-types/macros.kigt"));
-
-    if (!file.isEmpty()) {
-        QFile macros(file);
-        const QDir writeableDataLocation(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
-        const QDir typesDir(writeableDataLocation.absoluteFilePath(QStringLiteral("kig-types")));
-
-        if (!typesDir.exists()) {
-            writeableDataLocation.mkpath(QStringLiteral("kig-types"));
-        }
-
-        macros.copy(typesDir.absoluteFilePath(QStringLiteral("macros.kigt")));
-    }
-}
-#endif
 
 int main(int argc, char **argv)
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    configMigration();
-
-    // Fixes blurry icons with Fractional scaling
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("kig");
     KAboutData about = kigAboutData("kig");
@@ -92,9 +54,6 @@ int main(int argc, char **argv)
     KAboutData::setApplicationData(about);
     QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("kig")));
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    dataMigration(); // This needs the about AboutData to be set up
-#endif
     about.setupCommandLine(&parser);
     parser.addOption(convertToNativeOption);
     parser.addOption(outfileOption);

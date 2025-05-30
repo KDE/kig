@@ -98,7 +98,7 @@ public:
      */
     enum { Invalid = 0, Valid = 1, Complete = 2 };
 
-    using MaybeTranslated = std::variant<KLazyLocalizedString, std::string>;
+    using MaybeTranslated = std::variant<KLazyLocalizedString, QString>;
     struct spec {
         const ObjectImpType *type;
         MaybeTranslated usetext;

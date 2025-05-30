@@ -151,14 +151,14 @@ public:
 class NewScriptAction : public GUIAction
 {
     QString mactionname;
-    KLocalizedString mdescname;
-    KLocalizedString mdescription;
+    QString mdescname;
+    QString mdescription;
     QString micon;
     const ScriptType::Type mtype;
 
 public:
-    NewScriptAction(const KLazyLocalizedString &descname,
-                    const KLazyLocalizedString &description,
+    NewScriptAction(const QString &descname,
+                    const QString &description,
                     const QString &actionname,
                     const ScriptType::Type type,
                     const QString &icon = "");

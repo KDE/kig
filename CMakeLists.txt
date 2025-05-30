@@ -41,10 +41,8 @@ find_package(KF6Archive ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6XmlGui ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6Crash ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}Svg ${QT_REQUIRED_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_REQUIRED_VERSION} REQUIRED)
-#find_package(Qt${QT_MAJOR_VERSION}XmlPatterns ${QT_REQUIRED_VERSION})
-
+find_package(Qt6Svg ${QT_REQUIRED_VERSION} REQUIRED)
+find_package(Qt6PrintSupport ${QT_REQUIRED_VERSION} REQUIRED)
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KIG VERSION_HEADER kig_version.h)
 
@@ -58,7 +56,6 @@ endif()
 
 include(KigConfigureChecks.cmake)
 
-cmake_policy(SET CMP0167 OLD)
 find_package(BoostPython)
 
 if(KF6DocTools_FOUND)

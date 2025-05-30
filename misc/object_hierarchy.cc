@@ -424,10 +424,10 @@ void ObjectHierarchy::serialize(QDomElement &parent, QDomDocument &doc) const
         // we only load them from builtin macro's.
         if (msaveinputtags) {
             QDomElement ut = doc.createElement(QStringLiteral("UseText"));
-            ut.appendChild(doc.createTextNode(QString::fromLatin1(musetexts[i].c_str())));
+            ut.appendChild(doc.createTextNode(musetexts[i]));
             e.appendChild(ut);
             QDomElement ss = doc.createElement(QStringLiteral("SelectStatement"));
-            ss.appendChild(doc.createTextNode(QString::fromLatin1(mselectstatements[i].c_str())));
+            ss.appendChild(doc.createTextNode(mselectstatements[i]));
             e.appendChild(ss);
         }
         parent.appendChild(e);
@@ -506,15 +506,15 @@ ObjectHierarchy *ObjectHierarchy::buildSafeObjectHierarchy(const QDomElement &pa
         obhi->musetexts.resize(obhi->mnumberofargs, "");
         obhi->mselectstatements.resize(obhi->mnumberofargs, "");
         obhi->margrequirements[id - 1] = req;
-        obhi->musetexts[id - 1] = req->selectStatement().toLatin1().constData();
+        obhi->musetexts[id - 1] = req->selectStatement();
         QDomElement esub = e.firstChild().toElement();
         for (; !esub.isNull(); esub = esub.nextSibling().toElement()) {
             if (esub.tagName() == QLatin1String("UseText")) {
                 obhi->msaveinputtags = true;
-                obhi->musetexts[id - 1] = esub.text().toLatin1().data();
+                obhi->musetexts[id - 1] = esub.text();
             } else if (esub.tagName() == QLatin1String("SelectStatement")) {
                 obhi->msaveinputtags = true;
-                obhi->mselectstatements[id - 1] = esub.text().toLatin1().data();
+                obhi->mselectstatements[id - 1] = esub.text();
             } else {
                 // broken file ? ignore...
             }
@@ -725,7 +725,7 @@ int ObjectHierarchy::storeObject(const ObjectCalcer *o,
             std::vector<ObjectCalcer *> opl = o->parents();
 
             margrequirements[pl[i]] = lowermost(margrequirements[pl[i]], o->impRequirement(parent, opl), parent->imp()->type());
-            musetexts[pl[i]] = margrequirements[pl[i]]->selectStatement().toLatin1().constData();
+            musetexts[pl[i]] = margrequirements[pl[i]]->selectStatement();
         };
     };
     if (dynamic_cast<const ObjectTypeCalcer *>(o))
