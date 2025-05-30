@@ -41,9 +41,9 @@ find_package(KF6Archive ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6XmlGui ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6Crash ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}Svg ${QT_REQUIRED_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_REQUIRED_VERSION} REQUIRED)
-#find_package(Qt${QT_MAJOR_VERSION}XmlPatterns ${QT_REQUIRED_VERSION})
+find_package(Qt5Svg ${QT_REQUIRED_VERSION} REQUIRED)
+find_package(Qt5PrintSupport ${QT_REQUIRED_VERSION} REQUIRED)
+#find_package(Qt5XmlPatterns ${QT_REQUIRED_VERSION})
 
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KIG VERSION_HEADER kig_version.h)
