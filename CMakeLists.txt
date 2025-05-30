@@ -60,7 +60,6 @@ include(KigConfigureChecks.cmake)
 
 cmake_policy(SET CMP0167 OLD)
 find_package(BoostPython)
-find_package(LibIntl)
 
 if(KF6DocTools_FOUND)
   add_subdirectory( doc )
@@ -83,13 +82,6 @@ set_package_properties(
    URL "https://www.boost.org/"
    TYPE OPTIONAL
    PURPOSE "Kig can optionally use Boost.Python for Python scripting"
-)
-
-set_package_properties(
-   LibIntl PROPERTIES
-   URL "http://gnuwin32.sourceforge.net/packages/libintl.htm"
-   TYPE REQUIRED
-   PURPOSE "Needed for localization, in addition with KI18n"
 )
 
 if(QT_VERSION_MAJOR LESS 6)
@@ -386,9 +378,7 @@ target_link_libraries(kigpart
   KF6::IconWidgets
   KF6::ConfigWidgets
   KF6::Archive
-  ${LibIntl_LIBRARIES}
 )
-target_include_directories(kigpart PRIVATE ${LibIntl_INCLUDE_DIRS})
 
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} KF6::TextEditor)

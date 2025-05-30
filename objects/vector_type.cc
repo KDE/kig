@@ -11,8 +11,8 @@
 #include <libintl.h>
 
 static const ArgsParser::spec argsspecVector[] = {
-    {PointImp::stype(), gettext("Construct a vector from this point"), gettext("Select the start point of the new vector..."), true},
-    {PointImp::stype(), gettext("Construct a vector to this point"), gettext("Select the end point of the new vector..."), true}};
+    {PointImp::stype(), kli18n("Construct a vector from this point"), kli18n("Select the start point of the new vector..."), true},
+    {PointImp::stype(), kli18n("Construct a vector to this point"), kli18n("Select the end point of the new vector..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(VectorType)
 
@@ -43,14 +43,14 @@ const ObjectImpType *VectorType::resultId() const
 
 static const ArgsParser::spec argsspecVectorSum[] = {
     {VectorImp::stype(),
-     gettext("Construct the vector sum of this vector and another one."),
-     gettext("Select the first of the two vectors of which you want to construct the sum..."),
+     kli18n("Construct the vector sum of this vector and another one."),
+     kli18n("Select the first of the two vectors of which you want to construct the sum..."),
      false},
     {VectorImp::stype(),
-     gettext("Construct the vector sum of this vector and the other one."),
-     gettext("Select the other of the two vectors of which you want to construct the sum..."),
+     kli18n("Construct the vector sum of this vector and the other one."),
+     kli18n("Select the other of the two vectors of which you want to construct the sum..."),
      false},
-    {PointImp::stype(), gettext("Construct the vector sum starting at this point."), gettext("Select the point to construct the sum vector in..."), false}};
+    {PointImp::stype(), kli18n("Construct the vector sum starting at this point."), kli18n("Select the point to construct the sum vector in..."), false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(VectorSumType)
 

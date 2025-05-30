@@ -31,16 +31,16 @@
 
 struct color_struct {
     const Qt::GlobalColor color;
-    const char *name;
+    const KLazyLocalizedString name;
 };
 
-static const color_struct colors[] = {{Qt::black, gettext("Black")},
-                                      {Qt::gray, gettext("Gray")},
-                                      {Qt::red, gettext("Red")},
-                                      {Qt::green, gettext("Green")},
-                                      {Qt::cyan, gettext("Cyan")},
-                                      {Qt::yellow, gettext("Yellow")},
-                                      {Qt::darkRed, gettext("Dark Red")}};
+static const color_struct colors[] = {{Qt::black, kli18n("Black")},
+                                      {Qt::gray, kli18n("Gray")},
+                                      {Qt::red, kli18n("Red")},
+                                      {Qt::green, kli18n("Green")},
+                                      {Qt::cyan, kli18n("Cyan")},
+                                      {Qt::yellow, kli18n("Yellow")},
+                                      {Qt::darkRed, kli18n("Dark Red")}};
 
 const int numberofcolors = 7; // is there a better way to calc that?
 
@@ -73,7 +73,7 @@ void BuiltinObjectActionsProvider::fillUpMenu(NormalModePopupObjects &popup, int
         QPixmap p(20, 20);
         for (int i = 0; i < numberofcolors; i++) {
             p.fill(QColor(colors[i].color));
-            popup.addInternalAction(menu, QIcon(p), i18n(colors[i].name), nextfree++);
+            popup.addInternalAction(menu, QIcon(p), colors[i].name.toString(), nextfree++);
         }
         popup.addInternalAction(menu, QIcon(new KIconEngine("color", l)), i18n("&Custom Color"), nextfree++);
     } else if (menu == NormalModePopupObjects::SetSizeMenu && !popup.onlyLabels()) {

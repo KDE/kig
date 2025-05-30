@@ -162,16 +162,16 @@ public:
 class PropertyObjectConstructor : public StandardConstructorBase
 {
     ArgsParser mparser;
-    const char *mpropinternalname;
+    QByteArray mpropinternalname;
 
 public:
     explicit PropertyObjectConstructor(const ObjectImpType *imprequirement,
-                                       const char *usetext,
-                                       const char *selectstat,
+                                       const KLazyLocalizedString &usetext,
+                                       const KLazyLocalizedString &selectstat,
                                        const QString &descname,
                                        const QString &desc,
                                        const QString &iconfile,
-                                       const char *propertyinternalname);
+                                       const QByteArray &propertyinternalname);
 
     ~PropertyObjectConstructor();
 

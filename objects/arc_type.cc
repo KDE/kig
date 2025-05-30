@@ -31,12 +31,12 @@ using std::find;
  * oriented arc by three points
  */
 
-static const char *constructarcstartingstat = gettext("Construct an arc starting at this point");
+static const KLazyLocalizedString constructarcstartingstat = kli18n("Construct an arc starting at this point");
 
 static const ArgsParser::spec argsspecArcBTP[] = {
-    {PointImp::stype(), constructarcstartingstat, gettext("Select the start point of the new arc..."), true},
-    {PointImp::stype(), gettext("Construct an arc through this point"), gettext("Select a point for the new arc to go through..."), true},
-    {PointImp::stype(), gettext("Construct an arc ending at this point"), gettext("Select the end point of the new arc..."), true}};
+    {PointImp::stype(), constructarcstartingstat, kli18n("Select the start point of the new arc..."), true},
+    {PointImp::stype(), kli18n("Construct an arc through this point"), kli18n("Select a point for the new arc to go through..."), true},
+    {PointImp::stype(), kli18n("Construct an arc ending at this point"), kli18n("Select the end point of the new arc..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ArcBTPType)
 
@@ -146,9 +146,9 @@ const ObjectImpType *ArcBTPType::resultId() const
  */
 
 static const ArgsParser::spec argsspecArcBCPA[] = {
-    {PointImp::stype(), gettext("Construct an arc with this center"), gettext("Select the center of the new arc..."), true},
-    {PointImp::stype(), constructarcstartingstat, gettext("Select the start point of the new arc..."), true},
-    {AngleImp::stype(), gettext("Construct an arc with this angle"), gettext("Select the angle of the new arc..."), true}};
+    {PointImp::stype(), kli18n("Construct an arc with this center"), kli18n("Select the center of the new arc..."), true},
+    {PointImp::stype(), constructarcstartingstat, kli18n("Select the start point of the new arc..."), true},
+    {AngleImp::stype(), kli18n("Construct an arc with this angle"), kli18n("Select the angle of the new arc..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(ArcBCPAType)
 
@@ -202,15 +202,15 @@ const ObjectImpType *ArcBCPAType::resultId() const
  * arc of conic by three points and center
  */
 
-static const char *constructconicarcstartingstat = gettext("Construct a conic arc starting at this point");
-static const char *selectconicarcstartingstat = gettext("Select the start point of the new conic arc...");
-static const char *constructconicarcthrustat = gettext("Construct a conic arc through this point");
-static const char *selectconicarcthrustat = gettext("Select a point for the new conic arc to go through...");
-static const char *constructconicarcendingstat = gettext("Construct a conic arc ending at this point");
-static const char *selectconicarcendingstat = gettext("Select the end point of the new conic arc...");
+static const KLazyLocalizedString constructconicarcstartingstat = kli18n("Construct a conic arc starting at this point");
+static const KLazyLocalizedString selectconicarcstartingstat = kli18n("Select the start point of the new conic arc...");
+static const KLazyLocalizedString constructconicarcthrustat = kli18n("Construct a conic arc through this point");
+static const KLazyLocalizedString selectconicarcthrustat = kli18n("Select a point for the new conic arc to go through...");
+static const KLazyLocalizedString constructconicarcendingstat = kli18n("Construct a conic arc ending at this point");
+static const KLazyLocalizedString selectconicarcendingstat = kli18n("Select the end point of the new conic arc...");
 
 static const ArgsParser::spec argsspecConicArcBCTP[] = {
-    {PointImp::stype(), gettext("Construct an conic arc with this center"), gettext("Select the center of the new conic arc..."), false},
+    {PointImp::stype(), kli18n("Construct an conic arc with this center"), kli18n("Select the center of the new conic arc..."), false},
     {PointImp::stype(), constructconicarcstartingstat, selectconicarcstartingstat, true},
     {PointImp::stype(), constructconicarcthrustat, selectconicarcthrustat, true},
     {PointImp::stype(), constructconicarcendingstat, selectconicarcendingstat, true}};

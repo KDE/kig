@@ -497,12 +497,12 @@ bool ObjectConstructor::isIntersection() const
 }
 
 PropertyObjectConstructor::PropertyObjectConstructor(const ObjectImpType *imprequirement,
-                                                     const char *usetext,
-                                                     const char *selectstat,
+                                                     const KLazyLocalizedString &usetext,
+                                                     const KLazyLocalizedString &selectstat,
                                                      const QString &descname,
                                                      const QString &desc,
                                                      const QString &iconfile,
-                                                     const char *propertyinternalname)
+                                                     const QByteArray &propertyinternalname)
     : StandardConstructorBase(descname, desc, iconfile, mparser)
     , mpropinternalname(propertyinternalname)
 {

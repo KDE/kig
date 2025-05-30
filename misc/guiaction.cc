@@ -20,6 +20,8 @@
 #include <KActionCollection>
 #include <KIconEngine>
 #include <KIconLoader>
+#include <KLocalizedString>
+#include <KLazyLocalizedString>
 
 #include <QIcon>
 
@@ -36,7 +38,7 @@ ConstructibleAction::~ConstructibleAction()
 {
 }
 
-ConstructibleAction::ConstructibleAction(ObjectConstructor *ctor, const QByteArray &actionname, int shortcut)
+ConstructibleAction::ConstructibleAction(ObjectConstructor *ctor, const QString &actionname, int shortcut)
     : GUIAction()
     , mctor(ctor)
     , mactionname(actionname)
@@ -74,7 +76,7 @@ KigGUIAction::KigGUIAction(GUIAction *act, KigPart &doc)
 {
     QString icon = act->iconFileName(true);
     if (!icon.isEmpty())
-        setIcon(QIcon(new KIconEngine(icon, KIconLoader::global())));
+        setIcon(QIcon::fromTheme(icon));
     setWhatsThis(act->description());
     QString tooltip = act->descriptiveName();
     tooltip.replace(QStringLiteral("&&"), QStringLiteral("&"));
@@ -90,7 +92,7 @@ void KigGUIAction::slotActivated()
     mact->act(mdoc);
 }
 
-const char *ConstructibleAction::actionName() const
+QString ConstructibleAction::actionName() const
 {
     return mactionname;
 }
@@ -116,7 +118,7 @@ QString ConstructPointAction::descriptiveName() const
     return i18n("Point");
 }
 
-const char *ConstructPointAction::actionName() const
+QString ConstructPointAction::actionName() const
 {
     return mactionname;
 }
@@ -132,7 +134,7 @@ void ConstructPointAction::act(KigPart &d)
     d.runMode(&m);
 }
 
-ConstructPointAction::ConstructPointAction(const char *actionname)
+ConstructPointAction::ConstructPointAction(const QString &actionname)
     : mactionname(actionname)
 {
 }
@@ -167,7 +169,7 @@ QString ConstructTextLabelAction::descriptiveName() const
     return i18n("Text Label");
 }
 
-const char *ConstructTextLabelAction::actionName() const
+QString ConstructTextLabelAction::actionName() const
 {
     return mactionname;
 }
@@ -178,7 +180,7 @@ void ConstructTextLabelAction::act(KigPart &d)
     d.runMode(&m);
 }
 
-ConstructTextLabelAction::ConstructTextLabelAction(const char *actionname)
+ConstructTextLabelAction::ConstructTextLabelAction(const QString &actionname)
     : mactionname(actionname)
 {
 }
@@ -198,7 +200,7 @@ QString AddFixedPointAction::descriptiveName() const
     return i18n("Point by Coordinates");
 }
 
-const char *AddFixedPointAction::actionName() const
+QString AddFixedPointAction::actionName() const
 {
     return mactionname;
 }
@@ -221,7 +223,7 @@ void AddFixedPointAction::act(KigPart &doc)
     doc.addObject(p);
 }
 
-AddFixedPointAction::AddFixedPointAction(const char *actionname)
+AddFixedPointAction::AddFixedPointAction(const QString &actionname)
     : mactionname(actionname)
 {
 }
@@ -245,7 +247,7 @@ QString ConstructNumericLabelAction::descriptiveName() const
     return i18n("Numeric Value");
 }
 
-const char *ConstructNumericLabelAction::actionName() const
+QString ConstructNumericLabelAction::actionName() const
 {
     return mactionname;
 }
@@ -256,7 +258,7 @@ void ConstructNumericLabelAction::act(KigPart &doc)
     doc.runMode(&m);
 }
 
-ConstructNumericLabelAction::ConstructNumericLabelAction(const char *actionname)
+ConstructNumericLabelAction::ConstructNumericLabelAction(const QString &actionname)
     : mactionname(actionname)
 {
 }
@@ -345,7 +347,7 @@ void TestAction::act( KigPart& doc )
 #include "../scripting/python_type.h"
 #include "../scripting/script_mode.h"
 
-NewScriptAction::NewScriptAction(const char *descname, const char *description, const char *actionname, const ScriptType::Type type, const char *icon)
+NewScriptAction::NewScriptAction(const KLazyLocalizedString &descname, const KLazyLocalizedString &description, const QString &actionname, const ScriptType::Type type, const QString &icon)
     : GUIAction()
     , mactionname(actionname)
     , mdescname(descname)
@@ -353,7 +355,7 @@ NewScriptAction::NewScriptAction(const char *descname, const char *description, 
     , micon(icon)
     , mtype(type)
 {
-    if (QString(micon).isEmpty()) {
+    if (micon.isEmpty()) {
         micon = ScriptType::icon(type);
     }
 }
@@ -364,7 +366,7 @@ NewScriptAction::~NewScriptAction()
 
 QString NewScriptAction::description() const
 {
-    return i18n(mdescription);
+    return mdescription.toString();
 }
 
 QString NewScriptAction::iconFileName(const bool) const
@@ -374,10 +376,10 @@ QString NewScriptAction::iconFileName(const bool) const
 
 QString NewScriptAction::descriptiveName() const
 {
-    return i18n(mdescname);
+    return mdescname.toString();
 }
 
-const char *NewScriptAction::actionName() const
+QString NewScriptAction::actionName() const
 {
     return mactionname;
 }

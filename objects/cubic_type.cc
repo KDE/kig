@@ -10,8 +10,8 @@
 
 #include <libintl.h>
 
-static const char *cubictpstatement = gettext("Construct a cubic curve through this point");
-static const char *cubicselectstatement = gettext("Select a point for the new cubic to go through...");
+static const KLazyLocalizedString cubictpstatement = kli18n("Construct a cubic curve through this point");
+static const KLazyLocalizedString cubicselectstatement = kli18n("Select a point for the new cubic to go through...");
 
 static const struct ArgsParser::spec argsspecCubicB9P[] = {{PointImp::stype(), cubictpstatement, cubicselectstatement, true},
                                                            {PointImp::stype(), cubictpstatement, cubicselectstatement, true},

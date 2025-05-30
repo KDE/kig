@@ -20,9 +20,9 @@
 
 #include <libintl.h>
 
-static const char *constructlinetangentpoint = "SHOULDNOTBESEEN";
-static const char *selecttangent1 = gettext("Select the curve...");
-static const char *selecttangent2 = gettext("Select the point for the tangent to go through...");
+static const KLazyLocalizedString constructlinetangentpoint = {};
+static const KLazyLocalizedString selecttangent1 = kli18n("Select the curve...");
+static const KLazyLocalizedString selecttangent2 = kli18n("Select the point for the tangent to go through...");
 
 static const ArgsParser::spec argsspecTangentConic[] = {{ConicImp::stype(), constructlinetangentpoint, selecttangent1, false},
                                                         {PointImp::stype(), constructlinetangentpoint, selecttangent2, true}};
@@ -71,7 +71,7 @@ const ObjectImpType *TangentConicType::resultId() const
 
 /*** Arc starts here ***/
 
-static const ArgsParser::spec argsspecTangentArc[] = {{ArcImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false},
+static const ArgsParser::spec argsspecTangentArc[] = {{ArcImp::stype(), {}, selecttangent1, false},
                                                       {PointImp::stype(), constructlinetangentpoint, selecttangent2, true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(TangentArcType)
@@ -123,7 +123,7 @@ const ObjectImpType *TangentArcType::resultId() const
 
 /**** Cubic starts here ****/
 
-static const ArgsParser::spec argsspecTangentCubic[] = {{CubicImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false},
+static const ArgsParser::spec argsspecTangentCubic[] = {{CubicImp::stype(), {}, selecttangent1, false},
                                                         {PointImp::stype(), constructlinetangentpoint, selecttangent2, true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(TangentCubicType)
@@ -189,7 +189,7 @@ const ObjectImpType *TangentCubicType::resultId() const
 
 /**** Curve (locus) starts here ****/
 
-static const ArgsParser::spec argsspecTangentCurve[] = {{CurveImp::stype(), "SHOULDNOTBESEEN", selecttangent1, false},
+static const ArgsParser::spec argsspecTangentCurve[] = {{CurveImp::stype(), {}, selecttangent1, false},
                                                         {PointImp::stype(), constructlinetangentpoint, selecttangent2, true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(TangentCurveType)

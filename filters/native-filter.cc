@@ -353,10 +353,10 @@ KigFilterNative *KigFilterNative::instance()
     return &f;
 }
 
-static const char *obsoletemessage =
+static const KLazyLocalizedString obsoletemessage = kli18n(
     "This Kig file uses an object of type \"%1\", "
     "which is obsolete, you should save the construction with "
-    "a different name and check that it works as expected.";
+    "a different name and check that it works as expected.");
 
 KigDocument *KigFilterNative::load07(const QDomElement &docelem)
 {
@@ -445,7 +445,7 @@ KigDocument *KigFilterNative::load07(const QDomElement &docelem)
                     const ObjectType *type = ObjectTypeFactory::instance()->find(tmp.toLatin1());
                     if (!type) {
                         if (tmp == QLatin1String("MeasureTransport") && parents.size() == 3) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("TransportOfMeasure");
                             ObjectCalcer *circle = parents[0];
                             ObjectCalcer *point = parents[1];
@@ -454,22 +454,22 @@ KigDocument *KigFilterNative::load07(const QDomElement &docelem)
                             parents[1] = circle;
                             parents[2] = point;
                         } else if (tmp == QLatin1String("LineCubicIntersection")) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("CubicLineIntersection");
                         } else if (tmp == QLatin1String("InvertLine")) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("CircularInversion");
                         } else if (tmp == QLatin1String("InvertSegment")) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("CircularInversion");
                         } else if (tmp == QLatin1String("InvertCircle")) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("CircularInversion");
                         } else if (tmp == QLatin1String("InvertArc")) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("CircularInversion");
                         } else if (tmp == QLatin1String("ConicArcBTPC")) {
-                            warning(i18n(obsoletemessage, tmp));
+                            warning(obsoletemessage.subs(tmp).toString());
                             type = ObjectTypeFactory::instance()->find("ConicArcBCTP");
                             //
                             // the only difference is in the order of parents

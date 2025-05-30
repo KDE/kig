@@ -22,8 +22,8 @@
 
 using std::find;
 
-static const struct ArgsParser::spec argsspecLocus[] = {{HierarchyImp::stype(), "hierarchy", "SHOULD NOT BE SEEN", false},
-                                                        {CurveImp::stype(), "curve", "SHOULD NOT BE SEEN", false}};
+static const struct ArgsParser::spec argsspecLocus[] = {{HierarchyImp::stype(), "hierarchy", {}, false},
+                                                        {CurveImp::stype(), "curve", {}, false}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(LocusType)
 

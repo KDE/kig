@@ -24,12 +24,12 @@
 
 #include <QStringList>
 
-static const char *constructanglethroughpoint = gettext("Construct an angle through this point");
+static const KLazyLocalizedString constructanglethroughpoint = kli18n("Construct an angle through this point");
 
 static const ArgsParser::spec argsspecAngle[] = {
-    {PointImp::stype(), constructanglethroughpoint, gettext("Select a point that the first half-line of the angle should go through..."), true},
-    {PointImp::stype(), gettext("Construct an angle at this point"), gettext("Select the point to construct the angle in..."), true},
-    {PointImp::stype(), constructanglethroughpoint, gettext("Select a point that the second half-line of the angle should go through..."), true}};
+    {PointImp::stype(), constructanglethroughpoint, kli18n("Select a point that the first half-line of the angle should go through..."), true},
+    {PointImp::stype(), kli18n("Construct an angle at this point"), kli18n("Select the point to construct the angle in..."), true},
+    {PointImp::stype(), constructanglethroughpoint, kli18n("Select a point that the second half-line of the angle should go through..."), true}};
 
 KIG_INSTANTIATE_OBJECT_TYPE_INSTANCE(AngleType)
 
