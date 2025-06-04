@@ -8,8 +8,6 @@
 #include "cubic_imp.h"
 #include "point_imp.h"
 
-#include <libintl.h>
-
 static const KLazyLocalizedString cubictpstatement = kli18n("Construct a cubic curve through this point");
 static const KLazyLocalizedString cubicselectstatement = kli18n("Select a point for the new cubic to go through...");
 

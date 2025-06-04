@@ -5,7 +5,6 @@
 #include "polygon_type.h"
 
 #include <math.h>
-#include <libintl.h>
 
 #include "bogus_imp.h"
 #include "line_imp.h"

@@ -8,8 +8,6 @@
 #include "other_imp.h"
 #include "point_imp.h"
 
-#include <libintl.h>
-
 static const ArgsParser::spec argsspecVector[] = {
     {PointImp::stype(), kli18n("Construct a vector from this point"), kli18n("Select the start point of the new vector..."), true},
     {PointImp::stype(), kli18n("Construct a vector to this point"), kli18n("Select the end point of the new vector..."), true}};

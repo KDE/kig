@@ -5,7 +5,6 @@
 #include "inversion_type.h"
 
 #include <math.h>
-#include <libintl.h>
 
 #include "bogus_imp.h"
 #include "circle_imp.h"

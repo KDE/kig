@@ -17,8 +17,6 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-#include <libintl.h>
-
 static const KLazyLocalizedString constructcenterofcurvaturepoint = {};
 //  I18N_NOOP( "Construct the center of curvature corresponding to this point" );
 static const KLazyLocalizedString selectcoc1 = kli18n("Select the curve...");

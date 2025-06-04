@@ -5,7 +5,6 @@
 #include "bezier_type.h"
 
 #include <math.h>
-#include <libintl.h>
 
 #include "bezier_imp.h"
 #include "bogus_imp.h"

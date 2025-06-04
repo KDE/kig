@@ -17,7 +17,6 @@
 #include "../misc/common.h"
 
 #include <QStringList>
-#include <libintl.h>
 
 static const ArgsParser::spec argsspecSegmentAB[] = {
     {PointImp::stype(), kli18n("Construct a segment starting at this point"), kli18n("Select the start point of the new segment..."), true},

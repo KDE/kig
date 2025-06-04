@@ -21,8 +21,6 @@
 #include <algorithm>
 #include <cmath>
 #include <functional>
-#include <libintl.h>
-#include <math.h>
 
 using std::find;
 

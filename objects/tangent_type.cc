@@ -18,8 +18,6 @@
 #include "../kig/kig_part.h"
 #include "../kig/kig_view.h"
 
-#include <libintl.h>
-
 static const KLazyLocalizedString constructlinetangentpoint = {};
 static const KLazyLocalizedString selecttangent1 = kli18n("Select the curve...");
 static const KLazyLocalizedString selecttangent2 = kli18n("Select the point for the tangent to go through...");

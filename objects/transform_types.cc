@@ -5,7 +5,6 @@
 #include "transform_types.h"
 
 #include <math.h>
-#include <libintl.h>
 
 #include "../misc/coordinate.h"
 #include "../misc/kigtransform.h"

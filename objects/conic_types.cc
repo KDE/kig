@@ -15,8 +15,6 @@
 #include "object_calcer.h"
 #include "point_imp.h"
 
-#include <libintl.h>
-
 static const KLazyLocalizedString conic_constructstatement = kli18n("Construct a conic through this point");
 
 static const struct ArgsParser::spec argsspecConicB5P[] = {

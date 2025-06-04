@@ -5,7 +5,6 @@
 #include "special_constructors.h"
 
 #include <math.h>
-#include <libintl.h>
 
 #include "calcpaths.h"
 #include "common.h"
