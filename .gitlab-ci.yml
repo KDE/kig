@@ -8,22 +8,5 @@ include:
       - /gitlab-templates/freebsd-qt6.yml
       - /gitlab-templates/windows-qt6.yml
       - /gitlab-templates/flatpak.yml
-      - /gitlab-templates/craft-macos-arm64-qt6.yml
-      - /gitlab-templates/craft-macos-x86-64-qt6.yml
-
-craft_macos_x86_64:
-  after_script:
-  - mkdir $CI_PROJECT_DIR/.logs/
-  - cp -f -R $KDECI_CRAFT_PLATFORM/logs/. $CI_PROJECT_DIR/.logs/
-  - mkdir $CI_PROJECT_DIR/.sign-logs/
-  - find /tmp -name "task*.log" -exec cp '{}' CI_PROJECT_DIR/.sign-logs/ \;
-  - rm -rf src craftmaster ci-utilities blueprints downloads craft-clone $KDECI_CRAFT_PLATFORM
-  extends: ".craft_macos_base"
-  artifacts:
-    expire_in: 3 days
-    when: always
-    expose_as: macOS ARM
-    paths:
-    - ".kde-ci-packages/"
-    - ".logs/"
-    - ".sign-logs/"
+      - /gitlab-templates/craft-macos-arm64.yml
+      - /gitlab-templates/craft-macos-x86-64.yml
