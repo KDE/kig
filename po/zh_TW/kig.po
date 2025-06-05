@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2024-07-23 21:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -180,7 +180,7 @@ msgstr "匯出為 Asymptote 文稿"
 msgid "Asymptote Options"
 msgstr "Asymptote 選項"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -245,7 +245,7 @@ msgid ""
 "support."
 msgstr "此 Cabri 檔案包含 %1 物件，Kig 現在不支援。"
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -294,37 +294,37 @@ msgid ""
 "currently support."
 msgstr "此 Dr. Geo 檔案包含一個扇形，Kig 現在不支援。"
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "匯出到圖像(&E)"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "圖像(&I)..."
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, kde-format
 msgid "Export as Image"
 msgstr "匯出為圖像"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, kde-format
 msgid "Image Options"
 msgstr "圖像選項"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "抱歉，不支援此檔案格式。"
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "抱歉，儲存到圖像 %1 時出錯"
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "匯出到(&E)"
@@ -346,7 +346,7 @@ msgstr "分析檔案時遇到一個錯誤。無法開啟。"
 msgid "Parse Error"
 msgstr "分析錯誤"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr "不支援"
@@ -473,13 +473,13 @@ msgstr "只有圖片"
 msgid "Standalone document"
 msgstr "獨立文件"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
 msgstr "此檔案是 Kig 版本 %1 建立的，無法開啟。"
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -492,7 +492,7 @@ msgstr ""
 "您可以嘗試使用 Kig 的較早版本 (0.4 到 0.6) 開啟此檔案，\n"
 "然後再次儲存它，Kig 會使用新格式儲存它。"
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -502,7 +502,7 @@ msgstr ""
 "此 Kig 檔案有一個在此版本的 Kig 中不支援的座標系。\n"
 "將使用標準座標系代替。"
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, kde-format
 msgid ""
@@ -513,7 +513,7 @@ msgstr ""
 "此 Kig 檔案使用了 %1 物件類型，它不被此版本的 Kig 支援。可能您編譯時沒有支援"
 "此物件類型，或者可能您使用了一個舊版本的 Kig。"
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -759,12 +759,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "負責新物件動作圖示"
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "找不到必須的 Kig 函式庫，請檢查您的安裝。"
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -808,176 +808,176 @@ msgstr "顯示座標軸"
 msgid "Invert Selection"
 msgstr "反轉選取的內容"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "刪除物件(&D)"
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "刪除選取的物件"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "取消建構"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "取消即將建構物件的建構動作"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Repeat Construction"
 msgstr "重複建構"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "重複上次的建構動作（產生新資料）"
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "全部取消隱藏(&N)"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "顯示所有隱藏物件"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "新增巨集(&N)..."
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "定義一個新巨集"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Manage &Types..."
 msgstr "管理類型(&T)..."
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "管理巨集類型。"
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr "瀏覽歷史(&B)..."
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "瀏覽目前建構的歷史。"
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "放大文件"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "縮小文件"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "將文件重新顯示在螢幕中央"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "用全螢幕檢視此文件。"
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "選擇顯示的區域(&S)"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "選擇您要顯示在視窗中的區域。"
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "選擇縮放區域(&E)"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "設定座標精確度(&P)..."
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "設定文件中座標的浮點數精確度。"
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
 msgstr "顯示格線(&G)"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "顯示或隱藏格線。"
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, kde-format
 msgid "Show &Axes"
 msgstr "顯示座標軸(&A)"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "顯示或隱藏座標軸"
 
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "戴上紅外線眼鏡"
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "開啟/關閉隱藏物件的可見性。"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "重複建構（%1）"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "重複 %1（產生新資料）"
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr "您試圖開啟的檔案 %1 不存在。請檢查您輸入的路徑是否正確。"
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "找不到檔案"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -991,51 +991,51 @@ msgstr ""
 "product=kig&bug_severity=wishlist\">KDE 的錯誤追蹤系統</a>上去發一個功能請"
 "求。"
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
 msgid "Format Not Supported"
 msgstr "格式不支援"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "Kig 不支援儲存為其它檔案格式。您是否想要將其儲存為 Kig 的格式？"
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr "儲存 Kig 格式"
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Kig 文件 (*.kig);;壓縮的 Kig 文件(*.kigz)"
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "檔案 %1 已經存在。您要覆寫它嗎？"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "覆寫檔案嗎？"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "列印幾何"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "隱藏 %1 個物件"
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1276,7 +1276,7 @@ msgstr "檢視"
 msgid "&Settings"
 msgstr "設定(&S)"
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1285,7 +1285,7 @@ msgstr ""
 "不要顯示使用者介面。將指定的檔案轉換成 Kig 格式。除非有指定 --outfile 否則將"
 "輸出送到標準輸出（stdout）。"
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1293,12 +1293,12 @@ msgid ""
 msgstr ""
 "要輸出的檔案名稱。\"-\" 表示輸出到標準輸出（stdout）。預設是使用標準輸出。"
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, kde-format
 msgid "Document to open"
 msgstr "要開啟的文件"
@@ -1990,7 +1990,7 @@ msgstr "點投射"
 msgid "Project a point on a line"
 msgstr "將點投射在線上"
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr "Python 文稿"
@@ -2000,7 +2000,7 @@ msgstr "Python 文稿"
 msgid "Construct a new Python script."
 msgstr "建構新的 Python 文稿。"
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2009,7 +2009,7 @@ msgstr ""
 "請用以下格式輸入座標：\"x,y\"，\n"
 "這裡 x 是 x 軸座標，y 是 y 軸座標。"
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2017,7 +2017,7 @@ msgid ""
 msgstr ""
 "請用以下格式輸入座標：<b>\"x,y\"</b>，這裡 x 是 x 軸座標，y 是 y 軸座標。"
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2026,29 +2026,29 @@ msgstr ""
 "請用以下格式輸入座標：\"r, θ°\"，\n"
 "這裡 r 和 θ 是極座標 。 "
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
 "and θ are the polar coordinates."
 msgstr "請用以下格式輸入座標：<b>\"r; θ°\"</b>，這裡 r 和 θ 是極座標。"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "直角座標(&E)"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "極座標(&P)"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "設定直角座標系"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "設定極座標系"
@@ -2162,17 +2162,17 @@ msgstr ""
 "從此清單中選取您要用來改變此角的角度單位。<br />\n"
 "如果您切換到其它的單位，在編輯欄位中的值會轉換成新單位的值。"
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "無法開啟巨集檔案 %1 。"
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "Kig 無法開啟巨集檔案 %1 。"
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2184,7 +2184,7 @@ msgstr ""
 "Kig 中刪除。您可以嘗試使用 Kig 的先前版本（0.4 到 0.6）匯入此巨集，然後再將其"
 "匯出為新格式。"
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr "未命名巨集 #%1"
@@ -2217,19 +2217,16 @@ msgid "Moving Point"
 msgstr "移動點"
 
 #: misc/special_constructors.cc:327
-#, kde-format
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr "選取移動點，在繪製軌跡時會被移動..."
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid "Following Point"
 msgstr "跟隨點"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2304,12 +2301,10 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "選擇點做為新多邊形邊的頂點..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, kde-format
 msgid "Polygon"
 msgstr "多邊形"
 
 #: misc/special_constructors.cc:658
-#, kde-format
 msgid "Construct the vertices of this polygon..."
 msgstr "建構此多邊形的頂點..."
 
@@ -2324,7 +2319,6 @@ msgid "The vertices of a polygon."
 msgstr "多邊形的頂點"
 
 #: misc/special_constructors.cc:718
-#, kde-format
 msgid "Construct the sides of this polygon..."
 msgstr "建構此多邊形的邊..."
 
@@ -2560,25 +2554,21 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "選擇線條或圓上的起始點..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "與此二次曲線相交"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "與此直線相交"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, kde-format
 msgid "Intersect with this cubic"
 msgstr "與此三次曲線相交"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, kde-format
 msgid "Intersect with this circle"
 msgstr "與此圓相交"
 
@@ -2683,45 +2673,37 @@ msgid "with this Polygonal"
 msgstr "與此多邊形相交"
 
 #: misc/special_constructors.cc:1814
-#, kde-format
 msgid "Construct midpoint of this point and another one"
 msgstr "建構此點和另外一點的中點"
 
 #: misc/special_constructors.cc:1815
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "選擇建構中點的第一點..."
 
 #: misc/special_constructors.cc:1818
-#, kde-format
 msgid "Construct the midpoint of this point and another one"
 msgstr "建構此點和另外一點的中點"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "選擇建構中點的另外一點..."
 
 #: misc/special_constructors.cc:1869
-#, kde-format
 msgid "Construct golden ratio point of this point and another one"
 msgstr "建構此點和另外一點的黃金比例點"
 
 #: misc/special_constructors.cc:1870
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
 msgstr "選擇建構黃金比例點的第一點..."
 
 #: misc/special_constructors.cc:1873
-#, kde-format
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "建構此點和另外一點的黃金比例點"
 
 #: misc/special_constructors.cc:1874
-#, kde-format
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
@@ -2944,45 +2926,45 @@ msgstr "最後一步"
 msgid "Name"
 msgstr "名稱"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<未命名物件>"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
 "Please remove them or select enough arguments."
 msgstr "文字中有 %n 個部份沒有選取值。請將它們移除，或是選擇足夠的參數。"
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "參數 %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "選擇參數 %1"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "更改標籤"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, kde-format
 msgid "Set Value"
 msgstr "設定值"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, kde-format
 msgid "Enter value:"
 msgstr "輸入值："
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "選擇新數值的位置..."
@@ -3064,84 +3046,84 @@ msgstr[0] "移動 %1 個物件"
 msgid "Redefine Point"
 msgstr "重新定義點"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Black"
 msgstr "黑"
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, kde-format
 msgid "Gray"
 msgstr "灰"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, kde-format
 msgid "Red"
 msgstr "紅"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Green"
 msgstr "綠"
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
 msgstr "青"
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Yellow"
 msgstr "黃"
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, kde-format
 msgid "Dark Red"
 msgstr "暗紅"
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "隱藏(&H)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, kde-format
 msgid "&Show"
 msgstr "顯示(&S)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "移動(&M)"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
 msgstr "刪除(&D)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, kde-format
 msgid "&Custom Color"
 msgstr "自訂顏色(&C)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, kde-format
 msgid "Change Object Color"
 msgstr "更改物件顏色"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, kde-format
 msgid "Change Object Width"
 msgstr "更改物件寬度"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, kde-format
 msgid "Change Point Style"
 msgstr "更改點樣式"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, kde-format
 msgid "Change Object Style"
 msgstr "更改物件樣式"
@@ -3167,69 +3149,69 @@ msgstr "設定物件名稱"
 msgid "Set Name of this Object:"
 msgstr "選擇此物件的名稱："
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 個物件"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "Kig 文件"
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "轉換(&T)"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, kde-format
 msgid "T&est"
 msgstr "測試(&E)"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "建構(&R)"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
 msgstr "開始(&S)"
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "新增文字標籤(&X)"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "設定顏色(&L)"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, kde-format
 msgid "Set &Pen Width"
 msgstr "設定筆寬(&L)..."
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, kde-format
 msgid "Set St&yle"
 msgstr "設定樣式(&Y)"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "設定座標系統(&Y)"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, kde-format
 msgctxt "More menu items"
 msgid "More..."
 msgstr "更多..."
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, kde-format
 msgid "Edit Script..."
 msgstr "編輯文稿…"
@@ -3255,7 +3237,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "在框架中顯示文字"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "選擇參數"
@@ -3408,135 +3390,112 @@ msgstr "匯入包含於一個或多個檔案中的巨集。"
 msgid "&Import..."
 msgstr "匯入(&I)..."
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "建構一個通過此點的角"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr "選擇一個點，此角的第一條線會通過此點..."
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "在此點建構一個角"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr "選擇一個點以建構此角..."
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr "選擇一個點，此角的第二條線會通過此點..."
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "設定大小(&Z)"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr "切換右角度標記(&R)"
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
 msgstr "更改角大小"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "建構起於此點的弧"
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
 msgstr "選擇新弧的起點..."
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "建構通過此點的弧"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr "選擇新弧通過的一點..."
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "建構終於此點的弧"
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
 msgstr "選擇新戶的終點..."
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
 msgstr "建構以此為圓心的弧"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
 msgstr "選擇新弧的圓心..."
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
 msgstr "建構此角度的弧"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
 msgstr "選擇新弧的角度..."
 
-#: objects/arc_type.cc:204
-#, kde-format
+#: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
 msgstr "建構起於此點的二次曲線"
 
-#: objects/arc_type.cc:205
-#, kde-format
+#: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
 msgstr "選擇新二次曲線的起點..."
 
-#: objects/arc_type.cc:206
-#, kde-format
+#: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
 msgstr "建構一個通過該點的二次曲線"
 
-#: objects/arc_type.cc:207
-#, kde-format
+#: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
 msgstr "選擇新的二次曲線要通過的點..."
 
-#: objects/arc_type.cc:208
-#, kde-format
+#: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
 msgstr "建構終於此點的二次曲線"
 
-#: objects/arc_type.cc:209
-#, kde-format
+#: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
 msgstr "選擇新二次曲線的終點..."
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
 msgstr "建構以此為圓心的二次曲線"
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
 msgstr "選擇新二次曲線的圓心..."
 
@@ -3559,7 +3518,6 @@ msgid "Bézier Curve"
 msgstr "貝氏曲線"
 
 #: objects/bezier_imp.cc:202
-#, kde-format
 msgid "Select this Bézier Curve"
 msgstr "選擇此貝氏曲線"
 
@@ -3597,7 +3555,6 @@ msgid "Bézier Quadratic"
 msgstr "貝氏二次曲線"
 
 #: objects/bezier_imp.cc:219
-#, kde-format
 msgid "Select this Bézier Quadratic"
 msgstr "選擇此貝氏二次曲線"
 
@@ -3635,7 +3592,6 @@ msgid "Bézier Cubic"
 msgstr "貝氏三次立方體"
 
 #: objects/bezier_imp.cc:236
-#, kde-format
 msgid "Select this Bézier Cubic"
 msgstr "選擇此貝氏三次立方體"
 
@@ -3673,7 +3629,6 @@ msgid "Rational Bézier Curve"
 msgstr "合理貝氏曲線"
 
 #: objects/bezier_imp.cc:491
-#, kde-format
 msgid "Select this Rational Bézier Curve"
 msgstr "選擇此合理貝氏曲線"
 
@@ -3711,7 +3666,6 @@ msgid "Rational Bézier Quadratic"
 msgstr "有理貝氏二次曲線"
 
 #: objects/bezier_imp.cc:508
-#, kde-format
 msgid "Select this Rational Bézier Quadratic"
 msgstr "選擇此有理貝氏二次曲線"
 
@@ -3749,7 +3703,6 @@ msgid "Rational Bézier Cubic"
 msgstr "有理貝氏三次立方體"
 
 #: objects/bezier_imp.cc:525
-#, kde-format
 msgid "Select this Rational Bézier Cubic"
 msgstr "選擇此有理貝氏三次立方體"
 
@@ -3783,45 +3736,37 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr "隱藏有理貝氏三次立方體"
 
 #: objects/bezier_type.cc:26
-#, kde-format
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "用控制點來二次合理貝氏曲線"
 
 #: objects/bezier_type.cc:27
-#, kde-format
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr "選擇新二次貝氏曲線的控制點..."
 
 #: objects/bezier_type.cc:121
-#, kde-format
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "用控制點來建立三次貝氏曲線"
 
 #: objects/bezier_type.cc:122
-#, kde-format
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr "選擇新三次貝氏曲線的控制點..."
 
 #: objects/bezier_type.cc:328
-#, kde-format
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr "用控制點來建立有理貝氏曲線"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, kde-format
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr "選擇三個點與三個數值做為權值，以建立有理貝氏曲線..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, kde-format
 msgid "Select this value as weight"
 msgstr "選擇此值做為權值"
 
 #: objects/bezier_type.cc:433
-#, kde-format
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "用控制點來建立三次有理貝氏曲線"
 
@@ -3847,7 +3792,6 @@ msgid "Select the curve..."
 msgstr "選擇曲線..."
 
 #: objects/centerofcurvature_type.cc:23
-#, kde-format
 msgid "Select a point on the curve..."
 msgstr "選擇曲線上的點..."
 
@@ -3886,7 +3830,6 @@ msgid "circle"
 msgstr "圓"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "選擇此圓"
 
@@ -3919,34 +3862,30 @@ msgstr "顯示圓"
 msgid "Hide a Circle"
 msgstr "隱藏圓"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "建構一個通過該點的圓"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "建構以此做為圓心的圓"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr "選擇新圓的圓心..."
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr "選擇新圓要通過的點..."
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "With this radius"
 msgstr "以此為半徑"
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
 msgstr "選擇半徑長度..."
 
@@ -4002,7 +3941,6 @@ msgid "conic"
 msgstr "二次曲線"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "選擇此二次曲線"
 
@@ -4052,7 +3990,6 @@ msgid "conic arc"
 msgstr "二次曲線"
 
 #: objects/conic_imp.cc:604
-#, kde-format
 msgid "Select this conic arc"
 msgstr "選擇此二次曲線"
 
@@ -4087,7 +4024,6 @@ msgstr "隱藏二次曲線"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "建構一個通過該點的二次曲線"
 
@@ -4095,192 +4031,155 @@ msgstr "建構一個通過該點的二次曲線"
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr "選擇新的二次曲線要通過的點..."
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "建構一個以此為漸進線的二次曲線(雙曲線)"
 
 #: objects/conic_types.cc:61
-#, kde-format
 msgid "Select the first asymptote of the new conic..."
 msgstr "擇新的二次曲線的第一條漸近線..."
 
 #: objects/conic_types.cc:62
-#, kde-format
 msgid "Select the second asymptote of the new conic..."
 msgstr "擇新的二次曲線的第二條漸近線..."
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "建構一個以此點為焦點的橢圓"
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr "選擇新橢圓的第一個焦點..."
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr "選擇新橢圓的第二個焦點..."
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "建構一個通過此點的橢圓"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr "選擇新橢圓要通過的點..."
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "建構一個以此點為焦點的雙曲線"
 
 #: objects/conic_types.cc:146
-#, kde-format
 msgid "Select the first focus of the new hyperbola..."
 msgstr "選擇新雙曲線的第一個焦點..."
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr "選擇新雙曲線的第二個焦點..."
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "建構一個通過此點的雙曲線"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr "選擇新雙曲線要通過的點..."
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "以這條線作為準線建構一個二次曲線"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Select the directrix of the new conic..."
 msgstr "選擇新二次曲線的準線..."
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "以此點作為焦點建構一條二次曲線"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Select the focus of the new conic..."
 msgstr "選擇新二次曲線的角度..."
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "建構一個通過此點的拋物線"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr "選擇新拋物線要通過的點..."
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "建構此二次曲線的極點"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr "選擇您要建構極點的二次曲線"
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "建構此線的極點"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, kde-format
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "選擇您要建構極點的直線..."
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "建構此二次曲線的極線"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "建構此點的極線"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "建構此二次曲線的準線"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr "選擇您要建構準線的二次曲線..."
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "以此為準線建構一個拋物線"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Select the directrix of the new parabola..."
 msgstr "選擇新拋物線的準線..."
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Construct a parabola with this focus"
 msgstr "建構一個以此點為焦點的拋物線"
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Select the focus of the new parabola..."
 msgstr "選擇新拋物線的焦點..."
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "建構此二次曲線的漸近線"
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr "選擇您要建構漸近線的二次曲線..."
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "建構此二次曲線的公弦"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr "選擇您要建構公弦的第一個二次曲線..."
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4301,7 +4200,6 @@ msgid "cubic curve"
 msgstr "三次曲線"
 
 #: objects/cubic_imp.cc:348
-#, kde-format
 msgid "Select this cubic curve"
 msgstr "選擇此三次曲線"
 
@@ -4335,12 +4233,10 @@ msgid "Hide a Cubic Curve"
 msgstr "隱藏三次曲線"
 
 #: objects/cubic_type.cc:11
-#, kde-format
 msgid "Construct a cubic curve through this point"
 msgstr "建構一個通過此點的三次曲線"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr "選擇新三次曲線通過的一點..."
 
@@ -4349,7 +4245,6 @@ msgid "curve"
 msgstr "曲線"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "選擇此曲線"
 
@@ -4389,87 +4284,70 @@ msgstr "可能的超越曲線"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, kde-format
 msgid "Already computed intersection point"
 msgstr "已計算相交點"
 
 #: objects/intersection_types.cc:372
-#, kde-format
 msgid "Intersect with this cubic curve"
 msgstr "與此三次曲線相交"
 
 #: objects/intersection_types.cc:526
-#, kde-format
 msgid "Intersect with this arc"
 msgstr "與此弧相交"
 
 #: objects/inversion_type.cc:19
-#, kde-format
 msgid "Invert with respect to this circle"
 msgstr "以此圓為基準做反演轉換"
 
 #: objects/inversion_type.cc:20
-#, kde-format
 msgid "Select the circle we want to invert against..."
 msgstr "選擇要做為反演基準的圓..."
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Compute the inversion of this object"
 msgstr "計算此物件的反演轉換結果"
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Select the object to invert..."
 msgstr "選擇要反演的物件..."
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Compute the inversion of this point"
 msgstr "計算此點的反演轉換結果"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Select the point to invert..."
 msgstr "選擇要反演的點..."
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Compute the inversion of this line"
 msgstr "計算此直線的反演轉換結果"
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Select the line to invert..."
 msgstr "選擇要反演的直線..."
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Compute the inversion of this segment"
 msgstr "計算此線段的反演轉換結果"
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Select the segment to invert..."
 msgstr "選擇要反演的線段..."
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Compute the inversion of this circle"
 msgstr "計算此圓的反演轉換結果"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Select the circle to invert..."
 msgstr "選擇要反演的圓..."
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Compute the inversion of this arc"
 msgstr "計算此弧的反演轉換結果"
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Select the arc to invert..."
 msgstr "選擇要反演的弧..."
 
@@ -4498,12 +4376,10 @@ msgid "line"
 msgstr "直線"
 
 #: objects/line_imp.cc:545
-#, kde-format
 msgid "Select a Line"
 msgstr "選擇直線"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "選擇此直線"
 
@@ -4541,7 +4417,6 @@ msgid "segment"
 msgstr "線段"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "選擇此線段"
 
@@ -4579,7 +4454,6 @@ msgid "half-line"
 msgstr "半線"
 
 #: objects/line_imp.cc:593
-#, kde-format
 msgid "Select this half-line"
 msgstr "選擇此半線"
 
@@ -4613,102 +4487,82 @@ msgid "Hide a Half-Line"
 msgstr "隱藏半線"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Construct a segment starting at this point"
 msgstr "建構起於此點的線段"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Select the start point of the new segment..."
 msgstr "選擇新線段的起點..."
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Construct a segment ending at this point"
 msgstr "建構終於此點的線段"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Select the end point of the new segment..."
 msgstr "選擇新線段的終點..."
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "建構通過此點的一條直線"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr "選擇直線通過的一點..."
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr "選擇直線通過的另一點..."
 
 #: objects/line_type.cc:75
-#, kde-format
 msgid "Construct a half-line starting at this point"
 msgstr "建構起於此點的半線"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, kde-format
 msgid "Select the start point of the new half-line..."
 msgstr "選擇新半線的起點..."
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Construct a half-line through this point"
 msgstr "建構通過此點的一條半線"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr "選擇半線通過的一點..."
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Construct the axis of this segment"
 msgstr "建構線段的垂直平分線"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "選擇您想要繪製垂直平分線的線段..."
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Construct a line parallel to this line"
 msgstr "建構平行於此直線的直線"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Select a line parallel to the new line..."
 msgstr "選擇平行於新直線的直線..."
 
 #: objects/line_type.cc:156
-#, kde-format
 msgid "Construct the parallel line through this point"
 msgstr "建構通過此點的平行線"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr "選擇新直線通過的一點..."
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Construct a line perpendicular to this line"
 msgstr "建構垂直於此直線的直線"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Select a line perpendicular to the new line..."
 msgstr "選擇垂直於新直線的直線..."
 
 #: objects/line_type.cc:183
-#, kde-format
 msgid "Construct a perpendicular line through this point"
 msgstr "建構通過此點的垂線"
 
@@ -4733,22 +4587,18 @@ msgid "Resize Segment"
 msgstr "更改線段長度"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Construct a line by this vector"
 msgstr "根據此向量建構直線"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr "選擇新直線方向上的向量..."
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Construct a half-line by this vector"
 msgstr "根據此向量建構半線"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr "選擇新半線方向上的向量..."
 
@@ -4757,7 +4607,6 @@ msgid "locus"
 msgstr "軌跡"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "選擇此軌跡"
 
@@ -4798,8 +4647,7 @@ msgstr "物件類型"
 msgid "Object"
 msgstr "物件"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "選擇此物件"
 
@@ -4877,7 +4725,6 @@ msgid "angle"
 msgstr "角"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "選擇此角"
 
@@ -4915,7 +4762,6 @@ msgid "vector"
 msgstr "向量"
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "選擇此向量"
 
@@ -4953,7 +4799,6 @@ msgid "arc"
 msgstr "弧"
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "選擇此弧"
 
@@ -5003,7 +4848,6 @@ msgid "point"
 msgstr "點"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "選擇此點"
 
@@ -5037,38 +4881,32 @@ msgid "Hide a Point"
 msgstr "隱藏點"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, kde-format
 msgid "Construct the midpoint of this point and another point"
 msgstr "建構此點與另一個點間的中點"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr "選擇您要建構中點的第一個點..."
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr "選擇您要建構中點的另一個點..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, kde-format
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "建構此點與另一個點間的黃金比例點"
 
 #: objects/point_type.cc:275
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr "選擇您要建構黃金比例點的第一個點..."
 
 #: objects/point_type.cc:279
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
@@ -5115,37 +4953,30 @@ msgid "Change Parameter of Constrained Point"
 msgstr "變更限制點的參數"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr "選擇要在哪個圓上取弧..."
 
 #: objects/point_type.cc:744
-#, kde-format
 msgid "Select a point on the circle..."
 msgstr "選擇圓上一點..."
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr "選擇要在圓上取哪個線段大小"
 
 #: objects/point_type.cc:794
-#, kde-format
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "選擇此點的 X 座標的數值或長度..."
 
 #: objects/point_type.cc:795
-#, kde-format
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "選擇此點的 Y 座標的數值或長度..."
 
 #: objects/point_type.cc:820
-#, kde-format
 msgid "Select a point to project onto a line..."
 msgstr "選擇要投射在線上的點..."
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr "選擇要投射在哪條線上..."
 
@@ -5195,7 +5026,6 @@ msgid "polygon"
 msgstr "多邊形"
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, kde-format
 msgid "Select this polygon"
 msgstr "選擇此多邊形"
 
@@ -5233,7 +5063,6 @@ msgid "closed polygonal curve"
 msgstr "封閉式多邊形曲線"
 
 #: objects/polygon_imp.cc:646
-#, kde-format
 msgid "Select this closed polygonal curve"
 msgstr "選擇此封閉式多邊形曲線"
 
@@ -5271,7 +5100,6 @@ msgid "polygonal curve"
 msgstr "多邊形曲線"
 
 #: objects/polygon_imp.cc:663
-#, kde-format
 msgid "Select this polygonal curve"
 msgstr "選擇此多邊形曲線"
 
@@ -5309,7 +5137,6 @@ msgid "triangle"
 msgstr "三角形"
 
 #: objects/polygon_imp.cc:680
-#, kde-format
 msgid "Select this triangle"
 msgstr "選擇此三角形"
 
@@ -5347,7 +5174,6 @@ msgid "quadrilateral"
 msgstr "四邊形"
 
 #: objects/polygon_imp.cc:697
-#, kde-format
 msgid "Select this quadrilateral"
 msgstr "選擇此四邊形"
 
@@ -5381,105 +5207,85 @@ msgid "Hide a Quadrilateral"
 msgstr "隱藏四邊形"
 
 #: objects/polygon_type.cc:24
-#, kde-format
 msgid "Construct a triangle with this vertex"
 msgstr "以此頂點建構三角形"
 
 #: objects/polygon_type.cc:25
-#, kde-format
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "選擇新三角形的頂點..."
 
 #: objects/polygon_type.cc:470
-#, kde-format
 msgid "Intersect this polygon with a line"
 msgstr "用直線與此多邊形相交"
 
 #: objects/polygon_type.cc:471
-#, kde-format
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "選擇您要相交的多邊形..."
 
 #: objects/polygon_type.cc:474
-#, kde-format
 msgid "Intersect this line with a polygon"
 msgstr "將此直線與多邊形相交"
 
 #: objects/polygon_type.cc:475
-#, kde-format
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "選擇您要與多邊形相交的直線..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, kde-format
 msgid "Intersect this polygonal curve with a line"
 msgstr "用直線與此多邊形曲線相交"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, kde-format
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "選擇您要相交的多邊形曲線..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, kde-format
 msgid "Intersect this line with a polygonal curve"
 msgstr "將此直線與多邊形曲線相交"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, kde-format
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "選擇您要與多邊形曲線相交的直線..."
 
 #: objects/polygon_type.cc:788
-#, kde-format
 msgid "Intersect this polygon with another polygon"
 msgstr "用此多邊形與另一多邊形相交"
 
 #: objects/polygon_type.cc:789
-#, kde-format
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "選擇您要與其他多邊形相交的多邊形..."
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Intersect with this polygon"
 msgstr "與此多邊形相交"
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Select the second polygon for the intersection..."
 msgstr "選擇相交的第二個多邊形..."
 
 #: objects/polygon_type.cc:930
-#, kde-format
 msgid "Construct the vertices of this polygon"
 msgstr "建構此多邊形的頂點"
 
 #: objects/polygon_type.cc:931
-#, kde-format
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "選擇您要建構頂點的多邊形..."
 
 #: objects/polygon_type.cc:974
-#, kde-format
 msgid "Construct the sides of this polygon"
 msgstr "建構此多邊形的邊"
 
 #: objects/polygon_type.cc:975
-#, kde-format
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "選擇您要建構邊的多邊形..."
 
 #: objects/polygon_type.cc:1022
-#, kde-format
 msgid "Construct the convex hull of this polygon"
 msgstr "建構此多邊形的凸包"
 
 #: objects/polygon_type.cc:1023
-#, kde-format
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "選擇您要建構凸包的多邊形..."
 
@@ -5489,27 +5295,22 @@ msgid "Project this point onto the circle"
 msgstr "將此點投射在圓上"
 
 #: objects/tangent_type.cc:23
-#, kde-format
 msgid "Select the point for the tangent to go through..."
 msgstr "選擇切線要經過的點..."
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr "此直線平行嗎？"
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr "選擇要檢查是否為平行線的第一條線..."
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Parallel to this line?"
 msgstr "與此直線平行嗎？"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr "選擇要檢查是否為平行線的另一條線..."
 
@@ -5524,22 +5325,18 @@ msgid "These lines are not parallel."
 msgstr "這些線相互不平行。"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr "此直線垂直嗎？"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr "選擇要檢查是否相互垂直的第一條線..."
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Orthogonal to this line?"
 msgstr "與此直線垂直嗎？"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr "選擇要檢查是否相互垂直的另一條線..."
 
@@ -5554,32 +5351,26 @@ msgid "These lines are not orthogonal."
 msgstr "這些線相互不垂直。"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Check collinearity of this point"
 msgstr "檢查此點的共線性"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr "選擇要檢查是否共線的第一個點..."
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "and this second point"
 msgstr "與第二個點"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr "選擇要檢查是否共線的第二個點..."
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "with this third point"
 msgstr "與第三個點"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr "選擇要檢查是否共線的第三個點..."
 
@@ -5594,22 +5385,18 @@ msgid "These points are not collinear."
 msgstr "這些點不共線。"
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr "檢查此點是否在曲線上"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, kde-format
 msgid "Select the point you want to test..."
 msgstr "選擇您要測試的點"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr "檢查此點是否在曲線上"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Select the curve that the point might be on..."
 msgstr "選擇您要檢查的曲線..."
 
@@ -5624,17 +5411,14 @@ msgid "This curve does not contain the point."
 msgstr "這條曲線不通過該點。"
 
 #: objects/tests_type.cc:180
-#, kde-format
 msgid "Check whether this point is in a polygon"
 msgstr "檢查此點是否在多邊形上"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Check whether the point is in this polygon"
 msgstr "檢查此點是否在此多邊形上"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Select the polygon that the point might be in..."
 msgstr "選擇您要檢查的多邊形..."
 
@@ -5649,12 +5433,10 @@ msgid "This polygon does not contain the point."
 msgstr "此點不在此多邊形上。"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Check whether this polygon is convex"
 msgstr "檢查此多邊形是否為凸多邊形"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Select the polygon you want to test for convexity..."
 msgstr "選擇您要檢查的多邊形..."
 
@@ -5669,33 +5451,27 @@ msgid "This polygon is not convex."
 msgstr "此多邊形不是凸多邊形"
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr "檢查這些點是否等距"
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr "選擇要檢查是否與其他兩點等距的點..."
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "from this point"
 msgstr "從此點"
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "Select the first of the two other points..."
 msgstr "選擇另外兩點中的第一個點..."
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "and from this second point"
 msgstr "以及從此第二個點"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "Select the other of the two other points..."
 msgstr "選擇另外兩點中的第二個點..."
 
@@ -5710,22 +5486,18 @@ msgid "The two distances are not the same."
 msgstr "它們不等距。"
 
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr "檢查此向量是否與另一個向量相等"
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr "選擇要檢查的第一個向量..."
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr "檢查此向量是否與另一個向量相等"
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr "選擇要檢查的第二個向量..."
 
@@ -5740,12 +5512,10 @@ msgid "The two vectors are not the same."
 msgstr "這兩個向量不相等。"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Check whether this object exists"
 msgstr "檢查此物件是否存在"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Select the object for the existence check..."
 msgstr "選擇要檢查存在與否的物件..."
 
@@ -5768,7 +5538,6 @@ msgid "label"
 msgstr "標籤"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "選擇此標籤"
 
@@ -5806,7 +5575,6 @@ msgid "numeric label"
 msgstr "數值標籤"
 
 #: objects/text_imp.cc:184
-#, kde-format
 msgid "Select this numeric label"
 msgstr "選擇此數值標籤"
 
@@ -5848,7 +5616,6 @@ msgid "boolean label"
 msgstr "布林值標籤"
 
 #: objects/text_imp.cc:278
-#, kde-format
 msgid "Select this boolean label"
 msgstr "選擇此布林值標籤"
 
@@ -5927,550 +5694,455 @@ msgid "Change Displayed Value"
 msgstr "改變已顯示的值"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "平移此物件"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Select the object to translate..."
 msgstr "選擇要平移的物件..."
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "按此向量平移"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr "選擇平移的向量..."
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "映射此物件"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Select the object to reflect..."
 msgstr "選擇要映射的物件..."
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Reflect in this point"
 msgstr "映射於此點"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Select the point to reflect in..."
 msgstr "選擇要映射的點..."
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Reflect in this line"
 msgstr "映射於此線"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Select the line to reflect in..."
 msgstr "選擇要映射的線..."
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "旋轉此物件"
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Select the object to rotate..."
 msgstr "選擇要旋轉的物件..."
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "以此點為軸旋轉"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Select the center point of the rotation..."
 msgstr "選擇旋轉的中心點..."
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "以此角度旋轉"
 
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Select the angle of the rotation..."
 msgstr "選擇旋轉的角度..."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "縮放此物件"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, kde-format
 msgid "Select the object to scale..."
 msgstr "選擇要縮放的物件..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "以此中心點縮放"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Select the center point of the scaling..."
 msgstr "選擇要縮放的中心點..."
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid "Scale by this length"
 msgstr "以此長度縮放"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "選擇要用於決定縮放比例的線段長度..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, kde-format
 msgid "Scale this length..."
 msgstr "縮放此長度..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, kde-format
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr "選擇兩個用於決定縮放比例的線段的第一個..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, kde-format
 msgid "...to this other length"
 msgstr "相對於另一個線段長度"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, kde-format
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr "選擇兩個用於決定縮放比例的線段的第二個..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Select the object to scale"
 msgstr "選擇要縮放的物件"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "將此直線縮放"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Select the line to scale over"
 msgstr "選擇要縮放的直線"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "投影旋轉此物件"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Select the object to rotate projectively"
 msgstr "選擇要做投影旋轉的物件"
 
 #: objects/transform_types.cc:337
-#, kde-format
 msgid "Projectively rotate with this half-line"
 msgstr "投影旋轉此半線"
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr "選擇要做投影旋轉的半線"
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "投影旋轉此角"
 
 #: objects/transform_types.cc:342
-#, kde-format
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "選擇要做投影旋轉的角"
 
 #: objects/transform_types.cc:376
-#, kde-format
 msgid "Harmonic Homology of this object"
 msgstr "此物件的調和同調"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, kde-format
 msgid "Select the object to transform..."
 msgstr "選擇要轉換的物件..."
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Harmonic Homology with this center"
 msgstr "對此中心點做調和同調"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr "選擇調和同調的中心點..."
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr "對此軸做調和同調"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr "選擇調和同調的軸線..."
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, kde-format
 msgid "Generic affinity of this object"
 msgstr "此物件的一般相似形"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Map this triangle"
 msgstr "映射此三角形"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr "選擇要映射的三角形..."
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr "在此三角形上"
 
 #: objects/transform_types.cc:412
-#, kde-format
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "選擇第一個三角形..."
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr "三個起點的第一個"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr "選擇三個起點中的第一個..."
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr "三個起點的第二個"
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr "選擇三個起點中的第二個..."
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr "三個起點的第三個"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr "選擇三個起點中的第三個..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr "第一個點的轉換位置"
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr "選擇三個結束點的第一個..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr "第二個點的轉換位置"
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr "選擇三個結束點的第二個..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, kde-format
 msgid "Transformed position of third point"
 msgstr "第三個點的轉換位置"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr "選擇三個結束點的第三個..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, kde-format
 msgid "Generic projective transformation of this object"
 msgstr "此物件的一般投射轉換"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr "映射此四邊形"
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr "選擇要映射的四邊形..."
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr "在此四邊形上"
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr "選擇要映射的第一個四邊形..."
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr "四個起始點的第一個"
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr "選擇四個起始點的第一個"
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr "四個起始點的第二個"
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr "選擇四個起始點的第二個"
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr "四個起始點的第三個"
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr "選擇四個起始點的第三個"
 
 #: objects/transform_types.cc:566
-#, kde-format
 msgid "Fourth of 4 starting points"
 msgstr "四個起始點的第四個"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr "選擇四個起始點的第四個"
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr "選擇四個結束點的第一個..."
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr "選擇四個結束點的第二個..."
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr "選擇四個結束點的第三個..."
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr "第四個點的轉換位置"
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr "選擇四個結束點的第四個..."
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "計算此物件的陰影"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "選擇您要建構陰影的物件..."
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "計算從此光源產生的陰影"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr "選擇您要產生陰影的光源..."
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "計算此直線所表示的水平面投影"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr "選擇投影的水平面..."
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "轉換此物件"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "用此轉換法轉換"
 
 #: objects/transform_types.cc:883
-#, kde-format
 msgid "Apply a similitude to this object"
 msgstr "產生此物件的相似形"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Apply a similitude with this center"
 msgstr "以此為中心點產生相似形"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr "選擇中心點..."
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr "利用映射此點到另一個點產生相似形"
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr "選擇要映射的點..."
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr "利用映射某點到這個點產生相似形"
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr "選擇第一個點要映設到哪個點..."
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "建構起於此點的向量"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Select the start point of the new vector..."
 msgstr "選擇新向量的起點..."
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "建構指向此點的向量"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Select the end point of the new vector..."
 msgstr "選擇新向量的終點..."
 
 #: objects/vector_type.cc:44
-#, kde-format
 msgid "Construct the vector sum of this vector and another one."
 msgstr "建構此向量與另一個向量的向量和。"
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr "選擇您要建構向量和的第一個向量..."
 
 #: objects/vector_type.cc:48
-#, kde-format
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "建構此向量與另一個向量的向量和。"
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr "選擇您要建構向量和的另一個向量..."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Construct the vector sum starting at this point."
 msgstr "建構由這個點開始的向量和。"
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr "選擇要建構向量和的點..."
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "新增文稿"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr "在 Kig 視窗中選擇參數物件（如果有的話），然後點選「下一步」。"
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "輸入代碼"
@@ -6494,7 +6166,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6502,7 +6174,7 @@ msgid ""
 msgstr ""
 "Python 直譯器在執行您的文稿時發生了錯誤。請修正文稿，再點選「完成」按鈕。"
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
@@ -6511,7 +6183,7 @@ msgstr ""
 "Python 直譯器產生了下列錯誤輸出：\n"
 "%1"
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6521,25 +6193,25 @@ msgstr ""
 "在您的文稿中似乎有錯誤。Python 直譯器回報沒有錯誤，但是文稿並未產生合法的物"
 "件。請修正此文稿，再點選「完成」按鈕。"
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "編輯文稿"
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
 msgstr "編輯 Python 文稿"
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script."
 msgstr "Python 直譯器在執行您的文稿時發生了錯誤。請修正文稿。"
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "

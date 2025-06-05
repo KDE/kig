@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2023-03-12 09:30+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -173,7 +173,7 @@ msgstr "Exportovať ako skript asymptoty"
 msgid "Asymptote Options"
 msgstr "Voľby asymptoty"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -241,7 +241,7 @@ msgid ""
 "support."
 msgstr "Súbor Cabri obsahuje \"%1\" objekt, ktorý Kig momentálne nepodporuje."
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -292,37 +292,37 @@ msgid ""
 msgstr ""
 "Tento Dr. Geo súbor obsahuje typ prieniku, ktorý Kig momentálne nepodporuje."
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "&Exportovať ako obrázok"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "&Obrázok..."
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, kde-format
 msgid "Export as Image"
 msgstr "Exportovať ako obrázok"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, kde-format
 msgid "Image Options"
 msgstr "Možnosti obrázku"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "Prepáčte tento formát súboru nie je podporovaný."
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "Prepáčte, nastala chyba pri ukladaní do obrázku \"%1\""
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "&Exportovať do"
@@ -346,7 +346,7 @@ msgstr "Pri analýze súboru došlo k chybe. Nedá sa otvoriť."
 msgid "Parse Error"
 msgstr "Chyba analýzy"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr "Nepodporované"
@@ -479,7 +479,7 @@ msgstr "Iba obrázok"
 msgid "Standalone document"
 msgstr "Samostatný dokument"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
@@ -487,7 +487,7 @@ msgstr ""
 "Tento súbor bol vytvorený verziou Kig-u \"%1\", ktorú táto verzia nemôže "
 "otvoriť."
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -500,7 +500,7 @@ msgstr ""
 "Môžte skúsiť tento súbor otvoriť staršou verziou Kig-u (0.4 až 0.6),\n"
 "a znova ho uložiť v novom formáte."
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -510,7 +510,7 @@ msgstr ""
 "Tento Kig súbor má systém súradníc ktoré táto verzia nepodporuje.\n"
 "Bude použitý štandardný systém súradníc."
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, kde-format
 msgid ""
@@ -522,7 +522,7 @@ msgstr ""
 "Možno ste skompilovali Kig bez podpory pre tento typ objektu, alebo "
 "používate staršiu verziu Kig-u."
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -774,12 +774,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Zodpovedný za \"nový objekt\" ikonu."
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Nedajú sa nájsť potrebné knižnice Kig-u, skontrolujte vašu inštaláciu."
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -827,165 +827,165 @@ msgstr "Zobraziť osi"
 msgid "Invert Selection"
 msgstr "Invertovať výber"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "O&dstrániť objekty"
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Zmazať vybrané objekty"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Zrušiť vytváranie"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Zrušiť vytváranie objektu"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Opakovať konštrukciu"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Opakovať poslednú konštrukciu (s novými údajmi)"
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Zobraziť &všetko"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Zobraziť všetky skryté objekty"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Nové makro..."
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "Definovať nové makro"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Manage &Types..."
 msgstr "Spravovať &typy..."
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "Spravovať typy makier."
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr "Prehliadať históriu..."
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Prehliadať históriu aktuálnej konštrukcie."
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Priblížiť dokument"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Oddialiť dokument"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Vystrediť dokument na obrazovke"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Zobraziť tento dokument na celej obrazovke"
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "&Výber zobrazenej oblasti"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Výber oblasti ktorú chcete vidieť v okne"
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "&Zvoľte oblasť priblíženia"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Nastaviť presnosť súradníc..."
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 "Nastaviť presnosť s plávajúcou desatinnou čiarkou súradníc v dokumente. "
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
 msgstr "Zobraziť &mriežku"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Zobraziť alebo skryť mriežku"
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, kde-format
 msgid "Show &Axes"
 msgstr "Zobraziť &osy"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Zobraziť alebo skryť osy."
 
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Zapnúť infračervený pohľad"
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Povoliť/zakázať zobrazenie skrytých objektov."
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Opakovať konštrukciu (%1)"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Opakovať %1 (s novými údajmi)"
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -994,12 +994,12 @@ msgstr ""
 "Súbor \"%1\", ktorý chcete otvoriť neexistuje. Uistite sa, že ste zadali "
 "správnu cestu."
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "Súbor Nenájdený"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1013,45 +1013,45 @@ msgstr ""
 "pošlite žiadosť do <a href=\"https://bugs.kde.org/enter_bug.cgi?"
 "product=kig&bug_severity=wishlist\">KDE bug tracking systému</a>"
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Nepodporovaný formát"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "Kig nepodporuje uloženie do iného formátu. Uložiť do formátu Kig?"
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Uložiť Kig Formát"
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Kig dokumenty (*.kig);;Komprimované Kig dokumenty (*.kigz)"
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Súbor \"%1\" už existuje. Chcete ho prepísať?"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Prepísať súbor?"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Geometria tlače"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
@@ -1059,7 +1059,7 @@ msgstr[0] "Skryť %1 objekt"
 msgstr[1] "Skryť %1 objekty"
 msgstr[2] "Skryť %1 objektov"
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1304,7 +1304,7 @@ msgstr "Zobraziť"
 msgid "&Settings"
 msgstr "&Nastavenia"
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1313,7 +1313,7 @@ msgstr ""
 "Nezobrazovať GUI. Konvertovať zadaný súbor na prirodzený Kig formát. Výstup "
 "bude presmerovaný na stdout pokiaľ nie je zadané --outfile."
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1322,12 +1322,12 @@ msgstr ""
 "Súbor pre výstup vytvoreného prirodzeného súboru. '-' znamená výstup na "
 "stdout. Štandardný je stdout."
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, kde-format
 msgid "Document to open"
 msgstr "Dokument na otvorenie"
@@ -2030,7 +2030,7 @@ msgstr "Bodová projekcia"
 msgid "Project a point on a line"
 msgstr "Premietnuť bod na čiaru"
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr "Python Skript"
@@ -2040,7 +2040,7 @@ msgstr "Python Skript"
 msgid "Construct a new Python script."
 msgstr "Vytvoriť nový Python skript."
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2049,7 +2049,7 @@ msgstr ""
 "Zadajte súradnice vo formáte \"x;y\",\n"
 "kde x je súradnica x, a y je súradnica y."
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2058,7 +2058,7 @@ msgstr ""
 "Zadajte súradnice vo formáte: <b> \"x;y\"</b> ,<br /> kde x je súradnica x, "
 "a y je súradnica y."
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2067,7 +2067,7 @@ msgstr ""
 "Zadajte súradnice vo formáte \"r; θ\",\n"
 "kde r a θsú polárne súradnice."
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2076,22 +2076,22 @@ msgstr ""
 "Zadajte súradnice vo formáte: <b> \"r; θ\" </b>,<br /> kde r a θ sú polárne "
 "súradnice."
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "&Euklidovský"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "&Polárna"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "Nastaviť euklidovský súradnicový systém"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "Nastaviť polárny súradnicový systém"
@@ -2208,17 +2208,17 @@ msgstr ""
 "Ak prejdete na iný útvar, hodnota v editovacom poli vľavo bude konvertovaná "
 "na nový vybratý útvar."
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "Nedá sa otvoriť súbor makra \"%1\""
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "Kig nemôže otvoriť súbor makra \"%1\""
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2231,7 +2231,7 @@ msgstr ""
 "toto makro použitím predchádzajúcich verzií Kig-u(0.4 až 0.6) a potom ho "
 "znova exportovať do nového formátu."
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr "Nepomenované makro #%1"
@@ -2267,7 +2267,6 @@ msgid "Moving Point"
 msgstr "Premenlivý bod"
 
 #: misc/special_constructors.cc:327
-#, kde-format
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
@@ -2276,12 +2275,10 @@ msgstr ""
 "locusu..."
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid "Following Point"
 msgstr "Plávajúci bod"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2359,12 +2356,10 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "Vyberte bod, ktorý bude vrcholom novej polygonálnej čiary..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, kde-format
 msgid "Polygon"
 msgstr "Polygón"
 
 #: misc/special_constructors.cc:658
-#, kde-format
 msgid "Construct the vertices of this polygon..."
 msgstr "Vytvoriť vrcholy tohto polygónu..."
 
@@ -2379,7 +2374,6 @@ msgid "The vertices of a polygon."
 msgstr "Vrcholy polygónu."
 
 #: misc/special_constructors.cc:718
-#, kde-format
 msgid "Construct the sides of this polygon..."
 msgstr "Vytvoriť strany polygónu"
 
@@ -2624,25 +2618,21 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "Vyberte začiatočný bod na čiare/kružnici..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "prienik s touto kužeľosečkou"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "Prienik s touto priamkou"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, kde-format
 msgid "Intersect with this cubic"
 msgstr "Pretnúť s touto kubikou"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, kde-format
 msgid "Intersect with this circle"
 msgstr "Prienik s touto kružnicou"
 
@@ -2747,45 +2737,37 @@ msgid "with this Polygonal"
 msgstr "s týmto polygónom"
 
 #: misc/special_constructors.cc:1814
-#, kde-format
 msgid "Construct midpoint of this point and another one"
 msgstr "Vytvor stredový bod tohto a ďalšieho bodu"
 
 #: misc/special_constructors.cc:1815
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "Vyberte prvý z bodov z ktorých chcete vytvoriť stredový bod..."
 
 #: misc/special_constructors.cc:1818
-#, kde-format
 msgid "Construct the midpoint of this point and another one"
 msgstr "Vytvor stredový bod tohto a ďalšieho bodu"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "Vyberte ďalší z bodov z ktorých chcete vytvoriť stredový bod..."
 
 #: misc/special_constructors.cc:1869
-#, kde-format
 msgid "Construct golden ratio point of this point and another one"
 msgstr "Vytvor bod zlatého rezu tohto a ďalšieho bodu"
 
 #: misc/special_constructors.cc:1870
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
 msgstr "Vyberte prvý z bodov z ktorých chcete vytvoriť bod zlatého rezu..."
 
 #: misc/special_constructors.cc:1873
-#, kde-format
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "Vytvor bod zlatého rezu tohto a ďalšieho bodu"
 
 #: misc/special_constructors.cc:1874
-#, kde-format
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
@@ -3011,13 +2993,13 @@ msgstr "Posledný krok"
 msgid "Name"
 msgstr "Meno"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<nepomenovaný objekt>"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -3026,32 +3008,32 @@ msgstr ""
 "V texte je '%n' častí pre ktoré ste nevybrali hodnoty. Prosím odstráňte ich "
 "alebo vyberte dostatočné množstvo argumentov."
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "argument %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "Vyberám argument %1"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "Zmeniť návesť"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, kde-format
 msgid "Set Value"
 msgstr "Nastaviť hodnotu"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, kde-format
 msgid "Enter value:"
 msgstr "Zadajte hodnotu:"
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "Vyberte polohu nového číselného popisu..."
@@ -3137,84 +3119,84 @@ msgstr[2] "Presunúť %1 objektov"
 msgid "Redefine Point"
 msgstr "Predefinovať bod"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Black"
 msgstr "Čierna"
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, kde-format
 msgid "Gray"
 msgstr "Šedá"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, kde-format
 msgid "Red"
 msgstr "Červená"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Green"
 msgstr "Zelená"
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
 msgstr "Zelenomodrá"
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Yellow"
 msgstr "Žltá"
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, kde-format
 msgid "Dark Red"
 msgstr "Tmavočervená"
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "&Skryť"
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, kde-format
 msgid "&Show"
 msgstr "Zobraziť"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "&Presunúť"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
 msgstr "O&dstrániť"
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, kde-format
 msgid "&Custom Color"
 msgstr "Vlastná farba"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, kde-format
 msgid "Change Object Color"
 msgstr "Zmeniť farbu objektu"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, kde-format
 msgid "Change Object Width"
 msgstr "Zmeniť šírku objektu"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, kde-format
 msgid "Change Point Style"
 msgstr "Zmeniť štýl bodu"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, kde-format
 msgid "Change Object Style"
 msgstr "Zmeniť štýl objektu"
@@ -3240,7 +3222,7 @@ msgstr "Nastaviť meno objektu"
 msgid "Set Name of this Object:"
 msgstr "Nastaviť meno tohto objektu"
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
@@ -3248,63 +3230,63 @@ msgstr[0] "%1 objekt"
 msgstr[1] "Pridať %1 objekty"
 msgstr[2] "Pridať %1 objektov"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "Kig dokument"
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "&Transformovať"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, kde-format
 msgid "T&est"
 msgstr "T&esty"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "&Vytvoriť"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
 msgstr "Spustiť"
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "Pridať Te&xtový Popisok"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "&Nastaviť farbu"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, kde-format
 msgid "Set &Pen Width"
 msgstr "Na&staviť hrúbku pera"
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, kde-format
 msgid "Set St&yle"
 msgstr "Nastaviť š&týl"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "Nastaviť súradnicový systém"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, kde-format
 msgctxt "More menu items"
 msgid "More..."
 msgstr "Viac..."
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, kde-format
 msgid "Edit Script..."
 msgstr "Upraviť skript..."
@@ -3330,7 +3312,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "Zobraziť text v rámci"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "Vyberte argumenty"
@@ -3488,135 +3470,112 @@ msgstr ""
 msgid "&Import..."
 msgstr "&Importovať..."
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "Vytvoriť uhol cez tento bod"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr "Vyberte bod cez ktorý má ísť prvá polpriamka uhlu..."
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "Vytvoriť uhol na tom to bode"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr "Vyberte bod v ktorom vytvoriť uhol..."
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr "Vyberte bod cez ktorý má ísť druhá polpriamka uhlu..."
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "Nastaviť veľkosť"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr "Prepnúť značku pravého uhla"
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
 msgstr "Zmeniť veľkosť uhlu"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "Vytvoriť oblúk začínajúci v tomto bode"
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
 msgstr "Vyberte začiatočný bod nového oblúku"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "Vytvoriť oblúk cez tento bod"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr "Vyberte bod cez ktorý pôjde nový oblúk..."
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "Vytvoriť oblúk s kontom v tomto bode"
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
 msgstr "Vybrať koncový bod nového oblúku..."
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
 msgstr "Vytvoriť oblúk s týmto stredom"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
 msgstr "Vyberte stred nového oblúku..."
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
 msgstr "Vytvoriť oblúk s týmto uhlom"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
 msgstr "Vyberte uhol nového oblúku..."
 
-#: objects/arc_type.cc:204
-#, kde-format
+#: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
 msgstr "Vytvoriť kužeľosečku začínajúcu v tomto bode"
 
-#: objects/arc_type.cc:205
-#, kde-format
+#: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
 msgstr "Vyberte začiatočný bod novej kužeľosečky..."
 
-#: objects/arc_type.cc:206
-#, kde-format
+#: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
 msgstr "Vytvoriť kužeľosečku cez tento bod"
 
-#: objects/arc_type.cc:207
-#, kde-format
+#: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
 msgstr "Vyberte bod, cez ktorý bude prechádzať nová kužeľosečka..."
 
-#: objects/arc_type.cc:208
-#, kde-format
+#: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
 msgstr "Vytvoriť kužeľosečku s koncom v tomto bode"
 
-#: objects/arc_type.cc:209
-#, kde-format
+#: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
 msgstr "Vyberte koncový bod novej kužeľosečky..."
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
 msgstr "Vytvoriť kužeľosečku s týmto stredom"
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
 msgstr "Vyberte stred novej kužeľosečky..."
 
@@ -3639,7 +3598,6 @@ msgid "Bézier Curve"
 msgstr "Bézierova krivka"
 
 #: objects/bezier_imp.cc:202
-#, kde-format
 msgid "Select this Bézier Curve"
 msgstr "Vybrať túto Bézierovu krivku"
 
@@ -3677,7 +3635,6 @@ msgid "Bézier Quadratic"
 msgstr "Kvadratická Bézierova krivka"
 
 #: objects/bezier_imp.cc:219
-#, kde-format
 msgid "Select this Bézier Quadratic"
 msgstr "Vybrať túto kvadratickú Bézierovu krivku"
 
@@ -3715,7 +3672,6 @@ msgid "Bézier Cubic"
 msgstr "Bézierova kubika"
 
 #: objects/bezier_imp.cc:236
-#, kde-format
 msgid "Select this Bézier Cubic"
 msgstr "Vybrať túto Bézierovu kubiku"
 
@@ -3753,7 +3709,6 @@ msgid "Rational Bézier Curve"
 msgstr "Racionálna Bézierova krivka"
 
 #: objects/bezier_imp.cc:491
-#, kde-format
 msgid "Select this Rational Bézier Curve"
 msgstr "Vybrať túto racionálnu Bézierovu krivku"
 
@@ -3791,7 +3746,6 @@ msgid "Rational Bézier Quadratic"
 msgstr "Racionálna kvadratická Bézierova krivka"
 
 #: objects/bezier_imp.cc:508
-#, kde-format
 msgid "Select this Rational Bézier Quadratic"
 msgstr "Vybrať túto racionálnu kvadratickú Bézierovu krivku"
 
@@ -3829,7 +3783,6 @@ msgid "Rational Bézier Cubic"
 msgstr "Racionálna Bézierova kubika"
 
 #: objects/bezier_imp.cc:525
-#, kde-format
 msgid "Select this Rational Bézier Cubic"
 msgstr "Vybrať túto racionálnu Bézierovu kubiku"
 
@@ -3863,12 +3816,10 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr "Skryť racionálnu Bézierovu kubiku"
 
 #: objects/bezier_type.cc:26
-#, kde-format
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "Vytvoriť kvadratickú Bézierovu krivku s týmto ovládacím bodom"
 
 #: objects/bezier_type.cc:27
-#, kde-format
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr ""
@@ -3876,24 +3827,20 @@ msgstr ""
 "krivky..."
 
 #: objects/bezier_type.cc:121
-#, kde-format
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "Vytvoriť kubickú Bézierovu krivku s týmto ovládacím bodom"
 
 #: objects/bezier_type.cc:122
-#, kde-format
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr ""
 "Vyberte bod, ktorý bude ovládacím bodom novej kubickej Bézierovej krivky..."
 
 #: objects/bezier_type.cc:328
-#, kde-format
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr ""
 "Vytvoriť kvadratickú racionálnu Bézierovu krivku s týmto ovládacím bodom"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, kde-format
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
@@ -3902,12 +3849,10 @@ msgstr ""
 "Bézierovej krivky..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, kde-format
 msgid "Select this value as weight"
 msgstr "Vybrať túto hodnotu ako váhu"
 
 #: objects/bezier_type.cc:433
-#, kde-format
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "Vytvoriť kubickú racionálnu Bézierovu krivku s týmto ovládacím bodom"
 
@@ -3933,7 +3878,6 @@ msgid "Select the curve..."
 msgstr "Vybrať krivku..."
 
 #: objects/centerofcurvature_type.cc:23
-#, kde-format
 msgid "Select a point on the curve..."
 msgstr "Vyberte bod na krivke..."
 
@@ -3972,7 +3916,6 @@ msgid "circle"
 msgstr "kruh"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "Vybrať túto kružnicu"
 
@@ -4005,34 +3948,30 @@ msgstr "Zobraziť kružnicu"
 msgid "Hide a Circle"
 msgstr "Skryť kružnicu"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "Vytvoriť kružnicu cez tento bod"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "Vytvoriť kružnicu s týmto stredom"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr "Vyberte stred budúcej kružnice..."
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová kružnica..."
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "With this radius"
 msgstr "S týmto polomerom"
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
 msgstr "Vyberte dĺžku polomeru..."
 
@@ -4088,7 +4027,6 @@ msgid "conic"
 msgstr "kužeľosečka"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "Vybrať túto kužeľosečku"
 
@@ -4138,7 +4076,6 @@ msgid "conic arc"
 msgstr "kužeľový oblúk"
 
 #: objects/conic_imp.cc:604
-#, kde-format
 msgid "Select this conic arc"
 msgstr "Vybrať tento kužeľový oblúk"
 
@@ -4173,7 +4110,6 @@ msgstr "Skryť kužeľový oblúk"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "Vytvoriť kužeľosečku cez tento bod"
 
@@ -4181,185 +4117,149 @@ msgstr "Vytvoriť kužeľosečku cez tento bod"
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová kužeľosečka..."
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "Vytvoriť kužeľosečku s touto asymptotou"
 
 #: objects/conic_types.cc:61
-#, kde-format
 msgid "Select the first asymptote of the new conic..."
 msgstr "Vyberte prvú asymptotu pre novú kužeľosečku..."
 
 #: objects/conic_types.cc:62
-#, kde-format
 msgid "Select the second asymptote of the new conic..."
 msgstr "Vyberte druhú asymptotu pre novú kužeľosečku"
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "Vytvoriť elipsu s týmto ohniskom"
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr "Vyberte prvé ohnisko novej elipsy..."
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr "Vyberte druhé ohnisko novej elipsy..."
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "Vytvoriť elipsu cez tento bod"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová elipsa..."
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "Vytvoriť hyperbolu s týmto ohniskom"
 
 #: objects/conic_types.cc:146
-#, kde-format
 msgid "Select the first focus of the new hyperbola..."
 msgstr "Vyberte prvé ohnisko pre novú hyperbolu... "
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr "Vyberte druhé ohnisko pre novú hyperbolu..."
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "Vytvoriť hyperbolu cez tento bod"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová hyperbola..."
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "Vytvoriť kužeľosečku s touto priamkou ako direktrisou"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Select the directrix of the new conic..."
 msgstr "Vyberte direktrisu pre novú kužeľosečku..."
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "Vytvoriť kužeľosečku s ohniskom v tomto bode"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Select the focus of the new conic..."
 msgstr "Vyberte ohnisko pre novú kužeľosečku..."
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "Vytvoriť parabolu cez tento bod"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová parabola..."
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "Vytvoriť polárny bod vzhľadom na túto kužeľosečku"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr "Vyberte kužeľosečku vzhľadom na ktorú chcete vytvoriť polárny bod..."
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "Vytvoriť polárny bod tejto priamky"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, kde-format
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "Vyberte priamku pre ktorú chcete vytvoriť polárny bod..."
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "Vytvoriť polárnu priamku vzhľadom na túto kužeľosečku"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "Vytvoriť polárnu priamku tohto bodu"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "Vytvoriť direktrisu tejto kužeľosečky"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr "Vyberte kužeľosečku pre ktorú chcete vytvoriť direktrisu..."
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "Vytvoriť parabolu s touto direktrisou"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Select the directrix of the new parabola..."
 msgstr "Vyberte direktrisu novej paraboly..."
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Construct a parabola with this focus"
 msgstr "Vytvoriť parabolu s týmto ohniskom"
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Select the focus of the new parabola..."
 msgstr "Vyberte ohnisko novej paraboly..."
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "Vytvoriť asymptoty tejto kužeľosečky"
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr "Vyberte kužeľosečku z ktorej chcete vytvoriť asymptoty"
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "Vytvoriť prienikové priamky tejto kužeľosečky"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
@@ -4368,7 +4268,6 @@ msgstr ""
 "priamky..."
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4391,7 +4290,6 @@ msgid "cubic curve"
 msgstr "Kvadratická krivka"
 
 #: objects/cubic_imp.cc:348
-#, kde-format
 msgid "Select this cubic curve"
 msgstr "Vybrať túto kvadratickú krivku"
 
@@ -4425,12 +4323,10 @@ msgid "Hide a Cubic Curve"
 msgstr "Skryť kvadratickú krivku"
 
 #: objects/cubic_type.cc:11
-#, kde-format
 msgid "Construct a cubic curve through this point"
 msgstr "Vytvoriť kvadratickú krivku cez tento bod"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová kvadratická krivka..."
 
@@ -4439,7 +4335,6 @@ msgid "curve"
 msgstr "krivka"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "Vybrať túto krivku"
 
@@ -4480,87 +4375,70 @@ msgstr "Možná transcendentálna krivka"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, kde-format
 msgid "Already computed intersection point"
 msgstr "Prienikové body už boli vypočítané"
 
 #: objects/intersection_types.cc:372
-#, kde-format
 msgid "Intersect with this cubic curve"
 msgstr "Prienik s touto kvadratickou krivkou"
 
 #: objects/intersection_types.cc:526
-#, kde-format
 msgid "Intersect with this arc"
 msgstr "Prienik s týmto oblúkom"
 
 #: objects/inversion_type.cc:19
-#, kde-format
 msgid "Invert with respect to this circle"
 msgstr "Inverzia vzťahom na kružnicu"
 
 #: objects/inversion_type.cc:20
-#, kde-format
 msgid "Select the circle we want to invert against..."
 msgstr "Vyberte kružnicu vzhľadom na ktorú budeme invertovať..."
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Compute the inversion of this object"
 msgstr "Vypočítať inverziu tohto objektu"
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Select the object to invert..."
 msgstr "Vyberte objekt na invertovanie..."
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Compute the inversion of this point"
 msgstr "Vypočítať inverziu tohto bodu"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Select the point to invert..."
 msgstr "Vyberte bod pre inverziu..."
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Compute the inversion of this line"
 msgstr "Vypočítať inverziu tejto priamky"
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Select the line to invert..."
 msgstr "Vyberte priamku pre inverziu..."
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Compute the inversion of this segment"
 msgstr "Vypočítať inverziu tejto úsečky"
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Select the segment to invert..."
 msgstr "Vyberte úsečku pre inverziu..."
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Compute the inversion of this circle"
 msgstr "Vypočítať inverziu tejto kružnice"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Select the circle to invert..."
 msgstr "Vyberte kružnicu na inverziu..."
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Compute the inversion of this arc"
 msgstr "Vypočítať inverziu tohto oblúku"
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Select the arc to invert..."
 msgstr "Vyberte oblúk pre inverziu..."
 
@@ -4589,12 +4467,10 @@ msgid "line"
 msgstr "čiara"
 
 #: objects/line_imp.cc:545
-#, kde-format
 msgid "Select a Line"
 msgstr "Vybrať priamku"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "Vybrať túto priamku"
 
@@ -4632,7 +4508,6 @@ msgid "segment"
 msgstr "úsečka"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "Vybrať túto úsečku"
 
@@ -4670,7 +4545,6 @@ msgid "half-line"
 msgstr "polpriamka"
 
 #: objects/line_imp.cc:593
-#, kde-format
 msgid "Select this half-line"
 msgstr "Vybrať túto polpriamku"
 
@@ -4704,102 +4578,82 @@ msgid "Hide a Half-Line"
 msgstr "Skryť polpriamku"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Construct a segment starting at this point"
 msgstr "Vytvoriť úsečku so začiatkom v tomto bode"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Select the start point of the new segment..."
 msgstr "Vyberte začiatočný bod novej úsečky..."
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Construct a segment ending at this point"
 msgstr "Vytvoriť úsečku s koncom v tomto bode"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Select the end point of the new segment..."
 msgstr "Vyberte koncový bod novej úsečky..."
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "Vytvoriť priamku cez tento bod"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová priamka..."
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr "Vyberte ďalší bod cez ktorý bude prechádzať nová priamka..."
 
 #: objects/line_type.cc:75
-#, kde-format
 msgid "Construct a half-line starting at this point"
 msgstr "Vytvoriť polpriamku so začiatkom v tomto bode"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, kde-format
 msgid "Select the start point of the new half-line..."
 msgstr "Vyberte začiatočný bod novej polpriamky..."
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Construct a half-line through this point"
 msgstr "Vytvoriť polpriamku cez tento bod"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová polpriamka..."
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Construct the axis of this segment"
 msgstr "Vytvoriť os z tejto úsečky"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "Vyberte úsečku z ktorej chcete vytvoriť os..."
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Construct a line parallel to this line"
 msgstr "Vytvoriť priamku rovnobežnú s touto priamkou"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Select a line parallel to the new line..."
 msgstr "Vyberte priamku rovnobežnú k novej priamke..."
 
 #: objects/line_type.cc:156
-#, kde-format
 msgid "Construct the parallel line through this point"
 msgstr "Vytvoriť rovnobežku cez tento bod"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať nová rovnobežka..."
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Construct a line perpendicular to this line"
 msgstr "Vytvoriť priamku kolmú na túto priamku"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Select a line perpendicular to the new line..."
 msgstr "Vyberte priamku kolmú na novú priamku..."
 
 #: objects/line_type.cc:183
-#, kde-format
 msgid "Construct a perpendicular line through this point"
 msgstr "Vytvoriť kolmú priamku cez tento bod"
 
@@ -4824,22 +4678,18 @@ msgid "Resize Segment"
 msgstr "Zmeniť dĺžku úsečky"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Construct a line by this vector"
 msgstr "Vytvoriť priamku s týmto vektorom"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr "Vyberte vektor so smerom pre novú priamku..."
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Construct a half-line by this vector"
 msgstr "Vytvoriť polpriamku s týmto vektorom"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr "Vyberte vektor so smerom pre novú polpriamku..."
 
@@ -4848,7 +4698,6 @@ msgid "locus"
 msgstr "umiestnenie"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "Vybrať toto umiestnenie"
 
@@ -4889,8 +4738,7 @@ msgstr "Typ objektu"
 msgid "Object"
 msgstr "Objekt"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "Vybrať tento objekt"
 
@@ -4968,7 +4816,6 @@ msgid "angle"
 msgstr "uhol"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "Vybrať tento uhol"
 
@@ -5006,7 +4853,6 @@ msgid "vector"
 msgstr "vektor"
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "Vybrať tento vektor"
 
@@ -5044,7 +4890,6 @@ msgid "arc"
 msgstr "oblúk"
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "Vybrať tento oblúk"
 
@@ -5094,7 +4939,6 @@ msgid "point"
 msgstr "bod"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "Vybrať tento bod"
 
@@ -5128,38 +4972,32 @@ msgid "Hide a Point"
 msgstr "Skryť bod"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, kde-format
 msgid "Construct the midpoint of this point and another point"
 msgstr "Vytvoriť stredový bod z tohto a ďalšieho bodu"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr "Vyberte prvý z bodov z ktorých chcete vytvoriť stredový bod..."
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr "Vyberte druhý z bodov z ktorých chcete vytvoriť stredový bod..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, kde-format
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "Vytvoriť bod zlatého rezu z tohto a ďalšieho bodu"
 
 #: objects/point_type.cc:275
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr "Vyberte prvý z bodov z ktorých chcete vytvoriť bod zlatého rezu..."
 
 #: objects/point_type.cc:279
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
@@ -5206,37 +5044,30 @@ msgid "Change Parameter of Constrained Point"
 msgstr "Zmeniť paramater viazaného bodu"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr "Vyberte kružnicu cez ktorú transportovať mierku..."
 
 #: objects/point_type.cc:744
-#, kde-format
 msgid "Select a point on the circle..."
 msgstr "Vyberte bod na kružnici..."
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr "Vyberte úsečku pre transport na kružnicu..."
 
 #: objects/point_type.cc:794
-#, kde-format
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "Vyberte číslo/dĺžku ako x súradnicu bodu..."
 
 #: objects/point_type.cc:795
-#, kde-format
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "Vyberte číslo/dĺžku ako y súradnicu bodu..."
 
 #: objects/point_type.cc:820
-#, kde-format
 msgid "Select a point to project onto a line..."
 msgstr "Vyberte bod na premietnutie na čiaru..."
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr "Čiara, kde bude ležať premietnutý bod..."
 
@@ -5286,7 +5117,6 @@ msgid "polygon"
 msgstr "polygón"
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, kde-format
 msgid "Select this polygon"
 msgstr "Vybrať tento polygón"
 
@@ -5324,7 +5154,6 @@ msgid "closed polygonal curve"
 msgstr "zatvorená polygonálna krivka"
 
 #: objects/polygon_imp.cc:646
-#, kde-format
 msgid "Select this closed polygonal curve"
 msgstr "Vybrať túto zatvorenú polygonálnu krivku"
 
@@ -5362,7 +5191,6 @@ msgid "polygonal curve"
 msgstr "polygonálna krivka"
 
 #: objects/polygon_imp.cc:663
-#, kde-format
 msgid "Select this polygonal curve"
 msgstr "Vybrať túto polygonálnu krivku"
 
@@ -5400,7 +5228,6 @@ msgid "triangle"
 msgstr "trojuholník"
 
 #: objects/polygon_imp.cc:680
-#, kde-format
 msgid "Select this triangle"
 msgstr "Vybrať tento trojuholník"
 
@@ -5438,7 +5265,6 @@ msgid "quadrilateral"
 msgstr "štvoruholník"
 
 #: objects/polygon_imp.cc:697
-#, kde-format
 msgid "Select this quadrilateral"
 msgstr "Vybrať tento štvoruholník"
 
@@ -5472,105 +5298,85 @@ msgid "Hide a Quadrilateral"
 msgstr "Skryť štvoruholník"
 
 #: objects/polygon_type.cc:24
-#, kde-format
 msgid "Construct a triangle with this vertex"
 msgstr "Vytvoriť trojuholník s týmto vrcholom"
 
 #: objects/polygon_type.cc:25
-#, kde-format
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "Vyberte bod ktorý bude vrcholom nového trojuholníka"
 
 #: objects/polygon_type.cc:470
-#, kde-format
 msgid "Intersect this polygon with a line"
 msgstr "Prienik tohto polygónu s priamkou"
 
 #: objects/polygon_type.cc:471
-#, kde-format
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "Vyberte polygón z ktorého chcete prienik s priamkou..."
 
 #: objects/polygon_type.cc:474
-#, kde-format
 msgid "Intersect this line with a polygon"
 msgstr "Pretnúť túto čiaru s polygónom"
 
 #: objects/polygon_type.cc:475
-#, kde-format
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "Vyberte čiaru, ktorú chcete pretnúť s polygónom..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, kde-format
 msgid "Intersect this polygonal curve with a line"
 msgstr "Pretnúť túto polygonálnu krivku s čiarou"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, kde-format
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "Vyberte polygonálnu krivku, ktorú chcete pretnúť s čiarou..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, kde-format
 msgid "Intersect this line with a polygonal curve"
 msgstr "Pretnúť túto čiaru s polygonálnou krivkou"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, kde-format
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "Vyberte čiaru, ktorú chcete pretnúť s polygonálnou krivkou..."
 
 #: objects/polygon_type.cc:788
-#, kde-format
 msgid "Intersect this polygon with another polygon"
 msgstr "Pretnúť tento polygón s iným polygónom"
 
 #: objects/polygon_type.cc:789
-#, kde-format
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "Vyberte polygón, ktorý chcete pretnúť s iným polygónom..."
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Intersect with this polygon"
 msgstr "Pretnúť tento polygón"
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Select the second polygon for the intersection..."
 msgstr "Vyberte druhý polygón na pretnutie..."
 
 #: objects/polygon_type.cc:930
-#, kde-format
 msgid "Construct the vertices of this polygon"
 msgstr "Vytvoriť vrcholy tohto polygónu"
 
 #: objects/polygon_type.cc:931
-#, kde-format
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "Vyberte polygón z ktorého chcete vytvoriť vrcholy"
 
 #: objects/polygon_type.cc:974
-#, kde-format
 msgid "Construct the sides of this polygon"
 msgstr "Vytvoriť strany tohto polygónu"
 
 #: objects/polygon_type.cc:975
-#, kde-format
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "Vyberte polygón z ktorého chcete vytvoriť strany... "
 
 #: objects/polygon_type.cc:1022
-#, kde-format
 msgid "Construct the convex hull of this polygon"
 msgstr "Vytvoriť konvexný obal tohto polygónu"
 
 #: objects/polygon_type.cc:1023
-#, kde-format
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "Vyberte polygón z ktorého chcete vytvoriť konvexný obal..."
 
@@ -5580,27 +5386,22 @@ msgid "Project this point onto the circle"
 msgstr "Premietnuť tento bod na kružnicu"
 
 #: objects/tangent_type.cc:23
-#, kde-format
 msgid "Select the point for the tangent to go through..."
 msgstr "Vyberte bod cez ktorý bude prechádzať dotyčnica..."
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr "Je táto čiara rovnobežná?"
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr "Vyberte prvú z dvojice možných rovnobežných čiar..."
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Parallel to this line?"
 msgstr "Rovnobežná k tejto čiare?"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr "Vyberte druhú z dvojice možných rovnobežných čiar..."
 
@@ -5615,22 +5416,18 @@ msgid "These lines are not parallel."
 msgstr "Tieto čiary nie sú rovnobežné."
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr "Je táto čiara kolmá?"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr "Vyberte prvú z dvojice možných kolmých čiar..."
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Orthogonal to this line?"
 msgstr "Kolmá na túto čiaru?"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr "Vyberte druhú z dvojice možných kolmých čiar..."
 
@@ -5645,32 +5442,26 @@ msgid "These lines are not orthogonal."
 msgstr "Tieto čiary nie sú na seba kolmé."
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Check collinearity of this point"
 msgstr "Skontrolovať kolineárnosť tohto bodu"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr "Vyberte prvý z troch snáď kolineárnych bodov..."
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "and this second point"
 msgstr "a druhý bod"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr "Vyberte druhý z troch snáď kolineárnych bodov..."
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "with this third point"
 msgstr "a tretí bod"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr "Vyberte tretí z troch snáď kolineárnych bodov..."
 
@@ -5685,22 +5476,18 @@ msgid "These points are not collinear."
 msgstr "Tieto body nie sú kolineárne."
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr "Skontrolovať či sa tento bod nachádza na krivke"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, kde-format
 msgid "Select the point you want to test..."
 msgstr "Vyberte bod ktorý chcete testovať..."
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr "Skontrolovať či je bod na tejto krivke"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Select the curve that the point might be on..."
 msgstr "Vyberte krivku na ktorej môže byť bod..."
 
@@ -5715,17 +5502,14 @@ msgid "This curve does not contain the point."
 msgstr "Táto krivka neobsahuje daný bod"
 
 #: objects/tests_type.cc:180
-#, kde-format
 msgid "Check whether this point is in a polygon"
 msgstr "Skontrolovať či tento bod je súčasťou polygónu"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Check whether the point is in this polygon"
 msgstr "Skontrolovať či sa bod nachádza v tomto polygóne"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Select the polygon that the point might be in..."
 msgstr "Zvoľte polygón ktorý by bod mohol obsahovať..."
 
@@ -5740,12 +5524,10 @@ msgid "This polygon does not contain the point."
 msgstr "Tento polygón neobsahuje daný bod."
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Check whether this polygon is convex"
 msgstr "Skontrolovať či tento polygón je konvexný"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Select the polygon you want to test for convexity..."
 msgstr "Vyberte polygón ktorý chcete otestovať na konvexnosť..."
 
@@ -5760,34 +5542,28 @@ msgid "This polygon is not convex."
 msgstr "Tento polygón nie je konvexný."
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr "Overiť či tento bod má rovnakú vzdialenosť"
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr ""
 "Vyberte bod ktorý by mohol byť rovnako vzdialený od dvoch ďalších bodov..."
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "from this point"
 msgstr "od tohoto bodu"
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "Select the first of the two other points..."
 msgstr "Vyberte prvý z dvoch ostatných bodov..."
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "and from this second point"
 msgstr "a tohto druhého bodu"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "Select the other of the two other points..."
 msgstr "Vyberte prvý z dvoch ostatných bodov..."
 
@@ -5802,22 +5578,18 @@ msgid "The two distances are not the same."
 msgstr "Vzdialenosti nie sú rovnaké."
 
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr "Overiť či tento vektor je zhodný s iným"
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr "Vyberte prvý z dvoch možno rovnakých vektorov..."
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr "Overiť či je tento vektor zhodný s iným vektorom"
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr "Vyberte druhý z dvoch možno rovnakých vektorov..."
 
@@ -5832,12 +5604,10 @@ msgid "The two vectors are not the same."
 msgstr "Tieto dva vektory nie sú zhodné."
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Check whether this object exists"
 msgstr "Kontrola, či tento objekt existuje"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Select the object for the existence check..."
 msgstr "Vyberte objekt na kontrolu existencie..."
 
@@ -5860,7 +5630,6 @@ msgid "label"
 msgstr "Popisok"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "Vybrať tento popisok"
 
@@ -5898,7 +5667,6 @@ msgid "numeric label"
 msgstr "číselný popis"
 
 #: objects/text_imp.cc:184
-#, kde-format
 msgid "Select this numeric label"
 msgstr "Vybrať tento číselný popis"
 
@@ -5940,7 +5708,6 @@ msgid "boolean label"
 msgstr "logický popis"
 
 #: objects/text_imp.cc:278
-#, kde-format
 msgid "Select this boolean label"
 msgstr "Vybrať tento logický popis"
 
@@ -6019,173 +5786,146 @@ msgid "Change Displayed Value"
 msgstr "Zmeniť zobrazenú hodnotu"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "Presunúť tento objekt"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Select the object to translate..."
 msgstr "Vyberte objekt na presun..."
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "Presuňte podľa tohto vektoru"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr "Vyberte vektor podľa ktorého presúvať..."
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "Premietnuť tento objekt"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Select the object to reflect..."
 msgstr "Vyberte objekt na premietnutie..."
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Reflect in this point"
 msgstr "Premietnuť cez tento bod"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Select the point to reflect in..."
 msgstr "Vyberte bod cez ktorý sa bude premietať"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Reflect in this line"
 msgstr "Premietať cez túto priamku"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Select the line to reflect in..."
 msgstr "Vyberte priamku cez ktorú sa bude premietať..."
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "Rotovať tento objekt"
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Select the object to rotate..."
 msgstr "Vybrať objekt rotácie..."
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "Rotovať okolo tohto bodu"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Select the center point of the rotation..."
 msgstr "Vyberte stredový bod rotácie..."
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "Rotovať o tento uhol"
 
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Select the angle of the rotation..."
 msgstr "Vyberte uhol rotácie..."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "Vybrať tento objekt"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, kde-format
 msgid "Select the object to scale..."
 msgstr "Vyberte objekt ktorého veľkosť chcete zmeniť..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "Zmeniť veľkosť s týmto stredom"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Select the center point of the scaling..."
 msgstr "Vyberte stredový bod pre zmenu veľkosti..."
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid "Scale by this length"
 msgstr "Mierka podľa tejto dĺžky"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "Vyberte úsečku alebo segment, ktorého dĺžka ovplyvní zmenu veľkosti..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, kde-format
 msgid "Scale this length..."
 msgstr "Mierka tejto dĺžky..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, kde-format
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
 "Vyberte prvú z dvoch úsečiek ktorých pomer bude určovať zmenu veľkosti..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, kde-format
 msgid "...to this other length"
 msgstr "...na túto inú dĺžku"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, kde-format
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
 "Vyberte druhú z dvoch úsečiek ktorých pomer bude určovať zmenu veľkosti..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Select the object to scale"
 msgstr "Vyberte objekt pre zmenu veľkosti"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "Zmeniť veľkosť cez túto priamku"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Select the line to scale over"
 msgstr "Vyberte priamku cez ktorú zmeniť veľkosť"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "Projektívne rotovať tento objekt"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Select the object to rotate projectively"
 msgstr "Vyberte objekt pre projektívnu rotáciu"
 
 #: objects/transform_types.cc:337
-#, kde-format
 msgid "Projectively rotate with this half-line"
 msgstr "Projektívne rotovať s touto polpriamkou"
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
@@ -6193,164 +5933,134 @@ msgstr ""
 "Vyberte polpriamku projektívnej rotácie ktorú chcete aplikovať na objekt"
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "Projektívne rotovať o tento uhol"
 
 #: objects/transform_types.cc:342
-#, kde-format
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "Vyberte uhol projektívnej rotácie ktorý chcete aplikovať na objekt"
 
 #: objects/transform_types.cc:376
-#, kde-format
 msgid "Harmonic Homology of this object"
 msgstr "Harmonická homológia tohto objektu"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, kde-format
 msgid "Select the object to transform..."
 msgstr "Vyberte objekt na transformáciu..."
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Harmonic Homology with this center"
 msgstr "Harmonická homológia s týmto stredom"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr "Vyberte stredový bod pre harmonickú homológiu..."
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr "Harmonická homológia s touto osou"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr "Vyberte os pre harmonickú homológiu"
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, kde-format
 msgid "Generic affinity of this object"
 msgstr "Všeobecná podobnosť tohto objektu"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Map this triangle"
 msgstr "Mapovať tento trojuholník"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr ""
 "Vyberte trojuholník ktorý má byť transformovaný do daného trojuholníka..."
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr "do tohto trojuholníka"
 
 #: objects/transform_types.cc:412
-#, kde-format
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "Vyberte trojuholník ktorý je obrazom podobnosti prvého trojuholníka..."
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr "Prvý z troch začiatočných bodov"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr "Vyberte prvý z troch začiatočných bodov všeobecnej podobnosti..."
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr "Druhý z troch začiatočných bodov"
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr "Vyberte druhý z troch začiatočných bodov všeobecnej podobnosti..."
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr "Tretí z troch začiatočných bodov"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr "Vyberte tretí z troch začiatočných bodov všeobecnej podobnosti..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr "Transformovaná pozícia prvého bodu"
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr "Vyberte prvý z troch koncových bodov všeobecnej podobnosti"
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr "Transformovaná pozícia druhého bodu"
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr "Vyberte druhý z troch koncových bodov všeobecnej podobnosti"
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, kde-format
 msgid "Transformed position of third point"
 msgstr "Transformovaná pozícia tretieho bodu"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr "Vyberte tretí z troch koncových bodov všeobecnej podobnosti..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, kde-format
 msgid "Generic projective transformation of this object"
 msgstr "Všeobecná transformácia premietnutím tohto objektu"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr "Mapovať tento štvoruholník"
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr "Vyberte štvoruholník ktorý má byť transformovaný na daný štvoruholník"
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr "na tento štvoruholník"
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
@@ -6359,213 +6069,175 @@ msgstr ""
 "štvoruholníka... "
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr "Prvý zo štyroch počiatočných bodov"
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr "Vyberte prvý zo štyroch počiatočných bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr "Druhý zo štyroch počiatočných bodov"
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr ""
 "Vyberte druhý zo štyroch začiatočných bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr "tretí zo štyroch počiatočných bodov"
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr ""
 "Vyberte tretí zo štyroch začiatočných bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:566
-#, kde-format
 msgid "Fourth of 4 starting points"
 msgstr "Štvrtý zo štyroch počiatočných bodov"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr ""
 "Vyberte štvrtý zo štyroch začiatočných bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr "Vyberte prvý zo štyroch koncových bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr "Vyberte druhý zo štyroch koncových bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr "Vyberte tretí zo štyroch koncových bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr "Transformovaná pozícia štvrtého bodu"
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr "Vyberte štvrtý zo štyroch koncových bodov všeobecného premietnutia..."
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "Vrhnúť tieň tohto objektu"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "Vyberte objekt z ktorého chcete vytvoriť tieň..."
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "Vrhnúť tieň s týmto zdrojom svetla"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr "Vyberte zdroj svetla z ktorého má vzniknúť tieň"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "Vrhnúť tieň na obzor reprezentovaný touto priamkou"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr "Vyberte obzor pre tieň..."
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "Transformovať tento objekt"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "Transformovať použitím tejto transformácie"
 
 #: objects/transform_types.cc:883
-#, kde-format
 msgid "Apply a similitude to this object"
 msgstr "Použiť podobnosť na tento objekt"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Apply a similitude with this center"
 msgstr "Aplikovať podobnosť s týmto stredom"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr "Vyberte stred pre podobnosť..."
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr "Použiť podobnosť mapujúcu tento bod na iný bod"
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr "Vyberte bod ktorý má podobnosť mapovať na iný bod..."
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr "Použiť podobnosť mapujúcu bod na tento bod"
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr "Vyberte bod na ktorý má podobnosť mapovať prvý bod..."
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "Vytvoriť vektor z tohoto bodu"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Select the start point of the new vector..."
 msgstr "Zvoľte počiatočný bod nového vektoru..."
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "Vytvoriť vektor do tohoto bodu"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Select the end point of the new vector..."
 msgstr "Vyberte koncový bod nového vektoru..."
 
 #: objects/vector_type.cc:44
-#, kde-format
 msgid "Construct the vector sum of this vector and another one."
 msgstr "Vytvoriť vektorový súčet tohto a ďalšieho vektoru"
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr "Vyberte prvý z dvoch vektorov z ktorých chcete vytvoriť súčet..."
 
 #: objects/vector_type.cc:48
-#, kde-format
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "Vytvoriť vektorový súčet tohto a iného vektoru"
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr ""
 "Vyberte druhý z dvoch vektorov z ktorých chcete vytvoriť vektorový súčet..."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Construct the vector sum starting at this point."
 msgstr "Vytvoriť súčet vektorov so začiatkom v tomto bode."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr "Vyberte bod v ktorom bude vytvorený vektorový súčet"
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "Nový skript"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
@@ -6574,7 +6246,7 @@ msgstr ""
 "Vyberte objekty argumentov (ak sú)\n"
 "v okne Kig-u a stlačte \"Ďalej\"."
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "Zadajte kód"
@@ -6598,7 +6270,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6607,7 +6279,7 @@ msgstr ""
 "Python interpreter spôsobil chybu počas vykonávania vášho skriptu. Prosím "
 "opravte skript a kliknite znova na tlačítko Dokončiť"
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
@@ -6616,7 +6288,7 @@ msgstr ""
 "Interpreter jazyka Python vrátil nasledujúce chybové hlásenie:\n"
 "%1"
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6627,18 +6299,18 @@ msgstr ""
 "žiadne chyby, ale skript nevygeneroval žiadny platný objekt. Prosím opravte "
 "skript, a kliknite znova na tlačítko Dokončiť."
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "Upraviť skript"
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
 msgstr "Upraviť Python Skript"
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6647,7 +6319,7 @@ msgstr ""
 "Interpreter jazyka Python spôsobil chybu počas vykonávania vášho skriptu. "
 "Prosím opravte skript."
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "

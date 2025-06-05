@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2012-07-16 11:37+0700\n"
 "Last-Translator: Sok Sophea <sophea@khmeros.info>\n"
 "Language-Team: Khmer <>\n"
@@ -176,7 +176,7 @@ msgstr "នាំចេញ​ជា​ស្គ្រីប​អាស៊ីម
 msgid "Asymptote Options"
 msgstr "ជម្រើស​អាស៊ីមតូត"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -241,7 +241,7 @@ msgid ""
 "support."
 msgstr "ឯកសារ Cabri នេះ​មាន​វត្ថុ \"%1\", ដែល Kig បច្ចុប្បន្ន​មិន​គាំទ្រ ។"
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -290,37 +290,37 @@ msgid ""
 "currently support."
 msgstr "ឯកសារ Dr. Geo នេះ​មាន​ប្រភេទ​ចំណុច​ប្រសព្វ, ដែល Kig បច្ចុប្បន្ន​មិន​គាំទ្រ ។"
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "នាំ​ចេញ​ជា​រូបភាព"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "រូបភាព..."
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, kde-format
 msgid "Export as Image"
 msgstr "នាំ​ចេញ​ជា​រូបភាព"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, kde-format
 msgid "Image Options"
 msgstr "ជម្រើស​រូបភាព"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "សូម​ទោស, មិន​បាន​គាំទ្រ​ទ្រង់ទ្រាយ​ឯកសារ​នេះ​ទេ ។"
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "សូម​ទោស, មាន​កំហុស​ខណៈ​ពេល​រក្សា​ទុក​រូបភាព \"%1\""
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "នាំ​ចេញ​ជា"
@@ -347,7 +347,7 @@ msgstr "បាន​ជួប​កំហុស​ខណៈ​ពេល​ញែ
 msgid "Parse Error"
 msgstr "ញែក​កំហុស"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr "មិន​បាន​គាំទ្រ"
@@ -476,13 +476,13 @@ msgstr "តែ​រូបភាព​ប៉ុណ្ណោះ"
 msgid "Standalone document"
 msgstr "ឯកសារ​ឈរ​តែឯង​"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
 msgstr "ឯកសារ​នេះ​ត្រូវ​បាន​បង្កើត​ដោយ​កំណែ Kig \"%1\", ដែល​កំណែ​នេះ​មិន​អាច​ត្រូវ​បាន​បើក​ទេ ។"
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -495,7 +495,7 @@ msgstr ""
 "អ្នក​អាច​សាកល្បង​បើក​ឯកសារ​នេះ​ជាមួយ​នឹង​កំណែ​ចាស់​របស់ Kig  (0.4 to 0.6),\n"
 "ហើយ​រក្សា​ទុក​វា​ម្ដង​ទៀត, ដែល​នឹង​រក្សា​ទុក​វា​ក្នុង​ទ្រង់ទ្រាយ​ថ្មី ។"
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -505,7 +505,7 @@ msgstr ""
 "ឯកសារ Kig នេះ​បាន​ប្រព័ន្ធ​កូអរដោនេ​ដែល​កំណែ Kig នេះ​មិន​គាំទ្រ ។\n"
 "ខ្នាត​គំរូ​ប្រពន្ធ​កូអរដោនេ​នឹង​ត្រូវ​បាន​ប្រើ​ជំនួស ។"
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, kde-format
 msgid ""
@@ -516,7 +516,7 @@ msgstr ""
 "ឯកសារ Kig នេះ​ប្រើ​វត្ថុ​នៃ​ប្រភេទ \"%1\", ដែល​កំណែ Kig នេះ​មិន​គាំទ្រ ។ ប្រហែល​ជា​អ្នក​បាន​ចងក្រង "
 "Kig ដោយ​មិន​គាំទ្រ​ចំពោះ​ប្រភេទ​វត្ថុ​នេះ, ឬ ប្រហែល​ជា​អ្នក​កំពុង​ប្រើ​កំណែ​ចាស់​ជាង​របស់ Kig ។"
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -778,12 +778,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "ដែល​ទទួល​ខុស​ត្រូវ​ចំពោះ​រូប​តំណាង​សកម្មភាព​វត្ថុ​ថ្មី ។"
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "មិន​អាច​រក​បណ្ណាល័យ​ចាំបាច់​របស់​ Kig បានឡើយ​ ពិនិត្យ​ការ​ដំឡើង​របស់​អ្នក ។"
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -828,164 +828,164 @@ msgstr "បង្ហាញា​អ័ក្ស"
 msgid "Invert Selection"
 msgstr "បញ្ច្រាស​ការ​ជ្រើស"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "លុប​វត្ថុ​"
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "លុប​វត្ថុ​ដែល​បាន​ជ្រើស​"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "បោះបង់​ការ​សាងសង់​"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "បោះបង់​ការសាងសង់​នៃ​វត្ថុ​ដែល​កំពុង​ចាប់​ផ្តើម​សាងសង់​"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Repeat Construction"
 msgstr "ធ្វើការ​សង់​ម្ដង​ទៀត"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "ធ្វើ​ការ​សាងសង់​ចុង​ក្រោយ​ម្ដង​ទៀត (ជាមួយ​ទិន្នន័យ​ថ្មី)"
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "មិន​លាក់​ទាំងអស់​"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "បង្ហាញ​វត្ថុ​ដែល​លាក់​ទាំងអស់"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "ម៉ាក្រូ​ថ្មី​..."
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "កំណត់​ម៉ាក្រូ​ថ្មី​"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Manage &Types..."
 msgstr "គ្រប់គ្រង​ប្រភេទ..."
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "គ្រប់គ្រង​ប្រភេទ​ម៉ាក្រូ​ ។"
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr "រុករក​ប្រវត្តិ..."
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "រុករក​ប្រវត្តិ​នៃ​ការ​សាងសង់​ថ្មីៗ ។"
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "ពង្រីក​ឯកសារ​"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "បង្រួម​ឯកសារ​"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "ដាក់​ចំណុច​កណ្ដាល​ឡើង​វិញ​ទៅ​លើ​ឯកសារ"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "មើល​ឯកសារ​នេះ​ពេញ​អេក្រង់​ ។"
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "ជ្រើស​ផ្ទៃ​ដែល​បង្ហាញ"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "ជ្រើស​ផ្ទៃ​ដែល​អ្នក​ចង់​ឲ្យ​បង្ហាញ​ក្នុង​បង្អួច ។"
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "ជ្រើស​ផ្ទៃ​ពង្រីក"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "កំណត់​ចំនួន​ខ្ទង់​កូអរដោណេ..."
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "កំណត់​ចំនួន​ខ្ទង់​ទសភាគ​របស់​កូអរដោណេ​នៅ​ក្នុង​ឯកសារ ។"
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
 msgstr "បង្ហាញ​ក្រឡាចត្រង្គ"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "បង្ហាញ ឬ លាក់​ក្រឡាចត្រង្គ​ ។"
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, kde-format
 msgid "Show &Axes"
 msgstr "បង្ហាញ​អ័ក្ស​"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "បង្ហាញ ឬ លាក់​អ័ក្ស​ ។"
 
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "ពាក់​កញ្ចក់​អ៊ីនហ្វ្រារ៉េដ"
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "បើក/បិទ​វត្ថុ​ដែល​លាក់​ឲ្យ​មើល​ឃើញ ។"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "ធ្វើការ​សង់​ម្ដង​ទៀត (%1)"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "ធ្វើ %1 ម្ដងទៀត (ជាមូយ​ទិន្នន័យ​ថ្មី)"
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -994,12 +994,12 @@ msgstr ""
 "ឯកសារ​ \"%1\" ដែល​អ្នក​ព្យាយាម​បើក​មិន​ទាន់​មាន​នូវ​ឡើយ​ទេ​ ។ សូម​ផ្ទៀងផ្ទាត់​ថា​អ្នក​បាន​បញ្ចូល​ផ្លូវ​ត្រឹមត្រូវ​"
 "  ។​"
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "រក​មិន​ឃើញ​ឯកសារ​"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, fuzzy, kde-format
 #| msgid ""
 #| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1017,12 +1017,12 @@ msgstr ""
 "ថាត​ទ្រង់ទ្រាយ​នៅ​ក្នុង​សំណួរ​នឹ​ងមាន​តម្លៃ​ក្នុងការ​អនុវត្ត​ការ​គាំទ្រ​ អ្នក​តែងតែ​អាច​សួរ​យើងយ៉ាង​ល្អ​នៅ​ mailto:"
 "pino@kde.org ឬ​ធ្វើ​ដោយ​ខ្លួន​ឯង និង​ផ្ញើ​បំណះ​មក​ឲ្យ​ខ្ញុំ ។"
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
 msgid "Format Not Supported"
 msgstr "មិន​បាន​គាំទ្រ​ទ្រង់ទ្រាយ​"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1031,12 +1031,12 @@ msgstr ""
 "Kig មិន​គាំទ្រ​ការរក្សាទុក​ជា​ទ្រង់ទ្រាយ​ឯកសារ​ផ្សេង​ទៀត​ជាង​ទ្រង់ទ្រាយ​ផ្ទាល់​របស់​វា​ឡើយ​ ។ រក្សា​ទុក​ទៅ​"
 "ទ្រង់ទ្រាយ​របស់  Kig ជំនួស​វិញ​ឬ?"
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr "រក្សា​ទ្រង់ទ្រាយ​របស់​​ Kig"
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.kig|Kig Documents (*.kig)\n"
@@ -1046,30 +1046,30 @@ msgstr ""
 "ឯកសារ *.kig|Kig  (*.kig)\n"
 "ឯកសារ *.kigz|Compressed Kig  (*.kigz)"
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "ឯកសារ​ \"%1\" មានរួចហើយ​ ។ តើ​អ្នក​ពិតជាចង់​សរសេរពីលើ​ឬ​?"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "សរសេរ​ជាន់​លើ​ឯកសារឬ?"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, fuzzy, kde-format
 #| msgid "Print Geometry"
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "បោះពុម្ព​ធរណីមាត្រ"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "លាក់វត្ថុ​ %1"
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1312,7 +1312,7 @@ msgstr "ទិដ្ឋភាព"
 msgid "&Settings"
 msgstr "ការ​កំណត់"
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1321,7 +1321,7 @@ msgstr ""
 "កុំ​បង្ហាញ​ GUI ។​ បម្លែង​ឯកសារ​ដែល​បាន​បញ្ជាក់​ទៅ​ជា​ទ្រង់ទ្រាយ​ដើម​របស់​Kig  ។  ការ​បញ្ចេញ​នឹង​ទៅ​កាន់ "
 "stdout បើ --outfile មិន​បាន​បញ្ជាក់ ។"
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1330,12 +1330,12 @@ msgstr ""
 "ឯកសារ​ដែល​ត្រូវ​បញ្ចេញ​ឯកសារ​ដើម​ដែល​បាន​បង្កើត​ទៅ ។ '-' មាន​ន័យ​ថា​បញ្ចេញ​ទៅ​ stdout ។ លំនាំ​ដើម​គឺ "
 "stdout ផង​ដែរ ។"
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, kde-format
 msgid "Document to open"
 msgstr "ឯកសារ​ត្រូវ​បើក"
@@ -2032,7 +2032,7 @@ msgstr ""
 msgid "Project a point on a line"
 msgstr "គ្រោង​ចំណុច​សម្រាប់​រង្វង់​"
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr "ស្គ្រីប​ Python "
@@ -2042,7 +2042,7 @@ msgstr "ស្គ្រីប​ Python "
 msgid "Construct a new Python script."
 msgstr "បង្កើត​ស្គ្រីប​  Python ថ្មីមួយ​ ។"
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2051,7 +2051,7 @@ msgstr ""
 "បញ្ចូល​អរកូដោនេ​ក្នុង​ទ្រង់ទ្រាយ​ដូចខាងក្រោម​ ៖  \"x;y\",\n"
 " x នៅ​ទីណា​ កូអរដោនេ​ x ​នៅ​ទី​នោះ​ ហើយ​  y ជា​កូអរដោនេ​នៃ​ y  ។​"
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2060,7 +2060,7 @@ msgstr ""
 "បញ្ចូល​កូអោដោណេ​នៅ​ក្នុងទ្រង់ទ្រាយ​ដូច​ខាងក្រោម ៖ <b>\"x;y\"</b>,<br />ដែល x គឺ​ជា​កូអោដោណេ x "
 "និង​ y ជា​កូអោដោណេ y ។"
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2069,7 +2069,7 @@ msgstr ""
 "បញ្ចូល​កូអរដោនេ​តាម​ទ្រង់ទ្រាយ​ដូច​ខាងក្រោម​ ៖  \"r; θ°\",\n"
 " ទីតាំង​ r និង  θ ជា​កូអរដោនេ​នៃ​បន្ទាត់​រាង​ប៉ូល​ ។​"
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2078,22 +2078,22 @@ msgstr ""
 "បញ្ចូល​កូអរដោនេ​តាម​ទ្រង់ទ្រាយ​ដូច​ខាងក្រោម​ ៖  <b>\"r; θ°\"</b> ដែល r នឹង  θ ជា​កូអរដោនេ​​របស់​​"
 "ប៉ូល​ ។​"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "រាង​ជាក្រឡា​"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "រាងជា​ប៉ូល​"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "កំណត់​ប្រព័ន្ធ​កូអរដោនេ​រាងជាក្រឡា​"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "កំណត់​ប្រព័ន្ធ​កូអរដោនេ​រាងជា​ប៉ូល​"
@@ -2209,17 +2209,17 @@ msgstr ""
 "ប្រសិនបើ​អ្នក​ប្ដូរ​ទៅ​ឯកសារ​ផ្សេង តម្លៃ​នៅ​ក្នុង​វាល​កែសម្រួល​នៅ​ខាង​ឆ្វេង​នឹង​ត្រូវ​បានបម្លែង​ទៅ​ឯកសារ​ដែល​បាន​"
 "ជ្រើស​ថ្មី ។"
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "មិន​អាច​បើក​ឯកសារ​ម៉ាក្រូ '%1'"
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "Kig មិន​អាច​បើក​ឯកសារ​ម៉ាក្រូ \"%1\" ។"
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2231,7 +2231,7 @@ msgstr ""
 "ដែល​គាំទ្រ​ទ្រង់ទ្រាយ​នេះ​ត្រូវ​បាន​យក​ចេញ​ ។ អ្នក​អាច​ព្យាយាម​នាំចូល​ម៉ាក្រូ​ដោយ​ប្រើ​កំណែ​ Kig ពីមុន (0.4 ទៅ​ "
 "0. 6) ហើយ​បន្ទាប់​មកនាំវា​ចេញ​ទៅ​ជា​ទ្រង់ទ្រាយ​ថ្មី​ម្តងទៀត​ ។"
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr "ម៉ាក្រូ​គ្មាន​ឈ្មោះ #%1"
@@ -2266,19 +2266,16 @@ msgid "Moving Point"
 msgstr "ចំណុច​រំកិល"
 
 #: misc/special_constructors.cc:327
-#, kde-format
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr "ជ្រើស​ចំណុច​រំកិល​ដែល​នឹង​ត្រូវ​បាន​ផ្លាស់ទី​ជុំវិញ​ខណៈ​គូស​ស្ថានរេខាណិត..."
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid "Following Point"
 msgstr "ចំណុច​ខាង​ក្រោម"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2353,12 +2350,10 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "ជ្រើស​ចំណុច​ដើម្បី​ធ្វើជា​កំពូល​របស់​បន្ទាត់​ពហុកោណ​ថ្មី​..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, kde-format
 msgid "Polygon"
 msgstr "ពហុកោណ"
 
 #: misc/special_constructors.cc:658
-#, kde-format
 msgid "Construct the vertices of this polygon..."
 msgstr "សង់​កំពូល​ពហុកោណ​នេះ​..."
 
@@ -2373,7 +2368,6 @@ msgid "The vertices of a polygon."
 msgstr "កំពូល​ពហុកោណ "
 
 #: misc/special_constructors.cc:718
-#, kde-format
 msgid "Construct the sides of this polygon..."
 msgstr "បង្កើត​ជ្រុង​ពហុកោណនេះ​..."
 
@@ -2611,25 +2605,21 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​នៅ​លើ​រង្វង់/បន្ទាត់..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "ប្រសព្វ​ជាមួយ​សាជី​នេះ "
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "ប្រសព្វ​ជាមួយ​បន្ទាត់​នេះ​"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, kde-format
 msgid "Intersect with this cubic"
 msgstr "ប្រសព្វ​ជាមួយ​គូប​នេះ"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, kde-format
 msgid "Intersect with this circle"
 msgstr "ប្រសព្វ​ជាមួយ​រង្វង់​នេះ​"
 
@@ -2734,35 +2724,32 @@ msgid "with this Polygonal"
 msgstr "ជាមួយ​ពហុកោណ​នេះ"
 
 #: misc/special_constructors.cc:1814
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct midpoint of this point and another one"
 msgstr "សង់​ចំណុច​កណ្តាល​នៃ​ជ្រុង​និង ជ្រុង​មួយ​ផ្សេងទៀត​"
 
 #: misc/special_constructors.cc:1815
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "ជ្រើស​ចំណុច​ដំបូង​គេ​ដែល​អ្នក​ចង់​សង់​ចំណុច​កណ្តាល​..."
 
 #: misc/special_constructors.cc:1818
-#, kde-format
 msgid "Construct the midpoint of this point and another one"
 msgstr "សង់​ចំណុច​កណ្តាល​នៃ​ជ្រុង​និង ជ្រុង​មួយ​ផ្សេងទៀត​"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "ជ្រើស​ជ្រុង​មួយ​ផ្សេងទៀត​សម្រាប់​សង់​ចំណុច​កណ្តាល​..."
 
 #: misc/special_constructors.cc:1869
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct golden ratio point of this point and another one"
 msgstr "សង់​ចំណុច​កណ្តាល​នៃ​ជ្រុង​និង ជ្រុង​មួយ​ផ្សេងទៀត​"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the points of which you want to construct the "
 #| "midpoint..."
@@ -2772,13 +2759,13 @@ msgid ""
 msgstr "ជ្រើស​ចំណុច​ដំបូង​គេ​ដែល​អ្នក​ចង់​សង់​ចំណុច​កណ្តាល​..."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "សង់​ចំណុច​កណ្តាល​នៃ​ជ្រុង​និង ជ្រុង​មួយ​ផ្សេងទៀត​"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the other of the points of which to construct the midpoint..."
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
@@ -3006,13 +2993,13 @@ msgstr "ជំហាន​ចុង​ក្រោយ"
 msgid "Name"
 msgstr "ឈ្មោះ"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<វត្ថុ​ដែល​គ្មាន​ឈ្មោះ>"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -3021,32 +3008,32 @@ msgstr ""
 "មាន​ផ្នែក​ '%n' ​ក្នុង​អត្ថបទ​ដែល​អ្នក​មិនទាន់​បានជ្រើស​តម្លៃ​សម្រាប់​ ។សូម​យក​ពួក​វា​ចេញ​ ឬ យក​អាគុយម៉ង់​មួយ​"
 "គ្រប់គ្រាន់​ហើយ​​ ។"
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "អាគុយម៉ង់​ %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "កំពុង​ជ្រើស​អាគុយម៉ង់  %1"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "ផ្លាស់ប្តូរ​ស្លាក​"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, kde-format
 msgid "Set Value"
 msgstr "កំណត់​តម្លៃ"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, kde-format
 msgid "Enter value:"
 msgstr "បញ្ចូល​តម្លៃ ៖"
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "ជ្រើស​ទីតាំង​សម្រាប់​តម្លៃ​ជា​លេខ​ថ្មី..."
@@ -3129,84 +3116,84 @@ msgstr[0] "ផ្លាស់ទី​ វត្ថុ​ %1​"
 msgid "Redefine Point"
 msgstr "កំណត់​ជ្រុង​ឡើង​វិញ​"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Black"
 msgstr "ខ្មៅ"
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, kde-format
 msgid "Gray"
 msgstr "ប្រផេះ"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, kde-format
 msgid "Red"
 msgstr "ក្រហម"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Green"
 msgstr "បៃតង"
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
 msgstr "ផ្ទៃមេឃ"
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Yellow"
 msgstr "លឿង"
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, kde-format
 msgid "Dark Red"
 msgstr "ក្រហម​ទុំ"
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "លាក់"
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, kde-format
 msgid "&Show"
 msgstr "បង្ហាញ"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "ផ្លាស់ទី"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
 msgstr "លុប"
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, kde-format
 msgid "&Custom Color"
 msgstr "ពណ៌​ផ្ទាល់ខ្លួន​"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, kde-format
 msgid "Change Object Color"
 msgstr "ផ្លាស់ប្តូរ​ពណ៌​វត្ថុ​"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, kde-format
 msgid "Change Object Width"
 msgstr "ផ្លាស់ប្តូរ​ទទឹង​វត្ថុ​"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, kde-format
 msgid "Change Point Style"
 msgstr "ផ្លាស់ប្តូរ​រចនាប័ទ្ម​ចំណុច​"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, kde-format
 msgid "Change Object Style"
 msgstr "ផ្លាស់ប្តូរ​រចនាប័ទ្ម​វត្ថុ​"
@@ -3232,69 +3219,69 @@ msgstr "កំណត់​ឈ្មោះ​វត្ថុ​"
 msgid "Set Name of this Object:"
 msgstr "កំណត់​ឈ្មោះ​វត្ថុ​នេះ ៖"
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 វត្ថុ​"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "ឯកសារ​Kig "
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "ការ​ប្លែង​ភាព"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, kde-format
 msgid "T&est"
 msgstr "ពិសោធ​"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "សង់​"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
 msgstr "ចាប់ផ្ដើម"
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "បន្ថែម​ស្លាក​អត្ថបទ"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "កំណត់​ពណ៌"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, kde-format
 msgid "Set &Pen Width"
 msgstr "កំណត់​ទទឹង​ប៉ិច​"
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, kde-format
 msgid "Set St&yle"
 msgstr "កំណត់​រចនាប័ទ្ម​"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "កំណត់​ប្រព័ន្ធ​កូអរដោនេ"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, kde-format
 msgctxt "More menu items"
 msgid "More..."
 msgstr "ច្រើន​ទៀត..."
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, fuzzy, kde-format
 #| msgctxt "'Edit' is a verb"
 #| msgid "Edit Script"
@@ -3322,7 +3309,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "បង្ហាញ​អត្ថបទ​នៅក្នុង​ស៊ុម"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "ជ្រើស​អាគុយម៉ង់"
@@ -3488,135 +3475,112 @@ msgstr "នាំ​ចូល​ម៉ាក្រូ​ដែល​មាន​
 msgid "&Import..."
 msgstr "នាំចូល..."
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "សង់​មុំ​តាម​ចំណុច​នេះ​"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr "ជ្រើស​ចំណុច​ដែល​មុំ​ពាក់កណ្តាល​បន្ទាត់​ដំបូង​ត្រូវ​កាត់​តាម​..."
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "សង់​មុំ​តាម​ចំណុច​នេះ "
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​សង់​មុំ​ក្នុង​..."
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr "ជ្រើស​ចំណុច​ដែល​មុំ​ពាក់​កណ្តាល​បន្ទាត់​ទីពីរ​ត្រូវ​កាត់​តាម​..."
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "កំណត់​ទំហំ​"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr ""
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
 msgstr "ប្តូរ​ទំហំ​មុំ​"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "សង់​ធ្នូ​ដោយ​ចាប់ផ្ដើម​នៅ​ចំណុច​នេះ"
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​នៃ​ធ្នូ​ថ្មី..."
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "សង់​ធ្នូ​កាត់តាម​ចំណុច​នេះ​"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​ធ្នូ​ថ្មី​សម្រាប់​កាត់តាម​..."
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "សង់​ចុង​ធ្នូ​កាត់តាម​ចំណុច​នេះ​"
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
 msgstr "ជ្រើស​ចុង​ចំណុច​នៃ​ធ្នូ​ថ្មី ..."
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
 msgstr "សង់​ធ្នូ​ជាមួយ​ចំណុច​កណ្តាល​"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
 msgstr "ជ្រើស​ចំណុច​កណ្តាល​នៃ​ធ្នូ​ថ្មី..."
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
 msgstr "សង់​ធ្នូ​ជាមួយ​មុំ​នេះ​"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
 msgstr "ជ្រើស​មុំ​នៃ​ធ្នូ​ថ្មី​..."
 
-#: objects/arc_type.cc:204
-#, kde-format
+#: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
 msgstr "សង់​ធ្នូ​ដោយ​ចាប់ផ្ដើម​នៅ​ចំណុច​នេះ"
 
-#: objects/arc_type.cc:205
-#, kde-format
+#: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​របស់​ធ្នូ​ថ្មី..."
 
-#: objects/arc_type.cc:206
-#, kde-format
+#: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
 msgstr "សង់​សាជី​កាត់តាម​ចំណុច​នេះ​"
 
-#: objects/arc_type.cc:207
-#, kde-format
+#: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​ធ្នូ​​សាជី​ថ្មី​ដែលត្រូវ​កាត់តាម...​"
 
-#: objects/arc_type.cc:208
-#, kde-format
+#: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
 msgstr "សង់​ចុង​ធ្នូសាជី​​នៅ​ចំណុច​នេះ"
 
-#: objects/arc_type.cc:209
-#, kde-format
+#: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
 msgstr "ជ្រើស​ចុង​ចំណុច​របស់​ធ្នូ​សាជី​ថ្មី..."
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
 msgstr "សង់​ធ្នូ​ជាមួយ​ចំណុច​កណ្តាល​"
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
 msgstr "ជ្រើស​ចំណុច​កណ្ដាល​របស់​ធ្នូ​សាជី​ថ្មី..."
 
@@ -3639,7 +3603,6 @@ msgid "Bézier Curve"
 msgstr "ខ្សែ​កោង Bézier"
 
 #: objects/bezier_imp.cc:202
-#, kde-format
 msgid "Select this Bézier Curve"
 msgstr "ជ្រើស​ខ្សែ​កោង Bézier នេះ"
 
@@ -3677,7 +3640,6 @@ msgid "Bézier Quadratic"
 msgstr "Bézier បួន​ជ្រុង"
 
 #: objects/bezier_imp.cc:219
-#, kde-format
 msgid "Select this Bézier Quadratic"
 msgstr "ជ្រើស Bézier បួន​ជ្រុង​នេះ"
 
@@ -3715,7 +3677,6 @@ msgid "Bézier Cubic"
 msgstr "គូប Bézier"
 
 #: objects/bezier_imp.cc:236
-#, kde-format
 msgid "Select this Bézier Cubic"
 msgstr "ជ្រើស​គូប Bézier នេះ"
 
@@ -3753,7 +3714,6 @@ msgid "Rational Bézier Curve"
 msgstr "ខ្សែ​កោង Bézier សមស្រប"
 
 #: objects/bezier_imp.cc:491
-#, kde-format
 msgid "Select this Rational Bézier Curve"
 msgstr "ជ្រើស​ខ្សែ​កោង Bézier សមស្រប"
 
@@ -3791,7 +3751,6 @@ msgid "Rational Bézier Quadratic"
 msgstr "Bézier បួន​ជ្រុង​សមស្រប"
 
 #: objects/bezier_imp.cc:508
-#, kde-format
 msgid "Select this Rational Bézier Quadratic"
 msgstr "ជ្រើស Bézier បួន​ជ្រុង​សមស្រប"
 
@@ -3829,7 +3788,6 @@ msgid "Rational Bézier Cubic"
 msgstr "គូប Bézier សមស្រប"
 
 #: objects/bezier_imp.cc:525
-#, kde-format
 msgid "Select this Rational Bézier Cubic"
 msgstr "ជ្រើស​គូប Bézier សមស្រប​នេះ"
 
@@ -3863,45 +3821,37 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr "លាក់​គូប Bézier សមស្រប"
 
 #: objects/bezier_type.cc:26
-#, kde-format
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "សង់​ខ្សែ​កោង Bézier បួន​ជ្រុង​ជាមួយ​ចំណុច​ត្រួតពិនិត្យ​នេះ"
 
 #: objects/bezier_type.cc:27
-#, kde-format
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr "ជ្រើស​ចំណុច​ដើម្បី​ធ្វើជា​ចំណុច​ត្រួតពិនិត្យ​របស់​ខ្សែ​កោង Bézier បួន​ជ្រុង​ថ្មី..."
 
 #: objects/bezier_type.cc:121
-#, kde-format
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "សង់​ខ្សែ​កោង Bézier គូប​ជាមួយ​ចំណុច​ត្រួតពិនិត្យ​នេះ"
 
 #: objects/bezier_type.cc:122
-#, kde-format
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr "ជ្រើស​ចំណុច​ដើម្បី​ធ្វើជា​ចំណុច​ត្រួតពិនិត្យ​របស់​ខ្សែ​កោង Bézier គូប​ថ្មី..."
 
 #: objects/bezier_type.cc:328
-#, kde-format
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr "សង​ខ្សែ​កោង Bézier សមស្រប​បួន​ជ្រុង​ជាមួយ​ចំណុច​ត្រួតពិនិត្យ​នេះ"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, kde-format
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr "ជ្រើស​ចំណុច​បី និង​តម្លៃ​លេខ​បី​ជា​ភាព​សំខាន់​ដើម្បី​សង់​ខ្សែ​កោង Bézier សមស្រប..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, kde-format
 msgid "Select this value as weight"
 msgstr "ជ្រើស​តម្លៃ​នេះ​ជា​ភាព​សំខាន់"
 
 #: objects/bezier_type.cc:433
-#, kde-format
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "សង​ខ្សែ​កោង Bézier គូប​សមស្រប​ជាមួយ​ចំណុច​ត្រួតពិនិត្យ​នេះ"
 
@@ -3930,7 +3880,6 @@ msgid "Select the curve..."
 msgstr "ជ្រើស​ខ្សែកោង..."
 
 #: objects/centerofcurvature_type.cc:23
-#, kde-format
 msgid "Select a point on the curve..."
 msgstr "ជ្រើស​ចំណុច​មួយ​លើ​​ខ្សែកោង​..."
 
@@ -3969,7 +3918,6 @@ msgid "circle"
 msgstr "រង្វង់​"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "ជ្រើស​រង្វង់​នេះ​"
 
@@ -4002,34 +3950,30 @@ msgstr "បង្ហាញ​រង្វង់​"
 msgid "Hide a Circle"
 msgstr "លាក់​រង្វង់"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "សង់​រង្វង់​តាម​រយះ​ចំណុច​នេះ"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "បង្កើត​រង្វង់​ដោយ​ចំណុច​កណ្ដាល​នេះ"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr "ជ្រើស​ចំណុច​កណ្ដាល​របស់​រង្វង់​ថ្មី..."
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​រង្វង់ថ្មី​កាត់តាម​..."
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "With this radius"
 msgstr "ជា​មួយកាំ​នេះ"
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
 msgstr "ជ្រើស​ប្រវែង​របស់​កាំ..."
 
@@ -4085,7 +4029,6 @@ msgid "conic"
 msgstr "សាជី​"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "ជ្រើស​សាជី​នេះ​"
 
@@ -4135,7 +4078,6 @@ msgid "conic arc"
 msgstr "ធ្នូ​សាជី​"
 
 #: objects/conic_imp.cc:604
-#, kde-format
 msgid "Select this conic arc"
 msgstr "ជ្រើស​ធ្នូ​សាជី​នេះ​"
 
@@ -4170,7 +4112,6 @@ msgstr "លាក់​ធ្នូ​សាជី​"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "សង់​សាជី​កាត់តាម​ចំណុច​នេះ​"
 
@@ -4178,192 +4119,155 @@ msgstr "សង់​សាជី​កាត់តាម​ចំណុច​ន
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​សាជី​ថ្មី​កាត់តាម​..."
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "សង់​សាជី​ជាមួយ​អាស៊ីមតូត​នេះ​"
 
 #: objects/conic_types.cc:61
-#, kde-format
 msgid "Select the first asymptote of the new conic..."
 msgstr "ជ្រើស​អាស៊ីមតូត​ដំបូង​នៃ​សាជីថ្មី​..."
 
 #: objects/conic_types.cc:62
-#, kde-format
 msgid "Select the second asymptote of the new conic..."
 msgstr "ជ្រើស​អាស៊ីមតូត​ទីពីរ​នៃ​សាជី​ថ្មី​..."
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "សង់​រាង​ពង​ក្រពើ​ជាមួយ​ចំណុច​រូម​នេះ "
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr "ជ្រើស​ចំណុច​រួម​ដំបូង​នៃ​រាង​ពង​ក្រពើ​នេះ ..."
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr "ជ្រើស​ចំណុច​រួម​ទីពីរ​នៃ​រាង​ពង​ក្រពើ​ថ្មី​នេះ ..."
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "សង់​រាង​ពង​ក្រពើ​កាត់តាម​ចំណុច​នេះ​"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr "ជ្រើស​ជ្រុង​សម្រាប់​រាង​ពង​ក្រពើ​ថ្មី​កាត់តាម​..."
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "សង់​អ៊ីពែបូល​ជាមួយ​ចំណុច​រួម​នេះ "
 
 #: objects/conic_types.cc:146
-#, kde-format
 msgid "Select the first focus of the new hyperbola..."
 msgstr "ជ្រើស​ចំណុច​រូម​ដំបូង​នៃ​អ៊ីពែបូល​ថ្មី​..."
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr "ជ្រើស​ចំណុចរួម​ទីពីរ​នៃ​អ៊ីពែបូល​ថ្មី​មួយ​..."
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "សង់​អ៊ីពែបូល​កាត់តាម​ជ្រុង​នេះ "
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr "ជ្រើស​ជ្រុង​សម្រាប់​អ៊ីពែបូល​កាត់តាម​..."
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "សង់​សាជី​ជាមួយ​បន្ទាត់​នេះ ជា​ directrix"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Select the directrix of the new conic..."
 msgstr "ជ្រើស​ដាយរិចដ្រីច​នៃ​សាជី​ថ្មី ..."
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "សង់​សាជី​ជាមួយ​ចំណុច​នេះ​ជា​ចំណុច​រួម​"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Select the focus of the new conic..."
 msgstr "ជ្រើស​ចំណុច​រួម​របស់​សាជី​ថ្មី​មួយ​..."
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "សង់​ប៉ារ៉បូល​កាត់តាម​ជ្រុង​នេះ​"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr "ជ្រើស​ជ្រុង​សម្រាប់​ប៉ារ៉ាបូល​ថ្មី​ដោយ​កាត់តាម​..."
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "សង់​ជ្រុង​បន្ទាត់​រាង​ប៉ូល​ wrt. សាជី​នេះ​"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr "ជ្រើស​សាជី​ wrt. ដែល​អ្នក​ចង់​សង់​ជ្រុង​ដែល​មាន​រាង​ជា​ប៉ូល​..."
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "សង់​បន្ទាត់​នេះ​ជា​បន្ទាត់​រាង​ប៉ូល​នេះ "
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, kde-format
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "ជ្រើស​បន្ទាត់​ដែល​អ្នក​ចង់​សង់តាម​ជ្រុង​បន្ទាត់​រាង​ប៉ូល​..."
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "សង់​បន្ទាត់ូល​  រាង​ប៉ូល​t. នៃ​សាជី​នេះ​"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "សង់​ជ្រុង​នេះ​ជា​រាង​បន្ទាត់​ប៉ូល​"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "សង់​ដាយរិចដ្រីច​នៃ​សាជី​នេះ​"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr "ជ្រើស​សាជី​ដែល​អ្នក​ចង់​សង់​ដាយរិចដ្រីច​..."
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "សង់​ប៉ារ៉ាបូល​ជាមួយ​ដារិចដ្រីច​នេះ​"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Select the directrix of the new parabola..."
 msgstr "ជ្រើស​ដាយរិចដ្រីច​នៃ​ប៉ារ៉បូល​ថ្មី..."
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Construct a parabola with this focus"
 msgstr "សង់​ប៉ារ៉ាបូល​ជាមួយ​ចំណុច​រួម​"
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Select the focus of the new parabola..."
 msgstr "ជ្រើស​ចំណុច​រួម​នៃ​ប៉ារ៉ាបូល​ថ្មី​..."
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "សង់​អាស៊ីមតូត​នៃ​សាជី​នេះ "
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr "ជ្រើស​សាជី​ដែល​អ្នក​ចង់​សង់​ជា​អាស៊ីមតូត​..."
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "សង់​បន្ទាត់​រ៉ាឌីកាល់​នៃ​សាជីនេះ​"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr "ជ្រើស​សាជី​ទីមួយ​ក្នុង​ចំណោម​សាជី​ទាំងពីរ​ដែល​អ្នក​ចង់​សង់​បន្ទាត់​រ៉ាឌីកាល់..."
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4384,7 +4288,6 @@ msgid "cubic curve"
 msgstr "ខ្សែកោង​គូប​"
 
 #: objects/cubic_imp.cc:348
-#, kde-format
 msgid "Select this cubic curve"
 msgstr "ជ្រើស​ខ្សែកោង​គូប​នេះ​"
 
@@ -4418,12 +4321,10 @@ msgid "Hide a Cubic Curve"
 msgstr "លាក់​ខ្សែកោង​គូប​"
 
 #: objects/cubic_type.cc:11
-#, kde-format
 msgid "Construct a cubic curve through this point"
 msgstr "សង់​ខ្សែកោង​គូប​កាត់តាម​ចំណុច​នេះ​"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr "ជ្រើសជ្រុង​គូប​ថ្មី​កាត់​តាម​..."
 
@@ -4432,7 +4333,6 @@ msgid "curve"
 msgstr "ខ្សែកោង​"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "ជ្រើស​ខ្សែកោង​នេះ "
 
@@ -4473,87 +4373,70 @@ msgstr "ប្រហែល​ជា​ខ្សែកោង​របស់ trasc
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, kde-format
 msgid "Already computed intersection point"
 msgstr "បាន​គណនា​ចំណុច​ប្រសព្វ​រួច​ហើយ"
 
 #: objects/intersection_types.cc:372
-#, kde-format
 msgid "Intersect with this cubic curve"
 msgstr "ប្រសព្វ​ជាមួយ​​ខ្សែកោង​គូប​"
 
 #: objects/intersection_types.cc:526
-#, kde-format
 msgid "Intersect with this arc"
 msgstr "ប្រសព្វ​ជាមួយ​ធ្នូ​នេះ​"
 
 #: objects/inversion_type.cc:19
-#, kde-format
 msgid "Invert with respect to this circle"
 msgstr "ដាក់​បញ្ច្រាស​ដោយ​គោរពតាម​រង្វង់​នេះ​"
 
 #: objects/inversion_type.cc:20
-#, kde-format
 msgid "Select the circle we want to invert against..."
 msgstr "ជ្រើស​រង្វង់​ដែល​អ្នក​ចង់​ដាក់បញ្ច្រាស​ម្តងទៀត​..."
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Compute the inversion of this object"
 msgstr "គណនា​បញ្ច្រាស​របស់​វត្ថុ​នេះ"
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Select the object to invert..."
 msgstr "ជ្រើស​វត្ថុ​ត្រូវ​បម្លែង..."
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Compute the inversion of this point"
 msgstr "គណនា​ការរៀបបញ្ច្រាស​នៃ​ជ្រុង​នេះ​"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Select the point to invert..."
 msgstr "ជ្រើស​ជ្រុង​ដើម្បី​ដាក់​បញ្ច្រាស..."
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Compute the inversion of this line"
 msgstr "គណនា​ការរៀប​បញ្ច្រាស​នៃ​បន្ទាត់​នេះ "
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Select the line to invert..."
 msgstr "ជ្រើស​បន្ទាត់​សម្រាប់​ដាក់​បញ្ច្រាស..."
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Compute the inversion of this segment"
 msgstr "គណបា​ការរៀប​បញ្ច្រាស​នៃ​បម្រៀក​នេះ "
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Select the segment to invert..."
 msgstr "ជ្រើស​ចម្រៀក​សម្រាប់​ដាក់​បញ្ច្រាស..."
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Compute the inversion of this circle"
 msgstr "គណនា​ការរៀប​បញ្ច្រាស​នៃ​រង្វង់​នេះ​"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Select the circle to invert..."
 msgstr "ជ្រើស​រង្វង់​សម្រាប់​ដាក់​បញ្ច្រាស..."
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Compute the inversion of this arc"
 msgstr "គណនា​ការ​រៀប​បញ្ច្រាស​នៃ​ធ្នូ​នេះ​"
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Select the arc to invert..."
 msgstr "ជ្រើស​ធ្នូ​សម្រាប់​ដាក់​បញ្ច្រាស..."
 
@@ -4582,12 +4465,10 @@ msgid "line"
 msgstr "បន្ទាត់​"
 
 #: objects/line_imp.cc:545
-#, kde-format
 msgid "Select a Line"
 msgstr "ជ្រើស​បន្ទាត់​"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "ជ្រើស​បន្ទាត់​នេះ​"
 
@@ -4625,7 +4506,6 @@ msgid "segment"
 msgstr "ចម្រៀក​"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "ជ្រើស​ចម្រៀក​នេះ​"
 
@@ -4663,7 +4543,6 @@ msgid "half-line"
 msgstr "បន្ទាត់​ពាក់​កណ្តាល​"
 
 #: objects/line_imp.cc:593
-#, kde-format
 msgid "Select this half-line"
 msgstr "ជ្រើស​បន្ទាត់​ពាក់​កណ្តាល​នេះ​"
 
@@ -4697,102 +4576,82 @@ msgid "Hide a Half-Line"
 msgstr "លាក់​បន្ទាត់​ពាក់​កណ្តាល"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Construct a segment starting at this point"
 msgstr "កំពុង​ចាប់​ផ្តើម​បង្កើត​ចម្រៀក​តាម​ចំណុច​នេះ "
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Select the start point of the new segment..."
 msgstr "ជ្រើស​ចំណុច​ចាប់​ផ្តើម​នស​ចម្រៀក​ថ្មី​..."
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Construct a segment ending at this point"
 msgstr "សង់​ចុង​ចម្រៀក​តាម​ចំណុច​នេះ​"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Select the end point of the new segment..."
 msgstr "ជ្រើស​ចុង​ចំណុច​នៃ​ចម្រៀក​ថ្មី ...."
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "សង់​បន្ទាត់​កាត់តាម​ចំណុច​នេះ​"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​បន្ទាត់​ដើម្បីកាត់តាម​..."
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr "ជ្រើសចំណុច​ផ្សេងទៀត​សម្រាប់​បន្ទាត់​ដើម្បីកាត់​តាម​..."
 
 #: objects/line_type.cc:75
-#, kde-format
 msgid "Construct a half-line starting at this point"
 msgstr "សង់​បន្ទាត់​ពាក់​កណ្ដាល​ដោយ​ចាប់ផ្ដើម​នៅ​ចំណុច"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, kde-format
 msgid "Select the start point of the new half-line..."
 msgstr "ជ្រើស​ចំណុច​ចាប់​ផ្តើម​នៃ​បន្ទាត់​ពាក់កណ្តាល​ថ្មី​នេះ​..."
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Construct a half-line through this point"
 msgstr "សង់​បន្ទាត់​ពាក់កណ្តាល​កាត់តាម​ចំណុច​នេះ​"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​រាប់​បន្ទាត់​ពាក់កណ្តាល​តាម​..."
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Construct the axis of this segment"
 msgstr "បង្កើត​អ័ក្ស​នៃ​ចម្រៀក​នេះ"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "ជ្រើស​ចម្រៀក​ណាមួយ​ដែលអ្នក​ចង់ គូរ​អ័ក្ស..."
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Construct a line parallel to this line"
 msgstr "សង់​បន្ទាត់​ប៉ារ៉ាឡែល​និង​បន្ទាត់​នេះ"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Select a line parallel to the new line..."
 msgstr "ជ្រើស​បន្ទាត់​ប៉ារ៉ាឡែល​​សម្រាប់​បន្ទាត់​ថ្មី​..."
 
 #: objects/line_type.cc:156
-#, kde-format
 msgid "Construct the parallel line through this point"
 msgstr "សង់​បន្ទាត់​ប៉ារ៉ាឡែល​កាត់​តាម​ចំណុច​នេះ "
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​បន្ទាត់​ថ្មី​កាត់​តាម​..."
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Construct a line perpendicular to this line"
 msgstr "សង់​បន្ទាត់​កាត់កែង​ទៅ​នឹង បន្ទាត់​នេះ​"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Select a line perpendicular to the new line..."
 msgstr "ជ្រើស​បន្ទាត់​កាត់កែង​ទៅ​នឹង បន្ទាត់​ថ្មី​..."
 
 #: objects/line_type.cc:183
-#, kde-format
 msgid "Construct a perpendicular line through this point"
 msgstr "សង់​បន្ទាត់​កាត់កែង​កាត់​តាម​ចំណុច​នេះ "
 
@@ -4817,22 +4676,18 @@ msgid "Resize Segment"
 msgstr "ប្តូរ​ទំហំ​ចម្រៀក​"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Construct a line by this vector"
 msgstr "សង់​បន្ទាត់​តាម​វ៉ិចទ័រ​នេះ "
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​ក្នុង​ការ​កំណត់​ទិស​នៃ​បន្ទាត់​ថ្មី​..."
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Construct a half-line by this vector"
 msgstr "សង់​បន្ទាត់​ពាក់កណ្តាល​តាម​វ៉ិចទ័រ​នេះ "
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​ក្នុង​ទិសដៅ​នៃ​បន្ទាត់​ពាក់​កណ្តាល​ថ្មី​...ចំណុច"
 
@@ -4841,7 +4696,6 @@ msgid "locus"
 msgstr "ស្ថានរេខាណិត"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "ស្ថានរេខាណិត"
 
@@ -4882,8 +4736,7 @@ msgstr "ប្រភេទ​វត្ថុ​"
 msgid "Object"
 msgstr "វត្ថុ​"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "ជ្រើស​វត្ថុ​នេះ"
 
@@ -4961,7 +4814,6 @@ msgid "angle"
 msgstr "មុំ​"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "ជ្រើស​មុំ​នេះ​"
 
@@ -4999,7 +4851,6 @@ msgid "vector"
 msgstr "វ៉ិចទ័រ​"
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "ជ្រើស​វ៉ិទ័រនេះ​"
 
@@ -5037,7 +4888,6 @@ msgid "arc"
 msgstr "ធ្នូ"
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "ជ្រើស​ធ្នូ​នេះ​"
 
@@ -5087,7 +4937,6 @@ msgid "point"
 msgstr "ចំណុច"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "ជ្រើស​ចំណុច​"
 
@@ -5121,32 +4970,29 @@ msgid "Hide a Point"
 msgstr "លាក់​ចំណុច​"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, kde-format
 msgid "Construct the midpoint of this point and another point"
 msgstr "សង់​ចំណុច​កណ្តាល​នៃ​ចំណុច​នេះ​និង ចំណុច​ផ្សេងទៀត​"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr "ជាដំបូង​ជ្រើស​ចំណុច​ពីរ​ដែល​អ្នក​ចង់​សង់​ជា​ចំណុច​កណ្តាល​..."
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr "ជ្រើស​ចំណុច​ពីរ​ផ្សេងទៀត​​​ដែល​អ្នក​ចង់​សង់​ជា​ចំណុច​កណ្តាល​..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another point"
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "សង់​ចំណុច​កណ្តាល​នៃ​ចំណុច​នេះ​និង ចំណុច​ផ្សេងទៀត​"
 
 #: objects/point_type.cc:275
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the two points of which you want to construct the "
 #| "midpoint..."
@@ -5156,7 +5002,7 @@ msgid ""
 msgstr "ជាដំបូង​ជ្រើស​ចំណុច​ពីរ​ដែល​អ្នក​ចង់​សង់​ជា​ចំណុច​កណ្តាល​..."
 
 #: objects/point_type.cc:279
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the other of the two points of which you want to construct the "
 #| "midpoint..."
@@ -5206,38 +5052,32 @@ msgid "Change Parameter of Constrained Point"
 msgstr "ផ្លាស់ប្តូរ​ប៉ារ៉ាម៉ែត្រ​នៃ​ជ្រុង​"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr "ជ្រើស​រង្វង់​ណាមួយ​សម្រាប់​បញ្ជូន​រង្វាស់​..."
 
 #: objects/point_type.cc:744
-#, kde-format
 msgid "Select a point on the circle..."
 msgstr "ជ្រើស​ចំណុច​លើ​រង្វង់​..."
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr "ជ្រើស​ចម្រៀក​សម្រាប់​បញ្ជូន​លើ​រង្វង់​..."
 
 #: objects/point_type.cc:794
-#, kde-format
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "ជ្រើស​ប្រវែង/លេខ​ជា​កូអោដោណេ x របស់​ចំណុច..."
 
 #: objects/point_type.cc:795
-#, kde-format
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "ជ្រើស​ប្រវែង/លេខ​ជា​គូអោដោណេ​ y របស់​ចំណុច..."
 
 #: objects/point_type.cc:820
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the point to reflect in..."
 msgid "Select a point to project onto a line..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​ឆ្លុះ..."
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr ""
 
@@ -5287,7 +5127,6 @@ msgid "polygon"
 msgstr "ពហុកោណ "
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, kde-format
 msgid "Select this polygon"
 msgstr "ជ្រើស​ពហុកោណ​នេះ "
 
@@ -5325,7 +5164,6 @@ msgid "closed polygonal curve"
 msgstr "ខ្សែ​កោង​ពហុកោណ​បិទ​ជិត"
 
 #: objects/polygon_imp.cc:646
-#, kde-format
 msgid "Select this closed polygonal curve"
 msgstr "ជ្រើស​ខ្សែ​កោង​ពហុកោណ​បិទ​ជិត​នេះ"
 
@@ -5363,7 +5201,6 @@ msgid "polygonal curve"
 msgstr "ខ្សែ​កោង​ពហុកោណ "
 
 #: objects/polygon_imp.cc:663
-#, kde-format
 msgid "Select this polygonal curve"
 msgstr "ជ្រើស​ខ្សែ​កោង​ពហុកោណ​នេះ "
 
@@ -5401,7 +5238,6 @@ msgid "triangle"
 msgstr "ត្រីកោណ "
 
 #: objects/polygon_imp.cc:680
-#, kde-format
 msgid "Select this triangle"
 msgstr "ជ្រើស​ត្រីកោណ​នេះ "
 
@@ -5439,7 +5275,6 @@ msgid "quadrilateral"
 msgstr "ចតុរ័ង្ស"
 
 #: objects/polygon_imp.cc:697
-#, kde-format
 msgid "Select this quadrilateral"
 msgstr "ជ្រើស​ចតុរ័ង្ស​"
 
@@ -5473,105 +5308,85 @@ msgid "Hide a Quadrilateral"
 msgstr "លាក់​ចតុរ័ង្ស​"
 
 #: objects/polygon_type.cc:24
-#, kde-format
 msgid "Construct a triangle with this vertex"
 msgstr "សង់​ត្រីកោណ​តាម​កំពូល​នេះ 7"
 
 #: objects/polygon_type.cc:25
-#, kde-format
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "ជ្រើស​ចំណុច​កំពូល​នៃ​ត្រីកោណ​ថ្មី​..."
 
 #: objects/polygon_type.cc:470
-#, kde-format
 msgid "Intersect this polygon with a line"
 msgstr "ប្រសព្វ​ពហុកោណ ជាមួយ​បន្ទាត់​នេះ "
 
 #: objects/polygon_type.cc:471
-#, kde-format
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "ជ្រើស​ពហុកោណ​ដែល​អ្នក​ចង់​ប្រសព្វ​ជាមួយ​បន្ទាត់​..."
 
 #: objects/polygon_type.cc:474
-#, kde-format
 msgid "Intersect this line with a polygon"
 msgstr "ប្រសព្វ​ជា​មួយ​បន្ទាត់នេះ​មាន​ពហុកោណ​មួយ"
 
 #: objects/polygon_type.cc:475
-#, kde-format
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "ជ្រើស​បន្ទាត់​ដែល​​អ្នក​ចង់​ឲ្យ​ប្រសព្វ​ជា​មួយ​ពហុកោណ..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, kde-format
 msgid "Intersect this polygonal curve with a line"
 msgstr "ប្រសព្វ​ខ្សែ​កោង​ពហុកោណ​នេះ​ជាមួយ​បន្ទាត់"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, kde-format
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "ជ្រើស​ខ្សែ​កោង​ពហុកោណ​ដែល​អ្នក​ចង់​ប្រសព្វ​ជាមួយ​បន្ទាត់​..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, kde-format
 msgid "Intersect this line with a polygonal curve"
 msgstr "ប្រសព្វ​បន្ទាត់​នេះ​ជា​មួយ​ខ្សែ​កោង​ពហុកោណ"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, kde-format
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "ជ្រើស​បន្ទាត់​ដែល​​អ្នក​ចង់​ប្រសព្វ​ជា​មួយ​ខ្សែ​កោង​ពហុកោណ..."
 
 #: objects/polygon_type.cc:788
-#, kde-format
 msgid "Intersect this polygon with another polygon"
 msgstr "ប្រសព្វ​​ពហុកោណ​នេះ​​ជា​មួយ​ពហុកោណ​ផ្សេង"
 
 #: objects/polygon_type.cc:789
-#, kde-format
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "ជ្រើស​ពហុកោណ​ដែល​អ្នក​ឲ្យ​ប្រសព្វ​ជា​មួយ​ពហុកោណ​​ពហុកោណ​ផ្សេង..."
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Intersect with this polygon"
 msgstr "ប្រសព្វ​ជា​មួយ​ពហុកោណ​នេះ"
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Select the second polygon for the intersection..."
 msgstr "ជ្រើស​ពហុកោណ​ទីពីរ​សម្រាប់​ការ​ប្រសព្វ​នេះ..."
 
 #: objects/polygon_type.cc:930
-#, kde-format
 msgid "Construct the vertices of this polygon"
 msgstr "សង់​ចំណុច​កំពូល​នៃ​អហុកោណ​នេះ​"
 
 #: objects/polygon_type.cc:931
-#, kde-format
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "ជ្រើស​ពហុកោណ​មួយ​ណា​ដែល​អ្នក​ចង់​សង់​កំពូល​..."
 
 #: objects/polygon_type.cc:974
-#, kde-format
 msgid "Construct the sides of this polygon"
 msgstr "សង់​ផ្នែក​នៃ​ពហុកោណ​នេះ​"
 
 #: objects/polygon_type.cc:975
-#, kde-format
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "ជ្រើស​ពហុកោណ ដែល​អ្នក​ចង់​សង់​ជ្រុង..."
 
 #: objects/polygon_type.cc:1022
-#, kde-format
 msgid "Construct the convex hull of this polygon"
 msgstr "សង់​រាង​ប៉ោង​ខាងក្រៅ​នៃ​ពហុកោណ​នេះ "
 
 #: objects/polygon_type.cc:1023
-#, kde-format
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "ជ្រើស​ពហុកោណ ដែល​អ្នកចង់​សង់​មាន​រាង​ប៉ោង​ខាង​ក្រៅ​..."
 
@@ -5581,27 +5396,22 @@ msgid "Project this point onto the circle"
 msgstr "គ្រោង​ចំណុច​សម្រាប់​រង្វង់​"
 
 #: objects/tangent_type.cc:23
-#, kde-format
 msgid "Select the point for the tangent to go through..."
 msgstr "ជ្រើស​ជ្រុង​តង់ហ្សង់​កាត់តាម​..."
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr "តើ​នេះ​ជា​បន្ទាត់​ប៉ារ៉ាឡែល​ឬ ?"
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr "ជ្រើស​បន្ទាត់​ប៉ារ៉ាឡែល​ពីរ​ដំបូង​គេ​ដែល​អាច​ធ្វើ​ទៅ​បាន​..."
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Parallel to this line?"
 msgstr "ប៉ារ៉ាឡែល​ទៅ​និង​បន្ទាត់​នេះ ?"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr "ជ្រើស​បន្ទាត់​ដែល​អាច​ប៉ារ៉ាឡែល​ពីរ​ផ្សេង​ទៀត..."
 
@@ -5616,22 +5426,18 @@ msgid "These lines are not parallel."
 msgstr "ទាំងនេះ​មិន​មែន​ជា​បន្ទាត់​ប៉ារ៉ាឡែល​​ទេ​ ។"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr "តើ​នេះ​ជា​បន្ទាត់​អរតូកូណាល់​ឬ ?"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr "ជ្រើស​បន្ទាត់​ដែល​អាច​អរតូកូណាល់​ទីមួយ​នៃ​បន្ទាត់​ពី..."
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Orthogonal to this line?"
 msgstr "អរតូកូណាល់​និង​បន្ទាត់​នេះ ?"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr "ជ្រើស​បន្ទាត់​ដែល​អាច​អរតូកូណាល់​ពីរ​ផ្សេង​ទៀត..."
 
@@ -5646,32 +5452,26 @@ msgid "These lines are not orthogonal."
 msgstr "បន្ទាត់​ទាំងនេះ​មិន​មែន​ជា​បន្ទាត់​អរតូកូណាល់​ទេ ។"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Check collinearity of this point"
 msgstr "ពិនិត្យ​កូលីនេអ៊ែរ​នៃ​ចំណុច​នេះ"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr "ជ្រើស​ចំណុច​ទីមួយ​នៃ​ចំណុច​បី​ដែល​អាច​កូលីនេអ៊ែរ..."
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "and this second point"
 msgstr "ហើយ​និង​ជ្រុង​ទី​ពីរ​នេះ"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr "ជ្រើស​ចំណុច​ទី​ពីរ​នៃ​ចំណុច​បី​ដែល​អាច​កូលីនេអ៊ែរ..."
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "with this third point"
 msgstr "ជាមួយ​និង​ចំណុច​ទី​បី"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr "ជ្រើស​ចំណុច​ចុង​ក្រោយ​នៃ​ចំណុច​បី​ដែល​អាច​កូលីនេអ៊ែរ..."
 
@@ -5686,22 +5486,18 @@ msgid "These points are not collinear."
 msgstr "ចំណុច​ទាំង​នេះ​មិន​មាន​អ័ក្ស​រួម ។"
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr "ពិនិត្យ​ថា​តើ​ចំណុច​នេះស្ថិត​លើ​ខ្សែកោង​ដែរឬ​ទេ​"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, kde-format
 msgid "Select the point you want to test..."
 msgstr "ជ្រើស​ចំណុច​ដែល​អ្នក​ចង់​ពិសោធ..."
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr "ពិនិត្រ​ថាតើ​ចំណុច​នេះ​ស្ថិត​លើ​ខ្សែកោង​នេះ​ដែរឬ​ទេ​"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Select the curve that the point might be on..."
 msgstr "ជ្រើស​ខ្សែកោង​ដែល​ចំណុច​ត្រូវ​ស្ថិតលើ​..."
 
@@ -5716,17 +5512,14 @@ msgid "This curve does not contain the point."
 msgstr "មិន​មាន​ចំណុច​នៅ​លើ​ខ្សែ​កោង​នេះ​ទេ ។"
 
 #: objects/tests_type.cc:180
-#, kde-format
 msgid "Check whether this point is in a polygon"
 msgstr "ពិនិត្យ​ថា​តើ​ចំណុច​នេះ​នៅ​ក្នុង​ពហុកោណ​ឬ​ទេ"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Check whether the point is in this polygon"
 msgstr "ពិនិត្យ​ថាតើ​ចំណុច​នៅ​ក្នុង​ពហុកោណ​នេះ​ឬ​​ទេ"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Select the polygon that the point might be in..."
 msgstr "ជ្រើស​ពហុកោណ​ដែល​ប្រហែល​ជា​មាន​ចំណុច​នៅ​ក្នុង​..."
 
@@ -5741,12 +5534,10 @@ msgid "This polygon does not contain the point."
 msgstr "ពហុកោណ​នេះ​ពុំ​ទាន់មាន​ជ្រុង​ទេ​ ។​"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Check whether this polygon is convex"
 msgstr "ពិនិត្យ​ថាតើ​ពហុកោណ​នេះ​ជា​ពហុកោណ​ប៉ោង​"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Select the polygon you want to test for convexity..."
 msgstr "ជ្រើស​ពហុកោណ​ដែល​អ្នក​ចង់គូស​ជា​ពហុកោណ​ប៉ោង​..."
 
@@ -5761,33 +5552,27 @@ msgid "This polygon is not convex."
 msgstr "នេះ​មិន​មែន​ជា​ពហុកោណ​ប៉ោង​ ។"
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr "ពិនិត្យ​ជ្រុង​នេះ​មាន​ចម្ងាយ​ដូ​ចគ្នា​"
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr "ជ្រើស​ចំណុច​ដែល​មាន​ចម្ងាយ​ដូច​គ្នា​រវាង​ចំណុច​ទាំងពី​រ​ផ្សេងគ្នា​..."
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "from this point"
 msgstr "ពី​ចំណុច​នេះ "
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "Select the first of the two other points..."
 msgstr "ជ្រើស​ចំណុច​ទីមួយ​នៃ​ចំណុច​ពីរ​ផ្សេង..."
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "and from this second point"
 msgstr "និង​ពី​ចំណុច​ទី​ពីរ​នេះ"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "Select the other of the two other points..."
 msgstr "ជ្រើស​ចំណុច​ផ្សេង​នៃ​ចំណុច​ពីរ​ផ្សេង​ទៀត..."
 
@@ -5802,22 +5587,18 @@ msgid "The two distances are not the same."
 msgstr "ចម្ងាយ​ទាំង​ពីរ​មិន​ស្មើ​គ្នា​ទេ ។"
 
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr "ពិនិត្យ​ថា​តើ​វ៉ិចទ័រ​នេះ​ស្មើ​វ៉ិចទ័រ​មួយ​ផ្សេង​ទៀត​ឬ​អត់"
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​ទីមួយ​នៃ​វ៉ិចទ័រ​ពីរ​ដែល​អាច​ស្មើ​គ្នា..."
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr "ពិនិត្យ​ថាតើ​វ៉ិចទ័រ​នេះ ស្មើ​នឹង វ៉ិចទ័រ​ផ្សេងទៀត​"
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​ផ្សេងទៀត​នៃ​វ៉ិចទ័រ​ពីរ​ដែល​អាច​ស្មើ​គ្នា..."
 
@@ -5832,12 +5613,10 @@ msgid "The two vectors are not the same."
 msgstr "វ៉ិចទ័រ​ទាំង​ពីរ​មិន​ដូច​គ្នា​ ។​"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Check whether this object exists"
 msgstr "ពិនិត្យ​មើល​ថាតើ​មាន​វត្ថុ​នេះ​ហើយ​ឬនៅ"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Select the object for the existence check..."
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​ការ​ពិនិត្យ​ភាព​ស្ថិតស្ថេរ..."
 
@@ -5860,7 +5639,6 @@ msgid "label"
 msgstr "ស្លាក​​"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "ជ្រើស​ស្លាក​នេះ "
 
@@ -5898,7 +5676,6 @@ msgid "numeric label"
 msgstr "ស្លាក​ជាលេខ"
 
 #: objects/text_imp.cc:184
-#, kde-format
 msgid "Select this numeric label"
 msgstr "ជ្រើស​ស្លាក​ជាលេខ​នេះ"
 
@@ -5940,7 +5717,6 @@ msgid "boolean label"
 msgstr "ស្លាក​ប៊ូលីន"
 
 #: objects/text_imp.cc:278
-#, kde-format
 msgid "Select this boolean label"
 msgstr "ជ្រើស​ស្លាក​ប៊ូលីន​នេះ"
 
@@ -6019,544 +5795,449 @@ msgid "Change Displayed Value"
 msgstr "ផ្លាស់ប្ដូរ​តម្លៃ​ដែល​បង្ហាញ"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "បកប្រែ​វត្ថុ​នេះ"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Select the object to translate..."
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​បក​ប្រែ​..."
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "បកប្រែ​តាម​វ៉ិចទ័រ"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​សម្រាប់​បកប្រែ..."
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "ឆ្លុះ​វត្ថុ​នេះ"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Select the object to reflect..."
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​ឆ្លុះ​..."
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Reflect in this point"
 msgstr "ឆ្លុះ​និង​ចំណុច​នេះ"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Select the point to reflect in..."
 msgstr "ជ្រើស​ចំណុច​សម្រាប់​ឆ្លុះ..."
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Reflect in this line"
 msgstr "ឆ្លុះ​និង​បន្ទាត់​នេះ"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Select the line to reflect in..."
 msgstr "ជ្រើស​បន្ទាត់​សម្រាប់​ឆ្លុះ..."
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "បង្វិល​វត្ថុ​នេះ "
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Select the object to rotate..."
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​បង្វិល​..."
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "បង្វិល​ជុំវិញ​ចំណុច​នេះ​"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Select the center point of the rotation..."
 msgstr "ជ្រើស​ចំណុច​កណ្តាល​នៃ​ការ​បង្វិល​..."
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "បង្វិល​តាម​មុំ​នេះ "
 
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Select the angle of the rotation..."
 msgstr "ជ្រើស​មុំ​នៃ​ការ​បង្វិល..."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "ធ្វើ​មាត្រដ្ឋាន​វត្ថុ​នេះ "
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, kde-format
 msgid "Select the object to scale..."
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​ធ្វើ​មាត្រដ្ឋាន​..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "ធ្វើ​មាត្រដ្ឋាន​ពី​ចំណុច​កណ្ដាល​នេះ"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Select the center point of the scaling..."
 msgstr "ជ្រើស​ចំណុច​កណ្ដាល​នៃ​ការ​ធ្វើ​មាត្រដ្ឋាន..."
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid "Scale by this length"
 msgstr "ធ្វើ​មាត្រដ្ឋាន​តាម​ប្រវែង​នេះ"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "ជ្រើស​ប្រវែង ឬ​ចម្រៀកល​ដែល​ប្រវែង​របស់​គឺ​ជា​កត្តា​​នៃ​កា​រធ្វើ​មាត្រដ្ឋាន..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, kde-format
 msgid "Scale this length..."
 msgstr "ធ្វើ​មាត្រដ្ឋាន​ប្រវែង​នេះ..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, kde-format
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr "ជ្រើស​ប្រវែង​ដំបូង​ពីរ​ដែល​កាំ​របស់វា​គឺ​ជា​កត្តា​នៃ​ការ​ធ្វើ​មាត្រដ្ឋាន..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, kde-format
 msgid "...to this other length"
 msgstr "...ទៅ​ប្រវែង​ផ្សេង​នេះ"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, kde-format
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr "ជ្រើស​ប្រវែង​ទី​ពីរចំនួន​ពីរ​ដែលកាំ​របស់​វា​គឺ​ជា​កត្តា​នៃ​ការ​ធ្វើ​មាត្រដ្ឋាន...."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Select the object to scale"
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​ធ្វើមាត្រដ្ឋាន​"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "ធ្វើ​មាត្រដ្ឋាន​លើ​បន្ទាត់​"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Select the line to scale over"
 msgstr "ជ្រើស​បន្ទាត់​សម្រាប់​ធ្វើ​មាត្រដ្ឋាន​"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "បង្វិល​វត្ថុ​នេះ​ឲ្យ​លយ​"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Select the object to rotate projectively"
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​បង្វិល​ឲ្យ​លយ​"
 
 #: objects/transform_types.cc:337
-#, kde-format
 msgid "Projectively rotate with this half-line"
 msgstr "បង្វិល​លយ​ជាមួយ​ពាក់កណ្តាល​បន្ទាត់​នេះ "
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr "ជ្រើស​បន្ទាត់​ពាក់​កណ្ដាល​នៃ​ការ​បង្វិល​ឲ្យ​លយ​ដែល​អ្នក​ចង់​អនុវត្ត​ទៅ​លើ​វត្ថុ"
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "បង្វិលឲ្យ​​លយ​តាម​មុំ​នេះ "
 
 #: objects/transform_types.cc:342
-#, kde-format
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "ជ្រើស​មុំ​នៃ​ការ​បង្វិល​ឲ្យ​លយ​ដែល​អ្នក​ចង់​អនុវត្ត​ទៅ​លើ​វត្ថុ"
 
 #: objects/transform_types.cc:376
-#, kde-format
 msgid "Harmonic Homology of this object"
 msgstr "ភាព​ដូច​គ្នា​គណិតសាស្ត្រ​នៃ​វត្ថុ​នេះ"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, kde-format
 msgid "Select the object to transform..."
 msgstr "ជ្រើស​វត្ថុ​សម្រាប់​ប្លែង..."
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Harmonic Homology with this center"
 msgstr "ភាព​ដូចគ្នា​គណិតសាស្ត្រ​ជាមួយ​ចំណុច​កណ្តាល​នេះ "
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr "ជ្រើស​ចំណុច​កណ្តាល​នៃ​ភាព​ដូចគ្នា​គណិតសាស្ត្រ​..."
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr "ភាព​ដូច​គ្នា​គណិតសាស្ត្រ​ជា​មួយ​អ័ក្ស​នេះ"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr "ជ្រើស​អ័ក្ស​នៃ​ភាពដូចគ្នា​គណិតសាស្ត្រ..."
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, kde-format
 msgid "Generic affinity of this object"
 msgstr "ប្រភេទ​ដូចគ្នា​នៃ​វត្ថុ​នេះ​"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Map this triangle"
 msgstr "ផ្គូផ្គង​ត្រីកោណ​នេះ"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr "ជ្រើស​ត្រីកោណ​ដែល​ត្រូវ​តែ​ប្លែង​ទៅ​ជា​ត្រីកោណ​ដែល​ឲ្យ..."
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr "ទៅ​ជា​ត្រីកោណ​នេះ​ផ្សេង​ទៀត"
 
 #: objects/transform_types.cc:412
-#, kde-format
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "ជ្រើស​ត្រីកោណ​ដែល​ជា​រូបភាព​ ដោយភាព​នៃ​ត្រីកោន​ទី ១..."
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr "ចំណុច​ទី​មួយ​នៃ​ចំណុច​ចាប់ផ្ដើម​បី"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr "ជ្រើស​ចំណុច​ទី​មួយ​នៃ​ចំណុច​ចាប់ផ្ដើម​បីនៃ​ប្រភេទ​ដូច​គ្នា..."
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr "ចំណុច​ទីពីរ​នៃ​ចំណុច​ចាប់ផ្ដើម​បី"
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​ទីពីរ​នៃ​ចំណុច​ចាប់ផ្ដើម​បី​នៃ​ប្រភេទ​ដូចគ្នា..."
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr "ចំណុច​ទីបី​នៃ​ចំណុច​ចាប់ផ្ដើម ៣"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​ទីបី​នៃ​ចំណុច​ចាប់ផ្ដើម​បី​នៃ​ប្រភេទ​ដូចគ្នា..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr "ប្លែង​ទីតាំង​នៃ​ជ្រុង​ដំបូង​គេ​"
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីមួយ​នៃ​ចំណុច​បញ្ចប់​បី​នៃ​ប្រភេទ​ដូចគ្នា..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr "ប្លែង​ទីតាំង​នៃ​ជ្រុង​ទីពីរ​"
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីពីរ​នៃ​ចំណុច​បញ្ចប់​បី​នៃ​ប្រភេទ​ដូចគ្នា..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, kde-format
 msgid "Transformed position of third point"
 msgstr "ប្លែង​ទីតាំង​នៃ​ជ្រុង​ទីបី​"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីបី​នៃ​ចំណុច​បញ្ចប់​បី​នៃ​ប្រភេទ​ដូចគ្នា..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, kde-format
 msgid "Generic projective transformation of this object"
 msgstr "ការ​បម្លែង​ប្រភេទ​ភាព​លយ​នៃ​វត្ថុ​នេះ"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr "ផ្គូផ្គង​ចតុរ័ង្ស​នេះ​"
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr "ជ្រើស​ចតុរ័ង្ស​ដែល​ត្រូវ​បាន​ប្លែង​ទៅ​ជា​ចតុរ័ង្ស​ដែល​បាន​ផ្តល់​ឲ្យ​..."
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr "​នៅ​លើ​ចតុរ័ង្ស​ផ្សេងទៀត​នេះ"
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr "ជ្រើស​​ចតុរ័ង្ស​​ដែល​ជា​រូបភាព ដោយ​ការ​ប្លែង​វត្ថុ​របស់​ចតុរ័ង្ស​ទី ១..."
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr "ចំណុច​ចាប់ផ្ដើម​ទីមួយ​នៃ​ចំណុច​ចាប់ផ្ដើម ៤"
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​ទីមួយ​នៃ​ចំណុច​ចាប់ផ្ដើម​បួន​នៃ​ប្រភេទ​លយ..."
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr "ចំណុច​ចាប់ផ្ដើម​ទីពីរ​នៃ​ចំណុច​ចាប់ផ្ដើម ៤"
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​ទីពីរ​នៃ​ចំណុច​ចាប់ផ្ដើម​បួន​នៃ​ប្រភេទ​ភាព​លយ..."
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr "ចំណុច​ចាប់ផ្ដើម​ទីបី​នៃ​ចំណុច​ចាប់ផ្ដើម ៤"
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​ទីបី​នៃ​ចំណុច​ចាប់ផ្ដើម​បួន​នៃ​ប្រភេទ​លយ..."
 
 #: objects/transform_types.cc:566
-#, kde-format
 msgid "Fourth of 4 starting points"
 msgstr "ចំណុច​ចាប់ផ្ដើម​ទីបួន​នៃ​ចំណុច​ចាប់ផ្ដើម ៤"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​ចាប់ផ្ដើម​ទីបួន​នៃ​ចំណុច​ចាប់ផ្ដើម​បួន​នៃ​ប្រភេទ​ភាព​លយ..."
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីមួយ​នៃ​ចំណុច​បញ្ចប់​បួន​នៃ​ប្រភេទ​ភាព​លយ..."
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីពីរ​នៃ​ចំណុច​បញ្ចប់​ពីរ​នៃ​ប្រភេទ​ភាព​លយ..."
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីបី​នៃ​ចំណុច​បញ្ចប់​បី​នៃ​ប្រភេទ​ភាព​លយ..."
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr "ប្លែង​ទីតាំង​នៃ​ជ្រុង​ទី​បួន​"
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​ទីបួន​នៃ​ចំណុច​បញ្ចប់​បួន​នៃ​ប្រភេទ​ភាព​លយ..."
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "ចោល​ស្រមោល​នៃ​វត្ថុ​នេះ​"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "ជ្រើស​វត្ថុ​ដែល​អ្នក​ចង់​សង់​ស្រមោល..."
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "ចោល​ស្រមោល​ពី​ប្រភព​ពន្លឺ​នេះ​"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr "ជ្រើស​ប្រភព​ពន្លឺ​ដែលស្រមោល​គួរ​តែ​ចោល..."
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "ចោល​ស្រមោល​ផ្តេក​ដែល​តំណាង​ឲ្យ​បន្ទាត់​នេះ​"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr "ជ្រើស​ស្រមោល​ផ្តេក​..."
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "ប្លែង​វត្ថុ​នេះ​"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "ប្លែង​ដោយប្រើ​ការបម្លែង​នេះ​"
 
 #: objects/transform_types.cc:883
-#, kde-format
 msgid "Apply a similitude to this object"
 msgstr "អនុវត្ត​ភាព​ដូច​គ្នា​ទៅ​វត្ថុ​នេះ"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Apply a similitude with this center"
 msgstr "អនុវត្ត​ភាព​ដូច​គ្នា​ជាមួយ​ចំណុច​កណ្ដាល​នេះ"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr "ជ្រើស​ចំណុច​កណ្ដាល​សម្រាប់​ភាព​ដូច​គ្នា..."
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr "អនុវត្ត​ភាព​ដូច​គ្នា​ដែល​ផ្គូផ្គង​ចំណុច​នេះ​ទៅ​និង​ចំណុច​មួយ​ផ្សេង​ទៀត"
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr "ជ្រើស​ចំណុដ​ដែល​ភាព​ដូច​គ្នា​គួរ​តែ​ផ្គូផ្គង​​ទៅ​និង​ចំណុច​មួយ​ផ្សេង​ទៀត..."
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr "អនុវត្ត​ភាព​ដូច​គ្នា​ដែល​ផ្គូផ្គង​ចំណុច​ទៅ​និង​ចំណុច​នេះ"
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr "ជ្រើស​ជ្រុង​ដែល​ដូច​គ្នា​ត្រូវ​តែ​ផ្គួរផ្គង​ទៅ​នឹង ជ្រុង​ដំបូង​គេ​..."
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "សង់​វ៉ិចទ័រ​ពី​​ចំណុច​នេះ​"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Select the start point of the new vector..."
 msgstr "ជ្រើស​ចំណុច​ចាប់​ផ្តើម​នៃ​វ៉ិចទ័រ​ថ្មី​..."
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "សង់​វ៉ិចទ័រ​ទៅ​ចំណុច​នេះ"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Select the end point of the new vector..."
 msgstr "ជ្រើស​ចំណុច​បញ្ចប់​នៃ​វ៉ិចទ័រ​ថ្មី..."
 
 #: objects/vector_type.cc:44
-#, kde-format
 msgid "Construct the vector sum of this vector and another one."
 msgstr "សង់​ផលបូក​វ៉ិចទ័រ​នៃ​វ៉ិចទ័រ​នេះ និង​មួយ​ផ្សេង​ទៀត ។"
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​ទីមួយ​នៃ​វ៉ិចទ័រ​ពីរ​ដែល​អ្នក​ចង់​សង់​ផលបូក..."
 
 #: objects/vector_type.cc:48
-#, kde-format
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "សង់​ផលបូក​វ៉ិចទ័រ​នៃ​វ៉ិចទ័រ​នេះ​និង​មួយ​ផ្សេង​ទៀត ។"
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr "ជ្រើស​វ៉ិចទ័រ​ផ្សេង​ទៀត​នៃ​វ៉ិចទ័រ​ពីរ​ដែល​អ្នក​ចង់​សង់​ផលបូក..."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Construct the vector sum starting at this point."
 msgstr "សង់​វ៉ិចទ័រ​ផលបូក​ដោយ​ចាប់​ផ្ដើម​នៅ​ចំណុច​នេះ ។"
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr "ជ្រើស​ចំណុច​ដែល​ត្រូវ​សង់​វ៉ិចទ័រ​ផលបូក..."
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, fuzzy, kde-format
 #| msgid "New Script"
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "ស្គ្រីប​ថ្មី"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
@@ -6565,7 +6246,7 @@ msgstr ""
 "ជ្រើស​វត្ថុ​អាគុយម៉ង់ (ប្រសិនបើ​មាន)\n"
 "នៅ​ក្នុង​បង្អួច​របស់ Kig ហើយ​ចុច \"បន្ទាប់\" ។"
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "បញ្ចូល​កូដ"
@@ -6589,7 +6270,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6598,7 +6279,7 @@ msgstr ""
 "កម្មវិធី​បកប្រែ​ Python បាន​ចាប់​យក​កំហុស​កំឡុង​ពេល​ប្រតិបត្តិ​នៃ​ស្គ្រីប​របស់​អ្នក​ ។​សូម​ជួសជុល​ស្គ្រីប​ហើយ ចុច​លើ​ប៊ូតុង​"
 "បញ្ចប់​ម្តងទៀត​ ។"
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
@@ -6607,7 +6288,7 @@ msgstr ""
 "កម្មវិធី​បកប្រែ​ Python  ត្រូវ​បាន​បង្កើត​តាម​ទិន្នផល​កំហុស​ដូច​ខាងក្រោម​ ៖​\n"
 "%1"
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6617,7 +6298,7 @@ msgstr ""
 "ស្គ្រីប​របស់​អ្នក​ហាក់បី​ដូចជា​មាន​កំហុស ។ កម្មវិធី​បកប្រែ​ Python បាន​រាយការណ៍​ថា​គ្មាន​កំហុស​ ប៉ុន្តែ​ស្គ្រីប​មិន​"
 "បាន​បង្កើត​វត្ថុ​ដែល​ត្រឹមត្រូវ​នូវ​ឡើយ​​ ។ សូម​ជួសជុល​ស្គ្រីប​ ហើយ​ចុចលើ​ប៊ូតុង​បញ្ចប់​ម្តងទៀត​ ។​"
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, fuzzy, kde-format
 #| msgctxt "'Edit' is a verb"
 #| msgid "Edit Script"
@@ -6625,12 +6306,12 @@ msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "កែ​សម្រួល​ស្គ្រីប"
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
 msgstr "កែ​សម្រួល​ស្គ្រីប​ Python "
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6639,7 +6320,7 @@ msgstr ""
 "កម្មវិធី​បកប្រែ​ Python បាន​ចាប់​យក​កំហុស​កំឡុង​ពេល​ប្រតិបត្តិ​នៃ​ស្គ្រីប​របស់​អ្នក​ ។​ សូម​ជួសជុល​ស្គ្រីប​ហើយ ចុច​លើ​ប៊ូតុង​"
 "បញ្ចប់​ម្តងទៀត​ ។"
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "

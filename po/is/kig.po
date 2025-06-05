@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2010-05-31 11:56+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Asymptote Options"
 msgstr "Myndastillingar"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -240,7 +240,7 @@ msgstr ""
 "Þetta KSeg skjal inniheldur marghyrndan hlut sem Kig styður ekki að svo "
 "stöddu."
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, fuzzy, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -290,37 +290,37 @@ msgid ""
 "currently support."
 msgstr "Þessi KSeg skrá inniheldur bogasvæði sem Kig styður ekki að stöddu."
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "&Flytja í mynd"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "&Mynd..."
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, fuzzy, kde-format
 msgid "Export as Image"
 msgstr "Flytja í mynd"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, fuzzy, kde-format
 msgid "Image Options"
 msgstr "Myndastillingar"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "Því miður, þetta skráarsnið er ekki stutt."
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "Því miður, eitthvað fór úrskeiðis við vistun í mynd \"%1\""
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "&Flytja í"
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Parse Error"
 msgstr "Þáttunarvilla"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr "Ekki stutt"
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Standalone document"
 msgstr "Renna að í skjalinu"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
@@ -487,7 +487,7 @@ msgstr ""
 "Þessi skrá var búin til með útgáfu \"%1\" af Kig sem þessi útgáfa getur ekki "
 "opnað."
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -496,7 +496,7 @@ msgid ""
 "and then save it again, which will save it in the new format."
 msgstr ""
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, fuzzy, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -506,7 +506,7 @@ msgstr ""
 "Þessi Kig skrá notar hnitakerfi sem þessi útgáfa af Kig styður ekki. "
 "Staðalhnitakerfi verður notað í staðinn."
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, fuzzy, kde-format
 msgid ""
@@ -518,7 +518,7 @@ msgstr ""
 "styður ekki. Kannski hefur þú vistþýtt Kig án stuðnings við þennan hlut eða "
 "kannski ertu að nota eldri útgáfu af Kig..."
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -777,12 +777,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr ""
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -830,165 +830,165 @@ msgstr "Sýna ása"
 msgid "Invert Selection"
 msgstr "Umhverfa vali"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Eyða hlutum"
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Eyða völdum hlutum"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Hætta við teikningu"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Hætta við teikningu allra hluta sem verið er að teikna"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, fuzzy, kde-format
 msgid "Repeat Construction"
 msgstr "Hætta við teikningu"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, fuzzy, kde-format
 msgid "U&nhide All"
 msgstr "Birta &allt"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Sýna alla falda hluti"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Nýr fjölvi..."
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "Skilgreina nýjan fjölva"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, fuzzy, kde-format
 msgid "Manage &Types..."
 msgstr "&Sýsla með tegundir"
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "Sýsla með fjölvategundir."
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr ""
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, fuzzy, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Hætta við teikningu"
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Renna að í skjalinu"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Renna frá í skjalinu"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Endurmiðja skjáinn á skjalið"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Skoða þetta skjal í fullum skjá."
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, fuzzy, kde-format
 msgid "&Select Shown Area"
 msgstr "Velja sýnilegt svæði"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, fuzzy, kde-format
 msgid "S&elect Zoom Area"
 msgstr "Velja sýnilegt svæði"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, fuzzy, kde-format
 #| msgid "Set &Coordinate..."
 msgid "Set Coordinate &Precision..."
 msgstr "Velja &hnit"
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, fuzzy, kde-format
 msgid "Show &Grid"
 msgstr "Sýna hnitanet"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr ""
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, fuzzy, kde-format
 msgid "Show &Axes"
 msgstr "Sýna ása"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr ""
 
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr ""
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr ""
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, fuzzy, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Hætta við teikningu"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, fuzzy, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -997,12 +997,12 @@ msgstr ""
 "Skráin \"%1\" sem þú reyndir að opna fannst ekki. Vinsamlegast staðfestu að "
 "þú skrifaðir rétta slóð."
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "Skrá fannst ekki"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, fuzzy, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1016,53 +1016,53 @@ msgstr ""
 "getur þú alltaf beðið fallega í mailto:devriese@kde.org eða sent mér "
 "betrumbót."
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, fuzzy, kde-format
 msgid "Format Not Supported"
 msgstr "Snið ekki stutt"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, fuzzy, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "Kig styður ekki vistun í annað  skráarsnið en sitt eigið."
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr ""
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr ""
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Skráin \"%1\" er þegar til. Viltu skrifa yfir hana?"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, fuzzy, kde-format
 msgid "Overwrite File?"
 msgstr "Skrifa yfir skrá?"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, fuzzy, kde-format
 #| msgid "Print Geometry"
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Prenta rúmfræði"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1304,26 +1304,26 @@ msgstr "Skoða"
 msgid "&Settings"
 msgstr "&Stillingar"
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
 "Output goes to stdout unless --outfile is specified."
 msgstr ""
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
 "Default is stdout as well."
 msgstr ""
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, fuzzy, kde-format
 msgid "Document to open"
 msgstr "Skjal sem á að opna."
@@ -2020,7 +2020,7 @@ msgstr ""
 msgid "Project a point on a line"
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr ""
@@ -2030,7 +2030,7 @@ msgstr ""
 msgid "Construct a new Python script."
 msgstr "Búa til nýjan skriftaðan hlut."
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2039,7 +2039,7 @@ msgstr ""
 "Skrifaðu hnitin á eftirfarandi formi: \"x;y\", þar sem x er x hnitið og y er "
 "y hnitið."
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2048,7 +2048,7 @@ msgstr ""
 "Skrifaðu hnitin á eftirfarandi formi: \"x;y\", þar sem x er x hnitið og y er "
 "y hnitið."
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2057,7 +2057,7 @@ msgstr ""
 "Settu hnitin inn með eftirfarandi hætti: \"r; θ°\", þar sem r og θ eru "
 "pólhnitin."
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2066,22 +2066,22 @@ msgstr ""
 "Settu hnitin inn með eftirfarandi hætti: \"r; θ°\", þar sem r og θ eru "
 "pólhnitin."
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "&Evklíðsk"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "&Polar"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "Stilla á Evklíðska hnitakerfið"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "Stilla á Pól hnitakerfið"
@@ -2196,17 +2196,17 @@ msgid ""
 "be converted to the new selected unit."
 msgstr ""
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "Gat ekki opnað fjölvskrá '%1'"
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, fuzzy, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "Kig getur ekki opnað skrána \"%1\"."
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2215,7 +2215,7 @@ msgid ""
 "the new format."
 msgstr ""
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr ""
@@ -2251,19 +2251,18 @@ msgid "Moving Point"
 msgstr "Færi punkt"
 
 #: misc/special_constructors.cc:327
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: misc/special_constructors.cc:328
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Following Point"
 msgstr "Færi punkt"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2338,12 +2337,12 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Polygon"
 msgstr "Marghyrningur"
 
 #: misc/special_constructors.cc:658
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the vertices of this polygon..."
 msgstr "Búa til póllínu þessa punkts"
 
@@ -2358,7 +2357,7 @@ msgid "The vertices of a polygon."
 msgstr "Stýrilína keilu"
 
 #: misc/special_constructors.cc:718
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the sides of this polygon..."
 msgstr "Búa til póllínu þessa punkts"
 
@@ -2595,26 +2594,24 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "Skurðpunktur við þetta þrívíddarlínurit"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "Skara þessa línu"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Intersect with this conic"
 msgid "Intersect with this cubic"
 msgstr "Skurðpunktur við þetta þrívíddarlínurit"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect with this circle"
 msgstr "Skera þennan hring"
 
@@ -2720,45 +2717,44 @@ msgid "with this Polygonal"
 msgstr "Bæta við punkti"
 
 #: misc/special_constructors.cc:1814
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct midpoint of this point and another one"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: misc/special_constructors.cc:1815
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: misc/special_constructors.cc:1818
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the midpoint of this point and another one"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr ""
 
 #: misc/special_constructors.cc:1869
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct golden ratio point of this point and another one"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
@@ -2980,13 +2976,13 @@ msgstr ""
 msgid "Name"
 msgstr "Nafn"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, fuzzy, kde-format
 msgid "<unnamed object>"
 msgstr "Lokahlutur"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -2995,32 +2991,32 @@ msgstr ""
 "það eru '%n' hlutar í textanum sem þú hefur ekki sett gildi fyrir. "
 "Vinsamlegast fjarlægðu þá eða veldu nógu margar breytur."
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "breyta %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "Vel breytu %1"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "Breyta merki"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, fuzzy, kde-format
 msgid "Set Value"
 msgstr "Veldu &stærð"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, fuzzy, kde-format
 msgid "Enter value:"
 msgstr "Skrifaðu texta merkis"
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, fuzzy, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
@@ -3106,84 +3102,84 @@ msgstr[1] "Færa %1 hluti"
 msgid "Redefine Point"
 msgstr "Endurskilgreina punkt"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, fuzzy, kde-format
 msgid "Black"
 msgstr "Svart"
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, fuzzy, kde-format
 msgid "Gray"
 msgstr "Grár"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, fuzzy, kde-format
 msgid "Red"
 msgstr "Rauður"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, fuzzy, kde-format
 msgid "Green"
 msgstr "Grænn"
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, fuzzy, kde-format
 msgid "Cyan"
 msgstr "Blágrænn"
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, fuzzy, kde-format
 msgid "Yellow"
 msgstr "Gulur"
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, fuzzy, kde-format
 msgid "Dark Red"
 msgstr "Dökkrauður"
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "&Fela"
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, fuzzy, kde-format
 msgid "&Show"
 msgstr "&Sýna"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "Fæ&ra"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, fuzzy, kde-format
 msgid "&Delete"
 msgstr "&Eyða hlutum"
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, fuzzy, kde-format
 msgid "&Custom Color"
 msgstr "Veldu &lit"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, fuzzy, kde-format
 msgid "Change Object Color"
 msgstr "Breyta merki"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, fuzzy, kde-format
 msgid "Change Object Width"
 msgstr "Grunntegund"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, fuzzy, kde-format
 msgid "Change Point Style"
 msgstr "Grunntegund"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, fuzzy, kde-format
 msgid "Change Object Style"
 msgstr "Grunntegund"
@@ -3209,70 +3205,70 @@ msgstr "Skriftaður hlutur"
 msgid "Set Name of this Object:"
 msgstr "Skala þennan hlut"
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, fuzzy, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 hlutur"
 msgstr[1] "%1 hlutur"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "Kig skjal"
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "U&mmynda"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, fuzzy, kde-format
 msgid "T&est"
 msgstr "Afgangur"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "&Teikna"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, fuzzy, kde-format
 msgid "&Start"
 msgstr "&Byrja"
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "Bæta te&xta við merkingu"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "Veldu &lit"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, fuzzy, kde-format
 msgid "Set &Pen Width"
 msgstr "Velja &lengd..."
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, fuzzy, kde-format
 msgid "Set St&yle"
 msgstr "Veldu &stærð"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "Veldu &hnitakerfi"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, fuzzy, kde-format
 msgctxt "More menu items"
 msgid "More..."
 msgstr "&Flytja í"
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, fuzzy, kde-format
 msgid "Edit Script..."
 msgstr "Breyta skriftu"
@@ -3298,7 +3294,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "Sýna texta í ramma"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "Velja viðföng"
@@ -3463,135 +3459,126 @@ msgstr ""
 msgid "&Import..."
 msgstr "Flytja inn tegundir..."
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "Teikna horn gegnum þennan punkt"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr ""
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "Teikna horn á þessum punkti"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr ""
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr ""
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "Veldu &stærð"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr ""
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, fuzzy, kde-format
 msgid "Resize Angle"
 msgstr "Breyta stærð &horns"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "Búa til boga með þennan upphafspunkt"
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, fuzzy, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
+#, fuzzy
 msgid "Select the start point of the new arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "Búa til boga gegnum þennan punkt"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr ""
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "Búa til boga sem endar í þessum punkti"
 
-#: objects/arc_type.cc:38
-#, fuzzy, kde-format
+#: objects/arc_type.cc:37
+#, fuzzy
 msgid "Select the end point of the new arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:148
-#, fuzzy, kde-format
+#: objects/arc_type.cc:147
+#, fuzzy
 msgid "Construct an arc with this center"
 msgstr "Teikna hring með þessari miðju"
 
-#: objects/arc_type.cc:148
-#, fuzzy, kde-format
+#: objects/arc_type.cc:147
+#, fuzzy
 msgid "Select the center of the new arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:150
-#, fuzzy, kde-format
+#: objects/arc_type.cc:149
+#, fuzzy
 msgid "Construct an arc with this angle"
 msgstr "Teikna hring með þessari miðju"
 
-#: objects/arc_type.cc:150
-#, fuzzy, kde-format
+#: objects/arc_type.cc:149
+#, fuzzy
 msgid "Select the angle of the new arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:204
-#, fuzzy, kde-format
+#: objects/arc_type.cc:203
+#, fuzzy
 msgid "Construct a conic arc starting at this point"
 msgstr "Búa til boga með þennan upphafspunkt"
 
-#: objects/arc_type.cc:205
-#, fuzzy, kde-format
+#: objects/arc_type.cc:204
+#, fuzzy
 msgid "Select the start point of the new conic arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:206
-#, fuzzy, kde-format
+#: objects/arc_type.cc:205
+#, fuzzy
 msgid "Construct a conic arc through this point"
 msgstr "Búa til keilu gegnum þessa punkta"
 
-#: objects/arc_type.cc:207
-#, fuzzy, kde-format
+#: objects/arc_type.cc:206
+#, fuzzy
 msgid "Select a point for the new conic arc to go through..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:208
-#, fuzzy, kde-format
+#: objects/arc_type.cc:207
+#, fuzzy
 msgid "Construct a conic arc ending at this point"
 msgstr "Búa til boga sem endar í þessum punkti"
 
-#: objects/arc_type.cc:209
-#, fuzzy, kde-format
+#: objects/arc_type.cc:208
+#, fuzzy
 msgid "Select the end point of the new conic arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
-#: objects/arc_type.cc:212
-#, fuzzy, kde-format
+#: objects/arc_type.cc:211
+#, fuzzy
 msgid "Construct an conic arc with this center"
 msgstr "Teikna hring með þessari miðju"
 
-#: objects/arc_type.cc:212
-#, fuzzy, kde-format
+#: objects/arc_type.cc:211
+#, fuzzy
 msgid "Select the center of the new conic arc..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
@@ -3616,7 +3603,7 @@ msgid "Bézier Curve"
 msgstr "Bæta við feril"
 
 #: objects/bezier_imp.cc:202
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this curve"
 msgid "Select this Bézier Curve"
 msgstr "Velja þennan feril"
@@ -3666,7 +3653,7 @@ msgid "Bézier Quadratic"
 msgstr "Bæta við merki"
 
 #: objects/bezier_imp.cc:219
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this arc"
 msgid "Select this Bézier Quadratic"
 msgstr "Velja þennan boga"
@@ -3712,7 +3699,7 @@ msgid "Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_imp.cc:236
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this arc"
 msgid "Select this Bézier Cubic"
 msgstr "Velja þennan boga"
@@ -3759,7 +3746,7 @@ msgid "Rational Bézier Curve"
 msgstr ""
 
 #: objects/bezier_imp.cc:491
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this Rational Bézier Curve"
 msgstr "Velja þennan punkt"
 
@@ -3804,7 +3791,7 @@ msgid "Rational Bézier Quadratic"
 msgstr "Velja þessa keilu"
 
 #: objects/bezier_imp.cc:508
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this Rational Bézier Quadratic"
 msgstr "Velja þessa keilu"
 
@@ -3848,7 +3835,7 @@ msgid "Rational Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_imp.cc:525
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this Rational Bézier Cubic"
 msgstr "Velja þetta horn"
 
@@ -3884,49 +3871,49 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_type.cc:26
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "Teikna hring með þessari miðju"
 
 #: objects/bezier_type.cc:27
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/bezier_type.cc:121
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "Teikna hring með þessari miðju"
 
 #: objects/bezier_type.cc:122
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/bezier_type.cc:328
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr "Teikna hring með þessari miðju"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this segment"
 msgid "Select this value as weight"
 msgstr "Velja þetta strik"
 
 #: objects/bezier_type.cc:433
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "Teikna hring með þessari miðju"
@@ -3955,7 +3942,7 @@ msgid "Select the curve..."
 msgstr "Velja þennan feril"
 
 #: objects/centerofcurvature_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point on the curve..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
@@ -3996,7 +3983,6 @@ msgid "circle"
 msgstr "hringur"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "Velja þennan hring"
 
@@ -4031,34 +4017,32 @@ msgstr "Færa hring"
 msgid "Hide a Circle"
 msgstr "Bæta við hring"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "Teikna hring gegnum þennan punkt"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "Teikna hring með þessari miðju"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr ""
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr ""
 
-#: objects/circle_type.cc:177
-#, fuzzy, kde-format
+#: objects/circle_type.cc:178
+#, fuzzy
 msgid "With this radius"
 msgstr "Skera þennan hring"
 
-#: objects/circle_type.cc:177
-#, fuzzy, kde-format
+#: objects/circle_type.cc:178
+#, fuzzy
 msgid "Select the length of the radius..."
 msgstr "Veldu rétthyrninginn sem á að sýna."
 
@@ -4115,7 +4099,6 @@ msgid "conic"
 msgstr "keila"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "Velja þessa keilu"
 
@@ -4170,7 +4153,7 @@ msgid "conic arc"
 msgstr "keila"
 
 #: objects/conic_imp.cc:604
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this conic arc"
 msgstr "Velja þessa keilu"
 
@@ -4211,7 +4194,6 @@ msgstr "Bæta við keilu"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "Búa til keilu gegnum þessa punkta"
 
@@ -4219,192 +4201,164 @@ msgstr "Búa til keilu gegnum þessa punkta"
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr ""
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "Búa til keilu með þessari aðfellu"
 
 #: objects/conic_types.cc:61
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the first asymptote of the new conic..."
 msgstr "Teikna aðfellur þessarar keilu"
 
 #: objects/conic_types.cc:62
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the second asymptote of the new conic..."
 msgstr "Teikna aðfellur þessarar keilu"
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "Búa til keilu með þessum brennipunkti"
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr ""
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr ""
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "Teikna sporbaug gegnum þennan punkt"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr ""
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "Búa til breiðboga með þessum brennipunkti"
 
 #: objects/conic_types.cc:146
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the first focus of the new hyperbola..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr ""
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "Teikna breiðboga gegnum þennan punkt"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr ""
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "Búa til keilu með þessari stýrilínu"
 
 #: objects/conic_types.cc:179
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the directrix of the new conic..."
 msgstr "Teikna stýrilínu þessarar keilu"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "Búa til keilu með þennan punkt sem brennipunkt"
 
 #: objects/conic_types.cc:180
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the focus of the new conic..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "Teikna fleygboga gegnum þennan punkt"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr ""
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "Búa til pólpunkt mtt. þessarar keilu"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr ""
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "Búa til pólpunkt þessara línu"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "Búa til póllínu mtt. þessarar keilu"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "Teikna stýrilínu þessarar keilu"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr ""
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "Teikna fleygboga með þessa stýrilínu"
 
 #: objects/conic_types.cc:417
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the directrix of the new parabola..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/conic_types.cc:418
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a parabola with this focus"
 msgstr "Búa til breiðboga með þessum brennipunkti"
 
 #: objects/conic_types.cc:418
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the focus of the new parabola..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "Teikna aðfellur þessarar keilu"
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr ""
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "Teikna stofnlínur þessarar keilu"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr ""
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4426,7 +4380,7 @@ msgid "cubic curve"
 msgstr "þrívíddargraf"
 
 #: objects/cubic_imp.cc:348
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this cubic curve"
 msgstr "Velja þetta þrívíddargraf"
 
@@ -4465,12 +4419,11 @@ msgid "Hide a Cubic Curve"
 msgstr "Bæta við þrívíddarlínuriti"
 
 #: objects/cubic_type.cc:11
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a cubic curve through this point"
 msgstr "Búa til þrívíddarlínurit gegnum þennan punkt"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr ""
 
@@ -4479,7 +4432,6 @@ msgid "curve"
 msgstr "ferill"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "Velja þennan feril"
 
@@ -4521,87 +4473,87 @@ msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Already computed intersection point"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/intersection_types.cc:372
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect with this cubic curve"
 msgstr "Skera í punkti á þessu þrívíddarlínuriti"
 
 #: objects/intersection_types.cc:526
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect with this arc"
 msgstr "Skera þennan hring"
 
 #: objects/inversion_type.cc:19
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Invert with respect to this circle"
 msgstr "Skera þennan hring"
 
 #: objects/inversion_type.cc:20
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the circle we want to invert against..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/inversion_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this object"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/inversion_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to invert..."
 msgstr "Velja þennan punkt"
 
 #: objects/inversion_type.cc:270
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this point"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/inversion_type.cc:270
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the point to invert..."
 msgstr "Velja þennan punkt"
 
 #: objects/inversion_type.cc:329
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this line"
 msgstr "Búa til pólpunkt þessara línu"
 
 #: objects/inversion_type.cc:329
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the line to invert..."
 msgstr "Veldu tegundir hér..."
 
 #: objects/inversion_type.cc:381
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this segment"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/inversion_type.cc:381
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the segment to invert..."
 msgstr "Velja þennan punkt"
 
 #: objects/inversion_type.cc:469
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this circle"
 msgstr "Teikna stýrilínu þessarar keilu"
 
 #: objects/inversion_type.cc:469
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the circle to invert..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/inversion_type.cc:533
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this arc"
 msgstr "Teikna stýrilínu þessarar keilu"
 
 #: objects/inversion_type.cc:533
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the arc to invert..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
@@ -4632,12 +4584,11 @@ msgid "line"
 msgstr "lína"
 
 #: objects/line_imp.cc:545
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a Line"
 msgstr "Velja þessa línu"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "Velja þessa línu"
 
@@ -4677,7 +4628,6 @@ msgid "segment"
 msgstr "strik"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "Velja þetta strik"
 
@@ -4718,7 +4668,7 @@ msgid "half-line"
 msgstr "lína"
 
 #: objects/line_imp.cc:593
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this half-line"
 msgstr "Velja þessa línu"
 
@@ -4758,102 +4708,97 @@ msgid "Hide a Half-Line"
 msgstr "Bæta við línu"
 
 #: objects/line_type.cc:22
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a segment starting at this point"
 msgstr "Búa til boga með þennan upphafspunkt"
 
 #: objects/line_type.cc:22
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the start point of the new segment..."
 msgstr "Teiknar miðpunkt þessa striks"
 
 #: objects/line_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a segment ending at this point"
 msgstr "Teikna strik að þessum punkti"
 
 #: objects/line_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the end point of the new segment..."
 msgstr "Teiknar miðpunkt þessa striks"
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "Teikna línu gegnum þennan punkt"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr ""
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr ""
 
 #: objects/line_type.cc:75
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a half-line starting at this point"
 msgstr "Búa til boga með þennan upphafspunkt"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the start point of the new half-line..."
 msgstr "Búa til pólpunkt þessara línu"
 
 #: objects/line_type.cc:79
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a half-line through this point"
 msgstr "Teikna línu gegnum þennan punkt"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr ""
 
 #: objects/line_type.cc:104
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the axis of this segment"
 msgstr "Teiknar miðpunkt þessa striks"
 
 #: objects/line_type.cc:104
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/line_type.cc:155
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a line parallel to this line"
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/line_type.cc:155
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a line parallel to the new line..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/line_type.cc:156
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the parallel line through this point"
 msgstr "Teikna samsíða gegnum þennan punkt"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr ""
 
 #: objects/line_type.cc:182
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a line perpendicular to this line"
 msgstr "Teikna línu hornrétta á þessa"
 
 #: objects/line_type.cc:182
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a line perpendicular to the new line..."
 msgstr "Teikna línu hornrétta á þessa"
 
 #: objects/line_type.cc:183
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a perpendicular line through this point"
 msgstr "Teikna hornrétt gegnum þennan punkt"
 
@@ -4878,22 +4823,20 @@ msgid "Resize Segment"
 msgstr "Breyta stærð &striks"
 
 #: objects/line_type.cc:255
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a line by this vector"
 msgstr "Teikna hring með þessari miðju"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr ""
 
 #: objects/line_type.cc:292
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a half-line by this vector"
 msgstr "Búa til póllínu mtt. þessarar keilu"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr ""
 
@@ -4902,7 +4845,6 @@ msgid "locus"
 msgstr "punktur"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "Velja punkt"
 
@@ -4946,8 +4888,7 @@ msgstr "Grunntegund"
 msgid "Object"
 msgstr "Hlutur"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "Velja þennan hlut"
 
@@ -5033,7 +4974,6 @@ msgid "angle"
 msgstr "horn"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "Velja þetta horn"
 
@@ -5073,7 +5013,6 @@ msgid "vector"
 msgstr "vigur"
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "Velja þennan vigur"
 
@@ -5113,7 +5052,6 @@ msgid "arc"
 msgstr "bogi"
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "Velja þennan boga"
 
@@ -5167,7 +5105,6 @@ msgid "point"
 msgstr "punktur"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "Velja þennan punkt"
 
@@ -5203,38 +5140,36 @@ msgid "Hide a Point"
 msgstr "Bæta við punkti"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the midpoint of this point and another point"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr ""
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr ""
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: objects/point_type.cc:275
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/point_type.cc:279
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
@@ -5281,37 +5216,34 @@ msgid "Change Parameter of Constrained Point"
 msgstr "Breyta viðfangi þvingaðs punkts"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr ""
 
 #: objects/point_type.cc:744
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point on the circle..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr ""
 
 #: objects/point_type.cc:794
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "Búa til pólpunkt þessara línu"
 
 #: objects/point_type.cc:795
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "Búa til pólpunkt þessara línu"
 
 #: objects/point_type.cc:820
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point to project onto a line..."
 msgstr "Velja þennan punkt"
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr ""
 
@@ -5368,7 +5300,7 @@ msgid "polygon"
 msgstr ""
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this polygon"
 msgstr "Velja þennan punkt"
 
@@ -5413,7 +5345,7 @@ msgid "closed polygonal curve"
 msgstr "Velja þennan punkt"
 
 #: objects/polygon_imp.cc:646
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this closed polygonal curve"
 msgstr "Velja þennan punkt"
 
@@ -5458,7 +5390,7 @@ msgid "polygonal curve"
 msgstr "Færa feril"
 
 #: objects/polygon_imp.cc:663
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this polygonal curve"
 msgstr "Velja þennan punkt"
 
@@ -5503,7 +5435,7 @@ msgid "triangle"
 msgstr "horn"
 
 #: objects/polygon_imp.cc:680
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this triangle"
 msgstr "Velja þetta horn"
 
@@ -5547,7 +5479,7 @@ msgid "quadrilateral"
 msgstr ""
 
 #: objects/polygon_imp.cc:697
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this quadrilateral"
 msgstr "Velja þetta merki"
 
@@ -5587,105 +5519,105 @@ msgid "Hide a Quadrilateral"
 msgstr "Bæta við feril"
 
 #: objects/polygon_type.cc:24
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct a triangle with this vertex"
 msgstr "Teikna hring með þessari miðju"
 
 #: objects/polygon_type.cc:25
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/polygon_type.cc:470
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this polygon with a line"
 msgstr "Skara þessa línu"
 
 #: objects/polygon_type.cc:471
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:474
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this line with a polygon"
 msgstr "Skara þessa línu"
 
 #: objects/polygon_type.cc:475
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this polygonal curve with a line"
 msgstr "Skara þessa línu"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this line with a polygonal curve"
 msgstr "Skara þessa línu"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:788
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this polygon with another polygon"
 msgstr "Skara þessa línu"
 
 #: objects/polygon_type.cc:789
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:791
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect with this polygon"
 msgstr "Skara þessa línu"
 
 #: objects/polygon_type.cc:791
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the second polygon for the intersection..."
 msgstr "Eyða völdum hlutum"
 
 #: objects/polygon_type.cc:930
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the vertices of this polygon"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/polygon_type.cc:931
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:974
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the sides of this polygon"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/polygon_type.cc:975
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/polygon_type.cc:1022
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the convex hull of this polygon"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/polygon_type.cc:1023
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
@@ -5695,27 +5627,24 @@ msgid "Project this point onto the circle"
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/tangent_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the point for the tangent to go through..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr ""
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr ""
 
 #: objects/tests_type.cc:19
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Parallel to this line?"
 msgstr "Skala yfir þessa línu"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr ""
 
@@ -5730,22 +5659,19 @@ msgid "These lines are not parallel."
 msgstr ""
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr ""
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr ""
 
 #: objects/tests_type.cc:58
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Orthogonal to this line?"
 msgstr "Festa við þessa línu"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr ""
 
@@ -5760,32 +5686,29 @@ msgid "These lines are not orthogonal."
 msgstr ""
 
 #: objects/tests_type.cc:96
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Check collinearity of this point"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr ""
 
 #: objects/tests_type.cc:97
-#, fuzzy, kde-format
+#, fuzzy
 msgid "and this second point"
 msgstr "Snúa um þennan punkt"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr ""
 
 #: objects/tests_type.cc:98
-#, fuzzy, kde-format
+#, fuzzy
 msgid "with this third point"
 msgstr "Festa við þennan punkt"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr ""
 
@@ -5800,22 +5723,20 @@ msgid "These points are not collinear."
 msgstr ""
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr ""
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the point you want to test..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr ""
 
 #: objects/tests_type.cc:138
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the curve that the point might be on..."
 msgstr "Veldu rétthyrninginn sem á að sýna."
 
@@ -5830,17 +5751,15 @@ msgid "This curve does not contain the point."
 msgstr ""
 
 #: objects/tests_type.cc:180
-#, kde-format
 msgid "Check whether this point is in a polygon"
 msgstr ""
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Check whether the point is in this polygon"
 msgstr ""
 
 #: objects/tests_type.cc:181
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon that the point might be in..."
 msgstr "Veldu rétthyrninginn sem á að sýna."
 
@@ -5855,12 +5774,12 @@ msgid "This polygon does not contain the point."
 msgstr "Þessi kig-skrá inniheldur villur."
 
 #: objects/tests_type.cc:223
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Check whether this polygon is convex"
 msgstr "Skara þessa línu"
 
 #: objects/tests_type.cc:223
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon you want to test for convexity..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
@@ -5875,33 +5794,31 @@ msgid "This polygon is not convex."
 msgstr "Þessi kig-skrá inniheldur villur."
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr ""
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr ""
 
 #: objects/tests_type.cc:268
-#, fuzzy, kde-format
+#, fuzzy
 msgid "from this point"
 msgstr "Spegla um þennan punkt"
 
 #: objects/tests_type.cc:268
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the first of the two other points..."
 msgstr "Miðpunktur striks eða tveggja annarra punkta"
 
 #: objects/tests_type.cc:269
-#, fuzzy, kde-format
+#, fuzzy
 msgid "and from this second point"
 msgstr "Festa við þennan punkt"
 
 #: objects/tests_type.cc:269
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the other of the two other points..."
 msgstr "Miðpunktur striks eða tveggja annarra punkta"
 
@@ -5916,22 +5833,18 @@ msgid "The two distances are not the same."
 msgstr ""
 
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr ""
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr ""
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr ""
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr ""
 
@@ -5946,12 +5859,12 @@ msgid "The two vectors are not the same."
 msgstr ""
 
 #: objects/tests_type.cc:352
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Check whether this object exists"
 msgstr "Skara þessa línu"
 
 #: objects/tests_type.cc:352
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object for the existence check..."
 msgstr "Velja þennan hlut"
 
@@ -5974,7 +5887,6 @@ msgid "label"
 msgstr "merki"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "Velja þetta merki"
 
@@ -6014,7 +5926,7 @@ msgid "numeric label"
 msgstr ""
 
 #: objects/text_imp.cc:184
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this numeric label"
 msgstr "Velja þetta merki"
 
@@ -6063,7 +5975,7 @@ msgid "boolean label"
 msgstr "Færa merki"
 
 #: objects/text_imp.cc:278
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this boolean label"
 msgstr "Velja þetta merki"
 
@@ -6148,550 +6060,496 @@ msgid "Change Displayed Value"
 msgstr ""
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "Þýða þennan hlut"
 
 #: objects/transform_types.cc:21
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to translate..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "Þýða með þessum vigur"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr ""
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "Spegla þennan hlut"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to reflect..."
 msgstr "Velja þennan hlut"
 
 #: objects/transform_types.cc:54
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Reflect in this point"
 msgstr "Spegla um þennan punkt"
 
 #: objects/transform_types.cc:54
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the point to reflect in..."
 msgstr "Velja þennan punkt"
 
 #: objects/transform_types.cc:86
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Reflect in this line"
 msgstr "Spegla yfir þessa línu"
 
 #: objects/transform_types.cc:86
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the line to reflect in..."
 msgstr "Veldu tegundir hér..."
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "Snúa um þennan hlut"
 
 #: objects/transform_types.cc:117
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to rotate..."
 msgstr "Velja þennan hlut"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "Snúa um þennan punkt"
 
 #: objects/transform_types.cc:118
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the center point of the rotation..."
 msgstr "Búa til pólpunkt þessara línu"
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "Snúa um þetta horn"
 
 #: objects/transform_types.cc:121
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the angle of the rotation..."
 msgstr "Veldu rétthyrninginn sem á að sýna."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "Skala þennan hlut"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to scale..."
 msgstr "Velja þennan hlut"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "Skala með þessa miðju"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the center point of the scaling..."
 msgstr "Búa til pólpunkt þessara línu"
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Scale by this length"
 msgstr "Skala með þessa miðju"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "Teikna aðfellur þessarar keilu"
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Scale this length..."
 msgstr "Velja &lengd..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr "Teikna aðfellur þessarar keilu"
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, fuzzy, kde-format
+#, fuzzy
 msgid "...to this other length"
 msgstr "Skala eftir lengd þessa striks"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr "Teikna aðfellur þessarar keilu"
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to scale"
 msgstr "Velja þennan hlut"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "Skala yfir þessa línu"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the line to scale over"
 msgstr "Velja þennan vigur"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "Umvarpa þessum hlut"
 
 #: objects/transform_types.cc:335
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to rotate projectively"
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/transform_types.cc:337
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Projectively rotate with this half-line"
 msgstr "Vörpunarsnúningur við þennan geisla"
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr ""
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "Vörpunarsnúningur við þetta horn"
 
 #: objects/transform_types.cc:342
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/transform_types.cc:376
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Harmonic Homology of this object"
 msgstr "Festa við þennan hlut"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to transform..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/transform_types.cc:377
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Harmonic Homology with this center"
 msgstr "Skala með þessa miðju"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr ""
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr ""
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr ""
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Generic affinity of this object"
 msgstr "Velja þennan hlut"
 
 #: objects/transform_types.cc:409
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Map this triangle"
 msgstr "Festa við þetta horn"
 
 #: objects/transform_types.cc:409
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr ""
 
 #: objects/transform_types.cc:412
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "Teikna samsíða línu af þessari"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr ""
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr ""
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr ""
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr ""
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr ""
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr ""
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr ""
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr ""
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr ""
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr ""
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Transformed position of third point"
 msgstr "Teikna miðpunkt af þessum punkti"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr ""
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Generic projective transformation of this object"
 msgstr "Umvarpa þessum hlut"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr ""
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr ""
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr ""
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr ""
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr ""
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr ""
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr ""
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:566
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Fourth of 4 starting points"
 msgstr "Búa til boga með þennan upphafspunkt"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr ""
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr ""
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "Varpa skugga þessa hlutar"
 
 #: objects/transform_types.cc:624
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "Veldu svæðið sem þú vilt að verði sýnt í glugganum."
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "Varpa skugga frá þessu ljósi"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr ""
 
 #: objects/transform_types.cc:629
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "Varpa skugga á flöt skilgreindan af þessari línu"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr ""
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "Ummynda þennan hlut"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "Ummynda með þessari ummyndun"
 
 #: objects/transform_types.cc:883
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Apply a similitude to this object"
 msgstr "Festa við þennan hlut"
 
 #: objects/transform_types.cc:884
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Apply a similitude with this center"
 msgstr "Skala með þessa miðju"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr ""
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr ""
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr ""
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr ""
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr ""
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "Teikna vigur frá þessum punkti"
 
 #: objects/vector_type.cc:12
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the start point of the new vector..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "Teikna vigur að þessum punkti"
 
 #: objects/vector_type.cc:13
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the end point of the new vector..."
 msgstr "Veldu lokahlutinn  fyrir nýja fjölvann þinn."
 
 #: objects/vector_type.cc:44
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the vector sum of this vector and another one."
 msgstr "Teikna helmingunarlínu þessa horns"
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr ""
 
 #: objects/vector_type.cc:48
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "Teikna helmingunarlínu þessa horns"
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr ""
 
 #: objects/vector_type.cc:51
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the vector sum starting at this point."
 msgstr "Búa til boga með þennan upphafspunkt"
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr ""
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "Nýr skriftahlutur"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, fuzzy, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr "Veldu viðfangshluti (ef einhver) í Kig glugganum og ýttu á áfram."
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "Skrifaðu kóða"
@@ -6715,7 +6573,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, fuzzy, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6724,14 +6582,14 @@ msgstr ""
 "Það virðist vera villa í skriftunni þinni, hún skilar ekki gildum hlut. "
 "Vinsamlegast lagaðu skriftuna og Smelltu Ljúka hnappinn aftur."
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
 "%1"
 msgstr ""
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, fuzzy, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6741,18 +6599,18 @@ msgstr ""
 "Það virðist vera villa í skriftunni þinni, hún skilar ekki gildum hlut. "
 "Vinsamlegast lagaðu skriftuna og Smelltu Ljúka hnappinn aftur."
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, fuzzy, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "Breyta skriftu"
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
 msgstr ""
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, fuzzy, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6761,7 +6619,7 @@ msgstr ""
 "Það virðist vera villa í skriftunni þinni, hún skilar ekki gildum hlut. "
 "Vinsamlegast lagaðu skriftuna og Smelltu Ljúka hnappinn aftur."
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, fuzzy, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "

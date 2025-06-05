@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2010-09-25 18:32-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -181,7 +181,7 @@ msgstr ""
 msgid "Asymptote Options"
 msgstr "画像オプション"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -251,7 +251,7 @@ msgstr ""
 "この Cabri ファイルは、現在 Kig ではサポートしていないオブジェクト “%1” を含"
 "んでいます。"
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -304,37 +304,37 @@ msgstr ""
 "この Dr. Geo のファイルは、現在 Kig ではサポートしていない交点タイプを含んで"
 "います。"
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "画像にエクスポート(&E)"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "画像(&I)..."
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, kde-format
 msgid "Export as Image"
 msgstr "画像としてエクスポート"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, kde-format
 msgid "Image Options"
 msgstr "画像オプション"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "残念ながら、このファイルフォーマットはサポートしていません。"
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "残念ながら、画像 “%1” への保存中に問題が発生しました。"
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "エクスポート(&E)"
@@ -363,7 +363,7 @@ msgstr ""
 msgid "Parse Error"
 msgstr "解析エラー"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr "サポートされていません"
@@ -496,14 +496,14 @@ msgstr ""
 msgid "Standalone document"
 msgstr "スタンドアローンの文書"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
 msgstr ""
 "このファイルは Kig バージョン %1 で作成されているので開くことができません。"
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -516,7 +516,7 @@ msgstr ""
 "このファイルをバージョン 0.4 から 0.6 の Kig で開いて、\n"
 "新しいフォーマットで再度保存してみてください。"
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -526,7 +526,7 @@ msgstr ""
 "この Kig ファイルには、このバージョンの Kig ではサポートされていない座標系が"
 "あります。代わりに標準の座標系を使います。"
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, kde-format
 msgid ""
@@ -538,7 +538,7 @@ msgstr ""
 "のオブジェクトを使っています。おそらく、このオブジェクトタイプをサポートせず"
 "に Kig をコンパイルしたか、Kig の古いバージョンを使っていると思われます。"
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -807,14 +807,14 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "新しいオブジェクト動作のアイコンを作ってくれた。"
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 "必要な Kig のライブラリが見つかりません。正しくインストールされているかを"
 "チェックしてください。"
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -859,166 +859,166 @@ msgstr "軸を表示"
 msgid "Invert Selection"
 msgstr "選択反転"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "オブジェクトを削除|/|$[~setProps ~label '削除']"
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "選択したオブジェクトを削除"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "作成をキャンセル|/|$[~setProps ~label 'キャンセル']"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "作成途中のオブジェクトの作成をキャンセル"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Repeat Construction"
 msgstr "作成を繰り返し|/|$[~setProps ~label '繰り返し']"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "最後の作成を繰り返し (新しいデータで)"
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "すべて表示(&U)"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "すべての隠しオブジェクトを表示"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "新しいマクロ(&N)..."
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "新しいマクロを定義"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Manage &Types..."
 msgstr "タイプの管理(&T)..."
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "マクロタイプの管理を行います。"
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr "履歴をブラウズ(&B)..."
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "現在の作成の履歴を閲覧します。"
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "文書のズームイン"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "文書のズームアウト"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "ビューを文書に合わせる"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "この文書をフルスクリーン表示"
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "表示領域を選択(&S)"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "表示領域を選択範囲に合わせる"
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "表示領域を座標で指定(&E)"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, fuzzy, kde-format
 #| msgid "Set &Coordinate..."
 msgid "Set Coordinate &Precision..."
 msgstr "座標を設定(&C)..."
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
 msgstr "グリッドを表示(&G)"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "グリッドの表示/非表示を切り替え"
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, kde-format
 msgid "Show &Axes"
 msgstr "軸を表示(&A)"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "軸の表示/非表示を切り替え"
 
 # ACCELERATOR added by translator
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "赤外線鏡を装着(&W)"
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "隠れたオブジェクトの可視性を有効/無効にします。"
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "作成を繰り返し (%1)"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "繰り返し %1 (新しいデータで)"
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1027,12 +1027,12 @@ msgstr ""
 "あなたが開こうとしているファイル ‘%1’ は存在しません。正しいパスを入力してい"
 "るか確認してください。"
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "ファイルが見つかりません"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, fuzzy, kde-format
 #| msgid ""
 #| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1051,12 +1051,12 @@ msgstr ""
 "実装する価値があると思うのであれば、いつでも mailto:pino@kde.org にメールして"
 "ください。あなた自身で作業してパッチを送ってもらってもかまいません。"
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
 msgid "Format Not Supported"
 msgstr "サポートしていません"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1065,12 +1065,12 @@ msgstr ""
 "Kig は他のファイルフォーマットで保存することをサポートしていません。Kig の"
 "フォーマットで保存しますか？"
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Kig のフォーマットで保存"
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.kig|Kig Documents (*.kig)\n"
@@ -1080,30 +1080,30 @@ msgstr ""
 "*.kig|Kig 文書 (*.kig)\n"
 "*.kigz|圧縮された Kig 文書 (*.kigz)"
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "ファイル ‘%1’ は既に存在します。上書きしますか？"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "ファイルを上書きしますか？"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, fuzzy, kde-format
 #| msgid "Print Geometry"
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "図形を印刷"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "%1 個のオブジェクトを隠す"
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1345,7 +1345,7 @@ msgstr "表示"
 msgid "&Settings"
 msgstr "設定(&S)"
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1354,7 +1354,7 @@ msgstr ""
 "GUI を表示しません。指定したファイルを Kig のネイティブフォーマットに変換しま"
 "す。--outfile を指定しない限り、標準出力に出力されます。"
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1363,12 +1363,12 @@ msgstr ""
 "作成したネイティブファイルを出力するファイル。“-” は標準出力への出力を意味し"
 "ます。デフォルトも標準出力です。"
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, kde-format
 msgid "Document to open"
 msgstr "開く文書"
@@ -2071,7 +2071,7 @@ msgstr ""
 msgid "Project a point on a line"
 msgstr "この点を円に投影"
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr "Python スクリプト"
@@ -2081,7 +2081,7 @@ msgstr "Python スクリプト"
 msgid "Construct a new Python script."
 msgstr "新しい Python スクリプトを作成"
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2090,7 +2090,7 @@ msgstr ""
 "“x;y” の形式で座標を入力してください。\n"
 "x は x 座標、y は y 座標です。"
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2099,7 +2099,7 @@ msgstr ""
 "<qt><b>“x;y”</b> の形式で座標を入力してください。<br />x は x 座標、y は y 座"
 "標です。</qt>"
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2108,7 +2108,7 @@ msgstr ""
 "“r; θ°” の形式で座標を入力してください。\n"
 "r と θ は極座標です。"
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2117,22 +2117,22 @@ msgstr ""
 "<qt><b>“r; θ°”</b> の形式で座標を入力してください。<br />r と θ は極座標で"
 "す。</qt>"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "直交座標系(&E)"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "極座標系(&P)"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "直交座標系に設定"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "極座標系に設定"
@@ -2248,17 +2248,17 @@ msgstr ""
 "別の単位に切り替えると、左の編集フィールドの値は新しく選んだ単位に変換されま"
 "す。</qt>"
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "マクロファイル ‘%1’ を開けません"
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "Kig はマクロファイル ‘%1’ を開けません。"
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2270,7 +2270,7 @@ msgstr ""
 "このフォーマットはもうサポートしていません。このマクロをバージョン 0.4 から "
 "0.6 の Kig でインポートして、新しいフォーマットで再度保存してみてください。"
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr "名前なしのマクロ #%1"
@@ -2306,19 +2306,16 @@ msgid "Moving Point"
 msgstr "動点"
 
 #: misc/special_constructors.cc:327
-#, kde-format
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr "動点 (軌跡を描く一方で動かす点) を選択..."
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid "Following Point"
 msgstr "追従点"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2398,12 +2395,10 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "新しい多角形の頂点となる点を選択..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, kde-format
 msgid "Polygon"
 msgstr "多角形"
 
 #: misc/special_constructors.cc:658
-#, kde-format
 msgid "Construct the vertices of this polygon..."
 msgstr "この多角形の頂点を作成..."
 
@@ -2418,7 +2413,6 @@ msgid "The vertices of a polygon."
 msgstr "多角形の頂点に相当する点を作成"
 
 #: misc/special_constructors.cc:718
-#, kde-format
 msgid "Construct the sides of this polygon..."
 msgstr "この多角形の辺を作成..."
 
@@ -2671,25 +2665,21 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "円周上の点を選択..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "この二次曲線との交点"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "この直線との交点"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, kde-format
 msgid "Intersect with this cubic"
 msgstr "この三次曲線との交点"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, kde-format
 msgid "Intersect with this circle"
 msgstr "この円との交点"
 
@@ -2800,35 +2790,32 @@ msgid "with this Polygonal"
 msgstr "この多角形と交わる"
 
 #: misc/special_constructors.cc:1814
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct midpoint of this point and another one"
 msgstr "この点ともう 1 つの点の中点を作成"
 
 #: misc/special_constructors.cc:1815
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "中点を作成する最初の点を選択..."
 
 #: misc/special_constructors.cc:1818
-#, kde-format
 msgid "Construct the midpoint of this point and another one"
 msgstr "この点ともう 1 つの点の中点を作成"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "中点を作成するもう一方の点を選択..."
 
 #: misc/special_constructors.cc:1869
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct golden ratio point of this point and another one"
 msgstr "この点ともう 1 つの点の中点を作成"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the points of which you want to construct the "
 #| "midpoint..."
@@ -2838,13 +2825,13 @@ msgid ""
 msgstr "中点を作成する最初の点を選択..."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "この点ともう 1 つの点の中点を作成"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the other of the points of which to construct the midpoint..."
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
@@ -3072,13 +3059,13 @@ msgstr "最後のステップ"
 msgid "Name"
 msgstr "名前"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<名前なしオブジェクト>"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -3087,32 +3074,32 @@ msgstr ""
 "値が設定されていない変数が、テキスト中に %n 個あります。それらを削除するか、"
 "必要なだけの変数を設定してください。"
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "変数 %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "変数 %1 を選択"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "ラベルを変更"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, kde-format
 msgid "Set Value"
 msgstr "値を設定"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, kde-format
 msgid "Enter value:"
 msgstr "値を入力:"
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "新しい数値の位置を選択..."
@@ -3198,84 +3185,84 @@ msgstr[0] "%1 個のオブジェクトを移動"
 msgid "Redefine Point"
 msgstr "点の再定義"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Black"
 msgstr "黒"
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, kde-format
 msgid "Gray"
 msgstr "グレー"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, kde-format
 msgid "Red"
 msgstr "赤"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Green"
 msgstr "緑"
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
 msgstr "シアン"
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Yellow"
 msgstr "黄色"
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, kde-format
 msgid "Dark Red"
 msgstr "えんじ"
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "隠す(&H)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, kde-format
 msgid "&Show"
 msgstr "表示(&S)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "移動(&M)"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
 msgstr "削除(&D)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, kde-format
 msgid "&Custom Color"
 msgstr "カスタム色(&C)"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, kde-format
 msgid "Change Object Color"
 msgstr "オブジェクト色を変更"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, kde-format
 msgid "Change Object Width"
 msgstr "オブジェクト幅を変更"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, kde-format
 msgid "Change Point Style"
 msgstr "点のスタイルを変更"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, kde-format
 msgid "Change Object Style"
 msgstr "オブジェクトのスタイルを変更"
@@ -3301,69 +3288,69 @@ msgstr "オブジェクト名を設定"
 msgid "Set Name of this Object:"
 msgstr "このオブジェクトの名前を設定:"
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 個のオブジェクト"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "Kig 文書"
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "変換(&T)"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, kde-format
 msgid "T&est"
 msgstr "テスト(&E)"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "作成(&R)"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
 msgstr "開始(&S)"
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "テキストラベルを追加(&X)"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "色を設定(&L)"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, kde-format
 msgid "Set &Pen Width"
 msgstr "ペン幅を設定(&P)"
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, kde-format
 msgid "Set St&yle"
 msgstr "スタイルを設定(&Y)"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "座標系を設定(&Y)"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, kde-format
 msgctxt "More menu items"
 msgid "More..."
 msgstr ""
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, fuzzy, kde-format
 #| msgctxt "'Edit' is a verb"
 #| msgid "Edit Script"
@@ -3391,7 +3378,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "テキストを枠で囲む"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "変数を設定"
@@ -3559,135 +3546,112 @@ msgstr "1 つまたは複数のファイルからマクロをインポートし�
 msgid "&Import..."
 msgstr "インポート(&I)..."
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "この点を通る角を作成"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr "角をなす半直線の 1 番目が通るべき点を選択..."
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "この点における角を作成"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr "角を作成する点を選択..."
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr "角をなす半直線の 2 番目が通るべき点を選択..."
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "サイズを設定(&Z)"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr ""
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
 msgstr "角をリサイズ"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "この点から始まる弧を作成"
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
 msgstr "新しい弧の始点を選択..."
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "この点を通る弧を作成"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr "新しい弧が通る点を選択..."
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "この点で終わる弧を作成"
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
 msgstr "新しい弧の終点を選択..."
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
 msgstr "ここを中心とした弧を作成"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
 msgstr "新しい弧の中心を選択..."
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
 msgstr "この角で弧を作成"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
 msgstr "新しい弧の角を選択..."
 
-#: objects/arc_type.cc:204
-#, kde-format
+#: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
 msgstr "この点から始まる二次曲線の弧を作成"
 
-#: objects/arc_type.cc:205
-#, kde-format
+#: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
 msgstr "新しい二次曲線の弧の始点を選択..."
 
-#: objects/arc_type.cc:206
-#, kde-format
+#: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
 msgstr "この点を通る二次曲線の弧を作成"
 
-#: objects/arc_type.cc:207
-#, kde-format
+#: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
 msgstr "新しい二次曲線の弧が通る点を選択..."
 
-#: objects/arc_type.cc:208
-#, kde-format
+#: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
 msgstr "この点で終わる二次曲線の弧を作成"
 
-#: objects/arc_type.cc:209
-#, kde-format
+#: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
 msgstr "新しい二次曲線の弧の終点を選択..."
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
 msgstr "ここを中心とする二次曲線の弧を作成"
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
 msgstr "新しい二次曲線の弧の中心を選択..."
 
@@ -3716,7 +3680,7 @@ msgid "Bézier Curve"
 msgstr "曲線を隠す"
 
 #: objects/bezier_imp.cc:202
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this curve"
 msgid "Select this Bézier Curve"
 msgstr "この曲線を選択"
@@ -3770,7 +3734,7 @@ msgid "Bézier Quadratic"
 msgstr "四角形を追加"
 
 #: objects/bezier_imp.cc:219
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this arc"
 msgid "Select this Bézier Quadratic"
 msgstr "この弧を選択"
@@ -3822,7 +3786,7 @@ msgid "Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_imp.cc:236
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this arc"
 msgid "Select this Bézier Cubic"
 msgstr "この弧を選択"
@@ -3874,7 +3838,7 @@ msgid "Rational Bézier Curve"
 msgstr ""
 
 #: objects/bezier_imp.cc:491
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this polygon"
 msgid "Select this Rational Bézier Curve"
 msgstr "この多角形を選択"
@@ -3928,7 +3892,7 @@ msgid "Rational Bézier Quadratic"
 msgstr "二次曲線の弧 %1 を選択"
 
 #: objects/bezier_imp.cc:508
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this conic arc"
 msgid "Select this Rational Bézier Quadratic"
 msgstr "この二次曲線の弧を選択"
@@ -3980,7 +3944,7 @@ msgid "Rational Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_imp.cc:525
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this triangle"
 msgid "Select this Rational Bézier Cubic"
 msgstr "三角形を選択"
@@ -4018,38 +3982,38 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_type.cc:26
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "ここを中心とした円を作成"
 
 #: objects/bezier_type.cc:27
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select a point to be a vertex of the new triangle..."
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr "新しい三角形の頂点となる点を選択..."
 
 #: objects/bezier_type.cc:121
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "ここを中心とした円を作成"
 
 #: objects/bezier_type.cc:122
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select a point to be a vertex of the new triangle..."
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr "新しい三角形の頂点となる点を選択..."
 
 #: objects/bezier_type.cc:328
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr "ここを中心とした円を作成"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the two conics of which you want to construct the "
 #| "radical line..."
@@ -4059,13 +4023,13 @@ msgid ""
 msgstr "根軸を作成する 2 つの二次曲線の 1 番目を選択..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this segment"
 msgid "Select this value as weight"
 msgstr "この線分を選択"
 
 #: objects/bezier_type.cc:433
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "ここを中心とした円を作成"
@@ -4095,7 +4059,6 @@ msgid "Select the curve..."
 msgstr "曲線を選択..."
 
 #: objects/centerofcurvature_type.cc:23
-#, kde-format
 msgid "Select a point on the curve..."
 msgstr "曲線上の点を選択..."
 
@@ -4134,7 +4097,6 @@ msgid "circle"
 msgstr "円"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "この円を選択"
 
@@ -4167,34 +4129,30 @@ msgstr "円を表示"
 msgid "Hide a Circle"
 msgstr "円を隠す"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "この点を通る円を作成"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "ここを中心とした円を作成"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr "新しい円の中心を選択..."
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr "新しい円が通る点を選択..."
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "With this radius"
 msgstr "この半径で"
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
 msgstr "半径の長さを選択..."
 
@@ -4250,7 +4208,6 @@ msgid "conic"
 msgstr "二次曲線"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "この二次曲線を選択"
 
@@ -4300,7 +4257,6 @@ msgid "conic arc"
 msgstr "二次曲線の弧"
 
 #: objects/conic_imp.cc:604
-#, kde-format
 msgid "Select this conic arc"
 msgstr "この二次曲線の弧を選択"
 
@@ -4335,7 +4291,6 @@ msgstr "二次曲線の弧を隠す"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "この点を通る二次曲線を作成"
 
@@ -4343,192 +4298,155 @@ msgstr "この点を通る二次曲線を作成"
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr "新しい二次曲線が通る点を選択..."
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "この漸近線で二次曲線を作成"
 
 #: objects/conic_types.cc:61
-#, kde-format
 msgid "Select the first asymptote of the new conic..."
 msgstr "新しい二次曲線の 1 番目の漸近線を選択..."
 
 #: objects/conic_types.cc:62
-#, kde-format
 msgid "Select the second asymptote of the new conic..."
 msgstr "新しい二次曲線の 2 番目の漸近線を選択..."
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "この焦点で楕円を作成"
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr "新しい楕円の 1 番目の焦点を選択..."
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr "新しい楕円の 2 番目の焦点を選択..."
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "この点を通る楕円を作成"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr "新しい楕円が通る点を選択..."
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "この焦点で双曲線を作成"
 
 #: objects/conic_types.cc:146
-#, kde-format
 msgid "Select the first focus of the new hyperbola..."
 msgstr "新しい双曲線の 1 番目の焦点を選択..."
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr "新しい双曲線の 2 番目の焦点を選択..."
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "この点を通る双曲線を作成"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr "新しい双曲線が通る点を選択..."
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "この直線を準線として二次曲線を作成"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Select the directrix of the new conic..."
 msgstr "新しい二次曲線の準線を選択..."
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "この点を焦点として二次曲線を作成"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Select the focus of the new conic..."
 msgstr "新しい二次曲線の焦点を選択..."
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "この点を通る放物線を作成"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr "新しい放物線が通る点を選択..."
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "この二次曲線に関する極点を作成"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr "極点を作成する二次曲線を選択..."
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "この直線の極点を作成"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, kde-format
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "極点を作成する直線を選択..."
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "この二次曲線に関する極線を作成"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "この点の極線を作成"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "この二次曲線の準線を作成"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr "準線を作成する二次曲線を選択..."
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "この準線による放物線を作成"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Select the directrix of the new parabola..."
 msgstr "新しい放物線の準線を選択..."
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Construct a parabola with this focus"
 msgstr "この焦点で放物線を作成"
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Select the focus of the new parabola..."
 msgstr "新しい放物線の焦点を選択..."
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "この二次曲線の漸近線を作成"
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr "漸近線を作成する二次曲線を選択..."
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "この二次曲線の根軸を作成"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr "根軸を作成する 2 つの二次曲線の 1 番目を選択..."
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4550,7 +4468,6 @@ msgid "cubic curve"
 msgstr "三次曲線"
 
 #: objects/cubic_imp.cc:348
-#, kde-format
 msgid "Select this cubic curve"
 msgstr "この三次曲線を選択"
 
@@ -4584,12 +4501,10 @@ msgid "Hide a Cubic Curve"
 msgstr "三次曲線を隠す"
 
 #: objects/cubic_type.cc:11
-#, kde-format
 msgid "Construct a cubic curve through this point"
 msgstr "この点を通る三次曲線を作成"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr "新しい三次曲線が通る点を選択..."
 
@@ -4598,7 +4513,6 @@ msgid "curve"
 msgstr "曲線"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "この曲線を選択"
 
@@ -4638,87 +4552,70 @@ msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, kde-format
 msgid "Already computed intersection point"
 msgstr "既に計算された交点"
 
 #: objects/intersection_types.cc:372
-#, kde-format
 msgid "Intersect with this cubic curve"
 msgstr "この三次曲線との交点"
 
 #: objects/intersection_types.cc:526
-#, kde-format
 msgid "Intersect with this arc"
 msgstr "この弧との交点"
 
 #: objects/inversion_type.cc:19
-#, kde-format
 msgid "Invert with respect to this circle"
 msgstr "この円に関して反転"
 
 #: objects/inversion_type.cc:20
-#, kde-format
 msgid "Select the circle we want to invert against..."
 msgstr "反転円となる円を選択..."
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Compute the inversion of this object"
 msgstr "このオブジェクトの反転計算をする"
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Select the object to invert..."
 msgstr "反転させるオブジェクトを選択..."
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Compute the inversion of this point"
 msgstr "この点の反転計算をする"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Select the point to invert..."
 msgstr "反転させる点を選択..."
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Compute the inversion of this line"
 msgstr "この直線の反転計算をする"
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Select the line to invert..."
 msgstr "反転させる直線を選択..."
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Compute the inversion of this segment"
 msgstr "この線分の反転計算をする"
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Select the segment to invert..."
 msgstr "反転させる線分を選択..."
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Compute the inversion of this circle"
 msgstr "この円の反転計算をする"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Select the circle to invert..."
 msgstr "反転する円を選択..."
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Compute the inversion of this arc"
 msgstr "この弧の反転計算をする"
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Select the arc to invert..."
 msgstr "反転する弧を選択..."
 
@@ -4747,12 +4644,10 @@ msgid "line"
 msgstr "直線"
 
 #: objects/line_imp.cc:545
-#, kde-format
 msgid "Select a Line"
 msgstr "直線を選択"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "この直線を選択"
 
@@ -4790,7 +4685,6 @@ msgid "segment"
 msgstr "線分"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "この線分を選択"
 
@@ -4828,7 +4722,6 @@ msgid "half-line"
 msgstr "半直線"
 
 #: objects/line_imp.cc:593
-#, kde-format
 msgid "Select this half-line"
 msgstr "この半直線を選択"
 
@@ -4862,102 +4755,82 @@ msgid "Hide a Half-Line"
 msgstr "半直線を隠す"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Construct a segment starting at this point"
 msgstr "この点で始まる線分を作成"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Select the start point of the new segment..."
 msgstr "新しい線分の始点を選択..."
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Construct a segment ending at this point"
 msgstr "この点で終わる線分を作成"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Select the end point of the new segment..."
 msgstr "新しい線分の終点を作成..."
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "この点を通る直線を作成"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr "直線が通る点を選択..."
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr "直線が通る他の点を選択..."
 
 #: objects/line_type.cc:75
-#, kde-format
 msgid "Construct a half-line starting at this point"
 msgstr "この点で始まる半直線を作成"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, kde-format
 msgid "Select the start point of the new half-line..."
 msgstr "新しい半直線の始点を選択..."
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Construct a half-line through this point"
 msgstr "この点を通る半直線を作成"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr "半直線が通る点を選択..."
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Construct the axis of this segment"
 msgstr "この線分の軸を作成"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "軸を描く線分を選択..."
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Construct a line parallel to this line"
 msgstr "この直線の平行線を作成"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Select a line parallel to the new line..."
 msgstr "新しい直線の平行線を選択..."
 
 #: objects/line_type.cc:156
-#, kde-format
 msgid "Construct the parallel line through this point"
 msgstr "この点を通る平行線を作成"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr "新しい直線が通る点を選択..."
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Construct a line perpendicular to this line"
 msgstr "この直線の垂線を作成"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Select a line perpendicular to the new line..."
 msgstr "新しい直線の垂線を選択..."
 
 #: objects/line_type.cc:183
-#, kde-format
 msgid "Construct a perpendicular line through this point"
 msgstr "この点を通る垂線を作成"
 
@@ -4982,22 +4855,18 @@ msgid "Resize Segment"
 msgstr "線分をリサイズ"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Construct a line by this vector"
 msgstr "このベクトルで直線を作成"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr "新しい直線の方向ベクトルを選択..."
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Construct a half-line by this vector"
 msgstr "このベクトルで半直線を作成"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr "新しい半直線の方向ベクトルを選択..."
 
@@ -5006,7 +4875,6 @@ msgid "locus"
 msgstr "軌跡"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "この軌跡を選択"
 
@@ -5047,8 +4915,7 @@ msgstr "オブジェクトタイプ"
 msgid "Object"
 msgstr "オブジェクト"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "このオブジェクトを選択"
 
@@ -5126,7 +4993,6 @@ msgid "angle"
 msgstr "角"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "この角を選択"
 
@@ -5164,7 +5030,6 @@ msgid "vector"
 msgstr "ベクトル"
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "このベクトルを選択"
 
@@ -5202,7 +5067,6 @@ msgid "arc"
 msgstr "弧"
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "この弧を選択"
 
@@ -5252,7 +5116,6 @@ msgid "point"
 msgstr "点"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "この点を選択"
 
@@ -5286,32 +5149,29 @@ msgid "Hide a Point"
 msgstr "点を隠す"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, kde-format
 msgid "Construct the midpoint of this point and another point"
 msgstr "この点ともう 1 つの点の中点を作成"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr "中点を作成する 2 点の 1 番目の点を選択..."
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr "中点を作成する 2 点の 2 番目の点を選択..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another point"
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "この点ともう 1 つの点の中点を作成"
 
 #: objects/point_type.cc:275
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the two points of which you want to construct the "
 #| "midpoint..."
@@ -5321,7 +5181,7 @@ msgid ""
 msgstr "中点を作成する 2 点の 1 番目の点を選択..."
 
 #: objects/point_type.cc:279
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the other of the two points of which you want to construct the "
 #| "midpoint..."
@@ -5371,38 +5231,32 @@ msgid "Change Parameter of Constrained Point"
 msgstr "従属点のパラメータを変更"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr "長さを移す円を選択..."
 
 #: objects/point_type.cc:744
-#, kde-format
 msgid "Select a point on the circle..."
 msgstr "円周上の点を選択..."
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr "円周上に移す線分を選択..."
 
 #: objects/point_type.cc:794
-#, kde-format
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "点の x 座標となる数/長さを選択..."
 
 #: objects/point_type.cc:795
-#, kde-format
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "点の y 座標となる数/長さを選択..."
 
 #: objects/point_type.cc:820
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the point to reflect in..."
 msgid "Select a point to project onto a line..."
 msgstr "対称の中心を選択..."
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr ""
 
@@ -5462,7 +5316,6 @@ msgid "polygon"
 msgstr "多角形"
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, kde-format
 msgid "Select this polygon"
 msgstr "この多角形を選択"
 
@@ -5502,7 +5355,7 @@ msgid "closed polygonal curve"
 msgstr "多角形"
 
 #: objects/polygon_imp.cc:646
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this polygon"
 msgid "Select this closed polygonal curve"
 msgstr "この多角形を選択"
@@ -5556,7 +5409,7 @@ msgid "polygonal curve"
 msgstr "多角形"
 
 #: objects/polygon_imp.cc:663
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this polygon"
 msgid "Select this polygonal curve"
 msgstr "この多角形を選択"
@@ -5608,7 +5461,6 @@ msgid "triangle"
 msgstr "三角形"
 
 #: objects/polygon_imp.cc:680
-#, kde-format
 msgid "Select this triangle"
 msgstr "三角形を選択"
 
@@ -5646,7 +5498,6 @@ msgid "quadrilateral"
 msgstr "四角形"
 
 #: objects/polygon_imp.cc:697
-#, kde-format
 msgid "Select this quadrilateral"
 msgstr "この四角形を選択"
 
@@ -5680,109 +5531,93 @@ msgid "Hide a Quadrilateral"
 msgstr "四角形を隠す"
 
 #: objects/polygon_type.cc:24
-#, kde-format
 msgid "Construct a triangle with this vertex"
 msgstr "この頂点で三角形を作成"
 
 #: objects/polygon_type.cc:25
-#, kde-format
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "新しい三角形の頂点となる点を選択..."
 
 #: objects/polygon_type.cc:470
-#, kde-format
 msgid "Intersect this polygon with a line"
 msgstr "この多角形を直線と交差"
 
 #: objects/polygon_type.cc:471
-#, kde-format
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "直線と交差させる多角形を選択..."
 
 #: objects/polygon_type.cc:474
-#, kde-format
 msgid "Intersect this line with a polygon"
 msgstr "この直線を多角形と交差"
 
 #: objects/polygon_type.cc:475
-#, kde-format
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "多角形と交差させる直線を選択..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Intersect this polygon with a line"
 msgid "Intersect this polygonal curve with a line"
 msgstr "この多角形を直線と交差"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the polygon of which you want the intersection with a line..."
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "直線と交差させる多角形を選択..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Intersect this line with a polygon"
 msgid "Intersect this line with a polygonal curve"
 msgstr "この直線を多角形と交差"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the line of which you want the intersection with a polygon..."
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "多角形と交差させる直線を選択..."
 
 #: objects/polygon_type.cc:788
-#, kde-format
 msgid "Intersect this polygon with another polygon"
 msgstr "この多角形を別の多角形と交差"
 
 #: objects/polygon_type.cc:789
-#, kde-format
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "別の多角形と交差させる多角形を選択..."
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Intersect with this polygon"
 msgstr "この多角形との交点"
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Select the second polygon for the intersection..."
 msgstr "交差させる 2 番目の多角形を選択..."
 
 #: objects/polygon_type.cc:930
-#, kde-format
 msgid "Construct the vertices of this polygon"
 msgstr "この多角形の頂点を作成"
 
 #: objects/polygon_type.cc:931
-#, kde-format
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "頂点を作成する多角形を選択..."
 
 #: objects/polygon_type.cc:974
-#, kde-format
 msgid "Construct the sides of this polygon"
 msgstr "この多角形の辺を作成"
 
 #: objects/polygon_type.cc:975
-#, kde-format
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "辺を作成する多角形を選択..."
 
 #: objects/polygon_type.cc:1022
-#, kde-format
 msgid "Construct the convex hull of this polygon"
 msgstr "この多角形の凸包を作成"
 
 #: objects/polygon_type.cc:1023
-#, kde-format
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "凸包を作成する多角形を選択..."
 
@@ -5792,28 +5627,23 @@ msgid "Project this point onto the circle"
 msgstr "この点を円に投影"
 
 #: objects/tangent_type.cc:23
-#, kde-format
 msgid "Select the point for the tangent to go through..."
 msgstr "接線が通る点を選択..."
 
 # skip-rule: dots1
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr "この直線と..."
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr "平行かもしれない 2 直線の 1 番目を選択..."
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Parallel to this line?"
 msgstr "この直線は平行？"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr "平行かもしれない 2 直線の 2 番目を選択..."
 
@@ -5829,22 +5659,18 @@ msgstr "これらの直線は平行ではありません。"
 
 # skip-rule: dots1
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr "この直線と..."
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr "直交するかもしれない 2 直線の 1 番目を選択..."
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Orthogonal to this line?"
 msgstr "この直線は垂直？"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr "直交するかもしれない 2 直線の 2 番目を選択..."
 
@@ -5859,32 +5685,26 @@ msgid "These lines are not orthogonal."
 msgstr "これらの直線は垂直ではありません。"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Check collinearity of this point"
 msgstr "この点の共線性をチェック"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr "同一線上にあるかもしれない 3 点の 1 番目を選択..."
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "and this second point"
 msgstr "そして 2 つ目の点"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr "同一線上にあるかもしれない 3 点の 2 番目を選択..."
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "with this third point"
 msgstr "そして 3 つ目の点"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr "同一線上にあるかもしれない 3 点の 3 番目を選択..."
 
@@ -5899,22 +5719,18 @@ msgid "These points are not collinear."
 msgstr "これらの点は同一線上にありません。"
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr "この点が曲線上にあるかどうかをチェック"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, kde-format
 msgid "Select the point you want to test..."
 msgstr "テストする点を選択..."
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr "点がこの曲線上にあるかどうかをチェック"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Select the curve that the point might be on..."
 msgstr "点があるかもしれない曲線を選択..."
 
@@ -5929,17 +5745,14 @@ msgid "This curve does not contain the point."
 msgstr "この曲線は点を含んでいません。"
 
 #: objects/tests_type.cc:180
-#, kde-format
 msgid "Check whether this point is in a polygon"
 msgstr "この点が多角形内にあるかどうかをチェック"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Check whether the point is in this polygon"
 msgstr "点がこの多角形内にあるかどうかをチェック"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Select the polygon that the point might be in..."
 msgstr "点があるかもしれない多角形を選択..."
 
@@ -5954,12 +5767,10 @@ msgid "This polygon does not contain the point."
 msgstr "この多角形は点を含んでいません。"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Check whether this polygon is convex"
 msgstr "この多角形が凸かどうかをチェック"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Select the polygon you want to test for convexity..."
 msgstr "凸性をテストする多角形を選択..."
 
@@ -5974,33 +5785,27 @@ msgid "This polygon is not convex."
 msgstr "この多角形は凸ではありません。"
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr "この点が等距離にあるかどうかをチェック"
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr "他の 2 点から等距離にあるかもしれない点を選択..."
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "from this point"
 msgstr "この点からと"
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "Select the first of the two other points..."
 msgstr "他の 2 点の 1 番目を選択..."
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "and from this second point"
 msgstr "そしてこの 2 つ目の点から"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "Select the other of the two other points..."
 msgstr "他の 2 点の 2 番目を選択..."
 
@@ -6016,22 +5821,18 @@ msgstr "2 つの距離は等しくありません。"
 
 # skip-rule: dots1
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr "このベクトルと..."
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr "等しいかもしれない 2 つのベクトルの 1 番目を選択..."
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr "このベクトルは等しい？"
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr "等しいかもしれない 2 つのベクトルの 2 番目を選択..."
 
@@ -6046,12 +5847,10 @@ msgid "The two vectors are not the same."
 msgstr "2 つのベクトルは等しくありません。"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Check whether this object exists"
 msgstr "このオブジェクトが存在するかどうかをチェック"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Select the object for the existence check..."
 msgstr "存在をテストするオブジェクトを選択..."
 
@@ -6074,7 +5873,6 @@ msgid "label"
 msgstr "ラベル"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "このラベルを選択"
 
@@ -6112,7 +5910,6 @@ msgid "numeric label"
 msgstr "数値ラベル"
 
 #: objects/text_imp.cc:184
-#, kde-format
 msgid "Select this numeric label"
 msgstr "この数値ラベルを選択"
 
@@ -6154,7 +5951,6 @@ msgid "boolean label"
 msgstr "ブール値ラベル"
 
 #: objects/text_imp.cc:278
-#, kde-format
 msgid "Select this boolean label"
 msgstr "このブール値ラベルを選択"
 
@@ -6233,544 +6029,449 @@ msgid "Change Displayed Value"
 msgstr "表示する値を変更"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "このオブジェクトを平行移動"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Select the object to translate..."
 msgstr "平行移動するオブジェクトを選択..."
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "このベクトルの分だけ平行移動"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr "平行移動量を与えるベクトルを選択..."
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "このオブジェクトを対称移動"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Select the object to reflect..."
 msgstr "対称移動するオブジェクトを選択..."
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Reflect in this point"
 msgstr "この点に関して対称移動"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Select the point to reflect in..."
 msgstr "対称の中心を選択..."
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Reflect in this line"
 msgstr "この直線に関して対称移動"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Select the line to reflect in..."
 msgstr "対称の軸を選択..."
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "このオブジェクトを回転"
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Select the object to rotate..."
 msgstr "回転するオブジェクトを選択..."
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "この点の周りで回転"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Select the center point of the rotation..."
 msgstr "回転の中心を選択..."
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "この角だけ回転"
 
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Select the angle of the rotation..."
 msgstr "回転角を選択..."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "このオブジェクトを拡大縮小"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, kde-format
 msgid "Select the object to scale..."
 msgstr "拡大縮小するオブジェクトを選択..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "ここを中心として拡大縮小"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Select the center point of the scaling..."
 msgstr "拡大縮小の中心点を選択..."
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid "Scale by this length"
 msgstr "この長さだけ拡大縮小"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "拡大縮小の倍率となる長さまたは線分を選択..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, kde-format
 msgid "Scale this length..."
 msgstr "拡大縮小してこの長さを..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, kde-format
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr "拡大縮小の倍率となる比を持つ 2 つの長さの 1 番目を選択..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, kde-format
 msgid "...to this other length"
 msgstr "...この別の長さにする"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, kde-format
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr "拡大縮小の倍率となる比を持つ 2 つの長さの 2 番目を選択..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Select the object to scale"
 msgstr "拡大縮小するオブジェクトを選択"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "この直線に対して拡大縮小"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Select the line to scale over"
 msgstr "拡大縮小の軸となる直線を選択"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "このオブジェクトを射影的に回転"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Select the object to rotate projectively"
 msgstr "射影的に回転するオブジェクトを選択"
 
 #: objects/transform_types.cc:337
-#, kde-format
 msgid "Projectively rotate with this half-line"
 msgstr "この半直線で射影的に回転"
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr "オブジェクトをどの半直線で射影的に回転させるかを選択"
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "この角で射影的に回転"
 
 #: objects/transform_types.cc:342
-#, kde-format
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "オブジェクトをどの角で射影的に回転させるかを選択"
 
 #: objects/transform_types.cc:376
-#, kde-format
 msgid "Harmonic Homology of this object"
 msgstr "このオブジェクトの調和ホモロジー"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, kde-format
 msgid "Select the object to transform..."
 msgstr "変換するオブジェクトを選択..."
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Harmonic Homology with this center"
 msgstr "この中心での調和ホモロジー"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr "調和ホモロジーの中心点を選択..."
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr "この軸での調和ホモロジー"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr "調和ホモロジーの軸を選択..."
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, kde-format
 msgid "Generic affinity of this object"
 msgstr "このオブジェクトのアフィン変換"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Map this triangle"
 msgstr "この三角形を移す"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr "アフィン変換を決定する三角形の、変換元の三角形を選択..."
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr "この別の三角形上に"
 
 #: objects/transform_types.cc:412
-#, kde-format
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "アフィン変換を決定する三角形の、写像となる三角形を選択..."
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr "3 つの始点の 1 番目"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr "アフィン変換を決定する 3 点のうち 1 番目の、変換元の位置を選択..."
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr "3 つの始点の 2 番目"
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr "アフィン変換を決定する 3 点のうち 2 番目の、変換元の位置を選択..."
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr "3 つの始点の 3 番目"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr "アフィン変換を決定する 3 点のうち 3 番目の、変換元の位置を選択..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr "1 番目の点の移される位置"
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr "アフィン変換を決定する 3 点のうち 1 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr "2 番目の点の移される位置"
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr "アフィン変換を決定する 3 点のうち 2 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, kde-format
 msgid "Transformed position of third point"
 msgstr "3 番目の点の移される位置"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr "アフィン変換を決定する 3 点のうち 3 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, kde-format
 msgid "Generic projective transformation of this object"
 msgstr "このオブジェクトの一般的な射影変換"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr "この四角形を移す"
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr "射影変換を決定する四角形の、変換元の四角形を選択..."
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr "この別の四角形上に"
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr "射影変換を決定する四角形の、写像となる四角形を選択..."
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr "4 つの始点の 1 番目"
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 1 番目の、変換前の位置を選択..."
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr "4 つの始点の 2 番目"
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 2 番目の、変換前の位置を選択..."
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr "4 つの始点の 3 番目"
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 3 番目の、変換前の位置を選択..."
 
 #: objects/transform_types.cc:566
-#, kde-format
 msgid "Fourth of 4 starting points"
 msgstr "4 つの始点の 4 番目"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 4 番目の、変換前の位置を選択..."
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 1 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 2 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 3 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr "4 番目の点の移される位置"
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr "射影変換を決定する 4 点のうち 4 番目の、写像の位置を選択..."
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "このオブジェクトに影付けをする"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "影を作成するオブジェクトを選択..."
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "この光源からの影付けをする"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr "影の元となる光源を選択..."
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "この直線によって表される水平軸に影付けをする"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr "影の水平軸を選択..."
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "このオブジェクトを変換"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "この変換を使って変換する"
 
 #: objects/transform_types.cc:883
-#, kde-format
 msgid "Apply a similitude to this object"
 msgstr "このオブジェクトを相似変換"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Apply a similitude with this center"
 msgstr "ここを中心に相似変換"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr "相似変換の中心を選択..."
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr "この点が他のある点へ移るような相似変換"
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr "相似変換を決定する点の、変換元の位置を選択..."
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr "最初の点がこの点へ移るような相似変換"
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr "相似変換を決定する点の、写像の位置を選択..."
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "この点からのベクトルを作成"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Select the start point of the new vector..."
 msgstr "新しいベクトルの始点を選択..."
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "この点へのベクトルを作成"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Select the end point of the new vector..."
 msgstr "新しいベクトルの終点を選択..."
 
 #: objects/vector_type.cc:44
-#, kde-format
 msgid "Construct the vector sum of this vector and another one."
 msgstr "このベクトルと他のベクトルとの和ベクトルを作成します。"
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr "和ベクトルを作成する 2 つのベクトルの 1 番目のベクトルを選択..."
 
 #: objects/vector_type.cc:48
-#, kde-format
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "このベクトルともう 1 つのベクトルの和をとります。"
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr "和ベクトルを作成する 2 つのベクトルの 2 番目のベクトルを選択..."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Construct the vector sum starting at this point."
 msgstr "この点を始点として和ベクトルを作成します。"
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr "ベクトルの和を作成する点を選択..."
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, fuzzy, kde-format
 #| msgid "New Script"
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "新しいスクリプト"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
@@ -6779,7 +6480,7 @@ msgstr ""
 "引数として使用するオブジェクトがあれば、Kig ウィンドウでそれを選んでから"
 "「次」を押してください。"
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "コードを入力"
@@ -6803,7 +6504,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6812,7 +6513,7 @@ msgstr ""
 "スクリプト実行中に Python インタプリタがエラーを出しました。スクリプトを修正"
 "して再度「完了」ボタンを押してください。"
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
@@ -6821,7 +6522,7 @@ msgstr ""
 "Python インタプリタが以下のエラー出力を生成しました:\n"
 "%1"
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6832,7 +6533,7 @@ msgstr ""
 "せんが、スクリプトは正しいオブジェクトを作成しません。スクリプトを修正して再"
 "度「完了」ボタンを押してください。"
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, fuzzy, kde-format
 #| msgctxt "'Edit' is a verb"
 #| msgid "Edit Script"
@@ -6840,12 +6541,12 @@ msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "スクリプトを編集"
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
 msgstr "Python スクリプトを編集"
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6854,7 +6555,7 @@ msgstr ""
 "スクリプト実行中に Python インタプリタがエラーを出しました。スクリプトを修正"
 "してください。"
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "

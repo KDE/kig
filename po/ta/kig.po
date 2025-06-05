@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2021-01-18 19:15+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -189,7 +189,7 @@ msgstr ""
 msgid "Asymptote Options"
 msgstr "கிக் விருப்பங்கள்"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -254,7 +254,7 @@ msgid ""
 "support."
 msgstr "இந்த காப்ரியில் ஒரு \"%1\" பொருள் உள்ளது, தற்போது இதை Kig ஆதரிக்கவில்லை."
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, fuzzy, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -307,37 +307,37 @@ msgid ""
 msgstr ""
 "இந்த Dr. ஜியோ கோப்பு இணையும் வகையை கொண்டுள்ளது, அது கிக்கிற்கு தற்போது துணை புரியாது."
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "படங்களுக்கு ஏற்றுமதி செய்"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "படம்..."
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, fuzzy, kde-format
 msgid "Export as Image"
 msgstr "ஏற்ற வேண்டிய பிம்பங்கள்"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, fuzzy, kde-format
 msgid "Image Options"
 msgstr "கிக் விருப்பங்கள்"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "மன்னிக்கவும், இந்த கோப்பின் வடிவம் துணைபுரியவில்லை"
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "\"%1\" என்ற படத்திற்கு சேமிக்கும்போது ஏதோ பிழை நேர்ந்துள்ளது, மன்னிக்கவும்"
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "&க்கு ஏற்றுமதி "
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Parse Error"
 msgstr "பாகுபடுத்தி பிழை"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr " ஆதரவில்லை"
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Standalone document"
 msgstr "ஆவணத்தை பெரிதாக்கு"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
@@ -506,7 +506,7 @@ msgstr ""
 "கிக் பதிப்பு \"%1\" ல் கோப்பினை உருவாக்க முடியாது, இதன் மூலம் இந்த பதிப்பை திறக்க "
 "முடியாது."
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -519,7 +519,7 @@ msgstr ""
 "நீங்கள் இந்த கோப்பின் பதிப்பு (0.4 லிருந்து 0.6 வரை திறக்க முயலுங்கள் ,\n"
 "மற்றும் மறுபடியும் சேமி, அது புதிய வடிவத்தில் சேமிக்கும்."
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -529,7 +529,7 @@ msgstr ""
 "இந்த கிக் கோப்பு துணைபுரியாத மூலைகளைக் கொண்ட அமைப்பை உடைய கிக் பதிப்பை கொண்டுள்ளது.\n"
 "நிலையான மூலை அமைப்பை பயன்படுத்தவும்."
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, kde-format
 msgid ""
@@ -539,7 +539,7 @@ msgid ""
 msgstr ""
 "\"%1\" மாதிரி பொருளை கிக் கோப்பு உபயோகிக்கும், அதற்கு கிக் பதிப்பு ஆதரவளிக்காது."
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -801,12 +801,12 @@ msgstr ""
 msgid "Responsible for the new object action icons."
 msgstr "அழகான SVG சின்னத்திற்கு பொறுப்பு"
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "தேவையான கிக் நூலகத்தை காணவில்லை, உங்கள் நிறுவலை பரிசோதி."
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -855,165 +855,165 @@ msgstr "அச்சுகளைக்காட்டு"
 msgid "Invert Selection"
 msgstr "தேர்ந்தெடுத்ததை தலைகீழாக்கு"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "பொருளை அழி "
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "தேர்ந்தெடுத்த பொருளை அழி"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "உருவாக்கியதை ரத்து செய்"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "உருவாக்கிய பொருளின் உருவாக்கத்தை ரத்து செய்"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, fuzzy, kde-format
 msgid "Repeat Construction"
 msgstr "உருவாக்கியதை ரத்து செய்"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, fuzzy, kde-format
 msgid "U&nhide All"
 msgstr "எல்லாவற்றையும் வௌதக்கொணர் "
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "மறைத்த அனைத்து பொருளையும் காண்பி"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "புதிய மேக்ரோ "
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "புதிய மேக்ரோவை அறுதியிடு"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Manage &Types..."
 msgstr "மேலாண்மை வகைகள்"
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "மேக்ரோ வகைகளை மேலாள்"
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr ""
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, fuzzy, kde-format
 msgid "Browse the history of the current construction."
 msgstr "உருவாக்கியதை ரத்து செய்"
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "ஆவணத்தை பெரிதாக்கு"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "ஆவணத்தை சிறிதாக்கு"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "ஆவணத்தின் திரையை மையப்படுத்து"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "இந்த ஆவணத்தை முழு திரையில் பார்"
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "காட்டப்பட்ட பகுதியை தேர்ந்தெடு"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்"
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "பெரிதாக்கும் பகுதியை தேர்ந்தெடு"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, fuzzy, kde-format
 #| msgid "Set &Coordinate..."
 msgid "Set Coordinate &Precision..."
 msgstr "&ஆயத்தொலைவு அமை..."
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
 msgstr "கட்டத்தை காட்டு"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "கட்டத்தை காட்டு அல்லது மறை."
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, kde-format
 msgid "Show &Axes"
 msgstr "அச்சுகளை காட்டு"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "அச்சுகளை காட்டு அல்லது மறை."
 
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr ""
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr ""
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, fuzzy, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "உருவாக்கியதை ரத்து செய்"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1022,12 +1022,12 @@ msgstr ""
 "நீங்கள் திறக்க முயன்ற \"%1\" கோப்பினை காணவில்லை. தயவு செய்து பாதை சரிதானா என்று "
 "பார்க்கவும்."
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "கோப்பு காணவில்லை"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, fuzzy, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1041,24 +1041,24 @@ msgstr ""
 "org மின்னஞ்சலுக்கு உங்கள் கேள்வியை எழுப்பலாம் அல்லது நீங்களாகவே செய்து முடித்து அதன் "
 "அனுப்புக."
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, fuzzy, kde-format
 msgid "Format Not Supported"
 msgstr "வடிவங்களுக்கு ஆதரவு இல்லை"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "கிக் சொந்த வடிவங்களை தவிர மற்ற கோப்புகளின் வடிவங்களை ஆதரிக்காது."
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr ""
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, fuzzy, kde-format
 #| msgid ""
 #| "*.kig|Kig Documents (*.kig)\n"
@@ -1068,31 +1068,31 @@ msgstr ""
 "*.kig|Kig Documents (*.kig)\n"
 "*.kigz|Compressed Kig Documents (*.kigz)"
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "இந்தக் கோப்பு \"%1\" ஏற்கனவே உள்ளது. இதன் மேலெழுத வேண்டுமா?"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "கோப்பினை மேல் எழுதவா?"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, fuzzy, kde-format
 #| msgid "Print Geometry"
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "வடிவியலை அச்சிடு"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "%1 பொருளை மறை"
 msgstr[1] "%1 பொருட்களை மறை "
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1337,7 +1337,7 @@ msgstr ""
 msgid "&Settings"
 msgstr ""
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1346,7 +1346,7 @@ msgstr ""
 "GUI காண்பிக்காதே. குறிப்பிட்ட கோப்புகளை சொந்தமான கிக் முறைக்கு மாற்றும். வெளிகோப்பு "
 "குறிப்பிடும் வரைக்கும் வெளியீடு stdout க்கு செல்லும்."
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1355,12 +1355,12 @@ msgstr ""
 "வெளியீட்டுக்கான கோப்பு உருவாக்கின சொந்தமான கோப்பு. '-'என்றால் ஸ்டட்அவுட்க்கான வெளியீடு. "
 "ஸ்டட்அவுட் முன்னிருப்பாக உள்ளது."
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr ""
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, kde-format
 msgid "Document to open"
 msgstr "திறக்கப்பட வேண்டிய கோப்பு"
@@ -2069,7 +2069,7 @@ msgstr ""
 msgid "Project a point on a line"
 msgstr "இந்த புள்ளியை வட்டத்தின் மேல் "
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr "பைத்தான் சிறுநிரல்"
@@ -2079,7 +2079,7 @@ msgstr "பைத்தான் சிறுநிரல்"
 msgid "Construct a new Python script."
 msgstr "புதிய பைத்தான் எழுத்து பொருளை உருவாக்கு"
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2088,7 +2088,7 @@ msgstr ""
 "ஆயத்தொலைவை இந்த வடிவத்தில் அமை: \"x;y\", இதில் x ஒரு x ஆயத்தொலைவு, மற்றும் y ஒரு y "
 "ஆயத்தொலைவு."
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2097,7 +2097,7 @@ msgstr ""
 "ஆயத்தொலைவை இந்த வடிவத்தில் அமை: \"x;y\", இதில் x ஒரு x ஆயத்தொலைவு, மற்றும் y ஒரு y "
 "ஆயத்தொலைவு."
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2105,7 +2105,7 @@ msgid ""
 msgstr ""
 "ஆயத்தொலைவை இந்த வடிவத்தில் உள்ளிடு: \"r; θ°\", இதில் r  மற்றும் θ துருவ ஆயத்தொலைவு"
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, fuzzy, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2113,22 +2113,22 @@ msgid ""
 msgstr ""
 "ஆயத்தொலைவை இந்த வடிவத்தில் உள்ளிடு: \"r; θ°\", இதில் r  மற்றும் θ துருவ ஆயத்தொலைவு"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "&யுக்கிலிடியன்"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "&துருவம்"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "யுக்கிலிடியன் ஆயத்தொலைவின் அமைப்பை அமை"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "துருவத்தின் ஆயத்தொலைவு அமைப்பை அமை"
@@ -2252,17 +2252,17 @@ msgstr ""
 "அடுத்த பகுதிக்கு செல்லும்போது, இடதுபுறத்தில் உள்ள தொகுப்பு புலத்தில் மதிப்பு "
 "தேர்ந்தெடுக்கப்பட்ட புதிய அலகிற்கு மாற்றப்படும்."
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "'%1' மேக்ரோ கோப்பினை திறக்க முடியவில்லை "
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "கிக் மேக்ரோ கோப்பினை திறக்க முடியவில்லை \"%1\""
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2274,7 +2274,7 @@ msgstr ""
 "பதிப்புகளின் துணைபுரியும் இந்த வடிவம் நீக்கப்பட்டது. நீங்கள் இந்த மேக்ரோவை பயன்படுத்தும் "
 "முந்தய கிக் பதிப்பு (0.4 to 0.6) மற்றும் புதிய வடிவத்தை மறுபடியும் ஏற்றுமதி செய்யும்."
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr "பெயரிடப்படாத மாக்ரோ #%1"
@@ -2308,19 +2308,16 @@ msgid "Moving Point"
 msgstr "சுழற்சி புள்ளி"
 
 #: misc/special_constructors.cc:327
-#, kde-format
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr "நகரும் புள்ளியை தேர்ந்தெடு, அது நீங்கள் வரையும் போது சுற்றி நகரும்..."
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid "Following Point"
 msgstr "அடுத்த புள்ளி"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2397,12 +2394,10 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "புதிய பலகோணத்தின் முனைக்கு ஒரு புள்ளியை தேர்ந்தெடுக்கவும்"
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, kde-format
 msgid "Polygon"
 msgstr "பலகோண வடிவம்"
 
 #: misc/special_constructors.cc:658
-#, kde-format
 msgid "Construct the vertices of this polygon..."
 msgstr "இந்த பலகோணத்தின் முனைகளை அமைக்கவும்..."
 
@@ -2417,7 +2412,6 @@ msgid "The vertices of a polygon."
 msgstr "ஒரு பலகோணத்தின் முனைகள்"
 
 #: misc/special_constructors.cc:718
-#, kde-format
 msgid "Construct the sides of this polygon..."
 msgstr "இந்த பலகோணத்தின் பக்கங்களை அமைக்கவும்"
 
@@ -2660,26 +2654,23 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "கூம்பு தேர்வு செய்..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "இந்த கோனிக்கை வைத்து குறுக்குவெட்டு"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "வரியை வைத்து குறுக்குவெட்டு"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Intersect with this conic"
 msgid "Intersect with this cubic"
 msgstr "இந்த கோனிக்கை வைத்து குறுக்குவெட்டு"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, kde-format
 msgid "Intersect with this circle"
 msgstr "இந்த வட்டத்தை குறுக்குவெட்டு"
 
@@ -2790,35 +2781,32 @@ msgid "with this Polygonal"
 msgstr "இந்த பலகோணத்தில்"
 
 #: misc/special_constructors.cc:1814
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct midpoint of this point and another one"
 msgstr "புள்ளியை நடுப்புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: misc/special_constructors.cc:1815
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்..."
 
 #: misc/special_constructors.cc:1818
-#, kde-format
 msgid "Construct the midpoint of this point and another one"
 msgstr "புள்ளியை நடுப்புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "மைய புள்ளியை உருவாக்கும் மற்ற புள்ளிகளை தேர்ந்தெடு..."
 
 #: misc/special_constructors.cc:1869
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct golden ratio point of this point and another one"
 msgstr "புள்ளியை நடுப்புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the points of which you want to construct the "
 #| "midpoint..."
@@ -2828,13 +2816,13 @@ msgid ""
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்..."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another one"
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "புள்ளியை நடுப்புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the other of the points of which to construct the midpoint..."
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
@@ -3062,13 +3050,13 @@ msgstr ""
 msgid "Name"
 msgstr "பெயர்"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<unnamed object>"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -3077,32 +3065,32 @@ msgstr ""
 "மதிப்பிற்கான தேர்ந்தெடுத்த உரையில் '%n' பகுதிகள் உள்ளது. தயவு செய்து அவைகளை நீக்கவும் "
 "அல்லது தேவையான அளபுருகளை தேர்ந்தெடுக்கவும்."
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "தருமதிப்பு %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "தருமதிப்பு %1யை தேர்வு செய்க"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "வில்லையை மாற்றுக"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, fuzzy, kde-format
 msgid "Set Value"
 msgstr "தோற்றத்தை அமைத்திடு"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, fuzzy, kde-format
 msgid "Enter value:"
 msgstr "விளக்கச் சீட்டு உரையை இடு"
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, fuzzy, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
@@ -3194,84 +3182,84 @@ msgstr[1] "%1 பொருட்களை நகர்த்து"
 msgid "Redefine Point"
 msgstr "புள்ளியை மறுவரையறுக"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Black"
 msgstr ""
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, fuzzy, kde-format
 msgid "Gray"
 msgstr "Grad"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, fuzzy, kde-format
 msgid "Red"
 msgstr "Rad"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Green"
 msgstr ""
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
 msgstr ""
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Yellow"
 msgstr ""
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, kde-format
 msgid "Dark Red"
 msgstr ""
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "மறை "
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, kde-format
 msgid "&Show"
 msgstr "&காட்டு"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "நகற்று"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, fuzzy, kde-format
 msgid "&Delete"
 msgstr "பொருளை அழி "
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, kde-format
 msgid "&Custom Color"
 msgstr "ஆயத்த வண்ணம்"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, kde-format
 msgid "Change Object Color"
 msgstr "வண்ணப் பொருளை மாற்று"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, kde-format
 msgid "Change Object Width"
 msgstr "பொருளின் அகலத்தை மாற்று"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, kde-format
 msgid "Change Point Style"
 msgstr "தோற்றப் புள்ளியை மாற்று"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, kde-format
 msgid "Change Object Style"
 msgstr "தோற்றப் பொருளை மாற்று"
@@ -3297,71 +3285,71 @@ msgstr "பொருளின் பெயரை அமை"
 msgid "Set Name of this Object:"
 msgstr "இந்தப் பொருளின் பெயரை அமை:"
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, fuzzy, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 பொருட்கள்"
 msgstr[1] "%1 பொருட்கள்"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "Kig ஆவணம்"
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "மாற்று"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, kde-format
 msgid "T&est"
 msgstr "தேர்வு"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "அமைக"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
 msgstr ""
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "உரை பட்டியலை சேர்"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "வண்ணத்தை அமைத்திடு"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, fuzzy, kde-format
 msgid "Set &Pen Width"
 msgstr "&அளவினை அமை..."
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, kde-format
 msgid "Set St&yle"
 msgstr "தோற்றத்தை அமைத்திடு"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "கணினியை ஆயமுறைப் படுத்துக"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, fuzzy, kde-format
 #| msgid "Export..."
 msgctxt "More menu items"
 msgid "More..."
 msgstr "ஏற்றுமதி..."
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, fuzzy, kde-format
 msgid "Edit Script..."
 msgstr "தொகு..."
@@ -3387,7 +3375,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "உரையை கட்டத்துக்குள் காட்டு"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "தருமதிப்புகளை தேர்ந்தெடு"
@@ -3556,135 +3544,120 @@ msgstr "ஒன்று அல்லது அதற்கு மேற்பட
 msgid "&Import..."
 msgstr "இறக்குமதி..."
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "இந்த புள்ளியுடன் ஒரு கோணத்தை உருவாக்கவும்"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr "முதல் அரைக் கோட்டின் திசையில் கண்டிப்பாக செல்லும் புள்ளியை தேர்ந்தெடு..."
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "இந்த புள்ளிக்கு ஒரு கோணத்தை உருவாக்கவும்"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr "கோணத்தை உருவாக்கும் புள்ளியை தேர்ந்தெடு..."
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr "இரண்டாவது அரைக் கோட்டின் கோணத்தின் வழி செல்லும் புள்ளியை தேர்ந்தெடு..."
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "அளவை அமைத்திடு"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr ""
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
 msgstr "சாய்கோணத்தை மறுஅளவாக்கு"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "இந்த புள்ளியை துவக்கமாக கொண்டு ஒரு வட்ட பகுதியை உருவாக்கவும்."
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "இந்த புள்ளியுடன் ஒரு வட்ட பகுதியை உருவாக்கவும்."
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr "புதிய வளைவிள் செல்லும் புள்ளியை தேர்ந்தெடு..."
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "இந்த புள்ளியை முடிவாக கொண்டு ஒரு வட்ட பகுதியை உருவாக்கவும்."
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
 msgstr "தன் நடுநிலை கொண்டு வட்டப்பகுதியை வரைக"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
 msgstr "இந்த கோணத்தை கொண்டு வட்டப்பகுதியை வரைக"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
-#: objects/arc_type.cc:204
-#, fuzzy, kde-format
+#: objects/arc_type.cc:203
+#, fuzzy
 msgid "Construct a conic arc starting at this point"
 msgstr "இந்த புள்ளியை துவக்கமாக கொண்டு ஒரு வட்ட பகுதியை உருவாக்கவும்."
 
-#: objects/arc_type.cc:205
-#, fuzzy, kde-format
+#: objects/arc_type.cc:204
+#, fuzzy
 msgid "Select the start point of the new conic arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
-#: objects/arc_type.cc:206
-#, fuzzy, kde-format
+#: objects/arc_type.cc:205
+#, fuzzy
 msgid "Construct a conic arc through this point"
 msgstr "இந்த புள்ளி முழுவதும் கோனிக்கை உருவாக்கு"
 
-#: objects/arc_type.cc:207
-#, fuzzy, kde-format
+#: objects/arc_type.cc:206
+#, fuzzy
 msgid "Select a point for the new conic arc to go through..."
 msgstr "புதிய கூம்பில் செல்லும் புள்ளியை தேர்ந்தெடு..."
 
-#: objects/arc_type.cc:208
-#, fuzzy, kde-format
+#: objects/arc_type.cc:207
+#, fuzzy
 msgid "Construct a conic arc ending at this point"
 msgstr "இந்த புள்ளியை முடிவாக கொண்டு ஒரு வட்ட பகுதியை உருவாக்கவும்."
 
-#: objects/arc_type.cc:209
-#, fuzzy, kde-format
+#: objects/arc_type.cc:208
+#, fuzzy
 msgid "Select the end point of the new conic arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
-#: objects/arc_type.cc:212
-#, fuzzy, kde-format
+#: objects/arc_type.cc:211
+#, fuzzy
 msgid "Construct an conic arc with this center"
 msgstr "தன் நடுநிலை கொண்டு வட்டப்பகுதியை வரைக"
 
-#: objects/arc_type.cc:212
-#, fuzzy, kde-format
+#: objects/arc_type.cc:211
+#, fuzzy
 msgid "Select the center of the new conic arc..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
@@ -3712,7 +3685,7 @@ msgid "Bézier Curve"
 msgstr "வளைவை மறை"
 
 #: objects/bezier_imp.cc:202
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this curve"
 msgid "Select this Bézier Curve"
 msgstr "வளைக்கோட்டைத் தேர்வு செய்"
@@ -3765,7 +3738,7 @@ msgid "Bézier Quadratic"
 msgstr "விளக்கச்சீட்டை சேர்"
 
 #: objects/bezier_imp.cc:219
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this arc"
 msgid "Select this Bézier Quadratic"
 msgstr "இந்த வட்டப்பகுதியை தேர்வுசெய்"
@@ -3815,7 +3788,7 @@ msgid "Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_imp.cc:236
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this arc"
 msgid "Select this Bézier Cubic"
 msgstr "இந்த வட்டப்பகுதியை தேர்வுசெய்"
@@ -3867,7 +3840,7 @@ msgid "Rational Bézier Curve"
 msgstr ""
 
 #: objects/bezier_imp.cc:491
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this polygon"
 msgid "Select this Rational Bézier Curve"
 msgstr "இந்த பலகோண வடிவத்தை தேர்வுசெய்"
@@ -3920,7 +3893,7 @@ msgid "Rational Bézier Quadratic"
 msgstr "கூம்பு %1 யை தேர்ந்தெடு"
 
 #: objects/bezier_imp.cc:508
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this Rational Bézier Quadratic"
 msgstr "கூம்பு தேர்வு செய்"
 
@@ -3969,7 +3942,7 @@ msgid "Rational Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_imp.cc:525
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this triangle"
 msgid "Select this Rational Bézier Cubic"
 msgstr "இந்த முக்கோணத்தை தேர்ந்தெடு"
@@ -4006,36 +3979,36 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr ""
 
 #: objects/bezier_type.cc:26
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "இந்த மையத்தைக் கொண்டு ஒரு வட்டத்தை வரைக"
 
 #: objects/bezier_type.cc:27
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr "இந்தப் புள்ளியின் இணைக்கோட்டை உருவாக்கவும்..."
 
 #: objects/bezier_type.cc:121
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "இந்த மையத்தைக் கொண்டு ஒரு வட்டத்தை வரைக"
 
 #: objects/bezier_type.cc:122
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr "இந்தப் புள்ளியின் இணைக்கோட்டை உருவாக்கவும்..."
 
 #: objects/bezier_type.cc:328
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr "இந்த மையத்தைக் கொண்டு ஒரு வட்டத்தை வரைக"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the two conics of which you want to construct the "
 #| "radical line..."
@@ -4045,13 +4018,13 @@ msgid ""
 msgstr "நீங்கள் உருவாக்க விரும்பும் ஆரக்கோட்டின் முதல் இரண்டு கூம்பை தேர்ந்தெடு..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this segment"
 msgid "Select this value as weight"
 msgstr "இந்த துண்டத்தை தேர்வு செய்க"
 
 #: objects/bezier_type.cc:433
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct a circle with this center"
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "இந்த மையத்தைக் கொண்டு ஒரு வட்டத்தை வரைக"
@@ -4079,7 +4052,6 @@ msgid "Select the curve..."
 msgstr "வளைவை தேர்வு செய்..."
 
 #: objects/centerofcurvature_type.cc:23
-#, kde-format
 msgid "Select a point on the curve..."
 msgstr "வளைவில் ஒரு புள்ளியை தேர்வு செய்..."
 
@@ -4118,7 +4090,6 @@ msgid "circle"
 msgstr "வட்டம்"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "வட்டத்தை தேர்வு செய்"
 
@@ -4151,34 +4122,32 @@ msgstr "வட்டத்தைக் காட்டு"
 msgid "Hide a Circle"
 msgstr "வட்டத்தை மறை"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "இந்தப் புள்ளியைக் கொண்டு ஒரு வட்டத்தை உருவாக்குக"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "இந்த மையத்தைக் கொண்டு ஒரு வட்டத்தை வரைக"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr "இந்த புள்ளியை வட்டத்தின் மேல்..."
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr "புதிய வளைவின் வழியாக செல்லும் புள்ளியை தேர்ந்தெடுக்கவும்..."
 
-#: objects/circle_type.cc:177
-#, fuzzy, kde-format
+#: objects/circle_type.cc:178
+#, fuzzy
 msgid "With this radius"
 msgstr "இந்த பிறைவளைவில்"
 
-#: objects/circle_type.cc:177
-#, fuzzy, kde-format
+#: objects/circle_type.cc:178
+#, fuzzy
 msgid "Select the length of the radius..."
 msgstr "காண்பிக்கப்பட வேண்டிய நீள்சதுரத்தை தேர்வுசெய்..."
 
@@ -4234,7 +4203,6 @@ msgid "conic"
 msgstr "கூம்பு"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "கூம்பு தேர்வு செய்"
 
@@ -4285,7 +4253,7 @@ msgid "conic arc"
 msgstr "கூம்பு"
 
 #: objects/conic_imp.cc:604
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this conic arc"
 msgstr "கூம்பு தேர்வு செய்"
 
@@ -4326,7 +4294,6 @@ msgstr "கூம்பை மறை"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "இந்த புள்ளி முழுவதும் கோனிக்கை உருவாக்கு"
 
@@ -4334,192 +4301,155 @@ msgstr "இந்த புள்ளி முழுவதும் கோனி
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr "புதிய கூம்பில் செல்லும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "கோனிக்கை உருவாக்கு"
 
 #: objects/conic_types.cc:61
-#, kde-format
 msgid "Select the first asymptote of the new conic..."
 msgstr "இந்த கூம்பின் அஸிம்ப்டோட்களை (asymptote) கட்டமை..."
 
 #: objects/conic_types.cc:62
-#, kde-format
 msgid "Select the second asymptote of the new conic..."
 msgstr "இந்த கூம்பின் அஸிம்ப்டோட்களை (asymptote) கட்டமை..."
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "நீள்வட்டம்"
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr "புதிய நீள்வட்டத்தில் முதல் குவியத்தை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr "புதிய நீள்வட்டத்தின் இரண்டாவது குவியத்தை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "இந்த புள்ளி முழுவதும்  நீள்வட்டம் உருவாக்கு"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr "புதிய நீள்வட்டத்தின் வழியாக செல்லும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "இந்த முன்னிறுத்ததை வைத்து ஐப்பர்போலா உருவாக்கு"
 
 #: objects/conic_types.cc:146
-#, kde-format
 msgid "Select the first focus of the new hyperbola..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr "புதிய பரவளையத்தின் இரண்டாவது குவியத்தை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "இந்த புள்ளி முழுவதும்  ஐப்பர்போலாவை  உருவாக்கு"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr "புதிய பரவளையத்தின் வழியே செல்லும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "இந்த கோட்டை இயக்குவரையாக கொண்ட கூம்புருவத்தை வடிவமை"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Select the directrix of the new conic..."
 msgstr "இந்த கூம்பின் டைரக்ட்ரிக்ஸை (directrix) கட்டமை..."
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "இந்த கோட்டை குவியமாக கொண்ட கூம்புருவத்தை வடிவமை"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Select the focus of the new conic..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "புள்ளியின் மூலம் பரவளையத்தை வடிவமை"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr "புதிய பரவளையத்தின் வழியே செல்லும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "இந்த கூம்புவடிவ முனைவுக்கோட்டு புள்ளி wrt யை வடிவமை"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr "கூம்பு wrt யை தேர்ந்தெடு. அது நீஙகள் உருவாக்க விரும்பும் போலார் புள்ளி..."
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "இந்த வரியின் துருவப்புள்ளியை கட்டமை"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, kde-format
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்..."
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "இந்த கூம்பைச் சார்ந்த துருவவரியை கட்டமை"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "இந்த புள்ளியின் துருவவரியை கட்டமை"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "இந்த கூம்பின் டைரக்ட்ரிக்ஸை (directrix) கட்டமை"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "இந்த டைரக்ரிக்ஸைக்கொண்டு (directrix) ஒரு பரவளையத்தை (parabola) கட்டமை"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Select the directrix of the new parabola..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Construct a parabola with this focus"
 msgstr "இந்த முன்னிறுத்ததை கொண்டு ஐப்பர்போலா வரைக."
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Select the focus of the new parabola..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்..."
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "இந்த கூம்பின் அஸிம்ப்டோட்களை (asymptote) கட்டமை"
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் அசிம்டோட்சின் கூம்பை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "இந்த கூம்பின் ஆரவரிகளை கட்டமை"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் ஆரக்கோட்டின் முதல் இரண்டு கூம்பை தேர்ந்தெடு..."
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4541,7 +4471,6 @@ msgid "cubic curve"
 msgstr "கூம்பு வளைவு"
 
 #: objects/cubic_imp.cc:348
-#, kde-format
 msgid "Select this cubic curve"
 msgstr "கூம்புவளைவைத் தேர்வுச் செய்"
 
@@ -4575,12 +4504,10 @@ msgid "Hide a Cubic Curve"
 msgstr "கூம்புவளைவை சேர்"
 
 #: objects/cubic_type.cc:11
-#, kde-format
 msgid "Construct a cubic curve through this point"
 msgstr "புள்ளியில் கூம்பு வளைவை உருவாக்கு"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr "புதிய கூம்பின் வழியே செல்லும் புள்ளியை தேர்ந்தெடு..."
 
@@ -4589,7 +4516,6 @@ msgid "curve"
 msgstr "வளைக்கோடு"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "வளைக்கோட்டைத் தேர்வு செய்"
 
@@ -4629,87 +4555,79 @@ msgstr ""
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, kde-format
 msgid "Already computed intersection point"
 msgstr "இடை புள்ளியை ஏற்கனவே கணக்கிட்டுவிட்டது"
 
 #: objects/intersection_types.cc:372
-#, kde-format
 msgid "Intersect with this cubic curve"
 msgstr "கூம்பு வளைவைக்  குறுக்குவெட்டு"
 
 #: objects/intersection_types.cc:526
-#, kde-format
 msgid "Intersect with this arc"
 msgstr "இந்த் கோணத்தில் இடைபடும்"
 
 #: objects/inversion_type.cc:19
-#, kde-format
 msgid "Invert with respect to this circle"
 msgstr "இந்த புள்ளியில் தலைகீழாக்கு"
 
 #: objects/inversion_type.cc:20
-#, kde-format
 msgid "Select the circle we want to invert against..."
 msgstr "வட்டத்தை தேர்ந்தெடுக்கவும். எங்களுக்கு எதிராக தலைகீழாக்கவேண்டும்..."
 
 #: objects/inversion_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this object"
 msgstr "இந்த புள்ளியின் துருவவரியை கட்டமை"
 
 #: objects/inversion_type.cc:23
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the object to invert..."
 msgstr "தலைகீழாக்கவேண்டிய புள்ளியைத் தேர்ந்தெடுக்கவும்..."
 
 #: objects/inversion_type.cc:270
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this point"
 msgstr "இந்த புள்ளியின் துருவவரியை கட்டமை"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Select the point to invert..."
 msgstr "தலைகீழாக்கவேண்டிய புள்ளியைத் தேர்ந்தெடுக்கவும்..."
 
 #: objects/inversion_type.cc:329
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this line"
 msgstr "இந்த வரியின் துருவப்புள்ளியை கட்டமை"
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Select the line to invert..."
 msgstr "தலைகீழாக்கவேண்டிய வரியை தேர்ந்தெடு..."
 
 #: objects/inversion_type.cc:381
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this segment"
 msgstr "இந்த புள்ளியின் துருவவரியை கட்டமை"
 
 #: objects/inversion_type.cc:381
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the segment to invert..."
 msgstr "தலைகீழாக்கவேண்டிய புள்ளியைத் தேர்ந்தெடுக்கவும்..."
 
 #: objects/inversion_type.cc:469
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this circle"
 msgstr "இந்த கூம்பின் டைரக்ட்ரிக்ஸை (directrix) கட்டமை"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Select the circle to invert..."
 msgstr "தலைகீழாக்கவேண்டிய வட்டத்தைத் தேர்ந்தெடு"
 
 #: objects/inversion_type.cc:533
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Compute the inversion of this arc"
 msgstr "இந்த கூம்பின் டைரக்ட்ரிக்ஸை (directrix) கட்டமை"
 
 #: objects/inversion_type.cc:533
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the arc to invert..."
 msgstr "தலைகீழாக்கவேண்டிய வட்டத்தைத் தேர்ந்தெடு"
 
@@ -4740,12 +4658,10 @@ msgid "line"
 msgstr "கோடு"
 
 #: objects/line_imp.cc:545
-#, kde-format
 msgid "Select a Line"
 msgstr "கோட்டை தேர்வு செய்"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "இந்த கோட்டை தேர்வு செய்"
 
@@ -4783,7 +4699,6 @@ msgid "segment"
 msgstr "துண்டம்"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "இந்த துண்டத்தை தேர்வு செய்க"
 
@@ -4821,7 +4736,6 @@ msgid "half-line"
 msgstr "அரை-கோடு"
 
 #: objects/line_imp.cc:593
-#, kde-format
 msgid "Select this half-line"
 msgstr "அரை-கோட்டை தேர்வுசெய்"
 
@@ -4855,102 +4769,82 @@ msgid "Hide a Half-Line"
 msgstr "அரை- கோட்டை மறை"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Construct a segment starting at this point"
 msgstr "முதல் புள்ளியிலிருந்து துண்டத்தை உருவாக்கு"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Select the start point of the new segment..."
 msgstr "துண்டத்தின் மைய புள்ளியை உருவாக்கு..."
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Construct a segment ending at this point"
 msgstr "கடைசிப் புள்ளியிலிருந்து துண்டத்தை உருவாக்கு"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Select the end point of the new segment..."
 msgstr "துண்டத்தின் மைய புள்ளியை உருவாக்கு..."
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "இந்தப் புள்ளிக்கு ஒரு கோட்டினை உருவாக்கவும்"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr "கோட்டின் வழியில் செல்லும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr "கோட்டின் வழி செல்லும் வேறு புள்ளியை தேர்ந்தெடு..."
 
 #: objects/line_type.cc:75
-#, kde-format
 msgid "Construct a half-line starting at this point"
 msgstr "முதல் புள்ளியிலிருந்து அரைகோட்டில் நெறியை உருவாக்கு"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, kde-format
 msgid "Select the start point of the new half-line..."
 msgstr "இந்த வரியின் துருவப்புள்ளியை கட்டமை..."
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Construct a half-line through this point"
 msgstr "புள்ளியிருந்து அரைகோட்டில் நெறியை உருவாக்கு"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr "அரை-கோடு வழியாக செல்லும் புள்ளியை தேர்ந்தெடுக்கவும்..."
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Construct the axis of this segment"
 msgstr "துண்டத்தின் மையப் புள்ளியை உருவாக்கு"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்..."
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Construct a line parallel to this line"
 msgstr "இந்தப் புள்ளியின் இணைக்கோட்டை உருவாக்கவும்"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Select a line parallel to the new line..."
 msgstr "இந்தப் புள்ளியின் இணைக்கோட்டை உருவாக்கவும்..."
 
 #: objects/line_type.cc:156
-#, kde-format
 msgid "Construct the parallel line through this point"
 msgstr "இந்த புள்ளிக்கு ஒரு இணைகோட்டை உருவாக்கவும்"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr "புதிய கோட்டின் வழியாக செல்லும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Construct a line perpendicular to this line"
 msgstr "இந்தப் புள்ளியின் செங்குத்து கோட்டை உருவாக்கவும்"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Select a line perpendicular to the new line..."
 msgstr "இந்தப் புள்ளியின் செங்குத்து கோட்டை உருவாக்கவும்..."
 
 #: objects/line_type.cc:183
-#, kde-format
 msgid "Construct a perpendicular line through this point"
 msgstr "இந்தப் புள்ளிக்கு ஒரு செங்குத்து கோட்டை உருவாக்கவும்"
 
@@ -4975,22 +4869,18 @@ msgid "Resize Segment"
 msgstr "துண்டத்தை மறுஅளவாக்கு"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Construct a line by this vector"
 msgstr "கோட்டில் நெறியை உருவாக்கு"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr "புதிய கோட்டின் திசையில் இருக்கும் வெக்டாரை தேர்ந்தெடுக்கவும்..."
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Construct a half-line by this vector"
 msgstr "அரைகோட்டில் நெறியை உருவாக்கு"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr "புதிய அரை-கோட்டின் திசையில் வெக்டாரை தேர்ந்தெடு..."
 
@@ -4999,7 +4889,6 @@ msgid "locus"
 msgstr "மையம்"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "இந்த மையத்தை தேர்வுசெய்"
 
@@ -5040,8 +4929,7 @@ msgstr "பொருளின் வகை"
 msgid "Object"
 msgstr "பொருள்"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "இந்த பொருளை தேர்வுசெய்"
 
@@ -5120,7 +5008,6 @@ msgid "angle"
 msgstr "கோணம்"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "இந்த கோணத்தை தேர்வுசெய்"
 
@@ -5158,7 +5045,6 @@ msgid "vector"
 msgstr "நெறியம் "
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "இந்த நெறியதை தேர்வுசெய்"
 
@@ -5196,7 +5082,6 @@ msgid "arc"
 msgstr "வட்டப்பகுதி "
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "இந்த வட்டப்பகுதியை தேர்வுசெய்"
 
@@ -5246,7 +5131,6 @@ msgid "point"
 msgstr "புள்ளி"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "இந்த புள்ளியை தேர்வுசெய்"
 
@@ -5280,32 +5164,29 @@ msgid "Hide a Point"
 msgstr "புள்ளியை மறை"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, kde-format
 msgid "Construct the midpoint of this point and another point"
 msgstr "புள்ளியை நடுப் புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் மையப்புள்ளியின் முதல் இரண்டு புள்ளியை தேர்ந்தெடு..."
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் மையப்புள்ளியின் மற்ற இரண்டு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Construct the midpoint of this point and another point"
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "புள்ளியை நடுப் புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: objects/point_type.cc:275
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the first of the two points of which you want to construct the "
 #| "midpoint..."
@@ -5315,7 +5196,7 @@ msgid ""
 msgstr "நீங்கள் உருவாக்க விரும்பும் மையப்புள்ளியின் முதல் இரண்டு புள்ளியை தேர்ந்தெடு..."
 
 #: objects/point_type.cc:279
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid ""
 #| "Select the other of the two points of which you want to construct the "
 #| "midpoint..."
@@ -5365,38 +5246,34 @@ msgid "Change Parameter of Constrained Point"
 msgstr "புள்ளியின் கட்டுப்பாட்டின் அளவகைகளை மாற்று"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr "போக்குவரத்து அளவின் வட்டத்தை தேர்ந்தெடு..."
 
 #: objects/point_type.cc:744
-#, kde-format
 msgid "Select a point on the circle..."
 msgstr "கூம்பு தேர்வு செய்..."
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr "இந்த புள்ளியை வட்டத்தின் மேல்..."
 
 #: objects/point_type.cc:794
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "துண்டின் நீளத்தின் காரணியின் அளவை தேர்ந்தெடு..."
 
 #: objects/point_type.cc:795
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "துண்டின் நீளத்தின் காரணியின் அளவை தேர்ந்தெடு..."
 
 #: objects/point_type.cc:820
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the point to reflect in..."
 msgid "Select a point to project onto a line..."
 msgstr "இந்தப் புள்ளியை தேர்வுசெய்..."
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr ""
 
@@ -5457,7 +5334,6 @@ msgid "polygon"
 msgstr "பாலிகான்"
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, kde-format
 msgid "Select this polygon"
 msgstr "இந்த பலகோண வடிவத்தை தேர்வுசெய்"
 
@@ -5497,7 +5373,7 @@ msgid "closed polygonal curve"
 msgstr "பாலிகான்"
 
 #: objects/polygon_imp.cc:646
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this polygon"
 msgid "Select this closed polygonal curve"
 msgstr "இந்த பலகோண வடிவத்தை தேர்வுசெய்"
@@ -5551,7 +5427,7 @@ msgid "polygonal curve"
 msgstr "பாலிகான்"
 
 #: objects/polygon_imp.cc:663
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select this polygon"
 msgid "Select this polygonal curve"
 msgstr "இந்த பலகோண வடிவத்தை தேர்வுசெய்"
@@ -5604,7 +5480,6 @@ msgid "triangle"
 msgstr "கோணம்"
 
 #: objects/polygon_imp.cc:680
-#, kde-format
 msgid "Select this triangle"
 msgstr "இந்த முக்கோணத்தை தேர்ந்தெடு"
 
@@ -5645,7 +5520,6 @@ msgid "quadrilateral"
 msgstr "நான்குபக்க வடிவம்"
 
 #: objects/polygon_imp.cc:697
-#, kde-format
 msgid "Select this quadrilateral"
 msgstr "இந்த நான்குபக்க வடிவத்தை தேர்ந்தெடு"
 
@@ -5682,106 +5556,103 @@ msgid "Hide a Quadrilateral"
 msgstr "வளைவை மறை"
 
 #: objects/polygon_type.cc:24
-#, kde-format
 msgid "Construct a triangle with this vertex"
 msgstr "இந்த முனையுடன் ஒரு முக்கோணத்தை அமைக்கவும்"
 
 #: objects/polygon_type.cc:25
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "இந்தப் புள்ளியின் இணைக்கோட்டை உருவாக்கவும்..."
 
 #: objects/polygon_type.cc:470
-#, kde-format
 msgid "Intersect this polygon with a line"
 msgstr "ஒரு வரியில் இந்த பலகோணத்தை குறுக்காக வெட்டவும்"
 
 #: objects/polygon_type.cc:471
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:474
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this line with a polygon"
 msgstr "ஒரு வரியில் இந்த பலகோணத்தை குறுக்காக வெட்டவும்"
 
 #: objects/polygon_type.cc:475
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Intersect this polygon with a line"
 msgid "Intersect this polygonal curve with a line"
 msgstr "ஒரு வரியில் இந்த பலகோணத்தை குறுக்காக வெட்டவும்"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this line with a polygonal curve"
 msgstr "ஒரு வரியில் இந்த பலகோணத்தை குறுக்காக வெட்டவும்"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:788
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect this polygon with another polygon"
 msgstr "ஒரு வரியில் இந்த பலகோணத்தை குறுக்காக வெட்டவும்"
 
 #: objects/polygon_type.cc:789
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:791
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Intersect with this polygon"
 msgstr "வரியை வைத்து குறுக்குவெட்டு"
 
 #: objects/polygon_type.cc:791
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the second polygon for the intersection..."
 msgstr "இரண்டாவது பொருளை இணைக்க தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:930
-#, kde-format
 msgid "Construct the vertices of this polygon"
 msgstr "இந்த பலகோணத்தின் முனைகளை அமைக்கவும்"
 
 #: objects/polygon_type.cc:931
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:974
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the sides of this polygon"
 msgstr "இந்த புள்ளியின் துருவவரியை கட்டமை"
 
 #: objects/polygon_type.cc:975
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
 #: objects/polygon_type.cc:1022
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Construct the convex hull of this polygon"
 msgstr "இந்த புள்ளியின் துருவவரியை கட்டமை"
 
 #: objects/polygon_type.cc:1023
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "நீங்கள் உருவாக்க விரும்பும் கூம்பு directrix யை தேர்ந்தெடு..."
 
@@ -5791,27 +5662,22 @@ msgid "Project this point onto the circle"
 msgstr "இந்த புள்ளியை வட்டத்தின் மேல் "
 
 #: objects/tangent_type.cc:23
-#, kde-format
 msgid "Select the point for the tangent to go through..."
 msgstr "கோட்டின் வழி செல்லும் வேறு புள்ளியை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr "இந்த கோடு இணையாக உள்ளதா?"
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr "முதல் இரண்டு இணையாக்க முடிந்த கோடுகளை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Parallel to this line?"
 msgstr "இந்த இணைக்கோடு வரை"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr "மற்ற இரண்டு இணைக்க முடிந்த கோடுகளை தேர்ந்தெடு.."
 
@@ -5826,22 +5692,18 @@ msgid "These lines are not parallel."
 msgstr "இந்த கோடுகள் இணையாக இல்லை."
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr "இந்த கோடு செங்குதாக இருக்கிறதா?"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr "முதல் இரண்டு செங்குத்தான கோடுகளை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Orthogonal to this line?"
 msgstr "செங்குத்தான கோடு"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr "முதல் இரண்டு செங்குத்தான கோடுகளை தேர்ந்தெடு..."
 
@@ -5856,32 +5718,26 @@ msgid "These lines are not orthogonal."
 msgstr "இந்த கோடுகள் செங்குத்தானவை இல்லை."
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Check collinearity of this point"
 msgstr "புள்ளிலிருக்கும் நேர்கோட்டமையைச் சரி பார்க்கவும்"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr "முதல் இரண்டு இணையான கோடுகளை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "and this second point"
 msgstr "மற்றும் இரண்டாவது புள்ளி"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr "இரண்டாவது மூன்று செங்குத்தான கோடுகளை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "with this third point"
 msgstr "மூன்றாவது புள்ளி"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr "கடைசி மூன்று இணைக்கும் புள்ளிகளை தேர்ந்தெடுக்கவும்..."
 
@@ -5896,22 +5752,18 @@ msgid "These points are not collinear."
 msgstr "இந்த புள்ளிகள் நேர்க்கோட்டில் இல்லை."
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr "இந்த புள்ளிகள் இந்த வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, kde-format
 msgid "Select the point you want to test..."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்..."
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr "இந்தப் புள்ளிகள் வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Select the curve that the point might be on..."
 msgstr "காண்பிக்கப்பட வேண்டிய நீள்சதுரத்தை தேர்வுசெய்..."
 
@@ -5926,17 +5778,17 @@ msgid "This curve does not contain the point."
 msgstr "இந்த வளைவு புள்ளிகளை கொண்டுள்ளது"
 
 #: objects/tests_type.cc:180
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Check whether this point is in a polygon"
 msgstr "இந்த புள்ளிகள் இந்த வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:181
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Check whether the point is in this polygon"
 msgstr "இந்தப் புள்ளிகள் வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:181
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon that the point might be in..."
 msgstr "காண்பிக்கப்பட வேண்டிய நீள்சதுரத்தை தேர்வுசெய்..."
 
@@ -5951,12 +5803,12 @@ msgid "This polygon does not contain the point."
 msgstr "இந்த வளைவு புள்ளிகளை கொண்டுள்ளது"
 
 #: objects/tests_type.cc:223
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Check whether this polygon is convex"
 msgstr "இந்த புள்ளிகள் இந்த வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:223
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the polygon you want to test for convexity..."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்..."
 
@@ -5971,33 +5823,27 @@ msgid "This polygon is not convex."
 msgstr "இந்த வளைவு புள்ளிகளை கொண்டுள்ளது"
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr "இந்த புள்ளிகள் ஒரே தூரத்தில் இருந்தால் பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr "மற்ற இரண்டு புள்ளிகளின் தூரத்திலிருந்து சமமாக இருக்கும் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "from this point"
 msgstr "புள்ளியிலிருந்து"
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "Select the first of the two other points..."
 msgstr "இரண்டு மற்ற புள்ளிகளின் பதியின் நடுபுள்ளி..."
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "and from this second point"
 msgstr "மற்றும் இரணடாவது புள்ளியிலிருந்து"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "Select the other of the two other points..."
 msgstr "இரண்டு மற்ற புள்ளிகளின் பதியின் நடுபுள்ளி..."
 
@@ -6012,22 +5858,18 @@ msgid "The two distances are not the same."
 msgstr "இரண்டு தூரங்களும் சமமில்லை."
 
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr "இந்த புள்ளிகள் இந்த வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr "முதல் இரண்டு சமமான வெக்டார்களை தேர்ந்தெடு..."
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr "இந்த புள்ளிகள் இந்த வளைவில் உள்ளதா என்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr "மற்ற இரண்டு இணையான சமமான வெக்டார்களை தேர்ந்தெடு..."
 
@@ -6042,13 +5884,13 @@ msgid "The two vectors are not the same."
 msgstr "இரண்டு தூரங்களும் சமமில்லை."
 
 #: objects/tests_type.cc:352
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Check whether this point is on a curve"
 msgid "Check whether this object exists"
 msgstr "இந்த புள்ளிகள் இந்த வளைவில் உள்ளதா எண்று பரிசோதிக்கவும்"
 
 #: objects/tests_type.cc:352
-#, fuzzy, kde-format
+#, fuzzy
 #| msgid "Select the object to scale..."
 msgid "Select the object for the existence check..."
 msgstr "இந்த பொருளை அளக்க தேர்வுசெய்..."
@@ -6074,7 +5916,6 @@ msgid "label"
 msgstr "வில்லை"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "இந்த வில்லையை தேர்வுசெய்"
 
@@ -6112,7 +5953,7 @@ msgid "numeric label"
 msgstr ""
 
 #: objects/text_imp.cc:184
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this numeric label"
 msgstr "இந்த வில்லையை தேர்வுசெய்"
 
@@ -6161,7 +6002,7 @@ msgid "boolean label"
 msgstr "விளக்கச் சீட்டை நகற்று"
 
 #: objects/text_imp.cc:278
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select this boolean label"
 msgstr "இந்த வில்லையை தேர்வுசெய்"
 
@@ -6246,545 +6087,459 @@ msgid "Change Displayed Value"
 msgstr ""
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "இந்த பொருளை மொழிபெயர்"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Select the object to translate..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்."
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "இந்த வெக்டாரால் மொழிபெயர்"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr "வெக்டாரை மாற்றத்தின் மூலம் தேர்ந்தெடு ..."
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "இந்தப் பொருளை பிரதிபலி"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Select the object to reflect..."
 msgstr "இந்தப் பொருளை தேர்வுசெய்..."
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Reflect in this point"
 msgstr "இந்தப் புள்ளியிலிருந்து பிரதிப்பலி"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Select the point to reflect in..."
 msgstr "இந்தப் புள்ளியை தேர்வுசெய்..."
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Reflect in this line"
 msgstr "இந்தக் கோட்டிலிருந்துப் பிரதிப்பலி"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Select the line to reflect in..."
 msgstr "வகைகளை இங்கே தேர்வு செய்..."
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "இந்த பொருளை சுழற்று"
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Select the object to rotate..."
 msgstr "இந்த பொருளை சுழற்ற தேர்வுசெய்..."
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "இந்தப் புள்ளியுடன் சுழற்று"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Select the center point of the rotation..."
 msgstr "சுழற்சியின் மைய புள்ளியை தேர்ந்தெடு..."
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "இந்த கோணத்துடன் சுழற்று"
 
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Select the angle of the rotation..."
 msgstr "காண்பிக்கப்பட வேண்டிய நீள்சதுரத்தை தேர்வுசெய்..."
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "இந்தப் பொருளை அளவிடு"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, kde-format
 msgid "Select the object to scale..."
 msgstr "இந்த பொருளை அளக்க தேர்வுசெய்..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "மையப்பகுதியில் இருந்து அளவிடு"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Select the center point of the scaling..."
 msgstr "இந்த வரியின் துருவப்புள்ளியை கட்டமை..."
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Scale by this length"
 msgstr "மையப்பகுதியில் இருந்து அளவிடு"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "துண்டின் நீளத்தின் காரணியின் அளவை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Scale this length..."
 msgstr "&அளவினை அமை..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr "துண்டின் நீளத்தின் காரணியின் அளவை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, fuzzy, kde-format
+#, fuzzy
 msgid "...to this other length"
 msgstr "வட்டத்தின் நீளத்தை அளவிடு"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr "துண்டின் நீளத்தின் காரணியின் அளவை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Select the object to scale"
 msgstr "இந்தப் பொருளை அளக்க தேர்வுசெய்"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "இந்த புள்ளிக்கு மேல் அளவிடு"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Select the line to scale over"
 msgstr "Select the line to scale over"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "இந்த பொருளை சரியாக சுழற்று"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Select the object to rotate projectively"
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்."
 
 #: objects/transform_types.cc:337
-#, kde-format
 msgid "Projectively rotate with this half-line"
 msgstr "அரைகோட்டின் எறி சுழற்சி"
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr "பகிர்வு சுழற்சியை நீங்கள் அமைக்க விரும்பும் பொருளின் அரை வரியை தேர்ந்தெடு"
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "இந்த கோணத்தை சரியாக சுழற்று"
 
 #: objects/transform_types.cc:342
-#, kde-format
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்"
 
 #: objects/transform_types.cc:376
-#, kde-format
 msgid "Harmonic Homology of this object"
 msgstr "பொருளிருந்து இசையும் அமைப்பொற்றுமை"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, kde-format
 msgid "Select the object to transform..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்."
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Harmonic Homology with this center"
 msgstr "நடுவிலிருந்து Harmonic Homology"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr "மையப்புள்ளியின் ஹார்மோனிக் ஹோமோலஜியை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr "இந்த அச்சுடைய Harmonic Homology"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr "ஹார்மோனிக் ஹோமாலஜியின் அச்சை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, kde-format
 msgid "Generic affinity of this object"
 msgstr "பொருளின் பிறப்பு கூர்"
 
 #: objects/transform_types.cc:409
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Map this triangle"
 msgstr "இந்த கோணத்துடன் இணை"
 
 #: objects/transform_types.cc:409
-#, fuzzy, kde-format
+#, fuzzy
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr "இந்த புள்ளியை வட்டத்தின் மேல்..."
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr ""
 
 #: objects/transform_types.cc:412
-#, fuzzy, kde-format
+#, fuzzy
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "ஒத்திசைவு வரையும் முதல் புள்ளியின் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr "முதல் 3 ஆரம்ப புள்ளிகள்"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr "முதல் மூன்று ஆரம்ப புள்ளிகளின் பரம்பரை தொடர்பை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr "3 ஆரம்ப புள்ளிகளில் இரண்டாவது"
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr "இரண்டாவது மூன்று ஆரம்பிக்கும் புள்ளிகளின் பரம்பரை துவக்கத்தை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr "3 ஆரம்ப புள்ளிகளில் மூன்றாவது"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr "மூன்றாவது மூன்று ஆரம்பிக்கும் புள்ளியின் பரம்பரை துவக்கத்தைத் தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr "இடைமாற்றப்பட்ட முதல் புள்ளி"
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr "பரம்பரை துவக்கத்தின் முதல் மூன்று முடிவு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr "இடைமாற்றப்பட்ட இரண்டாம் புள்ளி"
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr "பரம்பரை துவக்கத்தின் இரண்டாவது மூன்று முடிவு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, kde-format
 msgid "Transformed position of third point"
 msgstr "மூன்றாவது புள்ளியின் உருமாற்றத்தின் நிலை"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr "பரம்பரை துவக்கத்தின் மூன்றாவது மூன்று முடிவு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, kde-format
 msgid "Generic projective transformation of this object"
 msgstr "பொருளின் பிறப்பு எறிதல் உருமாற்றுகை"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr "இந்த நான்குபக்க வடிவத்தை குறிக்கவும்"
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr ""
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr ""
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr ""
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr "4 ஆரம்ப புள்ளிகளில் முதல்"
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் முதல் நான்கு ஆரம்ப புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr "4 ஆரம்ப புள்ளிகளின் இரண்டாவது"
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் இரண்டாவது நான்கு ஆரம்ப புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr "4 ஆரம்ப புள்ளிகளில் மூன்றாவது"
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் மூன்றாவது நான்கு ஆரம்ப புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:566
-#, kde-format
 msgid "Fourth of 4 starting points"
 msgstr "நாலாவதாக 4 தொடக்கப் புள்ளிகள்"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் நான்காவது நான்கு ஆரம்ப புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் முதல் நான்கு ஆரம்ப புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் இரண்டாவது நான்கு முடிவு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் மூன்றாவது நான்கு முடிவு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr "நான்காவது புள்ளியின் இடைமாற்றப்பட்ட இடம்"
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr "பரம்பரை துவக்கத்தின் நான்காவது நான்கு முடிவு புள்ளிகளை தேர்ந்தெடு..."
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "இந்த பொருளின் நிழலை மாற்று"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "காண்பிக்கப்பட வேண்டிய இடத்தை தேர்வு செய்"
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "இந்த ஒளியின் மூலத்தில் இருந்து நிழலை மாற்று"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr "அதன் நிழலின் மூலத்திலிருந்து ஒலி மூலத்தை தேர்ந்தெடுக்கவும்..."
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "இடவலமாக நிழலைக் கணித்துக் கோட்டினை உருவகச் செய்"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr "மூலத்தை நிழலுக்காக தேர்ந்தெடுக்கவும்..."
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "இந்தப் பொருளை உருமாற்று"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "உருமாற்றத்தை உபயோகித்து உருமாற்று"
 
 #: objects/transform_types.cc:883
-#, kde-format
 msgid "Apply a similitude to this object"
 msgstr "இந்த பொருளுடன் ஒத்திசைவை அமை"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Apply a similitude with this center"
 msgstr "மையப்பகுதியில் இருந்து அளவிடு"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr "ஒத்திசைவின் மையத்தை தேர்ந்தெடுக்கவும்..."
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr "புள்ளியை நடுப் புள்ளியாக்கு மற்றும் வேறொருப் புள்ளி"
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr "புள்ளியை தேர்ந்தெடு அது வரைபடத்தோடு மற்ற புள்ளியில் ஒத்திசைக்க வேண்டும்..."
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr "ஒத்திசைவு வரைபடத்தை ஒரு புள்ளிக்காக இந்த புள்ளியில் அமை"
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr "ஒத்திசைவு வரையும் முதல் புள்ளியின் புள்ளியை தேர்ந்தெடு..."
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "இந்த புள்ளியில் இருந்து ஒரு நெறியத்தை உருவாக்கவும்"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Select the start point of the new vector..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்."
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "இந்த புள்ளிக்கு ஒரு நெறியத்தை உருவாக்கவும்"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Select the end point of the new vector..."
 msgstr "உங்களுக்காக புதிய குறுநிரலை கடைசி பொருளாக தேர்வு செய்யவும்."
 
 #: objects/vector_type.cc:44
-#, kde-format
 msgid "Construct the vector sum of this vector and another one."
 msgstr "நெறியத்திலிருந்து நெறிய தொகையை உருவாக்கு மற்றும் வேறொரு புள்ளி"
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr ""
 "முதல் இரண்டு வெக்டார்கள் அது நீங்கள் கூட்டி வடிவமைக்க விரும்புவதை தேர்ந்தெடுக்கவும்..."
 
 #: objects/vector_type.cc:48
-#, kde-format
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "நெறியத்திலிருந்து நெறியத் தொகையை உருவாக்கு மற்றும் அடுத்த ஒன்று"
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr "மற்ற இரண்டு வெக்டார்கள் அது நீங்கள் கூட்டி வடிவமைக்க விரும்புவதை தேர்ந்தெடுக்கவும்..."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Construct the vector sum starting at this point."
 msgstr "இந்த புள்ளியை துவக்கமாக கொண்டு ஒரு வட்ட பகுதியை உருவாக்கவும்."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr "கூட்டு வெக்டாரை உருவாக்க உதவும் புள்ளியை தேர்ந்தெடு..."
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, fuzzy, kde-format
 #| msgid "New Script"
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "புதிய குறுநிரல்"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the argument objects ( if any )\n"
@@ -6795,7 +6550,7 @@ msgid ""
 msgstr ""
 "கிக் சாளரத்தில் உள்ள பொருளை (ஏதாவது இருந்தால்) தேர்ந்தெடு மற்றும் அடுத்து வை அழுத்தவும்."
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "குறீயீட்டை இடு"
@@ -6819,7 +6574,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6828,7 +6583,7 @@ msgstr ""
 "உங்கள் உரையில் பிழை இருப்பது போல் உள்ளது; ஆகையால் இது தகுந்த பொருளை உருவாக்காது.உரை "
 "சரி பார்த்த பின் முடிந்தது எனற பொத்தானை அழுத்தவும்"
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
@@ -6837,7 +6592,7 @@ msgstr ""
 "தொடரும் பிழை வெளியீட்டை பைத்தான் இடைமாற்றி உருவாக்கியது:\n"
 "%1"
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6847,18 +6602,18 @@ msgstr ""
 "உங்கள் உரையில் பிழை இருப்பது போல் உள்ளது. ஆகையால் இது தகுந்த பொருளை உருவாக்காது. உரை "
 "சரி பார்த்த பின் முடிந்தது எனற பொத்தானை அழுத்தவும்."
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, fuzzy, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "தொகு..."
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, fuzzy, kde-format
 msgid "Edit Python Script"
 msgstr "பைத்தான் சிறுநிரல்"
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, fuzzy, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6867,7 +6622,7 @@ msgstr ""
 "உங்கள் உரையில் பிழை இருப்பது போல் உள்ளது; ஆகையால் இது தகுந்த பொருளை உருவாக்காது.உரை "
 "சரி பார்த்த பின் முடிந்தது எனற பொத்தானை அழுத்தவும்"
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, fuzzy, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "

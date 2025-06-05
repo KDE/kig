@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-08 01:54+0000\n"
+"POT-Creation-Date: 2025-06-05 00:38+0000\n"
 "PO-Revision-Date: 2025-03-13 15:48+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -186,7 +186,7 @@ msgstr "Asymptote Betiği Olarak Dışa Aktar"
 msgid "Asymptote Options"
 msgstr "Asymptote Seçenekleri"
 
-#: filters/asyexporter.cc:70 filters/exporter.cc:108
+#: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
 #: filters/xfigexporter.cc:568
 #, kde-format
@@ -253,7 +253,7 @@ msgstr ""
 "Bu Cabri dosyası, Kig uygulamasının şu anda desteklemediği bir “%1” "
 "nesnesini içeriyor."
 
-#: filters/cabri-utils.cc:18 filters/cabri-utils.cc:25 filters/filter.h:42
+#: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
@@ -305,37 +305,37 @@ msgid ""
 msgstr ""
 "Bu Dr. Geo dosyası Kig’in şu anda desteklemediği bir kesişme türü içeriyor."
 
-#: filters/exporter.cc:58
+#: filters/exporter.cc:59
 #, kde-format
 msgid "&Export to image"
 msgstr "&Görsel Olarak Dışa Aktar"
 
-#: filters/exporter.cc:63
+#: filters/exporter.cc:64
 #, kde-format
 msgid "&Image..."
 msgstr "Gö&rsel…"
 
-#: filters/exporter.cc:73
+#: filters/exporter.cc:74
 #, kde-format
 msgid "Export as Image"
 msgstr "Görsel Olarak Dışa Aktar"
 
-#: filters/exporter.cc:81
+#: filters/exporter.cc:82
 #, kde-format
 msgid "Image Options"
 msgstr "Görsel Seçenekleri"
 
-#: filters/exporter.cc:102
+#: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
 msgstr "Bu dosya biçimi desteklenmiyor."
 
-#: filters/exporter.cc:123
+#: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
 msgstr "“%1” görsel dosyasına kaydederken bir hata oluştu"
 
-#: filters/exporter.cc:144
+#: filters/exporter.cc:145
 #, kde-format
 msgid "&Export To"
 msgstr "Şuna Dışa &Aktar"
@@ -357,7 +357,7 @@ msgstr "Bu dosya ayrıştırılırken bir hata oluştu.  Dosya açılamadı."
 msgid "Parse Error"
 msgstr "Ayrıştırma Hatası"
 
-#: filters/filter.cc:88 misc/lists.cc:297
+#: filters/filter.cc:88 misc/lists.cc:296
 #, kde-format
 msgid "Not Supported"
 msgstr "Desteklenmiyor"
@@ -487,13 +487,13 @@ msgstr "Yalnızca resim"
 msgid "Standalone document"
 msgstr "Bağımsız belge"
 
-#: filters/native-filter.cc:174
+#: filters/native-filter.cc:176
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
 msgstr "Bu dosya bu sürümün açamadığı, Kig’in “%1” sürümüyle yaratılmış."
 
-#: filters/native-filter.cc:180
+#: filters/native-filter.cc:182
 #, kde-format
 msgid ""
 "This file was created by Kig version \"%1\".\n"
@@ -508,7 +508,7 @@ msgstr ""
 " daha sonra yeniden kaydedebilirsiniz. Böylece bu dosya, yeni dosya "
 "biçiminde kaydedilmiş olur."
 
-#: filters/native-filter.cc:210 filters/native-filter.cc:389
+#: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
 msgid ""
 "This Kig file has a coordinate system that this Kig version does not "
@@ -519,7 +519,7 @@ msgstr ""
 "ile uyuşmuyor.\n"
 " Bunun yerine standart bir koordinat sistemi kullanılacaktır."
 
-#: filters/native-filter.cc:303 filters/native-filter.cc:485
+#: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
 #, kde-format
 msgid ""
@@ -531,7 +531,7 @@ msgstr ""
 "kullanıyor. Galiba Kig’i, bu nesne türü desteği olmadan derlediniz ya da "
 "eski bir Kig sürümü kullanıyorsunuz."
 
-#: filters/native-filter.cc:356
+#: filters/native-filter.cc:358
 #, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which is obsolete, you should "
@@ -784,12 +784,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Yeni nesne eylem simgelerinden sorumlu."
 
-#: kig/kig.cpp:59
+#: kig/kig.cpp:60
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Gerekli kig kitaplığı bulunamadı, lütfen kurulumunuzu kontrol edin."
 
-#: kig/kig.cpp:195
+#: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -835,176 +835,176 @@ msgstr "Eksenleri Göster"
 msgid "Invert Selection"
 msgstr "Seçimi Tersine Çevir"
 
-#: kig/kig_part.cpp:225
+#: kig/kig_part.cpp:222
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Nesneleri Sil"
 
-#: kig/kig_part.cpp:229
+#: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Seçili nesneleri sil"
 
-#: kig/kig_part.cpp:231
+#: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Yapımı İptal Et"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Yapılan nesnenin yapımını iptal et"
 
-#: kig/kig_part.cpp:238
+#: kig/kig_part.cpp:235
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Yapımı Yinele"
 
-#: kig/kig_part.cpp:242
+#: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Son yapımıı yinele (yeni veriyle)"
 
-#: kig/kig_part.cpp:245 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "&Tümünü Göster"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:245
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Tüm gizli nesneleri göster"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Yeni Makro…"
 
-#: kig/kig_part.cpp:254
+#: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
 msgstr "Yeni bir makro tanımla"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:253
 #, kde-format
 msgid "Manage &Types..."
 msgstr "&Türleri Yönet…"
 
-#: kig/kig_part.cpp:259
+#: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
 msgstr "Makro türlerini yönet."
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
 msgstr "&Geçmişi Tara…"
 
-#: kig/kig_part.cpp:264
+#: kig/kig_part.cpp:261
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Geçerli yapımın geçmişine göz atın."
 
-#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
+#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Belgeye yakınlaştır"
 
-#: kig/kig_part.cpp:273 kig/kig_part.cpp:274
+#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Belgeden uzaklaştır"
 
-#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
+#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Geçerli belgede kullanılan ekranı merkeze taşı"
 
-#: kig/kig_part.cpp:283 kig/kig_part.cpp:284
+#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Bu belgeyi tam ekran görüntüle."
 
-#: kig/kig_part.cpp:287
+#: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "&Gösterilen Alanı Seç"
 
-#: kig/kig_part.cpp:290 kig/kig_part.cpp:291
+#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Pencerede gösterilmesini istediğiniz alanı seçin."
 
-#: kig/kig_part.cpp:293
+#: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "Yakınlaştırma Alanını S&eç"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:299
+#: kig/kig_part.cpp:296
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Koordinat &Hassasiyeti Tanımla…"
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Belgedeki koordinatların kayan nokta hassasiyetini ayarla. "
 
-#: kig/kig_part.cpp:304
+#: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
 msgstr "Iz&gara çizgilerini göster"
 
-#: kig/kig_part.cpp:306
+#: kig/kig_part.cpp:303
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Izgara çubuklarını göster ya da gizle."
 
-#: kig/kig_part.cpp:310
+#: kig/kig_part.cpp:307
 #, kde-format
 msgid "Show &Axes"
 msgstr "Koordin&at eksenlerini göster"
 
-#: kig/kig_part.cpp:312
+#: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Eksenleri göster ya da gizle."
 
-#: kig/kig_part.cpp:316
+#: kig/kig_part.cpp:313
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Kızılötesi Gözlük Tak"
 
-#: kig/kig_part.cpp:318
+#: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Gizli nesne görünürlüğünü aç/kapat."
 
-#: kig/kig_part.cpp:348
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Yapımı Yinele (%1)"
 
-#: kig/kig_part.cpp:349
+#: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Tekrarla %1 (yeni verilerle)"
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:374
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr "Açmaya çalıştığınız “%1” dosyası bulunamadı. Lütfen, tekrar deneyiniz."
 
-#: kig/kig_part.cpp:380
+#: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
 msgstr "Dosya Bulunamadı"
 
-#: kig/kig_part.cpp:395
+#: kig/kig_part.cpp:392
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1019,12 +1019,12 @@ msgstr ""
 "\">KDE hata izleme sistemi</a> üzerinden bir özellik isteğinde "
 "bulunabilirsiniz"
 
-#: kig/kig_part.cpp:399 kig/kig_part.cpp:447
+#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Biçim Desteklenmiyor"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:442
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1033,40 +1033,40 @@ msgstr ""
 "Kig farklı bir dosya biçiminde kaydetmeyi desteklemiyor. Dosya Kig’in dosya "
 "biçimine kaydedilsin mi?"
 
-#: kig/kig_part.cpp:448
+#: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Kig Biçimini Kaydet"
 
-#: kig/kig_part.cpp:705
+#: kig/kig_part.cpp:702
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Kig Belgeleri (*.kig);;Sıkıştırılmış Kig Belgeleri (*.kigz)"
 
-#: kig/kig_part.cpp:717 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "“%1” dosyası mevcut. Üzerine yazmak ister misiniz?"
 
-#: kig/kig_part.cpp:718 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Dosyanın üstüne yazılsın mı?"
 
-#: kig/kig_part.cpp:867
+#: kig/kig_part.cpp:864
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Yazdırma Boyutları"
 
-#: kig/kig_part.cpp:931
+#: kig/kig_part.cpp:928
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "%1 Nesneyi Gizle"
 msgstr[1] "%1 Nesneyi Gizle"
 
-#: kig/kig_part.cpp:950
+#: kig/kig_part.cpp:947
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
@@ -1310,7 +1310,7 @@ msgstr "Görünüm"
 msgid "&Settings"
 msgstr "Ayar&lar"
 
-#: kig/main.cpp:84
+#: kig/main.cpp:46
 #, kde-format
 msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
@@ -1319,7 +1319,7 @@ msgstr ""
 "Bir grafiksel arayüz göstermeyip belirtilen dosyayı doğal Kig biçimine "
 "dönüştürün. --outfile olmadıkça standart çıktıya çıktılar."
 
-#: kig/main.cpp:86
+#: kig/main.cpp:48
 #, kde-format
 msgid ""
 "File to output the created native file to. '-' means output to stdout. "
@@ -1328,12 +1328,12 @@ msgstr ""
 "Dosyanın oluşturulup çıktısı verilecek dosya. '-’ standart çıktıya çıktı ver "
 "demektir. Öntanımlı, standart çıktı budur."
 
-#: kig/main.cpp:91
+#: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
 msgstr "kde.org"
 
-#: kig/main.cpp:99
+#: kig/main.cpp:60
 #, kde-format
 msgid "Document to open"
 msgstr "Açılacak belge"
@@ -2050,7 +2050,7 @@ msgstr "Nokta İzdüşümü"
 msgid "Project a point on a line"
 msgstr "Noktayı bir doğru üstüne izdüşür"
 
-#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:53
+#: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
 msgstr "Python Betiği"
@@ -2060,7 +2060,7 @@ msgstr "Python Betiği"
 msgid "Construct a new Python script."
 msgstr "Yeni bir Python betiği oluştur."
 
-#: misc/coordinate_system.cpp:322
+#: misc/coordinate_system.cpp:323
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
@@ -2069,7 +2069,7 @@ msgstr ""
 "Koordinatları “x:y” şeklinde verin. Burada x, x koordinatını;\n"
 "y ise y koordinatını göstermektedir."
 
-#: misc/coordinate_system.cpp:329
+#: misc/coordinate_system.cpp:330
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
@@ -2078,7 +2078,7 @@ msgstr ""
 "Koordinatları <b>“x:y”</b> şeklinde verin;<br />burada x, x koordinatını; y "
 "ise y koordinatını göstermektedir."
 
-#: misc/coordinate_system.cpp:371
+#: misc/coordinate_system.cpp:372
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
@@ -2087,7 +2087,7 @@ msgstr ""
 "Koordinatları “r; θ°” şeklinde verin. Burada r ve θ°, kutupsal\n"
 "koordinatlardır."
 
-#: misc/coordinate_system.cpp:379
+#: misc/coordinate_system.cpp:380
 #, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
@@ -2096,22 +2096,22 @@ msgstr ""
 "Koordinatları “r; θ°” şeklinde verin;<br />burada <b>r ve θ°</b>, kutupsal "
 "koordinatlardır."
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Euclidean"
 msgstr "&Öklid"
 
-#: misc/coordinate_system.cpp:530
+#: misc/coordinate_system.cpp:532
 #, kde-format
 msgid "&Polar"
 msgstr "&Polar"
 
-#: misc/coordinate_system.cpp:581
+#: misc/coordinate_system.cpp:583
 #, kde-format
 msgid "Set Euclidean Coordinate System"
 msgstr "Öklid Koordinat Sistemine Geç"
 
-#: misc/coordinate_system.cpp:583
+#: misc/coordinate_system.cpp:585
 #, kde-format
 msgid "Set Polar Coordinate System"
 msgstr "Polar Koordinat Sistemine Geç"
@@ -2228,17 +2228,17 @@ msgstr ""
 "Başka birim birime geçerseniz, sol tarafta seçtiğiniz değer, seçilen birime "
 "dönüştürülecektir."
 
-#: misc/lists.cc:277 misc/lists.cc:282
+#: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
 msgstr "“%1” makro dosyası açılamadı"
 
-#: misc/lists.cc:292
+#: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
 msgstr "Kig “%1” macro dosyasını açamadı."
 
-#: misc/lists.cc:293
+#: misc/lists.cc:292
 #, kde-format
 msgid ""
 "This file was created by a very old Kig version (pre-0.4). Support for this "
@@ -2251,7 +2251,7 @@ msgstr ""
 "ile 0.6 arasında) açmayı deneyip daha sonra yeniden kaydedebilirsiniz. "
 "Böylece bu dosya, yeni dosya biçiminde kaydedilmiş olur."
 
-#: misc/lists.cc:347
+#: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
 msgstr "Adsız Makro #%1"
@@ -2287,19 +2287,16 @@ msgid "Moving Point"
 msgstr "Hareket Noktası"
 
 #: misc/special_constructors.cc:327
-#, kde-format
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr "Konum çizilirken etrafında döndürülecek olan, hareket noktasını çizin…"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid "Following Point"
 msgstr "Takip Noktası"
 
 #: misc/special_constructors.cc:328
-#, kde-format
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
@@ -2374,12 +2371,10 @@ msgid "Select a point to be a vertex of the new polygonal line..."
 msgstr "Yeni poligonal doğrunun köşesi olacak noktayı seç…"
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
-#, kde-format
 msgid "Polygon"
 msgstr "Çokgen"
 
 #: misc/special_constructors.cc:658
-#, kde-format
 msgid "Construct the vertices of this polygon..."
 msgstr "Bu poligonun köşelerini oluştur…"
 
@@ -2394,7 +2389,6 @@ msgid "The vertices of a polygon."
 msgstr "Bir çokgenin köşeleri."
 
 #: misc/special_constructors.cc:718
-#, kde-format
 msgid "Construct the sides of this polygon..."
 msgstr "Bu çokgenin kenarlarını oluştur…"
 
@@ -2639,25 +2633,21 @@ msgid "Choose a starting point on the line/circle..."
 msgstr "Doğru/Çember üstünde bir başlangıç noktası seç…"
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
-#, kde-format
 msgid "Intersect with this conic"
 msgstr "Bu koni ile kesiştir"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
-#, kde-format
 msgid "Intersect with this line"
 msgstr "Bu doğru ile kesiştir"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, kde-format
 msgid "Intersect with this cubic"
 msgstr "Bu kubik ile kesiştir"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
-#, kde-format
 msgid "Intersect with this circle"
 msgstr "Bu çember ile kesiştir"
 
@@ -2762,45 +2752,37 @@ msgid "with this Polygonal"
 msgstr "bu Çokgenle"
 
 #: misc/special_constructors.cc:1814
-#, kde-format
 msgid "Construct midpoint of this point and another one"
 msgstr "Bu nokta ile diğer noktanın orta noktasını çiz"
 
 #: misc/special_constructors.cc:1815
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
 msgstr "Orta noktasını oluşturmak istediğiniz noktalardan ilkini seç…"
 
 #: misc/special_constructors.cc:1818
-#, kde-format
 msgid "Construct the midpoint of this point and another one"
 msgstr "Bu nokta ile diğer noktanın orta noktasını çiz"
 
 #: misc/special_constructors.cc:1819
-#, kde-format
 msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "Orta noktalarını oluşturmak istediğiniz diğer noktaları seç…"
 
 #: misc/special_constructors.cc:1869
-#, kde-format
 msgid "Construct golden ratio point of this point and another one"
 msgstr "Bu nokta ile diğer noktanın altın oran noktasını çiz"
 
 #: misc/special_constructors.cc:1870
-#, kde-format
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
 msgstr "Altın oran noktasını oluşturmak istediğiniz noktalardan ilkini seç…"
 
 #: misc/special_constructors.cc:1873
-#, kde-format
 msgid "Construct the golden ratio point of this point and another one"
 msgstr "Bu nokta ile diğer noktanın altın oran noktasını çiz"
 
 #: misc/special_constructors.cc:1874
-#, kde-format
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
@@ -3028,13 +3010,13 @@ msgstr "Son adım"
 msgid "Name"
 msgstr "Ad"
 
-#: modes/label.cc:178 modes/popup/nameobjectactionsprovider.cc:69
+#: modes/label.cc:179 modes/popup/nameobjectactionsprovider.cc:69
 #: modes/popup/nameobjectactionsprovider.cc:98
 #, kde-format
 msgid "<unnamed object>"
 msgstr "<adsız nesne>"
 
-#: modes/label.cc:299
+#: modes/label.cc:302
 #, kde-format
 msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
@@ -3043,32 +3025,32 @@ msgstr ""
 "Metinde bir değer atamadığınız “%n” adet parça vardır. Lütfen bunları silin "
 "veya yeterli sayıda argüman seçin."
 
-#: modes/label.cc:368
+#: modes/label.cc:373
 #, kde-format
 msgid "argument %1"
 msgstr "argüman %1"
 
-#: modes/label.cc:397
+#: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
 msgstr "%1 argümanı seçiliyor"
 
-#: modes/label.cc:500
+#: modes/label.cc:506
 #, kde-format
 msgid "Change Label"
 msgstr "Etiketi Değiştir"
 
-#: modes/label.cc:595 objects/text_type.cc:290
+#: modes/label.cc:601 objects/text_type.cc:290
 #, kde-format
 msgid "Set Value"
 msgstr "Değeri Ayarla"
 
-#: modes/label.cc:595
+#: modes/label.cc:601
 #, kde-format
 msgid "Enter value:"
 msgstr "Değeri girin:"
 
-#: modes/label.cc:624
+#: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
 msgstr "Yeni sayısal değer için bir konum seç…"
@@ -3153,84 +3135,84 @@ msgstr[1] "%1 Nesneyi Taşı"
 msgid "Redefine Point"
 msgstr "Noktayı Yeniden Tanımla"
 
-#: modes/popup/builtinobjectactionsprovider.cc:34
+#: modes/popup/builtinobjectactionsprovider.cc:35
 #, kde-format
 msgid "Black"
 msgstr "Siyah"
 
-#: modes/popup/builtinobjectactionsprovider.cc:35
+#: modes/popup/builtinobjectactionsprovider.cc:36
 #, kde-format
 msgid "Gray"
 msgstr "Gri"
 
-#: modes/popup/builtinobjectactionsprovider.cc:36
+#: modes/popup/builtinobjectactionsprovider.cc:37
 #, kde-format
 msgid "Red"
 msgstr "Kırmızı"
 
-#: modes/popup/builtinobjectactionsprovider.cc:37
+#: modes/popup/builtinobjectactionsprovider.cc:38
 #, kde-format
 msgid "Green"
 msgstr "Yeşil"
 
-#: modes/popup/builtinobjectactionsprovider.cc:38
+#: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
 msgstr "Turkuaz"
 
-#: modes/popup/builtinobjectactionsprovider.cc:39
+#: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
 msgid "Yellow"
 msgstr "Sarı"
 
-#: modes/popup/builtinobjectactionsprovider.cc:40
+#: modes/popup/builtinobjectactionsprovider.cc:41
 #, kde-format
 msgid "Dark Red"
 msgstr "Koyu Kırmızı"
 
-#: modes/popup/builtinobjectactionsprovider.cc:61
+#: modes/popup/builtinobjectactionsprovider.cc:62
 #, kde-format
 msgid "&Hide"
 msgstr "&Gizle"
 
-#: modes/popup/builtinobjectactionsprovider.cc:64
+#: modes/popup/builtinobjectactionsprovider.cc:65
 #, kde-format
 msgid "&Show"
 msgstr "&Göster"
 
-#: modes/popup/builtinobjectactionsprovider.cc:67
+#: modes/popup/builtinobjectactionsprovider.cc:68
 #, kde-format
 msgid "&Move"
 msgstr "&Taşı"
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonRemove)
-#: modes/popup/builtinobjectactionsprovider.cc:68 modes/typesdialog.cpp:369
+#: modes/popup/builtinobjectactionsprovider.cc:69 modes/typesdialog.cpp:369
 #: modes/typeswidget.ui:112
 #, kde-format
 msgid "&Delete"
 msgstr "&Sil"
 
-#: modes/popup/builtinobjectactionsprovider.cc:75
+#: modes/popup/builtinobjectactionsprovider.cc:76
 #, kde-format
 msgid "&Custom Color"
 msgstr "&Renk Tanımla"
 
-#: modes/popup/builtinobjectactionsprovider.cc:208
+#: modes/popup/builtinobjectactionsprovider.cc:209
 #, kde-format
 msgid "Change Object Color"
 msgstr "Nesne Rengini Değiştir"
 
-#: modes/popup/builtinobjectactionsprovider.cc:220
+#: modes/popup/builtinobjectactionsprovider.cc:221
 #, kde-format
 msgid "Change Object Width"
 msgstr "Nesne Genişliğini Değiştir"
 
-#: modes/popup/builtinobjectactionsprovider.cc:240
+#: modes/popup/builtinobjectactionsprovider.cc:241
 #, kde-format
 msgid "Change Point Style"
 msgstr "Nokta Biçemini Değiştir"
 
-#: modes/popup/builtinobjectactionsprovider.cc:250
+#: modes/popup/builtinobjectactionsprovider.cc:251
 #, kde-format
 msgid "Change Object Style"
 msgstr "Nesne Biçemini Değiştir"
@@ -3256,70 +3238,70 @@ msgstr "Nesne Adı Ayarla"
 msgid "Set Name of this Object:"
 msgstr "Bu nesnenin adını ayarla:"
 
-#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:77
+#: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
 #, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
 msgstr[0] "%1 Nesne"
 msgstr[1] "%1 Nesneleri"
 
-#: modes/popup/popup.cc:70
+#: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
 msgstr "Kig Belgesi"
 
-#: modes/popup/popup.cc:113
+#: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
 msgstr "&Dönüştür"
 
-#: modes/popup/popup.cc:114
+#: modes/popup/popup.cc:115
 #, kde-format
 msgid "T&est"
 msgstr "T&est Et"
 
-#: modes/popup/popup.cc:115
+#: modes/popup/popup.cc:116
 #, kde-format
 msgid "Const&ruct"
 msgstr "&Oluştur"
 
-#: modes/popup/popup.cc:116
+#: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
 msgstr "&Başlat"
 
-#: modes/popup/popup.cc:117
+#: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
 msgstr "&Metin Etiketi Ekle"
 
-#: modes/popup/popup.cc:118
+#: modes/popup/popup.cc:119
 #, kde-format
 msgid "Set Co&lor"
 msgstr "&Renk Tanımla"
 
-#: modes/popup/popup.cc:119
+#: modes/popup/popup.cc:120
 #, kde-format
 msgid "Set &Pen Width"
 msgstr "Kalem &Genişliğini Ayarla"
 
-#: modes/popup/popup.cc:120
+#: modes/popup/popup.cc:121
 #, kde-format
 msgid "Set St&yle"
 msgstr "&Biçemi Ayarla"
 
-#: modes/popup/popup.cc:122
+#: modes/popup/popup.cc:123
 #, kde-format
 msgid "Set Coordinate S&ystem"
 msgstr "&Koordinat Sistemi Tanımla"
 
-#: modes/popup/popup.cc:208 modes/popup/popup.cc:217 modes/popup/popup.cc:226
+#: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, kde-format
 msgctxt "More menu items"
 msgid "More..."
 msgstr "Daha fazla…"
 
-#: modes/popup/scriptactionsprovider.cc:57
+#: modes/popup/scriptactionsprovider.cc:58
 #, kde-format
 msgid "Edit Script..."
 msgstr "Betik Düzenle…"
@@ -3345,7 +3327,7 @@ msgstr ""
 msgid "Show text in a frame"
 msgstr "Metni bir çerçeve içinde göster"
 
-#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:50
+#: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
 msgstr "Argümanları Seç"
@@ -3502,135 +3484,112 @@ msgstr "Bir veya daha fazla dosya içine koyulmuş makroları içe aktarın."
 msgid "&Import..."
 msgstr "&İçe Aktar…"
 
-#: objects/angle_type.cc:26
-#, kde-format
+#: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
 msgstr "Bu noktadan geçen bir açı oluştur"
 
-#: objects/angle_type.cc:29
-#, kde-format
+#: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
 msgstr "Açıya deyecek olan ilk ışının bir noktasını seç…"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
 msgstr "Bu noktada bir açı oluştur"
 
-#: objects/angle_type.cc:30
-#, kde-format
+#: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
 msgstr "Açının oluşturulacağı noktayı seç…"
 
-#: objects/angle_type.cc:31
-#, kde-format
+#: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
 msgstr "Açıya deyecek olan ikinci ışının bir noktasını seç…"
 
-#: objects/angle_type.cc:90
+#: objects/angle_type.cc:89
 #, kde-format
 msgid "Set Si&ze"
 msgstr "&Boyut Tanımla"
 
-#: objects/angle_type.cc:91
+#: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
 msgstr "&Sağ Açık İşaretini Aç"
 
-#: objects/angle_type.cc:133
+#: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
 msgstr "Açıyı Yeniden Boyutlandır"
 
-#: objects/arc_type.cc:33
-#, kde-format
+#: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
 msgstr "Bu noktadan başlayan bir yay oluştur"
 
-#: objects/arc_type.cc:36 objects/arc_type.cc:149
-#, kde-format
+#: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
 msgstr "Yeni yayın başlangıç noktasını seç…"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
 msgstr "Bu noktadan geçen bir yay oluştur"
 
-#: objects/arc_type.cc:37
-#, kde-format
+#: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
 msgstr "Yayın üzerinden geçeceği noktayı seç…"
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
 msgstr "Bu noktada biten bir yay oluştur"
 
-#: objects/arc_type.cc:38
-#, kde-format
+#: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
 msgstr "Yeni yayın bitiş noktasını seç…"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
 msgstr "Bu merkez ile bir yay çiz"
 
-#: objects/arc_type.cc:148
-#, kde-format
+#: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
 msgstr "Yeni yayın merkezini seç…"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
 msgstr "Bu açıyla bir yay çiz"
 
-#: objects/arc_type.cc:150
-#, kde-format
+#: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
 msgstr "Yeni yayın açısını seç…"
 
-#: objects/arc_type.cc:204
-#, kde-format
+#: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
 msgstr "Bu noktadan başlayan bir koni yayı oluştur"
 
-#: objects/arc_type.cc:205
-#, kde-format
+#: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
 msgstr "Yeni koni yayının başlangıç noktasını seç…"
 
-#: objects/arc_type.cc:206
-#, kde-format
+#: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
 msgstr "Bu noktadan geçen bir koni yayı oluştur"
 
-#: objects/arc_type.cc:207
-#, kde-format
+#: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
 msgstr "Teğetin üzerinden geçeceği koni yayını seç…"
 
-#: objects/arc_type.cc:208
-#, kde-format
+#: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
 msgstr "Bu noktada biten bir koni yayı oluştur"
 
-#: objects/arc_type.cc:209
-#, kde-format
+#: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
 msgstr "Yeni koni yayının bitiş noktasını seç…"
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
 msgstr "Bu merkez ile bir koni yayı çiz"
 
-#: objects/arc_type.cc:212
-#, kde-format
+#: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
 msgstr "Yeni koni yayının merkezini seç…"
 
@@ -3653,7 +3612,6 @@ msgid "Bézier Curve"
 msgstr "Bézier Eğrisi"
 
 #: objects/bezier_imp.cc:202
-#, kde-format
 msgid "Select this Bézier Curve"
 msgstr "Bu Bézier Eğrisini Seç"
 
@@ -3691,7 +3649,6 @@ msgid "Bézier Quadratic"
 msgstr "Bézier Dörtgeni"
 
 #: objects/bezier_imp.cc:219
-#, kde-format
 msgid "Select this Bézier Quadratic"
 msgstr "Bu Bézier Dörtgenini Seç"
 
@@ -3729,7 +3686,6 @@ msgid "Bézier Cubic"
 msgstr "Bézier Kubiği"
 
 #: objects/bezier_imp.cc:236
-#, kde-format
 msgid "Select this Bézier Cubic"
 msgstr "Bu Bézier Kubiğini Seç"
 
@@ -3767,7 +3723,6 @@ msgid "Rational Bézier Curve"
 msgstr "Rasyonel Bézier Kubiği"
 
 #: objects/bezier_imp.cc:491
-#, kde-format
 msgid "Select this Rational Bézier Curve"
 msgstr "Bu Rasyonel Bézier Kubiğini Seç"
 
@@ -3805,7 +3760,6 @@ msgid "Rational Bézier Quadratic"
 msgstr "Rasyonel Bézier Dörtgeni"
 
 #: objects/bezier_imp.cc:508
-#, kde-format
 msgid "Select this Rational Bézier Quadratic"
 msgstr "Bu Rasyonel Bézier Dörtgenini Seç"
 
@@ -3843,7 +3797,6 @@ msgid "Rational Bézier Cubic"
 msgstr "Rasyonel Bézier Kübik"
 
 #: objects/bezier_imp.cc:525
-#, kde-format
 msgid "Select this Rational Bézier Cubic"
 msgstr "Bu Rasyonel Bézier Kübiğini Seç"
 
@@ -3877,33 +3830,27 @@ msgid "Hide a Rational Bézier Cubic"
 msgstr "Bir Rasyonal Bézier Kubiğini Gizle"
 
 #: objects/bezier_type.cc:26
-#, kde-format
 msgid "Construct a quadratic Bézier curve with this control point"
 msgstr "Bu kontrol noktasıyla dörtgen Bézier eğrisini oluştur"
 
 #: objects/bezier_type.cc:27
-#, kde-format
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr "Yeni dörtgen Bézier eğrisinin kontrol noktası olacak noktayı seç…"
 
 #: objects/bezier_type.cc:121
-#, kde-format
 msgid "Construct a cubic Bézier curve with this control point"
 msgstr "Bu kontrol noktasıyla kübik Bézier eğrisi oluştur"
 
 #: objects/bezier_type.cc:122
-#, kde-format
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr "Yeni kübik Bézier eğrisinin kontrol noktası olacak olan noktayı seç…"
 
 #: objects/bezier_type.cc:328
-#, kde-format
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr "Bu kontrol noktasıyla, dörtgen rasyonel Bézier eğrisi oluştur"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, kde-format
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
@@ -3912,12 +3859,10 @@ msgstr ""
 "ve noktayı seç…"
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, kde-format
 msgid "Select this value as weight"
 msgstr "Bu değeri ağırlık olarak seç"
 
 #: objects/bezier_type.cc:433
-#, kde-format
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr "Bu kontrol noktasıyla bir kübik rasyonel Bézier eğrisi oluştur"
 
@@ -3943,7 +3888,6 @@ msgid "Select the curve..."
 msgstr "Bu eğriyi seç…"
 
 #: objects/centerofcurvature_type.cc:23
-#, kde-format
 msgid "Select a point on the curve..."
 msgstr "Eğri üzerinde bir nokta seç…"
 
@@ -3982,7 +3926,6 @@ msgid "circle"
 msgstr "çember"
 
 #: objects/circle_imp.cc:338
-#, kde-format
 msgid "Select this circle"
 msgstr "Bu çemberi seç"
 
@@ -4015,34 +3958,30 @@ msgstr "Bir Çember Göster"
 msgid "Hide a Circle"
 msgstr "Bir Çember Gizle"
 
-#: objects/circle_type.cc:17
-#, kde-format
+#: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
 msgstr "Bu noktadan geçen bir çember oluştur"
 
-#: objects/circle_type.cc:19
+#: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
 msgstr "Bu merkeze göre çember çiz"
 
-#: objects/circle_type.cc:22 objects/circle_type.cc:176
+#: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
 msgstr "Yeni çemberin merkezini seç…"
 
-#: objects/circle_type.cc:23 objects/circle_type.cc:48
-#: objects/circle_type.cc:49 objects/circle_type.cc:50
-#, kde-format
+#: objects/circle_type.cc:24 objects/circle_type.cc:49
+#: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
 msgstr "Çemberin üzerinden geçeceği noktayı seç…"
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "With this radius"
 msgstr "Bu yarıçap ile"
 
-#: objects/circle_type.cc:177
-#, kde-format
+#: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
 msgstr "Yarıçap uzunluğunu seç…"
 
@@ -4098,7 +4037,6 @@ msgid "conic"
 msgstr "koni"
 
 #: objects/conic_imp.cc:379
-#, kde-format
 msgid "Select this conic"
 msgstr "Bu koniği seç"
 
@@ -4148,7 +4086,6 @@ msgid "conic arc"
 msgstr "koni yayı"
 
 #: objects/conic_imp.cc:604
-#, kde-format
 msgid "Select this conic arc"
 msgstr "Bu koni yayını seç"
 
@@ -4183,7 +4120,6 @@ msgstr "Bir Koni Yayını Gizle"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Construct a conic through this point"
 msgstr "Bu noktadan geçen bir koni oluştur"
 
@@ -4191,192 +4127,155 @@ msgstr "Bu noktadan geçen bir koni oluştur"
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
-#, kde-format
 msgid "Select a point for the new conic to go through..."
 msgstr "Yeni koni üzerinden geçeceği noktayı seç…"
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
-#, kde-format
 msgid "Construct a conic with this asymptote"
 msgstr "Bu asimptota sahip bir koni oluştur"
 
 #: objects/conic_types.cc:61
-#, kde-format
 msgid "Select the first asymptote of the new conic..."
 msgstr "Yeni koniğin ilk asimptotunu seç…"
 
 #: objects/conic_types.cc:62
-#, kde-format
 msgid "Select the second asymptote of the new conic..."
 msgstr "Yeni koniğin ikinci asimptotunu seç…"
 
 #: objects/conic_types.cc:114
-#, kde-format
 msgid "Construct an ellipse with this focus"
 msgstr "Bu odağa sahip bir elips oluştur"
 
 #: objects/conic_types.cc:117
-#, kde-format
 msgid "Select the first focus of the new ellipse..."
 msgstr "Yeni elipsin ilk odağını seç…"
 
 #: objects/conic_types.cc:118
-#, kde-format
 msgid "Select the second focus of the new ellipse..."
 msgstr "Yeni elipsin ikinci odağını seç…"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Construct an ellipse through this point"
 msgstr "Bu noktadan geçen bir elips oluştur"
 
 #: objects/conic_types.cc:119
-#, kde-format
 msgid "Select a point for the new ellipse to go through..."
 msgstr "Yeni elipsin üzerinden geçeceği noktayı seç…"
 
 #: objects/conic_types.cc:143
-#, kde-format
 msgid "Construct a hyperbola with this focus"
 msgstr "Bu odağa sahip bir hiperbol oluştur"
 
 #: objects/conic_types.cc:146
-#, kde-format
 msgid "Select the first focus of the new hyperbola..."
 msgstr "Yeni hiperbolün ilk odağını seç…"
 
 #: objects/conic_types.cc:147
-#, kde-format
 msgid "Select the second focus of the new hyperbola..."
 msgstr "Yeni hiperbolün ikinci odağını seç…"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
-#, kde-format
 msgid "Construct a hyperbola through this point"
 msgstr "Bu noktadan geçen bir hiperbol oluştur"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
-#, kde-format
 msgid "Select a point for the new hyperbola to go through..."
 msgstr "Yeni hiperbolün üzerinden geçeceği noktayı seç…"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Construct a conic with this line as directrix"
 msgstr "Doğrultman olarak bu satırla bir koni oluştur"
 
 #: objects/conic_types.cc:179
-#, kde-format
 msgid "Select the directrix of the new conic..."
 msgstr "Yeni koniğin doğrultmanını seç…"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Construct a conic with this point as focus"
 msgstr "Bu noktayı odak kabul eden bir koni oluştur"
 
 #: objects/conic_types.cc:180
-#, kde-format
 msgid "Select the focus of the new conic..."
 msgstr "Yeni koniğin odağını seç…"
 
 #: objects/conic_types.cc:216
-#, kde-format
 msgid "Construct a parabola through this point"
 msgstr "Bu noktadan geçen bir parabol oluştur"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
-#, kde-format
 msgid "Select a point for the new parabola to go through..."
 msgstr "Yeni parabolün üzerinden geçeceği noktayı seç…"
 
 #: objects/conic_types.cc:257
-#, kde-format
 msgid "Construct a polar point wrt. this conic"
 msgstr "Bu koniğin bir kutup noktasını oluştur"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
-#, kde-format
 msgid "Select the conic wrt. which you want to construct a polar point..."
 msgstr "Oluşturmak istediğini bir kutup noktası için koniği seç…"
 
 #: objects/conic_types.cc:261
-#, kde-format
 msgid "Construct the polar point of this line"
 msgstr "Bu doğrunun kutup noktasını oluştur"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
-#, kde-format
 msgid "Select the line of which you want to construct the polar point..."
 msgstr "Kutup noktasını oluşturmak istediğiniz doğruyu seç…"
 
 #: objects/conic_types.cc:297
-#, kde-format
 msgid "Construct a polar line wrt. this conic"
 msgstr "Bu koniğin bir kutup noktasını oluştur"
 
 #: objects/conic_types.cc:301
-#, kde-format
 msgid "Construct the polar line of this point"
 msgstr "Bu noktanın kutup noktasını oluştur"
 
 #: objects/conic_types.cc:338
-#, kde-format
 msgid "Construct the directrix of this conic"
 msgstr "Bu koniğin doğrultmanını oluştur"
 
 #: objects/conic_types.cc:339
-#, kde-format
 msgid "Select the conic of which you want to construct the directrix..."
 msgstr "Doğrultmanını oluşturmak istediğiniz koniği seç…"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Construct a parabola with this directrix"
 msgstr "Bu doğrultmana sahip bir parabol oluştur"
 
 #: objects/conic_types.cc:417
-#, kde-format
 msgid "Select the directrix of the new parabola..."
 msgstr "Yeni parabolün doğrultmanını seç…"
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Construct a parabola with this focus"
 msgstr "Bu odağa sahip bir hiperbol çiz"
 
 #: objects/conic_types.cc:418
-#, kde-format
 msgid "Select the focus of the new parabola..."
 msgstr "Yeni parabolün odağını seç…"
 
 #: objects/conic_types.cc:453
-#, kde-format
 msgid "Construct the asymptotes of this conic"
 msgstr "Bu koniğin asimptotunu oluştur"
 
 #: objects/conic_types.cc:454
-#, kde-format
 msgid "Select the conic of which you want to construct the asymptotes..."
 msgstr "Asimptotunu oluşturmak istediğiniz koniği seç…"
 
 #: objects/conic_types.cc:489
-#, kde-format
 msgid "Construct the radical lines of this conic"
 msgstr "Bu koniğin kuvvet doğrularını oluştur"
 
 #: objects/conic_types.cc:492
-#, kde-format
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr "Kuvvet doğrusunu oluşturmak istediğiniz iki koniden ilkini seç…"
 
 #: objects/conic_types.cc:493
-#, kde-format
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
@@ -4397,7 +4296,6 @@ msgid "cubic curve"
 msgstr "kübik eğri"
 
 #: objects/cubic_imp.cc:348
-#, kde-format
 msgid "Select this cubic curve"
 msgstr "Bu kübik eğriyi seç"
 
@@ -4431,12 +4329,10 @@ msgid "Hide a Cubic Curve"
 msgstr "Bir Kübik Eğri Gizle"
 
 #: objects/cubic_type.cc:11
-#, kde-format
 msgid "Construct a cubic curve through this point"
 msgstr "Bu noktadan geçen bir kübik eğri oluştur"
 
 #: objects/cubic_type.cc:12
-#, kde-format
 msgid "Select a point for the new cubic to go through..."
 msgstr "Kübiğin üzerinden geçeceği noktayı seç…"
 
@@ -4445,7 +4341,6 @@ msgid "curve"
 msgstr "eğri"
 
 #: objects/curve_imp.cc:19
-#, kde-format
 msgid "Select this curve"
 msgstr "Bu eğriyi seç"
 
@@ -4485,87 +4380,70 @@ msgstr "Olası doğaüstü eğri"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
-#, kde-format
 msgid "Already computed intersection point"
 msgstr "Zaten işlem görmüş kesişim noktası"
 
 #: objects/intersection_types.cc:372
-#, kde-format
 msgid "Intersect with this cubic curve"
 msgstr "Bu kübik eğri ile kesiştir"
 
 #: objects/intersection_types.cc:526
-#, kde-format
 msgid "Intersect with this arc"
 msgstr "Bu yay ile kesiştir"
 
 #: objects/inversion_type.cc:19
-#, kde-format
 msgid "Invert with respect to this circle"
 msgstr "Bu çemberi açıyla ters çevir"
 
 #: objects/inversion_type.cc:20
-#, kde-format
 msgid "Select the circle we want to invert against..."
 msgstr "Tersine çevrilecek olan çemberi seç…"
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Compute the inversion of this object"
 msgstr "Bu nesnenin tersini hesapla"
 
 #: objects/inversion_type.cc:23
-#, kde-format
 msgid "Select the object to invert..."
 msgstr "Tersine çevrilecek nesneyi seç…"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Compute the inversion of this point"
 msgstr "Bu noktanın tersini hesapla"
 
 #: objects/inversion_type.cc:270
-#, kde-format
 msgid "Select the point to invert..."
 msgstr "Tersine çevrilecek noktayı seç…"
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Compute the inversion of this line"
 msgstr "Bu doğrunun tersini hesapla"
 
 #: objects/inversion_type.cc:329
-#, kde-format
 msgid "Select the line to invert..."
 msgstr "Tersine çevrilecek doğruyu seç…"
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Compute the inversion of this segment"
 msgstr "Bu bölütün tersini hesapla"
 
 #: objects/inversion_type.cc:381
-#, kde-format
 msgid "Select the segment to invert..."
 msgstr "Tersine çevrilecek bölütü seç…"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Compute the inversion of this circle"
 msgstr "Bu çemberin tersini hesapla"
 
 #: objects/inversion_type.cc:469
-#, kde-format
 msgid "Select the circle to invert..."
 msgstr "Tersine çevrilecek çemberi seç…"
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Compute the inversion of this arc"
 msgstr "Bu yayın tersini hesapla"
 
 #: objects/inversion_type.cc:533
-#, kde-format
 msgid "Select the arc to invert..."
 msgstr "Tersine çevrilecek yayı seç…"
 
@@ -4594,12 +4472,10 @@ msgid "line"
 msgstr "doğru"
 
 #: objects/line_imp.cc:545
-#, kde-format
 msgid "Select a Line"
 msgstr "Bir doğru seç"
 
 #: objects/line_imp.cc:561
-#, kde-format
 msgid "Select this line"
 msgstr "Bu doğruyu seç"
 
@@ -4637,7 +4513,6 @@ msgid "segment"
 msgstr "bölüt"
 
 #: objects/line_imp.cc:577
-#, kde-format
 msgid "Select this segment"
 msgstr "Bu bölütü seç"
 
@@ -4675,7 +4550,6 @@ msgid "half-line"
 msgstr "ışın"
 
 #: objects/line_imp.cc:593
-#, kde-format
 msgid "Select this half-line"
 msgstr "Bu ışını seç"
 
@@ -4709,102 +4583,82 @@ msgid "Hide a Half-Line"
 msgstr "Bir Işın Gizle"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Construct a segment starting at this point"
 msgstr "Bu noktadan başlayan bir bölüt yap"
 
 #: objects/line_type.cc:22
-#, kde-format
 msgid "Select the start point of the new segment..."
 msgstr "Yeni bölütün başlangıç noktasını seç…"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Construct a segment ending at this point"
 msgstr "Bu noktada biten bir bölüt oluştur"
 
 #: objects/line_type.cc:23
-#, kde-format
 msgid "Select the end point of the new segment..."
 msgstr "Yeni bölütün bitiş noktasını seç…"
 
 #: objects/line_type.cc:47
-#, kde-format
 msgid "Construct a line through this point"
 msgstr "Bu noktadan geçen bir doğru oluştur"
 
 #: objects/line_type.cc:50
-#, kde-format
 msgid "Select a point for the line to go through..."
 msgstr "Doğrunun üzerinden geçeceği noktayı seç…"
 
 #: objects/line_type.cc:51
-#, kde-format
 msgid "Select another point for the line to go through..."
 msgstr "Doğrunun üzerinden geçeceği diğer noktayı seç…"
 
 #: objects/line_type.cc:75
-#, kde-format
 msgid "Construct a half-line starting at this point"
 msgstr "Bu noktadan başlayan bir ışın oluştur"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
-#, kde-format
 msgid "Select the start point of the new half-line..."
 msgstr "Yeni ışının başlangıç noktasını seç…"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Construct a half-line through this point"
 msgstr "Bu noktadan geçen bir ışın oluştur"
 
 #: objects/line_type.cc:79
-#, kde-format
 msgid "Select a point for the half-line to go through..."
 msgstr "Işının üzerinden geçeceği noktayı seç…"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Construct the axis of this segment"
 msgstr "Bu bölütün eksenini çiz"
 
 #: objects/line_type.cc:104
-#, kde-format
 msgid "Select the segment of which you want to draw the axis..."
 msgstr "Eksenini çizmek istediğiniz bölütü seç…"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Construct a line parallel to this line"
 msgstr "Bu doğruya paralel bi doğru çiz"
 
 #: objects/line_type.cc:155
-#, kde-format
 msgid "Select a line parallel to the new line..."
 msgstr "Yeni doğruya paralel bir doğru seç…"
 
 #: objects/line_type.cc:156
-#, kde-format
 msgid "Construct the parallel line through this point"
 msgstr "Paralel doğruyu bu noktadan geçecek şekilde çiz"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
-#, kde-format
 msgid "Select a point for the new line to go through..."
 msgstr "Yeni doğrunun üzerinden geçeceği noktayı seç…"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Construct a line perpendicular to this line"
 msgstr "Bu doğruya dik bir doğru oluştur"
 
 #: objects/line_type.cc:182
-#, kde-format
 msgid "Select a line perpendicular to the new line..."
 msgstr "Yeni doğruya dik olan bir doğru seç…"
 
 #: objects/line_type.cc:183
-#, kde-format
 msgid "Construct a perpendicular line through this point"
 msgstr "Dik doğruyu bu noktadan geçecek şekilde çiz"
 
@@ -4829,22 +4683,18 @@ msgid "Resize Segment"
 msgstr "Bölütü Yeniden Boyutlandır"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Construct a line by this vector"
 msgstr "Bu vektörle bir doğru oluştur"
 
 #: objects/line_type.cc:255
-#, kde-format
 msgid "Select a vector in the direction of the new line..."
 msgstr "Yeni doğrunun yönünde bir vektör seç…"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Construct a half-line by this vector"
 msgstr "Bu vektörle bir ışın oluştur"
 
 #: objects/line_type.cc:292
-#, kde-format
 msgid "Select a vector in the direction of the new half-line..."
 msgstr "Yeni ışının yönünde bir vektör seç…"
 
@@ -4853,7 +4703,6 @@ msgid "locus"
 msgstr "konum"
 
 #: objects/locus_imp.cc:187
-#, kde-format
 msgid "Select this locus"
 msgstr "Bu konumu seç"
 
@@ -4894,8 +4743,7 @@ msgstr "Nesne Türü"
 msgid "Object"
 msgstr "Nesne"
 
-#: objects/object_imp.cc:280 objects/special_imptypes.cc:121
-#, kde-format
+#: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
 msgstr "Bu nesneyi seç"
 
@@ -4973,7 +4821,6 @@ msgid "angle"
 msgstr "açı"
 
 #: objects/other_imp.cc:599
-#, kde-format
 msgid "Select this angle"
 msgstr "Bu açıyı seç"
 
@@ -5011,7 +4858,6 @@ msgid "vector"
 msgstr "vektör"
 
 #: objects/other_imp.cc:614
-#, kde-format
 msgid "Select this vector"
 msgstr "Bu vektörü seç"
 
@@ -5049,7 +4895,6 @@ msgid "arc"
 msgstr "yay"
 
 #: objects/other_imp.cc:629
-#, kde-format
 msgid "Select this arc"
 msgstr "Bu yayı seç"
 
@@ -5099,7 +4944,6 @@ msgid "point"
 msgstr "nokta"
 
 #: objects/point_imp.cc:154
-#, kde-format
 msgid "Select this point"
 msgstr "Bu noktayı seç"
 
@@ -5133,38 +4977,32 @@ msgid "Hide a Point"
 msgstr "Bir Nokta Gizle"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
-#, kde-format
 msgid "Construct the midpoint of this point and another point"
 msgstr "Bu nokta ile başka bir noktanın orta noktasını oluştur"
 
 #: objects/point_type.cc:243
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr "Orta noktasını oluşturmak istediğiniz noktalardan ilkini seç…"
 
 #: objects/point_type.cc:247
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr "Orta noktasını oluşturmak istediğiniz noktalardan diğerini seç…"
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, kde-format
 msgid "Construct the golden ratio point of this point and another point"
 msgstr "Bu nokta ile başka bir noktanın altın oran noktasını oluştur"
 
 #: objects/point_type.cc:275
-#, kde-format
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr "Altın oran noktasını oluşturmak istediğiniz noktalardan ilkini seç…"
 
 #: objects/point_type.cc:279
-#, kde-format
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
@@ -5211,37 +5049,30 @@ msgid "Change Parameter of Constrained Point"
 msgstr "Zorunlu Noktanın Parametresini Değiştir"
 
 #: objects/point_type.cc:743
-#, kde-format
 msgid "Select the circle on which to transport a measure..."
 msgstr "Taşınacak bir ölçünün çemberini seç…"
 
 #: objects/point_type.cc:744
-#, kde-format
 msgid "Select a point on the circle..."
 msgstr "Çember üzerinde bir nokta seç…"
 
 #: objects/point_type.cc:745
-#, kde-format
 msgid "Select the segment to transport on the circle..."
 msgstr "Çember üstünde taşınacak bölütü seç…"
 
 #: objects/point_type.cc:794
-#, kde-format
 msgid "Select a number/length as x coordinate of the point..."
 msgstr "Noktanın x koordinatı için bir sayı/uzunluk seç…"
 
 #: objects/point_type.cc:795
-#, kde-format
 msgid "Select a number/length as y coordinate of the point..."
 msgstr "Noktanın y koordinatı için bir sayı/uzunluk seç…"
 
 #: objects/point_type.cc:820
-#, kde-format
 msgid "Select a point to project onto a line..."
 msgstr "Doğru üzerine çıkacak olan noktayı seç…"
 
 #: objects/point_type.cc:821
-#, kde-format
 msgid "Line where the projected point will lie..."
 msgstr "Üstüne çıkacak noktanın doğrusu…"
 
@@ -5291,7 +5122,6 @@ msgid "polygon"
 msgstr "çokgen"
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
-#, kde-format
 msgid "Select this polygon"
 msgstr "Bu çokgeni seç"
 
@@ -5329,7 +5159,6 @@ msgid "closed polygonal curve"
 msgstr "kapalı poligonal eğri"
 
 #: objects/polygon_imp.cc:646
-#, kde-format
 msgid "Select this closed polygonal curve"
 msgstr "Bu kapalı poligonal eğriyi seç"
 
@@ -5367,7 +5196,6 @@ msgid "polygonal curve"
 msgstr "poligonal eğri"
 
 #: objects/polygon_imp.cc:663
-#, kde-format
 msgid "Select this polygonal curve"
 msgstr "Bu poligonal eğriyi seç"
 
@@ -5405,7 +5233,6 @@ msgid "triangle"
 msgstr "üçgen"
 
 #: objects/polygon_imp.cc:680
-#, kde-format
 msgid "Select this triangle"
 msgstr "Bu üçgeni seç"
 
@@ -5443,7 +5270,6 @@ msgid "quadrilateral"
 msgstr "dörtgen"
 
 #: objects/polygon_imp.cc:697
-#, kde-format
 msgid "Select this quadrilateral"
 msgstr "Bu dörtgeni seç"
 
@@ -5477,105 +5303,85 @@ msgid "Hide a Quadrilateral"
 msgstr "Bir Dörtgen gizle"
 
 #: objects/polygon_type.cc:24
-#, kde-format
 msgid "Construct a triangle with this vertex"
 msgstr "Bu köşe ile bir üçgen oluştur"
 
 #: objects/polygon_type.cc:25
-#, kde-format
 msgid "Select a point to be a vertex of the new triangle..."
 msgstr "Yeni üçgenin köşesi olacak bir nokta seç…"
 
 #: objects/polygon_type.cc:470
-#, kde-format
 msgid "Intersect this polygon with a line"
 msgstr "Bu çokgeni bir doğruyla kesiştir"
 
 #: objects/polygon_type.cc:471
-#, kde-format
 msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "Bir doğruyla kesişimini istediğiniz çokgeni seç…"
 
 #: objects/polygon_type.cc:474
-#, kde-format
 msgid "Intersect this line with a polygon"
 msgstr "Bu doğruyu birçokgen ile kesiştir"
 
 #: objects/polygon_type.cc:475
-#, kde-format
 msgid "Select the line of which you want the intersection with a polygon..."
 msgstr "Bir çokgenle kesişimini istediğiniz doğruyu seç…"
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, kde-format
 msgid "Intersect this polygonal curve with a line"
 msgstr "Bu poligonal eğriyi bir doğruyla kesiştir"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, kde-format
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr "Bir doğruyla kesişimini istediğiniz poligonal eğriyi seç…"
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, kde-format
 msgid "Intersect this line with a polygonal curve"
 msgstr "Bu doğruyu bir poligonal eğriyle kesiştir"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, kde-format
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr "Bir çokgenle kesişimini istediğiniz doğruyu seç…"
 
 #: objects/polygon_type.cc:788
-#, kde-format
 msgid "Intersect this polygon with another polygon"
 msgstr "Bu çokgeni bir diğer çokgen ile kesiştir"
 
 #: objects/polygon_type.cc:789
-#, kde-format
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr "Bir çokgen ile kesişimini istediğiniz çokgeni seç…"
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Intersect with this polygon"
 msgstr "Bu çokgen ile kesiştir"
 
 #: objects/polygon_type.cc:791
-#, kde-format
 msgid "Select the second polygon for the intersection..."
 msgstr "Bu kesişim için ikinci çokgeni seç…"
 
 #: objects/polygon_type.cc:930
-#, kde-format
 msgid "Construct the vertices of this polygon"
 msgstr "Bu çokgenin köşelerini oluştur"
 
 #: objects/polygon_type.cc:931
-#, kde-format
 msgid "Select the polygon of which you want to construct the vertices..."
 msgstr "Köşelerini oluşturmak istediğiniz çokgeni seç…"
 
 #: objects/polygon_type.cc:974
-#, kde-format
 msgid "Construct the sides of this polygon"
 msgstr "Bu çokgenin kenarlarını oluştur"
 
 #: objects/polygon_type.cc:975
-#, kde-format
 msgid "Select the polygon of which you want to construct the sides..."
 msgstr "Kenarlarını oluşturmak istediğiniz çokgeni seç…"
 
 #: objects/polygon_type.cc:1022
-#, kde-format
 msgid "Construct the convex hull of this polygon"
 msgstr "Bu çokgenin dışbükey gövdesini oluştur"
 
 #: objects/polygon_type.cc:1023
-#, kde-format
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr "Dışbükey gövdesini oluşturmak istediğiniz çokgeni seç…"
 
@@ -5585,27 +5391,22 @@ msgid "Project this point onto the circle"
 msgstr "Bu noktayı çembere yansıt"
 
 #: objects/tangent_type.cc:23
-#, kde-format
 msgid "Select the point for the tangent to go through..."
 msgstr "Teğetin üzerinden geçeceği noktayı seç…"
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Is this line parallel?"
 msgstr "Bu çizgi paralel mi?"
 
 #: objects/tests_type.cc:18
-#, kde-format
 msgid "Select the first of the two possibly parallel lines..."
 msgstr "Olası iki paralel doğrudan ilkini seç…"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Parallel to this line?"
 msgstr "Bu doğruya paralel mi?"
 
 #: objects/tests_type.cc:19
-#, kde-format
 msgid "Select the other of the two possibly parallel lines..."
 msgstr "Olası iki paralel doğrudan diğerini seç…"
 
@@ -5620,22 +5421,18 @@ msgid "These lines are not parallel."
 msgstr "Bu doğrular paralel değildir."
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Is this line orthogonal?"
 msgstr "Bu doğru dik mi?"
 
 #: objects/tests_type.cc:57
-#, kde-format
 msgid "Select the first of the two possibly orthogonal lines..."
 msgstr "Olası iki dik doğrunun ilkini seç…"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Orthogonal to this line?"
 msgstr "Bu çizgiler birbirine dik midir?"
 
 #: objects/tests_type.cc:58
-#, kde-format
 msgid "Select the other of the two possibly orthogonal lines..."
 msgstr "Olası iki dik doğrunun diğerini seç…"
 
@@ -5650,32 +5447,26 @@ msgid "These lines are not orthogonal."
 msgstr "Bu çizgiler birbirine dik değildir."
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Check collinearity of this point"
 msgstr "Bu noktanın doğrudaşlığını kontrol et"
 
 #: objects/tests_type.cc:96
-#, kde-format
 msgid "Select the first of the three possibly collinear points..."
 msgstr "Olası üç doğrudaş noktadan ilkini seç…"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "and this second point"
 msgstr "ve bu ikinci nokta"
 
 #: objects/tests_type.cc:97
-#, kde-format
 msgid "Select the second of the three possibly collinear points..."
 msgstr "Olası üç doğrudaş noktadan ikincisini seç…"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "with this third point"
 msgstr "bu üçüncü nokta ile"
 
 #: objects/tests_type.cc:98
-#, kde-format
 msgid "Select the last of the three possibly collinear points..."
 msgstr "Olası üç doğrudaş noktadan sonuncusunu seç…"
 
@@ -5690,22 +5481,18 @@ msgid "These points are not collinear."
 msgstr "Bu noktalar doğrudaş değiller."
 
 #: objects/tests_type.cc:137
-#, kde-format
 msgid "Check whether this point is on a curve"
 msgstr "Bu noktanın eğrinin üzerinde olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
-#, kde-format
 msgid "Select the point you want to test..."
 msgstr "Test etmek istediğiniz noktayı seç…"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Check whether the point is on this curve"
 msgstr "Noktanın bu eğri üzerinde olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:138
-#, kde-format
 msgid "Select the curve that the point might be on..."
 msgstr "Noktanın üstünde olabileceği eğriyi seç…"
 
@@ -5720,17 +5507,14 @@ msgid "This curve does not contain the point."
 msgstr "Bu eğri noktayı içermiyor."
 
 #: objects/tests_type.cc:180
-#, kde-format
 msgid "Check whether this point is in a polygon"
 msgstr "Bu noktanın birçokgen üzerinde olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Check whether the point is in this polygon"
 msgstr "Noktanın bu çokgen üzerinde olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:181
-#, kde-format
 msgid "Select the polygon that the point might be in..."
 msgstr "Noktanın üstünde olabileceği çokgeni seç…"
 
@@ -5745,12 +5529,10 @@ msgid "This polygon does not contain the point."
 msgstr "Bu çokgen noktayı içermiyor."
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Check whether this polygon is convex"
 msgstr "Bu çokgenin dışbükey olup olmadığını test et"
 
 #: objects/tests_type.cc:223
-#, kde-format
 msgid "Select the polygon you want to test for convexity..."
 msgstr "Dışbükeyliğini test etmek istediğiniz çokgeni seç…"
 
@@ -5765,33 +5547,27 @@ msgid "This polygon is not convex."
 msgstr "Bu çokgen dışbükey değil."
 
 #: objects/tests_type.cc:265
-#, kde-format
 msgid "Check if this point has the same distance"
 msgstr "Bu noktanın aynı uzaklıkta olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:266
-#, kde-format
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr "Diğer iki noktadan eşit uzaklıkta olabilecek noktayı seç…"
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "from this point"
 msgstr "bu noktadan"
 
 #: objects/tests_type.cc:268
-#, kde-format
 msgid "Select the first of the two other points..."
 msgstr "Diğer iki noktadan ilkini seç…"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "and from this second point"
 msgstr "bu ikinci noktaya"
 
 #: objects/tests_type.cc:269
-#, kde-format
 msgid "Select the other of the two other points..."
 msgstr "Diğer iki noktadan ikinicisini seç…"
 
@@ -5806,22 +5582,18 @@ msgid "The two distances are not the same."
 msgstr "İki uzaklık aynı değil."
 
 #: objects/tests_type.cc:308
-#, kde-format
 msgid "Check whether this vector is equal to another vector"
 msgstr "Bu vektörün başka bir vektöre eşit olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:309
-#, kde-format
 msgid "Select the first of the two possibly equal vectors..."
 msgstr "Olası iki eşit vektörden ilkini seç…"
 
 #: objects/tests_type.cc:312
-#, kde-format
 msgid "Check whether this vector is equal to the other vector"
 msgstr "Bu vektörün diğer vektöre eşit olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:313
-#, kde-format
 msgid "Select the other of the two possibly equal vectors..."
 msgstr "Olası iki eşit vektörden diğerini seç…"
 
@@ -5836,12 +5608,10 @@ msgid "The two vectors are not the same."
 msgstr "İki vektör aynı değil."
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Check whether this object exists"
 msgstr "Bu nesnenin mevcut olup olmadığını kontrol et"
 
 #: objects/tests_type.cc:352
-#, kde-format
 msgid "Select the object for the existence check..."
 msgstr "Mevcut olma kontrolü için nesne seç…"
 
@@ -5864,7 +5634,6 @@ msgid "label"
 msgstr "etiket"
 
 #: objects/text_imp.cc:138
-#, kde-format
 msgid "Select this label"
 msgstr "Bu etiketi seç"
 
@@ -5902,7 +5671,6 @@ msgid "numeric label"
 msgstr "rakamsal etiket"
 
 #: objects/text_imp.cc:184
-#, kde-format
 msgid "Select this numeric label"
 msgstr "Bu rakamsal etiketi seç"
 
@@ -5944,7 +5712,6 @@ msgid "boolean label"
 msgstr "mantıksal değer etiketi"
 
 #: objects/text_imp.cc:278
-#, kde-format
 msgid "Select this boolean label"
 msgstr "Bu mantıksal değer etiketini seç"
 
@@ -6023,543 +5790,448 @@ msgid "Change Displayed Value"
 msgstr "Gösterilen Değeri Değiştir"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Translate this object"
 msgstr "Bu nesneyi dönüştür"
 
 #: objects/transform_types.cc:21
-#, kde-format
 msgid "Select the object to translate..."
 msgstr "Çevirmek için nesneyi seç…"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Translate by this vector"
 msgstr "Bu vektöre göre dönüştür"
 
 #: objects/transform_types.cc:22
-#, kde-format
 msgid "Select the vector to translate by..."
 msgstr "Çevirmek için vektörü seç…"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Reflect this object"
 msgstr "Bu nesneyi yansıt"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
-#, kde-format
 msgid "Select the object to reflect..."
 msgstr "Yansıtılacak nesneyi seç…"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Reflect in this point"
 msgstr "Bu noktanın etrafında yansıt"
 
 #: objects/transform_types.cc:54
-#, kde-format
 msgid "Select the point to reflect in..."
 msgstr "Yansıtılacak noktayı seç…"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Reflect in this line"
 msgstr "Bu doğruya göre yansıt"
 
 #: objects/transform_types.cc:86
-#, kde-format
 msgid "Select the line to reflect in..."
 msgstr "Kendine göre yansıtılacak doğruyu seç…"
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Rotate this object"
 msgstr "Bu nesneyi çevir"
 
 #: objects/transform_types.cc:117
-#, kde-format
 msgid "Select the object to rotate..."
 msgstr "Döndürülecek nesneyi seç…"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Rotate around this point"
 msgstr "Bu nokta çevresinde döndür"
 
 #: objects/transform_types.cc:118
-#, kde-format
 msgid "Select the center point of the rotation..."
 msgstr "Döndürmenin merkez noktasını seç…"
 
+#. i18n( "Rotate by this angle" ),
+#. kli18n( "Select the angle of the rotation..." ), false }
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Rotate by this angle"
 msgstr "Bu açıya göre çevir"
 
 #: objects/transform_types.cc:121
-#, kde-format
 msgid "Select the angle of the rotation..."
 msgstr "Döndürmenin açısını seç…"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Scale this object"
 msgstr "Bu nesneyi ölçeklendir"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
-#, kde-format
 msgid "Select the object to scale..."
 msgstr "Ölçeklendirilecek nesneyi seç…"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Scale with this center"
 msgstr "Bu merkez ile ölçeklendir"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
-#, kde-format
 msgid "Select the center point of the scaling..."
 msgstr "Ölçeklendirmenin merkez noktasını seç…"
 
+#. i18n( "Scale by the length of this segment" ),
+#. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
+#. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
+#. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid "Scale by this length"
 msgstr "Bu uzunluğa göre ölçekle"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, kde-format
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr "Ölçeklendirmenin bir etmeni olacak bir uzunluk veya bölüt seç…"
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, kde-format
 msgid "Scale this length..."
 msgstr "Bu uzunluğu ölçekle…"
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, kde-format
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr "Ölçeklendirmenin etmeni olacak iki uzunluk oranının ilkini seç…"
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, kde-format
 msgid "...to this other length"
 msgstr "…diğer uzunluğa"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, kde-format
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr "Ölçeklendirmenin etmeni olacak iki uzunluk oranının ikincisini seç…"
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
-#, kde-format
 msgid "Select the object to scale"
 msgstr "Ölçeklendirilecek nesneyi seçin"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Scale over this line"
 msgstr "Bu doğru üzerinde ölçeklendir"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
-#, kde-format
 msgid "Select the line to scale over"
 msgstr "Üzerinede ölçeklendirilecek doğruyu seç"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Projectively rotate this object"
 msgstr "Bu nesneyi yansıtmalı olarak döndür"
 
 #: objects/transform_types.cc:335
-#, kde-format
 msgid "Select the object to rotate projectively"
 msgstr "Yansıtmalı olarak döndürülecek olan nesneyi seçin"
 
 #: objects/transform_types.cc:337
-#, kde-format
 msgid "Projectively rotate with this half-line"
 msgstr "Bu ışını yansıtmalı olarak döndür"
 
 #: objects/transform_types.cc:338
-#, kde-format
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr "Nesneye eklemek istediğiniz yansıtmalı döndürmenin ışınını seç"
 
 #: objects/transform_types.cc:341
-#, kde-format
 msgid "Projectively rotate by this angle"
 msgstr "Açıya göre yansıtmalı olarak döndür"
 
 #: objects/transform_types.cc:342
-#, kde-format
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
 msgstr "Nesneye eklemek istediğiniz yansıtmalı döndürmenin açısını seç"
 
 #: objects/transform_types.cc:376
-#, kde-format
 msgid "Harmonic Homology of this object"
 msgstr "Bu nesnenin Harmonik Homolojisi"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
-#, kde-format
 msgid "Select the object to transform..."
 msgstr "Dönüştürülecek nesneyi seç…"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Harmonic Homology with this center"
 msgstr "Merkez ile Harmonik Homoloji"
 
 #: objects/transform_types.cc:377
-#, kde-format
 msgid "Select the center point of the harmonic homology..."
 msgstr "Harmonik homolojinin merkez noktasını seç…"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Harmonic Homology with this axis"
 msgstr "Bu eksenle Harmonik Homoloji"
 
 #: objects/transform_types.cc:378
-#, kde-format
 msgid "Select the axis of the harmonic homology..."
 msgstr "Harmonik homolojinin eksenini seç…"
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
-#, kde-format
 msgid "Generic affinity of this object"
 msgstr "Bu nesnenin genel benzerliği"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Map this triangle"
 msgstr "Bu üçgeni haritala"
 
 #: objects/transform_types.cc:409
-#, kde-format
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr "Verilen üçgen üzerine dönüştürülecek olan üçgeni seç…"
 
 #: objects/transform_types.cc:411
-#, kde-format
 msgid "onto this other triangle"
 msgstr "bu diğer üçgen üzerine"
 
 #: objects/transform_types.cc:412
-#, kde-format
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
 msgstr "İlk üçgenin benzerliğinden olan görsel için üçgen seç…"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid "First of 3 starting points"
 msgstr "3 başlangıç noktasının ilki"
 
 #: objects/transform_types.cc:450
-#, kde-format
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
 msgstr "Genel benzerliğin üç başlangıç noktasının ilkini seç…"
 
 #: objects/transform_types.cc:452
-#, kde-format
 msgid "Second of 3 starting points"
 msgstr "3 başlangıç noktasının ikincisi"
 
 #: objects/transform_types.cc:453
-#, kde-format
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
 msgstr "Genel benzerliğin üç başlangıç noktasının ikincisini seç…"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid "Third of 3 starting points"
 msgstr "3 başlangıç noktasının üçüncüsü"
 
 #: objects/transform_types.cc:455
-#, kde-format
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
 msgstr "Genel benzerliğin üç başlangıç noktasının üçüncüsünü seç…"
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
-#, kde-format
 msgid "Transformed position of first point"
 msgstr "İlk noktanın dönüştürülmüş konumu"
 
 #: objects/transform_types.cc:458
-#, kde-format
 msgid "Select the first of the three end points of the generic affinity..."
 msgstr "Genel benzerliğin üç son noktasının ilkini seç…"
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
-#, kde-format
 msgid "Transformed position of second point"
 msgstr "İkinci noktanın dönüştürülmüş konumu"
 
 #: objects/transform_types.cc:462
-#, kde-format
 msgid "Select the second of the three end points of the generic affinity..."
 msgstr "Genel benzerliğin üç son noktasının ikincisini seç…"
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
-#, kde-format
 msgid "Transformed position of third point"
 msgstr "Üçüncü noktanın dönüştürülmüş konumu"
 
 #: objects/transform_types.cc:466
-#, kde-format
 msgid "Select the third of the three end points of the generic affinity..."
 msgstr "Genel benzerliğin üç son noktasının üçüncüsünü seç…"
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
-#, kde-format
 msgid "Generic projective transformation of this object"
 msgstr "Bu nesnenin genel yansıntma dönüştürmesi"
 
 #: objects/transform_types.cc:510
-#, kde-format
 msgid "Map this quadrilateral"
 msgstr "Bu dörtgeni eşle"
 
 #: objects/transform_types.cc:511
-#, kde-format
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
 msgstr "Verilen dörtgene dönüştürülecek olan dörtgeni seç…"
 
 #: objects/transform_types.cc:514
-#, kde-format
 msgid "onto this other quadrilateral"
 msgstr "diğer bu dikdörtgene"
 
 #: objects/transform_types.cc:515
-#, kde-format
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr "İlk dörtgenden dönüştürülerek oluşturulacak görsel için dörtgen seç…"
 
 #: objects/transform_types.cc:554
-#, kde-format
 msgid "First of 4 starting points"
 msgstr "4 başlangıç noktasının ilki"
 
 #: objects/transform_types.cc:555
-#, kde-format
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört başlangıç noktasının ilkini seç…"
 
 #: objects/transform_types.cc:558
-#, kde-format
 msgid "Second of 4 starting points"
 msgstr "4 başlangıç noktasının ikincisi"
 
 #: objects/transform_types.cc:559
-#, kde-format
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört başlangıç noktasının ikincisini seç…"
 
 #: objects/transform_types.cc:562
-#, kde-format
 msgid "Third of 4 starting points"
 msgstr "4 başlangıç noktasının üçüncüsü"
 
 #: objects/transform_types.cc:563
-#, kde-format
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört başlangıç noktasının üçüncüsünü seç…"
 
 #: objects/transform_types.cc:566
-#, kde-format
 msgid "Fourth of 4 starting points"
 msgstr "4 başlangıç noktasının dördüncüsü"
 
 #: objects/transform_types.cc:567
-#, kde-format
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört başlangıç noktasının dördüncüsünü seç…"
 
 #: objects/transform_types.cc:571
-#, kde-format
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört bitiş noktasından ilkini seç…"
 
 #: objects/transform_types.cc:575
-#, kde-format
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört bitiş noktasından ikincisini seç…"
 
 #: objects/transform_types.cc:579
-#, kde-format
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört bitiş noktasından üçüncüsünü seç…"
 
 #: objects/transform_types.cc:582
-#, kde-format
 msgid "Transformed position of fourth point"
 msgstr "Dördüncü noktanın dönüştürülmüş konumu"
 
 #: objects/transform_types.cc:583
-#, kde-format
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr "Genel yansıtmanın dört bitiş noktasından dördüncüsünü seç…"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Cast the shadow of this object"
 msgstr "Bu nesnenin gölgesini çevir"
 
 #: objects/transform_types.cc:624
-#, kde-format
 msgid "Select the object of which you want to construct the shadow..."
 msgstr "Gölgesini oluşturmak istediğiniz nesneyi seç…"
 
 #: objects/transform_types.cc:626
-#, kde-format
 msgid "Cast a shadow from this light source"
 msgstr "Bu ışık kaynağından bir gölge çevir"
 
 #: objects/transform_types.cc:627
-#, kde-format
 msgid "Select the light source from which the shadow should originate..."
 msgstr "Kendisinden oluşacak olan gölgeden bir ışık kaynağı seç…"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Cast a shadow on the horizon represented by this line"
 msgstr "Bu doğru tarafından ufuk olacak bir gölge çevir"
 
 #: objects/transform_types.cc:629
-#, kde-format
 msgid "Select the horizon for the shadow..."
 msgstr "Gölge için ufku seç…"
 
 #: objects/transform_types.cc:809
-#, kde-format
 msgid "Transform this object"
 msgstr "Bu nesneyi dönüştür"
 
 #: objects/transform_types.cc:810
-#, kde-format
 msgid "Transform using this transformation"
 msgstr "Bu dönüşümü kullanarak dönüştür"
 
 #: objects/transform_types.cc:883
-#, kde-format
 msgid "Apply a similitude to this object"
 msgstr "Bu nesneye bir benzeşim ekle"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Apply a similitude with this center"
 msgstr "Bu merkeze bir benzeşim ekle"
 
 #: objects/transform_types.cc:884
-#, kde-format
 msgid "Select the center for the similitude..."
 msgstr "Benzeşim için bir merkez seç…"
 
 #: objects/transform_types.cc:886
-#, kde-format
 msgid "Apply a similitude mapping this point onto another point"
 msgstr "Bu noktadan diğer bir noktaya benzeşim eşleşme ekleyin"
 
 #: objects/transform_types.cc:887
-#, kde-format
 msgid "Select the point which the similitude should map onto another point..."
 msgstr "Diğer bir noktaya eşleşecek olan benzeşim için bir nokta seç…"
 
 #: objects/transform_types.cc:890
-#, kde-format
 msgid "Apply a similitude mapping a point onto this point"
 msgstr "Bu noktaya benzeşim eşleşme noktası ekleyin"
 
 #: objects/transform_types.cc:891
-#, kde-format
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr "İlk noktayı benzerliğinin olacağı noktayı seç…"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Construct a vector from this point"
 msgstr "Bu noktadan itibaren bir vektör oluştur"
 
 #: objects/vector_type.cc:12
-#, kde-format
 msgid "Select the start point of the new vector..."
 msgstr "Yeni vektörün başlangıç noktasını seç…"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Construct a vector to this point"
 msgstr "Bu noktaya göre bir vektör çiz"
 
 #: objects/vector_type.cc:13
-#, kde-format
 msgid "Select the end point of the new vector..."
 msgstr "Yeni vektörün bitiş noktasını seç…"
 
 #: objects/vector_type.cc:44
-#, kde-format
 msgid "Construct the vector sum of this vector and another one."
 msgstr "Bu vektör ile diğer vektör toplamını oluştur."
 
 #: objects/vector_type.cc:45
-#, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
 msgstr "Toplamını oluşturmak istediğiniz vektörlerden ilkini seç…"
 
 #: objects/vector_type.cc:48
-#, kde-format
 msgid "Construct the vector sum of this vector and the other one."
 msgstr "Bu vektör ile diğer vektör toplamını oluştur."
 
 #: objects/vector_type.cc:49
-#, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
 msgstr "Toplamını oluşturmak istediğiniz vektörlerden ikincisini seç…"
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Construct the vector sum starting at this point."
 msgstr "Bu noktadan başlayan bir vektör toplamı oluştur."
 
 #: objects/vector_type.cc:51
-#, kde-format
 msgid "Select the point to construct the sum vector in..."
 msgstr "Vektör toplamının oluşacağı noktayı seç…"
 
-#: scripting/newscriptwizard.cc:46
+#: scripting/newscriptwizard.cc:45
 #, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "Yeni Betik"
 
-#: scripting/newscriptwizard.cc:57
+#: scripting/newscriptwizard.cc:56
 #, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
@@ -6568,7 +6240,7 @@ msgstr ""
 "Kig penceresinde değişken nesnelerini seçin\n"
 "(varsa) ve ‘Sonraki’ düğmesine basın."
 
-#: scripting/newscriptwizard.cc:63
+#: scripting/newscriptwizard.cc:62
 #, kde-format
 msgid "Enter Code"
 msgstr "Kodu Gir"
@@ -6592,7 +6264,7 @@ msgctxt ""
 msgid "arg%1"
 msgstr "arg%1"
 
-#: scripting/script_mode.cc:181
+#: scripting/script_mode.cc:182
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6601,7 +6273,7 @@ msgstr ""
 "Betiğiniz çalıştırılırken, Python yorumlayıcısı bir hata yakaladı. Lütfen "
 "betiği düzeltin ve Bitir düğmesine yeniden tıklayın."
 
-#: scripting/script_mode.cc:183 scripting/script_mode.cc:317
+#: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
 msgid ""
 "The Python Interpreter generated the following error output:\n"
@@ -6610,7 +6282,7 @@ msgstr ""
 "Python yorumlayıcısı şu hata çıktısını oluşturdu:\n"
 "%1"
 
-#: scripting/script_mode.cc:186
+#: scripting/script_mode.cc:187
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
@@ -6621,18 +6293,18 @@ msgstr ""
 "betik geçerli bir nesne oluşturamıyor.Lütfen betikteki hatayı düzeltin ve "
 "Bitir düğmesine yeniden tıklayın."
 
-#: scripting/script_mode.cc:285
+#: scripting/script_mode.cc:286
 #, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "Betiği Düzenle"
 
-#: scripting/script_mode.cc:307
+#: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
 msgstr "Python Betiğini Düzenle"
 
-#: scripting/script_mode.cc:315
+#: scripting/script_mode.cc:316
 #, kde-format
 msgid ""
 "The Python interpreter caught an error during the execution of your script. "
@@ -6641,7 +6313,7 @@ msgstr ""
 "Betiğiniz çalıştırılırken, Python yorumlayıcısı bir hata yakaladı. Lütfen "
 "betiği düzeltin."
 
-#: scripting/script_mode.cc:320
+#: scripting/script_mode.cc:321
 #, kde-format
 msgid ""
 "There seems to be an error in your script. The Python interpreter reported "
