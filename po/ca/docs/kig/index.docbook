@@ -675,9 +675,7 @@ rotation.</para>
 <title
 >Etiquetes de text</title>
 <para
->El &kig; permet que afegiu etiquetes de text a una construcció. Això és molt útil per a afegir noms, explicacions o altre text a les construccions. El &kig;, a més, pot mostrar informació variable pertanyent als objectes (és a dir, <quote
->propietats</quote
->). </para>
+>El &kig; permet que afegiu etiquetes de text a una construcció. Això és molt útil per a afegir noms, explicacions o altre text a les construccions. El &kig;, a més, pot mostrar informació variable pertanyent als objectes (és a dir, «propietats»). </para>
 <para
 >Per a començar a construir una etiqueta de text n'hi ha prou amb prémer el botó &nbsp;<inlinemediaobject
 > <imageobject
@@ -695,9 +693,7 @@ rotation.</para>
 ></menuchoice
 >. </para>
 <para
->Després, podreu escollir un lloc per a l'etiqueta. Podeu escollir una posició aleatòria a la pantalla o bé <quote
->adjuntar</quote
-> l'etiqueta a un objecte. </para>
+>Després, podreu escollir un lloc per a l'etiqueta. Podeu escollir una posició aleatòria a la pantalla o bé «adjuntar» l'etiqueta a un objecte. </para>
 <screenshot>
 <screeninfo
 >Adjuntant l'etiqueta a un cercle...</screeninfo>
@@ -729,9 +725,7 @@ rotation.</para>
 </mediaobject>
 </screenshot>
 <para
->L'exemple anterior ha estat senzill i només de text. Malgrat això, també és possible mostrar informació variable dels objectes (&pex;, podeu construir una etiqueta amb el text <quote
->Aquest segment mesura %1 unitats de longitud.</quote
-> on <token
+>L'exemple anterior ha estat senzill i només de text. Malgrat això, també és possible mostrar informació variable dels objectes (&pex;, podeu construir una etiqueta amb el text «Aquest segment mesura %1 unitats de longitud.» on <token
 >%1</token
 > serà substituït dinàmicament amb la longitud del segment especificat). </para>
 <para
@@ -775,9 +769,7 @@ format="PNG"/>
 <title
 >Llocs geomètrics</title>
 <para
->El &kig; permet l'ús de llocs geomètrics. Un lloc geomètric es defineix matemàticament com el conjunt de tots els punts o rectes que compleixen o venen determinats per condicions específiques, com en el cas d'un cercle que és el <quote
->lloc geomètric dels punts que equidisten d'un punt donat</quote
->. Veiem un exemple de com utilitzar els llocs geomètrics amb el &kig;: </para>
+>El &kig; permet l'ús de llocs geomètrics. Un lloc geomètric es defineix matemàticament com el conjunt de tots els punts o rectes que compleixen o venen determinats per condicions específiques, com en el cas d'un cercle que és el «lloc geomètric dels punts que equidisten d'un punt donat». Veiem un exemple de com utilitzar els llocs geomètrics amb el &kig;: </para>
 <para
 >Considereu la següent construcció geomètrica. Dibuixem un cercle i un punt que només podeu moure al llarg de la seva circumferència (construïu aquest punt posicionant el cursor sobre un cercle, i fent clic amb el &BMR;. Si aleshores proveu de moure aquest punt veureu que només el podreu moure seguint el cercle). Després dibuixem un segment que vagi des d'aquest punt cap al centre del cercle i el seu punt mitjà. </para>
 <screenshot>
@@ -830,9 +822,7 @@ format="PNG"/>
 <para
 >La creació de scripts en Python en el &kig; bàsicament us permetrà crear els vostres propis objectes a partir d'altres objectes pare. Per exemple, si sou un professor de matemàtiques, i disposeu d'un mètode atractiu de calcular algun punt interessant d'una cònica, en lloc d'embolicar-vos amb construccions complexes i macros, podríeu escriure en el codi Python com s'ha de calcular el punt i llavors el &kig; el mostrarà. </para>
 <para
->Suposem que no esteu al cas de la integració en el &kig; del tipus <quote
->Punt mitjà</quote
->, i que voleu utilitzar el punt mitjà de dos punts donats. Aleshores cal que feu clic al botó &nbsp;<inlinemediaobject
+>Suposem que no esteu al cas de la integració en el &kig; del tipus «Punt mitjà», i que voleu utilitzar el punt mitjà de dos punts donats. Aleshores cal que feu clic al botó &nbsp;<inlinemediaobject
 > <imageobject
 > <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
 > </inlinemediaobject
