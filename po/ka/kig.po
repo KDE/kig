@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-06-05 10:13+0200\n"
+"PO-Revision-Date: 2025-06-06 05:54+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -94,11 +94,11 @@ msgstr "წრეწირის შეხება მრუდის წერ
 
 #, kde-format
 msgid "Osculating circle of this curve"
-msgstr ""
+msgstr "ამ მრუდის მხები წრეწირი"
 
 #, kde-format
 msgid "Osculating circle at this point"
-msgstr ""
+msgstr "ამ წერტილის მხები წრეწირი"
 
 #, kde-format
 msgid "Select the point..."
@@ -110,7 +110,7 @@ msgstr "კვადრატი"
 
 #, kde-format
 msgid "Square with two given adjacent vertices"
-msgstr ""
+msgstr "კვადრატი ახლომდებარე წვეროებით"
 
 #, kde-format
 msgid "Vector Difference"
@@ -118,35 +118,35 @@ msgstr "ვექტორის სხვაობა"
 
 #, kde-format
 msgid "Construct the vector difference of two vectors."
-msgstr ""
+msgstr "ორი ვექტორის სხვაობის აგება."
 
 #, kde-format
 msgid "Construct the vector difference of this vector and another one."
-msgstr ""
+msgstr "ამ და სხვა ვექტორების სხვაობის აგება."
 
 #, kde-format
 msgid "Construct the vector difference of the other vector and this one."
-msgstr ""
+msgstr "სხვა და ამ ვექტორების სხვაობის აგება."
 
 #, kde-format
 msgid "Construct the vector difference starting at this point."
-msgstr ""
+msgstr "ამ წერტილიდან დაწყებული ვექტორების სხვაობის აგება."
 
 #, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the "
 "difference..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი ვექტორიდან, რომლების სხვაობის აგებაც გნებავთ..."
 
 #, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the "
 "difference..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი ვექტორიდან, რომლების სხვაობის აგებაც გნებავთ..."
 
 #, kde-format
 msgid "Select the point to construct the difference vector in..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი ვექტორების სხვაობის ასაგებად..."
 
 #: filters/asyexporter.cc:29
 #, kde-format
@@ -509,6 +509,9 @@ msgid ""
 "support.\n"
 "A standard coordinate system will be used instead."
 msgstr ""
+"ამ Kig-ის ფაილს აქვს კოორდინატების სისტემა, რომლის მხარდაჭერაც ამ Kig-ის "
+"ვერსიას არ გაჩნია.\n"
+"გამოყენებული იქნება სტანდარტული კოორდინატების სისტემა."
 
 #: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
@@ -518,6 +521,9 @@ msgid ""
 "support.Perhaps you have compiled Kig without support for this object type,"
 "or perhaps you are using an older Kig version."
 msgstr ""
+"ეს Kig-ის ფაილი იყენებს ობიექტს ტიპით \"%1\", რომლის მხარდაჭერაც ამ Kig-ის "
+"ვერსიას არ გააჩნია. ალბათ Kig-ის აგებისას ეს ობიექტის ტიპი არ ჩაგირთავთ, ან "
+"იყენებთ Kig-ის უფრო ძველ ვერსიას."
 
 #: filters/native-filter.cc:358
 #, kde-format
@@ -526,6 +532,9 @@ msgid ""
 "save the construction with a different name and check that it works as "
 "expected."
 msgstr ""
+"ეს Kig-ის ფაილი იყენებს ობიექტის ტიპს \"%1\", რომელიც მოძველებულია. შეინახეთ "
+"კონსტრუქცია სხვა სახელით და შეამოწმეთ, თუ მუშაობს ისე, როგორც მოსალოდნელი "
+"იყო."
 
 #: filters/svgexporter.cc:30
 #, kde-format
@@ -624,6 +633,8 @@ msgid ""
 "Did a lot of important work all around Kig, including, but not limited to "
 "conics, cubics, transformations and property tests support."
 msgstr ""
+"ბევრი მნიშვნელოვანი რამე Kig-ის გარშემო კონუსების, კუბების და გადაყვანის "
+"შემოწმებების მხარდაჭერის ჩათვლით და ა.შ."
 
 #: kig/aboutdata.h:33
 #, kde-format
@@ -636,6 +647,8 @@ msgid ""
 "Former maintainer, Dr. Geo import filter, point and line styles, Italian "
 "translation, miscellaneous stuff here and there."
 msgstr ""
+"ყოფილი წამყვანი პროგრამისტი, Dr. Geo-ის შემოტანის ფილტრი, წერტილის და ხაზის "
+"სტილები, იტალიური თარგმანი, სხვადასხვა ფუნქციები აქაიქ."
 
 #: kig/aboutdata.h:39
 #, kde-format
@@ -1010,7 +1023,7 @@ msgstr "Kig ფორმატში შენახვა"
 #: kig/kig_part.cpp:702
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
-msgstr ""
+msgstr "Kig-ის დოკუმენტები (*.kig);;Kig-ის შეკუმშული დოკუმენტები (*.kigz)"
 
 #: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
@@ -1060,7 +1073,7 @@ msgstr "თავიდან დაცენტრება"
 #: kig/kig_view.cpp:496
 #, kde-format
 msgid "Select the rectangle that should be shown."
-msgstr ""
+msgstr "აირჩიეთ მართკუთხედი, რომელიც გნებავთ, ნაჩვენები იყოს."
 
 #: kig/kig_view.cpp:501 kig/kig_view.cpp:551
 #, kde-format
@@ -1309,7 +1322,7 @@ msgstr "წერტილი რიცხვითი ჭდეებით"
 #: misc/builtin_stuff.cc:44
 #, kde-format
 msgid "A point whose coordinates are given by two numeric labels"
-msgstr ""
+msgstr "წერტილი, რომლის კოორდინატებიც ორი რიცხვითაა მითითებული"
 
 #: misc/builtin_stuff.cc:50
 #, kde-format
@@ -1319,7 +1332,7 @@ msgstr "სეგმენტი"
 #: misc/builtin_stuff.cc:50
 #, kde-format
 msgid "A segment constructed from its start and end point"
-msgstr ""
+msgstr "საწყისი და საბოლოო წერტილებით აგებული სეგმენტი"
 
 #: misc/builtin_stuff.cc:56
 #, kde-format
@@ -1329,7 +1342,7 @@ msgstr "სეგმენტის ღერძი"
 #: misc/builtin_stuff.cc:57
 #, kde-format
 msgid "The perpendicular line through a given segment's mid point."
-msgstr ""
+msgstr "პერპენდიკულარული ხაზი მიცემული სეგმენტის შუა წერტილის გავლით."
 
 #: misc/builtin_stuff.cc:63
 #, kde-format
@@ -1350,6 +1363,7 @@ msgstr "ნახევარი-ხაზი"
 #, kde-format
 msgid "A half-line by its start point, and another point somewhere on it."
 msgstr ""
+"ნახევარი ხაზი მისი საწყისი და კიდევ ერთი წერტილით, რომელიც მას ეკუთვნის."
 
 #: misc/builtin_stuff.cc:77
 #, kde-format
@@ -1361,6 +1375,8 @@ msgstr "შვეული"
 msgid ""
 "A line constructed through a point, perpendicular to another line or segment."
 msgstr ""
+"ხაზი, რომელიც გადის წერტილზე და პერპენდიკულარულია სხვა ხაზის, ან სეგმენტის "
+"მიმართ."
 
 #: misc/builtin_stuff.cc:85
 #, kde-format
@@ -1371,7 +1387,7 @@ msgstr "პარალელური"
 #, kde-format
 msgid ""
 "A line constructed through a point, and parallel to another line or segment"
-msgstr ""
+msgstr "ხაზი, რომელიც გადის წერტილზე და პარალელურია სხვა ხაზის, ან სეგმენტის"
 
 #: misc/builtin_stuff.cc:93
 #, kde-format
@@ -1381,7 +1397,7 @@ msgstr "წრე ცენტრით და წერტილით"
 #: misc/builtin_stuff.cc:94
 #, kde-format
 msgid "A circle constructed by its center and a point that pertains to it"
-msgstr ""
+msgstr "წრეწირი, აგებული მისი ცენტრით და წერტილით, რომელიც ზედ მდებარეობს"
 
 #: misc/builtin_stuff.cc:100
 #, kde-format
@@ -1401,17 +1417,17 @@ msgstr "წრე წერტილითა და რადიუსით"
 #: misc/builtin_stuff.cc:108
 #, kde-format
 msgid "A circle defined by its center and the length of the radius"
-msgstr ""
+msgstr "წრეწირი, აგებული მისი ცენტრით და რადიუსის სიგრძით"
 
 #: misc/builtin_stuff.cc:122
 #, kde-format
 msgid "Construct Bisector of This Angle"
-msgstr ""
+msgstr "ამ კუთხის ბისექტრისის აგება"
 
 #: misc/builtin_stuff.cc:123
 #, kde-format
 msgid "Select the angle you want to construct the bisector of..."
-msgstr ""
+msgstr "აირჩიეთ კუთხე, რომლის ბისექტრისის აგებაც გნებავთ..."
 
 #: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
 #, kde-format
@@ -1436,32 +1452,32 @@ msgstr ""
 #: misc/builtin_stuff.cc:139
 #, kde-format
 msgid "Hyperbola by Asymptotes && Point"
-msgstr ""
+msgstr "ჰიპერბოლა ასიმპტოტებით და წერტილით"
 
 #: misc/builtin_stuff.cc:140
 #, kde-format
 msgid "A hyperbola with given asymptotes through a point"
-msgstr ""
+msgstr "ჰიპერბოლის აგება მითითებული ასიმპტოტებით და წერტილით"
 
 #: misc/builtin_stuff.cc:146
 #, kde-format
 msgid "Ellipse by Focuses && Point"
-msgstr ""
+msgstr "ოვალი ფოკუსებით და წერტილით"
 
 #: misc/builtin_stuff.cc:147
 #, kde-format
 msgid "An ellipse constructed by its focuses and a point that pertains to it"
-msgstr ""
+msgstr "ოვალი, აგებული მისი ფოკუსებით და წერტილით, რომელიც ზედ მდებარეობს"
 
 #: misc/builtin_stuff.cc:153
 #, kde-format
 msgid "Hyperbola by Focuses && Point"
-msgstr ""
+msgstr "ჰიპერბოლა ფოკუსებით და წერტილით"
 
 #: misc/builtin_stuff.cc:154
 #, kde-format
 msgid "A hyperbola constructed by its focuses and a point that pertains to it"
-msgstr ""
+msgstr "ჰიპერბოლა, აგებული მისი ფოკუსებით და წერტილით რომელიც ზედ მდებარეობს"
 
 #: misc/builtin_stuff.cc:160
 #, kde-format
@@ -1536,12 +1552,12 @@ msgstr ""
 #: misc/builtin_stuff.cc:209
 #, kde-format
 msgid "Cubic Function by Four Points"
-msgstr ""
+msgstr "მესამე დონის ფუნქცია ოთხი წერტილით"
 
 #: misc/builtin_stuff.cc:210
 #, kde-format
 msgid "A cubic function through four points"
-msgstr ""
+msgstr "მესამე დონის ფუნქცია, რომელიც ოთხ წერტილზე გაივლის"
 
 #: misc/builtin_stuff.cc:215
 #, kde-format
@@ -1576,7 +1592,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:242
 #, kde-format
 msgid "Construct the midpoint of this segment"
-msgstr ""
+msgstr "ამ სეგმენტის შუა წერტილის აგება"
 
 #: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
 #, kde-format
@@ -1586,7 +1602,7 @@ msgstr "შუა წერტილი"
 #: misc/builtin_stuff.cc:246
 #, kde-format
 msgid "The midpoint of a segment or two other points"
-msgstr ""
+msgstr "სეგმენტის, ან ორი სხვა წერტილის შუაწერტილი"
 
 #: misc/builtin_stuff.cc:264
 #, kde-format
@@ -1611,7 +1627,7 @@ msgstr "ვექტორი"
 #: misc/builtin_stuff.cc:281
 #, kde-format
 msgid "Construct a vector from two given points."
-msgstr ""
+msgstr "ვექტორის აგება ორი მითითებული წერტილით."
 
 #: misc/builtin_stuff.cc:285
 #, kde-format
@@ -1621,7 +1637,7 @@ msgstr "ვექტორების ჯამი"
 #: misc/builtin_stuff.cc:285
 #, kde-format
 msgid "Construct the vector sum of two vectors."
-msgstr ""
+msgstr "ორი ვექტორის ვექტორული ჯამის აგება."
 
 #: misc/builtin_stuff.cc:290
 #, kde-format
@@ -1651,48 +1667,50 @@ msgstr "რკალი სამი წერტილით"
 #: misc/builtin_stuff.cc:303
 #, kde-format
 msgid "Construct an arc through three points."
-msgstr ""
+msgstr "რკალის აგება სამი წერტილით."
 
 #: misc/builtin_stuff.cc:308
 #, kde-format
 msgid "Conic Arc by Center and Three Points"
-msgstr ""
+msgstr "კონუსური რკალი ცენტრით და სამი წერტილით"
 
 #: misc/builtin_stuff.cc:309
 #, kde-format
 msgid "Construct a conic arc with given center through three points."
-msgstr ""
+msgstr "კონუსური რკალის აგება მითითებული ცენტრით და სამი წერტილით."
 
 #: misc/builtin_stuff.cc:315
 #, kde-format
 msgid "Conic Arc by Five Points"
-msgstr ""
+msgstr "კონუსური რკალი ხუთი წერტილით"
 
 #: misc/builtin_stuff.cc:316
 #, kde-format
 msgid "Construct a conic arc through five points."
-msgstr ""
+msgstr "კონუსური რკალის აგება ხუთი წერტილით."
 
 #: misc/builtin_stuff.cc:322
 #, kde-format
 msgid "Arc by Center, Angle && Point"
-msgstr ""
+msgstr "რკალი ცენტრით, კუთხით და წერტილით"
 
 #: misc/builtin_stuff.cc:323
 #, kde-format
 msgid ""
 "Construct an arc by its center and a given angle, starting at a given point"
 msgstr ""
+"რკალის აგება მისი ცენტრით და მითითებული კუთხით, რომელიც მოცემულ წერტილზე "
+"იწყება"
 
 #: misc/builtin_stuff.cc:330
 #, kde-format
 msgid "Parabola by Directrix && Focus"
-msgstr ""
+msgstr "პარაბოლა დირექტრისით და ფოკუსით"
 
 #: misc/builtin_stuff.cc:331
 #, kde-format
 msgid "A parabola defined by its directrix and focus"
-msgstr ""
+msgstr "პარაბოლა, აღწერილი მისი დირექტრისით და ფოკუსით"
 
 #: misc/builtin_stuff.cc:349
 #, kde-format
@@ -1702,7 +1720,7 @@ msgstr "თარგმნა"
 #: misc/builtin_stuff.cc:349
 #, kde-format
 msgid "The translation of an object by a vector"
-msgstr ""
+msgstr "ობიექტის მოძრაობითი გადატანა ვექტორით"
 
 #: misc/builtin_stuff.cc:354
 #, kde-format
@@ -1712,7 +1730,7 @@ msgstr "წერტილში არეკვლა"
 #: misc/builtin_stuff.cc:355
 #, kde-format
 msgid "An object reflected in a point"
-msgstr ""
+msgstr "ობიექტის ანარეკლი წერტილთან შედარებით"
 
 #: misc/builtin_stuff.cc:360
 #, kde-format
@@ -1722,7 +1740,7 @@ msgstr "ხაზში არეკვლა"
 #: misc/builtin_stuff.cc:360
 #, kde-format
 msgid "An object reflected in a line"
-msgstr ""
+msgstr "ობიექტის ანარეკლი წრფესთან შედარებით"
 
 #: misc/builtin_stuff.cc:364
 #, kde-format
@@ -1732,7 +1750,7 @@ msgstr "შემობრუნება"
 #: misc/builtin_stuff.cc:364
 #, kde-format
 msgid "An object rotated by an angle around a point"
-msgstr ""
+msgstr "წერტილის გარშემო მოცემული კუთხით შებრუნებული ობიექტი"
 
 #: misc/builtin_stuff.cc:369
 #, kde-format
@@ -1748,7 +1766,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:376
 #, kde-format
 msgid "Scale over Line"
-msgstr ""
+msgstr "მასშტაბი წრფის მიხედვით"
 
 #: misc/builtin_stuff.cc:377
 #, kde-format
@@ -1759,7 +1777,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:383
 #, kde-format
 msgid "Scale (ratio given by two segments)"
-msgstr ""
+msgstr "მასშტავი (კოეფიციენტი მითითებულია ორი სეგმენტის მიერ)"
 
 #: misc/builtin_stuff.cc:384
 #, kde-format
@@ -1807,7 +1825,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:419
 #, kde-format
 msgid "Draw Projective Shadow"
-msgstr ""
+msgstr "პროექციული ჩრდილის დახატვა"
 
 #: misc/builtin_stuff.cc:420
 #, kde-format
@@ -1824,7 +1842,7 @@ msgstr "ჰიპერბოლის ასიმპტოტები"
 #: misc/builtin_stuff.cc:435
 #, kde-format
 msgid "The two asymptotes of a hyperbola."
-msgstr ""
+msgstr "ჰიპერბოლის ორი ასიმპტოტა."
 
 #: misc/builtin_stuff.cc:449
 #, kde-format
@@ -1834,7 +1852,7 @@ msgstr "სამკუთხედი თავსი წვეროები�
 #: misc/builtin_stuff.cc:450
 #, kde-format
 msgid "Construct a triangle given its three vertices."
-msgstr ""
+msgstr "სამკუთხედის აგება მისი სამი წვეროთი."
 
 #: misc/builtin_stuff.cc:476
 #, kde-format
@@ -1849,12 +1867,12 @@ msgstr ""
 #: misc/builtin_stuff.cc:487
 #, kde-format
 msgid "Bézier Quadratic by its Control Points"
-msgstr ""
+msgstr "ბეზიეს კვადრიკა მისი საკონტროლო წერტილებით"
 
 #: misc/builtin_stuff.cc:488
 #, kde-format
 msgid "Construct a Bézier quadratic given its three control points."
-msgstr ""
+msgstr "ბეზიეს კვადრიკას აგება მისი მოცემული სამი საკონტროლო წერტილით."
 
 #: misc/builtin_stuff.cc:494
 #, kde-format
@@ -1894,7 +1912,7 @@ msgstr "პარალელური ტექსტი"
 #: misc/builtin_stuff.cc:529
 #, kde-format
 msgid "Test whether two given lines are parallel"
-msgstr ""
+msgstr "შემოწმება, არის თუ არა ორი მითითებული ხაზი პარალელური"
 
 #: misc/builtin_stuff.cc:533
 #, kde-format
@@ -1904,7 +1922,7 @@ msgstr "ორთოგონალური ტესტი"
 #: misc/builtin_stuff.cc:533
 #, kde-format
 msgid "Test whether two given lines are orthogonal"
-msgstr ""
+msgstr "შემოწმება, არის თუ არა ორი მითითებული ხაზი ორთოგონალური"
 
 #: misc/builtin_stuff.cc:537
 #, kde-format
@@ -2161,7 +2179,7 @@ msgstr "მაკროს ფაილი '%1' ვერ გავხსენ�
 #: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
-msgstr ""
+msgstr "Kig-მა ვერ გახსნა მაკროს ფაილი \"%1\"."
 
 #: misc/lists.cc:292
 #, kde-format
@@ -2341,22 +2359,22 @@ msgstr ""
 #: misc/special_constructors.cc:954
 #, kde-format
 msgid "Adjust the number of sides (%1/%2)"
-msgstr ""
+msgstr "გვერდების რაოდენობის გასწორება (%1/%2)"
 
 #: misc/special_constructors.cc:957
 #, kde-format
 msgid "Adjust the number of sides (%1)"
-msgstr ""
+msgstr "გვერდების რაოდენობის გასწორება (%1)"
 
 #: misc/special_constructors.cc:970
 #, kde-format
 msgid "Select the center of the new polygon..."
-msgstr ""
+msgstr "აირჩიეთ ახალი მრავალკუთხედის ცენტრი..."
 
 #: misc/special_constructors.cc:974
 #, kde-format
 msgid "Select a vertex for the new polygon..."
-msgstr ""
+msgstr "აირჩიეთ წვერო ახალი პოლიგონისთვის..."
 
 #: misc/special_constructors.cc:978
 #, kde-format
