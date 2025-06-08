@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-06-06 05:54+0200\n"
+"PO-Revision-Date: 2025-06-07 05:53+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -670,7 +670,7 @@ msgstr "Francesca Gatti"
 #: kig/aboutdata.h:46
 #, kde-format
 msgid "Responsible for the computation of the algebraic equation of a locus."
-msgstr ""
+msgstr "პასუხისმგებელია ლოკუსის ალგებრული ტოლობის გამოთვლისთვის."
 
 #: kig/aboutdata.h:50
 #, kde-format
@@ -703,6 +703,8 @@ msgid ""
 "The French translator, who also contributed some useful feedback, like "
 "feature requests and bug reports."
 msgstr ""
+"ფრანგი მთარგმნელი, რომელმაც ასევე შეიტანა წვლილი სასარგებლო უკუკავშირით, "
+"ზოგიერთი ფუნქციის მოთხოვნით და ანგარიშებით შეცდომის შესახებ."
 
 #: kig/aboutdata.h:59
 #, kde-format
@@ -715,6 +717,8 @@ msgid ""
 "Author of KGeo, where I got inspiration, some source, and most of the "
 "artwork from."
 msgstr ""
+"KGeo-ის ავტორი, საიდანაც მივიღე შთაგონება, კოდის ნაწილი და ნახატების "
+"უმრავლესობა."
 
 #: kig/aboutdata.h:64
 #, kde-format
@@ -727,6 +731,8 @@ msgid ""
 "Domi's brother, who he got to write the algorithm for calculating the center "
 "of the circle with three points given."
 msgstr ""
+"დომის ძმა, რომელმაც დაწერა მოცემული სამი წერტილით წრის ცენტრის გამოთვლის "
+"ალგორითმი."
 
 #: kig/aboutdata.h:70
 #, kde-format
@@ -749,6 +755,9 @@ msgid ""
 "Contributed some good feedback on Kig, some feature requests, cleanups and "
 "style fixes, and someone to chat with on irc :)"
 msgstr ""
+"წვლილი შეიტანა Kig-ის შესახებ უკუკავშირით, ზოგიერთი ფუნქციის მოთხოვნით, "
+"მოსუფთავებით და სტილების გასწორებით და როგორც ვინმემ, ვისაც შეიძლება, irc-ზე "
+"ეჭორაო :)"
 
 #: kig/aboutdata.h:78
 #, kde-format
@@ -987,6 +996,8 @@ msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr ""
+"ფაილი \"%1\", რომლის გახსნაც სცადეთ, არ არსებობს. შეამოწმეთ, სწორია, თუ არა "
+"შეყვანილი ბილიკი."
 
 #: kig/kig_part.cpp:377
 #, kde-format
@@ -1014,6 +1025,8 @@ msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr ""
+"Kig-ს საკუთარი ფორმატის გარდა სხვაში შენახვა არ შეუძლია. შევინახო Kig-ის "
+"ფორმატში?"
 
 #: kig/kig_part.cpp:445
 #, kde-format
@@ -1091,6 +1104,8 @@ msgid ""
 "Select the zoom area by entering the coordinates<br />of the upper left "
 "corner and the lower right corner."
 msgstr ""
+"აირჩიეთ გადიდების ადგილი მისი<br/>ზედა მარცხენა კუთხის და ქვედა მარჯვენა "
+"კუთხის კოორდინატების შეყვანით."
 
 #. i18n: ectx: Menu (file)
 #: kig/kigpartui.rc:6 kig/kigui.rc:5
@@ -1296,6 +1311,9 @@ msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
 "Output goes to stdout unless --outfile is specified."
 msgstr ""
+"ინტერფეისი ნაჩვენები არ იქნება. მითითებული ფაილის გადაყვანა Kig-ის საკუთარ "
+"ფორმატში. გამოტანილი ინფორმაცია ნაჩვენები იქნება stdout-ზე, თუ არ მიუთითებთ "
+"პარამეტრს --outfile."
 
 #: kig/main.cpp:48
 #, kde-format
@@ -1447,7 +1465,7 @@ msgstr "კონუსი ხუთი წერტილით"
 #: misc/builtin_stuff.cc:133
 #, kde-format
 msgid "A conic constructed through five points"
-msgstr ""
+msgstr "კონუსური კვეთის აგება ხუთი წერტილით"
 
 #: misc/builtin_stuff.cc:139
 #, kde-format
@@ -1482,12 +1500,13 @@ msgstr "ჰიპერბოლა, აგებული მისი ფო�
 #: misc/builtin_stuff.cc:160
 #, kde-format
 msgid "Conic by Directrix, Focus && Point"
-msgstr ""
+msgstr "კონუსური კვეთა დირექტრისით, ფოკუსით და წერტილით"
 
 #: misc/builtin_stuff.cc:161
 #, kde-format
 msgid "A conic with given directrix and focus, through a point"
 msgstr ""
+"კონუსური კვეთა მოცემული დირექტრისით და ფოკუსით, გამავალი მოცემული წერტილზე"
 
 #: misc/builtin_stuff.cc:167
 #, kde-format
@@ -1497,7 +1516,7 @@ msgstr "ვერტიკალური პარაბოლა სამი 
 #: misc/builtin_stuff.cc:168
 #, kde-format
 msgid "A vertical parabola constructed through three points"
-msgstr ""
+msgstr "სამი წერტილით აგებული ვერტიკალური პარაბოლა"
 
 #: misc/builtin_stuff.cc:174
 #, kde-format
@@ -1507,7 +1526,7 @@ msgstr "მესამე დონის მრუდი ცხრა წე�
 #: misc/builtin_stuff.cc:175
 #, kde-format
 msgid "A cubic curve constructed through nine points"
-msgstr ""
+msgstr "მესამე დონის მრუდის აგება ცხრა წერტილით"
 
 #: misc/builtin_stuff.cc:181
 #, kde-format
@@ -1517,7 +1536,7 @@ msgstr "ხაზის პოლარული წერტილი"
 #: misc/builtin_stuff.cc:182
 #, kde-format
 msgid "The polar point of a line with respect to a conic."
-msgstr ""
+msgstr "ხაზის პოლარული წერტილი კონუსურ კვეთასთან მიმართებაში."
 
 #: misc/builtin_stuff.cc:188
 #, kde-format
@@ -1527,27 +1546,30 @@ msgstr "წერტილის პოლარული ხაზი"
 #: misc/builtin_stuff.cc:189
 #, kde-format
 msgid "The polar line of a point with respect to a conic."
-msgstr ""
+msgstr "წერტილის პოლარული წერტილი კონუსურ კვეთასთან მიმართებაში."
 
 #: misc/builtin_stuff.cc:195
 #, kde-format
 msgid "Cubic Curve with Node by Six Points"
-msgstr ""
+msgstr "მესამე დონის მრუდი კვანძით ექვსი წერტილის გასწვრივ"
 
 #: misc/builtin_stuff.cc:196
 #, kde-format
 msgid "A cubic curve with a nodal point at the origin through six points"
 msgstr ""
+"მესამე დონის მრუდის აგება ექვსი წერტილის გავლით და საკვანძო წერტილით "
+"დასაწყისში"
 
 #: misc/builtin_stuff.cc:202
 #, kde-format
 msgid "Cubic Curve with Cusp by Four Points"
-msgstr ""
+msgstr "მესამე დონის მრუდი გაბასრებით 4 წერტილზე"
 
 #: misc/builtin_stuff.cc:203
 #, kde-format
 msgid "A cubic curve with a horizontal cusp at the origin through four points"
 msgstr ""
+"მესამე დონის მრუდი ჰორიზონტალური გაბასრებით დასაწყისში ოთხი წერტილის გავლით"
 
 #: misc/builtin_stuff.cc:209
 #, kde-format
@@ -1582,12 +1604,12 @@ msgstr "სამი წერტილით აღწერილი კუთ
 #: misc/builtin_stuff.cc:224
 #, kde-format
 msgid "Equilateral Hyperbola by Four Points"
-msgstr ""
+msgstr "ტოლგვერდა ჰიპერბოლა ოთხი წერტილით"
 
 #: misc/builtin_stuff.cc:225
 #, kde-format
 msgid "An equilateral hyperbola constructed through four points"
-msgstr ""
+msgstr "ტოლგვერდა ჰიპერბოლა, აგებული ოთხი წერტილით"
 
 #: misc/builtin_stuff.cc:242
 #, kde-format
@@ -1607,7 +1629,7 @@ msgstr "სეგმენტის, ან ორი სხვა წერტ�
 #: misc/builtin_stuff.cc:264
 #, kde-format
 msgid "Construct the golden ratio point of this segment"
-msgstr ""
+msgstr "ამ სეგმენტის ოქროს კვეთის წერტილის აგება"
 
 #: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
 #, kde-format
@@ -1617,7 +1639,7 @@ msgstr "ოქროს კვეთის წერტილი"
 #: misc/builtin_stuff.cc:274
 #, kde-format
 msgid "The golden ratio point of a segment or two other points"
-msgstr ""
+msgstr "სეგმენტის, ან ორი სხვა წერტილის ოქროს კვეთის წერტილი"
 
 #: misc/builtin_stuff.cc:281
 #, kde-format
@@ -1647,7 +1669,7 @@ msgstr "ხაზი ვექტორით"
 #: misc/builtin_stuff.cc:291
 #, kde-format
 msgid "Construct the line by a given vector though a given point."
-msgstr ""
+msgstr "ხაზის აგება მითითებული ვექტორით მოცემული წერტილის გავლით."
 
 #: misc/builtin_stuff.cc:297
 #, kde-format
@@ -1657,7 +1679,7 @@ msgstr "ნახევარი-ხაზი ვექტორით"
 #: misc/builtin_stuff.cc:298
 #, kde-format
 msgid "Construct the half-line by a given vector starting at given point."
-msgstr ""
+msgstr "ნახევარხაზის აგება მითითებული ვექტორით მოცემული წერტილის გავლით."
 
 #: misc/builtin_stuff.cc:303
 #, kde-format
@@ -1789,7 +1811,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:390
 #, kde-format
 msgid "Scale over Line (ratio given by two segments)"
-msgstr ""
+msgstr "გაწელვა ხაზთან შედარებით (კოეფიციენტი მითითებულია ორი სეგმენტის მიერ)"
 
 #: misc/builtin_stuff.cc:391
 #, kde-format
@@ -1797,11 +1819,13 @@ msgid ""
 "An object scaled over a line, by the ratio given by the length of two "
 "segments"
 msgstr ""
+"ობიექტის გაწელვა ხაზთან შედარებით. კოეფიციენტი მოცემულია ორი სეგმენტის "
+"სიგრძით"
 
 #: misc/builtin_stuff.cc:397
 #, kde-format
 msgid "Apply Similitude"
-msgstr ""
+msgstr "მსგავსების გარდაქმნის გადატარება"
 
 #: misc/builtin_stuff.cc:398
 #, kde-format
@@ -1809,6 +1833,8 @@ msgid ""
 "Apply a similitude to an object (the sequence of a scaling and rotation "
 "around a center)"
 msgstr ""
+"ობიექტზე მსგავსების გარდაქმნის გადატარება (ცენტრის გარშემო მასშტაბის და "
+"ბრუნვის მიმდევრობა)"
 
 #: misc/builtin_stuff.cc:404
 #, kde-format
@@ -1821,6 +1847,8 @@ msgid ""
 "The harmonic homology with a given center and a given axis (this is a "
 "projective transformation)"
 msgstr ""
+"ჰარმონიული ჰომოლოგია მითითებული ცენტრით და ღერძით (ეს პროექციული "
+"ტრანსფორმაციაა)"
 
 #: misc/builtin_stuff.cc:419
 #, kde-format
@@ -1857,12 +1885,13 @@ msgstr "სამკუთხედის აგება მისი სამ
 #: misc/builtin_stuff.cc:476
 #, kde-format
 msgid "Convex Hull"
-msgstr ""
+msgstr "ამოზნექილი კორპუსი"
 
 #: misc/builtin_stuff.cc:477
 #, kde-format
 msgid "A polygon that corresponds to the convex hull of another polygon"
 msgstr ""
+"მრავალკუთხედი, რომელიც სხვა მრავალკუთხედის კორპუსის ამოზნექილობას შეესაბამება"
 
 #: misc/builtin_stuff.cc:487
 #, kde-format
@@ -1877,32 +1906,36 @@ msgstr "ბეზიეს კვადრიკას აგება მის
 #: misc/builtin_stuff.cc:494
 #, kde-format
 msgid "Bézier Cubic by its Control Points"
-msgstr ""
+msgstr "ბეზიეს მესამე დონის მრუდი მისი საკონტროლო წერტილებით"
 
 #: misc/builtin_stuff.cc:495
 #, kde-format
 msgid "Construct a Bézier cubic given its four control points."
 msgstr ""
+"ბეზიეს მესამე დონის მრუდის აგება მისი მითითებული ოთხი საკონტროლო წერტილით."
 
 #: misc/builtin_stuff.cc:505
 #, kde-format
 msgid "Rational Bézier Quadratic by its Control Points"
-msgstr ""
+msgstr "რაციონალური ბეზიეს კვადრიკა მისი საკონტროლო წერტილებით"
 
 #: misc/builtin_stuff.cc:506
 #, kde-format
 msgid "Construct a Rational Bézier quadratic given its three control points."
 msgstr ""
+"რაციონალური ბეზიეს კვადრიკას აგება მისი სამი მითითებული საკონტროლო წერტილით."
 
 #: misc/builtin_stuff.cc:512
 #, kde-format
 msgid "Rational Bézier Cubic by its Control Points"
-msgstr ""
+msgstr "რაციონალური ბეზიეს მესამე დონის მრუდი მისი საკონტროლო წერტილებით"
 
 #: misc/builtin_stuff.cc:513
 #, kde-format
 msgid "Construct a Rational Bézier cubic given its four control points."
 msgstr ""
+"რაციონალური ბეზიეს მესამე დონის მრუდის აგება მისი ოთხი მითითებული საკონტროლო "
+"წერტილით."
 
 #: misc/builtin_stuff.cc:529
 #, kde-format
@@ -1932,7 +1965,7 @@ msgstr "კოლინეარული ტესტი"
 #: misc/builtin_stuff.cc:537
 #, kde-format
 msgid "Test whether three given points are collinear"
-msgstr ""
+msgstr "შემოწმება, განლაგებულია თუ არა მითითებული წერტილები ერთ წრფეზე"
 
 #: misc/builtin_stuff.cc:541
 #, kde-format
@@ -1942,7 +1975,7 @@ msgstr "შეიცავს ტესტს"
 #: misc/builtin_stuff.cc:541
 #, kde-format
 msgid "Test whether a given curve contains a given point"
-msgstr ""
+msgstr "შემოწმება, შეიცავს თუ არა მოცემული მრუდი მოცემულ წერტილს"
 
 #: misc/builtin_stuff.cc:545
 #, kde-format
@@ -1952,7 +1985,7 @@ msgstr "პოლიგონის ტესტში"
 #: misc/builtin_stuff.cc:545
 #, kde-format
 msgid "Test whether a given polygon contains a given point"
-msgstr ""
+msgstr "შემოწმება, შეიცავს თუ არა მოცემული მრავალკუთხედი მოცემულ წერტილს"
 
 #: misc/builtin_stuff.cc:549
 #, kde-format
@@ -1962,7 +1995,7 @@ msgstr "მრავალკუთხედის ამოზნექილ�
 #: misc/builtin_stuff.cc:549
 #, kde-format
 msgid "Test whether a given polygon is convex"
-msgstr ""
+msgstr "შემოწმება, არის თუ არა მოცემული მრავალკუთხედი ამოზნექილი"
 
 #: misc/builtin_stuff.cc:553
 #, kde-format
@@ -1972,7 +2005,7 @@ msgstr "არსებობის ტესტი"
 #: misc/builtin_stuff.cc:553
 #, kde-format
 msgid "Test whether a given object is constructible"
-msgstr ""
+msgstr "შემოწმება, არის თუ არა მოცემული ობიექტი აგებადი"
 
 #: misc/builtin_stuff.cc:558
 #, kde-format
@@ -2160,7 +2193,7 @@ msgstr "შეიყვანეთ ამ კუთხის ახალი �
 #: misc/kiginputdialog.cc:148
 #, kde-format
 msgid "Use this edit field to modify the size of this angle."
-msgstr ""
+msgstr "გამოიყენეთ ეს ჩასწორების ველი კუთხის ზომის შესაცვლელად."
 
 #: misc/kiginputdialog.cc:155
 #, kde-format
@@ -2206,7 +2239,7 @@ msgstr ""
 #: misc/special_constructors.cc:274
 #, kde-format
 msgid "Radical Lines for Conics"
-msgstr ""
+msgstr "რადიკალური ხაზები კონუსური კვეთებისთვის"
 
 #: misc/special_constructors.cc:275
 #, kde-format
@@ -2214,6 +2247,8 @@ msgid ""
 "The lines constructed through the intersections of two conics.  This is also "
 "defined for non-intersecting conics."
 msgstr ""
+"ხაზები, აგებული ორი კონუსური კვეთის კვეთით.  ეს ასევე აღწერილია არაკვეთადი "
+"კონუსური კვეთებისთვის."
 
 #: misc/special_constructors.cc:327 misc/special_constructors.cc:411
 #, kde-format
@@ -2225,6 +2260,7 @@ msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr ""
+"აირჩიეთ მოძრავი წერტილი, რომლის გადაადგილება ლოკუსის დახატვისას მოხდება..."
 
 #: misc/special_constructors.cc:328
 msgid "Following Point"
@@ -2234,7 +2270,7 @@ msgstr "გამყოლი წერტილი"
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
-msgstr ""
+msgstr "აირჩიეთ შემდეგი წერტილი, რომლის გავლითაც დაიხატება ლოკუსი..."
 
 #: misc/special_constructors.cc:331
 #, kde-format
@@ -2259,28 +2295,28 @@ msgstr "მრავალკუთხედი მისი წვეროე�
 #: misc/special_constructors.cc:520
 #, kde-format
 msgid "Construct a polygon by giving its vertices"
-msgstr ""
+msgstr "მრავალკუთხედის აგება მისი წვეროების მითითებით"
 
 #: misc/special_constructors.cc:553
 #, kde-format
 msgid ""
 "... with this vertex (click on the first vertex to terminate construction)"
-msgstr ""
+msgstr "... ამ წვეროთი (დააწკაპუნეთ პირველ წვეროზე აგების შესაჩერებლად)"
 
 #: misc/special_constructors.cc:555
 #, kde-format
 msgid "Construct a polygon with this vertex"
-msgstr ""
+msgstr "მრავალკუთხედის აგება ამ წვეროთი"
 
 #: misc/special_constructors.cc:560
 #, kde-format
 msgid "Select a point to be a vertex of the new polygon..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომელიც ახალი მრავალკუთხედის წვერო იქნება..."
 
 #: misc/special_constructors.cc:589
 #, kde-format
 msgid "Open Polygon (Polygonal Line)"
-msgstr ""
+msgstr "ღია მრავალკუთხედი (პოლიგონალური ხაზი)"
 
 #: misc/special_constructors.cc:589
 #, kde-format
@@ -2293,6 +2329,7 @@ msgid ""
 "... with this vertex (click again on the last vertex to terminate "
 "construction)"
 msgstr ""
+"... ამ წვეროთი (დააწკაპუნეთ კიდევ ერთხელ ბოლო წვეროზე აგების შესაჩერებლად)"
 
 #: misc/special_constructors.cc:624
 #, kde-format
@@ -2310,7 +2347,7 @@ msgstr "მრავალკუთხედი"
 
 #: misc/special_constructors.cc:658
 msgid "Construct the vertices of this polygon..."
-msgstr ""
+msgstr "ამ მრავალკუთხედის წვეროების აგება..."
 
 #: misc/special_constructors.cc:661
 #, kde-format
@@ -2324,7 +2361,7 @@ msgstr "მრავალკუთხედის წვეროები."
 
 #: misc/special_constructors.cc:718
 msgid "Construct the sides of this polygon..."
-msgstr ""
+msgstr "ამ მრავალკუთხედის ვერდების აგება..."
 
 #: misc/special_constructors.cc:721
 #, kde-format
@@ -2339,22 +2376,22 @@ msgstr "მრავალკუთხედის გვერდები."
 #: misc/special_constructors.cc:789
 #, kde-format
 msgid "Regular Polygon with Given Center"
-msgstr ""
+msgstr "ჩვეულებრივი მრავალკუთხედი მითითებული ცენტრით"
 
 #: misc/special_constructors.cc:794
 #, kde-format
 msgid "Construct a regular polygon with a given center and vertex"
-msgstr ""
+msgstr "ჩვეულებრივი მრავალკუთხედის აგება მითითებული ცენტრით და წვეროთი"
 
 #: misc/special_constructors.cc:939
 #, kde-format
 msgid "Construct a regular polygon with this center"
-msgstr ""
+msgstr "ჩვეულებრივი მრავალკუთხედის აგება ამ ცენტრით"
 
 #: misc/special_constructors.cc:943
 #, kde-format
 msgid "Construct a regular polygon with this vertex"
-msgstr ""
+msgstr "ჩვეულებრივი მრავალკუთხედის აგება ამ წვეროთი"
 
 #: misc/special_constructors.cc:954
 #, kde-format
@@ -2379,17 +2416,17 @@ msgstr "აირჩიეთ წვერო ახალი პოლიგო
 #: misc/special_constructors.cc:978
 #, kde-format
 msgid "Move the cursor to get the desired number of sides..."
-msgstr ""
+msgstr "გადაიტანეთ კურსორი გვერდების სასურველი რაოდენობის მისაღებად..."
 
 #: misc/special_constructors.cc:1062
 #, kde-format
 msgid "Bézier Curve by its Control Points"
-msgstr ""
+msgstr "ბეზიეს მრუდი მისი საკონტროლო წერტილებით"
 
 #: misc/special_constructors.cc:1063
 #, kde-format
 msgid "Construct a Bézier curve by giving its control points"
-msgstr ""
+msgstr "ბეზიეს მრუდის აგება მისი საკონტროლო წერტილების მითითებით"
 
 #: misc/special_constructors.cc:1098
 #, kde-format
@@ -2397,32 +2434,36 @@ msgid ""
 "... with this control point (click again on the last control point to "
 "terminate construction)"
 msgstr ""
+"... ამ საკონტროლო წერტილით (დააწკაპუნეთ კიდევ ერთხელ ბოლო საკონტროლო "
+"წერტილზე აგების შესაწყვეტად)"
 
 #: misc/special_constructors.cc:1100
 #, kde-format
 msgid "Construct a Bézier curve with this control point"
-msgstr ""
+msgstr "ბეზიეს მრუდის აგება მისი საკონტროლო წერტილით"
 
 #: misc/special_constructors.cc:1105
 #, kde-format
 msgid "Select a point to be a control point of the new Bézier curve..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელი ახალი ბეზიეს მრუდის საკონტროლო წერტილი იქნება..."
 
 #: misc/special_constructors.cc:1138
 #, kde-format
 msgid "Rational Bézier Curve by its Control Points"
-msgstr ""
+msgstr "რაციონალური ბეზიეს მრუდი მისი საკონტროლო წერტილებით"
 
 #: misc/special_constructors.cc:1143
 #, kde-format
 msgid ""
 "Construct a Bézier curve by giving its control points and positive weights"
 msgstr ""
+"ბეზიეს მრუდის აგება მისი საკონტროლო წერტილების და დადებითი წონების მითითებით"
 
 #: misc/special_constructors.cc:1202
 #, kde-format
 msgid "... assign this weight to last selected control point"
-msgstr ""
+msgstr ".... ამ წონის მინიჭება ბოლო არჩეული საკონტროლო წერტილისთვის"
 
 #: misc/special_constructors.cc:1205
 #, kde-format
@@ -2430,37 +2471,41 @@ msgid ""
 "... with this control point (click again on the last control point or weight "
 "to terminate construction)"
 msgstr ""
+"... ამ საკონტროლო წერტილით (დააწკაპუნეთ კიდევ ერთხელ ბოლო საკონტროლო "
+"წერტილზე ან წონაზე აგების შესაწყვეტად)"
 
 #: misc/special_constructors.cc:1207
 #, kde-format
 msgid "Construct a rational Bézier curve with this control point"
-msgstr ""
+msgstr "რაციონალური ბეზიეს მრუდის აგება მისი საკონტროლო წერტილით"
 
 #: misc/special_constructors.cc:1213
 #, kde-format
 msgid ""
 "Select a point to be a control point of the new rational Bézier curve..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელი ახალი რაციონალური ბეზიეს მრუდის საკონტროლო წერტილი "
+"იქნება..."
 
 #: misc/special_constructors.cc:1215
 #, kde-format
 msgid "Select a numeric label to be a weight of last selected point..."
-msgstr ""
+msgstr "აირჩიეთ რიცხვითი ჭდე, რომელიც ბოლოს მონიშნული წერტილის წონა იქნება..."
 
 #: misc/special_constructors.cc:1380
 #, kde-format
 msgid "Construct the Radical Lines of This Circle"
-msgstr ""
+msgstr "ამ წრის რადიკალური ხაზების აგება"
 
 #: misc/special_constructors.cc:1382
 #, kde-format
 msgid "Construct the Radical Lines of This Conic"
-msgstr ""
+msgstr "ამ კონუსური კვეთის რადიკალური ხაზების აგება"
 
 #: misc/special_constructors.cc:1396
 #, kde-format
 msgid "Generic Affinity"
-msgstr ""
+msgstr "აფინური გარდაქმნა"
 
 #: misc/special_constructors.cc:1397
 #, kde-format
@@ -2468,11 +2513,13 @@ msgid ""
 "The unique affinity that maps three points (or a triangle) onto three other "
 "points (or a triangle)"
 msgstr ""
+"უნიკალური გარდაქმნა რომელიც სამ წერტილს (ან სამკუთხედს) სამ სხვა წერტილზე "
+"(ან სამკუთხედზე) ასახავს"
 
 #: misc/special_constructors.cc:1419
 #, kde-format
 msgid "Generic Projective Transformation"
-msgstr ""
+msgstr "ზოგადი პროექციული გარდაქმნა"
 
 #: misc/special_constructors.cc:1420
 #, kde-format
@@ -2480,81 +2527,83 @@ msgid ""
 "The unique projective transformation that maps four points (or a "
 "quadrilateral) onto four other points (or a quadrilateral)"
 msgstr ""
+"უნიკალური პროექციული გარდაქმნა, რომელიც ოთხ წერტილს (ან ოთხკუთხედს) ოთხ სხვა "
+"წერტილზე (ან ოთხკუთხედზე) ასახავს"
 
 #: misc/special_constructors.cc:1447
 #, kde-format
 msgid "Inversion of Point, Line or Circle"
-msgstr ""
+msgstr "წერტილის, ხაზის, ან წრის ინვერსია"
 
 #: misc/special_constructors.cc:1447
 #, kde-format
 msgid "The inversion of a point, line or circle with respect to a circle"
-msgstr ""
+msgstr "წერტილის, ხაზის, ან წრის ინვერსია წრესთან მიმართებაში"
 
 #: misc/special_constructors.cc:1505
 #, kde-format
 msgid "Measure Transport"
-msgstr ""
+msgstr "სიგრძის გადატანა"
 
 #: misc/special_constructors.cc:1510
 #, kde-format
 msgid "Transport the measure of a segment or arc over a line or circle."
-msgstr ""
+msgstr "მონაკვეთის, ან რკალის გადატანა წრფეზე ან წრეწირზე."
 
 #: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
 #, kde-format
 msgid "Segment to transport"
-msgstr ""
+msgstr "გადასატანი სეგმენტი"
 
 #: misc/special_constructors.cc:1614
 #, kde-format
 msgid "Arc to transport"
-msgstr ""
+msgstr "გადასატანი რკალი"
 
 #: misc/special_constructors.cc:1616
 #, kde-format
 msgid "Value to transport"
-msgstr ""
+msgstr "გადასატანი მნიშვნელობა"
 
 #: misc/special_constructors.cc:1618
 #, kde-format
 msgid "Transport a measure on this line"
-msgstr ""
+msgstr "სიგრძის გადატანა ამ წრფეზე"
 
 #: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
 #, kde-format
 msgid "Transport a measure on this circle"
-msgstr ""
+msgstr "სიგრძის გადატანა ამ წრეწრიზე"
 
 #: misc/special_constructors.cc:1623
 #, kde-format
 msgid "Start transport from this point of the circle"
-msgstr ""
+msgstr "გადატანის დაწყება წრეწირის ამ წერტილიდან"
 
 #: misc/special_constructors.cc:1625
 #, kde-format
 msgid "Start transport from this point of the line"
-msgstr ""
+msgstr "გადატანის დაწყება წრფის ამ წერტილიდან"
 
 #: misc/special_constructors.cc:1627
 #, kde-format
 msgid "Start transport from this point of the curve"
-msgstr ""
+msgstr "გადატანის დაწყება მრუდის ამ წერტილიდან"
 
 #: misc/special_constructors.cc:1637
 #, kde-format
 msgid "Select a segment, arc or numeric label to be transported..."
-msgstr ""
+msgstr "აირჩიეთ გადასატანი სეგმენტი, რკალი, ან რიცხვითი ჭდე..."
 
 #: misc/special_constructors.cc:1641
 #, kde-format
 msgid "Select a destination line or circle..."
-msgstr ""
+msgstr "აირჩიეთ სამიზნე წრფე, ან წრეწირი..."
 
 #: misc/special_constructors.cc:1645
 #, kde-format
 msgid "Choose a starting point on the line/circle..."
-msgstr ""
+msgstr "აირჩიეთ საწყისი წერტილი წრფეზე/წრეწირზე..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 msgid "Intersect with this conic"
@@ -2730,7 +2779,7 @@ msgstr "ტანგენსი"
 #: misc/special_constructors.cc:1985
 #, kde-format
 msgid "The line tangent to a curve"
-msgstr ""
+msgstr "მრუდის მხები"
 
 #: misc/special_constructors.cc:2008
 #, kde-format
@@ -2740,7 +2789,7 @@ msgstr "ამ წრის მხები"
 #: misc/special_constructors.cc:2010
 #, kde-format
 msgid "Tangent to This Conic"
-msgstr ""
+msgstr "ამ კონუსური კვეთის მხები"
 
 #: misc/special_constructors.cc:2012
 #, kde-format
@@ -2765,7 +2814,7 @@ msgstr "მხები ამ წერტილში"
 #: misc/special_constructors.cc:2038
 #, kde-format
 msgid "Center Of Curvature"
-msgstr ""
+msgstr "სიმრუდის ცენტრი"
 
 #: misc/special_constructors.cc:2038
 #, kde-format
@@ -2825,7 +2874,7 @@ msgstr ""
 #: modes/construct_mode.cc:429
 #, kde-format
 msgid "Now select the location for the result label."
-msgstr ""
+msgstr "ახლა აირჩიეთ მდებარეობა პირველი შედეგი ჭდისთვის."
 
 #: modes/edittype.cc:25
 #, kde-format
@@ -2836,7 +2885,7 @@ msgstr "ტიპის ჩასწორება"
 #: modes/edittype.cc:42
 #, kde-format
 msgid "Here you can edit the name of the current macro type."
-msgstr ""
+msgstr "აქ შეგიძლიათ, მიმდინარე მაკროს ტიპის სახელი ჩაასწოროთ."
 
 #: modes/edittype.cc:45
 #, kde-format
