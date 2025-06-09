@@ -8,10 +8,14 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kig VERSION ${RELEASE_SERVICE_VERSION})
 
+set(QT_MIN_VERSION "6.4.2")
+set(KF_MIN_VERSION "6.13.0")
 
 set (KDE_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 
-find_package(ECM REQUIRED NO_MODULE)
+set(KDE_COMPILERSETTINGS_LEVEL "5.84")
+
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${kig_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
 
 include(ECMAddAppIcon)
@@ -27,9 +31,6 @@ include(KDEGitCommitHooks)
 include(KDEClangFormat)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
-
-set(QT_MIN_VERSION "6.4.2")
-set(KF_MIN_VERSION "6.13.0")
 
 find_package(KF6Parts ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6DocTools ${KF_MIN_VERSION})
