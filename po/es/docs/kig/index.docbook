@@ -151,7 +151,7 @@
 ><guimenu
 >Ayuda</guimenu
 ><guimenuitem
->Informar de fallo...</guimenuitem
+>Informar de fallo…</guimenuitem
 ></menuchoice
 >). </para>
 
@@ -426,7 +426,7 @@ format="PNG"/>
 <para
 >Para dejar el modo de pantalla completa, pulse el &RMB; en cualquier lugar de la pantalla en que no haya ningún objeto y seleccione <guimenuitem
 >Salir del modo de pantalla completa</guimenuitem
->, o use el acceso rápido <keycombo action="simul"
+>, o use el atajo de teclado <keycombo action="simul"
 >&Ctrl;&Shift;<keycap
 >F</keycap
 ></keycombo
@@ -445,7 +445,7 @@ format="PNG"/>
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar las barras de herramientas...</guimenuitem
+>Configurar las barras de herramientas…</guimenuitem
 ></menuchoice
 > </para>
 </chapter>
@@ -559,7 +559,7 @@ rotation.</para>
 <listitem
 ><para
 >Para ajustar la longitud y la dirección del vector tendrá que editar sus puntos de inicio y fin. Selecciónelos y elija <guimenuitem
->Establecer coordenada...</guimenuitem
+>Establecer coordenada…</guimenuitem
 > en el menú de contexto. </para
 ></listitem>
 <listitem
@@ -625,7 +625,7 @@ rotation.</para>
 ><guimenu
 >Tipos</guimenu
 > <guimenuitem
->Nueva macro...</guimenuitem
+>Nueva macro…</guimenuitem
 ></menuchoice
 > o haga clic en el botón &nbsp;<inlinemediaobject
 > <imageobject
@@ -683,7 +683,7 @@ rotation.</para>
 ><guimenu
 >Tipos</guimenu
 ><guimenuitem
->Gestionar tipos...</guimenuitem
+>Gestionar tipos…</guimenuitem
 ></menuchoice
 > en el menú, verá un diálogo donde podrá editar sus tipos. Esto le permite modificar los tipos existentes, eliminar los que no vaya a utilizar más, exportarlos a un archivo e incluso cargarlos de otro archivo. </para>
 <screenshot>
@@ -726,14 +726,14 @@ rotation.</para>
 >Lo siguiente que debe hacer es seleccionar una ubicación para la etiqueta de texto. También puede seleccionar una ubicación aleatoria en la pantalla o decidir «asociar» la etiqueta a un objeto. </para>
 <screenshot>
 <screeninfo
->Asociar una etiqueta a una circunferencia...</screeninfo>
+>Asociar una etiqueta a una circunferencia…</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="text_label_attaching.png" format="PNG"/>
 </imageobject>
 <textobject>
 <phrase
->Asociar una etiqueta a una circunferencia...</phrase>
+>Asociar una etiqueta a una circunferencia…</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
@@ -981,7 +981,7 @@ format="PNG"/>
 <listitem>
 <para
 >&kig; permite definir macros de una manera sencilla. Estos objetos se presentan ante el usuario como objetos normales. Se guardan al salir del programa y se cargan al volver a iniciarlo, de forma que no se pierden al salir. Puede administrarlos a través del diálogo <guilabel
->Gestionar tipos...</guilabel
+>Gestionar tipos…</guilabel
 > (vea <xref linkend="working-with-types"/>). Puede exportarlos a archivos, importarlos desde archivos, editarlos y eliminarlos. </para>
 </listitem>
 <listitem>
