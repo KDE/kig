@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-06-08 06:12+0200\n"
+"PO-Revision-Date: 2025-06-09 05:51+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2374,7 +2374,7 @@ msgstr "მრავალკუთხედის წვეროები."
 
 #: misc/special_constructors.cc:718
 msgid "Construct the sides of this polygon..."
-msgstr "ამ მრავალკუთხედის ვერდების აგება..."
+msgstr "ამ მრავალკუთხედის გვერდების აგება..."
 
 #: misc/special_constructors.cc:721
 #, kde-format
@@ -3400,8 +3400,8 @@ msgid ""
 "Please select only the type you want to edit and try again."
 msgstr ""
 "მონიშნულია ერთზე მეტი ტიპი. ერთდროულად, მხოლოდ, ერთი ტიპის ჩასწორება "
-"შეგიძლიათ. მონიშნეთ, მხოლოდ, ერთი ტიპი და ჩასწორების ღილაკს, მხოლოდ, შემდეგ "
-"დააჭირეთ"
+"შეგიძლიათ. მონიშნეთ, მხოლოდ, ტიპი, რომლის ჩასწორებაც გნებავთ და თავიდან "
+"სცადეთ."
 
 #: modes/typesdialog.cpp:517
 #, kde-format
@@ -3887,7 +3887,7 @@ msgstr "პოლარული ტოლობა"
 #: objects/circle_imp.cc:233
 #, kde-format
 msgid "rho = %1   [centered at %2]"
-msgstr ""
+msgstr "ρ = %1   [ცენტრით %2-ზე]"
 
 #: objects/circle_imp.cc:337
 msgid "circle"
@@ -4394,31 +4394,31 @@ msgstr "ამ ხაზის ინვერსიის გამოთვლ
 
 #: objects/inversion_type.cc:329
 msgid "Select the line to invert..."
-msgstr ""
+msgstr "აირჩიეთ ხაზი ინვერსიისთვის..."
 
 #: objects/inversion_type.cc:381
 msgid "Compute the inversion of this segment"
-msgstr ""
+msgstr "ამ სეგმენტის ინვერსიის გამოთვლა"
 
 #: objects/inversion_type.cc:381
 msgid "Select the segment to invert..."
-msgstr ""
+msgstr "აირჩიეთ სეგმენტი ინვერსიისთვის..."
 
 #: objects/inversion_type.cc:469
 msgid "Compute the inversion of this circle"
-msgstr ""
+msgstr "ამ წრეწირის ინვერსიის გამოთვლა"
 
 #: objects/inversion_type.cc:469
 msgid "Select the circle to invert..."
-msgstr ""
+msgstr "აირჩიეთ წრეწირი ინვერსიისთვის..."
 
 #: objects/inversion_type.cc:533
 msgid "Compute the inversion of this arc"
-msgstr ""
+msgstr "ამ რკალის ინვერსიის გამოთვლა"
 
 #: objects/inversion_type.cc:533
 msgid "Select the arc to invert..."
-msgstr ""
+msgstr "აირჩიეთ რკალი ინვერსიისთვის..."
 
 #: objects/line_imp.cc:86
 msgid "Slope"
@@ -4557,83 +4557,83 @@ msgstr "ნახევარი-ხაზის დამალვა"
 
 #: objects/line_type.cc:22
 msgid "Construct a segment starting at this point"
-msgstr ""
+msgstr "ამ წერტილში დაწყებული სეგმენტის აგება"
 
 #: objects/line_type.cc:22
 msgid "Select the start point of the new segment..."
-msgstr ""
+msgstr "აირჩიეთ საწყისი წერტილი ახალი სეგმენტისთვის..."
 
 #: objects/line_type.cc:23
 msgid "Construct a segment ending at this point"
-msgstr ""
+msgstr "სეგმენტის აგება, რომელიც ამ წერტილში დასრულდება"
 
 #: objects/line_type.cc:23
 msgid "Select the end point of the new segment..."
-msgstr ""
+msgstr "აირჩიეთ ახალი სეგმენტის დასრულების წერტილი..."
 
 #: objects/line_type.cc:47
 msgid "Construct a line through this point"
-msgstr ""
+msgstr "წრფის გავლება ამ წერტილის გავლით"
 
 #: objects/line_type.cc:50
 msgid "Select a point for the line to go through..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი წრფის გასავლებად..."
 
 #: objects/line_type.cc:51
 msgid "Select another point for the line to go through..."
-msgstr ""
+msgstr "აირჩიეთ კიდევ ერთი წერტილი, რომელზეც წრფე გაივლის..."
 
 #: objects/line_type.cc:75
 msgid "Construct a half-line starting at this point"
-msgstr ""
+msgstr "ამ წერტილში დაწყებული ნახევარხაზის გავლება"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
 msgid "Select the start point of the new half-line..."
-msgstr ""
+msgstr "აირჩიეთ საწყისი წერტილი ახალი ნახევარხაზისთვის..."
 
 #: objects/line_type.cc:79
 msgid "Construct a half-line through this point"
-msgstr ""
+msgstr "ამ წერტილზე გამავალი ნახევარხაზის აგება"
 
 #: objects/line_type.cc:79
 msgid "Select a point for the half-line to go through..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომელზეც ნახევარხაზი გაივლის..."
 
 #: objects/line_type.cc:104
 msgid "Construct the axis of this segment"
-msgstr ""
+msgstr "ამ სეგმენტის ღერძის აგება"
 
 #: objects/line_type.cc:104
 msgid "Select the segment of which you want to draw the axis..."
-msgstr ""
+msgstr "აირჩიეთ სეგმენტი, რომლისთვისაც ღერძის დახატვა გნებავთ..."
 
 #: objects/line_type.cc:155
 msgid "Construct a line parallel to this line"
-msgstr ""
+msgstr "ამ ხაზის პარალელური ხაზის აგება"
 
 #: objects/line_type.cc:155
 msgid "Select a line parallel to the new line..."
-msgstr ""
+msgstr "აირჩიეთ ხაზი, რომლის პარალელურიც იქნება ახალი ხაზი..."
 
 #: objects/line_type.cc:156
 msgid "Construct the parallel line through this point"
-msgstr ""
+msgstr "ამ წერტილზე გამავალი პარალელური ხაზის აგება"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
 msgid "Select a point for the new line to go through..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომელზეც ახალი ხაზი გაივლის..."
 
 #: objects/line_type.cc:182
 msgid "Construct a line perpendicular to this line"
-msgstr ""
+msgstr "ამ წრფის პერპენდიკულარული წრფის აგება"
 
 #: objects/line_type.cc:182
 msgid "Select a line perpendicular to the new line..."
-msgstr ""
+msgstr "აირჩიეთ ხაზი, რომლის პერპენდიკულარულიც იქნება ახალი ხაზი..."
 
 #: objects/line_type.cc:183
 msgid "Construct a perpendicular line through this point"
-msgstr ""
+msgstr "ამ წერტილზე გამავალი პერპენდიკულარული ხაზის აგება"
 
 #: objects/line_type.cc:224
 #, kde-format
@@ -4661,7 +4661,7 @@ msgstr "ხაზის აგება ამ ვექტორით"
 
 #: objects/line_type.cc:255
 msgid "Select a vector in the direction of the new line..."
-msgstr ""
+msgstr "აირჩიეთ ახალი ხაზის მიმართულების მქონე ვექტორი..."
 
 #: objects/line_type.cc:292
 msgid "Construct a half-line by this vector"
@@ -4669,7 +4669,7 @@ msgstr "ნახევარი ხაზის აგება ამ ვე�
 
 #: objects/line_type.cc:292
 msgid "Select a vector in the direction of the new half-line..."
-msgstr ""
+msgstr "აირჩიეთ ახალი ნახევარხაზის მიმართულების მქონე ვექტორი..."
 
 #: objects/locus_imp.cc:186
 msgid "locus"
@@ -4951,35 +4951,37 @@ msgstr "წერტილის დამალვა"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
 msgid "Construct the midpoint of this point and another point"
-msgstr ""
+msgstr "ამ და სხვა წერტილის შუაწერტილის აგება"
 
 #: objects/point_type.cc:243
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი წერტილიდან, რომელთა შუაწერტილის აგებაც გნებავთ..."
 
 #: objects/point_type.cc:247
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი წერტილიდან, რომელთა შუაწერტილის აგებაც გნებავთ..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
 msgid "Construct the golden ratio point of this point and another point"
-msgstr ""
+msgstr "ამ და სხვა წერტილის ოქროს კვეთის აგება"
 
 #: objects/point_type.cc:275
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
+"აირჩიეთ პირველი ორი წერტილიდან, რომელთა შორისაც გნებავთ ოქროს კვეთის აგება..."
 
 #: objects/point_type.cc:279
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
+"აირჩიეთ მეორე ორი წერტილიდან, რომელთა შორისაც გნებავთ ოქროს კვეთის აგება..."
 
 #: objects/point_type.cc:386
 #, kde-format
@@ -5023,7 +5025,7 @@ msgstr "შეზღუდული წერტილის პარამე�
 
 #: objects/point_type.cc:743
 msgid "Select the circle on which to transport a measure..."
-msgstr ""
+msgstr "აირჩიეთ წრეწირი, რომელზეც გნებავთ, ანაზომი გადაიტანოთ..."
 
 #: objects/point_type.cc:744
 msgid "Select a point on the circle..."
@@ -5031,23 +5033,23 @@ msgstr "აირჩიეთ წერტილი წრეზე..."
 
 #: objects/point_type.cc:745
 msgid "Select the segment to transport on the circle..."
-msgstr ""
+msgstr "აირჩიეთ სეგმენტი, რომლის წრეწირზე გადატანაც გნებავთ..."
 
 #: objects/point_type.cc:794
 msgid "Select a number/length as x coordinate of the point..."
-msgstr ""
+msgstr "აირჩიეთ რიცხვი/სიგრძე, რომლის ტოლიც იქნება წერტილის აბსცისა..."
 
 #: objects/point_type.cc:795
 msgid "Select a number/length as y coordinate of the point..."
-msgstr ""
+msgstr "აირჩიეთ რიცხვი/სიგრძე, რომლის ტოლიც იქნება წერტილის ორდინატა..."
 
 #: objects/point_type.cc:820
 msgid "Select a point to project onto a line..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი წრფეზე პროექციისთვის..."
 
 #: objects/point_type.cc:821
 msgid "Line where the projected point will lie..."
-msgstr ""
+msgstr "ხაზი, რომელზეც პროექცირებული წერტილი განსხვავდება..."
 
 #: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
 #: objects/polygon_imp.cc:316
@@ -5277,95 +5279,97 @@ msgstr "ოთხკუთხედის დამალვა"
 
 #: objects/polygon_type.cc:24
 msgid "Construct a triangle with this vertex"
-msgstr ""
+msgstr "სამკუთხედის აგება ამ წვეროთი"
 
 #: objects/polygon_type.cc:25
 msgid "Select a point to be a vertex of the new triangle..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომელიც ახალი სამკუთხედის წვერო იქნება..."
 
 #: objects/polygon_type.cc:470
 msgid "Intersect this polygon with a line"
-msgstr ""
+msgstr "მრავალკუთხედის კვეთა ხაზით"
 
 #: objects/polygon_type.cc:471
 msgid "Select the polygon of which you want the intersection with a line..."
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხედი, რომელიც გნებავთ, წრფით გაკვეთოთ..."
 
 #: objects/polygon_type.cc:474
 msgid "Intersect this line with a polygon"
-msgstr ""
+msgstr "ამ ხაზის გაკვეთა მრავალკუთხედით"
 
 #: objects/polygon_type.cc:475
 msgid "Select the line of which you want the intersection with a polygon..."
-msgstr ""
+msgstr "აირჩიეთ ხაზი, რომელიც გნებავთ, მრავალკუთხედით გაკვეთოთ...."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
 msgid "Intersect this polygonal curve with a line"
-msgstr ""
+msgstr "მრავალკუთხედი მრუდის გაკვეთა ხაზით"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხედი მრუდი, რომელიც გნებავთ, წრფით გაკვეთოთ..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
 msgid "Intersect this line with a polygonal curve"
-msgstr ""
+msgstr "ამ ხაზის გადაკვეთა მრავალკუთხედი მრუდით"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
-msgstr ""
+msgstr "აირჩიეთ ხაზი, რომლის გადაკვეთაც გნებავთ მრავალკუთხედი მრუდით..."
 
 #: objects/polygon_type.cc:788
 msgid "Intersect this polygon with another polygon"
-msgstr ""
+msgstr "ამ მრავალკუთხედის გადაკვეთა სხვა მრავალკუთხედით"
 
 #: objects/polygon_type.cc:789
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr ""
+"აირჩიეთ მრავალკუთხედი, რომლის გადაკვეთაც გნებავთ სხვა მრავალკუთხედით..."
 
 #: objects/polygon_type.cc:791
 msgid "Intersect with this polygon"
-msgstr ""
+msgstr "გადაკვეთა ამ მრავალკუთხედთან"
 
 #: objects/polygon_type.cc:791
 msgid "Select the second polygon for the intersection..."
-msgstr ""
+msgstr "აირჩიეთ მეორე მრავალკუთხედი გადასაკვეთად..."
 
 #: objects/polygon_type.cc:930
 msgid "Construct the vertices of this polygon"
-msgstr ""
+msgstr "ამ მრავალკუთხედის წვეროების აგება"
 
 #: objects/polygon_type.cc:931
 msgid "Select the polygon of which you want to construct the vertices..."
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხედი, რომლისთვისაც წვეროების აგება გნებავთ..."
 
 #: objects/polygon_type.cc:974
 msgid "Construct the sides of this polygon"
-msgstr ""
+msgstr "ამ მრავალკუთხედის გვერდების აგება"
 
 #: objects/polygon_type.cc:975
 msgid "Select the polygon of which you want to construct the sides..."
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხედი, რომლის გვერდების აგებაც გნებავთ..."
 
 #: objects/polygon_type.cc:1022
 msgid "Construct the convex hull of this polygon"
-msgstr ""
+msgstr "ამ მრავალკუთხედის ამოზნექილი კორპუსის აგება"
 
 #: objects/polygon_type.cc:1023
 msgid "Select the polygon of which you want to construct the convex hull..."
 msgstr ""
+"აირჩიეთ მრავალკუთხედი, რომლისთვისაც გნებავთ, ამოზნექილი კორპუსი ააგოთ..."
 
 #: objects/special_calcers.cc:8
 #, kde-format
 msgid "Project this point onto the circle"
-msgstr ""
+msgstr "ამ წერტილის პროექცია წრეწირზე"
 
 #: objects/tangent_type.cc:23
 msgid "Select the point for the tangent to go through..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომელზეც მხები გაივლის..."
 
 #: objects/tests_type.cc:18
 msgid "Is this line parallel?"
@@ -5373,7 +5377,7 @@ msgstr "არის ეს ხაზი პარალელური?"
 
 #: objects/tests_type.cc:18
 msgid "Select the first of the two possibly parallel lines..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი შესაძლო პარალელური ხაზიდან..."
 
 #: objects/tests_type.cc:19
 msgid "Parallel to this line?"
@@ -5381,7 +5385,7 @@ msgstr "ამ ხაზის პარალელურა?"
 
 #: objects/tests_type.cc:19
 msgid "Select the other of the two possibly parallel lines..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი შესაძლო პარალელური ხაზიდან..."
 
 #: objects/tests_type.cc:46
 #, kde-format
@@ -5399,7 +5403,7 @@ msgstr "ეს ხაზები ორთოგონალურია?"
 
 #: objects/tests_type.cc:57
 msgid "Select the first of the two possibly orthogonal lines..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი შესაძლო პერპენდიკულარული ხაზიდან..."
 
 #: objects/tests_type.cc:58
 msgid "Orthogonal to this line?"
@@ -5407,7 +5411,7 @@ msgstr "ორთოგონალურია ამ ხაზთან?"
 
 #: objects/tests_type.cc:58
 msgid "Select the other of the two possibly orthogonal lines..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი შესაძლო პერპენდიკულარული ხაზიდან..."
 
 #: objects/tests_type.cc:85
 #, kde-format
@@ -5421,11 +5425,11 @@ msgstr "ეს ხაზები ორთოგონალური არა
 
 #: objects/tests_type.cc:96
 msgid "Check collinearity of this point"
-msgstr ""
+msgstr "ამ წერტილის არჩევა"
 
 #: objects/tests_type.cc:96
 msgid "Select the first of the three possibly collinear points..."
-msgstr ""
+msgstr "აირჩიეთ პირველი სამი წერტილიდან..."
 
 #: objects/tests_type.cc:97
 msgid "and this second point"
@@ -5433,7 +5437,7 @@ msgstr "და ამ მეორე წერტილით"
 
 #: objects/tests_type.cc:97
 msgid "Select the second of the three possibly collinear points..."
-msgstr ""
+msgstr "აირჩიეთ მეორე სამი წერტილიდან..."
 
 #: objects/tests_type.cc:98
 msgid "with this third point"
@@ -5441,33 +5445,33 @@ msgstr "ამ მესამე წერტილით"
 
 #: objects/tests_type.cc:98
 msgid "Select the last of the three possibly collinear points..."
-msgstr ""
+msgstr "აირჩიეთ მესამე სამი წერტილიდან..."
 
 #: objects/tests_type.cc:126
 #, kde-format
 msgid "These points are collinear."
-msgstr ""
+msgstr "ეს წერტილები ერთ წრფეზეა."
 
 #: objects/tests_type.cc:128
 #, kde-format
 msgid "These points are not collinear."
-msgstr ""
+msgstr "ეს წერტილები ერთ წრფეზე არაა."
 
 #: objects/tests_type.cc:137
 msgid "Check whether this point is on a curve"
-msgstr ""
+msgstr "შემოწმება, ეკუთვნის თუ არა ეს წერტილი მრუდს"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
 msgid "Select the point you want to test..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომლის შემოწმებაც გნებავთ..."
 
 #: objects/tests_type.cc:138
 msgid "Check whether the point is on this curve"
-msgstr ""
+msgstr "შემოწმება, ეკუთვნის თუ არა ეს წერტილი მრუდს"
 
 #: objects/tests_type.cc:138
 msgid "Select the curve that the point might be on..."
-msgstr ""
+msgstr "აირჩიეთ მრუდი..."
 
 #: objects/tests_type.cc:165
 #, kde-format
@@ -5489,7 +5493,7 @@ msgstr "შემოწმება, წერილი არის თუ ა�
 
 #: objects/tests_type.cc:181
 msgid "Select the polygon that the point might be in..."
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხედი..."
 
 #: objects/tests_type.cc:208
 #, kde-format
@@ -5503,11 +5507,11 @@ msgstr "ეს მრავალკუთხედი წერტილს ა
 
 #: objects/tests_type.cc:223
 msgid "Check whether this polygon is convex"
-msgstr ""
+msgstr "შემოწმება, არის თუ არა ეს მრავალკუთხედი ამოზნექილი"
 
 #: objects/tests_type.cc:223
 msgid "Select the polygon you want to test for convexity..."
-msgstr ""
+msgstr "აირჩიეთ მრავალკუთხედი მისი ამოზნექილობაზე შესამოწმებლად..."
 
 #: objects/tests_type.cc:249
 #, kde-format
@@ -5521,12 +5525,14 @@ msgstr "ეს მრავალკუთხედი ამოზნექი�
 
 #: objects/tests_type.cc:265
 msgid "Check if this point has the same distance"
-msgstr ""
+msgstr "წერტილებს შორის დაშორების შემოწმება"
 
 #: objects/tests_type.cc:266
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელიც გგონიათ, რომ იგივე მანძილითაა დაშორებული ორი სხვა "
+"წერტილიდან..."
 
 #: objects/tests_type.cc:268
 msgid "from this point"
@@ -5534,7 +5540,7 @@ msgstr "ამ წერტილიდან"
 
 #: objects/tests_type.cc:268
 msgid "Select the first of the two other points..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი სხვა წერტილიდან..."
 
 #: objects/tests_type.cc:269
 msgid "and from this second point"
@@ -5542,7 +5548,7 @@ msgstr "და ამ მეორე წერტილიდან"
 
 #: objects/tests_type.cc:269
 msgid "Select the other of the two other points..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი სხვა წერტილიდან..."
 
 #: objects/tests_type.cc:297
 #, kde-format
@@ -5556,19 +5562,19 @@ msgstr "ორი მანძილი იგივე არაა."
 
 #: objects/tests_type.cc:308
 msgid "Check whether this vector is equal to another vector"
-msgstr ""
+msgstr "შემოწმება, უდრის თუ არა ეს ვექტორი სხვა ვექტორს"
 
 #: objects/tests_type.cc:309
 msgid "Select the first of the two possibly equal vectors..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი შესაძლო ტოლი ვექტორებიდან..."
 
 #: objects/tests_type.cc:312
 msgid "Check whether this vector is equal to the other vector"
-msgstr ""
+msgstr "შემოწმება, ტოლია თუ არა ეს ვექტორი სხვა ვექტორის"
 
 #: objects/tests_type.cc:313
 msgid "Select the other of the two possibly equal vectors..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი შესაძლო ტოლი ვექტორებიდან..."
 
 #: objects/tests_type.cc:341
 #, kde-format
@@ -5586,7 +5592,7 @@ msgstr "ობიექტის არსებობის შემოწმ�
 
 #: objects/tests_type.cc:352
 msgid "Select the object for the existence check..."
-msgstr ""
+msgstr "აირჩიეთ ობიექტი არსებობის შესამოწმებლად..."
 
 #: objects/tests_type.cc:375
 #, kde-format
@@ -5776,7 +5782,7 @@ msgstr "ამ ვექტორით თარგმნა"
 
 #: objects/transform_types.cc:22
 msgid "Select the vector to translate by..."
-msgstr ""
+msgstr "აირჩიეთ, რომელ ვექტორზე მოხდება პარალელური გადატანა..."
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
 msgid "Reflect this object"
@@ -5843,7 +5849,7 @@ msgstr "ამ ცენტრით მასშტაბირება"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 msgid "Select the center point of the scaling..."
-msgstr ""
+msgstr "აირჩიეთ შუაწერტილი მასშტაბისთვის..."
 
 #. i18n( "Scale by the length of this segment" ),
 #. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
@@ -5857,6 +5863,7 @@ msgstr "ამ სიგრძით მასშტაბირება"
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr ""
+"აირჩიეთ სეგმენტის სიგრძე, რომლის სიგრძეც მასშტაბის კოეფიციენტის ტოლია..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
 msgid "Scale this length..."
@@ -5866,31 +5873,32 @@ msgstr "ამ სიგრძის მასშტაბირება..."
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
+"აირჩიეთ პირველი ორი სიგრძიდან, რომლის ფარდობაც მასშტაბის კოეფიციენტია..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
 msgid "...to this other length"
-msgstr ""
+msgstr "... ამ სიგრძის მონაკვეთში"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი სიგრძიდან, რომლის ფარდობაც მასშტაბის კოეფიციენტია..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
 msgid "Select the object to scale"
-msgstr ""
+msgstr "აირჩიეთ ობიექტი მასშტაბისთვის"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
 msgid "Scale over this line"
-msgstr ""
+msgstr "მასშტაბი ამ ხაზთან შედარებთ"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
 msgid "Select the line to scale over"
-msgstr ""
+msgstr "აირჩიეთ მასშტაბის ღერძი"
 
 #: objects/transform_types.cc:335
 msgid "Projectively rotate this object"
-msgstr ""
+msgstr "ამ ობიექტის პროექციული ბრუნვა"
 
 #: objects/transform_types.cc:335
 msgid "Select the object to rotate projectively"
