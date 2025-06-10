@@ -12,9 +12,7 @@
 #include "kgeo-filter.h"
 #include "kseg-filter.h"
 #include "native-filter.h"
-#ifdef WITH_GEOGEBRA
 #include "geogebra-filter.h"
-#endif // WITH_GEOGEBRA
 
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -37,9 +35,7 @@ KigFilters::KigFilters()
     mFilters.push_back(KigFilterCabri::instance());
     mFilters.push_back(KigFilterNative::instance());
     mFilters.push_back(KigFilterDrgeo::instance());
-#ifdef WITH_GEOGEBRA
     mFilters.push_back(KigFilterGeogebra::instance());
-#endif // WITH_GEOGEBRA
 }
 
 KigFilters *KigFilters::instance()

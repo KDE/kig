@@ -82,15 +82,19 @@ set_package_properties(
    PURPOSE "Kig can optionally use Boost.Python for Python scripting"
 )
 
-if(QT_VERSION_MAJOR LESS 6)
-   set_package_properties(
-      Qt${QT_MAJOR_VERSION}XmlPatterns PROPERTIES
-      DESCRIPTION "Qt${QT_MAJOR_VERSION} XmlPatterns Module"
-      URL "https://qt.io/"
-      TYPE OPTIONAL
-      PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
-   )
-endif(QT_VERSION_MAJOR LESS 6)
+find_package(LibXml2 MODULE)
+set_package_properties("LibXml2" PROPERTIES
+    PURPOSE "Support for Geogebra filter"
+    URL "http://libxml.org"
+    TYPE REQUIRED
+)
+
+find_package(LibXslt MODULE)
+set_package_properties("LibXslt" PROPERTIES
+    PURPOSE "Support for Geogebra filter"
+    URL "http://libxml.org"
+    TYPE REQUIRED
+)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
@@ -327,14 +331,12 @@ set(kigpart_PART_SRCS
    kig/kig_view.h
 )
 
-if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
-  set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
-  geogebra/geogebratransformer.cpp
-  geogebra/geogebrasection.cpp
-  filters/geogebra-filter.cpp)
-  qt_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/geogebra/geogebra.qrc)
-  add_definitions(-DWITH_GEOGEBRA=1)
-endif()
+set(kigpart_PART_SRCS ${kigpart_PART_SRCS}
+    geogebra/geogebratransformer.cpp
+    geogebra/geogebrasection.cpp
+    filters/geogebra-filter.cpp
+)
+qt_add_resources(kigpart_PART_SRCS ${CMAKE_SOURCE_DIR}/geogebra/geogebra.qrc)
 
 ki18n_wrap_ui(kigpart_PART_SRCS
    modes/typeswidget.ui
@@ -376,15 +378,13 @@ target_link_libraries(kigpart
   KF6::IconWidgets
   KF6::ConfigWidgets
   KF6::Archive
+  LibXml2::LibXml2
+  LibXslt::LibXslt
 )
 
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} KF6::TextEditor)
 endif(BoostPython_FOUND)
-
-if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
-  target_link_libraries(kigpart Qt::XmlPatterns)
-endif(Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
 
 ki18n_install(po)
 if (KF6DocTools_FOUND)
@@ -392,6 +392,20 @@ if (KF6DocTools_FOUND)
 endif()
 install(TARGETS kigpart DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/parts)
 install(FILES org.kde.kig.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+
+install(FILES kig/kig-mime.xml DESTINATION ${KDE_INSTALL_MIMEDIR})
+
+# require at least version 1.8 (same as for KF6)
+find_package(SharedMimeInfo 1.8)
+set_package_properties(SharedMimeInfo PROPERTIES
+                       TYPE OPTIONAL
+                       PURPOSE "Enables import of exported certificate groups with Kleopatra"
+                      )
+
+# update XDG mime-types if shared mime info is around
+if(SharedMimeInfo_FOUND AND NOT CMAKE_CROSSCOMPILING)
+    update_xdg_mimetypes(${KDE_INSTALL_MIMEDIR})
+endif()
 
 # unit tests
 if (BUILD_TESTING)

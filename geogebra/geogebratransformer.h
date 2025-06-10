@@ -7,10 +7,8 @@
 
 #pragma once
 
-#include <QAbstractXmlReceiver>
 #include <QMap>
 #include <QSet>
-#include <QXmlNamePool>
 
 #include <vector>
 
@@ -24,20 +22,12 @@ class ObjectType;
 /* This class 'transforms' the XML representation of the GeoGebra file into Kig's
  * internal representation of objects ( with proper parent-child relationship ).
  */
-class GeogebraTransformer : public QAbstractXmlReceiver
+class GeogebraTransformer
 {
 public:
-    GeogebraTransformer(KigDocument *document, const QXmlNamePool &np)
-        : m_document(document)
-        , m_currentState(GeogebraTransformer::ReadingObject)
-        , m_currentObject(nullptr)
-        , m_nsections(0)
-        , m_np(np)
-    {
-    }
-    ~GeogebraTransformer()
-    {
-    }
+    explicit GeogebraTransformer(KigDocument *document, const char *xmlContent);
+
+    ~GeogebraTransformer() = default;
 
     size_t getNumberOfSections() const
     {
@@ -48,21 +38,16 @@ public:
         return m_sections[sectionIdx];
     };
 
-    // QAbstractXmlReceiver implementation
-    void atomicValue(const QVariant &) override;
-    void attribute(const QXmlName &name, const QStringRef &value) override;
-    void characters(const QStringRef &) override;
-    void comment(const QString &) override;
-    void endDocument() override;
-    void endElement() override;
-    void endOfSequence() override;
-    void namespaceBinding(const QXmlName &) override;
-    void processingInstruction(const QXmlName &, const QString &) override;
-    void startDocument() override;
-    void startElement(const QXmlName &name) override;
-    void startOfSequence() override;
+    bool isValid() const
+    {
+        return m_isValid;
+    }
 
 private:
+    void attribute(QStringView namespaceUri, QStringView name, QStringView value);
+    void endElement(QStringView namespaceUri, QStringView name);
+    void startElement(QStringView namespaceUri, QStringView name);
+
     void resetDrawerVars()
     {
         m_show = true;
@@ -116,11 +101,11 @@ private:
     QByteArray m_currentObjectLabel;
     std::vector<GeogebraSection> m_sections;
     size_t m_nsections;
-    QXmlNamePool m_np;
     /* members required for constructing the object-drawers*/
     bool m_show;
     int m_thickness;
     Kig::PointStyle m_pointType;
     Qt::PenStyle m_type;
+    bool m_isValid = false;
     int m_r, m_g, m_b, m_alpha; // m_alpha is causing trouble at the moment as Geogebra somehow generates decimal values for it
 };

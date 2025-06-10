@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-FileCopyrightText: 2025 Carl Schwan <carl.schwan@gnupg.com>
+SPDX-License-Identifier: GPL-2.0-or-later
+-->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.geogebra.file">
+    <comment>GeoGebra document</comment>
+    <generic-icon name="text-x-generic"/>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.ggb" />
+  </mime-type>
+</mime-info>

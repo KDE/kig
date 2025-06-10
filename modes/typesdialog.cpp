@@ -28,14 +28,9 @@
 #include <KIconLoader>
 #include <KMessageBox>
 
-#ifdef WITH_GEOGEBRA
 #include "../geogebra/geogebratransformer.h"
 
-#include <QDebug>
-#include <QXmlQuery>
-
 #include <KZip>
-#endif // WITH_GEOGEBRA
 
 static QString wrapAt(const QString &str, int col = 50)
 {
@@ -473,9 +468,7 @@ void TypesDialog::importTypes()
     // TODO : Do this through MIME types
     QStringList toolFilters;
     toolFilters << i18n("Kig Types Files (*.kigt)");
-#ifdef WITH_GEOGEBRA
-    toolFilters << i18n("Geogebra Tool Files (*.ggt)");
-#endif // WITH_GEOGEBRA
+    toolFilters << i18n("Geogebra Tool Files (*.ggb)");
     toolFilters << i18n("All Files (*)");
     QStringList file_names = QFileDialog::getOpenFileNames(this,
                                                            i18n("Import Types"),
@@ -485,13 +478,11 @@ void TypesDialog::importTypes()
     std::vector<Macro *> macros;
     for (QStringList::const_iterator i = file_names.constBegin(); i != file_names.constEnd(); ++i) {
         std::vector<Macro *> nmacros;
-#ifdef WITH_GEOGEBRA
         if (i->endsWith(QLatin1String(".ggt"))) // The input file is a Geogebra Tool file..
         {
             loadGeogebraTools(*i, macros, mpart);
             continue;
         }
-#endif // WITH_GEOGEBRA
         bool ok = MacroList::instance()->load(*i, nmacros, mpart);
         if (!ok)
             continue;
@@ -564,47 +555,41 @@ void TypesDialog::typeListContextMenu(const QPoint &pos)
     popup->exec(mtypeswidget->typeList->viewport()->mapToGlobal(pos));
 }
 
-#ifdef WITH_GEOGEBRA
 bool TypesDialog::loadGeogebraTools(const QString &sFrom, std::vector<Macro *> &vec, KigPart & /*kigpart*/)
 {
     KZip geogebraFile(sFrom);
 
-    if (geogebraFile.open(QIODevice::ReadOnly)) {
-        const KZipFileEntry *geogebraXMLEntry = dynamic_cast<const KZipFileEntry *>(geogebraFile.directory()->entry(QStringLiteral("geogebra_macro.xml")));
-
-        if (geogebraXMLEntry) {
-            KigDocument *document = new KigDocument();
-            QXmlNamePool np;
-            QXmlQuery geogebraXSLT(QXmlQuery::XSLT20, np);
-            const QString encodedData = QString::fromUtf8(geogebraXMLEntry->data().constData());
-            QFile queryDevice(QStringLiteral(":/kig/geogebra/geogebra.xsl"));
-            GeogebraTransformer ggttransformer(document, np);
-
-            queryDevice.open(QFile::ReadOnly);
-            geogebraXSLT.setFocus(encodedData);
-            geogebraXSLT.setQuery(&queryDevice);
-            geogebraXSLT.evaluateTo(&ggttransformer);
-            queryDevice.close();
-
-            const size_t nmacros = ggttransformer.getNumberOfSections();
-
-            for (size_t i = 0; i < nmacros; i++) {
-                const GeogebraSection f = ggttransformer.getSection(i);
-                ObjectHierarchy hrchy(f.getInputObjects(), f.getOutputObjects());
-                MacroConstructor *ctor = new MacroConstructor(hrchy, ggttransformer.getSection(i).getName(), ggttransformer.getSection(i).getDescription());
-                ConstructibleAction *act = new ConstructibleAction(ctor, nullptr);
-
-                Macro *newmacro = new Macro(act, ctor);
-                vec.push_back(newmacro);
-            }
-        }
-    } else {
+    if (!geogebraFile.open(QIODevice::ReadOnly)) {
         qWarning() << "Failed to open zip archive";
         return false;
     }
 
+    const KZipFileEntry *geogebraXMLEntry = dynamic_cast<const KZipFileEntry *>(geogebraFile.directory()->entry(QStringLiteral("geogebra_macro.xml")));
+
+    if (!geogebraXMLEntry) {
+        return false;
+    }
+
+    auto document = new KigDocument();
+    GeogebraTransformer ggttransformer(document, geogebraXMLEntry->data().constData());
+
+    if (!ggttransformer.isValid()) {
+        return false;
+    }
+
+    const size_t nmacros = ggttransformer.getNumberOfSections();
+
+    for (size_t i = 0; i < nmacros; i++) {
+        const GeogebraSection f = ggttransformer.getSection(i);
+        ObjectHierarchy hrchy(f.getInputObjects(), f.getOutputObjects());
+        MacroConstructor *ctor = new MacroConstructor(hrchy, ggttransformer.getSection(i).getName(), ggttransformer.getSection(i).getDescription());
+        ConstructibleAction *act = new ConstructibleAction(ctor, nullptr);
+
+        Macro *newmacro = new Macro(act, ctor);
+        vec.push_back(newmacro);
+    }
+
     return true;
 }
-#endif // WITH_GEOEBRA
 
 #include "moc_typesdialog.cpp"

@@ -16,19 +16,120 @@
 #include <objects/object_holder.h>
 #include <objects/object_type_factory.h>
 
+#include <libxml/parser.h>
+#include <libxslt/transform.h>
+#include <libxslt/xslt.h>
+#include <libxslt/xsltInternals.h>
+#include <libxslt/xsltutils.h>
+
 #include <QDebug>
 
 #include <QColor>
-#include <QXmlName>
+#include <QFile>
+#include <QXmlStreamReader>
 
-void GeogebraTransformer::atomicValue(const QVariant &)
+struct XmlDocDeleter {
+    void operator()(xmlDocPtr xmlDoc)
+    {
+        if (xmlDoc) {
+            xmlFreeDoc(xmlDoc);
+        }
+    }
+};
+
+struct XsltStylesheetDeleter {
+    void operator()(xsltStylesheetPtr style) const
+    {
+        if (style) {
+            xsltFreeStylesheet(style);
+        }
+    }
+};
+
+using XmlDocPtr = std::unique_ptr<_xmlDoc, XmlDocDeleter>;
+using XsltStylesheetPtr = std::unique_ptr<xsltStylesheet, XsltStylesheetDeleter>;
+using namespace Qt::StringLiterals;
+
+GeogebraTransformer::GeogebraTransformer(KigDocument *document, const char *xmlContent)
+    : m_document(document)
+    , m_currentState(GeogebraTransformer::ReadingObject)
+    , m_currentObject(nullptr)
+    , m_nsections(0)
 {
-    // I wish I could use this...
+    XmlDocPtr xmlDoc(xmlReadMemory(xmlContent, strlen(xmlContent), "geogebra.xml", nullptr, 0));
+    if (!xmlDoc) {
+        qWarning() << "Failed to parse XML";
+        return;
+    }
+
+    QFile queryDevice(QStringLiteral(":/kig/geogebra/geogebra.xsl"));
+    const auto ok = queryDevice.open(QFile::ReadOnly);
+    if (!ok) {
+        qWarning() << "Failed to open geogebra.xsl";
+        Q_ASSERT(false);
+        return;
+    }
+
+    const auto data = queryDevice.readAll();
+    qWarning() << data;
+    const auto xsltContent = data.constData();
+    queryDevice.close();
+
+    XmlDocPtr xsltDoc(xmlReadMemory(xsltContent, strlen(xsltContent), "geogebra.xsl", nullptr, 0));
+    if (!xsltDoc) {
+        qWarning() << "Failed to parse XSLT document";
+        return;
+    }
+
+    XsltStylesheetPtr style(xsltParseStylesheetDoc(xsltDoc.release())); // passing the ownership to the style
+    if (!style) {
+        qWarning() << "Failed to compile XSLT stylesheet";
+        return;
+    }
+
+    XmlDocPtr result(xsltApplyStylesheet(style.get(), xmlDoc.get(), nullptr));
+
+    if (result) {
+        qWarning() << "Failed to apply XSLT stylesheet";
+        return;
+    }
+
+    xmlChar *docTextPtr = nullptr;
+    int docTextLength = 0;
+    if (!xsltSaveResultToString(&docTextPtr, &docTextLength, result.get(), style.get())) {
+        qWarning() << "Failed to save transformed document";
+        return;
+    }
+
+    const QByteArray transformedXml(reinterpret_cast<const char *>(docTextPtr), docTextLength);
+
+    xsltCleanupGlobals();
+    xmlCleanupParser();
+
+    QXmlStreamReader reader(transformedXml);
+    while (!reader.atEnd()) {
+        reader.readNext();
+        if (reader.isStartElement()) {
+            startElement(reader.namespaceUri(), reader.text());
+            const auto attributes = reader.attributes();
+            for (const auto &attrib : attributes) {
+                attribute(attrib.namespaceUri(), attrib.name(), attrib.value());
+            }
+        } else if (reader.isEndElement()) {
+            endElement(reader.namespaceUri(), reader.text());
+        }
+    }
+    if (reader.hasError()) {
+        qWarning() << "Failed to read transformed document";
+        return;
+    }
+
+    m_isValid = true;
 }
 
-void GeogebraTransformer::attribute(const QXmlName &name, const QStringRef &value)
+void GeogebraTransformer::attribute(QStringView namespaceUri, QStringView name, QStringView value)
 {
-    if (name.localName(m_np) == QLatin1String("label")) {
+    if (name == "label"_L1) {
         const QByteArray objectLabel = value.toLatin1();
         bool isDoubleValue;
         const double dblval = value.toString().toDouble(&isDoubleValue);
@@ -63,27 +164,27 @@ void GeogebraTransformer::attribute(const QXmlName &name, const QStringRef &valu
         default:
             break;
         }
-    } else if (name.localName(m_np) == QLatin1String("value")) {
+    } else if (name == "value"_L1) {
         Q_ASSERT(m_currentState == ReadingDouble);
         DoubleImp *doubleImp = new DoubleImp(value.toString().toDouble());
 
         m_currentArgStack.push_back(new ObjectConstCalcer(doubleImp));
-    } else if (name.localName(m_np) == QLatin1String("Name")) {
+    } else if (name == "Name"_L1) {
         m_sections[m_nsections - 1].setName(value.toString());
-    } else if (name.localName(m_np) == QLatin1String("Description")) {
+    } else if (name == "Description"_L1) {
         m_sections[m_nsections - 1].setDescription(value.toString());
-    } else if (name.localName(m_np) == QLatin1String("Input")) {
+    } else if (name == "Input"_L1) {
         m_inputObjectLabels.insert(value.toLatin1());
-    } else if (name.localName(m_np) == QLatin1String("Output")) {
+    } else if (name == "Output"_L1) {
         m_outputObjectLabels.insert(value.toLatin1());
-    } else if (name.localName(m_np) == QLatin1String("show")) {
-        m_show = ((value.toString() == QLatin1String("true")) ? true : false);
-    } else if (name.localName(m_np) == QLatin1String("thickness")) {
+    } else if (name == "show"_L1) {
+        m_show = ((value.toString() == "true"_L1) ? true : false);
+    } else if (name == "thickness"_L1) {
         m_thickness = value.toString().toInt();
-    } else if (name.localName(m_np) == QLatin1String("thickness_point")) {
+    } else if (name == "thickness_point"_L1) {
         m_thickness = value.toString().toInt();
         m_thickness += 6;
-    } else if (name.localName(m_np) == QLatin1String("type")) {
+    } else if (name == "type"_L1) {
         int penType = value.toString().toInt();
         switch (penType) {
         case SOLIDLINE:
@@ -104,7 +205,7 @@ void GeogebraTransformer::attribute(const QXmlName &name, const QStringRef &valu
         default:
             m_type = Qt::SolidLine;
         };
-    } else if (name.localName(m_np) == QLatin1String("pointType")) {
+    } else if (name == "pointType"_L1) {
         int pt = value.toString().toInt();
         if (pt == SOLIDCIRCLEPOINT)
             m_pointType = Kig::pointStyleFromString(QStringLiteral("Round"));
@@ -120,36 +221,24 @@ void GeogebraTransformer::attribute(const QXmlName &name, const QStringRef &valu
             m_pointType = Kig::pointStyleFromString(QStringLiteral("Cross"));
         else
             m_pointType = Kig::Round;
-    } else if (name.localName(m_np) == QLatin1String("r")) {
+    } else if (name == "r"_L1) {
         m_r = value.toString().toInt();
-    } else if (name.localName(m_np) == QLatin1String("g")) {
+    } else if (name == "g"_L1) {
         m_g = value.toString().toInt();
-    } else if (name.localName(m_np) == QLatin1String("b")) {
+    } else if (name == "b"_L1) {
         m_b = value.toString().toInt();
-    } else if (name.localName(m_np) == QLatin1String("alpha")) {
+    } else if (name == "alpha"_L1) {
         m_alpha = value.toString().toInt();
-    } else if (name.localName(m_np) == QLatin1String("axes")) {
-        bool showAxes = value.toString() == QLatin1String("true") ? true : false;
+    } else if (name == "axes"_L1) {
+        bool showAxes = value.toString() == "true"_L1 ? true : false;
         m_document->setAxes(showAxes);
-    } else if (name.localName(m_np) == QLatin1String("grid")) {
-        bool showGrid = value.toString() == QLatin1String("true") ? true : false;
+    } else if (name == "grid"_L1) {
+        bool showGrid = value.toString() == "true"_L1 ? true : false;
         m_document->setGrid(showGrid);
     }
 }
 
-void GeogebraTransformer::characters(const QStringRef &)
-{
-}
-
-void GeogebraTransformer::comment(const QString &)
-{
-}
-
-void GeogebraTransformer::endDocument()
-{
-}
-
-void GeogebraTransformer::endElement()
+void GeogebraTransformer::endElement(QStringView namespaceUri, QStringView name)
 {
     switch (m_currentState) {
     case GeogebraTransformer::ReadingObject:
@@ -195,25 +284,9 @@ void GeogebraTransformer::endElement()
     }
 }
 
-void GeogebraTransformer::endOfSequence()
+void GeogebraTransformer::startElement(QStringView namespaceUri, QStringView name)
 {
-}
-
-void GeogebraTransformer::namespaceBinding(const QXmlName &)
-{
-}
-
-void GeogebraTransformer::processingInstruction(const QXmlName &, const QString &)
-{
-}
-
-void GeogebraTransformer::startDocument()
-{
-}
-
-void GeogebraTransformer::startElement(const QXmlName &name)
-{
-    if (name.localName(m_np) == QLatin1String("Section")) {
+    if (name == "Section"_L1) {
         m_nsections++;
         m_sections.push_back(GeogebraSection());
 
@@ -230,23 +303,23 @@ void GeogebraTransformer::startElement(const QXmlName &name)
         if (m_currentObject) {
             // We are already building an object
             m_currentState = GeogebraTransformer::ReadingArguments;
-            startElement(name);
+            startElement(namespaceUri, name);
             return;
         }
 
         {
             resetDrawerVars();
-            const QByteArray nameData = name.localName(m_np).toLatin1();
+            const QByteArray nameData = name.toLatin1();
             m_currentObject = ObjectTypeFactory::instance()->find(nameData);
 
             if (!m_currentObject) {
-                qWarning() << name.localName(m_np) << " object not found!";
+                qWarning() << name << " object not found!";
             }
         }
 
         break;
     case GeogebraTransformer::ReadingArguments:
-        if (name.localName(m_np) == QLatin1String("Double")) {
+        if (name == "Double"_L1) {
             m_currentState = GeogebraTransformer::ReadingDouble;
         }
 
@@ -254,8 +327,4 @@ void GeogebraTransformer::startElement(const QXmlName &name)
     default:
         break;
     }
-}
-
-void GeogebraTransformer::startOfSequence()
-{
 }

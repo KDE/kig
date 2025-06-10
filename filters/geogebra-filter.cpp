@@ -7,8 +7,9 @@
 */
 
 #include "geogebra-filter.h"
+#include "geogebra/geogebratransformer.h"
 
-#include <geogebra/geogebratransformer.h>
+// #include <geogebra/geogebratransformer.h>
 #include <kig/kig_document.h>
 #include <objects/bogus_imp.h>
 #include <objects/object_calcer.h>
@@ -20,7 +21,7 @@
 #include <QDebug>
 
 #include <QFile>
-#include <QXmlQuery>
+#include <QXmlStreamReader>
 
 #include <algorithm>
 
@@ -45,36 +46,30 @@ KigDocument *KigFilterGeogebra::load(const QString &sFrom)
     KZip geogebraFile(sFrom);
     KigDocument *document = new KigDocument();
 
-    if (geogebraFile.open(QIODevice::ReadOnly)) {
-        const KZipFileEntry *geogebraXMLEntry = dynamic_cast<const KZipFileEntry *>(geogebraFile.directory()->entry(QStringLiteral("geogebra.xml")));
-
-        if (geogebraXMLEntry) {
-            QXmlNamePool np;
-            QXmlQuery geogebraXSLT(QXmlQuery::XSLT20, np);
-            const QString encodedData = QString::fromUtf8(geogebraXMLEntry->data().constData());
-            QFile queryDevice(QStringLiteral(":/kig/geogebra/geogebra.xsl"));
-            GeogebraTransformer ggbtransform(document, np);
-
-            queryDevice.open(QFile::ReadOnly);
-            geogebraXSLT.setFocus(encodedData);
-            geogebraXSLT.setQuery(&queryDevice);
-            geogebraXSLT.evaluateTo(&ggbtransform);
-            queryDevice.close();
-
-            assert(ggbtransform.getNumberOfSections() == 1);
-
-            const GeogebraSection &gs = ggbtransform.getSection(0);
-            const std::vector<ObjectCalcer *> &f = gs.getOutputObjects();
-            const std::vector<ObjectDrawer *> &d = gs.getDrawers();
-            std::vector<ObjectHolder *> holders(f.size());
-
-            std::transform(f.cbegin(), f.cend(), d.begin(), holders.begin(), holderFromCalcerAndDrawer);
-
-            document->addObjects(holders);
-        }
-    } else {
+    if (!geogebraFile.open(QIODevice::ReadOnly)) {
         qWarning() << "Failed to open zip archive";
+        return document;
     }
+
+    const KZipFileEntry *geogebraXMLEntry = dynamic_cast<const KZipFileEntry *>(geogebraFile.directory()->entry(QStringLiteral("geogebra.xml")));
+
+    if (!geogebraXMLEntry) {
+        qWarning() << "No geogebra.xml found in the ZIP archive";
+        return document;
+    }
+
+    GeogebraTransformer transformer(document, geogebraXMLEntry->data().constData());
+
+    Q_ASSERT(transformer.getNumberOfSections() == 1);
+
+    const GeogebraSection &gs = transformer.getSection(0);
+    const std::vector<ObjectCalcer *> &f = gs.getOutputObjects();
+    const std::vector<ObjectDrawer *> &d = gs.getDrawers();
+    std::vector<ObjectHolder *> holders(f.size());
+
+    std::transform(f.cbegin(), f.cend(), d.begin(), holders.begin(), holderFromCalcerAndDrawer);
+
+    document->addObjects(holders);
 
     return document;
 }
