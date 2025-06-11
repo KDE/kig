@@ -18,9 +18,9 @@
 >bab@debian.org</email
 ></author>
 <date
->2020-12-23</date>
+>2015-08-27</date>
 <releaseinfo
->Aplicaciones 20.12</releaseinfo>
+>&kig; 1.0 (Applications 15.12)</releaseinfo>
 <productname
 >Aplicaciones de KDE</productname>
 </refentryinfo>
@@ -40,7 +40,7 @@
 >kig</command
 ></refname>
 <refpurpose
->Un programa de geometría interactiva para &kde;</refpurpose>
+>an interactive geometry program by &kde;</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
@@ -134,9 +134,11 @@
 <title
 >Vea también</title>
 <para
->Existe información de usuario más detallada disponible en <ulink url="help:/kig"
+>More detailed user documentation is available from <ulink url="help:/kig"
 >help:/kig</ulink
-> (solo tiene que introducir esta &URL; en &konqueror;, o ejecutar <userinput
+> (either enter this <acronym
+>URL</acronym
+> into &konqueror;, or run <userinput
 ><command
 >khelpcenter</command
 > <parameter
@@ -145,8 +147,8 @@
 >).</para>
 
 <para
->Existe información más amplia disponible en el <ulink url="https://edu.kde.org/kig/"
->sitio web de aplicaciones educativas de &kde;</ulink
+>There is also further information available at the <ulink url="http://edu.kde.org/kig/"
+>&kde; Edutainment website</ulink
 >.</para>
 </refsect1>
 
@@ -196,7 +198,7 @@
 >david.narvaez@computer.org</email
 > y otros.</para>
 <para
->Esta página de manual está basada en una preparada para &Debian; por <personname
+>This man page based on the one prepared for Debian by <personname
 ><firstname
 >Ben</firstname
 ><surname
