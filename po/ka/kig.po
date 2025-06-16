@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-06-09 05:51+0200\n"
+"PO-Revision-Date: 2025-06-15 04:23+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -665,6 +665,8 @@ msgid ""
 "Helped a lot with the implementation of the Locus object, there's quite some "
 "math involved in doing it right, and Franco wrote the most difficult parts."
 msgstr ""
+"ძალიან დაგვეხმარა ლოკუსის ობიექტის განხორციელებისთვის. საჭირო იყო საკმაოდ "
+"ბევრი მათემატიკა და ფრანკომ ყველაზე რთული ადგილები დაწერა."
 
 #: kig/aboutdata.h:45
 #, kde-format
@@ -1017,6 +1019,11 @@ msgid ""
 "\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">KDE's bug tracking system</a>"
 msgstr ""
+"სცადეთ, გაგეხსნათ დოკუმენტი ტიპით \"%1\". სამწუხაროდ, Kig-ს ამ ფორმატის "
+"მხარდაჭერა არ აქვს. თუ ფიქრობთ, რომ ეს ფორმატი ღირსია, რომ Kig-ს მისი "
+"მხარდაჭერა ჰქონდეს, გახსენით ფუნქციის მოთხოვნის ბილეთი <a href=\"https://"
+"bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist\">KDE-ის "
+"შეცდომების ტრეკინგის სისტემაში</a>"
 
 #: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
@@ -1325,6 +1332,8 @@ msgid ""
 "File to output the created native file to. '-' means output to stdout. "
 "Default is stdout as well."
 msgstr ""
+"ფაილი გამოსატანად საკუთარი ფორმატით ჩაწერისას. '-' ნიშნავს სტანდარტულ "
+"გამოტანას. ნაგულისხმევიც სტანდარტული გამოტანაა."
 
 #: kig/main.cpp:53
 #, kde-format
@@ -2347,12 +2356,12 @@ msgstr ""
 #: misc/special_constructors.cc:624
 #, kde-format
 msgid "Construct a polygonal line with this vertex"
-msgstr ""
+msgstr "მრავალკუთხედი ხაზის აგება ამ წვეროთი"
 
 #: misc/special_constructors.cc:629
 #, kde-format
 msgid "Select a point to be a vertex of the new polygonal line..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი, რომელიც ახალი მრავალკუთხედი ხაზის წვერო იქნება..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
 msgid "Polygon"
@@ -2908,11 +2917,14 @@ msgid ""
 "optional, so you can also leave this empty: if you do so, then your macro "
 "type will have no description."
 msgstr ""
+"აქ შეგიძლიათ, მიმდინარე მაკროს ტიპის აღწერა ჩაასწოროთ. ეს ველი "
+"არასავალდებულოა, ასე რომ, შეგიძლიათ, ის ცარიელი დატოვოთ: თუ ასე იზამთ, "
+"თქვენი მაკროს ტიპს აღწერა არ ექნება."
 
 #: modes/edittype.cc:49
 #, kde-format
 msgid "Use this button to change the icon of the current macro type."
-msgstr ""
+msgstr "გამოიყენეთ ეს ღილაკი მიმდინარე მაკროს ტიპის ხატულას შესაცვლელად."
 
 #: modes/edittype.cc:70
 #, kde-format
@@ -2925,7 +2937,7 @@ msgstr "მაკროს სახელი ცარიელი არ შ�
 msgid ""
 "Here you can modify the name, the description and the icon of this macro "
 "type."
-msgstr ""
+msgstr "აქ შეგიძლიათ შეცვალოთ სახელი, აღწერა და ხატულა ამ მაკროს ტიპისთვის."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2_3)
 #: modes/edittypewidget.ui:73
@@ -5932,7 +5944,7 @@ msgstr ""
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
 msgid "Select the object to transform..."
-msgstr ""
+msgstr "აირჩიეთ ობიექტი გარდაქმნისთვის..."
 
 #: objects/transform_types.cc:377
 msgid "Harmonic Homology with this center"
@@ -5956,7 +5968,7 @@ msgstr ""
 
 #: objects/transform_types.cc:409
 msgid "Map this triangle"
-msgstr ""
+msgstr "კუთხის ჩვენება"
 
 #: objects/transform_types.cc:409
 msgid "Select the triangle that has to be transformed onto a given triangle..."
@@ -5964,7 +5976,7 @@ msgstr ""
 
 #: objects/transform_types.cc:411
 msgid "onto this other triangle"
-msgstr ""
+msgstr "ამ სხვა სამკუთხედზე"
 
 #: objects/transform_types.cc:412
 msgid ""
@@ -6029,7 +6041,7 @@ msgstr ""
 
 #: objects/transform_types.cc:510
 msgid "Map this quadrilateral"
-msgstr ""
+msgstr "ამ ოთხკუთხედის ჩვენება"
 
 #: objects/transform_types.cc:511
 msgid ""
@@ -6039,7 +6051,7 @@ msgstr ""
 
 #: objects/transform_types.cc:514
 msgid "onto this other quadrilateral"
-msgstr ""
+msgstr "ამ სხვა ოთხკუთხედზე"
 
 #: objects/transform_types.cc:515
 msgid ""
@@ -6105,7 +6117,7 @@ msgstr ""
 
 #: objects/transform_types.cc:624
 msgid "Cast the shadow of this object"
-msgstr ""
+msgstr "ამ ობიექტის ჩრდილის დახატვა"
 
 #: objects/transform_types.cc:624
 msgid "Select the object of which you want to construct the shadow..."
@@ -6113,7 +6125,7 @@ msgstr ""
 
 #: objects/transform_types.cc:626
 msgid "Cast a shadow from this light source"
-msgstr ""
+msgstr "ჩრდილის დახატვა ამ სინათლის წყაროდან"
 
 #: objects/transform_types.cc:627
 msgid "Select the light source from which the shadow should originate..."
@@ -6125,7 +6137,7 @@ msgstr ""
 
 #: objects/transform_types.cc:629
 msgid "Select the horizon for the shadow..."
-msgstr ""
+msgstr "აირჩიეთ ჰორიზონტი ჩრდილისთვის..."
 
 #: objects/transform_types.cc:809
 msgid "Transform this object"
@@ -6137,19 +6149,19 @@ msgstr "გარდაქმნა ამ ტრანსფორმაცი�
 
 #: objects/transform_types.cc:883
 msgid "Apply a similitude to this object"
-msgstr ""
+msgstr "მსგავსების გარდაქმნის გადატარება ამ ობიექტზე"
 
 #: objects/transform_types.cc:884
 msgid "Apply a similitude with this center"
-msgstr ""
+msgstr "მსგავსების გარდაქმნის გადატარება ამ ცენტრით"
 
 #: objects/transform_types.cc:884
 msgid "Select the center for the similitude..."
-msgstr ""
+msgstr "აირჩიეთ ცენტრი მსგავსების გარდაქმნისთვის..."
 
 #: objects/transform_types.cc:886
 msgid "Apply a similitude mapping this point onto another point"
-msgstr ""
+msgstr "მსგავსების გარდაქმნის გადატარება ამ წერტილისა სხვა წერტილზე"
 
 #: objects/transform_types.cc:887
 msgid "Select the point which the similitude should map onto another point..."
@@ -6166,19 +6178,19 @@ msgstr ""
 
 #: objects/vector_type.cc:12
 msgid "Construct a vector from this point"
-msgstr ""
+msgstr "ვექტორის აგება ამ წერტილიდან"
 
 #: objects/vector_type.cc:12
 msgid "Select the start point of the new vector..."
-msgstr ""
+msgstr "აირჩიეთ ახალი ვექტორის საწყისი წერტილი..."
 
 #: objects/vector_type.cc:13
 msgid "Construct a vector to this point"
-msgstr ""
+msgstr "ამ წერტილზე გამავალი ვექტორის აგება"
 
 #: objects/vector_type.cc:13
 msgid "Select the end point of the new vector..."
-msgstr ""
+msgstr "აირჩიეთ ბოლო წერტილი ახალი ვექტორისთვის..."
 
 #: objects/vector_type.cc:44
 msgid "Construct the vector sum of this vector and another one."
