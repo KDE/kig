@@ -28,6 +28,12 @@ parts:
     plugin: cmake
     source: .
     source-type: local
+    build-packages:
+      - libboost-python-dev
+      - libcups2-dev
+    stage-packages:
+      - libboost-python1.83.0
+      - libcups2t64
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
