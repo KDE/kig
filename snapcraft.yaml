@@ -40,6 +40,9 @@ parts:
       - -DQT_MAJOR_VERSION=6
       - -DBUILD_WITH_QT6=ON
       - -DBUILD_TESTING=OFF
+   override-pull: |
+        craftctl default
+        patch -p0 < ${SNAPCRAFT_PROJECT_DIR}/snap/local/cmake_policy.patch
     prime:
       - -usr/lib/*/cmake/*
       - -usr/include/*
