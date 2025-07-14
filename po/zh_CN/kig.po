@@ -4270,7 +4270,7 @@ msgstr "隐藏曲线"
 #: objects/curve_imp.cc:344
 #, kde-format
 msgid "Possibly transcendental curve"
-msgstr ""
+msgstr "可能是超越曲线"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
