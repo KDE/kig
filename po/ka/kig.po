@@ -2186,7 +2186,7 @@ msgstr "რიცხვითი მნიშვნელობა"
 #: misc/kigcoordinateprecisiondialog.ui:9
 #, kde-format
 msgid "&Use default coordinate precision"
-msgstr "&კოორდინატების ნაგულისხმები სიზუსტის გამოყენება"
+msgstr "&კოორდინატების ნაგულისხმევი სიზუსტის გამოყენება"
 
 #. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
 #: misc/kigcoordinateprecisiondialog.ui:16
