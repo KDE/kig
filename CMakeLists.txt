@@ -61,7 +61,7 @@ find_package(BoostPython)
 
 if(KF6DocTools_FOUND)
   add_subdirectory( doc )
-endif(KF6DocTools_FOUND)
+endif()
 
 add_subdirectory( icons )
 add_subdirectory( kig )
@@ -72,7 +72,7 @@ add_subdirectory( pykig )
 if(BoostPython_FOUND)
   add_subdirectory( scripting )
   add_definitions(-DKIG_ENABLE_PYTHON_SCRIPTING)
-endif(BoostPython_FOUND)
+endif()
 
 set_package_properties(
    BoostPython PROPERTIES
@@ -90,14 +90,14 @@ if(QT_VERSION_MAJOR LESS 6)
       TYPE OPTIONAL
       PURPOSE "Kig uses the XML Patterns module in Qt to support Geogebra files"
    )
-endif(QT_VERSION_MAJOR LESS 6)
+endif()
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 include_directories( ${CMAKE_SOURCE_DIR}/modes )
 if(BoostPython_FOUND)
   include_directories(${BoostPython_INCLUDE_DIRS})
-endif(BoostPython_FOUND)
+endif()
 
 # kigpart
 
@@ -358,7 +358,7 @@ if(BoostPython_FOUND)
   )
 
   kde_source_files_enable_exceptions(scripting/python_scripter.cc)
-endif(BoostPython_FOUND)
+endif()
 
 
 add_library(kigpart MODULE ${kigpart_PART_SRCS})
@@ -380,11 +380,11 @@ target_link_libraries(kigpart
 
 if(BoostPython_FOUND)
   target_link_libraries(kigpart ${BoostPython_LIBRARIES} KF6::TextEditor)
-endif(BoostPython_FOUND)
+endif()
 
 if (Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
   target_link_libraries(kigpart Qt::XmlPatterns)
-endif(Qt${QT_MAJOR_VERSION}XmlPatterns_FOUND)
+endif()
 
 ki18n_install(po)
 if (KF6DocTools_FOUND)

@@ -11,7 +11,7 @@
 if(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
     # Already in cache, be silent
 	set(BoostPython_FIND_QUIETLY TRUE)
-endif(BoostPython_INCLUDE_DIRS AND BoostPython_LIBRARIES)
+endif()
 
 include(CheckIncludeFileCXX)
 include(CMakePushCheckState)
@@ -28,7 +28,7 @@ const char* greet() { return \"Hello world!\"; }
 BOOST_PYTHON_MODULE(hello) { boost::python::def(\"greet\", greet); }
 int main() { return 0; }
 " ${varname} )
-endmacro(BoostPython_TRY_COMPILE)
+endmacro()
 
 cmake_policy(SET CMP0167 OLD)
 cmake_policy(SET CMP0148 OLD)
@@ -39,8 +39,8 @@ if(NOT Boost_PYTHON3_FOUND)
   if(Boost_PYTHON_FOUND)
     set(Boost_PYTHON3_LIBRARY ${Boost_PYTHON_LIBRARY})
     set(Boost_PYTHON3_FOUND TRUE)
-  endif(Boost_PYTHON_FOUND)
-endif(NOT Boost_PYTHON3_FOUND)
+  endif()
+endif()
 
 cmake_push_check_state()
 
@@ -70,9 +70,9 @@ if(Boost_PYTHON3_FOUND)
             CACHE INTERNAL "Includes search path for Boost+Python")
         set(BoostPython_LIBRARIES    ${PYTHON_LIBRARIES}    ${Boost_PYTHON3_LIBRARY}
             CACHE INTERNAL "Linker flags for Boost+Python")
-      endif(BoostPython_FromCMake)
-    endif(PYTHONLIBS_FOUND)
-  endif(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
+      endif()
+    endif()
+  endif()
 
   if(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES)
     # Second try: try pkg-config way
@@ -97,14 +97,14 @@ if(Boost_PYTHON3_FOUND)
                   CACHE INTERNAL "Includes search path for Boost+Python")
               set(BoostPython_LIBRARIES    ${${_pyver}_LDFLAGS}      ${Boost_PYTHON3_LIBRARY}
                   CACHE INTERNAL "Linker flags for Boost+Python")
-            endif(BoostPython_${_pyver})
+            endif()
 
-          endif(${_pyver}_FOUND)
-        endif(NOT BoostPython_INCLUDES OR NOT BoostPython_LIBS)
-      endforeach(_pyver ${PYTHON_VERSIONS})
-    endif(PKG_CONFIG_FOUND)
-  endif(NOT BoostPython_INCLUDE_DIRS OR NOT BoostPython_LIBRARIES )
-endif(Boost_PYTHON3_FOUND)
+          endif()
+        endif()
+      endforeach()
+    endif()
+  endif()
+endif()
 
 cmake_pop_check_state()
 
