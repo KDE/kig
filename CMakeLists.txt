@@ -70,6 +70,9 @@ add_subdirectory( pykig )
 if(BoostPython_FOUND)
   add_subdirectory( scripting )
   add_definitions(-DKIG_ENABLE_PYTHON_SCRIPTING)
+  get_filename_component(PYTHON_LIBRARY_REALPATH "${PYTHON_LIBRARY}" REALPATH)
+  get_filename_component(LIB_PYTHON ${PYTHON_LIBRARY_REALPATH} NAME)
+  add_definitions(-DLIB_PYTHON="${LIB_PYTHON}")
 endif()
 
 set_package_properties(
