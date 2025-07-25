@@ -10,6 +10,8 @@
 #include "python_scripter.h"
 #include <Python.h>
 
+#include <QLibrary>
+
 #include <iostream>
 #include <string>
 
@@ -308,6 +310,11 @@ public:
 PythonInitializer::PythonInitializer()
 {
     // tell the python interpreter about our API..
+
+    QLibrary *pythonLib = new QLibrary();
+    pythonLib->setLoadHints(QLibrary::ExportExternalSymbolsHint);
+    pythonLib->setFileName(LIB_PYTHON);
+    pythonLib->load();
 
     PyImport_AppendInittab("kig", PyInit_kig);
 
