@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-07-23 03:46+0200\n"
+"PO-Revision-Date: 2025-07-24 10:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6009,7 +6009,7 @@ msgstr "აირჩიეთ ჰარმონიული ჰომოლო�
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
 msgid "Generic affinity of this object"
-msgstr ""
+msgstr "ამ ობიექტის აფინური გარდაქმნა"
 
 #: objects/transform_types.cc:409
 msgid "Map this triangle"
@@ -6037,7 +6037,7 @@ msgstr "პირველი 3 საწყისი წერტილიდ�
 #: objects/transform_types.cc:450
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი საწყისი წერტილიდან პირველი..."
 
 #: objects/transform_types.cc:452
 msgid "Second of 3 starting points"
@@ -6046,7 +6046,7 @@ msgstr "მეორე 3 საწყისი წერტილიდან"
 #: objects/transform_types.cc:453
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი საწყისი წერტილიდან მეორე..."
 
 #: objects/transform_types.cc:455
 msgid "Third of 3 starting points"
@@ -6055,7 +6055,7 @@ msgstr "მესამე 3 საწყისი წერტილიდა�
 #: objects/transform_types.cc:455
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი საწყისი წერტილიდან მესამე..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
 msgid "Transformed position of first point"
@@ -6063,7 +6063,7 @@ msgstr "პირველი წერტილის გადაყვან�
 
 #: objects/transform_types.cc:458
 msgid "Select the first of the three end points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი წერტილიდან პირველი..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
 msgid "Transformed position of second point"
@@ -6071,7 +6071,7 @@ msgstr "მეორე წერტილის გადაყვანილ�
 
 #: objects/transform_types.cc:462
 msgid "Select the second of the three end points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი წერტილიდან მეორე..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
 msgid "Transformed position of third point"
@@ -6079,7 +6079,7 @@ msgstr "მესამე წერტილის გადაყვანი�
 
 #: objects/transform_types.cc:466
 msgid "Select the third of the three end points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი წერტილიდან მესამე..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
 msgid "Generic projective transformation of this object"
@@ -6093,7 +6093,7 @@ msgstr "ამ ოთხკუთხედის ჩვენება"
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
-msgstr ""
+msgstr "აირჩიეთ ოთხკუთხედი, რომელიც მითითებულ ოთხკუთხედად უნდა გარდაიქმნას..."
 
 #: objects/transform_types.cc:514
 msgid "onto this other quadrilateral"
@@ -6104,6 +6104,8 @@ msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr ""
+"აირჩიეთ ოთხკუთხედი, რომელიც პირველი ოთხკუთხედის პროექციული გარდაქმნის "
+"გამოსახულებაა..."
 
 #: objects/transform_types.cc:554
 msgid "First of 4 starting points"
@@ -6212,15 +6214,17 @@ msgstr "მსგავსების გარდაქმნის გად�
 #: objects/transform_types.cc:887
 msgid "Select the point which the similitude should map onto another point..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელზეც სხვა წერტილის მსგავსების ასახვა უნდა მოხდეს..."
 
 #: objects/transform_types.cc:890
 msgid "Apply a similitude mapping a point onto this point"
-msgstr ""
+msgstr "მსგავსების გარდაქმნის გადატარება წერტილისა ამ წერტილზე"
 
 #: objects/transform_types.cc:891
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელზეც პირველი წერტილის მსგავსების ასახვა უნდა მოხდეს..."
 
 #: objects/vector_type.cc:12
 msgid "Construct a vector from this point"
