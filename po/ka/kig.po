@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-06-15 04:23+0200\n"
+"PO-Revision-Date: 2025-07-29 07:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1797,6 +1797,8 @@ msgstr "მასშტაბირება"
 msgid ""
 "Scale an object over a point, by the ratio given by the length of a segment"
 msgstr ""
+"ობიექტის მასშტაბი წერტილთან შედარებით, სეგმენტის სიგრძის მიხედვით აღებული "
+"კოეფიციენტით"
 
 #: misc/builtin_stuff.cc:376
 #, kde-format
@@ -1808,6 +1810,8 @@ msgstr "მასშტაბი წრფის მიხედვით"
 msgid ""
 "An object scaled over a line, by the ratio given by the length of a segment"
 msgstr ""
+"ობიექტი გაწელილია ხაზთან შედარებით, სეგმენტის სიგრძის მიხედვით აღებული "
+"კოეფიციენტით"
 
 #: misc/builtin_stuff.cc:383
 #, kde-format
@@ -1820,6 +1824,8 @@ msgid ""
 "Scale an object over a point, by the ratio given by the length of two "
 "segments"
 msgstr ""
+"ობიექტის გაწელვა წერტილთან შედარებით, ორი სეგმენტის სიგრძის მიხედვით აღებული "
+"კოეფიციენტით"
 
 #: misc/builtin_stuff.cc:390
 #, kde-format
@@ -1874,6 +1880,8 @@ msgid ""
 "The shadow of an object with a given light source and projection plane "
 "(indicated by a line)"
 msgstr ""
+"ობიექტის ჩრდილი მოცემული სინათლის წყაროთი და პროექციის სიბრტყით (ხაზით "
+"მითითებული)"
 
 #: misc/builtin_stuff.cc:434
 #, kde-format
@@ -2031,6 +2039,8 @@ msgid ""
 "Test whether a given point have the same distance from a given point and "
 "from another given point"
 msgstr ""
+"შემოწმება, არის თუ არა მითითებული წერტილი დაშორებული თანაბარი მანძილით ორი "
+"მითითებული წერტილიდან"
 
 #: misc/builtin_stuff.cc:565
 #, kde-format
@@ -2068,6 +2078,8 @@ msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
 "where x is the x coordinate, and y is the y coordinate."
 msgstr ""
+"შეიყვანეთ კოორდინატები ფორმატში: \"x;y\",\n"
+"სადაც x წარმოადგენს x კოორდინატს, y კი y კოორდინატს."
 
 #: misc/coordinate_system.cpp:330
 #, kde-format
@@ -2075,6 +2087,8 @@ msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
 "the x coordinate, and y is the y coordinate."
 msgstr ""
+"შეიყვანეთ კოორდინატები შემდეგ ფორმატში: <b>\"x;y\"</b>,<br />სადაც x და y "
+"შესაბამისად X და Y კოორდინატებია."
 
 #: misc/coordinate_system.cpp:372
 #, kde-format
@@ -2082,6 +2096,8 @@ msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
 "where r and θ are the polar coordinates."
 msgstr ""
+"შეიყვანეთ კოორდინატები შემდეგ ფორმატში: \"r; θ°\",\n"
+"სადაც r და θ პოლარული კოორდინატებია."
 
 #: misc/coordinate_system.cpp:380
 #, kde-format
@@ -2089,6 +2105,8 @@ msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
 "and θ are the polar coordinates."
 msgstr ""
+"შეიყვანეთ კოორდინატები შემდეგ ფორმატში: <b>\"r; θ°\"</b>,<br />სადაც r და θ "
+"პოლარული კოორდინატებია."
 
 #: misc/coordinate_system.cpp:532
 #, kde-format
@@ -2218,6 +2236,10 @@ msgid ""
 "If you switch to another unit, the value in the edit field on the left will "
 "be converted to the new selected unit."
 msgstr ""
+"აირჩიეთ სიიდან გონიომეტრიული ერთეული, რომელიც გნებავთ, გამოიყენოთ ამ კუთხის "
+"ზომის შესაცვლელად.<br />\n"
+"თუ გნებავთ გადართვა სხვა ერთეულზე, მარცხენა მხარეს ჩასწორების ერთეულში "
+"არსებული მნიშვნელობა გადაყვანილი იქნება ახლად არჩეულ ერთეულში."
 
 #: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
@@ -2893,6 +2915,8 @@ msgid ""
 "Click the location where you want to place the new point, or the curve that "
 "you want to attach it to..."
 msgstr ""
+"აირჩიეთ მდებარეობა, სადაც გნებავთ, ახალი წერტილი მოათავსოთ, ან მრუდი, "
+"რომელსაც გნებავთ, ის მიამაგროთ..."
 
 #: modes/construct_mode.cc:429
 #, kde-format
@@ -3015,6 +3039,8 @@ msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
 "Please remove them or select enough arguments."
 msgstr ""
+"არსებობს '%n' ნაწილი ტექსტში, რომლისთვისაც მნიშვნელობა არ აგირჩევიათ. "
+"წაშალეთ ისინი, ან აირჩიეთ საკმარისი არგუმენტი."
 
 #: modes/label.cc:373
 #, kde-format
@@ -3053,6 +3079,9 @@ msgid ""
 "objects. Kig cannot calculate this macro because of this. Please press Back, "
 "and construct the objects in the correct order..."
 msgstr ""
+"მოცემული ობიექტებიდან თქვენს მიერ არჩეული ერთ-ერთი შედეგი ობიექტის გამოთვლა "
+"შეუძლებელია. Kig-ს ამის გამო ამ მაკროს გამოთვლა არ შეუძლია. დააჭირეთ ღილაკს "
+"'უკან' და ააგეთ ობიექტი სწორი მიმდევრობით..."
 
 #: modes/macro.cc:78
 #, kde-format
@@ -3061,6 +3090,9 @@ msgid ""
 "objects.  This probably means you are expecting Kig to do something "
 "impossible.  Please check the macro and try again."
 msgstr ""
+"ერთ-ერთი მოცემული ობიექტი არ გამოიყენება შედეგობრივი ობიექტების გამოთვლაში.  "
+"ეს ნიშნავს, რომ თქვენ Kig-ისგან შეუძლებელს მოელით.  შეამოწმეთ მაკრო და "
+"თავიდან სცადეთ."
 
 #: modes/macrowizard.cc:35
 #, kde-format
@@ -3305,6 +3337,9 @@ msgid ""
 "If you want to show variable parts, then put %1, %2, ... at the appropriate "
 "places (e.g. \"This segment is %1 units long.\")."
 msgstr ""
+"შეიყვანეთ ტექსტი თქვენი ჭდისთვის და დააჭირეთ ღილაკს 'შემდეგი'.\n"
+"თუ გნებავთ, აჩვენოთ ცვლადი ნაწილები, დააყენეთ %1, %2,... შესაბამის ადგილებში "
+"(მაგ: 'ამ სეგმენტის სიგრძეა %1 ერთეული.')."
 
 #: modes/textlabelwizard.cc:52
 #, kde-format
@@ -3323,6 +3358,9 @@ msgid ""
 "select an object and a property in the Kig window, and click finish when you "
 "are done..."
 msgstr ""
+"აირჩიეთ არგუმენტები, რომლებიც გჭირდებათ.  თითოეული არგუმენტისთვის, "
+"დააწკაპუნეთ მასზე, აირჩიეთ ობიექტი და თვისება Kig-ის ფანჯარაში და "
+"დააწკაპუნეთ 'დასრულებაზე', როცა დაასრულებთ..."
 
 #: modes/textlabelwizard.cc:106
 #, kde-format
@@ -3813,30 +3851,35 @@ msgstr "რაციონალური ბეზიეს მესამე 
 
 #: objects/bezier_type.cc:26
 msgid "Construct a quadratic Bézier curve with this control point"
-msgstr ""
+msgstr "ბეზიეს კვადრიკას აგება ამ საკონტროლო წერტილით"
 
 #: objects/bezier_type.cc:27
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელიც ახალი ბეზიეს კვადრიკას საკონტროლო წერტილი იქნება..."
 
 #: objects/bezier_type.cc:121
 msgid "Construct a cubic Bézier curve with this control point"
-msgstr ""
+msgstr "ბეზიეს მესამე დონის მრუდის აგება ამ საკონტროლო წერტილით"
 
 #: objects/bezier_type.cc:122
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელიც ახალი ბეზიეს მესამე დონის მრუდის საკონტროლო წერტილი "
+"იქნება..."
 
 #: objects/bezier_type.cc:328
 msgid "Construct a quadratic rational Bézier curve with this control point"
-msgstr ""
+msgstr "რაციონალური ბეზიეს კვადრიკას აგება ამ საკონტროლო წერტილით"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr ""
+"აირჩიეთ სამი წერტილი და სამი რიცხვითი მნიშვნელობა რაციონალური ბეზიეს "
+"მრუდისასაგებად...."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
 msgid "Select this value as weight"
@@ -3844,7 +3887,7 @@ msgstr "ამ მნიშვნელობის არჩევა წონ
 
 #: objects/bezier_type.cc:433
 msgid "Construct a cubic rational Bézier curve with this control point"
-msgstr ""
+msgstr "რაციონალური ბეზიეს მესამე დონის მრუდის აგება ამ საკონტროლო წერტილით"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
@@ -5078,7 +5121,7 @@ msgstr "მრავალკუთხედის საზღვარი"
 
 #: objects/polygon_imp.cc:292
 msgid "Open Boundary Polygonal"
-msgstr ""
+msgstr "მრავალკუთხედის ღია საზღვარი"
 
 #: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
 msgid "Center of Mass of the Vertices"
@@ -5914,31 +5957,33 @@ msgstr "ამ ობიექტის პროექციული ბრუ
 
 #: objects/transform_types.cc:335
 msgid "Select the object to rotate projectively"
-msgstr ""
+msgstr "აირჩიეთ ობიექტი პროექციულად სატრიალებლად"
 
 #: objects/transform_types.cc:337
 msgid "Projectively rotate with this half-line"
-msgstr ""
+msgstr "პროექციული მოტრიალება ამ ნახევარი ხაზით"
 
 #: objects/transform_types.cc:338
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr ""
+"აირჩიეთ ნახევარი ხაზი პროექციული მოტრიალების, რომელიც გნებავთ, ობიექტზე "
+"გადაატაროთ"
 
 #: objects/transform_types.cc:341
 msgid "Projectively rotate by this angle"
-msgstr ""
+msgstr "პროექციული მოტრიალება ამ კუთხით"
 
 #: objects/transform_types.cc:342
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
-msgstr ""
+msgstr "აირჩიეთ პროექციული ტრიალის კუთხე, რომელიც გნებავთ, ობიექტზე გადაატაროთ"
 
 #: objects/transform_types.cc:376
 msgid "Harmonic Homology of this object"
-msgstr ""
+msgstr "ამ ობიექტის ჰარმონიული ჰომოლოგია"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
@@ -5948,23 +5993,23 @@ msgstr "აირჩიეთ ობიექტი გარდაქმნი�
 
 #: objects/transform_types.cc:377
 msgid "Harmonic Homology with this center"
-msgstr ""
+msgstr "ჰარმონიული ჰომოლოგია ამ ცენტრით"
 
 #: objects/transform_types.cc:377
 msgid "Select the center point of the harmonic homology..."
-msgstr ""
+msgstr "აირჩიეთ ჰარმონიული ჰომოლოგიის ცენტრი წერტილი..."
 
 #: objects/transform_types.cc:378
 msgid "Harmonic Homology with this axis"
-msgstr ""
+msgstr "ჰარმონიული ჰომოლოგია ამ ღერძით"
 
 #: objects/transform_types.cc:378
 msgid "Select the axis of the harmonic homology..."
-msgstr ""
+msgstr "აირჩიეთ ჰარმონიული ჰომოლოგიის ღერძი..."
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
 msgid "Generic affinity of this object"
-msgstr ""
+msgstr "ამ ობიექტის აფინური გარდაქმნა"
 
 #: objects/transform_types.cc:409
 msgid "Map this triangle"
@@ -5973,6 +6018,7 @@ msgstr "კუთხის ჩვენება"
 #: objects/transform_types.cc:409
 msgid "Select the triangle that has to be transformed onto a given triangle..."
 msgstr ""
+"აირჩიეთ სამკუთხედი, რომელიც გნაბვთ, მითითებულ სამკუთხედში გადაიყვანოთ..."
 
 #: objects/transform_types.cc:411
 msgid "onto this other triangle"
@@ -5982,7 +6028,7 @@ msgstr "ამ სხვა სამკუთხედზე"
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
-msgstr ""
+msgstr "აირჩიეთ სამკუთხედი, რომელიც პირველს ჰგავს..."
 
 #: objects/transform_types.cc:450
 msgid "First of 3 starting points"
@@ -5991,7 +6037,7 @@ msgstr "პირველი 3 საწყისი წერტილიდ�
 #: objects/transform_types.cc:450
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი საწყისი წერტილიდან პირველი..."
 
 #: objects/transform_types.cc:452
 msgid "Second of 3 starting points"
@@ -6000,7 +6046,7 @@ msgstr "მეორე 3 საწყისი წერტილიდან"
 #: objects/transform_types.cc:453
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი საწყისი წერტილიდან მეორე..."
 
 #: objects/transform_types.cc:455
 msgid "Third of 3 starting points"
@@ -6009,35 +6055,35 @@ msgstr "მესამე 3 საწყისი წერტილიდა�
 #: objects/transform_types.cc:455
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი საწყისი წერტილიდან მესამე..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
 msgid "Transformed position of first point"
-msgstr ""
+msgstr "პირველი წერტილის გადაყვანილი მდებარეობა"
 
 #: objects/transform_types.cc:458
 msgid "Select the first of the three end points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი წერტილიდან პირველი..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
 msgid "Transformed position of second point"
-msgstr ""
+msgstr "მეორე წერტილის გადაყვანილი მდებარეობა"
 
 #: objects/transform_types.cc:462
 msgid "Select the second of the three end points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი წერტილიდან მეორე..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
 msgid "Transformed position of third point"
-msgstr ""
+msgstr "მესამე წერტილის გადაყვანილი მდებარეობა"
 
 #: objects/transform_types.cc:466
 msgid "Select the third of the three end points of the generic affinity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი აფინურობის სამი წერტილიდან მესამე..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
 msgid "Generic projective transformation of this object"
-msgstr ""
+msgstr "ამ ობიექტის ზოგადი პროექციული გარდაქმნა"
 
 #: objects/transform_types.cc:510
 msgid "Map this quadrilateral"
@@ -6047,7 +6093,7 @@ msgstr "ამ ოთხკუთხედის ჩვენება"
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
-msgstr ""
+msgstr "აირჩიეთ ოთხკუთხედი, რომელიც მითითებულ ოთხკუთხედად უნდა გარდაიქმნას..."
 
 #: objects/transform_types.cc:514
 msgid "onto this other quadrilateral"
@@ -6058,6 +6104,8 @@ msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr ""
+"აირჩიეთ ოთხკუთხედი, რომელიც არის სურათი პირველი ოთხკუთხედის პროექტული "
+"ტრანსფორმაციით..."
 
 #: objects/transform_types.cc:554
 msgid "First of 4 starting points"
@@ -6066,7 +6114,7 @@ msgstr "პირველი 4 საწყისი წერტილიდ�
 #: objects/transform_types.cc:555
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი საწყისი წერტილიდან პირველი..."
 
 #: objects/transform_types.cc:558
 msgid "Second of 4 starting points"
@@ -6075,7 +6123,7 @@ msgstr "მეორე 4 საწყისი წერტილიდან"
 #: objects/transform_types.cc:559
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი საწყისი წერტილიდან მეორე..."
 
 #: objects/transform_types.cc:562
 msgid "Third of 4 starting points"
@@ -6084,7 +6132,7 @@ msgstr "მესამე 4 საწყისი წერტილიდა�
 #: objects/transform_types.cc:563
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი საწყისი წერტილიდან მესამე..."
 
 #: objects/transform_types.cc:566
 msgid "Fourth of 4 starting points"
@@ -6093,27 +6141,27 @@ msgstr "მეოთხე 4 საწყისი წერტილიდა�
 #: objects/transform_types.cc:567
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი საწყისი წერტილიდან მეოთხე..."
 
 #: objects/transform_types.cc:571
 msgid "Select the first of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი წერტილიდან პირველი..."
 
 #: objects/transform_types.cc:575
 msgid "Select the second of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი წერტილიდან მეორე..."
 
 #: objects/transform_types.cc:579
 msgid "Select the third of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი წერტილიდან მესამე..."
 
 #: objects/transform_types.cc:582
 msgid "Transformed position of fourth point"
-msgstr ""
+msgstr "მეოთხე წერტილის გადაყვანილი მდებარეობა"
 
 #: objects/transform_types.cc:583
 msgid "Select the fourth of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "აირჩიეთ ზოგადი პროექციულობის ოთხი წერტილიდან მეოთხე..."
 
 #: objects/transform_types.cc:624
 msgid "Cast the shadow of this object"
@@ -6121,7 +6169,7 @@ msgstr "ამ ობიექტის ჩრდილის დახატვ
 
 #: objects/transform_types.cc:624
 msgid "Select the object of which you want to construct the shadow..."
-msgstr ""
+msgstr "აირჩიეთ ობიექტი, რომლის ჩრდილის აგებაც გნებავთ..."
 
 #: objects/transform_types.cc:626
 msgid "Cast a shadow from this light source"
@@ -6129,11 +6177,11 @@ msgstr "ჩრდილის დახატვა ამ სინათლი
 
 #: objects/transform_types.cc:627
 msgid "Select the light source from which the shadow should originate..."
-msgstr ""
+msgstr "აირჩიეთ სინათლის წყარო, საიდანაც ჩრდილი უნდა წარმოიშვას..."
 
 #: objects/transform_types.cc:629
 msgid "Cast a shadow on the horizon represented by this line"
-msgstr ""
+msgstr "ამ ხაზის მიერ წარმოდგენილი ჩრდილის აგება ჰორიზონტზე"
 
 #: objects/transform_types.cc:629
 msgid "Select the horizon for the shadow..."
@@ -6166,15 +6214,17 @@ msgstr "მსგავსების გარდაქმნის გად�
 #: objects/transform_types.cc:887
 msgid "Select the point which the similitude should map onto another point..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელზეც სხვა წერტილის მსგავსების ასახვა უნდა მოხდეს..."
 
 #: objects/transform_types.cc:890
 msgid "Apply a similitude mapping a point onto this point"
-msgstr ""
+msgstr "მსგავსების გარდაქმნის გადატარება წერტილისა ამ წერტილზე"
 
 #: objects/transform_types.cc:891
 msgid ""
 "Select the point onto which the similitude should map the first point..."
 msgstr ""
+"აირჩიეთ წერტილი, რომელზეც პირველი წერტილის მსგავსების ასახვა უნდა მოხდეს..."
 
 #: objects/vector_type.cc:12
 msgid "Construct a vector from this point"
@@ -6194,29 +6244,29 @@ msgstr "აირჩიეთ ბოლო წერტილი ახალი
 
 #: objects/vector_type.cc:44
 msgid "Construct the vector sum of this vector and another one."
-msgstr ""
+msgstr "ვექტორების ჯამის აგება ამ ვექტორისგან და კიდევ ერთისგან."
 
 #: objects/vector_type.cc:45
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
-msgstr ""
+msgstr "აირჩიეთ პირველი ორი ვექტორისგან, რომლების ჯამის აგებაც გნებავთ..."
 
 #: objects/vector_type.cc:48
 msgid "Construct the vector sum of this vector and the other one."
-msgstr ""
+msgstr "ვექტორების ჯამის აგება ამ ვექტორისგან და კიდევ ერთისგან."
 
 #: objects/vector_type.cc:49
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
-msgstr ""
+msgstr "აირჩიეთ მეორე ორი ვექტორისგან, რომლის ჯამის აგებაც გნებავთ..."
 
 #: objects/vector_type.cc:51
 msgid "Construct the vector sum starting at this point."
-msgstr ""
+msgstr "ვექტორების ჯამის აგება ამ წერტილიდან დაწყებული."
 
 #: objects/vector_type.cc:51
 msgid "Select the point to construct the sum vector in..."
-msgstr ""
+msgstr "აირჩიეთ წერტილი ჯამური ვექტორის ასაგებად..."
 
 #: scripting/newscriptwizard.cc:45
 #, kde-format
@@ -6230,6 +6280,8 @@ msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr ""
+"აირჩიეთ არგუმენტი ობიექტები (თუ არსებობს)\n"
+"Kig-ის ფანჯარაში და დააჭირეთ ღილაკს \"შემდეგი\"."
 
 #: scripting/newscriptwizard.cc:62
 #, kde-format
@@ -6261,6 +6313,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script and click the Finish button again."
 msgstr ""
+"Python-ის ინტერპრეტატორმა თქვენი სკრიპტის შესრულებისას შეცდომად დაიჭირა. "
+"გაასწორეთ სკრიპტი და დააჭირეთ დასრულების ღილაკს კიდევ ერთხელ."
 
 #: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
@@ -6268,6 +6322,8 @@ msgid ""
 "The Python Interpreter generated the following error output:\n"
 "%1"
 msgstr ""
+"Python-ის ინტერპრეტატორმა დააგენერირა შემდეგი შეცდომის ტექსტი:\n"
+"%1"
 
 #: scripting/script_mode.cc:187
 #, kde-format
@@ -6276,6 +6332,9 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script, and click the Finish button again."
 msgstr ""
+"როგორც ჩანს, თქვენი სკრიპტი შეცდომას შეიცავს. Python-ის ინტერპრეტატორმა "
+"შეცდომები არ დააბრუნა, მაგრამ სკრიპტს სწორი ობიექტი არ შეუქმნია. გაასწორეთ "
+"სკრიპტი და დააჭირეთ დასრულების ღილაკს კიდევ ერთხელ."
 
 #: scripting/script_mode.cc:286
 #, kde-format
@@ -6294,6 +6353,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script."
 msgstr ""
+"Python-ის ინტერპრეტატორმა თქვენი სკრიპტის შესრულებისას შეცდომა აღმოაჩინა. "
+"გაასწორეთ სკრიპტი."
 
 #: scripting/script_mode.cc:321
 #, kde-format
@@ -6302,3 +6363,6 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script."
 msgstr ""
+"როგორც ჩანს, თქვენი სკრიპტი შეცდომას შეიცავს. Python-ის ინტერპრეტატორმა "
+"შეცდომები არ დააბრუნა, მაგრამ სკრიპტს სწორი ობიექტი არ შეუქმნია. გაასწორეთ "
+"სკრიპტი."
