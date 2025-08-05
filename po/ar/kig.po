@@ -578,7 +578,7 @@ msgstr ""
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "Current maintainer."
-msgstr "المصين الحاليّ"
+msgstr "الصائن الحاليّ"
 
 #: kig/aboutdata.h:25
 #, fuzzy, kde-format
