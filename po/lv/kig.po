@@ -5,31 +5,32 @@
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
 # Einars Sprugis <einars8@gmail.com>, 2010, 2011, 2012.
 # Maris Nartiss <maris.kde@gmail.com>, 2010.
+# SPDX-FileCopyrightText: 2025 Toms Trasūns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2012-06-24 18:40+0300\n"
-"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"PO-Revision-Date: 2025-08-20 12:17+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 25.08.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Einārs Sprūģis"
+msgstr "Einārs Sprūģis, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "einars8@gmail.com"
+msgstr "einars8@gmail.com, toms.trasuns@posteo.net"
 
 #, kde-format
 msgid "Circle by Center && Line"
@@ -89,19 +90,19 @@ msgstr "Šīs līknes evolūta"
 
 #, kde-format
 msgid "Osculating Circle"
-msgstr ""
+msgstr "Oskulācijas riņķis"
 
 #, kde-format
 msgid "Osculating circle of a curve at a point"
-msgstr ""
+msgstr "Līknes oskulācijas riņķa noteiktā punktā"
 
 #, kde-format
 msgid "Osculating circle of this curve"
-msgstr ""
+msgstr "Šīs līknes oskulacijas riņķis"
 
 #, kde-format
 msgid "Osculating circle at this point"
-msgstr ""
+msgstr "Oskulācijas riņķis šajā punktā"
 
 #, kde-format
 msgid "Select the point..."
@@ -156,7 +157,7 @@ msgstr "Izvēlieties punktu, kurā konstruēt starpības vektoru..."
 #: filters/asyexporter.cc:29
 #, kde-format
 msgid "Export to &Asymptote..."
-msgstr "Eksportēt uz &Asymptote..."
+msgstr "Eksportēt uz „&Asymptote“..."
 
 #: filters/asyexporter.cc:34
 #, kde-format
@@ -164,20 +165,19 @@ msgid "&Asymptote..."
 msgstr "&Asymptote..."
 
 #: filters/asyexporter.cc:45
-#, fuzzy, kde-format
-#| msgid "*.asy|Asymptote Documents (*.asy)"
+#, kde-format
 msgid "Asymptote Documents (*.asy)"
-msgstr "*.asy|Asymptote dokumenti (*.asy)"
+msgstr "„Asymptote“ dokumenti (*.asy)"
 
 #: filters/asyexporter.cc:46
 #, kde-format
 msgid "Export as Asymptote script"
-msgstr "Eksportēt kā Asymptote skriptu"
+msgstr "Eksportēt kā „Asymptote“ skriptu"
 
 #: filters/asyexporter.cc:48
 #, kde-format
 msgid "Asymptote Options"
-msgstr "Asymptote opcijas"
+msgstr "„Asymptote“ opcijas"
 
 #: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
@@ -187,8 +187,8 @@ msgid ""
 "The file \"%1\" could not be opened. Please check if the file permissions "
 "are set correctly."
 msgstr ""
-"Neizdevās atvērt failu \"%1\". Lūdzu, pārbaudiet, vai faila atļaujas ir "
-"iestatītas pareizi."
+"Neizdevās atvērt datni „%1“. Pārbaudiet, vai tās atļaujas ir iestatītas "
+"pareizi."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -228,7 +228,7 @@ msgstr "Rādīt tīklu"
 #: filters/cabri-filter.cc:143
 #, kde-format
 msgid "This is an XFig file, not a Cabri figure."
-msgstr "Šis ir XFig fails, nevis Cabri figūra."
+msgstr "Šī ir „XFig“ datne, nevis „Cabri“ figūra."
 
 #: filters/cabri-filter.cc:181
 #, kde-format
@@ -236,36 +236,36 @@ msgid ""
 "This Cabri version (%1) is not supported yet.\n"
 "Please contact the Kig authors to help supporting this Cabri version."
 msgstr ""
-"Šī Cabri versija (%1) vēl nav atbalstīta.\n"
-"Lūdzu, sazinieties ar Kig autoriem, lai palīdzētu atbalsta izveidošanā."
+"Šī „Cabri“ versija (%1) vēl nav atbalstīta.\n"
+"Sazinieties ar „Kig“ autoriem, lai palīdzētu atbalsta izveidošanā."
 
 #: filters/cabri-filter.cc:568
 #, kde-format
 msgid ""
 "This Cabri file contains a \"%1\" object, which Kig does not currently "
 "support."
-msgstr "Šis Cabri fails satur objektu \"%1\", kuru Kig pašreiz neatbalsta."
+msgstr "Šī „Cabri“ datne satur objektu „%1“, kuru „Kig“ pašreiz neatbalsta."
 
 #: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, kde-format
 msgid "An error was encountered at line %1 in file %2."
-msgstr "Kļūda %1. rindā, failā %2."
+msgstr "Kļūda %1. rindā, datnē „%2“."
 
 #: filters/drgeo-filter.cc:92
 #, kde-format
 msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
-msgstr "Dr. Geo fails \"%1\" ir makrosu fails, līdz ar to tas nesatur figūras."
+msgstr "„Dr. Geo“ datne „%1“ ir makrokomandu datne, tāpēc tā nesatur figūras."
 
 #: filters/drgeo-filter.cc:96
 #, kde-format
 msgid "There are no figures in Dr. Geo file \"%1\"."
-msgstr "Dr. Geo failā \"%1\" nav figūru."
+msgstr "„Dr. Geo“ datnē „%1“ nav figūru."
 
 #: filters/drgeo-filter.cc:111
 #, kde-format
 msgid "Dr. Geo Filter"
-msgstr "Dr. Geo filtrs"
+msgstr "„Dr. Geo“ filtrs"
 
 #: filters/drgeo-filter.cc:112
 #, kde-format
@@ -273,8 +273,8 @@ msgid ""
 "The current Dr. Geo file contains more than one figure.\n"
 "Please select which to import:"
 msgstr ""
-"Pašreizējais Dr. Geo fails satur vairāk nekā vienu figūru.\n"
-"Lūdzu, izvēlieties, kuru importēt:"
+"Pašreizējā „Dr. Geo“ datne satur vairāk nekā vienu figūru.\n"
+"Izvēlieties, kuru importēt:"
 
 #: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
 #: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
@@ -287,14 +287,14 @@ msgid ""
 "This Dr. Geo file contains a \"%1 %2\" object, which Kig does not currently "
 "support."
 msgstr ""
-"Šis Dr. Geo fails satur objektu \"%1 %2\", kuru Kig pašreiz neatbalsta."
+"Šī „Dr. Geo“ datne satur objektu „%1 %2“, kuru „Kig“ pašreiz neatbalsta."
 
 #: filters/drgeo-filter.cc:339
 #, kde-format
 msgid ""
 "This Dr. Geo file contains an intersection type, which Kig does not "
 "currently support."
-msgstr "Šis Dr. Geo fails satur šķēluma tipu, kuru Kig pašreiz neatbalsta."
+msgstr "Šī „Dr. Geo“ datne satur šķēluma tipu, kuru „Kig“ pašreiz neatbalsta."
 
 #: filters/exporter.cc:59
 #, kde-format
@@ -319,12 +319,12 @@ msgstr "Attēla opcijas"
 #: filters/exporter.cc:103
 #, kde-format
 msgid "Sorry, this file format is not supported."
-msgstr "Atvainojiet, šis faila formāts vēl nav atbalstīts."
+msgstr "Diemžēl šis datnes formāts vēl nav atbalstīts."
 
 #: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
-msgstr "Atvainojiet, kaut kas nogāja greizi, saglabājot attēlā \"%1\""
+msgstr "Diemžēl kaut kas nogāja greizi, saglabājot attēlā „%1“"
 
 #: filters/exporter.cc:145
 #, kde-format
@@ -337,16 +337,13 @@ msgid ""
 "The file \"%1\" could not be opened.  This probably means that it does not "
 "exist, or that it cannot be opened due to its permissions"
 msgstr ""
-"Neizdevās atvērt failu \"%1\". Tas, iespējams, nozīmē, ka fails nepastāv, "
-"vai arī to nevarēja atvērt tā atļauju dēļ"
+"Neizdevās atvērt datni „%1“. Tas, iespējams, nozīmē, ka datne nepastāv, vai "
+"arī to nevarēja atvērt to atļauju dēļ"
 
 #: filters/filter.cc:76
-#, fuzzy, kde-format
-#| msgid ""
-#| "An error was encountered while parsing the file \"%1\".  It cannot be "
-#| "opened."
+#, kde-format
 msgid "An error was encountered while parsing this file.  It cannot be opened."
-msgstr "Kļūda parsējot failu \"%1\". Neizdevās to atvērt."
+msgstr "Kļūda parsējot šo datni. To neizdevās atvērt."
 
 #: filters/filter.cc:78
 #, kde-format
@@ -359,10 +356,9 @@ msgid "Not Supported"
 msgstr "Nav atbalstīts"
 
 #: filters/filter.cc:88
-#, fuzzy, kde-format
-#| msgid "Kig cannot open the file \"%1\"."
+#, kde-format
 msgid "Kig cannot open this file."
-msgstr "Neizdevās atvērt failu \"%1\"."
+msgstr "„Kig“ nevar atvērt šo datni."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: filters/imageexporteroptionswidget.ui:22
@@ -374,7 +370,7 @@ msgstr "Izšķirtspēja"
 #: filters/imageexporteroptionswidget.ui:37
 #, kde-format
 msgid "&Keep Aspect Ratio"
-msgstr "Saglabāt &attiecību"
+msgstr "Saglabāt malu &attiecību"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: filters/imageexporteroptionswidget.ui:54
@@ -394,32 +390,32 @@ msgid ""
 "This KSeg document uses a scaling transformation, which Kig currently cannot "
 "import."
 msgstr ""
-"Šis KSeg dokuments lieto mērogošanas pārveidošanu, kuru Kig pašreiz nevar "
-"importēt."
+"Šis „KSeg“ dokuments lieto mērogošanas pārveidošanu, kuru „Kig“ pašreiz "
+"nevar importēt."
 
 #: filters/kseg-filter.cc:505
 #, kde-format
 msgid ""
 "This KSeg file contains a filled circle, which Kig does not currently "
 "support."
-msgstr "Šis KSeg fails satur aizpildīto riņķi, kuru Kig pašreiz neatbalsta."
+msgstr "Šī „KSeg“ datne satur aizpildītu riņķi, kuru „Kig“ pašreiz neatbalsta."
 
 #: filters/kseg-filter.cc:511
 #, kde-format
 msgid ""
 "This KSeg file contains an arc sector, which Kig does not currently support."
-msgstr "Šis Cabri fails satur loka sektoru, kuru Kig pašreiz neatbalsta."
+msgstr "Šī „Cabri“ datne satur loka sektoru, kuru „Kig“ pašreiz neatbalsta."
 
 #: filters/kseg-filter.cc:517
 #, kde-format
 msgid ""
 "This KSeg file contains an arc segment, which Kig does not currently support."
-msgstr "Šis Cabri fails satur loka segmentu, kuru Kig pašreiz neatbalsta."
+msgstr "Šī „Cabri“ datne satur loka segmentu, kuru „Kig“ pašreiz neatbalsta."
 
 #: filters/latexexporter.cc:63
 #, kde-format
 msgid "Export to &Latex..."
-msgstr "Eksportēt uz &Latex..."
+msgstr "Eksportēt uz „&Latex“..."
 
 #: filters/latexexporter.cc:68
 #, kde-format
@@ -427,26 +423,25 @@ msgid "&Latex..."
 msgstr "&Latex..."
 
 #: filters/latexexporter.cc:511
-#, fuzzy, kde-format
-#| msgid "*.tex|Latex Documents (*.tex)"
+#, kde-format
 msgid "Latex Documents (*.tex)"
-msgstr "*.tex|Latex dokumenti (*.tex)"
+msgstr "„Latex“ dokumenti (*.tex)"
 
 #: filters/latexexporter.cc:511
 #, kde-format
 msgid "Export as Latex"
-msgstr "Eksportēt kā Latex"
+msgstr "Eksportēt kā „Latex“"
 
 #: filters/latexexporter.cc:512
 #, kde-format
 msgid "Latex Options"
-msgstr "Latex opcijas"
+msgstr "„Latex“ opcijas"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
 #: filters/latexexporteroptionswidget.ui:23
 #, kde-format
 msgid "Output format"
-msgstr "Izvada formāts"
+msgstr "Izvades formāts"
 
 #. i18n: ectx: property (text), widget (QRadioButton, psTricksRadioButton)
 #: filters/latexexporteroptionswidget.ui:29
@@ -489,7 +484,7 @@ msgstr "Atsevišķs dokuments"
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
 msgstr ""
-"Šis fails tika izveidots ar Kig versiju \"%1\", kuru ar šo versiju nevar "
+"Šī datne tika izveidota ar „Kig“ versiju „%1“, kuru ar šo versiju nevar "
 "atvērt."
 
 #: filters/native-filter.cc:182
@@ -500,10 +495,10 @@ msgid ""
 "You can try to open this file with an older Kig version (0.4 to 0.6),\n"
 "and then save it again, which will save it in the new format."
 msgstr ""
-"Šis fails tika izveidots ar Kig versiju \"%1\".\n"
-"Vecāko Kig formātu (pirms 0.4) atbalsts no programmas ir izņemts.\n"
-"Jūs varat mēģināt atvērt šo failu ar vecāku Kig versiju (0.4 līdz 0.6)\n"
-"un tad saglabāt to vēlreiz. Fails tad tiks saglabāts jaunajā formātā."
+"Šī datne tika izveidota ar „Kig“ versiju „%1“.\n"
+"Vecāko „Kig“ formātu (pirms 0.4) atbalsts no programmas ir izņemts.\n"
+"Jūs varat mēģināt atvērt šo datni ar vecāku „Kig“ versiju (no 0.4 līdz 0.6)\n"
+"un tad saglabāt to vēlreiz. Datne tad tiks saglabāta jaunajā formātā."
 
 #: filters/native-filter.cc:212 filters/native-filter.cc:391
 #, kde-format
@@ -512,7 +507,8 @@ msgid ""
 "support.\n"
 "A standard coordinate system will be used instead."
 msgstr ""
-"Šajā Kig failā izmantota koordinātu sistēma, ko šī Kig versija neatbalsta.\n"
+"Šajā „Kig“ datnē ir izmantota koordinātu sistēma, ko šī „Kig“ versija "
+"neatbalsta.\n"
 "Tās vietā tiks izmantota standarta koordinātu sistēma."
 
 #: filters/native-filter.cc:305 filters/native-filter.cc:487
@@ -523,9 +519,9 @@ msgid ""
 "support.Perhaps you have compiled Kig without support for this object type,"
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Šis Kig fails izmanto objektu ar tipu \"%1\", ko šī Kig versija neatbalsta. "
-"Iespējams, jūs esat kompilējis Kig, neiekļaujot tajā šī objektu tipa "
-"atbalstu, vai arī lietojat vecāku Kig versiju."
+"Šī „Kig“ datne izmanto objektu ar tipu „%1“, ko šī „Kig“ versija neatbalsta. "
+"Iespējams, jūs esat kompilējis „Kig“, neiekļaujot tajā šī objektu tipa "
+"atbalstu, vai arī lietojat vecāku „Kig“ versiju."
 
 #: filters/native-filter.cc:358
 #, kde-format
@@ -534,7 +530,7 @@ msgid ""
 "save the construction with a different name and check that it works as "
 "expected."
 msgstr ""
-"Šis Kig fails izmanto objektu ar tipu \"%1\", kas ir novecojis. Jums "
+"Šī „Kig“ datne izmanto objektu ar tipu „%1“, kas ir novecojis. Jums "
 "vajadzētu konstrukciju saglabāt ar atšķirīgu nosaukumu un pārbaudīt, vai tā "
 "darbojas pareizi."
 
@@ -549,10 +545,9 @@ msgid "&SVG..."
 msgstr "&SVG..."
 
 #: filters/svgexporter.cc:46
-#, fuzzy, kde-format
-#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+#, kde-format
 msgid "Scalable Vector Graphics (*.svg)"
-msgstr "*.svg|Mērogojamo vektoru grafika (*.svg)"
+msgstr "Mērogojamo vektoru grafika (*.svg)"
 
 #: filters/svgexporter.cc:47
 #, kde-format
@@ -567,28 +562,27 @@ msgstr "SVG opcijas"
 #: filters/svgexporter.cc:94
 #, kde-format
 msgid "Sorry, something went wrong while saving to SVG file \"%1\""
-msgstr "Atvainojiet, kaut kas nogāja greizi, saglabājot SVG failā \"%1\""
+msgstr "Atvainojiet, kaut kas nogāja greizi, saglabājot SVG datnē „%1“"
 
 #: filters/xfigexporter.cc:46
 #, kde-format
 msgid "Export to &XFig file"
-msgstr "Eksportēt uz &XFig failu"
+msgstr "Eksportēt uz „&XFig“ datni"
 
 #: filters/xfigexporter.cc:51
 #, kde-format
 msgid "&XFig File..."
-msgstr "&XFig fails..."
+msgstr "„&XFig“ datne..."
 
 #: filters/xfigexporter.cc:557
-#, fuzzy, kde-format
-#| msgid "*.fig|XFig Documents (*.fig)"
+#, kde-format
 msgid "XFig Documents (*.fig)"
-msgstr "*.fig|XFig dokumenti (*.fig)"
+msgstr "„XFig“ dokumenti (*.fig)"
 
 #: filters/xfigexporter.cc:557
 #, kde-format
 msgid "Export as XFig File"
-msgstr "Eksportēt kā XFig failu"
+msgstr "Eksportēt kā „XFig“ datni"
 
 #: kig/aboutdata.h:15
 #, kde-format
@@ -603,17 +597,17 @@ msgstr "KDE interaktīvā ģeometrija"
 #: kig/aboutdata.h:19
 #, kde-format
 msgid "(C) 2002-2005, The Kig developers"
-msgstr "(C) 2002-2005, The Kig izstrādātāji"
+msgstr "(C) 2002—2005, „Kig“ izstrādātāji"
 
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "David E. Narvaez"
-msgstr ""
+msgstr "David E. Narvaez"
 
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "Current maintainer."
-msgstr ""
+msgstr "Pašreizējais uzturētājs."
 
 #: kig/aboutdata.h:25
 #, kde-format
@@ -621,11 +615,11 @@ msgid "Dominique Devriese"
 msgstr "Dominique Devriese"
 
 #: kig/aboutdata.h:25
-#, fuzzy, kde-format
-#| msgid "Original author, long time maintainer, design and lots of code."
+#, kde-format
 msgid "Original author, former maintainer, design and lots of code."
 msgstr ""
-"Sākotnējais autors, ilgstošs uzturētājs, dizaina un lielas daļas koda autors."
+"Oriģinālās versijas autors, agrākais uzturētājs, dizaina un lielas daļas "
+"koda autors."
 
 #: kig/aboutdata.h:27
 #, kde-format
@@ -638,8 +632,8 @@ msgid ""
 "Did a lot of important work all around Kig, including, but not limited to "
 "conics, cubics, transformations and property tests support."
 msgstr ""
-"Veicis daudz svarīga darba ap Kig, ietverot, bet neierobežojoties ar, konusu "
-"šķēlumu, kubisko līkņu, transformāciju un īpašību testu atbalstu."
+"Veicis daudz svarīga darba ap „Kig“, ietverot, bet neierobežojoties ar "
+"konusu šķēlumu, kubisko līkņu, transformāciju un īpašību testu atbalstu."
 
 #: kig/aboutdata.h:33
 #, kde-format
@@ -647,15 +641,12 @@ msgid "Pino Toscano"
 msgstr "Pino Toscano"
 
 #: kig/aboutdata.h:34
-#, fuzzy, kde-format
-#| msgid ""
-#| "Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
-#| "translation, miscellaneous stuff here and there."
+#, kde-format
 msgid ""
 "Former maintainer, Dr. Geo import filter, point and line styles, Italian "
 "translation, miscellaneous stuff here and there."
 msgstr ""
-"Faktiskais uzturētājs, Dr. Geo importēšanas filtrs, punktu un līniju stili, "
+"Agrākais uzturētājs, „Dr. Geo“ importēšanas filtrs, punktu un līniju stili, "
 "tulkojums itāļu valodā un vēl šis un tas."
 
 #: kig/aboutdata.h:39
@@ -669,8 +660,8 @@ msgid ""
 "Helped a lot with the implementation of the Locus object, there's quite some "
 "math involved in doing it right, and Franco wrote the most difficult parts."
 msgstr ""
-"Palīdzēja ar Lotus objekta implementāciju - lai to izdarītu pareizi, bija "
-"jāiesaista visai sarežģīta matemātika, un Franco uzrakstīja pašas "
+"Palīdzēja ar „Lotus“ objektu implementāciju — lai to izdarītu pareizi, bija "
+"jāiesaista visai sarežģīta matemātika, bet Franko tam uzrakstīja pašas "
 "sarežģītākās daļas."
 
 #: kig/aboutdata.h:45
@@ -681,7 +672,7 @@ msgstr "Francesca Gatti"
 #: kig/aboutdata.h:46
 #, kde-format
 msgid "Responsible for the computation of the algebraic equation of a locus."
-msgstr "Atbildīgs par koordinātu punkta algebriskā vienādojuma izskaitļošanu."
+msgstr "Atbildīga par koordinātu punkta algebriskā vienādojuma izskaitļošanu."
 
 #: kig/aboutdata.h:50
 #, kde-format
@@ -691,7 +682,7 @@ msgstr "Petr Gajdos"
 #: kig/aboutdata.h:50
 #, kde-format
 msgid "Contributed the Bézier curves and related icons."
-msgstr "Ziedoja Bezjē līknes un ar tām saistītās ikonas."
+msgstr "Izveidoja Bezjē līknes un ar tām saistītās ikonas."
 
 #: kig/aboutdata.h:52
 #, kde-format
@@ -701,7 +692,7 @@ msgstr "Raoul Bourquin"
 #: kig/aboutdata.h:52
 #, kde-format
 msgid "Contributed the 'asymptote' export filter."
-msgstr "Devis eksportēšanas filtru 'Asymptote'."
+msgstr "Izveidoja „Asymptote“ eksportēšanas filtru."
 
 #: kig/aboutdata.h:54
 #, kde-format
@@ -709,16 +700,13 @@ msgid "Eric Depagne"
 msgstr "Eric Depagne"
 
 #: kig/aboutdata.h:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "The French translator, who also sent me some useful feedback, like "
-#| "feature requests and bug reports."
+#, kde-format
 msgid ""
 "The French translator, who also contributed some useful feedback, like "
 "feature requests and bug reports."
 msgstr ""
-"Franču tulkotājs, kas iesūtījis arī tādu noderīgu informāciju, kā jaunu "
-"iespēju ierosinājumi un kļūdu ziņojumi."
+"Franču valodas tulkotājs, kurš iesūtījis arī tādu noderīgu informāciju, kā "
+"jaunu iespēju ierosinājumus un kļūdu ziņojumus."
 
 #: kig/aboutdata.h:59
 #, kde-format
@@ -731,8 +719,8 @@ msgid ""
 "Author of KGeo, where I got inspiration, some source, and most of the "
 "artwork from."
 msgstr ""
-"Izveidojis KGeo, no kurienes guvu iedvesmu, nedaudz izejas koda un lielāko "
-"daļu mākslinieciskā noformējuma."
+"Izveidoja „KGeo“, no kā guva iedvesmu, nedaudz izejas koda un lielāko daļu "
+"mākslinieciskā noformējuma."
 
 #: kig/aboutdata.h:64
 #, kde-format
@@ -754,8 +742,7 @@ msgid "Christophe Prud'homme"
 msgstr "Christophe Prud'homme"
 
 #: kig/aboutdata.h:70
-#, fuzzy, kde-format
-#| msgid "Sent me a patch for some bugs."
+#, kde-format
 msgid "Contributed a patch for some bugs."
 msgstr "Iesūtīja dažus kļūdu labojumus."
 
@@ -765,16 +752,14 @@ msgid "Robert Gogolok"
 msgstr "Robert Gogolok"
 
 #: kig/aboutdata.h:73
-#, fuzzy, kde-format
-#| msgid ""
-#| "Gave me some good feedback on Kig, some feature requests, cleanups and "
-#| "style fixes, and someone to chat with on irc :)"
+#, kde-format
 msgid ""
 "Contributed some good feedback on Kig, some feature requests, cleanups and "
 "style fixes, and someone to chat with on irc :)"
 msgstr ""
-"Deva labas atsauksmes par Kig, dažus jaunu iespēju ierosinājumus, "
-"'satīrīšanas' un stila labojumus, kā arī kādu, ar ko patērzēt irc kanālos :)"
+"Sniedza noderīgas atsauksmes par „Kig“, dažus jaunu iespēju ierosinājumus, "
+"„satīrīšanas“ un stila labojumus, kā arī bija labs sarunu biedrs IRC "
+"kanālos :)"
 
 #: kig/aboutdata.h:78
 #, kde-format
@@ -800,13 +785,14 @@ msgstr "Atbildīgs par jaunajām objektu darbību ikonām."
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
-"Neizdevās atrast nepieciešamo Kig bibliotēku, pārbaudiet jūsu instalāciju."
+"Neizdevās atrast nepieciešamo „Kig“ bibliotēku, pārbaudiet programmas "
+"instalāciju."
 
 #: kig/kig.cpp:196
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
-msgstr ""
+msgstr "Atvērt datni"
 
 #: kig/kig_commands.cpp:91
 #, kde-format
@@ -814,7 +800,7 @@ msgid "Remove %1 Object"
 msgid_plural "Remove %1 Objects"
 msgstr[0] "Noņemt %1 objektu"
 msgstr[1] "Noņemt %1 objektus"
-msgstr[2] "Noņemt %1 objektus"
+msgstr[2] "Noņemt %1 objektu"
 
 #: kig/kig_commands.cpp:103
 #, kde-format
@@ -822,7 +808,7 @@ msgid "Add %1 Object"
 msgid_plural "Add %1 Objects"
 msgstr[0] "Pievienot %1 objektu"
 msgstr[1] "Pievienot %1 objektus"
-msgstr[2] "Pievienot %1 objektus"
+msgstr[2] "Pievienot %1 objektu"
 
 #: kig/kig_part.cpp:86
 #, kde-format
@@ -830,11 +816,10 @@ msgid "&Set Coordinate System"
 msgstr "Ie&statīt koordinātu sistēmu"
 
 #: kig/kig_part.cpp:126
-#, fuzzy, kde-format
-#| msgid "Kig Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
-msgstr "Kig opcijas"
+msgstr "„Kig“ opcijas"
 
 #: kig/kig_part.cpp:130
 #, kde-format
@@ -849,7 +834,7 @@ msgstr "Rādīt asis"
 #: kig/kig_part.cpp:218
 #, kde-format
 msgid "Invert Selection"
-msgstr "Invertēt iezīmējumu"
+msgstr "Invertēt atlasi"
 
 #: kig/kig_part.cpp:222
 #, kde-format
@@ -859,7 +844,7 @@ msgstr "&Dzēst objektus"
 #: kig/kig_part.cpp:226
 #, kde-format
 msgid "Delete the selected objects"
-msgstr "Dzēst iezīmētos objektus"
+msgstr "Dzēst atlasītos objektus"
 
 #: kig/kig_part.cpp:228
 #, kde-format
@@ -894,12 +879,12 @@ msgstr "Rādīt visus slēptos objektus"
 #: kig/kig_part.cpp:248
 #, kde-format
 msgid "&New Macro..."
-msgstr "Jau&ns makross..."
+msgstr "Jau&na makrokomanda..."
 
 #: kig/kig_part.cpp:251
 #, kde-format
 msgid "Define a new macro"
-msgstr "Definēt jaunu makrosu"
+msgstr "Definēt jaunu makrokomandu"
 
 #: kig/kig_part.cpp:253
 #, kde-format
@@ -909,7 +894,7 @@ msgstr "Pārvaldīt &tipus..."
 #: kig/kig_part.cpp:256
 #, kde-format
 msgid "Manage macro types."
-msgstr "Pārvaldīt makrosu tipus."
+msgstr "Pārvaldīt makrokomandu tipus."
 
 #: kig/kig_part.cpp:258
 #, kde-format
@@ -924,12 +909,12 @@ msgstr "Pārlūkot pašreizējās konstrukcijas vēsturi."
 #: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
 msgid "Zoom in on the document"
-msgstr "Pietuvināt dokumentu"
+msgstr "Tuvināt dokumentu"
 
 #: kig/kig_part.cpp:270 kig/kig_part.cpp:271
 #, kde-format
 msgid "Zoom out of the document"
-msgstr "Attālināt dokumentu"
+msgstr "Tālināt dokumentu"
 
 #: kig/kig_part.cpp:276 kig/kig_part.cpp:277
 #, kde-format
@@ -944,17 +929,17 @@ msgstr "Skatīt šo dokumentu pilnekrāna režīmā."
 #: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
-msgstr "Izvēlietie&s rādāmo apgabalu"
+msgstr "Atla&sīt rādāmo apgabalu"
 
 #: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
-msgstr "Izvēlieties apgabalu, kuru vēlaties redzēt logā."
+msgstr "Atlasīt apgabalu, kuru vēlaties redzēt logā."
 
 #: kig/kig_part.cpp:290
 #, kde-format
 msgid "S&elect Zoom Area"
-msgstr "Izvēli&eties tālummaiņas apgabalu"
+msgstr "&Atlasīt tālummaiņas apgabalu"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
@@ -996,7 +981,7 @@ msgstr "Valkāt infrasarkanās brilles"
 #: kig/kig_part.cpp:315
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
-msgstr "Ieslēgt/izslēgt slēpto objektu redzmību."
+msgstr "Ieslēgt/izslēgt slēpto objektu redzamību."
 
 #: kig/kig_part.cpp:345
 #, kde-format
@@ -1014,21 +999,16 @@ msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr ""
-"Fails \"%1\", kuru mēģinājāt atvērt, nepastāv. Lūdzu, pārbaudiet, vai "
-"ievadījāt pareizu ceļu."
+"Datne „%1“, kuru mēģinājāt atvērt, nepastāv. Pārbaudiet, vai ievadījāt "
+"pareizu ceļu."
 
 #: kig/kig_part.cpp:377
 #, kde-format
 msgid "File Not Found"
-msgstr "Fails nav atrasts"
+msgstr "Datne nav atrasta"
 
 #: kig/kig_part.cpp:392
-#, fuzzy, kde-format
-#| msgid ""
-#| "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
-#| "support this format. If you think the format in question would be worth "
-#| "implementing support for, you can always ask us nicely on mailto:pino@kde."
-#| "org or do the work yourself and send me a patch."
+#, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
 "support this format. If you think the format in question would be worth "
@@ -1036,10 +1016,10 @@ msgid ""
 "\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">KDE's bug tracking system</a>"
 msgstr ""
-"Jūs mēģinājāt atvērt dokumentu ar tipu \"%1\"; diemžēl, Kig neatbalsta šo "
-"formātu. Ja uzskatāt, kā šī formāta atbalstu būtu vērts ieviest, vienmēr "
-"varat mīļi pavaicāt mailto:pino@kde.org vai arī izdarīt šo darbu pats un "
-"atsūtīt mums ielāpu."
+"Jūs mēģinājāt atvērt dokumentu ar tipu „%1“. Diemžēl, „Kig“ neatbalsta šo "
+"formātu. Ja uzskatāt, kā šī formāta atbalstu būtu vērts ieviest, varat "
+"izveidot jaunas iespējas lūgumu <a href=\"https://bugs.kde.org/enter_bug.cgi?"
+"product=kig&bug_severity=wishlist\">KDE kļūdu uzskaites sistēmā</a>"
 
 #: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
@@ -1052,37 +1032,31 @@ msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr ""
-"Kig neatbalsta saglabāšanu jebkādā citā faila formātā, izņemot savējo. "
-"Saglabāt Kig formātā?"
+"„Kig“ neatbalsta saglabāšanu jebkādā citā datņu formātā, izņemot savējo. Vai "
+"saglabāt „Kig“ formātā?"
 
 #: kig/kig_part.cpp:445
 #, kde-format
 msgid "Save Kig Format"
-msgstr "Saglabāt Kig formātā"
+msgstr "Saglabāt „Kig“ formātā"
 
 #: kig/kig_part.cpp:702
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.kig|Kig Documents (*.kig)\n"
-#| "*.kigz|Compressed Kig Documents (*.kigz)"
+#, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
-msgstr ""
-"*.kig|Kig dokumenti (*.kig)\n"
-"*.kigz|Kompresēti Kig dokumenti (*.kigz)"
+msgstr "„Kig“ dokumenti (*.kig);;Saspiesti „Kig“ dokumenti (*.kigz)"
 
 #: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
-msgstr "Fails \"%1\" jau pastāv. Vai vēlaties to pārrakstīt?"
+msgstr "Datne „%1“ jau pastāv. Vai vēlaties to pārrakstīt?"
 
 #: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
-msgstr "Pārrakstīt failu?"
+msgstr "Vai pārrakstīt datni?"
 
 #: kig/kig_part.cpp:864
-#, fuzzy, kde-format
-#| msgid "Print Geometry"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Drukāt ģeometriju"
@@ -1093,7 +1067,7 @@ msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "Paslēpt %1 objektu"
 msgstr[1] "Paslēpt %1 objektus"
-msgstr[2] "Paslēpt %1 objektus"
+msgstr[2] "Paslēpt %1 objektu"
 
 #: kig/kig_part.cpp:947
 #, kde-format
@@ -1101,7 +1075,7 @@ msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
 msgstr[0] "Rādīt %1 objektu"
 msgstr[1] "Rādīt %1 objektus"
-msgstr[2] "Rādīt %1 objektus"
+msgstr[2] "Rādīt %1 objektu"
 
 #: kig/kig_view.cpp:189
 #, kde-format
@@ -1146,19 +1120,19 @@ msgstr ""
 #: kig/kigpartui.rc:6 kig/kigui.rc:5
 #, kde-format
 msgid "&File"
-msgstr "&Fails"
+msgstr "&Datne"
 
 #. i18n: ectx: Menu (edit)
 #: kig/kigpartui.rc:17
 #, kde-format
 msgid "&Edit"
-msgstr "R&ediģēt"
+msgstr "&Rediģēt"
 
 #. i18n: ectx: Menu (view)
 #: kig/kigpartui.rc:28
 #, kde-format
 msgid "&View"
-msgstr "S&kats"
+msgstr "&Skats"
 
 #. i18n: ectx: Menu (objects)
 #: kig/kigpartui.rc:36
@@ -1200,7 +1174,7 @@ msgstr "&Vektori un segmenti"
 #: kig/kigpartui.rc:94
 #, kde-format
 msgid "Co&nics && Cubics"
-msgstr "Ko&nusa šķēlumi un kubiskās līknes"
+msgstr "&Konusa šķēlumi un kubiskās līknes"
 
 #. i18n: ectx: Menu (new_moreconics)
 #: kig/kigpartui.rc:101
@@ -1212,7 +1186,7 @@ msgstr "Vairāk konusa šķēlumu"
 #: kig/kigpartui.rc:116
 #, kde-format
 msgid "Cu&bics"
-msgstr "Ku&biskās līknes"
+msgstr "K&ubiskās līknes"
 
 #. i18n: ectx: Menu (new_bezier)
 #: kig/kigpartui.rc:124
@@ -1346,9 +1320,9 @@ msgid ""
 "Do not show a GUI. Convert the specified file to the native Kig format. "
 "Output goes to stdout unless --outfile is specified."
 msgstr ""
-"Nerādīt grafisko lietotāja saskarni. Pārveidot norādīto failu dzimtajā Kig "
-"formātā. Izvade tiks novirzīta uz standarta izvadi, ja vien nebūs norādīts --"
-"outfile."
+"Nerādīt grafisko lietotāja saskarni. Pārveidot norādīto datni dzimtajā „Kig“ "
+"formātā. Izvade tiks novirzīta uz standarta izvadi, ja vien nebūs norādīts "
+"„--outfile“."
 
 #: kig/main.cpp:48
 #, kde-format
@@ -1356,13 +1330,13 @@ msgid ""
 "File to output the created native file to. '-' means output to stdout. "
 "Default is stdout as well."
 msgstr ""
-"Fails, kurā izvadīt izveidoto programmas dzimto failu. '-' nozīmē: izvadīt "
-"izvadi uz standarta izvadi. Noklusējums ir novadīšana uz standarta izvadi."
+"Datne, kurā izvadīt izveidoto programmas dzimto datni. '-' nozīmē: izvadīt "
+"izvadi uz standarta izvadi. Noklusējums ir izvadīšana uz standarta izvadi."
 
 #: kig/main.cpp:53
 #, kde-format
 msgid "kde.org"
-msgstr ""
+msgstr "kde.org"
 
 #: kig/main.cpp:60
 #, kde-format
@@ -1663,22 +1637,19 @@ msgid "The midpoint of a segment or two other points"
 msgstr "Segmenta vai divu citu punktu viduspunkts"
 
 #: misc/builtin_stuff.cc:264
-#, fuzzy, kde-format
-#| msgid "Construct the midpoint of this segment"
+#, kde-format
 msgid "Construct the golden ratio point of this segment"
-msgstr "Konstruēt šī segmenta viduspunktu"
+msgstr "Konstruēt šī segmenta zelta griezumu"
 
 #: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
-#, fuzzy, kde-format
-#| msgid "Move a Point"
+#, kde-format
 msgid "Golden Ratio Point"
-msgstr "Pārvietot punktu"
+msgstr "Zelta griezuma punkts"
 
 #: misc/builtin_stuff.cc:274
-#, fuzzy, kde-format
-#| msgid "The midpoint of a segment or two other points"
+#, kde-format
 msgid "The golden ratio point of a segment or two other points"
-msgstr "Segmenta vai divu citu punktu viduspunkts"
+msgstr "Segmenta vai divu citu punktu zelta griezums"
 
 #: misc/builtin_stuff.cc:281
 #, kde-format
@@ -2075,23 +2046,22 @@ msgstr "Pārbauda, vai divi vektori ir vienādi"
 #: misc/builtin_stuff.cc:583
 #, kde-format
 msgid "Point Projection"
-msgstr ""
+msgstr "Punkta projekcija"
 
 #: misc/builtin_stuff.cc:584
-#, fuzzy, kde-format
-#| msgid "Project this point onto the circle"
+#, kde-format
 msgid "Project a point on a line"
-msgstr "Projicēt šo punktu uz riņķa"
+msgstr "Projicēt šo punktu uz līnijas"
 
 #: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
 msgid "Python Script"
-msgstr "Python skripts"
+msgstr "„Python“ skripts"
 
 #: misc/builtin_stuff.cc:612
 #, kde-format
 msgid "Construct a new Python script."
-msgstr "Konstruēt jaunu Python skriptu."
+msgstr "Konstruēt jaunu „Python“ skriptu."
 
 #: misc/coordinate_system.cpp:323
 #, kde-format
@@ -2099,7 +2069,7 @@ msgid ""
 "Enter coordinates in the following format: \"x;y\",\n"
 "where x is the x coordinate, and y is the y coordinate."
 msgstr ""
-"Ievadiet koordinātes šādā formātā: \"x,y\",\n"
+"Ievadiet koordinātes šādā formātā: „x,y“,\n"
 "kur x ir x koordināte un y ir y koordināte."
 
 #: misc/coordinate_system.cpp:330
@@ -2108,8 +2078,8 @@ msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
 "the x coordinate, and y is the y coordinate."
 msgstr ""
-"Ievadiet koordinātes šādā formātā: <b>\"x,y\"</b>,<br />kur x ir x "
-"koordināte un y ir y koordināte."
+"Ievadiet koordinātes šādā formātā: <b>„x,y“</b>,<br />kur x ir x koordināte "
+"un y ir y koordināte."
 
 #: misc/coordinate_system.cpp:372
 #, kde-format
@@ -2117,7 +2087,7 @@ msgid ""
 "Enter coordinates in the following format: \"r; θ°\",\n"
 "where r and θ are the polar coordinates."
 msgstr ""
-"Ievadiet koordinātes šādā formātā: \"r; θ°\",\n"
+"Ievadiet koordinātes šādā formātā: „r; θ°“,\n"
 "kur r un θ ir polārās koordinātes."
 
 #: misc/coordinate_system.cpp:380
@@ -2126,7 +2096,7 @@ msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
 "and θ are the polar coordinates."
 msgstr ""
-"Ievadiet koordinātes šādā formātā: <b>\"r; θ°\"</b>,<br />kur r un θ ir "
+"Ievadiet koordinātes šādā formātā: <b>„r; θ°“</b>,<br />kur r un θ ir "
 "polārās koordinātes."
 
 #: misc/coordinate_system.cpp:532
@@ -2234,8 +2204,7 @@ msgid "&Specify coordinate precision:"
 msgstr "&Norādīt koordināšu precizitāti:"
 
 #: misc/kiginputdialog.cc:125
-#, fuzzy, kde-format
-#| msgid "Set Angle Size"
+#, kde-format
 msgctxt "@title:window"
 msgid "Set Angle Size"
 msgstr "Iestatīt leņķa izmēru"
@@ -2266,12 +2235,12 @@ msgstr ""
 #: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
-msgstr "Neizdevās atvērt makrosu failu '%1'"
+msgstr "Neizdevās atvērt makrokomandas datni „%1“"
 
 #: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
-msgstr "Kig neizdevās atvērt makrosu failu \"%1\"."
+msgstr "„Kig“ neizdevās atvērt makrokomandas datni „%1“."
 
 #: misc/lists.cc:292
 #, kde-format
@@ -2281,15 +2250,15 @@ msgid ""
 "macro using a previous Kig version (0.4 to 0.6) and then export it again in "
 "the new format."
 msgstr ""
-"Šis fails tika izveidots ar ļoti vecu Kig versiju (pirms 0.4). Šī formāta "
-"atbalsts nesenajās Kig versijās tika izņemts. Varat mēģināt importēt šo "
-"makrosu, izmantojot iepriekšējo Kig versiju (0.4 līdz 0.6) un tad to "
+"Šī datne ir izveidota ar ļoti vecu „Kig“ versiju (pirms 0.4). Šī formāta "
+"atbalsts nesenajās „Kig“ versijās ir izņemts. Varat mēģināt importēt šo "
+"makrokomandu, izmantojot iepriekšējo „Kig“ versiju (0.4 līdz 0.6) un tad to "
 "eksportēt jaunajā formātā."
 
 #: misc/lists.cc:338
 #, kde-format
 msgid "Unnamed Macro #%1"
-msgstr "Nenosaukts makross #%1"
+msgstr "Nenosaukta makrokomanda #%1"
 
 #: misc/object_hierarchy.cc:541
 #, kde-format
@@ -2298,9 +2267,9 @@ msgid ""
 "support. Perhaps you have compiled Kig without support for this object type, "
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Šis Kig fails izmanto objektu ar tipu \"%1\", ko šī Kig versija neatbalsta. "
-"Iespējams, jūs esat kompilējis Kig, neiekļaujot tajā šī objektu tipa "
-"atbalstu, vai arī lietojat vecāku Kig versiju."
+"Šī „Kig“ datne izmanto objektu ar tipu „%1“, ko šī „Kig“ versija neatbalsta. "
+"Iespējams, jūsu izmantotā „Kig“ kompilācija nesatur šī objektu tipa atbalstu "
+"vai arī lietojat vecāku „Kig“ versiju."
 
 #: misc/special_constructors.cc:274
 #, kde-format
@@ -2337,7 +2306,7 @@ msgstr "Sekojošais punkts"
 msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
-msgstr ""
+msgstr "Atlasiet sekojošo punkta, caur kuru tiks zīmēts koordinātu punkts..."
 
 #: misc/special_constructors.cc:331
 #, kde-format
@@ -2646,17 +2615,17 @@ msgstr "Transportēt mēru uz šo riņķi"
 #: misc/special_constructors.cc:1623
 #, kde-format
 msgid "Start transport from this point of the circle"
-msgstr "Sākt tranportu no šī riņķa punkta"
+msgstr "Sākt transportu no šī riņķa punkta"
 
 #: misc/special_constructors.cc:1625
 #, kde-format
 msgid "Start transport from this point of the line"
-msgstr "Sākt tranportu no šī līnijas punkta"
+msgstr "Sākt transportu no šī līnijas punkta"
 
 #: misc/special_constructors.cc:1627
 #, kde-format
 msgid "Start transport from this point of the curve"
-msgstr "Sākt tranportu no šī līknes punkta"
+msgstr "Sākt transportu no šī līknes punkta"
 
 #: misc/special_constructors.cc:1637
 #, kde-format
@@ -2793,8 +2762,6 @@ msgid "with this Polygonal"
 msgstr "ar šo daudzstūri"
 
 #: misc/special_constructors.cc:1814
-#, fuzzy
-#| msgid "Construct the midpoint of this point and another one"
 msgid "Construct midpoint of this point and another one"
 msgstr "Konstruēt šī un cita punkta viduspunktu"
 
@@ -2816,38 +2783,27 @@ msgstr ""
 "viduspunktu..."
 
 #: misc/special_constructors.cc:1869
-#, fuzzy
-#| msgid "Construct the midpoint of this point and another one"
 msgid "Construct golden ratio point of this point and another one"
-msgstr "Konstruēt šī un cita punkta viduspunktu"
+msgstr "Konstruēt šī un cita punkta zelta griezumu"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy
-#| msgid ""
-#| "Select the first of the points of which you want to construct the "
-#| "midpoint..."
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
-"viduspunktu..."
+"Izvēlieties pirmo no diviem punktiem, no kura vēlaties zelta griezumu..."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy
-#| msgid "Construct the midpoint of this point and another one"
 msgid "Construct the golden ratio point of this point and another one"
-msgstr "Konstruēt šī un cita punkta viduspunktu"
+msgstr "Konstruēt šī un cita punkta zelta griezumu"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy
-#| msgid "Select the other of the points of which to construct the midpoint..."
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
 msgstr ""
-"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
-"viduspunktu..."
+"Izvēlieties otru no diviem punktiem, no kura vēlaties konstruēt zelta "
+"griezuma punktu..."
 
 #: misc/special_constructors.cc:1979
 #, kde-format
@@ -2907,7 +2863,7 @@ msgstr "Izliekuma centrs"
 #: misc/special_constructors.cc:2038
 #, kde-format
 msgid "The center of the osculating circle to a curve"
-msgstr ""
+msgstr "Līknes oskulācijas riņķa centra punkts"
 
 #: misc/special_constructors.cc:2058
 #, kde-format
@@ -2967,8 +2923,7 @@ msgid "Now select the location for the result label."
 msgstr "Tagad izvēlieties vietu rezultāta etiķetei."
 
 #: modes/edittype.cc:25
-#, fuzzy, kde-format
-#| msgid "Edit Type"
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
 msgstr "Rediģēt tipu"
@@ -2976,7 +2931,7 @@ msgstr "Rediģēt tipu"
 #: modes/edittype.cc:42
 #, kde-format
 msgid "Here you can edit the name of the current macro type."
-msgstr "Šeit varat rediģēt pašreizējā makrosa tipa nosaukumu."
+msgstr "Šeit varat rediģēt pašreizējās makrokomandas tipa nosaukumu."
 
 #: modes/edittype.cc:45
 #, kde-format
@@ -2985,19 +2940,19 @@ msgid ""
 "optional, so you can also leave this empty: if you do so, then your macro "
 "type will have no description."
 msgstr ""
-"Šeit varat rediģēt pašreizējā makrosa tipa aprakstu. Šis lauks nav obligāts, "
-"tādēļ varat to atstāt tukšu: šādi rīkojoties, jūsu makrosa tipam nebūs "
-"apraksta."
+"Šeit varat rediģēt pašreizējās makrokomandas tipa aprakstu. Šis lauks nav "
+"obligāts, tādēļ varat to atstāt tukšu: šādi rīkojoties, jūsu makrokomandas "
+"tipam nebūs apraksta."
 
 #: modes/edittype.cc:49
 #, kde-format
 msgid "Use this button to change the icon of the current macro type."
-msgstr "Lietojiet šo pogu, lai mainītu ikonu pašreizējam makrosa tipam."
+msgstr "Lietojiet šo pogu, lai mainītu ikonu pašreizējam makrokomandas tipam."
 
 #: modes/edittype.cc:70
 #, kde-format
 msgid "The name of the macro can not be empty."
-msgstr "Makrosa nosaukums nedrīkst būt tukšs."
+msgstr "Makrokomandas nosaukums nedrīkst būt tukšs."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: modes/edittypewidget.ui:36
@@ -3005,7 +2960,8 @@ msgstr "Makrosa nosaukums nedrīkst būt tukšs."
 msgid ""
 "Here you can modify the name, the description and the icon of this macro "
 "type."
-msgstr "Šeit varat mainīt nosaukumu, aprakstu un ikonu šim makrosa tipam."
+msgstr ""
+"Šeit varat mainīt nosaukumu, aprakstu un ikonu šim makrokomandas tipam."
 
 #. i18n: ectx: property (text), widget (QLabel, label_2_3)
 #: modes/edittypewidget.ui:73
@@ -3020,8 +2976,7 @@ msgid "Description:"
 msgstr "Apraksts:"
 
 #: modes/historydialog.cc:24
-#, fuzzy, kde-format
-#| msgid "History Browser"
+#, kde-format
 msgctxt "@title:window"
 msgid "History Browser"
 msgstr "Vēstures pārlūks"
@@ -3084,8 +3039,8 @@ msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
 "Please remove them or select enough arguments."
 msgstr ""
-"Tekstā ir '%n' daļas, kurām jūs neesat izvēlējies vērtību. Lūdzu, izņemiet "
-"tās vai arī izvēlieties pietiekami daudz argumentu."
+"Tekstā ir „%n“ daļas, kurām nav norādīta vērtība. Izņemiet tās vai "
+"izvēlieties pietiekami daudz argumentu."
 
 #: modes/label.cc:373
 #, kde-format
@@ -3095,7 +3050,7 @@ msgstr "arguments %1"
 #: modes/label.cc:403
 #, kde-format
 msgid "Selecting argument %1"
-msgstr "Izvēlas argumentu %1"
+msgstr "Atlasa argumentu %1"
 
 #: modes/label.cc:506
 #, kde-format
@@ -3115,7 +3070,7 @@ msgstr "Ievadiet vērtību:"
 #: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
-msgstr "Izvēlieties jaunās skaitliskās vērtības novietojumu..."
+msgstr "Norādiet jaunās skaitliskās vērtības novietojumu..."
 
 #: modes/macro.cc:70
 #, kde-format
@@ -3125,8 +3080,8 @@ msgid ""
 "and construct the objects in the correct order..."
 msgstr ""
 "Viens no jūsu izvēlētajiem rezultāta objektiem nevar tikt aprēķināts no "
-"dotajiem objektiem. Šī iemesla dēļ Kig nevar aprēķināt šo makrosu. Lūdzu, "
-"nospiediet 'Atpakaļ' un kontruējiet objektus pareizā kārtībā..."
+"dotajiem objektiem. Šī iemesla dēļ „Kig“ nevar aprēķināt šo makrokomandu. "
+"Nospiediet „Atpakaļ“ un konstruējiet objektus pareizā kārtībā..."
 
 #: modes/macro.cc:78
 #, kde-format
@@ -3136,8 +3091,8 @@ msgid ""
 "impossible.  Please check the macro and try again."
 msgstr ""
 "Viens no dotajiem objektiem netiek izmantots rezultāta objektu aprēķināšanā. "
-"Tas, iespējams, nozīmē, ka gaidāt no Kig kaut ko neiespējamu. Lūdzu, "
-"pārbaudiet makrosu un mēģiniet vēlreiz."
+"Tas, iespējams, nozīmē, ka gaidāt no „Kig“ kaut ko neiespējamu. Pārbaudiet "
+"makrokomandu un mēģiniet vēlreiz."
 
 #: modes/macrowizard.cc:35
 #, kde-format
@@ -3148,8 +3103,8 @@ msgstr "Dotie objekti"
 #, kde-format
 msgid "Select the \"given\" objects for your new macro and press \"Next\"."
 msgstr ""
-"Izvēlieties \"dotos\" objektus jūsu jaunajam makrosam un nospiediet "
-"\"Nākamais\"."
+"Izvēlieties „dotos“ objektus jūsu jaunajai makrokomandai un nospiediet "
+"„Tālāk“."
 
 #: modes/macrowizard.cc:74
 #, kde-format
@@ -3159,7 +3114,7 @@ msgstr "Beigu objekts"
 #: modes/macrowizard.cc:81
 #, kde-format
 msgid "Select the final object(s) for your new macro."
-msgstr "Izvēlieties jūsu makrosa beigu objektu(s)."
+msgstr "Izvēlieties jūsu makrokomandas beigu objektu(s)."
 
 #: modes/macrowizard.cc:110
 #, kde-format
@@ -3182,11 +3137,10 @@ msgid "&Icon:"
 msgstr "&Ikona:"
 
 #: modes/macrowizard.cc:154
-#, fuzzy, kde-format
-#| msgid "Define New Macro"
+#, kde-format
 msgctxt "@title:window"
 msgid "Define New Macro"
-msgstr "Definēt jaunu makrosu"
+msgstr "Definēt jaunu makrokomandu"
 
 #: modes/moving.cc:136
 #, kde-format
@@ -3315,7 +3269,7 @@ msgstr[2] "%1 objektu"
 #: modes/popup/popup.cc:71
 #, kde-format
 msgid "Kig Document"
-msgstr "Kig dokuments"
+msgstr "„Kig“ dokuments"
 
 #: modes/popup/popup.cc:114
 #, kde-format
@@ -3369,11 +3323,9 @@ msgid "More..."
 msgstr "Vairāk..."
 
 #: modes/popup/scriptactionsprovider.cc:58
-#, fuzzy, kde-format
-#| msgctxt "'Edit' is a verb"
-#| msgid "Edit Script"
+#, kde-format
 msgid "Edit Script..."
-msgstr "Rediģēt skriptu"
+msgstr "Rediģēt skriptu..."
 
 #: modes/textlabelwizard.cc:31
 #, kde-format
@@ -3387,9 +3339,9 @@ msgid ""
 "If you want to show variable parts, then put %1, %2, ... at the appropriate "
 "places (e.g. \"This segment is %1 units long.\")."
 msgstr ""
-"Šeit ievadiet jūsu etiķetes tekstu un nospiediet \"Nākamais\".\n"
+"Šeit ievadiet jūsu etiķetes tekstu un nospiediet „Tālāk“.\n"
 "Ja vēlaties attēlot mainīgo daļas, tad liekat %1, %2, ... attiecīgajās "
-"vietās (piem., \"Šī segmenta garums ir %1 vienības.\")."
+"vietās (piemēram, „Šī segmenta garums ir %1 vienības.“)."
 
 #: modes/textlabelwizard.cc:52
 #, kde-format
@@ -3408,13 +3360,12 @@ msgid ""
 "select an object and a property in the Kig window, and click finish when you "
 "are done..."
 msgstr ""
-"Tagad izvēlieties nepieciešamos argumentus. Darbības katram argumentam - "
-"noklikšķiniet uz tā, atzīmējiet objektu un parametru Kig logā, tad "
-"noklikšķiniet uz 'Beigt', kad esat to izdarījis..."
+"Tagad izvēlieties nepieciešamos argumentus. Darbības katram argumentam — "
+"noklikšķiniet uz tā, „Kig“ logā atzīmējiet objektu un parametru, tad, kad "
+"viss ir izdarīts, noklikšķiniet uz „Beigt“..."
 
 #: modes/textlabelwizard.cc:106
-#, fuzzy, kde-format
-#| msgid "Construct Label"
+#, kde-format
 msgctxt "@title:window"
 msgid "Construct Label"
 msgstr "Konstrukcijas etiķete"
@@ -3422,7 +3373,7 @@ msgstr "Konstrukcijas etiķete"
 #: modes/typesdialog.cpp:133
 #, kde-format
 msgid "Macro"
-msgstr "Makross"
+msgstr "Makrokomanda"
 
 #: modes/typesdialog.cpp:301
 #, kde-format
@@ -3435,8 +3386,7 @@ msgid "Description"
 msgstr "Apraksts"
 
 #: modes/typesdialog.cpp:331
-#, fuzzy, kde-format
-#| msgid "Manage Types"
+#, kde-format
 msgctxt "@title:window"
 msgid "Manage Types"
 msgstr "Pārvaldīt tipus"
@@ -3472,34 +3422,24 @@ msgid "Export Types"
 msgstr "Eksportēt tipus"
 
 #: modes/typesdialog.cpp:455
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.kigt|Kig Types Files\n"
-#| "*|All Files"
+#, kde-format
 msgid "Kig Types Files (*.kigt);;All Files (*)"
-msgstr ""
-"*.kigt|Kig tipu faili\n"
-"*|Visi faili"
+msgstr "„Kig“ tipu datnes (*.kigt);;Visas datnes (*)"
 
 #: modes/typesdialog.cpp:475
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.kigt|Kig Types Files\n"
-#| "*|All Files"
+#, kde-format
 msgid "Kig Types Files (*.kigt)"
-msgstr ""
-"*.kigt|Kig tipu faili\n"
-"*|Visi faili"
+msgstr "„Kig“ tipu datnes (*.kigt)"
 
 #: modes/typesdialog.cpp:477
 #, kde-format
 msgid "Geogebra Tool Files (*.ggt)"
-msgstr ""
+msgstr "„Geogebra“ rīku datnes (*.ggt)"
 
 #: modes/typesdialog.cpp:479
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Visas datnes (*)"
 
 #: modes/typesdialog.cpp:481
 #, kde-format
@@ -3513,19 +3453,18 @@ msgid ""
 "Please select only the type you want to edit and try again."
 msgstr ""
 "Ir izvēlēts vairāk nekā viens tips. Jūs varat vienlaikus rediģēt tikai vienu "
-"tipu. Lūdzu, izvēlieties tikai to tipu, ko vēlaties rediģēt, un mēģiniet "
-"vēlreiz."
+"tipu. Izvēlieties tikai to tipu, ko vēlaties rediģēt, un mēģiniet vēlreiz."
 
 #: modes/typesdialog.cpp:517
 #, kde-format
 msgid "More Than One Type Selected"
-msgstr "Izvēlēts vairāk nekā viens tips"
+msgstr "Atlasīts vairāk nekā viens tips"
 
 #. i18n: ectx: property (toolTip), widget (QTreeView, typeList)
 #: modes/typeswidget.ui:37
 #, kde-format
 msgid "Select types here..."
-msgstr "Šeit atzīmējiet tipus..."
+msgstr "Šeit atlasiet tipus..."
 
 #. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
 #: modes/typeswidget.ui:40
@@ -3534,7 +3473,7 @@ msgid ""
 "This is a list of the current macro types... You can select, edit, delete, "
 "export and import them..."
 msgstr ""
-"Šis ir pieejamo makrosu tipu saraksts... Jūs varat tos atzīmēŧ, dzēst, "
+"Šis ir pieejamo makrokomadu tipu saraksts... Jūs varat tos atzīmēŧ, dzēst, "
 "eksportēt un importēt..."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, buttonEdit)
@@ -3547,19 +3486,19 @@ msgstr "Rediģēt izvēlēto tipu."
 #: modes/typeswidget.ui:109
 #, kde-format
 msgid "Delete all the selected types in the list."
-msgstr "Dzēst visus sarakstā izvēlētos tipus."
+msgstr "Dzēst visus sarakstā atlasītos tipus."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, buttonExport)
 #: modes/typeswidget.ui:151
 #, kde-format
 msgid "Export all the selected types to a file."
-msgstr "Eksportēt atzīmētos tipus uz failu."
+msgstr "Eksportēt atlasītos tipus uz datni."
 
 #. i18n: ectx: property (whatsThis), widget (QPushButton, buttonImport)
 #: modes/typeswidget.ui:161
 #, kde-format
 msgid "Import macros that are contained in one or more files."
-msgstr "Importēt makrosus, kuri ir ietverti vienā vai vairākos failos."
+msgstr "Importēt makrokomandas, kas ir ietvertas vienā vai vairākās datnēs."
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonImport)
 #: modes/typeswidget.ui:164
@@ -3597,7 +3536,7 @@ msgstr "Iestatīt i&zmēru"
 #: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
-msgstr ""
+msgstr "Pārslēgt &taisna leņķa atzīmi"
 
 #: objects/angle_type.cc:132
 #, kde-format
@@ -3954,18 +3893,15 @@ msgstr "Konstruēt racionālo Bezjē kubisko līkni ar šo kontrolpunktu"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr ""
+msgstr "virkne"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
-msgstr ""
+msgstr "dubults"
 
 #: objects/bogus_imp.cc:307
-#, fuzzy
-#| msgctxt "Translators: Inch"
-#| msgid "in"
 msgid "int"
-msgstr "collas"
+msgstr "vesels skaitlis"
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
@@ -4109,12 +4045,12 @@ msgstr "rho"
 #: objects/conic_imp.cc:263
 #, kde-format
 msgid "cos theta"
-msgstr "cos tēta"
+msgstr "cos teta"
 
 #: objects/conic_imp.cc:264
 #, kde-format
 msgid "sin theta"
-msgstr "sin tēta"
+msgstr "sin teta"
 
 #: objects/conic_imp.cc:266
 #, kde-format
@@ -4469,10 +4405,9 @@ msgid "Hide a Curve"
 msgstr "Paslēpt līkni"
 
 #: objects/curve_imp.cc:344
-#, fuzzy, kde-format
-#| msgid "Possibly trascendental curve"
+#, kde-format
 msgid "Possibly transcendental curve"
-msgstr "Iespējmi transcendenta līkne"
+msgstr "Iespējami transcendenta līkne"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
@@ -5041,12 +4976,12 @@ msgstr "punkts"
 
 #: objects/point_imp.cc:154
 msgid "Select this point"
-msgstr "Izvēlēties šo punktu"
+msgstr "Atlasīt šo punktu"
 
 #: objects/point_imp.cc:155
 #, kde-format
 msgid "Select point %1"
-msgstr "Izvēlēties punktu %1"
+msgstr "Atlasīt punktu %1"
 
 #: objects/point_imp.cc:156
 msgid "Remove a Point"
@@ -5081,46 +5016,34 @@ msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr ""
-"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
-"viduspunktu..."
+"Atlasiet pirmo no diviem punktiem, no kura vēlaties konstruēt viduspunktu..."
 
 #: objects/point_type.cc:247
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr ""
-"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
-"viduspunktu..."
+"Atlasiet otro no diviem punktiem, no kura vēlaties konstruēt viduspunktu..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy
-#| msgid "Construct the midpoint of this point and another point"
 msgid "Construct the golden ratio point of this point and another point"
-msgstr "Konstruēt šī un cita punkta viduspunktu"
+msgstr "Konstruēt šī un cita punkta zelta griezuma punktu"
 
 #: objects/point_type.cc:275
-#, fuzzy
-#| msgid ""
-#| "Select the first of the two points of which you want to construct the "
-#| "midpoint..."
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Izvēlieties pirmo no diviem punktiem, no kura vēlaties konstruēt "
-"viduspunktu..."
+"Atlasiet pirmo no diviem punktiem, no kura vēlaties konstruēt zelta griezuma "
+"punktu..."
 
 #: objects/point_type.cc:279
-#, fuzzy
-#| msgid ""
-#| "Select the other of the two points of which you want to construct the "
-#| "midpoint..."
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Izvēlieties otro no diviem punktiem, no kura vēlaties konstruēt "
-"viduspunktu..."
+"Atlasiet otro no diviem punktiem, no kura vēlaties konstruēt zelta griezuma "
+"punktu..."
 
 #: objects/point_type.cc:386
 #, kde-format
@@ -5183,14 +5106,12 @@ msgid "Select a number/length as y coordinate of the point..."
 msgstr "Izvēlieties skaitli/garumu kā punkta y koordināti..."
 
 #: objects/point_type.cc:820
-#, fuzzy
-#| msgid "Select the point to reflect in..."
 msgid "Select a point to project onto a line..."
-msgstr "Izvēlieties punktu, kurā atspoguļot..."
+msgstr "Izvēlieties punktu, ko projicēt kā līniju..."
 
 #: objects/point_type.cc:821
 msgid "Line where the projected point will lie..."
-msgstr ""
+msgstr "Līniju, kurā punkts ir projicēts, atradīsies..."
 
 #: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
 #: objects/polygon_imp.cc:316
@@ -5736,12 +5657,12 @@ msgstr "Izvēlieties objektu, kura eksistenci vēlaties pārbaudīt...."
 #: objects/tests_type.cc:375
 #, kde-format
 msgid "The object exists."
-msgstr "Objekts eksistē."
+msgstr "Objekts pastāv."
 
 #: objects/tests_type.cc:377
 #, kde-format
 msgid "The object does not exist."
-msgstr "Objekts neeksistē."
+msgstr "Objekts nepastāv."
 
 #: objects/text_imp.cc:74
 msgid "Text"
@@ -5753,12 +5674,12 @@ msgstr "etiķete"
 
 #: objects/text_imp.cc:138
 msgid "Select this label"
-msgstr "Izvēlēties šo etiķeti"
+msgstr "Atlasiet šo etiķeti"
 
 #: objects/text_imp.cc:139
 #, kde-format
 msgid "Select label %1"
-msgstr "Izvēlēties etiķeti %1"
+msgstr "Atlasiet etiķeti %1"
 
 #: objects/text_imp.cc:140
 msgid "Remove a Label"
@@ -6368,8 +6289,7 @@ msgid "Select the point to construct the sum vector in..."
 msgstr "Izvēlieties punktu, kurā konstruēt summas vektoru..."
 
 #: scripting/newscriptwizard.cc:45
-#, fuzzy, kde-format
-#| msgid "New Script"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Script"
 msgstr "Jauns skripts"
@@ -6380,8 +6300,8 @@ msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr ""
-"Izvēlieties argumentu objektus\n"
-"Kig logā, un nospiediet \"Nākamais\"."
+"Atlasiet argumentu objektus\n"
+"„Kig“ logā un nospiediet „Tālāk“."
 
 #: scripting/newscriptwizard.cc:62
 #, kde-format
@@ -6396,7 +6316,7 @@ msgstr "Tagad ievadiet kodu:"
 #: scripting/script-common.cc:19
 #, kde-format
 msgid "Now fill in the Python code:"
-msgstr "Tagad ievadiet Python kodu:"
+msgstr "Tagad ievadiet „Python“ kodu:"
 
 #: scripting/script-common.cc:80
 #, kde-format
@@ -6413,8 +6333,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script and click the Finish button again."
 msgstr ""
-"Python interpretators jūsu skripta izpildes laikā atrada kļūdu. Lūdzu, "
-"izlabojiet skriptu, un noklikšķiniet pogu 'Pabeigt' vēlreiz."
+"„Python“ interpretators jūsu skripta izpildes laikā atrada kļūdu. Izlabojiet "
+"skriptu un noklikšķiniet pogu „Pabeigt“."
 
 #: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
@@ -6422,7 +6342,7 @@ msgid ""
 "The Python Interpreter generated the following error output:\n"
 "%1"
 msgstr ""
-"Python Interpretators ģenerēja šādu kļūdas izvadi:\n"
+"„Python“ Interpretators ģenerēja šādu kļūdas izvadi:\n"
 "%1"
 
 #: scripting/script_mode.cc:187
@@ -6432,14 +6352,12 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script, and click the Finish button again."
 msgstr ""
-"Šķiet, ka jūsu skriptā ir kļūda. Python interpretators neziņoja par kļūdām, "
-"tomēr skripts neģenerē derīgu objektu. Lūdzu, izlabojiet skriptu, un "
-"noklikšķiniet pogu 'Pabeigt' vēlreiz."
+"Šķiet, ka jūsu skriptā ir kļūda. „Python“ interpretators neziņoja par "
+"kļūdām, tomēr skripts neģenerē derīgu objektu. Izlabojiet skriptu un "
+"noklikšķiniet uz pogas „Pabeig“."
 
 #: scripting/script_mode.cc:286
-#, fuzzy, kde-format
-#| msgctxt "'Edit' is a verb"
-#| msgid "Edit Script"
+#, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
 msgstr "Rediģēt skriptu"
@@ -6447,7 +6365,7 @@ msgstr "Rediģēt skriptu"
 #: scripting/script_mode.cc:308
 #, kde-format
 msgid "Edit Python Script"
-msgstr "Rediģēt Python skriptu"
+msgstr "Rediģēt „Python“ skriptu"
 
 #: scripting/script_mode.cc:316
 #, kde-format
@@ -6455,8 +6373,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script."
 msgstr ""
-"Python interpretators jūsu skripta izpildes laikā atrada kļūdu. Lūdzu, "
-"izlabojiet skriptu."
+"„Python“ interpretators jūsu skripta izpildes laikā atrada kļūdu. Izlabojiet "
+"skriptu."
 
 #: scripting/script_mode.cc:321
 #, kde-format
@@ -6465,8 +6383,8 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script."
 msgstr ""
-"Šķiet, ka jūsu skriptā ir kļūda. Python interpretators neziņoja par kļūdām, "
-"tomēr skripts neģenerē derīgu objektu. Lūdzu, izlabojiet skriptu."
+"Šķiet, ka jūsu skriptā ir kļūda. „Python“ interpretators neziņoja par "
+"kļūdām, tomēr skripts neģenerē derīgu objektu. Izlabojiet skriptu."
 
 #~ msgid ""
 #~ "<p>You can control a kig construction by means of a \"pykig\" \n"
