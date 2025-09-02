@@ -46,7 +46,7 @@ msgstr "Construïx un cercle tangent a esta recta"
 
 #, kde-format
 msgid "Select the line that the new circle should be tangent to..."
-msgstr "Seleccioneu la recta a la qual el nou cercle ha de ser tangent…"
+msgstr "Trieu la recta a la qual el cercle nou ha de ser tangent…"
 
 #, kde-format
 msgid "Circle by Point && Segment (as the Diameter)"
@@ -66,8 +66,7 @@ msgstr ""
 
 #, kde-format
 msgid "Select the segment whose length gives the diameter of the new circle..."
-msgstr ""
-"Seleccioneu el segment que dona la llargària del diàmetre del nou cercle…"
+msgstr "Trieu el segment que dona la llargària del diàmetre del cercle nou…"
 
 #, kde-format
 msgid "Equilateral Triangle"
@@ -107,7 +106,7 @@ msgstr "Cercle osculador en este punt"
 
 #, kde-format
 msgid "Select the point..."
-msgstr "Seleccioneu el punt…"
+msgstr "Trieu el punt…"
 
 #, kde-format
 msgid "Square"
@@ -119,43 +118,41 @@ msgstr "Quadrat amb dos vèrtexs adjacents donats"
 
 #, kde-format
 msgid "Vector Difference"
-msgstr "Vector diferència"
+msgstr "Vector de la diferència"
 
 #, kde-format
 msgid "Construct the vector difference of two vectors."
-msgstr "Construïx el vector diferència de dos vectors."
+msgstr "Construïx el vector de la diferència de dos vectors."
 
 #, kde-format
 msgid "Construct the vector difference of this vector and another one."
-msgstr "Construïx el vector diferència d'este vector i un altre."
+msgstr "Construïx el vector de la diferència d'este vector i un altre."
 
 #, kde-format
 msgid "Construct the vector difference of the other vector and this one."
-msgstr "Construïx el vector diferència de l'altre vector i d'este."
+msgstr "Construïx el vector de la diferència de l'altre vector i d'este."
 
 #, kde-format
 msgid "Construct the vector difference starting at this point."
-msgstr "Construïx el vector diferència començant en este punt."
+msgstr "Construïx el vector de la diferència començant en este punt."
 
 #, kde-format
 msgid ""
 "Select the first of the two vectors of which you want to construct the "
 "difference..."
 msgstr ""
-"Seleccioneu el primer dels dos vectors dels quals voleu construir la "
-"diferència…"
+"Trieu el primer dels dos vectors dels quals voleu construir la diferència…"
 
 #, kde-format
 msgid ""
 "Select the other of the two vectors of which you want to construct the "
 "difference..."
 msgstr ""
-"Seleccioneu el segon dels dos vectors dels quals voleu construir la "
-"diferència…"
+"Trieu el segon dels dos vectors dels quals voleu construir la diferència…"
 
 #, kde-format
 msgid "Select the point to construct the difference vector in..."
-msgstr "Seleccioneu el punt on construir el vector diferència…"
+msgstr "Trieu el punt on construir el vector de la diferència…"
 
 #: filters/asyexporter.cc:29
 #, kde-format
@@ -280,7 +277,7 @@ msgid ""
 "Please select which to import:"
 msgstr ""
 "El fitxer Dr. Geo actual conté més d'una figura.\n"
-"Seleccioneu quina voleu importar:"
+"Trieu quina voleu importar:"
 
 #: filters/drgeo-filter.cc:306 filters/drgeo-filter.cc:359
 #: filters/drgeo-filter.cc:386 filters/drgeo-filter.cc:398
@@ -873,7 +870,7 @@ msgstr "Repetix la construcció"
 #: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
-msgstr "Repetix l'última construcció (amb noves dades)"
+msgstr "Repetix l'última construcció (amb dades noves)"
 
 #: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
@@ -938,12 +935,12 @@ msgstr "Mostra el document a pantalla completa."
 #: kig/kig_part.cpp:284
 #, kde-format
 msgid "&Select Shown Area"
-msgstr "&Selecciona l'àrea mostrada"
+msgstr "&Tria l'àrea mostrada"
 
 #: kig/kig_part.cpp:287 kig/kig_part.cpp:288
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
-msgstr "Seleccioneu l'àrea que voleu que es mostre en la finestra."
+msgstr "Trieu l'àrea que voleu que es mostre en la finestra."
 
 #: kig/kig_part.cpp:290
 #, kde-format
@@ -1000,7 +997,7 @@ msgstr "Repetix la construcció (%1)"
 #: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
-msgstr "Repetix %1 (amb noves dades)"
+msgstr "Repetix %1 (amb dades noves)"
 
 #: kig/kig_part.cpp:374
 #, kde-format
@@ -1103,7 +1100,7 @@ msgstr "Torna a centrar la vista"
 #: kig/kig_view.cpp:496
 #, kde-format
 msgid "Select the rectangle that should be shown."
-msgstr "Seleccioneu el rectangle que voleu que es mostre."
+msgstr "Trieu el rectangle que voleu que es mostre."
 
 #: kig/kig_view.cpp:501 kig/kig_view.cpp:551
 #, kde-format
@@ -1113,7 +1110,7 @@ msgstr "Canvia la part mostrada a la pantalla"
 #: kig/kig_view.cpp:538
 #, kde-format
 msgid "Select Zoom Area"
-msgstr "Seleccioneu àrea de zoom"
+msgstr "Trieu àrea de zoom"
 
 #: kig/kig_view.cpp:539
 #, kde-format
@@ -1121,8 +1118,8 @@ msgid ""
 "Select the zoom area by entering the coordinates<br />of the upper left "
 "corner and the lower right corner."
 msgstr ""
-"Seleccioneu l'àrea de zoom introduint les coordenades<br />del cantó "
-"superior esquerre i del cantó inferior dret."
+"Trieu l'àrea de zoom introduint les coordenades<br />del cantó superior "
+"esquerre i del cantó inferior dret."
 
 #. i18n: ectx: Menu (file)
 #: kig/kigpartui.rc:6 kig/kigui.rc:5
@@ -1466,7 +1463,7 @@ msgstr "Construïx la bisectriu d'este angle"
 #: misc/builtin_stuff.cc:123
 #, kde-format
 msgid "Select the angle you want to construct the bisector of..."
-msgstr "Seleccioneu l'angle del qual voleu construir la bisectriu…"
+msgstr "Trieu l'angle del qual voleu construir la bisectriu…"
 
 #: misc/builtin_stuff.cc:124 objects/other_imp.cc:113
 #, kde-format
@@ -2229,7 +2226,7 @@ msgstr "Establix la mida de l'angle"
 #: misc/kiginputdialog.cc:140
 #, kde-format
 msgid "Insert the new size of this angle:"
-msgstr "Introduïu la nova mida d'este angle:"
+msgstr "Introduïu la mida nova d'este angle:"
 
 #: misc/kiginputdialog.cc:148
 #, kde-format
@@ -2247,7 +2244,7 @@ msgstr ""
 "Trieu d'esta llista la unitat goniomètrica que voleu utilitzar per a "
 "modificar la mida d'este angle.<br />\n"
 "Si canvieu a una altra unitat, el valor que hi haja al camp d'edició de "
-"l'esquerra es convertirà a la nova unitat seleccionada."
+"l'esquerra es convertirà a la unitat nova seleccionada."
 
 #: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
@@ -2312,8 +2309,8 @@ msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr ""
-"Trieu el punt que s'ha de moure que es canviarà de lloc mentre es traça el "
-"lloc geomètric…"
+"Trieu el punt a moure que es canviarà de lloc mentre es traça el lloc "
+"geomètric…"
 
 #: misc/special_constructors.cc:328
 msgid "Following Point"
@@ -2324,7 +2321,7 @@ msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
 msgstr ""
-"Seleccioneu el següent dels punts a través dels quals es dibuixarà el lloc "
+"Trieu el següent dels punts a través dels quals es dibuixarà el lloc "
 "geomètric…"
 
 #: misc/special_constructors.cc:331
@@ -2368,7 +2365,7 @@ msgstr "Construïx un polígon amb este vèrtex"
 #: misc/special_constructors.cc:560
 #, kde-format
 msgid "Select a point to be a vertex of the new polygon..."
-msgstr "Seleccioneu un punt que serà un vèrtex del nou polígon…"
+msgstr "Trieu un punt que serà un vèrtex del polígon nou…"
 
 #: misc/special_constructors.cc:589
 #, kde-format
@@ -2397,7 +2394,7 @@ msgstr "Construïx una línia poligonal amb este vèrtex"
 #: misc/special_constructors.cc:629
 #, kde-format
 msgid "Select a point to be a vertex of the new polygonal line..."
-msgstr "Seleccioneu un punt que serà un vèrtex de la nova línia poligonal…"
+msgstr "Trieu un punt que serà un vèrtex de la línia poligonal nova…"
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
 msgid "Polygon"
@@ -2464,12 +2461,12 @@ msgstr "Ajusta el nombre de costats (%1)"
 #: misc/special_constructors.cc:970
 #, kde-format
 msgid "Select the center of the new polygon..."
-msgstr "Seleccioneu el centre del nou polígon…"
+msgstr "Trieu el centre del polígon nou…"
 
 #: misc/special_constructors.cc:974
 #, kde-format
 msgid "Select a vertex for the new polygon..."
-msgstr "Seleccioneu un vèrtex per al nou polígon…"
+msgstr "Trieu un vèrtex per al polígon nou…"
 
 #: misc/special_constructors.cc:978
 #, kde-format
@@ -2503,8 +2500,7 @@ msgstr "Construïx una corba de Bézier amb este punt de control"
 #: misc/special_constructors.cc:1105
 #, kde-format
 msgid "Select a point to be a control point of the new Bézier curve..."
-msgstr ""
-"Seleccioneu un punt que serà un punt de control de la nova corba de Bézier…"
+msgstr "Trieu un punt que serà un punt de control de la corba nova de Bézier…"
 
 #: misc/special_constructors.cc:1138
 #, kde-format
@@ -2543,15 +2539,14 @@ msgstr "Construïx una corba racional de Bézier amb este punt de control"
 msgid ""
 "Select a point to be a control point of the new rational Bézier curve..."
 msgstr ""
-"Seleccioneu un punt que serà un punt de control de la nova corba racional de "
+"Trieu un punt que serà un punt de control de la corba racional nova de "
 "Bézier…"
 
 #: misc/special_constructors.cc:1215
 #, kde-format
 msgid "Select a numeric label to be a weight of last selected point..."
 msgstr ""
-"Seleccioneu una etiqueta numèrica que serà un pes de l'últim punt "
-"seleccionat…"
+"Trieu una etiqueta numèrica que serà un pes de l'últim punt seleccionat…"
 
 #: misc/special_constructors.cc:1380
 #, kde-format
@@ -2654,17 +2649,17 @@ msgstr "Comença el transport a partir d'este punt de la corba"
 #: misc/special_constructors.cc:1637
 #, kde-format
 msgid "Select a segment, arc or numeric label to be transported..."
-msgstr "Seleccioneu un segment, arc o etiqueta numèrica per a transportar…"
+msgstr "Trieu un segment, arc o etiqueta numèrica per a transportar…"
 
 #: misc/special_constructors.cc:1641
 #, kde-format
 msgid "Select a destination line or circle..."
-msgstr "Seleccioneu una línia o cercle de destinació…"
+msgstr "Trieu una línia o cercle de destinació…"
 
 #: misc/special_constructors.cc:1645
 #, kde-format
 msgid "Choose a starting point on the line/circle..."
-msgstr "Seleccioneu un punt inicial sobre la línia/cercle…"
+msgstr "Trieu un punt inicial sobre la línia/cercle…"
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 msgid "Intersect with this conic"
@@ -2792,8 +2787,7 @@ msgstr "Construïx el punt mitjà d'este punt i un altre"
 #: misc/special_constructors.cc:1815
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
-msgstr ""
-"Seleccioneu el primer dels punts dels quals voleu calcular el punt mitjà…"
+msgstr "Trieu el primer dels punts dels quals voleu calcular el punt mitjà…"
 
 #: misc/special_constructors.cc:1818
 msgid "Construct the midpoint of this point and another one"
@@ -2801,8 +2795,7 @@ msgstr "Construïx el punt mitjà d'este punt i un altre"
 
 #: misc/special_constructors.cc:1819
 msgid "Select the other of the points of which to construct the midpoint..."
-msgstr ""
-"Seleccioneu l'altre dels punts dels quals voleu construir el punt mitjà…"
+msgstr "Trieu l'altre dels punts dels quals voleu construir el punt mitjà…"
 
 #: misc/special_constructors.cc:1869
 msgid "Construct golden ratio point of this point and another one"
@@ -2813,8 +2806,8 @@ msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Seleccioneu el primer dels punts dels quals voleu construir el punt de la "
-"raó àuria…"
+"Trieu el primer dels punts dels quals voleu construir el punt de la raó "
+"àuria…"
 
 #: misc/special_constructors.cc:1873
 msgid "Construct the golden ratio point of this point and another one"
@@ -2825,18 +2818,17 @@ msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
 msgstr ""
-"Seleccioneu l'altre dels punts dels quals voleu construir el punt de la raó "
-"àuria…"
+"Trieu l'altre dels punts dels quals voleu construir el punt de la raó àuria…"
 
 #: misc/special_constructors.cc:1979
 #, kde-format
 msgid "Select the first object to intersect..."
-msgstr "Seleccioneu el primer objecte a intersecar…"
+msgstr "Trieu el primer objecte a intersecar…"
 
 #: misc/special_constructors.cc:1981
 #, kde-format
 msgid "Select the second object to intersect..."
-msgstr "Seleccioneu el segon objecte a intersecar…"
+msgstr "Trieu el segon objecte a intersecar…"
 
 #: misc/special_constructors.cc:1985
 #, kde-format
@@ -3063,7 +3055,7 @@ msgid ""
 "Please remove them or select enough arguments."
 msgstr ""
 "Hi ha «%n» parts en el text per a les quals no heu seleccionat cap valor. "
-"Per favor, elimineu-les o seleccioneu arguments suficients."
+"Per favor, elimineu-les o trieu arguments suficients."
 
 #: modes/label.cc:373
 #, kde-format
@@ -3093,7 +3085,7 @@ msgstr "Introduïu el valor:"
 #: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
-msgstr "Seleccioneu la posició per al valor numèric nou…"
+msgstr "Tria la posició per al valor numèric nou…"
 
 #: modes/macro.cc:70
 #, kde-format
@@ -3126,8 +3118,7 @@ msgstr "Objectes donats"
 #, kde-format
 msgid "Select the \"given\" objects for your new macro and press \"Next\"."
 msgstr ""
-"Seleccioneu els objectes «donats» per a la vostra nova macro i premeu "
-"«Següent»."
+"Trieu els objectes «donats» per a la vostra macro nova i premeu «Següent»."
 
 #: modes/macrowizard.cc:74
 #, kde-format
@@ -3137,12 +3128,12 @@ msgstr "Objecte final"
 #: modes/macrowizard.cc:81
 #, kde-format
 msgid "Select the final object(s) for your new macro."
-msgstr "Seleccioneu l'objecte o objectes finals per a la vostra nova macro."
+msgstr "Trieu l'objecte o objectes finals per a la vostra macro nova."
 
 #: modes/macrowizard.cc:110
 #, kde-format
 msgid "Enter a name and description for your new type."
-msgstr "Introduïu un nom i una descripció per al nou tipus."
+msgstr "Introduïu un nom i una descripció per al tipus nou."
 
 #: modes/macrowizard.cc:119
 #, kde-format
@@ -3372,7 +3363,7 @@ msgstr "Mostra el text en un marc"
 #: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
 msgid "Select Arguments"
-msgstr "Seleccioneu els arguments"
+msgstr "Trieu els arguments"
 
 #: modes/textlabelwizard.cc:85
 #, kde-format
@@ -3382,8 +3373,8 @@ msgid ""
 "are done..."
 msgstr ""
 "Ara seleccioneu els arguments que necessiteu. Per a cada argument, premeu "
-"sobre seu, seleccioneu un objecte i una propietat en la finestra de Kig i "
-"premeu Acaba quan hàgeu acabat…"
+"sobre seu, trieu un objecte i una propietat en la finestra de Kig i premeu "
+"Acaba quan hàgeu acabat…"
 
 #: modes/textlabelwizard.cc:106
 #, kde-format
@@ -3472,8 +3463,8 @@ msgid ""
 "There is more than one type selected. You can only edit one type at a time. "
 "Please select only the type you want to edit and try again."
 msgstr ""
-"Hi ha més d'un tipus seleccionat. Només podeu editar un tipus alhora. "
-"Seleccioneu només el tipus que voleu editar i intenteu-ho de nou."
+"Hi ha més d'un tipus seleccionat. Només podeu editar un tipus alhora. Trieu "
+"només el tipus que voleu editar i intenteu-ho de nou."
 
 #: modes/typesdialog.cpp:517
 #, kde-format
@@ -3484,7 +3475,7 @@ msgstr "Més d'un tipus seleccionat"
 #: modes/typeswidget.ui:37
 #, kde-format
 msgid "Select types here..."
-msgstr "Seleccioneu els tipus ací…"
+msgstr "Tria els tipus ací…"
 
 #. i18n: ectx: property (whatsThis), widget (QTreeView, typeList)
 #: modes/typeswidget.ui:40
@@ -3533,8 +3524,7 @@ msgstr "Construïx un angle a través d'este punt"
 #: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
-msgstr ""
-"Seleccioneu un punt per on haja de passar la primera semirecta de l'angle…"
+msgstr "Trieu un punt per on haja de passar la primera semirecta de l'angle…"
 
 #: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
@@ -3542,13 +3532,12 @@ msgstr "Construïx un angle a este punt"
 
 #: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
-msgstr "Seleccioneu el punt on construir l'angle…"
+msgstr "Trieu el punt on construir l'angle…"
 
 #: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
-msgstr ""
-"Seleccioneu un punt per on haja de passar la segona semirecta de l'angle…"
+msgstr "Trieu un punt per on haja de passar la segona semirecta de l'angle…"
 
 #: objects/angle_type.cc:89
 #, kde-format
@@ -3571,7 +3560,7 @@ msgstr "Construïx un arc que comence en este punt"
 
 #: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
-msgstr "Seleccioneu el punt inicial del nou arc…"
+msgstr "Trieu el punt inicial de l'arc nou…"
 
 #: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
@@ -3579,7 +3568,7 @@ msgstr "Construïx un arc a través d'este punt"
 
 #: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
-msgstr "Seleccioneu un punt pel qual ha de passar el nou arc…"
+msgstr "Trieu un punt pel qual ha de passar l'arc nou…"
 
 #: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
@@ -3587,7 +3576,7 @@ msgstr "Construïx un arc que acabe en este punt"
 
 #: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
-msgstr "Seleccioneu el punt d'acabament del nou arc…"
+msgstr "Trieu el punt d'acabament de l'arc nou…"
 
 #: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
@@ -3595,7 +3584,7 @@ msgstr "Construïx un arc amb este centre"
 
 #: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
-msgstr "Selecciona el centre del nou arc…"
+msgstr "Tria el centre de l'arc nou…"
 
 #: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
@@ -3603,7 +3592,7 @@ msgstr "Construïx un arc amb este angle"
 
 #: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
-msgstr "Selecciona l'angle del nou arc…"
+msgstr "Tria l'angle de l'arc nou…"
 
 #: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
@@ -3611,7 +3600,7 @@ msgstr "Construïx un arc de cònica que comence en este punt"
 
 #: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
-msgstr "Seleccioneu el punt inicial del nou arc de cònica…"
+msgstr "Trieu el punt inicial de l'arc de cònica nou…"
 
 #: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
@@ -3619,7 +3608,7 @@ msgstr "Construïx un arc de cònica a través d'este punt"
 
 #: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
-msgstr "Selecciona un punt per on ha de passar el nou arc de cònica…"
+msgstr "Tria un punt per on ha de passar l'arc de cònica nou…"
 
 #: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
@@ -3627,7 +3616,7 @@ msgstr "Construïx un arc de cònica que acabe en este punt"
 
 #: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
-msgstr "Seleccioneu el punt final del nou arc de cònica…"
+msgstr "Trieu el punt final de l'arc de cònica nou…"
 
 #: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
@@ -3635,7 +3624,7 @@ msgstr "Construïx un arc de cònica amb este centre"
 
 #: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
-msgstr "Selecciona el centre del nou arc de cònica…"
+msgstr "Tria el centre de l'arc de cònica nou…"
 
 #: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
 msgid "Number of control points"
@@ -3657,12 +3646,12 @@ msgstr "Corba de Bézier"
 
 #: objects/bezier_imp.cc:202
 msgid "Select this Bézier Curve"
-msgstr "Selecciona esta corba de Bézier"
+msgstr "Tria esta corba de Bézier"
 
 #: objects/bezier_imp.cc:203
 #, kde-format
 msgid "Select Bézier Curve %1"
-msgstr "Selecciona la corba de Bézier %1"
+msgstr "Tria la corba de Bézier %1"
 
 #: objects/bezier_imp.cc:204
 msgid "Remove a Bézier Curve"
@@ -3694,12 +3683,12 @@ msgstr "Quadràtica de Bézier"
 
 #: objects/bezier_imp.cc:219
 msgid "Select this Bézier Quadratic"
-msgstr "Selecciona esta quadràtica de Bézier"
+msgstr "Tria esta quadràtica de Bézier"
 
 #: objects/bezier_imp.cc:220
 #, kde-format
 msgid "Select Bézier Quadratic %1"
-msgstr "Selecciona la quadràtica de Bézier %1"
+msgstr "Tria la quadràtica de Bézier %1"
 
 #: objects/bezier_imp.cc:221
 msgid "Remove a Bézier Quadratic"
@@ -3731,12 +3720,12 @@ msgstr "Cúbica de Bézier"
 
 #: objects/bezier_imp.cc:236
 msgid "Select this Bézier Cubic"
-msgstr "Selecciona esta cúbica de Bézier"
+msgstr "Tria esta cúbica de Bézier"
 
 #: objects/bezier_imp.cc:237
 #, kde-format
 msgid "Select Bézier Cubic %1"
-msgstr "Selecciona la cúbica de Bézier %1"
+msgstr "Tria la cúbica de Bézier %1"
 
 #: objects/bezier_imp.cc:238
 msgid "Remove a Bézier Cubic"
@@ -3768,12 +3757,12 @@ msgstr "Corba racional de Bézier"
 
 #: objects/bezier_imp.cc:491
 msgid "Select this Rational Bézier Curve"
-msgstr "Selecciona esta corba racional de Bézier"
+msgstr "Tria esta corba racional de Bézier"
 
 #: objects/bezier_imp.cc:492
 #, kde-format
 msgid "Select Rational Bézier Curve %1"
-msgstr "Selecciona la corba racional de Bézier %1"
+msgstr "Tria la corba racional de Bézier %1"
 
 #: objects/bezier_imp.cc:493
 msgid "Remove a Rational Bézier Curve"
@@ -3805,12 +3794,12 @@ msgstr "Quadràtica racional de Bézier"
 
 #: objects/bezier_imp.cc:508
 msgid "Select this Rational Bézier Quadratic"
-msgstr "Selecciona esta quadràtica racional de Bézier"
+msgstr "Tria esta quadràtica racional de Bézier"
 
 #: objects/bezier_imp.cc:509
 #, kde-format
 msgid "Select Rational Bézier Quadratic %1"
-msgstr "Selecciona la quadràtica racional de Bézier %1"
+msgstr "Tria la quadràtica racional de Bézier %1"
 
 #: objects/bezier_imp.cc:510
 msgid "Remove a Rational Bézier Quadratic"
@@ -3842,12 +3831,12 @@ msgstr "Cúbica racional de Bézier"
 
 #: objects/bezier_imp.cc:525
 msgid "Select this Rational Bézier Cubic"
-msgstr "Selecciona esta cúbica racional de Bézier"
+msgstr "Tria esta cúbica racional de Bézier"
 
 #: objects/bezier_imp.cc:526
 #, kde-format
 msgid "Select Rational Bézier Cubic %1"
-msgstr "Selecciona la cúbica racional de Bézier %1"
+msgstr "Tria la cúbica racional de Bézier %1"
 
 #: objects/bezier_imp.cc:527
 msgid "Remove a Rational Bézier Cubic"
@@ -3881,8 +3870,8 @@ msgstr "Construïx una corba quadràtica de Bézier amb este punt de control"
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr ""
-"Seleccioneu un punt que serà un punt de control de la nova corba quadràtica "
-"de Bézier…"
+"Trieu un punt que serà un punt de control de la corba quadràtica nova de "
+"Bézier…"
 
 #: objects/bezier_type.cc:121
 msgid "Construct a cubic Bézier curve with this control point"
@@ -3891,8 +3880,7 @@ msgstr "Construïx una corba cúbica de Bézier amb este punt de control"
 #: objects/bezier_type.cc:122
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr ""
-"Seleccioneu un punt que serà un punt de control de la nova corba cúbica de "
-"Bézier…"
+"Trieu un punt que serà un punt de control de la corba cúbica nova de Bézier…"
 
 #: objects/bezier_type.cc:328
 msgid "Construct a quadratic rational Bézier curve with this control point"
@@ -3904,12 +3892,12 @@ msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr ""
-"Seleccioneu tres punts i tres valors numèrics com a pesos per a construir la "
-"corba racional de Bézier…"
+"Trieu tres punts i tres valors numèrics com a pesos per a construir la corba "
+"racional de Bézier…"
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
 msgid "Select this value as weight"
-msgstr "Selecciona este valor com a pes"
+msgstr "Tria este valor com a pes"
 
 #: objects/bezier_type.cc:433
 msgid "Construct a cubic rational Bézier curve with this control point"
@@ -3934,11 +3922,11 @@ msgstr "Resultat de la prova"
 #: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
 #, kde-format
 msgid "Select the curve..."
-msgstr "Seleccioneu la corba…"
+msgstr "Tria la corba…"
 
 #: objects/centerofcurvature_type.cc:23
 msgid "Select a point on the curve..."
-msgstr "Seleccioneu un punt de la corba…"
+msgstr "Trieu un punt de la corba…"
 
 #: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
 #: objects/polygon_imp.cc:304
@@ -3976,12 +3964,12 @@ msgstr "cercle"
 
 #: objects/circle_imp.cc:338
 msgid "Select this circle"
-msgstr "Seleccioneu este cercle"
+msgstr "Trieu este cercle"
 
 #: objects/circle_imp.cc:339
 #, kde-format
 msgid "Select circle %1"
-msgstr "Selecciona el cercle %1"
+msgstr "Tria el cercle %1"
 
 #: objects/circle_imp.cc:340
 msgid "Remove a Circle"
@@ -4019,12 +4007,12 @@ msgstr "Construïx un cercle amb este centre"
 #: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
 msgid "Select the center of the new circle..."
-msgstr "Seleccioneu el centre del nou cercle…"
+msgstr "Trieu el centre del cercle nou…"
 
 #: objects/circle_type.cc:24 objects/circle_type.cc:49
 #: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
-msgstr "Seleccioneu un punt pel qual ha de passar el nou cercle…"
+msgstr "Trieu un punt pel qual ha de passar el cercle nou…"
 
 #: objects/circle_type.cc:178
 msgid "With this radius"
@@ -4032,7 +4020,7 @@ msgstr "Amb este radi"
 
 #: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
-msgstr "Seleccioneu la llargària del radi…"
+msgstr "Trieu la llargària del radi…"
 
 #: objects/conic_imp.cc:73
 msgid "Conic Type"
@@ -4087,12 +4075,12 @@ msgstr "cònica"
 
 #: objects/conic_imp.cc:379
 msgid "Select this conic"
-msgstr "Selecciona esta cònica"
+msgstr "Tria esta cònica"
 
 #: objects/conic_imp.cc:380
 #, kde-format
 msgid "Select conic %1"
-msgstr "Selecciona la cònica %1"
+msgstr "Tria la cònica %1"
 
 #: objects/conic_imp.cc:381
 msgid "Remove a Conic"
@@ -4136,12 +4124,12 @@ msgstr "arc de cònica"
 
 #: objects/conic_imp.cc:604
 msgid "Select this conic arc"
-msgstr "Selecciona este arc de cònica"
+msgstr "Tria este arc de cònica"
 
 #: objects/conic_imp.cc:605
 #, kde-format
 msgid "Select conic arc %1"
-msgstr "Selecciona l'arc de cònica %1"
+msgstr "Tria l'arc de cònica %1"
 
 #: objects/conic_imp.cc:606
 msgid "Remove a Conic Arc"
@@ -4177,7 +4165,7 @@ msgstr "Construïx una cònica a través d'este punt"
 #: objects/conic_types.cc:25 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
 msgid "Select a point for the new conic to go through..."
-msgstr "Selecciona un punt on ha de passar la nova cònica…"
+msgstr "Trieu un punt per on haja de passar la cònica nova…"
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
 msgid "Construct a conic with this asymptote"
@@ -4185,11 +4173,11 @@ msgstr "Construïx una cònica amb esta asímptota"
 
 #: objects/conic_types.cc:61
 msgid "Select the first asymptote of the new conic..."
-msgstr "Selecciona la primera asímptota d'esta cònica nova…"
+msgstr "Tria la primera asímptota d'esta cònica nova…"
 
 #: objects/conic_types.cc:62
 msgid "Select the second asymptote of the new conic..."
-msgstr "Selecciona la segona asímptota d'esta cònica nova…"
+msgstr "Tria la segona asímptota d'esta cònica nova…"
 
 #: objects/conic_types.cc:114
 msgid "Construct an ellipse with this focus"
@@ -4197,11 +4185,11 @@ msgstr "Construïx una el·lipse amb este focus"
 
 #: objects/conic_types.cc:117
 msgid "Select the first focus of the new ellipse..."
-msgstr "Selecciona el primer focus d'esta el·lipse nova…"
+msgstr "Tria el primer focus d'esta el·lipse nova…"
 
 #: objects/conic_types.cc:118
 msgid "Select the second focus of the new ellipse..."
-msgstr "Selecciona el segon focus d'esta nova el·lipse…"
+msgstr "Tria el segon focus d'esta el·lipse nova…"
 
 #: objects/conic_types.cc:119
 msgid "Construct an ellipse through this point"
@@ -4209,7 +4197,7 @@ msgstr "Construïx una el·lipse a través d'este punt"
 
 #: objects/conic_types.cc:119
 msgid "Select a point for the new ellipse to go through..."
-msgstr "Selecciona un punt a través del qual vaja l'el·lipse nova…"
+msgstr "Tria un punt a través del qual vaja l'el·lipse nova…"
 
 #: objects/conic_types.cc:143
 msgid "Construct a hyperbola with this focus"
@@ -4217,11 +4205,11 @@ msgstr "Construïx una hipèrbola amb este focus"
 
 #: objects/conic_types.cc:146
 msgid "Select the first focus of the new hyperbola..."
-msgstr "Selecciona el primer focus de la hipèrbola nova…"
+msgstr "Tria el primer focus de la hipèrbola nova…"
 
 #: objects/conic_types.cc:147
 msgid "Select the second focus of the new hyperbola..."
-msgstr "Selecciona el segon focus de la hipèrbola nova…"
+msgstr "Tria el segon focus de la hipèrbola nova…"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
 msgid "Construct a hyperbola through this point"
@@ -4231,7 +4219,7 @@ msgstr "Construïx una hipèrbola a través d'este punt"
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
 msgid "Select a point for the new hyperbola to go through..."
-msgstr "Selecciona un punt a través del qual vaja la hipèrbola nova…"
+msgstr "Tria un punt a través del qual vaja la hipèrbola nova…"
 
 #: objects/conic_types.cc:179
 msgid "Construct a conic with this line as directrix"
@@ -4239,7 +4227,7 @@ msgstr "Construïx una cònica amb esta recta com a directriu"
 
 #: objects/conic_types.cc:179
 msgid "Select the directrix of the new conic..."
-msgstr "Seleccioneu la directriu de la nova cònica…"
+msgstr "Trieu la directriu de la cònica nova…"
 
 #: objects/conic_types.cc:180
 msgid "Construct a conic with this point as focus"
@@ -4247,7 +4235,7 @@ msgstr "Construïx una cònica amb este punt com a focus"
 
 #: objects/conic_types.cc:180
 msgid "Select the focus of the new conic..."
-msgstr "Seleccioneu el focus de la nova cònica…"
+msgstr "Trieu el focus de la cònica nova…"
 
 #: objects/conic_types.cc:216
 msgid "Construct a parabola through this point"
@@ -4256,7 +4244,7 @@ msgstr "Construïx una paràbola a través d'este punt"
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
 msgid "Select a point for the new parabola to go through..."
-msgstr "Seleccioneu un punt a través del qual vaja la paràbola nova…"
+msgstr "Trieu un punt a través del qual vaja la paràbola nova…"
 
 #: objects/conic_types.cc:257
 msgid "Construct a polar point wrt. this conic"
@@ -4264,8 +4252,7 @@ msgstr "Construïx un punt polar respecte a esta cònica"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
 msgid "Select the conic wrt. which you want to construct a polar point..."
-msgstr ""
-"Seleccioneu la cònica respecte a la qual voleu construir un punt polar…"
+msgstr "Trieu la cònica respecte a la qual voleu construir un punt polar…"
 
 #: objects/conic_types.cc:261
 msgid "Construct the polar point of this line"
@@ -4273,7 +4260,7 @@ msgstr "Construïx el punt polar d'esta recta"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
 msgid "Select the line of which you want to construct the polar point..."
-msgstr "Seleccioneu la recta de la qual voleu construir el punt polar…"
+msgstr "Trieu la recta de la qual voleu construir el punt polar…"
 
 #: objects/conic_types.cc:297
 msgid "Construct a polar line wrt. this conic"
@@ -4289,7 +4276,7 @@ msgstr "Construïx la directriu d'esta cònica"
 
 #: objects/conic_types.cc:339
 msgid "Select the conic of which you want to construct the directrix..."
-msgstr "Seleccioneu la cònica de la qual voleu construir la directriu…"
+msgstr "Trieu la cònica de la qual voleu construir la directriu…"
 
 #: objects/conic_types.cc:417
 msgid "Construct a parabola with this directrix"
@@ -4297,7 +4284,7 @@ msgstr "Construïx una paràbola amb esta directriu"
 
 #: objects/conic_types.cc:417
 msgid "Select the directrix of the new parabola..."
-msgstr "Seleccioneu la directriu de la paràbola nova…"
+msgstr "Trieu la directriu de la paràbola nova…"
 
 #: objects/conic_types.cc:418
 msgid "Construct a parabola with this focus"
@@ -4305,7 +4292,7 @@ msgstr "Construïx una paràbola amb este focus"
 
 #: objects/conic_types.cc:418
 msgid "Select the focus of the new parabola..."
-msgstr "Seleccioneu el focus de la paràbola nova…"
+msgstr "Trieu el focus de la paràbola nova…"
 
 #: objects/conic_types.cc:453
 msgid "Construct the asymptotes of this conic"
@@ -4313,7 +4300,7 @@ msgstr "Construïx les asímptotes d'esta cònica"
 
 #: objects/conic_types.cc:454
 msgid "Select the conic of which you want to construct the asymptotes..."
-msgstr "Seleccioneu la cònica de la qual voleu construir les asímptotes…"
+msgstr "Trieu la cònica de la qual voleu construir les asímptotes…"
 
 #: objects/conic_types.cc:489
 msgid "Construct the radical lines of this conic"
@@ -4324,16 +4311,16 @@ msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr ""
-"Seleccioneu la primera de les dues còniques de les quals voleu construir la "
-"recta radical…"
+"Trieu la primera de les dues còniques de les quals voleu construir la recta "
+"radical…"
 
 #: objects/conic_types.cc:493
 msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
 msgstr ""
-"Seleccioneu la segona de les dues còniques de les quals voleu construir la "
-"recta radical…"
+"Trieu la segona de les dues còniques de les quals voleu construir la recta "
+"radical…"
 
 #: objects/conic_types.cc:604
 #, kde-format
@@ -4351,12 +4338,12 @@ msgstr "corba cúbica"
 
 #: objects/cubic_imp.cc:348
 msgid "Select this cubic curve"
-msgstr "Selecciona esta corba cúbica"
+msgstr "Tria esta corba cúbica"
 
 #: objects/cubic_imp.cc:349
 #, kde-format
 msgid "Select cubic curve %1"
-msgstr "Selecciona la corba cúbica %1"
+msgstr "Tria la corba cúbica %1"
 
 #: objects/cubic_imp.cc:350
 msgid "Remove a Cubic Curve"
@@ -4388,7 +4375,7 @@ msgstr "Construïx una corba cúbica a través d'este punt"
 
 #: objects/cubic_type.cc:12
 msgid "Select a point for the new cubic to go through..."
-msgstr "Seleccioneu un punt a través del qual vaja la cúbica nova…"
+msgstr "Trieu un punt a través del qual vaja la cúbica nova…"
 
 #: objects/curve_imp.cc:18
 msgid "curve"
@@ -4396,12 +4383,12 @@ msgstr "corba"
 
 #: objects/curve_imp.cc:19
 msgid "Select this curve"
-msgstr "Selecciona esta corba"
+msgstr "Tria esta corba"
 
 #: objects/curve_imp.cc:20
 #, kde-format
 msgid "Select curve %1"
-msgstr "Selecciona la corba %1"
+msgstr "Tria la corba %1"
 
 #: objects/curve_imp.cc:21
 msgid "Remove a Curve"
@@ -4451,7 +4438,7 @@ msgstr "Invertix respecte a este cercle"
 
 #: objects/inversion_type.cc:20
 msgid "Select the circle we want to invert against..."
-msgstr "Seleccioneu el cercle contra el qual volem invertir-lo…"
+msgstr "Trieu el cercle contra el qual volem invertir-lo…"
 
 #: objects/inversion_type.cc:23
 msgid "Compute the inversion of this object"
@@ -4459,7 +4446,7 @@ msgstr "Calcula la inversió d'este objecte"
 
 #: objects/inversion_type.cc:23
 msgid "Select the object to invert..."
-msgstr "Seleccioneu l'objecte que voleu invertir…"
+msgstr "Trieu l'objecte que voleu invertir…"
 
 #: objects/inversion_type.cc:270
 msgid "Compute the inversion of this point"
@@ -4467,7 +4454,7 @@ msgstr "Calcula la inversió d'este punt"
 
 #: objects/inversion_type.cc:270
 msgid "Select the point to invert..."
-msgstr "Seleccioneu el punt que voleu invertir…"
+msgstr "Trieu el punt que voleu invertir…"
 
 #: objects/inversion_type.cc:329
 msgid "Compute the inversion of this line"
@@ -4475,7 +4462,7 @@ msgstr "Calcula la inversió d'esta recta"
 
 #: objects/inversion_type.cc:329
 msgid "Select the line to invert..."
-msgstr "Seleccioneu la recta que voleu invertir…"
+msgstr "Trieu la recta que voleu invertir…"
 
 #: objects/inversion_type.cc:381
 msgid "Compute the inversion of this segment"
@@ -4483,7 +4470,7 @@ msgstr "Calcula la inversió d'este segment"
 
 #: objects/inversion_type.cc:381
 msgid "Select the segment to invert..."
-msgstr "Seleccioneu el segment que voleu invertir…"
+msgstr "Trieu el segment que voleu invertir…"
 
 #: objects/inversion_type.cc:469
 msgid "Compute the inversion of this circle"
@@ -4491,7 +4478,7 @@ msgstr "Calcula la inversió d'este cercle"
 
 #: objects/inversion_type.cc:469
 msgid "Select the circle to invert..."
-msgstr "Seleccioneu el cercle que voleu invertir…"
+msgstr "Trieu el cercle que voleu invertir…"
 
 #: objects/inversion_type.cc:533
 msgid "Compute the inversion of this arc"
@@ -4499,7 +4486,7 @@ msgstr "Calcula la inversió d'este arc"
 
 #: objects/inversion_type.cc:533
 msgid "Select the arc to invert..."
-msgstr "Seleccioneu l'arc que voleu invertir…"
+msgstr "Trieu l'arc que voleu invertir…"
 
 #: objects/line_imp.cc:86
 msgid "Slope"
@@ -4527,16 +4514,16 @@ msgstr "recta"
 
 #: objects/line_imp.cc:545
 msgid "Select a Line"
-msgstr "Selecciona una recta"
+msgstr "Tria una recta"
 
 #: objects/line_imp.cc:561
 msgid "Select this line"
-msgstr "Selecciona esta recta"
+msgstr "Tria esta recta"
 
 #: objects/line_imp.cc:562
 #, kde-format
 msgid "Select line %1"
-msgstr "Selecciona la recta %1"
+msgstr "Tria la recta %1"
 
 #: objects/line_imp.cc:563
 msgid "Remove a Line"
@@ -4568,12 +4555,12 @@ msgstr "segment"
 
 #: objects/line_imp.cc:577
 msgid "Select this segment"
-msgstr "Selecciona este segment"
+msgstr "Tria este segment"
 
 #: objects/line_imp.cc:578
 #, kde-format
 msgid "Select segment %1"
-msgstr "Selecciona el segment %1"
+msgstr "Tria el segment %1"
 
 #: objects/line_imp.cc:579
 msgid "Remove a Segment"
@@ -4605,12 +4592,12 @@ msgstr "semirecta"
 
 #: objects/line_imp.cc:593
 msgid "Select this half-line"
-msgstr "Seleccioneu esta semirecta"
+msgstr "Trieu esta semirecta"
 
 #: objects/line_imp.cc:594
 #, kde-format
 msgid "Select half-line %1"
-msgstr "Seleccioneu la semirecta %1"
+msgstr "Trieu la semirecta %1"
 
 #: objects/line_imp.cc:595
 msgid "Remove a Half-Line"
@@ -4642,7 +4629,7 @@ msgstr "Construïx un segment que comence en este punt"
 
 #: objects/line_type.cc:22
 msgid "Select the start point of the new segment..."
-msgstr "Seleccioneu el punt d'inici del nou segment…"
+msgstr "Trieu el punt d'inici del segment nou…"
 
 #: objects/line_type.cc:23
 msgid "Construct a segment ending at this point"
@@ -4650,7 +4637,7 @@ msgstr "Construïx un segment que acabe en este punt"
 
 #: objects/line_type.cc:23
 msgid "Select the end point of the new segment..."
-msgstr "Seleccioneu el punt d'acabament del nou segment…"
+msgstr "Trieu el punt d'acabament del segment nou…"
 
 #: objects/line_type.cc:47
 msgid "Construct a line through this point"
@@ -4658,11 +4645,11 @@ msgstr "Construïx una recta a través d'este punt"
 
 #: objects/line_type.cc:50
 msgid "Select a point for the line to go through..."
-msgstr "Seleccioneu un punt a través del qual vaja la recta…"
+msgstr "Trieu un punt a través del qual vaja la recta…"
 
 #: objects/line_type.cc:51
 msgid "Select another point for the line to go through..."
-msgstr "Seleccioneu un altre punt a través del qual vaja la recta…"
+msgstr "Trieu un altre punt a través del qual vaja la recta…"
 
 #: objects/line_type.cc:75
 msgid "Construct a half-line starting at this point"
@@ -4670,7 +4657,7 @@ msgstr "Construïx una semirecta començant en este punt"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
 msgid "Select the start point of the new half-line..."
-msgstr "Seleccioneu el punt d'inici de la nova semirecta…"
+msgstr "Trieu el punt d'inici de la semirecta nova…"
 
 #: objects/line_type.cc:79
 msgid "Construct a half-line through this point"
@@ -4678,7 +4665,7 @@ msgstr "Construïx una semirecta a través d'este punt"
 
 #: objects/line_type.cc:79
 msgid "Select a point for the half-line to go through..."
-msgstr "Seleccioneu un punt per on vaja la semirecta…"
+msgstr "Trieu un punt per on vaja la semirecta…"
 
 #: objects/line_type.cc:104
 msgid "Construct the axis of this segment"
@@ -4686,7 +4673,7 @@ msgstr "Construïx la mediatriu d'este segment"
 
 #: objects/line_type.cc:104
 msgid "Select the segment of which you want to draw the axis..."
-msgstr "Seleccioneu el segment del qual voleu dibuixar la mediatriu…"
+msgstr "Trieu el segment del qual voleu dibuixar la mediatriu…"
 
 #: objects/line_type.cc:155
 msgid "Construct a line parallel to this line"
@@ -4694,7 +4681,7 @@ msgstr "Construïx una recta paral·lela a esta recta"
 
 #: objects/line_type.cc:155
 msgid "Select a line parallel to the new line..."
-msgstr "Seleccioneu una recta paral·lela a la recta nova…"
+msgstr "Trieu una recta paral·lela a la recta nova…"
 
 #: objects/line_type.cc:156
 msgid "Construct the parallel line through this point"
@@ -4702,7 +4689,7 @@ msgstr "Construïx la recta paral·lela a través d'este punt"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
 msgid "Select a point for the new line to go through..."
-msgstr "Seleccioneu un punt a través del qual vaja la recta nova…"
+msgstr "Trieu un punt a través del qual vaja la recta nova…"
 
 #: objects/line_type.cc:182
 msgid "Construct a line perpendicular to this line"
@@ -4710,7 +4697,7 @@ msgstr "Construïx una recta perpendicular a esta recta"
 
 #: objects/line_type.cc:182
 msgid "Select a line perpendicular to the new line..."
-msgstr "Seleccioneu una recta perpendicular a la recta nova…"
+msgstr "Trieu una recta perpendicular a la recta nova…"
 
 #: objects/line_type.cc:183
 msgid "Construct a perpendicular line through this point"
@@ -4742,7 +4729,7 @@ msgstr "Construïx una recta per a este vector"
 
 #: objects/line_type.cc:255
 msgid "Select a vector in the direction of the new line..."
-msgstr "Seleccioneu un vector en la direcció de la recta nova…"
+msgstr "Trieu un vector en la direcció de la recta nova…"
 
 #: objects/line_type.cc:292
 msgid "Construct a half-line by this vector"
@@ -4750,7 +4737,7 @@ msgstr "Construïx una semirecta per a este vector"
 
 #: objects/line_type.cc:292
 msgid "Select a vector in the direction of the new half-line..."
-msgstr "Seleccioneu un vector en la direcció de la nova semirecta…"
+msgstr "Trieu un vector en la direcció de la semirecta nova…"
 
 #: objects/locus_imp.cc:186
 msgid "locus"
@@ -4758,12 +4745,12 @@ msgstr "lloc geomètric"
 
 #: objects/locus_imp.cc:187
 msgid "Select this locus"
-msgstr "Selecciona este lloc geomètric"
+msgstr "Tria este lloc geomètric"
 
 #: objects/locus_imp.cc:188
 #, kde-format
 msgid "Select locus %1"
-msgstr "Selecciona el lloc geomètric %1"
+msgstr "Tria el lloc geomètric %1"
 
 #: objects/locus_imp.cc:189
 msgid "Remove a Locus"
@@ -4799,12 +4786,12 @@ msgstr "Objecte"
 
 #: objects/object_imp.cc:280 objects/special_imptypes.cc:119
 msgid "Select this object"
-msgstr "Selecciona este objecte"
+msgstr "Tria este objecte"
 
 #: objects/object_imp.cc:281
 #, kde-format
 msgid "Select object %1"
-msgstr "Selecciona l'objecte %1"
+msgstr "Tria l'objecte %1"
 
 #: objects/object_imp.cc:282
 msgid "Remove an object"
@@ -4876,12 +4863,12 @@ msgstr "angle"
 
 #: objects/other_imp.cc:599
 msgid "Select this angle"
-msgstr "Selecciona este angle"
+msgstr "Tria este angle"
 
 #: objects/other_imp.cc:600
 #, kde-format
 msgid "Select angle %1"
-msgstr "Selecciona l'angle %1"
+msgstr "Tria l'angle %1"
 
 #: objects/other_imp.cc:601
 msgid "Remove an Angle"
@@ -4913,12 +4900,12 @@ msgstr "vector"
 
 #: objects/other_imp.cc:614
 msgid "Select this vector"
-msgstr "Selecciona este vector"
+msgstr "Tria este vector"
 
 #: objects/other_imp.cc:615
 #, kde-format
 msgid "Select vector %1"
-msgstr "Selecciona el vector %1"
+msgstr "Tria el vector %1"
 
 #: objects/other_imp.cc:616
 msgid "Remove a Vector"
@@ -4950,12 +4937,12 @@ msgstr "arc"
 
 #: objects/other_imp.cc:629
 msgid "Select this arc"
-msgstr "Selecciona este arc"
+msgstr "Tria este arc"
 
 #: objects/other_imp.cc:630
 #, kde-format
 msgid "Select arc %1"
-msgstr "Selecciona l'arc %1"
+msgstr "Tria l'arc %1"
 
 #: objects/other_imp.cc:631
 msgid "Remove an Arc"
@@ -4999,12 +4986,12 @@ msgstr "punt"
 
 #: objects/point_imp.cc:154
 msgid "Select this point"
-msgstr "Selecciona este punt"
+msgstr "Tria este punt"
 
 #: objects/point_imp.cc:155
 #, kde-format
 msgid "Select point %1"
-msgstr "Selecciona el punt %1"
+msgstr "Tria el punt %1"
 
 #: objects/point_imp.cc:156
 msgid "Remove a Point"
@@ -5039,15 +5026,14 @@ msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
 msgstr ""
-"Seleccioneu el primer dels dos punts dels quals voleu construir el punt "
-"mitjà…"
+"Trieu el primer dels dos punts dels quals voleu construir el punt mitjà…"
 
 #: objects/point_type.cc:247
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
 msgstr ""
-"Seleccioneu el segon dels dos punts dels quals voleu construir el punt mitjà…"
+"Trieu el segon dels dos punts dels quals voleu construir el punt mitjà…"
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
 msgid "Construct the golden ratio point of this point and another point"
@@ -5058,16 +5044,16 @@ msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Seleccioneu el primer dels dos punts dels quals voleu construir el punt de "
-"la raó àuria…"
+"Trieu el primer dels dos punts dels quals voleu construir el punt de la raó "
+"àuria…"
 
 #: objects/point_type.cc:279
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Seleccioneu el segon dels dos punts dels quals voleu construir el punt de la "
-"raó àuria…"
+"Trieu el segon dels dos punts dels quals voleu construir el punt de la raó "
+"àuria…"
 
 #: objects/point_type.cc:386
 #, kde-format
@@ -5092,7 +5078,7 @@ msgstr "Establix les coordenades"
 #: objects/point_type.cc:413
 #, kde-format
 msgid "Enter the new coordinate."
-msgstr "Introduïu la nova coordenada."
+msgstr "Introduïu la coordenada nova."
 
 #: objects/point_type.cc:452
 #, kde-format
@@ -5102,7 +5088,7 @@ msgstr "Establix el paràmetre punt"
 #: objects/point_type.cc:452
 #, kde-format
 msgid "Choose the new parameter: "
-msgstr "Trieu el nou paràmetre: "
+msgstr "Trieu el paràmetre nou: "
 
 #: objects/point_type.cc:458
 #, kde-format
@@ -5111,27 +5097,27 @@ msgstr "Canvia el paràmetre del punt restringit"
 
 #: objects/point_type.cc:743
 msgid "Select the circle on which to transport a measure..."
-msgstr "Seleccioneu el cercle al qual transportar una mida…"
+msgstr "Trieu el cercle al qual transportar una mida…"
 
 #: objects/point_type.cc:744
 msgid "Select a point on the circle..."
-msgstr "Seleccioneu un punt del cercle…"
+msgstr "Trieu un punt del cercle…"
 
 #: objects/point_type.cc:745
 msgid "Select the segment to transport on the circle..."
-msgstr "Seleccioneu el segment que voleu transportar al cercle…"
+msgstr "Trieu el segment que voleu transportar al cercle…"
 
 #: objects/point_type.cc:794
 msgid "Select a number/length as x coordinate of the point..."
-msgstr "Seleccioneu un nombre llargària com a coordenada x del punt…"
+msgstr "Trieu un nombre llargària com a coordenada x del punt…"
 
 #: objects/point_type.cc:795
 msgid "Select a number/length as y coordinate of the point..."
-msgstr "Seleccioneu un nombre/llargària com a coordenada y del punt…"
+msgstr "Trieu un nombre/llargària com a coordenada y del punt…"
 
 #: objects/point_type.cc:820
 msgid "Select a point to project onto a line..."
-msgstr "Seleccioneu el punt que s'ha de projectar sobre una línia…"
+msgstr "Trieu el punt que s'ha de projectar sobre una línia…"
 
 #: objects/point_type.cc:821
 msgid "Line where the projected point will lie..."
@@ -5184,12 +5170,12 @@ msgstr "polígon"
 
 #: objects/polygon_imp.cc:613 objects/polygon_imp.cc:629
 msgid "Select this polygon"
-msgstr "Selecciona este polígon"
+msgstr "Tria este polígon"
 
 #: objects/polygon_imp.cc:630
 #, kde-format
 msgid "Select polygon %1"
-msgstr "Selecciona el polígon %1"
+msgstr "Tria el polígon %1"
 
 #: objects/polygon_imp.cc:631
 msgid "Remove a Polygon"
@@ -5221,12 +5207,12 @@ msgstr "corba poligonal tancada"
 
 #: objects/polygon_imp.cc:646
 msgid "Select this closed polygonal curve"
-msgstr "Selecciona esta corba poligonal tancada"
+msgstr "Tria esta corba poligonal tancada"
 
 #: objects/polygon_imp.cc:647
 #, kde-format
 msgid "Select closed polygonal curve %1"
-msgstr "Selecciona la corba poligonal tancada %1"
+msgstr "Tria la corba poligonal tancada %1"
 
 #: objects/polygon_imp.cc:648
 msgid "Remove a closed polygonal curve"
@@ -5258,12 +5244,12 @@ msgstr "corba poligonal"
 
 #: objects/polygon_imp.cc:663
 msgid "Select this polygonal curve"
-msgstr "Selecciona esta corba poligonal"
+msgstr "Tria esta corba poligonal"
 
 #: objects/polygon_imp.cc:664
 #, kde-format
 msgid "Select polygonal curve %1"
-msgstr "Selecciona la corba poligonal %1"
+msgstr "Tria la corba poligonal %1"
 
 #: objects/polygon_imp.cc:665
 msgid "Remove a polygonal curve"
@@ -5295,12 +5281,12 @@ msgstr "triangle"
 
 #: objects/polygon_imp.cc:680
 msgid "Select this triangle"
-msgstr "Selecciona este triangle"
+msgstr "Tria este triangle"
 
 #: objects/polygon_imp.cc:681
 #, kde-format
 msgid "Select triangle %1"
-msgstr "Selecciona el triangle %1"
+msgstr "Tria el triangle %1"
 
 #: objects/polygon_imp.cc:682
 msgid "Remove a Triangle"
@@ -5332,12 +5318,12 @@ msgstr "quadrilàter"
 
 #: objects/polygon_imp.cc:697
 msgid "Select this quadrilateral"
-msgstr "Selecciona este quadrilàter"
+msgstr "Tria este quadrilàter"
 
 #: objects/polygon_imp.cc:698
 #, kde-format
 msgid "Select quadrilateral %1"
-msgstr "Selecciona el quadrilàter %1"
+msgstr "Tria el quadrilàter %1"
 
 #: objects/polygon_imp.cc:699
 msgid "Remove a Quadrilateral"
@@ -5369,7 +5355,7 @@ msgstr "Construïx un triangle amb este vèrtex"
 
 #: objects/polygon_type.cc:25
 msgid "Select a point to be a vertex of the new triangle..."
-msgstr "Seleccioneu un punt que serà el vèrtex del nou triangle…"
+msgstr "Trieu un punt que serà el vèrtex del triangle nou…"
 
 #: objects/polygon_type.cc:470
 msgid "Intersect this polygon with a line"
@@ -5377,7 +5363,7 @@ msgstr "Interseca este polígon amb una recta"
 
 #: objects/polygon_type.cc:471
 msgid "Select the polygon of which you want the intersection with a line..."
-msgstr "Seleccioneu el polígon del qual voleu la intersecció amb una recta…"
+msgstr "Trieu el polígon del qual voleu la intersecció amb una recta…"
 
 #: objects/polygon_type.cc:474
 msgid "Intersect this line with a polygon"
@@ -5385,7 +5371,7 @@ msgstr "Interseca esta recta amb un polígon"
 
 #: objects/polygon_type.cc:475
 msgid "Select the line of which you want the intersection with a polygon..."
-msgstr "Seleccioneu la recta que voleu intersecar amb un polígon…"
+msgstr "Trieu la recta que voleu intersecar amb un polígon…"
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
 msgid "Intersect this polygonal curve with a line"
@@ -5394,7 +5380,7 @@ msgstr "Interseca esta corba poligonal amb una recta"
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
-msgstr "Seleccioneu la corba poligonal que voleu intersecar amb una recta…"
+msgstr "Trieu la corba poligonal que voleu intersecar amb una recta…"
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
 msgid "Intersect this line with a polygonal curve"
@@ -5403,7 +5389,7 @@ msgstr "Interseca esta recta amb una corba poligonal"
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
-msgstr "Seleccioneu la recta que voleu intersecar amb una corba poligonal…"
+msgstr "Trieu la recta que voleu intersecar amb una corba poligonal…"
 
 #: objects/polygon_type.cc:788
 msgid "Intersect this polygon with another polygon"
@@ -5412,7 +5398,7 @@ msgstr "Interseca este polígon amb un altre polígon"
 #: objects/polygon_type.cc:789
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
-msgstr "Seleccioneu el polígon que voleu intersecar amb un altre polígon…"
+msgstr "Trieu el polígon que voleu intersecar amb un altre polígon…"
 
 #: objects/polygon_type.cc:791
 msgid "Intersect with this polygon"
@@ -5420,7 +5406,7 @@ msgstr "Interseca amb este polígon"
 
 #: objects/polygon_type.cc:791
 msgid "Select the second polygon for the intersection..."
-msgstr "Seleccioneu el segon polígon a intersecar…"
+msgstr "Trieu el segon polígon a intersecar…"
 
 #: objects/polygon_type.cc:930
 msgid "Construct the vertices of this polygon"
@@ -5428,7 +5414,7 @@ msgstr "Construïx els vèrtexs d'este polígon"
 
 #: objects/polygon_type.cc:931
 msgid "Select the polygon of which you want to construct the vertices..."
-msgstr "Seleccioneu el polígon del qual voleu construir els vèrtexs…"
+msgstr "Trieu el polígon del qual voleu construir els vèrtexs…"
 
 #: objects/polygon_type.cc:974
 msgid "Construct the sides of this polygon"
@@ -5436,7 +5422,7 @@ msgstr "Construïx els costats d'este polígon"
 
 #: objects/polygon_type.cc:975
 msgid "Select the polygon of which you want to construct the sides..."
-msgstr "Seleccioneu el polígon del qual voleu construir els costats…"
+msgstr "Trieu el polígon del qual voleu construir els costats…"
 
 #: objects/polygon_type.cc:1022
 msgid "Construct the convex hull of this polygon"
@@ -5444,7 +5430,7 @@ msgstr "Construïx l'envolupant convexa d'este polígon"
 
 #: objects/polygon_type.cc:1023
 msgid "Select the polygon of which you want to construct the convex hull..."
-msgstr "Seleccioneu el polígon del qual voleu construir l'envolupant convexa…"
+msgstr "Trieu el polígon del qual voleu construir l'envolupant convexa…"
 
 #: objects/special_calcers.cc:8
 #, kde-format
@@ -5453,7 +5439,7 @@ msgstr "Projecta este punt sobre el cercle"
 
 #: objects/tangent_type.cc:23
 msgid "Select the point for the tangent to go through..."
-msgstr "Seleccioneu el punt pel qual ha de passar la tangent…"
+msgstr "Trieu el punt pel qual ha de passar la tangent…"
 
 #: objects/tests_type.cc:18
 msgid "Is this line parallel?"
@@ -5461,7 +5447,7 @@ msgstr "Esta recta és paral·lela?"
 
 #: objects/tests_type.cc:18
 msgid "Select the first of the two possibly parallel lines..."
-msgstr "Seleccioneu la primera de les dues rectes possiblement paral·leles…"
+msgstr "Trieu la primera de les dues rectes possiblement paral·leles…"
 
 #: objects/tests_type.cc:19
 msgid "Parallel to this line?"
@@ -5469,7 +5455,7 @@ msgstr "És paral·lela a esta recta?"
 
 #: objects/tests_type.cc:19
 msgid "Select the other of the two possibly parallel lines..."
-msgstr "Seleccioneu la segona de les dues rectes possiblement paral·leles…"
+msgstr "Trieu la segona de les dues rectes possiblement paral·leles…"
 
 #: objects/tests_type.cc:46
 #, kde-format
@@ -5487,7 +5473,7 @@ msgstr "Esta recta és ortogonal?"
 
 #: objects/tests_type.cc:57
 msgid "Select the first of the two possibly orthogonal lines..."
-msgstr "Seleccioneu la primera de les dues rectes possiblement ortogonals…"
+msgstr "Trieu la primera de les dues rectes possiblement ortogonals…"
 
 #: objects/tests_type.cc:58
 msgid "Orthogonal to this line?"
@@ -5495,7 +5481,7 @@ msgstr "És ortogonal a esta recta?"
 
 #: objects/tests_type.cc:58
 msgid "Select the other of the two possibly orthogonal lines..."
-msgstr "Seleccioneu la segona de les dues rectes possiblement ortogonals…"
+msgstr "Trieu la segona de les dues rectes possiblement ortogonals…"
 
 #: objects/tests_type.cc:85
 #, kde-format
@@ -5513,7 +5499,7 @@ msgstr "Comprova la col·linealitat d'este punt"
 
 #: objects/tests_type.cc:96
 msgid "Select the first of the three possibly collinear points..."
-msgstr "Seleccioneu el primer dels tres punts possiblement col·lineals…"
+msgstr "Trieu el primer dels tres punts possiblement col·lineals…"
 
 #: objects/tests_type.cc:97
 msgid "and this second point"
@@ -5521,7 +5507,7 @@ msgstr "i este segon punt"
 
 #: objects/tests_type.cc:97
 msgid "Select the second of the three possibly collinear points..."
-msgstr "Seleccioneu el segon dels tres punts possiblement col·lineals…"
+msgstr "Trieu el segon dels tres punts possiblement col·lineals…"
 
 #: objects/tests_type.cc:98
 msgid "with this third point"
@@ -5529,7 +5515,7 @@ msgstr "amb este tercer punt"
 
 #: objects/tests_type.cc:98
 msgid "Select the last of the three possibly collinear points..."
-msgstr "Seleccioneu l'últim dels tres punts possiblement col·lineals…"
+msgstr "Trieu l'últim dels tres punts possiblement col·lineals…"
 
 #: objects/tests_type.cc:126
 #, kde-format
@@ -5547,7 +5533,7 @@ msgstr "Comprova si este punt està a una corba"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
 msgid "Select the point you want to test..."
-msgstr "Seleccioneu el punt que voleu comprovar…"
+msgstr "Trieu el punt que voleu comprovar…"
 
 #: objects/tests_type.cc:138
 msgid "Check whether the point is on this curve"
@@ -5555,7 +5541,7 @@ msgstr "Comprova si el punt està a esta corba"
 
 #: objects/tests_type.cc:138
 msgid "Select the curve that the point might be on..."
-msgstr "Seleccioneu la corba sobre la qual podria estar el punt…"
+msgstr "Trieu la corba sobre la qual podria estar el punt…"
 
 #: objects/tests_type.cc:165
 #, kde-format
@@ -5577,7 +5563,7 @@ msgstr "Comprova si el punt està en este polígon"
 
 #: objects/tests_type.cc:181
 msgid "Select the polygon that the point might be in..."
-msgstr "Seleccioneu el polígon on podria estar el punt…"
+msgstr "Trieu el polígon on podria estar el punt…"
 
 #: objects/tests_type.cc:208
 #, kde-format
@@ -5595,7 +5581,7 @@ msgstr "Comprova si este polígon és convex"
 
 #: objects/tests_type.cc:223
 msgid "Select the polygon you want to test for convexity..."
-msgstr "Seleccioneu el polígon del qual voleu comprovar la convexitat…"
+msgstr "Trieu el polígon del qual voleu comprovar la convexitat…"
 
 #: objects/tests_type.cc:249
 #, kde-format
@@ -5615,8 +5601,7 @@ msgstr "Comprova si este punt té la mateixa distància"
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr ""
-"Seleccioneu el punt que podria tindre la mateixa distància des d'altres dos "
-"punts…"
+"Trieu el punt que podria tindre la mateixa distància des d'altres dos punts…"
 
 #: objects/tests_type.cc:268
 msgid "from this point"
@@ -5624,7 +5609,7 @@ msgstr "des d'este punt"
 
 #: objects/tests_type.cc:268
 msgid "Select the first of the two other points..."
-msgstr "Seleccioneu el primer dels dos altres punts…"
+msgstr "Trieu el primer dels dos altres punts…"
 
 #: objects/tests_type.cc:269
 msgid "and from this second point"
@@ -5632,7 +5617,7 @@ msgstr "i des d'este segon punt"
 
 #: objects/tests_type.cc:269
 msgid "Select the other of the two other points..."
-msgstr "Seleccioneu el segon dels altres dos punts…"
+msgstr "Trieu el segon dels altres dos punts…"
 
 #: objects/tests_type.cc:297
 #, kde-format
@@ -5650,7 +5635,7 @@ msgstr "Comprova si este vector és igual que un altre vector"
 
 #: objects/tests_type.cc:309
 msgid "Select the first of the two possibly equal vectors..."
-msgstr "Seleccioneu el primer dels dos vectors possiblement iguals…"
+msgstr "Trieu el primer dels dos vectors possiblement iguals…"
 
 #: objects/tests_type.cc:312
 msgid "Check whether this vector is equal to the other vector"
@@ -5658,7 +5643,7 @@ msgstr "Comprova si este vector és igual que l'altre vector"
 
 #: objects/tests_type.cc:313
 msgid "Select the other of the two possibly equal vectors..."
-msgstr "Seleccioneu el segon dels dos vectors possiblement iguals…"
+msgstr "Trieu el segon dels dos vectors possiblement iguals…"
 
 #: objects/tests_type.cc:341
 #, kde-format
@@ -5676,7 +5661,7 @@ msgstr "Comprova si este objecte existix"
 
 #: objects/tests_type.cc:352
 msgid "Select the object for the existence check..."
-msgstr "Seleccioneu l'objecte per a comprovar-ne l'existència…"
+msgstr "Trieu l'objecte per a comprovar-ne l'existència…"
 
 #: objects/tests_type.cc:375
 #, kde-format
@@ -5698,12 +5683,12 @@ msgstr "etiqueta"
 
 #: objects/text_imp.cc:138
 msgid "Select this label"
-msgstr "Selecciona esta etiqueta"
+msgstr "Tria esta etiqueta"
 
 #: objects/text_imp.cc:139
 #, kde-format
 msgid "Select label %1"
-msgstr "Selecciona l'etiqueta %1"
+msgstr "Tria l'etiqueta %1"
 
 #: objects/text_imp.cc:140
 msgid "Remove a Label"
@@ -5735,12 +5720,12 @@ msgstr "etiqueta numèrica"
 
 #: objects/text_imp.cc:184
 msgid "Select this numeric label"
-msgstr "Selecciona esta etiqueta numèrica"
+msgstr "Tria esta etiqueta numèrica"
 
 #: objects/text_imp.cc:185
 #, kde-format
 msgid "Select numeric label %1"
-msgstr "Selecciona l'etiqueta numèrica %1"
+msgstr "Tria l'etiqueta numèrica %1"
 
 #: objects/text_imp.cc:186
 msgid "Remove a Numeric Label"
@@ -5776,12 +5761,12 @@ msgstr "etiqueta booleana"
 
 #: objects/text_imp.cc:278
 msgid "Select this boolean label"
-msgstr "Selecciona esta etiqueta booleana"
+msgstr "Tria esta etiqueta booleana"
 
 #: objects/text_imp.cc:279
 #, kde-format
 msgid "Select boolean label %1"
-msgstr "Selecciona l'etiqueta booleana %1"
+msgstr "Tria l'etiqueta booleana %1"
 
 #: objects/text_imp.cc:280
 msgid "Remove a Boolean Label"
@@ -5858,7 +5843,7 @@ msgstr "Trasllada este objecte"
 
 #: objects/transform_types.cc:21
 msgid "Select the object to translate..."
-msgstr "Seleccioneu l'objecte que voleu traslladar…"
+msgstr "Trieu l'objecte que voleu traslladar…"
 
 #: objects/transform_types.cc:22
 msgid "Translate by this vector"
@@ -5866,7 +5851,7 @@ msgstr "Trasllada per este vector"
 
 #: objects/transform_types.cc:22
 msgid "Select the vector to translate by..."
-msgstr "Seleccioneu el vector per on voleu traslladar…"
+msgstr "Trieu el vector per on voleu traslladar…"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
 msgid "Reflect this object"
@@ -5874,7 +5859,7 @@ msgstr "Reflectix este objecte"
 
 #: objects/transform_types.cc:53 objects/transform_types.cc:85
 msgid "Select the object to reflect..."
-msgstr "Seleccioneu l'objecte que voleu reflectir…"
+msgstr "Trieu l'objecte que voleu reflectir…"
 
 #: objects/transform_types.cc:54
 msgid "Reflect in this point"
@@ -5882,7 +5867,7 @@ msgstr "Reflectix en este punt"
 
 #: objects/transform_types.cc:54
 msgid "Select the point to reflect in..."
-msgstr "Seleccioneu el punt on reflectir…"
+msgstr "Trieu el punt on reflectir…"
 
 #: objects/transform_types.cc:86
 msgid "Reflect in this line"
@@ -5890,7 +5875,7 @@ msgstr "Reflectix en esta recta"
 
 #: objects/transform_types.cc:86
 msgid "Select the line to reflect in..."
-msgstr "Seleccioneu la recta on reflectir…"
+msgstr "Trieu la recta on reflectir…"
 
 #: objects/transform_types.cc:117
 msgid "Rotate this object"
@@ -5898,7 +5883,7 @@ msgstr "Gira este objecte"
 
 #: objects/transform_types.cc:117
 msgid "Select the object to rotate..."
-msgstr "Seleccioneu l'objecte que voleu girar…"
+msgstr "Trieu l'objecte que voleu girar…"
 
 #: objects/transform_types.cc:118
 msgid "Rotate around this point"
@@ -5906,7 +5891,7 @@ msgstr "Gira respecte a este punt"
 
 #: objects/transform_types.cc:118
 msgid "Select the center point of the rotation..."
-msgstr "Seleccioneu el punt central de la rotació…"
+msgstr "Trieu el punt central de la rotació…"
 
 #. i18n( "Rotate by this angle" ),
 #. kli18n( "Select the angle of the rotation..." ), false }
@@ -5916,7 +5901,7 @@ msgstr "Gira este angle"
 
 #: objects/transform_types.cc:121
 msgid "Select the angle of the rotation..."
-msgstr "Seleccioneu l'angle de la rotació…"
+msgstr "Trieu l'angle de la rotació…"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
@@ -5925,7 +5910,7 @@ msgstr "Escala este objecte"
 
 #: objects/transform_types.cc:156 objects/transform_types.cc:194
 msgid "Select the object to scale..."
-msgstr "Seleccioneu l'objecte que voleu escalar…"
+msgstr "Trieu l'objecte que voleu escalar…"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 msgid "Scale with this center"
@@ -5933,7 +5918,7 @@ msgstr "Escala amb este centre"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 msgid "Select the center point of the scaling..."
-msgstr "Seleccioneu el punt central de l'escalat…"
+msgstr "Trieu el punt central de l'escalat…"
 
 #. i18n( "Scale by the length of this segment" ),
 #. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
@@ -5947,8 +5932,7 @@ msgstr "Escala per esta llargària"
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr ""
-"Seleccioneu una llargària o segment la llargària del qual és el factor "
-"d'escalat…"
+"Trieu una llargària o segment la llargària del qual és el factor d'escalat…"
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
 msgid "Scale this length..."
@@ -5958,8 +5942,8 @@ msgstr "Escala esta llargària…"
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
-"Seleccioneu la primera de dues llargàries la relació de les quals és el "
-"factor de l'escalat…"
+"Trieu la primera de dues llargàries la relació de les quals és el factor de "
+"l'escalat…"
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
 msgid "...to this other length"
@@ -5969,12 +5953,12 @@ msgstr "…a esta altra llargària"
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
-"Seleccioneu la segona de dues llargàries la relació de les quals és el "
-"factor de l'escalat…"
+"Trieu la segona de dues llargàries la relació de les quals és el factor de "
+"l'escalat…"
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
 msgid "Select the object to scale"
-msgstr "Seleccioneu l'objecte que voleu escalar"
+msgstr "Trieu l'objecte que voleu escalar"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
 msgid "Scale over this line"
@@ -5982,7 +5966,7 @@ msgstr "Escala sobre esta recta"
 
 #: objects/transform_types.cc:247 objects/transform_types.cc:285
 msgid "Select the line to scale over"
-msgstr "Seleccioneu la recta sobre la qual voleu escalar"
+msgstr "Trieu la recta sobre la qual voleu escalar"
 
 #: objects/transform_types.cc:335
 msgid "Projectively rotate this object"
@@ -5990,7 +5974,7 @@ msgstr "Gira este objecte projectivament"
 
 #: objects/transform_types.cc:335
 msgid "Select the object to rotate projectively"
-msgstr "Seleccioneu l'objecte que voleu girar projectivament"
+msgstr "Trieu l'objecte que voleu girar projectivament"
 
 #: objects/transform_types.cc:337
 msgid "Projectively rotate with this half-line"
@@ -6001,8 +5985,7 @@ msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
 msgstr ""
-"Seleccioneu la semirecta de la rotació projectiva que voleu aplicar a "
-"l'objecte"
+"Trieu la semirecta de la rotació projectiva que voleu aplicar a l'objecte"
 
 #: objects/transform_types.cc:341
 msgid "Projectively rotate by this angle"
@@ -6012,8 +5995,7 @@ msgstr "Gira este angle projectivament"
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
-msgstr ""
-"Seleccioneu l'angle de la rotació projectiva que voleu aplicar a l'objecte"
+msgstr "Trieu l'angle de la rotació projectiva que voleu aplicar a l'objecte"
 
 #: objects/transform_types.cc:376
 msgid "Harmonic Homology of this object"
@@ -6023,7 +6005,7 @@ msgstr "Homologia harmònica d'este objecte"
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
 #: objects/transform_types.cc:552 objects/transform_types.cc:883
 msgid "Select the object to transform..."
-msgstr "Seleccioneu l'objecte que voleu transformar…"
+msgstr "Trieu l'objecte que voleu transformar…"
 
 #: objects/transform_types.cc:377
 msgid "Harmonic Homology with this center"
@@ -6031,7 +6013,7 @@ msgstr "Homologia harmònica amb este centre"
 
 #: objects/transform_types.cc:377
 msgid "Select the center point of the harmonic homology..."
-msgstr "Seleccioneu el punt central de l'homologia harmònica…"
+msgstr "Trieu el punt central de l'homologia harmònica…"
 
 #: objects/transform_types.cc:378
 msgid "Harmonic Homology with this axis"
@@ -6039,7 +6021,7 @@ msgstr "Homologia harmònica amb este eix"
 
 #: objects/transform_types.cc:378
 msgid "Select the axis of the harmonic homology..."
-msgstr "Seleccioneu l'eix de l'homologia harmònica…"
+msgstr "Trieu l'eix de l'homologia harmònica…"
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
 msgid "Generic affinity of this object"
@@ -6051,7 +6033,7 @@ msgstr "Traça este triangle"
 
 #: objects/transform_types.cc:409
 msgid "Select the triangle that has to be transformed onto a given triangle..."
-msgstr "Seleccioneu el triangle que s'ha de transformar en un triangle donat…"
+msgstr "Trieu el triangle que s'ha de transformar en un triangle donat…"
 
 #: objects/transform_types.cc:411
 msgid "onto this other triangle"
@@ -6061,8 +6043,7 @@ msgstr "en este altre triangle"
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
-msgstr ""
-"Seleccioneu el triangle que és la imatge per l'afinitat del primer triangle…"
+msgstr "Trieu el triangle que és la imatge per l'afinitat del primer triangle…"
 
 #: objects/transform_types.cc:450
 msgid "First of 3 starting points"
@@ -6071,8 +6052,7 @@ msgstr "Primer de 3 punts de començament"
 #: objects/transform_types.cc:450
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
-msgstr ""
-"Seleccioneu el primer dels tres punts de començament de l'afinitat genèrica…"
+msgstr "Trieu el primer dels tres punts de començament de l'afinitat genèrica…"
 
 #: objects/transform_types.cc:452
 msgid "Second of 3 starting points"
@@ -6081,8 +6061,7 @@ msgstr "Segon de 3 punts de començament"
 #: objects/transform_types.cc:453
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
-msgstr ""
-"Seleccioneu el segon dels tres punts de començament de l'afinitat genèrica…"
+msgstr "Trieu el segon dels tres punts de començament de l'afinitat genèrica…"
 
 #: objects/transform_types.cc:455
 msgid "Third of 3 starting points"
@@ -6091,8 +6070,7 @@ msgstr "Tercer de 3 punts de començament"
 #: objects/transform_types.cc:455
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
-msgstr ""
-"Seleccioneu el tercer dels tres punts de començament de l'afinitat genèrica…"
+msgstr "Trieu el tercer dels tres punts de començament de l'afinitat genèrica…"
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
 msgid "Transformed position of first point"
@@ -6100,8 +6078,7 @@ msgstr "Posició transformada del primer punt"
 
 #: objects/transform_types.cc:458
 msgid "Select the first of the three end points of the generic affinity..."
-msgstr ""
-"Seleccioneu el primer dels tres punts d'acabament de l'afinitat genèrica…"
+msgstr "Trieu el primer dels tres punts d'acabament de l'afinitat genèrica…"
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
 msgid "Transformed position of second point"
@@ -6109,8 +6086,7 @@ msgstr "Posició transformada del segon punt"
 
 #: objects/transform_types.cc:462
 msgid "Select the second of the three end points of the generic affinity..."
-msgstr ""
-"Seleccioneu el segon dels tres punts d'acabament de l'afinitat genèrica…"
+msgstr "Trieu el segon dels tres punts d'acabament de l'afinitat genèrica…"
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
 msgid "Transformed position of third point"
@@ -6118,8 +6094,7 @@ msgstr "Posició transformada del tercer punt"
 
 #: objects/transform_types.cc:466
 msgid "Select the third of the three end points of the generic affinity..."
-msgstr ""
-"Seleccioneu el tercer dels tres punts d'acabament de l'afinitat genèrica…"
+msgstr "Trieu el tercer dels tres punts d'acabament de l'afinitat genèrica…"
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
 msgid "Generic projective transformation of this object"
@@ -6133,8 +6108,7 @@ msgstr "Traça este quadrilàter"
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
-msgstr ""
-"Seleccioneu el quadrilàter que s'ha de transformar en un quadrilàter donat…"
+msgstr "Trieu el quadrilàter que s'ha de transformar en un quadrilàter donat…"
 
 #: objects/transform_types.cc:514
 msgid "onto this other quadrilateral"
@@ -6145,8 +6119,8 @@ msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr ""
-"Seleccioneu el quadrilàter que és la imatge de la transformació projectiva "
-"del primer quadrilàter…"
+"Trieu el quadrilàter que és la imatge de la transformació projectiva del "
+"primer quadrilàter…"
 
 #: objects/transform_types.cc:554
 msgid "First of 4 starting points"
@@ -6156,7 +6130,7 @@ msgstr "Primer de 4 punts d'inici"
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
 msgstr ""
-"Seleccioneu el primer dels quatre punts d'inici de la projectivitat genèrica…"
+"Trieu el primer dels quatre punts d'inici de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:558
 msgid "Second of 4 starting points"
@@ -6165,8 +6139,7 @@ msgstr "Segon de 4 punts d'inici"
 #: objects/transform_types.cc:559
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
-msgstr ""
-"Seleccioneu el segon dels quatre punts d'inici de la projectivitat genèrica…"
+msgstr "Trieu el segon dels quatre punts d'inici de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:562
 msgid "Third of 4 starting points"
@@ -6176,7 +6149,7 @@ msgstr "Tercer de 4 punts d'inici"
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
 msgstr ""
-"Seleccioneu el tercer dels quatre punts d'inici de la projectivitat genèrica…"
+"Trieu el tercer dels quatre punts d'inici de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:566
 msgid "Fourth of 4 starting points"
@@ -6185,26 +6158,22 @@ msgstr "Quart de 4 punts d'inici"
 #: objects/transform_types.cc:567
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
-msgstr ""
-"Seleccioneu el quart dels quatre punts d'inici de la projectivitat genèrica…"
+msgstr "Trieu el quart dels quatre punts d'inici de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:571
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr ""
-"Seleccioneu el primer dels quatre punts d'acabament de la projectivitat "
-"genèrica…"
+"Trieu el primer dels quatre punts d'acabament de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:575
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr ""
-"Seleccioneu el segon dels quatre punts d'acabament de la projectivitat "
-"genèrica…"
+"Trieu el segon dels quatre punts d'acabament de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:579
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr ""
-"Seleccioneu el tercer dels quatre punts d'acabament de la projectivitat "
-"genèrica…"
+"Trieu el tercer dels quatre punts d'acabament de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:582
 msgid "Transformed position of fourth point"
@@ -6213,8 +6182,7 @@ msgstr "Posició transformada del quart punt"
 #: objects/transform_types.cc:583
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr ""
-"Seleccioneu el quart dels quatre punts d'acabament de la projectivitat "
-"genèrica…"
+"Trieu el quart dels quatre punts d'acabament de la projectivitat genèrica…"
 
 #: objects/transform_types.cc:624
 msgid "Cast the shadow of this object"
@@ -6222,7 +6190,7 @@ msgstr "Projecta l'ombra d'este objecte"
 
 #: objects/transform_types.cc:624
 msgid "Select the object of which you want to construct the shadow..."
-msgstr "Seleccioneu l'objecte del qual voleu construir l'ombra…"
+msgstr "Trieu l'objecte del qual voleu construir l'ombra…"
 
 #: objects/transform_types.cc:626
 msgid "Cast a shadow from this light source"
@@ -6230,7 +6198,7 @@ msgstr "Projecta una ombra des d'esta font de llum"
 
 #: objects/transform_types.cc:627
 msgid "Select the light source from which the shadow should originate..."
-msgstr "Seleccioneu la font de llum des de la qual s'ha d'originar l'ombra…"
+msgstr "Trieu la font de llum des de la qual s'ha d'originar l'ombra…"
 
 #: objects/transform_types.cc:629
 msgid "Cast a shadow on the horizon represented by this line"
@@ -6238,7 +6206,7 @@ msgstr "Projecta una ombra en l'horitzó definit per esta recta"
 
 #: objects/transform_types.cc:629
 msgid "Select the horizon for the shadow..."
-msgstr "Seleccioneu l'horitzó per a l'ombra…"
+msgstr "Trieu l'horitzó per a l'ombra…"
 
 #: objects/transform_types.cc:809
 msgid "Transform this object"
@@ -6258,7 +6226,7 @@ msgstr "Aplica una similitud amb este centre"
 
 #: objects/transform_types.cc:884
 msgid "Select the center for the similitude..."
-msgstr "Seleccioneu el centre per a la similitud…"
+msgstr "Trieu el centre per a la similitud…"
 
 #: objects/transform_types.cc:886
 msgid "Apply a similitude mapping this point onto another point"
@@ -6266,7 +6234,7 @@ msgstr "Aplica una similitud traçant este punt sobre un altre punt"
 
 #: objects/transform_types.cc:887
 msgid "Select the point which the similitude should map onto another point..."
-msgstr "Seleccioneu el punt que la similitud ha de traçar sobre un altre punt…"
+msgstr "Trieu el punt que la similitud ha de traçar sobre un altre punt…"
 
 #: objects/transform_types.cc:890
 msgid "Apply a similitude mapping a point onto this point"
@@ -6275,8 +6243,7 @@ msgstr "Aplica una similitud traçant un punt sobre este punt"
 #: objects/transform_types.cc:891
 msgid ""
 "Select the point onto which the similitude should map the first point..."
-msgstr ""
-"Seleccioneu el punt sobre el qual la similitud ha de traçar el primer punt…"
+msgstr "Trieu el punt sobre el qual la similitud ha de traçar el primer punt…"
 
 #: objects/vector_type.cc:12
 msgid "Construct a vector from this point"
@@ -6284,7 +6251,7 @@ msgstr "Construïx un vector des d'este punt"
 
 #: objects/vector_type.cc:12
 msgid "Select the start point of the new vector..."
-msgstr "Seleccioneu el punt d'inici del nou vector…"
+msgstr "Trieu el punt d'inici del vector nou…"
 
 #: objects/vector_type.cc:13
 msgid "Construct a vector to this point"
@@ -6292,7 +6259,7 @@ msgstr "Construïx un vector a este punt"
 
 #: objects/vector_type.cc:13
 msgid "Select the end point of the new vector..."
-msgstr "Seleccioneu el punt d'acabament del nou vector…"
+msgstr "Trieu el punt d'acabament del vector nou…"
 
 #: objects/vector_type.cc:44
 msgid "Construct the vector sum of this vector and another one."
@@ -6301,8 +6268,7 @@ msgstr "Construïx el vector suma d'este vector i un altre."
 #: objects/vector_type.cc:45
 msgid ""
 "Select the first of the two vectors of which you want to construct the sum..."
-msgstr ""
-"Seleccioneu el primer dels dos vectors dels quals voleu construir la suma…"
+msgstr "Trieu el primer dels dos vectors dels quals voleu construir la suma…"
 
 #: objects/vector_type.cc:48
 msgid "Construct the vector sum of this vector and the other one."
@@ -6311,8 +6277,7 @@ msgstr "Construïx el vector suma d'este vector i de l'altre."
 #: objects/vector_type.cc:49
 msgid ""
 "Select the other of the two vectors of which you want to construct the sum..."
-msgstr ""
-"Seleccioneu el segon dels dos vectors dels quals voleu construir la suma…"
+msgstr "Trieu el segon dels dos vectors dels quals voleu construir la suma…"
 
 #: objects/vector_type.cc:51
 msgid "Construct the vector sum starting at this point."
@@ -6320,7 +6285,7 @@ msgstr "Construïx el vector suma començant en este punt."
 
 #: objects/vector_type.cc:51
 msgid "Select the point to construct the sum vector in..."
-msgstr "Seleccioneu el punt on construir el vector suma…"
+msgstr "Trieu el punt on construir el vector suma…"
 
 #: scripting/newscriptwizard.cc:45
 #, kde-format
@@ -6334,7 +6299,7 @@ msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr ""
-"Seleccioneu els objectes argument (si n'hi ha)\n"
+"Trieu els objectes argument (si n'hi ha)\n"
 "en la finestra de Kig i premeu «Següent»."
 
 #: scripting/newscriptwizard.cc:62
