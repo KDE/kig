@@ -5,20 +5,20 @@
 # David Gil <al016950@yahoo.es>, 2005.
 # Orestes Mas Casals <orestes@tsc.upc.edu>, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
 # Josep M. Ferrer <txemaq@gmail.com>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024, 2025.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2015, 2018, 2020.
+# SPDX-FileCopyrightText: 2015, 2018, 2020, 2025 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-06-05 00:38+0000\n"
-"PO-Revision-Date: 2025-06-05 11:02+0200\n"
-"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"PO-Revision-Date: 2025-09-01 20:38+0200\n"
+"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -6333,7 +6333,7 @@ msgid ""
 "Please fix the script and click the Finish button again."
 msgstr ""
 "L'intèrpret de Python ha detectat un error durant l'execució del vostre "
-"script. Corregiu el guió i premeu el botó Acaba una altra vegada."
+"script. Corregiu l'script i premeu el botó «Acaba» una altra vegada."
 
 #: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
@@ -6352,8 +6352,8 @@ msgid ""
 "script, and click the Finish button again."
 msgstr ""
 "Pareix que hi ha un error al vostre script. L'intèrpret de Python no ha "
-"informat de cap error, però el guió no genera cap objecte vàlid. Corregiu el "
-"guió i premeu el botó Acaba una altra vegada."
+"informat de cap error, però l'script no genera cap objecte vàlid. Corregiu "
+"l'script i premeu el botó «Acaba» una altra vegada."
 
 #: scripting/script_mode.cc:286
 #, kde-format
