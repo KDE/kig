@@ -777,7 +777,7 @@ int AbstractPolygonImp::windingNumber() const
      * boundary of the polygon.
      * In the end we only need to count how many time we cross the (1,0)
      * direction (positive x-axis) with a positive sign if we cross while
-     * steering left and a negative sign viceversa
+     * steering left and a negative sign vice-versa
      */
 
     int winding = 0;

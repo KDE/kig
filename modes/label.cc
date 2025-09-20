@@ -119,7 +119,7 @@ void TextLabelModeBase::leftReleased(QMouseEvent *e, KigWidget *v, ObjectTypeCal
             return;
         /*
          * in case we are redefining a text label:
-         * we postpone the circular recursion check untill the
+         * we postpone the circular recursion check until the
          * finish() method is called.  This is not the optimal
          * solution, since the user receives confusing feedback
          * from the cursor, which seemingly indicates that some

@@ -6,7 +6,7 @@ EXPLANATION OF THE KIG DESIGN
 
 The Kig Object System is a design I'm particularly proud of.  It
 started out pretty basic, but has undergone some major revisions, that
-have proven very succesful.  Currently, I have just made one more
+have proven very successful.  Currently, I have just made one more
 major change, and I think this will be the last majore change to it
 for quite some time to come.  That's also why I'm writing this
 explanation for other developers.

@@ -619,7 +619,7 @@ const LineData calcConicRadical(const ConicCartesianData &cequation1, const Coni
     const int maxiterations = 30;
     while (iterations++ < maxiterations) // using Newton, iterations should be very few
     {
-        // compute value of function and polinomial
+        // compute value of function and polynomial
         fval = fpval = af;
         fval = bf + lambda * fval; // b + xa
         fpval = fval + lambda * fpval; // b + 2xa

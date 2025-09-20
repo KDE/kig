@@ -565,7 +565,7 @@ However, &kig; does allow you to do more with the macros. If
 you select <menuchoice><guimenu>Types</guimenu><guimenuitem>Manage
 Types...</guimenuitem></menuchoice> from the menu, you will see
 a dialog where you can edit your types. It allows you to modify
-the existant types, delete types that are no longer used, export
+the existent types, delete types that are no longer used, export
 them to a file, or even load them from another file.
 </para>
 <screenshot>

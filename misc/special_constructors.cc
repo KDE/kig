@@ -1625,7 +1625,7 @@ QString MeasureTransportConstructor::useText(const ObjectCalcer &o, const std::v
             return i18n("Start transport from this point of the line");
         else
             return i18n("Start transport from this point of the curve");
-        // well, this isn't impemented yet, should never get here
+        // well, this isn't implemented yet, should never get here
     }
     return QLatin1String("");
 }

@@ -59,7 +59,7 @@ public:
 extern WeightImpType weightimptypeinstance;
 
 /*
- * The "InvertibleImpType" class, inherited fron ObjectImpType
+ * The "InvertibleImpType" class, inherited from ObjectImpType
  * is used to recognize non-point objects that we know how to
  * circular-invert, namely: lines, segments, rays, circles, arcs.
  * The trick is done by redefining the "match" method of the

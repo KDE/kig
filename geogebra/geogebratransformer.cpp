@@ -48,7 +48,7 @@ void GeogebraTransformer::attribute(const QXmlName &name, const QStringRef &valu
                  * <output a0="c"/>
                  *
                  * Notice the attribute 'a1' of the 'input' element. The value - '3' is the radius of the circle.
-                 * First, we try to convert that value to Double. If the conversion suceeds, we stack a DoubleImp (Calcer)
+                 * First, we try to convert that value to Double. If the conversion succeeds, we stack a DoubleImp (Calcer)
                  * in the m_currentArgStack and break. Otherwise, we check the m_objectMap for that label entry.
                  */
                 DoubleImp *doubleImp = new DoubleImp(dblval);

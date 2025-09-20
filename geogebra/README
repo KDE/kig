@@ -6,7 +6,7 @@ The Geogebra Filter makes use of XSLT ( Extensible Stylesheet Language Transform
 Qt's XmlPatterns Module is used for providing support for XSLT. Using XSLT we
 first convert the XML representation of the Geogebra files into a more suitable intermediate
 representation from which constructing the ObjectCalcers ( and thus the objectHolders )
-is easier and homogenous for most object-types. We use the callback interface provided
+is easier and homogeneous for most object-types. We use the callback interface provided
 by the QAbstractXmlReceiver class to read the transformed XML and construct the objects
 present in the document.
 
@@ -26,7 +26,7 @@ There are two important classes involved :
    This class transforms the XML representation of the
    Geogebra files into a more suitable intermediate XML
    representation from which readingand allocating corresponding objectHolders is easier and
-   homogenous. The two filters - worksheet-filter and tool-filter make use of  objects of this class.
+   homogeneous. The two filters - worksheet-filter and tool-filter make use of objects of this class.
 
 
 File-Types Supported and Usage :

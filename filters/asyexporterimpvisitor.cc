@@ -142,7 +142,7 @@ void AsyExporterImpVisitor::plotGenericCurve(const CurveImp *imp)
     // special case for ellipse
     if (const ConicImp *conic = dynamic_cast<const ConicImp *>(imp)) {
         // if ellipse, close its path
-        // THSI IS WRONG, think of ellipse arcs!!
+        // THIS IS WRONG, think of ellipse arcs!!
         if (conic->conicType() == 1 && coordlist.size() == 1 && coordlist[0].size() > 1) {
             coordlist[0].push_back(coordlist[0][0]);
         }

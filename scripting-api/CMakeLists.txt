@@ -10,7 +10,7 @@
 
 #original Makefile.am contents follow:
 
-## generate the Kig Python Scriptin APIdocs from the Kig source code
+## generate the Kig Python Scripting APIdocs from the Kig source code
 #
 #all-local: build-kig-python-scripting-apidocs
 #build-kig-python-scripting-apidocs:

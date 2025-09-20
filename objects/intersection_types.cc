@@ -53,7 +53,7 @@ ObjectImp *ConicLineIntersectionType::calc(const Args &parents, const KigDocumen
         /*
          * mp: In this case only one of the two points must be valid (the other is "pushed"
          * to infinity).  The choice of which one is done such that we avoid abrupt points exchange
-         * when dinamically movint points
+         * when dynamically movint points
          */
         if (side * vecprod < 0) {
             Coordinate p = calcIntersectionPoint(degline, line);
@@ -560,7 +560,7 @@ ObjectImp *ArcLineIntersectionType::calc(const Args &parents, const KigDocument 
         /*
          * mp: In this case only one of the two points must be valid (the other is "pushed"
          * to infinity).  The choice of which one is done such that we avoid abrupt points exchange
-         * when dinamically movint points
+         * when dynamically movint points
          */
         if (side * vecprod < 0) {
             Coordinate p = calcIntersectionPoint(degline, line);

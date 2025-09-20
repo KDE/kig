@@ -38,7 +38,7 @@ class KigPainter
 //  : public Qt
 {
 protected:
-    // don't blaim me for this mutable hack.  It's TT that hasn't got
+    // don't blame me for this mutable hack.  It's TT that hasn't got
     // its consts correctly...
     mutable QPainter mP;
 

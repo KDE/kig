@@ -227,7 +227,7 @@ void XFigExportImpVisitor::visit(const TextImp *imp)
     QPoint coord = convertCoord(imp->surroundingRect().bottomLeft());
 
     mstream << "4 " // text type
-            << "0 " // subtype: left justfied
+            << "0 " // subtype: left justified
             << mcurcolorid << " " // color: black
             << "50 " // depth: 50
             << "-1 " // pen style: unused

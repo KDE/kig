@@ -199,8 +199,8 @@ void KigWidget::slotZoomOut()
     nr.setCenter(c);
 
     // zooming in is undoable.  I know this isn't really correct,
-    // because the current view doesn't really belong to the document (
-    // althought KGeo and KSeg both save them along, iirc ).  However,
+    // because the current view doesn't really belong to the document
+    // ( although KGeo and KSeg both save them along, iirc ).  However,
     // undoing a zoom or another operation affecting the window seems a
     // bit too useful to not be available.  Please try to convince me if
     // you feel otherwise ;-)

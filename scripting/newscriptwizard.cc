@@ -73,7 +73,7 @@ NewScriptWizard::NewScriptWizard(QWidget *parent, ScriptModeBase *mode, KIconLoa
 
     if (!editor) {
         // there is no KDE textditor component installed, so we'll use a
-        // simplier KTextEdit
+        // simpler KTextEdit
         textedit = new QTextEdit(secondPage);
         textedit->setObjectName(QStringLiteral("textedit"));
         textedit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));

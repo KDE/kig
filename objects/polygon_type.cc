@@ -860,7 +860,7 @@ ObjectImp *PolygonPolygonIntersectionType::calc(const Args &parents, const KigDo
     do {
         if (t2 == 1.0) {
             /*
-             * in this case I will continue cicling along the current polygon
+             * in this case I will continue cycling along the current polygon
              */
             iprevprevpoint = iprevpoint; /* we need this in the special case */
             iprevpoint = ipoint;
@@ -888,7 +888,7 @@ ObjectImp *PolygonPolygonIntersectionType::calc(const Args &parents, const KigDo
             }
         } else {
             /*
-             * in this case I must cicle along the other polygon
+             * in this case I must cycle along the other polygon
              */
             ppointsc = ppointsa;
             ppointsa = ppointsb;

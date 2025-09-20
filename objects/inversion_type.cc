@@ -50,7 +50,7 @@ ObjectImp *CircularInversionType::calc(const Args &args, const KigDocument &) co
     if (args.size() == 2 && args[1]->inherits(LineImp::stype())) {
         /* we also accept the special case when the circle becomes a
          * straight line (this is not accepted during interactive construction,
-         * but could happen dinamically when a construction can result either
+         * but could happen dynamically when a construction can result either
          * with a circle or a line.
          * In this case we simply have a reflection
          */
@@ -316,7 +316,7 @@ ObjectImp *InvertPointType::calc(const Args &args, const KigDocument &) const
 }
 
 /*
- * old-style invertion types.  These can be safely removed, since trying
+ * old-style inversion types.  These can be safely removed, since trying
  * to load kig files that use these constructions are correctly converted
  * into the new CircularInversion.
  */

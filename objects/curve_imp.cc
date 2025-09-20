@@ -129,7 +129,7 @@ double CurveImp::getParam(const Coordinate &p, const KigDocument &doc) const
     // differential geometry constructions like tangent, center of curvature,...
     // such constructions need to recover the param associated to a (constrained)
     // PointImp, but do not have direct access to it since it is a parent of the
-    // calcer accociated to the ConstrainedPointType, whereas we only have the
+    // calcer associated to the ConstrainedPointType, whereas we only have the
     // ObjectImps of the Curve and of the Point; in such case the only possibility
     // consists in a call to getParam, which is unnecessarily heavy since the PointImp
     // was itself computed previously using getPoint.  So the param used in getPoint
@@ -326,7 +326,7 @@ QString CurveImp::cartesianEquationString(const KigDocument &doc) const
                 break;
             }
         }
-        if (test == true) // now we can costruct the cartesian equation of the locus
+        if (test == true) // now we can construct the cartesian equation of the locus
         {
             assert(deglocus >= 0 && deglocus <= degmax);
             for (deg = deglocus; deg > 0; --deg) {

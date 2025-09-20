@@ -173,8 +173,7 @@ const Coordinate CubicImp::getPoint(double p) const
     else
         x = p / (1 + p);
 
-    // calc the third degree polynomial:
-    // compute the third degree polinomial:
+    // compute the third degree polynomial:
     //  double a000 = mdata.coeffs[0];
     //  double a001 = mdata.coeffs[1];
     //  double a002 = mdata.coeffs[2];

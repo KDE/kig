@@ -698,7 +698,7 @@ const ObjectImpType *lowermost(const ObjectImpType *a, const ObjectImpType *b, c
 
 // this function is part of the visit procedure really.  It is
 // factored out, because it recurses for cache ObjectImp's.  What this
-// does is, it makes sure that object o is calcable, by putting
+// does is, it makes sure that object o is calculable, by putting
 // appropriate Node's in mnodes. po is o->parents() and pl contains
 // the location of objects that are already in mnodes and -1
 // otherwise. -1 means we have to store their ObjectImp, unless
