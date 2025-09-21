@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 00:38+0000\n"
+"POT-Creation-Date: 2025-09-21 00:38+0000\n"
 "PO-Revision-Date: 2009-02-23 13:11+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -3593,7 +3593,7 @@ msgid "Control polygon"
 msgstr "ये बहुभुज के भुजाओं ल बनाव"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
-#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
 #: objects/locus_imp.cc:93
 msgid "Cartesian Equation"
 msgstr "कार्टेसियन समीकरन"
@@ -4388,40 +4388,40 @@ msgstr "रेडिकल लकीरें स्विच करव"
 msgid "Switch Conic Radical Lines"
 msgstr "रेडिकल लकीरें स्विच करव"
 
-#: objects/cubic_imp.cc:347
+#: objects/cubic_imp.cc:346
 msgid "cubic curve"
 msgstr "घन वक्र"
 
-#: objects/cubic_imp.cc:348
+#: objects/cubic_imp.cc:347
 msgid "Select this cubic curve"
 msgstr "ये घन वक्र ल चुनव"
 
-#: objects/cubic_imp.cc:349
+#: objects/cubic_imp.cc:348
 #, kde-format
 msgid "Select cubic curve %1"
 msgstr "घन वक्र चुनव %1"
 
-#: objects/cubic_imp.cc:350
+#: objects/cubic_imp.cc:349
 msgid "Remove a Cubic Curve"
 msgstr "घन वक्र मेटाव"
 
-#: objects/cubic_imp.cc:351
+#: objects/cubic_imp.cc:350
 msgid "Add a Cubic Curve"
 msgstr "घन वक्र जोड़व"
 
-#: objects/cubic_imp.cc:352
+#: objects/cubic_imp.cc:351
 msgid "Move a Cubic Curve"
 msgstr "घन वक्र खिसकाव"
 
-#: objects/cubic_imp.cc:353
+#: objects/cubic_imp.cc:352
 msgid "Attach to this cubic curve"
 msgstr "ये घन वक्र के साथ संलग्न करव"
 
-#: objects/cubic_imp.cc:354
+#: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
 msgstr "घन वक्र देखाव"
 
-#: objects/cubic_imp.cc:355
+#: objects/cubic_imp.cc:354
 msgid "Hide a Cubic Curve"
 msgstr "घन वक्र लुकाव"
 

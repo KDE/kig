@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 00:38+0000\n"
+"POT-Creation-Date: 2025-09-21 00:38+0000\n"
 "PO-Revision-Date: 2024-03-25 17:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -3630,7 +3630,7 @@ msgid "Control polygon"
 msgstr "Контрольна ламана"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
-#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
 #: objects/locus_imp.cc:93
 msgid "Cartesian Equation"
 msgstr "Рівняння у декартовій системі"
@@ -4323,40 +4323,40 @@ msgstr "Перемкнути радикальні осі"
 msgid "Switch Conic Radical Lines"
 msgstr "Перемкнути конічні радикальні осі"
 
-#: objects/cubic_imp.cc:347
+#: objects/cubic_imp.cc:346
 msgid "cubic curve"
 msgstr "кубічна крива"
 
-#: objects/cubic_imp.cc:348
+#: objects/cubic_imp.cc:347
 msgid "Select this cubic curve"
 msgstr "Позначити цю кубічну криву"
 
-#: objects/cubic_imp.cc:349
+#: objects/cubic_imp.cc:348
 #, kde-format
 msgid "Select cubic curve %1"
 msgstr "Позначити кубічну криву %1"
 
-#: objects/cubic_imp.cc:350
+#: objects/cubic_imp.cc:349
 msgid "Remove a Cubic Curve"
 msgstr "Вилучити кубічну криву"
 
-#: objects/cubic_imp.cc:351
+#: objects/cubic_imp.cc:350
 msgid "Add a Cubic Curve"
 msgstr "Додати кубічну криву"
 
-#: objects/cubic_imp.cc:352
+#: objects/cubic_imp.cc:351
 msgid "Move a Cubic Curve"
 msgstr "Пересунути кубічну криву"
 
-#: objects/cubic_imp.cc:353
+#: objects/cubic_imp.cc:352
 msgid "Attach to this cubic curve"
 msgstr "Приєднати до цієї кубічної кривої"
 
-#: objects/cubic_imp.cc:354
+#: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
 msgstr "Показати кубічну криву"
 
-#: objects/cubic_imp.cc:355
+#: objects/cubic_imp.cc:354
 msgid "Hide a Cubic Curve"
 msgstr "Сховати кубічну криву"
 

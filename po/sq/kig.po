@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 00:38+0000\n"
+"POT-Creation-Date: 2025-09-21 00:38+0000\n"
 "PO-Revision-Date: 2009-03-11 02:09+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -3458,7 +3458,7 @@ msgid "Control polygon"
 msgstr ""
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
-#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
 #: objects/locus_imp.cc:93
 msgid "Cartesian Equation"
 msgstr ""
@@ -4147,40 +4147,40 @@ msgstr ""
 msgid "Switch Conic Radical Lines"
 msgstr ""
 
-#: objects/cubic_imp.cc:347
+#: objects/cubic_imp.cc:346
 msgid "cubic curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:348
+#: objects/cubic_imp.cc:347
 msgid "Select this cubic curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:349
+#: objects/cubic_imp.cc:348
 #, kde-format
 msgid "Select cubic curve %1"
 msgstr ""
 
-#: objects/cubic_imp.cc:350
+#: objects/cubic_imp.cc:349
 msgid "Remove a Cubic Curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:351
+#: objects/cubic_imp.cc:350
 msgid "Add a Cubic Curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:352
+#: objects/cubic_imp.cc:351
 msgid "Move a Cubic Curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:353
+#: objects/cubic_imp.cc:352
 msgid "Attach to this cubic curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:354
+#: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:355
+#: objects/cubic_imp.cc:354
 msgid "Hide a Cubic Curve"
 msgstr ""
 

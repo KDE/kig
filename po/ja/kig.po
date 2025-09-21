@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 00:38+0000\n"
+"POT-Creation-Date: 2025-09-21 00:38+0000\n"
 "PO-Revision-Date: 2010-09-25 18:32-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -3668,7 +3668,7 @@ msgid "Control polygon"
 msgstr "この多角形の辺を作成"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
-#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
 #: objects/locus_imp.cc:93
 msgid "Cartesian Equation"
 msgstr "方程式 (直交座標系)"
@@ -4463,40 +4463,40 @@ msgstr "二次曲線の根軸を切り替え"
 msgid "Switch Conic Radical Lines"
 msgstr "二次曲線の根軸を切り替え"
 
-#: objects/cubic_imp.cc:347
+#: objects/cubic_imp.cc:346
 msgid "cubic curve"
 msgstr "三次曲線"
 
-#: objects/cubic_imp.cc:348
+#: objects/cubic_imp.cc:347
 msgid "Select this cubic curve"
 msgstr "この三次曲線を選択"
 
-#: objects/cubic_imp.cc:349
+#: objects/cubic_imp.cc:348
 #, kde-format
 msgid "Select cubic curve %1"
 msgstr "三次曲線 %1 を選択"
 
-#: objects/cubic_imp.cc:350
+#: objects/cubic_imp.cc:349
 msgid "Remove a Cubic Curve"
 msgstr "三次曲線を削除"
 
-#: objects/cubic_imp.cc:351
+#: objects/cubic_imp.cc:350
 msgid "Add a Cubic Curve"
 msgstr "三次曲線を追加"
 
-#: objects/cubic_imp.cc:352
+#: objects/cubic_imp.cc:351
 msgid "Move a Cubic Curve"
 msgstr "三次曲線を移動"
 
-#: objects/cubic_imp.cc:353
+#: objects/cubic_imp.cc:352
 msgid "Attach to this cubic curve"
 msgstr "この三次曲線に付ける"
 
-#: objects/cubic_imp.cc:354
+#: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
 msgstr "三次曲線を表示"
 
-#: objects/cubic_imp.cc:355
+#: objects/cubic_imp.cc:354
 msgid "Hide a Cubic Curve"
 msgstr "三次曲線を隠す"
 

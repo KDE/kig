@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig (KDE 3.5)\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 00:38+0000\n"
+"POT-Creation-Date: 2025-09-21 00:38+0000\n"
 "PO-Revision-Date: 2006-03-29 19:00+0600\n"
 "Last-Translator: Progga <progga@BengaLinux.Org>\n"
 "Language-Team: Bangla <kde-translation@BengaLinux.Org>\n"
@@ -3752,7 +3752,7 @@ msgid "Control polygon"
 msgstr "এই বহুভুজের বাহুগুলো আঁকো"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
-#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
 #: objects/locus_imp.cc:93
 msgid "Cartesian Equation"
 msgstr "কার্টেসিয় সমীকরণ"
@@ -4555,40 +4555,40 @@ msgstr "র্যাডিকাল (radical) রেখা পাল্টাও
 msgid "Switch Conic Radical Lines"
 msgstr "র্যাডিকাল (radical) রেখা পাল্টাও"
 
-#: objects/cubic_imp.cc:347
+#: objects/cubic_imp.cc:346
 msgid "cubic curve"
 msgstr "ঘনকীয় বক্ররখা"
 
-#: objects/cubic_imp.cc:348
+#: objects/cubic_imp.cc:347
 msgid "Select this cubic curve"
 msgstr "এই ঘনকীয় বক্ররেখাটি বেছে নিন"
 
-#: objects/cubic_imp.cc:349
+#: objects/cubic_imp.cc:348
 #, kde-format
 msgid "Select cubic curve %1"
 msgstr "%1 ঘনকীয় বক্ররেখাটি বেছে নিন"
 
-#: objects/cubic_imp.cc:350
+#: objects/cubic_imp.cc:349
 msgid "Remove a Cubic Curve"
 msgstr "একটি ঘনকীয় বক্ররেখা অপসারণ করো"
 
-#: objects/cubic_imp.cc:351
+#: objects/cubic_imp.cc:350
 msgid "Add a Cubic Curve"
 msgstr "একটি ঘনকীয় বক্ররেখা যোগ করো"
 
-#: objects/cubic_imp.cc:352
+#: objects/cubic_imp.cc:351
 msgid "Move a Cubic Curve"
 msgstr "একটি ঘনকীয় বক্ররেখা স্থানান্তর করো"
 
-#: objects/cubic_imp.cc:353
+#: objects/cubic_imp.cc:352
 msgid "Attach to this cubic curve"
 msgstr "এই ঘনকীয় বক্ররেখার সাথে সংযুক্ত করো"
 
-#: objects/cubic_imp.cc:354
+#: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
 msgstr "একটি ঘনকীয় বক্ররেখা দেখাও"
 
-#: objects/cubic_imp.cc:355
+#: objects/cubic_imp.cc:354
 msgid "Hide a Cubic Curve"
 msgstr "একটি ঘনকীয় বক্ররেখাকে আড়াল করো"
 

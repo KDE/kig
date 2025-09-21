@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-06-05 00:38+0000\n"
+"POT-Creation-Date: 2025-09-21 00:38+0000\n"
 "PO-Revision-Date: 2010-05-31 11:56+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -3592,7 +3592,7 @@ msgid "Control polygon"
 msgstr "Búa til póllínu þessa punkts"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
-#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:285
+#: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
 #: objects/locus_imp.cc:93
 msgid "Cartesian Equation"
 msgstr "Cartesísk Jafna"
@@ -4374,46 +4374,46 @@ msgstr "Stofnlína fyrir keilur"
 msgid "Switch Conic Radical Lines"
 msgstr "Stofnlína fyrir keilur"
 
-#: objects/cubic_imp.cc:347
+#: objects/cubic_imp.cc:346
 #, fuzzy
 msgid "cubic curve"
 msgstr "þrívíddargraf"
 
-#: objects/cubic_imp.cc:348
+#: objects/cubic_imp.cc:347
 #, fuzzy
 msgid "Select this cubic curve"
 msgstr "Velja þetta þrívíddargraf"
 
-#: objects/cubic_imp.cc:349
+#: objects/cubic_imp.cc:348
 #, fuzzy, kde-format
 msgid "Select cubic curve %1"
 msgstr "Velja þetta þrívíddargraf"
 
-#: objects/cubic_imp.cc:350
+#: objects/cubic_imp.cc:349
 #, fuzzy
 msgid "Remove a Cubic Curve"
 msgstr "Fjarlægja þrívíddargraf"
 
-#: objects/cubic_imp.cc:351
+#: objects/cubic_imp.cc:350
 #, fuzzy
 msgid "Add a Cubic Curve"
 msgstr "Bæta við þrívíddarlínuriti"
 
-#: objects/cubic_imp.cc:352
+#: objects/cubic_imp.cc:351
 #, fuzzy
 msgid "Move a Cubic Curve"
 msgstr "Færa þrívíddarlínurit"
 
-#: objects/cubic_imp.cc:353
+#: objects/cubic_imp.cc:352
 #, fuzzy
 msgid "Attach to this cubic curve"
 msgstr "Festa við þetta þrívíddarlínurit"
 
-#: objects/cubic_imp.cc:354
+#: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
 msgstr ""
 
-#: objects/cubic_imp.cc:355
+#: objects/cubic_imp.cc:354
 #, fuzzy
 msgid "Hide a Cubic Curve"
 msgstr "Bæta við þrívíddarlínuriti"
