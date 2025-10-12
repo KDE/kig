@@ -663,7 +663,7 @@ rotation.</para>
 <title
 >Lavorare con i tipi</title>
 <para
->Come hai visto nel capitolo precedente, &kig; ti permette di creare i tuoi oggetti. &kig; anche si assicura che una volta che hai creato un oggetto, esso venga salvato all'uscita e caricato all'avvio del programma. Non devi salvare e caricare le definizioni delle macro manualmente. Tuttavia, &kig; ti permette di fare di più con le macro. Se selezioni <menuchoice
+>Come hai visto nel capitolo precedente, &kig; ti permette di creare i tuoi oggetti. &kig; si assicura anche che una volta che hai creato un oggetto, esso venga salvato all'uscita e caricato all'avvio del programma. Non devi salvare e caricare le definizioni delle macro manualmente. Tuttavia, &kig; ti permette di fare di più con le macro. Se selezioni <menuchoice
 ><guimenu
 >Tipi</guimenu
 ><guimenuitem
