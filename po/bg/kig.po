@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-09-21 00:38+0000\n"
-"PO-Revision-Date: 2024-03-20 10:30+0100\n"
+"PO-Revision-Date: 2025-10-24 23:39+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -180,8 +180,7 @@ msgstr "Настройки на изображението"
 msgid ""
 "The file \"%1\" could not be opened. Please check if the file permissions "
 "are set correctly."
-msgstr ""
-"Файлът \"%1\" не може да се отвори. Моля, проверете си права за достъп."
+msgstr "Файлът „%1“ не може да се отвори. Моля, проверете си права за достъп."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -236,24 +235,24 @@ msgid ""
 "This Cabri file contains a \"%1\" object, which Kig does not currently "
 "support."
 msgstr ""
-"Файлът Cabri съдържа обект \"%1\", който не се поддържа от тази версия на "
+"Файлът Cabri съдържа обект „%1“, който не се поддържа от тази версия на "
 "програмата."
 
 #: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
 #, fuzzy, kde-format
 msgid "An error was encountered at line %1 in file %2."
-msgstr "Грешка при анализ на файла \"%1\". Файлът не може да се отвори."
+msgstr "Грешка при анализ на файла „%1“. Файлът не може да се отвори."
 
 #: filters/drgeo-filter.cc:92
 #, kde-format
 msgid "The Dr. Geo file \"%1\" is a macro file so it contains no figures."
-msgstr "Файлът Dr. Geo \"%1\" съдържа само макроси."
+msgstr "Файлът Dr. Geo „%1“ съдържа само макроси."
 
 #: filters/drgeo-filter.cc:96
 #, kde-format
 msgid "There are no figures in Dr. Geo file \"%1\"."
-msgstr "Във файла Dr. Geo \"%1\" не се съдържат фигури."
+msgstr "Във файла Dr. Geo „%1“ не се съдържат фигури."
 
 #: filters/drgeo-filter.cc:111
 #, kde-format
@@ -320,7 +319,7 @@ msgstr "Типът на файл не се поддържа."
 #: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
-msgstr "Грешка при запис на изображение \"%1\""
+msgstr "Грешка при запис на изображение „%1“"
 
 #: filters/exporter.cc:145
 #, kde-format
@@ -333,13 +332,13 @@ msgid ""
 "The file \"%1\" could not be opened.  This probably means that it does not "
 "exist, or that it cannot be opened due to its permissions"
 msgstr ""
-"Файлът \"%1\" не може да се отвори. Вероятно файлът не съществува или нямате "
+"Файлът „%1“ не може да се отвори. Вероятно файлът не съществува или нямате "
 "права за достъп до него."
 
 #: filters/filter.cc:76
 #, fuzzy, kde-format
 msgid "An error was encountered while parsing this file.  It cannot be opened."
-msgstr "Грешка при анализ на файла \"%1\". Файлът не може да се отвори."
+msgstr "Грешка при анализ на файла „%1“. Файлът не може да се отвори."
 
 #: filters/filter.cc:78
 #, kde-format
@@ -354,7 +353,7 @@ msgstr "Не се поддържа"
 #: filters/filter.cc:88
 #, fuzzy, kde-format
 msgid "Kig cannot open this file."
-msgstr "Файлът \"%1\" не може да се отвори."
+msgstr "Файлът „%1“ не може да се отвори."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: filters/imageexporteroptionswidget.ui:22
@@ -486,7 +485,7 @@ msgstr "Независим документа"
 msgid ""
 "This file was created by Kig version \"%1\", which this version cannot open."
 msgstr ""
-"Файлът е създаден с версия \"%1\" и не може да се отвори с текущата версия."
+"Файлът е създаден с версия „%1“ и не може да се отвори с текущата версия."
 
 #: filters/native-filter.cc:182
 #, kde-format
@@ -496,7 +495,7 @@ msgid ""
 "You can try to open this file with an older Kig version (0.4 to 0.6),\n"
 "and then save it again, which will save it in the new format."
 msgstr ""
-"Файлът е създаден с версия \"%1\".\n"
+"Файлът е създаден с версия „%1“.\n"
 "Поддръжката на стари формати е премахната."
 
 #: filters/native-filter.cc:212 filters/native-filter.cc:391
@@ -518,7 +517,7 @@ msgid ""
 "support.Perhaps you have compiled Kig without support for this object type,"
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Файлът съдържа обект от тип \"%1\", който не се поддържа от тази версия на "
+"Файлът съдържа обект от тип „%1“, който не се поддържа от тази версия на "
 "програмата.\n"
 "Вероятно сте компилирали програмата без поддръжка на този тип или използвате "
 "стара версия."
@@ -559,7 +558,7 @@ msgstr "Настройки на SVG"
 #: filters/svgexporter.cc:94
 #, kde-format
 msgid "Sorry, something went wrong while saving to SVG file \"%1\""
-msgstr "Грешка при запис на файла SVG \"%1\""
+msgstr "Грешка при запис на файла SVG „%1“"
 
 #: filters/xfigexporter.cc:46
 #, kde-format
@@ -988,7 +987,7 @@ msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr ""
-"Файлът \"%1\" не съществува. Моля, проверете дали сте въвели правилния път."
+"Файлът „%1“ не съществува. Моля, проверете дали сте въвели правилния път."
 
 #: kig/kig_part.cpp:377
 #, kde-format
@@ -1004,7 +1003,7 @@ msgid ""
 "\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">KDE's bug tracking system</a>"
 msgstr ""
-"Опитвате се да отворите обект от тип \"%1\". Програмата не поддържа формата. "
+"Опитвате се да отворите обект от тип „%1“. Програмата не поддържа формата. "
 "Ако мислите, че за този формат трябва да има поддръжка, може да пишете на "
 "адрес devriese@kde.org."
 
@@ -1037,7 +1036,7 @@ msgstr ""
 #: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
-msgstr "Вече има файл \"%1\". Искате ли да бъде презаписан?"
+msgstr "Вече има файл „%1“. Искате ли да бъде презаписан?"
 
 #: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
@@ -2207,12 +2206,12 @@ msgstr ""
 #: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
 msgid "Could not open macro file '%1'"
-msgstr "Файлът макрос \"%1\" не може да се отвори."
+msgstr "Файлът макрос „%1“ не може да се отвори."
 
 #: misc/lists.cc:291
 #, kde-format
 msgid "Kig cannot open the macro file \"%1\"."
-msgstr "Файлът макрос \"%1\" не може да се отвори."
+msgstr "Файлът макрос „%1“ не може да се отвори."
 
 #: misc/lists.cc:292
 #, kde-format
@@ -2238,7 +2237,7 @@ msgid ""
 "support. Perhaps you have compiled Kig without support for this object type, "
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Файлът съдържа обект от тип \"%1\", който не се поддържа от тази версия на "
+"Файлът съдържа обект от тип „%1“, който не се поддържа от тази версия на "
 "програмата.\n"
 "Вероятно сте компилирали програмата без поддръжка на този тип или използвате "
 "стара версия."
