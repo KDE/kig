@@ -1905,7 +1905,7 @@ msgid ""
 "Apply a similitude to an object (the sequence of a scaling and rotation "
 "around a center)"
 msgstr ""
-"Appliquer une similitude à un objet (l'enchaînement d'une homothétie et "
+"Appliquer une similitude à un objet (l'enchainement d'une homothétie et "
 "d'une rotation autour d'un centre)"
 
 #: misc/builtin_stuff.cc:404
@@ -3980,7 +3980,7 @@ msgstr ""
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr "chaîne"
+msgstr "chaine"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
