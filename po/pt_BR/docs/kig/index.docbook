@@ -67,9 +67,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->27/09/2015</date>
+>23/12/2020</date>
 <releaseinfo
->&kig; 1.0 (Applications 15.12)</releaseinfo>
+>Applications 20.12</releaseinfo>
 
 <abstract>
 <para
@@ -128,7 +128,7 @@
 >). </para>
 
 <para
->Uma vez que o &kig; suporta macros e 'loci', ele permite a definição de algumas macros mais avançadas. Se você criou uma macro interessante e achar que pode ser útil para outras pessoas, crie uma solicitação de revisão para que possa ser avaliada sua inclusão na distribuição (se o fizer, ela será licenciada sob os termos da licença do &kig;, a <ulink url="http://www.gnu.org/licenses/licenses.html#GPL"
+>Uma vez que o &kig; suporta macros e 'loci', ele permite a definição de algumas macros mais avançadas. Se você criou uma macro interessante e achar que pode ser útil para outras pessoas, crie uma solicitação de revisão para que possa ser avaliada sua inclusão na distribuição (se o fizer, ela será licenciada sob os termos da licença do &kig;, a <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
 >GPL</ulink
 >, de modo que as outras pessoas possam usá-la livremente e adaptá-la). </para>
 </chapter>
@@ -220,11 +220,13 @@ format="PNG"/>
 <para
 >Estes argumentos são também objetos e poderão ser selecionados, clicando nos mesmos. Quando você mover um objeto que possa ser usado para construir o objeto, será mostrada uma imagem preliminar de como o objeto se parecerá. Para os objetos que necessitem de pontos como argumentos, você poderá criar um novo ponto na posição atual do cursor e selecioná-lo com o &LMB;. </para>
 <para
->Você poderá sempre cancelar a criação do novo objeto com a tecla &Esc; ou clicando no botão <guiicon
->Cancelar Construção</guiicon
-> (o octógono vermelho com um <quote
->X</quote
->) na barra de ferramentas. </para>
+>Você poderá sempre cancelar a criação do novo objeto com a tecla &Esc; ou clicando no botão &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guiicon
+>Cancelar construção</guiicon
+> na barra de ferramentas. </para>
 <screenshot>
 <screeninfo
 >Construindo uma circunferência.</screeninfo>
@@ -309,9 +311,13 @@ format="PNG"/>
 </listitem>
 <listitem>
 <para
->Pressionando o botão <guiicon
->Apagar os Objetos</guiicon
-> da barra de ferramentas. </para>
+>Pressionando o botão <inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>Excluir objetos</guibutton
+> na barra de ferramentas. </para>
 </listitem>
 <listitem>
 <para
@@ -371,23 +377,23 @@ format="PNG"/>
 >Refazer</guiicon
 > da barra de ferramentas, no menu <guimenu
 >Editar</guimenu
-> ou o atalho apropriado. </para>
+> ou o atalho de teclado apropriado. </para>
 </sect1>
 
 <sect1 id="full-screen-mode">
 <title
->Modo de tela inteira</title>
+>Modo de tela cheia</title>
 <para
->O &kig; também tem um modo de tela inteira. Para usá-lo, clique no botão apropriado da barra de ferramentas ou selecione <menuchoice
+>O &kig; também tem um modo de tela cheia. Para usá-lo, clique no botão apropriado da barra de ferramentas ou selecione <menuchoice
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
->Modo de tela inteira</guimenuitem
+>Modo de tela cheia</guimenuitem
 ></menuchoice
 >. </para>
 <para
->Para sair do modo de tela inteira, clique com o &RMB; na tela, num local em que não hajam objetos presentes e selecione <guimenuitem
->Sair do modo em tela inteira</guimenuitem
+>Para sair do modo de tela cheia, clique com o &RMB; na tela, num local em que não hajam objetos presentes e selecione <guimenuitem
+>Sair do modo em tela cheia</guimenuitem
 > ou pressione a combinação de teclas <keycombo action="simul"
 >&Ctrl;&Shift;<keycap
 >F</keycap
@@ -442,8 +448,8 @@ format="PNG"/>
 >Ângulo por Três Pontos</guimenuitem
 > </menuchoice
 > e crie o seu ângulo de rotação desejado em algum ponto da janela do &kig;, normalmente num local não incômodo. Se desejar, clique com o botão direito no ângulo e na opção <menuchoice
-><guimenu
->Adicionar uma Legenda de Texto</guimenu
+><guisubmenu
+>Adicionar legenda de texto</guisubmenu
 ><guimenuitem
 >Ângulo em Graus</guimenuitem
 ></menuchoice
@@ -457,16 +463,16 @@ format="PNG"/>
 ></listitem>
 <listitem
 ><para
->Clique nos <guimenu
+>Clique no menu <guimenu
 >Objetos</guimenu
 > e construa o seu objeto desejado. </para
 ></listitem>
 <listitem
 ><para
 >Clique com o botão direito na sua forma e selecione a opção <menuchoice
-><guimenu
->Transformar</guimenu
-><guimenuitem
+><guisubmenu
+>Transformar</guisubmenu
+> <guimenuitem
 >Rodar</guimenuitem
 ></menuchoice
 >.</para
@@ -521,7 +527,7 @@ rotation.</para>
 <listitem
 ><para
 >Para ajustar o comprimento e direção do vetor, você terá que editar o seu ponto inicial e final. Selecione-os e escolha no menu de contexto <guimenuitem
->Definir a coordenada...</guimenuitem
+>Definir coordenada...</guimenuitem
 > </para
 ></listitem>
 <listitem
@@ -533,8 +539,8 @@ rotation.</para>
 <listitem
 ><para
 >Clique com o botão direito no seu objeto e selecione a opção <menuchoice
-><guimenu
->Transformar</guimenu
+><guisubmenu
+>Transformar</guisubmenu
 > <guimenuitem
 >Transladar</guimenuitem
 ></menuchoice
@@ -554,7 +560,7 @@ rotation.</para>
 <title
 >Menus de contexto do documento</title>
 <para
->Clicando com o &RMB; no documento (&ie;, sem ser num objeto), irá aparecer um menu que você poderá usar para iniciar a criação de um novo objeto, mudar o sistema de coordenadas usado, mostrar os objetos ocultos, ampliar ou reduzir o documento e alternar para o modo de tela inteira. </para>
+>Clicando com o &RMB; no documento (&ie;, sem ser num objeto), irá aparecer um menu que você poderá usar para iniciar a criação de um novo objeto, mudar o sistema de coordenadas usado, mostrar os objetos ocultos, ampliar ou reduzir o documento e alternar para o modo de tela cheia. </para>
 </sect1>
 
 <sect1 id="defining-macros">
@@ -581,11 +587,19 @@ rotation.</para>
 </screenshot>
 
 <para
->A seguir vem a definição da macro. Selecione a opção <guimenuitem
->Nova Macro...</guimenuitem
-> do menu <guimenu
+>A seguir vem a definição da macro. Selecione a opção <menuchoice
+><guimenu
 >Tipos</guimenu
-> ou clique no botão da barra de ferramentas. Irá aparecer um assistente que irá pedir para selecionar os objetos indicados. Selecione os três pontos (clique neles para selecioná-los, e clique de novo para os desmarcar), clicando depois no botão <guibutton
+> <guimenuitem
+>Nova macro...</guimenuitem
+></menuchoice
+> do menu ou clique no botão &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>Nova macro...</guibutton
+> da barra de ferramentas. Irá aparecer um assistente que irá pedir para selecionar os objetos indicados. Selecione os três pontos (clique neles para selecioná-los, e clique de novo para os desmarcar), clicando depois no botão <guibutton
 >Próximo</guibutton
 > para continuar. Finalmente, selecione os últimos objetos (apenas a circunferência, no nosso exemplo). </para>
 
@@ -663,7 +677,11 @@ rotation.</para>
 >propriedades</quote
 >). </para>
 <para
->Para iniciar a criação de uma legenda de texto, basta escolher o botão <guibutton
+>Para iniciar a criação de uma legenda de texto, basta escolher o botão &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
 >Rótulo de texto</guibutton
 > na barra de ferramentas do &kig; ou selecionando <menuchoice
 ><guimenu
@@ -778,17 +796,25 @@ format="PNG"/>
 <para
 >Agora, se mover o ponto que está restringido à circunferência, você poderá ver que o segundo ponto se move com ele. Se você mantivesse uma caneta acima do segundo ponto e movesse o primeiro ponto à volta da circunferência, iria criar uma nova circunferência com metade do tamanho da outra. Veremos abaixo que isto é exatamente o que um 'locus' faz. O caminho que o segundo ponto percorre enquanto o primeiro se move à volta da circunferência é como ficaria o 'locus'. </para>
 <para
->De fato, a criação do 'locus' é muito simples. Clique no seu botão na barra de ferramentas ou selecione a opção <menuchoice
+>De fato, a criação do 'locus' é muito simples. Clique no botão &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>Locus</guibutton
+> na barra de ferramentas, ou selecione a opção <menuchoice
 ><guimenu
 >Objetos</guimenu
 > <guisubmenu
 >Outros</guisubmenu
 > <guimenuitem
->'Locus'</guimenuitem
+>Locus</guimenuitem
 > </menuchoice
 > do menu. Selecione então o ponto restrito como o ponto móvel (o texto <guilabel
->Ponto Móvel</guilabel
-> irá aparecer à medida que você passa o mouse por cima) e o outro como ponto dependente. Irá então aparecer o 'locus'. </para>
+>Ponto móvel</guilabel
+> irá aparecer à medida que você passa o mouse por cima) e o outro como <guilabel
+>Ponto dependente</guilabel
+>. Irá então aparecer o 'locus'. </para>
 </sect1>
 </chapter>
 
@@ -803,16 +829,20 @@ format="PNG"/>
 >A programação em Python no &kig; basicamente permite-lhe criar a sua própria forma de definir um objeto a partir de certos objetos-pai. Por exemplo, se você for um professor de matemática e se tiver alguma forma bonita de calcular um ponto interessante de uma cônica, então em vez de lidar com construções complexas e macros, você poderá então definir em Python como o ponto será calculado, deixando que o &kig; o mostre para você. </para>
 <para
 >Suponha que você não conhecia o tipo <quote
->Ponto Médio</quote
-> do &kig; e quisesse mostrar o ponto médio de dois pontos indicados. Você iria então clicar no botão <guibutton
->'Script' de Python</guibutton
+>Ponto médio</quote
+> do &kig; e quisesse mostrar o ponto médio de dois pontos indicados. Você iria então clicar no botão &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>Script Python</guibutton
 > da barra de ferramentas ou selecionar a opção <menuchoice
 > <guimenu
 >Objetos</guimenu
 > <guisubmenu
 >Outros</guisubmenu
 > <guimenuitem
->'Script' de Python</guimenuitem
+>Script Python</guimenuitem
 > </menuchoice
 > na barra de menu. Aparecerá então um assistente que lhe permitirá prosseguir. </para>
 <screenshot>
@@ -898,7 +928,7 @@ format="PNG"/>
 >Point.coordinate()</function
 >. Você poderá devolver também todos os tipos de objetos e não apenas <classname
 >Point</classname
->'s. Estão disponíveis muitos mais métodos e classes na página de código em Python do &kig;, assim como uma referência completa sobre eles <ulink url="http://edu.kde.org/kig/manual/scripting-api/index.html"
+>'s. Estão disponíveis muitos mais métodos e classes na página de código em Python do &kig;, assim como uma referência completa sobre eles <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
 >aqui</ulink
 >. </para>
 </chapter>
@@ -946,9 +976,7 @@ format="PNG"/>
 >XFig</application
 >, <application
 >LaTeX</application
-> e arquivos vetoriais em <acronym
->SVG</acronym
->. Isto é bastante útil, uma vez que nem todos os programas suportam ainda o formato de arquivos do &kig;. </para>
+> e arquivos vetoriais em &SVG;. Isto é bastante útil, uma vez que nem todos os programas suportam ainda o formato de arquivos do &kig;. </para>
 </listitem>
 <listitem>
 <para
@@ -1010,7 +1038,7 @@ format="PNG"/>
 <title
 >Software livre</title>
 <para
->O &kig; é <ulink url="http://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+>O &kig; é <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
 > Software Livre</ulink
 >. Isto significa que o seu código-fonte está disponível livremente na Internet e poderá ser utilizado, lido, modificado e distribuído por qualquer pessoa. </para>
 </sect1>
@@ -1019,12 +1047,12 @@ format="PNG"/>
 <title
 >Contribuir</title>
 <para
->O objetivo deste capítulo é explicar-lhe os direitos que a licença do &kig; lhe concede. Como em todo Software Livre, você tem a permissão (e é encorajado a isso) para corrigir os problemas que encontrar durante a sua utilização, adicionar funcionalidades que sentir falta ou distribuir o seu programa modificado, e enviar essas modificações para inclusão na distribuição do programa, através das ferramentas de revisão disponíveis para a comunidade KDE. </para>
+>O objetivo deste capítulo é explicar-lhe os direitos que a licença do &kig; lhe concede. Como em todo Software Livre, você tem a permissão (e é encorajado a isso) para corrigir os problemas que encontrar durante a sua utilização, adicionar funcionalidades que sentir falta ou distribuir o seu programa modificado, e enviar essas modificações para inclusão na distribuição do programa, através das ferramentas de revisão disponíveis para a comunidade &kde;. </para>
 <para
 >Se você não tiver certeza dos seus direitos para usar este 'software' ou dos das outras pessoas para usar as modificações que você fizer ao programa, &etc;, por favor leia a licença. Você poderá encontrá-la no arquivo <filename
 >COPYING</filename
 > do pacote de código do &kig; ou no link para a licença da janela <guilabel
->Sobre o Kig</guilabel
+>Sobre o &kig;</guilabel
 >. </para>
 </sect1>
 
