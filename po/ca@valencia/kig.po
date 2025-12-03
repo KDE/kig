@@ -348,7 +348,8 @@ msgstr ""
 #: filters/filter.cc:76
 #, kde-format
 msgid "An error was encountered while parsing this file.  It cannot be opened."
-msgstr "S'ha trobat un error en interpretar este fitxer. No es pot obrir."
+msgstr ""
+"S'ha trobat un error mentre s'interpretava este fitxer. No es pot obrir."
 
 #: filters/filter.cc:78
 #, kde-format
