@@ -348,7 +348,8 @@ msgstr ""
 #: filters/filter.cc:76
 #, kde-format
 msgid "An error was encountered while parsing this file.  It cannot be opened."
-msgstr "S'ha trobat un error en interpretar este fitxer. No es pot obrir."
+msgstr ""
+"S'ha trobat un error mentre s'interpretava este fitxer. No es pot obrir."
 
 #: filters/filter.cc:78
 #, kde-format
@@ -2823,12 +2824,12 @@ msgstr ""
 #: misc/special_constructors.cc:1979
 #, kde-format
 msgid "Select the first object to intersect..."
-msgstr "Trieu el primer objecte a intersecar…"
+msgstr "Trieu el primer objecte per a la intersecció…"
 
 #: misc/special_constructors.cc:1981
 #, kde-format
 msgid "Select the second object to intersect..."
-msgstr "Trieu el segon objecte a intersecar…"
+msgstr "Trieu el segon objecte per a la intersecció…"
 
 #: misc/special_constructors.cc:1985
 #, kde-format
@@ -5406,7 +5407,7 @@ msgstr "Interseca amb este polígon"
 
 #: objects/polygon_type.cc:791
 msgid "Select the second polygon for the intersection..."
-msgstr "Trieu el segon polígon a intersecar…"
+msgstr "Trieu el segon polígon per a la intersecció…"
 
 #: objects/polygon_type.cc:930
 msgid "Construct the vertices of this polygon"
