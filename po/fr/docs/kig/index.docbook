@@ -311,7 +311,7 @@ format="PNG"/>
 >Effacer</guimenuitem
 > dans le <link linkend="objects-context-menus"
 >menu contextuel</link
-> qui apparaît. </para>
+> qui apparait. </para>
 </listitem>
 </itemizedlist>
 </para>
@@ -325,7 +325,7 @@ format="PNG"/>
 >Cacher</guimenuitem
 > dans le <link linkend="objects-context-menus"
 >menu contextuel</link
-> qui apparaît. </para>
+> qui apparait. </para>
 <para
 >Pour rendre les objets à nouveau visibles, utilisez le menu <menuchoice
 ><guimenu
@@ -339,7 +339,7 @@ format="PNG"/>
 <title
 >Vision nocturne</title>
 <para
->La vision nocturne est une façon spéciale de travailler avec des objets cachés. Lorsque vous avez à déplacer ou changer quelque chose sur un ou plusieurs de vos objets sans faire réapparaître tous les objets cachés que vous avez, alors le mode de vision nocturne sera intéressant pour vous. </para>
+>La vision nocturne est une façon spéciale de travailler avec des objets cachés. Lorsque vous avez à déplacer ou changer quelque chose sur un ou plusieurs de vos objets sans faire réapparaitre tous les objets cachés que vous avez, alors le mode de vision nocturne sera intéressant pour vous. </para>
 <para
 >À la base, vous pouvez voir les objets cachés comme s'ils étaient visibles, donc vous pouvez les manipuler comme vous le faites normalement. Dans le mode de vision nocturne, les objets cachés seront visibles avec une couleur grise. </para>
 <para
@@ -412,7 +412,7 @@ format="PNG"/>
 <title
 >Menus contextuels</title>
 <para
->&kig; dispose de menus contextuels pour ses objets. Essayez de cliquer avec le &BDS; sur un objet pour voir un menu contextuel apparaître. Il comporte de nombreuses options : pour construire d'autres objets, définir les couleurs, la largeur du crayon, le style et aussi cacher, déplacer ou effacer des objets. Certains objets ont leurs propres options (&pex; vous pouvez contraindre certains points à être sur une droite, alors que précédemment ils ne l'étaient pas, &etc;). Ces options devraient être facile à comprendre. </para>
+>&kig; dispose de menus contextuels pour ses objets. Essayez de cliquer avec le &BDS; sur un objet pour voir un menu contextuel apparaitre. Il comporte de nombreuses options : pour construire d'autres objets, définir les couleurs, la largeur du crayon, le style et aussi cacher, déplacer ou effacer des objets. Certains objets ont leurs propres options (&pex; vous pouvez contraindre certains points à être sur une droite, alors que précédemment ils ne l'étaient pas, &etc;). Ces options devraient être facile à comprendre. </para>
 
 <para
 >Certaines actions du menu contextuel d'un objet nécessitent un autre objet défini comme référence, par exemple :</para>
@@ -445,7 +445,7 @@ format="PNG"/>
 ><para
 >Cliquez avec le &BDS; sur l'angle et choisissez <guimenuitem
 >Définir la taille</guimenuitem
-> et indiquez la nouvelle taille pour cet angle dans la boîte de dialogue. </para
+> et indiquez la nouvelle taille pour cet angle dans la boite de dialogue. </para
 ></listitem>
 <listitem
 ><para
@@ -546,7 +546,7 @@ rotation.</para>
 <title
 >Les menus contextuels du document</title>
 <para
->Cliquer avec le &BDS; dans le document (&cad; pas sur un objet) fera apparaître un menu vous permettant de créer un nouvel objet, de changer le système de coordonnées utilisé, d'afficher les objets cachés, de zoomer en avant ou en arrière dans le document et même de basculer en mode plein écran. </para>
+>Cliquer avec le &BDS; dans le document (&cad; pas sur un objet) fera apparaitre un menu vous permettant de créer un nouvel objet, de changer le système de coordonnées utilisé, d'afficher les objets cachés, de zoomer en avant ou en arrière dans le document et même de basculer en mode plein écran. </para>
 </sect1>
 
 <sect1 id="defining-macros">
@@ -585,7 +585,7 @@ rotation.</para>
 > </inlinemediaobject
 > <guibutton
 >Nouvelle Macro...</guibutton
-> de la barre d'outils. Un assistant apparaîtra et vous demandera de sélectionner les objets donnés. Dans notre exemple, ce sont les trois points. Veuillez sélectionner les trois points (Cliquez dessus pour les sélectionner et cliquez à nouveau pour les dé-sélectionner) puis appuyer sur le bouton <guibutton
+> de la barre d'outils. Un assistant apparaitra et vous demandera de sélectionner les objets donnés. Dans notre exemple, ce sont les trois points. Veuillez sélectionner les trois points (Cliquez dessus pour les sélectionner et cliquez à nouveau pour les dé-sélectionner) puis appuyer sur le bouton <guibutton
 >Suivant</guibutton
 > pour continuer. Enfin, sélectionnez les derniers objets (Dans notre exemple, seulement le cercle). </para>
 
@@ -639,7 +639,7 @@ rotation.</para>
 > <guimenuitem
 >Gérer les types...</guimenuitem
 > </menuchoice
-> à partir du menu, vous verrez une boîte de dialogue dans laquelle vous pourrez éditer vos types. Cette boîte de dialogue vous permet de modifier les types existant, de supprimer les types qui ne sont plus utilisés, de les exporter dans un fichier, ou même d'en charger à partir d'un autre fichier. </para>
+> à partir du menu, vous verrez une boite de dialogue dans laquelle vous pourrez éditer vos types. Cette boite de dialogue vous permet de modifier les types existant, de supprimer les types qui ne sont plus utilisés, de les exporter dans un fichier, ou même d'en charger à partir d'un autre fichier. </para>
 <screenshot>
 <screeninfo
 >Boîte de dialogue d'édition de types</screeninfo>
@@ -649,7 +649,7 @@ rotation.</para>
 </imageobject>
 <textobject>
 <phrase
->La boîte de dialogue d'édition de types</phrase>
+>La boite de dialogue d'édition de types</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
@@ -696,19 +696,19 @@ rotation.</para>
 </mediaobject>
 </screenshot>
 <para
->Après que vous ayez sélectionné où mettre l'étiquette, la boîte de dialogue d'étiquette apparaît. Ici, vous pouvez saisir le texte que vous voulez dans la nouvelle étiquette et cliquer sur le bouton <guibutton
+>Après que vous ayez sélectionné où mettre l'étiquette, la boite de dialogue d'étiquette apparait. Ici, vous pouvez saisir le texte que vous voulez dans la nouvelle étiquette et cliquer sur le bouton <guibutton
 >Terminer</guibutton
 >. Vous devriez maintenant voir l'étiquette dans votre document. </para>
 <screenshot>
 <screeninfo
->La boîte de dialogue d'étiquettes</screeninfo>
+>La boite de dialogue d'étiquettes</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="text_label_wizard.png" format="PNG"/>
 </imageobject>
 <textobject>
 <phrase
->La boîte de dialogue d'étiquettes</phrase>
+>La boite de dialogue d'étiquettes</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
@@ -731,7 +731,7 @@ rotation.</para>
 <para
 >L'assistant affiche maintenant le texte saisi, avec les masques remplacés par quelque chose du type <guilabel
 >argument 1</guilabel
->. La sélection de la propriété associé à un argument est faite par un premier clic sur l'argument en question. Puis cliquer sur l'objet ayant une propriété dont vous avez besoin et sélectionnez la propriété elle-même dans le menu contextuel qui apparaît. Par exemple, dans l'exemple précédent, vous cliqueriez sur <guilabel
+>. La sélection de la propriété associé à un argument est faite par un premier clic sur l'argument en question. Puis cliquer sur l'objet ayant une propriété dont vous avez besoin et sélectionnez la propriété elle-même dans le menu contextuel qui apparait. Par exemple, dans l'exemple précédent, vous cliqueriez sur <guilabel
 >argument 1</guilabel
 >, puis sur le segment choisi dans la fenêtre principale de &kig; et sélectionneriez la propriété <guilabel
 >Longueur</guilabel
@@ -798,7 +798,7 @@ format="PNG"/>
 ></menuchoice
 >. Ensuite, veuillez sélectionner le point contraint comme point mobile (Le texte <guilabel
 >Point mobile</guilabel
-> apparaîtra lorsque vous le survolerez avec la souris) et l'autre comme <guilabel
+> apparaitra lorsque vous le survolerez avec la souris) et l'autre comme <guilabel
 >Point dépendant</guilabel
 >. Le lieu du point dépendant sera alors dessiné. </para>
 </sect1>
@@ -849,7 +849,7 @@ format="PNG"/>
 >Suivant</guibutton
 > pour continuer. </para>
 <para
->Un petite boîte d'édition vous est alors présentée dans laquelle vous pouvez saisir le code pour votre objet de script. Un modèle de code et quelques commentaires y sont déjà présents. Il est important de s'assurer que votre code est bien du code valable en Python. Les personnes familières avec Python remarqueront que nous définissons actuellement une fonction en Python appelée <function
+>Un petite boite d'édition vous est alors présentée dans laquelle vous pouvez saisir le code pour votre objet de script. Un modèle de code et quelques commentaires y sont déjà présents. Il est important de s'assurer que votre code est bien du code valable en Python. Les personnes familières avec Python remarqueront que nous définissons actuellement une fonction en Python appelée <function
 >calc</function
 >. Il est en conséquence nécessaire d'utiliser les règles de définition d'une fonction en Python. Par exemple, chaque ligne de la fonction devra commencer par un caractère de <keysym
 >Tabulation</keysym
@@ -897,7 +897,7 @@ format="PNG"/>
 <para
 >Si vous cliquez maintenant sur le bouton <guibutton
 >Terminer</guibutton
->, le nouvel objet apparaîtra dans le document &kig;. Si vous déplacez un des points, alors le point nouvellement créé l'accompagnera. Des objets bien plus puissant peuvent être construits de cette manière, vous êtes encouragés à essayer. </para>
+>, le nouvel objet apparaitra dans le document &kig;. Si vous déplacez un des points, alors le point nouvellement créé l'accompagnera. Des objets bien plus puissant peuvent être construits de cette manière, vous êtes encouragés à essayer. </para>
 <screenshot>
 <screeninfo
 >Un script a été créé</screeninfo>
@@ -948,7 +948,7 @@ format="PNG"/>
 </listitem>
 <listitem>
 <para
->&kig; permet que les macros soit définies simplement. Ces objets sont présentés à l'utilisateur comme des objets classiques. Ils sont enregistrés en fin de session et chargés au démarrage de l'application, ainsi ils ne sont pas perdus d'une session à l'autre. Vous pouvez gérer ces objets dans la boîte de dialogue <guilabel
+>&kig; permet que les macros soit définies simplement. Ces objets sont présentés à l'utilisateur comme des objets classiques. Ils sont enregistrés en fin de session et chargés au démarrage de l'application, ainsi ils ne sont pas perdus d'une session à l'autre. Vous pouvez gérer ces objets dans la boite de dialogue <guilabel
 >Gérer les types de macro</guilabel
 > (voir <xref linkend="working-with-types"/>). Vous pouvez les exporter vers un fichier, les importer depuis un fichier, les éditer et les effacer. </para>
 </listitem>
@@ -1041,7 +1041,7 @@ format="PNG"/>
 <para
 >Si vous doutez de vos droits concernant l'utilisation de ce logiciel, ou de l'utilisation par des tierces personnes des modifications que vous avez faites au programme, &etc;, veuillez lire la licence. Vous pouvez la trouver dans le fichier <filename
 >COPYING</filename
-> situé dans l'arborescence des fichiers sources de &kig; ou en cliquant sur le lien de licence se trouvant dans la boîte de dialogue <guilabel
+> situé dans l'arborescence des fichiers sources de &kig; ou en cliquant sur le lien de licence se trouvant dans la boite de dialogue <guilabel
 >À propos de Kig</guilabel
 >. </para>
 </sect1>
