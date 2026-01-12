@@ -2824,12 +2824,12 @@ msgstr ""
 #: misc/special_constructors.cc:1979
 #, kde-format
 msgid "Select the first object to intersect..."
-msgstr "Trieu el primer objecte a intersecar…"
+msgstr "Trieu el primer objecte per a la intersecció…"
 
 #: misc/special_constructors.cc:1981
 #, kde-format
 msgid "Select the second object to intersect..."
-msgstr "Trieu el segon objecte a intersecar…"
+msgstr "Trieu el segon objecte per a la intersecció…"
 
 #: misc/special_constructors.cc:1985
 #, kde-format
@@ -5407,7 +5407,7 @@ msgstr "Interseca amb este polígon"
 
 #: objects/polygon_type.cc:791
 msgid "Select the second polygon for the intersection..."
-msgstr "Trieu el segon polígon a intersecar…"
+msgstr "Trieu el segon polígon per a la intersecció…"
 
 #: objects/polygon_type.cc:930
 msgid "Construct the vertices of this polygon"
