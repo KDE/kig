@@ -671,13 +671,13 @@ rotation.</para>
 <title
 >Arbeta med typer</title>
 <para
->Som du såg i föregående kapitel, låter &kig; dig skapa dina egna objekt. &kig; försäkrar också att när du har skapat ett objekt, sparas det när programmet avslutas och laddas när det startas. Du behöver inte spara eller ladda makrodefinitioner för hand. Men &kig; låter dig göra mer med makron. Om du väljer <menuchoice
+>As you saw in the previous chapter, &kig; allows you to create your own objects. &kig; also makes sure that once you have created an object, it is saved on exit and loaded on startup. You do not have to manually save or load macro definitions. However, &kig; does allow you to do more with the macros. If you select <menuchoice
 ><guimenu
->Typer</guimenu
-> <guimenuitem
->Hantera typer...</guimenuitem
+>Types</guimenu
+><guimenuitem
+>Manage Types...</guimenuitem
 ></menuchoice
->, ser du en dialogruta där du kan redigera dina typer. Den låter dig ändra befintliga typer, ta bort typer du inte längre använder, exportera dem till en fil, eller till och med ladda dem från en annan fil. </para>
+> from the menu, you will see a dialog where you can edit your types. It allows you to modify the existant types, delete types that are no longer used, export them to a file, or even load them from another file. </para>
 <screenshot>
 <screeninfo
 >Dialogruta för att redigera typer</screeninfo>
