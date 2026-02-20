@@ -157,10 +157,9 @@ msgid "&Asymptote..."
 msgstr "&Asymptote..."
 
 #: filters/asyexporter.cc:45
-#, fuzzy, kde-format
-#| msgid "*.asy|Asymptote Documents (*.asy)"
+#, kde-format
 msgid "Asymptote Documents (*.asy)"
-msgstr "*.asy|Cáipéisí Asymptote (*.asy)"
+msgstr ""
 
 #: filters/asyexporter.cc:46
 #, kde-format
@@ -327,12 +326,9 @@ msgid ""
 msgstr ""
 
 #: filters/filter.cc:76
-#, fuzzy, kde-format
-#| msgid ""
-#| "An error was encountered while parsing the file \"%1\".  It cannot be "
-#| "opened."
+#, kde-format
 msgid "An error was encountered while parsing this file.  It cannot be opened."
-msgstr "Tharla earráid agus comhad \"%1\" á pharsáil. Ní féidir é a oscailt."
+msgstr ""
 
 #: filters/filter.cc:78
 #, kde-format
@@ -345,10 +341,9 @@ msgid "Not Supported"
 msgstr "Gan tacaíocht"
 
 #: filters/filter.cc:88
-#, fuzzy, kde-format
-#| msgid "Kig cannot open the file \"%1\"."
+#, kde-format
 msgid "Kig cannot open this file."
-msgstr "Ní féidir le Kig comhad \"%1\" a oscailt."
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: filters/imageexporteroptionswidget.ui:22
@@ -413,10 +408,9 @@ msgid "&Latex..."
 msgstr "&LaTeX..."
 
 #: filters/latexexporter.cc:511
-#, fuzzy, kde-format
-#| msgid "*.tex|Latex Documents (*.tex)"
+#, kde-format
 msgid "Latex Documents (*.tex)"
-msgstr "*.tex|Cáipéisí LaTeX (*.tex)"
+msgstr ""
 
 #: filters/latexexporter.cc:511
 #, kde-format
@@ -521,10 +515,9 @@ msgid "&SVG..."
 msgstr "&SVG..."
 
 #: filters/svgexporter.cc:46
-#, fuzzy, kde-format
-#| msgid "*.svg|Scalable Vector Graphics (*.svg)"
+#, kde-format
 msgid "Scalable Vector Graphics (*.svg)"
-msgstr "*.svg|Grafaic Inscálaithe Veicteoireach (*.svg)"
+msgstr ""
 
 #: filters/svgexporter.cc:47
 #, kde-format
@@ -552,10 +545,9 @@ msgid "&XFig File..."
 msgstr "Comhad &XFig..."
 
 #: filters/xfigexporter.cc:557
-#, fuzzy, kde-format
-#| msgid "*.fig|XFig Documents (*.fig)"
+#, kde-format
 msgid "XFig Documents (*.fig)"
-msgstr "*.fig|Cáipéisí XFig (*.fig)"
+msgstr ""
 
 #: filters/xfigexporter.cc:557
 #, kde-format
@@ -593,10 +585,9 @@ msgid "Dominique Devriese"
 msgstr "Dominique Devriese"
 
 #: kig/aboutdata.h:25
-#, fuzzy, kde-format
-#| msgid "Original author, long time maintainer, design and lots of code."
+#, kde-format
 msgid "Original author, former maintainer, design and lots of code."
-msgstr "An chéad údar, cothaitheoir le fada, dearadh agus go leor cóid."
+msgstr ""
 
 #: kig/aboutdata.h:27
 #, kde-format
@@ -781,11 +772,10 @@ msgid "&Set Coordinate System"
 msgstr "&Socraigh Córas Comhordanáidí"
 
 #: kig/kig_part.cpp:126
-#, fuzzy, kde-format
-#| msgid "Kig Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
-msgstr "Roghanna Kig"
+msgstr ""
 
 #: kig/kig_part.cpp:130
 #, kde-format
@@ -999,14 +989,9 @@ msgid "Save Kig Format"
 msgstr "Sábháil Formáid Kig"
 
 #: kig/kig_part.cpp:702
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.kig|Kig Documents (*.kig)\n"
-#| "*.kigz|Compressed Kig Documents (*.kigz)"
+#, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr ""
-"*.kig|Cáipéisí Kig (*.kig)\n"
-"*.kigz|Cáipéisí Comhbhrúite Kig (*.kigz)"
 
 #: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
@@ -1019,11 +1004,10 @@ msgid "Overwrite File?"
 msgstr "Forscríobh an Comhad?"
 
 #: kig/kig_part.cpp:864
-#, fuzzy, kde-format
-#| msgid "&Differential geometry"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
-msgstr "Céimseata &difreálach"
+msgstr ""
 
 #: kig/kig_part.cpp:928
 #, kde-format
@@ -1592,16 +1576,14 @@ msgid "The midpoint of a segment or two other points"
 msgstr ""
 
 #: misc/builtin_stuff.cc:264
-#, fuzzy, kde-format
-#| msgid "Construct the axis of this segment"
+#, kde-format
 msgid "Construct the golden ratio point of this segment"
-msgstr "Tóg ais na mírlíne seo"
+msgstr ""
 
 #: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
-#, fuzzy, kde-format
-#| msgid "Move a Point"
+#, kde-format
 msgid "Golden Ratio Point"
-msgstr "Bog Pointe"
+msgstr ""
 
 #: misc/builtin_stuff.cc:274
 #, kde-format
@@ -2135,11 +2117,10 @@ msgid "&Specify coordinate precision:"
 msgstr ""
 
 #: misc/kiginputdialog.cc:125
-#, fuzzy, kde-format
-#| msgid "Set Angle Size"
+#, kde-format
 msgctxt "@title:window"
 msgid "Set Angle Size"
-msgstr "Socraigh Méid na hUillinne"
+msgstr ""
 
 #: misc/kiginputdialog.cc:140
 #, kde-format
@@ -2665,10 +2646,8 @@ msgid "with this Polygonal"
 msgstr ""
 
 #: misc/special_constructors.cc:1814
-#, fuzzy
-#| msgid "Apply a similitude mapping this point onto another point"
 msgid "Construct midpoint of this point and another one"
-msgstr "Cuir cosúlacht i bhfeidhm a mhapálann an pointe seo go pointe eile"
+msgstr ""
 
 #: misc/special_constructors.cc:1815
 msgid ""
@@ -2818,13 +2797,11 @@ msgstr ""
 msgid "Now select the location for the result label."
 msgstr ""
 
-# not "Cineál Eagarthóireachta"
 #: modes/edittype.cc:25
-#, fuzzy, kde-format
-#| msgid "Edit Type"
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
-msgstr "Cuir an Cineál in Eagar"
+msgstr ""
 
 #: modes/edittype.cc:42
 #, kde-format
@@ -3021,11 +2998,10 @@ msgid "&Icon:"
 msgstr "De&ilbhín:"
 
 #: modes/macrowizard.cc:154
-#, fuzzy, kde-format
-#| msgid "Define New Macro"
+#, kde-format
 msgctxt "@title:window"
 msgid "Define New Macro"
-msgstr "Sainmhínigh Macra Nua"
+msgstr ""
 
 #: modes/moving.cc:136
 #, kde-format
@@ -3120,10 +3096,9 @@ msgid "Change Point Style"
 msgstr ""
 
 #: modes/popup/builtinobjectactionsprovider.cc:251
-#, fuzzy, kde-format
-#| msgid "Change Object Color"
+#, kde-format
 msgid "Change Object Style"
-msgstr "Athraigh Dath an Réada"
+msgstr ""
 
 #: modes/popup/nameobjectactionsprovider.cc:41
 #, kde-format
@@ -3249,11 +3224,10 @@ msgid ""
 msgstr ""
 
 #: modes/textlabelwizard.cc:106
-#, fuzzy, kde-format
-#| msgid "Construct a text label."
+#, kde-format
 msgctxt "@title:window"
 msgid "Construct Label"
-msgstr "Cruthaigh lipéad téacs."
+msgstr ""
 
 #: modes/typesdialog.cpp:133
 #, kde-format
@@ -3271,11 +3245,10 @@ msgid "Description"
 msgstr "Cur Síos"
 
 #: modes/typesdialog.cpp:331
-#, fuzzy, kde-format
-#| msgid "Manage Types"
+#, kde-format
 msgctxt "@title:window"
 msgid "Manage Types"
-msgstr "Bainistigh Cineálacha"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, buttonEdit)
 #: modes/typesdialog.cpp:368 modes/typeswidget.ui:102
@@ -3310,24 +3283,14 @@ msgid "Export Types"
 msgstr "Cineálacha Easpórtála"
 
 #: modes/typesdialog.cpp:455
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.kigt|Kig Types Files\n"
-#| "*|All Files"
+#, kde-format
 msgid "Kig Types Files (*.kigt);;All Files (*)"
 msgstr ""
-"*.kigt|Comhaid Cineálacha Kig\n"
-"*|Gach Comhad"
 
 #: modes/typesdialog.cpp:475
-#, fuzzy, kde-format
-#| msgid ""
-#| "*.kigt|Kig Types Files\n"
-#| "*|All Files"
+#, kde-format
 msgid "Kig Types Files (*.kigt)"
 msgstr ""
-"*.kigt|Comhaid Cineálacha Kig\n"
-"*|Gach Comhad"
 
 #: modes/typesdialog.cpp:477
 #, kde-format
@@ -3789,11 +3752,8 @@ msgid "double"
 msgstr ""
 
 #: objects/bogus_imp.cc:307
-#, fuzzy
-#| msgctxt "Translators: Inch"
-#| msgid "in"
 msgid "int"
-msgstr "orlach"
+msgstr ""
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
@@ -4544,10 +4504,8 @@ msgid "Select a point for the half-line to go through..."
 msgstr ""
 
 #: objects/line_type.cc:104
-#, fuzzy
-#| msgid "Construct the axis of this segment"
 msgid "Construct the axis of this segment"
-msgstr "Tóg ais na mírlíne seo"
+msgstr ""
 
 #: objects/line_type.cc:104
 msgid "Select the segment of which you want to draw the axis..."
@@ -4912,10 +4870,8 @@ msgid ""
 msgstr ""
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy
-#| msgid "Apply a similitude mapping this point onto another point"
 msgid "Construct the golden ratio point of this point and another point"
-msgstr "Cuir cosúlacht i bhfeidhm a mhapálann an pointe seo go pointe eile"
+msgstr ""
 
 #: objects/point_type.cc:275
 msgid ""
@@ -4990,10 +4946,8 @@ msgid "Select a number/length as y coordinate of the point..."
 msgstr ""
 
 #: objects/point_type.cc:820
-#, fuzzy
-#| msgid "Select the object to transform..."
 msgid "Select a point to project onto a line..."
-msgstr "Roghnaigh an réad le trasfhoirmiú..."
+msgstr ""
 
 #: objects/point_type.cc:821
 msgid "Line where the projected point will lie..."
@@ -6149,11 +6103,10 @@ msgid "Select the point to construct the sum vector in..."
 msgstr ""
 
 #: scripting/newscriptwizard.cc:45
-#, fuzzy, kde-format
-#| msgid "New Script"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Script"
-msgstr "Script Nua"
+msgstr ""
 
 #: scripting/newscriptwizard.cc:56
 #, kde-format
@@ -6209,11 +6162,10 @@ msgid ""
 msgstr ""
 
 #: scripting/script_mode.cc:286
-#, fuzzy, kde-format
-#| msgid "Edit Script..."
+#, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
-msgstr "Cuir Script in Eagar..."
+msgstr ""
 
 #: scripting/script_mode.cc:308
 #, kde-format
@@ -6234,81 +6186,3 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script."
 msgstr ""
-
-#~ msgid "KigPart"
-#~ msgstr "KigPart"
-
-#, fuzzy
-#~| msgid "Select the center of the new polygon..."
-#~ msgid "Select the first of the two points..."
-#~ msgstr "Roghnaigh lár an pholagáin nua..."
-
-#, fuzzy
-#~| msgid "Construct the axis of this segment"
-#~ msgid "Construct the axis of the segment with the previous and this point"
-#~ msgstr "Tóg ais na mírlíne seo"
-
-#, fuzzy
-#~| msgid "Select the center of the new polygon..."
-#~ msgid "Select the second of the two points..."
-#~ msgstr "Roghnaigh lár an pholagáin nua..."
-
-#~ msgid "Save Changes?"
-#~ msgstr "Sábháil Athruithe?"
-
-#~ msgid ""
-#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|All Supported Files (*.kig *.kigz *."
-#~ "seg *.fgeo *.fig)\n"
-#~ "*.kig|Kig Documents (*.kig)\n"
-#~ "*.kigz|Compressed Kig Documents (*.kigz)\n"
-#~ "*.kgeo|KGeo Documents (*.kgeo)\n"
-#~ "*.seg|KSeg Documents (*.seg)\n"
-#~ "*.fgeo|Dr. Geo Documents (*.fgeo)\n"
-#~ "*.fig *.FIG|Cabri Documents (*.fig *.FIG)"
-#~ msgstr ""
-#~ "*.kig *.kigz *.seg *.fgeo *.fig *.FIG|Gach Comhad a dTacaítear Leis (*."
-#~ "kig *.kigz *.seg *.fgeo *.fig)\n"
-#~ "*.kig|Cáipéisí Kig (*.kig)\n"
-#~ "*.kigz|Cáipéisí Comhbhrúite Kig (*.kigz)\n"
-#~ "*.seg|Cáipéisí KSeg (*.seg)\n"
-#~ "*.fgeo|Cáipéisí Dr. Geo (*.fgeo)\n"
-#~ "*.fig *.FIG|Cáipéisí Cabri (*.fig *.FIG)"
-
-#~ msgid "&Help"
-#~ msgstr "Cab&hair"
-
-#~ msgid "Icon"
-#~ msgstr "Deilbhín"
-
-#~ msgid "Edit..."
-#~ msgstr "Eagar..."
-
-#~ msgid "Please select a figure."
-#~ msgstr "Roghnaigh léaráid le do thoil."
-
-#~ msgid "Overwrite"
-#~ msgstr "Forscríobh"
-
-#~ msgid "x² + y² + %1 x + %2 y + %3 = 0"
-#~ msgstr "x² + y² + %1 x + %2 y + %3 = 0"
-
-#~ msgid "( x - %1 )² + ( y - %2 )² = %3"
-#~ msgstr "( x - %1 )² + ( y - %2 )² = %3"
-
-#~ msgid "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0"
-#~ msgstr "%1 x² + %2 y² + %3 xy + %4 x + %5 y + %6 = 0"
-
-#~ msgid ""
-#~ "rho = %1/(1 + %2 cos theta + %3 sin theta)\n"
-#~ "    [centered at %4]"
-#~ msgstr ""
-#~ "ρ = %1/(1 + %2 cos θ + %3 sin θ)\n"
-#~ "    [láraithe ag %4]"
-
-#~ msgid ""
-#~ "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y"
-#~ msgstr ""
-#~ "%6 x³ + %9 y³ + %7 x²y + %8 xy² + %5 y² + %3 x² + %4 xy + %1 x + %2 y"
-
-#~ msgid " + %1 = 0"
-#~ msgstr " + %1 = 0"
