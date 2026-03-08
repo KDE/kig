@@ -3218,7 +3218,7 @@ msgid ""
 "If you want to show variable parts, then put %1, %2, ... at the appropriate "
 "places (e.g. \"This segment is %1 units long.\")."
 msgstr ""
-"在此输入您的标签的文字，并点选“下一步”。 \n"
+"在此输入您的标签的文本，并点选“下一步”。 \n"
 "如果您想要显示变量的部分，请在合适的地方加入 %1,%2(例如：“此线段的长度为%1 个"
 "单位”)"
 
