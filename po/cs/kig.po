@@ -3,31 +3,32 @@
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2019.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
 # Vit Pelcak <vit@pelcak.org>, 2021, 2023.
+# SPDX-FileCopyrightText: 2026 Libor Filípek <filipek.libor@protonmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2023-06-23 09:02+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
-"Language-Team: Czech <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2026-04-08 20:58+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
+"Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Klára Cihlářová, Miroslav Hrončok"
+msgstr "Klára Cihlářová,Miroslav Hrončok,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "koty@seznam.cz, miro@hroncok.cz"
+msgstr "koty@seznam.cz,miro@hroncok.cz,libor.filipek@gmail.com"
 
 #, kde-format
 msgid "Circle by Center && Line"
@@ -35,7 +36,7 @@ msgstr "Kružnice ze středu a úsečky"
 
 #, kde-format
 msgid "A circle constructed by its center and tangent to a given line"
-msgstr "Kruh vytvořený podle středu a tečny k dané přímce"
+msgstr "Kruh sestrojený podle středu a tečny k dané přímce"
 
 #, kde-format
 msgid "Construct a circle tangent to this line"
@@ -57,7 +58,7 @@ msgstr "Kružnice definované středem a délkou průměru"
 #, kde-format
 msgid ""
 "Construct a circle with the diameter given by the length of this segment"
-msgstr "Vytvořit kružnici, jejíž průměr je dán délkou tohoto segmentu"
+msgstr "Sestrojit kružnici, jejíž průměr je dán délkou tohoto segmentu"
 
 #, kde-format
 msgid "Select the segment whose length gives the diameter of the new circle..."
@@ -149,7 +150,7 @@ msgstr ""
 
 #, kde-format
 msgid "Select the point to construct the difference vector in..."
-msgstr "Vyberte bod, ve kterém má být sestrojen rozdílový vektor..."
+msgstr "Vyberte bod, ve kterém má být vytvořen rozdílový vektor..."
 
 #: filters/asyexporter.cc:29
 #, kde-format
@@ -337,7 +338,7 @@ msgid ""
 "exist, or that it cannot be opened due to its permissions"
 msgstr ""
 "Soubor \"%1\" nelze otevřít. To může znamenat, že soubor neexistuje nebo má "
-"špatně nastavená přístupová práva."
+"špatně nastavená přístupová práva"
 
 #: filters/filter.cc:76
 #, kde-format
@@ -532,7 +533,7 @@ msgid ""
 "expected."
 msgstr ""
 "Tento Kig soubor obsahuje objekt typu \"%1\", který je zastaralý, měli byste "
-"tuto konstrukci uložit pod jiným jménem a zkontrolovat, že funguje dle "
+"tuto sestrojení uložit pod jiným jménem a zkontrolovat, že funguje dle "
 "očekávání."
 
 #: filters/svgexporter.cc:30
@@ -603,7 +604,7 @@ msgstr "(C) 2002-2005, Vývojáři programu Kig"
 #: kig/aboutdata.h:23
 #, kde-format
 msgid "David E. Narvaez"
-msgstr ""
+msgstr "David E. Narvaez"
 
 #: kig/aboutdata.h:23
 #, kde-format
@@ -670,7 +671,7 @@ msgstr "Francesca Gatti"
 #: kig/aboutdata.h:46
 #, kde-format
 msgid "Responsible for the computation of the algebraic equation of a locus."
-msgstr ""
+msgstr "Odpovědnost za výpočet algebraické rovnice geometrického místa bodů."
 
 #: kig/aboutdata.h:50
 #, kde-format
@@ -680,7 +681,7 @@ msgstr "Petr Gajdos"
 #: kig/aboutdata.h:50
 #, kde-format
 msgid "Contributed the Bézier curves and related icons."
-msgstr ""
+msgstr "Přidal Bézierovy křivky a související ikony."
 
 #: kig/aboutdata.h:52
 #, kde-format
@@ -842,22 +843,22 @@ msgstr "Smazat vybrané objekty"
 #: kig/kig_part.cpp:228
 #, kde-format
 msgid "Cancel Construction"
-msgstr "Zrušit konstrukci"
+msgstr "Zrušit sestrojení"
 
 #: kig/kig_part.cpp:232
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
-msgstr "Zrušit konstrukci konstruovaného objektu"
+msgstr "Zrušit sestrojení konstruovaného objektu"
 
 #: kig/kig_part.cpp:235
 #, kde-format
 msgid "Repeat Construction"
-msgstr "Opakovat konstrukci"
+msgstr "Opakovat sestrojení"
 
 #: kig/kig_part.cpp:239
 #, kde-format
 msgid "Repeat the last construction (with new data)"
-msgstr "Opakovat poslední konstrukci (s novými daty)"
+msgstr "Opakovat poslední sestrojení (s novými daty)"
 
 #: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
@@ -897,7 +898,7 @@ msgstr "Prohlížet &historii..."
 #: kig/kig_part.cpp:261
 #, kde-format
 msgid "Browse the history of the current construction."
-msgstr "Prohlížet historii této konstrukce."
+msgstr "Prohlížet historii tohoto sestrojení."
 
 #: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
@@ -944,7 +945,7 @@ msgstr "Nastavit &přesnost souřadnice..."
 #: kig/kig_part.cpp:298
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
-msgstr ""
+msgstr "Nastavte přesnost desetinných čísel souřadnic v dokumentu. "
 
 #: kig/kig_part.cpp:301
 #, kde-format
@@ -979,7 +980,7 @@ msgstr "Povolit/zakázat zobrazení skrytých objektů."
 #: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat Construction (%1)"
-msgstr "Opakovat konstrukci (%1)"
+msgstr "Opakovat sestrojení (%1)"
 
 #: kig/kig_part.cpp:346
 #, kde-format
@@ -1423,7 +1424,7 @@ msgstr "Kružnice podle tří bodů"
 #: misc/builtin_stuff.cc:101
 #, kde-format
 msgid "A circle constructed through three points"
-msgstr "kružnice vytvořená ze tří bodů"
+msgstr "kružnice sestrojená ze tří bodů"
 
 #: misc/builtin_stuff.cc:107
 #, kde-format
@@ -1513,7 +1514,7 @@ msgstr "Svislá parabola podle tří bodů"
 #: misc/builtin_stuff.cc:168
 #, kde-format
 msgid "A vertical parabola constructed through three points"
-msgstr "Svislá parabola sestrojená tak, aby procházela třemi danými body."
+msgstr "Svislá parabola sestrojená tak, aby procházela třemi danými body"
 
 #: misc/builtin_stuff.cc:174
 #, kde-format
@@ -1548,32 +1549,32 @@ msgstr "Polární přímka bodu vzhledem ke kuželosečce."
 #: misc/builtin_stuff.cc:195
 #, kde-format
 msgid "Cubic Curve with Node by Six Points"
-msgstr "Kvadratická křivka s uzlem pomocí šesti bodů."
+msgstr "Kubická křivka s uzlem pomocí šesti bodů"
 
 #: misc/builtin_stuff.cc:196
 #, kde-format
 msgid "A cubic curve with a nodal point at the origin through six points"
-msgstr "Kvadratická křivka s uzlovým bodem v počátku pomocí šesti bodů"
+msgstr "Kubická křivka s uzlovým bodem v počátku pomocí šesti bodů"
 
 #: misc/builtin_stuff.cc:202
 #, kde-format
 msgid "Cubic Curve with Cusp by Four Points"
-msgstr "Kvadratická křivka s vrcholem pomocí čtyř bodů"
+msgstr "Kubická křivka s vrcholem pomocí čtyř bodů"
 
 #: misc/builtin_stuff.cc:203
 #, kde-format
 msgid "A cubic curve with a horizontal cusp at the origin through four points"
-msgstr "Kvadratická křivka s vodorovným vrcholem v počátku pomocí čtyř bodů"
+msgstr "Kubická křivka s vodorovným vrcholem v počátku pomocí čtyř bodů"
 
 #: misc/builtin_stuff.cc:209
 #, kde-format
 msgid "Cubic Function by Four Points"
-msgstr ""
+msgstr "Kvadratické funkce určená čtyřmi body"
 
 #: misc/builtin_stuff.cc:210
 #, kde-format
 msgid "A cubic function through four points"
-msgstr ""
+msgstr "Kvadratická funkce procházející čtyřmi body"
 
 #: misc/builtin_stuff.cc:215
 #, kde-format
@@ -1583,7 +1584,7 @@ msgstr "Řídící přímka kuželosečky"
 #: misc/builtin_stuff.cc:215
 #, kde-format
 msgid "The directrix line of a conic."
-msgstr "Řídící přímka kuželosečky"
+msgstr "Řídící přímka kuželosečky."
 
 #: misc/builtin_stuff.cc:219
 #, kde-format
@@ -1603,12 +1604,12 @@ msgstr "Rovnostranná hyperbola pomocí čtyř bodů"
 #: misc/builtin_stuff.cc:225
 #, kde-format
 msgid "An equilateral hyperbola constructed through four points"
-msgstr "Rovnostranná hyperbola vytvořená přes čtyři body"
+msgstr "Rovnostranná hyperbola sestrojená přes čtyři body"
 
 #: misc/builtin_stuff.cc:242
 #, kde-format
 msgid "Construct the midpoint of this segment"
-msgstr "Vytvořit středový bod této úsečky"
+msgstr "Sestrojit středový bod této úsečky"
 
 #: misc/builtin_stuff.cc:246 objects/line_imp.cc:114
 #, kde-format
@@ -1623,17 +1624,17 @@ msgstr "Středový bod úsečky nebo dvou jiných bodů"
 #: misc/builtin_stuff.cc:264
 #, kde-format
 msgid "Construct the golden ratio point of this segment"
-msgstr ""
+msgstr "Sestrojit bod zlatého řezu této úsečky"
 
 #: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
 #, kde-format
 msgid "Golden Ratio Point"
-msgstr ""
+msgstr "Bod zlatého řezu"
 
 #: misc/builtin_stuff.cc:274
 #, kde-format
 msgid "The golden ratio point of a segment or two other points"
-msgstr ""
+msgstr "Bod zlatého řezu úsečky nebo dvou jiných bodů"
 
 #: misc/builtin_stuff.cc:281
 #, kde-format
@@ -1643,7 +1644,7 @@ msgstr "Vektor"
 #: misc/builtin_stuff.cc:281
 #, kde-format
 msgid "Construct a vector from two given points."
-msgstr "Vytvořit vektor z dvou daných bodů."
+msgstr "Sestrojit vektor ze dvou daných bodů."
 
 #: misc/builtin_stuff.cc:285
 #, kde-format
@@ -1653,7 +1654,7 @@ msgstr "Vektorový součet"
 #: misc/builtin_stuff.cc:285
 #, kde-format
 msgid "Construct the vector sum of two vectors."
-msgstr "Vytvořit součet dvou vektorů."
+msgstr "Sestrojit součet dvou vektorů."
 
 #: misc/builtin_stuff.cc:290
 #, kde-format
@@ -1683,7 +1684,7 @@ msgstr "Oblouk podle tří bodů"
 #: misc/builtin_stuff.cc:303
 #, kde-format
 msgid "Construct an arc through three points."
-msgstr "Vytvořit oblouk přes tři body."
+msgstr "Sestrojit oblouk přes tři body."
 
 #: misc/builtin_stuff.cc:308
 #, kde-format
@@ -1693,7 +1694,7 @@ msgstr "Kuželosečkový oblouk podle středu a tří bodů"
 #: misc/builtin_stuff.cc:309
 #, kde-format
 msgid "Construct a conic arc with given center through three points."
-msgstr "Vytvořit kuželosečkový oblouk se zadaným středem přes tři body."
+msgstr "Sestrojit kuželosečkový oblouk se zadaným středem přes tři body."
 
 #: misc/builtin_stuff.cc:315
 #, kde-format
@@ -1703,7 +1704,7 @@ msgstr "Kuželosečkový oblouk podle pěti bodů"
 #: misc/builtin_stuff.cc:316
 #, kde-format
 msgid "Construct a conic arc through five points."
-msgstr "Vytvořit kuželosečkový oblouk přes pět bodů."
+msgstr "Sestrojit kuželosečkový oblouk přes pět bodů."
 
 #: misc/builtin_stuff.cc:322
 #, kde-format
@@ -1715,7 +1716,7 @@ msgstr "Oblouk podle středu, úhlu a bodu"
 msgid ""
 "Construct an arc by its center and a given angle, starting at a given point"
 msgstr ""
-"Vytvořit oblouk pomocí jeho středu, daného úhlu a s počátkem v daném bodě"
+"Sestrojit oblouk pomocí jeho středu, daného úhlu a s počátkem v daném bodě"
 
 #: misc/builtin_stuff.cc:330
 #, kde-format
@@ -1824,6 +1825,7 @@ msgid ""
 "Apply a similitude to an object (the sequence of a scaling and rotation "
 "around a center)"
 msgstr ""
+"Použít podobnost na objekt (poslední fáze škálování a otočení kolem středu)"
 
 #: misc/builtin_stuff.cc:404
 #, kde-format
@@ -1868,7 +1870,7 @@ msgstr "Trojúhelník podle vrcholů"
 #: misc/builtin_stuff.cc:450
 #, kde-format
 msgid "Construct a triangle given its three vertices."
-msgstr "Vytvořit trojúhelník zadáním jeho vrcholů."
+msgstr "Sestrojit trojúhelník zadáním jeho vrcholů."
 
 #: misc/builtin_stuff.cc:476
 #, kde-format
@@ -1883,42 +1885,50 @@ msgstr "Mnohoúhelník který odpovídá konvexnímu obalu jiného mnohoúhelní
 #: misc/builtin_stuff.cc:487
 #, kde-format
 msgid "Bézier Quadratic by its Control Points"
-msgstr ""
+msgstr "Bézierova křivka druhého stupně podle jejích kontrolních bodů"
 
 #: misc/builtin_stuff.cc:488
 #, kde-format
 msgid "Construct a Bézier quadratic given its three control points."
 msgstr ""
+"Sestrojit kvadratickou Bézierovu křivku na základě jejích tří kontrolních "
+"bodů."
 
 #: misc/builtin_stuff.cc:494
 #, kde-format
 msgid "Bézier Cubic by its Control Points"
-msgstr ""
+msgstr "Kubická Bézierova křivka podle svých kontrolních bodů"
 
 #: misc/builtin_stuff.cc:495
 #, kde-format
 msgid "Construct a Bézier cubic given its four control points."
 msgstr ""
+"Sestrojit Bézierovu křivku třetího stupně na základě čtyř kontrolních bodů."
 
 #: misc/builtin_stuff.cc:505
 #, kde-format
 msgid "Rational Bézier Quadratic by its Control Points"
 msgstr ""
+"Racionální Bézierova křivka druhého stupně podle jejích kontrolních bodů"
 
 #: misc/builtin_stuff.cc:506
 #, kde-format
 msgid "Construct a Rational Bézier quadratic given its three control points."
 msgstr ""
+"Sestrojit racionální Bézierovu křivku druhého stupně na základě tří daných "
+"kontrolních bodů."
 
 #: misc/builtin_stuff.cc:512
 #, kde-format
 msgid "Rational Bézier Cubic by its Control Points"
-msgstr ""
+msgstr "Racionální kubická Bézierova křivka podle svých kontrolních bodů"
 
 #: misc/builtin_stuff.cc:513
 #, kde-format
 msgid "Construct a Rational Bézier cubic given its four control points."
 msgstr ""
+"Sestrojit racionální Bézierovu křivku třetího stupně na základě čtyř "
+"kontrolních bodů."
 
 #: misc/builtin_stuff.cc:529
 #, kde-format
@@ -2016,7 +2026,7 @@ msgstr "Zjistit, jestli jsou dva vektory rovnocenné"
 #: misc/builtin_stuff.cc:583
 #, kde-format
 msgid "Point Projection"
-msgstr ""
+msgstr "Bodová projekce"
 
 #: misc/builtin_stuff.cc:584
 #, kde-format
@@ -2124,7 +2134,7 @@ msgstr "Bod"
 #: misc/guiaction.cc:157
 #, kde-format
 msgid "Construct a text label."
-msgstr "Vytvořit testové pole"
+msgstr "Vytvořit textové pole."
 
 #: misc/guiaction.cc:167
 #, kde-format
@@ -2134,7 +2144,7 @@ msgstr "Textový popisek"
 #: misc/guiaction.cc:188
 #, kde-format
 msgid "Construct a Point by its Coordinates"
-msgstr "Vytvořit bod podle souřadnic"
+msgstr "Sestrojit bod podle souřadnic"
 
 #: misc/guiaction.cc:198
 #, kde-format
@@ -2154,7 +2164,7 @@ msgstr "Zadejte souřadnice pro nový bod."
 #: misc/guiaction.cc:235
 #, kde-format
 msgid "Construct a Numeric Value"
-msgstr ""
+msgstr "Vytvořit číselnou hodnotu"
 
 #: misc/guiaction.cc:245
 #, kde-format
@@ -2197,6 +2207,10 @@ msgid ""
 "If you switch to another unit, the value in the edit field on the left will "
 "be converted to the new selected unit."
 msgstr ""
+"Z tohoto seznamu vyberte goniometrickou jednotku, kterou chcete použít k "
+"úpravě velikosti tohoto úhlu.<br />\n"
+"Pokud přepnete na jinou jednotku, hodnota v editačním poli vlevo se převede "
+"na nově vybranou jednotku."
 
 #: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
@@ -2240,7 +2254,7 @@ msgstr ""
 #: misc/special_constructors.cc:274
 #, kde-format
 msgid "Radical Lines for Conics"
-msgstr ""
+msgstr "Radikální přímky pro kuželosečky"
 
 #: misc/special_constructors.cc:275
 #, kde-format
@@ -2248,17 +2262,21 @@ msgid ""
 "The lines constructed through the intersections of two conics.  This is also "
 "defined for non-intersecting conics."
 msgstr ""
+"Přímky procházející průsečíky dvou kuželoseček.  To platí i pro kuželosečky, "
+"které se neprotínají."
 
 #: misc/special_constructors.cc:327 misc/special_constructors.cc:411
 #, kde-format
 msgid "Moving Point"
-msgstr ""
+msgstr "Pohyblivý bod"
 
 #: misc/special_constructors.cc:327
 msgid ""
 "Select the moving point, which will be moved around while drawing the "
 "locus..."
 msgstr ""
+"Vyberte pohyblivý bod, který se bude při kreslení geometrického místa bodů "
+"posouvat..."
 
 #: misc/special_constructors.cc:328
 msgid "Following Point"
@@ -2269,16 +2287,17 @@ msgid ""
 "Select the following point, whose locations the locus will be drawn "
 "through..."
 msgstr ""
+"Vyberte následující bod, přes který bude geometrické místo bodů nakresleno..."
 
 #: misc/special_constructors.cc:331
 #, kde-format
 msgid "Locus"
-msgstr "Lokus"
+msgstr "Geometrické místo bodů"
 
 #: misc/special_constructors.cc:331
 #, kde-format
 msgid "A locus"
-msgstr "Lokus"
+msgstr "Geometrické místo bodů"
 
 #: misc/special_constructors.cc:413
 #, kde-format
@@ -2293,23 +2312,23 @@ msgstr "Mnohoúhelník pomocí vrcholů"
 #: misc/special_constructors.cc:520
 #, kde-format
 msgid "Construct a polygon by giving its vertices"
-msgstr ""
+msgstr "Sestrojit mnohoúhelník zadáním jeho vrcholů"
 
 #: misc/special_constructors.cc:553
 #, kde-format
 msgid ""
 "... with this vertex (click on the first vertex to terminate construction)"
-msgstr ""
+msgstr "... s tímto vrcholem (kliknutím na první vrchol sestrojování ukončíte)"
 
 #: misc/special_constructors.cc:555
 #, kde-format
 msgid "Construct a polygon with this vertex"
-msgstr ""
+msgstr "Sestrojit mnohoúhelník s tímto vrcholem"
 
 #: misc/special_constructors.cc:560
 #, kde-format
 msgid "Select a point to be a vertex of the new polygon..."
-msgstr ""
+msgstr "Vyberte bod, který bude vrcholem nového mnohoúhelníku..."
 
 #: misc/special_constructors.cc:589
 #, kde-format
@@ -2319,7 +2338,7 @@ msgstr "Otevřený mnohoúhelník (čára s více body)"
 #: misc/special_constructors.cc:589
 #, kde-format
 msgid "Construct an open polygon"
-msgstr "Nakreslit otevřený mnohoúhelník"
+msgstr "Sestrojit otevřený mnohoúhelník"
 
 #: misc/special_constructors.cc:622
 #, kde-format
@@ -2327,16 +2346,18 @@ msgid ""
 "... with this vertex (click again on the last vertex to terminate "
 "construction)"
 msgstr ""
+"... s tímto vrcholem (dalším kliknutím na poslední vrchol sestrojování "
+"ukončíte)"
 
 #: misc/special_constructors.cc:624
 #, kde-format
 msgid "Construct a polygonal line with this vertex"
-msgstr ""
+msgstr "Sestrojit mnohoúhelníkovou čáru s tímto vrcholem"
 
 #: misc/special_constructors.cc:629
 #, kde-format
 msgid "Select a point to be a vertex of the new polygonal line..."
-msgstr ""
+msgstr "Vyberte bod, který bude vrcholem nové polygonální čáry..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
 msgid "Polygon"
@@ -2344,7 +2365,7 @@ msgstr "Mnohoúhelník"
 
 #: misc/special_constructors.cc:658
 msgid "Construct the vertices of this polygon..."
-msgstr ""
+msgstr "Sestrojit vrcholy tohoto mnohoúhelníku..."
 
 #: misc/special_constructors.cc:661
 #, kde-format
@@ -2358,7 +2379,7 @@ msgstr "Vrcholy mnohoúhelníku."
 
 #: misc/special_constructors.cc:718
 msgid "Construct the sides of this polygon..."
-msgstr ""
+msgstr "Sestrojit strany tohoto mnohoúhelníku..."
 
 #: misc/special_constructors.cc:721
 #, kde-format
@@ -2378,42 +2399,42 @@ msgstr "Pravidelný mnohoúhelník daný středem"
 #: misc/special_constructors.cc:794
 #, kde-format
 msgid "Construct a regular polygon with a given center and vertex"
-msgstr ""
+msgstr "Sestrojit pravidelný mnohoúhelník se zadaným středem a vrcholem"
 
 #: misc/special_constructors.cc:939
 #, kde-format
 msgid "Construct a regular polygon with this center"
-msgstr ""
+msgstr "Sestrojit pravidelný mnohoúhelník s tímto středem"
 
 #: misc/special_constructors.cc:943
 #, kde-format
 msgid "Construct a regular polygon with this vertex"
-msgstr ""
+msgstr "Sestrojit pravidelný mnohoúhelník s tímto vrcholem"
 
 #: misc/special_constructors.cc:954
 #, kde-format
 msgid "Adjust the number of sides (%1/%2)"
-msgstr ""
+msgstr "Upravit počet stran (%1/%2)"
 
 #: misc/special_constructors.cc:957
 #, kde-format
 msgid "Adjust the number of sides (%1)"
-msgstr ""
+msgstr "Upravit počet stran (%1)"
 
 #: misc/special_constructors.cc:970
 #, kde-format
 msgid "Select the center of the new polygon..."
-msgstr ""
+msgstr "Vybrat střed nového mnohoúhelníku..."
 
 #: misc/special_constructors.cc:974
 #, kde-format
 msgid "Select a vertex for the new polygon..."
-msgstr ""
+msgstr "Vybrat vrchol pro nový mnohoúhelník..."
 
 #: misc/special_constructors.cc:978
 #, kde-format
 msgid "Move the cursor to get the desired number of sides..."
-msgstr ""
+msgstr "Pohybem kurzoru získejte požadovaný počet stran..."
 
 #: misc/special_constructors.cc:1062
 #, kde-format
@@ -2423,7 +2444,7 @@ msgstr "Beziérova křivka pomocí vodicích bodů"
 #: misc/special_constructors.cc:1063
 #, kde-format
 msgid "Construct a Bézier curve by giving its control points"
-msgstr "Kreslit Beziérovu křivku pomocí jejích vodicích bodů"
+msgstr "Sestrojit Beziérovu křivku pomocí jejích vodicích bodů"
 
 #: misc/special_constructors.cc:1098
 #, kde-format
@@ -2431,32 +2452,35 @@ msgid ""
 "... with this control point (click again on the last control point to "
 "terminate construction)"
 msgstr ""
+"... s tímto kontrolním bodem (dalším kliknutím na poslední kontrolní bod "
+"sestrojování ukončíte)"
 
 #: misc/special_constructors.cc:1100
 #, kde-format
 msgid "Construct a Bézier curve with this control point"
-msgstr "Kreslit Beziérovu křivku pomocí tohoto vodicího bodu"
+msgstr "Sestrojit Beziérovu křivku pomocí tohoto vodicího bodu"
 
 #: misc/special_constructors.cc:1105
 #, kde-format
 msgid "Select a point to be a control point of the new Bézier curve..."
-msgstr ""
+msgstr "Vyberte bod, který bude kontrolním bodem nové Bézierovy křivky..."
 
 #: misc/special_constructors.cc:1138
 #, kde-format
 msgid "Rational Bézier Curve by its Control Points"
-msgstr ""
+msgstr "Racionální Bézierova křivka podle jejích kontrolních bodů"
 
 #: misc/special_constructors.cc:1143
 #, kde-format
 msgid ""
 "Construct a Bézier curve by giving its control points and positive weights"
 msgstr ""
+"Sestrojit Bézierovu křivku zadáním jejích kontrolních bodů a kladných vah"
 
 #: misc/special_constructors.cc:1202
 #, kde-format
 msgid "... assign this weight to last selected control point"
-msgstr ""
+msgstr "... přiřadit tuto váhu naposledy vybranému kontrolnímu bodu"
 
 #: misc/special_constructors.cc:1205
 #, kde-format
@@ -2464,32 +2488,37 @@ msgid ""
 "... with this control point (click again on the last control point or weight "
 "to terminate construction)"
 msgstr ""
+"... s tímto kontrolním bodem (dalším kliknutím na poslední kontrolní bod "
+"nebo váhu sestrojení ukončíte)"
 
 #: misc/special_constructors.cc:1207
 #, kde-format
 msgid "Construct a rational Bézier curve with this control point"
-msgstr ""
+msgstr "Sestrojit racionální Bézierovu křivku s tímto kontrolním bodem"
 
 #: misc/special_constructors.cc:1213
 #, kde-format
 msgid ""
 "Select a point to be a control point of the new rational Bézier curve..."
 msgstr ""
+"Vyberte bod, který bude kontrolním bodem nové racionální Bézierovy křivky..."
 
 #: misc/special_constructors.cc:1215
 #, kde-format
 msgid "Select a numeric label to be a weight of last selected point..."
 msgstr ""
+"Vyberte číselný údaj, který bude představovat váhu posledního vybraného "
+"bodu..."
 
 #: misc/special_constructors.cc:1380
 #, kde-format
 msgid "Construct the Radical Lines of This Circle"
-msgstr ""
+msgstr "Sestrojit osy tohoto kruhu"
 
 #: misc/special_constructors.cc:1382
 #, kde-format
 msgid "Construct the Radical Lines of This Conic"
-msgstr ""
+msgstr "Sestrojit osy této kuželosečky"
 
 #: misc/special_constructors.cc:1396
 #, kde-format
@@ -2508,7 +2537,7 @@ msgstr ""
 #: misc/special_constructors.cc:1419
 #, kde-format
 msgid "Generic Projective Transformation"
-msgstr ""
+msgstr "Obecná projektivní transformace"
 
 #: misc/special_constructors.cc:1420
 #, kde-format
@@ -2516,16 +2545,18 @@ msgid ""
 "The unique projective transformation that maps four points (or a "
 "quadrilateral) onto four other points (or a quadrilateral)"
 msgstr ""
+"Jedinečná projektivní transformace, která zobrazuje čtyři body (nebo "
+"čtyřúhelník) na čtyři jiné body (nebo čtyřúhelník)"
 
 #: misc/special_constructors.cc:1447
 #, kde-format
 msgid "Inversion of Point, Line or Circle"
-msgstr ""
+msgstr "Obrácení bodu, přímky nebo kružnice"
 
 #: misc/special_constructors.cc:1447
 #, kde-format
 msgid "The inversion of a point, line or circle with respect to a circle"
-msgstr ""
+msgstr "Obrácení bodu, přímky nebo kružnice vzhledem ke kružnici"
 
 #: misc/special_constructors.cc:1505
 #, kde-format
@@ -3289,7 +3320,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Construct Label"
-msgstr "Vytvořit popisek"
+msgstr "Sestrojit popisek"
 
 #: modes/typesdialog.cpp:133
 #, kde-format
@@ -3429,7 +3460,7 @@ msgstr "&Importovat..."
 
 #: objects/angle_type.cc:25
 msgid "Construct an angle through this point"
-msgstr "Vytvořit úhel přes tento bod"
+msgstr "Sestrojit úhel přes tento bod"
 
 #: objects/angle_type.cc:28
 msgid ""
@@ -3474,7 +3505,7 @@ msgstr "Zvolte počáteční bod nového oblouku..."
 
 #: objects/arc_type.cc:36
 msgid "Construct an arc through this point"
-msgstr "Vytvořit oblouk procházející tímto bodem"
+msgstr "Sestrojit oblouk procházející tímto bodem"
 
 #: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
@@ -3522,7 +3553,7 @@ msgstr ""
 
 #: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
-msgstr "Vytvořit kuželosečkový oblouk končící tímto bodem"
+msgstr "Sestrojit kuželosečkový oblouk končící tímto bodem"
 
 #: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
@@ -3530,7 +3561,7 @@ msgstr "Zadejte konečný bod nového kuželosečkového oblouku..."
 
 #: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
-msgstr "Vytvořit kuželosečkový oblouk se středem v tomto bodě"
+msgstr "Sestrojit kuželosečkový oblouk se středem v tomto bodě"
 
 #: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
@@ -3906,7 +3937,7 @@ msgstr ""
 #: objects/circle_type.cc:20
 #, kde-format
 msgid "Construct a circle with this center"
-msgstr "Vytvořit kružnici se středem v tomto bodě"
+msgstr "Sestrojit kružnici se středem v tomto bodě"
 
 #: objects/circle_type.cc:23 objects/circle_type.cc:177
 #, kde-format
@@ -4062,7 +4093,7 @@ msgstr "Skrýt kuželosečkový oblouk"
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
 msgid "Construct a conic through this point"
-msgstr "Vytvořit kuželosečku přes tento bod"
+msgstr "Sestrojit kuželosečku přes tento bod"
 
 #: objects/conic_types.cc:21 objects/conic_types.cc:22
 #: objects/conic_types.cc:23 objects/conic_types.cc:24
@@ -4073,7 +4104,7 @@ msgstr "Vyberte bod kterým bude procházet nová kuželosečka..."
 
 #: objects/conic_types.cc:61 objects/conic_types.cc:62
 msgid "Construct a conic with this asymptote"
-msgstr "Vytvořit kuželosečku s touto asymptotou"
+msgstr "Sestrojit kuželosečku s touto asymptotou"
 
 #: objects/conic_types.cc:61
 msgid "Select the first asymptote of the new conic..."
@@ -4127,7 +4158,7 @@ msgstr ""
 
 #: objects/conic_types.cc:179
 msgid "Construct a conic with this line as directrix"
-msgstr "Vytvořit kuželosečku s touto přímkou jako řídící přímkou"
+msgstr "Sestrojit kuželosečku s touto přímkou jako řídící přímkou"
 
 #: objects/conic_types.cc:179
 msgid "Select the directrix of the new conic..."
@@ -4135,7 +4166,7 @@ msgstr "Vyberte řídicí přímku pro novou kuželosečku..."
 
 #: objects/conic_types.cc:180
 msgid "Construct a conic with this point as focus"
-msgstr "Vytvořit kuželosečku s ohniskem v tomto bodě"
+msgstr "Sestrojit kuželosečku s ohniskem v tomto bodě"
 
 #: objects/conic_types.cc:180
 msgid "Select the focus of the new conic..."
@@ -4156,7 +4187,7 @@ msgstr ""
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
 msgid "Select the conic wrt. which you want to construct a polar point..."
-msgstr "Vyberte kuželosečku na kterou chcete vytvořit polární bod..."
+msgstr "Vyberte kuželosečku na kterou chcete sestrojit polární bod..."
 
 #: objects/conic_types.cc:261
 msgid "Construct the polar point of this line"
@@ -4176,15 +4207,15 @@ msgstr ""
 
 #: objects/conic_types.cc:338
 msgid "Construct the directrix of this conic"
-msgstr "Vytvořit řídící přímku této kuželosečky"
+msgstr "Sestrojit řídící přímku této kuželosečky"
 
 #: objects/conic_types.cc:339
 msgid "Select the conic of which you want to construct the directrix..."
-msgstr "Vyberte kuželosečku pro kterou chcete vytvořit řídící přímku..."
+msgstr "Vyberte kuželosečku pro kterou chcete sestrojit řídící přímku..."
 
 #: objects/conic_types.cc:417
 msgid "Construct a parabola with this directrix"
-msgstr "Vytvořit parabolu s touto řídící přímkou"
+msgstr "Sestrojit parabolu s touto řídící přímkou"
 
 #: objects/conic_types.cc:417
 msgid "Select the directrix of the new parabola..."
@@ -4200,11 +4231,11 @@ msgstr ""
 
 #: objects/conic_types.cc:453
 msgid "Construct the asymptotes of this conic"
-msgstr "Vytvořit asymptoty této kuželosečky"
+msgstr "Sestrojit asymptoty této kuželosečky"
 
 #: objects/conic_types.cc:454
 msgid "Select the conic of which you want to construct the asymptotes..."
-msgstr "Vyberte kuželosečku ze které si přejete vytvořit asymptoty..."
+msgstr "Vyberte kuželosečku ze které si přejete sestrojit asymptoty..."
 
 #: objects/conic_types.cc:489
 msgid "Construct the radical lines of this conic"
@@ -4221,7 +4252,7 @@ msgid ""
 "Select the other of the two conic of which you want to construct the radical "
 "line..."
 msgstr ""
-"Vyberte druhou kuželosečku pro kterou chcete vytvořit průnikovou přímku..."
+"Vyberte druhou kuželosečku pro kterou chcete sestrojit průnikovou přímku..."
 
 #: objects/conic_types.cc:604
 #, kde-format
@@ -4642,40 +4673,40 @@ msgstr ""
 
 #: objects/locus_imp.cc:186
 msgid "locus"
-msgstr "lokus"
+msgstr "geometrické místo bodů"
 
 #: objects/locus_imp.cc:187
 msgid "Select this locus"
-msgstr "Vybrat tento Lokus"
+msgstr "Vybrat toto geometrické místo bodů"
 
 #: objects/locus_imp.cc:188
 #, kde-format
 msgid "Select locus %1"
-msgstr "Vybrat Lokus %1"
+msgstr "Vybrat geometrické místo bodů %1"
 
 #: objects/locus_imp.cc:189
 msgid "Remove a Locus"
-msgstr "Odstranit Lokus"
+msgstr "Odstranit geometrické místo bodů"
 
 #: objects/locus_imp.cc:190
 msgid "Add a Locus"
-msgstr "Přidat Lokus"
+msgstr "Přidat geometrické místo bodů"
 
 #: objects/locus_imp.cc:191
 msgid "Move a Locus"
-msgstr "Přesunout Lokus"
+msgstr "Přesunout geometrické místo bodů"
 
 #: objects/locus_imp.cc:192
 msgid "Attach to this locus"
-msgstr "Připojit k tomuto Loku"
+msgstr "Připojit k tomuto geometrickému místu bodů"
 
 #: objects/locus_imp.cc:193
 msgid "Show a Locus"
-msgstr "Zobrazit Lokus"
+msgstr "Zobrazit geometrické místo bodů"
 
 #: objects/locus_imp.cc:194
 msgid "Hide a Locus"
-msgstr "Skrýt Lokus"
+msgstr "Skrýt geometrické místo bodů"
 
 #: objects/object_imp.cc:41
 msgid "Object Type"
@@ -6127,7 +6158,7 @@ msgstr ""
 
 #: objects/vector_type.cc:12
 msgid "Construct a vector from this point"
-msgstr "Vytvořit vektor z tohoto bodu"
+msgstr "Sestrojit vektor z tohoto bodu"
 
 #: objects/vector_type.cc:12
 msgid "Select the start point of the new vector..."
@@ -6135,7 +6166,7 @@ msgstr "Zvolte počáteční bod nového vektoru..."
 
 #: objects/vector_type.cc:13
 msgid "Construct a vector to this point"
-msgstr "Vytvořit vektor tímto bodem"
+msgstr "Sestrojit vektor tímto bodem"
 
 #: objects/vector_type.cc:13
 msgid "Select the end point of the new vector..."
@@ -6169,7 +6200,7 @@ msgstr "Sestrojit vektorový součet začínající v tomto bodě."
 
 #: objects/vector_type.cc:51
 msgid "Select the point to construct the sum vector in..."
-msgstr "Vyberte bod, ve kterém bude vytvořen vektorový součet"
+msgstr "Vyberte bod, ve kterém bude vytvořen vektorový součet..."
 
 #: scripting/newscriptwizard.cc:45
 #, kde-format
@@ -6192,7 +6223,7 @@ msgstr "Zadejte kód"
 #: scripting/script-common.cc:18
 #, kde-format
 msgid "Now fill in the code:"
-msgstr "Nyní vložte kód"
+msgstr "Nyní vložte kód:"
 
 #: scripting/script-common.cc:19
 #, kde-format
