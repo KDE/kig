@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2026-04-08 20:58+0200\n"
-"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
+"PO-Revision-Date: 2026-04-09 11:22+0200\n"
+"Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -293,8 +293,7 @@ msgid ""
 "This Dr. Geo file contains an intersection type, which Kig does not "
 "currently support."
 msgstr ""
-"Tento soubor Dr. Geo obsahuje druh prolínání, který Kig momentálně "
-"nepodporuje."
+"Tento soubor Dr. Geo obsahuje druh průniků, který Kig momentálně nepodporuje."
 
 #: filters/exporter.cc:59
 #, kde-format
@@ -2262,7 +2261,7 @@ msgid ""
 "The lines constructed through the intersections of two conics.  This is also "
 "defined for non-intersecting conics."
 msgstr ""
-"Přímky procházející průsečíky dvou kuželoseček.  To platí i pro kuželosečky, "
+"Přímky procházející průniky dvou kuželoseček.  To platí i pro kuželosečky, "
 "které se neprotínají."
 
 #: misc/special_constructors.cc:327 misc/special_constructors.cc:411
@@ -2561,67 +2560,67 @@ msgstr "Obrácení bodu, přímky nebo kružnice vzhledem ke kružnici"
 #: misc/special_constructors.cc:1505
 #, kde-format
 msgid "Measure Transport"
-msgstr ""
+msgstr "Přenos změřené části"
 
 #: misc/special_constructors.cc:1510
 #, kde-format
 msgid "Transport the measure of a segment or arc over a line or circle."
-msgstr ""
+msgstr "Přeneste změřenou část úsečky nebo křivky na přímku nebo kružnici."
 
 #: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
 #, kde-format
 msgid "Segment to transport"
-msgstr ""
+msgstr "Úsečka k přenosu"
 
 #: misc/special_constructors.cc:1614
 #, kde-format
 msgid "Arc to transport"
-msgstr ""
+msgstr "Křivka k přenosu"
 
 #: misc/special_constructors.cc:1616
 #, kde-format
 msgid "Value to transport"
-msgstr ""
+msgstr "Hodnota k přenosu"
 
 #: misc/special_constructors.cc:1618
 #, kde-format
 msgid "Transport a measure on this line"
-msgstr ""
+msgstr "Přeneste změřenou část na tuto přímku"
 
 #: misc/special_constructors.cc:1620 objects/special_calcers.cc:7
 #, kde-format
 msgid "Transport a measure on this circle"
-msgstr ""
+msgstr "Přeneste změřenou část na tuto kružnici"
 
 #: misc/special_constructors.cc:1623
 #, kde-format
 msgid "Start transport from this point of the circle"
-msgstr ""
+msgstr "Spustit přenos z tohoto bodu kružnice"
 
 #: misc/special_constructors.cc:1625
 #, kde-format
 msgid "Start transport from this point of the line"
-msgstr ""
+msgstr "Spustit přenos z tohoto bodu přímky"
 
 #: misc/special_constructors.cc:1627
 #, kde-format
 msgid "Start transport from this point of the curve"
-msgstr ""
+msgstr "Spustit přenos z tohoto bodu křivky"
 
 #: misc/special_constructors.cc:1637
 #, kde-format
 msgid "Select a segment, arc or numeric label to be transported..."
-msgstr ""
+msgstr "Vyberte úsečku, křivku nebo číselný údaj, který chcete přesunout..."
 
 #: misc/special_constructors.cc:1641
 #, kde-format
 msgid "Select a destination line or circle..."
-msgstr ""
+msgstr "Vyberte cílovou přímku nebo kružnici..."
 
 #: misc/special_constructors.cc:1645
 #, kde-format
 msgid "Choose a starting point on the line/circle..."
-msgstr ""
+msgstr "Vyberte počáteční bod na přímce/kružnici..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 msgid "Intersect with this conic"
@@ -2655,47 +2654,47 @@ msgstr "Průnik dvou objektů"
 #: misc/special_constructors.cc:1766
 #, kde-format
 msgid "Intersect this Circle"
-msgstr ""
+msgstr "Průnik této kružnice"
 
 #: misc/special_constructors.cc:1768
 #, kde-format
 msgid "Intersect this Conic"
-msgstr ""
+msgstr "Průnik této kuželosečky"
 
 #: misc/special_constructors.cc:1770
 #, kde-format
 msgid "Intersect this Segment"
-msgstr ""
+msgstr "Průnik této úsečky"
 
 #: misc/special_constructors.cc:1772
 #, kde-format
 msgid "Intersect this Half-line"
-msgstr ""
+msgstr "Průnik této polopřímky"
 
 #: misc/special_constructors.cc:1774
 #, kde-format
 msgid "Intersect this Line"
-msgstr ""
+msgstr "Průnik této přímky"
 
 #: misc/special_constructors.cc:1776
 #, kde-format
 msgid "Intersect this Cubic Curve"
-msgstr ""
+msgstr "Průnik této kubické křivky"
 
 #: misc/special_constructors.cc:1778
 #, kde-format
 msgid "Intersect this Arc"
-msgstr ""
+msgstr "Průnik této křivky"
 
 #: misc/special_constructors.cc:1780
 #, kde-format
 msgid "Intersect this Polygon"
-msgstr ""
+msgstr "Průnik tohoto mnohoúhelníku"
 
 #: misc/special_constructors.cc:1782
 #, kde-format
 msgid "Intersect this Polygonal"
-msgstr ""
+msgstr "Průnik tohoto mnohoúhelníkového"
 
 #: misc/special_constructors.cc:1788
 #, kde-format
@@ -2710,17 +2709,17 @@ msgstr "s touto kuželosečkou"
 #: misc/special_constructors.cc:1792
 #, kde-format
 msgid "with this Segment"
-msgstr ""
+msgstr "s touto úsečkou"
 
 #: misc/special_constructors.cc:1794
 #, kde-format
 msgid "with this Half-line"
-msgstr ""
+msgstr "s touto polopřímkou"
 
 #: misc/special_constructors.cc:1796
 #, kde-format
 msgid "with this Line"
-msgstr "bez této přímky"
+msgstr "s touto přímkou"
 
 #: misc/special_constructors.cc:1798
 #, kde-format
@@ -2740,54 +2739,54 @@ msgstr "s tímto mnohoúhelníkem"
 #: misc/special_constructors.cc:1804
 #, kde-format
 msgid "with this Polygonal"
-msgstr ""
+msgstr "s tímto mnohoúhelníkovým"
 
 #: misc/special_constructors.cc:1814
 msgid "Construct midpoint of this point and another one"
-msgstr ""
+msgstr "Sestrojte střed tohoto bodu a jiného bodu"
 
 #: misc/special_constructors.cc:1815
 msgid ""
 "Select the first of the points of which you want to construct the midpoint..."
-msgstr ""
+msgstr "Vyberte první z bodů, jejichž střed chcete sestrojit..."
 
 #: misc/special_constructors.cc:1818
 msgid "Construct the midpoint of this point and another one"
-msgstr ""
+msgstr "Sestrojte střed tohoto bodu a dalšího bodu"
 
 #: misc/special_constructors.cc:1819
 msgid "Select the other of the points of which to construct the midpoint..."
-msgstr ""
+msgstr "Vyberte druhý bod, jehož střed chcete sestrojit..."
 
 #: misc/special_constructors.cc:1869
 msgid "Construct golden ratio point of this point and another one"
-msgstr ""
+msgstr "Sestrojte bod zlatého řezu tohoto bodu a dalšího bodu"
 
 #: misc/special_constructors.cc:1870
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
-msgstr ""
+msgstr "Vyberte první z bodů, z nichž chcete sestrojit bod zlatého řezu..."
 
 #: misc/special_constructors.cc:1873
 msgid "Construct the golden ratio point of this point and another one"
-msgstr ""
+msgstr "Sestrojte bod zlatého řezu tohoto bodu a dalšího bodu"
 
 #: misc/special_constructors.cc:1874
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
-msgstr ""
+msgstr "Vyberte druhý z bodů, z nichž chcete sestrojit bod zlatého řezu..."
 
 #: misc/special_constructors.cc:1979
 #, kde-format
 msgid "Select the first object to intersect..."
-msgstr ""
+msgstr "Vyberte první objekt, se kterým se má provést průnik..."
 
 #: misc/special_constructors.cc:1981
 #, kde-format
 msgid "Select the second object to intersect..."
-msgstr ""
+msgstr "Vyberte druhý objekt, se kterým se má provést průnik..."
 
 #: misc/special_constructors.cc:1985
 #, kde-format
@@ -2797,7 +2796,7 @@ msgstr "Tečna"
 #: misc/special_constructors.cc:1985
 #, kde-format
 msgid "The line tangent to a curve"
-msgstr ""
+msgstr "Přímka tečná ke křivce"
 
 #: misc/special_constructors.cc:2008
 #, kde-format
@@ -2837,7 +2836,7 @@ msgstr "Střed zakřivení"
 #: misc/special_constructors.cc:2038
 #, kde-format
 msgid "The center of the osculating circle to a curve"
-msgstr ""
+msgstr "Střed dotekové kružnice ke křivce"
 
 #: misc/special_constructors.cc:2058
 #, kde-format
@@ -2888,11 +2887,13 @@ msgid ""
 "Click the location where you want to place the new point, or the curve that "
 "you want to attach it to..."
 msgstr ""
+"Klikněte na místo, kam chcete nový bod umístit, nebo na křivku, ke které jej "
+"chcete připojit..."
 
 #: modes/construct_mode.cc:429
 #, kde-format
 msgid "Now select the location for the result label."
-msgstr ""
+msgstr "Nyní vyberte umístění pro popisek výsledku."
 
 #: modes/edittype.cc:25
 #, kde-format
@@ -2903,7 +2904,7 @@ msgstr "Upravit typ"
 #: modes/edittype.cc:42
 #, kde-format
 msgid "Here you can edit the name of the current macro type."
-msgstr ""
+msgstr "Zde můžete upravit název aktuálního typu makra."
 
 #: modes/edittype.cc:45
 #, kde-format
@@ -2912,16 +2913,19 @@ msgid ""
 "optional, so you can also leave this empty: if you do so, then your macro "
 "type will have no description."
 msgstr ""
+"Zde můžete upravit popis aktuálního typu makra. Toto pole je volitelné, "
+"takže jej můžete nechat prázdné: v takovém případě nebude mít váš typ makra "
+"žádný popis."
 
 #: modes/edittype.cc:49
 #, kde-format
 msgid "Use this button to change the icon of the current macro type."
-msgstr ""
+msgstr "Pomocí tohoto tlačítka můžete změnit ikonu aktuálního typu makra."
 
 #: modes/edittype.cc:70
 #, kde-format
 msgid "The name of the macro can not be empty."
-msgstr ""
+msgstr "Název makra nesmí být prázdný."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: modes/edittypewidget.ui:36
@@ -2952,7 +2956,7 @@ msgstr "Prohlížeč historie"
 #: modes/historydialog.cc:108
 #, kde-format
 msgid "Start of the construction"
-msgstr ""
+msgstr "Spuštění sestrojování"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: modes/historywidget.ui:22
@@ -3007,6 +3011,8 @@ msgid ""
 "There are '%n' parts in the text that you have not selected a value for. "
 "Please remove them or select enough arguments."
 msgstr ""
+"V textu je '%n' částí, pro které jste nezadali hodnotu. Odstraňte je prosím "
+"nebo zadejte dostatečný počet argumentů."
 
 #: modes/label.cc:373
 #, kde-format
@@ -3036,7 +3042,7 @@ msgstr "Zadat hodnotu:"
 #: modes/label.cc:630
 #, kde-format
 msgid "Select the position for the new numeric value..."
-msgstr ""
+msgstr "Vyberte pozici pro novou číselnou hodnotu..."
 
 #: modes/macro.cc:70
 #, kde-format
@@ -3045,6 +3051,9 @@ msgid ""
 "objects. Kig cannot calculate this macro because of this. Please press Back, "
 "and construct the objects in the correct order..."
 msgstr ""
+"Jeden z vámi vybraných výsledných objektů nelze vypočítat ze zadaných "
+"objektů. Kig proto nemůže toto makro vypočítat. Stiskněte prosím tlačítko "
+"Zpět a vytvořte objekty ve správném pořadí..."
 
 #: modes/macro.cc:78
 #, kde-format
@@ -3053,6 +3062,9 @@ msgid ""
 "objects.  This probably means you are expecting Kig to do something "
 "impossible.  Please check the macro and try again."
 msgstr ""
+"Jeden ze zadaných objektů není při výpočtu výsledných objektů použit. To "
+"pravděpodobně znamená, že od programu Kig očekáváte něco, co není možné. "
+"Zkontrolujte prosím makro a zkuste to znovu."
 
 #: modes/macrowizard.cc:35
 #, kde-format
@@ -3072,12 +3084,12 @@ msgstr "Konečné objekty"
 #: modes/macrowizard.cc:81
 #, kde-format
 msgid "Select the final object(s) for your new macro."
-msgstr ""
+msgstr "Vyberte objekt(y), na které se má nové makro vztahovat."
 
 #: modes/macrowizard.cc:110
 #, kde-format
 msgid "Enter a name and description for your new type."
-msgstr ""
+msgstr "Zadejte název a popis nového typu."
 
 #: modes/macrowizard.cc:119
 #, kde-format
@@ -3247,7 +3259,7 @@ msgstr "Konst&ruovat"
 #: modes/popup/popup.cc:117
 #, kde-format
 msgid "&Start"
-msgstr "&Start"
+msgstr "&Spustit"
 
 #: modes/popup/popup.cc:118
 #, kde-format
