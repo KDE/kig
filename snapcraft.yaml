@@ -43,7 +43,7 @@ parts:
    override-pull: |
         craftctl default
         patch -p0 < ${SNAPCRAFT_PROJECT_DIR}/snap/local/patches/cmake_policy.patch
-    prime:
+   prime:
       - -usr/lib/*/cmake/*
       - -usr/include/*
       - -usr/share/ECM/*
