@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2026-04-09 11:22+0200\n"
+"PO-Revision-Date: 2026-04-10 23:19+0200\n"
 "Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -36,7 +36,7 @@ msgstr "Kružnice ze středu a úsečky"
 
 #, kde-format
 msgid "A circle constructed by its center and tangent to a given line"
-msgstr "Kruh sestrojený podle středu a tečny k dané přímce"
+msgstr "Kružnice sestrojená podle středu a tečny k dané přímce"
 
 #, kde-format
 msgid "Construct a circle tangent to this line"
@@ -397,21 +397,22 @@ msgstr ""
 msgid ""
 "This KSeg file contains a filled circle, which Kig does not currently "
 "support."
-msgstr "Tento soubor KSeg obsahuje plný kruh, což Kig momentálně nepodporuje."
+msgstr ""
+"Tento soubor KSeg obsahuje plnou kružnici, což Kig momentálně nepodporuje."
 
 #: filters/kseg-filter.cc:511
 #, kde-format
 msgid ""
 "This KSeg file contains an arc sector, which Kig does not currently support."
 msgstr ""
-"Tento soubor KSeg obsahuje kruhovou úseč, což Kig momentálně nepodporuje."
+"Tento soubor KSeg obsahuje kruhovou výseč, což Kig momentálně nepodporuje."
 
 #: filters/kseg-filter.cc:517
 #, kde-format
 msgid ""
 "This KSeg file contains an arc segment, which Kig does not currently support."
 msgstr ""
-"Tento soubor KSeg obsahuje kruhovou úseč, což Kig momentálně nepodporuje."
+"Tento soubor KSeg obsahuje kruhovou výseč, což Kig momentálně nepodporuje."
 
 #: filters/latexexporter.cc:63
 #, kde-format
@@ -1147,7 +1148,7 @@ msgstr "Čá&ry"
 #: kig/kigpartui.rc:62
 #, kde-format
 msgid "&Circles && Arcs"
-msgstr "&Kruhy a úhly"
+msgstr "&Kružnice a oblouky"
 
 #. i18n: ectx: Menu (new_poligon)
 #: kig/kigpartui.rc:73
@@ -1183,7 +1184,7 @@ msgstr "K&ubiky"
 #: kig/kigpartui.rc:124
 #, kde-format
 msgid "&Bézier curves"
-msgstr "&Beziérovy křivky"
+msgstr "&Bézierovy křivky"
 
 #. i18n: ectx: Menu (new_angle)
 #: kig/kigpartui.rc:134
@@ -1255,7 +1256,7 @@ msgstr "Vektory a segmenty"
 #: kig/kigpartui.rc:250
 #, kde-format
 msgid "Circles && Arcs"
-msgstr "Kruhy a úhly"
+msgstr "Kružnice a oblouky"
 
 #. i18n: ectx: ToolBar (conic_toolbar)
 #: kig/kigpartui.rc:258
@@ -1267,7 +1268,7 @@ msgstr "Kuželosečku"
 #: kig/kigpartui.rc:267
 #, kde-format
 msgid "Bézier Curves"
-msgstr "Beziérovy křivky"
+msgstr "Bézierovy křivky"
 
 #. i18n: ectx: ToolBar (angles_toolbar)
 #: kig/kigpartui.rc:277
@@ -1688,22 +1689,22 @@ msgstr "Sestrojit oblouk přes tři body."
 #: misc/builtin_stuff.cc:308
 #, kde-format
 msgid "Conic Arc by Center and Three Points"
-msgstr "Kuželosečkový oblouk podle středu a tří bodů"
+msgstr "Kuželový oblouk podle středu a tří bodů"
 
 #: misc/builtin_stuff.cc:309
 #, kde-format
 msgid "Construct a conic arc with given center through three points."
-msgstr "Sestrojit kuželosečkový oblouk se zadaným středem přes tři body."
+msgstr "Sestrojit kuželový oblouk se zadaným středem přes tři body."
 
 #: misc/builtin_stuff.cc:315
 #, kde-format
 msgid "Conic Arc by Five Points"
-msgstr "Kuželosečkový oblouk podle pěti bodů"
+msgstr "Kuželový oblouk podle pěti bodů"
 
 #: misc/builtin_stuff.cc:316
 #, kde-format
 msgid "Construct a conic arc through five points."
-msgstr "Sestrojit kuželosečkový oblouk přes pět bodů."
+msgstr "Sestrojit kuželový oblouk přes pět bodů."
 
 #: misc/builtin_stuff.cc:322
 #, kde-format
@@ -2123,7 +2124,7 @@ msgid ""
 "circle, segment."
 msgstr ""
 "Normální bod. Tj. ten, který je buďto nezávislý, nebo je připojen k přímce, "
-"kruhu nebo jinému objektu."
+"kružnici nebo jinému objektu."
 
 #: misc/guiaction.cc:116
 #, kde-format
@@ -2438,12 +2439,12 @@ msgstr "Pohybem kurzoru získejte požadovaný počet stran..."
 #: misc/special_constructors.cc:1062
 #, kde-format
 msgid "Bézier Curve by its Control Points"
-msgstr "Beziérova křivka pomocí vodicích bodů"
+msgstr "Bézierova křivka pomocí vodicích bodů"
 
 #: misc/special_constructors.cc:1063
 #, kde-format
 msgid "Construct a Bézier curve by giving its control points"
-msgstr "Sestrojit Beziérovu křivku pomocí jejích vodicích bodů"
+msgstr "Sestrojit Bézierovu křivku pomocí jejích vodicích bodů"
 
 #: misc/special_constructors.cc:1098
 #, kde-format
@@ -2457,7 +2458,7 @@ msgstr ""
 #: misc/special_constructors.cc:1100
 #, kde-format
 msgid "Construct a Bézier curve with this control point"
-msgstr "Sestrojit Beziérovu křivku pomocí tohoto vodicího bodu"
+msgstr "Sestrojit Bézierovu křivku pomocí tohoto vodicího bodu"
 
 #: misc/special_constructors.cc:1105
 #, kde-format
@@ -2512,7 +2513,7 @@ msgstr ""
 #: misc/special_constructors.cc:1380
 #, kde-format
 msgid "Construct the Radical Lines of This Circle"
-msgstr "Sestrojit osy tohoto kruhu"
+msgstr "Sestrojit osy této kružnice"
 
 #: misc/special_constructors.cc:1382
 #, kde-format
@@ -2565,7 +2566,7 @@ msgstr "Přenos změřené části"
 #: misc/special_constructors.cc:1510
 #, kde-format
 msgid "Transport the measure of a segment or arc over a line or circle."
-msgstr "Přeneste změřenou část úsečky nebo křivky na přímku nebo kružnici."
+msgstr "Přeneste změřenou část úsečky nebo oblouk na přímku nebo kružnici."
 
 #: misc/special_constructors.cc:1612 objects/special_calcers.cc:9
 #, kde-format
@@ -2575,7 +2576,7 @@ msgstr "Úsečka k přenosu"
 #: misc/special_constructors.cc:1614
 #, kde-format
 msgid "Arc to transport"
-msgstr "Křivka k přenosu"
+msgstr "Oblouk k přenosu"
 
 #: misc/special_constructors.cc:1616
 #, kde-format
@@ -2610,7 +2611,7 @@ msgstr "Spustit přenos z tohoto bodu křivky"
 #: misc/special_constructors.cc:1637
 #, kde-format
 msgid "Select a segment, arc or numeric label to be transported..."
-msgstr "Vyberte úsečku, křivku nebo číselný údaj, který chcete přesunout..."
+msgstr "Vyberte úsečku, oblouk nebo číselný údaj, který chcete přesunout..."
 
 #: misc/special_constructors.cc:1641
 #, kde-format
@@ -2684,7 +2685,7 @@ msgstr "Průnik této kubické křivky"
 #: misc/special_constructors.cc:1778
 #, kde-format
 msgid "Intersect this Arc"
-msgstr "Průnik této křivky"
+msgstr "Průnik tohoto oblouku"
 
 #: misc/special_constructors.cc:1780
 #, kde-format
@@ -2699,7 +2700,7 @@ msgstr "Průnik tohoto mnohoúhelníkového"
 #: misc/special_constructors.cc:1788
 #, kde-format
 msgid "with this Circle"
-msgstr "s tímto kruhem"
+msgstr "s touto kružnicí"
 
 #: misc/special_constructors.cc:1790
 #, kde-format
@@ -2801,7 +2802,7 @@ msgstr "Přímka tečná ke křivce"
 #: misc/special_constructors.cc:2008
 #, kde-format
 msgid "Tangent to This Circle"
-msgstr "Tečna tohoto kruhu"
+msgstr "Tečna této kružnice"
 
 #: misc/special_constructors.cc:2010
 #, kde-format
@@ -3264,7 +3265,7 @@ msgstr "&Spustit"
 #: modes/popup/popup.cc:118
 #, kde-format
 msgid "Add Te&xt Label"
-msgstr ""
+msgstr "Přidat te&xtový popisek"
 
 #: modes/popup/popup.cc:119
 #, kde-format
@@ -3274,7 +3275,7 @@ msgstr "Nastavit ba&rvu"
 #: modes/popup/popup.cc:120
 #, kde-format
 msgid "Set &Pen Width"
-msgstr ""
+msgstr "Nastavit šířku &pera"
 
 #: modes/popup/popup.cc:121
 #, kde-format
@@ -3300,7 +3301,7 @@ msgstr "Upravit skript..."
 #: modes/textlabelwizard.cc:31
 #, kde-format
 msgid "Enter Label Text"
-msgstr ""
+msgstr "Zadejte text popisku"
 
 #: modes/textlabelwizard.cc:40
 #, kde-format
@@ -3309,11 +3310,14 @@ msgid ""
 "If you want to show variable parts, then put %1, %2, ... at the appropriate "
 "places (e.g. \"This segment is %1 units long.\")."
 msgstr ""
+"Zde zadejte text pro popisek a stiskněte tlačítko \"Další\".\n"
+"Pokud chcete zobrazit variabilní části, vložte %1, %2, ... na příslušná "
+"místa (např. \"Tento segment je dlouhý %1 jednotek.\")."
 
 #: modes/textlabelwizard.cc:52
 #, kde-format
 msgid "Show text in a frame"
-msgstr ""
+msgstr "Zobrazit text v rámečku"
 
 #: modes/textlabelwizard.cc:76 scripting/newscriptwizard.cc:49
 #, kde-format
@@ -3327,6 +3331,8 @@ msgid ""
 "select an object and a property in the Kig window, and click finish when you "
 "are done..."
 msgstr ""
+"Nyní vyberte argument(y), které potřebujete. U každého argumentu na něj "
+"klikněte, vyberte objekt a vlastnost v okně Kig a poté jej dokončete..."
 
 #: modes/textlabelwizard.cc:106
 #, kde-format
@@ -3477,20 +3483,20 @@ msgstr "Sestrojit úhel přes tento bod"
 #: objects/angle_type.cc:28
 msgid ""
 "Select a point that the first half-line of the angle should go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má procházet první polopřímka úhlu..."
 
 #: objects/angle_type.cc:29
 msgid "Construct an angle at this point"
-msgstr ""
+msgstr "Sestrojit úhel v tomto bodě"
 
 #: objects/angle_type.cc:29
 msgid "Select the point to construct the angle in..."
-msgstr ""
+msgstr "Vyberte bod pro sestrojení úhlu v..."
 
 #: objects/angle_type.cc:30
 msgid ""
 "Select a point that the second half-line of the angle should go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má procházet druhá polopřímka úhlu..."
 
 #: objects/angle_type.cc:89
 #, kde-format
@@ -3500,16 +3506,16 @@ msgstr "Nastavit veliko&st"
 #: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
-msgstr ""
+msgstr "Přepnout značku p&ravého úhlu"
 
 #: objects/angle_type.cc:132
 #, kde-format
 msgid "Resize Angle"
-msgstr ""
+msgstr "Změnit velikost úhlu"
 
 #: objects/arc_type.cc:32
 msgid "Construct an arc starting at this point"
-msgstr ""
+msgstr "Sestrojit oblouk začínající v tomto bodě"
 
 #: objects/arc_type.cc:35 objects/arc_type.cc:148
 msgid "Select the start point of the new arc..."
@@ -3521,71 +3527,71 @@ msgstr "Sestrojit oblouk procházející tímto bodem"
 
 #: objects/arc_type.cc:36
 msgid "Select a point for the new arc to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nový oblouk procházet..."
 
 #: objects/arc_type.cc:37
 msgid "Construct an arc ending at this point"
-msgstr ""
+msgstr "Sestrojit oblouk končící v tomto bodě"
 
 #: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
-msgstr ""
+msgstr "Vyberte koncový bod nového oblouku..."
 
 #: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
-msgstr ""
+msgstr "Sestrojit oblouk s tímto středem"
 
 #: objects/arc_type.cc:147
 msgid "Select the center of the new arc..."
-msgstr ""
+msgstr "Vyberte střed nového oblouku..."
 
 #: objects/arc_type.cc:149
 msgid "Construct an arc with this angle"
-msgstr ""
+msgstr "Sestrojit oblouk s tímto úhlem"
 
 #: objects/arc_type.cc:149
 msgid "Select the angle of the new arc..."
-msgstr ""
+msgstr "Vyberte úhel nového oblouku..."
 
 #: objects/arc_type.cc:203
 msgid "Construct a conic arc starting at this point"
-msgstr ""
+msgstr "Sestrojit kuželový oblouk začínající v tomto bodě"
 
 #: objects/arc_type.cc:204
 msgid "Select the start point of the new conic arc..."
-msgstr ""
+msgstr "Vyberte počáteční bod nového kuželového oblouku..."
 
 #: objects/arc_type.cc:205
 msgid "Construct a conic arc through this point"
-msgstr ""
+msgstr "Sestrojit kuželový oblouk skrz tento bod"
 
 #: objects/arc_type.cc:206
 msgid "Select a point for the new conic arc to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým bude procházet nový kuželový oblouk..."
 
 #: objects/arc_type.cc:207
 msgid "Construct a conic arc ending at this point"
-msgstr "Sestrojit kuželosečkový oblouk končící tímto bodem"
+msgstr "Sestrojit kuželový oblouk končící tímto bodem"
 
 #: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
-msgstr "Zadejte konečný bod nového kuželosečkového oblouku..."
+msgstr "Zadejte konečný bod nového kuželového oblouku..."
 
 #: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
-msgstr "Sestrojit kuželosečkový oblouk se středem v tomto bodě"
+msgstr "Sestrojit kuželový oblouk se středem v tomto bodě"
 
 #: objects/arc_type.cc:211
 msgid "Select the center of the new conic arc..."
-msgstr "Zadejte střed nového kuželosečkového oblouku..."
+msgstr "Zadejte střed nového kuželového oblouku..."
 
 #: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
 msgid "Number of control points"
-msgstr ""
+msgstr "Počet kontrolních bodů"
 
 #: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
 msgid "Control polygon"
-msgstr ""
+msgstr "Kontrolní mnohoúhelník"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
 #: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
@@ -3595,260 +3601,266 @@ msgstr "Kartézská rovnice"
 
 #: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
 msgid "Bézier Curve"
-msgstr "Beziérova křivka"
+msgstr "Bézierova křivka"
 
 #: objects/bezier_imp.cc:202
 msgid "Select this Bézier Curve"
-msgstr "Vybrat tuto Beziérovu křivku"
+msgstr "Vybrat tuto Bézierovu křivku"
 
 #: objects/bezier_imp.cc:203
 #, kde-format
 msgid "Select Bézier Curve %1"
-msgstr "Vyberte Beziérovu křivku %1"
+msgstr "Vyberte Bézierovu křivku %1"
 
 #: objects/bezier_imp.cc:204
 msgid "Remove a Bézier Curve"
-msgstr "Odstranit Beziérovu křivku"
+msgstr "Odstranit Bézierovu křivku"
 
 #: objects/bezier_imp.cc:205
 msgid "Add a Bézier Curve"
-msgstr "Přidat Beziérovu křivku"
+msgstr "Přidat Bézierovu křivku"
 
 #: objects/bezier_imp.cc:206
 msgid "Move a Bézier Curve"
-msgstr "Posunout Beziérovu křivku"
+msgstr "Posunout Bézierovu křivku"
 
 #: objects/bezier_imp.cc:207
 msgid "Attach to this Bézier Curve"
-msgstr "Připojit k této Beziérově křivce"
+msgstr "Připojit k této Bézierově křivce"
 
 #: objects/bezier_imp.cc:208
 msgid "Show a Bézier Curve"
-msgstr "Zobrazit Beziérovu křivku"
+msgstr "Zobrazit Bézierovu křivku"
 
 #: objects/bezier_imp.cc:209
 msgid "Hide a Bézier Curve"
-msgstr "Skrýt Beziérovu křivku"
+msgstr "Skrýt Bézierovu křivku"
 
 #: objects/bezier_imp.cc:218
 msgid "Bézier Quadratic"
-msgstr ""
+msgstr "Bézierova kvadratická křivka"
 
 #: objects/bezier_imp.cc:219
 msgid "Select this Bézier Quadratic"
-msgstr ""
+msgstr "Vybrat tuto Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:220
 #, kde-format
 msgid "Select Bézier Quadratic %1"
-msgstr ""
+msgstr "Vybrat Bézierovu kvadratickou křivku %1"
 
 #: objects/bezier_imp.cc:221
 msgid "Remove a Bézier Quadratic"
-msgstr ""
+msgstr "Odstranit Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:222
 msgid "Add a Bézier Quadratic"
-msgstr ""
+msgstr "Přidat Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:223
 msgid "Move a Bézier Quadratic"
-msgstr ""
+msgstr "Přesunout Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:224
 msgid "Attach to this Bézier Quadratic"
-msgstr ""
+msgstr "Připojit k této Bézierově kvadratické křivce"
 
 #: objects/bezier_imp.cc:225
 msgid "Show a Bézier Quadratic"
-msgstr ""
+msgstr "Zobrazit Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:226
 msgid "Hide a Bézier Quadratic"
-msgstr ""
+msgstr "Skrýt Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:235
 msgid "Bézier Cubic"
-msgstr "Beziérovy křivky"
+msgstr "Bézierova kubická křivka"
 
 #: objects/bezier_imp.cc:236
 msgid "Select this Bézier Cubic"
-msgstr ""
+msgstr "Vybrat tuto Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:237
 #, kde-format
 msgid "Select Bézier Cubic %1"
-msgstr ""
+msgstr "Vybrat Bézierovu kubickou křivku %1"
 
 #: objects/bezier_imp.cc:238
 msgid "Remove a Bézier Cubic"
-msgstr ""
+msgstr "Odstranit kubickou Bézierovu křivku"
 
 #: objects/bezier_imp.cc:239
 msgid "Add a Bézier Cubic"
-msgstr ""
+msgstr "Přidat Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:240
 msgid "Move a Bézier Cubic"
-msgstr ""
+msgstr "Přesunout Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:241
 msgid "Attach to this Bézier Cubic"
-msgstr ""
+msgstr "Připojit k této Bézierově kubické křivce"
 
 #: objects/bezier_imp.cc:242
 msgid "Show a Bézier Cubic"
-msgstr ""
+msgstr "Zobrazit Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:243
 msgid "Hide a Bézier Cubic"
-msgstr ""
+msgstr "Skrýt Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:490
 msgid "Rational Bézier Curve"
-msgstr ""
+msgstr "Racionální Bézierova křivka "
 
 #: objects/bezier_imp.cc:491
 msgid "Select this Rational Bézier Curve"
-msgstr ""
+msgstr "Vybrat tuto racionální Bézierovu křivku"
 
 #: objects/bezier_imp.cc:492
 #, kde-format
 msgid "Select Rational Bézier Curve %1"
-msgstr ""
+msgstr "Vybrat racionální Bézierovu křivku %1"
 
 #: objects/bezier_imp.cc:493
 msgid "Remove a Rational Bézier Curve"
-msgstr ""
+msgstr "Odstranit racionální Bézierovu křivku"
 
 #: objects/bezier_imp.cc:494
 msgid "Add a Rational Bézier Curve"
-msgstr ""
+msgstr "Přidat racionální Bézierovu křivku"
 
 #: objects/bezier_imp.cc:495
 msgid "Move a Rational Bézier Curve"
-msgstr ""
+msgstr "Přesunout racionální Bézierovu křivku"
 
 #: objects/bezier_imp.cc:496
 msgid "Attach to this Rational Bézier Curve"
-msgstr ""
+msgstr "Připojit k této racionální Bézierově křivce"
 
 #: objects/bezier_imp.cc:497
 msgid "Show a Rational Bézier Curve"
-msgstr ""
+msgstr "Zobrazit racionální Bézierovu křivku"
 
 #: objects/bezier_imp.cc:498
 msgid "Hide a Rational Bézier Curve"
-msgstr ""
+msgstr "Skrýt racionální Bézierovu křivku"
 
 #: objects/bezier_imp.cc:507
 msgid "Rational Bézier Quadratic"
-msgstr ""
+msgstr "Racionální Bézierova kvadratická křivka"
 
 #: objects/bezier_imp.cc:508
 msgid "Select this Rational Bézier Quadratic"
-msgstr ""
+msgstr "Vybrat tuto racionální Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:509
 #, kde-format
 msgid "Select Rational Bézier Quadratic %1"
-msgstr ""
+msgstr "Vybrat racionální Bézierovu kvadratickou křivku %1"
 
 #: objects/bezier_imp.cc:510
 msgid "Remove a Rational Bézier Quadratic"
-msgstr ""
+msgstr "Odstranit racionální Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:511
 msgid "Add a Rational Bézier Quadratic"
-msgstr ""
+msgstr "Přidat racionální Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:512
 msgid "Move a Rational Bézier Quadratic"
-msgstr ""
+msgstr "Přesunout racionální Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:513
 msgid "Attach to this Rational Bézier Quadratic"
-msgstr ""
+msgstr "Připojit k této racionální Bézierově kvadratické křivce"
 
 #: objects/bezier_imp.cc:514
 msgid "Show a Rational Bézier Quadratic"
-msgstr ""
+msgstr "Zobrazit racionální Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:515
 msgid "Hide a Rational Bézier Quadratic"
-msgstr ""
+msgstr "Skrýt racionální Bézierovu kvadratickou křivku"
 
 #: objects/bezier_imp.cc:524
 msgid "Rational Bézier Cubic"
-msgstr ""
+msgstr "Racionální Bézierova kubická křivka"
 
 #: objects/bezier_imp.cc:525
 msgid "Select this Rational Bézier Cubic"
-msgstr ""
+msgstr "Vybrat tuto racionální Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:526
 #, kde-format
 msgid "Select Rational Bézier Cubic %1"
-msgstr ""
+msgstr "Vybrat racionální Bézierovu kubickou křivku %1"
 
 #: objects/bezier_imp.cc:527
 msgid "Remove a Rational Bézier Cubic"
-msgstr ""
+msgstr "Odstranit racionální Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:528
 msgid "Add a Rational Bézier Cubic"
-msgstr ""
+msgstr "Přidat racionální Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:529
 msgid "Move a Rational Bézier Cubic"
-msgstr ""
+msgstr "Přesunout racionální Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:530
 msgid "Attach to this Rational Bézier Cubic"
-msgstr ""
+msgstr "Připojit k této racionální Bézierově kubické křivce"
 
 #: objects/bezier_imp.cc:531
 msgid "Show a Rational Bézier Cubic"
-msgstr ""
+msgstr "Zobrazit racionální Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:532
 msgid "Hide a Rational Bézier Cubic"
-msgstr ""
+msgstr "Skrýt racionální Bézierovu kubickou křivku"
 
 #: objects/bezier_type.cc:26
 msgid "Construct a quadratic Bézier curve with this control point"
-msgstr ""
+msgstr "Sestrojit kvadratickou Bézierovu křivku s tímto kontrolním bodem"
 
 #: objects/bezier_type.cc:27
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
 msgstr ""
+"Vyberte bod, který bude kontrolním bodem nové kvadratické Bézierovy křivky..."
 
 #: objects/bezier_type.cc:121
 msgid "Construct a cubic Bézier curve with this control point"
-msgstr ""
+msgstr "Sestrojit kubickou Bézierovu křivku s tímto kontrolním bodem"
 
 #: objects/bezier_type.cc:122
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
 msgstr ""
+"Vyberte bod, který bude kontrolním bodem nové Bézierovy kubické křivky..."
 
 #: objects/bezier_type.cc:328
 msgid "Construct a quadratic rational Bézier curve with this control point"
 msgstr ""
+"Sestrojit kvadratickou racionální Bézierovu křivku s tímto kontrolním bodem"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr ""
+"Vyberte tři body a tři číselné hodnoty jako váhy pro vytvoření racionální "
+"Bézierovy křivky..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
 msgid "Select this value as weight"
-msgstr ""
+msgstr "Vybrat tuto hodnotu jako váhu"
 
 #: objects/bezier_type.cc:433
 msgid "Construct a cubic rational Bézier curve with this control point"
 msgstr ""
+"Sestrojit kubickou racionální Bézierovu křivku s tímto kontrolním bodem"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
@@ -3864,7 +3876,7 @@ msgstr "int"
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
-msgstr ""
+msgstr "Výsledek testu"
 
 #: objects/centerofcurvature_type.cc:22 objects/tangent_type.cc:22
 #, kde-format
@@ -3873,7 +3885,7 @@ msgstr "Zvolit křivku..."
 
 #: objects/centerofcurvature_type.cc:23
 msgid "Select a point on the curve..."
-msgstr ""
+msgstr "Vyberte bod na křivce..."
 
 #: objects/circle_imp.cc:133 objects/polygon_imp.cc:290
 #: objects/polygon_imp.cc:304
@@ -3882,7 +3894,7 @@ msgstr "Povrch"
 
 #: objects/circle_imp.cc:134
 msgid "Circumference"
-msgstr ""
+msgstr "Obvod"
 
 #: objects/circle_imp.cc:135 objects/other_imp.cc:392
 msgid "Radius"
@@ -3898,12 +3910,12 @@ msgstr "Expandovat kartézskou rovnici"
 
 #: objects/circle_imp.cc:139 objects/conic_imp.cc:78
 msgid "Polar Equation"
-msgstr ""
+msgstr "Polární rovnice"
 
 #: objects/circle_imp.cc:233
 #, kde-format
 msgid "rho = %1   [centered at %2]"
-msgstr ""
+msgstr "rho = %1   [vycentrováno na %2]"
 
 #: objects/circle_imp.cc:337
 msgid "circle"
@@ -3911,40 +3923,40 @@ msgstr "kružnice"
 
 #: objects/circle_imp.cc:338
 msgid "Select this circle"
-msgstr "Vybrat tento kruh"
+msgstr "Vybrat tuto kružnici"
 
 #: objects/circle_imp.cc:339
 #, kde-format
 msgid "Select circle %1"
-msgstr "Vybrat kruh %1"
+msgstr "Vybrat kružnici %1"
 
 #: objects/circle_imp.cc:340
 msgid "Remove a Circle"
-msgstr "Odstranit kruh"
+msgstr "Odstranit kružnici"
 
 #: objects/circle_imp.cc:341
 msgid "Add a Circle"
-msgstr "Přidat kruh"
+msgstr "Přidat kružnici"
 
 #: objects/circle_imp.cc:342
 msgid "Move a Circle"
-msgstr "Přesunout kruh"
+msgstr "Přesunout kružnici"
 
 #: objects/circle_imp.cc:343
 msgid "Attach to this circle"
-msgstr "Připojit k tomuto kruhu"
+msgstr "Připojit k této kružnici"
 
 #: objects/circle_imp.cc:344
 msgid "Show a Circle"
-msgstr ""
+msgstr "Zobrazit kružnici"
 
 #: objects/circle_imp.cc:345
 msgid "Hide a Circle"
-msgstr "Skrýt kruh"
+msgstr "Skrýt kružnici"
 
 #: objects/circle_type.cc:18
 msgid "Construct a circle through this point"
-msgstr ""
+msgstr "Sestrojit kružnici procházející tímto bodem"
 
 #: objects/circle_type.cc:20
 #, kde-format
@@ -3959,15 +3971,15 @@ msgstr "Zadejte střed nové kružnice..."
 #: objects/circle_type.cc:24 objects/circle_type.cc:49
 #: objects/circle_type.cc:50 objects/circle_type.cc:51
 msgid "Select a point for the new circle to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nová kružnice procházet..."
 
 #: objects/circle_type.cc:178
 msgid "With this radius"
-msgstr ""
+msgstr "S tímto poloměrem"
 
 #: objects/circle_type.cc:178
 msgid "Select the length of the radius..."
-msgstr ""
+msgstr "Vyberte délku poloměru..."
 
 #: objects/conic_imp.cc:73
 msgid "Conic Type"
@@ -3975,11 +3987,11 @@ msgstr "Typ kuželosečky"
 
 #: objects/conic_imp.cc:75
 msgid "First Focus"
-msgstr ""
+msgstr "První ohnisko"
 
 #: objects/conic_imp.cc:76
 msgid "Second Focus"
-msgstr ""
+msgstr "Druhé ohnisko"
 
 #: objects/conic_imp.cc:202
 #, kde-format
@@ -4004,7 +4016,7 @@ msgstr "ró"
 #: objects/conic_imp.cc:263
 #, kde-format
 msgid "cos theta"
-msgstr ""
+msgstr "cos theta"
 
 #: objects/conic_imp.cc:264
 #, kde-format
@@ -4014,15 +4026,15 @@ msgstr "sinus theta"
 #: objects/conic_imp.cc:266
 #, kde-format
 msgid "[centered at %1]"
-msgstr ""
+msgstr "[vycentrováno na %1]"
 
 #: objects/conic_imp.cc:378
 msgid "conic"
-msgstr ""
+msgstr "kuželosečka"
 
 #: objects/conic_imp.cc:379
 msgid "Select this conic"
-msgstr ""
+msgstr "Vybrat tuto kuželosečku"
 
 #: objects/conic_imp.cc:380
 #, kde-format
@@ -4055,52 +4067,52 @@ msgstr "Skrýt kuželosečku"
 
 #: objects/conic_imp.cc:524
 msgid "Supporting Conic"
-msgstr ""
+msgstr "Podporující kuželosečka"
 
 #: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
 msgid "First End Point"
-msgstr ""
+msgstr "První koncový bod"
 
 #: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
 msgid "Second End Point"
-msgstr ""
+msgstr "Druhý koncový bod"
 
 #: objects/conic_imp.cc:603
 msgid "conic arc"
-msgstr "kuželosečkový oblouk"
+msgstr "kuželový oblouk"
 
 #: objects/conic_imp.cc:604
 msgid "Select this conic arc"
-msgstr "Vybrat tento kuželosečkový oblouk"
+msgstr "Vybrat tento kuželový oblouk"
 
 #: objects/conic_imp.cc:605
 #, kde-format
 msgid "Select conic arc %1"
-msgstr "Vybrat kuželosečkový oblouk %1"
+msgstr "Vybrat kuželový oblouk %1"
 
 #: objects/conic_imp.cc:606
 msgid "Remove a Conic Arc"
-msgstr "Odstranit kuželosečkový oblouk"
+msgstr "Odstranit kuželový oblouk"
 
 #: objects/conic_imp.cc:607
 msgid "Add a Conic Arc"
-msgstr "Přidat kuželosečkový oblouk"
+msgstr "Přidat kuželový oblouk"
 
 #: objects/conic_imp.cc:608
 msgid "Move a Conic Arc"
-msgstr "Posunout kuželosečkový oblouk"
+msgstr "Posunout kuželový oblouk"
 
 #: objects/conic_imp.cc:609
 msgid "Attach to this conic arc"
-msgstr "Připojit k tomuto kuželosečkovému oblouku"
+msgstr "Připojit k tomuto kuželovému oblouku"
 
 #: objects/conic_imp.cc:610
 msgid "Show a Conic Arc"
-msgstr "Zobrazit kuželosečkový oblouk"
+msgstr "Zobrazit kuželový oblouk"
 
 #: objects/conic_imp.cc:611
 msgid "Hide a Conic Arc"
-msgstr "Skrýt kuželosečkový oblouk"
+msgstr "Skrýt kuželový oblouk"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
@@ -4128,45 +4140,45 @@ msgstr "Vyberte druhou asymptotu pro novou kuželosečku..."
 
 #: objects/conic_types.cc:114
 msgid "Construct an ellipse with this focus"
-msgstr ""
+msgstr "Sestrojit elipsu s tímto ohniskem"
 
 #: objects/conic_types.cc:117
 msgid "Select the first focus of the new ellipse..."
-msgstr ""
+msgstr "Vyberte první ohnisko nové elipsy..."
 
 #: objects/conic_types.cc:118
 msgid "Select the second focus of the new ellipse..."
-msgstr ""
+msgstr "Vyberte druhé ohnisko nové elipsy..."
 
 #: objects/conic_types.cc:119
 msgid "Construct an ellipse through this point"
-msgstr ""
+msgstr "Sestrojit elipsu procházející tímto bodem"
 
 #: objects/conic_types.cc:119
 msgid "Select a point for the new ellipse to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nová elipsa procházet..."
 
 #: objects/conic_types.cc:143
 msgid "Construct a hyperbola with this focus"
-msgstr ""
+msgstr "Sestrojit hyperbolu s tímto ohniskem"
 
 #: objects/conic_types.cc:146
 msgid "Select the first focus of the new hyperbola..."
-msgstr ""
+msgstr "Vyberte první ohnisko nové hyperboly..."
 
 #: objects/conic_types.cc:147
 msgid "Select the second focus of the new hyperbola..."
-msgstr ""
+msgstr "Vyberte druhé ohnisko nové hyperboly..."
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:375
 msgid "Construct a hyperbola through this point"
-msgstr ""
+msgstr "Sestrojit hyperbolu procházející tímto bodem"
 
 #: objects/conic_types.cc:148 objects/conic_types.cc:378
 #: objects/conic_types.cc:379 objects/conic_types.cc:380
 #: objects/conic_types.cc:381
 msgid "Select a point for the new hyperbola to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nová hyperbola procházet..."
 
 #: objects/conic_types.cc:179
 msgid "Construct a conic with this line as directrix"
@@ -4877,11 +4889,11 @@ msgstr "Skrýt vektor"
 
 #: objects/other_imp.cc:628
 msgid "arc"
-msgstr "arc"
+msgstr "oblouk"
 
 #: objects/other_imp.cc:629
 msgid "Select this arc"
-msgstr "Vybrat oblouk"
+msgstr "Vybrat tento oblouk"
 
 #: objects/other_imp.cc:630
 #, kde-format
