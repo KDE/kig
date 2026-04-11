@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 Scarlett Moore <sgmoore@kde.org>
+# SPDX-FileCopyrightText: 2024-2026 Scarlett Moore <sgmoore@kde.org>
 #
 # SPDX-License-Identifier: CC0-1.0
 ---
@@ -42,7 +42,7 @@ parts:
       - -DBUILD_TESTING=OFF
    override-pull: |
         craftctl default
-        patch -p0 < ${SNAPCRAFT_PROJECT_DIR}/snap/local/cmake_policy.patch
+        patch -p0 < ${SNAPCRAFT_PROJECT_DIR}/snap/local/patches/cmake_policy.patch
     prime:
       - -usr/lib/*/cmake/*
       - -usr/include/*
