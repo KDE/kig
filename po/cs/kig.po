@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2026-04-10 23:19+0200\n"
+"PO-Revision-Date: 2026-04-11 21:26+0200\n"
 "Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -4194,20 +4194,20 @@ msgstr "Sestrojit kuželosečku s ohniskem v tomto bodě"
 
 #: objects/conic_types.cc:180
 msgid "Select the focus of the new conic..."
-msgstr ""
+msgstr "Vyberte ohnisko nové kuželosečky..."
 
 #: objects/conic_types.cc:216
 msgid "Construct a parabola through this point"
-msgstr ""
+msgstr "Sestrojte parabolu procházející tímto bodem"
 
 #: objects/conic_types.cc:219 objects/conic_types.cc:220
 #: objects/conic_types.cc:221
 msgid "Select a point for the new parabola to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nová parabola procházet..."
 
 #: objects/conic_types.cc:257
 msgid "Construct a polar point wrt. this conic"
-msgstr ""
+msgstr "Sestrojit polární bod vzhledem k této kuželosečce"
 
 #: objects/conic_types.cc:258 objects/conic_types.cc:298
 msgid "Select the conic wrt. which you want to construct a polar point..."
@@ -4215,19 +4215,19 @@ msgstr "Vyberte kuželosečku na kterou chcete sestrojit polární bod..."
 
 #: objects/conic_types.cc:261
 msgid "Construct the polar point of this line"
-msgstr ""
+msgstr "Sestrojit polární bod této přímky"
 
 #: objects/conic_types.cc:262 objects/conic_types.cc:302
 msgid "Select the line of which you want to construct the polar point..."
-msgstr ""
+msgstr "Vyberte přímku, pro kterou chcete sestrojit polární bod..."
 
 #: objects/conic_types.cc:297
 msgid "Construct a polar line wrt. this conic"
-msgstr ""
+msgstr "Sestrojit polární přímku vzhledem k této kuželosečce"
 
 #: objects/conic_types.cc:301
 msgid "Construct the polar line of this point"
-msgstr ""
+msgstr "Sestrojit polární přímku tohoto bodu"
 
 #: objects/conic_types.cc:338
 msgid "Construct the directrix of this conic"
@@ -4247,11 +4247,11 @@ msgstr "Vyberte řídící přímku nové paraboly..."
 
 #: objects/conic_types.cc:418
 msgid "Construct a parabola with this focus"
-msgstr ""
+msgstr "Sestrojit parabolu s tímto ohniskem"
 
 #: objects/conic_types.cc:418
 msgid "Select the focus of the new parabola..."
-msgstr ""
+msgstr "Vyberte ohnisko nové paraboly..."
 
 #: objects/conic_types.cc:453
 msgid "Construct the asymptotes of this conic"
@@ -4263,13 +4263,15 @@ msgstr "Vyberte kuželosečku ze které si přejete sestrojit asymptoty..."
 
 #: objects/conic_types.cc:489
 msgid "Construct the radical lines of this conic"
-msgstr ""
+msgstr "Sestrojit průnikové přímky této kuželosečky"
 
 #: objects/conic_types.cc:492
 msgid ""
 "Select the first of the two conics of which you want to construct the "
 "radical line..."
 msgstr ""
+"Vyberte první ze dvou kuželoseček, pro kterou chcete sestrojit průnikovou "
+"přímku..."
 
 #: objects/conic_types.cc:493
 msgid ""
@@ -4281,20 +4283,20 @@ msgstr ""
 #: objects/conic_types.cc:604
 #, kde-format
 msgid "Switch Radical Lines"
-msgstr ""
+msgstr "Přepnout průnikové přímky"
 
 #: objects/conic_types.cc:619
 #, kde-format
 msgid "Switch Conic Radical Lines"
-msgstr ""
+msgstr "Přepnout průnikové přímky kuželosečky"
 
 #: objects/cubic_imp.cc:346
 msgid "cubic curve"
-msgstr ""
+msgstr "kubická křivka"
 
 #: objects/cubic_imp.cc:347
 msgid "Select this cubic curve"
-msgstr ""
+msgstr "Vybrat tuto kubickou křivku"
 
 #: objects/cubic_imp.cc:348
 #, kde-format
@@ -4315,11 +4317,11 @@ msgstr "Přesunout kubickou křivku"
 
 #: objects/cubic_imp.cc:352
 msgid "Attach to this cubic curve"
-msgstr ""
+msgstr "Připojit k této kubické křivce"
 
 #: objects/cubic_imp.cc:353
 msgid "Show a Cubic Curve"
-msgstr ""
+msgstr "Zobrazit kubickou křivku"
 
 #: objects/cubic_imp.cc:354
 msgid "Hide a Cubic Curve"
@@ -4327,11 +4329,11 @@ msgstr "Skrýt kubickou křivku"
 
 #: objects/cubic_type.cc:11
 msgid "Construct a cubic curve through this point"
-msgstr ""
+msgstr "Sestrojit kubickou křivku procházející tímto bodem"
 
 #: objects/cubic_type.cc:12
 msgid "Select a point for the new cubic to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nová kubická křivka procházet..."
 
 #: objects/curve_imp.cc:18
 msgid "curve"
@@ -4364,7 +4366,7 @@ msgstr "Připojit k této křivce"
 
 #: objects/curve_imp.cc:25
 msgid "Show a Curve"
-msgstr ""
+msgstr "Zobrazit křivku"
 
 #: objects/curve_imp.cc:26
 msgid "Hide a Curve"
@@ -4373,76 +4375,76 @@ msgstr "Skrýt křivku"
 #: objects/curve_imp.cc:344
 #, kde-format
 msgid "Possibly transcendental curve"
-msgstr ""
+msgstr "Pravděpodobně transcendentní křivka"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
 msgid "Already computed intersection point"
-msgstr ""
+msgstr "Již vypočítaný průsečík"
 
 #: objects/intersection_types.cc:372
 msgid "Intersect with this cubic curve"
-msgstr ""
+msgstr "Průsečík s touto kubickou křivkou"
 
 #: objects/intersection_types.cc:526
 msgid "Intersect with this arc"
-msgstr ""
+msgstr "Průsečík s tímto obloukem"
 
 #: objects/inversion_type.cc:19
 msgid "Invert with respect to this circle"
-msgstr ""
+msgstr "Invertovat vzhledem k této kružnici"
 
 #: objects/inversion_type.cc:20
 msgid "Select the circle we want to invert against..."
-msgstr ""
+msgstr "Vyberte kružnici, vůči které chceme provést inverzi..."
 
 #: objects/inversion_type.cc:23
 msgid "Compute the inversion of this object"
-msgstr ""
+msgstr "Vypočítat inverzi tohoto objektu"
 
 #: objects/inversion_type.cc:23
 msgid "Select the object to invert..."
-msgstr ""
+msgstr "Vyberte objekt, který chcete invertovat..."
 
 #: objects/inversion_type.cc:270
 msgid "Compute the inversion of this point"
-msgstr ""
+msgstr "Vypočítat inverzi tohoto bodu"
 
 #: objects/inversion_type.cc:270
 msgid "Select the point to invert..."
-msgstr ""
+msgstr "Vyberte bod, který chcete invertovat..."
 
 #: objects/inversion_type.cc:329
 msgid "Compute the inversion of this line"
-msgstr ""
+msgstr "Vypočítat inverzi této přímky"
 
 #: objects/inversion_type.cc:329
 msgid "Select the line to invert..."
-msgstr ""
+msgstr "Vyberte přímku, kterou chcete invertovat..."
 
 #: objects/inversion_type.cc:381
 msgid "Compute the inversion of this segment"
-msgstr ""
+msgstr "Vypočítat inverzi této úsečky"
 
 #: objects/inversion_type.cc:381
 msgid "Select the segment to invert..."
-msgstr ""
+msgstr "Vyberte úsečku, kterou chcete invertovat..."
 
 #: objects/inversion_type.cc:469
 msgid "Compute the inversion of this circle"
-msgstr ""
+msgstr "Vypočítat inverzi této kružnice"
 
 #: objects/inversion_type.cc:469
 msgid "Select the circle to invert..."
-msgstr ""
+msgstr "Vyberte kružnici, kterou chcete invertovat..."
 
 #: objects/inversion_type.cc:533
 msgid "Compute the inversion of this arc"
-msgstr ""
+msgstr "Vypočítat inverzi tohoto oblouku"
 
 #: objects/inversion_type.cc:533
 msgid "Select the arc to invert..."
-msgstr ""
+msgstr "Vyberte oblouk, který chcete invertovat..."
 
 #: objects/line_imp.cc:86
 msgid "Slope"
@@ -4458,11 +4460,11 @@ msgstr "Délka"
 
 #: objects/line_imp.cc:116 objects/line_imp.cc:193
 msgid "Support Line"
-msgstr ""
+msgstr "Podpůrná přímka"
 
 #: objects/line_imp.cc:194
 msgid "End Point"
-msgstr ""
+msgstr "Konečný bod"
 
 #: objects/line_imp.cc:544 objects/line_imp.cc:560
 msgid "line"
@@ -4507,28 +4509,28 @@ msgstr "Skrýt přímku"
 
 #: objects/line_imp.cc:576
 msgid "segment"
-msgstr "segment"
+msgstr "úsečka"
 
 #: objects/line_imp.cc:577
 msgid "Select this segment"
-msgstr "Vybrat tento segment"
+msgstr "Vybrat tuto úsečku"
 
 #: objects/line_imp.cc:578
 #, kde-format
 msgid "Select segment %1"
-msgstr "Vybrat segment %1"
+msgstr "Vybrat úsečku %1"
 
 #: objects/line_imp.cc:579
 msgid "Remove a Segment"
-msgstr "Odstranit segment"
+msgstr "Odstranit úsečku"
 
 #: objects/line_imp.cc:580
 msgid "Add a Segment"
-msgstr "Přidat segment"
+msgstr "Přidat úsečku"
 
 #: objects/line_imp.cc:581
 msgid "Move a Segment"
-msgstr "Přesunout segment"
+msgstr "Přesunout úsečku"
 
 #: objects/line_imp.cc:582
 msgid "Attach to this segment"
@@ -4536,11 +4538,11 @@ msgstr "Připojit k této úsečce"
 
 #: objects/line_imp.cc:583
 msgid "Show a Segment"
-msgstr "Zobrazit segment"
+msgstr "Zobrazit úsečku"
 
 #: objects/line_imp.cc:584
 msgid "Hide a Segment"
-msgstr "Skrýt segment"
+msgstr "Skrýt úsečku"
 
 #: objects/line_imp.cc:592
 msgid "half-line"
@@ -4581,47 +4583,47 @@ msgstr "Skrýt polopřímku"
 
 #: objects/line_type.cc:22
 msgid "Construct a segment starting at this point"
-msgstr ""
+msgstr "Sestrojit úsečku začínající v tomto bodě"
 
 #: objects/line_type.cc:22
 msgid "Select the start point of the new segment..."
-msgstr ""
+msgstr "Vyberte počáteční bod nové úsečky..."
 
 #: objects/line_type.cc:23
 msgid "Construct a segment ending at this point"
-msgstr ""
+msgstr "Sestrojit úsečku končící v tomto bodě"
 
 #: objects/line_type.cc:23
 msgid "Select the end point of the new segment..."
-msgstr ""
+msgstr "Vyberte koncový bod nové úsečky..."
 
 #: objects/line_type.cc:47
 msgid "Construct a line through this point"
-msgstr ""
+msgstr "Sestrojit přímku procházející tímto bodem"
 
 #: objects/line_type.cc:50
 msgid "Select a point for the line to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má přímka procházet..."
 
 #: objects/line_type.cc:51
 msgid "Select another point for the line to go through..."
-msgstr ""
+msgstr "Vyberte jiný bod, kterým má přímka procházet..."
 
 #: objects/line_type.cc:75
 msgid "Construct a half-line starting at this point"
-msgstr ""
+msgstr "Sestrojit polopřímku začínající v tomto bodě"
 
 #: objects/line_type.cc:78 objects/line_type.cc:293
 msgid "Select the start point of the new half-line..."
-msgstr ""
+msgstr "Vyberte počáteční bod nové polopřímky..."
 
 #: objects/line_type.cc:79
 msgid "Construct a half-line through this point"
-msgstr ""
+msgstr "Sestrojit polopřímku procházející tímto bodem"
 
 #: objects/line_type.cc:79
 msgid "Select a point for the half-line to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má polopřímka procházet..."
 
 #: objects/line_type.cc:104
 msgid "Construct the axis of this segment"
@@ -4629,35 +4631,35 @@ msgstr "Sestrojit osu této úsečky"
 
 #: objects/line_type.cc:104
 msgid "Select the segment of which you want to draw the axis..."
-msgstr "Vyberte segment, jemuž si přejete nakreslit osu..."
+msgstr "Vyberte úsečku, ke které chcete nakreslit osu..."
 
 #: objects/line_type.cc:155
 msgid "Construct a line parallel to this line"
-msgstr ""
+msgstr "Sestrojit přímku rovnoběžnou s touto přímkou"
 
 #: objects/line_type.cc:155
 msgid "Select a line parallel to the new line..."
-msgstr ""
+msgstr "Vyberte přímku rovnoběžnou s novou přímkou..."
 
 #: objects/line_type.cc:156
 msgid "Construct the parallel line through this point"
-msgstr ""
+msgstr "Sestrojit rovnoběžnou přímku procházející tímto bodem"
 
 #: objects/line_type.cc:156 objects/line_type.cc:183 objects/line_type.cc:256
 msgid "Select a point for the new line to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má nová přímka procházet..."
 
 #: objects/line_type.cc:182
 msgid "Construct a line perpendicular to this line"
-msgstr ""
+msgstr "Sestrojit přímku kolmou na tuto přímku"
 
 #: objects/line_type.cc:182
 msgid "Select a line perpendicular to the new line..."
-msgstr ""
+msgstr "Vyberte přímku kolmou na novou přímku..."
 
 #: objects/line_type.cc:183
 msgid "Construct a perpendicular line through this point"
-msgstr ""
+msgstr "Sestrojit kolmou přímku procházející tímto bodem"
 
 #: objects/line_type.cc:224
 #, kde-format
@@ -4677,23 +4679,23 @@ msgstr "Vybrat novou délku: "
 #: objects/line_type.cc:249
 #, kde-format
 msgid "Resize Segment"
-msgstr ""
+msgstr "Změnit velikost úsečky"
 
 #: objects/line_type.cc:255
 msgid "Construct a line by this vector"
-msgstr ""
+msgstr "Sestrojit přímku podle tohoto vektoru"
 
 #: objects/line_type.cc:255
 msgid "Select a vector in the direction of the new line..."
-msgstr ""
+msgstr "Vyberte vektor ve směru nové přímky..."
 
 #: objects/line_type.cc:292
 msgid "Construct a half-line by this vector"
-msgstr ""
+msgstr "Sestrojit polopřímku podle tohoto vektoru"
 
 #: objects/line_type.cc:292
 msgid "Select a vector in the direction of the new half-line..."
-msgstr ""
+msgstr "Vyberte vektor ve směru nové polopřímky..."
 
 #: objects/locus_imp.cc:186
 msgid "locus"
@@ -4767,7 +4769,7 @@ msgstr "Připojit k tomuto objektu"
 
 #: objects/object_imp.cc:286
 msgid "Show an object"
-msgstr ""
+msgstr "Zobrazit objekt"
 
 #: objects/object_imp.cc:287
 msgid "Hide an object"
@@ -4787,11 +4789,11 @@ msgstr "Středový bod"
 
 #: objects/other_imp.cc:226
 msgid "X length"
-msgstr ""
+msgstr "Délka X"
 
 #: objects/other_imp.cc:227
 msgid "Y length"
-msgstr ""
+msgstr "Délka Y"
 
 #: objects/other_imp.cc:228
 msgid "Opposite Vector"
@@ -4803,7 +4805,7 @@ msgstr "Úhel"
 
 #: objects/other_imp.cc:396
 msgid "Sector Surface"
-msgstr ""
+msgstr "Povrch sektoru"
 
 #: objects/other_imp.cc:397
 msgid "Arc Length"
@@ -4811,7 +4813,7 @@ msgstr "Délka oblouku"
 
 #: objects/other_imp.cc:398
 msgid "Support Circle"
-msgstr ""
+msgstr "Podpůrná kružnice"
 
 #: objects/other_imp.cc:598
 msgid "angle"
@@ -4942,12 +4944,12 @@ msgstr "bod"
 
 #: objects/point_imp.cc:154
 msgid "Select this point"
-msgstr ""
+msgstr "Vybrat tento bod"
 
 #: objects/point_imp.cc:155
 #, kde-format
 msgid "Select point %1"
-msgstr ""
+msgstr "Vybrat bod %1"
 
 #: objects/point_imp.cc:156
 msgid "Remove a Point"
@@ -4975,35 +4977,37 @@ msgstr "Skrýt bod"
 
 #: objects/point_type.cc:242 objects/point_type.cc:246
 msgid "Construct the midpoint of this point and another point"
-msgstr ""
+msgstr "Sestrojit střed tohoto bodu a jiného bodu"
 
 #: objects/point_type.cc:243
 msgid ""
 "Select the first of the two points of which you want to construct the "
 "midpoint..."
-msgstr ""
+msgstr "Vyberte první ze dvou bodů, jejichž střed chcete sestrojit..."
 
 #: objects/point_type.cc:247
 msgid ""
 "Select the other of the two points of which you want to construct the "
 "midpoint..."
-msgstr ""
+msgstr "Vyberte druhý ze dvou bodů, jejichž střed chcete sestrojit..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
 msgid "Construct the golden ratio point of this point and another point"
-msgstr ""
+msgstr "Sestrojit bod zlatého řezu mezi tímto bodem a jiným bodem"
 
 #: objects/point_type.cc:275
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
+"Vyberte první ze dvou bodů, z nichž chcete sestrojit bod zlatého řezu..."
 
 #: objects/point_type.cc:279
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
+"Vyberte druhý ze dvou bodů, z nichž chcete sestrojit bod zlatého řezu..."
 
 #: objects/point_type.cc:386
 #, kde-format
@@ -5018,7 +5022,7 @@ msgstr "Předefinovat"
 #: objects/point_type.cc:394
 #, kde-format
 msgid "Set &Parameter..."
-msgstr ""
+msgstr "Nastavit &parametr..."
 
 #: objects/point_type.cc:412
 #, kde-format
@@ -5033,7 +5037,7 @@ msgstr "Vložte nové souřadnice."
 #: objects/point_type.cc:452
 #, kde-format
 msgid "Set Point Parameter"
-msgstr ""
+msgstr "Nastavit parametr bodu"
 
 #: objects/point_type.cc:452
 #, kde-format
@@ -5043,35 +5047,35 @@ msgstr "Vyberte nový parametr: "
 #: objects/point_type.cc:458
 #, kde-format
 msgid "Change Parameter of Constrained Point"
-msgstr ""
+msgstr "Změnit parametr omezeného bodu"
 
 #: objects/point_type.cc:743
 msgid "Select the circle on which to transport a measure..."
-msgstr ""
+msgstr "Vyberte kružnici, na kterou chcete míru přenést..."
 
 #: objects/point_type.cc:744
 msgid "Select a point on the circle..."
-msgstr ""
+msgstr "Vyberte bod na kružnici..."
 
 #: objects/point_type.cc:745
 msgid "Select the segment to transport on the circle..."
-msgstr ""
+msgstr "Vyberte úsečku, kterou chcete přenést na kružnici..."
 
 #: objects/point_type.cc:794
 msgid "Select a number/length as x coordinate of the point..."
-msgstr ""
+msgstr "Vyberte číslo/délku jako souřadnici x bodu..."
 
 #: objects/point_type.cc:795
 msgid "Select a number/length as y coordinate of the point..."
-msgstr ""
+msgstr "Vyberte číslo/délku jako souřadnici y bodu..."
 
 #: objects/point_type.cc:820
 msgid "Select a point to project onto a line..."
-msgstr "Vyberte bod jež bude promítnut na přímku..."
+msgstr "Vyberte bod, který chcete promítnout na přímku..."
 
 #: objects/point_type.cc:821
 msgid "Line where the projected point will lie..."
-msgstr ""
+msgstr "Přímka, na které bude ležet promítnutý bod..."
 
 #: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
 #: objects/polygon_imp.cc:316
@@ -5084,35 +5088,35 @@ msgstr "Obvod"
 
 #: objects/polygon_imp.cc:291
 msgid "Boundary Polygonal"
-msgstr ""
+msgstr "Hraniční mnohoúhelník"
 
 #: objects/polygon_imp.cc:292
 msgid "Open Boundary Polygonal"
-msgstr ""
+msgstr "Otevřený hraniční mnohoúhelník"
 
 #: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
 msgid "Center of Mass of the Vertices"
-msgstr ""
+msgstr "Těžiště vrcholů"
 
 #: objects/polygon_imp.cc:294 objects/polygon_imp.cc:308
 msgid "Winding Number"
-msgstr ""
+msgstr "Počet otočení"
 
 #: objects/polygon_imp.cc:305
 msgid "Inside Polygon"
-msgstr ""
+msgstr "Uvnitř mnohoúhelníku"
 
 #: objects/polygon_imp.cc:306
 msgid "Open Polygonal Curve"
-msgstr ""
+msgstr "Otevřená mnohoúhelníková křivka"
 
 #: objects/polygon_imp.cc:319
 msgid "Associated Polygon"
-msgstr ""
+msgstr "Přidružený mnohoúhelník"
 
 #: objects/polygon_imp.cc:320
 msgid "Closed Polygonal Curve"
-msgstr ""
+msgstr "Uzavřená mnohoúhelníková křivka"
 
 #: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
 msgid "polygon"
