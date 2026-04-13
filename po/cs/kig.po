@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2026-04-11 21:26+0200\n"
-"Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
+"PO-Revision-Date: 2026-04-12 20:59+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -293,7 +293,8 @@ msgid ""
 "This Dr. Geo file contains an intersection type, which Kig does not "
 "currently support."
 msgstr ""
-"Tento soubor Dr. Geo obsahuje druh průniků, který Kig momentálně nepodporuje."
+"Tento soubor Dr. Geo obsahuje druh průsečíků, který Kig momentálně "
+"nepodporuje."
 
 #: filters/exporter.cc:59
 #, kde-format
@@ -2262,7 +2263,7 @@ msgid ""
 "The lines constructed through the intersections of two conics.  This is also "
 "defined for non-intersecting conics."
 msgstr ""
-"Přímky procházející průniky dvou kuželoseček.  To platí i pro kuželosečky, "
+"Přímky procházející průsečíky dvou kuželoseček.  To platí i pro kuželosečky, "
 "které se neprotínají."
 
 #: misc/special_constructors.cc:327 misc/special_constructors.cc:411
@@ -2625,77 +2626,77 @@ msgstr "Vyberte počáteční bod na přímce/kružnici..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 msgid "Intersect with this conic"
-msgstr "Průnik s touto kuželosečkou"
+msgstr "Průsečík s touto kuželosečkou"
 
 #: misc/special_constructors.cc:1683 misc/special_constructors.cc:1686
 #: objects/intersection_types.cc:17
 msgid "Intersect with this line"
-msgstr "Průnik s touto přímkou"
+msgstr "Průsečík s touto přímkou"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
 msgid "Intersect with this cubic"
-msgstr "Průnik s touto kubikou"
+msgstr "Průsečík s touto kubikou"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
 msgid "Intersect with this circle"
-msgstr "Průnik s touto kružnicí"
+msgstr "Průsečík s touto kružnicí"
 
 #: misc/special_constructors.cc:1692
 #, kde-format
 msgid "Intersect"
-msgstr "Průnik"
+msgstr "Průsečík"
 
 #: misc/special_constructors.cc:1692
 #, kde-format
 msgid "The intersection of two objects"
-msgstr "Průnik dvou objektů"
+msgstr "Průsečík dvou objektů"
 
 #: misc/special_constructors.cc:1766
 #, kde-format
 msgid "Intersect this Circle"
-msgstr "Průnik této kružnice"
+msgstr "Průsečík této kružnice"
 
 #: misc/special_constructors.cc:1768
 #, kde-format
 msgid "Intersect this Conic"
-msgstr "Průnik této kuželosečky"
+msgstr "Průsečík této kuželosečky"
 
 #: misc/special_constructors.cc:1770
 #, kde-format
 msgid "Intersect this Segment"
-msgstr "Průnik této úsečky"
+msgstr "Průsečík této úsečky"
 
 #: misc/special_constructors.cc:1772
 #, kde-format
 msgid "Intersect this Half-line"
-msgstr "Průnik této polopřímky"
+msgstr "Průsečík této polopřímky"
 
 #: misc/special_constructors.cc:1774
 #, kde-format
 msgid "Intersect this Line"
-msgstr "Průnik této přímky"
+msgstr "Průsečík této přímky"
 
 #: misc/special_constructors.cc:1776
 #, kde-format
 msgid "Intersect this Cubic Curve"
-msgstr "Průnik této kubické křivky"
+msgstr "Průsečík této kubické křivky"
 
 #: misc/special_constructors.cc:1778
 #, kde-format
 msgid "Intersect this Arc"
-msgstr "Průnik tohoto oblouku"
+msgstr "Průsečík tohoto oblouku"
 
 #: misc/special_constructors.cc:1780
 #, kde-format
 msgid "Intersect this Polygon"
-msgstr "Průnik tohoto mnohoúhelníku"
+msgstr "Průsečík tohoto mnohoúhelníku"
 
 #: misc/special_constructors.cc:1782
 #, kde-format
 msgid "Intersect this Polygonal"
-msgstr "Průnik tohoto mnohoúhelníkového"
+msgstr "Průsečík tohoto mnohoúhelníkového"
 
 #: misc/special_constructors.cc:1788
 #, kde-format
@@ -2782,12 +2783,12 @@ msgstr "Vyberte druhý z bodů, z nichž chcete sestrojit bod zlatého řezu..."
 #: misc/special_constructors.cc:1979
 #, kde-format
 msgid "Select the first object to intersect..."
-msgstr "Vyberte první objekt, se kterým se má provést průnik..."
+msgstr "Vyberte první objekt, se kterým se má provést průsečík..."
 
 #: misc/special_constructors.cc:1981
 #, kde-format
 msgid "Select the second object to intersect..."
-msgstr "Vyberte druhý objekt, se kterým se má provést průnik..."
+msgstr "Vyberte druhý objekt, se kterým se má provést průsečík..."
 
 #: misc/special_constructors.cc:1985
 #, kde-format
@@ -3712,7 +3713,7 @@ msgstr "Skrýt Bézierovu kubickou křivku"
 
 #: objects/bezier_imp.cc:490
 msgid "Rational Bézier Curve"
-msgstr "Racionální Bézierova křivka "
+msgstr "Racionální Bézierova křivka"
 
 #: objects/bezier_imp.cc:491
 msgid "Select this Rational Bézier Curve"
@@ -5157,77 +5158,77 @@ msgstr "Skrýt mnohoúhelník"
 
 #: objects/polygon_imp.cc:645
 msgid "closed polygonal curve"
-msgstr ""
+msgstr "uzavřená mnohoúhelníková křivka"
 
 #: objects/polygon_imp.cc:646
 msgid "Select this closed polygonal curve"
-msgstr ""
+msgstr "Vybrat tuto uzavřenou mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:647
 #, kde-format
 msgid "Select closed polygonal curve %1"
-msgstr ""
+msgstr "Vybrat uzavřenou mnohoúhelníkovou křivku %1"
 
 #: objects/polygon_imp.cc:648
 msgid "Remove a closed polygonal curve"
-msgstr ""
+msgstr "Odstranit uzavřenou mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:649
 msgid "Add a closed polygonal curve"
-msgstr ""
+msgstr "Přidat uzavřenou mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:650
 msgid "Move a closed polygonal curve"
-msgstr ""
+msgstr "Přesunout uzavřenou mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:651
 msgid "Attach to this closed polygonal curve"
-msgstr ""
+msgstr "Připojit k této uzavřené mnohoúhelníkové křivce"
 
 #: objects/polygon_imp.cc:652
 msgid "Show a closed polygonal curve"
-msgstr ""
+msgstr "Zobrazit uzavřenou mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:653
 msgid "Hide a closed polygonal curve"
-msgstr ""
+msgstr "Skrýt uzavřenou mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:662
 msgid "polygonal curve"
-msgstr ""
+msgstr "mnohoúhelníková křivka"
 
 #: objects/polygon_imp.cc:663
 msgid "Select this polygonal curve"
-msgstr ""
+msgstr "Vybrat tuto mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:664
 #, kde-format
 msgid "Select polygonal curve %1"
-msgstr ""
+msgstr "Vybrat mnohoúhelníkovou křivku %1"
 
 #: objects/polygon_imp.cc:665
 msgid "Remove a polygonal curve"
-msgstr ""
+msgstr "Odstranit mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:666
 msgid "Add a polygonal curve"
-msgstr ""
+msgstr "Přidat mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:667
 msgid "Move a polygonal curve"
-msgstr ""
+msgstr "Přesunout mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:668
 msgid "Attach to this polygonal curve"
-msgstr ""
+msgstr "Připojit k této mnohoúhelníkové křivce"
 
 #: objects/polygon_imp.cc:669
 msgid "Show a polygonal curve"
-msgstr ""
+msgstr "Zobrazit mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:670
 msgid "Hide a polygonal curve"
-msgstr ""
+msgstr "Skrýt mnohoúhelníkovou křivku"
 
 #: objects/polygon_imp.cc:679
 msgid "triangle"
@@ -5268,132 +5269,137 @@ msgstr "Skrýt trojúhelník"
 
 #: objects/polygon_imp.cc:696
 msgid "quadrilateral"
-msgstr ""
+msgstr "čtyřúhelník"
 
 #: objects/polygon_imp.cc:697
 msgid "Select this quadrilateral"
-msgstr ""
+msgstr "Vybrat tento čtyřúhelník"
 
 #: objects/polygon_imp.cc:698
 #, kde-format
 msgid "Select quadrilateral %1"
-msgstr ""
+msgstr "Vybrat čtyřúhelník %1"
 
 #: objects/polygon_imp.cc:699
 msgid "Remove a Quadrilateral"
-msgstr ""
+msgstr "Odstranit čtyřúhelník"
 
 #: objects/polygon_imp.cc:700
 msgid "Add a Quadrilateral"
-msgstr ""
+msgstr "Přidat čtyřúhelník"
 
 #: objects/polygon_imp.cc:701
 msgid "Move a Quadrilateral"
-msgstr ""
+msgstr "Přesunout čtyřúhelník"
 
 #: objects/polygon_imp.cc:702
 msgid "Attach to this quadrilateral"
-msgstr ""
+msgstr "Připojit k tomuto čtyřúhelníku"
 
 #: objects/polygon_imp.cc:703
 msgid "Show a Quadrilateral"
-msgstr ""
+msgstr "Zobrazit čtyřúhelník"
 
 #: objects/polygon_imp.cc:704
 msgid "Hide a Quadrilateral"
-msgstr ""
+msgstr "Skrýt čtyřúhelník"
 
 #: objects/polygon_type.cc:24
 msgid "Construct a triangle with this vertex"
-msgstr ""
+msgstr "Sestrojit trojúhelník s tímto vrcholem"
 
 #: objects/polygon_type.cc:25
 msgid "Select a point to be a vertex of the new triangle..."
-msgstr ""
+msgstr "Vyberte bod, který bude vrcholem nového trojúhelníku..."
 
 #: objects/polygon_type.cc:470
 msgid "Intersect this polygon with a line"
-msgstr ""
+msgstr "Průsečík tohoto mnohoúhelníku s přímkou"
 
 #: objects/polygon_type.cc:471
 msgid "Select the polygon of which you want the intersection with a line..."
-msgstr ""
+msgstr "Vyberte mnohoúhelník, jehož průsečík s přímkou chcete sestrojit..."
 
 #: objects/polygon_type.cc:474
 msgid "Intersect this line with a polygon"
-msgstr ""
+msgstr "Průsečík této přímky s mnohoúhelníkem"
 
 #: objects/polygon_type.cc:475
 msgid "Select the line of which you want the intersection with a polygon..."
-msgstr ""
+msgstr "Vyberte přímku, u které chcete sestrojit průsečík s mnohoúhelníkem..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
 msgid "Intersect this polygonal curve with a line"
-msgstr ""
+msgstr "Průsečík této mnohoúhelníkové křivky s přímkou"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
 msgstr ""
+"Vyberte mnohoúhelníkovou křivku, u které chcete sestrojit průsečík s "
+"přímkou..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
 msgid "Intersect this line with a polygonal curve"
-msgstr ""
+msgstr "Průsečík této přímky s mnohoúhelníkovou křivkou"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
 msgstr ""
+"Vyberte přímku, u které chcete sestrojit průsečík s mnohoúhelníkovou "
+"křivkou..."
 
 #: objects/polygon_type.cc:788
 msgid "Intersect this polygon with another polygon"
-msgstr ""
+msgstr "Průsečík tohoto mnohoúhelníku s jiným mnohoúhelníkem"
 
 #: objects/polygon_type.cc:789
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
 msgstr ""
+"Vyberte mnohoúhelník, jehož průsečík s jiným mnohoúhelníkem chcete zjistit..."
 
 #: objects/polygon_type.cc:791
 msgid "Intersect with this polygon"
-msgstr ""
+msgstr "Průsečík s tímto mnohoúhelníkem"
 
 #: objects/polygon_type.cc:791
 msgid "Select the second polygon for the intersection..."
-msgstr ""
+msgstr "Vyberte druhý mnohoúhelník pro průsečík..."
 
 #: objects/polygon_type.cc:930
 msgid "Construct the vertices of this polygon"
-msgstr ""
+msgstr "Sestrojit vrcholy tohoto mnohoúhelníku"
 
 #: objects/polygon_type.cc:931
 msgid "Select the polygon of which you want to construct the vertices..."
-msgstr ""
+msgstr "Vyberte mnohoúhelník, z něhož chcete vytvořit vrcholy..."
 
 #: objects/polygon_type.cc:974
 msgid "Construct the sides of this polygon"
-msgstr ""
+msgstr "Sestrojit strany tohoto mnohoúhelníku"
 
 #: objects/polygon_type.cc:975
 msgid "Select the polygon of which you want to construct the sides..."
-msgstr ""
+msgstr "Vyberte mnohoúhelník, jehož strany chcete sestrojit..."
 
 #: objects/polygon_type.cc:1022
 msgid "Construct the convex hull of this polygon"
-msgstr ""
+msgstr "Sestrojit konvexní obal tohoto mnohoúhelníku"
 
 #: objects/polygon_type.cc:1023
 msgid "Select the polygon of which you want to construct the convex hull..."
-msgstr ""
+msgstr "Vyberte mnohoúhelník, pro který chcete vytvořit konvexní obal..."
 
 #: objects/special_calcers.cc:8
 #, kde-format
 msgid "Project this point onto the circle"
-msgstr ""
+msgstr "Promítnout tento bod na kružnici"
 
 #: objects/tangent_type.cc:23
 msgid "Select the point for the tangent to go through..."
-msgstr ""
+msgstr "Vyberte bod, kterým má tečna procházet..."
 
 #: objects/tests_type.cc:18
 msgid "Is this line parallel?"
@@ -5401,7 +5407,7 @@ msgstr "Je tato přímka rovnoběžná?"
 
 #: objects/tests_type.cc:18
 msgid "Select the first of the two possibly parallel lines..."
-msgstr ""
+msgstr "Vyberte první ze dvou potenciálně rovnoběžných přímek..."
 
 #: objects/tests_type.cc:19
 msgid "Parallel to this line?"
@@ -5409,7 +5415,7 @@ msgstr "Je rovnoběžná?"
 
 #: objects/tests_type.cc:19
 msgid "Select the other of the two possibly parallel lines..."
-msgstr ""
+msgstr "Vyberte druhou z těchto dvou potenciálně rovnoběžných přímek..."
 
 #: objects/tests_type.cc:46
 #, kde-format
@@ -5423,29 +5429,29 @@ msgstr "Přímky nejsou rovnoběžné."
 
 #: objects/tests_type.cc:57
 msgid "Is this line orthogonal?"
-msgstr ""
+msgstr "Je tato přímka kolmá?"
 
 #: objects/tests_type.cc:57
 msgid "Select the first of the two possibly orthogonal lines..."
-msgstr ""
+msgstr "Vyberte první ze dvou potenciálně kolmých přímek..."
 
 #: objects/tests_type.cc:58
 msgid "Orthogonal to this line?"
-msgstr ""
+msgstr "Kolmá na tuto přímku?"
 
 #: objects/tests_type.cc:58
 msgid "Select the other of the two possibly orthogonal lines..."
-msgstr ""
+msgstr "Vyberte druhou z těchto dvou potenciálně kolmých přímek..."
 
 #: objects/tests_type.cc:85
 #, kde-format
 msgid "These lines are orthogonal."
-msgstr "Přímky jsou ortogonální."
+msgstr "Tyto přímky jsou kolmé."
 
 #: objects/tests_type.cc:87
 #, kde-format
 msgid "These lines are not orthogonal."
-msgstr ""
+msgstr "Tyto přímky nejsou kolmé."
 
 #: objects/tests_type.cc:96
 msgid "Check collinearity of this point"
@@ -5453,37 +5459,37 @@ msgstr "Zkontrolovat kolineárnost tohoto bodu"
 
 #: objects/tests_type.cc:96
 msgid "Select the first of the three possibly collinear points..."
-msgstr "Vyberte první ze tří možná kolineárních bodů..."
+msgstr "Vyberte první ze tří bodů, které mohou ležet na jedné přímce..."
 
 #: objects/tests_type.cc:97
 msgid "and this second point"
-msgstr ""
+msgstr "a tento druhý bod"
 
 #: objects/tests_type.cc:97
 msgid "Select the second of the three possibly collinear points..."
-msgstr ""
+msgstr "Vyberte druhý ze tří bodů, které mohou ležet na jedné přímce..."
 
 #: objects/tests_type.cc:98
 msgid "with this third point"
-msgstr ""
+msgstr "s tímto třetím bodem"
 
 #: objects/tests_type.cc:98
 msgid "Select the last of the three possibly collinear points..."
-msgstr ""
+msgstr "Vyberte poslední ze tří bodů, které mohou ležet na jedné přímce..."
 
 #: objects/tests_type.cc:126
 #, kde-format
 msgid "These points are collinear."
-msgstr ""
+msgstr "Tyto body leží na jedné přímce."
 
 #: objects/tests_type.cc:128
 #, kde-format
 msgid "These points are not collinear."
-msgstr ""
+msgstr "Tyto body neleží na jedné přímce."
 
 #: objects/tests_type.cc:137
 msgid "Check whether this point is on a curve"
-msgstr ""
+msgstr "Zkontrolovat, zda tento bod leží na křivce"
 
 #: objects/tests_type.cc:137 objects/tests_type.cc:180
 msgid "Select the point you want to test..."
@@ -5491,33 +5497,33 @@ msgstr "Zvolte bod, který si přejete otestovat..."
 
 #: objects/tests_type.cc:138
 msgid "Check whether the point is on this curve"
-msgstr ""
+msgstr "Zkontrolovat, zda bod leží na této křivce"
 
 #: objects/tests_type.cc:138
 msgid "Select the curve that the point might be on..."
-msgstr ""
+msgstr "Vyberte křivku, na které by se bod mohl nacházet..."
 
 #: objects/tests_type.cc:165
 #, kde-format
 msgid "This curve contains the point."
-msgstr ""
+msgstr "Tato křivka obsahuje tento bod."
 
 #: objects/tests_type.cc:167
 #, kde-format
 msgid "This curve does not contain the point."
-msgstr ""
+msgstr "Tato křivka neobsahuje tento bod."
 
 #: objects/tests_type.cc:180
 msgid "Check whether this point is in a polygon"
-msgstr ""
+msgstr "Zkontrolovat, zda tento bod leží na mnohoúhelníku"
 
 #: objects/tests_type.cc:181
 msgid "Check whether the point is in this polygon"
-msgstr ""
+msgstr "Zkontrolovat, zda bod leží na mnohoúhelníku"
 
 #: objects/tests_type.cc:181
 msgid "Select the polygon that the point might be in..."
-msgstr "Zvolte mnohoúhelník, který by mohl bod obsahovat..."
+msgstr "Vyberte mnohoúhelník, na kterém by se bod mohl nacházet..."
 
 #: objects/tests_type.cc:208
 #, kde-format
@@ -5531,16 +5537,16 @@ msgstr "Mnohoúhelník neobsahuje bod."
 
 #: objects/tests_type.cc:223
 msgid "Check whether this polygon is convex"
-msgstr "Zkontrolovat jestli je mnohostěn konvexní"
+msgstr "Zkontrolovat, zda je tento mnohoúhelník konvexní"
 
 #: objects/tests_type.cc:223
 msgid "Select the polygon you want to test for convexity..."
-msgstr ""
+msgstr "Vyberte mnohoúhelník, u kterého chcete zkontrolovat konvexitu..."
 
 #: objects/tests_type.cc:249
 #, kde-format
 msgid "This polygon is convex."
-msgstr ""
+msgstr "Tento mnohoúhelník je konvexní."
 
 #: objects/tests_type.cc:251
 #, kde-format
@@ -5549,12 +5555,13 @@ msgstr "Tento mnohoúhelník není konvexní."
 
 #: objects/tests_type.cc:265
 msgid "Check if this point has the same distance"
-msgstr ""
+msgstr "Zkontrolovat, zda je vzdálenost tohoto bodu stejná"
 
 #: objects/tests_type.cc:266
 msgid ""
 "Select the point which might have the same distance from two other points..."
 msgstr ""
+"Vyberte bod, který by mohl být ve stejné vzdálenosti od dvou dalších bodů..."
 
 #: objects/tests_type.cc:268
 msgid "from this point"
@@ -5562,15 +5569,15 @@ msgstr "od tohoto bodu"
 
 #: objects/tests_type.cc:268
 msgid "Select the first of the two other points..."
-msgstr ""
+msgstr "Vyberte první ze dvou zbývajících bodů..."
 
 #: objects/tests_type.cc:269
 msgid "and from this second point"
-msgstr ""
+msgstr "a od tohoto třetího bodu"
 
 #: objects/tests_type.cc:269
 msgid "Select the other of the two other points..."
-msgstr ""
+msgstr "Vyberte druhý ze dvou zbývajících bodů..."
 
 #: objects/tests_type.cc:297
 #, kde-format
@@ -5588,7 +5595,7 @@ msgstr "Zkontrolovat jestli je tento vektor shodný s nějakým jiným vektorem"
 
 #: objects/tests_type.cc:309
 msgid "Select the first of the two possibly equal vectors..."
-msgstr ""
+msgstr "Vyberte první ze dvou vektorů, které mohou být shodné..."
 
 #: objects/tests_type.cc:312
 msgid "Check whether this vector is equal to the other vector"
@@ -5596,7 +5603,7 @@ msgstr "Zkontrolovat jestli je tento vektor shodný s jiným vektorem"
 
 #: objects/tests_type.cc:313
 msgid "Select the other of the two possibly equal vectors..."
-msgstr ""
+msgstr "Vyberte druhý ze dvou vektorů, které mohou být shodné..."
 
 #: objects/tests_type.cc:341
 #, kde-format
@@ -5610,21 +5617,21 @@ msgstr "Vektory nejsou shodné."
 
 #: objects/tests_type.cc:352
 msgid "Check whether this object exists"
-msgstr ""
+msgstr "Zkontrolovat, zda tento objekt existuje"
 
 #: objects/tests_type.cc:352
 msgid "Select the object for the existence check..."
-msgstr ""
+msgstr "Vyberte objekt pro kontrolu existence..."
 
 #: objects/tests_type.cc:375
 #, kde-format
 msgid "The object exists."
-msgstr ""
+msgstr "Objekt existuje."
 
 #: objects/tests_type.cc:377
 #, kde-format
 msgid "The object does not exist."
-msgstr ""
+msgstr "Objekt neexistuje."
 
 #: objects/text_imp.cc:74
 msgid "Text"
@@ -5669,36 +5676,36 @@ msgstr "Skrýt popisek"
 
 #: objects/text_imp.cc:183
 msgid "numeric label"
-msgstr ""
+msgstr "číselný popisek"
 
 #: objects/text_imp.cc:184
 msgid "Select this numeric label"
-msgstr "Zvolit tento numerický popisek"
+msgstr "Zvolit tento číselný popisek"
 
 #: objects/text_imp.cc:185
 #, kde-format
 msgid "Select numeric label %1"
-msgstr "Zvolit numerický popisek %1"
+msgstr "Zvolit číselný popisek %1"
 
 #: objects/text_imp.cc:186
 msgid "Remove a Numeric Label"
-msgstr ""
+msgstr "Odstranit číselný popisek"
 
 #: objects/text_imp.cc:187
 msgid "Add a Numeric Label"
-msgstr ""
+msgstr "Přidat číselný popisek"
 
 #: objects/text_imp.cc:188
 msgid "Move a Numeric Label"
-msgstr ""
+msgstr "Přesunout číselný popisek"
 
 #: objects/text_imp.cc:189
 msgid "Attach to this numeric label"
-msgstr ""
+msgstr "Připojit tento číselný popisek"
 
 #: objects/text_imp.cc:190
 msgid "Show a Numeric Label"
-msgstr ""
+msgstr "Zobrazit číselný popisek"
 
 #: objects/text_imp.cc:191
 msgid "Hide a Numeric Label"
@@ -5710,40 +5717,40 @@ msgstr "Číselná hodnota"
 
 #: objects/text_imp.cc:277
 msgid "boolean label"
-msgstr ""
+msgstr "logický popisek"
 
 #: objects/text_imp.cc:278
 msgid "Select this boolean label"
-msgstr ""
+msgstr "Vybrat tento logický popisek"
 
 #: objects/text_imp.cc:279
 #, kde-format
 msgid "Select boolean label %1"
-msgstr ""
+msgstr "Vybrat logický popisek %1"
 
 #: objects/text_imp.cc:280
 msgid "Remove a Boolean Label"
-msgstr ""
+msgstr "Odstranit logický popisek"
 
 #: objects/text_imp.cc:281
 msgid "Add a Boolean Label"
-msgstr ""
+msgstr "Přidat logický popisek"
 
 #: objects/text_imp.cc:282
 msgid "Move a Boolean Label"
-msgstr ""
+msgstr "Přesunout logický popisek"
 
 #: objects/text_imp.cc:283
 msgid "Attach to this boolean label"
-msgstr ""
+msgstr "Připojit tento logický popisek"
 
 #: objects/text_imp.cc:284
 msgid "Show a Boolean Label"
-msgstr ""
+msgstr "Zobrazit logický popisek"
 
 #: objects/text_imp.cc:285
 msgid "Hide a Boolean Label"
-msgstr ""
+msgstr "Skrýt logický popisek"
 
 #: objects/text_type.cc:156
 #, kde-format
@@ -5763,7 +5770,7 @@ msgstr "Nastavit písm&o..."
 #: objects/text_type.cc:182
 #, kde-format
 msgid "Toggle Label Frame"
-msgstr ""
+msgstr "Přepnout rámeček popisku"
 
 #: objects/text_type.cc:192
 #, kde-format
@@ -5867,11 +5874,11 @@ msgstr "Vyberte objekt ke škálování..."
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 msgid "Scale with this center"
-msgstr "Škálovat s tímto středem"
+msgstr "Změnit velikost s tímto středem"
 
 #: objects/transform_types.cc:157 objects/transform_types.cc:195
 msgid "Select the center point of the scaling..."
-msgstr ""
+msgstr "Vyberte středový bod změny velikosti..."
 
 #. i18n( "Scale by the length of this segment" ),
 #. kli18n( "Select a segment whose length is the factor of the scaling..." ), false }
@@ -5879,30 +5886,34 @@ msgstr ""
 #. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
 msgid "Scale by this length"
-msgstr ""
+msgstr "Změnit velikost o tuto délku"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
 msgstr ""
+"Vyberte délku nebo úsečku, jejíž délka je koeficientem změny velikosti..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
 msgid "Scale this length..."
-msgstr ""
+msgstr "Změnit velikost touto délkou..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
+"Vyberte první ze dvou délek, jejichž poměr je koeficientem změny velikosti..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
 msgid "...to this other length"
-msgstr ""
+msgstr "...na tuto druhou délku"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
+"Vyberte druhou ze dvou délek, jejichž poměr je koeficientem změny "
+"velikosti..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
 msgid "Select the object to scale"
@@ -5918,35 +5929,35 @@ msgstr "Vyberte přímku přes kterou se má změnit velikost"
 
 #: objects/transform_types.cc:335
 msgid "Projectively rotate this object"
-msgstr ""
+msgstr "Projekčně otočit tento objekt"
 
 #: objects/transform_types.cc:335
 msgid "Select the object to rotate projectively"
-msgstr ""
+msgstr "Vyberte objekt, který chcete projekčně otočit"
 
 #: objects/transform_types.cc:337
 msgid "Projectively rotate with this half-line"
-msgstr ""
+msgstr "Projekčně otočit s touto polopřímkou"
 
 #: objects/transform_types.cc:338
 msgid ""
 "Select the half line of the projective rotation that you want to apply to "
 "the object"
-msgstr ""
+msgstr "Vyberte polopřímku projekční rotace, kterou chcete na objekt použít"
 
 #: objects/transform_types.cc:341
 msgid "Projectively rotate by this angle"
-msgstr ""
+msgstr "Projekčně otočit o tento úhel"
 
 #: objects/transform_types.cc:342
 msgid ""
 "Select the angle of the projective rotation that you want to apply to the "
 "object"
-msgstr ""
+msgstr "Vyberte úhel projekční rotace, který chcete na objekt použít"
 
 #: objects/transform_types.cc:376
 msgid "Harmonic Homology of this object"
-msgstr ""
+msgstr "Harmonická homologie tohoto objektu"
 
 #: objects/transform_types.cc:376 objects/transform_types.cc:408
 #: objects/transform_types.cc:449 objects/transform_types.cc:508
@@ -5956,41 +5967,41 @@ msgstr "Vybrat objekt k transformaci..."
 
 #: objects/transform_types.cc:377
 msgid "Harmonic Homology with this center"
-msgstr ""
+msgstr "Harmonická homologie s tímto středem"
 
 #: objects/transform_types.cc:377
 msgid "Select the center point of the harmonic homology..."
-msgstr ""
+msgstr "Vyberte středový bod harmonické homologie..."
 
 #: objects/transform_types.cc:378
 msgid "Harmonic Homology with this axis"
-msgstr ""
+msgstr "Harmonická homologie s touto osou"
 
 #: objects/transform_types.cc:378
 msgid "Select the axis of the harmonic homology..."
-msgstr ""
+msgstr "Vyberte osu harmonické homologie..."
 
 #: objects/transform_types.cc:408 objects/transform_types.cc:449
 msgid "Generic affinity of this object"
-msgstr ""
+msgstr "Obecná afinita tohoto objektu"
 
 #: objects/transform_types.cc:409
 msgid "Map this triangle"
-msgstr "Mapovat trojúhelník"
+msgstr "Mapovat tento trojúhelník"
 
 #: objects/transform_types.cc:409
 msgid "Select the triangle that has to be transformed onto a given triangle..."
-msgstr ""
+msgstr "Vyberte trojúhelník, který má být transformován na daný trojúhelník..."
 
 #: objects/transform_types.cc:411
 msgid "onto this other triangle"
-msgstr ""
+msgstr "na tento druhý trojúhelník"
 
 #: objects/transform_types.cc:412
 msgid ""
 "Select the triangle that is the image by the affinity of the first "
 "triangle..."
-msgstr ""
+msgstr "Vyberte trojúhelník, který je obrazem afinity prvního trojúhelníku..."
 
 #: objects/transform_types.cc:450
 msgid "First of 3 starting points"
@@ -5999,7 +6010,7 @@ msgstr "První ze 3 počátečních bodů"
 #: objects/transform_types.cc:450
 msgid ""
 "Select the first of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "Vyberte první ze tří výchozích bodů obecné afinity..."
 
 #: objects/transform_types.cc:452
 msgid "Second of 3 starting points"
@@ -6008,7 +6019,7 @@ msgstr "Druhý ze 3 počátečních bodů"
 #: objects/transform_types.cc:453
 msgid ""
 "Select the second of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "Vyberte druhý ze tří výchozích bodů obecné afinity..."
 
 #: objects/transform_types.cc:455
 msgid "Third of 3 starting points"
@@ -6017,7 +6028,7 @@ msgstr "Třetí ze 3 počátečních bodů"
 #: objects/transform_types.cc:455
 msgid ""
 "Select the third of the three starting points of the generic affinity..."
-msgstr ""
+msgstr "Vyberte třetí ze tří výchozích bodů obecné afinity..."
 
 #: objects/transform_types.cc:457 objects/transform_types.cc:570
 msgid "Transformed position of first point"
@@ -6025,7 +6036,7 @@ msgstr "Transformovaná pozice prvního bodu"
 
 #: objects/transform_types.cc:458
 msgid "Select the first of the three end points of the generic affinity..."
-msgstr ""
+msgstr "Vyberte první ze tří koncových bodů obecné afinity..."
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
 msgid "Transformed position of second point"
@@ -6033,7 +6044,7 @@ msgstr "Transformovaná pozice druhého bodu"
 
 #: objects/transform_types.cc:462
 msgid "Select the second of the three end points of the generic affinity..."
-msgstr ""
+msgstr "Vyberte druhý ze tří koncových bodů obecné afinity..."
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
 msgid "Transformed position of third point"
@@ -6041,31 +6052,33 @@ msgstr "Transformovaná pozice třetího bodu"
 
 #: objects/transform_types.cc:466
 msgid "Select the third of the three end points of the generic affinity..."
-msgstr ""
+msgstr "Vyberte třetí ze tří koncových bodů obecné afinity..."
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
 msgid "Generic projective transformation of this object"
-msgstr ""
+msgstr "Obecná projektivní transformace tohoto objektu"
 
 #: objects/transform_types.cc:510
 msgid "Map this quadrilateral"
-msgstr ""
+msgstr "Mapovat tento čtyřúhelník"
 
 #: objects/transform_types.cc:511
 msgid ""
 "Select the quadrilateral that has to be transformed onto a given "
 "quadrilateral..."
-msgstr ""
+msgstr "Vyberte čtyřúhelník, který má být transformován na daný čtyřúhelník..."
 
 #: objects/transform_types.cc:514
 msgid "onto this other quadrilateral"
-msgstr ""
+msgstr "na tento druhý čtyřúhelník"
 
 #: objects/transform_types.cc:515
 msgid ""
 "Select the quadrilateral that is the image by the projective transformation "
 "of the first quadrilateral..."
 msgstr ""
+"Vyberte čtyřúhelník, který je obrazem projektivní transformace prvního "
+"čtyřúhelníku ..."
 
 #: objects/transform_types.cc:554
 msgid "First of 4 starting points"
@@ -6074,7 +6087,7 @@ msgstr "První ze 4 počátečních bodů"
 #: objects/transform_types.cc:555
 msgid ""
 "Select the first of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte první ze čtyř výchozích bodů obecné projekce..."
 
 #: objects/transform_types.cc:558
 msgid "Second of 4 starting points"
@@ -6083,7 +6096,7 @@ msgstr "Druhý ze 4 počátečních bodů"
 #: objects/transform_types.cc:559
 msgid ""
 "Select the second of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte druhý ze čtyř výchozích bodů obecné projekce..."
 
 #: objects/transform_types.cc:562
 msgid "Third of 4 starting points"
@@ -6092,7 +6105,7 @@ msgstr "Třetí ze 4 počátečních bodů"
 #: objects/transform_types.cc:563
 msgid ""
 "Select the third of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte třetí ze čtyř výchozích bodů obecné projekce..."
 
 #: objects/transform_types.cc:566
 msgid "Fourth of 4 starting points"
@@ -6101,19 +6114,19 @@ msgstr "Čtvrtý ze čtyř počátečních bodů"
 #: objects/transform_types.cc:567
 msgid ""
 "Select the fourth of the four starting points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte čtvrtý ze čtyř výchozích bodů obecné projekce..."
 
 #: objects/transform_types.cc:571
 msgid "Select the first of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte první ze čtyř koncových bodů obecné projekce..."
 
 #: objects/transform_types.cc:575
 msgid "Select the second of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte druhý ze čtyř koncových bodů obecné projekce..."
 
 #: objects/transform_types.cc:579
 msgid "Select the third of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte třetí ze čtyř koncových bodů obecné projekce..."
 
 #: objects/transform_types.cc:582
 msgid "Transformed position of fourth point"
@@ -6121,7 +6134,7 @@ msgstr "Transformovaná pozice čtvrtého bodu"
 
 #: objects/transform_types.cc:583
 msgid "Select the fourth of the four end points of the generic projectivity..."
-msgstr ""
+msgstr "Vyberte čtvrtý ze čtyř koncových bodů obecné projekce..."
 
 #: objects/transform_types.cc:624
 msgid "Cast the shadow of this object"
@@ -6169,20 +6182,20 @@ msgstr "Vyberte střed pro podobnost..."
 
 #: objects/transform_types.cc:886
 msgid "Apply a similitude mapping this point onto another point"
-msgstr ""
+msgstr "Použít mapování podobnosti z tohoto bodu na jiný bod"
 
 #: objects/transform_types.cc:887
 msgid "Select the point which the similitude should map onto another point..."
-msgstr ""
+msgstr "Vyberte bod, který má podobnost mapovat na jiný bod..."
 
 #: objects/transform_types.cc:890
 msgid "Apply a similitude mapping a point onto this point"
-msgstr ""
+msgstr "Použít mapování podobnosti bodu na tento bod"
 
 #: objects/transform_types.cc:891
 msgid ""
 "Select the point onto which the similitude should map the first point..."
-msgstr ""
+msgstr "Vyberte bod, na který má podobnost mapovat první bod..."
 
 #: objects/vector_type.cc:12
 msgid "Construct a vector from this point"
@@ -6242,6 +6255,8 @@ msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr ""
+"Vyberte objekty argumentů (pokud existují)\n"
+"v okně Kig a stiskněte tlačítko \"Další\"."
 
 #: scripting/newscriptwizard.cc:62
 #, kde-format
@@ -6273,6 +6288,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script and click the Finish button again."
 msgstr ""
+"Interpret jazyka Python zaznamenal při spuštění vašeho skriptu chybu. "
+"Opravte prosím skript a znovu klikněte na tlačítko Dokončit."
 
 #: scripting/script_mode.cc:184 scripting/script_mode.cc:318
 #, kde-format
@@ -6290,6 +6307,9 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script, and click the Finish button again."
 msgstr ""
+"Ve vašem skriptu se zřejmě vyskytuje chyba. Interpret jazyka Python nehlásil "
+"žádné chyby, ale skript nevytvořil platný objekt. Opravte prosím skript a "
+"znovu klikněte na tlačítko Dokončit."
 
 #: scripting/script_mode.cc:286
 #, kde-format
@@ -6308,6 +6328,8 @@ msgid ""
 "The Python interpreter caught an error during the execution of your script. "
 "Please fix the script."
 msgstr ""
+"Interpret jazyka Python zaznamenal při spuštění vašeho skriptu chybu. "
+"Opravte prosím skript."
 
 #: scripting/script_mode.cc:321
 #, kde-format
@@ -6316,3 +6338,5 @@ msgid ""
 "no errors, but the script does not generate a valid object. Please fix the "
 "script."
 msgstr ""
+"Ve vašem skriptu se zřejmě vyskytuje chyba. Interpret jazyka Python nehlásil "
+"žádné chyby, ale skript nevytvořil platný objekt. Opravte prosím skript."
