@@ -1,7 +1,7 @@
 diff --git a/cmake/modules/FindBoostPython.cmake b/cmake/modules/FindBoostPython.cmake
 index 3ce93a18..27ac2a2b 100644
---- a/cmake/modules/FindBoostPython.cmake
-+++ b/cmake/modules/FindBoostPython.cmake
+--- cmake/modules/FindBoostPython.cmake
++++ cmake/modules/FindBoostPython.cmake
 @@ -30,7 +30,7 @@ int main() { return 0; }
  " ${varname} )
  endmacro(BoostPython_TRY_COMPILE)
