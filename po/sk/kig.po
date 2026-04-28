@@ -3056,9 +3056,9 @@ msgid ""
 "objects.  This probably means you are expecting Kig to do something "
 "impossible.  Please check the macro and try again."
 msgstr ""
-"Jeden z daných objektov nie je použitý pre výpočet výpočet výsledného "
-"objektu. To pravdepodobne znamená že od Kig-u očakávate nemožné. Prosím "
-"skontrolujte makro a skúste to znova."
+"Jeden z daných objektov nie je použitý pri výpočte výsledného objektu. To "
+"pravdepodobne znamená, že od Kig-u očakávate nemožné. Skontrolujte prosím "
+"makro a skúste to znova."
 
 #: modes/macrowizard.cc:35
 #, kde-format
