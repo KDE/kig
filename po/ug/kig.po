@@ -8,24 +8,25 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-31 18:37-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #, kde-format
 msgid "Circle by Center && Line"
@@ -212,7 +213,7 @@ msgstr ""
 #: filters/svgexporteroptionswidget.ui:49
 #, kde-format
 msgid "Show Grid"
-msgstr "سېتكا كۆرسەت"
+msgstr "شادا كۆرسەت"
 
 #: filters/cabri-filter.cc:143
 #, kde-format
@@ -699,7 +700,7 @@ msgstr ""
 #: kig/aboutdata.h:72
 #, kde-format
 msgid "Robert Gogolok"
-msgstr "Robert Gogolok"
+msgstr ""
 
 #: kig/aboutdata.h:73
 #, kde-format
@@ -711,7 +712,7 @@ msgstr ""
 #: kig/aboutdata.h:78
 #, kde-format
 msgid "David Vignoni"
-msgstr "David Vignoni"
+msgstr ""
 
 #: kig/aboutdata.h:78
 #, kde-format
@@ -721,7 +722,7 @@ msgstr ""
 #: kig/aboutdata.h:80
 #, kde-format
 msgid "Danny Allen"
-msgstr "Danny Allen"
+msgstr ""
 
 #: kig/aboutdata.h:80
 #, kde-format
@@ -737,7 +738,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
-msgstr ""
+msgstr "ھۆججەت ئاچ"
 
 #: kig/kig_commands.cpp:91
 #, kde-format
@@ -757,11 +758,10 @@ msgid "&Set Coordinate System"
 msgstr ""
 
 #: kig/kig_part.cpp:126
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
-msgstr "تاللانما"
+msgstr ""
 
 #: kig/kig_part.cpp:130
 #, kde-format
@@ -898,7 +898,7 @@ msgstr ""
 #: kig/kig_part.cpp:301
 #, kde-format
 msgid "Show &Grid"
-msgstr "سېتكا كۆرسەت(&G)"
+msgstr "شادا كۆرسەت(&G)"
 
 #: kig/kig_part.cpp:303
 #, kde-format
@@ -1010,12 +1010,12 @@ msgstr[0] ""
 #: kig/kig_view.cpp:189
 #, kde-format
 msgid "Zoom In"
-msgstr "چوڭايت"
+msgstr "يېقىنلات"
 
 #: kig/kig_view.cpp:207
 #, kde-format
 msgid "Zoom Out"
-msgstr "كىچىكلىتىش"
+msgstr "يىراقلات"
 
 #: kig/kig_view.cpp:474
 #, kde-format
@@ -1156,13 +1156,13 @@ msgstr "باشقا (&O)"
 #: kig/kigpartui.rc:189
 #, kde-format
 msgid "&Types"
-msgstr "تىپلار(&T):"
+msgstr "تۈر(&T)"
 
 #. i18n: ectx: Menu (tools)
 #: kig/kigpartui.rc:194
 #, kde-format
 msgid "&Tools"
-msgstr "قوراللار(&T)"
+msgstr "قورال(&T)"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kig/kigpartui.rc:207 kig/kigui.rc:24
@@ -1702,7 +1702,7 @@ msgstr ""
 #: misc/builtin_stuff.cc:369
 #, kde-format
 msgid "Scale"
-msgstr "نىسبىتى"
+msgstr "نىسبەت"
 
 #: misc/builtin_stuff.cc:370
 #, kde-format
@@ -2015,7 +2015,7 @@ msgstr ""
 #, kde-format
 msgctxt "Translators: Degrees"
 msgid "Deg"
-msgstr "گرادۇس"
+msgstr "گىرادۇس"
 
 #: misc/goniometry.cc:96
 #, kde-format
@@ -2743,7 +2743,7 @@ msgstr ""
 #, kde-format
 msgctxt "Translators: Pixel"
 msgid "pixel"
-msgstr "پىكسېللار"
+msgstr "پىكسېل"
 
 #: misc/unit.cc:106
 #, kde-format
@@ -2755,7 +2755,7 @@ msgstr "سانتىمېتىر"
 #, kde-format
 msgctxt "Translators: Inch"
 msgid "in"
-msgstr "دىيۇيم"
+msgstr "ئىچىدە"
 
 #: modes/construct_mode.cc:223 modes/normal.cc:238
 #, kde-format
@@ -2775,11 +2775,10 @@ msgid "Now select the location for the result label."
 msgstr ""
 
 #: modes/edittype.cc:25
-#, fuzzy, kde-format
-#| msgid "Type"
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
-msgstr "تىپى"
+msgstr ""
 
 #: modes/edittype.cc:42
 #, kde-format
@@ -2857,7 +2856,7 @@ msgstr ""
 #: modes/historywidget.ui:82
 #, kde-format
 msgid "/"
-msgstr "/"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, buttonNext)
 #: modes/historywidget.ui:96
@@ -3015,7 +3014,7 @@ msgstr "يېشىل"
 #: modes/popup/builtinobjectactionsprovider.cc:39
 #, kde-format
 msgid "Cyan"
-msgstr "توق يېشىل"
+msgstr "كۆكۈچ"
 
 #: modes/popup/builtinobjectactionsprovider.cc:40
 #, kde-format
@@ -3070,10 +3069,9 @@ msgid "Change Point Style"
 msgstr ""
 
 #: modes/popup/builtinobjectactionsprovider.cc:251
-#, fuzzy, kde-format
-#| msgid "Object Type"
+#, kde-format
 msgid "Change Object Style"
-msgstr "ئوبيېكت تىپى"
+msgstr ""
 
 #: modes/popup/nameobjectactionsprovider.cc:41
 #, kde-format
@@ -3087,10 +3085,9 @@ msgstr "ئاتى(&N)"
 
 #: modes/popup/nameobjectactionsprovider.cc:63
 #: modes/popup/nameobjectactionsprovider.cc:77
-#, fuzzy, kde-format
-#| msgid "Object Type"
+#, kde-format
 msgid "Set Object Name"
-msgstr "ئوبيېكت تىپى"
+msgstr ""
 
 #: modes/popup/nameobjectactionsprovider.cc:63
 #, kde-format
@@ -3098,11 +3095,10 @@ msgid "Set Name of this Object:"
 msgstr ""
 
 #: modes/popup/objectchooserpopup.cc:70 modes/popup/popup.cc:78
-#, fuzzy, kde-format
-#| msgid "Object"
+#, kde-format
 msgid "%1 Object"
 msgid_plural "%1 Objects"
-msgstr[0] "نەڭ"
+msgstr[0] ""
 
 #: modes/popup/popup.cc:71
 #, kde-format
@@ -3112,7 +3108,7 @@ msgstr ""
 #: modes/popup/popup.cc:114
 #, kde-format
 msgid "&Transform"
-msgstr ""
+msgstr "ئۆزگەرت(&T)"
 
 #: modes/popup/popup.cc:115
 #, kde-format
@@ -3130,10 +3126,9 @@ msgid "&Start"
 msgstr "باشلا(&S)"
 
 #: modes/popup/popup.cc:118
-#, fuzzy, kde-format
-#| msgid "Text Label"
+#, kde-format
 msgid "Add Te&xt Label"
-msgstr "تېكىست ئەنى"
+msgstr ""
 
 #: modes/popup/popup.cc:119
 #, kde-format
@@ -3151,10 +3146,9 @@ msgid "Set St&yle"
 msgstr ""
 
 #: modes/popup/popup.cc:123
-#, fuzzy, kde-format
-#| msgid "Coordinate"
+#, kde-format
 msgid "Set Coordinate S&ystem"
-msgstr "كوئوردېناتى"
+msgstr ""
 
 #: modes/popup/popup.cc:209 modes/popup/popup.cc:218 modes/popup/popup.cc:227
 #, kde-format
@@ -3163,11 +3157,9 @@ msgid "More..."
 msgstr "تېخىمۇ كۆپ…"
 
 #: modes/popup/scriptactionsprovider.cc:58
-#, fuzzy, kde-format
-#| msgctxt "'Edit' is a verb"
-#| msgid "Edit Script"
+#, kde-format
 msgid "Edit Script..."
-msgstr "قوليازما تەھرىر"
+msgstr ""
 
 #: modes/textlabelwizard.cc:31
 #, kde-format
@@ -3209,12 +3201,12 @@ msgstr ""
 #: modes/typesdialog.cpp:133
 #, kde-format
 msgid "Macro"
-msgstr "Macro"
+msgstr ""
 
 #: modes/typesdialog.cpp:301
 #, kde-format
 msgid "Type"
-msgstr "تىپى"
+msgstr "تۈرى"
 
 #: modes/typesdialog.cpp:307
 #, kde-format
@@ -3273,7 +3265,7 @@ msgstr ""
 #: modes/typesdialog.cpp:479
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "ھەممە ھۆججەت(*)"
 
 #: modes/typesdialog.cpp:481
 #, kde-format
@@ -3285,7 +3277,7 @@ msgstr ""
 msgid ""
 "There is more than one type selected. You can only edit one type at a time. "
 "Please select only the type you want to edit and try again."
-msgstr "T"
+msgstr ""
 
 #: modes/typesdialog.cpp:517
 #, kde-format
@@ -3718,18 +3710,15 @@ msgstr ""
 
 #: objects/bogus_imp.cc:215
 msgid "string"
-msgstr ""
+msgstr "تېكىست"
 
 #: objects/bogus_imp.cc:291
 msgid "double"
 msgstr ""
 
 #: objects/bogus_imp.cc:307
-#, fuzzy
-#| msgctxt "Translators: Inch"
-#| msgid "in"
 msgid "int"
-msgstr "دىيۇيم"
+msgstr ""
 
 #: objects/bogus_imp.cc:387
 msgid "Test Result"
@@ -3759,7 +3748,7 @@ msgstr "رادىئۇس"
 
 #: objects/circle_imp.cc:136 objects/conic_imp.cc:74 objects/other_imp.cc:391
 msgid "Center"
-msgstr "مەركەز"
+msgstr "ئوتتۇرا"
 
 #: objects/circle_imp.cc:137
 msgid "Expanded Cartesian Equation"
@@ -3853,7 +3842,7 @@ msgstr ""
 #: objects/conic_imp.cc:202
 #, kde-format
 msgid "Ellipse"
-msgstr "ئېللىپس"
+msgstr "ئېللىپىس"
 
 #: objects/conic_imp.cc:204
 #, kde-format
@@ -3868,7 +3857,7 @@ msgstr ""
 #: objects/conic_imp.cc:255
 #, kde-format
 msgid "rho"
-msgstr "rho"
+msgstr ""
 
 #: objects/conic_imp.cc:263
 #, kde-format
@@ -6079,11 +6068,10 @@ msgid "Select the point to construct the sum vector in..."
 msgstr ""
 
 #: scripting/newscriptwizard.cc:45
-#, fuzzy, kde-format
-#| msgid "New Script"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Script"
-msgstr "يېڭى قوليازما"
+msgstr ""
 
 #: scripting/newscriptwizard.cc:56
 #, kde-format
@@ -6139,12 +6127,10 @@ msgid ""
 msgstr ""
 
 #: scripting/script_mode.cc:286
-#, fuzzy, kde-format
-#| msgctxt "'Edit' is a verb"
-#| msgid "Edit Script"
+#, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
-msgstr "قوليازما تەھرىر"
+msgstr ""
 
 #: scripting/script_mode.cc:308
 #, kde-format
