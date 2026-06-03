@@ -28,6 +28,7 @@
   <developer_name xml:lang="sl">KDE</developer_name>
   <developer_name xml:lang="sv">KDE</developer_name>
   <developer_name xml:lang="tr">KDE</developer_name>
+  <developer_name xml:lang="ug">KDE</developer_name>
   <developer_name xml:lang="uk">KDE</developer_name>
   <developer_name xml:lang="zh-CN">KDE</developer_name>
   <developer_name xml:lang="zh-TW">KDE</developer_name>
@@ -70,6 +71,7 @@
   <name xml:lang="sl">Kig</name>
   <name xml:lang="sv">Kig</name>
   <name xml:lang="tr">Kig</name>
+  <name xml:lang="ug">Kig</name>
   <name xml:lang="uk">Kig</name>
   <name xml:lang="zh-CN">Kig</name>
   <name xml:lang="zh-TW">數學_Kig</name>
@@ -108,6 +110,7 @@
   <summary xml:lang="sl">Interaktivna geometrija</summary>
   <summary xml:lang="sv">Interaktiv geometri</summary>
   <summary xml:lang="tr">Etkileşimli Geometri</summary>
+  <summary xml:lang="ug">تەسىرلىشىشچان  گېئومېتىرىيە</summary>
   <summary xml:lang="uk">Інтерактивна геометрія</summary>
   <summary xml:lang="zh-CN">交互几何</summary>
   <summary xml:lang="zh-TW">交互式幾何作圖</summary>
