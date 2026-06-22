@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022-2026 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2025-10-24 23:39+0200\n"
+"PO-Revision-Date: 2026-06-21 16:33+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -149,29 +149,29 @@ msgid "Select the point to construct the difference vector in..."
 msgstr "Избор на точката, в която трябва се построи разликата на векторите..."
 
 #: filters/asyexporter.cc:29
-#, fuzzy, kde-format
+#, kde-format
 msgid "Export to &Asymptote..."
-msgstr "Експортиране като ф&айл Latex..."
+msgstr "Експортиране в &Asymptote..."
 
 #: filters/asyexporter.cc:34
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Asymptote..."
-msgstr "Импортиране..."
+msgstr "&Asymptote..."
 
 #: filters/asyexporter.cc:45
-#, fuzzy, kde-format
+#, kde-format
 msgid "Asymptote Documents (*.asy)"
-msgstr "*.tex|Документи Latex (*.tex)"
+msgstr "Документи на Asymptote (*.asy)"
 
 #: filters/asyexporter.cc:46
 #, kde-format
 msgid "Export as Asymptote script"
-msgstr ""
+msgstr "Експортиране като скрипт на Asymptote"
 
 #: filters/asyexporter.cc:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "Asymptote Options"
-msgstr "Настройки на изображението"
+msgstr "Настройки на Asymptote"
 
 #: filters/asyexporter.cc:70 filters/exporter.cc:109
 #: filters/latexexporter.cc:547 filters/svgexporter.cc:67
@@ -195,7 +195,7 @@ msgstr "Настройки"
 #. i18n: ectx: property (text), widget (QCheckBox, showFrameCheckBox)
 #: filters/asyexporteroptionswidget.ui:42
 #: filters/latexexporteroptionswidget.ui:95
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Extra Frame"
 msgstr "Показване на допълнителна рамка"
 
@@ -204,9 +204,9 @@ msgstr "Показване на допълнителна рамка"
 #: filters/imageexporteroptionswidget.ui:140
 #: filters/latexexporteroptionswidget.ui:102
 #: filters/svgexporteroptionswidget.ui:42
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show Axes"
-msgstr "Показване на &осите"
+msgstr "Показване на осите"
 
 #. i18n: ectx: property (text), widget (QCheckBox, showGridCheckBox)
 #: filters/asyexporteroptionswidget.ui:56
@@ -228,6 +228,9 @@ msgid ""
 "This Cabri version (%1) is not supported yet.\n"
 "Please contact the Kig authors to help supporting this Cabri version."
 msgstr ""
+"Тази версия на Cabri (%1) все още не се поддържа.\n"
+"Моля, свържете се с авторите на Kig, за да помогнете за поддръжката на тази "
+"версия на Cabri."
 
 #: filters/cabri-filter.cc:568
 #, kde-format
@@ -240,9 +243,9 @@ msgstr ""
 
 #: filters/cabri-utils.cc:19 filters/cabri-utils.cc:26 filters/filter.h:42
 #: misc/object_hierarchy.cc:481 objects/object_imp_factory.cc:224
-#, fuzzy, kde-format
+#, kde-format
 msgid "An error was encountered at line %1 in file %2."
-msgstr "Грешка при анализ на файла „%1“. Файлът не може да се отвори."
+msgstr "Възникна грешка на ред %1 във файла %2."
 
 #: filters/drgeo-filter.cc:92
 #, kde-format
@@ -336,9 +339,9 @@ msgstr ""
 "права за достъп до него."
 
 #: filters/filter.cc:76
-#, fuzzy, kde-format
+#, kde-format
 msgid "An error was encountered while parsing this file.  It cannot be opened."
-msgstr "Грешка при анализ на файла „%1“. Файлът не може да се отвори."
+msgstr "Възникна грешка при анализа на този файл. Той не може да бъде отворен."
 
 #: filters/filter.cc:78
 #, kde-format
@@ -351,9 +354,9 @@ msgid "Not Supported"
 msgstr "Не се поддържа"
 
 #: filters/filter.cc:88
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kig cannot open this file."
-msgstr "Файлът „%1“ не може да се отвори."
+msgstr "Kig не може да отвори този файл."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: filters/imageexporteroptionswidget.ui:22
@@ -529,6 +532,8 @@ msgid ""
 "save the construction with a different name and check that it works as "
 "expected."
 msgstr ""
+"Този файл на Kig използва обект от тип „%1“, който е остарял. Трябва да "
+"запишете конструкцията с друго име и да проверите дали работи правилно."
 
 #: filters/svgexporter.cc:30
 #, kde-format
@@ -571,9 +576,9 @@ msgid "&XFig File..."
 msgstr "&Файл XFig..."
 
 #: filters/xfigexporter.cc:557
-#, fuzzy, kde-format
+#, kde-format
 msgid "XFig Documents (*.fig)"
-msgstr "*.fig|Документи XFig (*.fig)"
+msgstr "Документи на XFig (*.fig)"
 
 #: filters/xfigexporter.cc:557
 #, kde-format
@@ -635,18 +640,18 @@ msgid "Pino Toscano"
 msgstr "Pino Toscano"
 
 #: kig/aboutdata.h:34
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Former maintainer, Dr. Geo import filter, point and line styles, Italian "
 "translation, miscellaneous stuff here and there."
 msgstr ""
-"Actual maintainer, Dr. Geo import filter, point and line styles, Italian "
-"translation, miscellaneous stuff here and there."
+"Бивш поддръжник, филтър за импортиране от Dr. Geo, стилове за точки и прави, "
+"превод на италиански и различни други подобрения."
 
 #: kig/aboutdata.h:39
 #, kde-format
 msgid "Franco Pasquarelli"
-msgstr ""
+msgstr "Франко Паскуарели"
 
 #: kig/aboutdata.h:40
 #, kde-format
@@ -660,51 +665,53 @@ msgstr ""
 #: kig/aboutdata.h:45
 #, kde-format
 msgid "Francesca Gatti"
-msgstr ""
+msgstr "Франческа Гати"
 
 #: kig/aboutdata.h:46
-#, fuzzy, kde-format
+#, kde-format
 msgid "Responsible for the computation of the algebraic equation of a locus."
-msgstr "Responsible for the nice application SVG Icon."
+msgstr ""
+"Отговорен за изчисляването на алгебричното уравнение на геометрично място на "
+"точки (locus)."
 
 #: kig/aboutdata.h:50
 #, kde-format
 msgid "Petr Gajdos"
-msgstr ""
+msgstr "Петър Гайдош"
 
 #: kig/aboutdata.h:50
-#, fuzzy, kde-format
+#, kde-format
 msgid "Contributed the Bézier curves and related icons."
-msgstr "Построяване на окръжност със зададения център "
+msgstr "Принос за кривите на Безие и свързаните с тях икони."
 
 #: kig/aboutdata.h:52
 #, kde-format
 msgid "Raoul Bourquin"
-msgstr ""
+msgstr "Раул Буркен"
 
 #: kig/aboutdata.h:52
-#, fuzzy, kde-format
+#, kde-format
 msgid "Contributed the 'asymptote' export filter."
-msgstr "Построяване на асимптотите на кривата"
+msgstr "Принос за филтъра за експортиране към „asymptote“."
 
 #: kig/aboutdata.h:54
 #, kde-format
 msgid "Eric Depagne"
-msgstr ""
+msgstr "Ерик Депан"
 
 #: kig/aboutdata.h:55
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "The French translator, who also contributed some useful feedback, like "
 "feature requests and bug reports."
 msgstr ""
-"The French translator, who also sent me some useful feedback, like feature "
-"requests and bug reports."
+"Френският преводач, който също така предостави полезна обратна връзка, като "
+"заявки за нови функции и доклади за грешки."
 
 #: kig/aboutdata.h:59
 #, kde-format
 msgid "Marc Bartsch"
-msgstr ""
+msgstr "Марк Барч"
 
 #: kig/aboutdata.h:60
 #, kde-format
@@ -718,7 +725,7 @@ msgstr ""
 #: kig/aboutdata.h:64
 #, kde-format
 msgid "Christophe Devriese"
-msgstr ""
+msgstr "Кристоф Деврийс"
 
 #: kig/aboutdata.h:65
 #, kde-format
@@ -732,12 +739,12 @@ msgstr ""
 #: kig/aboutdata.h:70
 #, kde-format
 msgid "Christophe Prud'homme"
-msgstr ""
+msgstr "Кристоф Прюдом"
 
 #: kig/aboutdata.h:70
-#, fuzzy, kde-format
+#, kde-format
 msgid "Contributed a patch for some bugs."
-msgstr "Sent me a patch for some bugs."
+msgstr "Принос с кръпка (patch) за някои грешки."
 
 #: kig/aboutdata.h:72
 #, kde-format
@@ -745,13 +752,13 @@ msgid "Robert Gogolok"
 msgstr "Robert Gogolok"
 
 #: kig/aboutdata.h:73
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Contributed some good feedback on Kig, some feature requests, cleanups and "
 "style fixes, and someone to chat with on irc :)"
 msgstr ""
-"Gave me some good feedback on Kig, some feature requests, cleanups and style "
-"fixes, and someone to chat with on irc :)"
+"Принос с добра обратна връзка за Kig, някои заявки за функции, почистване и "
+"корекции на стила, както и събеседник в IRC :)"
 
 #: kig/aboutdata.h:78
 #, kde-format
@@ -887,12 +894,12 @@ msgstr "Управление на типове макроси."
 #: kig/kig_part.cpp:258
 #, kde-format
 msgid "&Browse History..."
-msgstr ""
+msgstr "Преглед на &историята..."
 
 #: kig/kig_part.cpp:261
-#, fuzzy, kde-format
+#, kde-format
 msgid "Browse the history of the current construction."
-msgstr "Отмяна на построението"
+msgstr "Преглед на историята на текущата конструкция."
 
 #: kig/kig_part.cpp:266 kig/kig_part.cpp:267
 #, kde-format
@@ -967,19 +974,19 @@ msgid "Wear Infrared Glasses"
 msgstr "Инфрачервени очила"
 
 #: kig/kig_part.cpp:315
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enable/disable hidden objects' visibility."
-msgstr "Видимост на скритите обекти."
+msgstr "Включване/изключване на видимостта на скритите обекти."
 
 #: kig/kig_part.cpp:345
-#, fuzzy, kde-format
+#, kde-format
 msgid "Repeat Construction (%1)"
-msgstr "Отмяна на построението"
+msgstr "Повторение на конструкцията (%1)"
 
 #: kig/kig_part.cpp:346
 #, kde-format
 msgid "Repeat %1 (with new data)"
-msgstr ""
+msgstr "Повторение на %1 (с нови данни)"
 
 #: kig/kig_part.cpp:374
 #, kde-format
@@ -995,7 +1002,7 @@ msgid "File Not Found"
 msgstr "Файлът не е намерен"
 
 #: kig/kig_part.cpp:392
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
 "support this format. If you think the format in question would be worth "
@@ -1003,9 +1010,11 @@ msgid ""
 "\"https://bugs.kde.org/enter_bug.cgi?product=kig&bug_severity=wishlist"
 "\">KDE's bug tracking system</a>"
 msgstr ""
-"Опитвате се да отворите обект от тип „%1“. Програмата не поддържа формата. "
-"Ако мислите, че за този формат трябва да има поддръжка, може да пишете на "
-"адрес devriese@kde.org."
+"Опитахте да отворите документ от тип „%1“; за съжаление Kig не поддържа този "
+"формат. Ако смятате, че си струва да се реализира поддръжка за въпросния "
+"формат, можете да изпратите заявка за функция в <a href=\"https://bugs.kde."
+"org/enter_bug.cgi?product=kig&bug_severity=wishlist\">системата за "
+"проследяване на грешки на KDE</a>."
 
 #: kig/kig_part.cpp:396 kig/kig_part.cpp:444
 #, kde-format
@@ -1027,11 +1036,9 @@ msgid "Save Kig Format"
 msgstr "Запис"
 
 #: kig/kig_part.cpp:702
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
-msgstr ""
-"*.kig|Документи Kig (*.kig)\n"
-"*.kigz|Компресирани документи Kig (*.kigz)"
+msgstr "Документи на Kig (*.kig);;Компресирани документи на Kig (*.kigz)"
 
 #: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
@@ -1044,24 +1051,24 @@ msgid "Overwrite File?"
 msgstr "Презапис на файл"
 
 #: kig/kig_part.cpp:864
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
-msgstr "Отпечатване"
+msgstr "Печат на геометрията"
 
 #: kig/kig_part.cpp:928
-#, fuzzy, kde-format
+#, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
-msgstr[0] "Скриване на обект"
-msgstr[1] "Скриване на обект"
+msgstr[0] "Скриване на %1 обект"
+msgstr[1] "Скриване на %1 обекта"
 
 #: kig/kig_part.cpp:947
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
-msgstr[0] "Показване на обект"
-msgstr[1] "Показване на обект"
+msgstr[0] "Показване на %1 обект"
+msgstr[1] "Показване на %1 обекта"
 
 #: kig/kig_view.cpp:189
 #, kde-format
@@ -1094,13 +1101,13 @@ msgid "Select Zoom Area"
 msgstr "Избор на област за увеличение"
 
 #: kig/kig_view.cpp:539
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the zoom area by entering the coordinates<br />of the upper left "
 "corner and the lower right corner."
 msgstr ""
-"Изберете област за увеличаване чрез въвеждане на координатите на горния ляв "
-"и долния десен ъгъл."
+"Изберете областта за мащабиране, като въведете координатите<br />на горния "
+"ляв и долния десен ъгъл."
 
 #. i18n: ectx: Menu (file)
 #: kig/kigpartui.rc:6 kig/kigui.rc:5
@@ -1178,7 +1185,7 @@ msgstr "Кр&иви от трета степен"
 #: kig/kigpartui.rc:124
 #, kde-format
 msgid "&Bézier curves"
-msgstr ""
+msgstr "Криви на &Безие"
 
 #. i18n: ectx: Menu (new_angle)
 #: kig/kigpartui.rc:134
@@ -1260,9 +1267,9 @@ msgstr "Криви от втора степен"
 
 #. i18n: ectx: ToolBar (bezier_toolbar)
 #: kig/kigpartui.rc:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bézier Curves"
-msgstr "Скриване на крива"
+msgstr "Криви на Безие"
 
 #. i18n: ectx: ToolBar (angles_toolbar)
 #: kig/kigpartui.rc:277
@@ -1327,14 +1334,14 @@ msgid "Document to open"
 msgstr "Документ за отваряне"
 
 #: misc/builtin_stuff.cc:43
-#, fuzzy, kde-format
+#, kde-format
 msgid "Point by Numeric Labels"
-msgstr "Точка по координати"
+msgstr "Точка по числови етикети"
 
 #: misc/builtin_stuff.cc:44
 #, kde-format
 msgid "A point whose coordinates are given by two numeric labels"
-msgstr ""
+msgstr "Точка, чиито координати са зададени от два числови етикета"
 
 #: misc/builtin_stuff.cc:50
 #, kde-format
@@ -1420,14 +1427,14 @@ msgid "A circle constructed through three points"
 msgstr "Окръжност, построена по зададени три точки"
 
 #: misc/builtin_stuff.cc:107
-#, fuzzy, kde-format
+#, kde-format
 msgid "Circle by Point && Radius"
-msgstr "Окръжност по точка и отсечка (за радиус)"
+msgstr "Окръжност по точка и радиус"
 
 #: misc/builtin_stuff.cc:108
-#, fuzzy, kde-format
+#, kde-format
 msgid "A circle defined by its center and the length of the radius"
-msgstr "Окръжност, определена по център и дължина на отсечка за радиус"
+msgstr "Окръжност, определена от нейния център и дължината на радиуса"
 
 #: misc/builtin_stuff.cc:122
 #, kde-format
@@ -1560,14 +1567,14 @@ msgid "A cubic curve with a horizontal cusp at the origin through four points"
 msgstr "Крива от трета степен с хоризонтален връх и четири точки"
 
 #: misc/builtin_stuff.cc:209
-#, fuzzy, kde-format
+#, kde-format
 msgid "Cubic Function by Four Points"
-msgstr "Крива от трета степен с връх и четири точки"
+msgstr "Кубична функция по четири точки"
 
 #: misc/builtin_stuff.cc:210
-#, fuzzy, kde-format
+#, kde-format
 msgid "A cubic function through four points"
-msgstr "Конична крива, минаваща през зададени пет точки"
+msgstr "Кубична функция, преминаваща през четири точки"
 
 #: misc/builtin_stuff.cc:215
 #, kde-format
@@ -1615,19 +1622,19 @@ msgid "The midpoint of a segment or two other points"
 msgstr "Среда на отсечка или между две точки"
 
 #: misc/builtin_stuff.cc:264
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct the golden ratio point of this segment"
-msgstr "Построяване средата на отсечката"
+msgstr "Построяване на точка на златното сечение върху тази отсечка"
 
 #: misc/builtin_stuff.cc:273 objects/line_imp.cc:115
-#, fuzzy, kde-format
+#, kde-format
 msgid "Golden Ratio Point"
-msgstr "Преместване на точка"
+msgstr "Точка на златното сечение"
 
 #: misc/builtin_stuff.cc:274
-#, fuzzy, kde-format
+#, kde-format
 msgid "The golden ratio point of a segment or two other points"
-msgstr "Среда на отсечка или между две точки"
+msgstr "Точката на златното сечение на отсечка или две други точки"
 
 #: misc/builtin_stuff.cc:281
 #, kde-format
@@ -1680,24 +1687,24 @@ msgid "Construct an arc through three points."
 msgstr "Построяване на дъга, минаваща през три точки"
 
 #: misc/builtin_stuff.cc:308
-#, fuzzy, kde-format
+#, kde-format
 msgid "Conic Arc by Center and Three Points"
-msgstr "Дъга по три точки"
+msgstr "Конична дъга по център и три точки"
 
 #: misc/builtin_stuff.cc:309
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a conic arc with given center through three points."
-msgstr "Построяване на дъга, минаваща през три точки"
+msgstr "Построяване на конична дъга по даден център през три точки."
 
 #: misc/builtin_stuff.cc:315
-#, fuzzy, kde-format
+#, kde-format
 msgid "Conic Arc by Five Points"
-msgstr "Крива от втора степен по пет точки"
+msgstr "Конична дъга по пет точки"
 
 #: misc/builtin_stuff.cc:316
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a conic arc through five points."
-msgstr "Построяване на дъга, минаваща през три точки"
+msgstr "Построяване на конична дъга през пет точки."
 
 #: misc/builtin_stuff.cc:322
 #, kde-format
@@ -1820,13 +1827,13 @@ msgid "Apply Similitude"
 msgstr "Прилагане на подобие"
 
 #: misc/builtin_stuff.cc:398
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Apply a similitude to an object (the sequence of a scaling and rotation "
 "around a center)"
 msgstr ""
-"Прилагане на подобие на обект (последователност от мащабиране и завъртане "
-"около център)"
+"Прилагане на подобие (хомотетия и ротация) върху обект (последователност от "
+"мащабиране и завъртане около център)"
 
 #: misc/builtin_stuff.cc:404
 #, kde-format
@@ -1885,44 +1892,50 @@ msgid "A polygon that corresponds to the convex hull of another polygon"
 msgstr "Многоъгълник, съответстващ на изпъкнала обвивка на друг"
 
 #: misc/builtin_stuff.cc:487
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bézier Quadratic by its Control Points"
-msgstr "Крива от трета степен по девет точки"
+msgstr "Квадратична крива на Безие по нейните контролни точки"
 
 #: misc/builtin_stuff.cc:488
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Bézier quadratic given its three control points."
-msgstr "Построяване на дъга, минаваща през три точки"
+msgstr ""
+"Построяване на квадратична крива на Безие по нейните три контролни точки."
 
 #: misc/builtin_stuff.cc:494
 #, kde-format
 msgid "Bézier Cubic by its Control Points"
-msgstr ""
+msgstr "Кубична крива на Безие по нейните контролни точки"
 
 #: misc/builtin_stuff.cc:495
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Bézier cubic given its four control points."
-msgstr "Построяване на крива от трета степен през точката"
+msgstr ""
+"Построяване на кубична крива на Безие по нейните четири контролни точки."
 
 #: misc/builtin_stuff.cc:505
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rational Bézier Quadratic by its Control Points"
-msgstr "Крива от трета степен по девет точки"
+msgstr "Рационална квадратична крива на Безие по нейните контролни точки"
 
 #: misc/builtin_stuff.cc:506
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Rational Bézier quadratic given its three control points."
-msgstr "Построяване на триъгълник по дадени три върха"
+msgstr ""
+"Построяване на рационална квадратична крива на Безие по нейните три "
+"контролни точки."
 
 #: misc/builtin_stuff.cc:512
 #, kde-format
 msgid "Rational Bézier Cubic by its Control Points"
-msgstr ""
+msgstr "Рационална кубична крива на Безие по нейните контролни точки"
 
 #: misc/builtin_stuff.cc:513
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Rational Bézier cubic given its four control points."
-msgstr "Построяване на дъга, минаваща през три точки"
+msgstr ""
+"Построяване на рационална кубична крива на Безие по нейните четири контролни "
+"точки."
 
 #: misc/builtin_stuff.cc:529
 #, kde-format
@@ -1985,14 +1998,14 @@ msgid "Test whether a given polygon is convex"
 msgstr "Проверка дали многоъгълникът е изпъкнал"
 
 #: misc/builtin_stuff.cc:553
-#, fuzzy, kde-format
+#, kde-format
 msgid "Existence Test"
-msgstr "Проверка на разстояние"
+msgstr "Проверка за съществуване"
 
 #: misc/builtin_stuff.cc:553
-#, fuzzy, kde-format
+#, kde-format
 msgid "Test whether a given object is constructible"
-msgstr "Проверка дали многоъгълникът е изпъкнал"
+msgstr "Проверка дали даден обект е построим"
 
 #: misc/builtin_stuff.cc:558
 #, kde-format
@@ -2020,12 +2033,12 @@ msgstr "Проверка дали два вектора са равни"
 #: misc/builtin_stuff.cc:583
 #, kde-format
 msgid "Point Projection"
-msgstr ""
+msgstr "Проекция на точка"
 
 #: misc/builtin_stuff.cc:584
-#, fuzzy, kde-format
+#, kde-format
 msgid "Project a point on a line"
-msgstr "Проектиране на точката върху окръжността"
+msgstr "Проектиране на точка върху права"
 
 #: misc/builtin_stuff.cc:612 modes/popup/scriptactionsprovider.cc:54
 #, kde-format
@@ -2047,13 +2060,13 @@ msgstr ""
 "където x е абсцисата, а и y е ординатата."
 
 #: misc/coordinate_system.cpp:330
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"x;y\"</b>,<br />where x is "
 "the x coordinate, and y is the y coordinate."
 msgstr ""
-"Въведете координатите във формат \"x;y\", където x е абсцисата, а и y е "
-"ординатата."
+"Въведете координатите в следния формат: <b>\"x;y\"</b>,<br />където x е "
+"абсцисата, а y е ординатата."
 
 #: misc/coordinate_system.cpp:372
 #, kde-format
@@ -2065,13 +2078,13 @@ msgstr ""
 "където r и θ са полярни координати."
 
 #: misc/coordinate_system.cpp:380
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Enter coordinates in the following format: <b>\"r; θ°\"</b>,<br />where r "
 "and θ are the polar coordinates."
 msgstr ""
-"Въведете координатите във формат \"r; θ°\", където r и θ са полярни "
-"координати."
+"Въведете координатите в следния format: <b>\"r; θ°\"</b>,<br />където r и θ "
+"са полярните координати."
 
 #: misc/coordinate_system.cpp:532
 #, kde-format
@@ -2100,10 +2113,10 @@ msgid "Deg"
 msgstr "Deg"
 
 #: misc/goniometry.cc:96
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Translators: Radians"
 msgid "Rad"
-msgstr "Радиус"
+msgstr "Рад"
 
 #: misc/goniometry.cc:97
 #, kde-format
@@ -2154,9 +2167,9 @@ msgid "Enter the coordinates for the new point."
 msgstr "Въведете координатите на новата точка."
 
 #: misc/guiaction.cc:235
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Numeric Value"
-msgstr "Създаване на надпис"
+msgstr "Построяване на числена стойност"
 
 #: misc/guiaction.cc:245
 #, kde-format
@@ -2167,19 +2180,19 @@ msgstr "Числова стойност"
 #: misc/kigcoordinateprecisiondialog.ui:9
 #, kde-format
 msgid "&Use default coordinate precision"
-msgstr ""
+msgstr "&Използване на стандартна точност на координатите"
 
 #. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
 #: misc/kigcoordinateprecisiondialog.ui:16
 #, kde-format
 msgid "&Specify coordinate precision:"
-msgstr ""
+msgstr "&Задаване на точност на координатите:"
 
 #: misc/kiginputdialog.cc:125
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Set Angle Size"
-msgstr "Избор на големина на ъгъла"
+msgstr "Задаване на големина на ъгъла"
 
 #: misc/kiginputdialog.cc:140
 #, kde-format
@@ -2192,16 +2205,17 @@ msgid "Use this edit field to modify the size of this angle."
 msgstr "Използвайте това поле, за да промените големината на ъгъла."
 
 #: misc/kiginputdialog.cc:155
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Choose from this list the goniometric unit you want to use to modify the "
 "size of this angle.<br />\n"
 "If you switch to another unit, the value in the edit field on the left will "
 "be converted to the new selected unit."
 msgstr ""
-"Изберете от списъка единицата, която ще използвате при промяна големината на "
-"ъгъла.<br>При избор на друга единица, стойността на полето вляво ще бъде "
-"преобразувана."
+"Изберете от този списък гониометричната единица (градуси/радиани), която "
+"искате да използвате за промяна на големината на този ъгъл.<br />\n"
+"Ако превключите към друга единица, стойността в полето за редактиране вляво "
+"ще бъде преобразувана спрямо новата единица."
 
 #: misc/lists.cc:276 misc/lists.cc:281
 #, kde-format
@@ -2231,16 +2245,15 @@ msgid "Unnamed Macro #%1"
 msgstr "Макрос %1"
 
 #: misc/object_hierarchy.cc:541
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "This Kig file uses an object of type \"%1\", which this Kig version does not "
 "support. Perhaps you have compiled Kig without support for this object type, "
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Файлът съдържа обект от тип „%1“, който не се поддържа от тази версия на "
-"програмата.\n"
-"Вероятно сте компилирали програмата без поддръжка на този тип или използвате "
-"стара версия."
+"Този файл на Kig използва обект от тип „%1“, който не се поддържа от тази "
+"версия на Kig. Вероятно сте компилирали Kig без поддръжка за този тип обекти "
+"или използвате по-стара версия на програмата."
 
 #: misc/special_constructors.cc:274
 #, kde-format
@@ -2323,29 +2336,31 @@ msgstr "Изберете точка, която да е връх на новия
 #: misc/special_constructors.cc:589
 #, kde-format
 msgid "Open Polygon (Polygonal Line)"
-msgstr ""
+msgstr "Отворена полигонална линия (начупена линия)"
 
 #: misc/special_constructors.cc:589
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct an open polygon"
-msgstr "Построяване на страните на многоъгълника"
+msgstr "Построяване на отворен многоъгълник (начупена линия)"
 
 #: misc/special_constructors.cc:622
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "... with this vertex (click again on the last vertex to terminate "
 "construction)"
-msgstr "... с върха (щракнете върху първия връх за край на построението)"
+msgstr ""
+"... с този връх (щракнете отново върху последния връх за край на "
+"построението)"
 
 #: misc/special_constructors.cc:624
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a polygonal line with this vertex"
-msgstr "Построяване на многоъгълник по върха"
+msgstr "Построяване на полигонална линия с този връх"
 
 #: misc/special_constructors.cc:629
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a point to be a vertex of the new polygonal line..."
-msgstr "Изберете точка, която да е връх на новия многоъгълник..."
+msgstr "Изберете точка, която да бъде връх на новата полигонална линия..."
 
 #: misc/special_constructors.cc:658 misc/special_constructors.cc:718
 msgid "Polygon"
@@ -2425,70 +2440,80 @@ msgid "Move the cursor to get the desired number of sides..."
 msgstr "Движете курсора, за да получите желания брой страни..."
 
 #: misc/special_constructors.cc:1062
-#, fuzzy, kde-format
+#, kde-format
 msgid "Bézier Curve by its Control Points"
-msgstr "Крива от трета степен по девет точки"
+msgstr "Крива на Безие по нейните контролни точки"
 
 #: misc/special_constructors.cc:1063
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Bézier curve by giving its control points"
-msgstr "Построяване на многоъгълник по зададени върхове"
+msgstr "Построяване на крива на Безие чрез задаване на нейните контролни точки"
 
 #: misc/special_constructors.cc:1098
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "... with this control point (click again on the last control point to "
 "terminate construction)"
-msgstr "... с върха (щракнете върху първия връх за край на построението)"
+msgstr ""
+"... с тази контролна точка (щракнете отново върху последната контролна точка "
+"за край на построението)"
 
 #: misc/special_constructors.cc:1100
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a Bézier curve with this control point"
-msgstr "Построяване на окръжност със зададения център "
+msgstr "Построяване на крива на Безие с тази контролна точка"
 
 #: misc/special_constructors.cc:1105
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a point to be a control point of the new Bézier curve..."
-msgstr "Изберете точка за връх на новия триъгълник..."
+msgstr ""
+"Изберете точка, която да бъде контролна точка на новата крива на Безие..."
 
 #: misc/special_constructors.cc:1138
-#, fuzzy, kde-format
+#, kde-format
 msgid "Rational Bézier Curve by its Control Points"
-msgstr "Крива от трета степен по девет точки"
+msgstr "Рационална крива на Безие по нейните контролни точки"
 
 #: misc/special_constructors.cc:1143
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Construct a Bézier curve by giving its control points and positive weights"
-msgstr "Построяване на многоъгълник по зададени върхове"
+msgstr ""
+"Построяване на крива на Безие чрез задаване на нейните контролни точки и "
+"положителни тегла"
 
 #: misc/special_constructors.cc:1202
 #, kde-format
 msgid "... assign this weight to last selected control point"
-msgstr ""
+msgstr "... присвояване на тази тежест на последно избраната контролна точка"
 
 #: misc/special_constructors.cc:1205
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "... with this control point (click again on the last control point or weight "
 "to terminate construction)"
-msgstr "... с върха (щракнете върху първия връх за край на построението)"
+msgstr ""
+"... с тази контролна точка (щракнете отново върху последната контролна точка "
+"или тегло за край на построението)"
 
 #: misc/special_constructors.cc:1207
-#, fuzzy, kde-format
+#, kde-format
 msgid "Construct a rational Bézier curve with this control point"
-msgstr "Построяване на окръжност със зададения център "
+msgstr "Построяване на рационална крива на Безие с тази контролна точка"
 
 #: misc/special_constructors.cc:1213
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select a point to be a control point of the new rational Bézier curve..."
-msgstr "Изберете точка за връх на новия триъгълник..."
+msgstr ""
+"Изберете точка, която да бъде контролна точка на новата рационална крива на "
+"Безие..."
 
 #: misc/special_constructors.cc:1215
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a numeric label to be a weight of last selected point..."
-msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+msgstr ""
+"Изберете числов етикет, който да бъде тегло на последно избраната точка..."
 
 #: misc/special_constructors.cc:1380
 #, kde-format
@@ -2559,9 +2584,9 @@ msgid "Arc to transport"
 msgstr "Дъга за пренасяне"
 
 #: misc/special_constructors.cc:1616
-#, fuzzy, kde-format
+#, kde-format
 msgid "Value to transport"
-msgstr "Дъга за пренасяне"
+msgstr "Стойност за пренасяне"
 
 #: misc/special_constructors.cc:1618
 #, kde-format
@@ -2589,19 +2614,19 @@ msgid "Start transport from this point of the curve"
 msgstr "Начало на пренасяне в точката на кривата"
 
 #: misc/special_constructors.cc:1637
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a segment, arc or numeric label to be transported..."
-msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+msgstr "Изберете отсечка, дъга или числов етикет за пренасяне..."
 
 #: misc/special_constructors.cc:1641
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select a destination line or circle..."
-msgstr "Изберете точка от окръжността..."
+msgstr "Изберете целева права или окръжност..."
 
 #: misc/special_constructors.cc:1645
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose a starting point on the line/circle..."
-msgstr "Изберете точка от окръжността..."
+msgstr "Изберете начална точка върху правата/окръжността..."
 
 #: misc/special_constructors.cc:1682 objects/intersection_types.cc:19
 msgid "Intersect with this conic"
@@ -2614,9 +2639,8 @@ msgstr "Сечение с правата"
 
 #: misc/special_constructors.cc:1685 objects/intersection_types.cc:150
 #: objects/intersection_types.cc:215
-#, fuzzy
 msgid "Intersect with this cubic"
-msgstr "Сечение с кривата от втора степен"
+msgstr "Пресичане с тази кубична крива"
 
 #: misc/special_constructors.cc:1688 misc/special_constructors.cc:1689
 #: objects/intersection_types.cc:443 objects/intersection_types.cc:444
@@ -2644,14 +2668,14 @@ msgid "Intersect this Conic"
 msgstr "Сечение на кривата от втора степен"
 
 #: misc/special_constructors.cc:1770
-#, fuzzy, kde-format
+#, kde-format
 msgid "Intersect this Segment"
-msgstr "Сечение на правата"
+msgstr "Пресичане на тази отсечка"
 
 #: misc/special_constructors.cc:1772
-#, fuzzy, kde-format
+#, kde-format
 msgid "Intersect this Half-line"
-msgstr "Сечение на правата"
+msgstr "Пресичане на този полулъч"
 
 #: misc/special_constructors.cc:1774
 #, kde-format
@@ -2674,9 +2698,9 @@ msgid "Intersect this Polygon"
 msgstr "Сечение на многоъгълника"
 
 #: misc/special_constructors.cc:1782
-#, fuzzy, kde-format
+#, kde-format
 msgid "Intersect this Polygonal"
-msgstr "Сечение на многоъгълника"
+msgstr "Пресичане на тази полигонална линия"
 
 #: misc/special_constructors.cc:1788
 #, kde-format
@@ -2689,14 +2713,14 @@ msgid "with this Conic"
 msgstr "с кривата от втора степен"
 
 #: misc/special_constructors.cc:1792
-#, fuzzy, kde-format
+#, kde-format
 msgid "with this Segment"
-msgstr "Избор на отсечката"
+msgstr "с тази отсечка"
 
 #: misc/special_constructors.cc:1794
-#, fuzzy, kde-format
+#, kde-format
 msgid "with this Half-line"
-msgstr "с правата"
+msgstr "с този полулъч"
 
 #: misc/special_constructors.cc:1796
 #, kde-format
@@ -2719,14 +2743,13 @@ msgid "with this Polygon"
 msgstr "с многоъгълника"
 
 #: misc/special_constructors.cc:1804
-#, fuzzy, kde-format
+#, kde-format
 msgid "with this Polygonal"
-msgstr "с многоъгълника"
+msgstr "с тази полигонална линия"
 
 #: misc/special_constructors.cc:1814
-#, fuzzy
 msgid "Construct midpoint of this point and another one"
-msgstr "Построяване на средата между тази и друга точка"
+msgstr "Построяване на среда между тази точка и друга"
 
 #: misc/special_constructors.cc:1815
 msgid ""
@@ -2742,28 +2765,27 @@ msgid "Select the other of the points of which to construct the midpoint..."
 msgstr "Избор на втората от двете точки, чиято среда искате да построите..."
 
 #: misc/special_constructors.cc:1869
-#, fuzzy
 msgid "Construct golden ratio point of this point and another one"
-msgstr "Построяване на средата между тази и друга точка"
+msgstr "Построяване на точка на златното сечение между тази точка и друга"
 
 #: misc/special_constructors.cc:1870
-#, fuzzy
 msgid ""
 "Select the first of the points of which you want to construct the golden "
 "ratio point..."
-msgstr "Избор на първата от точките, чиято среда искате да построите..."
+msgstr ""
+"Изберете първата от точките, за които искате да построите точка на златното "
+"сечение..."
 
 #: misc/special_constructors.cc:1873
-#, fuzzy
 msgid "Construct the golden ratio point of this point and another one"
-msgstr "Построяване на средата между тази и друга точка"
+msgstr "Построяване на точка на златното сечение между тази и друга точка"
 
 #: misc/special_constructors.cc:1874
-#, fuzzy
 msgid ""
 "Select the other of the points of which to construct the golden ratio "
 "point..."
-msgstr "Избор на втората от двете точки, чиято среда искате да построите..."
+msgstr ""
+"Изберете другата точка, за която да построите точка на златното сечение..."
 
 #: misc/special_constructors.cc:1979
 #, kde-format
@@ -2883,10 +2905,10 @@ msgid "Now select the location for the result label."
 msgstr "Сега изберете местоположението на резултата"
 
 #: modes/edittype.cc:25
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Edit Type"
-msgstr "Редактиране на тип"
+msgstr "Редактиране на типа"
 
 #: modes/edittype.cc:42
 #, kde-format
@@ -2936,30 +2958,30 @@ msgstr "Описание:"
 #, kde-format
 msgctxt "@title:window"
 msgid "History Browser"
-msgstr ""
+msgstr "Преглед на историята"
 
 #: modes/historydialog.cc:108
-#, fuzzy, kde-format
+#, kde-format
 msgid "Start of the construction"
-msgstr "Отмяна на построението"
+msgstr "Начало на конструкцията"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: modes/historywidget.ui:22
 #, kde-format
 msgid "Description of the current step:"
-msgstr ""
+msgstr "Описание на текущата стъпка:"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, buttonFirst)
 #: modes/historywidget.ui:53
-#, fuzzy, kde-format
+#, kde-format
 msgid "First step"
-msgstr "Първи фокус"
+msgstr "Първа стъпка"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, buttonBack)
 #: modes/historywidget.ui:66
 #, kde-format
 msgid "One step back"
-msgstr ""
+msgstr "Една стъпка назад"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: modes/historywidget.ui:82
@@ -2971,13 +2993,13 @@ msgstr "/"
 #: modes/historywidget.ui:96
 #, kde-format
 msgid "One step forward"
-msgstr ""
+msgstr "Една стъпка напред"
 
 #. i18n: ectx: property (toolTip), widget (QPushButton, buttonLast)
 #: modes/historywidget.ui:109
 #, kde-format
 msgid "Last step"
-msgstr ""
+msgstr "Последна стъпка"
 
 #: modes/label.cc:154 modes/macrowizard.cc:109 modes/typesdialog.cpp:304
 #, kde-format
@@ -3015,19 +3037,19 @@ msgid "Change Label"
 msgstr "Промяна на надписа"
 
 #: modes/label.cc:601 objects/text_type.cc:290
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set Value"
-msgstr "Избор на сти&л"
+msgstr "Задаване на стойност"
 
 #: modes/label.cc:601
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enter value:"
-msgstr "Текст на надписа"
+msgstr "Въведете стойност:"
 
 #: modes/label.cc:630
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select the position for the new numeric value..."
-msgstr "Изберете крайната точка на дъгата..."
+msgstr "Изберете позицията за новата числена стойност..."
 
 #: modes/macro.cc:70
 #, kde-format
@@ -3093,16 +3115,16 @@ msgid "&Icon:"
 msgstr "&Икона:"
 
 #: modes/macrowizard.cc:154
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Define New Macro"
-msgstr "Дефиниране на макрос"
+msgstr "Дефиниране на нов макрос"
 
 #: modes/moving.cc:136
-#, fuzzy, kde-format
+#, kde-format
 msgid "Move %1 Object"
 msgid_plural "Move %1 Objects"
-msgstr[0] "Преместване на %1 обекта"
+msgstr[0] "Преместване на %1 обект"
 msgstr[1] "Преместване на %1 обекта"
 
 #: modes/moving.cc:218
@@ -3319,10 +3341,10 @@ msgstr ""
 "натиснете бутона за край..."
 
 #: modes/textlabelwizard.cc:106
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Construct Label"
-msgstr "Създаване на надпис"
+msgstr "Построяване на етикет"
 
 #: modes/typesdialog.cpp:133
 #, kde-format
@@ -3340,7 +3362,7 @@ msgid "Description"
 msgstr "Описание"
 
 #: modes/typesdialog.cpp:331
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Manage Types"
 msgstr "Управление на типовете"
@@ -3358,15 +3380,11 @@ msgid "E&xport..."
 msgstr "&Експортиране..."
 
 #: modes/typesdialog.cpp:425
-#, fuzzy, kde-format
+#, kde-format
 msgid "Are you sure you want to delete this type?"
 msgid_plural "Are you sure you want to delete these %1 types?"
-msgstr[0] ""
-"Сигурни ли сте, че искате типът да бъде изтрит?\n"
-"Сигурни ли сте, че искате типовете да бъдат изтрити (%n)?"
-msgstr[1] ""
-"Сигурни ли сте, че искате типът да бъде изтрит?\n"
-"Сигурни ли сте, че искате типовете да бъдат изтрити (%n)?"
+msgstr[0] "Сигурни ли сте, че искате типът да бъде изтрит?"
+msgstr[1] "Сигурни ли сте, че искате да изтриете тези %1 типа?"
 
 #: modes/typesdialog.cpp:427
 #, kde-format
@@ -3379,23 +3397,19 @@ msgid "Export Types"
 msgstr "Експортиране на типове"
 
 #: modes/typesdialog.cpp:455
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kig Types Files (*.kigt);;All Files (*)"
-msgstr ""
-"*.kigt|Типове файлове Kig\n"
-"*|Всички файлове"
+msgstr "Файлове с типове на Kig (*.kigt);;Всички файлове (*)"
 
 #: modes/typesdialog.cpp:475
-#, fuzzy, kde-format
+#, kde-format
 msgid "Kig Types Files (*.kigt)"
-msgstr ""
-"*.kigt|Типове файлове Kig\n"
-"*|Всички файлове"
+msgstr "Файлове с типове на Kig (*.kigt)"
 
 #: modes/typesdialog.cpp:477
 #, kde-format
 msgid "Geogebra Tool Files (*.ggt)"
-msgstr ""
+msgstr "Файлове с инструменти на GeoGebra (*.ggt)"
 
 #: modes/typesdialog.cpp:479
 #, kde-format
@@ -3497,7 +3511,7 @@ msgstr "Избор на &размер"
 #: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
-msgstr ""
+msgstr "Превключване на маркирането за &прав ъгъл"
 
 #: objects/angle_type.cc:132
 #, kde-format
@@ -3545,54 +3559,44 @@ msgid "Select the angle of the new arc..."
 msgstr "Изберете ъгъл за дъгата..."
 
 #: objects/arc_type.cc:203
-#, fuzzy
 msgid "Construct a conic arc starting at this point"
-msgstr "Построяване на дъга с начало точката"
+msgstr "Построяване на конична дъга, започваща от тази точка"
 
 #: objects/arc_type.cc:204
-#, fuzzy
 msgid "Select the start point of the new conic arc..."
-msgstr "Изберете начална точка на дъгата..."
+msgstr "Изберете началната точка на новата конична дъга..."
 
 #: objects/arc_type.cc:205
-#, fuzzy
 msgid "Construct a conic arc through this point"
-msgstr "Построяване на крива от втора степен през точката"
+msgstr "Построяване на конична дъга през тази точка"
 
 #: objects/arc_type.cc:206
-#, fuzzy
 msgid "Select a point for the new conic arc to go through..."
-msgstr "Изберете точка, през която да минава кривата от втора степен..."
+msgstr "Изберете точка, през която да преминава новата конична дъга..."
 
 #: objects/arc_type.cc:207
-#, fuzzy
 msgid "Construct a conic arc ending at this point"
-msgstr "Построяване на дъга, завършваща в точката"
+msgstr "Построяване на конична дъга, завършваща в тази точка"
 
 #: objects/arc_type.cc:208
-#, fuzzy
 msgid "Select the end point of the new conic arc..."
-msgstr "Изберете крайната точка на дъгата..."
+msgstr "Изберете крайната точка на новата конична дъга..."
 
 #: objects/arc_type.cc:211
-#, fuzzy
 msgid "Construct an conic arc with this center"
-msgstr "Построяване на дъга с точката за център"
+msgstr "Построяване на конична дъга с този център"
 
 #: objects/arc_type.cc:211
-#, fuzzy
 msgid "Select the center of the new conic arc..."
-msgstr "Изберете центъра на дъгата..."
+msgstr "Изберете центъра на новата конична дъга..."
 
 #: objects/bezier_imp.cc:119 objects/bezier_imp.cc:408
-#, fuzzy
 msgid "Number of control points"
-msgstr "Брой страни"
+msgstr "Брой контролни точки"
 
 #: objects/bezier_imp.cc:120 objects/bezier_imp.cc:409
-#, fuzzy
 msgid "Control polygon"
-msgstr "Построяване на страните на многоъгълника"
+msgstr "Контролен многоъгълник"
 
 #: objects/bezier_imp.cc:121 objects/bezier_imp.cc:410
 #: objects/circle_imp.cc:138 objects/conic_imp.cc:77 objects/cubic_imp.cc:284
@@ -3601,311 +3605,269 @@ msgid "Cartesian Equation"
 msgstr "Декартово уравнение"
 
 #: objects/bezier_imp.cc:201 objects/polygon_imp.cc:318
-#, fuzzy
 msgid "Bézier Curve"
-msgstr "Скриване на крива"
+msgstr "Крива на Безие"
 
 #: objects/bezier_imp.cc:202
-#, fuzzy
 msgid "Select this Bézier Curve"
-msgstr "Избор на кривата"
+msgstr "Избор на тази крива на Безие"
 
 #: objects/bezier_imp.cc:203
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Bézier Curve %1"
-msgstr "Избор на кривата %1"
+msgstr "Избор на крива на Безие %1"
 
 #: objects/bezier_imp.cc:204
-#, fuzzy
 msgid "Remove a Bézier Curve"
-msgstr "Премахване на крива"
+msgstr "Премахване на крива на Безие"
 
 #: objects/bezier_imp.cc:205
-#, fuzzy
 msgid "Add a Bézier Curve"
-msgstr "Добавяне на крива"
+msgstr "Добавяне на крива на Безие"
 
 #: objects/bezier_imp.cc:206
-#, fuzzy
 msgid "Move a Bézier Curve"
-msgstr "Преместване на крива"
+msgstr "Преместване на крива на Безие"
 
 #: objects/bezier_imp.cc:207
-#, fuzzy
 msgid "Attach to this Bézier Curve"
-msgstr "Прикрепяне към крива"
+msgstr "Прикрепяне към тази крива на Безие"
 
 #: objects/bezier_imp.cc:208
-#, fuzzy
 msgid "Show a Bézier Curve"
-msgstr "Показване на крива"
+msgstr "Показване на крива на Безие"
 
 #: objects/bezier_imp.cc:209
-#, fuzzy
 msgid "Hide a Bézier Curve"
-msgstr "Скриване на крива"
+msgstr "Скриване на крива на Безие"
 
 #: objects/bezier_imp.cc:218
-#, fuzzy
 msgid "Bézier Quadratic"
-msgstr "Добавяне на четириъгълник"
+msgstr "Квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:219
-#, fuzzy
 msgid "Select this Bézier Quadratic"
-msgstr "Избор на дъгата"
+msgstr "Избор на тази квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:220
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Bézier Quadratic %1"
-msgstr "Избор на дъгата %1"
+msgstr "Избор на квадратична крива на Безие %1"
 
 #: objects/bezier_imp.cc:221
-#, fuzzy
 msgid "Remove a Bézier Quadratic"
-msgstr "Премахване на четириъгълник"
+msgstr "Премахване на квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:222
-#, fuzzy
 msgid "Add a Bézier Quadratic"
-msgstr "Добавяне на четириъгълник"
+msgstr "Добавяне на квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:223
-#, fuzzy
 msgid "Move a Bézier Quadratic"
-msgstr "Преместване на четириъгълник"
+msgstr "Преместване на квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:224
-#, fuzzy
 msgid "Attach to this Bézier Quadratic"
-msgstr "Прикрепяне към дъга"
+msgstr "Прикрепяне към тази квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:225
-#, fuzzy
 msgid "Show a Bézier Quadratic"
-msgstr "Показване на четириъгълник"
+msgstr "Показване на квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:226
-#, fuzzy
 msgid "Hide a Bézier Quadratic"
-msgstr "Скриване на четириъгълник"
+msgstr "Скриване на квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:235
 msgid "Bézier Cubic"
-msgstr ""
+msgstr "Кубична крива на Безие"
 
 #: objects/bezier_imp.cc:236
-#, fuzzy
 msgid "Select this Bézier Cubic"
-msgstr "Избор на дъгата"
+msgstr "Избор на тази кубична крива на Безие"
 
 #: objects/bezier_imp.cc:237
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Bézier Cubic %1"
-msgstr "Избор на окръжността %1"
+msgstr "Избор на кубична крива на Безие %1"
 
 #: objects/bezier_imp.cc:238
-#, fuzzy
 msgid "Remove a Bézier Cubic"
-msgstr "Премахване на крива от втора степен"
+msgstr "Премахване на кубична крива на Безие"
 
 #: objects/bezier_imp.cc:239
-#, fuzzy
 msgid "Add a Bézier Cubic"
-msgstr "Добавяне на крива от трета степен"
+msgstr "Добавяне на кубична крива на Безие"
 
 #: objects/bezier_imp.cc:240
-#, fuzzy
 msgid "Move a Bézier Cubic"
-msgstr "Преместване на крива от трета степен"
+msgstr "Преместване на кубична крива на Безие"
 
 #: objects/bezier_imp.cc:241
-#, fuzzy
 msgid "Attach to this Bézier Cubic"
-msgstr "Прикрепяне към дъга"
+msgstr "Прикрепяне към тази кубична крива на Безие"
 
 #: objects/bezier_imp.cc:242
-#, fuzzy
 msgid "Show a Bézier Cubic"
-msgstr "Показване на крива от трета степен"
+msgstr "Показване на кубична крива на Безие"
 
 #: objects/bezier_imp.cc:243
-#, fuzzy
 msgid "Hide a Bézier Cubic"
-msgstr "Скриване на крива от трета степен"
+msgstr "Скриване на кубична крива на Безие"
 
 #: objects/bezier_imp.cc:490
 msgid "Rational Bézier Curve"
-msgstr ""
+msgstr "Рационална крива на Безие"
 
 #: objects/bezier_imp.cc:491
-#, fuzzy
 msgid "Select this Rational Bézier Curve"
-msgstr "Избор на многоъгълника"
+msgstr "Избор на тази рационална крива на Безие"
 
 #: objects/bezier_imp.cc:492
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Rational Bézier Curve %1"
-msgstr "Избор на многоъгълника %1"
+msgstr "Избор на рационална крива на Безие %1"
 
 #: objects/bezier_imp.cc:493
-#, fuzzy
 msgid "Remove a Rational Bézier Curve"
-msgstr "Премахване на многоъгълник"
+msgstr "Премахване на рационална крива на Безие"
 
 #: objects/bezier_imp.cc:494
-#, fuzzy
 msgid "Add a Rational Bézier Curve"
-msgstr "Добавяне на многоъгълник"
+msgstr "Добавяне на рационална крива на Безие"
 
 #: objects/bezier_imp.cc:495
-#, fuzzy
 msgid "Move a Rational Bézier Curve"
-msgstr "Преместване на многоъгълник"
+msgstr "Преместване на рационална крива на Безие"
 
 #: objects/bezier_imp.cc:496
-#, fuzzy
 msgid "Attach to this Rational Bézier Curve"
-msgstr "Прикрепяне към многоъгълник"
+msgstr "Прикрепяне към тази рационална крива на Безие"
 
 #: objects/bezier_imp.cc:497
-#, fuzzy
 msgid "Show a Rational Bézier Curve"
-msgstr "Показване на многоъгълник"
+msgstr "Показване на рационална крива на Безие"
 
 #: objects/bezier_imp.cc:498
-#, fuzzy
 msgid "Hide a Rational Bézier Curve"
-msgstr "Скриване на многоъгълник"
+msgstr "Скриване на рационална крива на Безие"
 
 #: objects/bezier_imp.cc:507
-#, fuzzy
 msgid "Rational Bézier Quadratic"
-msgstr "Избор на кривата от втора степен %1"
+msgstr "Рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:508
-#, fuzzy
 msgid "Select this Rational Bézier Quadratic"
-msgstr "Избор на кривата от втора степен"
+msgstr "Избор на тази рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:509
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Rational Bézier Quadratic %1"
-msgstr "Избор на кривата от втора степен %1"
+msgstr "Избор на рационална квадратична крива на Безие %1"
 
 #: objects/bezier_imp.cc:510
-#, fuzzy
 msgid "Remove a Rational Bézier Quadratic"
-msgstr "Премахване на многоъгълник"
+msgstr "Премахване на рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:511
-#, fuzzy
 msgid "Add a Rational Bézier Quadratic"
-msgstr "Добавяне на многоъгълник"
+msgstr "Добавяне на рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:512
-#, fuzzy
 msgid "Move a Rational Bézier Quadratic"
-msgstr "Преместване на многоъгълник"
+msgstr "Преместване на рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:513
-#, fuzzy
 msgid "Attach to this Rational Bézier Quadratic"
-msgstr "Прикрепяне към кривата от втора степен"
+msgstr "Прикрепяне към тази рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:514
-#, fuzzy
 msgid "Show a Rational Bézier Quadratic"
-msgstr "Показване на многоъгълник"
+msgstr "Показване на рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:515
-#, fuzzy
 msgid "Hide a Rational Bézier Quadratic"
-msgstr "Скриване на многоъгълник"
+msgstr "Скриване на рационална квадратична крива на Безие"
 
 #: objects/bezier_imp.cc:524
 msgid "Rational Bézier Cubic"
-msgstr ""
+msgstr "Рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:525
-#, fuzzy
 msgid "Select this Rational Bézier Cubic"
-msgstr "Избор на триъгълника"
+msgstr "Избор на тази рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:526
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select Rational Bézier Cubic %1"
-msgstr "Избор на триъгълника %1"
+msgstr "Избор на рационална кубична крива на Безие %1"
 
 #: objects/bezier_imp.cc:527
 msgid "Remove a Rational Bézier Cubic"
-msgstr ""
+msgstr "Премахване на рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:528
 msgid "Add a Rational Bézier Cubic"
-msgstr ""
+msgstr "Добавяне на рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:529
 msgid "Move a Rational Bézier Cubic"
-msgstr ""
+msgstr "Преместване на рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:530
-#, fuzzy
 msgid "Attach to this Rational Bézier Cubic"
-msgstr "Прикрепяне към кривата от втора степен"
+msgstr "Прикрепяне към тази рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:531
 msgid "Show a Rational Bézier Cubic"
-msgstr ""
+msgstr "Показване на рационална кубична крива на Безие"
 
 #: objects/bezier_imp.cc:532
 msgid "Hide a Rational Bézier Cubic"
-msgstr ""
+msgstr "Скриване на рационална кубична крива на Безие"
 
 #: objects/bezier_type.cc:26
-#, fuzzy
 msgid "Construct a quadratic Bézier curve with this control point"
-msgstr "Построяване на окръжност със зададения център "
+msgstr "Построяване на квадратична крива на Безие с тази контролна точка"
 
 #: objects/bezier_type.cc:27
-#, fuzzy
 msgid ""
 "Select a point to be a control point of the new quadratic Bézier curve..."
-msgstr "Изберете точка за връх на новия триъгълник..."
+msgstr ""
+"Изберете точка, която да бъде контролна точка на новата квадратична крива на "
+"Безие..."
 
 #: objects/bezier_type.cc:121
-#, fuzzy
 msgid "Construct a cubic Bézier curve with this control point"
-msgstr "Построяване на окръжност със зададения център "
+msgstr "Построяване на кубична крива на Безие с тази контролна точка"
 
 #: objects/bezier_type.cc:122
-#, fuzzy
 msgid "Select a point to be a control point of the new cubic Bézier curve..."
-msgstr "Изберете точка за връх на новия триъгълник..."
+msgstr ""
+"Изберете точка, която да бъде контролна точка на новата кубична крива на "
+"Безие..."
 
 #: objects/bezier_type.cc:328
-#, fuzzy
 msgid "Construct a quadratic rational Bézier curve with this control point"
-msgstr "Построяване на окръжност със зададения център "
+msgstr ""
+"Построяване на рационална квадратична крива на Безие с тази контролна точка"
 
 #: objects/bezier_type.cc:329 objects/bezier_type.cc:434
-#, fuzzy
 msgid ""
 "Select three points and three numeric values as weights to construct "
 "rational Bézier curve..."
 msgstr ""
-"Изберете първата крива от двете криви, на който искате да постройте "
-"радикалните оси..."
+"Изберете три точки и три числени стойности като тегла за построяване на "
+"рационална крива на Безие..."
 
 #: objects/bezier_type.cc:330 objects/bezier_type.cc:435
-#, fuzzy
 msgid "Select this value as weight"
-msgstr "Избор на отсечката"
+msgstr "Избор на тази стойност като тегло"
 
 #: objects/bezier_type.cc:433
-#, fuzzy
 msgid "Construct a cubic rational Bézier curve with this control point"
-msgstr "Построяване на окръжност със зададения център "
+msgstr ""
+"Построяване на рационална кубична крива на Безие с тази контролна точка"
 
 #: objects/bogus_imp.cc:215
 msgid "string"
@@ -4019,14 +3981,12 @@ msgid "Select a point for the new circle to go through..."
 msgstr "Изберете точка, през която да минава окръжността..."
 
 #: objects/circle_type.cc:178
-#, fuzzy
 msgid "With this radius"
-msgstr "с дъгата"
+msgstr "С този радиус"
 
 #: objects/circle_type.cc:178
-#, fuzzy
 msgid "Select the length of the radius..."
-msgstr "Изберете ъгъл на завъртане..."
+msgstr "Изберете дължината на радиуса..."
 
 #: objects/conic_imp.cc:73
 msgid "Conic Type"
@@ -4063,17 +4023,17 @@ msgstr "ро"
 #: objects/conic_imp.cc:263
 #, kde-format
 msgid "cos theta"
-msgstr ""
+msgstr "cos θ"
 
 #: objects/conic_imp.cc:264
 #, kde-format
 msgid "sin theta"
-msgstr ""
+msgstr "sin θ"
 
 #: objects/conic_imp.cc:266
-#, fuzzy, kde-format
+#, kde-format
 msgid "[centered at %1]"
-msgstr "rho = %1   [центрирано в %2]"
+msgstr "[центрирано в %1]"
 
 #: objects/conic_imp.cc:378
 msgid "conic"
@@ -4114,7 +4074,7 @@ msgstr "Скриване на крива от втора степен"
 
 #: objects/conic_imp.cc:524
 msgid "Supporting Conic"
-msgstr ""
+msgstr "Опорно конично сечение"
 
 #: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
 msgid "First End Point"
@@ -4125,49 +4085,41 @@ msgid "Second End Point"
 msgstr "Втора крайна точка"
 
 #: objects/conic_imp.cc:603
-#, fuzzy
 msgid "conic arc"
-msgstr "крива от втора степен"
+msgstr "конична дъга"
 
 #: objects/conic_imp.cc:604
-#, fuzzy
 msgid "Select this conic arc"
-msgstr "Избор на кривата от втора степен"
+msgstr "Избор на тази конична дъга"
 
 #: objects/conic_imp.cc:605
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select conic arc %1"
-msgstr "Избор на кривата от втора степен %1"
+msgstr "Избор на конична дъга %1"
 
 #: objects/conic_imp.cc:606
-#, fuzzy
 msgid "Remove a Conic Arc"
-msgstr "Премахване на крива от втора степен"
+msgstr "Премахване на конична дъга"
 
 #: objects/conic_imp.cc:607
-#, fuzzy
 msgid "Add a Conic Arc"
-msgstr "Добавяне на крива от втора степен"
+msgstr "Добавяне на конична дъга"
 
 #: objects/conic_imp.cc:608
-#, fuzzy
 msgid "Move a Conic Arc"
-msgstr "Преместване на крива от втора степен"
+msgstr "Преместване на конична дъга"
 
 #: objects/conic_imp.cc:609
-#, fuzzy
 msgid "Attach to this conic arc"
-msgstr "Прикрепяне към кривата от втора степен"
+msgstr "Прикрепяне към тази конична дъга"
 
 #: objects/conic_imp.cc:610
-#, fuzzy
 msgid "Show a Conic Arc"
-msgstr "Показване на крива от втора степен"
+msgstr "Показване на конична дъга"
 
 #: objects/conic_imp.cc:611
-#, fuzzy
 msgid "Hide a Conic Arc"
-msgstr "Скриване на крива от втора степен"
+msgstr "Скриване на конична дъга"
 
 #: objects/conic_types.cc:18 objects/conic_types.cc:63
 #: objects/conic_types.cc:181
@@ -4342,9 +4294,9 @@ msgid "Switch Radical Lines"
 msgstr "Размяна на радикалните оси"
 
 #: objects/conic_types.cc:619
-#, fuzzy, kde-format
+#, kde-format
 msgid "Switch Conic Radical Lines"
-msgstr "Размяна на радикалните оси"
+msgstr "Превключване на радикалните оси на коничните сечения"
 
 #: objects/cubic_imp.cc:346
 msgid "cubic curve"
@@ -4431,7 +4383,7 @@ msgstr "Скриване на крива"
 #: objects/curve_imp.cc:344
 #, kde-format
 msgid "Possibly transcendental curve"
-msgstr ""
+msgstr "Вероятно трансцендентна крива"
 
 #: objects/intersection_types.cc:152 objects/intersection_types.cc:153
 #: objects/intersection_types.cc:217
@@ -4455,14 +4407,12 @@ msgid "Select the circle we want to invert against..."
 msgstr "Изберете окръжност, спрямо която да се извърши обръщането..."
 
 #: objects/inversion_type.cc:23
-#, fuzzy
 msgid "Compute the inversion of this object"
-msgstr "Изчисляване обръщането на точката"
+msgstr "Изчисляване на инверсията на този обект"
 
 #: objects/inversion_type.cc:23
-#, fuzzy
 msgid "Select the object to invert..."
-msgstr "Изберете точка за обръщане..."
+msgstr "Изберете обекта за инверсия..."
 
 #: objects/inversion_type.cc:270
 msgid "Compute the inversion of this point"
@@ -4517,14 +4467,12 @@ msgid "Length"
 msgstr "Дължина"
 
 #: objects/line_imp.cc:116 objects/line_imp.cc:193
-#, fuzzy
 msgid "Support Line"
-msgstr "Не се поддържа"
+msgstr "Опорна права"
 
 #: objects/line_imp.cc:194
-#, fuzzy
 msgid "End Point"
-msgstr "Среда"
+msgstr "Крайна точка"
 
 #: objects/line_imp.cc:544 objects/line_imp.cc:560
 msgid "line"
@@ -4872,9 +4820,8 @@ msgid "Arc Length"
 msgstr "Дължина на дъга"
 
 #: objects/other_imp.cc:398
-#, fuzzy
 msgid "Support Circle"
-msgstr "Показване на окръжност"
+msgstr "Опорна окръжност"
 
 #: objects/other_imp.cc:598
 msgid "angle"
@@ -5055,25 +5002,24 @@ msgstr ""
 "Изберете втората от двете точки, на които искате да построите средата..."
 
 #: objects/point_type.cc:274 objects/point_type.cc:278
-#, fuzzy
 msgid "Construct the golden ratio point of this point and another point"
-msgstr "Построяване на средата между две точки"
+msgstr "Построяване на точка на златното сечение между тази точка и друга"
 
 #: objects/point_type.cc:275
-#, fuzzy
 msgid ""
 "Select the first of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Изберете първата от двете точки, на които искате да построите средата..."
+"Изберете първата от двете точки, за които искате да построите точка на "
+"златното сечение..."
 
 #: objects/point_type.cc:279
-#, fuzzy
 msgid ""
 "Select the other of the two points of which you want to construct the golden "
 "ratio point..."
 msgstr ""
-"Изберете втората от двете точки, на които искате да построите средата..."
+"Изберете втората от двете точки, за които искате да построите точка на "
+"златното сечение..."
 
 #: objects/point_type.cc:386
 #, kde-format
@@ -5128,23 +5074,20 @@ msgid "Select the segment to transport on the circle..."
 msgstr "Изберете отсечка, която да нанесете върху окръжността..."
 
 #: objects/point_type.cc:794
-#, fuzzy
 msgid "Select a number/length as x coordinate of the point..."
-msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+msgstr "Изберете число/дължина за x-координата на точката..."
 
 #: objects/point_type.cc:795
-#, fuzzy
 msgid "Select a number/length as y coordinate of the point..."
-msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+msgstr "Изберете число/дължина за y-координата на точката..."
 
 #: objects/point_type.cc:820
-#, fuzzy
 msgid "Select a point to project onto a line..."
-msgstr "Изберете точка, спрямо която да бъде извършено отражението..."
+msgstr "Изберете точка за проектиране върху права..."
 
 #: objects/point_type.cc:821
 msgid "Line where the projected point will lie..."
-msgstr ""
+msgstr "Права, върху която ще лежи проектираната точка..."
 
 #: objects/polygon_imp.cc:288 objects/polygon_imp.cc:302
 #: objects/polygon_imp.cc:316
@@ -5156,13 +5099,12 @@ msgid "Perimeter"
 msgstr "Периметър"
 
 #: objects/polygon_imp.cc:291
-#, fuzzy
 msgid "Boundary Polygonal"
-msgstr "Добавяне на многоъгълник"
+msgstr "Полигонален контур (граница)"
 
 #: objects/polygon_imp.cc:292
 msgid "Open Boundary Polygonal"
-msgstr ""
+msgstr "Отворен полигонален контур"
 
 #: objects/polygon_imp.cc:293 objects/polygon_imp.cc:307
 msgid "Center of Mass of the Vertices"
@@ -5173,24 +5115,20 @@ msgid "Winding Number"
 msgstr "Брой на извивките"
 
 #: objects/polygon_imp.cc:305
-#, fuzzy
 msgid "Inside Polygon"
-msgstr "Скриване на многоъгълник"
+msgstr "Вътрешност на многоъгълник"
 
 #: objects/polygon_imp.cc:306
-#, fuzzy
 msgid "Open Polygonal Curve"
-msgstr "Многоъгълник"
+msgstr "Отворена полигонална линия"
 
 #: objects/polygon_imp.cc:319
-#, fuzzy
 msgid "Associated Polygon"
-msgstr "Добавяне на многоъгълник"
+msgstr "Свързан многоъгълник"
 
 #: objects/polygon_imp.cc:320
-#, fuzzy
 msgid "Closed Polygonal Curve"
-msgstr "Преместване на многоъгълник"
+msgstr "Затворена полигонална линия"
 
 #: objects/polygon_imp.cc:612 objects/polygon_imp.cc:628
 msgid "polygon"
@@ -5230,94 +5168,78 @@ msgid "Hide a Polygon"
 msgstr "Скриване на многоъгълник"
 
 #: objects/polygon_imp.cc:645
-#, fuzzy
 msgid "closed polygonal curve"
-msgstr "многоъгълник"
+msgstr "затворена полигонална линия"
 
 #: objects/polygon_imp.cc:646
-#, fuzzy
 msgid "Select this closed polygonal curve"
-msgstr "Избор на многоъгълника"
+msgstr "Избор на тази затворена полигонална линия"
 
 #: objects/polygon_imp.cc:647
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select closed polygonal curve %1"
-msgstr "Избор на многоъгълника %1"
+msgstr "Избор на затворена полигонална линия %1"
 
 #: objects/polygon_imp.cc:648
-#, fuzzy
 msgid "Remove a closed polygonal curve"
-msgstr "Премахване на многоъгълник"
+msgstr "Премахване на затворена полигонална линия"
 
 #: objects/polygon_imp.cc:649
-#, fuzzy
 msgid "Add a closed polygonal curve"
-msgstr "Добавяне на многоъгълник"
+msgstr "Добавяне на затворена полигонална линия"
 
 #: objects/polygon_imp.cc:650
-#, fuzzy
 msgid "Move a closed polygonal curve"
-msgstr "Преместване на многоъгълник"
+msgstr "Преместване на затворена полигонална линия"
 
 #: objects/polygon_imp.cc:651
-#, fuzzy
 msgid "Attach to this closed polygonal curve"
-msgstr "Прикрепяне към многоъгълник"
+msgstr "Прикрепяне към тази затворена полигонална линия"
 
 #: objects/polygon_imp.cc:652
-#, fuzzy
 msgid "Show a closed polygonal curve"
-msgstr "Показване на многоъгълник"
+msgstr "Показване на затворена полигонална линия"
 
 #: objects/polygon_imp.cc:653
-#, fuzzy
 msgid "Hide a closed polygonal curve"
-msgstr "Скриване на многоъгълник"
+msgstr "Скриване на затворена полигонална линия"
 
 #: objects/polygon_imp.cc:662
-#, fuzzy
 msgid "polygonal curve"
-msgstr "многоъгълник"
+msgstr "полигонална линия"
 
 #: objects/polygon_imp.cc:663
-#, fuzzy
 msgid "Select this polygonal curve"
-msgstr "Избор на многоъгълника"
+msgstr "Избор на тази полигонална линия"
 
 #: objects/polygon_imp.cc:664
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select polygonal curve %1"
-msgstr "Избор на многоъгълника %1"
+msgstr "Избор на полигонална линия %1"
 
 #: objects/polygon_imp.cc:665
-#, fuzzy
 msgid "Remove a polygonal curve"
-msgstr "Премахване на многоъгълник"
+msgstr "Премахване на полигонална линия"
 
 #: objects/polygon_imp.cc:666
-#, fuzzy
 msgid "Add a polygonal curve"
-msgstr "Добавяне на многоъгълник"
+msgstr "Добавяне на полигонална линия"
 
 #: objects/polygon_imp.cc:667
-#, fuzzy
 msgid "Move a polygonal curve"
-msgstr "Преместване на многоъгълник"
+msgstr "Преместване на полигонална линия"
 
 #: objects/polygon_imp.cc:668
-#, fuzzy
 msgid "Attach to this polygonal curve"
-msgstr "Прикрепяне към многоъгълник"
+msgstr "Прикрепяне към тази полигонална линия"
 
 #: objects/polygon_imp.cc:669
-#, fuzzy
 msgid "Show a polygonal curve"
-msgstr "Показване на многоъгълник"
+msgstr "Показване на полигонална линия"
 
 #: objects/polygon_imp.cc:670
-#, fuzzy
 msgid "Hide a polygonal curve"
-msgstr "Скриване на многоъгълник"
+msgstr "Скриване на полигонална линия"
 
 #: objects/polygon_imp.cc:679
 msgid "triangle"
@@ -5410,57 +5332,51 @@ msgid "Select the polygon of which you want the intersection with a line..."
 msgstr "Изберете многоъгълника, който искате да пресечете с права..."
 
 #: objects/polygon_type.cc:474
-#, fuzzy
 msgid "Intersect this line with a polygon"
-msgstr "Сечение на многоъгълника с права"
+msgstr "Пресичане на тази права с многоъгълник"
 
 #: objects/polygon_type.cc:475
-#, fuzzy
 msgid "Select the line of which you want the intersection with a polygon..."
-msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+msgstr "Изберете правата, чието сечение с многоъгълник искате да намерите..."
 
 #: objects/polygon_type.cc:590 objects/polygon_type.cc:623
-#, fuzzy
 msgid "Intersect this polygonal curve with a line"
-msgstr "Сечение на многоъгълника с права"
+msgstr "Пресичане на тази полигонална линия с права"
 
 #: objects/polygon_type.cc:591 objects/polygon_type.cc:624
-#, fuzzy
 msgid ""
 "Select the polygonal curve of which you want the intersection with a line..."
-msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+msgstr ""
+"Изберете полигоналната линия, чието сечение с права искате да намерите..."
 
 #: objects/polygon_type.cc:594 objects/polygon_type.cc:627
-#, fuzzy
 msgid "Intersect this line with a polygonal curve"
-msgstr "Сечение на многоъгълника с права"
+msgstr "Пресичане на тази права с полигонална линия"
 
 #: objects/polygon_type.cc:595 objects/polygon_type.cc:628
-#, fuzzy
 msgid ""
 "Select the line of which you want the intersection with a polygonal curve..."
-msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+msgstr ""
+"Изберете правата, чието сечение с полигонална линия искате да намерите..."
 
 #: objects/polygon_type.cc:788
-#, fuzzy
 msgid "Intersect this polygon with another polygon"
-msgstr "Сечение на многоъгълника с права"
+msgstr "Пресичане на този многоъгълник с друг многоъгълник"
 
 #: objects/polygon_type.cc:789
-#, fuzzy
 msgid ""
 "Select the polygon of which you want the intersection with another polygon..."
-msgstr "Изберете многоъгълника, който искате да пресечете с права..."
+msgstr ""
+"Изберете многоъгълника, чието сечение с друг многоъгълник искате да "
+"намерите..."
 
 #: objects/polygon_type.cc:791
-#, fuzzy
 msgid "Intersect with this polygon"
-msgstr "Сечение с правата"
+msgstr "Пресичане с този многоъгълник"
 
 #: objects/polygon_type.cc:791
-#, fuzzy
 msgid "Select the second polygon for the intersection..."
-msgstr "Избор на втория обект за сечението..."
+msgstr "Изберете втория многоъгълник за сечението..."
 
 #: objects/polygon_type.cc:930
 msgid "Construct the vertices of this polygon"
@@ -5710,24 +5626,22 @@ msgid "The two vectors are not the same."
 msgstr "Векторите не са еднакви."
 
 #: objects/tests_type.cc:352
-#, fuzzy
 msgid "Check whether this object exists"
-msgstr "Проверка за принадлежност на точка към крива"
+msgstr "Проверка дали този обект съществува"
 
 #: objects/tests_type.cc:352
-#, fuzzy
 msgid "Select the object for the existence check..."
-msgstr "Изберете обект за мащабиране..."
+msgstr "Изберете обекта за проверка на съществуване..."
 
 #: objects/tests_type.cc:375
-#, fuzzy, kde-format
+#, kde-format
 msgid "The object exists."
-msgstr "Тип на обекта"
+msgstr "Обектът съществува."
 
 #: objects/tests_type.cc:377
-#, fuzzy, kde-format
+#, kde-format
 msgid "The object does not exist."
-msgstr "Векторите не са еднакви."
+msgstr "Обектът не съществува."
 
 #: objects/text_imp.cc:74
 msgid "Text"
@@ -5772,96 +5686,81 @@ msgstr "Показване на надпис"
 
 #: objects/text_imp.cc:183
 msgid "numeric label"
-msgstr ""
+msgstr "числов етикет"
 
 #: objects/text_imp.cc:184
-#, fuzzy
 msgid "Select this numeric label"
-msgstr "Избор на надписа"
+msgstr "Избор на този числов етикет"
 
 #: objects/text_imp.cc:185
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select numeric label %1"
-msgstr "Избор на надписа %1"
+msgstr "Избор на числов етикет %1"
 
 #: objects/text_imp.cc:186
-#, fuzzy
 msgid "Remove a Numeric Label"
-msgstr "Премахване на надпис"
+msgstr "Премахване на числов етикет"
 
 #: objects/text_imp.cc:187
-#, fuzzy
 msgid "Add a Numeric Label"
-msgstr "Добавяне на надпис"
+msgstr "Добавяне на числов етикет"
 
 #: objects/text_imp.cc:188
-#, fuzzy
 msgid "Move a Numeric Label"
-msgstr "Преместване на надпис"
+msgstr "Преместване на числов етикет"
 
 #: objects/text_imp.cc:189
-#, fuzzy
 msgid "Attach to this numeric label"
-msgstr "Прибавяне към надпис"
+msgstr "Прикрепяне към този числов етикет"
 
 #: objects/text_imp.cc:190
-#, fuzzy
 msgid "Show a Numeric Label"
-msgstr "Скриване на надпис"
+msgstr "Показване на числов етикет"
 
 #: objects/text_imp.cc:191
-#, fuzzy
 msgid "Hide a Numeric Label"
-msgstr "Показване на надпис"
+msgstr "Скриване на числов етикет"
 
 #: objects/text_imp.cc:220 objects/text_imp.cc:314
 msgid "Numeric value"
-msgstr ""
+msgstr "Числена стойност"
 
 #: objects/text_imp.cc:277
-#, fuzzy
 msgid "boolean label"
-msgstr "Преместване на надпис"
+msgstr "булев етикет"
 
 #: objects/text_imp.cc:278
-#, fuzzy
 msgid "Select this boolean label"
-msgstr "Избор на надписа"
+msgstr "Избор на този булев етикет"
 
 #: objects/text_imp.cc:279
-#, fuzzy, kde-format
+#, kde-format
 msgid "Select boolean label %1"
-msgstr "Избор на надписа %1"
+msgstr "Избор на булев етикет %1"
 
 #: objects/text_imp.cc:280
-#, fuzzy
 msgid "Remove a Boolean Label"
-msgstr "Премахване на надпис"
+msgstr "Премахване на булев етикет"
 
 #: objects/text_imp.cc:281
-#, fuzzy
 msgid "Add a Boolean Label"
-msgstr "Добавяне на надпис"
+msgstr "Добавяне на булев етикет"
 
 #: objects/text_imp.cc:282
-#, fuzzy
 msgid "Move a Boolean Label"
-msgstr "Преместване на надпис"
+msgstr "Преместване на булев етикет"
 
 #: objects/text_imp.cc:283
-#, fuzzy
 msgid "Attach to this boolean label"
-msgstr "Прибавяне към надпис"
+msgstr "Прикрепяне към този булев етикет"
 
 #: objects/text_imp.cc:284
-#, fuzzy
 msgid "Show a Boolean Label"
-msgstr "Скриване на надпис"
+msgstr "Показване на булев етикет"
 
 #: objects/text_imp.cc:285
-#, fuzzy
 msgid "Hide a Boolean Label"
-msgstr "Показване на надпис"
+msgstr "Скриване на булев етикет"
 
 #: objects/text_type.cc:156
 #, kde-format
@@ -5874,9 +5773,9 @@ msgid "&Toggle Frame"
 msgstr "&Рамка"
 
 #: objects/text_type.cc:158
-#, fuzzy, kde-format
+#, kde-format
 msgid "Set &Font..."
-msgstr "&Дължина..."
+msgstr "Задаване на &шрифт..."
 
 #: objects/text_type.cc:182
 #, kde-format
@@ -5884,9 +5783,9 @@ msgid "Toggle Label Frame"
 msgstr "Рамка на надписа"
 
 #: objects/text_type.cc:192
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change Label Font"
-msgstr "Промяна на надписа"
+msgstr "Промяна на шрифта на етикета"
 
 #: objects/text_type.cc:219
 #, kde-format
@@ -5894,19 +5793,19 @@ msgid "&Redefine..."
 msgstr "&Повторно дефиниране..."
 
 #: objects/text_type.cc:266
-#, fuzzy, kde-format
+#, kde-format
 msgid "Change &Value..."
-msgstr "Промяна на надписа"
+msgstr "Промяна на &стойността..."
 
 #: objects/text_type.cc:290
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enter the new value:"
-msgstr "Въведете новата координата."
+msgstr "Въведете новата стойност:"
 
 #: objects/text_type.cc:295
 #, kde-format
 msgid "Change Displayed Value"
-msgstr ""
+msgstr "Промяна на показваната стойност"
 
 #: objects/transform_types.cc:21
 msgid "Translate this object"
@@ -5996,39 +5895,36 @@ msgstr "Изберете среда за мащабиране..."
 #. i18n( "Scale by the length of this segment" ), kli18n( "Select a segment whose length is the factor for the scaling" ),
 #. false }
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, fuzzy
 msgid "Scale by this length"
-msgstr "Мащабиране с центъра"
+msgstr "Мащабиране с тази дължина"
 
 #: objects/transform_types.cc:160 objects/transform_types.cc:250
-#, fuzzy
 msgid ""
 "Select a length or a segment whose length is the factor of the scaling..."
-msgstr "Изберете отсечка, чиято дължина да е коефициент на мащабиране..."
+msgstr ""
+"Изберете дължина или отсечка, чиято дължина е коефициентът на мащабиране..."
 
 #: objects/transform_types.cc:201 objects/transform_types.cc:290
-#, fuzzy
 msgid "Scale this length..."
-msgstr "&Дължина..."
+msgstr "Мащабиране на тази дължина..."
 
 #: objects/transform_types.cc:202 objects/transform_types.cc:291
-#, fuzzy
 msgid ""
 "Select the first of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
-"Изберете първата от двете отсечки, които да са коефициент на мащабиране..."
+"Изберете първата от двете дължини, чието отношение е коефициентът на "
+"мащабиране..."
 
 #: objects/transform_types.cc:205 objects/transform_types.cc:294
-#, fuzzy
 msgid "...to this other length"
-msgstr "в триъгълника"
+msgstr "...към тази друга дължина"
 
 #: objects/transform_types.cc:206 objects/transform_types.cc:295
-#, fuzzy
 msgid ""
 "Select the second of two lengths whose ratio is the factor of the scaling..."
 msgstr ""
-"Изберете втората от двете отсечки, които да са коефициент на мащабиране..."
+"Изберете втората от двете дължини, чието отношение е коефициентът на "
+"мащабиране..."
 
 #: objects/transform_types.cc:246 objects/transform_types.cc:284
 msgid "Select the object to scale"
@@ -6378,13 +6274,13 @@ msgid "New Script"
 msgstr "Създаване на скрипт"
 
 #: scripting/newscriptwizard.cc:56
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "Select the argument objects (if any)\n"
 "in the Kig window and press \"Next\"."
 msgstr ""
-"Изберете аргументите обекти (ако има) от основния прозорец на програмата и "
-"натиснете бутона \"Напред\"."
+"Изберете обектите-аргументи (ако има такива)\n"
+"в прозореца на Kig и натиснете „Напред“."
 
 #: scripting/newscriptwizard.cc:62
 #, kde-format
@@ -6402,13 +6298,13 @@ msgid "Now fill in the Python code:"
 msgstr "Въведете кода на Питон:"
 
 #: scripting/script-common.cc:80
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "Note to translators: this should be a default name for an argument in a "
 "Python function. The default is \"arg%1\" which would become arg1, arg2, "
 "etc. Give something which seems appropriate for your language."
 msgid "arg%1"
-msgstr "аргумент %1"
+msgstr "арг%1"
 
 #: scripting/script_mode.cc:182
 #, kde-format
@@ -6440,10 +6336,10 @@ msgstr ""
 "\"Готово\"."
 
 #: scripting/script_mode.cc:286
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window 'Edit' is a verb"
 msgid "Edit Script"
-msgstr "Редактиране на скрипт..."
+msgstr "Редактиране на скрипт"
 
 #: scripting/script_mode.cc:308
 #, kde-format
