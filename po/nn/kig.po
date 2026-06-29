@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2024-08-27 20:25+0200\n"
+"PO-Revision-Date: 2026-06-27 15:54+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.07.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -1345,7 +1345,7 @@ msgstr "Linjestykke"
 #: misc/builtin_stuff.cc:50
 #, kde-format
 msgid "A segment constructed from its start and end point"
-msgstr "Eit linjestykke konstruert ut frå start- og sluttpunkt."
+msgstr "Eit linjestykke konstruert ut frå start- og endepunkt."
 
 #: misc/builtin_stuff.cc:56
 #, kde-format
@@ -3526,7 +3526,7 @@ msgstr "Konstruer ein boge som sluttar i dette punktet"
 
 #: objects/arc_type.cc:37
 msgid "Select the end point of the new arc..."
-msgstr "Vel sluttpunkt for den nye bogen …"
+msgstr "Vel endepunkt for den nye bogen …"
 
 #: objects/arc_type.cc:147
 msgid "Construct an arc with this center"
@@ -3566,7 +3566,7 @@ msgstr "Konstruer ein kjeglesnittboge som sluttar i dette punktet"
 
 #: objects/arc_type.cc:208
 msgid "Select the end point of the new conic arc..."
-msgstr "Vel sluttpunkt for den nye kjeglesnittbogen …"
+msgstr "Vel endepunkt for den nye kjeglesnittbogen …"
 
 #: objects/arc_type.cc:211
 msgid "Construct an conic arc with this center"
@@ -4056,11 +4056,11 @@ msgstr "Støtte-kjeglesnitt"
 
 #: objects/conic_imp.cc:525 objects/line_imp.cc:117 objects/other_imp.cc:399
 msgid "First End Point"
-msgstr "Første sluttpunkt"
+msgstr "Første endepunkt"
 
 #: objects/conic_imp.cc:526 objects/line_imp.cc:118 objects/other_imp.cc:400
 msgid "Second End Point"
-msgstr "Andre sluttpunkt"
+msgstr "Andre endepunkt"
 
 #: objects/conic_imp.cc:603
 msgid "conic arc"
@@ -4449,7 +4449,7 @@ msgstr "Støttelinje"
 
 #: objects/line_imp.cc:194
 msgid "End Point"
-msgstr "Sluttpunkt"
+msgstr "Endepunkt"
 
 #: objects/line_imp.cc:544 objects/line_imp.cc:560
 msgid "line"
@@ -4580,7 +4580,7 @@ msgstr "Konstruer eit linjestykke til dette punktet"
 
 #: objects/line_type.cc:23
 msgid "Select the end point of the new segment..."
-msgstr "Vel sluttpunktet på det nye linjestykket …"
+msgstr "Vel endepunktet på det nye linjestykket …"
 
 #: objects/line_type.cc:47
 msgid "Construct a line through this point"
@@ -6014,7 +6014,7 @@ msgstr "Transformert posisjon for første punkt"
 
 #: objects/transform_types.cc:458
 msgid "Select the first of the three end points of the generic affinity..."
-msgstr "Vel det første av tre sluttpunkt i den generiske affiniteten …"
+msgstr "Vel det første av tre endepunkt i den generiske affiniteten …"
 
 #: objects/transform_types.cc:461 objects/transform_types.cc:574
 msgid "Transformed position of second point"
@@ -6022,7 +6022,7 @@ msgstr "Transformert posisjon for andre punkt"
 
 #: objects/transform_types.cc:462
 msgid "Select the second of the three end points of the generic affinity..."
-msgstr "Vel det andre av tre sluttpunkt i den generiske affiniteten …"
+msgstr "Vel det andre av tre endepunkt i den generiske affiniteten …"
 
 #: objects/transform_types.cc:465 objects/transform_types.cc:578
 msgid "Transformed position of third point"
@@ -6030,7 +6030,7 @@ msgstr "Transformert posisjon for tredje punkt"
 
 #: objects/transform_types.cc:466
 msgid "Select the third of the three end points of the generic affinity..."
-msgstr "Vel det tredje av tre sluttpunkt i den generiske affiniteten …"
+msgstr "Vel det tredje av tre endepunkt i den generiske affiniteten …"
 
 #: objects/transform_types.cc:508 objects/transform_types.cc:552
 msgid "Generic projective transformation of this object"
@@ -6101,17 +6101,17 @@ msgstr ""
 #: objects/transform_types.cc:571
 msgid "Select the first of the four end points of the generic projectivity..."
 msgstr ""
-"Vel det første av fire sluttpunkt i den generisk projektive transformasjon …"
+"Vel det første av fire endepunkt i den generisk projektive transformasjon …"
 
 #: objects/transform_types.cc:575
 msgid "Select the second of the four end points of the generic projectivity..."
 msgstr ""
-"Vel det andre av fire sluttpunkt i den generisk projektive transformasjon …"
+"Vel det andre av fire endepunkt i den generisk projektive transformasjon …"
 
 #: objects/transform_types.cc:579
 msgid "Select the third of the four end points of the generic projectivity..."
 msgstr ""
-"Vel det tredje av fire sluttpunkt i den generisk projektive transformasjon …"
+"Vel det tredje av fire endepunkt i den generisk projektive transformasjon …"
 
 #: objects/transform_types.cc:582
 msgid "Transformed position of fourth point"
@@ -6120,7 +6120,7 @@ msgstr "Transformert posisjon for det fjerde punktet"
 #: objects/transform_types.cc:583
 msgid "Select the fourth of the four end points of the generic projectivity..."
 msgstr ""
-"Vel det fjerde av fire sluttpunkt i den generisk projektive transformasjon …"
+"Vel det fjerde av fire endepunkt i den generisk projektive transformasjon …"
 
 #: objects/transform_types.cc:624
 msgid "Cast the shadow of this object"
@@ -6198,7 +6198,7 @@ msgstr "Konstruer ein vektor til dette punktet"
 
 #: objects/vector_type.cc:13
 msgid "Select the end point of the new vector..."
-msgstr "Vel sluttpunktet for den nye vektoren …"
+msgstr "Vel endepunktet for den nye vektoren …"
 
 #: objects/vector_type.cc:44
 msgid "Construct the vector sum of this vector and another one."
