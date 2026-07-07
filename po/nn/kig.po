@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2026-06-27 15:54+0200\n"
+"PO-Revision-Date: 2026-07-05 17:18+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.07.70\n"
+"X-Generator: Lokalize 26.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -961,7 +961,7 @@ msgstr "Vis &aksar"
 #: kig/kig_part.cpp:309
 #, kde-format
 msgid "Show or hide the axes."
-msgstr "Vis eller gøym aksene."
+msgstr "Vis eller gøym aksane."
 
 #: kig/kig_part.cpp:313
 #, kde-format
@@ -3413,7 +3413,7 @@ msgid ""
 "There is more than one type selected. You can only edit one type at a time. "
 "Please select only the type you want to edit and try again."
 msgstr ""
-"Du har valt meir enn éin type. Du kan berre redigera éin type om gangen. Vel "
+"Du har valt meir enn éin type. Du kan berre redigera éin type om gongen. Vel "
 "den typen du vil redigera, og prøv på nytt."
 
 #: modes/typesdialog.cpp:517
