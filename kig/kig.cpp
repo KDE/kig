@@ -27,7 +27,6 @@
 #include <KSharedConfig>
 #include <KStandardAction>
 #include <KXMLGUIFactory>
-#include <kxmlgui_version.h>
 
 Kig::Kig()
     : KParts::MainWindow()
@@ -41,7 +40,7 @@ Kig::Kig()
     // then, setup our actions
     setupActions();
 
-    const KPluginMetaData partMetaData(QLatin1String("kf") + QT_STRINGIFY(QT_VERSION_MAJOR) + QLatin1String("/parts/kigpart"));
+    const KPluginMetaData partMetaData(QLatin1String("kf6/parts/kigpart"));
     const auto result = KPluginFactory::instantiatePlugin<KParts::ReadWritePart>(partMetaData, this);
 
     if (result) {
