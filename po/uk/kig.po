@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-07-11 00:39+0000\n"
 "PO-Revision-Date: 2024-03-25 17:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -779,12 +779,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Відповідальний за нові піктограми дій з об’єктами."
 
-#: kig/kig.cpp:60
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Не знайдено необхідну бібліотеку для Kig, перевірте встановлене."
 
-#: kig/kig.cpp:196
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -808,190 +808,190 @@ msgstr[1] "додавання %1 об’єктів"
 msgstr[2] "додавання %1 об’єктів"
 msgstr[3] "додавання об’єкта"
 
-#: kig/kig_part.cpp:86
+#: kig/kig_part.cpp:85
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "&Встановити систему координат"
 
-#: kig/kig_part.cpp:126
+#: kig/kig_part.cpp:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Параметри Kig"
 
-#: kig/kig_part.cpp:130
+#: kig/kig_part.cpp:129
 #, kde-format
 msgid "Show grid"
 msgstr "Показати ґратку"
 
-#: kig/kig_part.cpp:133
+#: kig/kig_part.cpp:132
 #, kde-format
 msgid "Show axes"
 msgstr "Показати осі"
 
-#: kig/kig_part.cpp:218
+#: kig/kig_part.cpp:217
 #, kde-format
 msgid "Invert Selection"
 msgstr "Інвертувати вибір"
 
-#: kig/kig_part.cpp:222
+#: kig/kig_part.cpp:221
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Вилучити об’єкти"
 
-#: kig/kig_part.cpp:226
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Вилучити вибрані об’єкти"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:227
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Скасувати побудову"
 
-#: kig/kig_part.cpp:232
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Скасувати побудову об’єкта, що зараз будується"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:234
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Повторити побудову"
 
-#: kig/kig_part.cpp:239
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Повторити останню побудову (з новими даними)"
 
-#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:241 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Показати в&се"
 
-#: kig/kig_part.cpp:245
+#: kig/kig_part.cpp:244
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Показати всі приховані об’єкти"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:247
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Новий макротип…"
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:250
 #, kde-format
 msgid "Define a new macro"
 msgstr "Визначити новий макротип"
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:252
 #, kde-format
 msgid "Manage &Types..."
 msgstr "&Керування макротипами…"
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:255
 #, kde-format
 msgid "Manage macro types."
 msgstr "Керувати макротипами."
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:257
 #, kde-format
 msgid "&Browse History..."
 msgstr "&Перегляд журналу…"
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:260
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Перегляд журналу поточної побудови."
 
-#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
+#: kig/kig_part.cpp:265 kig/kig_part.cpp:266
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Збільшити масштаб документа"
 
-#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Зменшити масштаб документа"
 
-#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
+#: kig/kig_part.cpp:275 kig/kig_part.cpp:276
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Змінити центральну точку екрана відповідно до розмірів документа"
 
-#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Перегляд документа у повноекранному режимі."
 
-#: kig/kig_part.cpp:284
+#: kig/kig_part.cpp:283
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "Ви&брати область показу"
 
-#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
+#: kig/kig_part.cpp:286 kig/kig_part.cpp:287
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Вибрати область, яку ви бажаєте бачити на екрані."
 
-#: kig/kig_part.cpp:290
+#: kig/kig_part.cpp:289
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "В&ибрати область для зміни масштабу"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:296
+#: kig/kig_part.cpp:295
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Встановити &точність координат…"
 
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:297
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Встановити точність дробових значень координат у документі."
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:300
 #, kde-format
 msgid "Show &Grid"
 msgstr "Показати &ґратку"
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:302
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Показати або сховати сітку."
 
-#: kig/kig_part.cpp:307
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show &Axes"
 msgstr "Показати &осі"
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:308
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Показати або сховати осі."
 
-#: kig/kig_part.cpp:313
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Вдягнути інфрачервоні окуляри"
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:314
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Дозволити або заборонити показ прихованих об’єктів."
 
-#: kig/kig_part.cpp:345
+#: kig/kig_part.cpp:344
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Повторити побудову (%1)"
 
-#: kig/kig_part.cpp:346
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Повторити %1 (з новими даними)"
 
-#: kig/kig_part.cpp:374
+#: kig/kig_part.cpp:373
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1000,12 +1000,12 @@ msgstr ""
 "Файл «%1», який ви намагалися відкрити, не існує. Будь ласка, переконайтеся, "
 "що ви правильно ввели його адресу."
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:376
 #, kde-format
 msgid "File Not Found"
 msgstr "Файл не знайдено"
 
-#: kig/kig_part.cpp:392
+#: kig/kig_part.cpp:391
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1020,12 +1020,12 @@ msgstr ""
 "enter_bug.cgi?product=kig&bug_severity=wishlist\">системі стеження за вадами "
 "KDE</a>."
 
-#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
+#: kig/kig_part.cpp:395 kig/kig_part.cpp:438
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Формат не підтримується"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:436
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1034,33 +1034,33 @@ msgstr ""
 "Kig не підтримує збереження до жодного іншого формату файлів, окрім свого "
 "власного. Зберегти інформацію у форматі Kig?"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:439
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Збереження у форматі Kig"
 
-#: kig/kig_part.cpp:702
+#: kig/kig_part.cpp:692
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "документи Kig (*.kig);;стиснуті документи Kig (*.kigz)"
 
-#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:704 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Файл «%1» вже існує. Бажаєте його перезаписати?"
 
-#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:705 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Перезаписати файл?"
 
-#: kig/kig_part.cpp:864
+#: kig/kig_part.cpp:854
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Геометрія друку"
 
-#: kig/kig_part.cpp:928
+#: kig/kig_part.cpp:918
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
@@ -1069,7 +1069,7 @@ msgstr[1] "приховування %1 об’єктів"
 msgstr[2] "приховування %1 об’єктів"
 msgstr[3] "приховування об’єкта"
 
-#: kig/kig_part.cpp:947
+#: kig/kig_part.cpp:937
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-07-11 00:39+0000\n"
 "PO-Revision-Date: 2026-04-12 20:59+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: \n"
@@ -778,12 +778,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Zodpovědný za nové ikony činnosti objektu."
 
-#: kig/kig.cpp:60
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "Nelze najít potřebné knihovny Kig, překontrolujte instalaci."
 
-#: kig/kig.cpp:196
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -805,190 +805,190 @@ msgstr[0] "Vloženo %1 objektů"
 msgstr[1] "Vložené objekty: %1"
 msgstr[2] "Vložené objekty: %1"
 
-#: kig/kig_part.cpp:86
+#: kig/kig_part.cpp:85
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "&Nastavit souřadnicový systém"
 
-#: kig/kig_part.cpp:126
+#: kig/kig_part.cpp:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Volby Kig"
 
-#: kig/kig_part.cpp:130
+#: kig/kig_part.cpp:129
 #, kde-format
 msgid "Show grid"
 msgstr "Zobrazovat mřížku"
 
-#: kig/kig_part.cpp:133
+#: kig/kig_part.cpp:132
 #, kde-format
 msgid "Show axes"
 msgstr "Zobrazit osy"
 
-#: kig/kig_part.cpp:218
+#: kig/kig_part.cpp:217
 #, kde-format
 msgid "Invert Selection"
 msgstr "Invertovat výběr"
 
-#: kig/kig_part.cpp:222
+#: kig/kig_part.cpp:221
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Smazat objekty"
 
-#: kig/kig_part.cpp:226
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Smazat vybrané objekty"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:227
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Zrušit sestrojení"
 
-#: kig/kig_part.cpp:232
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Zrušit sestrojení konstruovaného objektu"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:234
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Opakovat sestrojení"
 
-#: kig/kig_part.cpp:239
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Opakovat poslední sestrojení (s novými daty)"
 
-#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:241 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Odkrýt &vše"
 
-#: kig/kig_part.cpp:245
+#: kig/kig_part.cpp:244
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Zobrazit všechny skryté objekty"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:247
 #, kde-format
 msgid "&New Macro..."
 msgstr "&Nové makro..."
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:250
 #, kde-format
 msgid "Define a new macro"
 msgstr "Definovat nové makro"
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:252
 #, kde-format
 msgid "Manage &Types..."
 msgstr "Správa &typů..."
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:255
 #, kde-format
 msgid "Manage macro types."
 msgstr "Správa typů maker."
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:257
 #, kde-format
 msgid "&Browse History..."
 msgstr "Prohlížet &historii..."
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:260
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Prohlížet historii tohoto sestrojení."
 
-#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
+#: kig/kig_part.cpp:265 kig/kig_part.cpp:266
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Přiblížit dokument"
 
-#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Oddálit dokument"
 
-#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
+#: kig/kig_part.cpp:275 kig/kig_part.cpp:276
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Vycentrovat obrazovku na dokument"
 
-#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Zobrazit dokument v celoobrazovkovém režimu."
 
-#: kig/kig_part.cpp:284
+#: kig/kig_part.cpp:283
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "&Výběr zobrazené oblasti"
 
-#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
+#: kig/kig_part.cpp:286 kig/kig_part.cpp:287
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Zobrazte oblast, kterou si přejete zobrazit v okně."
 
-#: kig/kig_part.cpp:290
+#: kig/kig_part.cpp:289
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "&Zvolte oblast přiblížení"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:296
+#: kig/kig_part.cpp:295
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Nastavit &přesnost souřadnice..."
 
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:297
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Nastavte přesnost desetinných čísel souřadnic v dokumentu. "
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:300
 #, kde-format
 msgid "Show &Grid"
 msgstr "Zobrazit &mřížku"
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:302
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Zobrazit nebo skrýt mřížku."
 
-#: kig/kig_part.cpp:307
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show &Axes"
 msgstr "Zobrazit &osy"
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:308
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Zobrazit nebo skrýt osy."
 
-#: kig/kig_part.cpp:313
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Nasadit infračervené brýle"
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:314
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Povolit/zakázat zobrazení skrytých objektů."
 
-#: kig/kig_part.cpp:345
+#: kig/kig_part.cpp:344
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Opakovat sestrojení (%1)"
 
-#: kig/kig_part.cpp:346
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Opakovat %1 (s novými daty)"
 
-#: kig/kig_part.cpp:374
+#: kig/kig_part.cpp:373
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -997,12 +997,12 @@ msgstr ""
 "Soubor \"%1\", který si přejete otevřít, neexistuje. Ujistěte se, že jste "
 "zadali správnou cestu."
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:376
 #, kde-format
 msgid "File Not Found"
 msgstr "Soubor nenalezen"
 
-#: kig/kig_part.cpp:392
+#: kig/kig_part.cpp:391
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1016,45 +1016,45 @@ msgstr ""
 "požadavek na novou vlastnost na <a href=\"https://bugs.kde.org/enter_bug.cgi?"
 "product=kig&bug_severity=wishlist\">Systému na zprávu chyb KDE</a>"
 
-#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
+#: kig/kig_part.cpp:395 kig/kig_part.cpp:438
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Nepodporovaný formát"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:436
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "Kig nepodporuje uložení do jiného formátu. Uložit do formátu Kig?"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:439
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Uložit ve formátu Kig"
 
-#: kig/kig_part.cpp:702
+#: kig/kig_part.cpp:692
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Dokumenty Kig (*.kig);;Komprimované dokumenty Kig (*.kigz)"
 
-#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:704 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Soubor \"%1\" již existuje. Přejete si jej přepsat?"
 
-#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:705 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Přepsat soubor?"
 
-#: kig/kig_part.cpp:864
+#: kig/kig_part.cpp:854
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Geometrie tisku"
 
-#: kig/kig_part.cpp:928
+#: kig/kig_part.cpp:918
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
@@ -1062,7 +1062,7 @@ msgstr[0] "Skrýt %1 objekt"
 msgstr[1] "Skrýt %1 objekty"
 msgstr[2] "Skrýt %1 objektů"
 
-#: kig/kig_part.cpp:947
+#: kig/kig_part.cpp:937
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

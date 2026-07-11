@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-07-11 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 16:04\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -750,12 +750,12 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "负责新对象动态圆标的绘制。"
 
-#: kig/kig.cpp:60
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr "找不到必需的 Kig 库，请检查您的安装。"
 
-#: kig/kig.cpp:196
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -773,202 +773,202 @@ msgid "Add %1 Object"
 msgid_plural "Add %1 Objects"
 msgstr[0] "添加 %1 个对象"
 
-#: kig/kig_part.cpp:86
+#: kig/kig_part.cpp:85
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "设置坐标系(&S)"
 
-#: kig/kig_part.cpp:126
+#: kig/kig_part.cpp:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Kig 选项"
 
-#: kig/kig_part.cpp:130
+#: kig/kig_part.cpp:129
 #, kde-format
 msgid "Show grid"
 msgstr "显示网格"
 
-#: kig/kig_part.cpp:133
+#: kig/kig_part.cpp:132
 #, kde-format
 msgid "Show axes"
 msgstr "显示坐标轴"
 
-#: kig/kig_part.cpp:218
+#: kig/kig_part.cpp:217
 #, kde-format
 msgid "Invert Selection"
 msgstr "反转选中内容"
 
-#: kig/kig_part.cpp:222
+#: kig/kig_part.cpp:221
 #, kde-format
 msgid "&Delete Objects"
 msgstr "删除对象(&D)"
 
-#: kig/kig_part.cpp:226
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "删除选中的对象"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:227
 #, kde-format
 msgid "Cancel Construction"
 msgstr "取消构造"
 
-#: kig/kig_part.cpp:232
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "取消对象的构造"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:234
 #, kde-format
 msgid "Repeat Construction"
 msgstr "重复构造"
 
-#: kig/kig_part.cpp:239
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "重复最后一次构造(产生新数据)"
 
-#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:241 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "全部取消隐藏(&N)"
 
-#: kig/kig_part.cpp:245
+#: kig/kig_part.cpp:244
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "显示所有隐藏对象"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:247
 #, kde-format
 msgid "&New Macro..."
 msgstr "新建宏(&N)..."
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:250
 #, kde-format
 msgid "Define a new macro"
 msgstr "定义一个新宏"
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:252
 #, kde-format
 msgid "Manage &Types..."
 msgstr "管理宏类型(&T)..."
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:255
 #, kde-format
 msgid "Manage macro types."
 msgstr "管理宏的类型。"
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:257
 #, kde-format
 msgid "&Browse History..."
 msgstr "浏览历史(&B)..."
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:260
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "浏览当前构造的历史。"
 
-#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
+#: kig/kig_part.cpp:265 kig/kig_part.cpp:266
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "放大文档"
 
-#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "缩小文档"
 
-#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
+#: kig/kig_part.cpp:275 kig/kig_part.cpp:276
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "将文档重新显示在屏幕中心"
 
-#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "View this document full-screen."
 msgstr "全屏查看此文档。"
 
-#: kig/kig_part.cpp:284
+#: kig/kig_part.cpp:283
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "选择显示的区域(&S)"
 
-#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
+#: kig/kig_part.cpp:286 kig/kig_part.cpp:287
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "选择您想要在窗口中显示的区域。"
 
-#: kig/kig_part.cpp:290
+#: kig/kig_part.cpp:289
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "选择缩放区域(&E)"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:296
+#: kig/kig_part.cpp:295
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "设置坐标精度(&P)..."
 
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:297
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "设置在文档中的坐标的浮点精确度。"
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:300
 #, kde-format
 msgid "Show &Grid"
 msgstr "显示网格(&G)"
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:302
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "显示或隐藏网格。"
 
-#: kig/kig_part.cpp:307
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show &Axes"
 msgstr "显示坐标轴(&A)"
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:308
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "显示或隐藏坐标轴。"
 
-#: kig/kig_part.cpp:313
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "戴上红外眼镜"
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:314
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "启用/禁用隐藏对象的可见性。"
 
-#: kig/kig_part.cpp:345
+#: kig/kig_part.cpp:344
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "取消构造 (%1)"
 
-#: kig/kig_part.cpp:346
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "重复 %1 (以及新的数据)"
 
-#: kig/kig_part.cpp:374
+#: kig/kig_part.cpp:373
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr "您试图打开的文件“%1”不存在。请检查您输入的路径是否正确。"
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:376
 #, kde-format
 msgid "File Not Found"
 msgstr "文件未找到"
 
-#: kig/kig_part.cpp:392
+#: kig/kig_part.cpp:391
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -981,51 +981,51 @@ msgstr ""
 "到支持，您可以在 <a href=\"https://bugs.kde.org/enter_bug.cgi?"
 "product=kig&bug_severity=wishlist\">KDE 漏洞跟踪系统</a> 处创建一个特性请求。"
 
-#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
+#: kig/kig_part.cpp:395 kig/kig_part.cpp:438
 #, kde-format
 msgid "Format Not Supported"
 msgstr "格式不支持"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:436
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr "Kig 不支持保存为其他文件格式。您是否想要将其保存为 Kig 的格式？"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:439
 #, kde-format
 msgid "Save Kig Format"
 msgstr "保存 Kig 格式"
 
-#: kig/kig_part.cpp:702
+#: kig/kig_part.cpp:692
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "Kig 文档 (*.kig);;压缩的 Kig 文档 (*.kigz)"
 
-#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:704 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "文件“%1”已经存在。是否覆盖？"
 
-#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:705 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "覆盖文件吗？"
 
-#: kig/kig_part.cpp:864
+#: kig/kig_part.cpp:854
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "打印几何"
 
-#: kig/kig_part.cpp:928
+#: kig/kig_part.cpp:918
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "隐藏 %1 个对象"
 
-#: kig/kig_part.cpp:947
+#: kig/kig_part.cpp:937
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

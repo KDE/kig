@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeedu/kig.pot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-07-11 00:39+0000\n"
 "PO-Revision-Date: 2004-12-22 23:06+0100\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: br <LL@li.org>\n"
@@ -734,12 +734,12 @@ msgstr ""
 msgid "Responsible for the new object action icons."
 msgstr ""
 
-#: kig/kig.cpp:60
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 
-#: kig/kig.cpp:196
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -761,203 +761,203 @@ msgid_plural "Add %1 Objects"
 msgstr[0] "Ouzhpennañ %1 tra"
 msgstr[1] ""
 
-#: kig/kig_part.cpp:86
+#: kig/kig_part.cpp:85
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr ""
 
-#: kig/kig_part.cpp:126
+#: kig/kig_part.cpp:125
 #, fuzzy, kde-format
 #| msgid "Kig Options"
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "Dibaboù Kig"
 
-#: kig/kig_part.cpp:130
+#: kig/kig_part.cpp:129
 #, kde-format
 msgid "Show grid"
 msgstr "Diskouez ar gael"
 
-#: kig/kig_part.cpp:133
+#: kig/kig_part.cpp:132
 #, kde-format
 msgid "Show axes"
 msgstr "Diskouez an aheloù"
 
-#: kig/kig_part.cpp:218
+#: kig/kig_part.cpp:217
 #, kde-format
 msgid "Invert Selection"
 msgstr "Eilpennañ an diuz"
 
-#: kig/kig_part.cpp:222
+#: kig/kig_part.cpp:221
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Lemel an traoñ"
 
-#: kig/kig_part.cpp:226
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Lemel an traoñ dibabet"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:227
 #, kde-format
 msgid "Cancel Construction"
 msgstr ""
 
-#: kig/kig_part.cpp:232
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr ""
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:234
 #, kde-format
 msgid "Repeat Construction"
 msgstr ""
 
-#: kig/kig_part.cpp:239
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:241 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr ""
 
-#: kig/kig_part.cpp:245
+#: kig/kig_part.cpp:244
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Diskouez an holl traoñ kuzhet"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:247
 #, kde-format
 msgid "&New Macro..."
 msgstr "Makro &nevez ..."
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:250
 #, kde-format
 msgid "Define a new macro"
 msgstr "Lakaat ur makro nevez"
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:252
 #, kde-format
 msgid "Manage &Types..."
 msgstr "Merañ ar &seurtoù ..."
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:255
 #, kde-format
 msgid "Manage macro types."
 msgstr ""
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:257
 #, kde-format
 msgid "&Browse History..."
 msgstr ""
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:260
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr ""
 
-#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
+#: kig/kig_part.cpp:265 kig/kig_part.cpp:266
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Tostoc'h d'an teul"
 
-#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Pelloc'h d'an teul"
 
-#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
+#: kig/kig_part.cpp:275 kig/kig_part.cpp:276
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr ""
 
-#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Sell ouzh an teul-mañ gant ar skramm leun."
 
-#: kig/kig_part.cpp:284
+#: kig/kig_part.cpp:283
 #, kde-format
 msgid "&Select Shown Area"
 msgstr ""
 
-#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
+#: kig/kig_part.cpp:286 kig/kig_part.cpp:287
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr ""
 
-#: kig/kig_part.cpp:290
+#: kig/kig_part.cpp:289
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr ""
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:296
+#: kig/kig_part.cpp:295
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr ""
 
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:297
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr ""
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:300
 #, kde-format
 msgid "Show &Grid"
 msgstr "Diskouez ar &gael"
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:302
 #, kde-format
 msgid "Show or hide the grid."
 msgstr ""
 
-#: kig/kig_part.cpp:307
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show &Axes"
 msgstr "Diskouez an &aheloù"
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:308
 #, kde-format
 msgid "Show or hide the axes."
 msgstr ""
 
-#: kig/kig_part.cpp:313
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr ""
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:314
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr ""
 
-#: kig/kig_part.cpp:345
+#: kig/kig_part.cpp:344
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr ""
 
-#: kig/kig_part.cpp:346
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr ""
 
-#: kig/kig_part.cpp:374
+#: kig/kig_part.cpp:373
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
 "entered the correct path."
 msgstr ""
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:376
 #, kde-format
 msgid "File Not Found"
 msgstr "N'eo ket bet kavet ar restr"
 
-#: kig/kig_part.cpp:392
+#: kig/kig_part.cpp:391
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -967,52 +967,52 @@ msgid ""
 "\">KDE's bug tracking system</a>"
 msgstr ""
 
-#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
+#: kig/kig_part.cpp:395 kig/kig_part.cpp:438
 #, fuzzy, kde-format
 msgid "Format Not Supported"
 msgstr "N'eo ket skoraet"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:436
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
 "Kig's format instead?"
 msgstr ""
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:439
 #, kde-format
 msgid "Save Kig Format"
 msgstr ""
 
-#: kig/kig_part.cpp:702
+#: kig/kig_part.cpp:692
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr ""
 
-#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:704 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Ar restr « %1 » a zo endeo. Rasklañ ?"
 
-#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:705 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Rasklañ ar restr ?"
 
-#: kig/kig_part.cpp:864
+#: kig/kig_part.cpp:854
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr ""
 
-#: kig/kig_part.cpp:928
+#: kig/kig_part.cpp:918
 #, fuzzy, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
 msgstr[0] "Kuzhat %1 tra"
 msgstr[1] ""
 
-#: kig/kig_part.cpp:947
+#: kig/kig_part.cpp:937
 #, fuzzy, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"

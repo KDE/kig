@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:48+0000\n"
+"POT-Creation-Date: 2026-07-11 00:39+0000\n"
 "PO-Revision-Date: 2025-08-20 12:17+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -781,14 +781,14 @@ msgstr "Danny Allen"
 msgid "Responsible for the new object action icons."
 msgstr "Atbildīgs par jaunajām objektu darbību ikonām."
 
-#: kig/kig.cpp:60
+#: kig/kig.cpp:59
 #, kde-format
 msgid "Could not find the necessary Kig library, check your installation."
 msgstr ""
 "Neizdevās atrast nepieciešamo „Kig“ bibliotēku, pārbaudiet programmas "
 "instalāciju."
 
-#: kig/kig.cpp:196
+#: kig/kig.cpp:195
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
@@ -810,190 +810,190 @@ msgstr[0] "Pievienot %1 objektu"
 msgstr[1] "Pievienot %1 objektus"
 msgstr[2] "Pievienot %1 objektu"
 
-#: kig/kig_part.cpp:86
+#: kig/kig_part.cpp:85
 #, kde-format
 msgid "&Set Coordinate System"
 msgstr "Ie&statīt koordinātu sistēmu"
 
-#: kig/kig_part.cpp:126
+#: kig/kig_part.cpp:125
 #, kde-format
 msgctxt "@title:window"
 msgid "Kig Options"
 msgstr "„Kig“ opcijas"
 
-#: kig/kig_part.cpp:130
+#: kig/kig_part.cpp:129
 #, kde-format
 msgid "Show grid"
 msgstr "Rādīt tīklu"
 
-#: kig/kig_part.cpp:133
+#: kig/kig_part.cpp:132
 #, kde-format
 msgid "Show axes"
 msgstr "Rādīt asis"
 
-#: kig/kig_part.cpp:218
+#: kig/kig_part.cpp:217
 #, kde-format
 msgid "Invert Selection"
 msgstr "Invertēt atlasi"
 
-#: kig/kig_part.cpp:222
+#: kig/kig_part.cpp:221
 #, kde-format
 msgid "&Delete Objects"
 msgstr "&Dzēst objektus"
 
-#: kig/kig_part.cpp:226
+#: kig/kig_part.cpp:225
 #, kde-format
 msgid "Delete the selected objects"
 msgstr "Dzēst atlasītos objektus"
 
-#: kig/kig_part.cpp:228
+#: kig/kig_part.cpp:227
 #, kde-format
 msgid "Cancel Construction"
 msgstr "Atcelt konstruēšanu"
 
-#: kig/kig_part.cpp:232
+#: kig/kig_part.cpp:231
 #, kde-format
 msgid "Cancel the construction of the object being constructed"
 msgstr "Atcelt pašreiz konstruējamā objekta konstruēšanu"
 
-#: kig/kig_part.cpp:235
+#: kig/kig_part.cpp:234
 #, kde-format
 msgid "Repeat Construction"
 msgstr "Atkārtot konstruēšanu"
 
-#: kig/kig_part.cpp:239
+#: kig/kig_part.cpp:238
 #, kde-format
 msgid "Repeat the last construction (with new data)"
 msgstr "Atkārtot pēdējo konstruēšanu (ar jaunajiem datiem)"
 
-#: kig/kig_part.cpp:242 modes/popup/builtindocumentactionsprovider.cc:22
+#: kig/kig_part.cpp:241 modes/popup/builtindocumentactionsprovider.cc:22
 #, kde-format
 msgid "U&nhide All"
 msgstr "Parādīt &visus"
 
-#: kig/kig_part.cpp:245
+#: kig/kig_part.cpp:244
 #, kde-format
 msgid "Show all hidden objects"
 msgstr "Rādīt visus slēptos objektus"
 
-#: kig/kig_part.cpp:248
+#: kig/kig_part.cpp:247
 #, kde-format
 msgid "&New Macro..."
 msgstr "Jau&na makrokomanda..."
 
-#: kig/kig_part.cpp:251
+#: kig/kig_part.cpp:250
 #, kde-format
 msgid "Define a new macro"
 msgstr "Definēt jaunu makrokomandu"
 
-#: kig/kig_part.cpp:253
+#: kig/kig_part.cpp:252
 #, kde-format
 msgid "Manage &Types..."
 msgstr "Pārvaldīt &tipus..."
 
-#: kig/kig_part.cpp:256
+#: kig/kig_part.cpp:255
 #, kde-format
 msgid "Manage macro types."
 msgstr "Pārvaldīt makrokomandu tipus."
 
-#: kig/kig_part.cpp:258
+#: kig/kig_part.cpp:257
 #, kde-format
 msgid "&Browse History..."
 msgstr "Pār&lūkot vēsturi..."
 
-#: kig/kig_part.cpp:261
+#: kig/kig_part.cpp:260
 #, kde-format
 msgid "Browse the history of the current construction."
 msgstr "Pārlūkot pašreizējās konstrukcijas vēsturi."
 
-#: kig/kig_part.cpp:266 kig/kig_part.cpp:267
+#: kig/kig_part.cpp:265 kig/kig_part.cpp:266
 #, kde-format
 msgid "Zoom in on the document"
 msgstr "Tuvināt dokumentu"
 
-#: kig/kig_part.cpp:270 kig/kig_part.cpp:271
+#: kig/kig_part.cpp:269 kig/kig_part.cpp:270
 #, kde-format
 msgid "Zoom out of the document"
 msgstr "Tālināt dokumentu"
 
-#: kig/kig_part.cpp:276 kig/kig_part.cpp:277
+#: kig/kig_part.cpp:275 kig/kig_part.cpp:276
 #, kde-format
 msgid "Recenter the screen on the document"
 msgstr "Pārcentrēt ekrānu virs dokumenta"
 
-#: kig/kig_part.cpp:280 kig/kig_part.cpp:281
+#: kig/kig_part.cpp:279 kig/kig_part.cpp:280
 #, kde-format
 msgid "View this document full-screen."
 msgstr "Skatīt šo dokumentu pilnekrāna režīmā."
 
-#: kig/kig_part.cpp:284
+#: kig/kig_part.cpp:283
 #, kde-format
 msgid "&Select Shown Area"
 msgstr "Atla&sīt rādāmo apgabalu"
 
-#: kig/kig_part.cpp:287 kig/kig_part.cpp:288
+#: kig/kig_part.cpp:286 kig/kig_part.cpp:287
 #, kde-format
 msgid "Select the area that you want to be shown in the window."
 msgstr "Atlasīt apgabalu, kuru vēlaties redzēt logā."
 
-#: kig/kig_part.cpp:290
+#: kig/kig_part.cpp:289
 #, kde-format
 msgid "S&elect Zoom Area"
 msgstr "&Atlasīt tālummaiņas apgabalu"
 
 #. i18n( "Select the area that you want to be shown in the window." ) );
 #. a->setWhatsThis( i18n( "Select the area that you want to be shown in the window." ) );
-#: kig/kig_part.cpp:296
+#: kig/kig_part.cpp:295
 #, kde-format
 msgid "Set Coordinate &Precision..."
 msgstr "Iestatīt koordinātes &precizitāti..."
 
-#: kig/kig_part.cpp:298
+#: kig/kig_part.cpp:297
 #, kde-format
 msgid "Set the floating point precision of coordinates in the document. "
 msgstr "Iestatīt daļskaitļu precizitāti koordinātēm dokumentā. "
 
-#: kig/kig_part.cpp:301
+#: kig/kig_part.cpp:300
 #, kde-format
 msgid "Show &Grid"
 msgstr "Rādīt &tīklu"
 
-#: kig/kig_part.cpp:303
+#: kig/kig_part.cpp:302
 #, kde-format
 msgid "Show or hide the grid."
 msgstr "Rādīt vai slēpt tīklu."
 
-#: kig/kig_part.cpp:307
+#: kig/kig_part.cpp:306
 #, kde-format
 msgid "Show &Axes"
 msgstr "Rādīt &asis"
 
-#: kig/kig_part.cpp:309
+#: kig/kig_part.cpp:308
 #, kde-format
 msgid "Show or hide the axes."
 msgstr "Rādīt vai slēpt asis."
 
-#: kig/kig_part.cpp:313
+#: kig/kig_part.cpp:312
 #, kde-format
 msgid "Wear Infrared Glasses"
 msgstr "Valkāt infrasarkanās brilles"
 
-#: kig/kig_part.cpp:315
+#: kig/kig_part.cpp:314
 #, kde-format
 msgid "Enable/disable hidden objects' visibility."
 msgstr "Ieslēgt/izslēgt slēpto objektu redzamību."
 
-#: kig/kig_part.cpp:345
+#: kig/kig_part.cpp:344
 #, kde-format
 msgid "Repeat Construction (%1)"
 msgstr "Atkārtot konstruēšanu (%1)"
 
-#: kig/kig_part.cpp:346
+#: kig/kig_part.cpp:345
 #, kde-format
 msgid "Repeat %1 (with new data)"
 msgstr "Atkārtot %1 (ar jaunajiem datiem)"
 
-#: kig/kig_part.cpp:374
+#: kig/kig_part.cpp:373
 #, kde-format
 msgid ""
 "The file \"%1\" you tried to open does not exist. Please verify that you "
@@ -1002,12 +1002,12 @@ msgstr ""
 "Datne „%1“, kuru mēģinājāt atvērt, nepastāv. Pārbaudiet, vai ievadījāt "
 "pareizu ceļu."
 
-#: kig/kig_part.cpp:377
+#: kig/kig_part.cpp:376
 #, kde-format
 msgid "File Not Found"
 msgstr "Datne nav atrasta"
 
-#: kig/kig_part.cpp:392
+#: kig/kig_part.cpp:391
 #, kde-format
 msgid ""
 "You tried to open a document of type \"%1\"; unfortunately, Kig does not "
@@ -1021,12 +1021,12 @@ msgstr ""
 "izveidot jaunas iespējas lūgumu <a href=\"https://bugs.kde.org/enter_bug.cgi?"
 "product=kig&bug_severity=wishlist\">KDE kļūdu uzskaites sistēmā</a>"
 
-#: kig/kig_part.cpp:396 kig/kig_part.cpp:444
+#: kig/kig_part.cpp:395 kig/kig_part.cpp:438
 #, kde-format
 msgid "Format Not Supported"
 msgstr "Formāts nav atbalstīts"
 
-#: kig/kig_part.cpp:442
+#: kig/kig_part.cpp:436
 #, kde-format
 msgid ""
 "Kig does not support saving to any other file format than its own. Save to "
@@ -1035,33 +1035,33 @@ msgstr ""
 "„Kig“ neatbalsta saglabāšanu jebkādā citā datņu formātā, izņemot savējo. Vai "
 "saglabāt „Kig“ formātā?"
 
-#: kig/kig_part.cpp:445
+#: kig/kig_part.cpp:439
 #, kde-format
 msgid "Save Kig Format"
 msgstr "Saglabāt „Kig“ formātā"
 
-#: kig/kig_part.cpp:702
+#: kig/kig_part.cpp:692
 #, kde-format
 msgid "Kig Documents (*.kig);;Compressed Kig Documents (*.kigz)"
 msgstr "„Kig“ dokumenti (*.kig);;Saspiesti „Kig“ dokumenti (*.kigz)"
 
-#: kig/kig_part.cpp:714 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
+#: kig/kig_part.cpp:704 misc/kigfiledialog.cc:41 modes/typesdialog.cpp:461
 #, kde-format
 msgid "The file \"%1\" already exists. Do you wish to overwrite it?"
 msgstr "Datne „%1“ jau pastāv. Vai vēlaties to pārrakstīt?"
 
-#: kig/kig_part.cpp:715 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
+#: kig/kig_part.cpp:705 misc/kigfiledialog.cc:42 modes/typesdialog.cpp:464
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Vai pārrakstīt datni?"
 
-#: kig/kig_part.cpp:864
+#: kig/kig_part.cpp:854
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Geometry"
 msgstr "Drukāt ģeometriju"
 
-#: kig/kig_part.cpp:928
+#: kig/kig_part.cpp:918
 #, kde-format
 msgid "Hide %1 Object"
 msgid_plural "Hide %1 Objects"
@@ -1069,7 +1069,7 @@ msgstr[0] "Paslēpt %1 objektu"
 msgstr[1] "Paslēpt %1 objektus"
 msgstr[2] "Paslēpt %1 objektu"
 
-#: kig/kig_part.cpp:947
+#: kig/kig_part.cpp:937
 #, kde-format
 msgid "Show %1 Object"
 msgid_plural "Show %1 Objects"
