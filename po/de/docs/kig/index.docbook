@@ -67,7 +67,7 @@
 >&FDLNotice;</legalnotice>
 
 <date
->2020-12-23</date>
+>2020–12–23</date>
 <releaseinfo
 >Anwendungen 20.12</releaseinfo>
 
@@ -123,14 +123,14 @@
 ><guimenu
 >Hilfe</guimenu
 > <guimenuitem
->Probleme oder Wünsche berichten ...</guimenuitem
+>Probleme oder Wünsche berichten …</guimenuitem
 > </menuchoice
 >). </para>
 
 <para
 >Seit &kig; Makros und geometrische Orte unterstützt, ist es möglich, sehr ausgefeilte Makros zu definieren. Falls Sie ein interessantes Makro erstellt haben, das vielleicht für andere Benutzer ebenfalls von Interesse sein könnte, dann schicken Sie einen „Review Request“, so dass überprüft werden kann, ob es in das Programm eingefügt werden kann. Dann wird es unter &kig;s Lizenz, der <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
 >GPL</ulink
->, veröffentlicht, damit andere Benutzer es frei benutzen und anpassen können. </para>
+>, veröffentlicht, damit andere Benutzer es frei verwenden und anpassen können. </para>
 </chapter>
 
 
@@ -170,7 +170,7 @@
 
 <listitem>
 <para
->Da das Konstruieren von Punkten sehr häufig ist, können Sie dies einfach durch einen Klick mit der &MMBn; an einer beliebigen Stelle im Fenster tun, ohne die Menüs oder Knöpfe zu benutzen. </para>
+>Da das Konstruieren von Punkten sehr häufig ist, können Sie dies einfach durch einen Klick mit der &MMBn; an einer beliebigen Stelle im Fenster tun, ohne die Menüs oder Knöpfe zu verwenden. </para>
 </listitem>
 <listitem>
 <para
@@ -216,9 +216,9 @@ format="PNG"/>
 </mediaobject>
 </screenshot>
 <para
->So beginnen Sie die Konstruktion des gewählten Objekttyps. Alle diese Objekttypen benötigen Parameter. Wenn Sie zum Beispiel einen Kreis durch Mittelpunkt und Punkt konstruieren wollen, dann müssen Sie zwei Punkte angeben: den Mittelpunkt und einen Punkt auf dem Kreis. </para>
+>So beginnen Sie die Konstruktion des gewählten Objekttyps. Alle diese Objekttypen benötigen Parameter. Wenn Sie zum Beispiel einen Kreis durch Mittelpunkt und Punkt konstruieren möchten, dann müssen Sie zwei Punkte angeben: den Mittelpunkt und einen Punkt auf dem Kreis. </para>
 <para
->Diese Parameter sind ebenfalls Objekte, die Sie einfach durch Klicken auswählen können. Bewegen Sie den Mauszeiger über ein Objekt, das Sie als Parameter für die Konstruktion verwenden wollen, wird eine Vorschau des neuen Objekts gezeigt, sodass Sie das Ergebnis sehen können. Für Objekte, die Punkte als Parameter benötigen, können Sie einen neuen Punkt an der aktuellen Position des Mauszeigers durch einen Klick mit der &LMBn; erstellen. Dieser Punkt wird sofort als Parameter gewählt.  </para>
+>Diese Parameter sind ebenfalls Objekte, die Sie einfach durch Klicken auswählen können. Bewegen Sie den Mauszeiger über ein Objekt, das Sie als Parameter für die Konstruktion verwenden möchten, wird eine Vorschau des neuen Objekts gezeigt, sodass Sie das Ergebnis sehen können. Für Objekte, die Punkte als Parameter benötigen, können Sie einen neuen Punkt an der aktuellen Position des Mauszeigers durch einen Klick mit der &LMBn; erstellen. Dieser Punkt wird sofort als Parameter gewählt.  </para>
 <para
 >Sie können die Konstruktion eines neuen Objektes jederzeit abbrechen, indem Sie die &Esc;-Taste betätigen oder den Knopf <inlinemediaobject
 > <imageobject
@@ -421,7 +421,7 @@ format="PNG"/>
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->Werkzeugleisten einrichten ...</guimenuitem
+>Werkzeugleisten einrichten …</guimenuitem
 ></menuchoice
 >. </para>
 </chapter>
@@ -535,7 +535,7 @@ rotation.</para>
 <listitem
 ><para
 >Um die Länge des Vektors zu ändern, müssen Sie den Start- und Endpunkt bearbeiten. Wählen Sie diese Punkte aus und ändern Sie deren Koordinaten mit <guimenuitem
->Koordinaten ändern ...</guimenuitem
+>Koordinaten ändern …</guimenuitem
 > </para
 ></listitem>
 <listitem
@@ -579,7 +579,7 @@ rotation.</para>
 <para
 >Ein weiteres Merkmal von &kig; ist die Unterstützung von Makros. Damit können Sie neue Objekte definieren, die aus anderen, bereits definierten Objekten zusammensetzt sind. </para>
 <para
->Ein Beispiel: Nehmen wir an, Sie wollen ein Makro zur Konstruktion eines Kreises durch drei Punkte erstellen. Dazu konstruieren Sie drei Punkte und die Linien dazwischen. Auf diesen Linien zeichnen Sie in der Mitte die Senkrechten, deren Schnittpunkt den Mittelpunkt für den Kreis durch die drei Ausgangspunkte bildet. Jetzt können Sie den vorhandenen Befehl <guimenuitem
+>Ein Beispiel: Nehmen wir an, Sie möchten ein Makro zur Konstruktion eines Kreises durch drei Punkte erstellen. Dazu konstruieren Sie drei Punkte und die Linien dazwischen. Auf diesen Linien zeichnen Sie in der Mitte die Senkrechten, deren Schnittpunkt den Mittelpunkt für den Kreis durch die drei Ausgangspunkte bildet. Jetzt können Sie den vorhandenen Befehl <guimenuitem
 >Kreis durch Mittelpunkt &amp; Punkt</guimenuitem
 > (mit einem der drei Punkte als Parameter für diesen Befehl) verwenden. Das folgende Bild veranschaulicht die Konstruktion: </para>
 <screenshot>
@@ -598,7 +598,7 @@ rotation.</para>
 
 <para
 >Jetzt muss das Makro definiert werden. Dazu wählen Sie <guimenuitem
->Neues Makro ...</guimenuitem
+>Neues Makro …</guimenuitem
 > aus dem Menü <guimenu
 >Typen</guimenu
 > aus oder klicken auf den Knopf <inlinemediaobject
@@ -633,19 +633,19 @@ rotation.</para>
 >. Das Makro ist jetzt vollständig definiert. </para>
 
 <para
->Um das Makro zu benutzen, wählen Sie es aus der Werkzeugleiste direkt aus oder rufen es im Menü <guimenu
+>Um das Makro zu verwenden, wählen Sie es aus der Werkzeugleiste direkt aus oder rufen es im Menü <guimenu
 >Objekte</guimenu
 > auf. Ein Makro zu konstruieren, funktioniert genauso wie die Konstruktion eines beliebigen Objekts. </para>
 <screenshot>
 <screeninfo
->Das neue Makro benutzen</screeninfo>
+>Das neue Makro verwenden</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="macros_at_work.png" format="PNG"/>
 </imageobject>
 <textobject>
 <phrase
->Das neue Makro benutzen</phrase>
+>Das neue Makro verwenden</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
@@ -656,7 +656,7 @@ rotation.</para>
 >Arbeiten mit Makros</title>
 <para
 >Wie im vorherigen Kapitel gezeigt wurde, können Sie in &kig; eigene Objekte definieren. &kig; stellt weiterhin sicher, dass bei jedem Beenden die angelegten Objekte gespeichert werden und beim nächsten Start wieder zur Verfügung stehen. Ein manuelles Speichern oder Laden der Makrodefinitionen ist nicht notwendig. Sie können Makros aber auch bearbeiten. Mit <guimenuitem
->Typen verwalten ...</guimenuitem
+>Typen verwalten …</guimenuitem
 > im Menü <guimenu
 >Typen</guimenu
 > öffnet sich ein Fenster zur Verwaltung der Makros. Sie können ungenutzte Makros löschen, Makros in Dateien speichern und sogar Makros aus anderen Dateien laden. </para>
@@ -704,14 +704,14 @@ rotation.</para>
 >. </para>
 <screenshot>
 <screeninfo
->Ein Textfeld an einen Kreis hängen ...</screeninfo>
+>Ein Textfeld an einen Kreis hängen …</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="text_label_attaching.png" format="PNG"/>
 </imageobject>
 <textobject>
 <phrase
->Ein Textfeld an einen Kreis hängen ...</phrase>
+>Ein Textfeld an einen Kreis hängen …</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
@@ -747,13 +747,13 @@ rotation.</para>
 >%2</token
 > &etc;) eingeben. Danach bestätigen Sie mit dem Knopf <guibutton
 >Weiter</guibutton
->. Wollen Sie den Text oder die Platzhalter später noch ändern, können Sie mit dem Knopf <guibutton
+>. Möchten Sie den Text oder die Platzhalter später noch ändern, können Sie mit dem Knopf <guibutton
 >Zurück</guibutton
 > wieder zur Bearbeitung gehen. </para>
 <para
 >Der Assistent zeigt nun den eingegebenen Text mit den Platzhaltern in der Form <guilabel
 >Argument 1</guilabel
->. Um festzulegen, was für ein bestimmtes Argument angezeigt werden soll, müssen Sie zuerst das Argument im Text anklicken. Jetzt klicken Sie auf das Objekt, dessen Eigenschaft Sie anzeigen lassen wollen und wählen die gewünschte Eigenschaft aus dem erscheinenden Aufklappfenster. In unserem Beispiel oben klicken Sie auf <guilabel
+>. Um festzulegen, was für ein bestimmtes Argument angezeigt werden soll, müssen Sie zuerst das Argument im Text anklicken. Jetzt klicken Sie auf das Objekt, dessen Eigenschaft Sie anzeigen lassen möchten und wählen die gewünschte Eigenschaft aus dem erscheinenden Aufklappfenster. In unserem Beispiel oben klicken Sie auf <guilabel
 >Argument 1</guilabel
 >, in der Arbeitsfläche von &kig; auf die entsprechende Strecke und wählen die Eigenschaft <guilabel
 >Länge</guilabel
@@ -832,11 +832,11 @@ format="PNG"/>
 >GNOME</acronym
 >-Programm &drgeo;). </para>
 <para
->Mit Python-Skripten in &kig; können Sie eigene Objekte aus vorhandenen Objekten erstellen. So können Sie &eg; einen bestimmten Punkt eines Kegels berechnen wollen. Anstatt nun mit komplexen Konstruktionen und Makros zu hantieren, können Sie die Rechenvorschrift einfach in der Sprache Python aufschreiben und &kig; wird den Punkt entsprechend darstellen. </para>
+>Mit Python-Skripten in &kig; können Sie eigene Objekte aus vorhandenen Objekten erstellen. So können Sie &eg; einen bestimmten Punkt eines Kegels berechnen möchten. Anstatt nun mit komplexen Konstruktionen und Makros zu hantieren, können Sie die Rechenvorschrift einfach in der Sprache Python aufschreiben und &kig; wird den Punkt entsprechend darstellen. </para>
 <para
 >Nehmen wir an, Ihnen ist das in &kig; vorhandene Objekt <quote
 >Mittelpunkt</quote
-> nicht bekannt und Sie wollen den Mittelpunkt zwischen zwei vorgegebenen Punkten konstruieren. Dazu klicken Sie auf den Knopf <inlinemediaobject
+> nicht bekannt und Sie möchten den Mittelpunkt zwischen zwei vorgegebenen Punkten konstruieren. Dazu klicken Sie auf den Knopf <inlinemediaobject
 > <imageobject
 > <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
 > </inlinemediaobject
@@ -865,7 +865,7 @@ format="PNG"/>
 </mediaobject>
 </screenshot>
 <para
->Zuerst müssen Sie die Argumente des Skriptobjektes wählen. In unserem Beispiel sind das die zwei Punkte, zwischen denen wir den Mittelpunkt anzeigen wollen. Diese wählen Sie im Hauptfenster von &kig; aus und bestätigen mit einem Klick auf den Knopf <guibutton
+>Zuerst müssen Sie die Argumente des Skriptobjektes wählen. In unserem Beispiel sind das die zwei Punkte, zwischen denen wir den Mittelpunkt anzeigen möchten. Diese wählen Sie im Hauptfenster von &kig; aus und bestätigen mit einem Klick auf den Knopf <guibutton
 >Weiter</guibutton
 >. </para>
 <para
@@ -873,7 +873,7 @@ format="PNG"/>
 >calc</function
 > definieren. Halten Sie sich an die Python-Regeln zur Definition einer Funktion. So muss jede Zeile der Funktion mit einem &Tab; eingerückt werden. Die erste Zeile ohne &Tab; am Zeilenanfang beendet die Funktionsdefinition. </para>
 <para
->Die Python-Funktion, die wir definieren wollen, heißt <quote
+>Die Python-Funktion, die wir definieren möchten, heißt <quote
 >calc</quote
 > und verarbeitet in unserem Beispiel zwei Argumente. Das sind die im vorherigen Schritt ausgewählten Objekte. Die Anzahl der Argumente muss immer mit der Anzahl der gewählten Objekte übereinstimmen. Die Argumente heißen <parameter
 >arg1</parameter
@@ -881,7 +881,7 @@ format="PNG"/>
 >arg2</parameter
 >, aber Sie können natürlich die Namen ändern. </para>
 <para
->In der Funktion können Sie alle Arten von Berechnungen mit den Argumenten durchführen, die nötig sind. Sie müssen das Objekt zurückgeben, dass Sie definieren wollen. In diesem Fall ist es ein <classname
+>In der Funktion können Sie alle Arten von Berechnungen mit den Argumenten durchführen, die nötig sind. Sie müssen das Objekt zurückgeben, dass Sie definieren möchten. In diesem Fall ist es ein <classname
 >Point</classname
 >-Objekt. Die beiden Argumente sind ebenfalls <classname
 >Point</classname
@@ -928,7 +928,7 @@ format="PNG"/>
 </mediaobject>
 </screenshot>
 <para
->Alle &kig; Objekte können im Python-Quelltext benutzt werden. Wie weiter oben gezeigt wurde, gehören Punkte zur <classname
+>Alle &kig; Objekte können im Python-Quelltext verwendet werden. Wie weiter oben gezeigt wurde, gehören Punkte zur <classname
 >Point</classname
 >-Klasse und Sie können &eg; die Koordinaten über die Funktion <function
 >Point.coordinate()</function
@@ -946,7 +946,7 @@ format="PNG"/>
 <itemizedlist>
 <listitem>
 <para
->&kig; ist eine OpenSource Anwendung. Das bedeutet, Sie dürfen es frei verändern und nutzen, wie Sie wollen. Die Weitergabe von &kig; unterliegt einigen Einschränkungen, hauptsächlich dass jeder die gleichen Rechte wie Sie an &kig;s Benutzung hat, dazu gehören auch die eigenen Änderungen. </para>
+>&kig; ist eine OpenSource Anwendung. Das bedeutet, Sie dürfen es frei verändern und nutzen, wie Sie möchten. Die Weitergabe von &kig; unterliegt einigen Einschränkungen, hauptsächlich dass jeder die gleichen Rechte wie Sie an &kig;s Benutzung hat, dazu gehören auch die eigenen Änderungen. </para>
 <para
 >Freie Software wird in einem sehr offenen Umfeld entwickelt und die Entwickler reagieren meist sehr schnell auf die Rückmeldung durch die Benutzer. Wenn Sie also Fragen, Probleme oder sonstige Hinweise zu &kig; haben, dann schreiben Sie an die Mailingliste <email
 >kde-edu@kde.org</email
@@ -1003,29 +1003,29 @@ format="PNG"/>
 <para
 >Hauptentwickler: </para>
 <para
->&kig; Copyright 2011-2015 David E. Narvaez <email
+>&kig; © 2011–2015 David E. Narvaez <email
 >david.narvaez@computer.org</email
 > </para>
 <para
->&kig; Copyright 2002-2013 Maurizio Paolini <email
+>&kig; © 2002–2013 Maurizio Paolini <email
 >paolini@dmf.unicatt.it</email
 > </para>
 <para
->&kig; Copyright 2004-2010 Pino Toscano <email
+>&kig; © 2004–2010 Pino Toscano <email
 >pino@kde.org</email
 > </para>
 <para
->&kig; Copyright 2002-2005 Dominique Devriese <email
+>&kig; © 2002–2005 Dominique Devriese <email
 >devriese@kde.org</email
 > </para>
 
 <para
->Copyright der Dokumentation 2002-2004 Dominique Devriese <email
+>Copyright der Dokumentation 2002–2004 Dominique Devriese <email
 >devriese@kde.org</email
 >. </para>
 
 <para
->Copyright der Dokumentation 2002-2005 Pino Toscano <email
+>Copyright der Dokumentation 2002–2005 Pino Toscano <email
 >toscano.pino@tiscali.it</email
 >. </para>
 
@@ -1066,7 +1066,7 @@ format="PNG"/>
 <title
 >Wie kann ich Mithelfen?</title>
 <para
->Jegliche Unterstützung ist willkommen! Finden Sie die Icons schlecht, braucht das Handbuch eine Überarbeitung oder haben Sie ein tolles Makro, das Sie mit der ganzen Welt teilen möchten, dann zögern Sie nicht, dies an mich zu schicken. Dabei ist zu beachten, dass der Beitrag ebenfalls unter der &GNU; <acronym
+>Jegliche Unterstützung ist willkommen! Finden Sie die Icons schlecht, benötigt das Handbuch eine Überarbeitung oder haben Sie ein tolles Makro, das Sie mit der ganzen Welt teilen möchten, dann zögern Sie nicht, dies an mich zu schicken. Dabei ist zu beachten, dass der Beitrag ebenfalls unter der &GNU; <acronym
 >GPL</acronym
 >; veröffentlicht wird, deren Text Sie in der Datei <filename
 >COPYING</filename
