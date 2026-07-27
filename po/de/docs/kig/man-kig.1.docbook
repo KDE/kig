@@ -18,7 +18,7 @@
 >bab@debian.org</email
 ></author>
 <date
->2020-12-23</date>
+>2020–12–23</date>
 <releaseinfo
 >Anwendungen 20.12</releaseinfo>
 <productname
@@ -105,9 +105,9 @@
 ></term>
 <listitem
 ><para
->Startet nicht die Benutzeroberfläche, sondern wandelt die angegebene Datei in das &kig;-Format. Die &kig;-Datei wird auf die Standardausgabe geschrieben, wenn Sie nicht <option
+>Startet nicht die Benutzeroberfläche, sondern wandelt die angegebene Datei in das &kig;-Format. Die &kig;-Datei wird auf die Standardausgabe geschrieben, wenn Sie <option
 >--outfile</option
-> benutzen.</para
+> nicht verwenden.</para
 ></listitem>
 </varlistentry>
 <varlistentry>
