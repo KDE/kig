@@ -411,8 +411,8 @@ msgid ""
 "This KSeg document uses a scaling transformation, which Kig currently cannot "
 "import."
 msgstr ""
-"Dieses KSeg-Dokument benutzt eine Skalierungstransformation, die Kig zurzeit "
-"nicht importieren kann."
+"Dieses KSeg-Dokument verwendet eine Skalierungstransformation, die Kig "
+"zurzeit nicht importieren kann."
 
 #: filters/kseg-filter.cc:505
 #, kde-format
@@ -535,7 +535,7 @@ msgid ""
 "A standard coordinate system will be used instead."
 msgstr ""
 "Diese Kig-Datei hat ein Koordinatensystem, das diese Kig-Version nicht "
-"unterstützt. Ein normales Koordinatensystem wird stattdessen benutzt."
+"unterstützt. Ein normales Koordinatensystem wird stattdessen verwendet."
 
 #: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
@@ -545,9 +545,9 @@ msgid ""
 "support.Perhaps you have compiled Kig without support for this object type,"
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Diese Kig-Datei benutzt ein Objekt des Typs „%1“, das diese Kig-Version "
+"Diese Kig-Datei verwendet ein Objekt des Typs „%1“, das diese Kig-Version "
 "nicht unterstützt. Vielleicht haben Sie Kig ohne Unterstützung dieses "
-"Objekttyps kompiliert oder vielleicht benutzen Sie eine ältere Kig-Version."
+"Objekttyps kompiliert oder vielleicht verwenden Sie eine ältere Kig-Version."
 
 #: filters/native-filter.cc:358
 #, kde-format
@@ -556,7 +556,7 @@ msgid ""
 "save the construction with a different name and check that it works as "
 "expected."
 msgstr ""
-"Diese Kig-Datei benutzt ein Objekt des Typs „%1“, das veraltet ist. Sie "
+"Diese Kig-Datei verwendet ein Objekt des Typs „%1“, das veraltet ist. Sie "
 "sollten die Konstruktion unter einem anderen Namen speichern und testen, ob "
 "sie wie erwartet funktioniert."
 
@@ -2267,7 +2267,7 @@ msgstr "Geben Sie die neue Größe des Winkels ein:"
 #, kde-format
 msgid "Use this edit field to modify the size of this angle."
 msgstr ""
-"Benutzen Sie dieses Eingabefeld, um die Größe des Winkels zu verändern."
+"Verwenden Sie dieses Eingabefeld, um die Größe des Winkels zu verändern."
 
 #: misc/kiginputdialog.cc:155
 #, kde-format
@@ -2277,8 +2277,8 @@ msgid ""
 "If you switch to another unit, the value in the edit field on the left will "
 "be converted to the new selected unit."
 msgstr ""
-"Wählen Sie aus der Liste die Einheit, die Sie benutzen möchten, um die Größe "
-"des Winkels zu verändern.<br />\n"
+"Wählen Sie aus der Liste die Einheit, die Sie verwenden möchten, um die "
+"Größe des Winkels zu verändern.<br />\n"
 "Wenn Sie zu einer anderen Einheit wechseln, dann wird der Wert im "
 "Eingabefeld automatisch zur neuen Einheit konvertiert."
 
@@ -2317,9 +2317,9 @@ msgid ""
 "support. Perhaps you have compiled Kig without support for this object type, "
 "or perhaps you are using an older Kig version."
 msgstr ""
-"Diese Kig-Datei benutzt ein Objekt des Typs „%1“, das diese Kig-Version "
+"Diese Kig-Datei verwendet ein Objekt des Typs „%1“, das diese Kig-Version "
 "nicht unterstützt. Vielleicht haben Sie Kig ohne Unterstützung dieses "
-"Objekttyps kompiliert oder vielleicht benutzen Sie eine ältere Kig-Version."
+"Objekttyps kompiliert oder vielleicht verwenden Sie eine ältere Kig-Version."
 
 #: misc/special_constructors.cc:274
 #, kde-format
@@ -3017,7 +3017,7 @@ msgstr ""
 #, kde-format
 msgid "Use this button to change the icon of the current macro type."
 msgstr ""
-"Benutzen Sie diesen Knopf, um das Symbol für den aktuellen Makrotyp zu "
+"Verwenden Sie diesen Knopf, um das Symbol für den aktuellen Makrotyp zu "
 "verändern."
 
 #: modes/edittype.cc:70
@@ -3164,7 +3164,7 @@ msgid ""
 "impossible.  Please check the macro and try again."
 msgstr ""
 "Eines der gegebenen Objekte wird nicht für die Berechnung der "
-"Resultatobjekte benutzt. Das bedeutet womöglich, dass Sie etwas erwarten, "
+"Resultatobjekte verwendet. Das bedeutet womöglich, dass Sie etwas erwarten, "
 "was Kig nicht kann. Bitte überprüfen Sie das Makro und versuchen Sie es "
 "erneut."
 
@@ -3414,7 +3414,7 @@ msgstr ""
 "Geben Sie hier einen Text für Ihr Textfeld ein und drücken Sie „Weiter“ bzw. "
 "„Abschließen“.\n"
 "Wenn Sie veränderliche Teile zeigen möchten, fügen Sie %1, %2, an der "
-"passenden Stelle ein (z. B. „Diese Strecke ist %1 Einheiten lang.“)."
+"passenden Stelle ein (z. B. „Diese Strecke ist %1 Einheiten lang.“)."
 
 #: modes/textlabelwizard.cc:52
 #, kde-format
@@ -3433,7 +3433,7 @@ msgid ""
 "select an object and a property in the Kig window, and click finish when you "
 "are done..."
 msgstr ""
-"Nun wählen Sie die Argumente, die Sie brauchen. Klicken Sie auf das "
+"Nun wählen Sie die Argumente, die Sie benötigen. Klicken Sie auf das "
 "Argument, wählen Sie ein Objekt und eine Eigenschaft im Kig-Fenster und "
 "klicken auf „Abschließen“, wenn Sie fertig sind ..."
 
