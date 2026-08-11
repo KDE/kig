@@ -1,5 +1,5 @@
 # translation of kig.po to
-# SPDX-FileCopyrightText: 2021, 2022, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 # Ahmad M. Zawawi <azawawi@emirates.net.ae>, 2004.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # Abdalrahim G. Fakhouri <abdilra7eem@yahoo.com>, 2014.
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:48+0000\n"
-"PO-Revision-Date: 2025-09-17 19:16+0400\n"
+"PO-Revision-Date: 2026-08-10 18:34+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -179,7 +179,7 @@ msgstr "خيارات Asymptote"
 msgid ""
 "The file \"%1\" could not be opened. Please check if the file permissions "
 "are set correctly."
-msgstr "لم أستطع فتح الملف \"%1\". رجاء، افحص إعدادات صلاحيات الملف."
+msgstr "لم أستطع فتح الملف \"%1\". رجاء، افحص إعدادات أذون الملف."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_2)
@@ -328,7 +328,7 @@ msgid ""
 "exist, or that it cannot be opened due to its permissions"
 msgstr ""
 "تعذر فتح الملف \"%1\". هذا يعني على الأرجح أنه غير موجود، أو أنه لا يمكن "
-"فتحه بسبب أذوناته"
+"فتحه بسبب أذونه"
 
 #: filters/filter.cc:76
 #, kde-format
