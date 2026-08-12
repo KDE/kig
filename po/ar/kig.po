@@ -314,7 +314,7 @@ msgstr "عذرًا، صيغة الملف هذه غير متاحة."
 #: filters/exporter.cc:124
 #, kde-format
 msgid "Sorry, something went wrong while saving to image \"%1\""
-msgstr "عذراً هناك خطأ حدث أثناء حفظ الصورة \"%1\""
+msgstr "عذرًا هناك خطأ حدث أثناء حفظ الصورة \"%1\""
 
 #: filters/exporter.cc:145
 #, kde-format
@@ -497,7 +497,7 @@ msgid ""
 "A standard coordinate system will be used instead."
 msgstr ""
 "يحتوي ملف كيج هذا على نظام إحداثيات لا يدعمه إصدار كيج هذا.\n"
-"سيُستَخدم نظام إحداثيات قياسي بدلاً من ذلك."
+"سيُستَخدم نظام إحداثيات قياسي بدلًا من ذلك."
 
 #: filters/native-filter.cc:305 filters/native-filter.cc:487
 #: objects/object_imp_factory.cc:435
@@ -770,7 +770,7 @@ msgstr "تعذر العثور على مكتبة كيج الضرورية، تحق
 #, kde-format
 msgctxt "@title:window"
 msgid "Open File"
-msgstr "افتح ملفاً"
+msgstr "افتح ملفًا"
 
 #: kig/kig_commands.cpp:91
 #, kde-format
@@ -1017,7 +1017,7 @@ msgid ""
 "Kig's format instead?"
 msgstr ""
 "لا يتيح كيج الحفظ في أي صيغة ملف أخرى غير صيغته الخاصة. هل تريد الحفظ بصيغة "
-"كيج بدلاً من ذلك؟"
+"كيج بدلًا من ذلك؟"
 
 #: kig/kig_part.cpp:439
 #, kde-format
@@ -4440,7 +4440,7 @@ msgstr "خطّ"
 
 #: objects/line_imp.cc:545
 msgid "Select a Line"
-msgstr "حدد خطاً"
+msgstr "حدد خطًا"
 
 #: objects/line_imp.cc:561
 msgid "Select this line"
@@ -5726,7 +5726,7 @@ msgstr "ب&دّل الإطار"
 #: objects/text_type.cc:158
 #, kde-format
 msgid "Set &Font..."
-msgstr "&عين خطاً..."
+msgstr "&عين خطًا..."
 
 #: objects/text_type.cc:182
 #, kde-format
