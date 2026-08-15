@@ -162,6 +162,9 @@
   <url type="donation">https://www.kde.org/community/donations/?app=kig&amp;source=appdata</url>
   <url type="vcs-browser">https://invent.kde.org/education/kig</url>
   <url type="contribute">https://invent.kde.org/education/kig/-/blob/master/README.Developers?ref_type=heads</url>
+  <custom>
+    <value key="KDE::mailinglist">kde-edu@kde.org</value>
+  </custom>
   <screenshots>
     <screenshot type="default">
       <caption>Interactive geometry with Kig</caption>
