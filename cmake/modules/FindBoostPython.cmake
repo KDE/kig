@@ -109,7 +109,6 @@ endif()
 cmake_pop_check_state()
 
 find_package_handle_standard_args(BoostPython
-                                  FOUND_VAR BoostPython_FOUND
                                   REQUIRED_VARS BoostPython_LIBRARIES BoostPython_INCLUDE_DIRS
                                  )
 
