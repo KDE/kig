@@ -3503,7 +3503,7 @@ msgstr "Sett &størrelse"
 #: objects/angle_type.cc:90
 #, kde-format
 msgid "Toggle &Right Angle Mark"
-msgstr "Slå %rettvinkel-merke av/på"
+msgstr "Slå %rettvinkel-merke på/av"
 
 #: objects/angle_type.cc:132
 #, kde-format
@@ -5742,7 +5742,7 @@ msgstr "&Kopier tekst"
 #: objects/text_type.cc:157
 #, kde-format
 msgid "&Toggle Frame"
-msgstr "S&lå ramme av/på"
+msgstr "S&lå ramme på/av"
 
 #: objects/text_type.cc:158
 #, kde-format
