@@ -1,0 +1,1081 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kseg "<application
+>KSeg</application
+>">
+<!ENTITY cabri "<application
+>Cabri</application
+>">
+<!ENTITY drgeo "<application
+>Dr.Geo</application
+>">
+<!ENTITY % addindex "IGNORE">
+<!ENTITY % Arabic "INCLUDE">
+<!-- change language only here -->
+]
+>
+
+<book id="kig" lang="&language;">
+
+<bookinfo>
+<title
+>دليل كيج</title>
+
+<authorgroup>
+<author
+><firstname
+>Dominique</firstname
+> <surname
+>Devriese</surname
+> <affiliation
+> <address
+><email
+>devriese@kde.org</email
+></address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+<copyright>
+<year
+>2002</year
+><year
+>2003</year
+><year
+>2004</year
+> <holder
+>دومينيك ديفريز</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-23</date>
+<releaseinfo
+>تطبيقات 20.12</releaseinfo>
+
+<abstract>
+<para
+>كيج تطبيق للهندسة التفاعلية من كيدي. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>KDE-Edu</keyword>
+<keyword
+>كيج</keyword>
+<keyword
+>الهندسة التفاعلية</keyword>
+<keyword
+>KGeo</keyword>
+<keyword
+>Cabri</keyword>
+<keyword
+>Dr.Geo</keyword>
+<keyword
+>KSeg</keyword>
+</keywordset>
+</bookinfo>
+
+
+<chapter id="introduction">
+<title
+>مقدمة</title>
+
+<para
+>كيج تطبيق للهندسة التفاعلية. يُقصد به خدمة غرضين: </para>
+
+<itemizedlist>
+<listitem
+><para
+>السماح للطلاب باستكشاف الأشكال والمفاهيم الرياضية تفاعليًا باستخدام الحاسوب. </para
+></listitem>
+
+<listitem
+><para
+>العمل كأداة <acronym
+>WYSIWYG</acronym
+> لرسم الأشكال الرياضية وتضمينها في مستندات أخرى.</para
+></listitem>
+</itemizedlist>
+
+<para
+>يمكنك الإبلاغ عن المشاكل في كيج باستخدام أداة الإبلاغ عن الأخطاء الداخلية (<menuchoice
+><guimenu
+>مساعدة</guimenu
+><guimenuitem
+>الإبلاغ عن خطأ...</guimenuitem
+></menuchoice
+>). </para>
+
+<para
+>بما أن كيج يدعم الماكرو وإنشاء المحلّات الهندسية، فإنه يتيح تعريف ماكرو متقدمة إلى حد ما. إذا أنشأت ماكرو مثيرًا للاهتمام تعتقد أنه قد يكون مفيدًا للآخرين، فيُرجى فتح طلب مراجعة للتغيير، ليتم تقييمه لإدراجه في التوزيعة (إذا فعلت ذلك، فسيُرخّص بموجب شروط ترخيص كيج، وهو <ulink url="https://www.gnu.org/licenses/licenses.html#GPL"
+>GPL</ulink
+>، ليتمكن الآخرون من استخدامه وتكييفه بحرية). </para>
+</chapter>
+
+
+<chapter id="using-kig-basic">
+<title
+>الاستخدام الأساسي</title>
+<sect1 id="constructing-objects">
+<title
+>إنشاء الكائنات</title>
+<sect2 id="constructing-points">
+<title
+>إنشاء النقاط</title>
+<para
+>يمكنك إنشاء النقاط بعدة طرق:</para>
+<itemizedlist>
+<listitem>
+<para
+>اختر <menuchoice
+><guimenu
+>كائنات</guimenu
+> <guisubmenu
+>نقاط</guisubmenu
+> <guimenuitem
+>نقطة</guimenuitem
+></menuchoice
+> من شريط القوائم أو اضغط على الزر المناسب في شريط الأدوات. يمكنك بعد ذلك إنشاء نقطة بالنقر على الموضع المطلوب في النافذة.</para>
+
+<note
+><para
+> &Shift; لتفعيل وضع الشبكة المنطبقة الذي يسمح لك بتعيين أي نقطة في الإنشاء بدقة على نقاط الشبكة.</para
+></note>
+<note
+><para
+>في الواقع، يعمل هذا بنفس الطريقة لإنشاء كائنات أخرى أيضًا: انقر على إدخال شريط القوائم أو زر شريط الأدوات المطلوب واختر العناصر اللازمة لإنشاء الكائن.</para
+></note>
+</listitem>
+
+<listitem>
+<para
+>نظرًا لأنك تحتاج غالبًا إلى إنشاء نقاط، فإن مجرد النقر في مكان ما على الشاشة باستخدام &MMB; سينشئ لك نقطة، دون الحاجة إلى الذهاب إلى قائمة أو زر. </para>
+</listitem>
+<listitem>
+<para
+>يمكنك إنشاء نقاط أثناء بناء كائنات أخرى في الخلفية، مع إمكانية تحديدها للكائن الذي تبنيه. لمزيد من المعلومات حول هذا، انظر <xref linkend="constructing-other-objects"/>. </para>
+</listitem>
+</itemizedlist>
+
+<screenshot>
+<screeninfo
+>تم إنشاء نقطة</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_a_point.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>أنشئت نقطة</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="constructing-other-objects">
+<title
+>إنشاء كائنات أخرى</title>
+<para
+>عادةً ما يتم إنشاء كائنات غير النقاط باختيار الإدخال المناسب في قائمة <guimenu
+>كائنات</guimenu
+>، أو بالنقر على أحد أزرار شريط الأدوات. </para>
+<screenshot>
+<screeninfo
+>إنشاء دائرة</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>إنشاء دائرة</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>سيبدأ هذا إنشاء نوع الكائن المختار. تتطلب جميع هذه الأنواع وسائط. على سبيل المثال، إذا اخترت إنشاء دائرة بالمركز والنقطة، فستحتاج إلى إعطاء نقطتين: واحدة للمركز، وأخرى للنقطة على الدائرة. </para>
+<para
+>هذه الوسائط هي كائنات أيضًا، يمكن تحديدها بمجرد النقر عليها. عندما تحرك المؤشر فوق وسيطة تريد استخدامها لإنشاء كائن، سيُعرض صورة أولية للكائن، لتعرف كيف سيبدو. بالنسبة للكائنات التي تتطلب نقاطًا كوسائط، يمكنك وضع نقطة جديدة في موضع المؤشر الحالي وتحديدها بالنقر بزر الفأرة الأيسر &LMB;. </para>
+<para
+>يمكنك دائمًا إلغاء إنشاء الكائن الجديد بالضغط على زر &Esc; أو بالنقر على زر &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="process-stop.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>إلغاء الإنشاء</guibutton
+> في شريط الأدوات. </para>
+<screenshot>
+<screeninfo
+>إنشاء دائرة</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructing_a_circle_2.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>إنشاء دائرة</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect2>
+</sect1>
+
+<sect1 id="selecting-objects">
+<title
+>اختيار الكائنات</title>
+<para
+>يمكن اختيار الكائنات بطريقتين: </para>
+<itemizedlist>
+<listitem>
+<para
+>النقر البسيط على كائن يحدد ذلك الكائن، مع مسح التحديد الحالي. إذا أردت تحديد كائنات متعددة في وقت واحد، فاضغط مع الاستمرار على مفتاح &Ctrl; أثناء النقر على كائن. </para>
+</listitem>
+<listitem>
+<para
+>بالنقر والسحب على بقعة فارغة على الشاشة، يمكنك تحديد جميع الكائنات داخل المستطيل الذي يُنشأ. هذا الإجراء سيمسح التحديد الحالي. كما في الحالة السابقة، الضغط مع الاستمرار على مفتاح &Ctrl; يتيح لك الاحتفاظ بالتحديد الحالي. </para>
+</listitem>
+</itemizedlist>
+<para
+>عندما يكون لديك أكثر من كائن واحد تحت الفأرة (يُشار إليه بـ <guilabel
+>أي كائن؟</guilabel
+> في شريط الحالة وعند مؤشر الفأرة)، يمكنك بسهولة اختيار الكائن الذي تريد تحديده أو إضافته إلى التحديد الحالي. انقر بزر الفأرة الأيسر (&LMB;)، مع الضغط على مفتاح &Shift; أو انقر بزر الفأرة الأيمن (&RMB;)، لتظهر قائمة منبثقة بجميع الكائنات تحت الفأرة. ثم يمكنك تحديد الكائن الذي تحتاجه. كما ذكر سابقًا، سيؤثر سلوك مفتاح &Ctrl; على التحديد. </para>
+<screenshot>
+<screeninfo
+>اختيار الكائنات</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="selecting_objects.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>اختيار الكائنات</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="moving-objects">
+<title
+>نقل الكائنات</title>
+<para
+>لنقل الكائنات، يجب عليك أولًا <link linkend="selecting-objects"
+>تحديدها</link
+>. </para>
+<para
+>عندما تُحدد الكائنات التي تريد نقلها، يمكنك البدء في نقلها بالنقر بزر الفأرة الأيسر (&LMB;) وسحب أي منها. عندما تنتهي، أفلت زر الفأرة الأيسر (&LMB;) ببساطة. </para>
+<note
+><para
+>بالنسبة لبعض أنواع الكائنات (خاصةً تلك المعرفة بمواضع معقدة)، قد يكون نقلها بطيئًا على الأجهزة القديمة. هذا أمر مؤسف، لكنه حتمي نظرًا للحسابات المتضمنة. </para
+></note
+> <note
+><para
+>إذا نقرت بزر الفأرة الأيمن (&RMB;) على أحد الكائنات المحددة، واخترت <guimenuitem
+>نقل</guimenuitem
+>، فإن تحريك الفأرة سينقل الكائن. عندما يُنقل الكائن إلى الموضع المطلوب، نقر آخر بزر الفأرة الأيسر (&LMB;) سيوقف نقل الكائن.</para
+></note>
+</sect1>
+<sect1 id="deleting-objects">
+<title
+>حذف الكائنات</title>
+<para
+>يتم حذف الكائنات بتحديدها أولًا <link linkend="selecting-objects"
+>اختيارها</link
+>، ثم القيام بأحد الإجراءين التاليين: <itemizedlist>
+<listitem>
+<para
+>اضغط على مفتاح &Del;. </para>
+</listitem>
+<listitem>
+<para
+>اضغط على الزر &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="edit-delete.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>حذف الكائنات</guibutton
+> في شريط الأدوات. </para>
+</listitem>
+<listitem>
+<para
+>انقر بزر الفأرة الأيمن على أحد الكائنات، واختر <guimenuitem
+>حذف</guimenuitem
+> من <link linkend="objects-context-menus"
+>القائمة السياقية</link
+> التي تظهر. </para>
+</listitem>
+</itemizedlist>
+</para>
+</sect1>
+
+<sect1 id="showing-hiding-objects">
+<title
+>إظهار الكائنات وإخفاؤها</title>
+<para
+>في كيج، يمكن إخفاء الكائنات. يُفعل ذلك بتحديد الكائنات، والنقر بزر الفأرة الأيمن على أحدها، واختيار <guimenuitem
+>إخفاء</guimenuitem
+> من <link linkend="objects-context-menus"
+>القائمة السياقية</link
+> التي تظهر. </para>
+<para
+>لإظهار الكائنات المخفية، استخدم <menuchoice
+><guimenu
+>تحرير</guimenu
+><guimenuitem
+>إظهار الكل</guimenuitem
+></menuchoice
+>. سيُظهر هذا جميع الكائنات المخفية حاليًا. </para>
+
+<sect2 id="night-vision">
+<title
+>الرؤية الليلية</title>
+<para
+>الرؤية الليلية هي طريقة خاصة للعمل مع الكائنات المخفية. عندما تحتاج إلى تحريك أو تغيير شيء في كائن واحد أو أكثر دون إظهار جميع الكائنات المخفية لديك، فإن وضع الرؤية الليلية سيفيدك. </para>
+<para
+>أساسًا، يتيح لك رؤية الكائنات المخفية كما لو كانت مرئية، بحيث يمكنك التعامل معها كالمعتاد. في وضع الرؤية الليلية، ستكون الكائنات المخفية مرئية بلون رمادي. </para>
+<para
+>لتبديل وضع الرؤية الليلية، استخدم <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>ارتداء نظارات الأشعة تحت الحمراء</guimenuitem
+></menuchoice
+>. </para>
+</sect2>
+</sect1>
+
+<sect1 id="undo-redo">
+<title
+>تراجع/أعد</title>
+<para
+>في كيج، يمكنك التراجع عن أي تغيير تقريبًا تجريه في المستند. استخدم أزرار <guiicon
+>تراجع</guiicon
+>/<guiicon
+>إعادة</guiicon
+> على شريط الأدوات، أو قائمة <guimenu
+>تحرير</guimenu
+>، أو اختصارات لوحة المفاتيح المناسبة. </para>
+</sect1>
+
+<sect1 id="full-screen-mode">
+<title
+>وضع ملء الشاشة</title>
+<para
+>كيج لديه أيضًا وضع ملء الشاشة. لاستخدامه، انقر على الزر المناسب في شريط الأدوات، أو اختر <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>وضع ملء الشاشة</guimenuitem
+></menuchoice
+>. </para>
+<para
+>لمغادرة وضع ملء الشاشة، انقر بزر الفأرة الأيمن على الشاشة في مكان لا يوجد به كائن، واختر <guimenuitem
+>الخروج من وضع ملء الشاشة</guimenuitem
+>، أو اضغط على الاختصار <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>F</keycap
+></keycombo
+>. </para>
+</sect1>
+</chapter>
+
+
+<chapter id="kig-object-types">
+<title
+>أنواع الكائنات في كيج</title>
+<para
+>يدعم كيج عددًا كبيرًا نسبيًا من أنواع الكائنات. يُرجى ملاحظة أنه لا تظهر جميع أنواع الكائنات المتاحة في أشرطة الأدوات: هناك بعض الكائنات التي يمكنك إنشاؤها فقط عبر قائمة <guimenu
+>كائنات</guimenu
+> في شريط القوائم. بالطبع، كما هو الحال مع جميع تطبيقات &kde;، محتويات أشرطة الأدوات قابلة للتخصيص. جرب خيار <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط أشرطة الأدوات...</guimenuitem
+></menuchoice
+> إذا أردت فعل ذلك. </para>
+</chapter>
+
+
+<chapter id="using-advanced">
+<title
+>الاستخدام المتقدم</title>
+<sect1 id="objects-context-menus">
+<title
+>قوائم السياق</title>
+<para
+>كيج لديه قوائم سياقية لكائناته. جرب النقر بزر الفأرة الأيمن على كائن لترى قائمة سياقية تظهر. هناك العديد من الخيارات: لإنشاء كائنات أخرى، وضبط الألوان، وعرض القلم، والنمط، وحتى إخفاء الكائنات أو تحريكها أو حذفها. بعض الكائنات لها خياراتها الخاصة (مثلًا: يمكنك إعادة تعريف نقاط معينة لتكون مقيدة بخط إذا لم تكن كذلك سابقًا، إلخ). هذه الخيارات يجب أن تكون سهلة الفهم. </para>
+
+<para
+>بعض الإجراءات في القائمة السياقية لكائن تحتاج إلى كائن آخر محدد كمرجع، على سبيل المثال:</para>
+
+<variablelist>
+<varlistentry>
+<term
+>تدوير شكل بعدد محدد من الدرجات حول نقطة</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>انقر على <menuchoice
+><guimenu
+>كائنات</guimenu
+> <guisubmenu
+>زوايا</guisubmenu
+><guimenuitem
+>زاوية بثلاث نقاط</guimenuitem
+> </menuchoice
+> واجعل زاوية الدوران المطلوبة في مكان ما في نافذة كيج، عمومًا في مكان غير بارز. إذا رغبت، انقر بزر الفأرة الأيمن على الزاوية وانقر على <menuchoice
+><guisubmenu
+>أضف تسمية نصية</guisubmenu
+><guimenuitem
+>الزاوية بالدرجات</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>انقر بزر الفأرة الأيمن على الزاوية واختر <guimenuitem
+>ضبط الحجم</guimenuitem
+> وأدخل الحجم الجديد لهذه الزاوية في الحوار. </para
+></listitem>
+<listitem
+><para
+>انقر على قائمة <guimenu
+>كائنات</guimenu
+> وأنشئ الكائن المطلوب. </para
+></listitem>
+<listitem
+><para
+>انقر بزر الفأرة الأيمن على الشكل، واختر من <menuchoice
+><guisubmenu
+>تحويل</guisubmenu
+> <guimenuitem
+>تدوير</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>اضبط نقطة الدوران المطلوبة.</para
+></listitem>
+<listitem
+><para
+>انقر على زاويتك.</para
+></listitem>
+<listitem
+><para
+>شكلك قد دُوِّر!</para
+></listitem>
+</orderedlist>
+<!--this does not work in 4.3/4.4/4.5 and trunk, so comment out for now
+<note>
+<para
+>Constructing your angle with an opening to the right allows for clockwise
+shape rotation. Constructing your angle with an opening to the left <emphasis
+>and</emphasis>
+adding the text label will allow both clockwise and counter-clockwise
+rotations.</para
+></note>
+<para>
+Clicking on the arrow created by the angle makes a counter-clockwise
+rotation. Clicking on the text label of the angle makes a clockwise
+rotation.</para>
+-->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>انقل كائنًا</term>
+<listitem>
+<orderedlist>
+<listitem
+><para
+>انقر على <menuchoice
+><guimenu
+>كائنات</guimenu
+> <guisubmenu
+>متجهات ومقاطع</guisubmenu
+><guimenuitem
+>متجه</guimenuitem
+> </menuchoice
+> وأنشئ الكائن باختيار نقطة البداية والنهاية في مكان ما في نافذة كيج.</para
+></listitem>
+<listitem
+><para
+>لتعديل طول واتجاه المتجه، عليك تحرير نقطة بدايته ونهايته. اخترهما وانتقِ <guimenuitem
+>اضبط الإحداثي...</guimenuitem
+> في القائمة السياقية. </para
+></listitem>
+<listitem
+><para
+>انقر على <guimenu
+>كائنات</guimenu
+> وأنشئ الكائن الذي تريده. </para
+></listitem>
+<listitem
+><para
+>انقر بزر الفأرة الأيمن على كائنك، واختر <menuchoice
+><guisubmenu
+>تحويل</guisubmenu
+> <guimenuitem
+>نقل</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+<listitem
+><para
+>اختر المتجه المراد النقل به.</para
+></listitem>
+</orderedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="document-context-menus">
+<title
+>قوائم سياقية للمستند</title>
+<para
+>النقر بزر الفأرة <mousebutton
+>الأيمن</mousebutton
+> على المستند (أي ليس على كائن) سيُظهر نافذة منبثقة يمكنك استخدامها لبدء إنشاء كائن جديد، أو تغيير نظام الإحداثيات المستخدم، أو إظهار الكائنات المخفية، أو التكبير والتصغير في المستند، أو التبديل إلى وضع ملء الشاشة. </para>
+</sect1>
+
+<sect1 id="defining-macros">
+<title
+>تعريف وحدات ماكرو</title>
+<para
+>من الميزات الأكثر تقدمًا في كيج دعمه لوحدات الماكرو. يتيح لك ذلك تعريف أنواع جديدة من الكائنات من أنواع أخرى مُعرَّفة مسبقًا. </para>
+<para
+>مثال: افترض أنك تريد إنشاء ماكرو لبناء دائرة من ثلاث نقاط عليها. ستُدخل ثلاث نقاط، ثم تنشئ بعض العموديات ونقاط المنتصف حتى تجد المركز. يمكنك الآن استخدام الأمر الموجود <guimenuitem
+>دائرة بالمركز ونقطة</guimenuitem
+> (باستخدام إحدى النقاط الثلاث كنقطة لهذا الأمر). الصورة التالية قد توضح ذلك أكثر: </para>
+<screenshot>
+<screeninfo
+>اختبار تشغيل وحدات الماكرو</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="test_run_macro.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>اختبار تشغيل وحدات الماكرو</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>بعد ذلك يأتي تعريف الماكرو. اختر عنصر القائمة <menuchoice
+><guimenu
+>أنواع</guimenu
+> <guimenuitem
+>ماكرو جديد...</guimenuitem
+></menuchoice
+>، أو انقر على الزر &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="system-run.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>ماكرو جديد...</guibutton
+> في شريط الأدوات. سيظهر معالج ويطلب منك تحديد الكائنات المعطاة. في مثالنا، هذه هي النقاط الثلاث. حدد النقاط الثلاث (انقر عليها لتحديدها، وانقر مرة أخرى لإلغاء التحديد) وانقر على الزر <guibutton
+>التالي</guibutton
+> للمتابعة. أخيرًا، حدد الكائنات الأخيرة (الدائرة فقط في مثالنا). </para>
+
+<screenshot>
+<screeninfo
+>معالج الماكرو</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macro_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>معالج الماكرو</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>بعد إتمام الخطوات السابقة، انقر على الزر <guibutton
+>التالي</guibutton
+> للمتابعة. أدخل اسمًا ووصفًا اختياريًا لنوعك الجديد، وانقر على الزر <guibutton
+>إنهاء</guibutton
+>. أصبح نوع الماكرو الخاص بك جاهزًا الآن. </para>
+
+<para
+>لاستخدام نوع الماكرو الجديد، انقر على زرّه في شريط الأدوات أو استخدم قائمة <guimenu
+>كائنات</guimenu
+>. إنشاء كائن ماكرو هو تمامًا مثل إنشاء أي كائن آخر. </para>
+<screenshot>
+<screeninfo
+>استخدام نوعك الجديد</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="macros_at_work.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>استخدام نوعك الجديد</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="working-with-types">
+<title
+>العمل مع الأنواع</title>
+<para
+>كما رأيت في الفصل السابق، يتيح لك كيج إنشاء كائناتك الخاصة. ويضمن كيج أيضًا أنه بمجرد إنشاء كائن، يُحفظ عند الخروج ويُحمّل عند بدء التشغيل. ليس عليك حفظ أو تحميل تعريفات الماكرو يدويًا. ومع ذلك، يسمح لك كيج بفعل المزيد مع الماكرو. إذا اخترت <menuchoice
+><guimenu
+>الأنواع</guimenu
+><guimenuitem
+>إدارة الأنواع...</guimenuitem
+></menuchoice
+> من القائمة، سترى حوارًا حيث يمكنك تحرير أنواعك. يتيح لك تعديل الأنواع الموجودة، وحذف الأنواع غير المستخدمة، وتصديرها إلى ملف، أو حتى تحميلها من ملف آخر. </para>
+<screenshot>
+<screeninfo
+>حوار تحرير الأنواع</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="edit_types_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>حوار تحرير الأنواع</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="text-labels">
+<title
+>نصوص اللصائق</title>
+<para
+>يتيح لك كيج إضافة لصائق نصية إلى إنشاء. هذا مفيد جدًا لإضافة أسماء أو شروحات أو نصوص أخرى إلى الإنشاءات. يمكن لـ كيج أيضًا عرض معلومات متغيرة عن الكائنات (تُعرف أيضًا باسم <quote
+>الخصائص</quote
+>). </para>
+<para
+>لبدء إنشاء لصيقة نصية، اضغط ببساطة على زر &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="kig_text.png" format="PNG"/> </imageobject
+> </inlinemediaobject
+> <guibutton
+>لصيقة نصية</guibutton
+> في شريط أدوات كيج أو اختر عنصر القائمة <menuchoice
+><guimenu
+>الكائنات</guimenu
+> <guisubmenu
+>أخرى</guisubmenu
+><guimenuitem
+>لصيقة نصية</guimenuitem
+> </menuchoice
+>. </para>
+<para
+>بعد ذلك، عليك اختيار موقع للصيقة النصية. يمكنك إما تحديد موقع عشوائي على الشاشة، أو اختيار <quote
+>إرفاق</quote
+> اللصيقة بكائن. </para>
+<screenshot>
+<screeninfo
+>إرفاق لصيقة بدائرة...</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_attaching.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>إرفاق لصيقة بدائرة...</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>بعد تحديد مكان وضع اللصيقة، يظهر حوار اللصيقة النصية. هنا، يمكنك كتابة النص الذي تريده في اللصيقة الجديدة، ثم انقر <guibutton
+>إنهاء</guibutton
+>. يجب أن ترى الآن اللصيقة في مستندك. </para>
+<screenshot>
+<screeninfo
+>حوار اللصيقة النصية</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="text_label_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>حوار اللصيقة النصية</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>المثال السابق كان بسيطًا ومقتصرًا على النص فقط. ومع ذلك، هناك أيضًا دعم لعرض معلومات متغيرة عن الكائنات في لصيقة (مثلًا: يمكنك إنشاء لصيقة بالنص <quote
+>طول هذا القطعة هو %1 وحدة.</quote
+> حيث يُستبدل <token
+>%1</token
+> ديناميكيًا بطول قطعة محددة). </para>
+<para
+>لفعل ذلك، أدخل نصًا يحتوي على عدد من العناصر النائبة ( <token
+>%1</token
+>, <token
+>%2</token
+> إلخ…). ثم اضغط على زر <guibutton
+>التالي</guibutton
+> للمتابعة. إذا أردت تغيير النص أو المتغيرات لاحقًا، يمكنك العودة باستخدام زر <guibutton
+>السابق</guibutton
+>. </para>
+<para
+>يعرض المعالج الآن النص الذي أدخلته مع استبدال جميع العناصر النائبة بشيء مثل <guilabel
+>الوسيط 1</guilabel
+>. يتم اختيار الخاصية المرتبطة بوسيط معين بالنقر أولًا على الوسيط المعني. ثم انقر على الكائن الذي تحتاجه والذي يمتلك هذه الخاصية، ثم اختر الخاصية نفسها في القائمة المنبثقة التي تظهر. على سبيل المثال، في المثال أعلاه، ستنقر على <guilabel
+>الوسيط 1</guilabel
+>، ثم تنقر على القطعة الصحيحة في نافذة كيج الرئيسة، وتختار الخاصية <guilabel
+>الطول</guilabel
+>. بعد ذلك، يمكنك ملء باقي الأجزاء المتغيرة، أو اختيار خاصية أخرى لأحد الأجزاء المتغيرة إذا أردت تغييرها. عندما تكون مستعدًا، انقر على زر <guibutton
+>إنهاء</guibutton
+> لإكمال إنشاء اللصيقة النصية. </para>
+<screenshot>
+<screeninfo
+>اختيار خاصية لجزء متغير</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="text_label_wizard__select_property.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>اختيار خاصية لجزء متغير</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+</sect1>
+
+<sect1 id="loci">
+<title
+>Loci</title>
+<para
+>يدعم كيج استخدام المحال الهندسية. يُعرّف المحل رياضيًا على أنه مجموعة جميع النقاط أو الخطوط التي تحقق أو تُحدد بشروط محددة؛ كما في <quote
+>محل النقاط المتساوية البعد عن نقطة معينة هو دائرة</quote
+>. لنلقِ نظرة على مثال لكيفية استخدام المحال الهندسية في كيج: </para>
+<para
+>تأمل البناء الهندسي التالي: نرسم دائرة، ونقطة يمكنها التحرك فقط على طول محيطها (ابنِ هذه النقطة بتحديد المؤشر على دائرة، والنقر على &MMB;. إذا حاولت بعد ذلك تحريك النقطة الناتجة، سترى أنه لا يمكنك تحريكها خارج الدائرة). ثم نرسم قطعة مستقيمة من تلك النقطة إلى مركز الدائرة، ونقطة منتصف تلك القطعة. </para>
+<screenshot>
+<screeninfo
+>بناء بسيط باستخدام محَطّ</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata
+fileref="simple_locus_construction.png"
+format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>بناء بسيط باستخدام محَطّ</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>الآن إذا حركت النقطة المقيدة بالدائرة، سترى أن النقطة الثانية تتحرك معها. إذا أمسكت بقلم عند النقطة الثانية، وحركت النقطة الأولى حول الدائرة بأكملها، فسيتم رسم دائرة جديدة نصف حجم الأخرى. المسار الذي تسلكه النقطة الثانية بينما تتحرك الأولى حول الدائرة هو محَطّها. </para>
+<para
+>بناء محَطّ نقطة فعليًا سهل جدًا. انقر على زر &nbsp;<inlinemediaobject
+><imageobject
+> <imagedata fileref="locus.png" format="PNG"/> </imageobject
+></inlinemediaobject
+> <guibutton
+>محَطّ</guibutton
+> في شريط الأدوات، أو اختر عنصر القائمة <menuchoice
+><guimenu
+>الكائنات</guimenu
+> <guisubmenu
+>أخرى</guisubmenu
+><guimenuitem
+>محَطّ</guimenuitem
+></menuchoice
+>. ثم اختر النقطة المقيدة كنقطة متحركة (سيظهر النص <guilabel
+>نقطة متحركة</guilabel
+> عند تحريك الفأرة فوقها)، والأخرى كـ <guilabel
+>نقطة تابعة</guilabel
+>. سيتم بعد ذلك رسم محَطّ النقطة التابعة. </para>
+</sect1>
+</chapter>
+
+<chapter id="scripting">
+<title
+>البرمجة</title>
+<para
+>يسمح لك كيج بإنشاء أنواع مخصصة بلغة البرمجة النصية Python. هذه ميزة متقدمة جدًا، وأنا أعرف برنامج هندسة تفاعلية واحدًا آخر فقط له وظيفة مماثلة (برنامج <acronym
+>جنوم</acronym
+> &drgeo;). </para>
+<para
+>البرمجة النصية بلغة Python في كيج تسمح لك أساسًا بإنشاء كائناتك الخاصة من كائنات أب معينة. على سبيل المثال، إذا كنت مدرس رياضيات، ولديك طريقة مبتكرة لحساب نقطة مثيرة للاهتمام على قطع مخروطي، فبدلًا من التعامل مع الإنشاءات المعقدة والماكرو، يمكنك ببساطة كتابة كيفية حساب النقطة في كود Python وسيعرضها لك كيج. </para>
+<para
+>افترض أنك لم تكن على علم بالنوع المدمج في كيج <quote
+>نقطة المنتصف</quote
+>، وأردت إظهار نقطة المنتصف لنقطتين معطاتين. عندها ستنقر على زر &nbsp;<inlinemediaobject
+> <imageobject
+> <imagedata fileref="text-x-python3.png" format="PNG"/></imageobject
+> </inlinemediaobject
+> <guibutton
+>نص Python</guibutton
+> في شريط الأدوات، أو تختار <menuchoice
+><guimenu
+>الكائنات</guimenu
+><guisubmenu
+>أخرى</guisubmenu
+> <guimenuitem
+>نص Python</guimenuitem
+></menuchoice
+> من شريط القوائم. سيُعرض عليك بعد ذلك معالج يسمح لك بالمتابعة. </para>
+<screenshot>
+<screeninfo
+>معالج كائن النص البرمجي</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>معالج كائن النص البرمجي</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>أول شيء عليك فعله هو اختيار الوسائط لكائن النص البرمجي. في مثالنا، هذا يعني النقطتين اللتين نريد إظهار نقطة المنتصف لهما. اخترهما في النافذة الرئيسة لـ كيج، وانقر على <guibutton
+>التالي</guibutton
+> للمتابعة. </para>
+<para
+>الآن يُعرض عليك مربع تحرير نص حيث يمكنك إدخال الكود لكائن النص البرمجي الخاص بك. كود قالب وبعض التعليقات موجودة بالفعل. من المهم التأكد من أن كودك هو كود Python صالح. سيلاحظ الأشخاص الملمون بلغة Python أننا نعرّف فعليًا دالة Python تُسمى <function
+>calc</function
+>. لذلك من الضروري الالتزام بقواعد Python لتعريف الدوال. على سبيل المثال، يجب أن يبدأ كل سطر من الدالة بعلامة تبويب. أول سطر لا يبدأ بعلامة تبويب ينهي تعريف الدالة. </para>
+<para
+>دالة Python التي نريد تعريفها تُسمى <function
+>calc</function
+>، وفي حالتنا تقبل وسيطين. هذان هما الكائنان اللذان اخترتهما كوسائط في الشاشة السابقة. تحتاج إلى عدد من الوسائط بقدر ما اخترته هناك. يُطلق عليهما <parameter
+>arg1</parameter
+> و <parameter
+>arg2</parameter
+>، لكن يمكنك تغيير أسمائهما إلى شيء أكثر دلالة إذا أردت. </para>
+<para
+>في الدالة، يمكنك القيام بجميع أنواع الحسابات التي تراها ضرورية، باستخدام الوسيطين إذا لزم الأمر. يجب عليك إرجاع الكائن الذي تريد تعريفه. في حالتنا، هذا هو كائن <classname
+>نقطة</classname
+>. الوسيطان هما أيضًا كائنا <classname
+>نقطة</classname
+>، ويمكننا استخدام دالة <function
+>Point.coordinate()</function
+> لتعريف إحداثيات النقطتين المعطاتين. </para>
+<para
+>الحساب الضروري في مثالنا بسيط جدًا، نحن ببساطة نجمع مجموعتي الإحداثيات، ونقسم المجموعة الجديدة على اثنين. ثم نبني نقطة جديدة باستخدام النتيجة. كود Python المطلوب هو:</para>
+
+<programlisting
+>def calc( a, b ):
+    m = ( a.coordinate() + b.coordinate() ) / 2;
+    return Point( m )
+</programlisting>
+
+<screenshot>
+<screeninfo
+>إدخال الكود</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="script_wizard_entering_code.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>إدخال الكود لنقطة المنتصف في معالج كائن النص البرمجي.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>إذا نقرت الآن على زر <guibutton
+>إنهاء</guibutton
+>، سيظهر الكائن الجديد في مستند كيج. إذا حركت إحدى النقطتين، ستتحرك النقطة المنشأة حديثًا معها. يمكن بناء كائنات أكثر قوة بهذه الطريقة: نُشجعك على تجربتها. </para>
+<screenshot>
+<screeninfo
+>بُني كائن نص برمجي</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="constructed_script_object.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>كائن النص البرمجي المُنشأ حديثًا. </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>يمكن استخدام جميع الكائنات في كيج في كود بايثون. كما رأينا أعلاه، النقاط هي من الصنف <classname
+>Point</classname
+>، ويمكنك استخدام &eg; التابع <function
+>Point.coordinate()</function
+>. يمكنك أيضًا إرجاع جميع أنواع الكائنات، وليس فقط <classname
+>Point</classname
+>. تتوفر العديد من الأصناف والتابعات الإضافية في كود بايثون الخاص بـ كيج، ويُقدَّم مرجع أكثر اكتمالًا <ulink url="https://edu.kde.org/kig/manual/scripting-api/index.html"
+>على موقع كيج الإلكتروني</ulink
+>. </para>
+</chapter>
+
+<chapter id="kig-features">
+<title
+>ميزات كيج</title>
+
+<itemizedlist>
+<listitem>
+<para
+>كيج هو تطبيق مفتوح المصدر. هذا يعني أنك حر في استخدامه وتعديله بأي طريقة تريدها. يخضع توزيع كيج لبعض القيود، أساسًا أن يكون لكل شخص نفس الحقوق في استخدام كيج، بما في ذلك تعديلاتك، مثلي ومثلك. </para>
+<para
+>تُطوَّر برامج البرمجيات الحرة بروح منفتحة جدًا، وعادةً ما يكون مطوروها مستجيبين جدًا لملاحظات المستخدمين. لذلك، إذا كانت لديك أي أسئلة أو شكاوى أو أي شيء بخصوص كيج، يُرجى الاتصال بالقائمة البريدية kde-edu على <email
+>kde-edu@kde.org</email
+>. </para>
+</listitem>
+<listitem>
+<para
+>كيج هو تطبيق KPart، مما يعني أنه يمكنك تضمينه في برامج &kde; الأخرى. إذا فتحت ملفًا بامتداد <literal role="extension"
+>.kig</literal
+> في &konqueror;، فيمكن فتحه مباشرة في شاشة &konqueror; دون الحاجة إلى بدء تطبيق خارجي. </para>
+</listitem>
+<listitem>
+<para
+>يجب أن يكون العمل مع كيج مباشرًا جدًا. بناء الكائنات سهل وتفاعلي، مع عرض النتائج الأولية، &etc;. تعمل عمليات النقل والاختيار والبناء كما هو متوقع. يجب أن يكون دعم التراجع بديهيًا جدًا أيضًا. </para>
+</listitem>
+<listitem>
+<para
+>يدعم كيج تعريف وحدات الماكرو بطريقة مباشرة. تُقدَّم هذه الكائنات للمستخدم مثل الكائنات العادية. تُحفظ عند الخروج وتُحمَّل عند بدء التشغيل، حتى لا تُفقد عند الخروج. يمكنك إدارة هذه الكائنات في حوار <guilabel
+>إدارة الأنواع</guilabel
+> (انظر <xref linkend="working-with-types"/>). يمكنك تصديرها إلى ملفات، واستيرادها من ملفات، وتحريرها وحذفها. </para>
+</listitem>
+<listitem>
+<para
+>يحفظ كيج بياناته بتنسيق &XML; واضح. </para>
+</listitem>
+<listitem>
+<para
+>يدعم كيج بناء المحلّات الهندسية. </para>
+</listitem>
+<listitem>
+<para
+>يسمح لك كيج بتصدير ملف كيج إلى بعض التنسيقات المثيرة للاهتمام، مثل الصور، وملفات <application
+>XFig</application
+> و <application
+>LaTeX</application
+>، والصور المتجهة &SVG;. هذا مفيد جدًا، لأن ليس كل البرامج تدعم تنسيق ملف كيج بعد. </para>
+</listitem>
+<listitem>
+<para
+>يمتلك كيج نظام تحويل مرن جدًا. </para>
+</listitem>
+<listitem>
+<para
+>يهدف كيج إلى أن يكون متوافقًا مع منافسيه. لهذا السبب يدعم تنسيق ملف &kgeo;، وتنسيق ملف &kseg;، وجزئيًا تنسيقي &drgeo; و &cabri;؛ علاوة على ذلك، يُخطط لدعم تنسيقات أخرى. </para>
+</listitem>
+</itemizedlist>
+</chapter>
+
+
+<chapter id="credits">
+<title
+>الحقوق والترخيص</title>
+
+<para
+>المؤلفون الرئيسون </para>
+<para
+>حقوق نشر كيج 2011-2015 ديفيد إي. نارفايز <email
+>david.narvaez@computer.org</email
+> </para>
+<para
+>حقوق نشر كيج 2002-2013 موريتسيو باوليني <email
+>paolini@dmf.unicatt.it</email
+> </para>
+<para
+>حقوق نشر كيج 2004-2010 بينو توسكانو <email
+>pino@kde.org</email
+> </para>
+<para
+>حقوق نشر كيج 2002-2005 دومينيك ديفريسي <email
+>devriese@kde.org</email
+> </para>
+
+<para
+>حقوق نشر التوثيق 2002-2004 دومينيك ديفريسي <email
+>devriese@kde.org</email
+>. </para>
+
+<para
+>حقوق نشر التوثيق 2004-2005 بينو توسكانو <email
+>toscano.pino@tiscali.it</email
+>. </para>
+
+<para
+>راجعه &Philip.Rodrigues; &Philip.Rodrigues.mail;. </para>
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="contributing">
+<title
+>ساهم</title>
+<sect1 id="kig-is-free">
+<title
+>البرمجيات الحرة</title>
+<para
+>كيج هو <ulink url="https://www.gnu.org/philosophy/philosophy.html#AboutFreeSoftware"
+> برنامج حر</ulink
+>. يعني هذا أن شيفرته المصدرية متاحة بحرية على الإنترنت، ويمكن لأي شخص استخدامها وقراءتها وتعديلها وتوزيعها. </para>
+</sect1>
+
+<sect1 id="contribute-to-kig">
+<title
+>ساهم</title>
+<para
+>في هذا الفصل أريد أن أوضح لك (المستخدم) الحقوق التي يمنحك إياها ترخيص كيج. كما هو الحال مع كل البرامج الحرة، يُسمح لك (ويُشجّع) على إصلاح المشكلات التي تواجهها أثناء استخدامه، وإضافة الميزات التي تفتقدها، وتوزيع برنامجك المعدّل، وإرسال هذه التعديلات لإدراجها عبر أدوات المراجعة المتاحة لمجتمع كيدي. </para>
+<para
+>إذا كنت غير متأكد من حقوقك في استخدام هذا البرنامج، أو حقوق الآخرين في استخدام أي تعديلات تجريها على هذا البرنامج إلخ…، فالرجاء قراءة الترخيص. يمكنك العثور عليه في ملف <filename
+>COPYING</filename
+> في شجرة مصدر كيج أو رابط الترخيص في حوار <guilabel
+>حول كيج</guilabel
+>. </para>
+</sect1>
+
+<sect1 id="howto-contribute">
+<title
+>كيف تساهم ؟</title>
+<para
+>أي مساهمات مرحّب بها. إذا كنت لا تحب الأيقونات، أو تعتقد أن الدليل بحاجة إلى تحديث، أو إذا كان لديك هذه الوحدة الكبيرة الرائعة التي تريد مشاركتها مع العالم، فلا تتردد في إرسالها إليّ. يرجى ملاحظة أن مساهماتك ستُوزّع بموجب شروط &GNU; <acronym
+>GPL</acronym
+>؛ يمكنك العثور على شروط هذا الترخيص في ملف <filename
+>COPYING</filename
+> في شجرة مصدر كيج، وفي فصل <link linkend="credits"
+>الإسناد والترخيص</link
+> في هذا الدليل. </para>
+</sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: xml
+End:
+-->

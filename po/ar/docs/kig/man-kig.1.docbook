@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Arabic "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>دليل مستخدم كيج</title>
+<author
+><personname
+> <firstname
+>Ben</firstname
+> <surname
+>Burton</surname
+> </personname
+><email
+>bab@debian.org</email
+></author>
+<date
+>2020-12-23</date>
+<releaseinfo
+>تطبيقات 20.12</releaseinfo>
+<productname
+>تطبيقات كِيدِي</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>kig</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+><command
+>kig</command
+></refname>
+<refpurpose
+>برنامج هندسة تفاعلي من كيدي</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<cmdsynopsis
+><command
+>kig</command
+> <group choice="opt"
+><option
+>-c, --convert-to-native</option
+> <group choice="opt"
+><option
+>-o, --outfile <replaceable
+>اسم_الملف</replaceable
+></option
+> </group
+> </group
+> <arg choice="opt"
+>خيارات</arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title
+>الوصف</title>
+<para
+>كيج تطبيق للهندسة التفاعلية. يُقصد به خدمة غرضين:</para>
+<itemizedlist
+><listitem
+><para
+>السماح للطلاب باستكشاف الأشكال والمفاهيم الرياضية تفاعليًا باستخدام الحاسوب؛</para
+></listitem>
+<listitem
+><para
+>العمل كأداة WYSIWYG لرسم الأشكال الرياضية وتضمينها في مستندات أخرى.</para
+></listitem
+></itemizedlist>
+<para
+>بهذا البرنامج يمكنك ممارسة الهندسة على الحاسوب تمامًا كما تفعل على سبورة في الفصل. لكن البرنامج يسمح لك بتحريك وتغيير أجزاء من رسم هندسي لترى كيف تتغير الأجزاء الأخرى نتيجة لذلك.</para>
+<para
+>يدعم كيج المحلّات الهندسية والماكروات المعرفة من المستخدم. كما يستورد ويصدر من وإلى صيغ ملفات خارجية تتضمن <application
+>Cabri</application
+> و<application
+>Dr. Geo</application
+> و&kgeo; و<application
+>KSeg</application
+> و<application
+>XFig</application
+>.</para>
+<para
+>هذا التطبيق جزء من وحدة التعليم والترفيه الرسمية لـكيدي.</para>
+</refsect1>
+
+<refsect1>
+<title
+>خيارات</title>
+
+<variablelist>
+<varlistentry>
+<term
+><option
+>-c, --convert-to-native</option
+></term>
+<listitem
+><para
+>لا تُظهر واجهة مستخدم رسومية. بل حوّل الملف المحدد إلى صيغة كيج الأصلية. سيُكتب ملف كيج الأصلي إلى المخرج المعياري ما لم يُمرّر <option
+>--outfile</option
+>.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><option
+>-o, --outfile <replaceable
+>اسم_ملف</replaceable
+></option
+></term>
+<listitem
+><para
+>يُستخدم مع <option
+>--convert-to-native</option
+> لتحديد أين يُحفظ ملف كيج المنشأ حديثًا. عدم تحديد هذا الخيار، أو تقديم اسم ملف <filename
+>-</filename
+> سيُخرج الملف إلى المخرج المعياري.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsect1>
+
+<refsect1>
+<title
+>انظر أيضًا</title>
+<para
+>وثائق المستخدم الأكثر تفصيلًا متوفرة من <ulink url="help:/kig"
+>help:/kig</ulink
+> (إما أدخل هذا الرابط في &konqueror;، أو شغّل <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/kig</parameter
+></userinput
+>).</para>
+
+<para
+>هناك أيضًا معلومات إضافية متوفرة في <ulink url="https://edu.kde.org/kig/"
+>موقع كيدي التعليمي</ulink
+>.</para>
+</refsect1>
+
+<refsect1>
+<title
+>المؤلفون</title>
+<para
+>كُتب كيج بواسطة <personname
+><firstname
+>دومينيك</firstname
+><surname
+>ديفريسي</surname
+></personname
+> <email
+>devriese@kde.org</email
+>، و<personname
+><firstname
+>ماوريتسيو</firstname
+><surname
+>باوليني</surname
+></personname
+> <email
+>paolini@dmf.bs.unicatt.it</email
+>، و<personname
+><firstname
+>فرانكو</firstname
+><surname
+>باسكواريلي</surname
+></personname
+> <email
+>pasqui@dmf.bs.unicatt.it</email
+>، و<personname
+><firstname
+>بينو</firstname
+><surname
+>توسكانو</surname
+></personname
+> <email
+>toscano.pino@tiscali.it</email
+>، و<personname
+><firstname
+>ديفيد إي.</firstname
+><surname
+>نارفايز</surname
+></personname
+> <email
+>david.narvaez@computer.org</email
+>، وآخرين.</para>
+<para
+>صفحة الدليل هذه مبنية على تلك المُعدّة لـ&Debian; بواسطة <personname
+><firstname
+>بن</firstname
+><surname
+>بيرتون</surname
+></personname
+> <email
+>bab@debian.org</email
+>.</para>
+</refsect1>
+
+</refentry>
