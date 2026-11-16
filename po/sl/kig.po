@@ -1,6 +1,6 @@
 # Translation of kig.po to Slovenian
 # Copyright (C) 2003,2004, 2006 Free Software Foundation, Inc.
-# $Id: kig.po 1752419 2026-11-08 03:44:09Z scripty $
+# $Id$
 # $Source$
 #
 # Jure Repinc <jlp@holodeck1.com>, 2003, 2004, 2006.
