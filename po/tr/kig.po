@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kig\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:53+0000\n"
-"PO-Revision-Date: 2026-11-15 20:14+0300\n"
+"PO-Revision-Date: 2026-11-23 17:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1326,7 +1326,7 @@ msgid ""
 "Default is stdout as well."
 msgstr ""
 "Dosyanın oluşturulup çıktısı verilecek dosya. “-” standart çıktıya çıktı ver "
-"demektir. Öntanımlı, standart çıktı budur."
+"demektir. Varsayılan, standart çıktı budur."
 
 #: kig/main.cpp:53
 #, kde-format
@@ -2192,7 +2192,7 @@ msgstr "Sayısak Değer"
 #: misc/kigcoordinateprecisiondialog.ui:9
 #, kde-format
 msgid "&Use default coordinate precision"
-msgstr "Öntanımlı koordinat hassasiyeti &kullan"
+msgstr "Varsayılan koordinat hassasiyeti &kullan"
 
 #. i18n: ectx: property (text), widget (QLabel, m_precisionLabel)
 #: misc/kigcoordinateprecisiondialog.ui:16
